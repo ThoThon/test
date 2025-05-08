@@ -1,6 +1,4 @@
-import 'dart:io';
-
-import 'package:dio/io.dart';
+import 'package:v_bhxh/base_app/repository_base/interceptor/jwt_token_interceptor.dart';
 
 import '../../core/core.src.dart';
 import '../../shares/log/dio_log.dart';
@@ -17,27 +15,15 @@ class BaseApi {
   static Dio dio = getBaseDio();
 
   static Dio getBaseDio() {
-    Dio dio = Dio();
+    final dio = Dio();
 
     dio.options = buildDefaultOptions();
+
+    dio.interceptors.add(JwtTokenInterceptor());
     if (Diolog().showDebug) {
       dio.interceptors.add(SDSDioLogInterceptor());
     }
-    dio.httpClientAdapter = IOHttpClientAdapter(
-      createHttpClient: () {
-        final client = HttpClient();
-        client.badCertificateCallback =
-            (X509Certificate cert, String host, int port) => true;
-        return client;
-      },
-    );
 
-/*    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-        (HttpClient client) {
-      client.badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-      return client;
-    };*/
     return dio;
   }
 
@@ -47,15 +33,6 @@ class BaseApi {
           timeOut ?? const Duration(milliseconds: AppConst.requestTimeOut)
       ..receiveTimeout =
           timeOut ?? const Duration(milliseconds: AppConst.requestTimeOut);
-  }
-
-  static void close() {
-    dio.close(force: true);
-    updateCurrentDio();
-  }
-
-  static void updateCurrentDio() {
-    dio = getBaseDio();
   }
 
   static Dio getCurrentDio() {

@@ -73,7 +73,14 @@ class BaseGetxController extends GetxController {
                   break;
                 case AppConst.error401:
                   errorContent = LocaleKeys.dialog_error401.tr;
-                  break;
+                  ShowDialog.showDialogNotificationError(
+                    errorContent,
+                    isActiveBack: false,
+                    function: () {
+                      Get.offAllNamed(AppRoutes.login.path);
+                    },
+                  );
+                  return;
                 case AppConst.error404:
                   errorContent = LocaleKeys.dialog_error404.tr;
                   break;
