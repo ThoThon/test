@@ -1,4 +1,5 @@
-enum AppRoutesIcare {
+enum AppRoutes {
+  pageBuilder,
   routeDioLog,
   splash,
 
@@ -26,6 +27,6 @@ enum AppRoutesIcare {
   verifyCertificate;
 
   String get path {
-    return '/icare_$name';
+    return '/vbhxh_$name';
   }
 }

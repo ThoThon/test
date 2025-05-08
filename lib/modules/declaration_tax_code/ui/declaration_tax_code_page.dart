@@ -55,7 +55,7 @@ class DeclarationTaxCodePage extends BaseGetWidget {
       child: GestureDetector(
         onTap: () {
           Get.toNamed(
-            AppRoutesIcare.declarationTaxCodeDetail.path,
+            AppRoutes.declarationTaxCodeDetail.path,
             arguments: item.taxcode,
           );
         },

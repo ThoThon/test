@@ -1,21 +1,21 @@
-class BaseResponseIcare<T> {
+class BaseResponse<T> {
   final String code;
   final String errorMessage;
   final T? result;
 
-  BaseResponseIcare({
+  BaseResponse({
     required this.code,
     required this.errorMessage,
     required this.result,
   });
 
-  factory BaseResponseIcare.fromJson(
+  factory BaseResponse.fromJson(
     Map<String, dynamic> json, {
     required T Function(Map<String, dynamic>)? fromJson,
   }) {
     final dynamic resultData = json["result"];
 
-    return BaseResponseIcare(
+    return BaseResponse(
       code: json["code"] ?? '',
       errorMessage: json["errorMessage"] ?? '',
       result: (resultData is Map<String, dynamic> && fromJson != null)

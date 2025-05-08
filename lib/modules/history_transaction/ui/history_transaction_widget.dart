@@ -39,9 +39,9 @@ extension HistoryTransactionWidget on HistoryTransactionPage {
                 Get.until(
                   (route) {
                     return checkHaveUnitCode
-                        ? route.settings.name == AppRoutesIcare.home.path
+                        ? route.settings.name == AppRoutes.home.path
                         : route.settings.name ==
-                            AppRoutesIcare.declarationTaxCodeDetail.path;
+                            AppRoutes.declarationTaxCodeDetail.path;
                   },
                 );
               },

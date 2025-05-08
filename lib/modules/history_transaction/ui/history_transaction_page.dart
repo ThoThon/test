@@ -23,9 +23,9 @@ class HistoryTransactionPage extends BaseGetWidget {
                       controller.registerItem?.unitCode?.isNotEmpty == true;
                   Get.until(
                     (route) => checkHaveUnitCode
-                        ? route.settings.name == AppRoutesIcare.home.path
+                        ? route.settings.name == AppRoutes.home.path
                         : route.settings.name ==
-                            AppRoutesIcare.declarationTaxCodeDetail.path,
+                            AppRoutes.declarationTaxCodeDetail.path,
                   );
                 }
               : null,

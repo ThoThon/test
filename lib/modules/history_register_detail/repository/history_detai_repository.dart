@@ -6,7 +6,7 @@ import '../history_register_detail_src.dart';
 class HistoryDetaiRepositoryICare extends BaseRepository {
   HistoryDetaiRepositoryICare(super.controller);
 
-  Future<BaseResponseIcare<ProcessDocumentModel>> searchProcessDocument({
+  Future<BaseResponse<ProcessDocumentModel>> searchProcessDocument({
     required String key,
   }) async {
     final response = await baseCallApi(
@@ -14,13 +14,13 @@ class HistoryDetaiRepositoryICare extends BaseRepository {
       EnumRequestMethod.get,
       jsonMap: {"key": key},
     );
-    return BaseResponseIcare<ProcessDocumentModel>.fromJson(
+    return BaseResponse<ProcessDocumentModel>.fromJson(
       response,
       fromJson: (json) => ProcessDocumentModel.fromJson(json),
     );
   }
 
-  Future<BaseResponseIcare> updateHistoryRigister({
+  Future<BaseResponse> updateHistoryRigister({
     required UpdateHistoryRigisterRequest request,
   }) async {
     final response = await baseCallApi(
@@ -28,7 +28,7 @@ class HistoryDetaiRepositoryICare extends BaseRepository {
       EnumRequestMethod.post,
       jsonMap: request.toJson(),
     );
-    return BaseResponseIcare.fromJson(
+    return BaseResponse.fromJson(
       response,
       fromJson: (json) => json,
     );

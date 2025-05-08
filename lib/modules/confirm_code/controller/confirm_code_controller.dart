@@ -3,7 +3,7 @@ import 'dart:async';
 import '../../icare/icare.src.dart';
 import '../../src.dart';
 
-class PinCodeControllerICare extends BaseGetxControllerIcare {
+class PinCodeControllerICare extends BaseGetxController {
   late TextEditingController textEditingController = TextEditingController();
   late FocusNode pinCodeFocusNode;
   RxString pinCode = ''.obs;

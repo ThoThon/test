@@ -2,7 +2,7 @@ import 'package:v_bhxh/modules/src.dart';
 
 import '../src.dart';
 
-class IcareHomeController extends BaseGetxControllerIcare {
+class IcareHomeController extends BaseGetxController {
   late InfoCompanyResponse itemCompany;
   late final HomepositoryICare homepositoryICare = HomepositoryICare(this);
 
@@ -29,7 +29,7 @@ class IcareHomeController extends BaseGetxControllerIcare {
   }
 
   Future<void> fetchInfoCompany() async {
-    if (Get.previousRoute != AppRoutesIcare.declarationTaxCodeDetail.path) {
+    if (Get.previousRoute != AppRoutes.declarationTaxCodeDetail.path) {
       final List<InfoCompanyResponse> listResponse = [];
       await callAPIList(
         functionAPI: homepositoryICare.fetchInfoCompany(itemCompany.taxCode),

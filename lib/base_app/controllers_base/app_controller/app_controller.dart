@@ -9,13 +9,13 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 
 import '../../../shares/shares.src.dart';
 
-late Box hiveAppICare;
+late Box hiveApp;
 
 late PackageInfo packageInfo;
 
 String? tokenFCM;
 
-class AppControllerIcare extends GetxController {
+class AppController extends GetxController {
   @override
   Future<void> onInit() async {
     // initHive().then((value) async {
@@ -30,6 +30,6 @@ Future<void> initHive() async {
   final appDocumentDirectory =
       await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
-  hiveAppICare = await Hive.openBox(LocaleKeys.app_name.tr);
+  hiveApp = await Hive.openBox(LocaleKeys.app_name.tr);
   packageInfo = await PackageInfo.fromPlatform();
 }

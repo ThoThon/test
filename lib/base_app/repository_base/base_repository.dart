@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import '../base_app.src.dart';
 
 class BaseRepository {
-  final BaseGetxControllerIcare controller;
+  final BaseGetxController controller;
 
   BaseRepository(this.controller);
 
@@ -27,7 +27,7 @@ class BaseRepository {
     Duration? timeOut,
     bool getHeader = false,
   }) {
-    return BaseApiIcare().callApi(
+    return BaseApi().callApi(
       action,
       requestMethod,
       jsonMap: jsonMap,

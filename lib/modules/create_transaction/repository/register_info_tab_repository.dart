@@ -6,19 +6,19 @@ import 'package:v_bhxh/modules/create_transaction/models/model_src.dart';
 class RegisterInfoTabRepositoryICare extends BaseRepository {
   RegisterInfoTabRepositoryICare(super.controller);
 
-  Future<BaseResponseListIcare<ProvinceResponse>> getListProvince() async {
+  Future<BaseResponseList<ProvinceResponse>> getListProvince() async {
     final response = await baseCallApi(
       AppApi.urlGetProvinces,
       EnumRequestMethod.get,
       isHaveVersion: false,
     );
-    return BaseResponseListIcare<ProvinceResponse>.fromJson(
+    return BaseResponseList<ProvinceResponse>.fromJson(
       response,
       ProvinceResponse.fromJson,
     );
   }
 
-  Future<BaseResponseListIcare<DistrictResponse>> getListDistrict(
+  Future<BaseResponseList<DistrictResponse>> getListDistrict(
       String provinceCode) async {
     final request = {
       "provinceCode": provinceCode,
@@ -29,13 +29,13 @@ class RegisterInfoTabRepositoryICare extends BaseRepository {
       isHaveVersion: false,
       jsonMap: request,
     );
-    return BaseResponseListIcare<DistrictResponse>.fromJson(
+    return BaseResponseList<DistrictResponse>.fromJson(
       response,
       DistrictResponse.fromJson,
     );
   }
 
-  Future<BaseResponseListIcare<WardResponse>> getListWard(
+  Future<BaseResponseList<WardResponse>> getListWard(
       String provinceCode, String districtCode) async {
     final request = {
       "provinceCode": provinceCode,
@@ -47,13 +47,13 @@ class RegisterInfoTabRepositoryICare extends BaseRepository {
       isHaveVersion: false,
       jsonMap: request,
     );
-    return BaseResponseListIcare<WardResponse>.fromJson(
+    return BaseResponseList<WardResponse>.fromJson(
       response,
       WardResponse.fromJson,
     );
   }
 
-  Future<BaseResponseListIcare<SocialAgencyResponse>> getSocialAgency({
+  Future<BaseResponseList<SocialAgencyResponse>> getSocialAgency({
     required String administrativeCode,
   }) async {
     final request = {
@@ -65,7 +65,7 @@ class RegisterInfoTabRepositoryICare extends BaseRepository {
       isHaveVersion: false,
       jsonMap: request,
     );
-    return BaseResponseListIcare<SocialAgencyResponse>.fromJson(
+    return BaseResponseList<SocialAgencyResponse>.fromJson(
       response,
       SocialAgencyResponse.fromJson,
     );

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'base_controller.dart';
 
-abstract class BaseRefreshGetxController extends BaseGetxControllerIcare {
+abstract class BaseRefreshGetxController extends BaseGetxController {
   ScrollController scrollControllerUpToTop = ScrollController();
   RxBool showBackToTopButton = false.obs;
 

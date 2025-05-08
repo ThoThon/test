@@ -28,7 +28,7 @@ class Diolog {
 
     showDebugBtn(Get.context!);
 
-    Get.toNamed(AppRoutesIcare.routeDioLog.path);
+    Get.toNamed(AppRoutes.routeDioLog.path);
   }
 
   Future<bool> _triggerCheckShowDiolog() async {

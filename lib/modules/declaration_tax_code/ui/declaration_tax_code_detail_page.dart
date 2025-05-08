@@ -138,8 +138,8 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
           ? () {
               Get.toNamed(
                 isUnitEmpty
-                    ? AppRoutesIcare.createTransaction.path
-                    : AppRoutesIcare.home.path,
+                    ? AppRoutes.createTransaction.path
+                    : AppRoutes.home.path,
                 arguments: controller.itemSelected.value,
               );
             }
@@ -166,7 +166,7 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
           boderColor: AppColors.primaryColor,
           onPressed: () {
             Get.toNamed(
-              AppRoutesIcare.historyTransaction.path,
+              AppRoutes.historyTransaction.path,
               arguments: controller.itemSelected.value,
             );
           },

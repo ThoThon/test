@@ -6,7 +6,7 @@ import 'package:v_bhxh/modules/src.dart';
 
 import '../../../shares/widgets/dialog/dialog.src.dart';
 
-class VerityCertControllerICare extends BaseGetxControllerIcare {
+class VerityCertControllerICare extends BaseGetxController {
   late final CertInfo certInfo;
 
   @override

@@ -7,12 +7,12 @@ import '../../shares/log/dio_log.dart';
 import '../../shares/shares.src.dart';
 import '../controllers_base/base_controller.src.dart';
 
-class BaseApiIcare {
-  static final BaseApiIcare _singleton = BaseApiIcare._();
+class BaseApi {
+  static final BaseApi _singleton = BaseApi._();
 
-  factory BaseApiIcare() => _singleton;
+  factory BaseApi() => _singleton;
 
-  BaseApiIcare._();
+  BaseApi._();
 
   static Dio dio = getBaseDio();
 
@@ -81,7 +81,7 @@ class BaseApiIcare {
     String? urlOther,
     Map<String, String>? headersUrlOther,
     bool isQueryParametersPost = false,
-    required BaseGetxControllerIcare controller,
+    required BaseGetxController controller,
     BaseOptions? dioOptions,
     Function(Object error)? functionError,
     bool isToken = true,

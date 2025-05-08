@@ -1,7 +1,7 @@
 import '../../modules/src.dart';
 
 /// class chứa các collection
-class AppCollectionICare {
+class AppCollection {
   static Map<String, Color> mapColorBackgroundSnackBar = {
     AppConst.actionSuccess: AppColors.backgroundSuccess,
     AppConst.actionFail: AppColors.backgroundFail,

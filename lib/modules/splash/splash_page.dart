@@ -28,12 +28,12 @@ class _SplashPageLoginState extends State<SplashPage> {
   }
 
   Future<void> _initAll() async {
-    Get.put(BaseApiIcare(), permanent: true);
-    Get.put(BaseGetxControllerIcare(), permanent: true);
+    Get.put(BaseApi(), permanent: true);
+    Get.put(BaseGetxController(), permanent: true);
     MockSdk().isMock = true;
     MockSdk().mockEmail = "mobile_test_1";
     await Future.delayed(const Duration(seconds: 2), () {
-      Get.offAndToNamed(AppRoutesIcare.declarationTaxCode.path);
+      Get.offAndToNamed(AppRoutes.pageBuilder.path);
     });
   }
 

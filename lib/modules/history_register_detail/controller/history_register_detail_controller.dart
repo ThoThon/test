@@ -1,6 +1,6 @@
 import '../../src.dart';
 
-class HistoryRegisterDetailControllerICare extends BaseGetxControllerIcare {
+class HistoryRegisterDetailControllerICare extends BaseGetxController {
   late HistoryRegisterModel historyRegisterModel;
 
   QuaTrinhXuLy? quaTrinhXuLy1;

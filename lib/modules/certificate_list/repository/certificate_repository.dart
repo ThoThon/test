@@ -8,7 +8,7 @@ import '../models/model_src.dart';
 class CertificateRepositoryICare extends BaseRepository {
   CertificateRepositoryICare(super.controller);
 
-  Future<BaseResponseIcare<String>> registerSocial({
+  Future<BaseResponse<String>> registerSocial({
     required RegisterRequest request,
     bool isRegisterFirst = true,
   }) async {
@@ -35,7 +35,7 @@ class CertificateRepositoryICare extends BaseRepository {
       jsonMap: formData,
       timeOut: Duration(minutes: 2),
     );
-    return BaseResponseIcare<String>.fromJson(
+    return BaseResponse<String>.fromJson(
       response,
       fromJson: (json) => json.toString(),
     );

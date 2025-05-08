@@ -5,7 +5,7 @@ import 'package:v_bhxh/modules/declaration_tax_code/models/info_company_response
 class HomepositoryICare extends BaseRepository {
   HomepositoryICare(super.controller);
 
-  Future<BaseResponseListIcare<InfoCompanyResponse>> fetchInfoCompany(
+  Future<BaseResponseList<InfoCompanyResponse>> fetchInfoCompany(
       String taxCode) async {
     final body = {
       "taxCode": taxCode,
@@ -16,7 +16,7 @@ class HomepositoryICare extends BaseRepository {
       EnumRequestMethod.get,
       jsonMap: body,
     );
-    return BaseResponseListIcare<InfoCompanyResponse>.fromJson(
+    return BaseResponseList<InfoCompanyResponse>.fromJson(
       response,
       InfoCompanyResponse.fromJson,
     );

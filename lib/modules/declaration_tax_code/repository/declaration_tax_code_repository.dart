@@ -5,7 +5,7 @@ import '../../src.dart';
 class DeclarationTaxCodeRepositoryICare extends BaseRepository {
   DeclarationTaxCodeRepositoryICare(super.controller);
 
-  Future<BaseResponseListIcare<TaxModelResponse>> fetchListTaxCode({
+  Future<BaseResponseList<TaxModelResponse>> fetchListTaxCode({
     required String email,
   }) async {
     final request = {"email": email};
@@ -16,13 +16,13 @@ class DeclarationTaxCodeRepositoryICare extends BaseRepository {
       jsonMap: request,
     );
 
-    return BaseResponseListIcare<TaxModelResponse>.fromJson(
+    return BaseResponseList<TaxModelResponse>.fromJson(
       response,
       TaxModelResponse.fromMap,
     );
   }
 
-  Future<BaseResponseListIcare<InfoCompanyResponse>> fetchInfoCompany(
+  Future<BaseResponseList<InfoCompanyResponse>> fetchInfoCompany(
       String taxCode) async {
     final body = {
       "taxCode": taxCode,
@@ -33,7 +33,7 @@ class DeclarationTaxCodeRepositoryICare extends BaseRepository {
       EnumRequestMethod.get,
       jsonMap: body,
     );
-    return BaseResponseListIcare<InfoCompanyResponse>.fromJson(
+    return BaseResponseList<InfoCompanyResponse>.fromJson(
       response,
       InfoCompanyResponse.fromJson,
     );

@@ -5,7 +5,7 @@ import '../../src.dart';
 class HistoryTransactionRepository extends BaseRepository {
   HistoryTransactionRepository(super.controller);
 
-  Future<BaseResponseListIcare<HistoryRegisterModel>> getHistoryRegister(
+  Future<BaseResponseList<HistoryRegisterModel>> getHistoryRegister(
       String idCompany) async {
     final response = await baseCallApi(
       AppApi.urlGetHistoryRegister,
@@ -16,7 +16,7 @@ class HistoryTransactionRepository extends BaseRepository {
       },
     );
 
-    return BaseResponseListIcare<HistoryRegisterModel>.fromJson(
+    return BaseResponseList<HistoryRegisterModel>.fromJson(
       response,
       HistoryRegisterModel.fromJson,
     );
