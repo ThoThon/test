@@ -15,7 +15,12 @@ class HistoryRegisterDetailPage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: LocaleKeys.historyRegister_historyDetail.tr),
+      appBar: BaseAppBar(
+        title: TextUtils(
+          text: LocaleKeys.historyRegister_historyDetail.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
+      ),
       body: baseShowLoading(
         () => _buildBody(),
       ),

@@ -12,7 +12,10 @@ class DeclarationTaxCodePage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: LocaleKeys.declaration_declarationSocial.tr,
+        title: TextUtils(
+          text: LocaleKeys.declaration_declarationSocial.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
       ),
       body: _buildBody(),
     );
@@ -55,7 +58,7 @@ class DeclarationTaxCodePage extends BaseGetWidget {
       child: GestureDetector(
         onTap: () {
           Get.toNamed(
-            AppRoutesIcare.declarationTaxCodeDetail.path,
+            AppRoutes.declarationTaxCodeDetail.path,
             arguments: item.taxcode,
           );
         },

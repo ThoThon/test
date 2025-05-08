@@ -15,7 +15,12 @@ class ListCertificatePage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: LocaleKeys.certificate_selectCertificate.tr),
+      appBar: BaseAppBar(
+        title: TextUtils(
+          text: LocaleKeys.certificate_selectCertificate.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
+      ),
       body: _buildBody(),
     );
   }

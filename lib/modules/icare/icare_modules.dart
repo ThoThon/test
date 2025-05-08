@@ -21,10 +21,10 @@ class IcareModules {
     // Get.toNamed(AppRoutesIcare.moduleIcare.path);
     icareModulesData = icareModulesRequest;
     Assets.isFromModules = true;
-    Get.put(BaseGetxControllerIcare(), permanent: true);
+    Get.put(BaseGetxController(), permanent: true);
 
-    var result = await Get.toNamed(AppRoutesIcare.declarationTaxCode.path);
-    Get.delete<BaseGetxControllerIcare>();
+    var result = await Get.toNamed(AppRoutes.declarationTaxCode.path);
+    Get.delete<BaseGetxController>();
     return result;
   }
 }

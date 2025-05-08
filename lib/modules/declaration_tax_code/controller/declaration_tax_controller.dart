@@ -2,7 +2,7 @@ import 'package:v_bhxh/modules/src.dart';
 
 import '../../icare/icare.src.dart';
 
-class DeclarationTaxControllerICare extends BaseGetxControllerIcare {
+class DeclarationTaxControllerICare extends BaseGetxController {
   final listData = <TaxModelResponse>[].obs;
   late final declarationTaxCodeRepository =
       DeclarationTaxCodeRepositoryICare(this);

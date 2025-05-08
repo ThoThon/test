@@ -6,7 +6,7 @@ import '../../../shares/widgets/dialog/dialog.src.dart';
 import '../../model/base_model.src.dart';
 import '../../repository_base/repository_base.src.dart';
 
-class BaseGetxControllerIcare extends GetxController {
+class BaseGetxController extends GetxController {
   /// Show loading button
   RxBool isShowLoading = false.obs;
   String errorContent = '';
@@ -46,7 +46,7 @@ class BaseGetxControllerIcare extends GetxController {
   }
 
   void _setOnErrorListener() {
-    BaseApiIcare().setOnErrorListener((error) async {
+    BaseApi().setOnErrorListener((error) async {
       errorContent = LocaleKeys.dialog_errorConnectFailedStr.tr;
 
       if (error is DioException) {
@@ -73,7 +73,14 @@ class BaseGetxControllerIcare extends GetxController {
                   break;
                 case AppConst.error401:
                   errorContent = LocaleKeys.dialog_error401.tr;
-                  break;
+                  ShowDialog.showDialogNotificationError(
+                    errorContent,
+                    isActiveBack: false,
+                    function: () {
+                      Get.offAllNamed(AppRoutes.login.path);
+                    },
+                  );
+                  return;
                 case AppConst.error404:
                   errorContent = LocaleKeys.dialog_error404.tr;
                   break;
@@ -132,9 +139,9 @@ class BaseGetxControllerIcare extends GetxController {
               vertical: AppDimens.padding10,
             ),
             decoration: BoxDecoration(
-              color: AppCollectionICare.mapColorBackgroundSnackBar[typeAction],
+              color: AppCollection.mapColorBackgroundSnackBar[typeAction],
               border: Border.all(
-                color: AppCollectionICare.mapColorBorderSnackBar[typeAction] ??
+                color: AppCollection.mapColorBorderSnackBar[typeAction] ??
                     AppColors.statusRed,
               ),
               borderRadius: BorderRadius.circular(
@@ -155,7 +162,7 @@ class BaseGetxControllerIcare extends GetxController {
                   child: Row(
                     children: [
                       SvgPicture.asset(
-                        AppCollectionICare.mapIconSnackBar[typeAction] ??
+                        AppCollection.mapIconSnackBar[typeAction] ??
                             Assets.ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG,
                       ).paddingOnly(
                         right: AppDimens.paddingVerySmall,
@@ -202,7 +209,7 @@ class BaseGetxControllerIcare extends GetxController {
 
   /// Func goi API Danh sách
   Future<void> callAPIList<T>({
-    required Future<BaseResponseListIcare<T>> functionAPI,
+    required Future<BaseResponseList<T>> functionAPI,
     required List<T> listResponse,
     bool isRefresh = true,
   }) async {
@@ -230,7 +237,7 @@ class BaseGetxControllerIcare extends GetxController {
 
   /// Func goi API Đơn
   Future<void> callAPIBE<T>({
-    required Future<BaseResponseIcare<T>> functionAPI,
+    required Future<BaseResponse<T>> functionAPI,
     required Function(T? result) functionSuccess,
     Function(T? result)? functionFail,
     bool isOverlay = true,

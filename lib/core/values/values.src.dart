@@ -3,3 +3,4 @@ export 'collection.dart';
 export 'const.dart';
 export 'key.dart';
 export 'dimens.dart';
+export 'hive_key.dart';

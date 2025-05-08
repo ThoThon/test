@@ -8,7 +8,7 @@ export '../../../generated/locales.g.dart';
 export '../../../modules/declaration_tax_code/controller/declaration_tax_detail_controller.dart';
 export '../../../shares/base/base.src.dart';
 export '../../../shares/shares.src.dart';
-export '../../../shares/widgets/appbar/base_appbar.dart';
+export '../../../shares/widgets/appbar/base_app_bar.dart';
 export '../models/info_company_response.dart';
 export 'declaration_tax_code_detail_page.dart';
 export 'declaration_tax_code_page.dart';

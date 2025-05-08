@@ -6,7 +6,7 @@ import 'package:v_bhxh/shares/package/export_package.dart';
 import '../../declaration_tax_code/models/info_company_response.dart';
 import '../models/model_src.dart';
 
-abstract class TransactionControllerICare extends BaseGetxControllerIcare {
+abstract class TransactionControllerICare extends BaseGetxController {
   final taxCodeController = TextEditingController();
 
   final nameUnitController = TextEditingController();

@@ -11,7 +11,10 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: LocaleKeys.declaration_selectedUnitCode.tr,
+        title: TextUtils(
+          text: LocaleKeys.declaration_selectedUnitCode.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
       ),
       body: baseShowLoading(
         () => _buildBody(),
@@ -138,8 +141,8 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
           ? () {
               Get.toNamed(
                 isUnitEmpty
-                    ? AppRoutesIcare.infoUnit.path
-                    : AppRoutesIcare.home.path,
+                    ? AppRoutes.infoUnit.path
+                    : AppRoutes.home.path,
                 arguments: controller.itemSelected.value,
               );
             }
@@ -167,7 +170,7 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
           boderColor: AppColors.primaryColor,
           onPressed: () {
             Get.toNamed(
-              AppRoutesIcare.historyTransaction.path,
+              AppRoutes.historyTransaction.path,
               arguments: controller.itemSelected.value,
             );
           },

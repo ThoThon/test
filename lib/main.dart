@@ -10,6 +10,7 @@ import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 import 'core/core.src.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const Application());
 }
 
@@ -46,8 +47,8 @@ class _Application extends State<Application> {
         locale: const Locale('vi', 'VN'),
         debugShowCheckedModeBanner: false,
         translationsKeys: AppTranslation.translations,
-        initialRoute: AppRoutesIcare.splash.path,
-        getPages: RouteAppPageIcare.route,
+        initialRoute: AppRoutes.splash.path,
+        getPages: RouteAppPage.route,
         theme: ThemeData(
           scaffoldBackgroundColor: AppColors.backgroundColorLight,
           appBarTheme: AppBarTheme(

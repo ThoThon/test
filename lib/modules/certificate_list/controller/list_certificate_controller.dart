@@ -81,7 +81,7 @@ class ListCertificateControllerICare extends BaseRefreshGetxController {
     }
     if (certInfo != null) {
       Get.toNamed(
-        AppRoutesIcare.verifyCertificate.path,
+        AppRoutes.verifyCertificate.path,
         arguments: certInfo,
       )?.then(
         (value) async {
@@ -155,12 +155,12 @@ class ListCertificateControllerICare extends BaseRefreshGetxController {
   void gotoAwaitConfirmSignature() {
     if (Assets.isFromModules) {
       Get.toNamed(
-        AppRoutesIcare.awaitConfirmSignature.path,
+        AppRoutes.awaitConfirmSignature.path,
         arguments: registerItemArguments,
       );
     } else {
       Get.toNamed(
-        AppRoutesIcare.awaitConfirmSignature.path,
+        AppRoutes.awaitConfirmSignature.path,
         arguments: registerItemArguments,
       );
     }

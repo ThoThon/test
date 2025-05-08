@@ -6,4 +6,4 @@ export 'sized_box/sized_box.dart';
 export 'text/text_utils.dart';
 export 'text/font_style.dart';
 export 'utils_widget/utils_widget.src.dart';
-export 'appbar/appbar_src.dart';
+export 'appbar/app_bar_src.dart';

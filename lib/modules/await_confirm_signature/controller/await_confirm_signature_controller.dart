@@ -6,7 +6,7 @@ import '../../certificate_list/repository/repository_src.dart';
 import '../../icare/icare.src.dart';
 import '../../src.dart';
 
-class AwaitConfirmSignatureControllerICare extends BaseGetxControllerIcare {
+class AwaitConfirmSignatureControllerICare extends BaseGetxController {
   late final certificateRepository = CertificateRepositoryICare(this);
 
   final listSign = <SignIcare>[].obs;
@@ -52,7 +52,7 @@ class AwaitConfirmSignatureControllerICare extends BaseGetxControllerIcare {
           isActiveBack: false,
           onPressed: () {
             Get.toNamed(
-              AppRoutesIcare.historyTransaction.path,
+              AppRoutes.historyTransaction.path,
               arguments: {
                 'item': registerItem,
                 'isHaveBtn': isHaveButton,
@@ -62,7 +62,7 @@ class AwaitConfirmSignatureControllerICare extends BaseGetxControllerIcare {
           funcBack: () {
             Get.until(
               (route) =>
-                  route.settings.name == AppRoutesIcare.declarationTaxCode.path,
+                  route.settings.name == AppRoutes.declarationTaxCode.path,
             );
           },
         );
@@ -121,7 +121,7 @@ class AwaitConfirmSignatureControllerICare extends BaseGetxControllerIcare {
   Future<void> confirmSign(SignIcare item) async {
     isFetchList = false;
     await Get.toNamed(
-      AppRoutesIcare.confirmCode.path,
+      AppRoutes.confirmCode.path,
       arguments: item,
     );
     isFetchList = true;
@@ -132,7 +132,7 @@ class AwaitConfirmSignatureControllerICare extends BaseGetxControllerIcare {
         textBtnRight: LocaleKeys.dialog_history.tr,
         onPressed: () {
           Get.toNamed(
-            AppRoutesIcare.historyTransaction.path,
+            AppRoutes.historyTransaction.path,
             arguments: {
               'item': registerItem,
               'isHaveBtn': isHaveButton,
@@ -141,7 +141,7 @@ class AwaitConfirmSignatureControllerICare extends BaseGetxControllerIcare {
         },
         funcBack: () {
           Get.offAllNamed(
-            AppRoutesIcare.declarationTaxCode.path,
+            AppRoutes.declarationTaxCode.path,
           );
         },
         isActiveBack: false,

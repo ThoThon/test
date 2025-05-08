@@ -1,6 +1,6 @@
 import 'controller_src.dart';
 
-class DeclarationTaxDetailControllerICare extends BaseGetxControllerIcare {
+class DeclarationTaxDetailControllerICare extends BaseGetxController {
   final listDataDetail = [].obs;
 
   // final appControllerIcare = Get.put(AppControllerIcare());

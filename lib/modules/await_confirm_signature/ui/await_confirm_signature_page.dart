@@ -13,7 +13,12 @@ class AwaitConfirmSignaturePage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: LocaleKeys.awaitConfirmSign_waitActive.tr),
+      appBar: BaseAppBar(
+        title: TextUtils(
+          text: LocaleKeys.awaitConfirmSign_waitActive.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
+      ),
       body: baseShowLoadingCustom(
         () => _buildBody(),
         _buildAwait(),

@@ -1,43 +1,29 @@
-import 'dart:io';
-
-import 'package:dio/io.dart';
+import 'package:v_bhxh/base_app/repository_base/interceptor/jwt_token_interceptor.dart';
 
 import '../../core/core.src.dart';
 import '../../shares/log/dio_log.dart';
 import '../../shares/shares.src.dart';
 import '../controllers_base/base_controller.src.dart';
 
-class BaseApiIcare {
-  static final BaseApiIcare _singleton = BaseApiIcare._();
+class BaseApi {
+  static final BaseApi _singleton = BaseApi._();
 
-  factory BaseApiIcare() => _singleton;
+  factory BaseApi() => _singleton;
 
-  BaseApiIcare._();
+  BaseApi._();
 
   static Dio dio = getBaseDio();
 
   static Dio getBaseDio() {
-    Dio dio = Dio();
+    final dio = Dio();
 
     dio.options = buildDefaultOptions();
+
+    dio.interceptors.add(JwtTokenInterceptor());
     if (Diolog().showDebug) {
       dio.interceptors.add(SDSDioLogInterceptor());
     }
-    dio.httpClientAdapter = IOHttpClientAdapter(
-      createHttpClient: () {
-        final client = HttpClient();
-        client.badCertificateCallback =
-            (X509Certificate cert, String host, int port) => true;
-        return client;
-      },
-    );
 
-/*    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-        (HttpClient client) {
-      client.badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-      return client;
-    };*/
     return dio;
   }
 
@@ -47,15 +33,6 @@ class BaseApiIcare {
           timeOut ?? const Duration(milliseconds: AppConst.requestTimeOut)
       ..receiveTimeout =
           timeOut ?? const Duration(milliseconds: AppConst.requestTimeOut);
-  }
-
-  static void close() {
-    dio.close(force: true);
-    updateCurrentDio();
-  }
-
-  static void updateCurrentDio() {
-    dio = getBaseDio();
   }
 
   static Dio getCurrentDio() {
@@ -81,7 +58,7 @@ class BaseApiIcare {
     String? urlOther,
     Map<String, String>? headersUrlOther,
     bool isQueryParametersPost = false,
-    required BaseGetxControllerIcare controller,
+    required BaseGetxController controller,
     BaseOptions? dioOptions,
     Function(Object error)? functionError,
     bool isToken = true,
@@ -91,8 +68,7 @@ class BaseApiIcare {
   }) async {
     dio.options = dioOptions ?? buildDefaultOptions(timeOut: timeOut);
     dynamic response;
-    String url = urlOther ??
-        (AppApi.url + action + (isHaveVersion ? AppApi.version : ""));
+    String url = urlOther ?? AppApi.url + action;
     Map<String, String> headers = isToken
         ? (headersUrlOther ?? getBaseHeader())
         : {"Content-Type": "application/json"};

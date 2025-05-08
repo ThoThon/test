@@ -201,7 +201,7 @@ class LocaleKeys {
 
 class Locales {
   static const en_US = {
-    'app_name': 'IcareBHXH',
+    'app_name': 'vBHXH',
     'dialog_close': 'Close',
     'dialog_errorConnectFailedStr':
         'Unable to connect to the server\nPlease check your network connection.',
@@ -375,7 +375,7 @@ class Locales {
     'awaitConfirmSign_loading': 'Waiting for activation',
   };
   static const vi_VN = {
-    'app_name': 'IcareBHXH',
+    'app_name': 'vBHXH',
     'dialog_close': 'Đóng',
     'dialog_errorConnectFailedStr':
         'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',

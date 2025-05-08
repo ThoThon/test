@@ -190,7 +190,7 @@ extension RegisterInfoTabControllerICare on TransactionControllerICare {
     );
 
     Get.toNamed(
-      AppRoutesIcare.listCertificate.path,
+      AppRoutes.listCertificate.path,
       arguments: registerModel,
     );
   }

@@ -40,7 +40,7 @@ class HistoryRegisterTabPage extends BaseGetWidget {
       onTap: index == 0
           ? () {
               Get.toNamed(
-                AppRoutesIcare.historyRegisterDetail.path,
+                AppRoutes.historyRegisterDetail.path,
                 arguments: item,
               )?.then(
                 (value) async {

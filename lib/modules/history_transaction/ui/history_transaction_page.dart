@@ -16,19 +16,24 @@ class HistoryTransactionPage extends BaseGetWidget {
       canPop: false,
       child: Scaffold(
         appBar: BaseAppBar(
-          title: LocaleKeys.historyRegister_historyTransaction.tr,
-          backFunc: Get.previousRoute == AppConst.dialogConfirm
-              ? () {
-                  final checkHaveUnitCode = controller.registerItem != null &&
-                      controller.registerItem?.unitCode?.isNotEmpty == true;
-                  Get.until(
-                    (route) => checkHaveUnitCode
-                        ? route.settings.name == AppRoutesIcare.home.path
-                        : route.settings.name ==
-                            AppRoutesIcare.declarationTaxCodeDetail.path,
-                  );
-                }
-              : null,
+          title: TextUtils(
+            text: LocaleKeys.historyRegister_historyTransaction.tr,
+            availableStyle: StyleEnum.subBold,
+          ),
+          leading: AppBarLeading(
+            backFunc: Get.previousRoute == AppConst.dialogConfirm
+                ? () {
+                    final checkHaveUnitCode = controller.registerItem != null &&
+                        controller.registerItem?.unitCode?.isNotEmpty == true;
+                    Get.until(
+                      (route) => checkHaveUnitCode
+                          ? route.settings.name == AppRoutes.home.path
+                          : route.settings.name ==
+                              AppRoutes.declarationTaxCodeDetail.path,
+                    );
+                  }
+                : null,
+          ),
         ),
         body: _buildBody(),
       ),

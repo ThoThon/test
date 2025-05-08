@@ -22,7 +22,10 @@ class UnitInfoPage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: LocaleKeys.unitInfo_unitInfo.tr,
+        title: TextUtils(
+          text: LocaleKeys.unitInfo_unitInfo.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
       ),
       body: baseShowLoading(() => _buildBody()),
     );

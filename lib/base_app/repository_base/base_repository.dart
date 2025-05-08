@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import '../base_app.src.dart';
 
 class BaseRepository {
-  final BaseGetxControllerIcare controller;
+  final BaseGetxController controller;
 
   BaseRepository(this.controller);
 
@@ -21,13 +21,12 @@ class BaseRepository {
     Map<String, String>? headersUrlOther,
     bool isQueryParametersPost = false,
     BaseOptions? dioOptions,
-    bool isHaveVersion = true,
     bool isToken = true,
     Function(Object error)? functionError,
     Duration? timeOut,
     bool getHeader = false,
   }) {
-    return BaseApiIcare().callApi(
+    return BaseApi().callApi(
       action,
       requestMethod,
       jsonMap: jsonMap,
@@ -38,7 +37,6 @@ class BaseRepository {
       controller: controller,
       dioOptions: dioOptions,
       functionError: functionError,
-      isHaveVersion: isHaveVersion,
       isToken: isToken,
       timeOut: timeOut,
       getHeader: getHeader,

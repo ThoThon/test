@@ -1,17 +1,17 @@
-class BaseResponseListIcare<T> {
+class BaseResponseList<T> {
   final String code;
   final String? errorMessage;
   final List<T> result;
   final int totalNumber;
 
-  BaseResponseListIcare({
+  BaseResponseList({
     required this.code,
     this.errorMessage,
     required this.result,
     required this.totalNumber,
   });
 
-  factory BaseResponseListIcare.fromJson(
+  factory BaseResponseList.fromJson(
       Map<String, dynamic> json, T Function(Map<String, dynamic>) fromMap) {
     final resultData = json["result"];
 
@@ -28,7 +28,7 @@ class BaseResponseListIcare<T> {
       parsedResult = [];
     }
 
-    return BaseResponseListIcare(
+    return BaseResponseList(
       code: json["code"] ?? '',
       errorMessage: json["errorMessage"],
       result: parsedResult,
