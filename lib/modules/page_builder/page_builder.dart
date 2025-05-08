@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/core/theme/colors.dart';
+import 'package:v_bhxh/modules/home/ui/home_page.dart';
 
 import 'page_builder_controller.dart';
 
@@ -29,8 +30,8 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
       physics: const NeverScrollableScrollPhysics(),
       scrollDirection: Axis.horizontal,
       onPageChanged: controller.changePage,
-      children: const [
-        Center(child: Text("Trang chủ")),
+      children: [
+        HomePage(),
         Center(child: Text("Danh sách")),
         Center(child: Text("Thông báo")),
         Center(child: Text("Cá nhân")),

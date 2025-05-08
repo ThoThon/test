@@ -1,5 +1,6 @@
 enum AppRoutes {
   pageBuilder,
+  login,
   routeDioLog,
   splash,
 

@@ -10,7 +10,6 @@ class RegisterInfoTabRepositoryICare extends BaseRepository {
     final response = await baseCallApi(
       AppApi.urlGetProvinces,
       EnumRequestMethod.get,
-      isHaveVersion: false,
     );
     return BaseResponseList<ProvinceResponse>.fromJson(
       response,
@@ -26,7 +25,6 @@ class RegisterInfoTabRepositoryICare extends BaseRepository {
     final response = await baseCallApi(
       AppApi.urlGetDistricts,
       EnumRequestMethod.get,
-      isHaveVersion: false,
       jsonMap: request,
     );
     return BaseResponseList<DistrictResponse>.fromJson(
@@ -44,7 +42,6 @@ class RegisterInfoTabRepositoryICare extends BaseRepository {
     final response = await baseCallApi(
       AppApi.urlGetWards,
       EnumRequestMethod.get,
-      isHaveVersion: false,
       jsonMap: request,
     );
     return BaseResponseList<WardResponse>.fromJson(
@@ -62,7 +59,6 @@ class RegisterInfoTabRepositoryICare extends BaseRepository {
     final response = await baseCallApi(
       AppApi.urlGetSocialAgency,
       EnumRequestMethod.get,
-      isHaveVersion: false,
       jsonMap: request,
     );
     return BaseResponseList<SocialAgencyResponse>.fromJson(

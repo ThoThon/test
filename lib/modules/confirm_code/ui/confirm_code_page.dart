@@ -15,7 +15,12 @@ class ConfirmCodePage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.colorWhite,
-      appBar: BaseAppBar(title: LocaleKeys.awaitConfirmSign_activeCode.tr),
+      appBar: BaseAppBar(
+        title: TextUtils(
+          text: LocaleKeys.awaitConfirmSign_activeCode.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
+      ),
       body: _buildBody(),
     );
   }

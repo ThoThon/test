@@ -14,7 +14,10 @@ class VerifyCertPageICare extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: LocaleKeys.certificate_activeCert.tr,
+        title: TextUtils(
+          text: LocaleKeys.certificate_activeCert.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
       ),
       body: _buildBody(),
     );

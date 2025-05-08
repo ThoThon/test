@@ -1,3 +1,5 @@
+import 'package:v_bhxh/core/values/const.dart';
+
 class BaseResponse<T> {
   final String code;
   final String errorMessage;
@@ -11,7 +13,7 @@ class BaseResponse<T> {
 
   factory BaseResponse.fromJson(
     Map<String, dynamic> json, {
-    required T Function(Map<String, dynamic>)? fromJson,
+    T Function(Map<String, dynamic>)? fromJson,
   }) {
     final dynamic resultData = json["result"];
 
@@ -31,4 +33,6 @@ class BaseResponse<T> {
             ? (toJson != null ? toJson(result as T) : result)
             : null,
       };
+
+  bool get isSuccess => code == AppConst.statusCodeSuccess;
 }

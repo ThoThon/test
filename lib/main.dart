@@ -10,6 +10,7 @@ import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 import 'core/core.src.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const Application());
 }
 

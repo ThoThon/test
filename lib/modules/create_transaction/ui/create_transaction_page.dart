@@ -21,7 +21,10 @@ class CreateTransactionPage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: LocaleKeys.transaction_transactionRegister.tr,
+        title: TextUtils(
+          text: LocaleKeys.transaction_transactionRegister.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
       ),
       body: baseShowLoading(() => _buildBody()),
     );

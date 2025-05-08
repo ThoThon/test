@@ -11,7 +11,6 @@ class DeclarationTaxCodeRepositoryICare extends BaseRepository {
     final request = {"email": email};
     final response = await baseCallApi(
       AppApi.urlGetListTaxCode,
-      isHaveVersion: false,
       EnumRequestMethod.get,
       jsonMap: request,
     );
@@ -29,7 +28,6 @@ class DeclarationTaxCodeRepositoryICare extends BaseRepository {
     };
     final response = await baseCallApi(
       AppApi.urlGetInfoUnit,
-      isHaveVersion: false,
       EnumRequestMethod.get,
       jsonMap: body,
     );

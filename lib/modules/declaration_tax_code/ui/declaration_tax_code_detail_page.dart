@@ -11,7 +11,10 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: LocaleKeys.declaration_selectedUnitCode.tr,
+        title: TextUtils(
+          text: LocaleKeys.declaration_selectedUnitCode.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
       ),
       body: baseShowLoading(
         () => _buildBody(),

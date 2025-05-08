@@ -91,8 +91,7 @@ class BaseApi {
   }) async {
     dio.options = dioOptions ?? buildDefaultOptions(timeOut: timeOut);
     dynamic response;
-    String url = urlOther ??
-        (AppApi.url + action + (isHaveVersion ? AppApi.version : ""));
+    String url = urlOther ?? AppApi.url + action;
     Map<String, String> headers = isToken
         ? (headersUrlOther ?? getBaseHeader())
         : {"Content-Type": "application/json"};

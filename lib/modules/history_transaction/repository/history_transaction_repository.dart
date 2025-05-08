@@ -10,7 +10,6 @@ class HistoryTransactionRepository extends BaseRepository {
     final response = await baseCallApi(
       AppApi.urlGetHistoryRegister,
       EnumRequestMethod.get,
-      isHaveVersion: false,
       jsonMap: {
         "idCompany": idCompany,
       },
