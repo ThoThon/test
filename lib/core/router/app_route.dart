@@ -6,10 +6,12 @@ enum AppRoutesIcare {
   home,
   moduleIcare,
 
+  ///Thông tin đơn vị
+  infoUnit,
+
   ///Kê khai BHXH
   declarationTaxCode,
   declarationTaxCodeDetail,
-  createTransaction,
   historyTransaction,
   historyRegisterDetail,
 

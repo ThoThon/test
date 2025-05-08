@@ -38,7 +38,7 @@ enum HomeEnum {
   String get path {
     switch (this) {
       case register_transaction:
-        return AppRoutesIcare.createTransaction.path;
+        return AppRoutesIcare.infoUnit.path;
       // case file_declaration:
       //   return "";
       case transaction_history:

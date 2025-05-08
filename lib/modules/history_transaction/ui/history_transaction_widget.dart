@@ -56,7 +56,7 @@ extension HistoryTransactionWidget on HistoryTransactionPage {
     return Row(
       children: [
         TextUtils(
-          text: LocaleKeys.transaction_inputTaxCode.tr,
+          text: LocaleKeys.unitInfo_inputTaxCode.tr,
           availableStyle: StyleEnum.bodyRegular,
         ).paddingOnly(right: AppDimens.paddingSmallest),
         TextUtils(

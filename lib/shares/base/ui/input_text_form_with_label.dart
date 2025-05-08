@@ -3,7 +3,7 @@ import 'package:v_bhxh/modules/src.dart';
 class BuildInputTextWithLabel extends StatelessWidget {
   final BuildInputText buildInputText;
   final String label;
-  final StyleEnum? textStyle;
+  final TextStyle? textStyle;
 
   const BuildInputTextWithLabel({
     super.key,
@@ -23,10 +23,12 @@ class BuildInputTextWithLabel extends StatelessWidget {
               : EdgeInsets.zero,
           child: Row(
             children: [
-              TextUtils(
-                text: label,
-                availableStyle: textStyle ?? StyleEnum.subBold,
-                color: AppColors.dsGray1,
+              SDSBuildText(
+                label,
+                style: textStyle ??
+                    AppTextStyle.font12Bo.copyWith(
+                      color: AppColors.dsGray1,
+                    ),
               ),
               Visibility(
                 visible: buildInputText.inputTextFormModel.isValidate,

@@ -41,7 +41,7 @@
         "declarationForm": "Declare \nProfile",
         "lookupC12": "Lookup \nC12"
     },
-    "transaction": {
+    "unitInfo": {
         "transactionRegister": "Register transaction",
         "generalInfo": "General Information",
         "registerInfo": "Registration Information",
@@ -87,7 +87,7 @@
         "otherInfo": "Other Information",
         "unitGroup": "Unit Group",
         "content": "Content",
-        "trader": "Trader",
+        "transactionPerson": "Transaction Person",
         "phoneContact": "Contact Phone",
         "email": "Email",
         "fileInclude": "Attached Documents",

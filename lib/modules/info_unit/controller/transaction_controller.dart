@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../declaration_tax_code/models/info_company_response.dart';
 import '../models/model_src.dart';
@@ -9,9 +9,15 @@ import '../models/model_src.dart';
 abstract class TransactionControllerICare extends BaseGetxControllerIcare {
   final taxCodeController = TextEditingController();
 
-  final companyNameController = TextEditingController();
+  final nameUnitController = TextEditingController();
 
   final unitCodeController = TextEditingController();
+
+  final socialAgencyNameCtrl = TextEditingController();
+
+  final socialAgencyCodeCtrl = TextEditingController();
+
+  final companyNameController = TextEditingController();
 
   final phoneController = TextEditingController();
 

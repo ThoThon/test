@@ -34,7 +34,7 @@
     "declarationListCode": "Danh sách mã đơn vị",
     "declarationTaxCode": "Mã số thuế",
     "noUnitCode": "Chưa có mã đơn vị",
-    "historyRegister":"Lịch sử đăng ký"
+    "historyRegister": "Lịch sử đăng ký"
   },
   "home": {
     "registerInsurance": "Đăng ký \nBHXH",
@@ -42,7 +42,7 @@
     "declarationForm": "Kê khai \nhồ sơ",
     "lookupC12": "Tra cứu \nC12"
   },
-  "transaction": {
+  "unitInfo": {
     "transactionRegister": "Đăng ký giao dịch",
     "generalInfo": "Thông tin chung",
     "registerInfo": "Thông tin đăng ký",
@@ -56,6 +56,7 @@
     "addressTransaction": "Địa chỉ giao dịch hồ sơ",
     "businessIndustry": "Ngành nghề sản xuất",
     "representInfo": "Thông tin người đại diện",
+    "transactionPersonInfo":"Thông tin người giao dịch",
     "represent": "Người đại diện",
     "position": "Chức vụ",
     "decisionInfo": "Thông tin quyết định",
@@ -88,7 +89,7 @@
     "otherInfo": "Thông tin khác",
     "unitGroup": "Khối đơn vị",
     "content": "Nội dung",
-    "trader": "Người giao dịch",
+    "transactionPerson": "Người giao dịch",
     "phoneContact": "Điện thoại liên hệ",
     "email": "Email",
     "fileInclude": "Hồ sơ kèm theo",
@@ -120,7 +121,10 @@
     "missingFileInclude": "File đính kèm",
     "missingInfo": "Thiếu thông tin",
     "fileIncludeInValid": "File đính kèm không được bỏ trống",
-    "search": "Tìm kiếm"
+    "search": "Tìm kiếm",
+    "change": "Thay đổi",
+    "socialAgencyName": "Tên cơ quan BHXH",
+    "socialAgencyCode": "Mã cơ quan BHXH"
   },
   "historyRegister": {
     "historyDetail": "Chi tiết lịch sử",

@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/core/core.src.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
-import 'package:v_bhxh/modules/create_transaction/controller/controller_src.dart';
-import 'package:v_bhxh/modules/create_transaction/ui/general_info_tab_page.dart';
-import 'package:v_bhxh/modules/create_transaction/ui/register_info_tab_page.dart';
+import 'package:v_bhxh/modules/info_unit/controller/controller_src.dart';
 import 'package:v_bhxh/shares/shares.src.dart';
 
-part 'widgets/create_transaction_widget.dart';
+import '../../../assets.dart';
+import '../../../shares/base/base.src.dart';
 
-class CreateTransactionPage extends BaseGetWidget {
-  CreateTransactionPage({super.key});
+part 'widgets/unit_info_widget.dart';
+
+class UnitInfoPage extends BaseGetWidget {
+  UnitInfoPage({super.key});
 
   @override
   TransactionControllerImpICare get controller => _controller;
@@ -21,7 +22,7 @@ class CreateTransactionPage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: LocaleKeys.transaction_transactionRegister.tr,
+        title: LocaleKeys.unitInfo_unitInfo.tr,
       ),
       body: baseShowLoading(() => _buildBody()),
     );

@@ -1,5 +1,5 @@
-import 'package:v_bhxh/modules/create_transaction/controller/register_info_tab_controller.dart';
-import 'package:v_bhxh/modules/create_transaction/controller/transaction_controller.dart';
+import 'package:v_bhxh/modules/info_unit/controller/register_info_tab_controller.dart';
+import 'package:v_bhxh/modules/info_unit/controller/transaction_controller.dart';
 import 'package:v_bhxh/modules/mock_data/mock_sdk.dart';
 
 import '../../declaration_tax_code/ui/ui_src.dart';

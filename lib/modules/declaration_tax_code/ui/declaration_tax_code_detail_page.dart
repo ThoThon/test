@@ -105,7 +105,7 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
                     ),
                     TextUtils(
                       text:
-                          "${LocaleKeys.transaction_expiryDate.tr} ${changeDateString(item.endDate, pattern: PATTERN_1)}",
+                          "${LocaleKeys.unitInfo_expiryDate.tr} ${changeDateString(item.endDate, pattern: PATTERN_1)}",
                     ),
                   ],
                 ),
@@ -129,16 +129,16 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
   Widget _buildButtonRegister(bool isUnitEmpty) {
     return BaseButton(
       text: isUnitEmpty
-          ? LocaleKeys.transaction_signUpForCode
-          : LocaleKeys.transaction_agree,
-      style: StyleEnum.subBold,
+          ? LocaleKeys.unitInfo_signUpForCode
+          : LocaleKeys.unitInfo_agree,
+          style: AppTextStyle.font16Bo.copyWith(color: AppColors.colorWhite),
       color: isUnitEmpty ? AppColors.statusGreen : AppColors.primaryColor,
       radius: AppDimens.radius4,
       onPressed: controller.itemSelected.value != null
           ? () {
               Get.toNamed(
                 isUnitEmpty
-                    ? AppRoutesIcare.createTransaction.path
+                    ? AppRoutesIcare.infoUnit.path
                     : AppRoutesIcare.home.path,
                 arguments: controller.itemSelected.value,
               );
@@ -160,8 +160,9 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
           radius: AppDimens.radius4,
           padding: EdgeInsets.zero,
           text: LocaleKeys.declaration_historyRegister.tr,
-          style: StyleEnum.subBold,
-          textColor: AppColors.primaryColor,
+          style: AppTextStyle.font16Bo.copyWith(
+            color: AppColors.primaryColor,
+          ),
           color: AppColors.colorWhite,
           boderColor: AppColors.primaryColor,
           onPressed: () {

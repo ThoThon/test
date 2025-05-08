@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../../../core/core.src.dart';
-import '../../shares.src.dart';
+import 'package:v_bhxh/modules/declaration_tax_code/ui/ui_src.dart';
 
 class BaseButton extends StatelessWidget {
   final String text;
@@ -10,7 +7,7 @@ class BaseButton extends StatelessWidget {
   final Color textColor;
   final Color? boderColor;
   final double radius;
-  final StyleEnum? style;
+  final TextStyle? style;
   final double? width;
   final EdgeInsetsGeometry? padding;
   const BaseButton({
@@ -66,10 +63,12 @@ class BaseButton extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                TextUtils(
-                  text: text,
-                  color: textColor,
-                  availableStyle: style ?? StyleEnum.subBold,
+                SDSBuildText(
+                  text,
+                  style: style ??
+                      AppTextStyle.font16Bo.copyWith(
+                        color: textColor,
+                      ),
                 ),
                 if (loading) ...[
                   sdsSBWidth8,

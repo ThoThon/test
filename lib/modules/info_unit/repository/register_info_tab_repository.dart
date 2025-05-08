@@ -1,7 +1,7 @@
 import 'package:v_bhxh/base_app/model/base_response_list.dart';
 import 'package:v_bhxh/base_app/repository_base/base_repository.dart';
 import 'package:v_bhxh/core/core.src.dart';
-import 'package:v_bhxh/modules/create_transaction/models/model_src.dart';
+import 'package:v_bhxh/modules/info_unit/models/model_src.dart';
 
 class RegisterInfoTabRepositoryICare extends BaseRepository {
   RegisterInfoTabRepositoryICare(super.controller);
