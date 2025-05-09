@@ -15,9 +15,9 @@ class ProcedureListPage extends BaseGetWidget<ProcedureListController> {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: TextUtils(text: 'Danh sách thủ tục'),
+        title: BaseAppBarTitle(title: LocaleKeys.procedureList_pageTitle.tr),
       ),
-      body: _buildBody(),
+      body: SafeArea(child: _buildBody()),
     );
   }
 }

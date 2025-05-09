@@ -213,6 +213,12 @@ class LocaleKeys {
   static const login_password = 'login_password';
   static const login_usernameCannotEmpty = 'login_usernameCannotEmpty';
   static const login_passwordCannotEmpty = 'login_passwordCannotEmpty';
+  static const procedureList_pageTitle = 'procedureList_pageTitle';
+  static const procedureList_procedureItemTitle =
+      'procedureList_procedureItemTitle';
+  static const procedureList_procedureItemSubtitle =
+      'procedureList_procedureItemSubtitle';
+  static const procedureList_declare = 'procedureList_declare';
 }
 
 class Locales {
@@ -398,5 +404,11 @@ class Locales {
     'login_password': 'Mật khẩu',
     'login_usernameCannotEmpty': 'Tài khoản không được bỏ trống',
     'login_passwordCannotEmpty': 'Mật khẩu không được bỏ trống',
+    'procedureList_pageTitle': 'Danh sách thủ tục',
+    'procedureList_procedureItemTitle':
+        'Báo tăng, báo giảm, điều chỉnh mức đóng',
+    'procedureList_procedureItemSubtitle':
+        'Kê khai hồ sơ báo tăng lao động, báo giảm lao động, điều chỉnh lương',
+    'procedureList_declare': 'Kê khai',
   };
 }

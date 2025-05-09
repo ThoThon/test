@@ -13,6 +13,7 @@ class UtilWidget {
     );
   }
 
+  static const Widget sizedBox4 = SizedBox(height: 4);
   static const Widget sizedBox5 = SizedBox(height: 5);
   static const Widget sizedBox8 = SizedBox(height: 8);
   static const Widget sizedBox10 = SizedBox(height: 10);
@@ -207,12 +208,10 @@ class UtilWidget {
           ),
         ),
         onPressed: onPressed,
-        child: Center(
-          child: TextUtils(
-            text: title,
-            availableStyle: StyleEnum.subBold,
-            color: AppColors.primaryColor,
-          ),
+        child: TextUtils(
+          text: title,
+          availableStyle: StyleEnum.subBold,
+          color: AppColors.primaryColor,
         ),
       ),
     );

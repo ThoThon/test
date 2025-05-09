@@ -190,5 +190,11 @@
     "password": "Mật khẩu",
     "usernameCannotEmpty": "Tài khoản không được bỏ trống",
     "passwordCannotEmpty": "Mật khẩu không được bỏ trống"
+  },
+  "procedureList": {
+    "pageTitle": "Danh sách thủ tục",
+    "procedureItemTitle": "Báo tăng, báo giảm, điều chỉnh mức đóng",
+    "procedureItemSubtitle": "Kê khai hồ sơ báo tăng lao động, báo giảm lao động, điều chỉnh lương",
+    "declare": "Kê khai"
   }
 }
