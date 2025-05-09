@@ -76,7 +76,7 @@ class _Application extends State<Application> {
         ],
         supportedLocales: const [
           Locale('vi', ''),
-          Locale('en', ''),
+          // Locale('en', ''),
         ],
         // title: AppStr.appName,
         // theme: getThemeByAppTheme(false)

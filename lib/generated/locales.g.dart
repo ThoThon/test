@@ -193,6 +193,7 @@ class LocaleKeys {
   static const awaitConfirmSign_loading = 'awaitConfirmSign_loading';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
   static const declaration_historyRegister = 'declaration_historyRegister';
+  static const home_declare = 'home_declare';
   static const unitInfo_transactionPersonInfo =
       'unitInfo_transactionPersonInfo';
   static const unitInfo_change = 'unitInfo_change';
@@ -427,6 +428,7 @@ class Locales {
     'home_transactionHistory': 'Lịch sử \ngiao dịch',
     'home_declarationForm': 'Kê khai \nhồ sơ',
     'home_lookupC12': 'Tra cứu \nC12',
+    'home_declare': 'Kê khai',
     'unitInfo_transactionRegister': 'Đăng ký giao dịch',
     'unitInfo_generalInfo': 'Thông tin chung',
     'unitInfo_registerInfo': 'Thông tin đăng ký',

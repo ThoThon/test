@@ -41,7 +41,8 @@
     "registerInsurance": "Đăng ký \nBHXH",
     "transactionHistory": "Lịch sử \ngiao dịch",
     "declarationForm": "Kê khai \nhồ sơ",
-    "lookupC12": "Tra cứu \nC12"
+    "lookupC12": "Tra cứu \nC12",
+    "declare": "Kê khai"
   },
   "unitInfo": {
     "transactionRegister": "Đăng ký giao dịch",
