@@ -188,5 +188,14 @@
     "comfirmSignSuccessfully": "Xác thực ký số thành công",
     "comfirmSignLoading": "Đang lấy yêu cầu xác thực",
     "loading": "Đang chờ kích hoạt"
+  },
+  "login": {
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "usernameAndPasswordInValid": "Tài khoản hoặc mật khẩu không đúng",
+    "username": "Tài khoản",
+    "password": "Mật khẩu",
+    "usernameCannotEmpty": "Tài khoản không được bỏ trống",
+    "passwordCannotEmpty": "Mật khẩu không được bỏ trống"
   }
 }

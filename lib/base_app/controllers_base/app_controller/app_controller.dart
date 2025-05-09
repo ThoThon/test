@@ -49,8 +49,9 @@ class AppController extends BaseGetxController {
     try {
       final username = hiveApp.get(HiveKeys.keyUsername);
       final password = hiveApp.get(HiveKeys.keyPassword);
+      final jwtToken = hiveApp.get(HiveKeys.keyJwtToken);
 
-      if (username == null || password == null) {
+      if (username == null || password == null || jwtToken == null) {
         Get.offAndToNamed(AppRoutes.login.path);
         return;
       }
