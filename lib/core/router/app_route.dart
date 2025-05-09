@@ -4,6 +4,7 @@ enum AppRoutes {
   procedureList,
   declarationPeriod,
   declarationPeriodDetail,
+  declareInfo,
 
   routeDioLog,
   splash,

@@ -238,6 +238,7 @@ class LocaleKeys {
       'declarationPeriodDetail_addAttachedImage';
   static const declarationPeriodDetail_deposit =
       'declarationPeriodDetail_deposit';
+  static const declareInfo_title = 'declareInfo_title';
 }
 
 class Locales {
@@ -443,5 +444,6 @@ class Locales {
     'declarationPeriodDetail_attachFile': 'Đính kèm file',
     'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',
     'declarationPeriodDetail_deposit': 'Ký gửi',
+    'declareInfo_title': 'Kê khai thông tin',
   };
 }

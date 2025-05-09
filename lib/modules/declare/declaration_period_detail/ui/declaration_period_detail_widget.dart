@@ -150,7 +150,9 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
   Widget _buildSubmitButton() {
     return UtilWidget.buildSolidButton(
       title: LocaleKeys.declarationPeriodDetail_deposit.tr,
-      onPressed: () {},
+      onPressed: () {
+        Get.toNamed(AppRoutes.declareInfo.path);
+      },
     );
   }
 }

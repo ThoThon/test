@@ -214,5 +214,8 @@
     "attachFile": "Đính kèm file",
     "addAttachedImage": "Thêm hình ảnh đính kèm",
     "deposit": "Ký gửi"
+  },
+  "declareInfo": {
+    "title": "Kê khai thông tin"
   }
 }
