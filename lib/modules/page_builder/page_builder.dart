@@ -20,7 +20,9 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: AppBar(toolbarHeight: 0),
-      body: _buildBody(),
+      body: baseShowLoading(
+        () => _buildBody(),
+      ),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }

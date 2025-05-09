@@ -21,7 +21,9 @@
     "history": "Lịch sử",
     "consignment": "Ký gửi",
     "notification": "Thông báo",
-    "updateSuccess": "Thay đổi thông tin thành công"
+    "updateSuccess": "Thay đổi thông tin thành công",
+    "logout": "Đăng xuất",
+    "isLogout": "Đăng xuất khỏi tài khoản của bạn"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -38,10 +40,10 @@
     "historyRegister": "Lịch sử đăng ký"
   },
   "home": {
-    "registerInsurance": "Đăng ký \nBHXH",
-    "transactionHistory": "Lịch sử \ngiao dịch",
-    "declarationForm": "Kê khai \nhồ sơ",
+    "unitInfo": "Thông tin \nđơn vị",
+    "history": "Lịch sử",
     "lookupC12": "Tra cứu \nC12",
+    "guide": "Hướng dẫn",
     "declare": "Kê khai"
   },
   "unitInfo": {
@@ -129,8 +131,7 @@
     "socialAgencyCode": "Mã cơ quan BHXH",
     "region": "Vùng",
     "basicSalary": "Lương cơ sở",
-    "registerResult":"Đăng ký nhận kết quả"
-
+    "registerResult": "Đăng ký nhận kết quả"
   },
   "historyRegister": {
     "historyDetail": "Chi tiết lịch sử",
@@ -199,5 +200,15 @@
     "password": "Mật khẩu",
     "usernameCannotEmpty": "Tài khoản không được bỏ trống",
     "passwordCannotEmpty": "Mật khẩu không được bỏ trống"
+  },
+  "profile": {
+    "accountInfo": "Thông tin tài khoản",
+    "companyName": "Tên công ty",
+    "taxCode": "Mã số thuế",
+    "unitCode": "Mã đơn vị",
+    "package": "Gói dịch vụ",
+    "monthOfUse": "Số tháng sử dụng",
+    "registerDay": "Ngày đăng ký",
+    "expiredDay": "Ngày hết hạn"
   }
 }

@@ -1,21 +1,7 @@
 import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/modules/info_unit/models/account_info_model.dart';
-
-import '../../src.dart';
 
 class UnitInfoRepository extends BaseRepository {
   UnitInfoRepository(super.controller);
-
-  Future<BaseResponse<AccountInfoModel>> getAccountInfo() async {
-    final response = await baseCallApi(
-      AppApi.urlGetAccountInfo,
-      EnumRequestMethod.get,
-    );
-    return BaseResponse<AccountInfoModel>.fromJson(
-      response,
-      fromJson: (json) => AccountInfoModel.fromJson(json),
-    );
-  }
 
   // Future<BaseResponseList<DistrictResponse>> getListDistrict(
   //     String provinceCode) async {

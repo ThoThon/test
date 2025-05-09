@@ -192,7 +192,12 @@ class LocaleKeys {
       'awaitConfirmSign_comfirmSignLoading';
   static const awaitConfirmSign_loading = 'awaitConfirmSign_loading';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
+  static const dialog_logout = 'dialog_logout';
+  static const dialog_isLogout = 'dialog_isLogout';
   static const declaration_historyRegister = 'declaration_historyRegister';
+  static const home_unitInfo = 'home_unitInfo';
+  static const home_history = 'home_history';
+  static const home_guide = 'home_guide';
   static const home_declare = 'home_declare';
   static const unitInfo_transactionPersonInfo =
       'unitInfo_transactionPersonInfo';
@@ -210,6 +215,14 @@ class LocaleKeys {
   static const login_password = 'login_password';
   static const login_usernameCannotEmpty = 'login_usernameCannotEmpty';
   static const login_passwordCannotEmpty = 'login_passwordCannotEmpty';
+  static const profile_accountInfo = 'profile_accountInfo';
+  static const profile_companyName = 'profile_companyName';
+  static const profile_taxCode = 'profile_taxCode';
+  static const profile_unitCode = 'profile_unitCode';
+  static const profile_package = 'profile_package';
+  static const profile_monthOfUse = 'profile_monthOfUse';
+  static const profile_registerDay = 'profile_registerDay';
+  static const profile_expiredDay = 'profile_expiredDay';
 }
 
 class Locales {
@@ -414,6 +427,8 @@ class Locales {
     'dialog_consignment': 'Ký gửi',
     'dialog_notification': 'Thông báo',
     'dialog_updateSuccess': 'Thay đổi thông tin thành công',
+    'dialog_logout': 'Đăng xuất',
+    'dialog_isLogout': 'Đăng xuất khỏi tài khoản của bạn',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -424,10 +439,10 @@ class Locales {
     'declaration_declarationTaxCode': 'Mã số thuế',
     'declaration_noUnitCode': 'Chưa có mã đơn vị',
     'declaration_historyRegister': 'Lịch sử đăng ký',
-    'home_registerInsurance': 'Đăng ký \nBHXH',
-    'home_transactionHistory': 'Lịch sử \ngiao dịch',
-    'home_declarationForm': 'Kê khai \nhồ sơ',
+    'home_unitInfo': 'Thông tin \nđơn vị',
+    'home_history': 'Lịch sử',
     'home_lookupC12': 'Tra cứu \nC12',
+    'home_guide': 'Hướng dẫn',
     'home_declare': 'Kê khai',
     'unitInfo_transactionRegister': 'Đăng ký giao dịch',
     'unitInfo_generalInfo': 'Thông tin chung',
@@ -577,5 +592,13 @@ class Locales {
     'login_password': 'Mật khẩu',
     'login_usernameCannotEmpty': 'Tài khoản không được bỏ trống',
     'login_passwordCannotEmpty': 'Mật khẩu không được bỏ trống',
+    'profile_accountInfo': 'Thông tin tài khoản',
+    'profile_companyName': 'Tên công ty',
+    'profile_taxCode': 'Mã số thuế',
+    'profile_unitCode': 'Mã đơn vị',
+    'profile_package': 'Gói dịch vụ',
+    'profile_monthOfUse': 'Số tháng sử dụng',
+    'profile_registerDay': 'Ngày đăng ký',
+    'profile_expiredDay': 'Ngày hết hạn',
   };
 }

@@ -160,6 +160,7 @@ class ShowDialog {
     Function()? onPressed,
     Function()? funcBack,
     String? name,
+    bool activeIcon = true,
   }) {
     _showDialog(
       Dialog(
@@ -174,14 +175,16 @@ class ShowDialog {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SDSImageSvg(
-                  Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
-                  width: 80,
-                  height: 80,
-                ).paddingOnly(
-                  top: AppDimens.defaultPadding,
-                  bottom: AppDimens.paddingSmall,
-                ),
+                activeIcon
+                    ? SDSImageSvg(
+                        Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
+                        width: 80,
+                        height: 80,
+                      ).paddingOnly(
+                        top: AppDimens.defaultPadding,
+                        bottom: AppDimens.paddingSmall,
+                      )
+                    : sdsSBHeight16,
                 SDSBuildText(
                   status ?? LocaleKeys.dialog_success.tr,
                   style: AppTextStyle.font16Bo,

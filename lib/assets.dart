@@ -10,6 +10,18 @@ class Assets {
 
   static bool isFromModules = false;
 
+  static String get ASSETS_FONTS_NUNITOSANS_BOLD_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-Bold.ttf';
+
+  static String get ASSETS_FONTS_NUNITOSANS_EXTRABOLD_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-ExtraBold.ttf';
+
+  static String get ASSETS_FONTS_NUNITOSANS_REGULAR_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-Regular.ttf';
+
+  static String get ASSETS_FONTS_NUNITOSANS_SEMIBOLD_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-SemiBold.ttf';
+
   /// {@macro assets_generator.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG.preview}
   static String get ASSETS_ICONS_HOME_FILE_DECLARATION_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/home/file_declaration.svg';
@@ -17,6 +29,10 @@ class Assets {
   /// {@macro assets_generator.ASSETS_ICONS_HOME_HOME_SVG.preview}
   static String get ASSETS_ICONS_HOME_HOME_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/home/home.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_GUIDE_SVG.preview}
+  static String get ASSETS_ICONS_HOME_IC_GUIDE_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/ic_guide.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_HOME_LOOKUP_C12_SVG.preview}
   static String get ASSETS_ICONS_HOME_LOOKUP_C12_SVG =>
@@ -154,11 +170,19 @@ class Assets {
 }
 
 final List<String> assetsArray = <String>[
+  Assets.ASSETS_FONTS_NUNITOSANS_BOLD_TTF,
+  Assets.ASSETS_FONTS_NUNITOSANS_EXTRABOLD_TTF,
+  Assets.ASSETS_FONTS_NUNITOSANS_REGULAR_TTF,
+  Assets.ASSETS_FONTS_NUNITOSANS_SEMIBOLD_TTF,
+
   /// {@macro assets_generator.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG.preview}
   Assets.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_HOME_HOME_SVG.preview}
   Assets.ASSETS_ICONS_HOME_HOME_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_GUIDE_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_IC_GUIDE_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_HOME_LOOKUP_C12_SVG.preview}
   Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG,

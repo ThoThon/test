@@ -1,5 +1,4 @@
 import '../../src.dart';
-import '../models/account_info_model.dart';
 
 abstract class UnitInfoController extends BaseGetxController {
   final taxCodeController = TextEditingController();
@@ -42,5 +41,5 @@ abstract class UnitInfoController extends BaseGetxController {
 
   late final unitInfoRepository = UnitInfoRepository(this);
 
-  AccountInfoModel? accountInfoModel;
+  final appController = Get.find<AppController>();
 }

@@ -3,9 +3,9 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog.src.dart';
 
 class UnitInfoControllerImpICare extends UnitInfoController {
   @override
-  Future<void> onInit() async {
+  void onInit() {
     super.onInit();
-    await getAccountInfo();
+    fetchDataAccountInfo();
   }
 
   @override
@@ -26,37 +26,27 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   void fetchDataAccountInfo() {
-    taxCodeController.text = accountInfoModel?.taxCode ?? '';
-    unitNameController.text = accountInfoModel?.tenToChuc ?? '';
-    unitCodeController.text = accountInfoModel?.maDonVi ?? '';
-    socialAgencyNameCtrl.text = accountInfoModel?.tenCoQuanQuanLy ?? '';
-    socialAgencyCodeCtrl.text = accountInfoModel?.maCoQuanQuanLy ?? '';
-    addressRegisterController.text = accountInfoModel?.diaChiDk ?? '';
-    addressTransactionController.text = accountInfoModel?.diaChi ?? '';
+    final accountInfo = appController.accountInfoModel;
+    taxCodeController.text = accountInfo?.taxCode ?? '';
+    unitNameController.text = accountInfo?.tenToChuc ?? '';
+    unitCodeController.text = accountInfo?.maDonVi ?? '';
+    socialAgencyNameCtrl.text = accountInfo?.tenCoQuanQuanLy ?? '';
+    socialAgencyCodeCtrl.text = accountInfo?.maCoQuanQuanLy ?? '';
+    addressRegisterController.text = accountInfo?.diaChiDk ?? '';
+    addressTransactionController.text = accountInfo?.diaChi ?? '';
     // nameRepresentController.text
-    positionController.text = accountInfoModel?.jobTitle ?? '';
-    personTransactionController.text = accountInfoModel?.tenNguoiKy ?? '';
-    phoneContactController.text = accountInfoModel?.dienThoai ?? '';
-    emailContactController.text = accountInfoModel?.mailLienLac ?? '';
-  }
-
-  Future<void> getAccountInfo() async {
-    callAPIBE(
-      isOverlay: false,
-      isShowLoading: true,
-      functionAPI: unitInfoRepository.getAccountInfo(),
-      functionSuccess: (result) {
-        accountInfoModel = result;
-        fetchDataAccountInfo();
-        logger.d(accountInfoModel?.taxCode ?? '');
-      },
-    );
+    positionController.text = accountInfo?.jobTitle ?? '';
+    personTransactionController.text = accountInfo?.tenNguoiKy ?? '';
+    phoneContactController.text = accountInfo?.dienThoai ?? '';
+    emailContactController.text = accountInfo?.mailLienLac ?? '';
   }
 
   void updateAccountInfo() {
     ShowDialog.showDialogConfirm(
       title: LocaleKeys.dialog_updateSuccess.tr,
       textBtnRight: "Quay lại",
+      activeIcon: false,
+      onPressed: () {},
     );
   }
 }
