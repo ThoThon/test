@@ -9,7 +9,7 @@ class AppColors {
 
   AppColors._internal();
 
-  static const Color primaryColor = Color(0xFFFD5C00);
+  static const Color primaryColor = Color(0xFFED1B2F);
   static const Color primaryNavy = Color(0xFF1C1E66);
   static const Color basicBlack = Color(0xFF333333);
 
@@ -52,7 +52,7 @@ class AppColors {
   static const Color dsGray3 = Color(0xFF9BA3B1);
   static const Color dsGray4 = Color(0xFFD5D8DD);
   static const Color dsGray5 = Color(0xFFDBDBDB);
-  static const Color greyDark= Color(0xFF16243D);
+  static const Color greyDark = Color(0xFF16243D);
   static const Color greyLight = Color(0xFFDBDBDB);
 
   static const Color buttonTab = Color(0xFFFFF3EC);

@@ -4,6 +4,7 @@ import 'package:v_bhxh/modules/confirm_code/ui/confirm_code_page.dart';
 import 'package:v_bhxh/modules/create_transaction/ui/create_transaction_page.dart';
 import 'package:v_bhxh/modules/declaration_tax_code/ui/declaration_tax_code_detail_page.dart';
 import 'package:v_bhxh/modules/declaration_tax_code/ui/declaration_tax_code_page.dart';
+import 'package:v_bhxh/modules/declare/procedure_list/ui/procedure_list_page.dart';
 import 'package:v_bhxh/modules/history_register_detail/ui/history_register_detail_page.dart';
 import 'package:v_bhxh/modules/history_transaction/ui/history_transaction_page.dart';
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
@@ -83,6 +84,11 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.verifyCertificate.path,
       page: () => VerifyCertPageICare(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.procedureList.path,
+      page: () => ProcedureListPage(),
       transition: Transition.rightToLeft,
     )
   ];
