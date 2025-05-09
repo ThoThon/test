@@ -197,6 +197,9 @@ class LocaleKeys {
   static const unitInfo_change = 'unitInfo_change';
   static const unitInfo_socialAgencyName = 'unitInfo_socialAgencyName';
   static const unitInfo_socialAgencyCode = 'unitInfo_socialAgencyCode';
+  static const unitInfo_region = 'unitInfo_region';
+  static const unitInfo_basicSalary = 'unitInfo_basicSalary';
+  static const unitInfo_registerResult = 'unitInfo_registerResult';
 }
 
 class Locales {
@@ -460,9 +463,9 @@ class Locales {
     'unitInfo_otherInfo': 'Thông tin khác',
     'unitInfo_unitGroup': 'Khối đơn vị',
     'unitInfo_content': 'Nội dung',
-    'unitInfo_transactionPerson': 'Người giao dịch',
+    'unitInfo_transactionPerson': 'Người giao dịch BHXH',
     'unitInfo_phoneContact': 'Điện thoại liên hệ',
-    'unitInfo_email': 'Email',
+    'unitInfo_email': 'Email liên hệ',
     'unitInfo_fileInclude': 'Hồ sơ kèm theo',
     'unitInfo_attached': 'Đính kèm',
     'unitInfo_serviceInfo': 'Thông tin dịch vụ',
@@ -496,6 +499,9 @@ class Locales {
     'unitInfo_change': 'Thay đổi',
     'unitInfo_socialAgencyName': 'Tên cơ quan BHXH',
     'unitInfo_socialAgencyCode': 'Mã cơ quan BHXH',
+    'unitInfo_region': 'Vùng',
+    'unitInfo_basicSalary': 'Lương cơ sở',
+    'unitInfo_registerResult': 'Đăng ký nhận kết quả',
     'historyRegister_historyDetail': 'Chi tiết lịch sử',
     'historyRegister_profileInfo': 'Thông tin hồ sơ',
     'historyRegister_status': 'Trạng thái',

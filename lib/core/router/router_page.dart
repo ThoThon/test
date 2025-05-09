@@ -1,10 +1,6 @@
 import 'package:v_bhxh/modules/certificate_list/ui/list_certificate_page.dart';
 import 'package:v_bhxh/modules/certificate_list/ui/verify_cert_page.dart';
 import 'package:v_bhxh/modules/confirm_code/ui/confirm_code_page.dart';
-import 'package:v_bhxh/modules/declaration_tax_code/ui/declaration_tax_code_detail_page.dart';
-import 'package:v_bhxh/modules/declaration_tax_code/ui/declaration_tax_code_page.dart';
-import 'package:v_bhxh/modules/history_register_detail/ui/history_register_detail_page.dart';
-import 'package:v_bhxh/modules/history_transaction/ui/history_transaction_page.dart';
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/login/ui/login_page.dart';
 import 'package:v_bhxh/modules/page_builder/page_builder.dart';
@@ -12,8 +8,6 @@ import 'package:v_bhxh/modules/page_builder/page_builder.dart';
 import '../../modules/await_confirm_signature/ui/await_confirm_signature_page.dart';
 import '../../modules/splash/splash_page.dart';
 import '../../modules/src.dart';
-import '../../shares/shares.src.dart';
-import 'app_route.dart';
 
 class RouteAppPage {
   static var route = [

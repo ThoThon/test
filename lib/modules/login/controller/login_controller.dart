@@ -10,7 +10,8 @@ class LoginController extends BaseGetxController {
   Future<void> login() async {
     final username = "sd8888k17";
     final password = "Viettel@789";
-
+    Get.offAndToNamed(AppRoutes.pageBuilder.path);
+    return;
     try {
       final response = await _loginRepository.login(
         username: username,

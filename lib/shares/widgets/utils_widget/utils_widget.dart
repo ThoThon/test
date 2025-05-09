@@ -132,6 +132,17 @@ class UtilWidget {
         highlightColor: Colors.transparent,
       ),
       child: ExpansionTile(
+        trailing: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Icon(Icons.arrow_drop_down),
+          ],
+        ),
+        // Column(
+        //   mainAxisSize: MainAxisSize.max,
+        //   mainAxisAlignment: MainAxisAlignment.start,
+        //   children: [Icon(Icons.arrow_drop_down)],
+        // ),
         initiallyExpanded: true,
         collapsedBackgroundColor: AppColors.colorWhite,
         backgroundColor: AppColors.colorWhite,
@@ -139,6 +150,30 @@ class UtilWidget {
         title: TextUtils(
           text: title,
           availableStyle: StyleEnum.bodyBold,
+        ),
+        subtitle: Column(
+          children: [
+            TextUtils(
+              text: title,
+              availableStyle: StyleEnum.bodyBold,
+            ),
+            TextUtils(
+              text: title,
+              availableStyle: StyleEnum.bodyBold,
+            ),
+            TextUtils(
+              text: title,
+              availableStyle: StyleEnum.bodyBold,
+            ),
+            TextUtils(
+              text: title,
+              availableStyle: StyleEnum.bodyBold,
+            ),
+            TextUtils(
+              text: title,
+              availableStyle: StyleEnum.bodyBold,
+            ),
+          ],
         ),
         shape: RoundedRectangleBorder(
           side: BorderSide.none,

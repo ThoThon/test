@@ -56,7 +56,7 @@
     "addressTransaction": "Địa chỉ giao dịch hồ sơ",
     "businessIndustry": "Ngành nghề sản xuất",
     "representInfo": "Thông tin người đại diện",
-    "transactionPersonInfo":"Thông tin người giao dịch",
+    "transactionPersonInfo": "Thông tin người giao dịch",
     "represent": "Người đại diện",
     "position": "Chức vụ",
     "decisionInfo": "Thông tin quyết định",
@@ -89,9 +89,9 @@
     "otherInfo": "Thông tin khác",
     "unitGroup": "Khối đơn vị",
     "content": "Nội dung",
-    "transactionPerson": "Người giao dịch",
+    "transactionPerson": "Người giao dịch BHXH",
     "phoneContact": "Điện thoại liên hệ",
-    "email": "Email",
+    "email": "Email liên hệ",
     "fileInclude": "Hồ sơ kèm theo",
     "attached": "Đính kèm",
     "serviceInfo": "Thông tin dịch vụ",
@@ -124,7 +124,11 @@
     "search": "Tìm kiếm",
     "change": "Thay đổi",
     "socialAgencyName": "Tên cơ quan BHXH",
-    "socialAgencyCode": "Mã cơ quan BHXH"
+    "socialAgencyCode": "Mã cơ quan BHXH",
+    "region": "Vùng",
+    "basicSalary": "Lương cơ sở",
+    "registerResult":"Đăng ký nhận kết quả"
+
   },
   "historyRegister": {
     "historyDetail": "Chi tiết lịch sử",
