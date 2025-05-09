@@ -5,7 +5,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../modules/src.dart';
 
 class UtilWidget {
-  static Widget buildLoading(Color? colorIcon) {
+  static Widget buildLoading({
+    Color? colorIcon,
+  }) {
     return CupertinoActivityIndicator(
       color: colorIcon ?? AppColors.primaryColor,
     );
@@ -29,7 +31,9 @@ class UtilWidget {
     required bool isShowLoading,
     Color? colorIcon,
   }) {
-    return isShowLoading ? Center(child: buildLoading(colorIcon)) : child();
+    return isShowLoading
+        ? Center(child: buildLoading(colorIcon: colorIcon))
+        : child();
   }
 
   /// URL launcher

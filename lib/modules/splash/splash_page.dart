@@ -20,7 +20,7 @@ class SplashPage extends BaseGetWidget<AppController> {
       ),
       child: Scaffold(
         body: Center(
-          child: UtilWidget.buildLoading(null),
+          child: UtilWidget.buildLoading(),
         ),
       ),
     );

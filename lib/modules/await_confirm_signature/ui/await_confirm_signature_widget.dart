@@ -62,7 +62,7 @@ extension AwaitConfirmSignatureWidget on AwaitConfirmSignaturePage {
         mainAxisSize: MainAxisSize.min,
         children: [
           UtilWidget.buildLoading(
-            AppColors.primaryColor,
+            colorIcon: AppColors.primaryColor,
           ),
           TextUtils(
             text: title ?? LocaleKeys.awaitConfirmSign_comfirmSignLoading.tr,
