@@ -4,7 +4,6 @@
 // ignore: avoid_classes_with_only_static_members
 class AppTranslation {
   static Map<String, Map<String, String>> translations = {
-    'en_US': Locales.en_US,
     'vi_VN': Locales.vi_VN,
   };
 }
@@ -41,10 +40,12 @@ class LocaleKeys {
   static const declaration_declarationTaxCode =
       'declaration_declarationTaxCode';
   static const declaration_noUnitCode = 'declaration_noUnitCode';
+  static const declaration_historyRegister = 'declaration_historyRegister';
   static const home_registerInsurance = 'home_registerInsurance';
   static const home_transactionHistory = 'home_transactionHistory';
   static const home_declarationForm = 'home_declarationForm';
   static const home_lookupC12 = 'home_lookupC12';
+  static const home_declare = 'home_declare';
   static const transaction_transactionRegister =
       'transaction_transactionRegister';
   static const transaction_generalInfo = 'transaction_generalInfo';
@@ -204,7 +205,6 @@ class LocaleKeys {
   static const awaitConfirmSign_comfirmSignLoading =
       'awaitConfirmSign_comfirmSignLoading';
   static const awaitConfirmSign_loading = 'awaitConfirmSign_loading';
-  static const declaration_historyRegister = 'declaration_historyRegister';
   static const login_login = 'login_login';
   static const login_logout = 'login_logout';
   static const login_usernameAndPasswordInValid =
@@ -216,180 +216,6 @@ class LocaleKeys {
 }
 
 class Locales {
-  static const en_US = {
-    'app_name': 'vBHXH',
-    'dialog_close': 'Close',
-    'dialog_errorConnectFailedStr':
-        'Unable to connect to the server\nPlease check your network connection.',
-    'dialog_errorConnectTimeOut':
-        'No response from the system, please try again later',
-    'dialog_errorInternalServer':
-        'System processing error\nPlease try again later!!!',
-    'dialog_error502': 'Server is under maintenance. Please come back later.',
-    'dialog_error503':
-        'Server is under maintenance. Please come back in a few minutes.',
-    'dialog_error400': 'Invalid data sent!',
-    'dialog_error404': 'This path was not found, please contact Admin',
-    'dialog_error401': 'Login session has expired. Please log in again',
-    'dialog_success': 'Success!',
-    'dialog_fail': 'Failed!',
-    'dialog_checkEmail': 'Please check the registered email again',
-    'dialog_processTime': '(Processing time is 3-5 working days).',
-    'dialog_registerFail': 'Registration failed, please try again',
-    'dialog_exit': 'Exit',
-    'dialog_history': 'History',
-    'dialog_consignment': 'Consignment',
-    'dialog_notification': 'Notification',
-    'input_inputEmpty': 'Cannot be empty',
-    'input_inputValidateLength': 'Must be greater than @length characters!',
-    'input_textEmpty': '-',
-    'declaration_declarationSocial': 'Social Insurance Declaration',
-    'declaration_selectedUnitCode': 'Select unit code',
-    'declaration_selectTaxCode': 'Select tax code',
-    'declaration_declarationListCode': 'List of unit codes',
-    'declaration_declarationTaxCode': 'Tax code',
-    'declaration_noUnitCode': 'No unit code available',
-    'home_registerInsurance': 'Register \nSocial Insurance',
-    'home_transactionHistory': 'Transaction \nHistory',
-    'home_declarationForm': 'Declare \nProfile',
-    'home_lookupC12': 'Lookup \nC12',
-    'transaction_transactionRegister': 'Register transaction',
-    'transaction_generalInfo': 'General Information',
-    'transaction_registerInfo': 'Registration Information',
-    'transaction_unitInfo': 'Unit Information',
-    'transaction_unitName': 'Unit Name',
-    'transaction_unitCode': 'Unit Code',
-    'transaction_phone': 'Phone Number',
-    'transaction_addressInfo': 'Address Information',
-    'transaction_addressRegister': 'Business Registration Address',
-    'transaction_addressRegisterDKKD': 'Business Registration Address: ',
-    'transaction_addressTransaction': 'Profile Transaction Address',
-    'transaction_businessIndustry': 'Business Industry',
-    'transaction_representInfo': 'Representative Information',
-    'transaction_represent': 'Representative',
-    'transaction_position': 'Position',
-    'transaction_decisionInfo': 'Decision Information',
-    'transaction_decisionNumber': 'Decision Number',
-    'transaction_decisionAddress': 'Decision Issuing Place',
-    'transaction_inputTaxCode': 'Enter Tax Code',
-    'transaction_inputPhone': 'Enter Phone Number',
-    'transaction_inputUnit': 'Enter Unit Name',
-    'transaction_inputAddressTransaction': 'Enter Transaction Address',
-    'transaction_inputAddressRegister': 'Enter Business Registration Address',
-    'transaction_inputRepresent': 'Enter Representative',
-    'transaction_inputPosition': 'Enter Position',
-    'transaction_inputDecisionNumber': 'Enter Decision Number',
-    'transaction_inputDecisionAddress': 'Enter Decision Issuing Place',
-    'transaction_inputSocialAgency': 'Enter Social Insurance Agency Name',
-    'transaction_inputProvince': 'Enter Province/City',
-    'transaction_inputDistrict': 'Enter District',
-    'transaction_inputWard': 'Enter Ward/Commune',
-    'transaction_register': 'Register',
-    'transaction_consignment': 'Consignment',
-    'transaction_firstTimeRegister': 'First-time code registration',
-    'transaction_socialInfo': 'Social Insurance Contribution Information',
-    'transaction_socialAgency': 'Social Insurance Agency',
-    'transaction_city': 'Province/City',
-    'transaction_methodResult': 'Receive profile results via',
-    'transaction_methodClose': 'Payment Method',
-    'transaction_receiveCity': 'Receiving Place/Province',
-    'transaction_receiveDistrict': 'Receiving Place/District',
-    'transaction_receiveWard': 'Receiving Place/Ward',
-    'transaction_otherInfo': 'Other Information',
-    'transaction_unitGroup': 'Unit Group',
-    'transaction_content': 'Content',
-    'transaction_trader': 'Trader',
-    'transaction_phoneContact': 'Contact Phone',
-    'transaction_email': 'Email',
-    'transaction_fileInclude': 'Attached Documents',
-    'transaction_attached': 'Attach',
-    'transaction_serviceInfo': 'Service Information',
-    'transaction_servicePackage': 'Service Package',
-    'transaction_agencyCode': 'Agent/Collaborator Code (Enter email)',
-    'transaction_addImageAttached': 'Add attached image',
-    'transaction_pickImageFromCamera': 'Take photo from camera',
-    'transaction_pickImageFromLibrary': 'Select photo from phone',
-    'transaction_expiryDate': 'Expiration Date',
-    'transaction_province': 'Province',
-    'transaction_district': 'District',
-    'transaction_ward': 'Ward/Commune',
-    'transaction_selectProvince': 'Select Province/City',
-    'transaction_selectDistrict': 'Select District',
-    'transaction_selectWard': 'Select Ward',
-    'transaction_selectSocialAgency': 'Select Social Insurance Agency',
-    'transaction_receiveResult': 'Receive profile results via',
-    'transaction_receiveMethod': 'Receiving Method',
-    'transaction_agree': 'Agree',
-    'transaction_signUpForCode': 'Register for code',
-    'transaction_phoneNumberInValid': 'Invalid phone number',
-    'transaction_phoenNumberIsNotEmpty': 'Phone number cannot be empty',
-    'transaction_unitCodeInValid': 'Unit code must be 7 characters',
-    'transaction_unitCodeIsNotEmpty': 'Unit code cannot be empty',
-    'transaction_emailIsNotEmpty': 'Email cannot be empty',
-    'transaction_emailInValid': 'Invalid email',
-    'transaction_missingFileInclude': 'Attached file',
-    'transaction_missingInfo': 'Missing information',
-    'transaction_fileIncludeInValid': 'Attached file cannot be empty',
-    'transaction_search': 'Search',
-    'historyRegister_historyDetail': 'History Details',
-    'historyRegister_profileInfo': 'Profile Information',
-    'historyRegister_status': 'Status',
-    'historyRegister_profileNumber': 'Profile Number:',
-    'historyRegister_timeResgiter': 'Time:',
-    'historyRegister_progressHandle': 'Processing Progress',
-    'historyRegister_profileCheckResult': 'Profile Check Result',
-    'historyRegister_declarationForm': 'Declaration Profile',
-    'historyRegister_historyTransaction': 'Transaction History',
-    'historyRegister_searchProfile': 'Search Profile',
-    'historyRegister_noResult': 'No results',
-    'historyRegister_result': 'Result: ',
-    'historyRegister_number': ' - Number ',
-    'historyRegister_home': 'Home',
-    'historyRegister_selectedUnitCode': 'Select Unit Code',
-    'historyRegister_lookup': 'Lookup',
-    'historyRegister_socialAgencyInProcess': 'Pending processing',
-    'historyRegister_success': 'Success',
-    'historyRegister_fail': 'Failed',
-    'historyRegister_lookupSuccess': 'Lookup successful!',
-    'certificate_listCertificate': 'List of Digital Certificates',
-    'certificate_selectCertificate': 'Select Digital Certificate',
-    'certificate_confirm': 'Confirm',
-    'certificate_serial': 'Serial',
-    'certificate_startFormDate': 'Valid from ',
-    'certificate_to': 'to',
-    'certificate_subjectName': 'Subject Name',
-    'certificate_declarationTaxCode': 'Tax Code/Citizen ID',
-    'certificate_taxCodeInValid':
-        'Tax Code/Citizen ID does not match the registered service information',
-    'certificate_validTo': 'Expiration Date',
-    'certificate_validForm': 'Effective Date',
-    'certificate_packageName': 'Package Information',
-    'certificate_email': 'Email',
-    'certificate_phone': 'Phone',
-    'certificate_organization': 'Provider',
-    'certificate_certHint':
-        'Note: In case of incorrect information in the digital certificate, please contact the support hotline 19003369',
-    'certificate_active': 'Active',
-    'certificate_inActive': 'Not activated',
-    'certificate_activeNow': 'Activate now',
-    'certificate_activeCert': 'Activate Digital Certificate',
-    'certificate_verifySuccessfully': 'Activation successful!',
-    'certificate_confirmActive': 'Confirm activation',
-    'awaitConfirmSign_confirm': 'Confirm',
-    'awaitConfirmSign_checkConfirmSign':
-        'You have a digital signature request that needs verification',
-    'awaitConfirmSign_checkListSign': 'Check',
-    'awaitConfirmSign_waitActive': 'Waiting for activation',
-    'awaitConfirmSign_createDate': 'Creation Date',
-    'awaitConfirmSign_activeCode': 'Activation Code',
-    'awaitConfirmSign_inputPinCode': 'Enter PIN',
-    'awaitConfirmSign_pleaseInputPinCode':
-        'Please enter the PIN to verify the profile',
-    'awaitConfirmSign_comfirmSignSuccessfully':
-        'Digital signature verification successful',
-    'awaitConfirmSign_comfirmSignLoading': 'Retrieving verification request',
-    'awaitConfirmSign_loading': 'Waiting for activation',
-  };
   static const vi_VN = {
     'app_name': 'vBHXH',
     'dialog_close': 'Đóng',
@@ -430,6 +256,7 @@ class Locales {
     'home_transactionHistory': 'Lịch sử \ngiao dịch',
     'home_declarationForm': 'Kê khai \nhồ sơ',
     'home_lookupC12': 'Tra cứu \nC12',
+    'home_declare': 'Kê khai',
     'transaction_transactionRegister': 'Đăng ký giao dịch',
     'transaction_generalInfo': 'Thông tin chung',
     'transaction_registerInfo': 'Thông tin đăng ký',
