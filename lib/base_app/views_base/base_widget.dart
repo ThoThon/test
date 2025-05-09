@@ -18,7 +18,7 @@ abstract class BaseGetWidget<T extends BaseGetxController> extends GetView<T> {
   Widget baseShowLoading(WidgetCallback child, {Color? colorIcon}) {
     return Obx(
       () => controller.isShowLoading.value
-          ? Center(child: UtilWidget.buildLoading(colorIcon))
+          ? Center(child: UtilWidget.buildLoading(colorIcon: colorIcon))
           : child(),
     );
   }
@@ -26,7 +26,7 @@ abstract class BaseGetWidget<T extends BaseGetxController> extends GetView<T> {
   Widget buildLoadingOverlay(WidgetCallback child, {Color? colorIcon}) {
     return Obx(
       () => LoadingOverlayPro(
-        progressIndicator: UtilWidget.buildLoading(colorIcon),
+        progressIndicator: UtilWidget.buildLoading(colorIcon: colorIcon),
         isLoading: controller.isLoadingOverlay.value,
         child: child(),
       ),
