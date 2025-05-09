@@ -25,14 +25,14 @@ class LoginPage extends BaseGetWidget<LoginController> {
                 children: [
                   SizedBox(height: AppDimens.padding80),
                   BuildInputTextWithLabel(
-                    label: 'Tài khoản',
+                    label: LocaleKeys.login_username.tr,
                     buildInputText: BuildInputText(
                       InputTextModel(
                         controller: controller.usernameTextCtrl,
                         obscureText: false,
                         validator: (value) {
                           if (value.isNullOrEmpty) {
-                            return 'Tên đăng nhập không được để trống';
+                            return LocaleKeys.login_usernameCannotEmpty.tr;
                           }
                           return null;
                         },
@@ -41,14 +41,14 @@ class LoginPage extends BaseGetWidget<LoginController> {
                   ),
                   UtilWidget.sizedBox16,
                   BuildInputTextWithLabel(
-                    label: 'Mật khẩu',
+                    label: LocaleKeys.login_password.tr,
                     buildInputText: BuildInputText(
                       InputTextModel(
                         controller: controller.passwordTextCtrl,
                         obscureText: true,
                         validator: (value) {
                           if (value.isNullOrEmpty) {
-                            return 'Mật khẩu không được để trống';
+                            return LocaleKeys.login_passwordCannotEmpty.tr;
                           }
                           return null;
                         },
@@ -57,7 +57,7 @@ class LoginPage extends BaseGetWidget<LoginController> {
                   ),
                   UtilWidget.sizedBox16,
                   UtilWidget.buildSolidButton(
-                    title: 'Đăng nhập',
+                    title: LocaleKeys.login_login.tr,
                     height: AppDimens.btnLargeFigma,
                     onPressed: () {
                       controller.login();

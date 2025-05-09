@@ -205,6 +205,14 @@ class LocaleKeys {
       'awaitConfirmSign_comfirmSignLoading';
   static const awaitConfirmSign_loading = 'awaitConfirmSign_loading';
   static const declaration_historyRegister = 'declaration_historyRegister';
+  static const login_login = 'login_login';
+  static const login_logout = 'login_logout';
+  static const login_usernameAndPasswordInValid =
+      'login_usernameAndPasswordInValid';
+  static const login_username = 'login_username';
+  static const login_password = 'login_password';
+  static const login_usernameCannotEmpty = 'login_usernameCannotEmpty';
+  static const login_passwordCannotEmpty = 'login_passwordCannotEmpty';
 }
 
 class Locales {
@@ -556,5 +564,12 @@ class Locales {
     'awaitConfirmSign_comfirmSignSuccessfully': 'Xác thực ký số thành công',
     'awaitConfirmSign_comfirmSignLoading': 'Đang lấy yêu cầu xác thực',
     'awaitConfirmSign_loading': 'Đang chờ kích hoạt',
+    'login_login': 'Đăng nhập',
+    'login_logout': 'Đăng xuất',
+    'login_usernameAndPasswordInValid': 'Tài khoản hoặc mật khẩu không đúng',
+    'login_username': 'Tài khoản',
+    'login_password': 'Mật khẩu',
+    'login_usernameCannotEmpty': 'Tài khoản không được bỏ trống',
+    'login_passwordCannotEmpty': 'Mật khẩu không được bỏ trống',
   };
 }
