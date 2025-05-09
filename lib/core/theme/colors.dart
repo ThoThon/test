@@ -44,7 +44,7 @@ class AppColors {
   static const Color colorTransparent = Colors.transparent;
   static const Color colorBlack = Colors.black;
   static const Color colorWhite = Colors.white;
-  static Color colorGreyOpacity35 = Colors.black.withOpacity(0.8);
+  static Color colorGreyOpacity35 = Colors.black.withValues(alpha: 0.8);
   static const Color colorDisable = Color(0xFF9d9d9d);
 
   static const Color dsGray1 = Color(0xFF16243D);

@@ -80,7 +80,9 @@ extension ProcedureListPageWidget on ProcedureListPage {
           UtilWidget.sizedBox8,
           UtilWidget.buildSolidButtonBack(
             title: LocaleKeys.procedureList_declare.tr,
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AppRoutes.declarationPeriod.path);
+            },
           ),
         ],
       ),

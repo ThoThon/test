@@ -29,10 +29,10 @@ class SDSItemSwitch extends StatelessWidget {
     return Row(
       children: [
         CupertinoSwitch(
-          trackColor: AppColors.trackColorSwitch.withOpacity(0.2),
+          inactiveTrackColor: AppColors.trackColorSwitch.withValues(alpha: 0.2),
           thumbColor:
               value == true ? AppColors.colorWhite : AppColors.thumbColorSwitch,
-          activeColor: activeColor ?? AppColors.primaryColor,
+          activeTrackColor: activeColor ?? AppColors.primaryColor,
           value: value ?? false,
           onChanged: onChanged,
         ),

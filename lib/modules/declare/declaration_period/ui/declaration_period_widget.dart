@@ -1,0 +1,151 @@
+part of 'declaration_period_page.dart';
+
+extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
+  Widget _buildBody() {
+    return Column(
+      children: [
+        _buildDatePicker()
+            .paddingSymmetric(horizontal: AppDimens.defaultPadding),
+        UtilWidget.sizedBox16,
+        Expanded(child: _buildPeriods()),
+        _buildBottomButton()
+            .paddingSymmetric(horizontal: AppDimens.defaultPadding),
+      ],
+    );
+  }
+
+  Widget _buildDatePicker() {
+    return Obx(
+      () {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SDSBuildText(
+              '${LocaleKeys.declarationPeriod_month.tr} ${convertDateToString(controller.selectedPeriodDate.value, PATTERN_12)}',
+              style: AppTextStyle.font16Bo,
+            ),
+            UtilWidget.buildSolidButtonBack(
+              title: LocaleKeys.declarationPeriod_selectMonth.tr,
+              onPressed: () {
+                controller.pickPeriodDate();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildPeriods() {
+    return ListView.builder(
+      padding: EdgeInsets.only(bottom: AppDimens.defaultPadding),
+      itemCount: controller.declarationPeriods.length,
+      itemBuilder: (context, index) {
+        final period = controller.declarationPeriods[index];
+        return _buildPeriodItem(
+          period: period,
+          index: index,
+        );
+      },
+    );
+  }
+
+  Widget _buildPeriodItem({
+    required DeclarationPeriodModel period,
+    required int index,
+  }) {
+    return Slidable(
+      key: ValueKey(period.id),
+      endActionPane: ActionPane(
+        // A motion is a widget used to control how the pane animates.
+        motion: const ScrollMotion(),
+        children: [
+          CustomSlidableAction(
+            onPressed: (ctx) {},
+            backgroundColor: AppColors.primaryColor,
+            foregroundColor: Colors.white,
+            child: SDSBuildText(
+              LocaleKeys.app_delete.tr,
+              style: AppTextStyle.font20Bo.copyWith(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
+      ),
+      child: Container(
+        padding: EdgeInsets.all(AppDimens.defaultPadding),
+        decoration: BoxDecoration(
+          color: index % 2 == 0 ? Colors.white : Colors.grey[100],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SDSBuildText(
+                    period.title,
+                    style: AppTextStyle.font16Bo,
+                  ),
+                  SDSBuildText(
+                    '${LocaleKeys.declarationPeriod_updateDate.tr}: ${convertDateToString(period.updateDate, PATTERN_1)}',
+                    style: AppTextStyle.font16Re,
+                  ),
+                  if (period.fileNumber != null)
+                    RichText(
+                      text: TextSpan(
+                        style: AppTextStyle.font16Re.copyWith(
+                          fontStyle: FontStyle.italic,
+                        ),
+                        children: [
+                          TextSpan(
+                            text:
+                                '${LocaleKeys.declarationPeriod_fileNumber.tr}: ',
+                          ),
+                          TextSpan(
+                            text: period.fileNumber ?? '',
+                            style: AppTextStyle.font16Bo,
+                          ),
+                        ],
+                      ),
+                    ),
+                  RichText(
+                    text: TextSpan(
+                      style: AppTextStyle.font16Re.copyWith(
+                        fontStyle: FontStyle.italic,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: '${LocaleKeys.declarationPeriod_status.tr}: ',
+                        ),
+                        TextSpan(
+                          text: period.status.title,
+                          style: AppTextStyle.font16Bo.copyWith(
+                            color: period.status.color,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (period.status.canEdit)
+              UtilWidget.buildSolidButtonBack(
+                title: LocaleKeys.app_edit2.tr,
+                onPressed: () {},
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomButton() {
+    return UtilWidget.buildSolidButton(
+      title: LocaleKeys.declarationPeriod_createNewPeriod.tr,
+      onPressed: () {},
+    );
+  }
+}
