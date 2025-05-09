@@ -208,5 +208,11 @@
     "fileNumber": "Số hồ sơ",
     "status": "Trạng thái",
     "createNewPeriod": "+ Tạo mới đợt"
+  },
+  "declarationPeriodDetail": {
+    "addNewStaff": "Thêm mới nhân viên",
+    "attachFile": "Đính kèm file",
+    "addAttachedImage": "Thêm hình ảnh đính kèm",
+    "deposit": "Ký gửi"
   }
 }

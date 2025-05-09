@@ -3,6 +3,7 @@ enum AppRoutes {
   login,
   procedureList,
   declarationPeriod,
+  declarationPeriodDetail,
 
   routeDioLog,
   splash,

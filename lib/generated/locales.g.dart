@@ -230,6 +230,14 @@ class LocaleKeys {
   static const declarationPeriod_status = 'declarationPeriod_status';
   static const declarationPeriod_createNewPeriod =
       'declarationPeriod_createNewPeriod';
+  static const declarationPeriodDetail_addNewStaff =
+      'declarationPeriodDetail_addNewStaff';
+  static const declarationPeriodDetail_attachFile =
+      'declarationPeriodDetail_attachFile';
+  static const declarationPeriodDetail_addAttachedImage =
+      'declarationPeriodDetail_addAttachedImage';
+  static const declarationPeriodDetail_deposit =
+      'declarationPeriodDetail_deposit';
 }
 
 class Locales {
@@ -431,5 +439,9 @@ class Locales {
     'declarationPeriod_fileNumber': 'Số hồ sơ',
     'declarationPeriod_status': 'Trạng thái',
     'declarationPeriod_createNewPeriod': '+ Tạo mới đợt',
+    'declarationPeriodDetail_addNewStaff': 'Thêm mới nhân viên',
+    'declarationPeriodDetail_attachFile': 'Đính kèm file',
+    'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',
+    'declarationPeriodDetail_deposit': 'Ký gửi',
   };
 }
