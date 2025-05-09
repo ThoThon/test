@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:v_bhxh/assets.dart';
-import 'package:v_bhxh/generated/locales.g.dart';
-
-import '../../../core/core.src.dart';
-import '../../shares.src.dart';
+import '../../../modules/src.dart';
 
 class ShowDialog {
   static int _numberOfDialogs = 0;
@@ -159,7 +154,8 @@ class ShowDialog {
 
   static void showDialogConfirm({
     final bool isActiveBack = true,
-    String? title,
+    required String title,
+    String? status,
     required String textBtnRight,
     Function()? onPressed,
     Function()? funcBack,
@@ -186,29 +182,13 @@ class ShowDialog {
                   top: AppDimens.defaultPadding,
                   bottom: AppDimens.paddingSmall,
                 ),
-                // SDSBuildText(
-                //   title ?? LocaleKeys.dialog_success.tr,
-                //   style: AppTextStyle.font16Bo,
-                // ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-                // SDSBuildText(
-                //   LocaleKeys.dialog_checkEmail.tr,
-                //   style: AppTextStyle.font14Re,
-                // ),
-                // SDSBuildText(
-                //   LocaleKeys.dialog_processTime.tr,
-                //   style: AppTextStyle.font14Re,
-                // ),
-                TextUtils(
-                  text: title ?? LocaleKeys.dialog_success.tr,
-                  availableStyle: StyleEnum.subBold,
+                SDSBuildText(
+                  status ?? LocaleKeys.dialog_success.tr,
+                  style: AppTextStyle.font16Bo,
                 ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-                TextUtils(
-                  text: LocaleKeys.dialog_checkEmail.tr,
-                  availableStyle: StyleEnum.bodyRegular,
-                ),
-                TextUtils(
-                  text: LocaleKeys.dialog_processTime.tr,
-                  availableStyle: StyleEnum.bodyRegular,
+                SDSBuildText(
+                  title,
+                  style: AppTextStyle.font14Re,
                 ),
                 Row(
                   children: [

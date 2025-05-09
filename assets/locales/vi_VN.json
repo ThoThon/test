@@ -20,7 +20,8 @@
     "exit": "Thoát",
     "history": "Lịch sử",
     "consignment": "Ký gửi",
-    "notification": "Thông báo"
+    "notification": "Thông báo",
+    "updateSuccess": "Thay đổi thông tin thành công"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",

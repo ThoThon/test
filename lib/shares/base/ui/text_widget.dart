@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
 import '../../../core/const/src.dart';
-import '../../../core/theme/colors.dart';
 import '../../../core/values/dimens.dart';
 
 class SDSBuildText extends StatelessWidget {
@@ -32,7 +31,6 @@ class SDSBuildText extends StatelessWidget {
       textAlign: textAlign ?? TextAlign.start,
       style: style ??
           AppTextStyle.font14Re.copyWith(
-            color: color ?? AppColors.colorBlack,
             fontWeight: fontWeight,
             overflow: TextOverflow.ellipsis,
             fontSize: fontSize ?? AppDimens.sizeTextSmall,

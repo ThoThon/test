@@ -14,7 +14,7 @@ extension AwaitConfirmSignatureWidget on AwaitConfirmSignaturePage {
                       final item = controller.listSign[index];
                       return InkWell(
                           onTap: () async {
-                            await controller.confirmSign(item);
+                            // await controller.confirmSign(item);
                           },
                           child: UtilWidget.buildCardBase(
                             radius: AppDimens.radius4,

@@ -192,13 +192,13 @@ extension UnitInfoWidget on UnitInfoPage {
   List<Widget> _buildCardTraderInfo() {
     return [
       _buildText(
-        "${LocaleKeys.unitInfo_transactionPerson.tr}: ${controller.nameRepresentController.text}",
+        "${LocaleKeys.unitInfo_transactionPerson.tr}: ${controller.personTransactionController.text}",
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_phoneContact.tr}: ${controller.nameRepresentController.text}",
+        "${LocaleKeys.unitInfo_phoneContact.tr}: ${controller.phoneContactController.text}",
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_email.tr}: ${controller.nameRepresentController.text}",
+        "${LocaleKeys.unitInfo_email.tr}: ${controller.emailContactController.text}",
       ),
     ];
   }
@@ -276,9 +276,9 @@ extension UnitInfoWidget on UnitInfoPage {
   }) {
     return Row(
       children: [
-        TextUtils(
-          text: title,
-          availableStyle: StyleEnum.bodyBold,
+        SDSBuildText(
+          title,
+          style: AppTextStyle.font16Bo,
         ),
         Spacer(),
         GestureDetector(
@@ -297,11 +297,12 @@ extension UnitInfoWidget on UnitInfoPage {
   Widget _buildText(
     String text, {
     int? maxLines,
+    TextStyle? style,
   }) {
-    return TextUtils(
-      text: text,
-      availableStyle: StyleEnum.bodyRegular,
-      maxLine: maxLines ?? 3,
+    return SDSBuildText(
+      text,
+      style: style,
+      maxLines: maxLines ?? 3,
     ).paddingOnly(bottom: AppDimens.paddingVerySmall);
   }
 
@@ -312,7 +313,7 @@ extension UnitInfoWidget on UnitInfoPage {
       color: AppColors.statusRed,
       radius: AppDimens.radius4,
       onPressed: () {
-        // controller.validateAndSubmit();
+        controller.updateAccountInfo();
       },
     );
   }

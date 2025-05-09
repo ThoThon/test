@@ -25,7 +25,7 @@ class AwaitConfirmSignatureControllerICare extends BaseGetxController {
     if (Get.arguments != null && Get.arguments is RegisterRequest) {
       registerItem = Get.arguments;
     }
-    firstRegister();
+    // firstRegister();
     fetchListSign();
     // Tạm thời cmt vì chưa tối ưu
     timerCallApi();
@@ -37,39 +37,39 @@ class AwaitConfirmSignatureControllerICare extends BaseGetxController {
     super.onClose();
   }
 
-  Future<void> firstRegister() async {
-    showLoading();
-    await callAPIBE(
-      functionAPI: certificateRepository.registerSocial(
-        isRegisterFirst: (registerItem.unitCode ?? '').isEmpty,
-        request: registerItem,
-      ),
-      functionSuccess: (result) {
-        _timer?.cancel();
-        ShowDialog.showDialogConfirm(
-          name: 'dialogConfirm',
-          textBtnRight: LocaleKeys.dialog_history.tr,
-          isActiveBack: false,
-          onPressed: () {
-            Get.toNamed(
-              AppRoutes.historyTransaction.path,
-              arguments: {
-                'item': registerItem,
-                'isHaveBtn': isHaveButton,
-              },
-            );
-          },
-          funcBack: () {
-            Get.until(
-              (route) =>
-                  route.settings.name == AppRoutes.declarationTaxCode.path,
-            );
-          },
-        );
-      },
-    );
-    hideLoading();
-  }
+  // Future<void> firstRegister() async {
+  //   showLoading();
+  //   await callAPIBE(
+  //     functionAPI: certificateRepository.registerSocial(
+  //       isRegisterFirst: (registerItem.unitCode ?? '').isEmpty,
+  //       request: registerItem,
+  //     ),
+  //     functionSuccess: (result) {
+  //       _timer?.cancel();
+  //       ShowDialog.showDialogConfirm(
+  //         name: 'dialogConfirm',
+  //         textBtnRight: LocaleKeys.dialog_history.tr,
+  //         isActiveBack: false,
+  //         onPressed: () {
+  //           Get.toNamed(
+  //             AppRoutes.historyTransaction.path,
+  //             arguments: {
+  //               'item': registerItem,
+  //               'isHaveBtn': isHaveButton,
+  //             },
+  //           );
+  //         },
+  //         funcBack: () {
+  //           Get.until(
+  //             (route) =>
+  //                 route.settings.name == AppRoutes.declarationTaxCode.path,
+  //           );
+  //         },
+  //       );
+  //     },
+  //   );
+  //   hideLoading();
+  // }
 
   Future<void> fetchListSignSDK() async {
     var listSignResponseIcare = await IcareModules.icareModulesData.listSign(
@@ -118,36 +118,36 @@ class AwaitConfirmSignatureControllerICare extends BaseGetxController {
     hideLoading();
   }
 
-  Future<void> confirmSign(SignIcare item) async {
-    isFetchList = false;
-    await Get.toNamed(
-      AppRoutes.confirmCode.path,
-      arguments: item,
-    );
-    isFetchList = true;
+  // Future<void> confirmSign(SignIcare item) async {
+  //   isFetchList = false;
+  //   await Get.toNamed(
+  //     AppRoutes.confirmCode.path,
+  //     arguments: item,
+  //   );
+  //   isFetchList = true;
 
-    if (MockSdk().isMock) {
-      ShowDialog.showDialogConfirm(
-        name: 'dialogConfirm',
-        textBtnRight: LocaleKeys.dialog_history.tr,
-        onPressed: () {
-          Get.toNamed(
-            AppRoutes.historyTransaction.path,
-            arguments: {
-              'item': registerItem,
-              'isHaveBtn': isHaveButton,
-            },
-          );
-        },
-        funcBack: () {
-          Get.offAllNamed(
-            AppRoutes.declarationTaxCode.path,
-          );
-        },
-        isActiveBack: false,
-      );
-    } else {
-      await fetchListSign();
-    }
-  }
+  //   if (MockSdk().isMock) {
+  //     ShowDialog.showDialogConfirm(
+  //       name: 'dialogConfirm',
+  //       textBtnRight: LocaleKeys.dialog_history.tr,
+  //       onPressed: () {
+  //         Get.toNamed(
+  //           AppRoutes.historyTransaction.path,
+  //           arguments: {
+  //             'item': registerItem,
+  //             'isHaveBtn': isHaveButton,
+  //           },
+  //         );
+  //       },
+  //       funcBack: () {
+  //         Get.offAllNamed(
+  //           AppRoutes.declarationTaxCode.path,
+  //         );
+  //       },
+  //       isActiveBack: false,
+  //     );
+  //   } else {
+  //     await fetchListSign();
+  //   }
+  // }
 }

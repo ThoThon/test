@@ -191,6 +191,7 @@ class LocaleKeys {
   static const awaitConfirmSign_comfirmSignLoading =
       'awaitConfirmSign_comfirmSignLoading';
   static const awaitConfirmSign_loading = 'awaitConfirmSign_loading';
+  static const dialog_updateSuccess = 'dialog_updateSuccess';
   static const declaration_historyRegister = 'declaration_historyRegister';
   static const unitInfo_transactionPersonInfo =
       'unitInfo_transactionPersonInfo';
@@ -411,6 +412,7 @@ class Locales {
     'dialog_history': 'Lịch sử',
     'dialog_consignment': 'Ký gửi',
     'dialog_notification': 'Thông báo',
+    'dialog_updateSuccess': 'Thay đổi thông tin thành công',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
