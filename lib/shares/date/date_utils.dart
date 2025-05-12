@@ -11,6 +11,7 @@ const String PATTERN_8 = "yyyy-MM-ddTHH:mm:ss";
 const String PATTERN_9 = "HH:mm - dd/MM/yyyy";
 const String PATTERN_10 = "dd/MM/yyyy HH:mm:ss";
 const String PATTERN_11 = "yyyyMMddHHmmss";
+const String PATTERN_12 = "MM/yyyy";
 const String PATTERN_DEFAULT = "yyyy-MM-dd";
 
 String formatDateTimeToString(DateTime dateTime) {
@@ -78,7 +79,6 @@ String convertTimestampToDate(String timestamp) {
   return outputFormat.format(dateTime);
 }
 
-
 String convertDateFormat(String originalDate) {
   // Tách ngày, tháng và năm từ chuỗi ban đầu
   List<String> dateParts = originalDate.split('/');
@@ -91,7 +91,6 @@ String convertDateFormat(String originalDate) {
 
   return formattedDate;
 }
-
 
 int calculateDateDifference(String fromDate, String toDate) {
   if (fromDate != "" || toDate != "") {
@@ -108,7 +107,6 @@ int calculateDateDifference(String fromDate, String toDate) {
   }
 }
 
-
 String convertDateStringToString(String dateString, String pattern) {
   final dateTime = DateTime(
     int.tryParse(dateString.substring(0, 4)) ?? 0, // Năm
@@ -120,4 +118,3 @@ String convertDateStringToString(String dateString, String pattern) {
   );
   return convertDateToString(dateTime, pattern);
 }
-

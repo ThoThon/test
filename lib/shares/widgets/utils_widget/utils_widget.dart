@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,6 +14,7 @@ class UtilWidget {
     );
   }
 
+  static const Widget sizedBox4 = SizedBox(height: 4);
   static const Widget sizedBox5 = SizedBox(height: 5);
   static const Widget sizedBox8 = SizedBox(height: 8);
   static const Widget sizedBox10 = SizedBox(height: 10);
@@ -207,12 +209,10 @@ class UtilWidget {
           ),
         ),
         onPressed: onPressed,
-        child: Center(
-          child: TextUtils(
-            text: title,
-            availableStyle: StyleEnum.subBold,
-            color: AppColors.primaryColor,
-          ),
+        child: TextUtils(
+          text: title,
+          availableStyle: StyleEnum.subBold,
+          color: AppColors.primaryColor,
         ),
       ),
     );
@@ -603,6 +603,34 @@ class UtilWidget {
         Rect.fromLTWH(0, 0, bounds.width, bounds.height),
       ),
       child: child,
+    );
+  }
+
+  static Future<DateTime?> showPeriodDatePicker() async {
+    final context = Get.context;
+    if (context == null) return null;
+
+    return showMonthPicker(
+      context: context,
+      initialDate: DateTime.now(),
+      monthPickerDialogSettings: const MonthPickerDialogSettings(
+        headerSettings: PickerHeaderSettings(
+          headerBackgroundColor: AppColors.primaryColor,
+        ),
+        dialogSettings: PickerDialogSettings(
+          locale: Locale('vi'),
+          dialogRoundedCornersRadius: 4,
+          dialogBackgroundColor: Colors.white,
+        ),
+        dateButtonsSettings: PickerDateButtonsSettings(
+          buttonBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(4),
+            ),
+          ),
+          selectedMonthBackgroundColor: AppColors.primaryColor,
+        ),
+      ),
     );
   }
 }

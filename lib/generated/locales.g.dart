@@ -11,6 +11,9 @@ class AppTranslation {
 class LocaleKeys {
   LocaleKeys._();
   static const app_name = 'app_name';
+  static const app_delete = 'app_delete';
+  static const app_edit = 'app_edit';
+  static const app_edit2 = 'app_edit2';
   static const dialog_close = 'dialog_close';
   static const dialog_errorConnectFailedStr = 'dialog_errorConnectFailedStr';
   static const dialog_errorConnectTimeOut = 'dialog_errorConnectTimeOut';
@@ -213,11 +216,37 @@ class LocaleKeys {
   static const login_password = 'login_password';
   static const login_usernameCannotEmpty = 'login_usernameCannotEmpty';
   static const login_passwordCannotEmpty = 'login_passwordCannotEmpty';
+  static const procedureList_pageTitle = 'procedureList_pageTitle';
+  static const procedureList_procedureItemTitle =
+      'procedureList_procedureItemTitle';
+  static const procedureList_procedureItemSubtitle =
+      'procedureList_procedureItemSubtitle';
+  static const procedureList_declare = 'procedureList_declare';
+  static const declarationPeriod_title = 'declarationPeriod_title';
+  static const declarationPeriod_month = 'declarationPeriod_month';
+  static const declarationPeriod_selectMonth = 'declarationPeriod_selectMonth';
+  static const declarationPeriod_updateDate = 'declarationPeriod_updateDate';
+  static const declarationPeriod_fileNumber = 'declarationPeriod_fileNumber';
+  static const declarationPeriod_status = 'declarationPeriod_status';
+  static const declarationPeriod_createNewPeriod =
+      'declarationPeriod_createNewPeriod';
+  static const declarationPeriodDetail_addNewStaff =
+      'declarationPeriodDetail_addNewStaff';
+  static const declarationPeriodDetail_attachFile =
+      'declarationPeriodDetail_attachFile';
+  static const declarationPeriodDetail_addAttachedImage =
+      'declarationPeriodDetail_addAttachedImage';
+  static const declarationPeriodDetail_deposit =
+      'declarationPeriodDetail_deposit';
+  static const declareInfo_title = 'declareInfo_title';
 }
 
 class Locales {
   static const vi_VN = {
     'app_name': 'vBHXH',
+    'app_delete': 'Xóa',
+    'app_edit': 'Sửa',
+    'app_edit2': 'Chỉnh sửa',
     'dialog_close': 'Đóng',
     'dialog_errorConnectFailedStr':
         'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',
@@ -398,5 +427,23 @@ class Locales {
     'login_password': 'Mật khẩu',
     'login_usernameCannotEmpty': 'Tài khoản không được bỏ trống',
     'login_passwordCannotEmpty': 'Mật khẩu không được bỏ trống',
+    'procedureList_pageTitle': 'Danh sách thủ tục',
+    'procedureList_procedureItemTitle':
+        'Báo tăng, báo giảm, điều chỉnh mức đóng',
+    'procedureList_procedureItemSubtitle':
+        'Kê khai hồ sơ báo tăng lao động, báo giảm lao động, điều chỉnh lương',
+    'procedureList_declare': 'Kê khai',
+    'declarationPeriod_title': 'Đợt kê khai',
+    'declarationPeriod_month': 'Tháng',
+    'declarationPeriod_selectMonth': 'Chọn tháng',
+    'declarationPeriod_updateDate': 'Ngày cập nhật',
+    'declarationPeriod_fileNumber': 'Số hồ sơ',
+    'declarationPeriod_status': 'Trạng thái',
+    'declarationPeriod_createNewPeriod': '+ Tạo mới đợt',
+    'declarationPeriodDetail_addNewStaff': 'Thêm mới nhân viên',
+    'declarationPeriodDetail_attachFile': 'Đính kèm file',
+    'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',
+    'declarationPeriodDetail_deposit': 'Ký gửi',
+    'declareInfo_title': 'Kê khai thông tin',
   };
 }

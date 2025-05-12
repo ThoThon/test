@@ -10,10 +10,8 @@ import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 class LoginController extends BaseGetxController {
   late final _loginRepository = LoginRepository(this);
   final formKey = GlobalKey<FormState>();
-  final usernameTextCtrl =
-      TextEditingController(text: hiveApp.get(HiveKeys.keyUsername));
-  final passwordTextCtrl =
-      TextEditingController(text: hiveApp.get(HiveKeys.keyPassword));
+  final usernameTextCtrl = TextEditingController(text: 'sd8888k17');
+  final passwordTextCtrl = TextEditingController(text: 'Viettel@789');
 
   Future<void> login() async {
     if (formKey.currentState?.validate() != true) {
