@@ -50,15 +50,15 @@ class RouteAppPage {
       transition: Transition.rightToLeft,
     ),
     GetPage(
-      name: AppRoutes.historyTransaction.path,
-      page: () => HistoryTransactionPage(),
+      name: AppRoutes.history.path,
+      page: () => HistoryPage(),
       transition: Transition.rightToLeft,
     ),
-    GetPage(
-      name: AppRoutes.historyRegisterDetail.path,
-      page: () => HistoryRegisterDetailPage(),
-      transition: Transition.rightToLeft,
-    ),
+    // GetPage(
+    //   name: AppRoutes.historyRegisterDetail.path,
+    //   page: () => HistoryRegisterDetailPage(),
+    //   transition: Transition.rightToLeft,
+    // ),
     GetPage(
       name: AppRoutes.listCertificate.path,
       page: () => ListCertificatePage(),

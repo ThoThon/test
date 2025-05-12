@@ -14,7 +14,7 @@ enum AppRoutes {
   ///Kê khai BHXH
   declarationTaxCode,
   declarationTaxCodeDetail,
-  historyTransaction,
+  history,
   historyRegisterDetail,
 
   ///Danh sách chứng thư số

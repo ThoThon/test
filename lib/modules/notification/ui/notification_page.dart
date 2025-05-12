@@ -1,4 +1,5 @@
 import 'package:v_bhxh/modules/declaration_tax_code/ui/ui_src.dart';
+
 part 'notification_widget.dart';
 
 class NotificationPage extends BaseGetWidget {
@@ -13,7 +14,10 @@ class NotificationPage extends BaseGetWidget {
           style: AppTextStyle.font16Bo,
         ),
         actions: [
-          Icon(Icons.check_outlined),
+          Icon(
+            Icons.check_outlined,
+            color: AppColors.primaryColor,
+          ),
           sdsSBWidth16,
         ],
         centerTitle: true,

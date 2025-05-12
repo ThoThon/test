@@ -6,7 +6,7 @@ import '../../../core/core.src.dart';
 enum HomeEnum {
   unit_info,
   file_declaration,
-  transaction_history,
+  history,
   lookup_c12,
   guide;
 
@@ -16,7 +16,7 @@ enum HomeEnum {
         return Assets.ASSETS_ICONS_HOME_REGISTER_TRANSACTION_SVG;
       case file_declaration:
         return Assets.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG;
-      case transaction_history:
+      case history:
         return Assets.ASSETS_ICONS_HOME_TRANSACTION_HISTORY_SVG;
       case lookup_c12:
         return Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG;
@@ -31,7 +31,7 @@ enum HomeEnum {
         return LocaleKeys.home_unitInfo;
       case file_declaration:
         return LocaleKeys.home_declare;
-      case transaction_history:
+      case history:
         return LocaleKeys.home_history;
       case lookup_c12:
         return LocaleKeys.home_lookupC12;
@@ -46,8 +46,8 @@ enum HomeEnum {
         return AppRoutes.infoUnit.path;
       case file_declaration:
         return "";
-      case transaction_history:
-        return AppRoutes.historyTransaction.path;
+      case history:
+        return AppRoutes.history.path;
       case lookup_c12:
         return "";
       case guide:

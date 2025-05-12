@@ -168,10 +168,10 @@ class BaseGetxController extends GetxController {
                         right: AppDimens.paddingVerySmall,
                       ),
                       Expanded(
-                        child: TextUtils(
-                          text: message.tr,
-                          availableStyle: StyleEnum.bodyBold,
-                          maxLine: 3,
+                        child: SDSBuildText(
+                          message.tr,
+                          style: AppTextStyle.font14Bo,
+                          maxLines: 3,
                         ),
                       ),
                     ],

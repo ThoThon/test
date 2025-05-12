@@ -284,8 +284,8 @@ extension UnitInfoWidget on UnitInfoPage {
         GestureDetector(
           onTap: onTap,
           child: isEdit.value
-              ? Icon(Icons.arrow_drop_up_outlined)
-              : Icon(Icons.arrow_drop_down_outlined),
+              ? SDSImageSvg(Assets.ASSETS_ICONS_IC_ARROW_UP_SVG)
+              : SDSImageSvg(Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG),
         )
       ],
     ).paddingOnly(

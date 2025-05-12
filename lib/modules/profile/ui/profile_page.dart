@@ -23,7 +23,10 @@ class ProfilePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: controller.showDialogLogout,
-            icon: Icon(Icons.logout),
+            icon: Icon(
+              Icons.logout,
+              color: AppColors.primaryColor,
+            ),
           ),
           sdsSBWidth12,
         ],

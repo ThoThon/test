@@ -9,7 +9,7 @@ class AppColors {
 
   AppColors._internal();
 
-  static const Color primaryColor = Color(0xFFFD5C00);
+  static const Color primaryColor = Color(0xFFED1B2F);
   static const Color primaryNavy = Color(0xFF1C1E66);
   static const Color basicBlack = Color(0xFF333333);
 

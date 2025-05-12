@@ -134,15 +134,13 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
       text: isUnitEmpty
           ? LocaleKeys.unitInfo_signUpForCode
           : LocaleKeys.unitInfo_agree,
-          style: AppTextStyle.font16Bo.copyWith(color: AppColors.colorWhite),
+      style: AppTextStyle.font16Bo.copyWith(color: AppColors.colorWhite),
       color: isUnitEmpty ? AppColors.statusGreen : AppColors.primaryColor,
       radius: AppDimens.radius4,
       onPressed: controller.itemSelected.value != null
           ? () {
               Get.toNamed(
-                isUnitEmpty
-                    ? AppRoutes.infoUnit.path
-                    : AppRoutes.home.path,
+                isUnitEmpty ? AppRoutes.infoUnit.path : AppRoutes.home.path,
                 arguments: controller.itemSelected.value,
               );
             }
@@ -170,7 +168,7 @@ class DeclarationTaxCodeDetailPage extends BaseGetWidget {
           boderColor: AppColors.primaryColor,
           onPressed: () {
             Get.toNamed(
-              AppRoutes.historyTransaction.path,
+              AppRoutes.history.path,
               arguments: controller.itemSelected.value,
             );
           },
