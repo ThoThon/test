@@ -1,6 +1,11 @@
 enum AppRoutes {
   pageBuilder,
   login,
+  procedureList,
+  declarationPeriod,
+  declarationPeriodDetail,
+  declareInfo,
+
   routeDioLog,
   splash,
 
@@ -15,7 +20,7 @@ enum AppRoutes {
   declarationTaxCode,
   declarationTaxCodeDetail,
   history,
-  historyRegisterDetail,
+  historyDetail,
 
   ///Danh sách chứng thư số
   listCertificate,

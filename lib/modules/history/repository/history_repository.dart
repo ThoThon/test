@@ -1,36 +1,21 @@
-import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/modules/history/models/result_model.dart';
-
+import '../../../base_app/base_app.src.dart';
 import '../../src.dart';
+import '../models/model_src.dart';
 
 class HistoryRepository extends BaseRepository {
   HistoryRepository(super.controller);
 
-  Future<BaseResponse<ResultModel>> getHistory() async {
-    // var request = HistoryRequest(
-    //   pageIndex: 1,
-    //   pageSize: 15,
-    //   thang: "",
-    //   nam: "",
-    //   maThuTuc: "",
-    //   soHoSo: "",
-    // );
+  Future<BaseResponse<HistoryResponse>> getHistory(
+      HistoryRequest request) async {
     final response = await baseCallApi(
       AppApi.urlGetHistory,
-      EnumRequestMethod.get,
-      jsonMap: {
-        "pageIndex": 1,
-        "pageSize": 15,
-        "thang": "",
-        "nam": "",
-        "maThuTuc": "",
-        "soHoSo": "",
-      },
+      EnumRequestMethod.post,
+      jsonMap: request.toJson(),
     );
     logger.d(response);
-    return BaseResponse<ResultModel>.fromJson(
+    return BaseResponse<HistoryResponse>.fromJson(
       response,
-      fromJson: (json) => ResultModel.fromJson(json),
+      fromJson: (json) => HistoryResponse.fromJson(json),
     );
   }
 }

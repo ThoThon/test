@@ -140,7 +140,9 @@ class BaseApi {
   dynamic showDialogError(dynamic e) {
     if (e.response?.data != null &&
         e.response.data is Map &&
-        e.response.data["errorMessage"] != null) return e.response.data;
+        e.response.data["errorMessage"] != null) {
+      return e.response.data;
+    }
     onErrorCallBack(e);
   }
 

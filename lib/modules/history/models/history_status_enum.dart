@@ -1,18 +1,14 @@
-import 'dart:ui';
-
-import 'package:v_bhxh/generated/locales.g.dart';
-
-import '../../../core/theme/colors.dart';
+import 'package:v_bhxh/modules/src.dart';
 
 abstract class HistoryStatusEnum {
   /// Đang chờ xử lý
-  static const String processing = '0';
+  static const String processing = 'Đang xử lý';
 
   ///Thành công
-  static const String success = '1';
+  static const String success = 'Thành công';
 
   ///Thất bại
-  static const String fail = '2';
+  static const String fail = 'Thất bại';
 }
 
 extension HistoryStatusEnumExt on String? {
@@ -32,13 +28,13 @@ extension HistoryStatusEnumExt on String? {
   String get titleStatus {
     switch (this) {
       case HistoryStatusEnum.processing:
-        return LocaleKeys.historyRegister_socialAgencyInProcess;
+        return LocaleKeys.history_socialAgencyInProcess.tr;
       case HistoryStatusEnum.success:
-        return LocaleKeys.historyRegister_success;
+        return LocaleKeys.history_success.tr;
       case HistoryStatusEnum.fail:
-        return LocaleKeys.historyRegister_fail;
+        return LocaleKeys.history_fail.tr;
       default:
-        return LocaleKeys.historyRegister_socialAgencyInProcess;
+        return LocaleKeys.history_socialAgencyInProcess.tr;
     }
   }
 }

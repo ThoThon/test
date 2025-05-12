@@ -5,35 +5,26 @@ extension HistoryWidget on HistoryPage {
     return SDSSafearea(
       child: Column(
         children: [
-          Flexible(
-            child: Column(
-              children: [
-                _buildSearchAndFilter(),
-                Expanded(
-                  child: UtilWidget.buildCardBase(
-                    baseShowLoading(
-                      () => UtilWidget.buildSmartRefresher(
-                        refreshController: controller.refreshController,
-                        onRefresh: controller.onRefresh,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            // final item = controller.listHistoryRegister[index];
-                            return Container();
-                            // _buildCardItemHistory(item);
-                          },
-                          itemCount: 10,
-                        ),
-                      ),
-                    ),
-                  ).paddingOnly(top: AppDimens.defaultPadding),
+          _buildSearchAndFilter(),
+          Expanded(
+            child: UtilWidget.buildCardBase(
+              UtilWidget.buildSmartRefresher(
+                refreshController: controller.refreshController,
+                onRefresh: controller.onRefresh,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    final item = controller.listHistory[index];
+                    return _buildCardItemHistory(item);
+                  },
+                  itemCount: controller.listHistory.length,
                 ),
-              ],
-            ).paddingSymmetric(
-              horizontal: AppDimens.defaultPadding,
-            ),
+              ),
+            ).paddingOnly(top: AppDimens.defaultPadding),
           ),
         ],
+      ).paddingSymmetric(
+        horizontal: AppDimens.defaultPadding,
       ),
     );
   }
@@ -54,36 +45,64 @@ extension HistoryWidget on HistoryPage {
                   width: AppDimens.sizeIcon,
                   height: AppDimens.sizeIcon,
                 ).paddingOnly(right: AppDimens.paddingVerySmall),
-                TextUtils(
-                  text: LocaleKeys.historyRegister_searchProfile.tr,
-                  availableStyle: StyleEnum.bodyRegular,
-                  color: AppColors.thumbColorSwitch,
-                ),
+                SDSBuildText(
+                  LocaleKeys.history_searchProfile.tr,
+                  style: AppTextStyle.font14Re.copyWith(
+                    color: AppColors.thumbColorSwitch,
+                  ),
+                )
               ],
             ).paddingAll(AppDimens.paddingSmall),
           ),
         ),
-        SDSImageSvg(
-          Assets.ASSETS_ICONS_IC_FILTER_SVG,
-          width: AppDimens.sizeIcon32,
-          height: AppDimens.sizeIcon32,
+        IconButton(
+          icon: SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_FILTER_SVG,
+            width: AppDimens.sizeIcon32,
+            height: AppDimens.sizeIcon32,
+          ),
+          onPressed: () {
+            ///TODO: hoàn thành sau
+            Get.bottomSheet(
+              UtilWidget.baseBottomSheet(
+                title: "Chọn thủ tục",
+                body: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SDSBuildText(
+                      'Tất cả',
+                      style: AppTextStyle.font14Re
+                          .copyWith(color: AppColors.primaryColor),
+                    ),
+                    SDSBuildText(
+                        '600c- tạm dừng đóng vào quỹ hưu trí - tử tuất theo luật bhxh 2014'),
+                    SDSBuildText(
+                        '600d- tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP'),
+                    SDSBuildText('600o - Tạm dừng đóng vào quỹ hưu trí'),
+                  ],
+                ),
+              ),
+            );
+          },
         ).paddingOnly(left: AppDimens.paddingSmall),
       ],
     );
   }
 
-  Widget _buildCardItemHistory(
-    int index,
-  ) {
+  Widget _buildCardItemHistory(HistoryItemModel item) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(
+          AppRoutes.historyDetail.path,
+          arguments: item,
+        );
+      },
       child: Row(
         children: [
-          SDSImageSvg(
-            color: index == 0 ? AppColors.primaryColor : AppColors.dsGray3,
-            Assets.ASSETS_ICONS_IC_USER_SVG,
-            width: AppDimens.sizeIconMedium,
-            height: AppDimens.sizeIconMedium,
+          Icon(
+            Icons.assignment_outlined,
+            color: AppColors.primaryColor,
+            size: AppDimens.sizeIconMedium,
           ).paddingOnly(right: AppDimens.paddingVerySmall),
           Expanded(
             child: Column(
@@ -91,33 +110,31 @@ extension HistoryWidget on HistoryPage {
               children: [
                 Row(
                   children: [
-                    // SDSBuildText(
-                    //   "${item.toKhai}${LocaleKeys.historyRegister_number.tr}",
-                    // ),
-                    // Flexible(
-                    //   child: SDSBuildText(
-                    //     item.soHoSo,
-                    //     style: AppTextStyle.font14Bo,
-                    //   ),
-                    // ),
+                    SDSBuildText(
+                      "${LocaleKeys.history_procedure.tr} ${item.maThuTuc}",
+                    ),
+                    Expanded(
+                      child: SDSBuildText(
+                        "${LocaleKeys.history_number.tr}${item.soHoSo ?? ''}",
+                        style: AppTextStyle.font14Bo,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ],
                 ).paddingOnly(bottom: AppDimens.paddingSmallest),
                 SDSBuildText(
-                  '123',
-                  // changeDateString(item.thoiGianGui, pattern: PATTERN_9),
-                  style: AppTextStyle.font12Re,
+                  "${LocaleKeys.history_submissionTime.tr}: ${changeDateString(item.thoiGianGui, pattern: PATTERN_9)}",
                   maxLines: 1,
                 ).paddingOnly(bottom: AppDimens.paddingSmallest),
                 Row(
                   children: [
                     SDSBuildText(
-                      "${LocaleKeys.historyRegister_status.tr}: ",
-                      style: AppTextStyle.font12Re,
+                      "${LocaleKeys.history_status.tr}: ",
                     ),
                     SDSBuildText(
-                      'Thành công',
+                      item.trangThai.titleStatus,
                       style: AppTextStyle.font14Bo.copyWith(
-                        color: AppColors.statusGreen,
+                        color: item.trangThai.historyStatusColor,
                       ),
                     ),
                   ],
@@ -125,13 +142,10 @@ extension HistoryWidget on HistoryPage {
               ],
             ),
           ),
-          Visibility(
-            visible: index == 0,
-            child: SDSImageSvg(
-              Assets.ASSETS_ICONS_IC_ARROW_RIGHT_SVG,
-              height: AppDimens.sizeIcon,
-              width: AppDimens.sizeIcon,
-            ),
+          SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_ARROW_RIGHT_SVG,
+            height: AppDimens.sizeIcon,
+            width: AppDimens.sizeIcon,
           ),
         ],
       ).paddingAll(AppDimens.paddingSmall),

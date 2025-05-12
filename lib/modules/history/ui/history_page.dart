@@ -1,3 +1,5 @@
+import 'package:v_bhxh/modules/history/models/model_src.dart';
+
 import '../../src.dart';
 
 part 'history_widget.dart';
@@ -13,13 +15,14 @@ class HistoryPage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(
-        title: SDSBuildText(
-          LocaleKeys.historyRegister_historyTransaction.tr,
-          style: AppTextStyle.font16Bo,
+        appBar: BaseAppBar(
+          title: SDSBuildText(
+            LocaleKeys.history_historyTransaction.tr,
+            style: AppTextStyle.font16Bo,
+          ),
         ),
-      ),
-      body: _buildBody(),
-    );
+        body: baseShowLoading(
+          () => _buildBody(),
+        ));
   }
 }

@@ -1,31 +1,20 @@
-class HistoryResults {
-  final String id;
-  final String maThuTuc;
-  final DateTime thoiGianGui;
-  final String soHoSo;
-  final String thang;
-  final String nam;
-  final String trangThai;
+import '../../src.dart';
 
-  HistoryResults({
-    required this.id,
-    required this.maThuTuc,
-    required this.thoiGianGui,
-    required this.soHoSo,
-    required this.thang,
-    required this.nam,
-    required this.trangThai,
+class HistoryResponse {
+  final List<HistoryItemModel> historyResults;
+  final int totalCount;
+
+  HistoryResponse({
+    required this.historyResults,
+    required this.totalCount,
   });
 
-  factory HistoryResults.fromJson(Map<String, dynamic> json) {
-    return HistoryResults(
-      id: json['id'] ?? '',
-      maThuTuc: json['maThuTuc'] ?? '',
-      thoiGianGui: DateTime.parse(json['thoiGianGui'] ?? ''),
-      soHoSo: json['soHoSo'] ?? '',
-      thang: json['thang'] ?? '',
-      nam: json['nam'] ?? '',
-      trangThai: json['trangThai'] ?? '',
+  factory HistoryResponse.fromJson(Map<String, dynamic> json) {
+    return HistoryResponse(
+      historyResults: (json['historyResults'] as List)
+          .map((e) => HistoryItemModel.fromJson(e))
+          .toList(),
+      totalCount: json['totalCount'] ?? 0,
     );
   }
 }

@@ -30,6 +30,12 @@ class LocaleKeys {
   static const dialog_history = 'dialog_history';
   static const dialog_consignment = 'dialog_consignment';
   static const dialog_notification = 'dialog_notification';
+  static const app_delete = 'app_delete';
+  static const app_edit = 'app_edit';
+  static const app_edit2 = 'app_edit2';
+  static const dialog_updateSuccess = 'dialog_updateSuccess';
+  static const dialog_logout = 'dialog_logout';
+  static const dialog_isLogout = 'dialog_isLogout';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -41,10 +47,12 @@ class LocaleKeys {
   static const declaration_declarationTaxCode =
       'declaration_declarationTaxCode';
   static const declaration_noUnitCode = 'declaration_noUnitCode';
-  static const home_registerInsurance = 'home_registerInsurance';
-  static const home_transactionHistory = 'home_transactionHistory';
-  static const home_declarationForm = 'home_declarationForm';
+  static const declaration_historyRegister = 'declaration_historyRegister';
+  static const home_unitInfo = 'home_unitInfo';
+  static const home_history = 'home_history';
   static const home_lookupC12 = 'home_lookupC12';
+  static const home_guide = 'home_guide';
+  static const home_declare = 'home_declare';
   static const unitInfo_transactionRegister = 'unitInfo_transactionRegister';
   static const unitInfo_generalInfo = 'unitInfo_generalInfo';
   static const unitInfo_registerInfo = 'unitInfo_registerInfo';
@@ -58,6 +66,8 @@ class LocaleKeys {
   static const unitInfo_addressTransaction = 'unitInfo_addressTransaction';
   static const unitInfo_businessIndustry = 'unitInfo_businessIndustry';
   static const unitInfo_representInfo = 'unitInfo_representInfo';
+  static const unitInfo_transactionPersonInfo =
+      'unitInfo_transactionPersonInfo';
   static const unitInfo_represent = 'unitInfo_represent';
   static const unitInfo_position = 'unitInfo_position';
   static const unitInfo_decisionInfo = 'unitInfo_decisionInfo';
@@ -125,32 +135,34 @@ class LocaleKeys {
   static const unitInfo_missingInfo = 'unitInfo_missingInfo';
   static const unitInfo_fileIncludeInValid = 'unitInfo_fileIncludeInValid';
   static const unitInfo_search = 'unitInfo_search';
-  static const historyRegister_historyDetail = 'historyRegister_historyDetail';
-  static const historyRegister_profileInfo = 'historyRegister_profileInfo';
-  static const historyRegister_status = 'historyRegister_status';
-  static const historyRegister_profileNumber = 'historyRegister_profileNumber';
-  static const historyRegister_timeResgiter = 'historyRegister_timeResgiter';
-  static const historyRegister_progressHandle =
-      'historyRegister_progressHandle';
-  static const historyRegister_profileCheckResult =
-      'historyRegister_profileCheckResult';
-  static const historyRegister_declarationForm =
-      'historyRegister_declarationForm';
-  static const historyRegister_historyTransaction =
-      'historyRegister_historyTransaction';
-  static const historyRegister_searchProfile = 'historyRegister_searchProfile';
-  static const historyRegister_noResult = 'historyRegister_noResult';
-  static const historyRegister_result = 'historyRegister_result';
-  static const historyRegister_number = 'historyRegister_number';
-  static const historyRegister_home = 'historyRegister_home';
-  static const historyRegister_selectedUnitCode =
-      'historyRegister_selectedUnitCode';
-  static const historyRegister_lookup = 'historyRegister_lookup';
-  static const historyRegister_socialAgencyInProcess =
-      'historyRegister_socialAgencyInProcess';
-  static const historyRegister_success = 'historyRegister_success';
-  static const historyRegister_fail = 'historyRegister_fail';
-  static const historyRegister_lookupSuccess = 'historyRegister_lookupSuccess';
+  static const unitInfo_change = 'unitInfo_change';
+  static const unitInfo_socialAgencyName = 'unitInfo_socialAgencyName';
+  static const unitInfo_socialAgencyCode = 'unitInfo_socialAgencyCode';
+  static const unitInfo_region = 'unitInfo_region';
+  static const unitInfo_basicSalary = 'unitInfo_basicSalary';
+  static const unitInfo_registerResult = 'unitInfo_registerResult';
+  static const history_procedure = 'history_procedure';
+  static const history_submissionTime = 'history_submissionTime';
+  static const history_historyDetail = 'history_historyDetail';
+  static const history_profileInfo = 'history_profileInfo';
+  static const history_status = 'history_status';
+  static const history_profileNumber = 'history_profileNumber';
+  static const history_timeResgiter = 'history_timeResgiter';
+  static const history_progressHandle = 'history_progressHandle';
+  static const history_profileCheckResult = 'history_profileCheckResult';
+  static const history_declarationForm = 'history_declarationForm';
+  static const history_historyTransaction = 'history_historyTransaction';
+  static const history_searchProfile = 'history_searchProfile';
+  static const history_noResult = 'history_noResult';
+  static const history_result = 'history_result';
+  static const history_number = 'history_number';
+  static const history_home = 'history_home';
+  static const history_selectedUnitCode = 'history_selectedUnitCode';
+  static const history_lookup = 'history_lookup';
+  static const history_socialAgencyInProcess = 'history_socialAgencyInProcess';
+  static const history_success = 'history_success';
+  static const history_fail = 'history_fail';
+  static const history_lookupSuccess = 'history_lookupSuccess';
   static const certificate_listCertificate = 'certificate_listCertificate';
   static const certificate_selectCertificate = 'certificate_selectCertificate';
   static const certificate_confirm = 'certificate_confirm';
@@ -191,22 +203,6 @@ class LocaleKeys {
   static const awaitConfirmSign_comfirmSignLoading =
       'awaitConfirmSign_comfirmSignLoading';
   static const awaitConfirmSign_loading = 'awaitConfirmSign_loading';
-  static const dialog_updateSuccess = 'dialog_updateSuccess';
-  static const dialog_logout = 'dialog_logout';
-  static const dialog_isLogout = 'dialog_isLogout';
-  static const declaration_historyRegister = 'declaration_historyRegister';
-  static const home_unitInfo = 'home_unitInfo';
-  static const home_history = 'home_history';
-  static const home_guide = 'home_guide';
-  static const home_declare = 'home_declare';
-  static const unitInfo_transactionPersonInfo =
-      'unitInfo_transactionPersonInfo';
-  static const unitInfo_change = 'unitInfo_change';
-  static const unitInfo_socialAgencyName = 'unitInfo_socialAgencyName';
-  static const unitInfo_socialAgencyCode = 'unitInfo_socialAgencyCode';
-  static const unitInfo_region = 'unitInfo_region';
-  static const unitInfo_basicSalary = 'unitInfo_basicSalary';
-  static const unitInfo_registerResult = 'unitInfo_registerResult';
   static const login_login = 'login_login';
   static const login_logout = 'login_logout';
   static const login_usernameAndPasswordInValid =
@@ -215,6 +211,29 @@ class LocaleKeys {
   static const login_password = 'login_password';
   static const login_usernameCannotEmpty = 'login_usernameCannotEmpty';
   static const login_passwordCannotEmpty = 'login_passwordCannotEmpty';
+  static const procedureList_pageTitle = 'procedureList_pageTitle';
+  static const procedureList_procedureItemTitle =
+      'procedureList_procedureItemTitle';
+  static const procedureList_procedureItemSubtitle =
+      'procedureList_procedureItemSubtitle';
+  static const procedureList_declare = 'procedureList_declare';
+  static const declarationPeriod_title = 'declarationPeriod_title';
+  static const declarationPeriod_month = 'declarationPeriod_month';
+  static const declarationPeriod_selectMonth = 'declarationPeriod_selectMonth';
+  static const declarationPeriod_updateDate = 'declarationPeriod_updateDate';
+  static const declarationPeriod_fileNumber = 'declarationPeriod_fileNumber';
+  static const declarationPeriod_status = 'declarationPeriod_status';
+  static const declarationPeriod_createNewPeriod =
+      'declarationPeriod_createNewPeriod';
+  static const declarationPeriodDetail_addNewStaff =
+      'declarationPeriodDetail_addNewStaff';
+  static const declarationPeriodDetail_attachFile =
+      'declarationPeriodDetail_attachFile';
+  static const declarationPeriodDetail_addAttachedImage =
+      'declarationPeriodDetail_addAttachedImage';
+  static const declarationPeriodDetail_deposit =
+      'declarationPeriodDetail_deposit';
+  static const declareInfo_title = 'declareInfo_title';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -250,158 +269,12 @@ class Locales {
     'dialog_history': 'History',
     'dialog_consignment': 'Consignment',
     'dialog_notification': 'Notification',
-    'input_inputEmpty': 'Cannot be empty',
-    'input_inputValidateLength': 'Must be greater than @length characters!',
-    'input_textEmpty': '-',
-    'declaration_declarationSocial': 'Social Insurance Declaration',
-    'declaration_selectedUnitCode': 'Select unit code',
-    'declaration_selectTaxCode': 'Select tax code',
-    'declaration_declarationListCode': 'List of unit codes',
-    'declaration_declarationTaxCode': 'Tax code',
-    'declaration_noUnitCode': 'No unit code available',
-    'home_registerInsurance': 'Register \nSocial Insurance',
-    'home_transactionHistory': 'Transaction \nHistory',
-    'home_declarationForm': 'Declare \nProfile',
-    'home_lookupC12': 'Lookup \nC12',
-    'unitInfo_transactionRegister': 'Register transaction',
-    'unitInfo_generalInfo': 'General Information',
-    'unitInfo_registerInfo': 'Registration Information',
-    'unitInfo_unitInfo': 'Unit Information',
-    'unitInfo_unitName': 'Unit Name',
-    'unitInfo_unitCode': 'Unit Code',
-    'unitInfo_phone': 'Phone Number',
-    'unitInfo_addressInfo': 'Address Information',
-    'unitInfo_addressRegister': 'Business Registration Address',
-    'unitInfo_addressRegisterDKKD': 'Business Registration Address: ',
-    'unitInfo_addressTransaction': 'Profile Transaction Address',
-    'unitInfo_businessIndustry': 'Business Industry',
-    'unitInfo_representInfo': 'Representative Information',
-    'unitInfo_represent': 'Representative',
-    'unitInfo_position': 'Position',
-    'unitInfo_decisionInfo': 'Decision Information',
-    'unitInfo_decisionNumber': 'Decision Number',
-    'unitInfo_decisionAddress': 'Decision Issuing Place',
-    'unitInfo_inputTaxCode': 'Enter Tax Code',
-    'unitInfo_inputPhone': 'Enter Phone Number',
-    'unitInfo_inputUnit': 'Enter Unit Name',
-    'unitInfo_inputAddressTransaction': 'Enter Transaction Address',
-    'unitInfo_inputAddressRegister': 'Enter Business Registration Address',
-    'unitInfo_inputRepresent': 'Enter Representative',
-    'unitInfo_inputPosition': 'Enter Position',
-    'unitInfo_inputDecisionNumber': 'Enter Decision Number',
-    'unitInfo_inputDecisionAddress': 'Enter Decision Issuing Place',
-    'unitInfo_inputSocialAgency': 'Enter Social Insurance Agency Name',
-    'unitInfo_inputProvince': 'Enter Province/City',
-    'unitInfo_inputDistrict': 'Enter District',
-    'unitInfo_inputWard': 'Enter Ward/Commune',
-    'unitInfo_register': 'Register',
-    'unitInfo_consignment': 'Consignment',
-    'unitInfo_firstTimeRegister': 'First-time code registration',
-    'unitInfo_socialInfo': 'Social Insurance Contribution Information',
-    'unitInfo_socialAgency': 'Social Insurance Agency',
-    'unitInfo_city': 'Province/City',
-    'unitInfo_methodResult': 'Receive profile results via',
-    'unitInfo_methodClose': 'Payment Method',
-    'unitInfo_receiveCity': 'Receiving Place/Province',
-    'unitInfo_receiveDistrict': 'Receiving Place/District',
-    'unitInfo_receiveWard': 'Receiving Place/Ward',
-    'unitInfo_otherInfo': 'Other Information',
-    'unitInfo_unitGroup': 'Unit Group',
-    'unitInfo_content': 'Content',
-    'unitInfo_transactionPerson': 'Transaction Person',
-    'unitInfo_phoneContact': 'Contact Phone',
-    'unitInfo_email': 'Email',
-    'unitInfo_fileInclude': 'Attached Documents',
-    'unitInfo_attached': 'Attach',
-    'unitInfo_serviceInfo': 'Service Information',
-    'unitInfo_servicePackage': 'Service Package',
-    'unitInfo_agencyCode': 'Agent/Collaborator Code (Enter email)',
-    'unitInfo_addImageAttached': 'Add attached image',
-    'unitInfo_pickImageFromCamera': 'Take photo from camera',
-    'unitInfo_pickImageFromLibrary': 'Select photo from phone',
-    'unitInfo_expiryDate': 'Expiration Date',
-    'unitInfo_province': 'Province',
-    'unitInfo_district': 'District',
-    'unitInfo_ward': 'Ward/Commune',
-    'unitInfo_selectProvince': 'Select Province/City',
-    'unitInfo_selectDistrict': 'Select District',
-    'unitInfo_selectWard': 'Select Ward',
-    'unitInfo_selectSocialAgency': 'Select Social Insurance Agency',
-    'unitInfo_receiveResult': 'Receive profile results via',
-    'unitInfo_receiveMethod': 'Receiving Method',
-    'unitInfo_agree': 'Agree',
-    'unitInfo_signUpForCode': 'Register for code',
-    'unitInfo_phoneNumberInValid': 'Invalid phone number',
-    'unitInfo_phoenNumberIsNotEmpty': 'Phone number cannot be empty',
-    'unitInfo_unitCodeInValid': 'Unit code must be 7 characters',
-    'unitInfo_unitCodeIsNotEmpty': 'Unit code cannot be empty',
-    'unitInfo_emailIsNotEmpty': 'Email cannot be empty',
-    'unitInfo_emailInValid': 'Invalid email',
-    'unitInfo_missingFileInclude': 'Attached file',
-    'unitInfo_missingInfo': 'Missing information',
-    'unitInfo_fileIncludeInValid': 'Attached file cannot be empty',
-    'unitInfo_search': 'Search',
-    'historyRegister_historyDetail': 'History Details',
-    'historyRegister_profileInfo': 'Profile Information',
-    'historyRegister_status': 'Status',
-    'historyRegister_profileNumber': 'Profile Number:',
-    'historyRegister_timeResgiter': 'Time:',
-    'historyRegister_progressHandle': 'Processing Progress',
-    'historyRegister_profileCheckResult': 'Profile Check Result',
-    'historyRegister_declarationForm': 'Declaration Profile',
-    'historyRegister_historyTransaction': 'Transaction History',
-    'historyRegister_searchProfile': 'Search Profile',
-    'historyRegister_noResult': 'No results',
-    'historyRegister_result': 'Result: ',
-    'historyRegister_number': ' - Number ',
-    'historyRegister_home': 'Home',
-    'historyRegister_selectedUnitCode': 'Select Unit Code',
-    'historyRegister_lookup': 'Lookup',
-    'historyRegister_socialAgencyInProcess': 'Pending processing',
-    'historyRegister_success': 'Success',
-    'historyRegister_fail': 'Failed',
-    'historyRegister_lookupSuccess': 'Lookup successful!',
-    'certificate_listCertificate': 'List of Digital Certificates',
-    'certificate_selectCertificate': 'Select Digital Certificate',
-    'certificate_confirm': 'Confirm',
-    'certificate_serial': 'Serial',
-    'certificate_startFormDate': 'Valid from ',
-    'certificate_to': 'to',
-    'certificate_subjectName': 'Subject Name',
-    'certificate_declarationTaxCode': 'Tax Code/Citizen ID',
-    'certificate_taxCodeInValid':
-        'Tax Code/Citizen ID does not match the registered service information',
-    'certificate_validTo': 'Expiration Date',
-    'certificate_validForm': 'Effective Date',
-    'certificate_packageName': 'Package Information',
-    'certificate_email': 'Email',
-    'certificate_phone': 'Phone',
-    'certificate_organization': 'Provider',
-    'certificate_certHint':
-        'Note: In case of incorrect information in the digital certificate, please contact the support hotline 19003369',
-    'certificate_active': 'Active',
-    'certificate_inActive': 'Not activated',
-    'certificate_activeNow': 'Activate now',
-    'certificate_activeCert': 'Activate Digital Certificate',
-    'certificate_verifySuccessfully': 'Activation successful!',
-    'certificate_confirmActive': 'Confirm activation',
-    'awaitConfirmSign_confirm': 'Confirm',
-    'awaitConfirmSign_checkConfirmSign':
-        'You have a digital signature request that needs verification',
-    'awaitConfirmSign_checkListSign': 'Check',
-    'awaitConfirmSign_waitActive': 'Waiting for activation',
-    'awaitConfirmSign_createDate': 'Creation Date',
-    'awaitConfirmSign_activeCode': 'Activation Code',
-    'awaitConfirmSign_inputPinCode': 'Enter PIN',
-    'awaitConfirmSign_pleaseInputPinCode':
-        'Please enter the PIN to verify the profile',
-    'awaitConfirmSign_comfirmSignSuccessfully':
-        'Digital signature verification successful',
-    'awaitConfirmSign_comfirmSignLoading': 'Retrieving verification request',
-    'awaitConfirmSign_loading': 'Waiting for activation',
   };
   static const vi_VN = {
     'app_name': 'vBHXH',
+    'app_delete': 'Xóa',
+    'app_edit': 'Sửa',
+    'app_edit2': 'Chỉnh sửa',
     'dialog_close': 'Đóng',
     'dialog_errorConnectFailedStr':
         'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',
@@ -529,26 +402,28 @@ class Locales {
     'unitInfo_region': 'Vùng',
     'unitInfo_basicSalary': 'Lương cơ sở',
     'unitInfo_registerResult': 'Đăng ký nhận kết quả',
-    'historyRegister_historyDetail': 'Chi tiết lịch sử',
-    'historyRegister_profileInfo': 'Thông tin hồ sơ',
-    'historyRegister_status': 'Trạng thái',
-    'historyRegister_profileNumber': 'Số hồ sơ:',
-    'historyRegister_timeResgiter': 'Thời gian:',
-    'historyRegister_progressHandle': 'Tiến độ xử lý',
-    'historyRegister_profileCheckResult': 'Kết quả kiểm tra hồ sơ',
-    'historyRegister_declarationForm': 'Hồ sơ kê khai',
-    'historyRegister_historyTransaction': 'Lịch sử giao dịch',
-    'historyRegister_searchProfile': 'Tìm kiếm hồ sơ',
-    'historyRegister_noResult': 'Không có kết quả',
-    'historyRegister_result': 'Kết quả: ',
-    'historyRegister_number': ' - Số ',
-    'historyRegister_home': 'Trang chủ',
-    'historyRegister_selectedUnitCode': 'Chọn mã đơn vị',
-    'historyRegister_lookup': 'Tra cứu',
-    'historyRegister_socialAgencyInProcess': 'Đang chờ xử lý',
-    'historyRegister_success': 'Thành công',
-    'historyRegister_fail': 'Thất bại',
-    'historyRegister_lookupSuccess': 'Tra cứu thành công!',
+    'history_procedure': 'Thủ tục',
+    'history_submissionTime': 'Thời gian nộp',
+    'history_historyDetail': 'Chi tiết lịch sử',
+    'history_profileInfo': 'Thông tin hồ sơ',
+    'history_status': 'Trạng thái',
+    'history_profileNumber': 'Số hồ sơ:',
+    'history_timeResgiter': 'Thời gian:',
+    'history_progressHandle': 'Tiến độ xử lý',
+    'history_profileCheckResult': 'Kết quả kiểm tra hồ sơ',
+    'history_declarationForm': 'Hồ sơ kê khai',
+    'history_historyTransaction': 'Lịch sử giao dịch',
+    'history_searchProfile': 'Tìm kiếm hồ sơ',
+    'history_noResult': 'Không có kết quả',
+    'history_result': 'Kết quả: ',
+    'history_number': ' - Số ',
+    'history_home': 'Trang chủ',
+    'history_selectedUnitCode': 'Chọn mã đơn vị',
+    'history_lookup': 'Tra cứu',
+    'history_socialAgencyInProcess': 'Đang chờ xử lý',
+    'history_success': 'Thành công',
+    'history_fail': 'Thất bại',
+    'history_lookupSuccess': 'Tra cứu thành công!',
     'certificate_listCertificate': 'Danh sách chứng thư số',
     'certificate_selectCertificate': 'Chọn chứng thư số',
     'certificate_confirm': 'Xác nhận',
@@ -592,6 +467,24 @@ class Locales {
     'login_password': 'Mật khẩu',
     'login_usernameCannotEmpty': 'Tài khoản không được bỏ trống',
     'login_passwordCannotEmpty': 'Mật khẩu không được bỏ trống',
+    'procedureList_pageTitle': 'Danh sách thủ tục',
+    'procedureList_procedureItemTitle':
+        'Báo tăng, báo giảm, điều chỉnh mức đóng',
+    'procedureList_procedureItemSubtitle':
+        'Kê khai hồ sơ báo tăng lao động, báo giảm lao động, điều chỉnh lương',
+    'procedureList_declare': 'Kê khai',
+    'declarationPeriod_title': 'Đợt kê khai',
+    'declarationPeriod_month': 'Tháng',
+    'declarationPeriod_selectMonth': 'Chọn tháng',
+    'declarationPeriod_updateDate': 'Ngày cập nhật',
+    'declarationPeriod_fileNumber': 'Số hồ sơ',
+    'declarationPeriod_status': 'Trạng thái',
+    'declarationPeriod_createNewPeriod': '+ Tạo mới đợt',
+    'declarationPeriodDetail_addNewStaff': 'Thêm mới nhân viên',
+    'declarationPeriodDetail_attachFile': 'Đính kèm file',
+    'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',
+    'declarationPeriodDetail_deposit': 'Ký gửi',
+    'declareInfo_title': 'Kê khai thông tin',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

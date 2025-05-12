@@ -1,6 +1,10 @@
 import 'package:v_bhxh/modules/certificate_list/ui/list_certificate_page.dart';
 import 'package:v_bhxh/modules/certificate_list/ui/verify_cert_page.dart';
 import 'package:v_bhxh/modules/confirm_code/ui/confirm_code_page.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/ui/declaration_period_page.dart';
+import 'package:v_bhxh/modules/declare/declaration_period_detail/ui/declaration_period_detail_page.dart';
+import 'package:v_bhxh/modules/declare/declare_infor/ui/declare_info_page.dart';
+import 'package:v_bhxh/modules/declare/procedure_list/ui/procedure_list_page.dart';
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/login/ui/login_page.dart';
 import 'package:v_bhxh/modules/page_builder/page_builder.dart';
@@ -54,11 +58,11 @@ class RouteAppPage {
       page: () => HistoryPage(),
       transition: Transition.rightToLeft,
     ),
-    // GetPage(
-    //   name: AppRoutes.historyRegisterDetail.path,
-    //   page: () => HistoryRegisterDetailPage(),
-    //   transition: Transition.rightToLeft,
-    // ),
+    GetPage(
+      name: AppRoutes.historyDetail.path,
+      page: () => HistoryDetailPage(),
+      transition: Transition.rightToLeft,
+    ),
     GetPage(
       name: AppRoutes.listCertificate.path,
       page: () => ListCertificatePage(),
@@ -77,6 +81,26 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.verifyCertificate.path,
       page: () => VerifyCertPageICare(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.procedureList.path,
+      page: () => ProcedureListPage(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.declarationPeriod.path,
+      page: () => DeclarationPeriodPage(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.declarationPeriodDetail.path,
+      page: () => DeclarationPeriodDetailPage(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.declareInfo.path,
+      page: () => DeclareInfoPage(),
       transition: Transition.rightToLeft,
     )
   ];

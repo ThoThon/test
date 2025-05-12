@@ -1,0 +1,31 @@
+import 'package:timelines_plus/timelines_plus.dart';
+import 'package:v_bhxh/modules/history/models/model_src.dart';
+import 'package:v_bhxh/modules/history_detail/model/result_valid_enum.dart';
+
+import '../../src.dart';
+
+part 'history_detail_widget.dart';
+
+class HistoryDetailPage extends BaseGetWidget {
+  HistoryDetailPage({super.key});
+
+  @override
+  HistoryDetailController get controller => _controller;
+
+  late final _controller = Get.put(HistoryDetailController());
+
+  @override
+  Widget buildWidgets(BuildContext context) {
+    return Scaffold(
+      appBar: BaseAppBar(
+        title: TextUtils(
+          text: LocaleKeys.history_historyDetail.tr,
+          availableStyle: StyleEnum.subBold,
+        ),
+      ),
+      body: baseShowLoading(
+        () => _buildBody(),
+      ),
+    );
+  }
+}
