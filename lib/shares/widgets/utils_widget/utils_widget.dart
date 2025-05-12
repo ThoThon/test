@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../modules/src.dart';
 
@@ -399,6 +400,100 @@ class UtilWidget {
                 ),
               ),
           ],
+        );
+      },
+    );
+  }
+
+  static Widget buildBottomSheetSelect<T>({
+    required String label,
+    required String hintText,
+    required Function(ValueChanged<T> didChange) funcSelect,
+    required Rx<T?> item,
+    required String Function(T) display,
+    String? Function(T?)? validator,
+  }) {
+    return Obx(
+      () {
+        return FormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: validator,
+          initialValue: item.value,
+          builder: (FormFieldState<T> state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: AppDimens.paddingVerySmall),
+                  child: RichText(
+                    text: TextSpan(
+                      text: label,
+                      style: AppTextStyle.font16Bo,
+                      children: [
+                        TextSpan(
+                          text: ' (*)',
+                          style: AppTextStyle.font12Re.copyWith(
+                            color: AppColors.statusRed,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    KeyBoard.hide();
+                    funcSelect(state.didChange);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(AppDimens.paddingSmall),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: state.errorText != null
+                            ? AppColors.statusRed
+                            : AppColors.dsGray5,
+                      ),
+                      borderRadius: BorderRadius.circular(AppDimens.radius4),
+                    ),
+                    child: Obx(
+                      () => Row(
+                        children: [
+                          Expanded(
+                            child: TextUtils(
+                              text: item.value != null
+                                  ? display(item.value as T)
+                                  : hintText,
+                              availableStyle: StyleEnum.bodyRegular,
+                              color: item.value != null
+                                  ? AppColors.colorBlack
+                                  : Color.fromARGB(255, 2, 2, 2),
+                            ),
+                          ),
+                          const Icon(
+                            Icons.arrow_drop_down,
+                            color: AppColors.dsGray3,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                if (state.hasError)
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: AppDimens.paddingSmallest,
+                      left: AppDimens.paddingVerySmall,
+                    ),
+                    child: TextUtils(
+                      text: state.errorText!,
+                      availableStyle: StyleEnum.detailRegular,
+                      color: AppColors.statusRed,
+                    ),
+                  ),
+              ],
+            ).paddingOnly(bottom: AppDimens.paddingSmall);
+          },
         );
       },
     );

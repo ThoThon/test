@@ -10,6 +10,18 @@ class Assets {
 
   static bool isFromModules = false;
 
+  static String get ASSETS_FONTS_NUNITOSANS_BOLD_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-Bold.ttf';
+
+  static String get ASSETS_FONTS_NUNITOSANS_EXTRABOLD_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-ExtraBold.ttf';
+
+  static String get ASSETS_FONTS_NUNITOSANS_REGULAR_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-Regular.ttf';
+
+  static String get ASSETS_FONTS_NUNITOSANS_SEMIBOLD_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-SemiBold.ttf';
+
   /// {@macro assets_generator.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG.preview}
   static String get ASSETS_ICONS_HOME_FILE_DECLARATION_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/home/file_declaration.svg';
@@ -57,6 +69,10 @@ class Assets {
   /// {@macro assets_generator.ASSETS_ICONS_IC_ARROW_UP_SVG.preview}
   static String get ASSETS_ICONS_IC_ARROW_UP_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_arrow_up.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_CALENDAR_SVG.preview}
+  static String get ASSETS_ICONS_IC_CALENDAR_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_calendar.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_CALENDER_SVG.preview}
   static String get ASSETS_ICONS_IC_CALENDER_SVG =>
@@ -146,14 +162,16 @@ class Assets {
   static String get ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/images/img_check_success.svg';
 
-  static String get ASSETS_LOCALES_EN_US_JSON =>
-      '${isFromModules ? "packages/$package/" : ""}assets/locales/en_US.json';
-
   static String get ASSETS_LOCALES_VI_VN_JSON =>
       '${isFromModules ? "packages/$package/" : ""}assets/locales/vi_VN.json';
 }
 
 final List<String> assetsArray = <String>[
+  Assets.ASSETS_FONTS_NUNITOSANS_BOLD_TTF,
+  Assets.ASSETS_FONTS_NUNITOSANS_EXTRABOLD_TTF,
+  Assets.ASSETS_FONTS_NUNITOSANS_REGULAR_TTF,
+  Assets.ASSETS_FONTS_NUNITOSANS_SEMIBOLD_TTF,
+
   /// {@macro assets_generator.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG.preview}
   Assets.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG,
 
@@ -189,6 +207,9 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_ARROW_UP_SVG.preview}
   Assets.ASSETS_ICONS_IC_ARROW_UP_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_CALENDAR_SVG.preview}
+  Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_CALENDER_SVG.preview}
   Assets.ASSETS_ICONS_IC_CALENDER_SVG,
@@ -255,6 +276,5 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG.preview}
   Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
-  Assets.ASSETS_LOCALES_EN_US_JSON,
   Assets.ASSETS_LOCALES_VI_VN_JSON,
 ];
