@@ -18,12 +18,12 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(toolbarHeight: 0),
-      body: baseShowLoading(
-        () => _buildBody(),
+    return buildLoadingOverlay(
+      () => Scaffold(
+        appBar: AppBar(toolbarHeight: 0),
+        body: _buildBody(),
+        bottomNavigationBar: _buildBottomNavigationBar(),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 

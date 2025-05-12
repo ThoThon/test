@@ -20,12 +20,12 @@ class PageBuilderController extends BaseGetxController {
 
   Future<void> getAccountInfo() async {
     try {
-      showLoading();
+      showLoadingOverlay();
       await _appController.getAccountInfo();
     } catch (e) {
       logger.d(e);
     } finally {
-      hideLoading();
+      hideLoadingOverlay();
     }
   }
 
