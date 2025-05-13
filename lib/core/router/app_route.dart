@@ -5,6 +5,7 @@ enum AppRoutes {
   declarationPeriod,
   declarationPeriodDetail,
   declareInfo,
+  familyMemberDetail,
 
   routeDioLog,
   splash,

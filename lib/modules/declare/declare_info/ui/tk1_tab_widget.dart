@@ -28,7 +28,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                       UtilWidget.sizedBox16,
                       _buildInputCCCD(),
                       UtilWidget.sizedBox16,
-                      _buildSelectDate(
+                      UtilWidget.buildSelectDate(
                         'Ngày sinh',
                         hintText: PATTERN_1,
                         date: convertDateToStringSafe(
@@ -532,7 +532,9 @@ extension Tk1TabWidget on DeclareInfoPage {
         Align(
           alignment: Alignment.center,
           child: OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AppRoutes.familyMemberDetail.path);
+            },
             style: OutlinedButton.styleFrom(
               shape: CircleBorder(),
               side: BorderSide(

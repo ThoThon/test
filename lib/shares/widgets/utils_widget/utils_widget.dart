@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -756,6 +757,68 @@ class UtilWidget {
           ),
         ],
       ),
+    );
+  }
+
+  static Widget buildSelectDate(
+    String title, {
+    String? date,
+    String? hintText,
+    bool isRequired = true,
+    VoidCallback? onTap,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        RichText(
+          text: TextSpan(
+            text: title,
+            style: AppTextStyle.font16Bo,
+            children: [
+              if (isRequired)
+                TextSpan(
+                  text: ' (*)',
+                  style: AppTextStyle.font12Re.copyWith(
+                    color: AppColors.statusRed,
+                  ),
+                ),
+            ],
+          ),
+        ).paddingOnly(bottom: AppDimens.paddingVerySmall),
+        Material(
+          color: AppColors.colorWhite,
+          borderRadius: BorderRadius.circular(AppDimens.radius4),
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(AppDimens.radius4),
+            child: Container(
+              padding: const EdgeInsets.all(AppDimens.paddingVerySmall),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                border: Border.all(color: AppColors.dsGray4),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SDSBuildText(
+                    date ?? hintText ?? '',
+                    style: AppTextStyle.font16Re.copyWith(
+                      color:
+                          date != null ? AppColors.dsGray1 : AppColors.dsGray3,
+                    ),
+                  ),
+                  SvgPicture.asset(
+                    Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
+                    width: AppDimens.sizeIconMedium,
+                    height: AppDimens.sizeIconMedium,
+                  )
+                ],
+              ).paddingSymmetric(vertical: AppDimens.paddingSmallest),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

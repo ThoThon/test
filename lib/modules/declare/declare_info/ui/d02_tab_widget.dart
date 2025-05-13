@@ -40,7 +40,7 @@ extension D02TabWidget on DeclareInfoPage {
                       UtilWidget.sizedBox16,
                       _buildInputCCCD(),
                       UtilWidget.sizedBox16,
-                      _buildSelectDate(
+                      UtilWidget.buildSelectDate(
                         'Ngày sinh',
                         hintText: PATTERN_1,
                         date: convertDateToStringSafe(
@@ -54,7 +54,7 @@ extension D02TabWidget on DeclareInfoPage {
                       UtilWidget.sizedBox8,
                       _buildSelectEthnic(),
                       _buildSelectNationality(),
-                      _buildSelectDate(
+                      UtilWidget.buildSelectDate(
                         'Từ tháng/năm',
                         hintText: PATTERN_12,
                         date: convertDateToStringSafe(
@@ -62,7 +62,7 @@ extension D02TabWidget on DeclareInfoPage {
                         onTap: () {},
                       ),
                       UtilWidget.sizedBox16,
-                      _buildSelectDate(
+                      UtilWidget.buildSelectDate(
                         'Đến tháng/năm',
                         hintText: PATTERN_12,
                         date: convertDateToStringSafe(
