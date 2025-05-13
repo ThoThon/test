@@ -63,21 +63,30 @@ extension D02TabWidget on DeclareInfoPage {
                       _buildInputPositionAllowance(),
                       UtilWidget.sizedBox16,
                       _buildInputPCTNN(),
+                      UtilWidget.sizedBox16,
+                      _buildInputPcTNVuotKhung(),
+                      UtilWidget.sizedBox16,
+                      _buildInputSalaryAllowance(),
+                      UtilWidget.sizedBox16,
+                      _buildInputOtherAllowance(),
+                      UtilWidget.sizedBox16,
+                      _buildInputNote(),
                     ],
                   );
                 },
               ),
             ),
           ),
-          UtilWidget.buildSolidButton(
-            title: 'Tiếp theo',
-            onPressed: () {
-              if (controller.d02State.formKey.currentState?.validate() ??
-                  false) {
-                print("Form is valid");
-              }
-            },
-          ),
+          // UtilWidget.buildSolidButton(
+          //   title: 'Tiếp theo',
+          //   onPressed: () {
+          //     if (controller.d02State.formKey.currentState?.validate() ??
+          //         false) {
+          //       print("Form is valid");
+          //     }
+          //   },
+          // ),
+          _buildBottomButtons()
         ],
       ),
     );
@@ -371,7 +380,6 @@ extension D02TabWidget on DeclareInfoPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.positionAllowanceTextCtrl,
-          isValidate: true,
         ),
       ),
     );
@@ -383,9 +391,76 @@ extension D02TabWidget on DeclareInfoPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.pcTNNTextCtrl,
-          isValidate: true,
         ),
       ),
+    );
+  }
+
+  Widget _buildInputPcTNVuotKhung() {
+    return BuildInputTextWithLabel(
+      label: 'PC TN vượt khung (%)',
+      buildInputText: BuildInputText(
+        InputTextModel(
+          controller: controller.d02State.pcTNVuotKhungTextCtrl,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInputSalaryAllowance() {
+    return BuildInputTextWithLabel(
+      label: 'Phụ cấp lương',
+      buildInputText: BuildInputText(
+        InputTextModel(
+          controller: controller.d02State.salaryAllowanceTextCtrl,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInputOtherAllowance() {
+    return BuildInputTextWithLabel(
+      label: 'Phụ cấp lương',
+      buildInputText: BuildInputText(
+        InputTextModel(
+          controller: controller.d02State.otherAllowanceTextCtrl,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInputNote() {
+    return BuildInputTextWithLabel(
+      label: 'Ghi chú',
+      buildInputText: BuildInputText(
+        InputTextModel(
+          controller: controller.d02State.noteTextCtrl,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomButtons() {
+    return Row(
+      children: [
+        Expanded(
+          child: UtilWidget.buildSolidButtonBack(
+            title: 'Lưu nháp',
+            onPressed: () {},
+          ),
+        ),
+        UtilWidget.sizedBoxWidth16,
+        Expanded(
+          child: UtilWidget.buildSolidButton(
+            title: 'Tiếp theo',
+            onPressed: () {},
+          ),
+        ),
+      ],
+    ).paddingOnly(
+      left: AppDimens.defaultPadding,
+      right: AppDimens.defaultPadding,
+      top: AppDimens.defaultPadding,
     );
   }
 }
