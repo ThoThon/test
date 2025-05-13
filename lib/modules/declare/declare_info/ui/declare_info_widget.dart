@@ -120,4 +120,251 @@ extension DeclareInfoWidget on DeclareInfoPage {
       ).paddingAll(AppDimens.paddingSmall),
     );
   }
+
+  Widget _buildInputFullName({
+    VoidCallback? onTapSelectStaff,
+    bool showSelectStaff = true,
+  }) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: _buildInputTitle(
+                title: 'Họ và tên',
+                isRequired: true,
+              ).paddingOnly(bottom: AppDimens.padding10),
+            ),
+            if (showSelectStaff)
+              TextButton(
+                onPressed: onTapSelectStaff,
+                style: TextButton.styleFrom(
+                  minimumSize: Size.zero,
+                  padding: EdgeInsets.symmetric(
+                    vertical: AppDimens.paddingSmallest,
+                    horizontal: AppDimens.paddingSmall,
+                  ),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                child: SDSBuildText(
+                  'Chọn nhân viên',
+                  style: AppTextStyle.font16Re.copyWith(
+                    color: AppColors.primaryColor,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ),
+          ],
+        ),
+        BuildInputText(
+          InputTextModel(
+            controller: controller.d02Tk1State.fullNameTextCtrl,
+            hintText: 'Nhập thông tin họ tên',
+            isValidate: true,
+            validator: (value) {
+              if (value.isNullOrEmpty) {
+                return 'Họ và tên không được để trống';
+              }
+              return null;
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildInputTitle({
+    required String title,
+    bool isRequired = false,
+  }) {
+    return RichText(
+      text: TextSpan(
+        text: title,
+        style: AppTextStyle.font16Bo,
+        children: [
+          if (isRequired)
+            TextSpan(
+              text: ' (*)',
+              style: AppTextStyle.font12Re.copyWith(
+                color: AppColors.statusRed,
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInputCCCD() {
+    return BuildInputTextWithLabel(
+      label: 'Số CCCD',
+      buildInputText: BuildInputText(
+        InputTextModel(
+          controller: controller.d02Tk1State.cccdTextCtrl,
+          isValidate: true,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInputBHXHNumber() {
+    return BuildInputTextWithLabel(
+      label: 'Mã số BHXH',
+      buildInputText: BuildInputText(
+        InputTextModel(
+          controller: controller.d02Tk1State.bhxhTextCtrl,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSelectDate(
+    String title, {
+    String? date,
+    String? hintText,
+    VoidCallback? onTap,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildInputTitle(
+          title: title,
+          isRequired: true,
+        ).paddingOnly(bottom: AppDimens.paddingVerySmall),
+        Material(
+          color: AppColors.colorWhite,
+          borderRadius: BorderRadius.circular(AppDimens.radius4),
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(AppDimens.radius4),
+            child: Container(
+              padding: const EdgeInsets.all(AppDimens.paddingVerySmall),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                border: Border.all(color: AppColors.dsGray4),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SDSBuildText(
+                    date ?? hintText ?? '',
+                    style: AppTextStyle.font16Re.copyWith(
+                      color:
+                          date != null ? AppColors.dsGray1 : AppColors.dsGray3,
+                    ),
+                  ),
+                  SvgPicture.asset(
+                    Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
+                    width: AppDimens.sizeIconMedium,
+                    height: AppDimens.sizeIconMedium,
+                  )
+                ],
+              ).paddingSymmetric(vertical: AppDimens.paddingSmallest),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSelectGender({
+    ValueChanged<Gender?>? onChanged,
+  }) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _buildInputTitle(
+              title: 'Giới tính',
+              isRequired: true,
+            ),
+            Radio<Gender>(
+              value: Gender.male,
+              groupValue: controller.d02Tk1State.gender.value,
+              onChanged: onChanged,
+              activeColor: AppColors.primaryColor,
+            ),
+            SDSBuildText(
+              'Nam',
+              style: AppTextStyle.font16Re,
+            ),
+            Radio<Gender>(
+              value: Gender.female,
+              groupValue: controller.d02Tk1State.gender.value,
+              onChanged: onChanged,
+              activeColor: AppColors.primaryColor,
+            ),
+            SDSBuildText(
+              'Nữ',
+              style: AppTextStyle.font16Re,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSelectEthnic() {
+    return UtilWidget.buildBottomSheetSelect<String>(
+      label: 'Dân tộc',
+      hintText: 'Chọn dân tộc',
+      funcSelect: (didChange) {
+        Get.bottomSheet(
+          BottomSheetSearch<String>(
+            title: 'Chọn dân tộc',
+            listFilter: ['Kinh', 'Thái', 'Tày'],
+            itemSelect: controller.d02Tk1State.selectedEthnic,
+            display: (value) => value,
+            onAccept: (value) {
+              if (value == null) return;
+              controller.d02Tk1State.selectedEthnic.value = value;
+              didChange(value);
+            },
+          ),
+          isScrollControlled: true,
+        );
+      },
+      item: controller.d02Tk1State.selectedEthnic,
+      display: (ethnic) => ethnic,
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return "Dân tộc không được để trống";
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildSelectNationality() {
+    return UtilWidget.buildBottomSheetSelect<String>(
+      label: 'Quốc tịch',
+      hintText: 'Chọn quốc tịch',
+      funcSelect: (didChange) {
+        Get.bottomSheet(
+          BottomSheetSearch<String>(
+            title: 'Chọn quốc tịch',
+            listFilter: ['Việt Nam', 'Lào', 'Campuchia'],
+            itemSelect: controller.d02Tk1State.selectedNationality,
+            display: (value) => value,
+            onAccept: (value) {
+              if (value == null) return;
+              controller.d02Tk1State.selectedNationality.value = value;
+              didChange(value);
+            },
+          ),
+          isScrollControlled: true,
+        );
+      },
+      item: controller.d02Tk1State.selectedNationality,
+      display: (ethnic) => ethnic,
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return "Quốc tịch không được để trống";
+        }
+        return null;
+      },
+    );
+  }
 }

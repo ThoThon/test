@@ -728,4 +728,33 @@ class UtilWidget {
       ),
     );
   }
+
+  static Widget buildCheckboxWithLabel({
+    required String label,
+    required bool value,
+    ValueChanged<bool?>? onChanged,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        if (onChanged != null) {
+          onChanged(!value);
+        }
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Checkbox(
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            value: value,
+            activeColor: AppColors.primaryColor,
+            onChanged: onChanged,
+          ),
+          SDSBuildText(
+            label,
+            style: AppTextStyle.font16Semi,
+          ),
+        ],
+      ),
+    );
+  }
 }

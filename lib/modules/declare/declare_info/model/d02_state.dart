@@ -1,34 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'gender.dart';
-
 class D02State {
   final formKey = GlobalKey<FormState>();
-
-  /// NOTE: Nhân viên được chọn - Mock tạm với String, sau tạo model riêng
-  final selectedStaff = Rxn<String>();
-
-  /// Họ và tên *
-  final fullNameTextCtrl = TextEditingController();
-
-  /// Mã số bảo hiểm xã hội
-  final bhxhTextCtrl = TextEditingController();
-
-  /// Mã số CCCD *
-  final cccdTextCtrl = TextEditingController();
-
-  /// Ngày sinh
-  final dateOfBirth = Rxn<DateTime>();
-
-  /// Giới tính *
-  final gender = Gender.male.obs;
-
-  /// Dân tộc *
-  final selectedEthnic = Rxn<String>();
-
-  /// Quốc tịch *
-  final selectedNationality = Rxn<String>();
 
   /// Từ tháng/năm *
   final fromDate = Rxn<DateTime>();
@@ -64,9 +38,6 @@ class D02State {
   final noteTextCtrl = TextEditingController();
 
   void dispose() {
-    fullNameTextCtrl.dispose();
-    bhxhTextCtrl.dispose();
-    cccdTextCtrl.dispose();
     positionTextCtrl.dispose();
     workplaceTextCtrl.dispose();
     salaryTextCtrl.dispose();

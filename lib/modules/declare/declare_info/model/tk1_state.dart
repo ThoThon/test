@@ -2,29 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'family_member.dart';
-import 'gender.dart';
 
 class Tk1State {
-  /// Họ và tên *
-  final fullNameTextCtrl = TextEditingController();
-
-  /// Mã số bảo hiểm xã hội
-  final bhxhNumberTextCtrl = TextEditingController();
-
-  /// Mã số CCCD *
-  final cccdNumberTextCtrl = TextEditingController();
-
-  /// Ngày sinh
-  final dateOfBirth = Rxn<DateTime>();
-
-  /// Giới tính *
-  final gender = Gender.male.obs;
-
-  /// Dân tộc *
-  final selectedEthnic = Rxn<String>();
-
-  /// Quốc tịch *
-  final selectedNationality = Rxn<String>();
+  final formKey = GlobalKey<FormState>();
 
   /// Tỉnh khai sinh *
   final selectedProvince = Rxn<String>();
@@ -69,7 +49,7 @@ class Tk1State {
   final headOfHouseholdTextCtrl = TextEditingController();
 
   /// Số CCCD/ĐDCN của chủ hộ
-  final headOfHouseholdIdTextCtrl = TextEditingController();
+  final headOfHouseholdCCCDTextCtrl = TextEditingController();
 
   /// Tỉnh thường trú
   final selectedProvinceTT = Rxn<String>();
@@ -87,14 +67,11 @@ class Tk1State {
   final familyMembers = <FamilyMember>[].obs;
 
   void dispose() {
-    fullNameTextCtrl.dispose();
-    bhxhNumberTextCtrl.dispose();
-    cccdNumberTextCtrl.dispose();
     addressTextCtrl.dispose();
     addressReceiveTextCtrl.dispose();
     phoneTextCtrl.dispose();
     headOfHouseholdTextCtrl.dispose();
-    headOfHouseholdIdTextCtrl.dispose();
+    headOfHouseholdCCCDTextCtrl.dispose();
     addressTTTextCtrl.dispose();
   }
 }
