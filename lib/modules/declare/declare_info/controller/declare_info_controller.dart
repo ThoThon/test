@@ -13,6 +13,22 @@ class DeclareInfoController extends BaseGetxController {
     selectedTab.value = tab;
   }
 
+  void showDialogSelectStaff() {
+    Get.bottomSheet(
+      BottomSheetSearch<String>(
+        title: 'Chọn nhân viên',
+        listFilter: ['Phạm Văn Cường', 'Hoàng Xuân Hiệp', 'Bắc'],
+        itemSelect: d02State.selectedStaff,
+        display: (value) => value,
+        onAccept: (value) {
+          if (value == null) return;
+          d02State.selectedStaff.value = value;
+        },
+      ),
+      isScrollControlled: true,
+    );
+  }
+
   @override
   void onClose() {
     d02State.dispose();

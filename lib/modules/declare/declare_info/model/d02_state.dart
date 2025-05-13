@@ -6,6 +6,9 @@ import 'gender.dart';
 class D02State {
   final formKey = GlobalKey<FormState>();
 
+  /// NOTE: Nhân viên được chọn - Mock tạm với String, sau tạo model riêng
+  final selectedStaff = Rxn<String>();
+
   /// Họ và tên *
   final fullNameTextCtrl = TextEditingController();
 

@@ -19,7 +19,7 @@ extension D02TabWidget on DeclareInfoPage {
                   return Column(
                     children: [
                       _buildInputFullName(
-                        onTapSelectStaff: () {},
+                        onTapSelectStaff: controller.showDialogSelectStaff,
                       ),
                       UtilWidget.sizedBox16,
                       _buildInputBHXHNumber(),

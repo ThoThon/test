@@ -88,7 +88,10 @@ extension DeclareInfoWidget on DeclareInfoPage {
             style: AppTextStyle.font16Re.copyWith(
               color: isSelected ? AppColors.colorWhite : AppColors.primaryColor,
             ),
-          ).paddingAll(AppDimens.paddingSmall),
+          ).paddingSymmetric(
+            horizontal: AppDimens.paddingSmall,
+            vertical: AppDimens.paddingVerySmall,
+          ),
         ),
       ),
     );
