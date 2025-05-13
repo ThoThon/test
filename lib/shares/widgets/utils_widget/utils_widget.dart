@@ -358,19 +358,20 @@ class UtilWidget {
               padding: label.isNotEmpty
                   ? const EdgeInsets.only(bottom: AppDimens.paddingSmallest)
                   : EdgeInsets.zero,
-              child: Row(
-                children: [
-                  TextUtils(
-                    text: label,
-                    availableStyle: StyleEnum.detailRegular,
-                  ),
-                  if (isRequired)
-                    TextUtils(
-                      text: ' (*)',
-                      availableStyle: StyleEnum.detailRegular,
-                      color: AppColors.statusRed,
-                    )
-                ],
+              child: RichText(
+                text: TextSpan(
+                  text: label,
+                  style: AppTextStyle.font16Bo,
+                  children: [
+                    if (isRequired)
+                      TextSpan(
+                        text: ' (*)',
+                        style: AppTextStyle.font12Re.copyWith(
+                          color: AppColors.statusRed,
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
             buildDropdown(

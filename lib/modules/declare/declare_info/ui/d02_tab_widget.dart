@@ -17,12 +17,26 @@ extension D02TabWidget on DeclareInfoPage {
               child: Obx(
                 () {
                   return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _buildInputFullName(
                         onTapSelectStaff: controller.showDialogSelectStaff,
                       ),
                       UtilWidget.sizedBox16,
                       _buildInputBHXHNumber(),
+                      UtilWidget.sizedBox16,
+                      _buildSelectDeclareType(),
+                      UtilWidget.sizedBox16,
+                      _buildSelectPlan(),
+                      UtilWidget.sizedBox16,
+                      UtilWidget.buildCheckboxWithLabel(
+                        label: 'SInh dữ liệu TK1-TS',
+                        value: controller.d02State.isGenerateTk1Data.value,
+                        onChanged: (value) {
+                          controller.d02State.isGenerateTk1Data.value =
+                              value ?? false;
+                        },
+                      ),
                       UtilWidget.sizedBox16,
                       _buildInputCCCD(),
                       UtilWidget.sizedBox16,
@@ -91,6 +105,38 @@ extension D02TabWidget on DeclareInfoPage {
           _buildD02BottomButtons()
         ],
       ),
+    );
+  }
+
+  Widget _buildSelectDeclareType() {
+    return UtilWidget.buildDropDownWithLabel<String>(
+      label: 'Loại khai báo',
+      hintText: 'Chọn loại khai báo',
+      items: ['Tăng lao động', 'Giảm lao động', 'Tăng lương', 'Giảm lương'],
+      display: (item) => item,
+      selectedItem: controller.d02State.declareType.value,
+      onChanged: (value) {
+        if (value == null) {
+          return;
+        }
+        controller.d02State.declareType.value = value;
+      },
+    );
+  }
+
+  Widget _buildSelectPlan() {
+    return UtilWidget.buildDropDownWithLabel<String>(
+      label: 'Phương án',
+      hintText: 'Chọn phương án',
+      items: ['A', 'B', 'C', 'D'],
+      display: (item) => item,
+      selectedItem: controller.d02State.plan.value,
+      onChanged: (value) {
+        if (value == null) {
+          return;
+        }
+        controller.d02State.plan.value = value;
+      },
     );
   }
 

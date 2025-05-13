@@ -4,6 +4,15 @@ import 'package:get/get.dart';
 class D02State {
   final formKey = GlobalKey<FormState>();
 
+  /// Loại khai báo
+  final declareType = Rxn<String>();
+
+  /// Phương án
+  final plan = Rxn<String>();
+
+  /// Sinh dữ liệu Tk1-TS
+  final isGenerateTk1Data = false.obs;
+
   /// Từ tháng/năm *
   final fromDate = Rxn<DateTime>();
 
