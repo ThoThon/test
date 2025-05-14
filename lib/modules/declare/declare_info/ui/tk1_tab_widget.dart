@@ -513,6 +513,11 @@ extension Tk1TabWidget on DeclareInfoPage {
         ),
         if (controller.tk1State.familyMembers.isNotEmpty)
           Container(
+            margin: EdgeInsets.symmetric(vertical: AppDimens.paddingVerySmall),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppDimens.defaultPadding,
+              vertical: AppDimens.paddingVerySmall,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
               border: Border.all(
@@ -520,13 +525,18 @@ extension Tk1TabWidget on DeclareInfoPage {
               ),
             ),
             child: Column(
-              children: controller.tk1State.familyMembers.map(
-                (member) {
-                  return SDSBuildText(
-                    '${member.fullName} - ${member.relationship}',
-                  );
-                },
-              ).toList(),
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: addSeparator(
+                spacer: UtilWidget.sizedBox8,
+                children: controller.tk1State.familyMembers.map(
+                  (member) {
+                    return SDSBuildText(
+                      '${member.fullName} - ${member.relationship}',
+                      style: AppTextStyle.font16Re,
+                    );
+                  },
+                ).toList(),
+              ),
             ),
           ),
         Align(
