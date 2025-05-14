@@ -13,6 +13,7 @@ class DeclareInfoController extends BaseGetxController {
   final d02Tk1State = D02Tk1State();
   final d02State = D02State();
   final tk1State = Tk1State();
+  final d01State = D01State();
 
   void onTabChanged(DeclareInfoTab tab) {
     KeyBoard.hide();

@@ -1,6 +1,6 @@
 import 'package:v_bhxh/modules/declare/declare_info/controller/controller_src.dart';
 import 'package:v_bhxh/modules/src.dart';
-
+import 'package:collection/collection.dart';
 import '../model/model_src.dart';
 
 part 'declare_info_widget.dart';
