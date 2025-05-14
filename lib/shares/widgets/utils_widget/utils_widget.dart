@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../modules/src.dart';
 
@@ -357,19 +359,20 @@ class UtilWidget {
               padding: label.isNotEmpty
                   ? const EdgeInsets.only(bottom: AppDimens.paddingSmallest)
                   : EdgeInsets.zero,
-              child: Row(
-                children: [
-                  TextUtils(
-                    text: label,
-                    availableStyle: StyleEnum.detailRegular,
-                  ),
-                  if (isRequired)
-                    TextUtils(
-                      text: ' (*)',
-                      availableStyle: StyleEnum.detailRegular,
-                      color: AppColors.statusRed,
-                    )
-                ],
+              child: RichText(
+                text: TextSpan(
+                  text: label,
+                  style: AppTextStyle.font16Bo,
+                  children: [
+                    if (isRequired)
+                      TextSpan(
+                        text: ' (*)',
+                        style: AppTextStyle.font12Re.copyWith(
+                          color: AppColors.statusRed,
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
             buildDropdown(
@@ -399,6 +402,100 @@ class UtilWidget {
                 ),
               ),
           ],
+        );
+      },
+    );
+  }
+
+  static Widget buildBottomSheetSelect<T>({
+    required String label,
+    required String hintText,
+    required Function(ValueChanged<T> didChange) funcSelect,
+    required Rx<T?> item,
+    required String Function(T) display,
+    String? Function(T?)? validator,
+  }) {
+    return Obx(
+      () {
+        return FormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: validator,
+          initialValue: item.value,
+          builder: (FormFieldState<T> state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: AppDimens.paddingVerySmall),
+                  child: RichText(
+                    text: TextSpan(
+                      text: label,
+                      style: AppTextStyle.font16Bo,
+                      children: [
+                        TextSpan(
+                          text: ' (*)',
+                          style: AppTextStyle.font12Re.copyWith(
+                            color: AppColors.statusRed,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    KeyBoard.hide();
+                    funcSelect(state.didChange);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(AppDimens.paddingSmall),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: state.errorText != null
+                            ? AppColors.statusRed
+                            : AppColors.dsGray5,
+                      ),
+                      borderRadius: BorderRadius.circular(AppDimens.radius4),
+                    ),
+                    child: Obx(
+                      () => Row(
+                        children: [
+                          Expanded(
+                            child: TextUtils(
+                              text: item.value != null
+                                  ? display(item.value as T)
+                                  : hintText,
+                              availableStyle: StyleEnum.bodyRegular,
+                              color: item.value != null
+                                  ? AppColors.colorBlack
+                                  : Color.fromARGB(255, 2, 2, 2),
+                            ),
+                          ),
+                          const Icon(
+                            Icons.arrow_drop_down,
+                            color: AppColors.dsGray3,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                if (state.hasError)
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: AppDimens.paddingSmallest,
+                      left: AppDimens.paddingVerySmall,
+                    ),
+                    child: TextUtils(
+                      text: state.errorText!,
+                      availableStyle: StyleEnum.detailRegular,
+                      color: AppColors.statusRed,
+                    ),
+                  ),
+              ],
+            ).paddingOnly(bottom: AppDimens.paddingSmall);
+          },
         );
       },
     );
@@ -493,6 +590,61 @@ class UtilWidget {
       ).paddingOnly(
         bottom: paddingBottom ?? 0,
       ),
+    );
+  }
+
+  static Widget buildBottomSheetFigma({
+    required Widget child,
+    String? title,
+  }) {
+    return Container(
+      padding: EdgeInsets.only(
+        left: AppDimens.defaultPadding,
+        right: AppDimens.defaultPadding,
+        bottom: GetPlatform.isAndroid ? AppDimens.paddingVerySmall : 0.0,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(AppDimens.radius30),
+          topRight: Radius.circular(AppDimens.radius30),
+        ),
+      ),
+      child: Container(
+        constraints: BoxConstraints(maxHeight: Get.height * 0.8),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            buildBottomHeader(),
+            if (title != null)
+              SDSBuildText(
+                title,
+                style: AppTextStyle.font20Bo.copyWith(
+                  color: AppColors.primaryColor,
+                ),
+                textAlign: TextAlign.center,
+              ).paddingOnly(
+                top: AppDimens.paddingSmallest,
+                bottom: AppDimens.paddingSmallest,
+              ),
+            child,
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget buildBottomHeader() {
+    return Center(
+      child: Container(
+        height: AppDimens.paddingSmallest,
+        width: AppDimens.sizeIconLarge,
+        decoration: const BoxDecoration(
+          borderRadius:
+              BorderRadius.all(Radius.circular(AppDimens.defaultPadding)),
+          color: Color(0xFFC0C4C8),
+        ),
+      ).paddingSymmetric(vertical: AppDimens.defaultPadding),
     );
   }
 
@@ -631,6 +783,97 @@ class UtilWidget {
           selectedMonthBackgroundColor: AppColors.primaryColor,
         ),
       ),
+    );
+  }
+
+  static Widget buildCheckboxWithLabel({
+    required String label,
+    required bool value,
+    ValueChanged<bool?>? onChanged,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        if (onChanged != null) {
+          onChanged(!value);
+        }
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Checkbox(
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            value: value,
+            activeColor: AppColors.primaryColor,
+            onChanged: onChanged,
+          ),
+          SDSBuildText(
+            label,
+            style: AppTextStyle.font16Semi,
+          ),
+        ],
+      ),
+    );
+  }
+
+  static Widget buildSelectDate(
+    String title, {
+    String? date,
+    String? hintText,
+    bool isRequired = true,
+    VoidCallback? onTap,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        RichText(
+          text: TextSpan(
+            text: title,
+            style: AppTextStyle.font16Bo,
+            children: [
+              if (isRequired)
+                TextSpan(
+                  text: ' (*)',
+                  style: AppTextStyle.font12Re.copyWith(
+                    color: AppColors.statusRed,
+                  ),
+                ),
+            ],
+          ),
+        ).paddingOnly(bottom: AppDimens.paddingVerySmall),
+        Material(
+          color: AppColors.colorWhite,
+          borderRadius: BorderRadius.circular(AppDimens.radius4),
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(AppDimens.radius4),
+            child: Container(
+              padding: const EdgeInsets.all(AppDimens.paddingVerySmall),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                border: Border.all(color: AppColors.dsGray4),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SDSBuildText(
+                    date ?? hintText ?? '',
+                    style: AppTextStyle.font16Re.copyWith(
+                      color:
+                          date != null ? AppColors.dsGray1 : AppColors.dsGray3,
+                    ),
+                  ),
+                  SvgPicture.asset(
+                    Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
+                    width: AppDimens.sizeIconMedium,
+                    height: AppDimens.sizeIconMedium,
+                  )
+                ],
+              ).paddingSymmetric(vertical: AppDimens.paddingSmallest),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

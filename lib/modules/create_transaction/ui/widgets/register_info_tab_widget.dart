@@ -67,6 +67,7 @@ extension RegisterInfoTabWidget on RegisterInfoTabPage {
   Widget _buildSocialAgencyChildBtnSheet() {
     return BottomSheetSearch<SocialAgencyResponse>(
       title: LocaleKeys.transaction_selectSocialAgency.tr,
+      hintText: LocaleKeys.transaction_inputSocialAgency.tr,
       listFilter: controller.listSocialAgency,
       itemSelect: controller.selectedSocialAgency.value.obs,
       display: (value) => value.socialAgencyName,

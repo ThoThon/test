@@ -1,6 +1,7 @@
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/controller/declaration_period_controller.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/model/declaration_period_model.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 part 'declaration_period_widget.dart';
