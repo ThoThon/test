@@ -335,6 +335,52 @@ class ShowDialog {
     );
   }
 
+  static Future<void> showDialogWithWidget({
+    required String title,
+    String? content,
+    Widget? child,
+    bool isActiveBack = true,
+  }) async {
+    _showDialog(
+      Dialog(
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.all(AppDimens.defaultPadding),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SDSBuildText(
+              title,
+              maxLines: 1,
+              style: AppTextStyle.font20Bo,
+            ),
+            content != null
+                ? Container(
+                    padding: const EdgeInsets.only(
+                      top: AppDimens.paddingSmall,
+                    ),
+                    constraints: const BoxConstraints(maxHeight: 200),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        content,
+                        style: AppTextStyle.font16Semi,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.clip,
+                      ).paddingSymmetric(horizontal: AppDimens.padding6),
+                    ),
+                  )
+                : UtilWidget.sizedBox16,
+            if (child != null) child,
+          ],
+        ).paddingAll(AppDimens.defaultPadding),
+      ),
+      isActiveBack,
+    );
+  }
+
   static void showDialogFail({
     final bool isActiveBack = true,
     String? title,

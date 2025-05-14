@@ -1,4 +1,5 @@
 import 'package:v_bhxh/modules/declare/check_list_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/ui/ui_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -69,7 +70,14 @@ class DeclareInfoController extends BaseGetxController {
     } else if (currentTab.value == DeclareInfoTab.tk1) {
       currentTab.value = DeclareInfoTab.d01;
     } else if (currentTab.value == DeclareInfoTab.d01) {
-      //
+      ShowDialog.showDialogWithWidget(
+        title: 'Hoàn tất',
+        content: 'Bạn muốn Chuyển ký hay thêm tiếp nhân sự?',
+        child: CompleteDeclareInfoWidget(
+          onTapAddStaff: () {},
+          onTapDeposit: () {},
+        ),
+      );
     }
   }
 
