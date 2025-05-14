@@ -8,6 +8,7 @@ class BottomSheetSearch<T> extends StatelessWidget {
     required this.listFilter,
     required this.display,
     required this.title,
+    this.hintText,
     required this.itemSelect,
     required this.onAccept,
   }) {
@@ -16,6 +17,7 @@ class BottomSheetSearch<T> extends StatelessWidget {
 
   final List<T> listFilter;
   final String title;
+  final String? hintText;
   final String Function(T) display;
   final Function(T?) onAccept;
 
@@ -33,7 +35,7 @@ class BottomSheetSearch<T> extends StatelessWidget {
             child: Column(
               children: [
                 buildSearch(
-                  hintSearch: LocaleKeys.unitInfo_inputSocialAgency.tr,
+                  hintSearch: hintText,
                   textEditingController: textEditingController,
                   function: onChanged,
                   isClear: true.obs,
@@ -60,7 +62,6 @@ class BottomSheetSearch<T> extends StatelessWidget {
             text: LocaleKeys.certificate_confirm,
             onPressed: () {
               onAccept(itemSelect.value);
-
               Get.back();
             },
             padding: EdgeInsets.zero,

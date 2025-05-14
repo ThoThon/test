@@ -10,6 +10,7 @@ class DeclarationPeriodController extends BaseGetxController {
       title: 'Đợt 1',
       updateDate: DateTime.now(),
       status: DeclarationStatus.draft,
+      type: DeclarationTypeEnum.increaseLabor,
     ),
     DeclarationPeriodModel(
       id: 2,
@@ -17,12 +18,14 @@ class DeclarationPeriodController extends BaseGetxController {
       updateDate: DateTime.now(),
       fileNumber: '01234/2025/00101',
       status: DeclarationStatus.sent,
+      type: DeclarationTypeEnum.decreaseLabor,
     ),
     DeclarationPeriodModel(
       id: 3,
       title: 'Đợt 3',
       updateDate: DateTime.now(),
       status: DeclarationStatus.draft,
+      type: DeclarationTypeEnum.increaseSalary,
     ),
     DeclarationPeriodModel(
       id: 4,
@@ -30,6 +33,7 @@ class DeclarationPeriodController extends BaseGetxController {
       updateDate: DateTime.now(),
       fileNumber: '01234/2025/00101',
       status: DeclarationStatus.sent,
+      type: DeclarationTypeEnum.decreaseSalary,
     ),
   ].obs;
 
