@@ -101,7 +101,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
     VoidCallback? onTap,
   }) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        Get.toNamed(AppRoutes.scanCccd.path);
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

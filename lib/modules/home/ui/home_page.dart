@@ -1,6 +1,6 @@
-import 'package:v_bhxh/modules/declaration_tax_code/ui/ui_src.dart';
 import 'package:v_bhxh/modules/home/controller/home_controller.dart';
 
+import '../../../modules/src.dart';
 import '../src.dart';
 
 class HomePage extends BaseGetWidget<HomeController> {
@@ -15,9 +15,9 @@ class HomePage extends BaseGetWidget<HomeController> {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: TextUtils(
-          text: LocaleKeys.declaration_declarationSocial,
-          availableStyle: StyleEnum.subBold,
+        title: SDSBuildText(
+          LocaleKeys.declaration_declarationSocial.tr,
+          style: AppTextStyle.font16Bo,
         ),
         centerTitle: true,
       ),
@@ -61,10 +61,10 @@ class HomePage extends BaseGetWidget<HomeController> {
                 ),
               ),
               Expanded(
-                child: TextUtils(
-                  text: item.string,
-                  availableStyle: StyleEnum.bodyBold,
-                  maxLine: 3,
+                child: SDSBuildText(
+                  item.string.tr,
+                  style: AppTextStyle.font14Bo,
+                  maxLines: 3,
                 ),
               ),
             ],

@@ -1,7 +1,7 @@
-import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
-
+import '../../../base_app/base_app.src.dart';
+import '../../../modules/src.dart';
+import '../../../shares/widgets/dialog/dialog.src.dart';
 import '../../login/model/model_src.dart';
-import '../../src.dart';
 
 class ProfileController extends BaseGetxController {
   final appController = Get.find<AppController>();

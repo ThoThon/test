@@ -1,7 +1,5 @@
 import 'package:v_bhxh/modules/icare/models/icare_model.src.dart';
 
-import '../../../../certificate_list/models/model_src.dart';
-
 class ListCertsResponseIcare extends BaseResponseSDK {
   const ListCertsResponseIcare({
     required super.errorCode,
@@ -81,7 +79,7 @@ class CertIcare {
     };
   }
 
-  bool get isActive => status == CertStatusEnum.active;
+  // bool get isActive => status == CertStatusEnum.active;
 
   String? getCertIssuer() => issuer?.split('=').last;
 

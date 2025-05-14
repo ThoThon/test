@@ -18,9 +18,9 @@ class HistoryDetailPage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: TextUtils(
-          text: LocaleKeys.history_historyDetail.tr,
-          availableStyle: StyleEnum.subBold,
+        title: SDSBuildText(
+          LocaleKeys.history_historyDetail.tr,
+          style: AppTextStyle.font16Bo,
         ),
       ),
       body: baseShowLoading(

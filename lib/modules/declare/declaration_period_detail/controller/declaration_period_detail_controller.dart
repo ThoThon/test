@@ -1,8 +1,8 @@
-import 'package:file_picker/file_picker.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/model/declaration_period_model.dart';
-import 'package:v_bhxh/modules/declare/declaration_period_detail/model/model_src.dart';
-import 'package:v_bhxh/modules/src.dart';
 import 'package:collection/collection.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:v_bhxh/modules/src.dart';
+
+import '../../../../base_app/base_app.src.dart';
 
 class DeclarationPeriodDetailController extends BaseGetxController {
   final declarationPeriod = Get.arguments as DeclarationPeriodModel;

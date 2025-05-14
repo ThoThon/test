@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -155,33 +155,9 @@ class UtilWidget {
         collapsedBackgroundColor: AppColors.colorWhite,
         backgroundColor: AppColors.colorWhite,
         collapsedTextColor: AppColors.colorWhite,
-        title: TextUtils(
-          text: title,
-          availableStyle: StyleEnum.bodyBold,
-        ),
+        title: SDSBuildText(title),
         subtitle: Column(
-          children: [
-            TextUtils(
-              text: title,
-              availableStyle: StyleEnum.bodyBold,
-            ),
-            TextUtils(
-              text: title,
-              availableStyle: StyleEnum.bodyBold,
-            ),
-            TextUtils(
-              text: title,
-              availableStyle: StyleEnum.bodyBold,
-            ),
-            TextUtils(
-              text: title,
-              availableStyle: StyleEnum.bodyBold,
-            ),
-            TextUtils(
-              text: title,
-              availableStyle: StyleEnum.bodyBold,
-            ),
-          ],
+          children: [],
         ),
         shape: RoundedRectangleBorder(
           side: BorderSide.none,
@@ -215,11 +191,11 @@ class UtilWidget {
         ),
         onPressed: onPressed,
         child: Center(
-            child: TextUtils(
-          text: title,
-          availableStyle: StyleEnum.subBold,
-          color: AppColors.colorWhite,
-        )),
+          child: SDSBuildText(
+            title,
+            style: AppTextStyle.font16Bo.copyWith(color: AppColors.colorWhite),
+          ),
+        ),
       ),
     );
   }
@@ -246,10 +222,9 @@ class UtilWidget {
           ),
         ),
         onPressed: onPressed,
-        child: TextUtils(
-          text: title,
-          availableStyle: StyleEnum.subBold,
-          color: AppColors.primaryColor,
+        child: SDSBuildText(
+          title,
+          style: AppTextStyle.font16Bo.copyWith(color: AppColors.primaryColor),
         ),
       ),
     );
@@ -353,10 +328,9 @@ class UtilWidget {
             value: selectedItem,
             onChanged: onChanged,
             hint: hintText != null
-                ? TextUtils(
-                    text: hintText,
-                    availableStyle: StyleEnum.bodyRegular,
-                    maxLine: 2,
+                ? SDSBuildText(
+                    hintText,
+                    maxLines: 2,
                     textAlign: TextAlign.start,
                   )
                 : null,
@@ -434,10 +408,10 @@ class UtilWidget {
                   top: AppDimens.paddingSmallest,
                   left: AppDimens.paddingSmall,
                 ),
-                child: TextUtils(
-                  text: state.errorText!,
-                  availableStyle: StyleEnum.detailRegular,
-                  color: AppColors.statusRed,
+                child: SDSBuildText(
+                  state.errorText!,
+                  style: AppTextStyle.font12Re
+                      .copyWith(color: AppColors.statusRed),
                 ),
               ),
           ],
@@ -501,14 +475,15 @@ class UtilWidget {
                       () => Row(
                         children: [
                           Expanded(
-                            child: TextUtils(
-                              text: item.value != null
+                            child: SDSBuildText(
+                              item.value != null
                                   ? display(item.value as T)
                                   : hintText,
-                              availableStyle: StyleEnum.bodyRegular,
-                              color: item.value != null
-                                  ? AppColors.colorBlack
-                                  : Color.fromARGB(255, 2, 2, 2),
+                              style: AppTextStyle.font14Re.copyWith(
+                                color: item.value != null
+                                    ? AppColors.colorBlack
+                                    : Color.fromARGB(255, 2, 2, 2),
+                              ),
                             ),
                           ),
                           const Icon(
@@ -526,10 +501,11 @@ class UtilWidget {
                       top: AppDimens.paddingSmallest,
                       left: AppDimens.paddingVerySmall,
                     ),
-                    child: TextUtils(
-                      text: state.errorText!,
-                      availableStyle: StyleEnum.detailRegular,
-                      color: AppColors.statusRed,
+                    child: SDSBuildText(
+                      state.errorText!,
+                      style: AppTextStyle.font12Re.copyWith(
+                        color: AppColors.statusRed,
+                      ),
                     ),
                   ),
               ],
@@ -598,12 +574,13 @@ class UtilWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: TextUtils(
-                            text: title,
+                          child: SDSBuildText(
+                            title,
                             textAlign: textAlign ?? TextAlign.center,
-                            maxLine: 1,
-                            availableStyle: StyleEnum.subBold,
-                            color: AppColors.colorBlack,
+                            maxLines: 1,
+                            style: AppTextStyle.font16Bo.copyWith(
+                              color: AppColors.colorBlack,
+                            ),
                           ).paddingOnly(top: AppDimens.paddingSmallest),
                         ),
                         iconTitle ?? const SizedBox(),
@@ -753,37 +730,6 @@ class UtilWidget {
     );
   }
 
-  static Widget buildLine({
-    required String label,
-    String? value,
-    int maxLine = AppDimens.widthDesign,
-  }) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // SDSBuildText(
-        //   '$label:',
-        //   style: AppTextStyle.font14Re.copyWith(
-        //     color: AppColors.colorBlack,
-        //   ),
-        // ),
-        TextUtils(
-          text: '$label:',
-          availableStyle: StyleEnum.bodyRegular,
-          color: AppColors.colorBlack,
-        ),
-        Expanded(
-          child: TextUtils(
-            text: value ?? '',
-            availableStyle: StyleEnum.bodyBold,
-            maxLine: maxLine,
-            textAlign: TextAlign.end,
-          ),
-        ),
-      ],
-    );
-  }
-
   static Widget buildGradient({
     required Widget child,
     required Gradient gradient,
@@ -804,10 +750,11 @@ class UtilWidget {
         children: [
           SDSImageSvg(Assets.ASSETS_ICONS_ICON_LIST_NULL_SVG),
           sdsSBHeight8,
-          TextUtils(
-            text: LocaleKeys.dialog_empty.tr,
-            availableStyle: StyleEnum.subBold,
-            color: AppColors.dsGray5,
+          SDSBuildText(
+            LocaleKeys.dialog_empty.tr,
+            style: AppTextStyle.font16Bo.copyWith(
+              color: AppColors.dsGray5,
+            ),
           ),
         ],
       ),

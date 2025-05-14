@@ -1,5 +1,4 @@
-import 'package:v_bhxh/modules/declaration_tax_code/ui/ui_src.dart';
-import 'package:v_bhxh/modules/login/login_src.dart';
+import '../../../modules/src.dart';
 
 part 'login_widget.dart';
 

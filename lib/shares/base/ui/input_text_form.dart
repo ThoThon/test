@@ -1,11 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../core/theme/colors.dart';
-import '../../../core/values/dimens.dart';
-import '../../shares.src.dart';
-import '../model/model.src.dart';
-import 'ui.src.dart';
+import '../../../modules/src.dart';
 
 class BuildInputText extends StatefulWidget {
   final InputTextModel inputTextFormModel;

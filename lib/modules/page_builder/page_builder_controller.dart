@@ -1,5 +1,6 @@
 import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/modules/declaration_tax_code/ui/ui_src.dart';
+
+import '../../../modules/src.dart';
 
 const _defaultPageIndex = 0;
 

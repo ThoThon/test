@@ -65,12 +65,13 @@ class ShowDialog {
                 padding: const EdgeInsets.all(15.0),
                 constraints: const BoxConstraints(maxHeight: 200),
                 child: SingleChildScrollView(
-                  child: TextUtils(
-                    text: content,
-                    availableStyle: StyleEnum.bodyRegular,
-                    color: AppColors.primaryNavy,
+                  child: SDSBuildText(
+                    content,
+                    style: AppTextStyle.font14Re.copyWith(
+                      color: AppColors.primaryNavy,
+                    ),
                     textAlign: TextAlign.center,
-                    maxLine: 4,
+                    maxLines: 4,
                   ),
                 ),
               ),
@@ -108,10 +109,11 @@ class ShowDialog {
           style: ButtonStyle(
             overlayColor: WidgetStateProperty.all(Colors.transparent),
           ),
-          child: TextUtils(
-            text: text,
-            availableStyle: StyleEnum.bodyRegular,
-            color: colorText ?? AppColors.primaryNavy,
+          child: SDSBuildText(
+            text,
+            style: AppTextStyle.font14Re.copyWith(
+              color: colorText ?? AppColors.primaryNavy,
+            ),
           ),
         ));
   }
@@ -257,14 +259,13 @@ class ShowDialog {
                   top: AppDimens.defaultPadding,
                   bottom: AppDimens.paddingSmall,
                 ),
-                TextUtils(
-                  text: title ?? LocaleKeys.dialog_fail.tr,
-                  availableStyle: StyleEnum.subBold,
+                SDSBuildText(
+                  title ?? LocaleKeys.dialog_fail.tr,
+                  style: AppTextStyle.font16Bo,
                 ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-                TextUtils(
-                  text: LocaleKeys.dialog_registerFail.tr +
+                SDSBuildText(
+                  LocaleKeys.dialog_registerFail.tr +
                       (contentError != null ? ("\n$contentError ") : ""),
-                  availableStyle: StyleEnum.bodyRegular,
                 ),
                 Row(
                   children: [
@@ -330,10 +331,8 @@ class ShowDialog {
                   ),
                   SizedBox(width: 8),
                   Expanded(
-                    child: TextUtils(
-                      text: title ?? 'Cảnh báo',
-                      availableStyle: StyleEnum.bodyRegular,
-                      color: AppColors.colorBlack,
+                    child: SDSBuildText(
+                      title ?? 'Cảnh báo',
                     ),
                   ),
                 ],
@@ -346,10 +345,8 @@ class ShowDialog {
                       .map(
                         (field) => Padding(
                           padding: const EdgeInsets.only(bottom: 4),
-                          child: TextUtils(
-                            text: '• $field',
-                            availableStyle: StyleEnum.bodyRegular,
-                            color: AppColors.colorBlack,
+                          child: SDSBuildText(
+                            '• $field',
                           ),
                         ),
                       )

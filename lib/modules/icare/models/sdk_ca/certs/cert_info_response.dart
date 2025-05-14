@@ -1,4 +1,3 @@
-import 'package:v_bhxh/modules/certificate_list/models/cert_status_enum.dart';
 import 'package:v_bhxh/modules/icare/icare.src.dart';
 
 class CertInfoResponseIcare extends BaseResponseSDK {
@@ -83,7 +82,7 @@ class CertInfo extends CertIcare {
   }
 
   @override
-  bool get isActive => status == CertStatusEnum.active;
+  // bool get isActive => status == CertStatusEnum.active;
 
   @override
   String? getCertIssuer() => issuer?.split('=').last;

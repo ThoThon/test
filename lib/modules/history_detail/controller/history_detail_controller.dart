@@ -1,3 +1,4 @@
+import '../../../base_app/base_app.src.dart';
 import '../../src.dart';
 
 class HistoryDetailController extends BaseGetxController {

@@ -41,56 +41,12 @@ extension HistoryWidget on HistoryPage {
             ).paddingAll(AppDimens.paddingSmall),
           ),
         ),
-        IconButton(
-          icon: SDSImageSvg(
-            Assets.ASSETS_ICONS_IC_FILTER_SVG,
-            width: AppDimens.sizeIcon32,
-            height: AppDimens.sizeIcon32,
-          ),
-          onPressed: () {
-            Get.bottomSheet(
-              UtilWidget.baseBottomSheet(
-                title: "Chọn thủ tục",
-                body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Obx(
-                        () {
-                          return ListView(
-                            children: ProcedureFilterEnum.values.map(
-                              (item) {
-                                return _buildItemOnTap(
-                                  onTap: () {
-                                    controller.selectProcedure.value = item;
-                                    Get.back();
-                                    controller.getListHistory();
-                                  },
-                                  text: item.title.tr,
-                                  style: AppTextStyle.font14Re.copyWith(
-                                    color:
-                                        controller.selectProcedure.value == item
-                                            ? AppColors.primaryColor
-                                            : AppColors.colorBlack,
-                                  ),
-                                );
-                              },
-                            ).toList(),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
-              ),
-            );
-          },
-        ).paddingOnly(left: AppDimens.paddingSmall),
+        _buildFilterButton(),
       ],
     );
   }
 
-  Widget _buildItemOnTap({
+  Widget _buildItemBottomSheetFilter({
     required Function()? onTap,
     required String text,
     TextStyle? style,
@@ -211,5 +167,50 @@ extension HistoryWidget on HistoryPage {
         );
       },
     ).paddingSymmetric(vertical: AppDimens.paddingSmall);
+  }
+
+  Widget _buildFilterButton() {
+    return IconButton(
+      icon: SDSImageSvg(
+        Assets.ASSETS_ICONS_IC_FILTER_SVG,
+        width: AppDimens.sizeIcon32,
+        height: AppDimens.sizeIcon32,
+      ),
+      onPressed: () {
+        Get.bottomSheet(
+          UtilWidget.buildBottomSheetFigma(
+            title: "Chọn thủ tục",
+            child: ListView.separated(
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                final type = ProcedureFilterEnum.values[index];
+                return Material(
+                  color: AppColors.colorWhite,
+                  child: Obx(
+                    () => _buildItemBottomSheetFilter(
+                      onTap: () {
+                        //Lọc thủ tục
+                        controller.selectProcedure.value = type;
+                        // Khi chọn thủ tục thì đóng bottom sheet
+                        Get.back();
+                        controller.getListHistory();
+                      },
+                      text: type.title.tr,
+                      style: controller.selectProcedure.value == type
+                          ? AppTextStyle.font14Bo
+                              .copyWith(color: AppColors.primaryColor)
+                          : AppTextStyle.font14Re,
+                    ),
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) =>
+                  UtilWidget.buildDividerDefault(),
+              itemCount: ProcedureFilterEnum.values.length,
+            ),
+          ),
+        );
+      },
+    ).paddingOnly(left: AppDimens.paddingSmall);
   }
 }

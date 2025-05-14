@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:v_bhxh/modules/declaration_tax_code/ui/ui_src.dart';
+
+import '../../../modules/src.dart';
 
 class SDSDropdown extends StatelessWidget {
   final Map<int?, String> mapData;
@@ -31,9 +32,11 @@ class SDSDropdown extends StatelessWidget {
             (entry) {
               return DropdownMenuItem<int>(
                 value: entry.key,
-                child: TextUtils(
-                  text: entry.value,
-                  color: AppColors.colorBlack,
+                child: SDSBuildText(
+                  entry.value,
+                  style: AppTextStyle.font14Re.copyWith(
+                    color: AppColors.colorBlack,
+                  ),
                   // entry.key == item?.value
                   //     ? AppColors.primaryColor
                   //     : AppColors.dsGray1,

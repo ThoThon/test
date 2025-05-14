@@ -32,10 +32,11 @@ class BuildInputTextWithLabel extends StatelessWidget {
               ),
               Visibility(
                 visible: buildInputText.inputTextFormModel.isValidate,
-                child: TextUtils(
-                  text: ' (*)',
-                  color: AppColors.statusRed,
-                  availableStyle: StyleEnum.detailRegular,
+                child: SDSBuildText(
+                  ' (*)',
+                  style: AppTextStyle.font12Re.copyWith(
+                    color: AppColors.statusRed,
+                  ),
                 ),
               ),
             ],

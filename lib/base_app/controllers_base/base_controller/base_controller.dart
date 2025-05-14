@@ -2,6 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../modules/src.dart';
+import '../../../shares/package/export_package.dart';
 import '../../../shares/widgets/dialog/dialog.src.dart';
 import '../../model/base_model.src.dart';
 import '../../repository_base/repository_base.src.dart';

@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/declaration_tax_code/ui/ui_src.dart';
+import '../../../modules/src.dart';
 
 part 'notification_widget.dart';
 

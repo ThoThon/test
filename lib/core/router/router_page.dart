@@ -1,19 +1,12 @@
-import 'package:v_bhxh/modules/certificate_list/ui/list_certificate_page.dart';
-import 'package:v_bhxh/modules/certificate_list/ui/verify_cert_page.dart';
-import 'package:v_bhxh/modules/confirm_code/ui/confirm_code_page.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/ui/declaration_period_page.dart';
-import 'package:v_bhxh/modules/declare/declaration_period_detail/ui/declaration_period_detail_page.dart';
-import 'package:v_bhxh/modules/declare/declare_info/ui/declare_info_page.dart';
-import 'package:v_bhxh/modules/declare/procedure_list/ui/procedure_list_page.dart';
-import 'package:v_bhxh/modules/home/ui/home_page.dart';
-import 'package:v_bhxh/modules/login/ui/login_page.dart';
-import 'package:v_bhxh/modules/page_builder/page_builder.dart';
+import 'package:v_bhxh/modules/scan_cccd/ui/scan_cccd_page.dart';
 
-import '../../modules/await_confirm_signature/ui/await_confirm_signature_page.dart';
-import '../../modules/declare/check_list_detail/ui/check_list_detail_page.dart';
-import '../../modules/declare/family_member_detail/ui/family_member_detail_page.dart';
-import '../../modules/splash/splash_page.dart';
+import '../../modules/declare/declaration_period_detail/ui/declaration_period_detail_page.dart';
+import '../../modules/declare/declare_info/ui/declare_info_page.dart';
+import '../../modules/declare/procedure_list/ui/procedure_list_page.dart';
+import '../../modules/home/src.dart';
+import '../../modules/splash/splash.src.dart';
 import '../../modules/src.dart';
+import '../../shares/package/export_package.dart';
 
 class RouteAppPage {
   static var route = [
@@ -38,14 +31,6 @@ class RouteAppPage {
       page: () => HomePage(),
     ),
     GetPage(
-      name: AppRoutes.declarationTaxCode.path,
-      page: () => DeclarationTaxCodePage(),
-    ),
-    GetPage(
-      name: AppRoutes.declarationTaxCodeDetail.path,
-      page: () => DeclarationTaxCodeDetailPage(),
-    ),
-    GetPage(
       name: AppRoutes.infoUnit.path,
       page: () => UnitInfoPage(),
     ),
@@ -56,22 +41,6 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.historyDetail.path,
       page: () => HistoryDetailPage(),
-    ),
-    GetPage(
-      name: AppRoutes.listCertificate.path,
-      page: () => ListCertificatePage(),
-    ),
-    GetPage(
-      name: AppRoutes.confirmCode.path,
-      page: () => ConfirmCodePage(),
-    ),
-    GetPage(
-      name: AppRoutes.awaitConfirmSignature.path,
-      page: () => AwaitConfirmSignaturePage(),
-    ),
-    GetPage(
-      name: AppRoutes.verifyCertificate.path,
-      page: () => VerifyCertPageICare(),
     ),
     GetPage(
       name: AppRoutes.procedureList.path,
@@ -97,6 +66,10 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.checkListDetail.path,
       page: () => CheckListDetailPage(),
+    ),
+    GetPage(
+      name: AppRoutes.scanCccd.path,
+      page: () => ScanCccdPage(),
     ),
   ];
 }

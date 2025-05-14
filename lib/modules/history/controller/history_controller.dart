@@ -1,6 +1,6 @@
-import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
+import '../../../base_app/base_app.src.dart';
 import '../models/model_src.dart';
 
 class HistoryController extends BaseRefreshGetxController {

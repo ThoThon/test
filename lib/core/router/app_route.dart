@@ -18,23 +18,14 @@ enum AppRoutes {
   ///Thông tin đơn vị
   infoUnit,
 
-  ///Kê khai BHXH
-  declarationTaxCode,
-  declarationTaxCodeDetail,
+  ///Lịch sử
   history,
+
+  ///Chi tiết lịch sử
   historyDetail,
 
-  ///Danh sách chứng thư số
-  listCertificate,
-
-  //Màn hình xác nhận ký
-  confirmCode,
-
-  //Màn hình chờ
-  awaitConfirmSignature,
-
-  ///Xác thực chứng thư số
-  verifyCertificate;
+  //Quét CCCD
+  scanCccd;
 
   String get path {
     return '/vbhxh_$name';

@@ -2,7 +2,7 @@ import 'package:v_bhxh/base_app/repository_base/interceptor/jwt_token_intercepto
 
 import '../../core/core.src.dart';
 import '../../shares/log/dio_log.dart';
-import '../../shares/shares.src.dart';
+import '../../shares/package/export_package.dart';
 import '../controllers_base/base_controller.src.dart';
 
 class BaseApi {

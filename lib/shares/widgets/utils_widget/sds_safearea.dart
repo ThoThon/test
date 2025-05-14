@@ -1,4 +1,4 @@
-import '../../../modules/src.dart';
+import 'package:flutter/material.dart';
 
 class SDSSafearea extends StatelessWidget {
   final Widget child;

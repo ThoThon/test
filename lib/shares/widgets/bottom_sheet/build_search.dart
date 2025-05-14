@@ -131,9 +131,8 @@ class BottomSheetSearch<T> extends StatelessWidget {
           },
           child: Row(
             children: [
-              TextUtils(
-                text: display(item),
-                availableStyle: StyleEnum.bodyRegular,
+              SDSBuildText(
+                display(item),
               ).paddingSymmetric(
                 vertical: AppDimens.paddingSmall,
               ),
