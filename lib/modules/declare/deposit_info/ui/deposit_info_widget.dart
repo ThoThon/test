@@ -40,7 +40,62 @@ extension DepositInfoWidget on DepositInfoPage {
         UtilWidget.sizedBox8,
         InkWell(
           onTap: () {
-            controller.pickImage();
+            Get.bottomSheet(
+              UtilWidget.buildBottomSheetFigma(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Material(
+                      color: Colors.white,
+                      child: InkWell(
+                        onTap: () {
+                          // Close the bottom sheet
+                          Get.back();
+                          // Open create period page
+                        },
+                        child: Row(
+                          children: [
+                            const Icon(Icons.camera_alt_outlined),
+                            UtilWidget.sizedBoxWidth8,
+                            Expanded(
+                              child: SDSBuildText(
+                                'Chụp ảnh từ cammera',
+                                style: AppTextStyle.font16Semi,
+                              ),
+                            ),
+                          ],
+                        ).paddingSymmetric(vertical: AppDimens.defaultPadding),
+                      ),
+                    ),
+                    const Divider(height: 1),
+                    Material(
+                      color: Colors.white,
+                      child: InkWell(
+                        onTap: () {
+                          // Close the bottom sheet
+                          Get.back();
+
+                          controller.pickImage();
+                        },
+                        child: Row(
+                          children: [
+                            const Icon(Icons.image_outlined),
+                            UtilWidget.sizedBoxWidth8,
+                            Expanded(
+                              child: SDSBuildText(
+                                'Chọn ảnh từ điện thoại',
+                                style: AppTextStyle.font16Semi,
+                              ),
+                            ),
+                          ],
+                        ).paddingSymmetric(vertical: AppDimens.defaultPadding),
+                      ),
+                    ),
+                    UtilWidget.sizedBox16,
+                  ],
+                ),
+              ),
+            );
           },
           borderRadius: BorderRadius.circular(8),
           child: Container(
