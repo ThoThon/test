@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/declare/declaration_list/controller/declaration_list_controller.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
 
 part 'declaration_list_widget.dart';
 

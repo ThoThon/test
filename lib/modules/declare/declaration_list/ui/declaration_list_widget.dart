@@ -14,18 +14,45 @@ extension DeclarationListWidget on DeclarationListPage {
               children: [
                 _buildDeclarationItem(
                   title: 'Danh sách lao động tham gia BHXH',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(
+                      AppRoutes.viewPdf.path,
+                      arguments: const ViewPdfArgument(
+                        url:
+                            'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf',
+                        title: 'Danh sách lao động',
+                      ),
+                    );
+                  },
                 ),
                 UtilWidget.sizedBox12,
                 _buildDeclarationItem(
                   title:
                       'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(
+                      AppRoutes.viewPdf.path,
+                      arguments: const ViewPdfArgument(
+                        url:
+                            'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf',
+                        title: 'Tờ khai tham gia',
+                      ),
+                    );
+                  },
                 ),
                 UtilWidget.sizedBox12,
                 _buildDeclarationItem(
                   title: 'File đính kèm',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(
+                      AppRoutes.viewPdf.path,
+                      arguments: const ViewPdfArgument(
+                        url:
+                            'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf',
+                        title: 'File đính kèm',
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

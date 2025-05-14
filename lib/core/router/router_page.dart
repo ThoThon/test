@@ -16,6 +16,7 @@ import 'package:v_bhxh/modules/history_transaction/ui/history_transaction_page.d
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/login/ui/login_page.dart';
 import 'package:v_bhxh/modules/page_builder/page_builder.dart';
+import 'package:v_bhxh/modules/view_pdf/ui/view_pdf_page.dart';
 
 import '../../modules/await_confirm_signature/ui/await_confirm_signature_page.dart';
 import '../../modules/splash/splash_page.dart';
@@ -123,6 +124,10 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.declarationList.path,
       page: () => DeclarationListPage(),
+    ),
+    GetPage(
+      name: AppRoutes.viewPdf.path,
+      page: () => ViewPdfPage(),
     ),
   ];
 }
