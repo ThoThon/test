@@ -21,5 +21,6 @@ class AppApi {
       '/HoSoBHXH/UpdateHistoryRegister';
   //
   static const String urlGetAccountInfo = '/api/Authen/get-account-info';
+  static const String urlUpdateAccountInfo = '/api/Authen/update-account-info';
   static const String urlGetHistory = '/api/History/get-histories';
 }

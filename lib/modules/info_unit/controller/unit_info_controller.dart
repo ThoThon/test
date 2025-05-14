@@ -1,3 +1,5 @@
+import 'package:v_bhxh/modules/login/model/model_src.dart';
+
 import '../../src.dart';
 
 abstract class UnitInfoController extends BaseGetxController {
@@ -27,6 +29,8 @@ abstract class UnitInfoController extends BaseGetxController {
 
   final emailContactController = TextEditingController();
 
+  final basicSalaryController = TextEditingController();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final isUnitInfoEdit = false.obs;
@@ -41,5 +45,13 @@ abstract class UnitInfoController extends BaseGetxController {
 
   late final unitInfoRepository = UnitInfoRepository(this);
 
+  Rx<RegionEnum?> selectedRegion = Rx<RegionEnum?>(null);
+
+  Rx<PaymentMethodEnum?> selectedMethod = Rx<PaymentMethodEnum?>(null);
+
+  Rx<ReceiveResultEnum?> selectedReceive = Rx<ReceiveResultEnum?>(null);
+
   final appController = Get.find<AppController>();
+
+  AccountInfoModel? accountInfo;
 }

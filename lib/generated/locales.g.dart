@@ -36,6 +36,7 @@ class LocaleKeys {
   static const dialog_updateSuccess = 'dialog_updateSuccess';
   static const dialog_logout = 'dialog_logout';
   static const dialog_isLogout = 'dialog_isLogout';
+  static const dialog_empty = 'dialog_empty';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -141,6 +142,15 @@ class LocaleKeys {
   static const unitInfo_region = 'unitInfo_region';
   static const unitInfo_basicSalary = 'unitInfo_basicSalary';
   static const unitInfo_registerResult = 'unitInfo_registerResult';
+  static const unitInfo_regionOne = 'unitInfo_regionOne';
+  static const unitInfo_regionTwo = 'unitInfo_regionTwo';
+  static const unitInfo_regionThree = 'unitInfo_regionThree';
+  static const unitInfo_regionFour = 'unitInfo_regionFour';
+  static const unitInfo_oneMonth = 'unitInfo_oneMonth';
+  static const unitInfo_threeMonth = 'unitInfo_threeMonth';
+  static const unitInfo_sixMonth = 'unitInfo_sixMonth';
+  static const unitInfo_byPostOffice = 'unitInfo_byPostOffice';
+  static const unitInfo_bySocialAgency = 'unitInfo_bySocialAgency';
   static const history_procedure = 'history_procedure';
   static const history_submissionTime = 'history_submissionTime';
   static const history_historyDetail = 'history_historyDetail';
@@ -162,7 +172,12 @@ class LocaleKeys {
   static const history_socialAgencyInProcess = 'history_socialAgencyInProcess';
   static const history_success = 'history_success';
   static const history_fail = 'history_fail';
+  static const history_all = 'history_all';
   static const history_lookupSuccess = 'history_lookupSuccess';
+  static const history_procedure600 = 'history_procedure600';
+  static const history_procedure600c = 'history_procedure600c';
+  static const history_procedure600d = 'history_procedure600d';
+  static const history_procedure600o = 'history_procedure600o';
   static const certificate_listCertificate = 'certificate_listCertificate';
   static const certificate_selectCertificate = 'certificate_selectCertificate';
   static const certificate_confirm = 'certificate_confirm';
@@ -302,6 +317,7 @@ class Locales {
     'dialog_updateSuccess': 'Thay đổi thông tin thành công',
     'dialog_logout': 'Đăng xuất',
     'dialog_isLogout': 'Đăng xuất khỏi tài khoản của bạn',
+    'dialog_empty': 'Trống',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -402,6 +418,15 @@ class Locales {
     'unitInfo_region': 'Vùng',
     'unitInfo_basicSalary': 'Lương cơ sở',
     'unitInfo_registerResult': 'Đăng ký nhận kết quả',
+    'unitInfo_regionOne': 'Vùng I',
+    'unitInfo_regionTwo': 'Vùng II',
+    'unitInfo_regionThree': 'Vùng III',
+    'unitInfo_regionFour': 'Vùng IV',
+    'unitInfo_oneMonth': '1 tháng',
+    'unitInfo_threeMonth': '3 tháng',
+    'unitInfo_sixMonth': '6 tháng',
+    'unitInfo_byPostOffice': 'Qua bưu điện',
+    'unitInfo_bySocialAgency': 'Nhận tại cơ quan bảo hiểm',
     'history_procedure': 'Thủ tục',
     'history_submissionTime': 'Thời gian nộp',
     'history_historyDetail': 'Chi tiết lịch sử',
@@ -423,7 +448,14 @@ class Locales {
     'history_socialAgencyInProcess': 'Đang chờ xử lý',
     'history_success': 'Thành công',
     'history_fail': 'Thất bại',
+    'history_all': 'Tất cả',
     'history_lookupSuccess': 'Tra cứu thành công!',
+    'history_procedure600': '600 - Báo tăng, báo giảm, điều chỉnh',
+    'history_procedure600c':
+        '600c - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo luật bhxh 2014',
+    'history_procedure600d':
+        '600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP',
+    'history_procedure600o': '600o - Tạm dừng đóng vào quỹ hưu trí',
     'certificate_listCertificate': 'Danh sách chứng thư số',
     'certificate_selectCertificate': 'Chọn chứng thư số',
     'certificate_confirm': 'Xác nhận',

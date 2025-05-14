@@ -154,7 +154,7 @@ class ShowDialog {
 
   static void showDialogConfirm({
     final bool isActiveBack = true,
-    required String title,
+    String? title,
     String? status,
     required String textBtnRight,
     Function()? onPressed,
@@ -189,10 +189,12 @@ class ShowDialog {
                   status ?? LocaleKeys.dialog_success.tr,
                   style: AppTextStyle.font16Bo,
                 ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-                SDSBuildText(
-                  title,
-                  style: AppTextStyle.font14Re,
-                ),
+                title == null
+                    ? SizedBox.shrink()
+                    : SDSBuildText(
+                        title,
+                        style: AppTextStyle.font14Re,
+                      ),
                 Row(
                   children: [
                     Expanded(

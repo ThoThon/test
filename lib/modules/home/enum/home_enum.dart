@@ -13,11 +13,11 @@ enum HomeEnum {
   String get image {
     switch (this) {
       case unit_info:
-        return Assets.ASSETS_ICONS_HOME_REGISTER_TRANSACTION_SVG;
+        return Assets.ASSETS_ICONS_HOME_UNIT_INFO_SVG;
       case declare:
-        return Assets.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG;
+        return Assets.ASSETS_ICONS_HOME_DECLARATION_SVG;
       case history:
-        return Assets.ASSETS_ICONS_HOME_TRANSACTION_HISTORY_SVG;
+        return Assets.ASSETS_ICONS_HOME_HISTORY_SVG;
       case lookup_c12:
         return Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG;
       case guide:
@@ -45,7 +45,7 @@ enum HomeEnum {
       case unit_info:
         return AppRoutes.infoUnit.path;
       case declare:
-        return "";
+        return AppRoutes.procedureList.path;
       case history:
         return AppRoutes.history.path;
       case lookup_c12:

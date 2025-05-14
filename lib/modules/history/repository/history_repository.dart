@@ -12,6 +12,7 @@ class HistoryRepository extends BaseRepository {
       EnumRequestMethod.post,
       jsonMap: request.toJson(),
     );
+    logger.d(request);
     logger.d(response);
     return BaseResponse<HistoryResponse>.fromJson(
       response,

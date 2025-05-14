@@ -15,14 +15,13 @@ class HistoryPage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-        appBar: BaseAppBar(
-          title: SDSBuildText(
-            LocaleKeys.history_historyTransaction.tr,
-            style: AppTextStyle.font16Bo,
-          ),
+      appBar: BaseAppBar(
+        title: SDSBuildText(
+          LocaleKeys.history_historyTransaction.tr,
+          style: AppTextStyle.font16Bo,
         ),
-        body: baseShowLoading(
-          () => _buildBody(),
-        ));
+      ),
+      body: _buildBody(),
+    );
   }
 }

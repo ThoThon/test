@@ -1,4 +1,5 @@
 class HistoryRequest {
+  final String companyId;
   final int pageIndex;
   final int pageSize;
   final String? thang;
@@ -7,6 +8,7 @@ class HistoryRequest {
   final String? soHoSo;
 
   HistoryRequest({
+    required this.companyId,
     required this.pageIndex,
     required this.pageSize,
     required this.thang,
@@ -17,6 +19,7 @@ class HistoryRequest {
 
   Map<String, dynamic> toJson() {
     return {
+      'companyId': companyId,
       'pageIndex': pageIndex,
       'pageSize': pageSize,
       'thang': thang ?? "",

@@ -26,82 +26,66 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.routeDioLog.path,
       page: () => const HttpLogListWidget(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.splash.path,
       page: () => SplashPage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.home.path,
       page: () => HomePage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.declarationTaxCode.path,
       page: () => DeclarationTaxCodePage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.declarationTaxCodeDetail.path,
       page: () => DeclarationTaxCodeDetailPage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.infoUnit.path,
       page: () => UnitInfoPage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.history.path,
       page: () => HistoryPage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.historyDetail.path,
       page: () => HistoryDetailPage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.listCertificate.path,
       page: () => ListCertificatePage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.confirmCode.path,
       page: () => ConfirmCodePage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.awaitConfirmSignature.path,
       page: () => AwaitConfirmSignaturePage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.verifyCertificate.path,
       page: () => VerifyCertPageICare(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.procedureList.path,
       page: () => ProcedureListPage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.declarationPeriod.path,
       page: () => DeclarationPeriodPage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.declarationPeriodDetail.path,
       page: () => DeclarationPeriodDetailPage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.declareInfo.path,
       page: () => DeclareInfoPage(),
-      transition: Transition.rightToLeft,
     )
   ];
 }

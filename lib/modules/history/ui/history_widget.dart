@@ -6,22 +6,8 @@ extension HistoryWidget on HistoryPage {
       child: Column(
         children: [
           _buildSearchAndFilter(),
-          Expanded(
-            child: UtilWidget.buildCardBase(
-              UtilWidget.buildSmartRefresher(
-                refreshController: controller.refreshController,
-                onRefresh: controller.onRefresh,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final item = controller.listHistory[index];
-                    return _buildCardItemHistory(item);
-                  },
-                  itemCount: controller.listHistory.length,
-                ),
-              ),
-            ).paddingOnly(top: AppDimens.defaultPadding),
-          ),
+          _buildDatePicker(),
+          _buildViewListHistory(),
         ],
       ).paddingSymmetric(
         horizontal: AppDimens.defaultPadding,
@@ -62,31 +48,60 @@ extension HistoryWidget on HistoryPage {
             height: AppDimens.sizeIcon32,
           ),
           onPressed: () {
-            ///TODO: hoàn thành sau
             Get.bottomSheet(
               UtilWidget.baseBottomSheet(
                 title: "Chọn thủ tục",
                 body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SDSBuildText(
-                      'Tất cả',
-                      style: AppTextStyle.font14Re
-                          .copyWith(color: AppColors.primaryColor),
+                    Expanded(
+                      child: Obx(
+                        () {
+                          return ListView(
+                            children: ProcedureFilterEnum.values.map(
+                              (item) {
+                                return _buildItemOnTap(
+                                  onTap: () {
+                                    controller.selectProcedure.value = item;
+                                    Get.back();
+                                    controller.getListHistory();
+                                  },
+                                  text: item.title.tr,
+                                  style: AppTextStyle.font14Re.copyWith(
+                                    color:
+                                        controller.selectProcedure.value == item
+                                            ? AppColors.primaryColor
+                                            : AppColors.colorBlack,
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                          );
+                        },
+                      ),
                     ),
-                    SDSBuildText(
-                        '600c- tạm dừng đóng vào quỹ hưu trí - tử tuất theo luật bhxh 2014'),
-                    SDSBuildText(
-                        '600d- tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP'),
-                    SDSBuildText('600o - Tạm dừng đóng vào quỹ hưu trí'),
                   ],
-                ),
+                ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
               ),
             );
           },
         ).paddingOnly(left: AppDimens.paddingSmall),
       ],
     );
+  }
+
+  Widget _buildItemOnTap({
+    required Function()? onTap,
+    required String text,
+    TextStyle? style,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: SDSBuildText(
+        text,
+        style: style,
+      ),
+    ).paddingOnly(bottom: AppDimens.paddingVerySmall);
   }
 
   Widget _buildCardItemHistory(HistoryItemModel item) {
@@ -150,5 +165,51 @@ extension HistoryWidget on HistoryPage {
         ],
       ).paddingAll(AppDimens.paddingSmall),
     );
+  }
+
+  Widget _buildViewListHistory() {
+    return Expanded(
+      child: UtilWidget.buildCardBase(
+        baseShowLoading(
+          () => UtilWidget.buildSmartRefresher(
+            refreshController: controller.refreshController,
+            onRefresh: controller.onRefresh,
+            onLoadMore: controller.onLoadMore,
+            enablePullUp: true,
+            child: controller.listHistory.isEmpty
+                ? UtilWidget.buildEmptyList()
+                : ListView.builder(
+                    itemBuilder: (context, index) {
+                      final item = controller.listHistory[index];
+                      return _buildCardItemHistory(item);
+                    },
+                    itemCount: controller.listHistory.length,
+                  ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDatePicker() {
+    return Obx(
+      () {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SDSBuildText(
+              '${LocaleKeys.declarationPeriod_month.tr} ${convertDateToString(controller.selectedPeriodDate.value, PATTERN_12)}',
+              style: AppTextStyle.font16Bo,
+            ),
+            UtilWidget.buildSolidButtonBack(
+              title: LocaleKeys.declarationPeriod_selectMonth.tr,
+              onPressed: () {
+                controller.pickPeriodDate();
+              },
+            ),
+          ],
+        );
+      },
+    ).paddingSymmetric(vertical: AppDimens.paddingSmall);
   }
 }

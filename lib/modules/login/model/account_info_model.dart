@@ -20,30 +20,37 @@ class AccountInfoModel {
   final String loaiDoiTuong;
   final String ptNhanKq;
   final String packageInfo;
+  final String tenNguoiKeKhai;
+  final int luongCoSo;
+  final int phuongThucDong;
+  final int maVung;
 
-  AccountInfoModel({
-    required this.toChucId,
-    required this.tenToChuc,
-    required this.taxCode,
-    required this.maDonVi,
-    required this.maNganSach,
-    required this.diaChiDk,
-    required this.diaChi,
-    required this.maCoQuanQuanLy,
-    required this.tenCoQuanQuanLy,
-    required this.dienThoai,
-    required this.mailLienLac,
-    required this.tenNguoiKy,
-    required this.telReceiver,
-    required this.serviceName,
-    required this.serviceStartDate,
-    required this.serviceExpiredDate,
-    required this.bankAccount,
-    required this.jobTitle,
-    required this.loaiDoiTuong,
-    required this.ptNhanKq,
-    required this.packageInfo,
-  });
+  AccountInfoModel(
+      {required this.toChucId,
+      required this.tenToChuc,
+      required this.taxCode,
+      required this.maDonVi,
+      required this.maNganSach,
+      required this.diaChiDk,
+      required this.diaChi,
+      required this.maCoQuanQuanLy,
+      required this.tenCoQuanQuanLy,
+      required this.dienThoai,
+      required this.mailLienLac,
+      required this.tenNguoiKy,
+      required this.telReceiver,
+      required this.serviceName,
+      required this.serviceStartDate,
+      required this.serviceExpiredDate,
+      required this.bankAccount,
+      required this.jobTitle,
+      required this.loaiDoiTuong,
+      required this.ptNhanKq,
+      required this.packageInfo,
+      required this.tenNguoiKeKhai,
+      required this.luongCoSo,
+      required this.phuongThucDong,
+      required this.maVung});
 
   factory AccountInfoModel.fromJson(Map<String, dynamic> json) {
     return AccountInfoModel(
@@ -68,6 +75,10 @@ class AccountInfoModel {
       loaiDoiTuong: json['loai_doi_tuong'] ?? '',
       ptNhanKq: json['pt_nhan_kq'] ?? '',
       packageInfo: json['packageInfo'] ?? '',
+      tenNguoiKeKhai: json['ten_nguoi_ke_khai'] ?? '',
+      luongCoSo: json['luong_co_so'] ?? 0,
+      phuongThucDong: json['phuong_thuc_dong'] ?? 1,
+      maVung: json['ma_vung'] ?? 0,
     );
   }
 }

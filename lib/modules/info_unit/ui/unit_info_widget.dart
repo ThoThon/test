@@ -65,6 +65,7 @@ extension UnitInfoWidget on UnitInfoPage {
                   cardEdit: _buildCardOtherInfoEdit(),
                   card: _buildCardOtherInfo(),
                   title: LocaleKeys.unitInfo_otherInfo.tr,
+                  hasBottomPadding: false,
                 ),
               )
             ],
@@ -79,23 +80,23 @@ extension UnitInfoWidget on UnitInfoPage {
     return [
       Column(
         children: [
-          _buildInputInfoUnit(
+          _buildInputDisable(
             label: LocaleKeys.unitInfo_inputTaxCode.tr,
             controller: controller.taxCodeController,
           ),
-          _buildInputInfoUnit(
-            label: LocaleKeys.unitInfo_unitName.tr,
+          _buildInputItemEdit(
             controller: controller.unitNameController,
+            label: LocaleKeys.unitInfo_unitName.tr,
           ),
-          _buildInputInfoUnit(
+          _buildInputDisable(
             label: LocaleKeys.unitInfo_unitCode.tr,
             controller: controller.unitCodeController,
           ),
-          _buildInputInfoUnit(
+          _buildInputDisable(
             label: LocaleKeys.unitInfo_socialAgencyName.tr,
             controller: controller.socialAgencyNameCtrl,
           ),
-          _buildInputInfoUnit(
+          _buildInputDisable(
             label: LocaleKeys.unitInfo_socialAgencyCode.tr,
             controller: controller.socialAgencyCodeCtrl,
           ),
@@ -206,22 +207,40 @@ extension UnitInfoWidget on UnitInfoPage {
   //Thông tin khác
   List<Widget> _buildCardOtherInfoEdit() {
     return [
-      _buildInputItemEdit(
-        controller: controller.personTransactionController,
+      UtilWidget.buildDropDownWithLabel<PaymentMethodEnum>(
         label: LocaleKeys.unitInfo_methodClose.tr,
+        items: PaymentMethodEnum.values,
+        display: (p0) => p0.title.tr,
+        selectedItem: controller.selectedMethod.value,
+        onChanged: (value) {
+          controller.selectedMethod.value = value;
+        },
       ),
-      _buildInputItemEdit(
-        controller: controller.phoneContactController,
+      sdsSBHeight12,
+      UtilWidget.buildDropDownWithLabel<RegionEnum>(
         label: LocaleKeys.unitInfo_region.tr,
+        items: RegionEnum.values,
+        display: (p0) => p0.title.tr,
+        selectedItem: controller.selectedRegion.value,
+        onChanged: (value) {
+          controller.selectedRegion.value = value;
+        },
       ),
+      sdsSBHeight12,
       _buildInputItemEdit(
-        controller: controller.emailContactController,
+        controller: controller.basicSalaryController,
         label: LocaleKeys.unitInfo_basicSalary.tr,
       ),
-      _buildInputItemEdit(
-        controller: controller.emailContactController,
-        label: LocaleKeys.unitInfo_basicSalary.tr,
+      UtilWidget.buildDropDownWithLabel<ReceiveResultEnum>(
+        label: LocaleKeys.unitInfo_receiveResult.tr,
+        items: ReceiveResultEnum.values,
+        display: (p0) => p0.receive.tr,
+        selectedItem: controller.selectedReceive.value,
+        onChanged: (value) {
+          controller.selectedReceive.value = value;
+        },
       ),
+      sdsSBHeight12,
     ];
   }
 
@@ -229,16 +248,16 @@ extension UnitInfoWidget on UnitInfoPage {
   List<Widget> _buildCardOtherInfo() {
     return [
       _buildText(
-        "${LocaleKeys.unitInfo_methodClose.tr}: ${controller.nameRepresentController.text}",
+        "${LocaleKeys.unitInfo_methodClose.tr}: ${controller.selectedMethod.value?.title.tr ?? ''}",
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_region.tr}: ${controller.nameRepresentController.text}",
+        "${LocaleKeys.unitInfo_region.tr}: ${controller.selectedRegion.value?.title.tr ?? ''}",
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_basicSalary.tr}: ${controller.nameRepresentController.text}",
+        "${LocaleKeys.unitInfo_basicSalary.tr}: ${controller.basicSalaryController.text}",
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_basicSalary.tr}: ${controller.nameRepresentController.text}",
+        "${LocaleKeys.unitInfo_registerResult.tr}: ${controller.selectedReceive.value?.receive.tr ?? ''}",
       ),
     ];
   }
@@ -310,16 +329,17 @@ extension UnitInfoWidget on UnitInfoPage {
     return BaseButton(
       text: LocaleKeys.unitInfo_change.tr,
       textColor: AppColors.colorWhite,
-      color: AppColors.statusRed,
       radius: AppDimens.radius4,
-      onPressed: () {
-        controller.updateAccountInfo();
+      onPressed: () async {
+        //Delay 1 giây để showLoading
+        await 1.seconds.delay();
+        await controller.updateAccountInfo();
       },
     );
   }
 
   //Thông tin đơn vị không được sửa, chỉ view thôi
-  Widget _buildInputInfoUnit({
+  Widget _buildInputDisable({
     required TextEditingController controller,
     required String label,
   }) {
@@ -349,21 +369,27 @@ extension UnitInfoWidget on UnitInfoPage {
     required List<Widget> cardEdit,
     required List<Widget> card,
     required String title,
+    bool hasBottomPadding = true,
   }) {
-    return UtilWidget.buildCardBase(
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildTitleAndIcon(
-            isEdit: isEdit,
-            title: title,
-            onTap: () {
-              isEdit.toggle();
-            },
-          ),
-          ...(isEdit.value ? cardEdit : card),
-        ],
-      ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
-    ).paddingOnly(bottom: AppDimens.defaultPadding);
+    return Padding(
+      padding: hasBottomPadding
+          ? EdgeInsets.only(bottom: AppDimens.defaultPadding)
+          : EdgeInsets.zero,
+      child: UtilWidget.buildCardBase(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildTitleAndIcon(
+              isEdit: isEdit,
+              title: title,
+              onTap: () {
+                isEdit.toggle();
+              },
+            ),
+            ...(isEdit.value ? cardEdit : card),
+          ],
+        ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
+      ),
+    );
   }
 }

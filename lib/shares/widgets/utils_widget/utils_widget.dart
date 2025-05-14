@@ -316,6 +316,19 @@ class UtilWidget {
           child: DropdownButton<T>(
             dropdownColor: AppColors.colorWhite,
             isExpanded: true,
+            selectedItemBuilder: (context) => items.map(
+              (e) {
+                return Align(
+                  alignment: Alignment.centerLeft,
+                  child: SDSBuildText(
+                    display(e),
+                    style: AppTextStyle.font14Re,
+                    maxLines: 2,
+                    textAlign: TextAlign.start,
+                  ),
+                );
+              },
+            ).toList(),
             items: items
                 .map(
                   (e) => DropdownMenuItem<T>(
@@ -323,21 +336,12 @@ class UtilWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: AppDimens.paddingVerySmall),
-                      child:
-                          // SDSBuildText(
-                          //   display(e),
-                          //   style: selectedItem == e
-                          //       ? AppTextStyle.font14Bo
-                          //       : AppTextStyle.font14Re,
-                          //   maxLines: 2,
-                          //   textAlign: TextAlign.start,
-                          // ),
-                          TextUtils(
-                        text: display(e),
-                        availableStyle: selectedItem == e
-                            ? StyleEnum.bodyBold
-                            : StyleEnum.bodyRegular,
-                        maxLine: 2,
+                      child: SDSBuildText(
+                        display(e),
+                        style: selectedItem == e
+                            ? AppTextStyle.font14Bo
+                            : AppTextStyle.font14Re,
+                        maxLines: 2,
                         textAlign: TextAlign.start,
                       ),
                     ),
@@ -641,13 +645,32 @@ class UtilWidget {
     );
   }
 
-  static Future<DateTime?> showPeriodDatePicker() async {
+  static Widget buildEmptyList() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SDSImageSvg(Assets.ASSETS_ICONS_ICON_LIST_NULL_SVG),
+          sdsSBHeight8,
+          TextUtils(
+            text: LocaleKeys.dialog_empty.tr,
+            availableStyle: StyleEnum.subBold,
+            color: AppColors.dsGray5,
+          ),
+        ],
+      ),
+    );
+  }
+
+  static Future<DateTime?> showPeriodDatePicker({
+    DateTime? dateTime,
+  }) async {
     final context = Get.context;
     if (context == null) return null;
 
     return showMonthPicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: dateTime ?? DateTime.now(),
       monthPickerDialogSettings: const MonthPickerDialogSettings(
         headerSettings: PickerHeaderSettings(
           headerBackgroundColor: AppColors.primaryColor,

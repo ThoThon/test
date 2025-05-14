@@ -26,7 +26,8 @@
     "notification": "Thông báo",
     "updateSuccess": "Thay đổi thông tin thành công",
     "logout": "Đăng xuất",
-    "isLogout": "Đăng xuất khỏi tài khoản của bạn"
+    "isLogout": "Đăng xuất khỏi tài khoản của bạn",
+    "empty": "Trống"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -134,11 +135,20 @@
     "socialAgencyCode": "Mã cơ quan BHXH",
     "region": "Vùng",
     "basicSalary": "Lương cơ sở",
-    "registerResult": "Đăng ký nhận kết quả"
+    "registerResult": "Đăng ký nhận kết quả",
+    "regionOne": "Vùng I",
+    "regionTwo": "Vùng II",
+    "regionThree": "Vùng III",
+    "regionFour": "Vùng IV",
+    "oneMonth": "1 tháng",
+    "threeMonth": "3 tháng",
+    "sixMonth": "6 tháng",
+    "byPostOffice": "Qua bưu điện",
+    "bySocialAgency": "Nhận tại cơ quan bảo hiểm"
   },
   "history": {
     "procedure": "Thủ tục",
-    "submissionTime":"Thời gian nộp",
+    "submissionTime": "Thời gian nộp",
     "historyDetail": "Chi tiết lịch sử",
     "profileInfo": "Thông tin hồ sơ",
     "status": "Trạng thái",
@@ -158,7 +168,12 @@
     "socialAgencyInProcess": "Đang chờ xử lý",
     "success": "Thành công",
     "fail": "Thất bại",
-    "lookupSuccess": "Tra cứu thành công!"
+    "all": "Tất cả",
+    "lookupSuccess": "Tra cứu thành công!",
+    "procedure600": "600 - Báo tăng, báo giảm, điều chỉnh",
+    "procedure600c": "600c - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo luật bhxh 2014",
+    "procedure600d": "600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP",
+    "procedure600o": "600o - Tạm dừng đóng vào quỹ hưu trí"
   },
   "certificate": {
     "listCertificate": "Danh sách chứng thư số",

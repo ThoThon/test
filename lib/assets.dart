@@ -22,9 +22,13 @@ class Assets {
   static String get ASSETS_FONTS_NUNITOSANS_SEMIBOLD_TTF =>
       '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-SemiBold.ttf';
 
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG.preview}
-  static String get ASSETS_ICONS_HOME_FILE_DECLARATION_SVG =>
-      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/file_declaration.svg';
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_DECLARATION_SVG.preview}
+  static String get ASSETS_ICONS_HOME_DECLARATION_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/declaration.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_HISTORY_SVG.preview}
+  static String get ASSETS_ICONS_HOME_HISTORY_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/history.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_HOME_HOME_SVG.preview}
   static String get ASSETS_ICONS_HOME_HOME_SVG =>
@@ -38,13 +42,9 @@ class Assets {
   static String get ASSETS_ICONS_HOME_LOOKUP_C12_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/home/lookup_c12.svg';
 
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_REGISTER_TRANSACTION_SVG.preview}
-  static String get ASSETS_ICONS_HOME_REGISTER_TRANSACTION_SVG =>
-      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/register_transaction.svg';
-
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_TRANSACTION_HISTORY_SVG.preview}
-  static String get ASSETS_ICONS_HOME_TRANSACTION_HISTORY_SVG =>
-      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/transaction_history.svg';
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_UNIT_INFO_SVG.preview}
+  static String get ASSETS_ICONS_HOME_UNIT_INFO_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/unit_info.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_ACTIVE_SVG.preview}
   static String get ASSETS_ICONS_IC_ACTIVE_SVG =>
@@ -138,6 +138,10 @@ class Assets {
   static String get ASSETS_ICONS_ICON_HOURGLASS_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_hourglass.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_LIST_NULL_SVG.preview}
+  static String get ASSETS_ICONS_ICON_LIST_NULL_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_list_null.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG.preview}
   static String get ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_snack_bar_fail.svg';
@@ -175,8 +179,11 @@ final List<String> assetsArray = <String>[
   Assets.ASSETS_FONTS_NUNITOSANS_REGULAR_TTF,
   Assets.ASSETS_FONTS_NUNITOSANS_SEMIBOLD_TTF,
 
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG.preview}
-  Assets.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG,
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_DECLARATION_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_DECLARATION_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_HISTORY_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_HISTORY_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_HOME_HOME_SVG.preview}
   Assets.ASSETS_ICONS_HOME_HOME_SVG,
@@ -187,11 +194,8 @@ final List<String> assetsArray = <String>[
   /// {@macro assets_generator.ASSETS_ICONS_HOME_LOOKUP_C12_SVG.preview}
   Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG,
 
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_REGISTER_TRANSACTION_SVG.preview}
-  Assets.ASSETS_ICONS_HOME_REGISTER_TRANSACTION_SVG,
-
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_TRANSACTION_HISTORY_SVG.preview}
-  Assets.ASSETS_ICONS_HOME_TRANSACTION_HISTORY_SVG,
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_UNIT_INFO_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_UNIT_INFO_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_ACTIVE_SVG.preview}
   Assets.ASSETS_ICONS_IC_ACTIVE_SVG,
@@ -261,6 +265,9 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_ICON_HOURGLASS_SVG.preview}
   Assets.ASSETS_ICONS_ICON_HOURGLASS_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_LIST_NULL_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_LIST_NULL_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG.preview}
   Assets.ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG,

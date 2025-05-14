@@ -29,4 +29,10 @@ class AppConst {
   static const String dialogConfirm = "dialogConfirm";
 
   static const int maxLines = 3;
+
+  ///procedure code
+  static const String procedure600 = '6001';
+  static const String procedure600c = '6004';
+  static const String procedure600d = '6005';
+  static const String procedure600o = '6006';
 }
