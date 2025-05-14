@@ -18,7 +18,7 @@ extension D01TabWidget on DeclareInfoPage {
                   },
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: controller.createNewCheckList,
                   child: Row(
                     children: [
                       Ink(
@@ -29,7 +29,7 @@ extension D01TabWidget on DeclareInfoPage {
                         child: IconButton(
                           icon: const Icon(Icons.add),
                           color: Colors.white,
-                          onPressed: () {},
+                          onPressed: controller.createNewCheckList,
                         ),
                       ),
                       UtilWidget.sizedBoxWidth16,
@@ -100,7 +100,15 @@ extension D01TabWidget on DeclareInfoPage {
             ),
             UtilWidget.buildSolidButtonBack(
               title: 'Sửa',
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(
+                  AppRoutes.checkListDetail.path,
+                  arguments: CheckListDetailArgument(
+                    checkList: checkList,
+                    action: CheckListDetailAction.edit,
+                  ),
+                );
+              },
             ),
           ],
         ),

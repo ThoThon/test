@@ -1,3 +1,4 @@
+import 'package:v_bhxh/modules/declare/check_list_detail/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
@@ -34,6 +35,15 @@ class DeclareInfoController extends BaseGetxController {
         },
       ),
       isScrollControlled: true,
+    );
+  }
+
+  void createNewCheckList() {
+    Get.toNamed(
+      AppRoutes.checkListDetail.path,
+      arguments: CheckListDetailArgument(
+        action: CheckListDetailAction.create,
+      ),
     );
   }
 
