@@ -593,6 +593,61 @@ class UtilWidget {
     );
   }
 
+  static Widget buildBottomSheetFigma({
+    required Widget child,
+    String? title,
+  }) {
+    return Container(
+      padding: EdgeInsets.only(
+        left: AppDimens.defaultPadding,
+        right: AppDimens.defaultPadding,
+        bottom: GetPlatform.isAndroid ? AppDimens.paddingVerySmall : 0.0,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(AppDimens.radius30),
+          topRight: Radius.circular(AppDimens.radius30),
+        ),
+      ),
+      child: Container(
+        constraints: BoxConstraints(maxHeight: Get.height * 0.8),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            buildBottomHeader(),
+            if (title != null)
+              SDSBuildText(
+                title,
+                style: AppTextStyle.font20Bo.copyWith(
+                  color: AppColors.primaryColor,
+                ),
+                textAlign: TextAlign.center,
+              ).paddingOnly(
+                top: AppDimens.paddingSmallest,
+                bottom: AppDimens.paddingSmallest,
+              ),
+            child,
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget buildBottomHeader() {
+    return Center(
+      child: Container(
+        height: AppDimens.paddingSmallest,
+        width: AppDimens.sizeIconLarge,
+        decoration: const BoxDecoration(
+          borderRadius:
+              BorderRadius.all(Radius.circular(AppDimens.defaultPadding)),
+          color: Color(0xFFC0C4C8),
+        ),
+      ).paddingSymmetric(vertical: AppDimens.defaultPadding),
+    );
+  }
+
   static Widget buildDividerDefault() {
     return const Divider(
       height: 10,

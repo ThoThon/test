@@ -4,6 +4,7 @@ import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 import '../model/model_src.dart';
 
 class DeclareInfoController extends BaseGetxController {
+  final DeclareInfoArgument argument = Get.arguments;
   final selectedTab = DeclareInfoTab.d02.obs;
 
   /// NOTE: Nhân viên được chọn - Mock tạm với String, sau tạo model riêng
