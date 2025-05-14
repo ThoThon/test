@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:v_bhxh/assets.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
+import 'package:v_bhxh/shares/base/ui/sds_build_text.dart';
 
 import '../../../core/core.src.dart';
 import '../../shares.src.dart';
@@ -241,6 +242,87 @@ class ShowDialog {
       ),
       isActiveBack,
       name: name,
+    );
+  }
+
+  static Future<void> showDialogConfirm2({
+    String? title,
+    String? content,
+    String? exitTitle,
+    String? confirmTitle,
+    VoidCallback? onCancelFunc,
+    VoidCallback? onConfirm,
+    bool isAutoCloseDialog = false,
+    bool isActiveBack = true,
+  }) async {
+    _showDialog(
+      Dialog(
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.all(AppDimens.defaultPadding),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              if (title != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: AppDimens.paddingMedium),
+                  child: SDSBuildText(
+                    title,
+                    maxLines: 1,
+                    style: AppTextStyle.font20Bo,
+                  ),
+                ),
+              content != null
+                  ? Container(
+                      padding: const EdgeInsets.only(
+                          top: AppDimens.paddingSmall,
+                          bottom: AppDimens.padding25),
+                      constraints: const BoxConstraints(maxHeight: 200),
+                      child: SingleChildScrollView(
+                        child: Text(
+                          content,
+                          style: AppTextStyle.font16Semi,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.clip,
+                        ).paddingSymmetric(horizontal: AppDimens.padding6),
+                      ),
+                    )
+                  : UtilWidget.sizedBox16,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  UtilWidget.sizedBoxWidth20,
+                  Expanded(
+                    child: UtilWidget.buildSolidButtonBack(
+                      title: exitTitle ?? 'Hủy',
+                      onPressed: () {
+                        dismissDialog();
+                        onCancelFunc?.call();
+                      },
+                    ),
+                  ),
+                  UtilWidget.sizedBoxWidth20,
+                  Expanded(
+                    child: UtilWidget.buildSolidButton(
+                      title: confirmTitle ?? 'Đồng ý',
+                      onPressed: () {
+                        dismissDialog();
+                        onConfirm?.call();
+                      },
+                    ),
+                  ),
+                  UtilWidget.sizedBoxWidth20,
+                ],
+              ).paddingOnly(bottom: AppDimens.paddingMedium),
+            ],
+          ),
+        ),
+      ),
+      isActiveBack,
     );
   }
 

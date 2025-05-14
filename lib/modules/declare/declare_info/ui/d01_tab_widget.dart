@@ -63,7 +63,9 @@ extension D01TabWidget on DeclareInfoPage {
         motion: const ScrollMotion(),
         children: [
           CustomSlidableAction(
-            onPressed: (ctx) {},
+            onPressed: (ctx) {
+              controller.showDialogDeleteCheckList(checkList);
+            },
             backgroundColor: AppColors.primaryColor,
             foregroundColor: Colors.white,
             child: SDSBuildText(

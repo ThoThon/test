@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/declare/check_list_detail/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../model/model_src.dart';
@@ -44,6 +45,16 @@ class DeclareInfoController extends BaseGetxController {
       arguments: CheckListDetailArgument(
         action: CheckListDetailAction.create,
       ),
+    );
+  }
+
+  void showDialogDeleteCheckList(DocumentCheckList checkList) {
+    ShowDialog.showDialogConfirm2(
+      title: 'Xóa "${checkList.title}"?',
+      confirmTitle: 'Xóa',
+      onConfirm: () {
+        //
+      },
     );
   }
 

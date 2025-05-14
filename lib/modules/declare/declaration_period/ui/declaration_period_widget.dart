@@ -61,7 +61,9 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
         motion: const ScrollMotion(),
         children: [
           CustomSlidableAction(
-            onPressed: (ctx) {},
+            onPressed: (ctx) {
+              controller.showDialogDeletePeriod(period);
+            },
             backgroundColor: AppColors.primaryColor,
             foregroundColor: Colors.white,
             child: SDSBuildText(

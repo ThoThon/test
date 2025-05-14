@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/declare/declaration_period/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 class DeclarationPeriodController extends BaseGetxController {
   final selectedPeriodDate = DateTime.now().obs;
@@ -42,5 +43,14 @@ class DeclarationPeriodController extends BaseGetxController {
     if (date != null) {
       selectedPeriodDate.value = date;
     }
+  }
+
+  void showDialogDeletePeriod(DeclarationPeriodModel period) {
+    ShowDialog.showDialogConfirm2(
+      title: 'Xóa "${period.title}"',
+      content: 'Xóa đợt kê khai cũng sẽ xóa toàn bộ dữ liệu của đợt kê khai',
+      confirmTitle: 'Xóa',
+      onConfirm: () {},
+    );
   }
 }
