@@ -255,7 +255,9 @@ extension D02TabWidget on DeclareInfoPage {
         Expanded(
           child: UtilWidget.buildSolidButton(
             title: 'Tiếp theo',
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AppRoutes.declarationList.path);
+            },
           ),
         ),
       ],

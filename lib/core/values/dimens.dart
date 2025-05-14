@@ -58,6 +58,7 @@ class AppDimens {
   static const double btnLoginFigmaHeight = 54;
   static const double btnFloatingButton = 48;
   static const double btnHeigh46 = 46;
+  static const double btnHeigh48 = 48;
 
   static const double padding1 = 1.0;
   static const double padding2 = 2.0;

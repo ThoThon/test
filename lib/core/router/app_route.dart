@@ -7,6 +7,7 @@ enum AppRoutes {
   declareInfo,
   familyMemberDetail,
   checkListDetail,
+  declarationList,
 
   routeDioLog,
   splash,
