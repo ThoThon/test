@@ -16,6 +16,7 @@ class UtilWidget {
     );
   }
 
+  static const Widget shrink = SizedBox.shrink();
   static const Widget sizedBox4 = SizedBox(height: 4);
   static const Widget sizedBox5 = SizedBox(height: 5);
   static const Widget sizedBox8 = SizedBox(height: 8);

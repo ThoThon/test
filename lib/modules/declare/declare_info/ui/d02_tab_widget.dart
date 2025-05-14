@@ -4,106 +4,87 @@ extension D02TabWidget on DeclareInfoPage {
   Widget _buildD02TabBody() {
     return Form(
       key: controller.d02State.formKey,
-      child: Column(
-        children: [
-          _buildScanIDButton(
-            onTap: () {},
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppDimens.defaultPadding,
-              ),
-              child: Obx(
-                () {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildInputFullName(
-                        onTapSelectStaff: controller.showDialogSelectStaff,
-                      ),
-                      UtilWidget.sizedBox16,
-                      _buildInputBHXHNumber(),
-                      UtilWidget.sizedBox16,
-                      _buildSelectDeclareType(),
-                      UtilWidget.sizedBox16,
-                      _buildSelectPlan(),
-                      UtilWidget.sizedBox16,
-                      UtilWidget.buildCheckboxWithLabel(
-                        label: 'SInh dữ liệu TK1-TS',
-                        value: controller.d02State.isGenerateTk1Data.value,
-                        onChanged: (value) {
-                          controller.d02State.isGenerateTk1Data.value =
-                              value ?? false;
-                        },
-                      ),
-                      UtilWidget.sizedBox16,
-                      _buildInputCCCD(),
-                      UtilWidget.sizedBox16,
-                      UtilWidget.buildSelectDate(
-                        'Ngày sinh',
-                        hintText: PATTERN_1,
-                        date: convertDateToStringSafe(
-                          controller.d02Tk1State.dateOfBirth.value,
-                          PATTERN_1,
-                        ),
-                        onTap: () {},
-                      ),
-                      UtilWidget.sizedBox12,
-                      _buildSelectGender(onChanged: (value) {}),
-                      UtilWidget.sizedBox8,
-                      _buildSelectEthnic(),
-                      _buildSelectNationality(),
-                      UtilWidget.buildSelectDate(
-                        'Từ tháng/năm',
-                        hintText: PATTERN_12,
-                        date: convertDateToStringSafe(
-                            controller.d02State.fromDate.value, PATTERN_12),
-                        onTap: () {},
-                      ),
-                      UtilWidget.sizedBox16,
-                      UtilWidget.buildSelectDate(
-                        'Đến tháng/năm',
-                        hintText: PATTERN_12,
-                        date: convertDateToStringSafe(
-                            controller.d02State.toDate.value, PATTERN_12),
-                        onTap: () {},
-                      ),
-                      UtilWidget.sizedBox16,
-                      _buildInputPosition(),
-                      UtilWidget.sizedBox16,
-                      _buildInputWorkplace(),
-                      UtilWidget.sizedBox16,
-                      _buildInputSalary(),
-                      UtilWidget.sizedBox16,
-                      _buildInputPositionAllowance(),
-                      UtilWidget.sizedBox16,
-                      _buildInputPCTNN(),
-                      UtilWidget.sizedBox16,
-                      _buildInputPcTNVuotKhung(),
-                      UtilWidget.sizedBox16,
-                      _buildInputSalaryAllowance(),
-                      UtilWidget.sizedBox16,
-                      _buildInputOtherAllowance(),
-                      UtilWidget.sizedBox16,
-                      _buildInputNote(),
-                    ],
-                  );
-                },
-              ),
-            ),
-          ),
-          // UtilWidget.buildSolidButton(
-          //   title: 'Tiếp theo',
-          //   onPressed: () {
-          //     if (controller.d02State.formKey.currentState?.validate() ??
-          //         false) {
-          //       print("Form is valid");
-          //     }
-          //   },
-          // ),
-          _buildD02BottomButtons()
-        ],
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppDimens.defaultPadding,
+        ),
+        child: Obx(
+          () {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildInputFullName(
+                  onTapSelectStaff: controller.showDialogSelectStaff,
+                ),
+                UtilWidget.sizedBox16,
+                _buildInputBHXHNumber(),
+                UtilWidget.sizedBox16,
+                _buildSelectDeclareType(),
+                UtilWidget.sizedBox16,
+                _buildSelectPlan(),
+                UtilWidget.sizedBox16,
+                UtilWidget.buildCheckboxWithLabel(
+                  label: 'SInh dữ liệu TK1-TS',
+                  value: controller.d02State.isGenerateTk1Data.value,
+                  onChanged: (value) {
+                    controller.d02State.isGenerateTk1Data.value =
+                        value ?? false;
+                  },
+                ),
+                UtilWidget.sizedBox16,
+                _buildInputCCCD(),
+                UtilWidget.sizedBox16,
+                UtilWidget.buildSelectDate(
+                  'Ngày sinh',
+                  hintText: PATTERN_1,
+                  date: convertDateToStringSafe(
+                    controller.d02Tk1State.dateOfBirth.value,
+                    PATTERN_1,
+                  ),
+                  onTap: () {},
+                ),
+                UtilWidget.sizedBox12,
+                _buildSelectGender(onChanged: (value) {}),
+                UtilWidget.sizedBox8,
+                _buildSelectEthnic(),
+                _buildSelectNationality(),
+                UtilWidget.buildSelectDate(
+                  'Từ tháng/năm',
+                  hintText: PATTERN_12,
+                  date: convertDateToStringSafe(
+                      controller.d02State.fromDate.value, PATTERN_12),
+                  onTap: () {},
+                ),
+                UtilWidget.sizedBox16,
+                UtilWidget.buildSelectDate(
+                  'Đến tháng/năm',
+                  hintText: PATTERN_12,
+                  date: convertDateToStringSafe(
+                      controller.d02State.toDate.value, PATTERN_12),
+                  onTap: () {},
+                ),
+                UtilWidget.sizedBox16,
+                _buildInputPosition(),
+                UtilWidget.sizedBox16,
+                _buildInputWorkplace(),
+                UtilWidget.sizedBox16,
+                _buildInputSalary(),
+                UtilWidget.sizedBox16,
+                _buildInputPositionAllowance(),
+                UtilWidget.sizedBox16,
+                _buildInputPCTNN(),
+                UtilWidget.sizedBox16,
+                _buildInputPcTNVuotKhung(),
+                UtilWidget.sizedBox16,
+                _buildInputSalaryAllowance(),
+                UtilWidget.sizedBox16,
+                _buildInputOtherAllowance(),
+                UtilWidget.sizedBox16,
+                _buildInputNote(),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -239,32 +220,6 @@ extension D02TabWidget on DeclareInfoPage {
           controller: controller.d02State.noteTextCtrl,
         ),
       ),
-    );
-  }
-
-  Widget _buildD02BottomButtons() {
-    return Row(
-      children: [
-        Expanded(
-          child: UtilWidget.buildSolidButtonBack(
-            title: 'Lưu nháp',
-            onPressed: () {},
-          ),
-        ),
-        UtilWidget.sizedBoxWidth16,
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: 'Tiếp theo',
-            onPressed: () {
-              Get.toNamed(AppRoutes.declarationList.path);
-            },
-          ),
-        ),
-      ],
-    ).paddingOnly(
-      left: AppDimens.defaultPadding,
-      right: AppDimens.defaultPadding,
-      top: AppDimens.defaultPadding,
     );
   }
 }
