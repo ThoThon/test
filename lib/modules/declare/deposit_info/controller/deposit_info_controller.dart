@@ -1,12 +1,9 @@
 import 'package:file_picker/file_picker.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/model/declaration_period_model.dart';
-import 'package:v_bhxh/modules/declare/declaration_period_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/deposit_info/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:collection/collection.dart';
 
-class DeclarationPeriodDetailController extends BaseGetxController {
-  final declarationPeriod = Get.arguments as DeclarationPeriodModel;
-
+class DepositInfoController extends BaseGetxController {
   final imagePath = Rxn<String>();
 
   final declaredStaffs = const <DeclaredStaffModel>[

@@ -1,6 +1,6 @@
-part of 'declaration_period_detail_page.dart';
+part of 'deposit_info_page.dart';
 
-extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
+extension DepositInfoWidget on DepositInfoPage {
   Widget _buildBody() {
     return Column(
       children: [
@@ -151,7 +151,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
     return UtilWidget.buildSolidButton(
       title: LocaleKeys.declarationPeriodDetail_deposit.tr,
       onPressed: () {
-        Get.toNamed(AppRoutes.declareInfo.path);
+        Get.toNamed(AppRoutes.declarationList.path);
       },
     );
   }
