@@ -74,7 +74,9 @@ class DeclareInfoController extends BaseGetxController {
         title: 'Hoàn tất',
         content: 'Bạn muốn Chuyển ký hay thêm tiếp nhân sự?',
         child: CompleteDeclareInfoWidget(
-          onTapAddStaff: () {},
+          onTapAddStaff: () {
+            currentTab.value = DeclareInfoTab.d02;
+          },
           onTapDeposit: () {
             Get.toNamed(AppRoutes.depositInfo.path);
           },

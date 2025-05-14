@@ -27,6 +27,7 @@ class CompleteDeclareInfoWidget extends StatelessWidget {
         const Divider(height: 1),
         _buildButton(
           title: 'Chuyển ký',
+          textColor: Colors.green,
           onTap: () {
             ShowDialog.dismissDialog();
             onTapDeposit?.call();
@@ -35,6 +36,7 @@ class CompleteDeclareInfoWidget extends StatelessWidget {
         const Divider(height: 1),
         _buildButton(
           title: 'Thêm tiếp nhân sự',
+          textColor: AppColors.primaryColor,
           onTap: () {
             ShowDialog.dismissDialog();
             onTapAddStaff?.call();
@@ -53,6 +55,7 @@ class CompleteDeclareInfoWidget extends StatelessWidget {
 
   Widget _buildButton({
     required String title,
+    Color? textColor,
     VoidCallback? onTap,
   }) {
     return InkWell(
@@ -64,7 +67,9 @@ class CompleteDeclareInfoWidget extends StatelessWidget {
         ),
         child: SDSBuildText(
           title,
-          style: AppTextStyle.font16Bo,
+          style: AppTextStyle.font16Bo.copyWith(
+            color: textColor,
+          ),
         ),
       ),
     );
