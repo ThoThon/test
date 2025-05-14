@@ -11,7 +11,7 @@ extension D02TabWidget on DeclareInfoPage {
           ),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: AppDimens.defaultPadding,
               ),
               child: Obx(

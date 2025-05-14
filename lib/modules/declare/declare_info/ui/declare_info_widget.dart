@@ -31,7 +31,8 @@ extension DeclareInfoWidget on DeclareInfoPage {
             color: AppColors.colorWhite,
             borderRadius: BorderRadius.circular(AppDimens.radius8),
           ),
-          padding: EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
+          padding:
+              const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
           child: Row(
             children: [
               Expanded(
@@ -105,7 +106,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.qr_code_scanner,
             size: 36,
           ),
@@ -141,7 +142,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
                 onPressed: onTapSelectStaff,
                 style: TextButton.styleFrom(
                   minimumSize: Size.zero,
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: AppDimens.paddingSmallest,
                     horizontal: AppDimens.paddingSmall,
                   ),

@@ -138,8 +138,8 @@ class BottomSheetSearch<T> extends StatelessWidget {
                 vertical: AppDimens.paddingSmall,
               ),
               if (isSelected) ...[
-                Spacer(),
-                Icon(
+                const Spacer(),
+                const Icon(
                   Icons.check_outlined,
                   color: AppColors.primaryColor,
                 ),

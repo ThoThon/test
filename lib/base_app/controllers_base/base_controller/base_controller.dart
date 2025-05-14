@@ -133,7 +133,7 @@ class BaseGetxController extends GetxController {
         return Material(
           color: Colors.transparent,
           child: Container(
-            padding: EdgeInsets.all(AppDimens.paddingSmall),
+            padding: const EdgeInsets.all(AppDimens.paddingSmall),
             margin: const EdgeInsets.symmetric(
               horizontal: AppDimens.padding5,
               vertical: AppDimens.padding10,

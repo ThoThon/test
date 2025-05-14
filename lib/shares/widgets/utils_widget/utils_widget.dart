@@ -229,9 +229,9 @@ class UtilWidget {
         right: AppDimens.defaultPadding,
         bottom: GetPlatform.isAndroid ? AppDimens.paddingVerySmall : 0.0,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.colorWhite,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(AppDimens.radius30),
           topRight: Radius.circular(AppDimens.radius30),
         ),
@@ -391,7 +391,7 @@ class UtilWidget {
             ),
             if (state.hasError)
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: AppDimens.paddingSmallest,
                   left: AppDimens.paddingSmall,
                 ),
@@ -469,7 +469,7 @@ class UtilWidget {
                               availableStyle: StyleEnum.bodyRegular,
                               color: item.value != null
                                   ? AppColors.colorBlack
-                                  : Color.fromARGB(255, 2, 2, 2),
+                                  : const Color.fromARGB(255, 2, 2, 2),
                             ),
                           ),
                           const Icon(
@@ -548,9 +548,9 @@ class UtilWidget {
                   width: AppDimens.padding60,
                   height: AppDimens.paddingVerySmall,
                   margin: const EdgeInsets.all(AppDimens.paddingVerySmall),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: AppColors.dsGray2,
-                      borderRadius: const BorderRadius.all(Radius.circular(8))),
+                      borderRadius: BorderRadius.all(Radius.circular(8))),
                 ),
               ),
               noAppBar
@@ -603,9 +603,9 @@ class UtilWidget {
         right: AppDimens.defaultPadding,
         bottom: GetPlatform.isAndroid ? AppDimens.paddingVerySmall : 0.0,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(AppDimens.radius30),
           topRight: Radius.circular(AppDimens.radius30),
         ),

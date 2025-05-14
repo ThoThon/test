@@ -35,7 +35,7 @@ class BaseButton extends StatelessWidget {
       builder: (context, loading, child) {
         return Container(
           width: width ?? Get.width,
-          padding: padding ?? EdgeInsets.all(AppDimens.defaultPadding),
+          padding: padding ?? const EdgeInsets.all(AppDimens.defaultPadding),
           child: ElevatedButton(
             onPressed: (onPressed == null || loading)
                 ? null
@@ -52,7 +52,7 @@ class BaseButton extends StatelessWidget {
               backgroundColor: color,
               foregroundColor: textColor,
               elevation: 0,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: AppDimens.paddingMedium,
                 vertical: AppDimens.paddingSmall,
               ),
@@ -73,7 +73,7 @@ class BaseButton extends StatelessWidget {
                 ),
                 if (loading) ...[
                   sdsSBWidth8,
-                  SizedBox(
+                  const SizedBox(
                     width: AppDimens.sizeIconDefault,
                     height: AppDimens.sizeIconDefault,
                     child: CircularProgressIndicator(

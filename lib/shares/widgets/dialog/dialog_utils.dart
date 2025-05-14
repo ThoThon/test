@@ -219,7 +219,7 @@ class ShowDialog {
                         onPressed: funcBack ?? Get.back,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: AppDimens.paddingSmall,
                     ),
                     Expanded(
@@ -371,7 +371,7 @@ class ShowDialog {
                         onPressed: funcBack ?? Get.back,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: AppDimens.paddingSmall,
                     ),
                     Expanded(
@@ -411,7 +411,7 @@ class ShowDialog {
         elevation: 8,
         child: Container(
           padding: const EdgeInsets.all(AppDimens.defaultPadding),
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 300,
           ),
           child: Column(
@@ -420,12 +420,12 @@ class ShowDialog {
             children: [
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.notifications_none_outlined,
                     color: Colors.redAccent,
                     size: 24,
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: TextUtils(
                       text: title ?? 'Cảnh báo',
@@ -435,7 +435,7 @@ class ShowDialog {
                   ),
                 ],
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               if (missingFields != null && missingFields.isNotEmpty)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -7,7 +7,7 @@ extension ProcedureListPageWidget on ProcedureListPage {
 
   Widget _buildProcedureList() {
     return ListView.separated(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         left: AppDimens.defaultPadding,
         right: AppDimens.defaultPadding,
         bottom: AppDimens.defaultPadding,
@@ -24,7 +24,7 @@ extension ProcedureListPageWidget on ProcedureListPage {
 
   Widget _buildProcedureItem() {
     return Container(
-      padding: EdgeInsets.all(AppDimens.paddingSmall),
+      padding: const EdgeInsets.all(AppDimens.paddingSmall),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppDimens.radius8),
         border: Border.all(
@@ -39,7 +39,7 @@ extension ProcedureListPageWidget on ProcedureListPage {
           Row(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: AppDimens.paddingVerySmall,
                   horizontal: AppDimens.paddingSmall,
                 ),

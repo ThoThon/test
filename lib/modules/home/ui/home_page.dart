@@ -14,7 +14,7 @@ class HomePage extends BaseGetWidget<HomeController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(
+      appBar: const BaseAppBar(
         title: TextUtils(
           text: LocaleKeys.declaration_declarationSocial,
           availableStyle: StyleEnum.subBold,
@@ -32,7 +32,7 @@ class HomePage extends BaseGetWidget<HomeController> {
               crossAxisCount: 2,
               mainAxisSpacing: AppDimens.defaultPadding,
               crossAxisSpacing: AppDimens.defaultPadding,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               childAspectRatio: 1.8,
               children:
                   HomeEnum.values.map((item) => _buildMenuItem(item)).toList(),
@@ -53,8 +53,8 @@ class HomePage extends BaseGetWidget<HomeController> {
           child: Row(
             children: [
               Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: AppDimens.paddingSmall),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimens.paddingSmall),
                 child: SDSImageSvg(
                   item.image,
                   height: AppDimens.sizeCardItem,

@@ -11,7 +11,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           ),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: AppDimens.defaultPadding,
               ),
               child: Obx(
@@ -513,8 +513,9 @@ extension Tk1TabWidget on DeclareInfoPage {
         ),
         if (controller.tk1State.familyMembers.isNotEmpty)
           Container(
-            margin: EdgeInsets.symmetric(vertical: AppDimens.paddingVerySmall),
-            padding: EdgeInsets.symmetric(
+            margin: const EdgeInsets.symmetric(
+                vertical: AppDimens.paddingVerySmall),
+            padding: const EdgeInsets.symmetric(
               horizontal: AppDimens.defaultPadding,
               vertical: AppDimens.paddingVerySmall,
             ),
@@ -546,12 +547,12 @@ extension Tk1TabWidget on DeclareInfoPage {
               Get.toNamed(AppRoutes.familyMemberDetail.path);
             },
             style: OutlinedButton.styleFrom(
-              shape: CircleBorder(),
-              side: BorderSide(
+              shape: const CircleBorder(),
+              side: const BorderSide(
                 color: AppColors.primaryColor,
               ),
             ),
-            label: Icon(
+            label: const Icon(
               Icons.add,
               color: AppColors.primaryColor,
             ),

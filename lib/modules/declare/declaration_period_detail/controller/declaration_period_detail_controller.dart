@@ -9,7 +9,7 @@ class DeclarationPeriodDetailController extends BaseGetxController {
 
   final imagePath = Rxn<String>();
 
-  final declaredStaffs = <DeclaredStaffModel>[
+  final declaredStaffs = const <DeclaredStaffModel>[
     DeclaredStaffModel(name: 'Nguyễn Văn A', phoneNumber: '0123456789'),
     DeclaredStaffModel(name: 'Nguyễn Văn A', phoneNumber: '0123456789'),
     DeclaredStaffModel(name: 'Nguyễn Văn A', phoneNumber: '0123456789'),

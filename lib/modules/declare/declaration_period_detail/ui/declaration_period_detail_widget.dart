@@ -6,7 +6,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
       children: [
         Expanded(
           child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: AppDimens.defaultPadding,
             ),
             child: Obx(
@@ -53,7 +53,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
             ),
             child: Row(
               children: [
-                Icon(Icons.image_outlined, size: 48),
+                const Icon(Icons.image_outlined, size: 48),
                 UtilWidget.sizedBoxWidth8,
                 SDSBuildText(
                   LocaleKeys.declarationPeriodDetail_addAttachedImage.tr,
@@ -78,7 +78,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
                   color: AppColors.primaryColor,
                   style: IconButton.styleFrom(backgroundColor: Colors.white),
                   onPressed: controller.removeImage,
-                  icon: Icon(Icons.close),
+                  icon: const Icon(Icons.close),
                 ),
               ),
             ],
@@ -101,7 +101,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
                 onTap: () {},
                 child: Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(AppDimens.defaultPadding),
+                  padding: const EdgeInsets.all(AppDimens.defaultPadding),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
@@ -128,7 +128,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
       onTap: () {},
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             backgroundColor: AppColors.primaryColor,
             child: Icon(
               Icons.add,

@@ -38,7 +38,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
 
   Widget _buildPeriods() {
     return ListView.builder(
-      padding: EdgeInsets.only(bottom: AppDimens.defaultPadding),
+      padding: const EdgeInsets.only(bottom: AppDimens.defaultPadding),
       itemCount: controller.declarationPeriods.length,
       itemBuilder: (context, index) {
         final period = controller.declarationPeriods[index];
@@ -76,7 +76,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
         ],
       ),
       child: Container(
-        padding: EdgeInsets.all(AppDimens.defaultPadding),
+        padding: const EdgeInsets.all(AppDimens.defaultPadding),
         decoration: BoxDecoration(
           color: index % 2 == 0 ? Colors.white : Colors.grey[100],
         ),
@@ -187,7 +187,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
                 );
               },
               separatorBuilder: (context, index) {
-                return Divider();
+                return const Divider();
               },
             ),
           ),

@@ -78,7 +78,7 @@ extension D01TabWidget on DeclareInfoPage {
         ],
       ),
       child: Container(
-        padding: EdgeInsets.all(AppDimens.defaultPadding),
+        padding: const EdgeInsets.all(AppDimens.defaultPadding),
         decoration: BoxDecoration(
           color: index % 2 == 0 ? Colors.white : Colors.grey[100],
         ),
