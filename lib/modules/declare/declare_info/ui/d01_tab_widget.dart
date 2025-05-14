@@ -11,35 +11,9 @@ extension D01TabWidget on DeclareInfoPage {
               children: [
                 ...controller.d01State.checkLists.mapIndexed(
                   (index, checkList) {
-                    return Container(
-                      padding: EdgeInsets.all(AppDimens.defaultPadding),
-                      decoration: BoxDecoration(
-                        color: index % 2 == 0 ? Colors.white : Colors.grey[100],
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SDSBuildText(
-                                  checkList.title,
-                                  style: AppTextStyle.font16Semi,
-                                ),
-                                SDSBuildText(
-                                  checkList.user,
-                                  style: AppTextStyle.font16Re,
-                                ),
-                              ],
-                            ),
-                          ),
-                          UtilWidget.buildSolidButtonBack(
-                            title: 'Sửa',
-                            onPressed: () {},
-                          ),
-                        ],
-                      ),
+                    return _buildD01Item(
+                      index: index,
+                      checkList: checkList,
                     );
                   },
                 ),
@@ -75,6 +49,62 @@ extension D01TabWidget on DeclareInfoPage {
         ),
         _buildD01BottomButtons(),
       ],
+    );
+  }
+
+  Widget _buildD01Item({
+    required int index,
+    required DocumentCheckList checkList,
+  }) {
+    return Slidable(
+      key: ValueKey(checkList.id),
+      endActionPane: ActionPane(
+        // A motion is a widget used to control how the pane animates.
+        motion: const ScrollMotion(),
+        children: [
+          CustomSlidableAction(
+            onPressed: (ctx) {},
+            backgroundColor: AppColors.primaryColor,
+            foregroundColor: Colors.white,
+            child: SDSBuildText(
+              LocaleKeys.app_delete.tr,
+              style: AppTextStyle.font20Bo.copyWith(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
+      ),
+      child: Container(
+        padding: EdgeInsets.all(AppDimens.defaultPadding),
+        decoration: BoxDecoration(
+          color: index % 2 == 0 ? Colors.white : Colors.grey[100],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SDSBuildText(
+                    checkList.title,
+                    style: AppTextStyle.font16Semi,
+                  ),
+                  SDSBuildText(
+                    checkList.user,
+                    style: AppTextStyle.font16Re,
+                  ),
+                ],
+              ),
+            ),
+            UtilWidget.buildSolidButtonBack(
+              title: 'Sửa',
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
     );
   }
 
