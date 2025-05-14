@@ -187,7 +187,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
                 );
               },
               separatorBuilder: (context, index) {
-                return const Divider();
+                return const Divider(height: 1);
               },
             ),
           ),

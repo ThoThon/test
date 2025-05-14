@@ -331,7 +331,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
             title: 'Lưu nháp',
-            onPressed: () {},
+            onPressed: () {
+              Get.back();
+            },
           ),
         ),
         UtilWidget.sizedBoxWidth16,
