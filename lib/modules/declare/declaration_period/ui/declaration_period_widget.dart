@@ -137,13 +137,14 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
               UtilWidget.buildSolidButtonBack(
                 title: LocaleKeys.app_edit2.tr,
                 onPressed: () {
-                  Get.toNamed(
-                    AppRoutes.declareInfo.path,
-                    arguments: DeclareInfoArgument(
-                      period: period,
-                      action: DeclareInfoAction.edit,
-                    ),
-                  );
+                  // Get.toNamed(
+                  //   AppRoutes.declareInfo.path,
+                  //   arguments: DeclareInfoArgument(
+                  //     period: period,
+                  //     action: DeclareInfoAction.edit,
+                  //   ),
+                  // );
+                  Get.toNamed(AppRoutes.depositInfo.path);
                 },
               ),
           ],

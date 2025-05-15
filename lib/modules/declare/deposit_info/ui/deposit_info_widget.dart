@@ -179,11 +179,22 @@ extension DepositInfoWidget on DepositInfoPage {
   Widget _buildAddNewStaff() {
     return InkWell(
       onTap: () {
-        Get.back(
-          result: const DepositInfoResult(
-            action: DepositInfoResultAction.selectD02Tab,
-          ),
-        );
+        // Nếu được mở từ màn Kê khai thông tin thì chỉ cần back về và chọn đúng tab
+        if (Get.previousRoute == AppRoutes.declareInfo.path) {
+          Get.back(
+            result: const DepositInfoResult(
+              action: DepositInfoResultAction.selectD02Tab,
+            ),
+          );
+        } else {
+          // Nếu chưa có thì đóng màn này và mở màn Kê khai thông tin
+          Get.offNamed(
+            AppRoutes.declareInfo.path,
+            arguments: const DeclareInfoArgument(
+              action: DeclareInfoAction.edit,
+            ),
+          );
+        }
       },
       child: Row(
         children: [
