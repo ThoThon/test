@@ -1,7 +1,5 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:v_bhxh/modules/declare/deposit_info/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
-import 'package:collection/collection.dart';
 
 class DepositInfoController extends BaseGetxController {
   final imagePath = Rxn<String>();
@@ -14,14 +12,16 @@ class DepositInfoController extends BaseGetxController {
   ].obs;
 
   Future<void> pickImage() async {
-    final result = await FilePicker.platform.pickFiles(
-      allowMultiple: false,
-      type: FileType.image,
-    );
+    final path = await ImageUtils.pickImage();
+    if (path != null) {
+      imagePath.value = path;
+    }
+  }
 
-    final file = result?.files.firstOrNull;
-    if (file != null) {
-      imagePath.value = file.path;
+  Future<void> takePhoto() async {
+    final path = await ImageUtils.takePhoto();
+    if (path != null) {
+      imagePath.value = path;
     }
   }
 

@@ -51,7 +51,7 @@ extension DepositInfoWidget on DepositInfoPage {
                         onTap: () {
                           // Close the bottom sheet
                           Get.back();
-                          // Open create period page
+                          controller.takePhoto();
                         },
                         child: Row(
                           children: [
@@ -74,7 +74,6 @@ extension DepositInfoWidget on DepositInfoPage {
                         onTap: () {
                           // Close the bottom sheet
                           Get.back();
-
                           controller.pickImage();
                         },
                         child: Row(
