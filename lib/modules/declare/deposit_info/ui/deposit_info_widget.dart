@@ -178,7 +178,13 @@ extension DepositInfoWidget on DepositInfoPage {
 
   Widget _buildAddNewStaff() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.back(
+          result: const DepositInfoResult(
+            action: DepositInfoResultAction.selectD02Tab,
+          ),
+        );
+      },
       child: Row(
         children: [
           const CircleAvatar(
@@ -202,7 +208,8 @@ extension DepositInfoWidget on DepositInfoPage {
 
   Widget _buildSubmitButton() {
     return UtilWidget.buildSolidButton(
-      title: LocaleKeys.declarationPeriodDetail_deposit.tr,
+      height: AppDimens.btnLargeFigma,
+      title: 'Tiếp theo',
       onPressed: () {
         Get.toNamed(AppRoutes.declarationList.path);
       },
