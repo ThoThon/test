@@ -77,4 +77,8 @@ class HistoryController extends BaseRefreshGetxController {
       getListHistory();
     }
   }
+
+  void backToHome() {
+    Get.until(ModalRoute.withName(AppRoutes.pageBuilder.path));
+  }
 }

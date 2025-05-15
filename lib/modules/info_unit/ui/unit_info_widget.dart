@@ -299,7 +299,7 @@ extension UnitInfoWidget on UnitInfoPage {
           title,
           style: AppTextStyle.font16Bo,
         ),
-        Spacer(),
+        const Spacer(),
         GestureDetector(
           onTap: onTap,
           child: isEdit.value
@@ -348,9 +348,9 @@ extension UnitInfoWidget on UnitInfoPage {
       label: label,
       buildInputText: BuildInputText(
         InputTextModel(
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: AppColors.dsGray7)),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: AppColors.dsGray7)),
           isShowBorder: false,
           isReadOnly: true,
@@ -373,7 +373,7 @@ extension UnitInfoWidget on UnitInfoPage {
   }) {
     return Padding(
       padding: hasBottomPadding
-          ? EdgeInsets.only(bottom: AppDimens.defaultPadding)
+          ? const EdgeInsets.only(bottom: AppDimens.defaultPadding)
           : EdgeInsets.zero,
       child: UtilWidget.buildCardBase(
         Column(

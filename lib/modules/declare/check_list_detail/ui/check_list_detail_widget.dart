@@ -8,7 +8,7 @@ extension CheckListDetailWidget on CheckListDetailPage {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: AppDimens.defaultPadding,
               ),
               child: Obx(
@@ -175,10 +175,6 @@ extension CheckListDetailWidget on CheckListDetailPage {
           ),
         ),
       ],
-    ).paddingOnly(
-      left: AppDimens.defaultPadding,
-      right: AppDimens.defaultPadding,
-      top: AppDimens.defaultPadding,
-    );
+    ).paddingAll(AppDimens.defaultPadding);
   }
 }

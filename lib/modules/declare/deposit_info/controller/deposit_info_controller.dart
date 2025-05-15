@@ -1,15 +1,12 @@
-import 'package:collection/collection.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:v_bhxh/modules/declare/deposit_info/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../../../base_app/base_app.src.dart';
 
-class DeclarationPeriodDetailController extends BaseGetxController {
-  final declarationPeriod = Get.arguments as DeclarationPeriodModel;
-
+class DepositInfoController extends BaseGetxController {
   final imagePath = Rxn<String>();
 
-  final declaredStaffs = <DeclaredStaffModel>[
+  final declaredStaffs = const <DeclaredStaffModel>[
     DeclaredStaffModel(name: 'Nguyễn Văn A', phoneNumber: '0123456789'),
     DeclaredStaffModel(name: 'Nguyễn Văn A', phoneNumber: '0123456789'),
     DeclaredStaffModel(name: 'Nguyễn Văn A', phoneNumber: '0123456789'),
@@ -17,14 +14,16 @@ class DeclarationPeriodDetailController extends BaseGetxController {
   ].obs;
 
   Future<void> pickImage() async {
-    final result = await FilePicker.platform.pickFiles(
-      allowMultiple: false,
-      type: FileType.image,
-    );
+    final path = await ImageUtils.pickImage();
+    if (path != null) {
+      imagePath.value = path;
+    }
+  }
 
-    final file = result?.files.firstOrNull;
-    if (file != null) {
-      imagePath.value = file.path;
+  Future<void> takePhoto() async {
+    final path = await ImageUtils.takePhoto();
+    if (path != null) {
+      imagePath.value = path;
     }
   }
 

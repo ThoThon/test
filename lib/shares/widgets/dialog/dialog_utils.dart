@@ -1,4 +1,16 @@
-import '../../../modules/src.dart';
+import 'package:flutter/material.dart';
+import 'package:v_bhxh/assets.dart';
+import 'package:v_bhxh/generated/locales.g.dart';
+import 'package:v_bhxh/shares/base/ui/sds_build_text.dart';
+import 'package:v_bhxh/shares/package/export_package.dart';
+
+import '../../../core/core.src.dart';
+import '../../shares.src.dart';
+
+enum DialogIconType {
+  success,
+  failure,
+}
 
 class ShowDialog {
   static int _numberOfDialogs = 0;
@@ -192,7 +204,7 @@ class ShowDialog {
                   style: AppTextStyle.font16Bo,
                 ).paddingOnly(bottom: AppDimens.paddingVerySmall),
                 title == null
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : SDSBuildText(
                         title,
                         style: AppTextStyle.font14Re,
@@ -205,7 +217,7 @@ class ShowDialog {
                         onPressed: funcBack ?? Get.back,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: AppDimens.paddingSmall,
                     ),
                     Expanded(
@@ -228,6 +240,137 @@ class ShowDialog {
       ),
       isActiveBack,
       name: name,
+    );
+  }
+
+  static Future<void> showDialogConfirm2({
+    required String title,
+    String? content,
+    String? exitTitle,
+    String? confirmTitle,
+    DialogIconType? iconType,
+    VoidCallback? onCancel,
+    VoidCallback? onConfirm,
+    bool isActiveBack = true,
+  }) async {
+    _showDialog(
+      Dialog(
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.all(AppDimens.defaultPadding),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            if (iconType != null)
+              iconType == DialogIconType.success
+                  ? SDSImageSvg(
+                      Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
+                      width: 80,
+                      height: 80,
+                    )
+                  : SDSImageSvg(
+                      Assets.ASSETS_IMAGES_IMG_CHECK_FAILURE_SVG,
+                      width: 80,
+                      height: 80,
+                    ),
+            SDSBuildText(
+              title,
+              maxLines: 1,
+              style: AppTextStyle.font20Bo,
+            ),
+            content != null
+                ? Container(
+                    padding: const EdgeInsets.only(
+                      top: AppDimens.paddingSmall,
+                      bottom: AppDimens.padding25,
+                    ),
+                    constraints: const BoxConstraints(maxHeight: 200),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        content,
+                        style: AppTextStyle.font16Semi,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.clip,
+                      ).paddingSymmetric(horizontal: AppDimens.padding6),
+                    ),
+                  )
+                : UtilWidget.sizedBox16,
+            Row(
+              children: [
+                Expanded(
+                  child: UtilWidget.buildSolidButtonBack(
+                    title: exitTitle ?? 'Hủy',
+                    onPressed: () {
+                      dismissDialog();
+                      onCancel?.call();
+                    },
+                  ),
+                ),
+                UtilWidget.sizedBoxWidth20,
+                Expanded(
+                  child: UtilWidget.buildSolidButton(
+                    title: confirmTitle ?? 'Đồng ý',
+                    onPressed: () {
+                      dismissDialog();
+                      onConfirm?.call();
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ).paddingAll(AppDimens.defaultPadding),
+      ),
+      isActiveBack,
+    );
+  }
+
+  static Future<void> showDialogWithWidget({
+    required String title,
+    String? content,
+    Widget? child,
+    bool isActiveBack = true,
+  }) async {
+    _showDialog(
+      Dialog(
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.all(AppDimens.defaultPadding),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SDSBuildText(
+              title,
+              maxLines: 1,
+              style: AppTextStyle.font20Bo,
+            ),
+            content != null
+                ? Container(
+                    padding: const EdgeInsets.only(
+                      top: AppDimens.paddingSmall,
+                    ),
+                    constraints: const BoxConstraints(maxHeight: 200),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        content,
+                        style: AppTextStyle.font16Semi,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.clip,
+                      ).paddingSymmetric(horizontal: AppDimens.padding6),
+                    ),
+                  )
+                : UtilWidget.sizedBox16,
+            if (child != null) child,
+          ],
+        ).paddingAll(AppDimens.defaultPadding),
+      ),
+      isActiveBack,
     );
   }
 
@@ -275,7 +418,7 @@ class ShowDialog {
                         onPressed: funcBack ?? Get.back,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: AppDimens.paddingSmall,
                     ),
                     Expanded(
@@ -315,7 +458,7 @@ class ShowDialog {
         elevation: 8,
         child: Container(
           padding: const EdgeInsets.all(AppDimens.defaultPadding),
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 300,
           ),
           child: Column(
@@ -324,12 +467,12 @@ class ShowDialog {
             children: [
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.notifications_none_outlined,
                     color: Colors.redAccent,
                     size: 24,
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: SDSBuildText(
                       title ?? 'Cảnh báo',
@@ -337,7 +480,7 @@ class ShowDialog {
                   ),
                 ],
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               if (missingFields != null && missingFields.isNotEmpty)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

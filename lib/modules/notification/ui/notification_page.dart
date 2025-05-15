@@ -14,7 +14,7 @@ class NotificationPage extends BaseGetWidget {
           style: AppTextStyle.font16Bo,
         ),
         actions: [
-          Icon(
+          const Icon(
             Icons.check_outlined,
             color: AppColors.primaryColor,
           ),

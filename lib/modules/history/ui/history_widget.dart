@@ -70,7 +70,7 @@ extension HistoryWidget on HistoryPage {
       },
       child: Row(
         children: [
-          Icon(
+          const Icon(
             Icons.assignment_outlined,
             color: AppColors.primaryColor,
             size: AppDimens.sizeIconMedium,

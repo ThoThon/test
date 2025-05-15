@@ -16,6 +16,7 @@ class UtilWidget {
     );
   }
 
+  static const Widget shrink = SizedBox.shrink();
   static const Widget sizedBox4 = SizedBox(height: 4);
   static const Widget sizedBox5 = SizedBox(height: 5);
   static const Widget sizedBox8 = SizedBox(height: 8);
@@ -140,7 +141,7 @@ class UtilWidget {
         highlightColor: Colors.transparent,
       ),
       child: ExpansionTile(
-        trailing: Row(
+        trailing: const Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Icon(Icons.arrow_drop_down),
@@ -156,7 +157,7 @@ class UtilWidget {
         backgroundColor: AppColors.colorWhite,
         collapsedTextColor: AppColors.colorWhite,
         title: SDSBuildText(title),
-        subtitle: Column(
+        subtitle: const Column(
           children: [],
         ),
         shape: RoundedRectangleBorder(
@@ -239,9 +240,9 @@ class UtilWidget {
         right: AppDimens.defaultPadding,
         bottom: GetPlatform.isAndroid ? AppDimens.paddingVerySmall : 0.0,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.colorWhite,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(AppDimens.radius30),
           topRight: Radius.circular(AppDimens.radius30),
         ),
@@ -321,6 +322,14 @@ class UtilWidget {
                         maxLines: 2,
                         textAlign: TextAlign.start,
                       ),
+                      //   TextUtils(
+                      // text: display(e),
+                      // availableStyle: selectedItem == e
+                      //     ? StyleEnum.bodyBold
+                      //     : StyleEnum.bodyRegular,
+                      //   maxLine: 2,
+                      //   textAlign: TextAlign.start,
+                      // ),
                     ),
                   ),
                 )
@@ -330,8 +339,10 @@ class UtilWidget {
             hint: hintText != null
                 ? SDSBuildText(
                     hintText,
+                    style: AppTextStyle.font14Re.copyWith(
+                      color: AppColors.dsGray3,
+                    ),
                     maxLines: 2,
-                    textAlign: TextAlign.start,
                   )
                 : null,
           ),
@@ -404,7 +415,7 @@ class UtilWidget {
             ),
             if (state.hasError)
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: AppDimens.paddingSmallest,
                   left: AppDimens.paddingSmall,
                 ),
@@ -464,6 +475,7 @@ class UtilWidget {
                   child: Container(
                     padding: const EdgeInsets.all(AppDimens.paddingSmall),
                     decoration: BoxDecoration(
+                      color: AppColors.colorWhite,
                       border: Border.all(
                         color: state.errorText != null
                             ? AppColors.statusRed
@@ -482,7 +494,7 @@ class UtilWidget {
                               style: AppTextStyle.font14Re.copyWith(
                                 color: item.value != null
                                     ? AppColors.colorBlack
-                                    : Color.fromARGB(255, 2, 2, 2),
+                                    : AppColors.dsGray3,
                               ),
                             ),
                           ),
@@ -563,9 +575,9 @@ class UtilWidget {
                   width: AppDimens.padding60,
                   height: AppDimens.paddingVerySmall,
                   margin: const EdgeInsets.all(AppDimens.paddingVerySmall),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: AppColors.dsGray2,
-                      borderRadius: const BorderRadius.all(Radius.circular(8))),
+                      borderRadius: BorderRadius.all(Radius.circular(8))),
                 ),
               ),
               noAppBar
@@ -620,9 +632,9 @@ class UtilWidget {
         right: AppDimens.defaultPadding,
         bottom: GetPlatform.isAndroid ? AppDimens.paddingVerySmall : 0.0,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(AppDimens.radius30),
           topRight: Radius.circular(AppDimens.radius30),
         ),

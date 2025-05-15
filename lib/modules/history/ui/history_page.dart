@@ -14,14 +14,26 @@ class HistoryPage extends BaseGetWidget {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: SDSBuildText(
-          LocaleKeys.history_historyTransaction.tr,
-          style: AppTextStyle.font16Bo,
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (didPop) return;
+        controller.backToHome();
+      },
+      child: Scaffold(
+        appBar: BaseAppBar(
+          leading: BackButton(
+            onPressed: () {
+              controller.backToHome();
+            },
+          ),
+          title: SDSBuildText(
+            LocaleKeys.history_historyTransaction.tr,
+            style: AppTextStyle.font16Bo,
+          ),
         ),
+        body: _buildBody(),
       ),
-      body: _buildBody(),
     );
   }
 }

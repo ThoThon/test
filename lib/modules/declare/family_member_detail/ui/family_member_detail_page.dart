@@ -14,7 +14,7 @@ class FamilyMemberDetailPage
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(
+      appBar: const BaseAppBar(
         title: BaseAppBarTitle(
           title: 'Thành viên trong gia đình',
         ),

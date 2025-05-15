@@ -9,7 +9,7 @@ enum DeclarationStatus {
   String get title {
     switch (this) {
       case DeclarationStatus.draft:
-        return 'Nháp';
+        return 'Lưu nháp';
       case DeclarationStatus.sent:
         return 'Đã gửi';
     }
@@ -18,7 +18,7 @@ enum DeclarationStatus {
   Color get color {
     switch (this) {
       case DeclarationStatus.draft:
-        return Colors.blue;
+        return const Color(0xFFFFCB09);
       case DeclarationStatus.sent:
         return Colors.green;
     }

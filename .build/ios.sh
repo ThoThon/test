@@ -6,10 +6,10 @@ note_file=".build/note.txt"
 
 fvm flutter build ipa --release --export-method ad-hoc
 
-firebase appdistribution:distribute './build/ios/ipa/v_bhxh.ipa' \
-    --app 1:845870308776:ios:e1ed730ac9a82803f0919d \
+firebase appdistribution:distribute './build/ios/ipa/vBHXH.ipa' \
+    --app 1:457157614636:ios:5497c69b937e2c4d318589 \
     --release-notes-file "$note_file" \
-    --groups "SDS Ios"
+    --groups "sds-ios"
 
 echo '-------------------'
 echo 'Build IOS done'

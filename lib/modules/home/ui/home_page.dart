@@ -16,18 +16,21 @@ class HomePage extends BaseGetWidget<HomeController> {
     return Scaffold(
       drawer: _buildDrawer(),
       appBar: BaseAppBar(
-        title: Row(
-          children: [
-            SDSBuildText("Xin chào "),
-            SDSBuildText(
-              controller.appController.accountInfoModel?.tenToChuc ?? '',
-              style: AppTextStyle.font16Bo.copyWith(
-                color: AppColors.primaryColor,
+        title: RichText(
+          text: TextSpan(
+            style: AppTextStyle.font20Bo,
+            children: [
+              const TextSpan(text: 'Xin chào '),
+              TextSpan(
+                text:
+                    controller.appController.accountInfoModel?.tenToChuc ?? '',
+                style: AppTextStyle.font20Bo
+                    .copyWith(color: AppColors.primaryColor),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-        centerTitle: true,
+        centerTitle: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(AppDimens.paddingMedium),
@@ -38,7 +41,7 @@ class HomePage extends BaseGetWidget<HomeController> {
               crossAxisCount: 2,
               mainAxisSpacing: AppDimens.defaultPadding,
               crossAxisSpacing: AppDimens.defaultPadding,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               childAspectRatio: 1.8,
               children:
                   HomeEnum.values.map((item) => _buildMenuItem(item)).toList(),
@@ -59,8 +62,8 @@ class HomePage extends BaseGetWidget<HomeController> {
           child: Row(
             children: [
               Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: AppDimens.paddingSmall),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimens.paddingSmall),
                 child: SDSImageSvg(
                   item.image,
                   height: AppDimens.sizeCardItem,
@@ -108,7 +111,7 @@ class HomePage extends BaseGetWidget<HomeController> {
           Row(
             children: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.primaryColor,
                 ),

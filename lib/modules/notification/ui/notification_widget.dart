@@ -7,12 +7,12 @@ extension NotificationWidget on NotificationPage {
         return Column(
           children: [
             _buildDataNotification(),
-            Divider(
+            const Divider(
               height: 1,
               color: AppColors.dsGray5,
             ),
             _buildFakeDataUpdateInfo(false),
-            Divider(
+            const Divider(
               height: 1,
               color: AppColors.dsGray5,
             ),
@@ -21,7 +21,7 @@ extension NotificationWidget on NotificationPage {
         );
       },
       itemCount: 10,
-      separatorBuilder: (context, index) => Divider(
+      separatorBuilder: (context, index) => const Divider(
         height: 1,
         color: AppColors.dsGray5,
       ),
@@ -31,7 +31,7 @@ extension NotificationWidget on NotificationPage {
   Widget _buildDataNotification() {
     return Row(
       children: [
-        Icon(
+        const Icon(
           Icons.description,
           color: AppColors.primaryColor,
         ),
@@ -44,7 +44,7 @@ extension NotificationWidget on NotificationPage {
                 "Hồ sơ kê khai",
                 style: AppTextStyle.font14Bo,
               ),
-              SDSBuildText(
+              const SDSBuildText(
                 "Gửi hồ sơ 600 vào lúc 15:14 22/04/2025 thành công",
                 maxLines: 3,
               ),
@@ -62,7 +62,7 @@ extension NotificationWidget on NotificationPage {
   Widget _buildFakeDataUpdateInfo(bool enable) {
     return Row(
       children: [
-        Icon(
+        const Icon(
           Icons.autorenew,
           color: AppColors.primaryColor,
         ),

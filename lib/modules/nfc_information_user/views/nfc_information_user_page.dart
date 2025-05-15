@@ -13,7 +13,7 @@ class NfcInformationUserPage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(
+      appBar: const BaseAppBar(
         title: BaseAppBarTitle(title: "Thông tin"),
       ),
       body: _buildListGuild(controller),

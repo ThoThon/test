@@ -12,7 +12,6 @@ class UnitInfoRepository extends BaseRepository {
       EnumRequestMethod.post,
       jsonMap: request.toJson(),
     );
-    logger.d(response);
     return BaseResponse.fromJson(response);
   }
 }

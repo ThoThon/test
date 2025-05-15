@@ -7,9 +7,4 @@ class HomeController extends BaseGetxController {
   final appController = Get.find<AppController>();
 
   AccountInfoModel? accountInfo;
-  @override
-  void onInit() {
-    super.onInit();
-    // accountInfo = _appController.accountInfoModel;
-  }
 }

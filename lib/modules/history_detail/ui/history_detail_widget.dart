@@ -71,7 +71,7 @@ extension HistoryDetailWidget on HistoryDetailPage {
         SDSBuildText(
           textLeft,
         ),
-        Spacer(),
+        const Spacer(),
         SDSBuildText(
           textRight,
           style: AppTextStyle.font14Bo.copyWith(

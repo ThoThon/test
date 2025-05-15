@@ -21,9 +21,7 @@ extension ProcedureFilterExt on ProcedureFilterEnum {
         return LocaleKeys.history_procedure600d;
       case ProcedureFilterEnum.procedure600o:
         return LocaleKeys.history_procedure600o;
-      default:
-        return LocaleKeys.history_all;
-    }
+      }
   }
 
   String get procedureCode {
@@ -38,8 +36,6 @@ extension ProcedureFilterExt on ProcedureFilterEnum {
         return AppConst.procedure600d;
       case ProcedureFilterEnum.procedure600o:
         return AppConst.procedure600o;
-      default:
-        return "";
-    }
+      }
   }
 }

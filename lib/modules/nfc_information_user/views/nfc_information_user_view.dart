@@ -92,7 +92,7 @@ Widget _buildListGuild(NfcInformationUserController controller) {
         ),
       ),
       BaseButton(
-        padding: EdgeInsets.all(AppDimens.defaultPadding),
+        padding: const EdgeInsets.all(AppDimens.defaultPadding),
         text: "Tiếp tục",
         onPressed: () {},
       ),

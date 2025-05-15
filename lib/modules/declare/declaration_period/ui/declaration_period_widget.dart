@@ -8,8 +8,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             .paddingSymmetric(horizontal: AppDimens.defaultPadding),
         UtilWidget.sizedBox16,
         Expanded(child: _buildPeriods()),
-        _buildBottomButton()
-            .paddingSymmetric(horizontal: AppDimens.defaultPadding),
+        _buildBottomButton().paddingAll(AppDimens.defaultPadding),
       ],
     );
   }
@@ -38,7 +37,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
 
   Widget _buildPeriods() {
     return ListView.builder(
-      padding: EdgeInsets.only(bottom: AppDimens.defaultPadding),
+      padding: const EdgeInsets.only(bottom: AppDimens.defaultPadding),
       itemCount: controller.declarationPeriods.length,
       itemBuilder: (context, index) {
         final period = controller.declarationPeriods[index];
@@ -56,12 +55,15 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   }) {
     return Slidable(
       key: ValueKey(period.id),
+      enabled: period.status.canEdit,
       endActionPane: ActionPane(
         // A motion is a widget used to control how the pane animates.
         motion: const ScrollMotion(),
         children: [
           CustomSlidableAction(
-            onPressed: (ctx) {},
+            onPressed: (ctx) {
+              controller.showDialogDeletePeriod(period);
+            },
             backgroundColor: AppColors.primaryColor,
             foregroundColor: Colors.white,
             child: SDSBuildText(
@@ -74,7 +76,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
         ],
       ),
       child: Container(
-        padding: EdgeInsets.all(AppDimens.defaultPadding),
+        padding: const EdgeInsets.all(AppDimens.defaultPadding),
         decoration: BoxDecoration(
           color: index % 2 == 0 ? Colors.white : Colors.grey[100],
         ),
@@ -135,14 +137,14 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
               UtilWidget.buildSolidButtonBack(
                 title: LocaleKeys.app_edit2.tr,
                 onPressed: () {
-                  Get.toNamed(
-                    AppRoutes.declareInfo.path,
-                    arguments: DeclareInfoArgument(
-                      period: period,
-                      type: period.type,
-                      action: DeclareInfoAction.edit,
-                    ),
-                  );
+                  // Get.toNamed(
+                  //   AppRoutes.declareInfo.path,
+                  //   arguments: DeclareInfoArgument(
+                  //     period: period,
+                  //     action: DeclareInfoAction.edit,
+                  //   ),
+                  // );
+                  Get.toNamed(AppRoutes.depositInfo.path);
                 },
               ),
           ],
@@ -155,39 +157,10 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
     return UtilWidget.buildSolidButton(
       title: LocaleKeys.declarationPeriod_createNewPeriod.tr,
       onPressed: () {
-        Get.bottomSheet(
-          UtilWidget.buildBottomSheetFigma(
-            title: 'Chọn loại khai báo',
-            child: ListView.separated(
-              shrinkWrap: true,
-              itemCount: DeclarationTypeEnum.values.length,
-              itemBuilder: (context, index) {
-                final type = DeclarationTypeEnum.values[index];
-                return Material(
-                  color: Colors.white,
-                  child: InkWell(
-                    onTap: () {
-                      // Close the bottom sheet
-                      Get.back();
-                      // Open create period page
-                      Get.toNamed(
-                        AppRoutes.declareInfo.path,
-                        arguments: DeclareInfoArgument(
-                          type: type,
-                          action: DeclareInfoAction.create,
-                        ),
-                      );
-                    },
-                    child: SDSBuildText(type.title).paddingSymmetric(
-                      vertical: AppDimens.defaultPadding,
-                    ),
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return Divider();
-              },
-            ),
+        Get.toNamed(
+          AppRoutes.declareInfo.path,
+          arguments: const DeclareInfoArgument(
+            action: DeclareInfoAction.create,
           ),
         );
       },

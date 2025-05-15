@@ -98,7 +98,7 @@ extension NfcWidget on NfcPage {
               children: [
                 SDSImageSvg(Assets.ASSETS_ICONS_ICON_SCAN_NFC_SVG),
                 sdsSBHeight16,
-                SDSBuildText(
+                const SDSBuildText(
                   'Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến',
                   textAlign: TextAlign.center,
                 ),
@@ -118,7 +118,7 @@ extension NfcWidget on NfcPage {
             ),
           ),
         );
-        await Future.delayed(Duration(seconds: 3));
+        await Future.delayed(const Duration(seconds: 3));
         Get.toNamed(AppRoutes.nfcInformationUser.path);
       },
     );

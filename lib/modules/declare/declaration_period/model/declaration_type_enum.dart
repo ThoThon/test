@@ -9,7 +9,10 @@ enum DeclarationTypeEnum {
   increaseSalary,
 
   /// Giảm lương
-  decreaseSalary;
+  decreaseSalary,
+
+  /// Khác
+  other;
 
   String get title {
     switch (this) {
@@ -21,6 +24,8 @@ enum DeclarationTypeEnum {
         return 'Tăng lương';
       case decreaseSalary:
         return 'Giảm lương';
+      case other:
+        return 'Khác';
     }
   }
 }

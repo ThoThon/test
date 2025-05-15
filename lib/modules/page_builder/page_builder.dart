@@ -30,8 +30,8 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
       onPageChanged: controller.changePage,
       children: [
         HomePage(),
-        Center(child: Text("Danh sách")),
-        NotificationPage(),
+        const Center(child: Text("Danh sách")),
+        const NotificationPage(),
         ProfilePage(),
       ],
     );

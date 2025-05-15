@@ -12,7 +12,7 @@ class IcarePage extends StatelessWidget {
         child: Scaffold(
           body: Container(
             alignment: Alignment.center,
-            child: SDSBuildText("Đang chuyển tới ICare..."),
+            child: const SDSBuildText("Đang chuyển tới ICare..."),
           ),
         ),
       ),

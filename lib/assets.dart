@@ -246,6 +246,10 @@ class Assets {
   static String get ASSETS_IMAGES_IPHONE_JPG =>
       '${isFromModules ? "packages/$package/" : ""}assets/images/iphone.jpg';
 
+  /// {@macro assets_generator.ASSETS_IMAGES_LOGO_VIETTEL_SVG.preview}
+  static String get ASSETS_IMAGES_LOGO_VIETTEL_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/images/logo_viettel.svg';
+
   static String get ASSETS_LOCALES_EN_US_JSON =>
       '${isFromModules ? "packages/$package/" : ""}assets/locales/en_US.json';
 
@@ -426,6 +430,9 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_IMAGES_IPHONE_JPG.preview}
   Assets.ASSETS_IMAGES_IPHONE_JPG,
+
+  /// {@macro assets_generator.ASSETS_IMAGES_LOGO_VIETTEL_SVG.preview}
+  Assets.ASSETS_IMAGES_LOGO_VIETTEL_SVG,
   Assets.ASSETS_LOCALES_EN_US_JSON,
   Assets.ASSETS_LOCALES_VI_VN_JSON,
 ];
