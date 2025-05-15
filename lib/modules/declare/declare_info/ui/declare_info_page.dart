@@ -1,5 +1,6 @@
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:v_bhxh/modules/declare/check_list_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/controller/controller_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:collection/collection.dart';
