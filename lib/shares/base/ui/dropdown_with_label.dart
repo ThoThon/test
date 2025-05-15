@@ -45,7 +45,7 @@ class DropdownWithLabel extends StatelessWidget {
                       //   fontSize: AppDimens.sizeTextSmaller,
                       //   color: AppColors.statusRed,
                       // ),
-                      TextUtils(
+                      const TextUtils(
                     text: ' (*)',
                     availableStyle: StyleEnum.detailRegular,
                     color: AppColors.statusRed,

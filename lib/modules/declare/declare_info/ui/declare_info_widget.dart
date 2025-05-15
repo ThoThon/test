@@ -5,11 +5,19 @@ extension DeclareInfoWidget on DeclareInfoPage {
     return Column(
       children: [
         _buildTabs(),
+        Obx(() {
+          if (controller.isShowScanIDButton) {
+            return _buildScanIDButton(
+              onTap: () {},
+            );
+          }
+          return UtilWidget.shrink;
+        }),
         Expanded(
           child: Obx(
             () {
               return IndexedStack(
-                index: controller.selectedTab.value.index,
+                index: controller.currentTab.value.index,
                 children: [
                   _buildD02TabBody(),
                   _buildTk1TabBody(),
@@ -19,6 +27,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
             },
           ),
         ),
+        _buildBottomButtons(),
       ],
     );
   }
@@ -31,14 +40,14 @@ extension DeclareInfoWidget on DeclareInfoPage {
             color: AppColors.colorWhite,
             borderRadius: BorderRadius.circular(AppDimens.radius8),
           ),
-          padding: EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
+          padding:
+              const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
           child: Row(
             children: [
               Expanded(
                 child: _buildTabButton(
                   title: 'D02-LT',
-                  isSelected:
-                      controller.selectedTab.value == DeclareInfoTab.d02,
+                  isSelected: controller.currentTab.value == DeclareInfoTab.d02,
                   onTap: () {
                     controller.onTabChanged(DeclareInfoTab.d02);
                   },
@@ -47,8 +56,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
               Expanded(
                 child: _buildTabButton(
                   title: 'TK1-TS',
-                  isSelected:
-                      controller.selectedTab.value == DeclareInfoTab.tk1,
+                  isSelected: controller.currentTab.value == DeclareInfoTab.tk1,
                   onTap: () {
                     controller.onTabChanged(DeclareInfoTab.tk1);
                   },
@@ -57,8 +65,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
               Expanded(
                 child: _buildTabButton(
                   title: 'D01-TS',
-                  isSelected:
-                      controller.selectedTab.value == DeclareInfoTab.d01,
+                  isSelected: controller.currentTab.value == DeclareInfoTab.d01,
                   onTap: () {
                     controller.onTabChanged(DeclareInfoTab.d01);
                   },
@@ -105,7 +112,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.qr_code_scanner,
             size: 36,
           ),
@@ -141,7 +148,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
                 onPressed: onTapSelectStaff,
                 style: TextButton.styleFrom(
                   minimumSize: Size.zero,
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: AppDimens.paddingSmallest,
                     horizontal: AppDimens.paddingSmall,
                   ),
@@ -315,6 +322,34 @@ extension DeclareInfoWidget on DeclareInfoPage {
         }
         return null;
       },
+    );
+  }
+
+  Widget _buildBottomButtons() {
+    return Row(
+      children: [
+        Expanded(
+          child: UtilWidget.buildSolidButtonBack(
+            title: 'Lưu nháp',
+            onPressed: () {
+              Get.back();
+            },
+          ),
+        ),
+        UtilWidget.sizedBoxWidth16,
+        Expanded(
+          child: UtilWidget.buildSolidButton(
+            title: 'Chuyển ký',
+            onPressed: () {
+              controller.nextTab();
+            },
+          ),
+        ),
+      ],
+    ).paddingOnly(
+      left: AppDimens.defaultPadding,
+      right: AppDimens.defaultPadding,
+      top: AppDimens.defaultPadding,
     );
   }
 }

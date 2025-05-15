@@ -1,12 +1,12 @@
-part of 'declaration_period_detail_page.dart';
+part of 'deposit_info_page.dart';
 
-extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
+extension DepositInfoWidget on DepositInfoPage {
   Widget _buildBody() {
     return Column(
       children: [
         Expanded(
           child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: AppDimens.defaultPadding,
             ),
             child: Obx(
@@ -40,7 +40,61 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
         UtilWidget.sizedBox8,
         InkWell(
           onTap: () {
-            controller.pickImage();
+            Get.bottomSheet(
+              UtilWidget.buildBottomSheetFigma(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Material(
+                      color: Colors.white,
+                      child: InkWell(
+                        onTap: () {
+                          // Close the bottom sheet
+                          Get.back();
+                          controller.takePhoto();
+                        },
+                        child: Row(
+                          children: [
+                            const Icon(Icons.camera_alt_outlined),
+                            UtilWidget.sizedBoxWidth8,
+                            Expanded(
+                              child: SDSBuildText(
+                                'Chụp ảnh từ cammera',
+                                style: AppTextStyle.font16Semi,
+                              ),
+                            ),
+                          ],
+                        ).paddingSymmetric(vertical: AppDimens.defaultPadding),
+                      ),
+                    ),
+                    const Divider(height: 1),
+                    Material(
+                      color: Colors.white,
+                      child: InkWell(
+                        onTap: () {
+                          // Close the bottom sheet
+                          Get.back();
+                          controller.pickImage();
+                        },
+                        child: Row(
+                          children: [
+                            const Icon(Icons.image_outlined),
+                            UtilWidget.sizedBoxWidth8,
+                            Expanded(
+                              child: SDSBuildText(
+                                'Chọn ảnh từ điện thoại',
+                                style: AppTextStyle.font16Semi,
+                              ),
+                            ),
+                          ],
+                        ).paddingSymmetric(vertical: AppDimens.defaultPadding),
+                      ),
+                    ),
+                    UtilWidget.sizedBox16,
+                  ],
+                ),
+              ),
+            );
           },
           borderRadius: BorderRadius.circular(8),
           child: Container(
@@ -53,7 +107,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
             ),
             child: Row(
               children: [
-                Icon(Icons.image_outlined, size: 48),
+                const Icon(Icons.image_outlined, size: 48),
                 UtilWidget.sizedBoxWidth8,
                 SDSBuildText(
                   LocaleKeys.declarationPeriodDetail_addAttachedImage.tr,
@@ -78,7 +132,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
                   color: AppColors.primaryColor,
                   style: IconButton.styleFrom(backgroundColor: Colors.white),
                   onPressed: controller.removeImage,
-                  icon: Icon(Icons.close),
+                  icon: const Icon(Icons.close),
                 ),
               ),
             ],
@@ -101,7 +155,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
                 onTap: () {},
                 child: Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(AppDimens.defaultPadding),
+                  padding: const EdgeInsets.all(AppDimens.defaultPadding),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
@@ -128,7 +182,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
       onTap: () {},
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             backgroundColor: AppColors.primaryColor,
             child: Icon(
               Icons.add,
@@ -151,7 +205,7 @@ extension DeclarationPeriodDetailPageWidget on DeclarationPeriodDetailPage {
     return UtilWidget.buildSolidButton(
       title: LocaleKeys.declarationPeriodDetail_deposit.tr,
       onPressed: () {
-        Get.toNamed(AppRoutes.declareInfo.path);
+        Get.toNamed(AppRoutes.declarationList.path);
       },
     );
   }

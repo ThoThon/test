@@ -4,90 +4,79 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildTk1TabBody() {
     return Form(
       key: controller.tk1State.formKey,
-      child: Column(
-        children: [
-          _buildScanIDButton(
-            onTap: () {},
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(
-                horizontal: AppDimens.defaultPadding,
-              ),
-              child: Obx(
-                () {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildInputFullName(
-                        onTapSelectStaff: controller.showDialogSelectStaff,
-                        showSelectStaff: false,
-                      ),
-                      UtilWidget.sizedBox16,
-                      _buildInputBHXHNumber(),
-                      UtilWidget.sizedBox16,
-                      _buildInputCCCD(),
-                      UtilWidget.sizedBox16,
-                      UtilWidget.buildSelectDate(
-                        'Ngày sinh',
-                        hintText: PATTERN_1,
-                        date: convertDateToStringSafe(
-                          controller.d02Tk1State.dateOfBirth.value,
-                          PATTERN_1,
-                        ),
-                        onTap: () {},
-                      ),
-                      UtilWidget.sizedBox12,
-                      _buildSelectGender(onChanged: (value) {}),
-                      UtilWidget.sizedBox8,
-                      _buildSelectEthnic(),
-                      _buildSelectNationality(),
-                      _buildSelectProvince(),
-                      _buildSelectDistrict(),
-                      _buildSelectWard(),
-                      _buildInputAddress(),
-                      UtilWidget.buildCheckboxWithLabel(
-                        label: 'Trùng địa chỉ khai sinh',
-                        value: controller.tk1State.isSameAddress.value,
-                        onChanged: (value) {
-                          controller.tk1State.isSameAddress.value =
-                              value ?? false;
-                        },
-                      ).paddingSymmetric(vertical: AppDimens.paddingVerySmall),
-                      _buildSelectProvinceReceive(),
-                      _buildSelectDistrictReceive(),
-                      _buildSelectWardReceive(),
-                      _buildInputAddressReceive(),
-                      UtilWidget.sizedBox16,
-                      _buildSelectProvinceKCB(),
-                      _buildSelectHospital(),
-                      _buildInputPhoneNumber(),
-                      UtilWidget.buildCheckboxWithLabel(
-                        label: 'Người tham gia là chủ hộ',
-                        value: controller.tk1State.isHeadOfHousehold.value,
-                        onChanged: (value) {
-                          controller.tk1State.isHeadOfHousehold.value =
-                              value ?? false;
-                        },
-                      ).paddingSymmetric(vertical: AppDimens.paddingVerySmall),
-                      _buildInputHeadOfHousehold(),
-                      UtilWidget.sizedBox16,
-                      _buildInputHeadOfHouseholdCCCD(),
-                      UtilWidget.sizedBox16,
-                      _buildSelectProvinceTT(),
-                      _buildSelectDistrictTT(),
-                      _buildSelectWardTT(),
-                      _buildInputAddressTTTextCtrl(),
-                      UtilWidget.sizedBox16,
-                      _buildFamilyMember(),
-                    ],
-                  );
-                },
-              ),
-            ),
-          ),
-          _buildTk1BottomButtons(),
-        ],
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppDimens.defaultPadding,
+        ),
+        child: Obx(
+          () {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildInputFullName(
+                  onTapSelectStaff: controller.showDialogSelectStaff,
+                  showSelectStaff: false,
+                ),
+                UtilWidget.sizedBox16,
+                _buildInputBHXHNumber(),
+                UtilWidget.sizedBox16,
+                _buildInputCCCD(),
+                UtilWidget.sizedBox16,
+                UtilWidget.buildSelectDate(
+                  'Ngày sinh',
+                  hintText: PATTERN_1,
+                  date: convertDateToStringSafe(
+                    controller.d02Tk1State.dateOfBirth.value,
+                    PATTERN_1,
+                  ),
+                  onTap: () {},
+                ),
+                UtilWidget.sizedBox12,
+                _buildSelectGender(onChanged: (value) {}),
+                UtilWidget.sizedBox8,
+                _buildSelectEthnic(),
+                _buildSelectNationality(),
+                _buildSelectProvince(),
+                _buildSelectDistrict(),
+                _buildSelectWard(),
+                _buildInputAddress(),
+                UtilWidget.buildCheckboxWithLabel(
+                  label: 'Trùng địa chỉ khai sinh',
+                  value: controller.tk1State.isSameAddress.value,
+                  onChanged: (value) {
+                    controller.tk1State.isSameAddress.value = value ?? false;
+                  },
+                ).paddingSymmetric(vertical: AppDimens.paddingVerySmall),
+                _buildSelectProvinceReceive(),
+                _buildSelectDistrictReceive(),
+                _buildSelectWardReceive(),
+                _buildInputAddressReceive(),
+                UtilWidget.sizedBox16,
+                _buildSelectProvinceKCB(),
+                _buildSelectHospital(),
+                _buildInputPhoneNumber(),
+                UtilWidget.buildCheckboxWithLabel(
+                  label: 'Người tham gia là chủ hộ',
+                  value: controller.tk1State.isHeadOfHousehold.value,
+                  onChanged: (value) {
+                    controller.tk1State.isHeadOfHousehold.value =
+                        value ?? false;
+                  },
+                ).paddingSymmetric(vertical: AppDimens.paddingVerySmall),
+                _buildInputHeadOfHousehold(),
+                UtilWidget.sizedBox16,
+                _buildInputHeadOfHouseholdCCCD(),
+                UtilWidget.sizedBox16,
+                _buildSelectProvinceTT(),
+                _buildSelectDistrictTT(),
+                _buildSelectWardTT(),
+                _buildInputAddressTTTextCtrl(),
+                UtilWidget.sizedBox16,
+                _buildFamilyMember(),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -513,8 +502,9 @@ extension Tk1TabWidget on DeclareInfoPage {
         ),
         if (controller.tk1State.familyMembers.isNotEmpty)
           Container(
-            margin: EdgeInsets.symmetric(vertical: AppDimens.paddingVerySmall),
-            padding: EdgeInsets.symmetric(
+            margin: const EdgeInsets.symmetric(
+                vertical: AppDimens.paddingVerySmall),
+            padding: const EdgeInsets.symmetric(
               horizontal: AppDimens.defaultPadding,
               vertical: AppDimens.paddingVerySmall,
             ),
@@ -546,42 +536,18 @@ extension Tk1TabWidget on DeclareInfoPage {
               Get.toNamed(AppRoutes.familyMemberDetail.path);
             },
             style: OutlinedButton.styleFrom(
-              shape: CircleBorder(),
-              side: BorderSide(
+              shape: const CircleBorder(),
+              side: const BorderSide(
                 color: AppColors.primaryColor,
               ),
             ),
-            label: Icon(
+            label: const Icon(
               Icons.add,
               color: AppColors.primaryColor,
             ),
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildTk1BottomButtons() {
-    return Row(
-      children: [
-        Expanded(
-          child: UtilWidget.buildSolidButtonBack(
-            title: 'Lưu nháp',
-            onPressed: () {},
-          ),
-        ),
-        UtilWidget.sizedBoxWidth16,
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: 'Tiếp theo',
-            onPressed: () {},
-          ),
-        ),
-      ],
-    ).paddingOnly(
-      left: AppDimens.defaultPadding,
-      right: AppDimens.defaultPadding,
-      top: AppDimens.defaultPadding,
     );
   }
 }

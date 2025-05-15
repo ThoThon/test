@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'model_src.dart';
 
 class D01State {
-  final checkLists = <DocumentCheckList>[
+  final checkLists = const <DocumentCheckList>[
     DocumentCheckList(
       id: 1,
       title: 'Bảng kê hồ sơ 1',

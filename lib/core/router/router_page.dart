@@ -5,8 +5,9 @@ import 'package:v_bhxh/modules/create_transaction/ui/create_transaction_page.dar
 import 'package:v_bhxh/modules/declaration_tax_code/ui/declaration_tax_code_detail_page.dart';
 import 'package:v_bhxh/modules/declaration_tax_code/ui/declaration_tax_code_page.dart';
 import 'package:v_bhxh/modules/declare/check_list_detail/ui/check_list_detail_page.dart';
+import 'package:v_bhxh/modules/declare/declaration_list/ui/declaration_list_page.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/ui/declaration_period_page.dart';
-import 'package:v_bhxh/modules/declare/declaration_period_detail/ui/declaration_period_detail_page.dart';
+import 'package:v_bhxh/modules/declare/deposit_info/ui/deposit_info_page.dart';
 import 'package:v_bhxh/modules/declare/declare_info/ui/declare_info_page.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/ui/family_member_detail_page.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/ui/procedure_list_page.dart';
@@ -15,6 +16,7 @@ import 'package:v_bhxh/modules/history_transaction/ui/history_transaction_page.d
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/login/ui/login_page.dart';
 import 'package:v_bhxh/modules/page_builder/page_builder.dart';
+import 'package:v_bhxh/modules/view_pdf/ui/view_pdf_page.dart';
 
 import '../../modules/await_confirm_signature/ui/await_confirm_signature_page.dart';
 import '../../modules/splash/splash_page.dart';
@@ -102,8 +104,8 @@ class RouteAppPage {
       transition: Transition.rightToLeft,
     ),
     GetPage(
-      name: AppRoutes.declarationPeriodDetail.path,
-      page: () => DeclarationPeriodDetailPage(),
+      name: AppRoutes.depositInfo.path,
+      page: () => DepositInfoPage(),
       transition: Transition.rightToLeft,
     ),
     GetPage(
@@ -118,6 +120,14 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.checkListDetail.path,
       page: () => CheckListDetailPage(),
+    ),
+    GetPage(
+      name: AppRoutes.declarationList.path,
+      page: () => DeclarationListPage(),
+    ),
+    GetPage(
+      name: AppRoutes.viewPdf.path,
+      page: () => ViewPdfPage(),
     ),
   ];
 }

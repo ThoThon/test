@@ -30,7 +30,7 @@ class BuildInputTextWithLabel extends StatelessWidget {
               ),
               Visibility(
                 visible: buildInputText.inputTextFormModel.isValidate,
-                child: TextUtils(
+                child: const TextUtils(
                   text: ' (*)',
                   color: AppColors.statusRed,
                   availableStyle: StyleEnum.detailRegular,

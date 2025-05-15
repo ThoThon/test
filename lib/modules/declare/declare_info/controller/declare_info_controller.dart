@@ -1,4 +1,5 @@
 import 'package:v_bhxh/modules/declare/check_list_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/ui/ui_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -7,7 +8,7 @@ import '../model/model_src.dart';
 
 class DeclareInfoController extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
-  final selectedTab = DeclareInfoTab.d02.obs;
+  final currentTab = DeclareInfoTab.d02.obs;
 
   /// NOTE: Nhân viên được chọn - Mock tạm với String, sau tạo model riêng
   final selectedStaff = Rxn<String>();
@@ -19,8 +20,13 @@ class DeclareInfoController extends BaseGetxController {
 
   void onTabChanged(DeclareInfoTab tab) {
     KeyBoard.hide();
-    if (selectedTab.value == tab) return;
-    selectedTab.value = tab;
+    if (currentTab.value == tab) return;
+    currentTab.value = tab;
+  }
+
+  bool get isShowScanIDButton {
+    return currentTab.value == DeclareInfoTab.d02 ||
+        currentTab.value == DeclareInfoTab.tk1;
   }
 
   void showDialogSelectStaff() {
@@ -56,6 +62,27 @@ class DeclareInfoController extends BaseGetxController {
         //
       },
     );
+  }
+
+  void nextTab() {
+    if (currentTab.value == DeclareInfoTab.d02) {
+      currentTab.value = DeclareInfoTab.tk1;
+    } else if (currentTab.value == DeclareInfoTab.tk1) {
+      currentTab.value = DeclareInfoTab.d01;
+    } else if (currentTab.value == DeclareInfoTab.d01) {
+      ShowDialog.showDialogWithWidget(
+        title: 'Hoàn tất',
+        content: 'Bạn muốn Chuyển ký hay thêm tiếp nhân sự?',
+        child: CompleteDeclareInfoWidget(
+          onTapAddStaff: () {
+            currentTab.value = DeclareInfoTab.d02;
+          },
+          onTapDeposit: () {
+            Get.toNamed(AppRoutes.depositInfo.path);
+          },
+        ),
+      );
+    }
   }
 
   @override

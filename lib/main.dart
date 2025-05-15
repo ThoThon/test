@@ -51,7 +51,7 @@ class _Application extends State<Application> {
         getPages: RouteAppPage.route,
         theme: ThemeData(
           scaffoldBackgroundColor: AppColors.backgroundColorLight,
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
             color: AppColors.backgroundColorLight,
           ),
         ),
