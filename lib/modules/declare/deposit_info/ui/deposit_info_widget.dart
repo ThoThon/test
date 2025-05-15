@@ -151,7 +151,24 @@ extension DepositInfoWidget on DepositInfoPage {
             (staff) {
               return InkWell(
                 borderRadius: BorderRadius.circular(8),
-                onTap: () {},
+                onTap: () {
+                  // Nếu được mở từ màn Kê khai thông tin thì chỉ cần back về và chọn đúng tab
+                  if (Get.previousRoute == AppRoutes.declareInfo.path) {
+                    Get.back(
+                      result: const DepositInfoResult(
+                        action: DepositInfoResultAction.selectD02Tab,
+                      ),
+                    );
+                  } else {
+                    // Nếu chưa có thì đóng màn này và mở màn Kê khai thông tin
+                    Get.offNamed(
+                      AppRoutes.declareInfo.path,
+                      arguments: const DeclareInfoArgument(
+                        action: DeclareInfoAction.edit,
+                      ),
+                    );
+                  }
+                },
                 child: Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(AppDimens.defaultPadding),
