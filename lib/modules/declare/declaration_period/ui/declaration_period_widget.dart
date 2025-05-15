@@ -56,6 +56,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   }) {
     return Slidable(
       key: ValueKey(period.id),
+      enabled: period.status.canEdit,
       endActionPane: ActionPane(
         // A motion is a widget used to control how the pane animates.
         motion: const ScrollMotion(),
