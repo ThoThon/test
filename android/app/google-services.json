@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "457157614636",
+    "project_id": "vbhxh-viettel",
+    "storage_bucket": "vbhxh-viettel.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457157614636:android:3a941110ed3d8f6a318589",
+        "android_client_info": {
+          "package_name": "vn.viettel.vbhxh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcqiSjGVXx312Vym5HJmvlo5_X1u0VUv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
