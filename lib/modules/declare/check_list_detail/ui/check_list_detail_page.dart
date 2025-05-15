@@ -1,4 +1,3 @@
-import 'package:v_bhxh/modules/declare/check_list_detail/controller/controller_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 part 'check_list_detail_widget.dart';

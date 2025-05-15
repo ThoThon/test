@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:v_bhxh/core/theme/colors.dart';
-import 'package:v_bhxh/shares/shares.src.dart';
+import 'package:v_bhxh/modules/src.dart';
 
 class SDSItemSwitch extends StatelessWidget {
   final String title;
@@ -10,7 +9,7 @@ class SDSItemSwitch extends StatelessWidget {
   final FontWeight? fontWeight;
   final Color? textColor;
   final double? fontSize;
-  final StyleEnum? style;
+  final TextStyle? style;
 
   const SDSItemSwitch({
     super.key,
@@ -37,11 +36,9 @@ class SDSItemSwitch extends StatelessWidget {
           onChanged: onChanged,
         ),
         sdsSBWidth8,
-        TextUtils(
-          text: title,
-          color: textColor,
-          fontWeight: fontWeight,
-          availableStyle: style,
+        SDSBuildText(
+          title,
+          style: style!.copyWith(color: textColor),
         ),
       ],
     );

@@ -1,5 +1,18 @@
-export 'declaration_tax_code/declaration_tax_code_src.dart';
-export 'history_transaction/history_transaction_src.dart';
-export 'history_register_detail/history_register_detail_src.dart';
-export 'create_transaction/create_transaction_src.dart';
+export 'package:flutter/material.dart';
+export 'package:get/get.dart';
+
+export '../../../assets.dart';
+export '../../../base_app/views_base/views_base.src.dart';
+export '../../../core/core.src.dart';
+export '../../../generated/locales.g.dart';
+export '../../shares/function/function.src.dart';
+export '../shares/base/base.src.dart';
+export '../shares/shares.src.dart';
+export 'declare/declare_src.dart';
+export 'history/history_src.dart';
+export 'history_detail/history_detail_src.dart';
+export 'info_unit/info_unit_src.dart';
+export 'login/login_src.dart';
 export 'mock_data/mock_data.src.dart';
+export 'page_builder/page_builder_src.dart';
+export 'profile/profile_src.dart';

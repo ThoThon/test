@@ -1,4 +1,3 @@
-import 'package:v_bhxh/modules/declare/procedure_list/controller/controller_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 part 'procedure_list_widget.dart';

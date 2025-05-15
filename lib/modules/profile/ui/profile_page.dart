@@ -1,24 +1,35 @@
-import 'package:flutter/material.dart';
-import 'package:v_bhxh/base_app/controllers_base/app_controller/app_controller.dart';
-import 'package:v_bhxh/shares/shares.src.dart';
+import '../../../modules/src.dart';
+
+part 'profile_widget.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+
+  ProfileController get controller => _controller;
+
+  late final _controller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Get.findOrNull<AppController>()?.logout();
-          },
-          child: Text('Logout'),
+      appBar: BaseAppBar(
+        title: SDSBuildText(
+          LocaleKeys.profile_accountInfo.tr,
+          style: AppTextStyle.font16Bo,
         ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: controller.showDialogLogout,
+            icon: const Icon(
+              Icons.logout,
+              color: AppColors.primaryColor,
+            ),
+          ),
+          sdsSBWidth12,
+        ],
       ),
+      body: _buildBody(),
     );
   }
 }

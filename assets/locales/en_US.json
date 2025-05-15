@@ -1,0 +1,25 @@
+{
+    "app": {
+        "name": "vBHXH"
+    },
+    "dialog": {
+        "close": "Close",
+        "errorConnectFailedStr": "Unable to connect to the server\nPlease check your network connection.",
+        "errorConnectTimeOut": "No response from the system, please try again later",
+        "errorInternalServer": "System processing error\nPlease try again later!!!",
+        "error502": "Server is under maintenance. Please come back later.",
+        "error503": "Server is under maintenance. Please come back in a few minutes.",
+        "error400": "Invalid data sent!",
+        "error404": "This path was not found, please contact Admin",
+        "error401": "Login session has expired. Please log in again",
+        "success": "Success!",
+        "fail": "Failed!",
+        "checkEmail": "Please check the registered email again",
+        "processTime": "(Processing time is 3-5 working days).",
+        "registerFail": "Registration failed, please try again",
+        "exit": "Exit",
+        "history": "History",
+        "consignment": "Consignment",
+        "notification": "Notification"
+    }
+}

@@ -22,25 +22,45 @@ class Assets {
   static String get ASSETS_FONTS_NUNITOSANS_SEMIBOLD_TTF =>
       '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-SemiBold.ttf';
 
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG.preview}
-  static String get ASSETS_ICONS_HOME_FILE_DECLARATION_SVG =>
-      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/file_declaration.svg';
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_DECLARATION_SVG.preview}
+  static String get ASSETS_ICONS_HOME_DECLARATION_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/declaration.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_HISTORY_SVG.preview}
+  static String get ASSETS_ICONS_HOME_HISTORY_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/history.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_HOME_HOME_SVG.preview}
   static String get ASSETS_ICONS_HOME_HOME_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/home/home.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_GUIDE_SVG.preview}
+  static String get ASSETS_ICONS_HOME_IC_GUIDE_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/ic_guide.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_HOME_SVG.preview}
+  static String get ASSETS_ICONS_HOME_IC_HOME_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/ic_home.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG.preview}
+  static String get ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/ic_notification.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_PROFILE_SVG.preview}
+  static String get ASSETS_ICONS_HOME_IC_PROFILE_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/ic_profile.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_STATIS_SVG.preview}
+  static String get ASSETS_ICONS_HOME_IC_STATIS_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/ic_statis.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_HOME_LOOKUP_C12_SVG.preview}
   static String get ASSETS_ICONS_HOME_LOOKUP_C12_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/home/lookup_c12.svg';
 
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_REGISTER_TRANSACTION_SVG.preview}
-  static String get ASSETS_ICONS_HOME_REGISTER_TRANSACTION_SVG =>
-      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/register_transaction.svg';
-
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_TRANSACTION_HISTORY_SVG.preview}
-  static String get ASSETS_ICONS_HOME_TRANSACTION_HISTORY_SVG =>
-      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/transaction_history.svg';
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_UNIT_INFO_SVG.preview}
+  static String get ASSETS_ICONS_HOME_UNIT_INFO_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/home/unit_info.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_ACTIVE_SVG.preview}
   static String get ASSETS_ICONS_IC_ACTIVE_SVG =>
@@ -78,6 +98,10 @@ class Assets {
   static String get ASSETS_ICONS_IC_CALENDER_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_calender.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_CCCD_SVG.preview}
+  static String get ASSETS_ICONS_IC_CCCD_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_cccd.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_DOCUMENT_SVG.preview}
   static String get ASSETS_ICONS_IC_DOCUMENT_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_document.svg';
@@ -110,9 +134,17 @@ class Assets {
   static String get ASSETS_ICONS_IC_IMPORT_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_import.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NATION_SVG.preview}
+  static String get ASSETS_ICONS_IC_NATION_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_nation.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_NOT_ACTIVE_SVG.preview}
   static String get ASSETS_ICONS_IC_NOT_ACTIVE_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_not_active.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_PERSON_SVG.preview}
+  static String get ASSETS_ICONS_IC_PERSON_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_person.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_PROFILE_SVG.preview}
   static String get ASSETS_ICONS_IC_PROFILE_SVG =>
@@ -130,13 +162,57 @@ class Assets {
   static String get ASSETS_ICONS_IC_SEARCH_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_search.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_START_DAY_SVG.preview}
+  static String get ASSETS_ICONS_IC_START_DAY_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_start_day.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_USER_SVG.preview}
   static String get ASSETS_ICONS_IC_USER_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_user.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_BIRTHDAY_SVG.preview}
+  static String get ASSETS_ICONS_ICON_BIRTHDAY_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_birthday.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_CARD_INFO_SVG.preview}
+  static String get ASSETS_ICONS_ICON_CARD_INFO_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_card_info.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_GENDER_SVG.preview}
+  static String get ASSETS_ICONS_ICON_GENDER_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_gender.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_ICON_HOURGLASS_SVG.preview}
   static String get ASSETS_ICONS_ICON_HOURGLASS_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_hourglass.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_LIST_NULL_SVG.preview}
+  static String get ASSETS_ICONS_ICON_LIST_NULL_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_list_null.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_MAP_SVG.preview}
+  static String get ASSETS_ICONS_ICON_MAP_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_map.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_NATIONALITY_SVG.preview}
+  static String get ASSETS_ICONS_ICON_NATIONALITY_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_nationality.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_NFC_SVG.preview}
+  static String get ASSETS_ICONS_ICON_NFC_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_nfc.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_NFC_HOME_TOWN_SVG.preview}
+  static String get ASSETS_ICONS_ICON_NFC_HOME_TOWN_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_nfc_home_town.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_NFC_IDENTIFYING_SIGNS_SVG.preview}
+  static String get ASSETS_ICONS_ICON_NFC_IDENTIFYING_SIGNS_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_nfc_identifying_signs.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_SCAN_NFC_SVG.preview}
+  static String get ASSETS_ICONS_ICON_SCAN_NFC_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_scan_nfc.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG.preview}
   static String get ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG =>
@@ -154,6 +230,10 @@ class Assets {
   static String get ASSETS_ICONS_ICON_SNACK_BAR_WARNING_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_snack_bar_warning.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_USER_NAME_CARD_SVG.preview}
+  static String get ASSETS_ICONS_ICON_USER_NAME_CARD_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_user_name_card.svg';
+
   /// {@macro assets_generator.ASSETS_IMAGES_IMG_CHECK_FAILURE_SVG.preview}
   static String get ASSETS_IMAGES_IMG_CHECK_FAILURE_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/images/img_check_failure.svg';
@@ -161,6 +241,17 @@ class Assets {
   /// {@macro assets_generator.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG.preview}
   static String get ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/images/img_check_success.svg';
+
+  /// {@macro assets_generator.ASSETS_IMAGES_IPHONE_JPG.preview}
+  static String get ASSETS_IMAGES_IPHONE_JPG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/images/iphone.jpg';
+
+  /// {@macro assets_generator.ASSETS_IMAGES_LOGO_VIETTEL_SVG.preview}
+  static String get ASSETS_IMAGES_LOGO_VIETTEL_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/images/logo_viettel.svg';
+
+  static String get ASSETS_LOCALES_EN_US_JSON =>
+      '${isFromModules ? "packages/$package/" : ""}assets/locales/en_US.json';
 
   static String get ASSETS_LOCALES_VI_VN_JSON =>
       '${isFromModules ? "packages/$package/" : ""}assets/locales/vi_VN.json';
@@ -172,20 +263,35 @@ final List<String> assetsArray = <String>[
   Assets.ASSETS_FONTS_NUNITOSANS_REGULAR_TTF,
   Assets.ASSETS_FONTS_NUNITOSANS_SEMIBOLD_TTF,
 
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG.preview}
-  Assets.ASSETS_ICONS_HOME_FILE_DECLARATION_SVG,
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_DECLARATION_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_DECLARATION_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_HISTORY_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_HISTORY_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_HOME_HOME_SVG.preview}
   Assets.ASSETS_ICONS_HOME_HOME_SVG,
 
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_GUIDE_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_IC_GUIDE_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_HOME_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_IC_HOME_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_PROFILE_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_IC_PROFILE_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_IC_STATIS_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_IC_STATIS_SVG,
+
   /// {@macro assets_generator.ASSETS_ICONS_HOME_LOOKUP_C12_SVG.preview}
   Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG,
 
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_REGISTER_TRANSACTION_SVG.preview}
-  Assets.ASSETS_ICONS_HOME_REGISTER_TRANSACTION_SVG,
-
-  /// {@macro assets_generator.ASSETS_ICONS_HOME_TRANSACTION_HISTORY_SVG.preview}
-  Assets.ASSETS_ICONS_HOME_TRANSACTION_HISTORY_SVG,
+  /// {@macro assets_generator.ASSETS_ICONS_HOME_UNIT_INFO_SVG.preview}
+  Assets.ASSETS_ICONS_HOME_UNIT_INFO_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_ACTIVE_SVG.preview}
   Assets.ASSETS_ICONS_IC_ACTIVE_SVG,
@@ -214,6 +320,9 @@ final List<String> assetsArray = <String>[
   /// {@macro assets_generator.ASSETS_ICONS_IC_CALENDER_SVG.preview}
   Assets.ASSETS_ICONS_IC_CALENDER_SVG,
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_CCCD_SVG.preview}
+  Assets.ASSETS_ICONS_IC_CCCD_SVG,
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_DOCUMENT_SVG.preview}
   Assets.ASSETS_ICONS_IC_DOCUMENT_SVG,
 
@@ -238,8 +347,14 @@ final List<String> assetsArray = <String>[
   /// {@macro assets_generator.ASSETS_ICONS_IC_IMPORT_SVG.preview}
   Assets.ASSETS_ICONS_IC_IMPORT_SVG,
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NATION_SVG.preview}
+  Assets.ASSETS_ICONS_IC_NATION_SVG,
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_NOT_ACTIVE_SVG.preview}
   Assets.ASSETS_ICONS_IC_NOT_ACTIVE_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_PERSON_SVG.preview}
+  Assets.ASSETS_ICONS_IC_PERSON_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_PROFILE_SVG.preview}
   Assets.ASSETS_ICONS_IC_PROFILE_SVG,
@@ -253,11 +368,44 @@ final List<String> assetsArray = <String>[
   /// {@macro assets_generator.ASSETS_ICONS_IC_SEARCH_SVG.preview}
   Assets.ASSETS_ICONS_IC_SEARCH_SVG,
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_START_DAY_SVG.preview}
+  Assets.ASSETS_ICONS_IC_START_DAY_SVG,
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_USER_SVG.preview}
   Assets.ASSETS_ICONS_IC_USER_SVG,
 
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_BIRTHDAY_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_BIRTHDAY_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_CARD_INFO_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_CARD_INFO_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_GENDER_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_GENDER_SVG,
+
   /// {@macro assets_generator.ASSETS_ICONS_ICON_HOURGLASS_SVG.preview}
   Assets.ASSETS_ICONS_ICON_HOURGLASS_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_LIST_NULL_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_LIST_NULL_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_MAP_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_MAP_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_NATIONALITY_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_NATIONALITY_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_NFC_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_NFC_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_NFC_HOME_TOWN_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_NFC_HOME_TOWN_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_NFC_IDENTIFYING_SIGNS_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_NFC_IDENTIFYING_SIGNS_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_SCAN_NFC_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_SCAN_NFC_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG.preview}
   Assets.ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG,
@@ -271,10 +419,20 @@ final List<String> assetsArray = <String>[
   /// {@macro assets_generator.ASSETS_ICONS_ICON_SNACK_BAR_WARNING_SVG.preview}
   Assets.ASSETS_ICONS_ICON_SNACK_BAR_WARNING_SVG,
 
+  /// {@macro assets_generator.ASSETS_ICONS_ICON_USER_NAME_CARD_SVG.preview}
+  Assets.ASSETS_ICONS_ICON_USER_NAME_CARD_SVG,
+
   /// {@macro assets_generator.ASSETS_IMAGES_IMG_CHECK_FAILURE_SVG.preview}
   Assets.ASSETS_IMAGES_IMG_CHECK_FAILURE_SVG,
 
   /// {@macro assets_generator.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG.preview}
   Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
+
+  /// {@macro assets_generator.ASSETS_IMAGES_IPHONE_JPG.preview}
+  Assets.ASSETS_IMAGES_IPHONE_JPG,
+
+  /// {@macro assets_generator.ASSETS_IMAGES_LOGO_VIETTEL_SVG.preview}
+  Assets.ASSETS_IMAGES_LOGO_VIETTEL_SVG,
+  Assets.ASSETS_LOCALES_EN_US_JSON,
   Assets.ASSETS_LOCALES_VI_VN_JSON,
 ];

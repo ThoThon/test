@@ -1,15 +1,11 @@
-import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:v_bhxh/modules/declare/check_list_detail/model/model_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/model/model_src.dart';
-import 'package:v_bhxh/modules/declare/declare_info/controller/controller_src.dart';
-import 'package:v_bhxh/modules/src.dart';
 import 'package:collection/collection.dart';
-import '../model/model_src.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:v_bhxh/modules/src.dart';
 
-part 'declare_info_widget.dart';
-part 'd02_tab_widget.dart';
-part 'tk1_tab_widget.dart';
 part 'd01_tab_widget.dart';
+part 'd02_tab_widget.dart';
+part 'declare_info_widget.dart';
+part 'tk1_tab_widget.dart';
 
 class DeclareInfoPage extends BaseGetWidget<DeclareInfoController> {
   DeclareInfoPage({super.key});

@@ -4,6 +4,7 @@
 // ignore: avoid_classes_with_only_static_members
 class AppTranslation {
   static Map<String, Map<String, String>> translations = {
+    'en_US': Locales.en_US,
     'vi_VN': Locales.vi_VN,
   };
 }
@@ -11,9 +12,6 @@ class AppTranslation {
 class LocaleKeys {
   LocaleKeys._();
   static const app_name = 'app_name';
-  static const app_delete = 'app_delete';
-  static const app_edit = 'app_edit';
-  static const app_edit2 = 'app_edit2';
   static const dialog_close = 'dialog_close';
   static const dialog_errorConnectFailedStr = 'dialog_errorConnectFailedStr';
   static const dialog_errorConnectTimeOut = 'dialog_errorConnectTimeOut';
@@ -32,6 +30,13 @@ class LocaleKeys {
   static const dialog_history = 'dialog_history';
   static const dialog_consignment = 'dialog_consignment';
   static const dialog_notification = 'dialog_notification';
+  static const app_delete = 'app_delete';
+  static const app_edit = 'app_edit';
+  static const app_edit2 = 'app_edit2';
+  static const dialog_updateSuccess = 'dialog_updateSuccess';
+  static const dialog_logout = 'dialog_logout';
+  static const dialog_isLogout = 'dialog_isLogout';
+  static const dialog_empty = 'dialog_empty';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -44,130 +49,135 @@ class LocaleKeys {
       'declaration_declarationTaxCode';
   static const declaration_noUnitCode = 'declaration_noUnitCode';
   static const declaration_historyRegister = 'declaration_historyRegister';
-  static const home_registerInsurance = 'home_registerInsurance';
-  static const home_transactionHistory = 'home_transactionHistory';
-  static const home_declarationForm = 'home_declarationForm';
+  static const home_unitInfo = 'home_unitInfo';
+  static const home_history = 'home_history';
   static const home_lookupC12 = 'home_lookupC12';
+  static const home_guide = 'home_guide';
   static const home_declare = 'home_declare';
-  static const transaction_transactionRegister =
-      'transaction_transactionRegister';
-  static const transaction_generalInfo = 'transaction_generalInfo';
-  static const transaction_registerInfo = 'transaction_registerInfo';
-  static const transaction_unitInfo = 'transaction_unitInfo';
-  static const transaction_unitName = 'transaction_unitName';
-  static const transaction_unitCode = 'transaction_unitCode';
-  static const transaction_phone = 'transaction_phone';
-  static const transaction_addressInfo = 'transaction_addressInfo';
-  static const transaction_addressRegister = 'transaction_addressRegister';
-  static const transaction_addressRegisterDKKD =
-      'transaction_addressRegisterDKKD';
-  static const transaction_addressTransaction =
-      'transaction_addressTransaction';
-  static const transaction_businessIndustry = 'transaction_businessIndustry';
-  static const transaction_representInfo = 'transaction_representInfo';
-  static const transaction_represent = 'transaction_represent';
-  static const transaction_position = 'transaction_position';
-  static const transaction_decisionInfo = 'transaction_decisionInfo';
-  static const transaction_decisionNumber = 'transaction_decisionNumber';
-  static const transaction_decisionAddress = 'transaction_decisionAddress';
-  static const transaction_inputTaxCode = 'transaction_inputTaxCode';
-  static const transaction_inputPhone = 'transaction_inputPhone';
-  static const transaction_inputUnit = 'transaction_inputUnit';
-  static const transaction_inputAddressTransaction =
-      'transaction_inputAddressTransaction';
-  static const transaction_inputAddressRegister =
-      'transaction_inputAddressRegister';
-  static const transaction_inputRepresent = 'transaction_inputRepresent';
-  static const transaction_inputPosition = 'transaction_inputPosition';
-  static const transaction_inputDecisionNumber =
-      'transaction_inputDecisionNumber';
-  static const transaction_inputDecisionAddress =
-      'transaction_inputDecisionAddress';
-  static const transaction_inputSocialAgency = 'transaction_inputSocialAgency';
-  static const transaction_inputProvince = 'transaction_inputProvince';
-  static const transaction_inputDistrict = 'transaction_inputDistrict';
-  static const transaction_inputWard = 'transaction_inputWard';
-  static const transaction_register = 'transaction_register';
-  static const transaction_consignment = 'transaction_consignment';
-  static const transaction_firstTimeRegister = 'transaction_firstTimeRegister';
-  static const transaction_socialInfo = 'transaction_socialInfo';
-  static const transaction_socialAgency = 'transaction_socialAgency';
-  static const transaction_city = 'transaction_city';
-  static const transaction_methodResult = 'transaction_methodResult';
-  static const transaction_methodClose = 'transaction_methodClose';
-  static const transaction_receiveCity = 'transaction_receiveCity';
-  static const transaction_receiveDistrict = 'transaction_receiveDistrict';
-  static const transaction_receiveWard = 'transaction_receiveWard';
-  static const transaction_otherInfo = 'transaction_otherInfo';
-  static const transaction_unitGroup = 'transaction_unitGroup';
-  static const transaction_content = 'transaction_content';
-  static const transaction_trader = 'transaction_trader';
-  static const transaction_phoneContact = 'transaction_phoneContact';
-  static const transaction_email = 'transaction_email';
-  static const transaction_fileInclude = 'transaction_fileInclude';
-  static const transaction_attached = 'transaction_attached';
-  static const transaction_serviceInfo = 'transaction_serviceInfo';
-  static const transaction_servicePackage = 'transaction_servicePackage';
-  static const transaction_agencyCode = 'transaction_agencyCode';
-  static const transaction_addImageAttached = 'transaction_addImageAttached';
-  static const transaction_pickImageFromCamera =
-      'transaction_pickImageFromCamera';
-  static const transaction_pickImageFromLibrary =
-      'transaction_pickImageFromLibrary';
-  static const transaction_expiryDate = 'transaction_expiryDate';
-  static const transaction_province = 'transaction_province';
-  static const transaction_district = 'transaction_district';
-  static const transaction_ward = 'transaction_ward';
-  static const transaction_selectProvince = 'transaction_selectProvince';
-  static const transaction_selectDistrict = 'transaction_selectDistrict';
-  static const transaction_selectWard = 'transaction_selectWard';
-  static const transaction_selectSocialAgency =
-      'transaction_selectSocialAgency';
-  static const transaction_receiveResult = 'transaction_receiveResult';
-  static const transaction_receiveMethod = 'transaction_receiveMethod';
-  static const transaction_agree = 'transaction_agree';
-  static const transaction_signUpForCode = 'transaction_signUpForCode';
-  static const transaction_phoneNumberInValid =
-      'transaction_phoneNumberInValid';
-  static const transaction_phoenNumberIsNotEmpty =
-      'transaction_phoenNumberIsNotEmpty';
-  static const transaction_unitCodeInValid = 'transaction_unitCodeInValid';
-  static const transaction_unitCodeIsNotEmpty =
-      'transaction_unitCodeIsNotEmpty';
-  static const transaction_emailIsNotEmpty = 'transaction_emailIsNotEmpty';
-  static const transaction_emailInValid = 'transaction_emailInValid';
-  static const transaction_missingFileInclude =
-      'transaction_missingFileInclude';
-  static const transaction_missingInfo = 'transaction_missingInfo';
-  static const transaction_fileIncludeInValid =
-      'transaction_fileIncludeInValid';
-  static const transaction_search = 'transaction_search';
-  static const historyRegister_historyDetail = 'historyRegister_historyDetail';
-  static const historyRegister_profileInfo = 'historyRegister_profileInfo';
-  static const historyRegister_status = 'historyRegister_status';
-  static const historyRegister_profileNumber = 'historyRegister_profileNumber';
-  static const historyRegister_timeResgiter = 'historyRegister_timeResgiter';
-  static const historyRegister_progressHandle =
-      'historyRegister_progressHandle';
-  static const historyRegister_profileCheckResult =
-      'historyRegister_profileCheckResult';
-  static const historyRegister_declarationForm =
-      'historyRegister_declarationForm';
-  static const historyRegister_historyTransaction =
-      'historyRegister_historyTransaction';
-  static const historyRegister_searchProfile = 'historyRegister_searchProfile';
-  static const historyRegister_noResult = 'historyRegister_noResult';
-  static const historyRegister_result = 'historyRegister_result';
-  static const historyRegister_number = 'historyRegister_number';
-  static const historyRegister_home = 'historyRegister_home';
-  static const historyRegister_selectedUnitCode =
-      'historyRegister_selectedUnitCode';
-  static const historyRegister_lookup = 'historyRegister_lookup';
-  static const historyRegister_socialAgencyInProcess =
-      'historyRegister_socialAgencyInProcess';
-  static const historyRegister_success = 'historyRegister_success';
-  static const historyRegister_fail = 'historyRegister_fail';
-  static const historyRegister_lookupSuccess = 'historyRegister_lookupSuccess';
+  static const unitInfo_transactionRegister = 'unitInfo_transactionRegister';
+  static const unitInfo_generalInfo = 'unitInfo_generalInfo';
+  static const unitInfo_registerInfo = 'unitInfo_registerInfo';
+  static const unitInfo_unitInfo = 'unitInfo_unitInfo';
+  static const unitInfo_unitName = 'unitInfo_unitName';
+  static const unitInfo_unitCode = 'unitInfo_unitCode';
+  static const unitInfo_phone = 'unitInfo_phone';
+  static const unitInfo_addressInfo = 'unitInfo_addressInfo';
+  static const unitInfo_addressRegister = 'unitInfo_addressRegister';
+  static const unitInfo_addressRegisterDKKD = 'unitInfo_addressRegisterDKKD';
+  static const unitInfo_addressTransaction = 'unitInfo_addressTransaction';
+  static const unitInfo_businessIndustry = 'unitInfo_businessIndustry';
+  static const unitInfo_representInfo = 'unitInfo_representInfo';
+  static const unitInfo_transactionPersonInfo =
+      'unitInfo_transactionPersonInfo';
+  static const unitInfo_represent = 'unitInfo_represent';
+  static const unitInfo_position = 'unitInfo_position';
+  static const unitInfo_decisionInfo = 'unitInfo_decisionInfo';
+  static const unitInfo_decisionNumber = 'unitInfo_decisionNumber';
+  static const unitInfo_decisionAddress = 'unitInfo_decisionAddress';
+  static const unitInfo_inputTaxCode = 'unitInfo_inputTaxCode';
+  static const unitInfo_inputPhone = 'unitInfo_inputPhone';
+  static const unitInfo_inputUnit = 'unitInfo_inputUnit';
+  static const unitInfo_inputAddressTransaction =
+      'unitInfo_inputAddressTransaction';
+  static const unitInfo_inputAddressRegister = 'unitInfo_inputAddressRegister';
+  static const unitInfo_inputRepresent = 'unitInfo_inputRepresent';
+  static const unitInfo_inputPosition = 'unitInfo_inputPosition';
+  static const unitInfo_inputDecisionNumber = 'unitInfo_inputDecisionNumber';
+  static const unitInfo_inputDecisionAddress = 'unitInfo_inputDecisionAddress';
+  static const unitInfo_inputSocialAgency = 'unitInfo_inputSocialAgency';
+  static const unitInfo_inputProvince = 'unitInfo_inputProvince';
+  static const unitInfo_inputDistrict = 'unitInfo_inputDistrict';
+  static const unitInfo_inputWard = 'unitInfo_inputWard';
+  static const unitInfo_register = 'unitInfo_register';
+  static const unitInfo_consignment = 'unitInfo_consignment';
+  static const unitInfo_firstTimeRegister = 'unitInfo_firstTimeRegister';
+  static const unitInfo_socialInfo = 'unitInfo_socialInfo';
+  static const unitInfo_socialAgency = 'unitInfo_socialAgency';
+  static const unitInfo_city = 'unitInfo_city';
+  static const unitInfo_methodResult = 'unitInfo_methodResult';
+  static const unitInfo_methodClose = 'unitInfo_methodClose';
+  static const unitInfo_receiveCity = 'unitInfo_receiveCity';
+  static const unitInfo_receiveDistrict = 'unitInfo_receiveDistrict';
+  static const unitInfo_receiveWard = 'unitInfo_receiveWard';
+  static const unitInfo_otherInfo = 'unitInfo_otherInfo';
+  static const unitInfo_unitGroup = 'unitInfo_unitGroup';
+  static const unitInfo_content = 'unitInfo_content';
+  static const unitInfo_transactionPerson = 'unitInfo_transactionPerson';
+  static const unitInfo_phoneContact = 'unitInfo_phoneContact';
+  static const unitInfo_email = 'unitInfo_email';
+  static const unitInfo_fileInclude = 'unitInfo_fileInclude';
+  static const unitInfo_attached = 'unitInfo_attached';
+  static const unitInfo_serviceInfo = 'unitInfo_serviceInfo';
+  static const unitInfo_servicePackage = 'unitInfo_servicePackage';
+  static const unitInfo_agencyCode = 'unitInfo_agencyCode';
+  static const unitInfo_addImageAttached = 'unitInfo_addImageAttached';
+  static const unitInfo_pickImageFromCamera = 'unitInfo_pickImageFromCamera';
+  static const unitInfo_pickImageFromLibrary = 'unitInfo_pickImageFromLibrary';
+  static const unitInfo_expiryDate = 'unitInfo_expiryDate';
+  static const unitInfo_province = 'unitInfo_province';
+  static const unitInfo_district = 'unitInfo_district';
+  static const unitInfo_ward = 'unitInfo_ward';
+  static const unitInfo_selectProvince = 'unitInfo_selectProvince';
+  static const unitInfo_selectDistrict = 'unitInfo_selectDistrict';
+  static const unitInfo_selectWard = 'unitInfo_selectWard';
+  static const unitInfo_selectSocialAgency = 'unitInfo_selectSocialAgency';
+  static const unitInfo_receiveResult = 'unitInfo_receiveResult';
+  static const unitInfo_receiveMethod = 'unitInfo_receiveMethod';
+  static const unitInfo_agree = 'unitInfo_agree';
+  static const unitInfo_signUpForCode = 'unitInfo_signUpForCode';
+  static const unitInfo_phoneNumberInValid = 'unitInfo_phoneNumberInValid';
+  static const unitInfo_phoenNumberIsNotEmpty =
+      'unitInfo_phoenNumberIsNotEmpty';
+  static const unitInfo_unitCodeInValid = 'unitInfo_unitCodeInValid';
+  static const unitInfo_unitCodeIsNotEmpty = 'unitInfo_unitCodeIsNotEmpty';
+  static const unitInfo_emailIsNotEmpty = 'unitInfo_emailIsNotEmpty';
+  static const unitInfo_emailInValid = 'unitInfo_emailInValid';
+  static const unitInfo_missingFileInclude = 'unitInfo_missingFileInclude';
+  static const unitInfo_missingInfo = 'unitInfo_missingInfo';
+  static const unitInfo_fileIncludeInValid = 'unitInfo_fileIncludeInValid';
+  static const unitInfo_search = 'unitInfo_search';
+  static const unitInfo_change = 'unitInfo_change';
+  static const unitInfo_socialAgencyName = 'unitInfo_socialAgencyName';
+  static const unitInfo_socialAgencyCode = 'unitInfo_socialAgencyCode';
+  static const unitInfo_region = 'unitInfo_region';
+  static const unitInfo_basicSalary = 'unitInfo_basicSalary';
+  static const unitInfo_registerResult = 'unitInfo_registerResult';
+  static const unitInfo_regionOne = 'unitInfo_regionOne';
+  static const unitInfo_regionTwo = 'unitInfo_regionTwo';
+  static const unitInfo_regionThree = 'unitInfo_regionThree';
+  static const unitInfo_regionFour = 'unitInfo_regionFour';
+  static const unitInfo_oneMonth = 'unitInfo_oneMonth';
+  static const unitInfo_threeMonth = 'unitInfo_threeMonth';
+  static const unitInfo_sixMonth = 'unitInfo_sixMonth';
+  static const unitInfo_byPostOffice = 'unitInfo_byPostOffice';
+  static const unitInfo_bySocialAgency = 'unitInfo_bySocialAgency';
+  static const history_procedure = 'history_procedure';
+  static const history_submissionTime = 'history_submissionTime';
+  static const history_historyDetail = 'history_historyDetail';
+  static const history_profileInfo = 'history_profileInfo';
+  static const history_status = 'history_status';
+  static const history_profileNumber = 'history_profileNumber';
+  static const history_timeResgiter = 'history_timeResgiter';
+  static const history_progressHandle = 'history_progressHandle';
+  static const history_profileCheckResult = 'history_profileCheckResult';
+  static const history_declarationForm = 'history_declarationForm';
+  static const history_historyTransaction = 'history_historyTransaction';
+  static const history_searchProfile = 'history_searchProfile';
+  static const history_noResult = 'history_noResult';
+  static const history_result = 'history_result';
+  static const history_number = 'history_number';
+  static const history_home = 'history_home';
+  static const history_selectedUnitCode = 'history_selectedUnitCode';
+  static const history_lookup = 'history_lookup';
+  static const history_socialAgencyInProcess = 'history_socialAgencyInProcess';
+  static const history_success = 'history_success';
+  static const history_fail = 'history_fail';
+  static const history_all = 'history_all';
+  static const history_lookupSuccess = 'history_lookupSuccess';
+  static const history_procedure600 = 'history_procedure600';
+  static const history_procedure600c = 'history_procedure600c';
+  static const history_procedure600d = 'history_procedure600d';
+  static const history_procedure600o = 'history_procedure600o';
   static const certificate_listCertificate = 'certificate_listCertificate';
   static const certificate_selectCertificate = 'certificate_selectCertificate';
   static const certificate_confirm = 'certificate_confirm';
@@ -239,9 +249,49 @@ class LocaleKeys {
   static const declarationPeriodDetail_deposit =
       'declarationPeriodDetail_deposit';
   static const declareInfo_title = 'declareInfo_title';
+  static const profile_accountInfo = 'profile_accountInfo';
+  static const profile_companyName = 'profile_companyName';
+  static const profile_taxCode = 'profile_taxCode';
+  static const profile_unitCode = 'profile_unitCode';
+  static const profile_package = 'profile_package';
+  static const profile_monthOfUse = 'profile_monthOfUse';
+  static const profile_registerDay = 'profile_registerDay';
+  static const profile_expiredDay = 'profile_expiredDay';
+  static const scanCccd_stepOne = 'scanCccd_stepOne';
+  static const scanCccd_stepTwo = 'scanCccd_stepTwo';
+  static const scanCccd_stepThree = 'scanCccd_stepThree';
+  static const scanCccd_guideScanCCCD = 'scanCccd_guideScanCCCD';
+  static const scanCccd_titleStepOne = 'scanCccd_titleStepOne';
+  static const scanCccd_titleStepTwo = 'scanCccd_titleStepTwo';
+  static const scanCccd_titleStepThree = 'scanCccd_titleStepThree';
 }
 
 class Locales {
+  static const en_US = {
+    'app_name': 'vBHXH',
+    'dialog_close': 'Close',
+    'dialog_errorConnectFailedStr':
+        'Unable to connect to the server\nPlease check your network connection.',
+    'dialog_errorConnectTimeOut':
+        'No response from the system, please try again later',
+    'dialog_errorInternalServer':
+        'System processing error\nPlease try again later!!!',
+    'dialog_error502': 'Server is under maintenance. Please come back later.',
+    'dialog_error503':
+        'Server is under maintenance. Please come back in a few minutes.',
+    'dialog_error400': 'Invalid data sent!',
+    'dialog_error404': 'This path was not found, please contact Admin',
+    'dialog_error401': 'Login session has expired. Please log in again',
+    'dialog_success': 'Success!',
+    'dialog_fail': 'Failed!',
+    'dialog_checkEmail': 'Please check the registered email again',
+    'dialog_processTime': '(Processing time is 3-5 working days).',
+    'dialog_registerFail': 'Registration failed, please try again',
+    'dialog_exit': 'Exit',
+    'dialog_history': 'History',
+    'dialog_consignment': 'Consignment',
+    'dialog_notification': 'Notification',
+  };
   static const vi_VN = {
     'app_name': 'vBHXH',
     'app_delete': 'Xóa',
@@ -271,6 +321,10 @@ class Locales {
     'dialog_history': 'Lịch sử',
     'dialog_consignment': 'Ký gửi',
     'dialog_notification': 'Thông báo',
+    'dialog_updateSuccess': 'Thay đổi thông tin thành công',
+    'dialog_logout': 'Đăng xuất',
+    'dialog_isLogout': 'Đăng xuất khỏi tài khoản của bạn',
+    'dialog_empty': 'Trống',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -281,109 +335,134 @@ class Locales {
     'declaration_declarationTaxCode': 'Mã số thuế',
     'declaration_noUnitCode': 'Chưa có mã đơn vị',
     'declaration_historyRegister': 'Lịch sử đăng ký',
-    'home_registerInsurance': 'Đăng ký \nBHXH',
-    'home_transactionHistory': 'Lịch sử \ngiao dịch',
-    'home_declarationForm': 'Kê khai \nhồ sơ',
+    'home_unitInfo': 'Thông tin \nđơn vị',
+    'home_history': 'Lịch sử',
     'home_lookupC12': 'Tra cứu \nC12',
+    'home_guide': 'Hướng dẫn',
     'home_declare': 'Kê khai',
-    'transaction_transactionRegister': 'Đăng ký giao dịch',
-    'transaction_generalInfo': 'Thông tin chung',
-    'transaction_registerInfo': 'Thông tin đăng ký',
-    'transaction_unitInfo': 'Thông tin đơn vị',
-    'transaction_unitName': 'Tên đơn vị',
-    'transaction_unitCode': 'Mã đơn vị',
-    'transaction_phone': 'Số điện thoại',
-    'transaction_addressInfo': 'Thông tin địa chỉ',
-    'transaction_addressRegister': 'Địa chỉ đăng ký kinh doanh',
-    'transaction_addressRegisterDKKD': 'Địa chỉ ĐKKD: ',
-    'transaction_addressTransaction': 'Địa chỉ giao dịch hồ sơ',
-    'transaction_businessIndustry': 'Ngành nghề sản xuất',
-    'transaction_representInfo': 'Thông tin người đại diện',
-    'transaction_represent': 'Người đại diện',
-    'transaction_position': 'Chức vụ',
-    'transaction_decisionInfo': 'Thông tin quyết định',
-    'transaction_decisionNumber': 'Số quyết định',
-    'transaction_decisionAddress': 'Nơi cấp quyết định',
-    'transaction_inputTaxCode': 'Mã số thuế',
-    'transaction_inputPhone': 'Nhập số điện thoại',
-    'transaction_inputUnit': 'Nhập tên đơn vị',
-    'transaction_inputAddressTransaction': 'Nhập địa chỉ giao dịch',
-    'transaction_inputAddressRegister': 'Nhập địa chỉ đăng ký kinh doanh',
-    'transaction_inputRepresent': 'Nhập người đại diện',
-    'transaction_inputPosition': 'Nhập chức vụ',
-    'transaction_inputDecisionNumber': 'Nhập số quyết định',
-    'transaction_inputDecisionAddress': 'Nhập nơi cấp quyết định',
-    'transaction_inputSocialAgency': 'Nhập tên cơ quan BHXH',
-    'transaction_inputProvince': 'Nhập tỉnh/thành phố',
-    'transaction_inputDistrict': 'Nhập quận/huyện',
-    'transaction_inputWard': 'Nhập phường/xã',
-    'transaction_register': 'Đăng ký',
-    'transaction_consignment': 'Ký gửi',
-    'transaction_firstTimeRegister': 'Đăng ký cấp mã lần đầu',
-    'transaction_socialInfo': 'Thông tin đóng BHXH',
-    'transaction_socialAgency': 'Cơ quan BHXH',
-    'transaction_city': 'Tỉnh/Thành phố',
-    'transaction_methodResult': 'Nhận kết quả hồ sơ qua',
-    'transaction_methodClose': 'Phương thức đóng',
-    'transaction_receiveCity': 'Nơi nhận/Tỉnh',
-    'transaction_receiveDistrict': 'Nơi nhận/Huyện',
-    'transaction_receiveWard': 'Nơi nhận/Xã',
-    'transaction_otherInfo': 'Thông tin khác',
-    'transaction_unitGroup': 'Khối đơn vị',
-    'transaction_content': 'Nội dung',
-    'transaction_trader': 'Người giao dịch',
-    'transaction_phoneContact': 'Điện thoại liên hệ',
-    'transaction_email': 'Email',
-    'transaction_fileInclude': 'Hồ sơ kèm theo',
-    'transaction_attached': 'Đính kèm',
-    'transaction_serviceInfo': 'Thông tin dịch vụ',
-    'transaction_servicePackage': 'Gói dịch vụ',
-    'transaction_agencyCode': 'Mã Đại lý, Cộng tác viên (Nhập email)',
-    'transaction_addImageAttached': 'Thêm hình ảnh đính kèm',
-    'transaction_pickImageFromCamera': 'Chụp ảnh từ camera',
-    'transaction_pickImageFromLibrary': 'Chọn ảnh từ điện thoại',
-    'transaction_expiryDate': 'Hạn dùng',
-    'transaction_province': 'Tỉnh',
-    'transaction_district': 'Quận/Huyện',
-    'transaction_ward': 'Phường/Xã',
-    'transaction_selectProvince': 'Chọn Tỉnh/Thành phố',
-    'transaction_selectDistrict': 'Chọn Quận/Huyện',
-    'transaction_selectWard': 'Chọn Xã',
-    'transaction_selectSocialAgency': 'Chọn cơ quan BHXH',
-    'transaction_receiveResult': 'Nhận kết quả hồ sơ qua',
-    'transaction_receiveMethod': 'Phương thức nhận',
-    'transaction_agree': 'Đồng ý',
-    'transaction_signUpForCode': 'Đăng ký cấp mã',
-    'transaction_phoneNumberInValid': 'Số điện thoại không hợp lệ',
-    'transaction_phoenNumberIsNotEmpty': 'Số điện thoại không được bỏ trống',
-    'transaction_unitCodeInValid': 'Mã đơn vị phải có 7 ký tự',
-    'transaction_unitCodeIsNotEmpty': 'Mã đơn vị không được bỏ trống',
-    'transaction_emailIsNotEmpty': 'Email không được bỏ trống',
-    'transaction_emailInValid': 'Email không hợp lệ',
-    'transaction_missingFileInclude': 'File đính kèm',
-    'transaction_missingInfo': 'Thiếu thông tin',
-    'transaction_fileIncludeInValid': 'File đính kèm không được bỏ trống',
-    'transaction_search': 'Tìm kiếm',
-    'historyRegister_historyDetail': 'Chi tiết lịch sử',
-    'historyRegister_profileInfo': 'Thông tin hồ sơ',
-    'historyRegister_status': 'Trạng thái',
-    'historyRegister_profileNumber': 'Số hồ sơ:',
-    'historyRegister_timeResgiter': 'Thời gian:',
-    'historyRegister_progressHandle': 'Tiến độ xử lý',
-    'historyRegister_profileCheckResult': 'Kết quả kiểm tra hồ sơ',
-    'historyRegister_declarationForm': 'Hồ sơ kê khai',
-    'historyRegister_historyTransaction': 'Lịch sử giao dịch',
-    'historyRegister_searchProfile': 'Tìm kiếm hồ sơ',
-    'historyRegister_noResult': 'Không có kết quả',
-    'historyRegister_result': 'Kết quả: ',
-    'historyRegister_number': ' - Số ',
-    'historyRegister_home': 'Trang chủ',
-    'historyRegister_selectedUnitCode': 'Chọn mã đơn vị',
-    'historyRegister_lookup': 'Tra cứu',
-    'historyRegister_socialAgencyInProcess': 'Đang chờ xử lý',
-    'historyRegister_success': 'Thành công',
-    'historyRegister_fail': 'Thất bại',
-    'historyRegister_lookupSuccess': 'Tra cứu thành công!',
+    'unitInfo_transactionRegister': 'Đăng ký giao dịch',
+    'unitInfo_generalInfo': 'Thông tin chung',
+    'unitInfo_registerInfo': 'Thông tin đăng ký',
+    'unitInfo_unitInfo': 'Thông tin đơn vị',
+    'unitInfo_unitName': 'Tên đơn vị',
+    'unitInfo_unitCode': 'Mã đơn vị',
+    'unitInfo_phone': 'Số điện thoại',
+    'unitInfo_addressInfo': 'Thông tin địa chỉ',
+    'unitInfo_addressRegister': 'Địa chỉ đăng ký kinh doanh',
+    'unitInfo_addressRegisterDKKD': 'Địa chỉ ĐKKD: ',
+    'unitInfo_addressTransaction': 'Địa chỉ giao dịch hồ sơ',
+    'unitInfo_businessIndustry': 'Ngành nghề sản xuất',
+    'unitInfo_representInfo': 'Thông tin người đại diện',
+    'unitInfo_transactionPersonInfo': 'Thông tin người giao dịch',
+    'unitInfo_represent': 'Người đại diện',
+    'unitInfo_position': 'Chức vụ',
+    'unitInfo_decisionInfo': 'Thông tin quyết định',
+    'unitInfo_decisionNumber': 'Số quyết định',
+    'unitInfo_decisionAddress': 'Nơi cấp quyết định',
+    'unitInfo_inputTaxCode': 'Mã số thuế',
+    'unitInfo_inputPhone': 'Nhập số điện thoại',
+    'unitInfo_inputUnit': 'Nhập tên đơn vị',
+    'unitInfo_inputAddressTransaction': 'Nhập địa chỉ giao dịch',
+    'unitInfo_inputAddressRegister': 'Nhập địa chỉ đăng ký kinh doanh',
+    'unitInfo_inputRepresent': 'Nhập người đại diện',
+    'unitInfo_inputPosition': 'Nhập chức vụ',
+    'unitInfo_inputDecisionNumber': 'Nhập số quyết định',
+    'unitInfo_inputDecisionAddress': 'Nhập nơi cấp quyết định',
+    'unitInfo_inputSocialAgency': 'Nhập tên cơ quan BHXH',
+    'unitInfo_inputProvince': 'Nhập tỉnh/thành phố',
+    'unitInfo_inputDistrict': 'Nhập quận/huyện',
+    'unitInfo_inputWard': 'Nhập phường/xã',
+    'unitInfo_register': 'Đăng ký',
+    'unitInfo_consignment': 'Ký gửi',
+    'unitInfo_firstTimeRegister': 'Đăng ký cấp mã lần đầu',
+    'unitInfo_socialInfo': 'Thông tin đóng BHXH',
+    'unitInfo_socialAgency': 'Cơ quan BHXH',
+    'unitInfo_city': 'Tỉnh/Thành phố',
+    'unitInfo_methodResult': 'Nhận kết quả hồ sơ qua',
+    'unitInfo_methodClose': 'Phương thức đóng',
+    'unitInfo_receiveCity': 'Nơi nhận/Tỉnh',
+    'unitInfo_receiveDistrict': 'Nơi nhận/Huyện',
+    'unitInfo_receiveWard': 'Nơi nhận/Xã',
+    'unitInfo_otherInfo': 'Thông tin khác',
+    'unitInfo_unitGroup': 'Khối đơn vị',
+    'unitInfo_content': 'Nội dung',
+    'unitInfo_transactionPerson': 'Người giao dịch BHXH',
+    'unitInfo_phoneContact': 'Điện thoại liên hệ',
+    'unitInfo_email': 'Email liên hệ',
+    'unitInfo_fileInclude': 'Hồ sơ kèm theo',
+    'unitInfo_attached': 'Đính kèm',
+    'unitInfo_serviceInfo': 'Thông tin dịch vụ',
+    'unitInfo_servicePackage': 'Gói dịch vụ',
+    'unitInfo_agencyCode': 'Mã Đại lý, Cộng tác viên (Nhập email)',
+    'unitInfo_addImageAttached': 'Thêm hình ảnh đính kèm',
+    'unitInfo_pickImageFromCamera': 'Chụp ảnh từ camera',
+    'unitInfo_pickImageFromLibrary': 'Chọn ảnh từ điện thoại',
+    'unitInfo_expiryDate': 'Hạn dùng',
+    'unitInfo_province': 'Tỉnh',
+    'unitInfo_district': 'Quận/Huyện',
+    'unitInfo_ward': 'Phường/Xã',
+    'unitInfo_selectProvince': 'Chọn Tỉnh/Thành phố',
+    'unitInfo_selectDistrict': 'Chọn Quận/Huyện',
+    'unitInfo_selectWard': 'Chọn Xã',
+    'unitInfo_selectSocialAgency': 'Chọn cơ quan BHXH',
+    'unitInfo_receiveResult': 'Nhận kết quả hồ sơ qua',
+    'unitInfo_receiveMethod': 'Phương thức nhận',
+    'unitInfo_agree': 'Đồng ý',
+    'unitInfo_signUpForCode': 'Đăng ký cấp mã',
+    'unitInfo_phoneNumberInValid': 'Số điện thoại không hợp lệ',
+    'unitInfo_phoenNumberIsNotEmpty': 'Số điện thoại không được bỏ trống',
+    'unitInfo_unitCodeInValid': 'Mã đơn vị phải có 7 ký tự',
+    'unitInfo_unitCodeIsNotEmpty': 'Mã đơn vị không được bỏ trống',
+    'unitInfo_emailIsNotEmpty': 'Email không được bỏ trống',
+    'unitInfo_emailInValid': 'Email không hợp lệ',
+    'unitInfo_missingFileInclude': 'File đính kèm',
+    'unitInfo_missingInfo': 'Thiếu thông tin',
+    'unitInfo_fileIncludeInValid': 'File đính kèm không được bỏ trống',
+    'unitInfo_search': 'Tìm kiếm',
+    'unitInfo_change': 'Thay đổi',
+    'unitInfo_socialAgencyName': 'Tên cơ quan BHXH',
+    'unitInfo_socialAgencyCode': 'Mã cơ quan BHXH',
+    'unitInfo_region': 'Vùng',
+    'unitInfo_basicSalary': 'Lương cơ sở',
+    'unitInfo_registerResult': 'Đăng ký nhận kết quả',
+    'unitInfo_regionOne': 'Vùng I',
+    'unitInfo_regionTwo': 'Vùng II',
+    'unitInfo_regionThree': 'Vùng III',
+    'unitInfo_regionFour': 'Vùng IV',
+    'unitInfo_oneMonth': '1 tháng',
+    'unitInfo_threeMonth': '3 tháng',
+    'unitInfo_sixMonth': '6 tháng',
+    'unitInfo_byPostOffice': 'Qua bưu điện',
+    'unitInfo_bySocialAgency': 'Nhận tại cơ quan bảo hiểm',
+    'history_procedure': 'Thủ tục',
+    'history_submissionTime': 'Thời gian nộp',
+    'history_historyDetail': 'Chi tiết lịch sử',
+    'history_profileInfo': 'Thông tin hồ sơ',
+    'history_status': 'Trạng thái',
+    'history_profileNumber': 'Số hồ sơ:',
+    'history_timeResgiter': 'Thời gian:',
+    'history_progressHandle': 'Tiến độ xử lý',
+    'history_profileCheckResult': 'Kết quả kiểm tra hồ sơ',
+    'history_declarationForm': 'Hồ sơ kê khai',
+    'history_historyTransaction': 'Lịch sử giao dịch',
+    'history_searchProfile': 'Tìm kiếm hồ sơ',
+    'history_noResult': 'Không có kết quả',
+    'history_result': 'Kết quả: ',
+    'history_number': ' - Số ',
+    'history_home': 'Trang chủ',
+    'history_selectedUnitCode': 'Chọn mã đơn vị',
+    'history_lookup': 'Tra cứu',
+    'history_socialAgencyInProcess': 'Đang chờ xử lý',
+    'history_success': 'Thành công',
+    'history_fail': 'Thất bại',
+    'history_all': 'Tất cả',
+    'history_lookupSuccess': 'Tra cứu thành công!',
+    'history_procedure600': '600 - Báo tăng, báo giảm, điều chỉnh',
+    'history_procedure600c':
+        '600c - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo luật bhxh 2014',
+    'history_procedure600d':
+        '600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP',
+    'history_procedure600o': '600o - Tạm dừng đóng vào quỹ hưu trí',
     'certificate_listCertificate': 'Danh sách chứng thư số',
     'certificate_selectCertificate': 'Chọn chứng thư số',
     'certificate_confirm': 'Xác nhận',
@@ -445,5 +524,22 @@ class Locales {
     'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',
     'declarationPeriodDetail_deposit': 'Ký gửi',
     'declareInfo_title': 'Kê khai thông tin',
+    'profile_accountInfo': 'Thông tin tài khoản',
+    'profile_companyName': 'Tên công ty',
+    'profile_taxCode': 'Mã số thuế',
+    'profile_unitCode': 'Mã đơn vị',
+    'profile_package': 'Gói dịch vụ',
+    'profile_monthOfUse': 'Số tháng sử dụng',
+    'profile_registerDay': 'Ngày đăng ký',
+    'profile_expiredDay': 'Ngày hết hạn',
+    'scanCccd_stepOne': '1',
+    'scanCccd_stepTwo': '2',
+    'scanCccd_stepThree': '3',
+    'scanCccd_guideScanCCCD': 'Hướng dẫn quét NFC(CCCD gắn chip)',
+    'scanCccd_titleStepOne': 'Bấm vào nút BẮT ĐẦU để tiến hành quét',
+    'scanCccd_titleStepTwo':
+        'Đưa thẻ(CCCD) ra sau máy khu vực phía sau của đầu điện thoại có cảm biến',
+    'scanCccd_titleStepThree':
+        'Di chuyển thẻ(CCCD) lên xuống để cảm biến nhận diện cho đến khi điện thoại rung, vui lòng giữ nguyên CCCD để tiến hành đọc thông tin',
   };
 }

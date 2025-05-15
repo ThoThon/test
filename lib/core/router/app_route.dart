@@ -17,24 +17,22 @@ enum AppRoutes {
   home,
   moduleIcare,
 
-  ///Kê khai BHXH
-  declarationTaxCode,
-  declarationTaxCodeDetail,
-  createTransaction,
-  historyTransaction,
-  historyRegisterDetail,
+  ///Thông tin đơn vị
+  infoUnit,
 
-  ///Danh sách chứng thư số
-  listCertificate,
+  ///Lịch sử
+  history,
 
-  //Màn hình xác nhận ký
-  confirmCode,
+  ///Chi tiết lịch sử
+  historyDetail,
 
-  //Màn hình chờ
-  awaitConfirmSignature,
+  routeNfcInformationUser,
 
-  ///Xác thực chứng thư số
-  verifyCertificate;
+  //Quét CCCD
+  nfc,
+
+  ///View thông tin CCCD
+  nfcInformationUser;
 
   String get path {
     return '/vbhxh_$name';

@@ -82,7 +82,7 @@ class BottomSheetSearch<T> extends StatelessWidget {
     Color? backgroundColor,
     double? padding,
   }) {
-    hintSearch ??= LocaleKeys.transaction_search.tr;
+    hintSearch ??= LocaleKeys.unitInfo_search.tr;
     isClear.value = textEditingController.text.isNotEmpty;
     return UtilWidget.buildTextInput(
       height: AppDimens.sizeDialogNotiIcon,
@@ -131,9 +131,8 @@ class BottomSheetSearch<T> extends StatelessWidget {
           },
           child: Row(
             children: [
-              TextUtils(
-                text: display(item),
-                availableStyle: StyleEnum.bodyRegular,
+              SDSBuildText(
+                display(item),
               ).paddingSymmetric(
                 vertical: AppDimens.paddingSmall,
               ),

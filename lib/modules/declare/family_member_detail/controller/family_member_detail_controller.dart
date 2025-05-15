@@ -1,5 +1,6 @@
-import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
+
+import '../../../../base_app/base_app.src.dart';
 
 class FamilyMemberDetailController extends BaseGetxController {
   /// Họ và tên *

@@ -108,7 +108,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
     VoidCallback? onTap,
   }) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        Get.toNamed(AppRoutes.nfc.path);
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

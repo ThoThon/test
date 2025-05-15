@@ -1,4 +1,4 @@
-import '../shares.src.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// Thực hiện lưu trữ dữ liệu bảo mật
 class SecureStorage {

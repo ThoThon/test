@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/declaration_tax_code/ui/ui_src.dart';
+import '../../../modules/src.dart';
 
 class IcarePage extends StatelessWidget {
   const IcarePage({super.key});
@@ -12,7 +12,7 @@ class IcarePage extends StatelessWidget {
         child: Scaffold(
           body: Container(
             alignment: Alignment.center,
-            child: TextUtils(text: "Đang chuyển tới ICare..."),
+            child: const SDSBuildText("Đang chuyển tới ICare..."),
           ),
         ),
       ),

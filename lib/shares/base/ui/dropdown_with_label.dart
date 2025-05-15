@@ -1,13 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:v_bhxh/core/theme/colors.dart';
-import 'package:v_bhxh/core/values/dimens.dart';
-import 'package:v_bhxh/shares/base/base.src.dart';
-import 'package:v_bhxh/shares/shares.src.dart';
+import '../../../modules/src.dart';
 
 class DropdownWithLabel extends StatelessWidget {
   final String label;
-  // final TextStyle? textStyle;
-  final StyleEnum? textStyle;
+  final TextStyle? textStyle;
   final bool isRequired;
   final RxInt? item;
   final Map<int?, String> mapData;
@@ -32,10 +27,12 @@ class DropdownWithLabel extends StatelessWidget {
               : EdgeInsets.zero,
           child: Row(
             children: [
-              TextUtils(
-                text: label,
-                availableStyle: textStyle ?? StyleEnum.subBold,
-                color: AppColors.dsGray1,
+              SDSBuildText(
+                label,
+                style: textStyle ??
+                    AppTextStyle.font16Bo.copyWith(
+                      color: AppColors.dsGray1,
+                    ),
               ),
               Visibility(
                   visible: isRequired,
@@ -45,10 +42,11 @@ class DropdownWithLabel extends StatelessWidget {
                       //   fontSize: AppDimens.sizeTextSmaller,
                       //   color: AppColors.statusRed,
                       // ),
-                      const TextUtils(
-                    text: ' (*)',
-                    availableStyle: StyleEnum.detailRegular,
-                    color: AppColors.statusRed,
+                      SDSBuildText(
+                    ' (*)',
+                    style: AppTextStyle.font12Re.copyWith(
+                      color: AppColors.statusRed,
+                    ),
                   )),
             ],
           ),

@@ -23,7 +23,11 @@
     "exit": "Thoát",
     "history": "Lịch sử",
     "consignment": "Ký gửi",
-    "notification": "Thông báo"
+    "notification": "Thông báo",
+    "updateSuccess": "Thay đổi thông tin thành công",
+    "logout": "Đăng xuất",
+    "isLogout": "Đăng xuất khỏi tài khoản của bạn",
+    "empty": "Trống"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -40,13 +44,13 @@
     "historyRegister": "Lịch sử đăng ký"
   },
   "home": {
-    "registerInsurance": "Đăng ký \nBHXH",
-    "transactionHistory": "Lịch sử \ngiao dịch",
-    "declarationForm": "Kê khai \nhồ sơ",
+    "unitInfo": "Thông tin \nđơn vị",
+    "history": "Lịch sử",
     "lookupC12": "Tra cứu \nC12",
+    "guide": "Hướng dẫn",
     "declare": "Kê khai"
   },
-  "transaction": {
+  "unitInfo": {
     "transactionRegister": "Đăng ký giao dịch",
     "generalInfo": "Thông tin chung",
     "registerInfo": "Thông tin đăng ký",
@@ -60,6 +64,7 @@
     "addressTransaction": "Địa chỉ giao dịch hồ sơ",
     "businessIndustry": "Ngành nghề sản xuất",
     "representInfo": "Thông tin người đại diện",
+    "transactionPersonInfo": "Thông tin người giao dịch",
     "represent": "Người đại diện",
     "position": "Chức vụ",
     "decisionInfo": "Thông tin quyết định",
@@ -92,9 +97,9 @@
     "otherInfo": "Thông tin khác",
     "unitGroup": "Khối đơn vị",
     "content": "Nội dung",
-    "trader": "Người giao dịch",
+    "transactionPerson": "Người giao dịch BHXH",
     "phoneContact": "Điện thoại liên hệ",
-    "email": "Email",
+    "email": "Email liên hệ",
     "fileInclude": "Hồ sơ kèm theo",
     "attached": "Đính kèm",
     "serviceInfo": "Thông tin dịch vụ",
@@ -124,9 +129,26 @@
     "missingFileInclude": "File đính kèm",
     "missingInfo": "Thiếu thông tin",
     "fileIncludeInValid": "File đính kèm không được bỏ trống",
-    "search": "Tìm kiếm"
+    "search": "Tìm kiếm",
+    "change": "Thay đổi",
+    "socialAgencyName": "Tên cơ quan BHXH",
+    "socialAgencyCode": "Mã cơ quan BHXH",
+    "region": "Vùng",
+    "basicSalary": "Lương cơ sở",
+    "registerResult": "Đăng ký nhận kết quả",
+    "regionOne": "Vùng I",
+    "regionTwo": "Vùng II",
+    "regionThree": "Vùng III",
+    "regionFour": "Vùng IV",
+    "oneMonth": "1 tháng",
+    "threeMonth": "3 tháng",
+    "sixMonth": "6 tháng",
+    "byPostOffice": "Qua bưu điện",
+    "bySocialAgency": "Nhận tại cơ quan bảo hiểm"
   },
-  "historyRegister": {
+  "history": {
+    "procedure": "Thủ tục",
+    "submissionTime": "Thời gian nộp",
     "historyDetail": "Chi tiết lịch sử",
     "profileInfo": "Thông tin hồ sơ",
     "status": "Trạng thái",
@@ -146,7 +168,12 @@
     "socialAgencyInProcess": "Đang chờ xử lý",
     "success": "Thành công",
     "fail": "Thất bại",
-    "lookupSuccess": "Tra cứu thành công!"
+    "all": "Tất cả",
+    "lookupSuccess": "Tra cứu thành công!",
+    "procedure600": "600 - Báo tăng, báo giảm, điều chỉnh",
+    "procedure600c": "600c - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo luật bhxh 2014",
+    "procedure600d": "600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP",
+    "procedure600o": "600o - Tạm dừng đóng vào quỹ hưu trí"
   },
   "certificate": {
     "listCertificate": "Danh sách chứng thư số",
@@ -217,5 +244,24 @@
   },
   "declareInfo": {
     "title": "Kê khai thông tin"
+  },
+  "profile": {
+    "accountInfo": "Thông tin tài khoản",
+    "companyName": "Tên công ty",
+    "taxCode": "Mã số thuế",
+    "unitCode": "Mã đơn vị",
+    "package": "Gói dịch vụ",
+    "monthOfUse": "Số tháng sử dụng",
+    "registerDay": "Ngày đăng ký",
+    "expiredDay": "Ngày hết hạn"
+  },
+  "scanCccd": {
+    "stepOne": "1",
+    "stepTwo": "2",
+    "stepThree": "3",
+    "guideScanCCCD": "Hướng dẫn quét NFC(CCCD gắn chip)",
+    "titleStepOne": "Bấm vào nút BẮT ĐẦU để tiến hành quét",
+    "titleStepTwo": "Đưa thẻ(CCCD) ra sau máy khu vực phía sau của đầu điện thoại có cảm biến",
+    "titleStepThree": "Di chuyển thẻ(CCCD) lên xuống để cảm biến nhận diện cho đến khi điện thoại rung, vui lòng giữ nguyên CCCD để tiến hành đọc thông tin"
   }
 }

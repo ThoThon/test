@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 
-import '../src.dart';
+import '../../../modules/src.dart';
+import '../../base_app/base_app.src.dart';
 
 class SplashPage extends BaseGetWidget<AppController> {
   SplashPage({super.key});

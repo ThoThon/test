@@ -1,6 +1,6 @@
-import 'package:v_bhxh/modules/declaration_tax_code/ui/ui_src.dart';
 import 'package:v_bhxh/modules/home/controller/home_controller.dart';
 
+import '../../../modules/src.dart';
 import '../src.dart';
 
 class HomePage extends BaseGetWidget<HomeController> {
@@ -14,19 +14,28 @@ class HomePage extends BaseGetWidget<HomeController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: const BaseAppBar(
-        title: TextUtils(
-          text: LocaleKeys.declaration_declarationSocial,
-          availableStyle: StyleEnum.subBold,
+      drawer: _buildDrawer(),
+      appBar: BaseAppBar(
+        title: RichText(
+          text: TextSpan(
+            style: AppTextStyle.font20Bo,
+            children: [
+              const TextSpan(text: 'Xin chào '),
+              TextSpan(
+                text:
+                    controller.appController.accountInfoModel?.tenToChuc ?? '',
+                style: AppTextStyle.font20Bo
+                    .copyWith(color: AppColors.primaryColor),
+              ),
+            ],
+          ),
         ),
-        centerTitle: true,
+        centerTitle: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(AppDimens.paddingMedium),
         child: ListView(
           children: [
-            SDSImageSvg(Assets.ASSETS_ICONS_HOME_HOME_SVG),
-            sdsSBHeight32,
             GridView.count(
               shrinkWrap: true,
               crossAxisCount: 2,
@@ -61,16 +70,98 @@ class HomePage extends BaseGetWidget<HomeController> {
                 ),
               ),
               Expanded(
-                child: TextUtils(
-                  text: item.string,
-                  availableStyle: StyleEnum.bodyBold,
-                  maxLine: 3,
+                child: SDSBuildText(
+                  item.string.tr,
+                  style: AppTextStyle.font14Bo,
+                  maxLines: 3,
                 ),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildItemDrawer(
+    IconData? icon,
+    String text,
+  ) {
+    return Row(
+      children: [
+        Icon(icon),
+        sdsSBWidth8,
+        InkWell(
+          child: SDSBuildText(
+            text,
+            style: AppTextStyle.font16Bo,
+          ),
+        )
+      ],
+    ).paddingOnly(bottom: AppDimens.defaultPadding);
+  }
+
+  Widget _buildDrawer() {
+    final accountInfo = controller.appController.accountInfoModel;
+
+    return Drawer(
+      backgroundColor: AppColors.basicWhite,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.primaryColor,
+                ),
+                child: SDSImageSvg(
+                  Assets.ASSETS_ICONS_IC_USER_SVG,
+                  color: AppColors.basicWhite,
+                ).paddingAll(AppDimens.defaultPadding),
+              ),
+              sdsSBWidth12,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SDSBuildText(
+                      accountInfo?.tenToChuc.toUpperCase() ?? '',
+                      style: AppTextStyle.font18Bo,
+                      maxLines: 3,
+                    ),
+                    SDSBuildText(
+                      "MST: ${accountInfo?.taxCode ?? ''}",
+                      style: AppTextStyle.font16Bo,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          sdsSBHeight32,
+          _buildItemDrawer(
+            Icons.language,
+            'Ngôn ngữ',
+          ),
+          _buildItemDrawer(
+            Icons.lock,
+            'Đổi mật khẩu',
+          ),
+          _buildItemDrawer(
+            Icons.phone,
+            'CSKH: 1900 1900',
+          ),
+          _buildItemDrawer(
+            Icons.switch_account,
+            'Đổi tài khoản',
+          ),
+          // _buildItemDrawer(
+          //   Icons.logout,
+          //   'Đăng xuất',
+          // ),
+        ],
+      ).paddingAll(AppDimens.defaultPadding),
     );
   }
 }

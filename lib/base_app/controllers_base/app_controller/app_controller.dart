@@ -1,12 +1,14 @@
 import 'dart:async';
+
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
-import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:v_bhxh/modules/declaration_tax_code/ui/ui_src.dart';
+import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
+import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/login/repository/login_repository.dart';
-import 'package:v_bhxh/modules/mock_data/mock_sdk.dart';
+
+import '../../../modules/src.dart';
 
 late Box hiveApp;
 
@@ -14,6 +16,8 @@ late PackageInfo packageInfo;
 
 class AppController extends BaseGetxController {
   late final _loginRepository = LoginRepository(this);
+
+  AccountInfoModel? accountInfoModel;
 
   @override
   Future<void> onInit() async {
@@ -43,6 +47,17 @@ class AppController extends BaseGetxController {
     Hive.init(appDocumentDirectory.path);
     hiveApp = await Hive.openBox('vBHXH');
     packageInfo = await PackageInfo.fromPlatform();
+  }
+
+  Future<void> getAccountInfo() async {
+    try {
+      final res = await _loginRepository.getAccountInfo();
+      if (res.code == AppConst.statusCodeSuccess && res.result != null) {
+        accountInfoModel = res.result;
+      }
+    } catch (e) {
+      logger.d(e);
+    }
   }
 
   Future<void> _checkLogin() async {

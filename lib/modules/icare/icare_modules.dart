@@ -1,8 +1,3 @@
-import 'package:v_bhxh/assets.dart';
-
-import '../../base_app/base_app.src.dart';
-import '../../core/core.src.dart';
-import '../../shares/shares.src.dart';
 import 'models/icare_model.src.dart';
 
 class IcareModules {
@@ -15,16 +10,16 @@ class IcareModules {
 
   IcareModules._();
 
-  static Future<dynamic> gotoDeclarationTaxCode({
-    required IcareModulesRequest icareModulesRequest,
-  }) async {
-    // Get.toNamed(AppRoutesIcare.moduleIcare.path);
-    icareModulesData = icareModulesRequest;
-    Assets.isFromModules = true;
-    Get.put(BaseGetxController(), permanent: true);
+  // static Future<dynamic> gotoDeclarationTaxCode({
+  //   required IcareModulesRequest icareModulesRequest,
+  // }) async {
+  //   // Get.toNamed(AppRoutesIcare.moduleIcare.path);
+  //   icareModulesData = icareModulesRequest;
+  //   Assets.isFromModules = true;
+  //   Get.put(BaseGetxController(), permanent: true);
 
-    var result = await Get.toNamed(AppRoutes.declarationTaxCode.path);
-    Get.delete<BaseGetxController>();
-    return result;
-  }
+  //   var result = await Get.toNamed(AppRoutes.declarationTaxCode.path);
+  //   Get.delete<BaseGetxController>();
+  //   return result;
+  // }
 }

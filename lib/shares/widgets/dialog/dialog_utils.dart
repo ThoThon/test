@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:v_bhxh/assets.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/shares/base/ui/sds_build_text.dart';
+import 'package:v_bhxh/shares/package/export_package.dart';
 
 import '../../../core/core.src.dart';
 import '../../shares.src.dart';
@@ -76,12 +77,13 @@ class ShowDialog {
                 padding: const EdgeInsets.all(15.0),
                 constraints: const BoxConstraints(maxHeight: 200),
                 child: SingleChildScrollView(
-                  child: TextUtils(
-                    text: content,
-                    availableStyle: StyleEnum.bodyRegular,
-                    color: AppColors.primaryNavy,
+                  child: SDSBuildText(
+                    content,
+                    style: AppTextStyle.font14Re.copyWith(
+                      color: AppColors.primaryNavy,
+                    ),
                     textAlign: TextAlign.center,
-                    maxLine: 4,
+                    maxLines: 4,
                   ),
                 ),
               ),
@@ -119,10 +121,11 @@ class ShowDialog {
           style: ButtonStyle(
             overlayColor: WidgetStateProperty.all(Colors.transparent),
           ),
-          child: TextUtils(
-            text: text,
-            availableStyle: StyleEnum.bodyRegular,
-            color: colorText ?? AppColors.primaryNavy,
+          child: SDSBuildText(
+            text,
+            style: AppTextStyle.font14Re.copyWith(
+              color: colorText ?? AppColors.primaryNavy,
+            ),
           ),
         ));
   }
@@ -166,10 +169,12 @@ class ShowDialog {
   static void showDialogConfirm({
     final bool isActiveBack = true,
     String? title,
+    String? status,
     required String textBtnRight,
     Function()? onPressed,
     Function()? funcBack,
     String? name,
+    bool activeIcon = true,
   }) {
     _showDialog(
       Dialog(
@@ -184,38 +189,26 @@ class ShowDialog {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SDSImageSvg(
-                  Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
-                  width: 80,
-                  height: 80,
-                ).paddingOnly(
-                  top: AppDimens.defaultPadding,
-                  bottom: AppDimens.paddingSmall,
-                ),
-                // SDSBuildText(
-                //   title ?? LocaleKeys.dialog_success.tr,
-                //   style: AppTextStyle.font16Bo,
-                // ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-                // SDSBuildText(
-                //   LocaleKeys.dialog_checkEmail.tr,
-                //   style: AppTextStyle.font14Re,
-                // ),
-                // SDSBuildText(
-                //   LocaleKeys.dialog_processTime.tr,
-                //   style: AppTextStyle.font14Re,
-                // ),
-                TextUtils(
-                  text: title ?? LocaleKeys.dialog_success.tr,
-                  availableStyle: StyleEnum.subBold,
+                activeIcon
+                    ? SDSImageSvg(
+                        Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
+                        width: 80,
+                        height: 80,
+                      ).paddingOnly(
+                        top: AppDimens.defaultPadding,
+                        bottom: AppDimens.paddingSmall,
+                      )
+                    : sdsSBHeight16,
+                SDSBuildText(
+                  status ?? LocaleKeys.dialog_success.tr,
+                  style: AppTextStyle.font16Bo,
                 ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-                TextUtils(
-                  text: LocaleKeys.dialog_checkEmail.tr,
-                  availableStyle: StyleEnum.bodyRegular,
-                ),
-                TextUtils(
-                  text: LocaleKeys.dialog_processTime.tr,
-                  availableStyle: StyleEnum.bodyRegular,
-                ),
+                title == null
+                    ? const SizedBox.shrink()
+                    : SDSBuildText(
+                        title,
+                        style: AppTextStyle.font14Re,
+                      ),
                 Row(
                   children: [
                     Expanded(
@@ -409,14 +402,13 @@ class ShowDialog {
                   top: AppDimens.defaultPadding,
                   bottom: AppDimens.paddingSmall,
                 ),
-                TextUtils(
-                  text: title ?? LocaleKeys.dialog_fail.tr,
-                  availableStyle: StyleEnum.subBold,
+                SDSBuildText(
+                  title ?? LocaleKeys.dialog_fail.tr,
+                  style: AppTextStyle.font16Bo,
                 ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-                TextUtils(
-                  text: LocaleKeys.dialog_registerFail.tr +
+                SDSBuildText(
+                  LocaleKeys.dialog_registerFail.tr +
                       (contentError != null ? ("\n$contentError ") : ""),
-                  availableStyle: StyleEnum.bodyRegular,
                 ),
                 Row(
                   children: [
@@ -482,10 +474,8 @@ class ShowDialog {
                   ),
                   const SizedBox(width: 8),
                   Expanded(
-                    child: TextUtils(
-                      text: title ?? 'Cảnh báo',
-                      availableStyle: StyleEnum.bodyRegular,
-                      color: AppColors.colorBlack,
+                    child: SDSBuildText(
+                      title ?? 'Cảnh báo',
                     ),
                   ),
                 ],
@@ -498,10 +488,8 @@ class ShowDialog {
                       .map(
                         (field) => Padding(
                           padding: const EdgeInsets.only(bottom: 4),
-                          child: TextUtils(
-                            text: '• $field',
-                            availableStyle: StyleEnum.bodyRegular,
-                            color: AppColors.colorBlack,
+                          child: SDSBuildText(
+                            '• $field',
                           ),
                         ),
                       )
@@ -513,6 +501,32 @@ class ShowDialog {
       ),
       barrierDismissible: true,
       isActiveBack,
+    );
+  }
+
+  static Future<void> funcOpenDialog(Widget child) async {
+    Get.dialog(
+      buildShowPopupOption(child),
+      barrierDismissible: false,
+    );
+  }
+
+  static Widget buildShowPopupOption(Widget? child) {
+    return AlertDialog(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            12,
+          ),
+        ),
+      ),
+      backgroundColor: AppColors.colorWhite,
+      contentPadding: const EdgeInsets.all(0),
+      elevation: 0.0,
+      content: SizedBox(
+        width: Get.width,
+        child: child,
+      ),
     );
   }
 }

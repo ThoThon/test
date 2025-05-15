@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -141,13 +141,24 @@ class UtilWidget {
         highlightColor: Colors.transparent,
       ),
       child: ExpansionTile(
+        trailing: const Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Icon(Icons.arrow_drop_down),
+          ],
+        ),
+        // Column(
+        //   mainAxisSize: MainAxisSize.max,
+        //   mainAxisAlignment: MainAxisAlignment.start,
+        //   children: [Icon(Icons.arrow_drop_down)],
+        // ),
         initiallyExpanded: true,
         collapsedBackgroundColor: AppColors.colorWhite,
         backgroundColor: AppColors.colorWhite,
         collapsedTextColor: AppColors.colorWhite,
-        title: TextUtils(
-          text: title,
-          availableStyle: StyleEnum.bodyBold,
+        title: SDSBuildText(title),
+        subtitle: const Column(
+          children: [],
         ),
         shape: RoundedRectangleBorder(
           side: BorderSide.none,
@@ -181,11 +192,11 @@ class UtilWidget {
         ),
         onPressed: onPressed,
         child: Center(
-            child: TextUtils(
-          text: title,
-          availableStyle: StyleEnum.subBold,
-          color: AppColors.colorWhite,
-        )),
+          child: SDSBuildText(
+            title,
+            style: AppTextStyle.font16Bo.copyWith(color: AppColors.colorWhite),
+          ),
+        ),
       ),
     );
   }
@@ -212,10 +223,9 @@ class UtilWidget {
           ),
         ),
         onPressed: onPressed,
-        child: TextUtils(
-          text: title,
-          availableStyle: StyleEnum.subBold,
-          color: AppColors.primaryColor,
+        child: SDSBuildText(
+          title,
+          style: AppTextStyle.font16Bo.copyWith(color: AppColors.primaryColor),
         ),
       ),
     );
@@ -284,6 +294,19 @@ class UtilWidget {
           child: DropdownButton<T>(
             dropdownColor: AppColors.colorWhite,
             isExpanded: true,
+            selectedItemBuilder: (context) => items.map(
+              (e) {
+                return Align(
+                  alignment: Alignment.centerLeft,
+                  child: SDSBuildText(
+                    display(e),
+                    style: AppTextStyle.font14Re,
+                    maxLines: 2,
+                    textAlign: TextAlign.start,
+                  ),
+                );
+              },
+            ).toList(),
             items: items
                 .map(
                   (e) => DropdownMenuItem<T>(
@@ -396,10 +419,10 @@ class UtilWidget {
                   top: AppDimens.paddingSmallest,
                   left: AppDimens.paddingSmall,
                 ),
-                child: TextUtils(
-                  text: state.errorText!,
-                  availableStyle: StyleEnum.detailRegular,
-                  color: AppColors.statusRed,
+                child: SDSBuildText(
+                  state.errorText!,
+                  style: AppTextStyle.font12Re
+                      .copyWith(color: AppColors.statusRed),
                 ),
               ),
           ],
@@ -464,14 +487,15 @@ class UtilWidget {
                       () => Row(
                         children: [
                           Expanded(
-                            child: TextUtils(
-                              text: item.value != null
+                            child: SDSBuildText(
+                              item.value != null
                                   ? display(item.value as T)
                                   : hintText,
-                              availableStyle: StyleEnum.bodyRegular,
-                              color: item.value != null
-                                  ? AppColors.colorBlack
-                                  : AppColors.dsGray3,
+                              style: AppTextStyle.font14Re.copyWith(
+                                color: item.value != null
+                                    ? AppColors.colorBlack
+                                    : AppColors.dsGray3,
+                              ),
                             ),
                           ),
                           const Icon(
@@ -489,10 +513,11 @@ class UtilWidget {
                       top: AppDimens.paddingSmallest,
                       left: AppDimens.paddingVerySmall,
                     ),
-                    child: TextUtils(
-                      text: state.errorText!,
-                      availableStyle: StyleEnum.detailRegular,
-                      color: AppColors.statusRed,
+                    child: SDSBuildText(
+                      state.errorText!,
+                      style: AppTextStyle.font12Re.copyWith(
+                        color: AppColors.statusRed,
+                      ),
                     ),
                   ),
               ],
@@ -561,12 +586,13 @@ class UtilWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: TextUtils(
-                            text: title,
+                          child: SDSBuildText(
+                            title,
                             textAlign: textAlign ?? TextAlign.center,
-                            maxLine: 1,
-                            availableStyle: StyleEnum.subBold,
-                            color: AppColors.colorBlack,
+                            maxLines: 1,
+                            style: AppTextStyle.font16Bo.copyWith(
+                              color: AppColors.colorBlack,
+                            ),
                           ).paddingOnly(top: AppDimens.paddingSmallest),
                         ),
                         iconTitle ?? const SizedBox(),
@@ -598,6 +624,7 @@ class UtilWidget {
   static Widget buildBottomSheetFigma({
     required Widget child,
     String? title,
+    Color? textColor,
   }) {
     return Container(
       padding: EdgeInsets.only(
@@ -622,7 +649,7 @@ class UtilWidget {
               SDSBuildText(
                 title,
                 style: AppTextStyle.font20Bo.copyWith(
-                  color: AppColors.primaryColor,
+                  color: textColor ?? AppColors.primaryColor,
                 ),
                 textAlign: TextAlign.center,
               ).paddingOnly(
@@ -716,37 +743,6 @@ class UtilWidget {
     );
   }
 
-  static Widget buildLine({
-    required String label,
-    String? value,
-    int maxLine = AppDimens.widthDesign,
-  }) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // SDSBuildText(
-        //   '$label:',
-        //   style: AppTextStyle.font14Re.copyWith(
-        //     color: AppColors.colorBlack,
-        //   ),
-        // ),
-        TextUtils(
-          text: '$label:',
-          availableStyle: StyleEnum.bodyRegular,
-          color: AppColors.colorBlack,
-        ),
-        Expanded(
-          child: TextUtils(
-            text: value ?? '',
-            availableStyle: StyleEnum.bodyBold,
-            maxLine: maxLine,
-            textAlign: TextAlign.end,
-          ),
-        ),
-      ],
-    );
-  }
-
   static Widget buildGradient({
     required Widget child,
     required Gradient gradient,
@@ -760,13 +756,33 @@ class UtilWidget {
     );
   }
 
-  static Future<DateTime?> showPeriodDatePicker() async {
+  static Widget buildEmptyList() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SDSImageSvg(Assets.ASSETS_ICONS_ICON_LIST_NULL_SVG),
+          sdsSBHeight8,
+          SDSBuildText(
+            LocaleKeys.dialog_empty.tr,
+            style: AppTextStyle.font16Bo.copyWith(
+              color: AppColors.dsGray5,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  static Future<DateTime?> showPeriodDatePicker({
+    DateTime? dateTime,
+  }) async {
     final context = Get.context;
     if (context == null) return null;
 
     return showMonthPicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: dateTime ?? DateTime.now(),
       monthPickerDialogSettings: const MonthPickerDialogSettings(
         headerSettings: PickerHeaderSettings(
           headerBackgroundColor: AppColors.primaryColor,

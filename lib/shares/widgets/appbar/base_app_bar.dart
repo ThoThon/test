@@ -18,6 +18,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       scrolledUnderElevation: 0,
+      titleSpacing: 0,
       leading: leading,
       title: title,
       centerTitle: centerTitle,

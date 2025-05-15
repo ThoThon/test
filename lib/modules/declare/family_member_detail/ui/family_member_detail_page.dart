@@ -1,5 +1,3 @@
-import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/controller/controller_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 part 'family_member_detail_widget.dart';

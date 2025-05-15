@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/const/src.dart';
 
 class SDSBuildText extends StatelessWidget {
@@ -6,6 +7,7 @@ class SDSBuildText extends StatelessWidget {
   final TextAlign? textAlign;
   final int? maxLines;
   final TextStyle? style;
+  final TextOverflow? overflow;
 
   const SDSBuildText(
     this.text, {
@@ -13,6 +15,7 @@ class SDSBuildText extends StatelessWidget {
     this.textAlign,
     this.maxLines,
     this.style,
+    this.overflow,
   });
 
   @override
@@ -22,6 +25,7 @@ class SDSBuildText extends StatelessWidget {
       textAlign: textAlign ?? TextAlign.start,
       style: style ?? AppTextStyle.font14Re,
       maxLines: maxLines,
+      overflow: overflow,
     );
   }
 }

@@ -1,0 +1,28 @@
+import '../../../modules/src.dart';
+
+part 'notification_widget.dart';
+
+class NotificationPage extends BaseGetWidget {
+  const NotificationPage({super.key});
+
+  @override
+  Widget buildWidgets(BuildContext context) {
+    return Scaffold(
+      appBar: BaseAppBar(
+        title: SDSBuildText(
+          "Thông báo",
+          style: AppTextStyle.font16Bo,
+        ),
+        actions: [
+          const Icon(
+            Icons.check_outlined,
+            color: AppColors.primaryColor,
+          ),
+          sdsSBWidth16,
+        ],
+        centerTitle: true,
+      ),
+      body: _buildBody(),
+    );
+  }
+}
