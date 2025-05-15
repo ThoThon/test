@@ -64,7 +64,7 @@ extension DeclarationListWidget on DeclarationListPage {
           onPressed: () {
             controller.showDialogCheckedSuccess();
           },
-        ).paddingSymmetric(horizontal: AppDimens.defaultPadding),
+        ).paddingAll(AppDimens.defaultPadding),
       ],
     );
   }

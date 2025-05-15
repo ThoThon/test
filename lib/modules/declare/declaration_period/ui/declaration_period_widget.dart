@@ -8,8 +8,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             .paddingSymmetric(horizontal: AppDimens.defaultPadding),
         UtilWidget.sizedBox16,
         Expanded(child: _buildPeriods()),
-        _buildBottomButton()
-            .paddingSymmetric(horizontal: AppDimens.defaultPadding),
+        _buildBottomButton().paddingAll(AppDimens.defaultPadding),
       ],
     );
   }
@@ -56,6 +55,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   }) {
     return Slidable(
       key: ValueKey(period.id),
+      enabled: period.status.canEdit,
       endActionPane: ActionPane(
         // A motion is a widget used to control how the pane animates.
         motion: const ScrollMotion(),
@@ -137,14 +137,14 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
               UtilWidget.buildSolidButtonBack(
                 title: LocaleKeys.app_edit2.tr,
                 onPressed: () {
-                  Get.toNamed(
-                    AppRoutes.declareInfo.path,
-                    arguments: DeclareInfoArgument(
-                      period: period,
-                      type: period.type,
-                      action: DeclareInfoAction.edit,
-                    ),
-                  );
+                  // Get.toNamed(
+                  //   AppRoutes.declareInfo.path,
+                  //   arguments: DeclareInfoArgument(
+                  //     period: period,
+                  //     action: DeclareInfoAction.edit,
+                  //   ),
+                  // );
+                  Get.toNamed(AppRoutes.depositInfo.path);
                 },
               ),
           ],
@@ -157,39 +157,10 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
     return UtilWidget.buildSolidButton(
       title: LocaleKeys.declarationPeriod_createNewPeriod.tr,
       onPressed: () {
-        Get.bottomSheet(
-          UtilWidget.buildBottomSheetFigma(
-            title: 'Chọn loại khai báo',
-            child: ListView.separated(
-              shrinkWrap: true,
-              itemCount: DeclarationTypeEnum.values.length,
-              itemBuilder: (context, index) {
-                final type = DeclarationTypeEnum.values[index];
-                return Material(
-                  color: Colors.white,
-                  child: InkWell(
-                    onTap: () {
-                      // Close the bottom sheet
-                      Get.back();
-                      // Open create period page
-                      Get.toNamed(
-                        AppRoutes.declareInfo.path,
-                        arguments: DeclareInfoArgument(
-                          type: type,
-                          action: DeclareInfoAction.create,
-                        ),
-                      );
-                    },
-                    child: SDSBuildText(type.title).paddingSymmetric(
-                      vertical: AppDimens.defaultPadding,
-                    ),
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return const Divider(height: 1);
-              },
-            ),
+        Get.toNamed(
+          AppRoutes.declareInfo.path,
+          arguments: const DeclareInfoArgument(
+            action: DeclareInfoAction.create,
           ),
         );
       },

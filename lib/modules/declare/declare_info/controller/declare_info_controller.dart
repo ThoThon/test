@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/declare/check_list_detail/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/ui/ui_src.dart';
+import 'package:v_bhxh/modules/declare/deposit_info/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -77,8 +78,14 @@ class DeclareInfoController extends BaseGetxController {
           onTapAddStaff: () {
             currentTab.value = DeclareInfoTab.d02;
           },
-          onTapDeposit: () {
-            Get.toNamed(AppRoutes.depositInfo.path);
+          onTapDeposit: () async {
+            final result = await Get.toNamed(AppRoutes.depositInfo.path);
+
+            if (result is DepositInfoResult) {
+              if (result.action == DepositInfoResultAction.selectD02Tab) {
+                currentTab.value = DeclareInfoTab.d02;
+              }
+            }
           },
         ),
       );

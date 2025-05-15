@@ -141,7 +141,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
               child: _buildInputTitle(
                 title: 'Họ và tên',
                 isRequired: true,
-              ).paddingOnly(bottom: AppDimens.padding10),
+              ),
             ),
             if (showSelectStaff)
               TextButton(
@@ -163,7 +163,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
                 ),
               ),
           ],
-        ),
+        ).paddingOnly(bottom: AppDimens.paddingSmallest),
         BuildInputText(
           InputTextModel(
             controller: controller.d02Tk1State.fullNameTextCtrl,
@@ -346,10 +346,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
           ),
         ),
       ],
-    ).paddingOnly(
-      left: AppDimens.defaultPadding,
-      right: AppDimens.defaultPadding,
-      top: AppDimens.defaultPadding,
-    );
+    ).paddingAll(AppDimens.defaultPadding);
   }
 }

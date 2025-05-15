@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/model/model_src.dart';
 
 class D02State {
   final formKey = GlobalKey<FormState>();
 
   /// Loại khai báo
-  final declareType = Rxn<String>();
+  final declarationType = Rxn<DeclarationTypeEnum>();
 
   /// Phương án
   final plan = Rxn<String>();

@@ -90,17 +90,17 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectDeclareType() {
-    return UtilWidget.buildDropDownWithLabel<String>(
+    return UtilWidget.buildDropDownWithLabel<DeclarationTypeEnum>(
       label: 'Loại khai báo',
       hintText: 'Chọn loại khai báo',
-      items: ['Tăng lao động', 'Giảm lao động', 'Tăng lương', 'Giảm lương'],
-      display: (item) => item,
-      selectedItem: controller.d02State.declareType.value,
+      items: DeclarationTypeEnum.values,
+      display: (item) => item.title,
+      selectedItem: controller.d02State.declarationType.value,
       onChanged: (value) {
         if (value == null) {
           return;
         }
-        controller.d02State.declareType.value = value;
+        controller.d02State.declarationType.value = value;
       },
     );
   }
