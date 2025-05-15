@@ -254,5 +254,14 @@
     "monthOfUse": "Số tháng sử dụng",
     "registerDay": "Ngày đăng ký",
     "expiredDay": "Ngày hết hạn"
+  },
+  "scanCccd": {
+    "stepOne": "1",
+    "stepTwo": "2",
+    "stepThree": "3",
+    "guideScanCCCD": "Hướng dẫn quét NFC(CCCD gắn chip)",
+    "titleStepOne": "Bấm vào nút BẮT ĐẦU để tiến hành quét",
+    "titleStepTwo": "Đưa thẻ(CCCD) ra sau máy khu vực phía sau của đầu điện thoại có cảm biến",
+    "titleStepThree": "Di chuyển thẻ(CCCD) lên xuống để cảm biến nhận diện cho đến khi điện thoại rung, vui lòng giữ nguyên CCCD để tiến hành đọc thông tin"
   }
 }

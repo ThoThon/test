@@ -1,12 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/notification/ui/notification_page.dart';
-import 'package:v_bhxh/modules/profile/ui/profile_page.dart';
-
-import 'page_builder_controller.dart';
+import 'package:v_bhxh/modules/src.dart';
 
 class PageBuilder extends BaseGetWidget<PageBuilderController> {
   PageBuilder({super.key});
@@ -48,7 +42,7 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
       () {
         return BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          unselectedItemColor: Color(0xFF196DFF),
+          unselectedItemColor: AppColors.basicGrey1,
           currentIndex: controller.pageIndex.value,
           backgroundColor: Colors.white,
           selectedItemColor: AppColors.primaryColor,
@@ -61,11 +55,16 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
 
   BottomNavigationBarItem _buildItem({
     required int index,
-    required IconData icon,
+    required String assetName,
     required String label,
   }) {
     return BottomNavigationBarItem(
-      icon: Icon(icon),
+      icon: SDSImageSvg(
+        assetName,
+        color: index == controller.pageIndex.value
+            ? AppColors.primaryColor
+            : AppColors.basicGrey1,
+      ),
       label: label,
     );
   }
@@ -74,22 +73,22 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
     return [
       _buildItem(
         index: 0,
-        icon: Icons.home,
+        assetName: Assets.ASSETS_ICONS_HOME_IC_HOME_SVG,
         label: 'Trang chủ',
       ),
       _buildItem(
         index: 1,
-        icon: Icons.bar_chart,
+        assetName: Assets.ASSETS_ICONS_HOME_IC_STATIS_SVG,
         label: 'Báo cáo',
       ),
       _buildItem(
         index: 2,
-        icon: Icons.notifications,
+        assetName: Assets.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG,
         label: 'Thông báo',
       ),
       _buildItem(
         index: 3,
-        icon: Icons.person,
+        assetName: Assets.ASSETS_ICONS_HOME_IC_PROFILE_SVG,
         label: 'Tài khoản',
       ),
     ];

@@ -19,18 +19,9 @@ extension ProfileWidget on ProfilePage {
   }
 
   Widget _buildAvatarProfile() {
-    return Center(
-      child: Container(
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(color: AppColors.colorBlack, width: 2),
-        ),
-        child: Icon(
-          Icons.person,
-          size: 100,
-          color: AppColors.dsGray1,
-        ),
-      ),
+    return SDSImageSvg(
+      Assets.ASSETS_ICONS_IC_PERSON_SVG,
+      height: 130,
     );
   }
 

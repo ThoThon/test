@@ -1,4 +1,5 @@
-import 'package:v_bhxh/modules/scan_cccd/ui/scan_cccd_page.dart';
+import 'package:v_bhxh/modules/nfc/ui/nfc_page.dart';
+import 'package:v_bhxh/modules/nfc_information_user/nfc_information_user_src.dart';
 
 import '../../modules/declare/declaration_period_detail/ui/declaration_period_detail_page.dart';
 import '../../modules/declare/declare_info/ui/declare_info_page.dart';
@@ -57,7 +58,6 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.declareInfo.path,
       page: () => DeclareInfoPage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.familyMemberDetail.path,
@@ -68,8 +68,12 @@ class RouteAppPage {
       page: () => CheckListDetailPage(),
     ),
     GetPage(
-      name: AppRoutes.scanCccd.path,
-      page: () => ScanCccdPage(),
+      name: AppRoutes.nfc.path,
+      page: () => NfcPage(),
+    ),
+    GetPage(
+      name: AppRoutes.nfcInformationUser.path,
+      page: () => NfcInformationUserPage(),
     ),
   ];
 }

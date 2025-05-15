@@ -257,6 +257,13 @@ class LocaleKeys {
   static const profile_monthOfUse = 'profile_monthOfUse';
   static const profile_registerDay = 'profile_registerDay';
   static const profile_expiredDay = 'profile_expiredDay';
+  static const scanCccd_stepOne = 'scanCccd_stepOne';
+  static const scanCccd_stepTwo = 'scanCccd_stepTwo';
+  static const scanCccd_stepThree = 'scanCccd_stepThree';
+  static const scanCccd_guideScanCCCD = 'scanCccd_guideScanCCCD';
+  static const scanCccd_titleStepOne = 'scanCccd_titleStepOne';
+  static const scanCccd_titleStepTwo = 'scanCccd_titleStepTwo';
+  static const scanCccd_titleStepThree = 'scanCccd_titleStepThree';
 }
 
 class Locales {
@@ -525,5 +532,14 @@ class Locales {
     'profile_monthOfUse': 'Số tháng sử dụng',
     'profile_registerDay': 'Ngày đăng ký',
     'profile_expiredDay': 'Ngày hết hạn',
+    'scanCccd_stepOne': '1',
+    'scanCccd_stepTwo': '2',
+    'scanCccd_stepThree': '3',
+    'scanCccd_guideScanCCCD': 'Hướng dẫn quét NFC(CCCD gắn chip)',
+    'scanCccd_titleStepOne': 'Bấm vào nút BẮT ĐẦU để tiến hành quét',
+    'scanCccd_titleStepTwo':
+        'Đưa thẻ(CCCD) ra sau máy khu vực phía sau của đầu điện thoại có cảm biến',
+    'scanCccd_titleStepThree':
+        'Di chuyển thẻ(CCCD) lên xuống để cảm biến nhận diện cho đến khi điện thoại rung, vui lòng giữ nguyên CCCD để tiến hành đọc thông tin',
   };
 }

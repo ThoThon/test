@@ -102,7 +102,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }) {
     return InkWell(
       onTap: () {
-        Get.toNamed(AppRoutes.scanCccd.path);
+        Get.toNamed(AppRoutes.nfc.path);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

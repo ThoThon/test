@@ -14,10 +14,18 @@ class HomePage extends BaseGetWidget<HomeController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
+      drawer: _buildDrawer(),
       appBar: BaseAppBar(
-        title: SDSBuildText(
-          LocaleKeys.declaration_declarationSocial.tr,
-          style: AppTextStyle.font16Bo,
+        title: Row(
+          children: [
+            SDSBuildText("Xin chào "),
+            SDSBuildText(
+              controller.appController.accountInfoModel?.tenToChuc ?? '',
+              style: AppTextStyle.font16Bo.copyWith(
+                color: AppColors.primaryColor,
+              ),
+            ),
+          ],
         ),
         centerTitle: true,
       ),
@@ -25,8 +33,6 @@ class HomePage extends BaseGetWidget<HomeController> {
         padding: const EdgeInsets.all(AppDimens.paddingMedium),
         child: ListView(
           children: [
-            SDSImageSvg(Assets.ASSETS_ICONS_HOME_HOME_SVG),
-            sdsSBHeight32,
             GridView.count(
               shrinkWrap: true,
               crossAxisCount: 2,
@@ -71,6 +77,88 @@ class HomePage extends BaseGetWidget<HomeController> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildItemDrawer(
+    IconData? icon,
+    String text,
+  ) {
+    return Row(
+      children: [
+        Icon(icon),
+        sdsSBWidth8,
+        InkWell(
+          child: SDSBuildText(
+            text,
+            style: AppTextStyle.font16Bo,
+          ),
+        )
+      ],
+    ).paddingOnly(bottom: AppDimens.defaultPadding);
+  }
+
+  Widget _buildDrawer() {
+    final accountInfo = controller.appController.accountInfoModel;
+
+    return Drawer(
+      backgroundColor: AppColors.basicWhite,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.primaryColor,
+                ),
+                child: SDSImageSvg(
+                  Assets.ASSETS_ICONS_IC_USER_SVG,
+                  color: AppColors.basicWhite,
+                ).paddingAll(AppDimens.defaultPadding),
+              ),
+              sdsSBWidth12,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SDSBuildText(
+                      accountInfo?.tenToChuc.toUpperCase() ?? '',
+                      style: AppTextStyle.font18Bo,
+                      maxLines: 3,
+                    ),
+                    SDSBuildText(
+                      "MST: ${accountInfo?.taxCode ?? ''}",
+                      style: AppTextStyle.font16Bo,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          sdsSBHeight32,
+          _buildItemDrawer(
+            Icons.language,
+            'Ngôn ngữ',
+          ),
+          _buildItemDrawer(
+            Icons.lock,
+            'Đổi mật khẩu',
+          ),
+          _buildItemDrawer(
+            Icons.phone,
+            'CSKH: 1900 1900',
+          ),
+          _buildItemDrawer(
+            Icons.switch_account,
+            'Đổi tài khoản',
+          ),
+          // _buildItemDrawer(
+          //   Icons.logout,
+          //   'Đăng xuất',
+          // ),
+        ],
+      ).paddingAll(AppDimens.defaultPadding),
     );
   }
 }

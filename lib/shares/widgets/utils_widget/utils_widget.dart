@@ -612,6 +612,7 @@ class UtilWidget {
   static Widget buildBottomSheetFigma({
     required Widget child,
     String? title,
+    Color? textColor,
   }) {
     return Container(
       padding: EdgeInsets.only(
@@ -636,7 +637,7 @@ class UtilWidget {
               SDSBuildText(
                 title,
                 style: AppTextStyle.font20Bo.copyWith(
-                  color: AppColors.primaryColor,
+                  color: textColor ?? AppColors.primaryColor,
                 ),
                 textAlign: TextAlign.center,
               ).paddingOnly(

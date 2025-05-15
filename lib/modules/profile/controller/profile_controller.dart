@@ -4,13 +4,13 @@ import '../../../shares/widgets/dialog/dialog.src.dart';
 import '../../login/model/model_src.dart';
 
 class ProfileController extends BaseGetxController {
-  final appController = Get.find<AppController>();
+  final _appController = Get.find<AppController>();
 
   AccountInfoModel? accountInfo;
   @override
   void onInit() {
     super.onInit();
-    accountInfo = appController.accountInfoModel;
+    accountInfo = _appController.accountInfoModel;
   }
 
   void showDialogLogout() {
@@ -19,7 +19,7 @@ class ProfileController extends BaseGetxController {
       textBtnRight: LocaleKeys.dialog_logout.tr,
       status: LocaleKeys.dialog_logout.tr,
       onPressed: () {
-        appController.logout();
+        _appController.logout();
       },
       activeIcon: false,
     );

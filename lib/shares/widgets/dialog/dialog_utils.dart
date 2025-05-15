@@ -360,4 +360,30 @@ class ShowDialog {
       isActiveBack,
     );
   }
+
+  static Future<void> funcOpenDialog(Widget child) async {
+    Get.dialog(
+      buildShowPopupOption(child),
+      barrierDismissible: false,
+    );
+  }
+
+  static Widget buildShowPopupOption(Widget? child) {
+    return AlertDialog(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            12,
+          ),
+        ),
+      ),
+      backgroundColor: AppColors.colorWhite,
+      contentPadding: const EdgeInsets.all(0),
+      elevation: 0.0,
+      content: SizedBox(
+        width: Get.width,
+        child: child,
+      ),
+    );
+  }
 }

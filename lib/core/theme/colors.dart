@@ -9,9 +9,20 @@ class AppColors {
 
   AppColors._internal();
 
+  static const Color basicGrey4 = Color(0xFFF4F4F4);
+  static const Color basicWhite = Color(0xFFFFFFFF);
+  static const Color basicWhiteBanner = Colors.white;
+  static const Color basicGrey3 = Color(0xFFDBDBDB);
+  static const Color basicGrey2 = Color(0xFFA9A9A9);
+  static const Color basicGrey1 = Color(0xFF7E7E7E);
+  static const Color basicGrey40 = Color(0x66A9A9A9);
+  static const Color basicGreyPin = Color(0x66E9EBEE);
+  static const Color basicGreyHeader = Color(0xFF79747E);
+
   static const Color primaryColor = Color(0xFFED1B2F);
   static const Color primaryNavy = Color(0xFF1C1E66);
   static const Color basicBlack = Color(0xFF333333);
+  static const Color primaryCam1 = Color(0xFFFD5C00);
 
   ///background, border snackBar
   static const Color backgroundSuccess = Color(0xFFECFBF1);
@@ -54,7 +65,7 @@ class AppColors {
   static const Color dsGray5 = Color(0xFFDBDBDB);
   static const Color dsGray6 = Color(0xFFE5E5E5);
   static const Color dsGray7 = Color(0xFFF2F2F2);
-  
+
   static const Color greyDark = Color(0xFF16243D);
   static const Color greyLight = Color(0xFFDBDBDB);
 
