@@ -22,8 +22,7 @@ extension DepositInfoWidget on DepositInfoPage {
             ),
           ),
         ),
-        _buildSubmitButton()
-            .paddingSymmetric(horizontal: AppDimens.defaultPadding),
+        _buildSubmitButton().paddingAll(AppDimens.defaultPadding),
       ],
     );
   }

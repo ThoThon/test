@@ -291,23 +291,22 @@ class UtilWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: AppDimens.paddingVerySmall),
-                      child:
-                          // SDSBuildText(
-                          //   display(e),
-                          //   style: selectedItem == e
-                          //       ? AppTextStyle.font14Bo
-                          //       : AppTextStyle.font14Re,
-                          //   maxLines: 2,
-                          //   textAlign: TextAlign.start,
-                          // ),
-                          TextUtils(
-                        text: display(e),
-                        availableStyle: selectedItem == e
-                            ? StyleEnum.bodyBold
-                            : StyleEnum.bodyRegular,
-                        maxLine: 2,
+                      child: SDSBuildText(
+                        display(e),
+                        style: selectedItem == e
+                            ? AppTextStyle.font14Bo
+                            : AppTextStyle.font14Re,
+                        maxLines: 2,
                         textAlign: TextAlign.start,
                       ),
+                      //   TextUtils(
+                      // text: display(e),
+                      // availableStyle: selectedItem == e
+                      //     ? StyleEnum.bodyBold
+                      //     : StyleEnum.bodyRegular,
+                      //   maxLine: 2,
+                      //   textAlign: TextAlign.start,
+                      // ),
                     ),
                   ),
                 )
@@ -315,11 +314,12 @@ class UtilWidget {
             value: selectedItem,
             onChanged: onChanged,
             hint: hintText != null
-                ? TextUtils(
-                    text: hintText,
-                    availableStyle: StyleEnum.bodyRegular,
-                    maxLine: 2,
-                    textAlign: TextAlign.start,
+                ? SDSBuildText(
+                    hintText,
+                    style: AppTextStyle.font14Re.copyWith(
+                      color: AppColors.dsGray3,
+                    ),
+                    maxLines: 2,
                   )
                 : null,
           ),
@@ -452,6 +452,7 @@ class UtilWidget {
                   child: Container(
                     padding: const EdgeInsets.all(AppDimens.paddingSmall),
                     decoration: BoxDecoration(
+                      color: AppColors.colorWhite,
                       border: Border.all(
                         color: state.errorText != null
                             ? AppColors.statusRed
@@ -470,7 +471,7 @@ class UtilWidget {
                               availableStyle: StyleEnum.bodyRegular,
                               color: item.value != null
                                   ? AppColors.colorBlack
-                                  : const Color.fromARGB(255, 2, 2, 2),
+                                  : AppColors.dsGray3,
                             ),
                           ),
                           const Icon(

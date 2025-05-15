@@ -8,8 +8,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             .paddingSymmetric(horizontal: AppDimens.defaultPadding),
         UtilWidget.sizedBox16,
         Expanded(child: _buildPeriods()),
-        _buildBottomButton()
-            .paddingSymmetric(horizontal: AppDimens.defaultPadding),
+        _buildBottomButton().paddingAll(AppDimens.defaultPadding),
       ],
     );
   }

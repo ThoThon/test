@@ -346,10 +346,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
           ),
         ),
       ],
-    ).paddingOnly(
-      left: AppDimens.defaultPadding,
-      right: AppDimens.defaultPadding,
-      top: AppDimens.defaultPadding,
-    );
+    ).paddingAll(AppDimens.defaultPadding);
   }
 }

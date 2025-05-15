@@ -322,10 +322,6 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           ),
         ),
       ],
-    ).paddingOnly(
-      left: AppDimens.defaultPadding,
-      right: AppDimens.defaultPadding,
-      top: AppDimens.defaultPadding,
-    );
+    ).paddingAll(AppDimens.defaultPadding);
   }
 }
