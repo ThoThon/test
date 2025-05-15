@@ -94,7 +94,9 @@ Widget _buildListGuild(NfcInformationUserController controller) {
       BaseButton(
         padding: const EdgeInsets.all(AppDimens.defaultPadding),
         text: "Tiếp tục",
-        onPressed: () {},
+        onPressed: () {
+          Get.until(ModalRoute.withName(AppRoutes.declareInfo.path));
+        },
       ),
     ],
   );
