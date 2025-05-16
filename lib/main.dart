@@ -30,9 +30,9 @@ class _Application extends State<Application> {
   final botToastBuilder = BotToastInit();
   @override
   void initState() {
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.portraitUp,
-    // ]);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         // systemNavigationBarColor: AppColors.color,
