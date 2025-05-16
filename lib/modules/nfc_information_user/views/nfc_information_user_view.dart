@@ -88,18 +88,17 @@ Widget _buildListGuild(NfcInformationUserController controller) {
                 'Họ tên mẹ: Nguyễn Văn A',
               ),
             ],
-          ).paddingSymmetric(horizontal: AppDimens.defaultPadding),
+          ),
         ),
       ),
-      BaseButton(
-        padding: const EdgeInsets.all(AppDimens.defaultPadding),
-        text: "Tiếp tục",
+      UtilWidget.buildSolidButton(
+        title: "Tiếp tục",
         onPressed: () {
           Get.until(ModalRoute.withName(AppRoutes.declareInfo.path));
         },
       ),
     ],
-  );
+  ).paddingAll(AppDimens.defaultPadding);
 }
 
 Widget _buildTextAndIcon(

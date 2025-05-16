@@ -58,14 +58,14 @@ class BottomSheetSearch<T> extends StatelessWidget {
               ],
             ),
           ),
-          BaseButton(
-            text: LocaleKeys.certificate_confirm,
+          UtilWidget.buildSolidButton(
+            title: LocaleKeys.certificate_confirm.tr,
             onPressed: () {
               onAccept(itemSelect.value);
               Get.back();
             },
-            padding: EdgeInsets.zero,
           ),
+          sdsSBHeight16,
         ],
       ).paddingAll(AppDimens.defaultPadding),
     );

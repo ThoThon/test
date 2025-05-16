@@ -178,7 +178,6 @@ class UtilWidget {
     VoidCallback? onPressed,
     double? width,
     double? height,
-    Color? disableTextColor,
   }) {
     return SizedBox(
       width: width,
@@ -206,7 +205,6 @@ class UtilWidget {
     VoidCallback? onPressed,
     double? width,
     double? height,
-    Color? disableTextColor,
   }) {
     return Container(
       width: width,

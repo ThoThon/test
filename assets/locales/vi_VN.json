@@ -219,7 +219,18 @@
     "username": "Tài khoản",
     "password": "Mật khẩu",
     "usernameCannotEmpty": "Tài khoản không được bỏ trống",
-    "passwordCannotEmpty": "Mật khẩu không được bỏ trống"
+    "passwordCannotEmpty": "Mật khẩu không được bỏ trống",
+    "forgetPassword": "Quên mật khẩu?",
+    "resetPassword": "Lấy lại mật khẩu",
+    "changeAccount": "Đổi tài khoản",
+    "hello": "Xin chào,",
+    "serviceCenter": "Tổng đài CSKH:",
+    "phoneNumber": "1800.1800 (nhánh 1)",
+    "unitCodeCannotEmpty":"Mã đơn vị không được bỏ trống",
+    "taxCodeCannotEmpty":"Mã số thuế/ Mã ngân sách không được bỏ trống",
+    "backToLogin":"Quay lại đăng nhập",
+    "inputUnitCode":"Nhập mã đơn vị",
+    "inputPassword":"Nhập mật khẩu"
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",

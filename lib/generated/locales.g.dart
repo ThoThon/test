@@ -226,6 +226,17 @@ class LocaleKeys {
   static const login_password = 'login_password';
   static const login_usernameCannotEmpty = 'login_usernameCannotEmpty';
   static const login_passwordCannotEmpty = 'login_passwordCannotEmpty';
+  static const login_forgetPassword = 'login_forgetPassword';
+  static const login_resetPassword = 'login_resetPassword';
+  static const login_changeAccount = 'login_changeAccount';
+  static const login_hello = 'login_hello';
+  static const login_serviceCenter = 'login_serviceCenter';
+  static const login_phoneNumber = 'login_phoneNumber';
+  static const login_unitCodeCannotEmpty = 'login_unitCodeCannotEmpty';
+  static const login_taxCodeCannotEmpty = 'login_taxCodeCannotEmpty';
+  static const login_backToLogin = 'login_backToLogin';
+  static const login_inputUnitCode = 'login_inputUnitCode';
+  static const login_inputPassword = 'login_inputPassword';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_procedureItemTitle =
       'procedureList_procedureItemTitle';
@@ -506,6 +517,17 @@ class Locales {
     'login_password': 'Mật khẩu',
     'login_usernameCannotEmpty': 'Tài khoản không được bỏ trống',
     'login_passwordCannotEmpty': 'Mật khẩu không được bỏ trống',
+    'login_forgetPassword': 'Quên mật khẩu?',
+    'login_resetPassword': 'Lấy lại mật khẩu',
+    'login_changeAccount': 'Đổi tài khoản',
+    'login_hello': 'Xin chào,',
+    'login_serviceCenter': 'Tổng đài CSKH:',
+    'login_phoneNumber': '1800.1800 (nhánh 1)',
+    'login_unitCodeCannotEmpty': 'Mã đơn vị không được bỏ trống',
+    'login_taxCodeCannotEmpty': 'Mã số thuế/ Mã ngân sách không được bỏ trống',
+    'login_backToLogin': 'Quay lại đăng nhập',
+    'login_inputUnitCode': 'Nhập mã đơn vị',
+    'login_inputPassword': 'Nhập mật khẩu',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_procedureItemTitle':
         'Báo tăng, báo giảm, điều chỉnh mức đóng',

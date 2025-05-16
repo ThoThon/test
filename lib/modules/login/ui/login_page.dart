@@ -48,9 +48,9 @@ class LoginPage extends BaseGetWidget<LoginController> {
                   text: TextSpan(
                     style: AppTextStyle.font18Bo,
                     children: [
-                      const TextSpan(text: "Tổng đài CSKH:"),
+                      TextSpan(text: LocaleKeys.login_serviceCenter.tr),
                       TextSpan(
-                        text: " 1800.8000 (nhánh 1)",
+                        text: " ${LocaleKeys.login_phoneNumber.tr}",
                         style: AppTextStyle.font18Bo.copyWith(
                           color: AppColors.primaryColor,
                         ),
@@ -76,37 +76,33 @@ class LoginPage extends BaseGetWidget<LoginController> {
   }
 
   Widget _buildInputAccount() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.login_username.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.usernameTextCtrl,
-          obscureText: false,
-          validator: (value) {
-            if (value.isNullOrEmpty) {
-              return LocaleKeys.login_usernameCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
+    return BuildInputText(
+      InputTextModel(
+        hintText: LocaleKeys.login_inputUnitCode.tr,
+        controller: controller.usernameTextCtrl,
+        obscureText: false,
+        validator: (value) {
+          if (value.isNullOrEmpty) {
+            return LocaleKeys.login_unitCodeCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
     );
   }
 
   Widget _buildInputPassword() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.login_password.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.passwordTextCtrl,
-          obscureText: true,
-          validator: (value) {
-            if (value.isNullOrEmpty) {
-              return LocaleKeys.login_passwordCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
+    return BuildInputText(
+      InputTextModel(
+        hintText: LocaleKeys.login_inputPassword.tr,
+        controller: controller.passwordTextCtrl,
+        obscureText: true,
+        validator: (value) {
+          if (value.isNullOrEmpty) {
+            return LocaleKeys.login_passwordCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
     );
   }
@@ -115,8 +111,8 @@ class LoginPage extends BaseGetWidget<LoginController> {
     return InkWell(
       onTap: () {},
       child: SDSBuildText(
-        'Quên mật khẩu?',
-        style: AppTextStyle.font14Bo.copyWith(color: AppColors.primaryColor),
+        LocaleKeys.login_forgetPassword.tr,
+        style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       ),
     );
   }

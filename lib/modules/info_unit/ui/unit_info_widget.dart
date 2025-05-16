@@ -326,15 +326,14 @@ extension UnitInfoWidget on UnitInfoPage {
   }
 
   Widget _buildButtonChange() {
-    return BaseButton(
-      text: LocaleKeys.unitInfo_change.tr,
-      textColor: AppColors.colorWhite,
-      radius: AppDimens.radius4,
-      onPressed: () async {
-        //Delay 1 giây để showLoading
-        await 1.seconds.delay();
-        await controller.updateAccountInfo();
-      },
+    return Padding(
+      padding: const EdgeInsets.all(AppDimens.defaultPadding),
+      child: UtilWidget.buildSolidButton(
+        title: LocaleKeys.unitInfo_change.tr,
+        onPressed: () {
+          controller.updateAccountInfo();
+        },
+      ),
     );
   }
 
