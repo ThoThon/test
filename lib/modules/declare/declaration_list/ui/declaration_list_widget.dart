@@ -17,10 +17,11 @@ extension DeclarationListWidget on DeclarationListPage {
                   onPressed: () {
                     Get.toNamed(
                       AppRoutes.viewPdf.path,
-                      arguments: const ViewPdfArgument(
+                      arguments: ViewPdfArgument(
                         url:
-                            'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf',
+                            'https://testapi.easyhrm.vn/upload/a97398b7804942598df1e1fa1af518a6/Files/Contract/D02tk1-test.pdf',
                         title: 'Danh sách lao động',
+                        isRotateHorizontall: true,
                       ),
                     );
                   },
@@ -32,9 +33,23 @@ extension DeclarationListWidget on DeclarationListPage {
                   onPressed: () {
                     Get.toNamed(
                       AppRoutes.viewPdf.path,
-                      arguments: const ViewPdfArgument(
+                      arguments: ViewPdfArgument(
                         url:
-                            'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf',
+                            'https://testapi.easyhrm.vn/upload/a97398b7804942598df1e1fa1af518a6/Files/Contract/TK01-test.pdf',
+                        title: 'Tờ khai tham gia',
+                      ),
+                    );
+                  },
+                ),
+                UtilWidget.sizedBox12,
+                _buildDeclarationItem(
+                  title: 'Bảng kê thông tin (Mẫu D01-TS)',
+                  onPressed: () {
+                    Get.toNamed(
+                      AppRoutes.viewPdf.path,
+                      arguments: ViewPdfArgument(
+                        url:
+                            'https://testapi.easyhrm.vn/upload/a97398b7804942598df1e1fa1af518a6/Files/Contract/D01ts-test.pdf',
                         title: 'Tờ khai tham gia',
                       ),
                     );
@@ -46,7 +61,7 @@ extension DeclarationListWidget on DeclarationListPage {
                   onPressed: () {
                     Get.toNamed(
                       AppRoutes.viewPdf.path,
-                      arguments: const ViewPdfArgument(
+                      arguments: ViewPdfArgument(
                         url:
                             'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf',
                         title: 'File đính kèm',

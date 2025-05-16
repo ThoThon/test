@@ -20,24 +20,27 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
-              width: Get.width,
-              height: Get.width * 297 / 210,
-              child: SfPdfViewerTheme(
-                data: const SfPdfViewerThemeData(
-                  backgroundColor: Colors.transparent,
-                ),
-                child: SfPdfViewer.network(
-                  controller.argument.url,
-                  controller: controller.pdfViewerController,
-                  pageLayoutMode: PdfPageLayoutMode.single,
-                  canShowScrollHead: false,
-                  scrollDirection: PdfScrollDirection.horizontal,
-                  onDocumentLoaded: controller.onDocumentLoaded,
-                  onPageChanged: controller.onPageChanged,
+            SfPdfViewerTheme(
+              data: const SfPdfViewerThemeData(
+                backgroundColor: Colors.transparent,
+              ),
+              child: Expanded(
+                child: RotatedBox(
+                  quarterTurns:
+                      controller.argument.isRotateHorizontall ?? false ? 1 : 0,
+                  child: SfPdfViewer.network(
+                    controller.argument.url,
+                    controller: controller.pdfViewerController,
+                    pageLayoutMode: PdfPageLayoutMode.single,
+                    canShowScrollHead: false,
+                    scrollDirection: PdfScrollDirection.horizontal,
+                    onDocumentLoaded: controller.onDocumentLoaded,
+                    onPageChanged: controller.onPageChanged,
+                  ),
                 ),
               ),
             ),
+
             // Next and Previous buttons
             Obx(
               () {
@@ -68,7 +71,6 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
                 );
               },
             ),
-            const Spacer(),
             _buildBottomButtons(),
           ],
         ),
