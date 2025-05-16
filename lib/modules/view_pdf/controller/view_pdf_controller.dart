@@ -28,6 +28,12 @@ class ViewPdfController extends BaseGetxController {
   @override
   void onClose() {
     pdfViewerController.dispose();
+    // SystemChrome.setPreferredOrientations(
+    //   [
+    //     DeviceOrientation.portraitUp,
+    //     DeviceOrientation.portraitDown,
+    //   ],
+    // );
     super.onClose();
   }
 }

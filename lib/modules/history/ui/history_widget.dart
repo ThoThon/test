@@ -193,6 +193,7 @@ extension HistoryWidget on HistoryPage {
                         controller.selectProcedure.value = type;
                         // Khi chọn thủ tục thì đóng bottom sheet
                         Get.back();
+                        controller.listHistory.clear();
                         controller.getListHistory();
                       },
                       text: type.title.tr,

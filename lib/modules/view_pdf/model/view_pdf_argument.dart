@@ -1,9 +1,11 @@
 class ViewPdfArgument {
   final String url;
   final String title;
+  bool? isRotateHorizontall;
 
-  const ViewPdfArgument({
+  ViewPdfArgument({
     required this.url,
     required this.title,
+    this.isRotateHorizontall,
   });
 }
