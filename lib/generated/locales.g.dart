@@ -253,12 +253,8 @@ class LocaleKeys {
   static const declareInfo_fullNameHint = 'declareInfo_fullNameHint';
   static const declareInfo_fullNameCannotEmpty =
       'declareInfo_fullNameCannotEmpty';
-  static const declareInfo_fullNameInvalidMaxLength =
-      'declareInfo_fullNameInvalidMaxLength';
   static const declareInfo_selectStaff = 'declareInfo_selectStaff';
   static const declareInfo_bhxhCode = 'declareInfo_bhxhCode';
-  static const declareInfo_bhxhCodeInvalidMaxLength =
-      'declareInfo_bhxhCodeInvalidMaxLength';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -537,12 +533,8 @@ class Locales {
     'declareInfo_fullName': 'Họ và tên',
     'declareInfo_fullNameHint': 'Nhập họ và tên',
     'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
-    'declareInfo_fullNameInvalidMaxLength':
-        'Họ và tên không được quá 100 ký tự',
     'declareInfo_selectStaff': 'Chọn nhân viên',
     'declareInfo_bhxhCode': 'Mã số BHXH',
-    'declareInfo_bhxhCodeInvalidMaxLength':
-        'Mã số BHXH không được quá 10 ký tự',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

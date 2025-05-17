@@ -179,10 +179,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
                 return LocaleKeys.declareInfo_fullNameCannotEmpty.tr;
               }
 
-              if (trimmedValue.length > 100) {
-                return LocaleKeys.declareInfo_fullNameInvalidMaxLength.tr;
-              }
-
               return null;
             },
           ),

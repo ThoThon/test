@@ -247,10 +247,8 @@
     "fullName": "Họ và tên",
     "fullNameHint": "Nhập họ và tên",
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
-    "fullNameInvalidMaxLength": "Họ và tên không được quá 100 ký tự",
     "selectStaff": "Chọn nhân viên",
-    "bhxhCode": "Mã số BHXH",
-    "bhxhCodeInvalidMaxLength": "Mã số BHXH không được quá 10 ký tự"
+    "bhxhCode": "Mã số BHXH"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",
