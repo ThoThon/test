@@ -230,7 +230,8 @@
     "taxCodeCannotEmpty":"Mã số thuế/ Mã ngân sách không được bỏ trống",
     "backToLogin":"Quay lại đăng nhập",
     "inputUnitCode":"Nhập mã đơn vị",
-    "inputPassword":"Nhập mật khẩu"
+    "inputPassword":"Nhập mật khẩu",
+    "inputTaxCode":"Mã số thuế/ Mã ngân sách"
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",

@@ -237,6 +237,7 @@ class LocaleKeys {
   static const login_backToLogin = 'login_backToLogin';
   static const login_inputUnitCode = 'login_inputUnitCode';
   static const login_inputPassword = 'login_inputPassword';
+  static const login_inputTaxCode = 'login_inputTaxCode';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_procedureItemTitle =
       'procedureList_procedureItemTitle';
@@ -528,6 +529,7 @@ class Locales {
     'login_backToLogin': 'Quay lại đăng nhập',
     'login_inputUnitCode': 'Nhập mã đơn vị',
     'login_inputPassword': 'Nhập mật khẩu',
+    'login_inputTaxCode': 'Mã số thuế/ Mã ngân sách',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_procedureItemTitle':
         'Báo tăng, báo giảm, điều chỉnh mức đóng',
