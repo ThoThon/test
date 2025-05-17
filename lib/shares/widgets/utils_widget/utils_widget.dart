@@ -362,7 +362,7 @@ class UtilWidget {
     String? Function(T?)? validator,
   }) {
     return FormField<T>(
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: isRequired
           ? (value) {
               if (validator != null) {
