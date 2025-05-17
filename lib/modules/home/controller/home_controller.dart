@@ -3,8 +3,15 @@ import '../../login/model/model_src.dart';
 import '../../src.dart';
 
 class HomeController extends BaseGetxController {
-  // late final HomeRepository _homeRepository = HomeRepository(this);
-  final appController = Get.find<AppController>();
+  final _appController = Get.find<AppController>();
 
   AccountInfoModel? accountInfo;
+
+  @override
+  void onInit() async {
+    super.onInit();
+    if (_appController.accountInfoModel != null) {
+      accountInfo = _appController.accountInfoModel;
+    }
+  }
 }

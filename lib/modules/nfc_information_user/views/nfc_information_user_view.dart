@@ -29,70 +29,70 @@ Widget _buildListGuild(NfcInformationUserController controller) {
               sdsSBHeight12,
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_CARD_INFO_SVG,
-                'ID: 0123456789',
+                "${LocaleKeys.infomationUser_id.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_USER_NAME_CARD_SVG,
-                'Tên: A',
+                "${LocaleKeys.infomationUser_name.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_USER_NAME_CARD_SVG,
-                'Họ: Nguyễn',
+                "${LocaleKeys.infomationUser_lastName.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_GENDER_SVG,
-                'Giới tính: Nam',
+                "${LocaleKeys.infomationUser_gender.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_MAP_SVG,
-                'Quê quán: Phú Thọ',
+                "${LocaleKeys.infomationUser_homeTown.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_MAP_SVG,
-                'Nơi thường trú: Phú Thọ',
+                "${LocaleKeys.infomationUser_permanentResident.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_NATIONALITY_SVG,
-                'Quốc tịch: Việt Nam',
+                "${LocaleKeys.infomationUser_nationality.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_IC_NATION_SVG,
-                'Dân tộc: Kinh',
+                "${LocaleKeys.infomationUser_nation.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_NATIONALITY_SVG,
-                'Tôn giáo: Không',
+                "${LocaleKeys.infomationUser_religion.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_IC_PERSON_SVG,
-                'Đặc điểm nhận dạng: Nốt ruồi mắt trái',
+                "${LocaleKeys.infomationUser_identification.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_BIRTHDAY_SVG,
-                'Ngày sinh: 01/01/0001',
+                "${LocaleKeys.infomationUser_birthDay.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_IC_START_DAY_SVG,
-                'Ngày làm thẻ: 01/01/0001',
+                "${LocaleKeys.infomationUser_releaseDay.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_IC_START_DAY_SVG,
-                'Ngày hết hạn: 01/01/0001',
+                "${LocaleKeys.infomationUser_expiryDay.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_USER_NAME_CARD_SVG,
-                'Họ tên bố: Nguyễn Văn A',
+                "${LocaleKeys.infomationUser_fatherName.tr}: ",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_USER_NAME_CARD_SVG,
-                'Họ tên mẹ: Nguyễn Văn A',
+                "${LocaleKeys.infomationUser_motherName.tr}: ",
               ),
             ],
           ),
         ),
       ),
       UtilWidget.buildSolidButton(
-        title: "Tiếp tục",
+        title: LocaleKeys.infomationUser_continue.tr,
         onPressed: () {
           Get.until(ModalRoute.withName(AppRoutes.declareInfo.path));
         },
@@ -112,7 +112,6 @@ Widget _buildTextAndIcon(
       SDSBuildText(
         text,
       ),
-      sdsSBHeight8,
     ],
-  );
+  ).paddingOnly(bottom: AppDimens.paddingSmallest);
 }

@@ -54,6 +54,12 @@ class LocaleKeys {
   static const home_lookupC12 = 'home_lookupC12';
   static const home_guide = 'home_guide';
   static const home_declare = 'home_declare';
+  static const home_langugue = 'home_langugue';
+  static const home_changePassword = 'home_changePassword';
+  static const home_support = 'home_support';
+  static const home_changeAccount = 'home_changeAccount';
+  static const home_taxCode = 'home_taxCode';
+  static const home_hello = 'home_hello';
   static const unitInfo_transactionRegister = 'unitInfo_transactionRegister';
   static const unitInfo_generalInfo = 'unitInfo_generalInfo';
   static const unitInfo_registerInfo = 'unitInfo_registerInfo';
@@ -151,6 +157,7 @@ class LocaleKeys {
   static const unitInfo_sixMonth = 'unitInfo_sixMonth';
   static const unitInfo_byPostOffice = 'unitInfo_byPostOffice';
   static const unitInfo_bySocialAgency = 'unitInfo_bySocialAgency';
+  static const unitInfo_home = 'unitInfo_home';
   static const history_procedure = 'history_procedure';
   static const history_submissionTime = 'history_submissionTime';
   static const history_historyDetail = 'history_historyDetail';
@@ -174,6 +181,7 @@ class LocaleKeys {
   static const history_fail = 'history_fail';
   static const history_all = 'history_all';
   static const history_lookupSuccess = 'history_lookupSuccess';
+  static const history_selectedProcedure = 'history_selectedProcedure';
   static const history_procedure600 = 'history_procedure600';
   static const history_procedure600c = 'history_procedure600c';
   static const history_procedure600d = 'history_procedure600d';
@@ -269,13 +277,35 @@ class LocaleKeys {
   static const profile_monthOfUse = 'profile_monthOfUse';
   static const profile_registerDay = 'profile_registerDay';
   static const profile_expiredDay = 'profile_expiredDay';
-  static const scanCccd_stepOne = 'scanCccd_stepOne';
-  static const scanCccd_stepTwo = 'scanCccd_stepTwo';
-  static const scanCccd_stepThree = 'scanCccd_stepThree';
-  static const scanCccd_guideScanCCCD = 'scanCccd_guideScanCCCD';
-  static const scanCccd_titleStepOne = 'scanCccd_titleStepOne';
-  static const scanCccd_titleStepTwo = 'scanCccd_titleStepTwo';
-  static const scanCccd_titleStepThree = 'scanCccd_titleStepThree';
+  static const nfc_stepOne = 'nfc_stepOne';
+  static const nfc_stepTwo = 'nfc_stepTwo';
+  static const nfc_stepThree = 'nfc_stepThree';
+  static const nfc_guideScanCCCD = 'nfc_guideScanCCCD';
+  static const nfc_titleStepOne = 'nfc_titleStepOne';
+  static const nfc_titleStepTwo = 'nfc_titleStepTwo';
+  static const nfc_titleStepThree = 'nfc_titleStepThree';
+  static const nfc_start = 'nfc_start';
+  static const nfc_readyScan = 'nfc_readyScan';
+  static const nfc_scanNFC = 'nfc_scanNFC';
+  static const nfc_cancel = 'nfc_cancel';
+  static const infomationUser_info = 'infomationUser_info';
+  static const infomationUser_id = 'infomationUser_id';
+  static const infomationUser_name = 'infomationUser_name';
+  static const infomationUser_lastName = 'infomationUser_lastName';
+  static const infomationUser_gender = 'infomationUser_gender';
+  static const infomationUser_homeTown = 'infomationUser_homeTown';
+  static const infomationUser_permanentResident =
+      'infomationUser_permanentResident';
+  static const infomationUser_nationality = 'infomationUser_nationality';
+  static const infomationUser_nation = 'infomationUser_nation';
+  static const infomationUser_religion = 'infomationUser_religion';
+  static const infomationUser_identification = 'infomationUser_identification';
+  static const infomationUser_birthDay = 'infomationUser_birthDay';
+  static const infomationUser_releaseDay = 'infomationUser_releaseDay';
+  static const infomationUser_expiryDay = 'infomationUser_expiryDay';
+  static const infomationUser_fatherName = 'infomationUser_fatherName';
+  static const infomationUser_motherName = 'infomationUser_motherName';
+  static const infomationUser_continue = 'infomationUser_continue';
 }
 
 class Locales {
@@ -352,6 +382,12 @@ class Locales {
     'home_lookupC12': 'Tra cứu \nC12',
     'home_guide': 'Hướng dẫn',
     'home_declare': 'Kê khai',
+    'home_langugue': 'Ngôn ngữ',
+    'home_changePassword': 'Đổi mật khẩu',
+    'home_support': 'CSKH: 1900 1900',
+    'home_changeAccount': 'Đổi tài khoản',
+    'home_taxCode': 'MST',
+    'home_hello': 'Xin chào,',
     'unitInfo_transactionRegister': 'Đăng ký giao dịch',
     'unitInfo_generalInfo': 'Thông tin chung',
     'unitInfo_registerInfo': 'Thông tin đăng ký',
@@ -446,6 +482,7 @@ class Locales {
     'unitInfo_sixMonth': '6 tháng',
     'unitInfo_byPostOffice': 'Qua bưu điện',
     'unitInfo_bySocialAgency': 'Nhận tại cơ quan bảo hiểm',
+    'unitInfo_home': 'Trang chủ',
     'history_procedure': 'Thủ tục',
     'history_submissionTime': 'Thời gian nộp',
     'history_historyDetail': 'Chi tiết lịch sử',
@@ -469,6 +506,7 @@ class Locales {
     'history_fail': 'Thất bại',
     'history_all': 'Tất cả',
     'history_lookupSuccess': 'Tra cứu thành công!',
+    'history_selectedProcedure': 'Chọn thủ tục',
     'history_procedure600': '600 - Báo tăng, báo giảm, điều chỉnh',
     'history_procedure600c':
         '600c - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo luật bhxh 2014',
@@ -556,14 +594,36 @@ class Locales {
     'profile_monthOfUse': 'Số tháng sử dụng',
     'profile_registerDay': 'Ngày đăng ký',
     'profile_expiredDay': 'Ngày hết hạn',
-    'scanCccd_stepOne': '1',
-    'scanCccd_stepTwo': '2',
-    'scanCccd_stepThree': '3',
-    'scanCccd_guideScanCCCD': 'Hướng dẫn quét NFC(CCCD gắn chip)',
-    'scanCccd_titleStepOne': 'Bấm vào nút BẮT ĐẦU để tiến hành quét',
-    'scanCccd_titleStepTwo':
+    'nfc_stepOne': '1',
+    'nfc_stepTwo': '2',
+    'nfc_stepThree': '3',
+    'nfc_guideScanCCCD': 'Hướng dẫn quét NFC(CCCD gắn chip)',
+    'nfc_titleStepOne': 'Bấm vào nút BẮT ĐẦU để tiến hành quét',
+    'nfc_titleStepTwo':
         'Đưa thẻ(CCCD) ra sau máy khu vực phía sau của đầu điện thoại có cảm biến',
-    'scanCccd_titleStepThree':
+    'nfc_titleStepThree':
         'Di chuyển thẻ(CCCD) lên xuống để cảm biến nhận diện cho đến khi điện thoại rung, vui lòng giữ nguyên CCCD để tiến hành đọc thông tin',
+    'nfc_start': 'Bắt đầu',
+    'nfc_readyScan': 'Sẵn sàng quét',
+    'nfc_scanNFC':
+        'Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến',
+    'nfc_cancel': 'Hủy',
+    'infomationUser_info': 'Thông tin',
+    'infomationUser_id': 'ID',
+    'infomationUser_name': 'Tên',
+    'infomationUser_lastName': 'Họ',
+    'infomationUser_gender': 'Giới tính',
+    'infomationUser_homeTown': 'Quê quán',
+    'infomationUser_permanentResident': 'Nơi thường trú',
+    'infomationUser_nationality': 'Quốc tịch',
+    'infomationUser_nation': 'Dân tộc',
+    'infomationUser_religion': 'Tôn giáo',
+    'infomationUser_identification': 'Đặc điểm nhận dạng',
+    'infomationUser_birthDay': 'Ngày sinh',
+    'infomationUser_releaseDay': 'Ngày làm thẻ',
+    'infomationUser_expiryDay': 'Ngày hết hạn',
+    'infomationUser_fatherName': 'Họ tên bố',
+    'infomationUser_motherName': 'Họ tên mẹ',
+    'infomationUser_continue': 'Tiếp tục',
   };
 }

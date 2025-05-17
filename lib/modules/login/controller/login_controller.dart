@@ -11,10 +11,11 @@ class LoginController extends BaseGetxController {
   late final _loginRepository = LoginRepository(this);
   final formKey = GlobalKey<FormState>();
   // final usernameTextCtrl = TextEditingController(text: 'sd8888k17');
-  // final passwordTextCtrl = TextEditingController(text: 'Viettel@789');
+  final passwordTextCtrl = TextEditingController(text: 'Viettel@789');
   final usernameTextCtrl = TextEditingController();
-  final passwordTextCtrl = TextEditingController();
+  // final passwordTextCtrl = TextEditingController();
   final isHaveUsername = false.obs;
+  final appController = Get.find<AppController>();
 
   @override
   void onInit() {
@@ -47,7 +48,7 @@ class LoginController extends BaseGetxController {
           hiveApp.put(HiveKeys.keyUsername, username),
           hiveApp.put(HiveKeys.keyJwtToken, response.result),
         ]);
-
+        await appController.getAccountInfo();
         Get.offAndToNamed(AppRoutes.pageBuilder.path);
         return;
       } else {

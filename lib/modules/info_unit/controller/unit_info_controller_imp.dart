@@ -29,7 +29,6 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   void fetchDataAccountInfo() {
-    // final accountInfo = appController.accountInfoModel;
     taxCodeController.text = accountInfo?.taxCode ?? '';
     unitNameController.text = accountInfo?.tenToChuc ?? '';
     unitCodeController.text = accountInfo?.maDonVi ?? '';
@@ -72,9 +71,8 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       functionSuccess: (result) {
         ShowDialog.showDialogConfirm(
           title: LocaleKeys.dialog_updateSuccess.tr,
-          textBtnRight: "Trang chủ",
+          textBtnRight: LocaleKeys.unitInfo_home.tr,
           activeIcon: true,
-          // status: LocaleKeys.dialog_updateSuccess.tr,
           onPressed: () {
             Get.offAllNamed(AppRoutes.pageBuilder.path);
           },

@@ -179,7 +179,7 @@ extension HistoryWidget on HistoryPage {
       onPressed: () {
         Get.bottomSheet(
           UtilWidget.buildBottomSheetFigma(
-            title: "Chọn thủ tục",
+            title: LocaleKeys.history_selectedProcedure.tr,
             child: ListView.separated(
               shrinkWrap: true,
               itemBuilder: (context, index) {

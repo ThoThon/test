@@ -28,7 +28,7 @@ extension NfcWidget on NfcPage {
                       ).paddingAll(AppDimens.defaultPadding),
                     ),
                     SDSBuildText(
-                      LocaleKeys.scanCccd_guideScanCCCD.tr,
+                      LocaleKeys.nfc_guideScanCCCD.tr,
                       style: AppTextStyle.font16Bo.copyWith(
                         color: AppColors.basicBlack,
                       ),
@@ -37,16 +37,16 @@ extension NfcWidget on NfcPage {
                       top: AppDimens.paddingSmall,
                     ),
                     _titleInstruct(
-                      LocaleKeys.scanCccd_stepOne.tr,
-                      LocaleKeys.scanCccd_titleStepOne.tr,
+                      LocaleKeys.nfc_stepOne.tr,
+                      LocaleKeys.nfc_titleStepOne.tr,
                     ),
                     _titleInstruct(
-                      LocaleKeys.scanCccd_stepTwo.tr,
-                      LocaleKeys.scanCccd_titleStepTwo.tr,
+                      LocaleKeys.nfc_stepTwo.tr,
+                      LocaleKeys.nfc_titleStepTwo.tr,
                     ),
                     _titleInstruct(
-                      LocaleKeys.scanCccd_stepThree.tr,
-                      LocaleKeys.scanCccd_titleStepThree.tr,
+                      LocaleKeys.nfc_stepThree.tr,
+                      LocaleKeys.nfc_titleStepThree.tr,
                     ),
                   ],
                 ),
@@ -90,22 +90,22 @@ extension NfcWidget on NfcPage {
 
   Widget _buildButtonNfcContinue() {
     return UtilWidget.buildSolidButton(
-      title: 'Bắt đầu',
+      title: LocaleKeys.nfc_start.tr,
       onPressed: () async {
         Get.bottomSheet(UtilWidget.buildBottomSheetFigma(
-          title: 'Sẵn sàng quét',
+          title: LocaleKeys.nfc_readyScan.tr,
           textColor: AppColors.basicGrey1,
           child: Column(
             children: [
               SDSImageSvg(Assets.ASSETS_ICONS_ICON_SCAN_NFC_SVG),
               sdsSBHeight16,
-              const SDSBuildText(
-                'Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến',
+              SDSBuildText(
+                LocaleKeys.nfc_scanNFC.tr,
                 textAlign: TextAlign.center,
               ),
               sdsSBHeight16,
               UtilWidget.buildSolidButtonBack(
-                title: 'Hủy',
+                title: LocaleKeys.nfc_cancel.tr,
                 width: Get.width,
                 onPressed: () {
                   Get.back();
