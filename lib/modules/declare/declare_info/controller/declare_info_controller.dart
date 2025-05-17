@@ -23,6 +23,14 @@ class DeclareInfoController extends BaseGetxController {
     currentTab.value = tab;
   }
 
+  bool get enableTk1Tab {
+    return d02State.isGenerateTk1Data.value == true;
+  }
+
+  bool get enableD01Tab {
+    return d02State.isGenerateD01Data.value == true;
+  }
+
   bool get isShowScanIDButton {
     return currentTab.value == DeclareInfoTab.d02 ||
         currentTab.value == DeclareInfoTab.tk1;

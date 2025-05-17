@@ -47,6 +47,9 @@ class D02State {
   /// Ghi chú
   final noteTextCtrl = TextEditingController();
 
+  /// Sinh dữ liệu D01-TS
+  final isGenerateD01Data = false.obs;
+
   void dispose() {
     positionTextCtrl.dispose();
     workplaceTextCtrl.dispose();

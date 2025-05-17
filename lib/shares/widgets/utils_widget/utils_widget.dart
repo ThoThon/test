@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -902,6 +903,49 @@ class UtilWidget {
         ],
       ),
     );
+  }
+
+  static Future<DateTime?> showDateTimePicker({
+    required DateTime dateTimeInit,
+    DateTime? minTime,
+    DateTime? maxTime,
+  }) async {
+    DateTime? newDateTime = await showRoundedDatePicker(
+      context: Get.context!,
+      height: Get.height / 1.8,
+      initialDate: dateTimeInit,
+      firstDate: minTime ?? DateTime.utc(DateTime.now().year - 10),
+      lastDate: maxTime,
+      // barrierDismissible: true,
+      theme: ThemeData(
+        primaryColor: AppColors.colorWhite,
+        dialogBackgroundColor: AppColors.colorWhite,
+        disabledColor: Colors.black54,
+        textTheme: TextTheme(
+          bodySmall: AppTextStyle.font14Semi.copyWith(color: Colors.black54),
+          bodyMedium: AppTextStyle.font16Bo,
+        ),
+      ),
+      styleDatePicker: MaterialRoundedDatePickerStyle(
+        textStyleMonthYearHeader: AppTextStyle.font16Bo,
+        colorArrowNext: Colors.black54,
+        colorArrowPrevious: Colors.black54,
+        textStyleButtonNegative:
+            AppTextStyle.font16Bo.copyWith(color: Colors.black54),
+        textStyleButtonPositive:
+            AppTextStyle.font16Bo.copyWith(color: AppColors.primaryColor),
+        decorationDateSelected: const BoxDecoration(
+          color: AppColors.primaryColor,
+          shape: BoxShape.circle,
+        ),
+        textStyleCurrentDayOnCalendar: AppTextStyle.font16Bo.copyWith(
+          color: AppColors.primaryColor,
+        ),
+        textStyleYearButton: AppTextStyle.font16Bo,
+        textStyleDayButton: AppTextStyle.font16Bo,
+      ),
+    );
+    return newDateTime;
   }
 
   static Future<DateTime?> showPeriodDatePicker({

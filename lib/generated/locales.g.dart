@@ -270,6 +270,23 @@ class LocaleKeys {
       'declareInfo_declarationTypeDecreaseSalary';
   static const declareInfo_declarationTypeOther =
       'declareInfo_declarationTypeOther';
+  static const declareInfo_generateTk1Data = 'declareInfo_generateTk1Data';
+  static const declareInfo_cccdNumber = 'declareInfo_cccdNumber';
+  static const declareInfo_dob = 'declareInfo_dob';
+  static const declareInfo_gender = 'declareInfo_gender';
+  static const declareInfo_male = 'declareInfo_male';
+  static const declareInfo_female = 'declareInfo_female';
+  static const declareInfo_ethnic = 'declareInfo_ethnic';
+  static const declareInfo_selectEthnic = 'declareInfo_selectEthnic';
+  static const declareInfo_ethnicCannotEmpty = 'declareInfo_ethnicCannotEmpty';
+  static const declareInfo_nationality = 'declareInfo_nationality';
+  static const declareInfo_selectNationality = 'declareInfo_selectNationality';
+  static const declareInfo_nationalityCannotEmpty =
+      'declareInfo_nationalityCannotEmpty';
+  static const declareInfo_fromMonthYear = 'declareInfo_fromMonthYear';
+  static const declareInfo_toMonthYear = 'declareInfo_toMonthYear';
+  static const declareInfo_position = 'declareInfo_position';
+  static const declareInfo_workplace = 'declareInfo_workplace';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -559,6 +576,22 @@ class Locales {
     'declareInfo_declarationTypeIncreaseSalary': 'Tăng lương',
     'declareInfo_declarationTypeDecreaseSalary': 'Giảm lương',
     'declareInfo_declarationTypeOther': 'Khác',
+    'declareInfo_generateTk1Data': 'Sinh dữ liệu TK1-TS',
+    'declareInfo_cccdNumber': 'Số CCCD',
+    'declareInfo_dob': 'Ngày sinh',
+    'declareInfo_gender': 'Giới tính',
+    'declareInfo_male': 'Nam',
+    'declareInfo_female': 'Nữ',
+    'declareInfo_ethnic': 'Dân tộc',
+    'declareInfo_selectEthnic': 'Chọn dân tộc',
+    'declareInfo_ethnicCannotEmpty': 'Dân tộc không được bỏ trống',
+    'declareInfo_nationality': 'Quốc tịch',
+    'declareInfo_selectNationality': 'Chọn quốc tịch',
+    'declareInfo_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
+    'declareInfo_fromMonthYear': 'Từ tháng/năm',
+    'declareInfo_toMonthYear': 'Đến tháng/năm',
+    'declareInfo_position': 'Cấp bập/chức vụ',
+    'declareInfo_workplace': 'Nơi làm việc',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

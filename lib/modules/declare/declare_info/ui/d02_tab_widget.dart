@@ -22,47 +22,23 @@ extension D02TabWidget on DeclareInfoPage {
                 _buildSelectDeclareType(),
                 UtilWidget.sizedBox16,
                 _buildSelectPlan(),
-                UtilWidget.sizedBox16,
-                UtilWidget.buildCheckboxWithLabel(
-                  label: 'SInh dữ liệu TK1-TS',
-                  value: controller.d02State.isGenerateTk1Data.value,
-                  onChanged: (value) {
-                    controller.d02State.isGenerateTk1Data.value =
-                        value ?? false;
-                  },
-                ),
+                _buildGenerateTk1DataCheckbox(),
                 UtilWidget.sizedBox16,
                 _buildInputCCCD(),
                 UtilWidget.sizedBox16,
-                UtilWidget.buildSelectDate(
-                  'Ngày sinh',
-                  hintText: PATTERN_1,
-                  date: convertDateToStringSafe(
-                    controller.d02Tk1State.dateOfBirth.value,
-                    PATTERN_1,
-                  ),
-                  onTap: () {},
-                ),
+                _buildSelectDateOfBirth(),
                 UtilWidget.sizedBox12,
-                _buildSelectGender(onChanged: (value) {}),
+                _buildSelectGender(
+                  onChanged: (value) {
+                    controller.d02Tk1State.gender.value = value;
+                  },
+                ),
                 UtilWidget.sizedBox8,
                 _buildSelectEthnic(),
                 _buildSelectNationality(),
-                UtilWidget.buildSelectDate(
-                  'Từ tháng/năm',
-                  hintText: PATTERN_12,
-                  date: convertDateToStringSafe(
-                      controller.d02State.fromDate.value, PATTERN_12),
-                  onTap: () {},
-                ),
+                _buildSelectFromDate(),
                 UtilWidget.sizedBox16,
-                UtilWidget.buildSelectDate(
-                  'Đến tháng/năm',
-                  hintText: PATTERN_12,
-                  date: convertDateToStringSafe(
-                      controller.d02State.toDate.value, PATTERN_12),
-                  onTap: () {},
-                ),
+                _buildSelectToDate(),
                 UtilWidget.sizedBox16,
                 _buildInputPosition(),
                 UtilWidget.sizedBox16,
@@ -81,11 +57,72 @@ extension D02TabWidget on DeclareInfoPage {
                 _buildInputOtherAllowance(),
                 UtilWidget.sizedBox16,
                 _buildInputNote(),
+                UtilWidget.sizedBox16,
+                UtilWidget.buildCheckboxWithLabel(
+                  label: 'Sinh dữ liệu D01-TS',
+                  value: controller.d02State.isGenerateD01Data.value,
+                  onChanged: (value) {
+                    controller.d02State.isGenerateD01Data.value =
+                        value ?? false;
+                  },
+                ),
               ],
             );
           },
         ),
       ),
+    );
+  }
+
+  Widget _buildSelectToDate() {
+    return UtilWidget.buildSelectDate(
+      LocaleKeys.declareInfo_toMonthYear.tr,
+      hintText: PATTERN_12,
+      date: convertDateToStringSafe(
+        controller.d02State.toDate.value,
+        PATTERN_12,
+      ),
+      onTap: () async {
+        final selectedDate = await UtilWidget.showPeriodDatePicker();
+        if (selectedDate != null) {
+          controller.d02State.toDate.value = selectedDate;
+        }
+      },
+    );
+  }
+
+  Widget _buildSelectFromDate() {
+    return UtilWidget.buildSelectDate(
+      LocaleKeys.declareInfo_fromMonthYear.tr,
+      hintText: PATTERN_12,
+      date: convertDateToStringSafe(
+        controller.d02State.fromDate.value,
+        PATTERN_12,
+      ),
+      onTap: () async {
+        final selectedDate = await UtilWidget.showPeriodDatePicker();
+        if (selectedDate != null) {
+          controller.d02State.fromDate.value = selectedDate;
+        }
+      },
+    );
+  }
+
+  Widget _buildSelectDateOfBirth() {
+    return UtilWidget.buildSelectDate(
+      LocaleKeys.declareInfo_dob.tr,
+      hintText: PATTERN_1,
+      date: convertDateToStringSafe(
+        controller.d02Tk1State.dateOfBirth.value,
+        PATTERN_1,
+      ),
+      onTap: () async {
+        final selectedDate =
+            await UtilWidget.showDateTimePicker(dateTimeInit: DateTime.now());
+        if (selectedDate != null) {
+          controller.d02Tk1State.dateOfBirth.value = selectedDate;
+        }
+      },
     );
   }
 
@@ -128,14 +165,24 @@ extension D02TabWidget on DeclareInfoPage {
             }
             controller.d02State.plan.value = value;
           },
-        );
+        ).paddingOnly(bottom: AppDimens.defaultPadding);
+      },
+    );
+  }
+
+  Widget _buildGenerateTk1DataCheckbox() {
+    return UtilWidget.buildCheckboxWithLabel(
+      label: LocaleKeys.declareInfo_generateTk1Data.tr,
+      value: controller.d02State.isGenerateTk1Data.value,
+      onChanged: (value) {
+        controller.d02State.isGenerateTk1Data.value = value ?? false;
       },
     );
   }
 
   Widget _buildInputPosition() {
     return BuildInputTextWithLabel(
-      label: 'Cấp bập/chức vụ',
+      label: LocaleKeys.declareInfo_position.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.positionTextCtrl,
@@ -147,7 +194,7 @@ extension D02TabWidget on DeclareInfoPage {
 
   Widget _buildInputWorkplace() {
     return BuildInputTextWithLabel(
-      label: 'Nơi làm việc',
+      label: LocaleKeys.declareInfo_workplace.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.workplaceTextCtrl,
