@@ -2,6 +2,7 @@
 // Flutter Đã có PR fix lỗi này https://github.com/flutter/flutter/pull/162810
 // Nhưng ở bản flutter mới nhất vẫn chưa có (có thể phải tới flutter 3.3x)
 // Nên tạm thời copy qua để sửa lại
+// TODO: Xóa file này và sử dụng lại code của flutter khi bản mới có code fix lỗi
 
 // ignore_for_file: deprecated_member_use
 
