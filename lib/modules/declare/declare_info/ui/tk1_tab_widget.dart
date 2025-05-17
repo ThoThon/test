@@ -18,7 +18,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                   showSelectStaff: false,
                 ),
                 UtilWidget.sizedBox16,
-                _buildInputBHXHNumber(),
+                _buildInputBHXHCode(),
                 UtilWidget.sizedBox16,
                 _buildInputCCCD(),
                 UtilWidget.sizedBox16,

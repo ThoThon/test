@@ -90,6 +90,12 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
+  void saveDraft() {
+    if (d02State.formKey.currentState?.validate() == true) {
+      //
+    }
+  }
+
   @override
   void onClose() {
     d02State.dispose();

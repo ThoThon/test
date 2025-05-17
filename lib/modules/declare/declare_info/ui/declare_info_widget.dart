@@ -141,7 +141,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           children: [
             Expanded(
               child: _buildInputTitle(
-                title: 'Họ và tên',
+                title: LocaleKeys.declareInfo_fullName.tr,
                 isRequired: true,
               ),
             ),
@@ -157,7 +157,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: SDSBuildText(
-                  'Chọn nhân viên',
+                  LocaleKeys.declareInfo_selectStaff.tr,
                   style: AppTextStyle.font16Re.copyWith(
                     color: AppColors.primaryColor,
                     fontStyle: FontStyle.italic,
@@ -169,12 +169,20 @@ extension DeclareInfoWidget on DeclareInfoPage {
         BuildInputText(
           InputTextModel(
             controller: controller.d02Tk1State.fullNameTextCtrl,
-            hintText: 'Nhập thông tin họ tên',
+            hintText: LocaleKeys.declareInfo_fullNameHint.tr,
             isValidate: true,
+            maxLengthInputForm: 100,
             validator: (value) {
-              if (value.isNullOrEmpty) {
-                return 'Họ và tên không được để trống';
+              final trimmedValue = value?.trim();
+
+              if (trimmedValue == null || trimmedValue.isEmpty) {
+                return LocaleKeys.declareInfo_fullNameCannotEmpty.tr;
               }
+
+              if (trimmedValue.length > 100) {
+                return LocaleKeys.declareInfo_fullNameInvalidMaxLength.tr;
+              }
+
               return null;
             },
           ),
@@ -216,12 +224,15 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
-  Widget _buildInputBHXHNumber() {
+  Widget _buildInputBHXHCode() {
     return BuildInputTextWithLabel(
-      label: 'Mã số BHXH',
+      label: LocaleKeys.declareInfo_bhxhCode.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02Tk1State.bhxhTextCtrl,
+          inputFormatters: InputFormatterEnum.digitsOnly,
+          maxLengthInputForm: 10,
+          textInputType: TextInputType.number,
         ),
       ),
     );
@@ -333,9 +344,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
             title: 'Lưu nháp',
-            onPressed: () {
-              Get.back();
-            },
+            onPressed: controller.saveDraft,
           ),
         ),
         UtilWidget.sizedBoxWidth16,

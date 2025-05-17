@@ -249,6 +249,16 @@ class LocaleKeys {
   static const declarationPeriodDetail_deposit =
       'declarationPeriodDetail_deposit';
   static const declareInfo_title = 'declareInfo_title';
+  static const declareInfo_fullName = 'declareInfo_fullName';
+  static const declareInfo_fullNameHint = 'declareInfo_fullNameHint';
+  static const declareInfo_fullNameCannotEmpty =
+      'declareInfo_fullNameCannotEmpty';
+  static const declareInfo_fullNameInvalidMaxLength =
+      'declareInfo_fullNameInvalidMaxLength';
+  static const declareInfo_selectStaff = 'declareInfo_selectStaff';
+  static const declareInfo_bhxhCode = 'declareInfo_bhxhCode';
+  static const declareInfo_bhxhCodeInvalidMaxLength =
+      'declareInfo_bhxhCodeInvalidMaxLength';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -524,6 +534,15 @@ class Locales {
     'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',
     'declarationPeriodDetail_deposit': 'Ký gửi',
     'declareInfo_title': 'Kê khai thông tin',
+    'declareInfo_fullName': 'Họ và tên',
+    'declareInfo_fullNameHint': 'Nhập họ và tên',
+    'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
+    'declareInfo_fullNameInvalidMaxLength':
+        'Họ và tên không được quá 100 ký tự',
+    'declareInfo_selectStaff': 'Chọn nhân viên',
+    'declareInfo_bhxhCode': 'Mã số BHXH',
+    'declareInfo_bhxhCodeInvalidMaxLength':
+        'Mã số BHXH không được quá 10 ký tự',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

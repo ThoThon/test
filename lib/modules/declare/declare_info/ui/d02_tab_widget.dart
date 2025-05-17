@@ -17,7 +17,7 @@ extension D02TabWidget on DeclareInfoPage {
                   onTapSelectStaff: controller.showDialogSelectStaff,
                 ),
                 UtilWidget.sizedBox16,
-                _buildInputBHXHNumber(),
+                _buildInputBHXHCode(),
                 UtilWidget.sizedBox16,
                 _buildSelectDeclareType(),
                 UtilWidget.sizedBox16,
