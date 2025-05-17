@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 
 class D02State {
   final formKey = GlobalKey<FormState>();
@@ -9,7 +9,7 @@ class D02State {
   final declarationType = Rxn<DeclarationTypeEnum>();
 
   /// Phương án
-  final plan = Rxn<String>();
+  final plan = Rxn<PlanEnum>();
 
   /// Sinh dữ liệu Tk1-TS
   final isGenerateTk1Data = false.obs;

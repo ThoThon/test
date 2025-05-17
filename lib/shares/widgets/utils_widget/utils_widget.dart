@@ -4,6 +4,7 @@ import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
+import 'dropdown_custom.dart' as dropdown_custom;
 
 import '../../../modules/src.dart';
 
@@ -428,6 +429,135 @@ class UtilWidget {
           ],
         );
       },
+    );
+  }
+
+  /// buildDropDownWithLabel cũ không tự động validate lại thông tin khi gán lại giá trị của selectedItem
+  /// nên chuyển sang dùng cái mặc định của Flutter
+  static Widget buildDropDownWithLabel2<T>({
+    bool isRequired = true,
+    required String label,
+    required List<T> items,
+    required String Function(T) display,
+    T? selectedItem,
+    ValueChanged<T?>? onChanged,
+    String? hintText,
+    String? Function(T?)? validator,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: label.isNotEmpty
+              ? const EdgeInsets.only(bottom: AppDimens.paddingSmallest)
+              : EdgeInsets.zero,
+          child: RichText(
+            text: TextSpan(
+              text: label,
+              style: AppTextStyle.font16Bo,
+              children: [
+                if (isRequired)
+                  TextSpan(
+                    text: ' (*)',
+                    style: AppTextStyle.font12Re.copyWith(
+                      color: AppColors.statusRed,
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+        ButtonTheme(
+          // REF: https://stackoverflow.com/a/78302373/15424249
+          // Force dropdown menu có chiều rộng bằng với dropdown button
+          alignedDropdown: true,
+          child: dropdown_custom.DropdownButtonFormField<T>(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            dropdownColor: AppColors.colorWhite,
+            decoration: InputDecoration(
+              errorStyle: AppTextStyle.font12Re.copyWith(
+                color: AppColors.statusRed,
+              ),
+              fillColor: AppColors.colorWhite,
+              filled: true,
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                borderSide: const BorderSide(color: AppColors.dsGray4),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                borderSide: const BorderSide(color: AppColors.dsGray4),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                borderSide: const BorderSide(color: AppColors.dsGray4),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                borderSide: const BorderSide(color: AppColors.statusRed),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                borderSide: const BorderSide(color: AppColors.statusRed),
+              ),
+              isDense: true,
+            ),
+            style: AppTextStyle.font14Re,
+            selectedItemBuilder: (context) => items.map(
+              (e) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimens.paddingVerySmall,
+                  ),
+                  child: SDSBuildText(
+                    display(e),
+                    style: AppTextStyle.font14Re,
+                    maxLines: 2,
+                  ),
+                );
+              },
+            ).toList(),
+            items: items
+                .map(
+                  (e) => dropdown_custom.DropdownMenuItem<T>(
+                    value: e,
+                    child: SDSBuildText(
+                      display(e),
+                      style: selectedItem == e
+                          ? AppTextStyle.font14Bo
+                          : AppTextStyle.font14Re,
+                      maxLines: 2,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                )
+                .toList(),
+            value: selectedItem,
+            validator: (value) {
+              if (!isRequired) return null;
+
+              if (validator != null) {
+                return validator(value);
+              }
+
+              if (value == null) {
+                return "${label.tr} ${LocaleKeys.input_inputEmpty.tr.toLowerCase()}";
+              }
+
+              return null;
+            },
+            onChanged: onChanged,
+            hint: SDSBuildText(
+              LocaleKeys.declareInfo_selectPlan.tr,
+              style: AppTextStyle.font14Re.copyWith(
+                color: AppColors.dsGray4,
+              ),
+              maxLines: 2,
+            ),
+          ),
+        ),
+      ],
     );
   }
 

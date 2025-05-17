@@ -7,3 +7,5 @@ export 'gender.dart';
 export 'declare_info_tab.dart';
 export 'declare_info_argument.dart';
 export 'document_check_list.dart';
+export 'declaration_type_enum.dart';
+export 'plan_enum.dart';

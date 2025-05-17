@@ -255,6 +255,21 @@ class LocaleKeys {
       'declareInfo_fullNameCannotEmpty';
   static const declareInfo_selectStaff = 'declareInfo_selectStaff';
   static const declareInfo_bhxhCode = 'declareInfo_bhxhCode';
+  static const declareInfo_declarationType = 'declareInfo_declarationType';
+  static const declareInfo_selectDeclarationType =
+      'declareInfo_selectDeclarationType';
+  static const declareInfo_plan = 'declareInfo_plan';
+  static const declareInfo_selectPlan = 'declareInfo_selectPlan';
+  static const declareInfo_declarationTypeIncreaseLabor =
+      'declareInfo_declarationTypeIncreaseLabor';
+  static const declareInfo_declarationTypeDecreaseLabor =
+      'declareInfo_declarationTypeDecreaseLabor';
+  static const declareInfo_declarationTypeIncreaseSalary =
+      'declareInfo_declarationTypeIncreaseSalary';
+  static const declareInfo_declarationTypeDecreaseSalary =
+      'declareInfo_declarationTypeDecreaseSalary';
+  static const declareInfo_declarationTypeOther =
+      'declareInfo_declarationTypeOther';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -535,6 +550,15 @@ class Locales {
     'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
     'declareInfo_selectStaff': 'Chọn nhân viên',
     'declareInfo_bhxhCode': 'Mã số BHXH',
+    'declareInfo_declarationType': 'Loại khai báo',
+    'declareInfo_selectDeclarationType': 'Chọn loại khai báo',
+    'declareInfo_plan': 'Phương án',
+    'declareInfo_selectPlan': 'Chọn phương án',
+    'declareInfo_declarationTypeIncreaseLabor': 'Tăng lao động',
+    'declareInfo_declarationTypeDecreaseLabor': 'Giảm lao động',
+    'declareInfo_declarationTypeIncreaseSalary': 'Tăng lương',
+    'declareInfo_declarationTypeDecreaseSalary': 'Giảm lương',
+    'declareInfo_declarationTypeOther': 'Khác',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

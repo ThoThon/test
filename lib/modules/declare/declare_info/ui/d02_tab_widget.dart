@@ -16,9 +16,9 @@ extension D02TabWidget on DeclareInfoPage {
                 _buildInputFullName(
                   onTapSelectStaff: controller.showDialogSelectStaff,
                 ),
-                UtilWidget.sizedBox16,
+                UtilWidget.sizedBox8,
                 _buildInputBHXHCode(),
-                UtilWidget.sizedBox16,
+                UtilWidget.sizedBox8,
                 _buildSelectDeclareType(),
                 UtilWidget.sizedBox16,
                 _buildSelectPlan(),
@@ -90,9 +90,9 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectDeclareType() {
-    return UtilWidget.buildDropDownWithLabel<DeclarationTypeEnum>(
-      label: 'Loại khai báo',
-      hintText: 'Chọn loại khai báo',
+    return UtilWidget.buildDropDownWithLabel2<DeclarationTypeEnum>(
+      label: LocaleKeys.declareInfo_declarationType.tr,
+      hintText: LocaleKeys.declareInfo_selectDeclarationType.tr,
       items: DeclarationTypeEnum.values,
       display: (item) => item.title,
       selectedItem: controller.d02State.declarationType.value,
@@ -100,23 +100,35 @@ extension D02TabWidget on DeclareInfoPage {
         if (value == null) {
           return;
         }
+        controller.d02State.plan.value = null;
         controller.d02State.declarationType.value = value;
       },
     );
   }
 
   Widget _buildSelectPlan() {
-    return UtilWidget.buildDropDownWithLabel<String>(
-      label: 'Phương án',
-      hintText: 'Chọn phương án',
-      items: ['A', 'B', 'C', 'D'],
-      display: (item) => item,
-      selectedItem: controller.d02State.plan.value,
-      onChanged: (value) {
-        if (value == null) {
-          return;
+    return Obx(
+      () {
+        final declarationType = controller.d02State.declarationType.value;
+        final plans = declarationType?.plans;
+
+        if (plans == null || plans.isEmpty) {
+          return UtilWidget.shrink;
         }
-        controller.d02State.plan.value = value;
+
+        return UtilWidget.buildDropDownWithLabel2<PlanEnum>(
+          label: LocaleKeys.declareInfo_declarationType.tr,
+          hintText: LocaleKeys.declareInfo_selectDeclarationType.tr,
+          items: plans,
+          display: (item) => item.title,
+          selectedItem: controller.d02State.plan.value,
+          onChanged: (value) {
+            if (value == null) {
+              return;
+            }
+            controller.d02State.plan.value = value;
+          },
+        );
       },
     );
   }
