@@ -213,7 +213,7 @@ extension D02TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_payBySalaryCoefficient.tr,
       value: controller.d02State.isSalaryCoefficient.value,
       onChanged: (value) {
-        controller.d02State.isSalaryCoefficient.value = value ?? false;
+        controller.onChangeSalaryCoefficient(value: value ?? false);
       },
     );
   }
@@ -232,69 +232,89 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildInputPositionAllowance() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_positionAllowance.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.d02State.positionAllowanceTextCtrl,
-          textInputType: TextInputType.number,
-          isReadOnly: !controller.d02State.isSalaryCoefficient.value,
+    final isReadOnly = !controller.d02State.isSalaryCoefficient.value;
+    return Opacity(
+      opacity: isReadOnly ? 0.5 : 1,
+      child: BuildInputTextWithLabel(
+        label: LocaleKeys.declareInfo_positionAllowance.tr,
+        buildInputText: BuildInputText(
+          InputTextModel(
+            controller: controller.d02State.positionAllowanceTextCtrl,
+            textInputType: TextInputType.number,
+            isReadOnly: isReadOnly,
+          ),
         ),
       ),
     );
   }
 
   Widget _buildInputPCTNN() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_pcTNN.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.d02State.pcTNNTextCtrl,
-          textInputType: TextInputType.number,
-          inputFormatters: InputFormatterEnum.digitsOnly,
-          maxLengthInputForm: 2,
-          isReadOnly: !controller.d02State.isSalaryCoefficient.value,
+    final isReadOnly = !controller.d02State.isSalaryCoefficient.value;
+    return Opacity(
+      opacity: isReadOnly ? 0.5 : 1,
+      child: BuildInputTextWithLabel(
+        label: LocaleKeys.declareInfo_pcTNN.tr,
+        buildInputText: BuildInputText(
+          InputTextModel(
+            controller: controller.d02State.pcTNNTextCtrl,
+            textInputType: TextInputType.number,
+            inputFormatters: InputFormatterEnum.digitsOnly,
+            maxLengthInputForm: 2,
+            isReadOnly: isReadOnly,
+          ),
         ),
       ),
     );
   }
 
   Widget _buildInputPcTNVuotKhung() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_pcTNVuotKhung.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.d02State.pcTNVuotKhungTextCtrl,
-          textInputType: TextInputType.number,
-          inputFormatters: InputFormatterEnum.digitsOnly,
-          maxLengthInputForm: 2,
-          isReadOnly: !controller.d02State.isSalaryCoefficient.value,
+    final isReadOnly = !controller.d02State.isSalaryCoefficient.value;
+    return Opacity(
+      opacity: isReadOnly ? 0.5 : 1,
+      child: BuildInputTextWithLabel(
+        label: LocaleKeys.declareInfo_pcTNVuotKhung.tr,
+        buildInputText: BuildInputText(
+          InputTextModel(
+            controller: controller.d02State.pcTNVuotKhungTextCtrl,
+            textInputType: TextInputType.number,
+            inputFormatters: InputFormatterEnum.digitsOnly,
+            maxLengthInputForm: 2,
+            isReadOnly: isReadOnly,
+          ),
         ),
       ),
     );
   }
 
   Widget _buildInputSalaryAllowance() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_salaryAllowance.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.d02State.salaryAllowanceTextCtrl,
-          textInputType: TextInputType.number,
-          isReadOnly: controller.d02State.isSalaryCoefficient.value,
+    final isReadOnly = controller.d02State.isSalaryCoefficient.value;
+    return Opacity(
+      opacity: isReadOnly ? 0.5 : 1,
+      child: BuildInputTextWithLabel(
+        label: LocaleKeys.declareInfo_salaryAllowance.tr,
+        buildInputText: BuildInputText(
+          InputTextModel(
+            controller: controller.d02State.salaryAllowanceTextCtrl,
+            textInputType: TextInputType.number,
+            isReadOnly: isReadOnly,
+          ),
         ),
       ),
     );
   }
 
   Widget _buildInputOtherAllowance() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_otherAllowance.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.d02State.otherAllowanceTextCtrl,
-          textInputType: TextInputType.number,
-          isReadOnly: controller.d02State.isSalaryCoefficient.value,
+    final isReadOnly = controller.d02State.isSalaryCoefficient.value;
+    return Opacity(
+      opacity: isReadOnly ? 0.5 : 1,
+      child: BuildInputTextWithLabel(
+        label: LocaleKeys.declareInfo_otherAllowance.tr,
+        buildInputText: BuildInputText(
+          InputTextModel(
+            controller: controller.d02State.otherAllowanceTextCtrl,
+            textInputType: TextInputType.number,
+            isReadOnly: isReadOnly,
+          ),
         ),
       ),
     );

@@ -104,6 +104,21 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
+  void onChangeSalaryCoefficient({
+    required bool value,
+  }) {
+    d02State.isSalaryCoefficient.value = value;
+
+    if (value) {
+      d02State.salaryAllowanceTextCtrl.clear();
+      d02State.otherAllowanceTextCtrl.clear();
+    } else {
+      d02State.positionAllowanceTextCtrl.clear();
+      d02State.pcTNNTextCtrl.clear();
+      d02State.pcTNVuotKhungTextCtrl.clear();
+    }
+  }
+
   @override
   void onClose() {
     d02State.dispose();
