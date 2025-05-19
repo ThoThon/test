@@ -57,7 +57,6 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.depositInfo.path,
       page: () => DepositInfoPage(),
-      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.declareInfo.path,
@@ -79,10 +78,17 @@ class RouteAppPage {
       name: AppRoutes.viewPdf.path,
       page: () => ViewPdfPage(),
     ),
-    GetPage(name: AppRoutes.nfc.path, page: () => NfcPage()),
+    GetPage(
+      name: AppRoutes.nfc.path,
+      page: () => NfcPage(),
+    ),
     GetPage(
       name: AppRoutes.nfcInformationUser.path,
       page: () => NfcInformationUserPage(),
+    ),
+    GetPage(
+      name: AppRoutes.forgotLogin.path,
+      page: () => ForgotPasswordPage(),
     ),
   ];
 }

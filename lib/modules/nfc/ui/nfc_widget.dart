@@ -2,57 +2,59 @@ part of 'nfc_page.dart';
 
 extension NfcWidget on NfcPage {
   Widget _buildBody() {
-    return SizedBox(
-      height: Get.height,
-      width: Get.width,
-      child: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  UtilWidget.buildCardBase(
-                    Center(
-                      child: Column(
-                        children: [
-                          SDSImageSvg(Assets.ASSETS_ICONS_IC_CCCD_SVG),
-                          sdsSBHeight20,
-                          Image.asset(
-                            Assets.ASSETS_IMAGES_IPHONE_JPG,
-                            height: 400,
-                          ),
-                        ],
-                      ),
-                    ).paddingAll(AppDimens.defaultPadding),
-                  ),
-                  SDSBuildText(
-                    LocaleKeys.scanCccd_guideScanCCCD.tr,
-                    style: AppTextStyle.font16Bo.copyWith(
-                      color: AppColors.basicBlack,
+    return SDSSafearea(
+      child: SizedBox(
+        height: Get.height,
+        width: Get.width,
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    UtilWidget.buildCardBase(
+                      Center(
+                        child: Column(
+                          children: [
+                            SDSImageSvg(Assets.ASSETS_ICONS_IC_CCCD_SVG),
+                            sdsSBHeight20,
+                            Image.asset(
+                              Assets.ASSETS_IMAGES_IPHONE_JPG,
+                              height: 400,
+                            ),
+                          ],
+                        ),
+                      ).paddingAll(AppDimens.defaultPadding),
                     ),
-                  ).paddingOnly(
-                    bottom: AppDimens.padding5,
-                    top: AppDimens.paddingSmall,
-                  ),
-                  _titleInstruct(
-                    LocaleKeys.scanCccd_stepOne.tr,
-                    LocaleKeys.scanCccd_titleStepOne.tr,
-                  ),
-                  _titleInstruct(
-                    LocaleKeys.scanCccd_stepTwo.tr,
-                    LocaleKeys.scanCccd_titleStepTwo.tr,
-                  ),
-                  _titleInstruct(
-                    LocaleKeys.scanCccd_stepThree.tr,
-                    LocaleKeys.scanCccd_titleStepThree.tr,
-                  ),
-                ],
-              ).paddingAll(AppDimens.padding15),
+                    SDSBuildText(
+                      LocaleKeys.nfc_guideScanCCCD.tr,
+                      style: AppTextStyle.font16Bo.copyWith(
+                        color: AppColors.basicBlack,
+                      ),
+                    ).paddingOnly(
+                      bottom: AppDimens.padding5,
+                      top: AppDimens.paddingSmall,
+                    ),
+                    _titleInstruct(
+                      LocaleKeys.nfc_stepOne.tr,
+                      LocaleKeys.nfc_titleStepOne.tr,
+                    ),
+                    _titleInstruct(
+                      LocaleKeys.nfc_stepTwo.tr,
+                      LocaleKeys.nfc_titleStepTwo.tr,
+                    ),
+                    _titleInstruct(
+                      LocaleKeys.nfc_stepThree.tr,
+                      LocaleKeys.nfc_titleStepThree.tr,
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
-          _buildButtonNfcContinue(),
-        ],
+            _buildButtonNfcContinue(),
+          ],
+        ).paddingAll(AppDimens.defaultPadding),
       ),
     );
   }
@@ -87,37 +89,32 @@ extension NfcWidget on NfcPage {
   }
 
   Widget _buildButtonNfcContinue() {
-    return BaseButton(
-      text: 'Bắt đầu',
+    return UtilWidget.buildSolidButton(
+      title: LocaleKeys.nfc_start.tr,
       onPressed: () async {
-        Get.bottomSheet(
-          UtilWidget.buildBottomSheetFigma(
-            title: 'Sẵn sàng quét',
-            textColor: AppColors.basicGrey1,
-            child: Column(
-              children: [
-                SDSImageSvg(Assets.ASSETS_ICONS_ICON_SCAN_NFC_SVG),
-                sdsSBHeight16,
-                const SDSBuildText(
-                  'Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến',
-                  textAlign: TextAlign.center,
-                ),
-                sdsSBHeight16,
-                BaseButton(
-                  text: 'Hủy',
-                  padding: EdgeInsets.zero,
-                  boderColor: AppColors.primaryColor,
-                  color: AppColors.colorWhite,
-                  textColor: AppColors.primaryColor,
-                  onPressed: () {
-                    Get.back();
-                  },
-                ),
-                sdsSBHeight16,
-              ],
-            ),
+        Get.bottomSheet(UtilWidget.buildBottomSheetFigma(
+          title: LocaleKeys.nfc_readyScan.tr,
+          textColor: AppColors.basicGrey1,
+          child: Column(
+            children: [
+              SDSImageSvg(Assets.ASSETS_ICONS_ICON_SCAN_NFC_SVG),
+              sdsSBHeight16,
+              SDSBuildText(
+                LocaleKeys.nfc_scanNFC.tr,
+                textAlign: TextAlign.center,
+              ),
+              sdsSBHeight16,
+              UtilWidget.buildSolidButtonBack(
+                title: LocaleKeys.nfc_cancel.tr,
+                width: Get.width,
+                onPressed: () {
+                  Get.back();
+                },
+              ),
+              sdsSBHeight32,
+            ],
           ),
-        );
+        ));
         await Future.delayed(const Duration(seconds: 3));
         Get.toNamed(AppRoutes.nfcInformationUser.path);
       },

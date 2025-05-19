@@ -1,3 +1,4 @@
+import '../../../base_app/controllers_base/app_controller/app_controller.dart';
 import '../../../modules/src.dart';
 
 part 'login_widget.dart';
@@ -13,110 +14,158 @@ class LoginPage extends BaseGetWidget<LoginController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return buildLoadingOverlay(
-      () => Scaffold(
-        body: SafeArea(
-          child: Form(
-            key: controller.formKey,
-            child: Column(
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _buildLogo(MediaQuery.of(context).size.width / 2),
-                        const SizedBox(height: AppDimens.padding40),
-                        _buildInputAccount(),
-                        UtilWidget.sizedBox16,
-                        _buildInputPassword(),
-                        sdsSBHeight8,
-                        _buildForgetPassword(),
-                        sdsSBHeight8,
-                        UtilWidget.buildSolidButton(
-                          title: LocaleKeys.login_login.tr,
-                          height: AppDimens.btnLargeFigma,
-                          onPressed: () {
-                            controller.login();
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                RichText(
-                  text: TextSpan(
-                    style: AppTextStyle.font18Bo,
+      () {
+        return Scaffold(
+          body: SafeArea(
+            child: Form(
+              key: controller.formKey,
+              child: Obx(
+                () {
+                  return Column(
                     children: [
-                      const TextSpan(text: "Tổng đài CSKH:"),
-                      TextSpan(
-                        text: " 1800.8000 (nhánh 1)",
-                        style: AppTextStyle.font18Bo.copyWith(
-                          color: AppColors.primaryColor,
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              _buildLogo(),
+                              const SizedBox(height: AppDimens.padding40),
+                              controller.isHaveUsername.value
+                                  ? _buildCompanyName()
+                                  : _buildInputAccount(),
+                              UtilWidget.sizedBox16,
+                              _buildInputPassword(),
+                              sdsSBHeight8,
+                              Row(
+                                children: [
+                                  _buildForgetPassword(),
+                                  const Spacer(),
+                                  controller.isHaveUsername.value
+                                      ? _buildChangeAccount()
+                                      : const SizedBox.shrink()
+                                ],
+                              ),
+                              sdsSBHeight8,
+                              _buildButtonLogin(),
+                            ],
+                          ),
                         ),
                       ),
+                      _buildPhoneService(),
                     ],
-                  ),
-                ),
-              ],
-            ),
-          ).paddingAll(AppDimens.defaultPadding),
-        ),
-      ),
+                  );
+                },
+              ),
+            ).paddingAll(AppDimens.defaultPadding),
+          ),
+        );
+      },
     );
   }
 
-  Widget _buildLogo(double? width) {
+  Widget _buildLogo() {
     return Center(
       child: SDSImageSvg(
         Assets.ASSETS_IMAGES_LOGO_VIETTEL_SVG,
-        width: width,
+        width: Get.width / 2,
       ),
     ).paddingOnly(top: AppDimens.padding25);
   }
 
   Widget _buildInputAccount() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.login_username.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.usernameTextCtrl,
-          obscureText: false,
-          validator: (value) {
-            if (value.isNullOrEmpty) {
-              return LocaleKeys.login_usernameCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
+    return BuildInputText(
+      InputTextModel(
+        hintText: LocaleKeys.login_inputUnitCode.tr,
+        controller: controller.usernameTextCtrl,
+        obscureText: false,
+        validator: (value) {
+          if (value.isNullOrEmpty) {
+            return LocaleKeys.login_unitCodeCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
     );
   }
 
   Widget _buildInputPassword() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.login_password.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.passwordTextCtrl,
-          obscureText: true,
-          validator: (value) {
-            if (value.isNullOrEmpty) {
-              return LocaleKeys.login_passwordCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
+    return BuildInputText(
+      InputTextModel(
+        hintText: LocaleKeys.login_inputPassword.tr,
+        controller: controller.passwordTextCtrl,
+        obscureText: true,
+        validator: (value) {
+          if (value.isNullOrEmpty) {
+            return LocaleKeys.login_passwordCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
     );
   }
 
   Widget _buildForgetPassword() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(AppRoutes.forgotLogin.path);
+      },
       child: SDSBuildText(
-        'Quên mật khẩu?',
-        style: AppTextStyle.font14Bo.copyWith(color: AppColors.primaryColor),
+        LocaleKeys.login_forgetPassword.tr,
+        style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+      ),
+    );
+  }
+
+  Widget _buildChangeAccount() {
+    return InkWell(
+      onTap: () {
+        controller.isHaveUsername.value = false;
+        controller.usernameTextCtrl.clear();
+      },
+      child: SDSBuildText(
+        LocaleKeys.login_changeAccount.tr,
+        style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+      ),
+    );
+  }
+
+  Widget _buildCompanyName() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SDSBuildText(LocaleKeys.login_hello.tr),
+        SDSBuildText(
+          "${hiveApp.get(HiveKeys.keyCompanyName) ?? ''}",
+          style: AppTextStyle.font16Bo,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildButtonLogin() {
+    return UtilWidget.buildSolidButton(
+      title: LocaleKeys.login_login.tr,
+      height: AppDimens.btnLargeFigma,
+      onPressed: () {
+        controller.login();
+      },
+    );
+  }
+
+  Widget _buildPhoneService() {
+    return RichText(
+      text: TextSpan(
+        style: AppTextStyle.font18Bo,
+        children: [
+          TextSpan(text: LocaleKeys.login_serviceCenter.tr),
+          TextSpan(
+            text: " ${LocaleKeys.login_phoneNumber.tr}",
+            style: AppTextStyle.font18Bo.copyWith(
+              color: AppColors.primaryColor,
+            ),
+          ),
+        ],
       ),
     );
   }

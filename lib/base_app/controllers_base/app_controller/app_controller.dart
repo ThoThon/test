@@ -33,11 +33,7 @@ class AppController extends BaseGetxController {
         statusBarColor: Colors.transparent, // Thanh trạng thái trong suốt
         statusBarIconBrightness: Brightness.dark, // Icon màu đen
       ));
-
-      MockSdk().isMock = true;
-      MockSdk().mockEmail = "mobile_test_1";
-
-      await _checkLogin();
+      await Get.offAndToNamed(AppRoutes.login.path);
     });
   }
 
@@ -54,49 +50,20 @@ class AppController extends BaseGetxController {
       final res = await _loginRepository.getAccountInfo();
       if (res.code == AppConst.statusCodeSuccess && res.result != null) {
         accountInfoModel = res.result;
+        //Lưu tên tổ chức lại để hiện ngoài màn login
+        if (accountInfoModel != null) {
+          hiveApp.put(HiveKeys.keyCompanyName, accountInfoModel?.tenToChuc);
+        }
       }
     } catch (e) {
       logger.d(e);
     }
   }
 
-  Future<void> _checkLogin() async {
-    try {
-      final username = hiveApp.get(HiveKeys.keyUsername);
-      final password = hiveApp.get(HiveKeys.keyPassword);
-      final jwtToken = hiveApp.get(HiveKeys.keyJwtToken);
-
-      if (username == null || password == null || jwtToken == null) {
-        Get.offAndToNamed(AppRoutes.login.path);
-        return;
-      }
-
-      final response = await _loginRepository.login(
-        username: username,
-        password: password,
-      );
-
-      if (response.isSuccess) {
-        await Future.wait([
-          hiveApp.put(HiveKeys.keyUsername, username),
-          hiveApp.put(HiveKeys.keyPassword, password),
-          hiveApp.put(HiveKeys.keyJwtToken, response.result),
-        ]);
-
-        Get.offAndToNamed(AppRoutes.pageBuilder.path);
-        return;
-      }
-
-      Get.offAndToNamed(AppRoutes.login.path);
-    } catch (e) {
-      logger.e(e);
-      Get.offAndToNamed(AppRoutes.login.path);
-    }
-  }
-
   Future<void> logout() async {
     await hiveApp.deleteAll([
       HiveKeys.keyJwtToken,
+      HiveKeys.keyUsername,
     ]);
     Get.offAllNamed(AppRoutes.login.path);
   }

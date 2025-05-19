@@ -15,6 +15,7 @@ class HistoryController extends BaseRefreshGetxController {
   final selectedPeriodDate = DateTime.now().obs;
 
   Rx<ProcedureFilterEnum?> selectProcedure = Rx<ProcedureFilterEnum?>(null);
+  
   @override
   void onInit() {
     super.onInit();

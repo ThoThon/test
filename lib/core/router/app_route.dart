@@ -1,6 +1,7 @@
 enum AppRoutes {
   pageBuilder,
   login,
+  forgotLogin,
   procedureList,
   declarationPeriod,
   depositInfo,
