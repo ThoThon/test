@@ -3,7 +3,9 @@
     "name": "vBHXH",
     "delete": "Xóa",
     "edit": "Sửa",
-    "edit2": "Chỉnh sửa"
+    "edit2": "Chỉnh sửa",
+    "save": "Lưu",
+    "cancel": "Hủy bỏ"
   },
   "dialog": {
     "close": "Đóng",
@@ -320,6 +322,30 @@
     "selectWardTT": "Chọn xã thường trú",
     "addressTT": "Địa chỉ thường trú",
     "familyMembers": "Danh sách thành viên trong gia đình"
+  },
+  "familyMember": {
+    "fullName": "Họ và tên",
+    "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
+    "bhxhCode": "Mã số BHXH",
+    "dob": "Ngày sinh",
+    "gender": "Giới tính",
+    "ethnic": "Dân tộc",
+    "selectEthnic": "Chọn dân tộc",
+    "ethnicCannotEmpty": "Dân tộc không được bỏ trống",
+    "nationality": "Quốc tịch",
+    "selectNationality": "Chọn quốc tịch",
+    "nationalityCannotEmpty": "Quốc tịch không được bỏ trống",
+    "provinceOfBirth": "Tỉnh khai sinh",
+    "selectProvinceOfBirth": "Chọn tỉnh khai sinh",
+    "provinceOfBirthCannotEmpty": "Tỉnh khai sinh không được bỏ trống",
+    "districtOfBirth": "Huyện khai sinh",
+    "selectDistrictOfBirth": "Chọn huyện khai sinh",
+    "districtOfBirthCannotEmpty": "Huyện khai sinh không được bỏ trống",
+    "wardOfBirth": "Xã khai sinh",
+    "selectWardOfBirth": "Chọn xã khai sinh",
+    "wardOfBirthCannotEmpty": "Xã khai sinh không được bỏ trống",
+    "relationshipWithHeadOfHousehold": "Mối quan hệ với chủ hộ",
+    "selectRelationshipWithHeadOfHousehold": "Chọn mối quan hệ với chủ hộ"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",

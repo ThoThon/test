@@ -33,6 +33,8 @@ class LocaleKeys {
   static const app_delete = 'app_delete';
   static const app_edit = 'app_edit';
   static const app_edit2 = 'app_edit2';
+  static const app_save = 'app_save';
+  static const app_cancel = 'app_cancel';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
   static const dialog_logout = 'dialog_logout';
   static const dialog_isLogout = 'dialog_isLogout';
@@ -350,6 +352,40 @@ class LocaleKeys {
   static const declareInfo_selectWardTT = 'declareInfo_selectWardTT';
   static const declareInfo_addressTT = 'declareInfo_addressTT';
   static const declareInfo_familyMembers = 'declareInfo_familyMembers';
+  static const familyMember_fullName = 'familyMember_fullName';
+  static const familyMember_fullNameCannotEmpty =
+      'familyMember_fullNameCannotEmpty';
+  static const familyMember_bhxhCode = 'familyMember_bhxhCode';
+  static const familyMember_dob = 'familyMember_dob';
+  static const familyMember_gender = 'familyMember_gender';
+  static const familyMember_ethnic = 'familyMember_ethnic';
+  static const familyMember_selectEthnic = 'familyMember_selectEthnic';
+  static const familyMember_ethnicCannotEmpty =
+      'familyMember_ethnicCannotEmpty';
+  static const familyMember_nationality = 'familyMember_nationality';
+  static const familyMember_selectNationality =
+      'familyMember_selectNationality';
+  static const familyMember_nationalityCannotEmpty =
+      'familyMember_nationalityCannotEmpty';
+  static const familyMember_provinceOfBirth = 'familyMember_provinceOfBirth';
+  static const familyMember_selectProvinceOfBirth =
+      'familyMember_selectProvinceOfBirth';
+  static const familyMember_provinceOfBirthCannotEmpty =
+      'familyMember_provinceOfBirthCannotEmpty';
+  static const familyMember_districtOfBirth = 'familyMember_districtOfBirth';
+  static const familyMember_selectDistrictOfBirth =
+      'familyMember_selectDistrictOfBirth';
+  static const familyMember_districtOfBirthCannotEmpty =
+      'familyMember_districtOfBirthCannotEmpty';
+  static const familyMember_wardOfBirth = 'familyMember_wardOfBirth';
+  static const familyMember_selectWardOfBirth =
+      'familyMember_selectWardOfBirth';
+  static const familyMember_wardOfBirthCannotEmpty =
+      'familyMember_wardOfBirthCannotEmpty';
+  static const familyMember_relationshipWithHeadOfHousehold =
+      'familyMember_relationshipWithHeadOfHousehold';
+  static const familyMember_selectRelationshipWithHeadOfHousehold =
+      'familyMember_selectRelationshipWithHeadOfHousehold';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -398,6 +434,8 @@ class Locales {
     'app_delete': 'Xóa',
     'app_edit': 'Sửa',
     'app_edit2': 'Chỉnh sửa',
+    'app_save': 'Lưu',
+    'app_cancel': 'Hủy bỏ',
     'dialog_close': 'Đóng',
     'dialog_errorConnectFailedStr':
         'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',
@@ -706,6 +744,31 @@ class Locales {
     'declareInfo_selectWardTT': 'Chọn xã thường trú',
     'declareInfo_addressTT': 'Địa chỉ thường trú',
     'declareInfo_familyMembers': 'Danh sách thành viên trong gia đình',
+    'familyMember_fullName': 'Họ và tên',
+    'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
+    'familyMember_bhxhCode': 'Mã số BHXH',
+    'familyMember_dob': 'Ngày sinh',
+    'familyMember_gender': 'Giới tính',
+    'familyMember_ethnic': 'Dân tộc',
+    'familyMember_selectEthnic': 'Chọn dân tộc',
+    'familyMember_ethnicCannotEmpty': 'Dân tộc không được bỏ trống',
+    'familyMember_nationality': 'Quốc tịch',
+    'familyMember_selectNationality': 'Chọn quốc tịch',
+    'familyMember_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
+    'familyMember_provinceOfBirth': 'Tỉnh khai sinh',
+    'familyMember_selectProvinceOfBirth': 'Chọn tỉnh khai sinh',
+    'familyMember_provinceOfBirthCannotEmpty':
+        'Tỉnh khai sinh không được bỏ trống',
+    'familyMember_districtOfBirth': 'Huyện khai sinh',
+    'familyMember_selectDistrictOfBirth': 'Chọn huyện khai sinh',
+    'familyMember_districtOfBirthCannotEmpty':
+        'Huyện khai sinh không được bỏ trống',
+    'familyMember_wardOfBirth': 'Xã khai sinh',
+    'familyMember_selectWardOfBirth': 'Chọn xã khai sinh',
+    'familyMember_wardOfBirthCannotEmpty': 'Xã khai sinh không được bỏ trống',
+    'familyMember_relationshipWithHeadOfHousehold': 'Mối quan hệ với chủ hộ',
+    'familyMember_selectRelationshipWithHeadOfHousehold':
+        'Chọn mối quan hệ với chủ hộ',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

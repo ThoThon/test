@@ -34,7 +34,7 @@ class FamilyMemberDetailController extends BaseGetxController {
   final selectedWard = Rxn<String>();
 
   /// Mối quan hệ với chủ hộ
-  final selectedRelationship = Rxn<String>();
+  final relationship = Rxn<String>();
 
   /// Là người tham gia
   final isParticipant = false.obs;
