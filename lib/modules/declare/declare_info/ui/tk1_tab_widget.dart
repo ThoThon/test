@@ -22,17 +22,11 @@ extension Tk1TabWidget on DeclareInfoPage {
                 UtilWidget.sizedBox16,
                 _buildInputCCCD(),
                 UtilWidget.sizedBox16,
-                UtilWidget.buildSelectDate(
-                  'Ngày sinh',
-                  hintText: PATTERN_1,
-                  date: convertDateToStringSafe(
-                    controller.d02Tk1State.dateOfBirth.value,
-                    PATTERN_1,
-                  ),
-                  onTap: () {},
-                ),
+                _buildSelectDateOfBirth(),
                 UtilWidget.sizedBox12,
-                _buildSelectGender(onChanged: (value) {}),
+                _buildSelectGender(onChanged: (value) {
+                  controller.d02Tk1State.gender.value = value;
+                }),
                 UtilWidget.sizedBox8,
                 _buildSelectEthnic(),
                 _buildSelectNationality(),
@@ -53,16 +47,10 @@ extension Tk1TabWidget on DeclareInfoPage {
                 _buildInputAddressReceive(),
                 UtilWidget.sizedBox16,
                 _buildSelectProvinceKCB(),
-                _buildSelectHospital(),
+                _buildSelectHospitalKCB(),
                 _buildInputPhoneNumber(),
-                UtilWidget.buildCheckboxWithLabel(
-                  label: 'Người tham gia là chủ hộ',
-                  value: controller.tk1State.isHeadOfHousehold.value,
-                  onChanged: (value) {
-                    controller.tk1State.isHeadOfHousehold.value =
-                        value ?? false;
-                  },
-                ).paddingSymmetric(vertical: AppDimens.paddingVerySmall),
+                _buildParticipantHeadOfHouseholdCheckbox()
+                    .paddingSymmetric(vertical: AppDimens.paddingVerySmall),
                 _buildInputHeadOfHousehold(),
                 UtilWidget.sizedBox16,
                 _buildInputHeadOfHouseholdCCCD(),
@@ -83,29 +71,29 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildSelectProvince() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Tỉnh khai sinh',
-      hintText: 'Chọn tỉnh khai sinh',
+      label: LocaleKeys.declareInfo_provinceOfBirth.tr,
+      hintText: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn tỉnh khai sinh',
+            title: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedProvince,
+            itemSelect: controller.tk1State.provinceOfBirth,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedProvince.value = value;
+              controller.tk1State.provinceOfBirth.value = value;
               didChange(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedProvince,
+      item: controller.tk1State.provinceOfBirth,
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
-          return "Tỉnh khai sinh không được để trống";
+          return LocaleKeys.declareInfo_provinceOfBirthCannotEmpty.tr;
         }
         return null;
       },
@@ -114,29 +102,29 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildSelectDistrict() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Huyện khai sinh',
-      hintText: 'Chọn huyện khai sinh',
+      label: LocaleKeys.declareInfo_districtOfBirth.tr,
+      hintText: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn huyện khai sinh',
+            title: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedDistrict,
+            itemSelect: controller.tk1State.districtOfBirth,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedDistrict.value = value;
+              controller.tk1State.districtOfBirth.value = value;
               didChange(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedDistrict,
+      item: controller.tk1State.districtOfBirth,
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
-          return "Huyện khai sinh không được để trống";
+          return LocaleKeys.declareInfo_districtOfBirthCannotEmpty.tr;
         }
         return null;
       },
@@ -145,12 +133,12 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildSelectWard() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Xã khai sinh',
-      hintText: 'Chọn xã khai sinh',
+      label: LocaleKeys.declareInfo_wardOfBirth.tr,
+      hintText: LocaleKeys.declareInfo_selectWardOfBirth.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn xã khai sinh',
+            title: LocaleKeys.declareInfo_selectWardOfBirth.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
             itemSelect: controller.tk1State.selectedWard,
             display: (value) => value,
@@ -167,7 +155,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
-          return "Xã khai sinh không được để trống";
+          return LocaleKeys.declareInfo_wardOfBirthCannotEmpty.tr;
         }
         return null;
       },
@@ -176,11 +164,12 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildInputAddress() {
     return BuildInputTextWithLabel(
-      label: 'Địa chỉ khai sinh',
+      label: LocaleKeys.declareInfo_birthAddress.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          controller: controller.tk1State.addressTextCtrl,
+          controller: controller.tk1State.birthAddressTextCtrl,
           isValidate: true,
+          maxLengthInputForm: 300,
         ),
       ),
     );
@@ -188,29 +177,29 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildSelectProvinceReceive() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Tỉnh nơi nhận',
-      hintText: 'Chọn tỉnh nơi nhận',
+      label: LocaleKeys.declareInfo_provinceReceive.tr,
+      hintText: LocaleKeys.declareInfo_selectProvinceReceive.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn tỉnh nơi nhận',
+            title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedProvinceReceive,
+            itemSelect: controller.tk1State.provinceReceive,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedProvinceReceive.value = value;
+              controller.tk1State.provinceReceive.value = value;
               didChange(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedProvinceReceive,
+      item: controller.tk1State.provinceReceive,
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
-          return "Tỉnh nơi nhận không được để trống";
+          return LocaleKeys.declareInfo_provinceReceiveCannotEmpty.tr;
         }
         return null;
       },
@@ -219,29 +208,29 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildSelectDistrictReceive() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Huyện nơi nhận',
-      hintText: 'Chọn huyện nơi nhận',
+      label: LocaleKeys.declareInfo_districtReceive.tr,
+      hintText: LocaleKeys.declareInfo_selectDistrictReceive.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn huyện nơi nhận',
+            title: LocaleKeys.declareInfo_selectDistrictReceive.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedDistrictReceive,
+            itemSelect: controller.tk1State.districtReceive,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedDistrictReceive.value = value;
+              controller.tk1State.districtReceive.value = value;
               didChange(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedDistrictReceive,
+      item: controller.tk1State.districtReceive,
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
-          return "Huyện nơi nhận không được để trống";
+          return LocaleKeys.declareInfo_districtReceiveCannotEmpty.tr;
         }
         return null;
       },
@@ -250,29 +239,29 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildSelectWardReceive() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Xã nơi nhận',
-      hintText: 'Chọn xã nơi nhận',
+      label: LocaleKeys.declareInfo_wardReceive.tr,
+      hintText: LocaleKeys.declareInfo_selectWardReceive.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn xã nơi nhận',
+            title: LocaleKeys.declareInfo_selectWardReceive.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedWardReceive,
+            itemSelect: controller.tk1State.wardReceive,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedWardReceive.value = value;
+              controller.tk1State.wardReceive.value = value;
               didChange(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedWardReceive,
+      item: controller.tk1State.wardReceive,
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
-          return "Xã nơi nhận không được để trống";
+          return LocaleKeys.declareInfo_wardReceiveCannotEmpty.tr;
         }
         return null;
       },
@@ -281,11 +270,12 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildInputAddressReceive() {
     return BuildInputTextWithLabel(
-      label: 'Địa chỉ nơi nhận',
+      label: LocaleKeys.declareInfo_addressReceive.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.tk1State.addressReceiveTextCtrl,
           isValidate: true,
+          maxLengthInputForm: 300,
         ),
       ),
     );
@@ -293,60 +283,60 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildSelectProvinceKCB() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Tỉnh nơi KCB',
-      hintText: 'Chọn tỉnh',
+      label: LocaleKeys.declareInfo_provinceKCB.tr,
+      hintText: LocaleKeys.declareInfo_selectProvinceKCB.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn tỉnh nơi KCB',
+            title: LocaleKeys.declareInfo_selectProvinceKCB.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedProvinceKCB,
+            itemSelect: controller.tk1State.provinceKCB,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedProvinceKCB.value = value;
+              controller.tk1State.provinceKCB.value = value;
               didChange(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedProvinceKCB,
+      item: controller.tk1State.provinceKCB,
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
-          return "Tỉnh nơi KCB không được để trống";
+          return LocaleKeys.declareInfo_provinceKCBCannotEmpty.tr;
         }
         return null;
       },
     );
   }
 
-  Widget _buildSelectHospital() {
+  Widget _buildSelectHospitalKCB() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Bệnh viện nơi KCB',
-      hintText: 'Chọn bệnh viện',
+      label: LocaleKeys.declareInfo_hospitalKCB.tr,
+      hintText: LocaleKeys.declareInfo_selectHospitalKCB.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn bệnh viện',
+            title: LocaleKeys.declareInfo_selectHospitalKCB.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedHospital,
+            itemSelect: controller.tk1State.hospitalKCB,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedHospital.value = value;
+              controller.tk1State.hospitalKCB.value = value;
               didChange(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedHospital,
+      item: controller.tk1State.hospitalKCB,
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
-          return "Bệnh viện KCB không được để trống";
+          return LocaleKeys.declareInfo_hospitalKCBCannotEmpty.tr;
         }
         return null;
       },
@@ -355,19 +345,30 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildInputPhoneNumber() {
     return BuildInputTextWithLabel(
-      label: 'SĐT liên hệ',
+      label: LocaleKeys.declareInfo_contactPhoneNumber.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          controller: controller.tk1State.phoneTextCtrl,
-          isValidate: true,
+          controller: controller.tk1State.contactPhoneNumberTextCtrl,
+          textInputType: TextInputType.phone,
+          maxLengthInputForm: 20,
         ),
       ),
     );
   }
 
+  Widget _buildParticipantHeadOfHouseholdCheckbox() {
+    return UtilWidget.buildCheckboxWithLabel(
+      label: LocaleKeys.declareInfo_participantHeadOfHousehold.tr,
+      value: controller.tk1State.participantHeadOfHousehold.value,
+      onChanged: (value) {
+        controller.tk1State.participantHeadOfHousehold.value = value ?? false;
+      },
+    );
+  }
+
   Widget _buildInputHeadOfHousehold() {
     return BuildInputTextWithLabel(
-      label: 'Họ và tên chủ hộ',
+      label: LocaleKeys.declareInfo_headOfHouseholdFullName.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.tk1State.headOfHouseholdTextCtrl,
@@ -378,7 +379,7 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildInputHeadOfHouseholdCCCD() {
     return BuildInputTextWithLabel(
-      label: 'Số CCCD/ĐDCN của chủ hộ',
+      label: LocaleKeys.declareInfo_headOfHouseholdCCCD.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
@@ -389,103 +390,86 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildSelectProvinceTT() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Tỉnh thường trú',
-      hintText: 'Chọn tỉnh thường trú',
+      label: LocaleKeys.declareInfo_provinceTT.tr,
+      hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn tỉnh thường trú',
+            title: LocaleKeys.declareInfo_selectProvinceTT.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedProvinceTT,
+            itemSelect: controller.tk1State.provinceTT,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedProvinceTT.value = value;
+              controller.tk1State.provinceTT.value = value;
               didChange(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedProvinceTT,
+      item: controller.tk1State.provinceTT,
       display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return "Tỉnh thường trú không được để trống";
-        }
-        return null;
-      },
     );
   }
 
   Widget _buildSelectDistrictTT() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Huyện thường trú',
-      hintText: 'Chọn huyện thường trú',
+      label: LocaleKeys.declareInfo_districtTT.tr,
+      hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn huyện thường trú',
+            title: LocaleKeys.declareInfo_selectDistrictTT.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedDistrictTT,
+            itemSelect: controller.tk1State.districtTT,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedDistrictTT.value = value;
+              controller.tk1State.districtTT.value = value;
               didChange(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedDistrictTT,
+      item: controller.tk1State.districtTT,
       display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return "Huyện thường trú không được để trống";
-        }
-        return null;
-      },
     );
   }
 
   Widget _buildSelectWardTT() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Huyện xã trú',
-      hintText: 'Chọn xã thường trú',
+      label: LocaleKeys.declareInfo_wardTT.tr,
+      hintText: LocaleKeys.declareInfo_selectWardTT.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn xã thường trú',
+            title: LocaleKeys.declareInfo_selectWardTT.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedWardTT,
+            itemSelect: controller.tk1State.wardTT,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedWardTT.value = value;
+              controller.tk1State.wardTT.value = value;
               didChange(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedWardTT,
+      item: controller.tk1State.wardTT,
       display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return "Xã thường trú không được để trống";
-        }
-        return null;
-      },
     );
   }
 
   Widget _buildInputAddressTTTextCtrl() {
     return BuildInputTextWithLabel(
-      label: 'Đia chỉ thường trú',
+      label: LocaleKeys.declareInfo_addressTT.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.tk1State.addressTTTextCtrl,
+          maxLengthInputForm: 300,
         ),
       ),
     );
@@ -497,7 +481,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       mainAxisSize: MainAxisSize.min,
       children: [
         SDSBuildText(
-          'Danh sách thành viên trong gia đình',
+          LocaleKeys.declareInfo_familyMembers.tr,
           style: AppTextStyle.font16Bo,
         ),
         if (controller.tk1State.familyMembers.isNotEmpty)

@@ -110,24 +110,6 @@ extension D02TabWidget on DeclareInfoPage {
     );
   }
 
-  Widget _buildSelectDateOfBirth() {
-    return UtilWidget.buildSelectDate(
-      LocaleKeys.declareInfo_dob.tr,
-      hintText: PATTERN_1,
-      date: convertDateToStringSafe(
-        controller.d02Tk1State.dateOfBirth.value,
-        PATTERN_1,
-      ),
-      onTap: () async {
-        final selectedDate =
-            await UtilWidget.showDateTimePicker(dateTimeInit: DateTime.now());
-        if (selectedDate != null) {
-          controller.d02Tk1State.dateOfBirth.value = selectedDate;
-        }
-      },
-    );
-  }
-
   Widget _buildSelectDeclareType() {
     return UtilWidget.buildDropDownWithLabel2<DeclarationTypeEnum>(
       label: LocaleKeys.declareInfo_declarationType.tr,

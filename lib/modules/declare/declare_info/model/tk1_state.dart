@@ -8,43 +8,43 @@ class Tk1State {
   final formKey = GlobalKey<FormState>();
 
   /// Tỉnh khai sinh *
-  final selectedProvince = Rxn<String>();
+  final provinceOfBirth = Rxn<String>();
 
   /// Huyện khai sinh *
-  final selectedDistrict = Rxn<String>();
+  final districtOfBirth = Rxn<String>();
 
   /// Xã khai sinh *
   final selectedWard = Rxn<String>();
 
   /// Địa chỉ khai sinh *
-  final addressTextCtrl = TextEditingController();
+  final birthAddressTextCtrl = TextEditingController();
 
   /// Trùng địa chỉ khai sinh
   final isSameAddress = false.obs;
 
   /// Tỉnh nơi nhận *
-  final selectedProvinceReceive = Rxn<String>();
+  final provinceReceive = Rxn<String>();
 
   /// Huyện nơi nhận *
-  final selectedDistrictReceive = Rxn<String>();
+  final districtReceive = Rxn<String>();
 
   /// Xã nơi nhận *
-  final selectedWardReceive = Rxn<String>();
+  final wardReceive = Rxn<String>();
 
   /// Địa chỉ nơi nhận *
   final addressReceiveTextCtrl = TextEditingController();
 
   /// Tỉnh nơi KCB *
-  final selectedProvinceKCB = Rxn<String>();
+  final provinceKCB = Rxn<String>();
 
   /// Bệnh viện nơi KCB *
-  final selectedHospital = Rxn<String>();
+  final hospitalKCB = Rxn<String>();
 
   /// SĐT liên hệ
-  final phoneTextCtrl = TextEditingController();
+  final contactPhoneNumberTextCtrl = TextEditingController();
 
   /// Người tham gia là chủ hộ
-  final isHeadOfHousehold = false.obs;
+  final participantHeadOfHousehold = false.obs;
 
   /// Họ và tên chủ hộ
   final headOfHouseholdTextCtrl = TextEditingController();
@@ -53,13 +53,13 @@ class Tk1State {
   final headOfHouseholdCCCDTextCtrl = TextEditingController();
 
   /// Tỉnh thường trú
-  final selectedProvinceTT = Rxn<String>();
+  final provinceTT = Rxn<String>();
 
   /// Huyện thường trú
-  final selectedDistrictTT = Rxn<String>();
+  final districtTT = Rxn<String>();
 
   /// Xã thường trú
-  final selectedWardTT = Rxn<String>();
+  final wardTT = Rxn<String>();
 
   /// Địa chỉ thường trú
   final addressTTTextCtrl = TextEditingController();
@@ -105,9 +105,9 @@ class Tk1State {
   ].obs;
 
   void dispose() {
-    addressTextCtrl.dispose();
+    birthAddressTextCtrl.dispose();
     addressReceiveTextCtrl.dispose();
-    phoneTextCtrl.dispose();
+    contactPhoneNumberTextCtrl.dispose();
     headOfHouseholdTextCtrl.dispose();
     headOfHouseholdCCCDTextCtrl.dispose();
     addressTTTextCtrl.dispose();

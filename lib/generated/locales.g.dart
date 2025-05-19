@@ -296,6 +296,60 @@ class LocaleKeys {
   static const declareInfo_salaryAllowance = 'declareInfo_salaryAllowance';
   static const declareInfo_otherAllowance = 'declareInfo_otherAllowance';
   static const declareInfo_note = 'declareInfo_note';
+  static const declareInfo_provinceOfBirth = 'declareInfo_provinceOfBirth';
+  static const declareInfo_selectProvinceOfBirth =
+      'declareInfo_selectProvinceOfBirth';
+  static const declareInfo_provinceOfBirthCannotEmpty =
+      'declareInfo_provinceOfBirthCannotEmpty';
+  static const declareInfo_districtOfBirth = 'declareInfo_districtOfBirth';
+  static const declareInfo_selectDistrictOfBirth =
+      'declareInfo_selectDistrictOfBirth';
+  static const declareInfo_districtOfBirthCannotEmpty =
+      'declareInfo_districtOfBirthCannotEmpty';
+  static const declareInfo_wardOfBirth = 'declareInfo_wardOfBirth';
+  static const declareInfo_selectWardOfBirth = 'declareInfo_selectWardOfBirth';
+  static const declareInfo_wardOfBirthCannotEmpty =
+      'declareInfo_wardOfBirthCannotEmpty';
+  static const declareInfo_birthAddress = 'declareInfo_birthAddress';
+  static const declareInfo_provinceReceive = 'declareInfo_provinceReceive';
+  static const declareInfo_selectProvinceReceive =
+      'declareInfo_selectProvinceReceive';
+  static const declareInfo_provinceReceiveCannotEmpty =
+      'declareInfo_provinceReceiveCannotEmpty';
+  static const declareInfo_districtReceive = 'declareInfo_districtReceive';
+  static const declareInfo_selectDistrictReceive =
+      'declareInfo_selectDistrictReceive';
+  static const declareInfo_districtReceiveCannotEmpty =
+      'declareInfo_districtReceiveCannotEmpty';
+  static const declareInfo_wardReceive = 'declareInfo_wardReceive';
+  static const declareInfo_selectWardReceive = 'declareInfo_selectWardReceive';
+  static const declareInfo_wardReceiveCannotEmpty =
+      'declareInfo_wardReceiveCannotEmpty';
+  static const declareInfo_addressReceive = 'declareInfo_addressReceive';
+  static const declareInfo_provinceKCB = 'declareInfo_provinceKCB';
+  static const declareInfo_selectProvinceKCB = 'declareInfo_selectProvinceKCB';
+  static const declareInfo_provinceKCBCannotEmpty =
+      'declareInfo_provinceKCBCannotEmpty';
+  static const declareInfo_hospitalKCB = 'declareInfo_hospitalKCB';
+  static const declareInfo_selectHospitalKCB = 'declareInfo_selectHospitalKCB';
+  static const declareInfo_hospitalKCBCannotEmpty =
+      'declareInfo_hospitalKCBCannotEmpty';
+  static const declareInfo_contactPhoneNumber =
+      'declareInfo_contactPhoneNumber';
+  static const declareInfo_participantHeadOfHousehold =
+      'declareInfo_participantHeadOfHousehold';
+  static const declareInfo_headOfHouseholdFullName =
+      'declareInfo_headOfHouseholdFullName';
+  static const declareInfo_headOfHouseholdCCCD =
+      'declareInfo_headOfHouseholdCCCD';
+  static const declareInfo_provinceTT = 'declareInfo_provinceTT';
+  static const declareInfo_selectProvinceTT = 'declareInfo_selectProvinceTT';
+  static const declareInfo_districtTT = 'declareInfo_districtTT';
+  static const declareInfo_selectDistrictTT = 'declareInfo_selectDistrictTT';
+  static const declareInfo_wardTT = 'declareInfo_wardTT';
+  static const declareInfo_selectWardTT = 'declareInfo_selectWardTT';
+  static const declareInfo_addressTT = 'declareInfo_addressTT';
+  static const declareInfo_familyMembers = 'declareInfo_familyMembers';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -609,6 +663,49 @@ class Locales {
     'declareInfo_salaryAllowance': 'Phụ cấp lương',
     'declareInfo_otherAllowance': 'Các khoản bổ sung',
     'declareInfo_note': 'Ghi chú',
+    'declareInfo_provinceOfBirth': 'Tỉnh khai sinh',
+    'declareInfo_selectProvinceOfBirth': 'Chọn tỉnh khai sinh',
+    'declareInfo_provinceOfBirthCannotEmpty':
+        'Tỉnh khai sinh không được bỏ trống',
+    'declareInfo_districtOfBirth': 'Huyện khai sinh',
+    'declareInfo_selectDistrictOfBirth': 'Chọn huyện khai sinh',
+    'declareInfo_districtOfBirthCannotEmpty':
+        'Huyện khai sinh không được bỏ trống',
+    'declareInfo_wardOfBirth': 'Xã khai sinh',
+    'declareInfo_selectWardOfBirth': 'Chọn xã khai sinh',
+    'declareInfo_wardOfBirthCannotEmpty': 'Xã khai sinh không được bỏ trống',
+    'declareInfo_birthAddress': 'Địa chỉ khai sinh',
+    'declareInfo_provinceReceive': 'Tỉnh nơi nhận',
+    'declareInfo_selectProvinceReceive': 'Chọn tỉnh nơi nhận',
+    'declareInfo_provinceReceiveCannotEmpty':
+        'Tỉnh nơi nhận không được bỏ trống',
+    'declareInfo_districtReceive': 'Huyện nơi nhận',
+    'declareInfo_selectDistrictReceive': 'Chọn huyện nơi nhận',
+    'declareInfo_districtReceiveCannotEmpty':
+        'Huyện nơi nhận không được bỏ trống',
+    'declareInfo_wardReceive': 'Xã nơi nhận',
+    'declareInfo_selectWardReceive': 'Chọn xã nơi nhận',
+    'declareInfo_wardReceiveCannotEmpty': 'Xã nơi nhận không được bỏ trống',
+    'declareInfo_addressReceive': 'Địa chỉ nơi nhận',
+    'declareInfo_provinceKCB': 'Tỉnh nơi KCB',
+    'declareInfo_selectProvinceKCB': 'Chọn tỉnh nơi KCB',
+    'declareInfo_provinceKCBCannotEmpty': 'Tỉnh nơi KCB không được bỏ trống',
+    'declareInfo_hospitalKCB': 'Bệnh viện nơi KCB',
+    'declareInfo_selectHospitalKCB': 'Chọn bệnh viện nơi KCB',
+    'declareInfo_hospitalKCBCannotEmpty':
+        'Bệnh viện nơi KCB không được bỏ trống',
+    'declareInfo_contactPhoneNumber': 'Số điện thoại liên hệ',
+    'declareInfo_participantHeadOfHousehold': 'Người tham gia là chủ hộ',
+    'declareInfo_headOfHouseholdFullName': 'Họ và tên chủ hộ',
+    'declareInfo_headOfHouseholdCCCD': 'Số CCCD/ĐDCN của chủ hộ',
+    'declareInfo_provinceTT': 'Tỉnh thường trú',
+    'declareInfo_selectProvinceTT': 'Chọn tỉnh thường trú',
+    'declareInfo_districtTT': 'Huyện thường trú',
+    'declareInfo_selectDistrictTT': 'Chọn huyện thường trú',
+    'declareInfo_wardTT': 'Xã thường trú',
+    'declareInfo_selectWardTT': 'Chọn xã thường trú',
+    'declareInfo_addressTT': 'Địa chỉ thường trú',
+    'declareInfo_familyMembers': 'Danh sách thành viên trong gia đình',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',
