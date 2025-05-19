@@ -35,7 +35,7 @@ class DeclarationFormDetailController extends BaseGetxController {
   final summaryTextCtrl = TextEditingController();
 
   /// Nội dung thẩm định *
-  final contentTextCtrl = TextEditingController();
+  final contentToBeAssessedTextCtrl = TextEditingController();
 
   @override
   void onClose() {
@@ -46,7 +46,7 @@ class DeclarationFormDetailController extends BaseGetxController {
     documentNumberTextCtrl.dispose();
     issuingAgencyTextCtrl.dispose();
     summaryTextCtrl.dispose();
-    contentTextCtrl.dispose();
+    contentToBeAssessedTextCtrl.dispose();
     super.onClose();
   }
 }

@@ -64,20 +64,29 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputName() {
     return BuildInputTextWithLabel(
-      label: 'Tên bảng kê',
+      label: LocaleKeys.declarationFromDetail_declarationFromName.tr,
       buildInputText: BuildInputText(
-        InputTextModel(controller: controller.nameTextCtrl),
+        InputTextModel(
+          controller: controller.nameTextCtrl,
+        ),
       ),
     );
   }
 
   Widget _buildInputFullName() {
     return BuildInputTextWithLabel(
-      label: 'Họ và tên',
+      label: LocaleKeys.declarationFromDetail_fullName.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.fullNameTextCtrl,
           isValidate: true,
+          // isReadOnly: true,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.declarationFromDetail_fullNameCannotEmpty.tr;
+            }
+            return null;
+          },
         ),
       ),
     );
@@ -85,7 +94,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputBHXHNumber() {
     return BuildInputTextWithLabel(
-      label: 'Mã số BHXH',
+      label: LocaleKeys.declarationFromDetail_bhxhCode.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.bhxhTextCtrl,
@@ -96,11 +105,19 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputDocumentType() {
     return BuildInputTextWithLabel(
-      label: 'Tên loại văn bản',
+      label: LocaleKeys.declarationFromDetail_documentType.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.documentTypeTextCtrl,
           isValidate: true,
+          maxLengthInputForm: 100,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys
+                  .declarationFromDetail_documentTypeCannotEmpty.tr;
+            }
+            return null;
+          },
         ),
       ),
     );
@@ -108,11 +125,19 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputDocumentNumber() {
     return BuildInputTextWithLabel(
-      label: 'Số văn bản',
+      label: LocaleKeys.declarationFromDetail_documentNumber.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.documentNumberTextCtrl,
           isValidate: true,
+          maxLengthInputForm: 50,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys
+                  .declarationFromDetail_documentNumberCannotEmpty.tr;
+            }
+            return null;
+          },
         ),
       ),
     );
@@ -120,11 +145,19 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputIssuingAgency() {
     return BuildInputTextWithLabel(
-      label: 'Cơ quan ban hành',
+      label: LocaleKeys.declarationFromDetail_issuingAgency.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.issuingAgencyTextCtrl,
           isValidate: true,
+          maxLengthInputForm: 255,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys
+                  .declarationFromDetail_issuingAgencyCannotEmpty.tr;
+            }
+            return null;
+          },
         ),
       ),
     );
@@ -132,11 +165,18 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputSummary() {
     return BuildInputTextWithLabel(
-      label: 'Trích yếu',
+      label: LocaleKeys.declarationFromDetail_summary.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.summaryTextCtrl,
           isValidate: true,
+          maxLengthInputForm: 500,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.declarationFromDetail_summaryCannotEmpty.tr;
+            }
+            return null;
+          },
         ),
       ),
     );
@@ -144,11 +184,19 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputContent() {
     return BuildInputTextWithLabel(
-      label: 'Nội dung thẩm định',
+      label: LocaleKeys.declarationFromDetail_contentToBeAssessed.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          controller: controller.contentTextCtrl,
+          controller: controller.contentToBeAssessedTextCtrl,
           isValidate: true,
+          maxLengthInputForm: 1000,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys
+                  .declarationFromDetail_contentToBeAssessedCannotEmpty.tr;
+            }
+            return null;
+          },
         ),
       ),
     );
@@ -159,7 +207,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       children: [
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
-            title: 'Lưu',
+            title: LocaleKeys.app_save.tr,
             onPressed: () {
               Get.back();
             },
@@ -168,7 +216,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         UtilWidget.sizedBoxWidth16,
         Expanded(
           child: UtilWidget.buildSolidButton(
-            title: 'Đóng',
+            title: LocaleKeys.app_close.tr,
             onPressed: () {
               Get.back();
             },

@@ -35,6 +35,7 @@ class LocaleKeys {
   static const app_edit2 = 'app_edit2';
   static const app_save = 'app_save';
   static const app_cancel = 'app_cancel';
+  static const app_close = 'app_close';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
   static const dialog_logout = 'dialog_logout';
   static const dialog_isLogout = 'dialog_isLogout';
@@ -390,6 +391,35 @@ class LocaleKeys {
   static const declarationFromDetail_title = 'declarationFromDetail_title';
   static const declarationFromDetail_declarationFromName =
       'declarationFromDetail_declarationFromName';
+  static const declarationFromDetail_fullName =
+      'declarationFromDetail_fullName';
+  static const declarationFromDetail_fullNameCannotEmpty =
+      'declarationFromDetail_fullNameCannotEmpty';
+  static const declarationFromDetail_bhxhCode =
+      'declarationFromDetail_bhxhCode';
+  static const declarationFromDetail_documentType =
+      'declarationFromDetail_documentType';
+  static const declarationFromDetail_documentTypeCannotEmpty =
+      'declarationFromDetail_documentTypeCannotEmpty';
+  static const declarationFromDetail_documentNumber =
+      'declarationFromDetail_documentNumber';
+  static const declarationFromDetail_documentNumberCannotEmpty =
+      'declarationFromDetail_documentNumberCannotEmpty';
+  static const declarationFromDetail_dateOfIssue =
+      'declarationFromDetail_dateOfIssue';
+  static const declarationFromDetail_effectiveDate =
+      'declarationFromDetail_effectiveDate';
+  static const declarationFromDetail_issuingAgency =
+      'declarationFromDetail_issuingAgency';
+  static const declarationFromDetail_issuingAgencyCannotEmpty =
+      'declarationFromDetail_issuingAgencyCannotEmpty';
+  static const declarationFromDetail_summary = 'declarationFromDetail_summary';
+  static const declarationFromDetail_summaryCannotEmpty =
+      'declarationFromDetail_summaryCannotEmpty';
+  static const declarationFromDetail_contentToBeAssessed =
+      'declarationFromDetail_contentToBeAssessed';
+  static const declarationFromDetail_contentToBeAssessedCannotEmpty =
+      'declarationFromDetail_contentToBeAssessedCannotEmpty';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -440,6 +470,7 @@ class Locales {
     'app_edit2': 'Chỉnh sửa',
     'app_save': 'Lưu',
     'app_cancel': 'Hủy bỏ',
+    'app_close': 'Đóng',
     'dialog_close': 'Đóng',
     'dialog_errorConnectFailedStr':
         'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',
@@ -776,6 +807,26 @@ class Locales {
         'Chọn mối quan hệ với chủ hộ',
     'declarationFromDetail_title': 'Thêm mới bảng kê',
     'declarationFromDetail_declarationFromName': 'Tên bảng kê',
+    'declarationFromDetail_fullName': 'Họ và tên',
+    'declarationFromDetail_fullNameCannotEmpty':
+        'Họ và tên không được bỏ trống',
+    'declarationFromDetail_bhxhCode': 'Mã số BHXH',
+    'declarationFromDetail_documentType': 'Tên loại văn bản',
+    'declarationFromDetail_documentTypeCannotEmpty':
+        'Tên loại văn bản không được bỏ trống',
+    'declarationFromDetail_documentNumber': 'Số văn bản',
+    'declarationFromDetail_documentNumberCannotEmpty':
+        'Số văn bản không được bỏ trống',
+    'declarationFromDetail_dateOfIssue': 'Ngày ban hành',
+    'declarationFromDetail_effectiveDate': 'Ngày hiệu lực',
+    'declarationFromDetail_issuingAgency': 'Cơ quan ban hành',
+    'declarationFromDetail_issuingAgencyCannotEmpty':
+        'Cơ quan ban hành không được bỏ trống',
+    'declarationFromDetail_summary': 'Trích yếu',
+    'declarationFromDetail_summaryCannotEmpty': 'Trích yếu không được bỏ trống',
+    'declarationFromDetail_contentToBeAssessed': 'Nội dung cần thẩm định',
+    'declarationFromDetail_contentToBeAssessedCannotEmpty':
+        'Nội dung cần thẩm định không được bỏ trống',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

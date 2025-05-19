@@ -5,7 +5,8 @@
     "edit": "Sửa",
     "edit2": "Chỉnh sửa",
     "save": "Lưu",
-    "cancel": "Hủy bỏ"
+    "cancel": "Hủy bỏ",
+    "close": "Đóng"
   },
   "dialog": {
     "close": "Đóng",
@@ -350,7 +351,22 @@
   },
   "declarationFromDetail": {
     "title": "Thêm mới bảng kê",
-    "declarationFromName": "Tên bảng kê"
+    "declarationFromName": "Tên bảng kê",
+    "fullName": "Họ và tên",
+    "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
+    "bhxhCode": "Mã số BHXH",
+    "documentType": "Tên loại văn bản",
+    "documentTypeCannotEmpty": "Tên loại văn bản không được bỏ trống",
+    "documentNumber": "Số văn bản",
+    "documentNumberCannotEmpty": "Số văn bản không được bỏ trống",
+    "dateOfIssue": "Ngày ban hành",
+    "effectiveDate": "Ngày hiệu lực",
+    "issuingAgency": "Cơ quan ban hành",
+    "issuingAgencyCannotEmpty": "Cơ quan ban hành không được bỏ trống",
+    "summary": "Trích yếu",
+    "summaryCannotEmpty": "Trích yếu không được bỏ trống",
+    "contentToBeAssessed": "Nội dung cần thẩm định",
+    "contentToBeAssessedCannotEmpty": "Nội dung cần thẩm định không được bỏ trống"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",
