@@ -287,6 +287,15 @@ class LocaleKeys {
   static const declareInfo_toMonthYear = 'declareInfo_toMonthYear';
   static const declareInfo_position = 'declareInfo_position';
   static const declareInfo_workplace = 'declareInfo_workplace';
+  static const declareInfo_payBySalaryCoefficient =
+      'declareInfo_payBySalaryCoefficient';
+  static const declareInfo_salaryCoefficient = 'declareInfo_salaryCoefficient';
+  static const declareInfo_positionAllowance = 'declareInfo_positionAllowance';
+  static const declareInfo_pcTNN = 'declareInfo_pcTNN';
+  static const declareInfo_pcTNVuotKhung = 'declareInfo_pcTNVuotKhung';
+  static const declareInfo_salaryAllowance = 'declareInfo_salaryAllowance';
+  static const declareInfo_otherAllowance = 'declareInfo_otherAllowance';
+  static const declareInfo_note = 'declareInfo_note';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -592,6 +601,14 @@ class Locales {
     'declareInfo_toMonthYear': 'Đến tháng/năm',
     'declareInfo_position': 'Cấp bập/chức vụ',
     'declareInfo_workplace': 'Nơi làm việc',
+    'declareInfo_payBySalaryCoefficient': 'Đóng theo hệ số',
+    'declareInfo_salaryCoefficient': 'Tiền lương/Hệ số',
+    'declareInfo_positionAllowance': 'PC chức vụ',
+    'declareInfo_pcTNN': 'PC TNN (%)',
+    'declareInfo_pcTNVuotKhung': 'PC TN vượt khung (%)',
+    'declareInfo_salaryAllowance': 'Phụ cấp lương',
+    'declareInfo_otherAllowance': 'Các khoản bổ sung',
+    'declareInfo_note': 'Ghi chú',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

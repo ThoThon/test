@@ -26,13 +26,16 @@ class D02State {
   /// Nơi làm việc *
   final workplaceTextCtrl = TextEditingController();
 
+  /// Đóng theo hệ số
+  final isSalaryCoefficient = false.obs;
+
   /// Tiền lương/Hệ số *
-  final salaryTextCtrl = TextEditingController();
+  final salaryCoefficientTextCtrl = TextEditingController();
 
   /// PC chức vụ
   final positionAllowanceTextCtrl = TextEditingController();
 
-  /// PC TNN (%)
+  /// PC TNN (%) - Phụ cấp thâm nhiên nghề
   final pcTNNTextCtrl = TextEditingController();
 
   /// PC TN vượt khung (%)
@@ -53,7 +56,7 @@ class D02State {
   void dispose() {
     positionTextCtrl.dispose();
     workplaceTextCtrl.dispose();
-    salaryTextCtrl.dispose();
+    salaryCoefficientTextCtrl.dispose();
     positionAllowanceTextCtrl.dispose();
     pcTNNTextCtrl.dispose();
     pcTNVuotKhungTextCtrl.dispose();

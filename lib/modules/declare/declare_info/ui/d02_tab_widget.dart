@@ -44,7 +44,9 @@ extension D02TabWidget on DeclareInfoPage {
                 UtilWidget.sizedBox16,
                 _buildInputWorkplace(),
                 UtilWidget.sizedBox16,
-                _buildInputSalary(),
+                _buildSalaryCoefficientCheckbox(),
+                UtilWidget.sizedBox16,
+                _buildInputSalaryCoefficient(),
                 UtilWidget.sizedBox16,
                 _buildInputPositionAllowance(),
                 UtilWidget.sizedBox16,
@@ -187,6 +189,7 @@ extension D02TabWidget on DeclareInfoPage {
         InputTextModel(
           controller: controller.d02State.positionTextCtrl,
           isValidate: true,
+          maxLengthInputForm: 500,
         ),
       ),
     );
@@ -199,18 +202,30 @@ extension D02TabWidget on DeclareInfoPage {
         InputTextModel(
           controller: controller.d02State.workplaceTextCtrl,
           isValidate: true,
+          maxLengthInputForm: 500,
         ),
       ),
     );
   }
 
-  Widget _buildInputSalary() {
+  Widget _buildSalaryCoefficientCheckbox() {
+    return UtilWidget.buildCheckboxWithLabel(
+      label: LocaleKeys.declareInfo_payBySalaryCoefficient.tr,
+      value: controller.d02State.isSalaryCoefficient.value,
+      onChanged: (value) {
+        controller.d02State.isSalaryCoefficient.value = value ?? false;
+      },
+    );
+  }
+
+  Widget _buildInputSalaryCoefficient() {
     return BuildInputTextWithLabel(
-      label: 'Tiền lương/Hệ số',
+      label: LocaleKeys.declareInfo_salaryCoefficient.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          controller: controller.d02State.salaryTextCtrl,
+          controller: controller.d02State.salaryCoefficientTextCtrl,
           isValidate: true,
+          textInputType: TextInputType.number,
         ),
       ),
     );
@@ -218,10 +233,12 @@ extension D02TabWidget on DeclareInfoPage {
 
   Widget _buildInputPositionAllowance() {
     return BuildInputTextWithLabel(
-      label: 'PC chức vụ',
+      label: LocaleKeys.declareInfo_positionAllowance.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.positionAllowanceTextCtrl,
+          textInputType: TextInputType.number,
+          isReadOnly: !controller.d02State.isSalaryCoefficient.value,
         ),
       ),
     );
@@ -229,10 +246,14 @@ extension D02TabWidget on DeclareInfoPage {
 
   Widget _buildInputPCTNN() {
     return BuildInputTextWithLabel(
-      label: 'PC TNN (%)',
+      label: LocaleKeys.declareInfo_pcTNN.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.pcTNNTextCtrl,
+          textInputType: TextInputType.number,
+          inputFormatters: InputFormatterEnum.digitsOnly,
+          maxLengthInputForm: 2,
+          isReadOnly: !controller.d02State.isSalaryCoefficient.value,
         ),
       ),
     );
@@ -240,10 +261,14 @@ extension D02TabWidget on DeclareInfoPage {
 
   Widget _buildInputPcTNVuotKhung() {
     return BuildInputTextWithLabel(
-      label: 'PC TN vượt khung (%)',
+      label: LocaleKeys.declareInfo_pcTNVuotKhung.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.pcTNVuotKhungTextCtrl,
+          textInputType: TextInputType.number,
+          inputFormatters: InputFormatterEnum.digitsOnly,
+          maxLengthInputForm: 2,
+          isReadOnly: !controller.d02State.isSalaryCoefficient.value,
         ),
       ),
     );
@@ -251,10 +276,12 @@ extension D02TabWidget on DeclareInfoPage {
 
   Widget _buildInputSalaryAllowance() {
     return BuildInputTextWithLabel(
-      label: 'Phụ cấp lương',
+      label: LocaleKeys.declareInfo_salaryAllowance.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.salaryAllowanceTextCtrl,
+          textInputType: TextInputType.number,
+          isReadOnly: controller.d02State.isSalaryCoefficient.value,
         ),
       ),
     );
@@ -262,10 +289,12 @@ extension D02TabWidget on DeclareInfoPage {
 
   Widget _buildInputOtherAllowance() {
     return BuildInputTextWithLabel(
-      label: 'Phụ cấp lương',
+      label: LocaleKeys.declareInfo_otherAllowance.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.otherAllowanceTextCtrl,
+          textInputType: TextInputType.number,
+          isReadOnly: controller.d02State.isSalaryCoefficient.value,
         ),
       ),
     );
@@ -273,10 +302,11 @@ extension D02TabWidget on DeclareInfoPage {
 
   Widget _buildInputNote() {
     return BuildInputTextWithLabel(
-      label: 'Ghi chú',
+      label: LocaleKeys.declareInfo_note.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.noteTextCtrl,
+          maxLengthInputForm: 500,
         ),
       ),
     );

@@ -273,7 +273,15 @@
     "fromMonthYear": "Từ tháng/năm",
     "toMonthYear": "Đến tháng/năm",
     "position": "Cấp bập/chức vụ",
-    "workplace": "Nơi làm việc"
+    "workplace": "Nơi làm việc",
+    "payBySalaryCoefficient": "Đóng theo hệ số",
+    "salaryCoefficient": "Tiền lương/Hệ số",
+    "positionAllowance": "PC chức vụ",
+    "pcTNN": "PC TNN (%)",
+    "pcTNVuotKhung": "PC TN vượt khung (%)",
+    "salaryAllowance": "Phụ cấp lương",
+    "otherAllowance": "Các khoản bổ sung",
+    "note": "Ghi chú"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",
