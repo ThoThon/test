@@ -99,8 +99,15 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void saveDraft() {
-    if (d02State.formKey.currentState?.validate() == true) {
-      //
+    if (d02State.formKey.currentState?.validate() != true) {
+      currentTab.value = DeclareInfoTab.d02;
+      return;
+    }
+
+    if (d02State.isGenerateTk1Data.value &&
+        tk1State.formKey.currentState?.validate() != true) {
+      currentTab.value = DeclareInfoTab.tk1;
+      return;
     }
   }
 
