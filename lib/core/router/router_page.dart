@@ -68,8 +68,8 @@ class RouteAppPage {
       page: () => FamilyMemberDetailPage(),
     ),
     GetPage(
-      name: AppRoutes.checkListDetail.path,
-      page: () => CheckListDetailPage(),
+      name: AppRoutes.declarationFormDetail.path,
+      page: () => DeclarationFormDetailPage(),
     ),
     GetPage(
       name: AppRoutes.declarationList.path,
@@ -79,10 +79,7 @@ class RouteAppPage {
       name: AppRoutes.viewPdf.path,
       page: () => ViewPdfPage(),
     ),
-    GetPage(
-      name: AppRoutes.nfc.path,
-      page: () => NfcPage()
-    ),
+    GetPage(name: AppRoutes.nfc.path, page: () => NfcPage()),
     GetPage(
       name: AppRoutes.nfcInformationUser.path,
       page: () => NfcInformationUserPage(),

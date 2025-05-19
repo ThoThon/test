@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/modules/declare/check_list_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_form_detail/model/model_src.dart';
 
-class CheckListDetailController extends BaseGetxController {
-  final CheckListDetailArgument argument = Get.arguments;
+class DeclarationFormDetailController extends BaseGetxController {
+  final DeclarationFormDetailArgument argument = Get.arguments;
 
   final formKey = GlobalKey<FormState>();
 

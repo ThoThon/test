@@ -52,18 +52,18 @@ class DeclareInfoController extends BaseGetxController {
     );
   }
 
-  void createNewCheckList() {
+  void createNewDeclarationForm() {
     Get.toNamed(
-      AppRoutes.checkListDetail.path,
-      arguments: CheckListDetailArgument(
-        action: CheckListDetailAction.create,
+      AppRoutes.declarationFormDetail.path,
+      arguments: DeclarationFormDetailArgument(
+        action: DeclarationFormDetailAction.create,
       ),
     );
   }
 
-  void showDialogDeleteCheckList(DocumentCheckList checkList) {
+  void showDialogDeleteForm(DeclarationForm form) {
     ShowDialog.showDialogConfirm2(
-      title: 'Xóa "${checkList.title}"?',
+      title: 'Xóa "${form.title}"?',
       confirmTitle: 'Xóa',
       onConfirm: () {
         //

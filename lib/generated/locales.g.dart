@@ -352,6 +352,7 @@ class LocaleKeys {
   static const declareInfo_selectWardTT = 'declareInfo_selectWardTT';
   static const declareInfo_addressTT = 'declareInfo_addressTT';
   static const declareInfo_familyMembers = 'declareInfo_familyMembers';
+  static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
       'familyMember_fullNameCannotEmpty';
@@ -386,6 +387,9 @@ class LocaleKeys {
       'familyMember_relationshipWithHeadOfHousehold';
   static const familyMember_selectRelationshipWithHeadOfHousehold =
       'familyMember_selectRelationshipWithHeadOfHousehold';
+  static const declarationFromDetail_title = 'declarationFromDetail_title';
+  static const declarationFromDetail_declarationFromName =
+      'declarationFromDetail_declarationFromName';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -744,6 +748,7 @@ class Locales {
     'declareInfo_selectWardTT': 'Chọn xã thường trú',
     'declareInfo_addressTT': 'Địa chỉ thường trú',
     'declareInfo_familyMembers': 'Danh sách thành viên trong gia đình',
+    'familyMember_title': 'Thành viên trong gia đình',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
     'familyMember_bhxhCode': 'Mã số BHXH',
@@ -769,6 +774,8 @@ class Locales {
     'familyMember_relationshipWithHeadOfHousehold': 'Mối quan hệ với chủ hộ',
     'familyMember_selectRelationshipWithHeadOfHousehold':
         'Chọn mối quan hệ với chủ hộ',
+    'declarationFromDetail_title': 'Thêm mới bảng kê',
+    'declarationFromDetail_declarationFromName': 'Tên bảng kê',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

@@ -1,6 +1,6 @@
-part of 'check_list_detail_page.dart';
+part of 'declaration_form_detail_page.dart';
 
-extension CheckListDetailWidget on CheckListDetailPage {
+extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
   Widget _buildBody() {
     return Form(
       key: controller.formKey,

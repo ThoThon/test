@@ -324,6 +324,7 @@
     "familyMembers": "Danh sách thành viên trong gia đình"
   },
   "familyMember": {
+    "title": "Thành viên trong gia đình",
     "fullName": "Họ và tên",
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
     "bhxhCode": "Mã số BHXH",
@@ -346,6 +347,10 @@
     "wardOfBirthCannotEmpty": "Xã khai sinh không được bỏ trống",
     "relationshipWithHeadOfHousehold": "Mối quan hệ với chủ hộ",
     "selectRelationshipWithHeadOfHousehold": "Chọn mối quan hệ với chủ hộ"
+  },
+  "declarationFromDetail": {
+    "title": "Thêm mới bảng kê",
+    "declarationFromName": "Tên bảng kê"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",
