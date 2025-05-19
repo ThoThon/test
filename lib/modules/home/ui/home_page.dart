@@ -20,10 +20,9 @@ class HomePage extends BaseGetWidget<HomeController> {
           text: TextSpan(
             style: AppTextStyle.font20Bo,
             children: [
-              const TextSpan(text: 'Xin chào '),
+              TextSpan(text: LocaleKeys.home_hello.tr),
               TextSpan(
-                text:
-                    controller.appController.accountInfoModel?.tenToChuc ?? '',
+                text: ' ${controller.accountInfo?.tenToChuc}',
                 style: AppTextStyle.font20Bo
                     .copyWith(color: AppColors.primaryColor),
               ),
@@ -94,7 +93,6 @@ class HomePage extends BaseGetWidget<HomeController> {
         InkWell(
           child: SDSBuildText(
             text,
-            style: AppTextStyle.font16Bo,
           ),
         )
       ],
@@ -102,8 +100,6 @@ class HomePage extends BaseGetWidget<HomeController> {
   }
 
   Widget _buildDrawer() {
-    final accountInfo = controller.appController.accountInfoModel;
-
     return Drawer(
       backgroundColor: AppColors.basicWhite,
       child: Column(
@@ -126,13 +122,13 @@ class HomePage extends BaseGetWidget<HomeController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SDSBuildText(
-                      accountInfo?.tenToChuc.toUpperCase() ?? '',
-                      style: AppTextStyle.font18Bo,
+                      controller.accountInfo?.tenToChuc.toUpperCase() ?? '',
+                      style: AppTextStyle.font16Re,
                       maxLines: 3,
                     ),
                     SDSBuildText(
-                      "MST: ${accountInfo?.taxCode ?? ''}",
-                      style: AppTextStyle.font16Bo,
+                      "${LocaleKeys.home_taxCode.tr}: ${controller.accountInfo?.taxCode ?? ''}",
+                      style: AppTextStyle.font16Re,
                     ),
                   ],
                 ),
@@ -142,24 +138,20 @@ class HomePage extends BaseGetWidget<HomeController> {
           sdsSBHeight32,
           _buildItemDrawer(
             Icons.language,
-            'Ngôn ngữ',
+            LocaleKeys.home_langugue.tr,
           ),
           _buildItemDrawer(
             Icons.lock,
-            'Đổi mật khẩu',
+            LocaleKeys.home_changePassword.tr,
           ),
           _buildItemDrawer(
             Icons.phone,
-            'CSKH: 1900 1900',
+            LocaleKeys.home_support.tr,
           ),
           _buildItemDrawer(
             Icons.switch_account,
-            'Đổi tài khoản',
+            LocaleKeys.home_changeAccount.tr,
           ),
-          // _buildItemDrawer(
-          //   Icons.logout,
-          //   'Đăng xuất',
-          // ),
         ],
       ).paddingAll(AppDimens.defaultPadding),
     );

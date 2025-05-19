@@ -1,8 +1,13 @@
 import '../../../src.dart';
 
 enum PaymentMethodEnum {
+  // 1 tháng
   oneMonth(1, LocaleKeys.unitInfo_oneMonth),
+
+  // 3 tháng
   threeMonth(3, LocaleKeys.unitInfo_threeMonth),
+
+  // 6 tháng
   sixMonth(6, LocaleKeys.unitInfo_sixMonth);
 
   final String title;

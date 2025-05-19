@@ -70,7 +70,6 @@ extension ProfileWidget on ProfilePage {
   Widget _buildTitleAccountInfo({
     required String text,
     required String content,
-    // required IconData? icon,
   }) {
     return UtilWidget.buildCardBase(
       Column(

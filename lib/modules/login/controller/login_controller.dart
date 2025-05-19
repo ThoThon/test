@@ -10,8 +10,21 @@ import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 class LoginController extends BaseGetxController {
   late final _loginRepository = LoginRepository(this);
   final formKey = GlobalKey<FormState>();
-  final usernameTextCtrl = TextEditingController(text: 'sd8888k17');
+  // final usernameTextCtrl = TextEditingController(text: 'sd8888k17');
   final passwordTextCtrl = TextEditingController(text: 'Viettel@789');
+  final usernameTextCtrl = TextEditingController();
+  // final passwordTextCtrl = TextEditingController();
+  final isHaveUsername = false.obs;
+  final appController = Get.find<AppController>();
+
+  @override
+  void onInit() {
+    super.onInit();
+    if (hiveApp.get(HiveKeys.keyUsername) != null) {
+      usernameTextCtrl.text = hiveApp.get(HiveKeys.keyUsername);
+    }
+    isHaveUsername.value = hiveApp.get(HiveKeys.keyUsername) != null;
+  }
 
   Future<void> login() async {
     if (formKey.currentState?.validate() != true) {
@@ -33,10 +46,9 @@ class LoginController extends BaseGetxController {
       if (response.isSuccess) {
         await Future.wait([
           hiveApp.put(HiveKeys.keyUsername, username),
-          hiveApp.put(HiveKeys.keyPassword, password),
           hiveApp.put(HiveKeys.keyJwtToken, response.result),
         ]);
-
+        await appController.getAccountInfo();
         Get.offAndToNamed(AppRoutes.pageBuilder.path);
         return;
       } else {

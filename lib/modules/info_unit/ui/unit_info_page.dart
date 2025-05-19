@@ -19,7 +19,7 @@ class UnitInfoPage extends BaseGetWidget {
           style: AppTextStyle.font16Bo,
         ),
       ),
-      body: baseShowLoading(() => _buildBody()),
+      body: buildLoadingOverlay(() => _buildBody()),
     );
   }
 }

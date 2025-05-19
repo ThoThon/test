@@ -16,7 +16,9 @@ class NfcInformationUserPage extends BaseGetWidget {
       appBar: const BaseAppBar(
         title: BaseAppBarTitle(title: "Thông tin"),
       ),
-      body: _buildListGuild(controller),
+      body: SDSSafearea(
+        child: _buildListGuild(controller),
+      ),
     );
   }
 }

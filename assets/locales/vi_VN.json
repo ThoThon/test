@@ -48,7 +48,13 @@
     "history": "Lịch sử",
     "lookupC12": "Tra cứu \nC12",
     "guide": "Hướng dẫn",
-    "declare": "Kê khai"
+    "declare": "Kê khai",
+    "langugue": "Ngôn ngữ",
+    "changePassword": "Đổi mật khẩu",
+    "support": "CSKH: 1900 1900",
+    "changeAccount": "Đổi tài khoản",
+    "taxCode": "MST",
+    "hello": "Xin chào,"
   },
   "unitInfo": {
     "transactionRegister": "Đăng ký giao dịch",
@@ -144,7 +150,8 @@
     "threeMonth": "3 tháng",
     "sixMonth": "6 tháng",
     "byPostOffice": "Qua bưu điện",
-    "bySocialAgency": "Nhận tại cơ quan bảo hiểm"
+    "bySocialAgency": "Nhận tại cơ quan bảo hiểm",
+    "home": "Trang chủ"
   },
   "history": {
     "procedure": "Thủ tục",
@@ -170,6 +177,7 @@
     "fail": "Thất bại",
     "all": "Tất cả",
     "lookupSuccess": "Tra cứu thành công!",
+    "selectedProcedure": "Chọn thủ tục",
     "procedure600": "600 - Báo tăng, báo giảm, điều chỉnh",
     "procedure600c": "600c - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo luật bhxh 2014",
     "procedure600d": "600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP",
@@ -219,7 +227,19 @@
     "username": "Tài khoản",
     "password": "Mật khẩu",
     "usernameCannotEmpty": "Tài khoản không được bỏ trống",
-    "passwordCannotEmpty": "Mật khẩu không được bỏ trống"
+    "passwordCannotEmpty": "Mật khẩu không được bỏ trống",
+    "forgetPassword": "Quên mật khẩu?",
+    "resetPassword": "Lấy lại mật khẩu",
+    "changeAccount": "Đổi tài khoản",
+    "hello": "Xin chào,",
+    "serviceCenter": "Tổng đài CSKH:",
+    "phoneNumber": "1800.1800 (nhánh 1)",
+    "unitCodeCannotEmpty": "Mã đơn vị không được bỏ trống",
+    "taxCodeCannotEmpty": "Mã số thuế/ Mã ngân sách không được bỏ trống",
+    "backToLogin": "Quay lại đăng nhập",
+    "inputUnitCode": "Nhập mã đơn vị",
+    "inputPassword": "Nhập mật khẩu",
+    "inputTaxCode": "Mã số thuế/ Mã ngân sách"
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",
@@ -255,13 +275,36 @@
     "registerDay": "Ngày đăng ký",
     "expiredDay": "Ngày hết hạn"
   },
-  "scanCccd": {
+  "nfc": {
     "stepOne": "1",
     "stepTwo": "2",
     "stepThree": "3",
     "guideScanCCCD": "Hướng dẫn quét NFC(CCCD gắn chip)",
     "titleStepOne": "Bấm vào nút BẮT ĐẦU để tiến hành quét",
     "titleStepTwo": "Đưa thẻ(CCCD) ra sau máy khu vực phía sau của đầu điện thoại có cảm biến",
-    "titleStepThree": "Di chuyển thẻ(CCCD) lên xuống để cảm biến nhận diện cho đến khi điện thoại rung, vui lòng giữ nguyên CCCD để tiến hành đọc thông tin"
+    "titleStepThree": "Di chuyển thẻ(CCCD) lên xuống để cảm biến nhận diện cho đến khi điện thoại rung, vui lòng giữ nguyên CCCD để tiến hành đọc thông tin",
+    "start":"Bắt đầu",
+    "readyScan":"Sẵn sàng quét",
+    "scanNFC":"Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến",
+    "cancel":"Hủy"
+  },
+  "infomationUser":{
+    "info":"Thông tin",
+    "id":"ID",
+    "name":"Tên",
+    "lastName":"Họ",
+    "gender":"Giới tính",
+    "homeTown":"Quê quán",
+    "permanentResident" : "Nơi thường trú",
+    "nationality":"Quốc tịch",
+    "nation":"Dân tộc",
+    "religion":"Tôn giáo",
+    "identification":"Đặc điểm nhận dạng",
+    "birthDay":"Ngày sinh",
+    "releaseDay":"Ngày làm thẻ",
+    "expiryDay":"Ngày hết hạn",
+    "fatherName":"Họ tên bố",
+    "motherName":"Họ tên mẹ",
+    "continue" :"Tiếp tục"
   }
 }

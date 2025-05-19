@@ -9,10 +9,9 @@ extension HistoryDetailWidget on HistoryDetailPage {
           final model = controller.historyItemModel;
           return Column(
             children: [
-              BaseButton(
-                text: LocaleKeys.history_lookup.tr,
+              UtilWidget.buildSolidButton(
+                title: LocaleKeys.history_lookup.tr,
                 onPressed: () {},
-                padding: EdgeInsets.zero,
               ),
               sdsSBHeight8,
               _buildProfileInfoCard(model),
