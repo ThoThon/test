@@ -32,6 +32,6 @@ class InputFormatterEnum {
   ///10: nhập ký tự đặc biệt không bao gồm dấu cách
   static const int password = 10;
 
-  /// 11 : Nhập số cho hệ số lương
+  /// 11 : Nhập số cho tiền lương/hệ số lương
   static const int salaryCurrency = 11;
 }
