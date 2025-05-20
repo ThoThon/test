@@ -44,7 +44,7 @@ class Tk1State {
   final contactPhoneNumberTextCtrl = TextEditingController();
 
   /// Người tham gia là chủ hộ
-  final participantHeadOfHousehold = false.obs;
+  final isParticipantHeadOfHousehold = false.obs;
 
   /// Họ và tên chủ hộ
   final headOfHouseholdTextCtrl = TextEditingController();

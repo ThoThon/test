@@ -363,10 +363,8 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildParticipantHeadOfHouseholdCheckbox() {
     return UtilWidget.buildCheckboxWithLabel(
       label: LocaleKeys.declareInfo_participantHeadOfHousehold.tr,
-      value: controller.tk1State.participantHeadOfHousehold.value,
-      onChanged: (value) {
-        controller.tk1State.participantHeadOfHousehold.value = value;
-      },
+      value: controller.tk1State.isParticipantHeadOfHousehold.value,
+      onChanged: controller.onChangeParticipantHeadOfHousehold,
     );
   }
 
@@ -376,6 +374,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.tk1State.headOfHouseholdTextCtrl,
+          onChanged: controller.onChangeHeadOfHouseholdFullName,
         ),
       ),
     );
@@ -387,6 +386,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
+          onChanged: controller.onChangeHeadOfHouseholdCCCD,
         ),
       ),
     );
@@ -405,8 +405,8 @@ extension Tk1TabWidget on DeclareInfoPage {
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.provinceTT.value = value;
               didChange(value);
+              controller.onChangeProvinceTT(value);
             },
           ),
           isScrollControlled: true,
@@ -430,8 +430,8 @@ extension Tk1TabWidget on DeclareInfoPage {
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.districtTT.value = value;
               didChange(value);
+              controller.onChangeDistrictTT(value);
             },
           ),
           isScrollControlled: true,
@@ -455,8 +455,8 @@ extension Tk1TabWidget on DeclareInfoPage {
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.wardTT.value = value;
               didChange(value);
+              controller.onChangeWardTT(value);
             },
           ),
           isScrollControlled: true,
@@ -474,6 +474,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         InputTextModel(
           controller: controller.tk1State.addressTTTextCtrl,
           maxLengthInputForm: 300,
+          onChanged: controller.onChangeAddressTT,
         ),
       ),
     );
