@@ -65,6 +65,15 @@ class BuildInputTextState extends State<BuildInputText> {
           FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9._%+-@]')),
           LengthLimitingTextInputFormatter(50),
         ];
+      case InputFormatterEnum.salaryCurrency:
+        return [
+          NumericTextFormatter(
+            type: 1,
+            isDot: true,
+            maxLengthNum: 17,
+            lastDecimal: 3,
+          ),
+        ];
       default:
         return [
           LengthLimitingTextFieldFormatterFixed(
