@@ -3,8 +3,13 @@ import 'package:flutter/services.dart';
 import 'currency_utils.dart';
 
 class NumericTextFormatter extends TextInputFormatter {
+  // Nếu định dạng là tiền của Việt Nam : true, ngoại tệ : false
   final bool isDot;
+
+  // Độ dài số thập phân
   final int lastDecimal;
+
+  // Độ dài số nguyên
   final int maxLengthNum;
 
   NumericTextFormatter({
