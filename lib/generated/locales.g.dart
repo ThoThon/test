@@ -332,6 +332,8 @@ class LocaleKeys {
   static const declareInfo_wardOfBirthCannotEmpty =
       'declareInfo_wardOfBirthCannotEmpty';
   static const declareInfo_birthAddress = 'declareInfo_birthAddress';
+  static const declareInfo_duplicateBirthAddress =
+      'declareInfo_duplicateBirthAddress';
   static const declareInfo_provinceReceive = 'declareInfo_provinceReceive';
   static const declareInfo_selectProvinceReceive =
       'declareInfo_selectProvinceReceive';
@@ -806,6 +808,7 @@ class Locales {
     'declareInfo_selectWardOfBirth': 'Chọn xã khai sinh',
     'declareInfo_wardOfBirthCannotEmpty': 'Xã khai sinh không được bỏ trống',
     'declareInfo_birthAddress': 'Địa chỉ khai sinh',
+    'declareInfo_duplicateBirthAddress': 'Trùng địa chỉ khai sinh',
     'declareInfo_provinceReceive': 'Tỉnh nơi nhận',
     'declareInfo_selectProvinceReceive': 'Chọn tỉnh nơi nhận',
     'declareInfo_provinceReceiveCannotEmpty':

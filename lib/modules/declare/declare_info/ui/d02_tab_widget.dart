@@ -64,8 +64,7 @@ extension D02TabWidget on DeclareInfoPage {
                   label: 'Sinh dữ liệu D01-TS',
                   value: controller.d02State.isGenerateD01Data.value,
                   onChanged: (value) {
-                    controller.d02State.isGenerateD01Data.value =
-                        value ?? false;
+                    controller.d02State.isGenerateD01Data.value = value;
                   },
                 ),
               ],
@@ -159,7 +158,7 @@ extension D02TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_generateTk1Data.tr,
       value: controller.d02State.isGenerateTk1Data.value,
       onChanged: (value) {
-        controller.d02State.isGenerateTk1Data.value = value ?? false;
+        controller.d02State.isGenerateTk1Data.value = value;
       },
     );
   }
@@ -195,7 +194,7 @@ extension D02TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_payBySalaryCoefficient.tr,
       value: controller.d02State.isSalaryCoefficient.value,
       onChanged: (value) {
-        controller.onChangeSalaryCoefficient(value: value ?? false);
+        controller.onChangeSalaryCoefficient(value: value);
       },
     );
   }

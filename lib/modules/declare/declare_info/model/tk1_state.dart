@@ -20,7 +20,7 @@ class Tk1State {
   final birthAddressTextCtrl = TextEditingController();
 
   /// Trùng địa chỉ khai sinh
-  final isSameAddress = false.obs;
+  final isDuplicateBirthAddress = false.obs;
 
   /// Tỉnh nơi nhận *
   final provinceReceive = Rxn<String>();

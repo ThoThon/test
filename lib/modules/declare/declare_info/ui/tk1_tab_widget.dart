@@ -34,13 +34,8 @@ extension Tk1TabWidget on DeclareInfoPage {
                 _buildSelectDistrict(),
                 _buildSelectWard(),
                 _buildInputAddress(),
-                UtilWidget.buildCheckboxWithLabel(
-                  label: 'Trùng địa chỉ khai sinh',
-                  value: controller.tk1State.isSameAddress.value,
-                  onChanged: (value) {
-                    controller.tk1State.isSameAddress.value = value ?? false;
-                  },
-                ).paddingSymmetric(vertical: AppDimens.paddingVerySmall),
+                _buildCheckboxDuplicateBirthAddress()
+                    .paddingSymmetric(vertical: AppDimens.paddingVerySmall),
                 _buildSelectProvinceReceive(),
                 _buildSelectDistrictReceive(),
                 _buildSelectWardReceive(),
@@ -66,6 +61,16 @@ extension Tk1TabWidget on DeclareInfoPage {
           },
         ),
       ),
+    );
+  }
+
+  Widget _buildCheckboxDuplicateBirthAddress() {
+    return UtilWidget.buildCheckboxWithLabel(
+      label: LocaleKeys.declareInfo_duplicateBirthAddress.tr,
+      value: controller.tk1State.isDuplicateBirthAddress.value,
+      onChanged: (value) {
+        controller.onChangeDuplicateBirthAddress(value: value);
+      },
     );
   }
 
@@ -361,7 +366,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_participantHeadOfHousehold.tr,
       value: controller.tk1State.participantHeadOfHousehold.value,
       onChanged: (value) {
-        controller.tk1State.participantHeadOfHousehold.value = value ?? false;
+        controller.tk1State.participantHeadOfHousehold.value = value;
       },
     );
   }

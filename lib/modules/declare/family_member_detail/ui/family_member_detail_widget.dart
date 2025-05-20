@@ -34,7 +34,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                       label: 'Là người tham gia',
                       value: controller.isParticipant.value,
                       onChanged: (value) {
-                        controller.isParticipant.value = value ?? false;
+                        controller.isParticipant.value = value;
                       },
                     ).paddingSymmetric(vertical: AppDimens.paddingVerySmall),
                   ],

@@ -979,13 +979,11 @@ class UtilWidget {
   static Widget buildCheckboxWithLabel({
     required String label,
     required bool value,
-    ValueChanged<bool?>? onChanged,
+    ValueChanged<bool>? onChanged,
   }) {
     return GestureDetector(
       onTap: () {
-        if (onChanged != null) {
-          onChanged(!value);
-        }
+        onChanged?.call(!value);
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -994,7 +992,9 @@ class UtilWidget {
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             value: value,
             activeColor: AppColors.primaryColor,
-            onChanged: onChanged,
+            onChanged: (value) {
+              onChanged?.call(value ?? false);
+            },
           ),
           SDSBuildText(
             label,

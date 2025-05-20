@@ -315,6 +315,7 @@
     "selectWardOfBirth": "Chọn xã khai sinh",
     "wardOfBirthCannotEmpty": "Xã khai sinh không được bỏ trống",
     "birthAddress": "Địa chỉ khai sinh",
+    "duplicateBirthAddress": "Trùng địa chỉ khai sinh",
     "provinceReceive": "Tỉnh nơi nhận",
     "selectProvinceReceive": "Chọn tỉnh nơi nhận",
     "provinceReceiveCannotEmpty": "Tỉnh nơi nhận không được bỏ trống",

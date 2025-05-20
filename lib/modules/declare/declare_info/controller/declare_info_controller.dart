@@ -126,6 +126,22 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
+  void onChangeDuplicateBirthAddress({
+    required bool value,
+  }) {
+    tk1State.isDuplicateBirthAddress.value = value;
+
+    if (value) {
+      // Khi chọn checkbox thì:
+      // Tỉnh nơi nhận trùng với Tỉnh khai sinh, Huyện nơi nhận trùng với Huyện khai sinh, Xã nơi nhận trùng với Xã khai sinh, Địa chỉ nơi nhận trùng với địa chỉ khai sinh.
+      // TH nếu đ/c khai sinh sửa lại thì đ/c nhận hồ sơ cũng thay đổi
+      tk1State.provinceReceive.value = tk1State.provinceOfBirth.value;
+      tk1State.districtReceive.value = tk1State.districtOfBirth.value;
+      tk1State.wardReceive.value = tk1State.selectedWard.value;
+      tk1State.addressReceiveTextCtrl.text = tk1State.birthAddressTextCtrl.text;
+    }
+  }
+
   @override
   void onClose() {
     d02State.dispose();
