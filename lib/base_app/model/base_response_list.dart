@@ -1,3 +1,5 @@
+import 'package:v_bhxh/core/values/const.dart';
+
 class BaseResponseList<T> {
   final String code;
   final String? errorMessage;
@@ -35,4 +37,6 @@ class BaseResponseList<T> {
       totalNumber: total,
     );
   }
+
+  bool get isSuccess => code == AppConst.statusCodeSuccess;
 }
