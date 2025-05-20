@@ -14,7 +14,7 @@ class Tk1State {
   final districtOfBirth = Rxn<String>();
 
   /// Xã khai sinh *
-  final selectedWard = Rxn<String>();
+  final wardOfBirth = Rxn<String>();
 
   /// Địa chỉ khai sinh *
   final birthAddressTextCtrl = TextEditingController();

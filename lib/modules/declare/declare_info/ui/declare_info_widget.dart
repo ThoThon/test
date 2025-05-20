@@ -138,7 +138,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
   Widget _buildInputFullName({
     VoidCallback? onTapSelectStaff,
-    bool showSelectStaff = true,
   }) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -151,7 +150,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
                 isRequired: true,
               ),
             ),
-            if (showSelectStaff)
+            if (onTapSelectStaff != null)
               TextButton(
                 onPressed: onTapSelectStaff,
                 style: TextButton.styleFrom(
@@ -297,7 +296,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_ethnic.tr,
             listFilter: ['Kinh', 'Thái', 'Tày'],
-            itemSelect: controller.d02Tk1State.selectedEthnic,
+            selectedItem: controller.d02Tk1State.selectedEthnic.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -328,7 +327,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectNationality.tr,
             listFilter: ['Việt Nam', 'Lào', 'Campuchia'],
-            itemSelect: controller.d02Tk1State.selectedNationality,
+            selectedItem: controller.d02Tk1State.selectedNationality.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;

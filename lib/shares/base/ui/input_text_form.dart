@@ -108,6 +108,7 @@ class BuildInputTextState extends State<BuildInputText> {
               onTap: () {
                 widget.inputTextFormModel.controller.clear();
                 _isShowButtonClear.value = false;
+                widget.inputTextFormModel.onChanged?.call("");
               },
               child: Icon(
                 Icons.clear,

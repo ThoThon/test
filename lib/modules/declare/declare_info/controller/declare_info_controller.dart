@@ -41,7 +41,7 @@ class DeclareInfoController extends BaseGetxController {
       BottomSheetSearch<String>(
         title: 'Chọn nhân viên',
         listFilter: ['Phạm Văn Cường', 'Hoàng Xuân Hiệp', 'Bắc'],
-        itemSelect: selectedStaff,
+        selectedItem: selectedStaff.value,
         display: (value) => value,
         onAccept: (value) {
           if (value == null) return;
@@ -137,13 +137,78 @@ class DeclareInfoController extends BaseGetxController {
       // TH nếu đ/c khai sinh sửa lại thì đ/c nhận hồ sơ cũng thay đổi
       tk1State.provinceReceive.value = tk1State.provinceOfBirth.value;
       tk1State.districtReceive.value = tk1State.districtOfBirth.value;
-      tk1State.wardReceive.value = tk1State.selectedWard.value;
+      tk1State.wardReceive.value = tk1State.wardOfBirth.value;
       tk1State.addressReceiveTextCtrl.text = tk1State.birthAddressTextCtrl.text;
     }
   }
 
+  void changeProvinceOfBirth(String value) {
+    tk1State.provinceOfBirth.value = value;
+
+    // Đồng bộ tỉnh nơi nhận hồ sơ với tỉnh khai sinh
+    if (tk1State.isDuplicateBirthAddress.value) {
+      tk1State.provinceReceive.value = value;
+    }
+  }
+
+  void changeDistrictOfBirth(String value) {
+    tk1State.districtOfBirth.value = value;
+
+    // Đồng bộ huyện nơi nhận hồ sơ với huyện khai sinh
+    if (tk1State.isDuplicateBirthAddress.value) {
+      tk1State.districtReceive.value = value;
+    }
+  }
+
+  void changeWardOfBirth(String value) {
+    tk1State.wardOfBirth.value = value;
+
+    // Đồng bộ xã nơi nhận hồ sơ với xã khai sinh
+    if (tk1State.isDuplicateBirthAddress.value) {
+      tk1State.wardReceive.value = value;
+    }
+  }
+
+  void onChangeBirthAddress(String value) {
+    // Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh
+    if (tk1State.isDuplicateBirthAddress.value) {
+      tk1State.addressReceiveTextCtrl.text = value;
+    }
+  }
+
+  void onChangeProvinceReceive(String value) {
+    if (tk1State.provinceReceive.value != value) {
+      // Khi user thay đổi tỉnh nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
+      tk1State.isDuplicateBirthAddress.value = false;
+    }
+
+    tk1State.provinceReceive.value = value;
+  }
+
+  void onChangeDistrictReceive(String value) {
+    if (tk1State.districtReceive.value != value) {
+      // Khi user thay đổi huyện nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
+      tk1State.isDuplicateBirthAddress.value = false;
+    }
+    tk1State.districtReceive.value = value;
+  }
+
+  void onChangeWardReceive(String value) {
+    if (tk1State.wardReceive.value != value) {
+      // Khi user thay đổi xã nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
+      tk1State.isDuplicateBirthAddress.value = false;
+    }
+    tk1State.wardReceive.value = value;
+  }
+
+  void onChangeAddressReceive(String value) {
+    // Khi user thay đổi địa chỉ nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
+    tk1State.isDuplicateBirthAddress.value = false;
+  }
+
   @override
   void onClose() {
+    d02Tk1State.dispose();
     d02State.dispose();
     tk1State.dispose();
     super.onClose();

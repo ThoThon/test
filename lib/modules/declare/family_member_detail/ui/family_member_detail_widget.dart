@@ -176,7 +176,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.familyMember_selectEthnic.tr,
             listFilter: ['Kinh', 'Thái', 'Tày'],
-            itemSelect: controller.selectedEthnic,
+            selectedItem: controller.selectedEthnic.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -207,7 +207,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.familyMember_selectNationality.tr,
             listFilter: ['Việt Nam', 'Lào', 'Campuchia'],
-            itemSelect: controller.selectedNationality,
+            selectedItem: controller.selectedNationality.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -238,7 +238,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.familyMember_selectProvinceOfBirth.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.selectedProvince,
+            selectedItem: controller.selectedProvince.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -269,7 +269,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.familyMember_selectDistrictOfBirth.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.selectedDistrict,
+            selectedItem: controller.selectedDistrict.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -300,7 +300,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.familyMember_selectWardOfBirth.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.selectedWard,
+            selectedItem: controller.selectedWard.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;

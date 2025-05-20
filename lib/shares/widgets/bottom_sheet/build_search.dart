@@ -2,18 +2,16 @@ import 'package:tiengviet/tiengviet.dart';
 
 import '../../../modules/src.dart';
 
-class BottomSheetSearch<T> extends StatelessWidget {
-  BottomSheetSearch({
+class BottomSheetSearch<T> extends StatefulWidget {
+  const BottomSheetSearch({
     super.key,
     required this.listFilter,
     required this.display,
     required this.title,
     this.hintText,
-    required this.itemSelect,
+    this.selectedItem,
     required this.onAccept,
-  }) {
-    listResult.addAll(listFilter);
-  }
+  });
 
   final List<T> listFilter;
   final String title;
@@ -21,21 +19,29 @@ class BottomSheetSearch<T> extends StatelessWidget {
   final String Function(T) display;
   final Function(T?) onAccept;
 
-  final TextEditingController textEditingController = TextEditingController();
-  final Rx<T?> itemSelect;
-  final RxList<T> listResult = RxList<T>([]);
+  final T? selectedItem;
+
+  @override
+  State<BottomSheetSearch<T>> createState() => _BottomSheetSearchState<T>();
+}
+
+class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
+  final textEditingController = TextEditingController();
+
+  late final itemSelect = Rxn<T>(widget.selectedItem);
+  late final listResult = widget.listFilter.obs;
 
   @override
   Widget build(BuildContext context) {
     return UtilWidget.baseBottomSheet(
-      title: title,
+      title: widget.title,
       body: Column(
         children: [
           Expanded(
             child: Column(
               children: [
                 buildSearch(
-                  hintSearch: hintText,
+                  hintSearch: widget.hintText,
                   textEditingController: textEditingController,
                   function: onChanged,
                   isClear: true.obs,
@@ -61,7 +67,7 @@ class BottomSheetSearch<T> extends StatelessWidget {
           UtilWidget.buildSolidButton(
             title: LocaleKeys.certificate_confirm.tr,
             onPressed: () {
-              onAccept(itemSelect.value);
+              widget.onAccept(itemSelect.value);
               Get.back();
             },
           ),
@@ -132,7 +138,7 @@ class BottomSheetSearch<T> extends StatelessWidget {
           child: Row(
             children: [
               SDSBuildText(
-                display(item),
+                widget.display(item),
               ).paddingSymmetric(
                 vertical: AppDimens.paddingSmall,
               ),
@@ -155,12 +161,13 @@ class BottomSheetSearch<T> extends StatelessWidget {
         TiengViet.parse(textEditingController.text.trim().toLowerCase());
     if (query.isEmpty) {
       listResult.clear();
-      listResult.addAll(listFilter);
+      listResult.addAll(widget.listFilter);
     } else {
-      final filteredList = listFilter
+      final filteredList = widget.listFilter
           .where(
-            (value) => TiengViet.parse(display(value).trim().toLowerCase())
-                .contains(query),
+            (value) =>
+                TiengViet.parse(widget.display(value).trim().toLowerCase())
+                    .contains(query),
           )
           .toList();
       listResult.clear();

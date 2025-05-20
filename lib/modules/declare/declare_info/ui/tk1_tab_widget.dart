@@ -13,10 +13,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildInputFullName(
-                  onTapSelectStaff: controller.showDialogSelectStaff,
-                  showSelectStaff: false,
-                ),
+                _buildInputFullName(),
                 UtilWidget.sizedBox16,
                 _buildInputBHXHCode(),
                 UtilWidget.sizedBox16,
@@ -83,12 +80,12 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.provinceOfBirth,
+            selectedItem: controller.tk1State.provinceOfBirth.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.provinceOfBirth.value = value;
               didChange(value);
+              controller.changeProvinceOfBirth(value);
             },
           ),
           isScrollControlled: true,
@@ -114,12 +111,12 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.districtOfBirth,
+            selectedItem: controller.tk1State.districtOfBirth.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.districtOfBirth.value = value;
               didChange(value);
+              controller.changeDistrictOfBirth(value);
             },
           ),
           isScrollControlled: true,
@@ -145,18 +142,18 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectWardOfBirth.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.selectedWard,
+            selectedItem: controller.tk1State.wardOfBirth.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.selectedWard.value = value;
               didChange(value);
+              controller.changeWardOfBirth(value);
             },
           ),
           isScrollControlled: true,
         );
       },
-      item: controller.tk1State.selectedWard,
+      item: controller.tk1State.wardOfBirth,
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
@@ -175,6 +172,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           controller: controller.tk1State.birthAddressTextCtrl,
           isValidate: true,
           maxLengthInputForm: 300,
+          onChanged: controller.onChangeBirthAddress,
         ),
       ),
     );
@@ -189,12 +187,12 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.provinceReceive,
+            selectedItem: controller.tk1State.provinceReceive.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.provinceReceive.value = value;
               didChange(value);
+              controller.onChangeProvinceReceive(value);
             },
           ),
           isScrollControlled: true,
@@ -220,12 +218,12 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectDistrictReceive.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.districtReceive,
+            selectedItem: controller.tk1State.districtReceive.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.districtReceive.value = value;
               didChange(value);
+              controller.onChangeDistrictReceive(value);
             },
           ),
           isScrollControlled: true,
@@ -251,12 +249,12 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectWardReceive.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.wardReceive,
+            selectedItem: controller.tk1State.wardReceive.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
-              controller.tk1State.wardReceive.value = value;
               didChange(value);
+              controller.onChangeWardReceive(value);
             },
           ),
           isScrollControlled: true,
@@ -281,6 +279,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           controller: controller.tk1State.addressReceiveTextCtrl,
           isValidate: true,
           maxLengthInputForm: 300,
+          onChanged: controller.onChangeAddressReceive,
         ),
       ),
     );
@@ -295,7 +294,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectProvinceKCB.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.provinceKCB,
+            selectedItem: controller.tk1State.provinceKCB.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -326,7 +325,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectHospitalKCB.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.hospitalKCB,
+            selectedItem: controller.tk1State.hospitalKCB.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -402,7 +401,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectProvinceTT.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.provinceTT,
+            selectedItem: controller.tk1State.provinceTT.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -427,7 +426,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectDistrictTT.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.districtTT,
+            selectedItem: controller.tk1State.districtTT.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -452,7 +451,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           BottomSheetSearch<String>(
             title: LocaleKeys.declareInfo_selectWardTT.tr,
             listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            itemSelect: controller.tk1State.wardTT,
+            selectedItem: controller.tk1State.wardTT.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
