@@ -12,7 +12,7 @@ class InputFormatterEnum {
   static const int textOnly = 3;
 
   /// 4 : Nhập giá trị tiền
-  static const int money = 4;
+  static const int currency = 4;
 
   /// 5 : Cho phép nhập giá trị âm
   static const int negativeNumber = 5;
@@ -31,4 +31,7 @@ class InputFormatterEnum {
 
   ///10: nhập ký tự đặc biệt không bao gồm dấu cách
   static const int password = 10;
+
+  /// 11 : Nhập số cho hệ số lương
+  static const int salaryCurrency = 11;
 }

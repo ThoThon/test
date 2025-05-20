@@ -1,8 +1,9 @@
 import 'dart:math';
 
-import '../../../../core/values/const.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
+
+import '../../../../core/values/const.dart';
 
 class CurrencyUtils {
   static const String invoiceSeparator = " | ";
@@ -157,6 +158,7 @@ class CurrencyUtils {
     return amount;
   }
 
+  ///Hỗ trợ số thập phân
   static String formatCurrencyForeign(
     dynamic number, {
     bool isDot = false,

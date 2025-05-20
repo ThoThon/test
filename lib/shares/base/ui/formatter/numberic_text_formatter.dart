@@ -3,19 +3,23 @@ import 'package:flutter/services.dart';
 import 'currency_utils.dart';
 
 class NumericTextFormatter extends TextInputFormatter {
+  //0: VND, 1: Foreign
+  final int type;
+
   // Nếu định dạng là tiền của Việt Nam : true, ngoại tệ : false
   final bool isDot;
 
   // Độ dài số thập phân
-  final int lastDecimal;
+  final int? lastDecimal;
 
   // Độ dài số nguyên
-  final int maxLengthNum;
+  final int? maxLengthNum;
 
   NumericTextFormatter({
-    required this.maxLengthNum,
-    required this.lastDecimal,
+    this.type = 0,
     this.isDot = false,
+    this.maxLengthNum,
+    this.lastDecimal,
   });
 
   @override
@@ -29,14 +33,21 @@ class NumericTextFormatter extends TextInputFormatter {
       if (newValue.text.replaceAll(RegExp(r"[-0-9.,]"), '').isNotEmpty) {
         return newValue = oldValue;
       }
-
-      final newString = CurrencyUtils.formatCurrencyForeign(
-        newValue.text,
-        isDot: isDot,
-        lastDecimal: lastDecimal,
-        maxLengthNum: maxLengthNum,
-      );
-
+      final newString = type == 0
+          ? CurrencyUtils.formatCurrency(
+              CurrencyUtils.formatNumberCurrency(
+                newValue.text,
+                isDot: isDot,
+              ),
+              isDot: isDot,
+            )
+          // formatCurrencyForeign hỗ trợ số thập phân
+          : CurrencyUtils.formatCurrencyForeign(
+              newValue.text,
+              isDot: isDot,
+              maxLengthNum: maxLengthNum,
+              lastDecimal: lastDecimal,
+            );
       return TextEditingValue(
         text: newString,
         selection: TextSelection.collapsed(offset: newString.length),

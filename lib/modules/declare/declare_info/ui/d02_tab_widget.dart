@@ -205,7 +205,7 @@ extension D02TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_salaryCoefficient.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          inputFormatters: InputFormatterEnum.money,
+          inputFormatters: InputFormatterEnum.salaryCurrency,
           controller: controller.d02State.salaryCoefficientTextCtrl,
           isValidate: true,
           textInputType: TextInputType.number,
