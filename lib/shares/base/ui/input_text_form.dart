@@ -47,9 +47,13 @@ class BuildInputTextState extends State<BuildInputText> {
         return [
           FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9-_\.]')),
         ];
-      case InputFormatterEnum.currency:
+      case InputFormatterEnum.money:
         return [
-          NumericTextFormatter(),
+          NumericTextFormatter(
+            lastDecimal: 3,
+            maxLengthNum: 17,
+            isDot: true,
+          ),
         ];
       case InputFormatterEnum.password:
         return [

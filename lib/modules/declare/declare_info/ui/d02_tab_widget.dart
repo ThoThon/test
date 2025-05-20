@@ -205,48 +205,13 @@ extension D02TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_salaryCoefficient.tr,
       buildInputText: BuildInputText(
         InputTextModel(
+          inputFormatters: InputFormatterEnum.money,
           controller: controller.d02State.salaryCoefficientTextCtrl,
           isValidate: true,
           textInputType: TextInputType.number,
-          onChanged: (value) {
-            buildInputSalary(
-              controller.d02State.salaryCoefficientTextCtrl,
-              value,
-              lastDecimal: 3,
-              maxLengthNum: 18,
-            );
-          },
         ),
       ),
     );
-  }
-
-  void buildInputSalary(
-    TextEditingController textEditingController,
-    String value, {
-    required int lastDecimal,
-    dynamic customMaxValue,
-    int? maxLengthNum,
-  }) {
-    textEditingController
-      ..text = CurrencyUtils.formatCurrencyForeign(
-        value,
-        lastDecimal: lastDecimal,
-        customMaxValue: customMaxValue,
-        isDot: true,
-        maxLengthNum: maxLengthNum,
-      )
-      ..selection = TextSelection.fromPosition(
-        TextPosition(
-          offset: CurrencyUtils.formatCurrencyForeign(
-            value,
-            lastDecimal: lastDecimal,
-            customMaxValue: customMaxValue,
-            isDot: true,
-            maxLengthNum: maxLengthNum,
-          ).length,
-        ),
-      );
   }
 
   Widget _buildInputPositionAllowance() {
