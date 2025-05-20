@@ -10,10 +10,10 @@ import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 class LoginController extends BaseGetxController {
   late final _loginRepository = LoginRepository(this);
   final formKey = GlobalKey<FormState>();
-  // final usernameTextCtrl = TextEditingController(text: 'sd8888k17');
-  final passwordTextCtrl = TextEditingController(text: 'Viettel@789');
+  // Username test : sd8888k17
+  // Password test : Viettel@789
   final usernameTextCtrl = TextEditingController();
-  // final passwordTextCtrl = TextEditingController();
+  final passwordTextCtrl = TextEditingController();
   final isHaveUsername = false.obs;
   final appController = Get.find<AppController>();
 

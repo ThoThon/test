@@ -1,6 +1,8 @@
 {
   "app": {
     "name": "vBHXH",
+    "someThingWentWrong": "Có lỗi xảy ra",
+    "noData": "Không có dữ liệu",
     "delete": "Xóa",
     "edit": "Sửa",
     "edit2": "Chỉnh sửa"
@@ -243,8 +245,6 @@
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",
-    "procedureItemTitle": "Báo tăng, báo giảm, điều chỉnh mức đóng",
-    "procedureItemSubtitle": "Kê khai hồ sơ báo tăng lao động, báo giảm lao động, điều chỉnh lương",
     "declare": "Kê khai"
   },
   "pageBuilder": {

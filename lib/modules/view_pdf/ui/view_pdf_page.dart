@@ -31,9 +31,9 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
                   child: SfPdfViewer.network(
                     controller.argument.url,
                     controller: controller.pdfViewerController,
-                    pageLayoutMode: PdfPageLayoutMode.single,
+                    pageLayoutMode: PdfPageLayoutMode.continuous,
                     canShowScrollHead: false,
-                    scrollDirection: PdfScrollDirection.horizontal,
+                    scrollDirection: PdfScrollDirection.vertical,
                     onDocumentLoaded: controller.onDocumentLoaded,
                     onPageChanged: controller.onPageChanged,
                   ),
