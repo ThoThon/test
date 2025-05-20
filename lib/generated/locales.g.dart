@@ -30,6 +30,8 @@ class LocaleKeys {
   static const dialog_history = 'dialog_history';
   static const dialog_consignment = 'dialog_consignment';
   static const dialog_notification = 'dialog_notification';
+  static const app_someThingWentWrong = 'app_someThingWentWrong';
+  static const app_noData = 'app_noData';
   static const app_delete = 'app_delete';
   static const app_edit = 'app_edit';
   static const app_edit2 = 'app_edit2';
@@ -250,10 +252,6 @@ class LocaleKeys {
   static const login_inputPassword = 'login_inputPassword';
   static const login_inputTaxCode = 'login_inputTaxCode';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
-  static const procedureList_procedureItemTitle =
-      'procedureList_procedureItemTitle';
-  static const procedureList_procedureItemSubtitle =
-      'procedureList_procedureItemSubtitle';
   static const procedureList_declare = 'procedureList_declare';
   static const declarationPeriod_title = 'declarationPeriod_title';
   static const declarationPeriod_month = 'declarationPeriod_month';
@@ -507,6 +505,8 @@ class Locales {
   };
   static const vi_VN = {
     'app_name': 'vBHXH',
+    'app_someThingWentWrong': 'Có lỗi xảy ra',
+    'app_noData': 'Không có dữ liệu',
     'app_delete': 'Xóa',
     'app_edit': 'Sửa',
     'app_edit2': 'Chỉnh sửa',
@@ -743,10 +743,6 @@ class Locales {
     'login_inputPassword': 'Nhập mật khẩu',
     'login_inputTaxCode': 'Mã số thuế/ Mã ngân sách',
     'procedureList_pageTitle': 'Danh sách thủ tục',
-    'procedureList_procedureItemTitle':
-        'Báo tăng, báo giảm, điều chỉnh mức đóng',
-    'procedureList_procedureItemSubtitle':
-        'Kê khai hồ sơ báo tăng lao động, báo giảm lao động, điều chỉnh lương',
     'procedureList_declare': 'Kê khai',
     'declarationPeriod_title': 'Đợt kê khai',
     'declarationPeriod_month': 'Tháng',

@@ -2,27 +2,43 @@ part of 'procedure_list_page.dart';
 
 extension ProcedureListPageWidget on ProcedureListPage {
   Widget _buildBody() {
-    return _buildProcedureList();
+    return baseShowLoading(() => _buildProcedureList());
   }
 
   Widget _buildProcedureList() {
-    return ListView.separated(
-      padding: const EdgeInsets.only(
-        left: AppDimens.defaultPadding,
-        right: AppDimens.defaultPadding,
-        bottom: AppDimens.defaultPadding,
-      ),
-      itemCount: 3,
-      itemBuilder: (context, index) {
-        return _buildProcedureItem();
-      },
-      separatorBuilder: (context, index) {
-        return UtilWidget.sizedBox16;
+    return Obx(
+      () {
+        if (controller.procedures.isEmpty) {
+          return Center(
+            child: SDSBuildText(
+              LocaleKeys.app_noData.tr,
+              style: AppTextStyle.font16Bo,
+            ),
+          );
+        }
+
+        return ListView.separated(
+          padding: const EdgeInsets.only(
+            left: AppDimens.defaultPadding,
+            right: AppDimens.defaultPadding,
+            bottom: AppDimens.defaultPadding,
+          ),
+          itemCount: controller.procedures.length,
+          itemBuilder: (context, index) {
+            final procedure = controller.procedures[index];
+            return _buildProcedureItem(procedure: procedure);
+          },
+          separatorBuilder: (context, index) {
+            return UtilWidget.sizedBox16;
+          },
+        );
       },
     );
   }
 
-  Widget _buildProcedureItem() {
+  Widget _buildProcedureItem({
+    required Procedure procedure,
+  }) {
     return Container(
       padding: const EdgeInsets.all(AppDimens.paddingSmall),
       decoration: BoxDecoration(
@@ -51,7 +67,7 @@ extension ProcedureListPageWidget on ProcedureListPage {
                   ),
                 ),
                 child: SDSBuildText(
-                  '600',
+                  procedure.ma,
                   style: AppTextStyle.font20Bo.copyWith(
                     color: AppColors.primaryColor,
                   ),
@@ -63,13 +79,13 @@ extension ProcedureListPageWidget on ProcedureListPage {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SDSBuildText(
-                      LocaleKeys.procedureList_procedureItemTitle.tr,
+                      procedure.ten,
                       style: AppTextStyle.font16Bo,
                       maxLines: 3,
                     ),
                     UtilWidget.sizedBox4,
                     SDSBuildText(
-                      LocaleKeys.procedureList_procedureItemSubtitle.tr,
+                      procedure.ghiChu,
                       maxLines: 3,
                     ),
                   ],

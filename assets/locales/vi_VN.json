@@ -1,6 +1,8 @@
 {
   "app": {
     "name": "vBHXH",
+    "someThingWentWrong": "Có lỗi xảy ra",
+    "noData": "Không có dữ liệu",
     "delete": "Xóa",
     "edit": "Sửa",
     "edit2": "Chỉnh sửa",
@@ -246,8 +248,6 @@
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",
-    "procedureItemTitle": "Báo tăng, báo giảm, điều chỉnh mức đóng",
-    "procedureItemSubtitle": "Kê khai hồ sơ báo tăng lao động, báo giảm lao động, điều chỉnh lương",
     "declare": "Kê khai"
   },
   "declarationPeriod": {
@@ -406,28 +406,28 @@
     "titleStepOne": "Bấm vào nút BẮT ĐẦU để tiến hành quét",
     "titleStepTwo": "Đưa thẻ(CCCD) ra sau máy khu vực phía sau của đầu điện thoại có cảm biến",
     "titleStepThree": "Di chuyển thẻ(CCCD) lên xuống để cảm biến nhận diện cho đến khi điện thoại rung, vui lòng giữ nguyên CCCD để tiến hành đọc thông tin",
-    "start":"Bắt đầu",
-    "readyScan":"Sẵn sàng quét",
-    "scanNFC":"Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến",
-    "cancel":"Hủy"
+    "start": "Bắt đầu",
+    "readyScan": "Sẵn sàng quét",
+    "scanNFC": "Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến",
+    "cancel": "Hủy"
   },
-  "infomationUser":{
-    "info":"Thông tin",
-    "id":"ID",
-    "name":"Tên",
-    "lastName":"Họ",
-    "gender":"Giới tính",
-    "homeTown":"Quê quán",
-    "permanentResident" : "Nơi thường trú",
-    "nationality":"Quốc tịch",
-    "nation":"Dân tộc",
-    "religion":"Tôn giáo",
-    "identification":"Đặc điểm nhận dạng",
-    "birthDay":"Ngày sinh",
-    "releaseDay":"Ngày làm thẻ",
-    "expiryDay":"Ngày hết hạn",
-    "fatherName":"Họ tên bố",
-    "motherName":"Họ tên mẹ",
-    "continue" :"Tiếp tục"
+  "infomationUser": {
+    "info": "Thông tin",
+    "id": "ID",
+    "name": "Tên",
+    "lastName": "Họ",
+    "gender": "Giới tính",
+    "homeTown": "Quê quán",
+    "permanentResident": "Nơi thường trú",
+    "nationality": "Quốc tịch",
+    "nation": "Dân tộc",
+    "religion": "Tôn giáo",
+    "identification": "Đặc điểm nhận dạng",
+    "birthDay": "Ngày sinh",
+    "releaseDay": "Ngày làm thẻ",
+    "expiryDay": "Ngày hết hạn",
+    "fatherName": "Họ tên bố",
+    "motherName": "Họ tên mẹ",
+    "continue": "Tiếp tục"
   }
 }
