@@ -2,22 +2,26 @@ part of 'procedure_list_page.dart';
 
 extension ProcedureListPageWidget on ProcedureListPage {
   Widget _buildBody() {
-    return _buildProcedureList();
+    return baseShowLoading(() => _buildProcedureList());
   }
 
   Widget _buildProcedureList() {
-    return ListView.separated(
-      padding: const EdgeInsets.only(
-        left: AppDimens.defaultPadding,
-        right: AppDimens.defaultPadding,
-        bottom: AppDimens.defaultPadding,
-      ),
-      itemCount: 3,
-      itemBuilder: (context, index) {
-        return _buildProcedureItem();
-      },
-      separatorBuilder: (context, index) {
-        return UtilWidget.sizedBox16;
+    return Obx(
+      () {
+        return ListView.separated(
+          padding: const EdgeInsets.only(
+            left: AppDimens.defaultPadding,
+            right: AppDimens.defaultPadding,
+            bottom: AppDimens.defaultPadding,
+          ),
+          itemCount: controller.procedures.length,
+          itemBuilder: (context, index) {
+            return _buildProcedureItem();
+          },
+          separatorBuilder: (context, index) {
+            return UtilWidget.sizedBox16;
+          },
+        );
       },
     );
   }
