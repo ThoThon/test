@@ -110,7 +110,7 @@ extension LookupC12Widget on LookupC12Page {
   Widget _buildButtonLookUp() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppDimens.defaultPadding),
-      child: UtilWidget.buildSolidButton(title: 'Tra cứu'),
+      child: UtilWidget.buildSolidButton(title: LocaleKeys.lookupC12_lookup.tr),
     );
   }
 }
