@@ -326,6 +326,7 @@ class LocaleKeys {
   static const lookupC12_december = 'lookupC12_december';
   static const lookupC12_month = 'lookupC12_month';
   static const lookupC12_see = 'lookupC12_see';
+  static const lookupC12_resultDetail = 'lookupC12_resultDetail';
 }
 
 class Locales {
@@ -665,5 +666,6 @@ class Locales {
     'lookupC12_december': 'Tháng 12',
     'lookupC12_month': 'Tháng',
     'lookupC12_see': 'Xem',
+    'lookupC12_resultDetail': 'Chi tiết kết quả đóng BHXH',
   };
 }

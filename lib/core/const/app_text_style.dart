@@ -9,7 +9,8 @@ abstract class AppTextStyle {
     fontWeight: FontWeight.w400,
     overflow: TextOverflow.ellipsis,
     color: AppColors.colorBlack,
-    fontFamily: 'NunitoSans',
+    // fontFamily: 'NunitoSans',
+    fontFamily: 'Roboto',
   );
 
   static final _font10 = _defaultFont.copyWith(fontSize: 10);

@@ -8,13 +8,12 @@ class NotificationPage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(
-        title: SDSBuildText(
-          "Thông báo",
-          style: AppTextStyle.font16Bo,
+      appBar: const BaseAppBar(
+        title: BaseAppBarTitle(
+          title: "Thông báo",
         ),
         actions: [
-          const Icon(
+          Icon(
             Icons.check_outlined,
             color: AppColors.primaryColor,
           ),
