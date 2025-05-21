@@ -15,8 +15,6 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
                 () {
                   return Column(
                     children: [
-                      _buildInputName(),
-                      UtilWidget.sizedBox16,
                       _buildInputFullName(),
                       UtilWidget.sizedBox16,
                       _buildInputBHXHNumber(),
@@ -25,25 +23,9 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
                       UtilWidget.sizedBox16,
                       _buildInputDocumentNumber(),
                       UtilWidget.sizedBox16,
-                      UtilWidget.buildSelectDate(
-                        'Ngày ban hành',
-                        hintText: PATTERN_1,
-                        date: convertDateToStringSafe(
-                          controller.dateOfIssue.value,
-                          PATTERN_1,
-                        ),
-                        onTap: () {},
-                      ),
+                      _buildSelectDateOfIssue(),
                       UtilWidget.sizedBox16,
-                      UtilWidget.buildSelectDate(
-                        'Ngày hiệu lực',
-                        hintText: PATTERN_1,
-                        date: convertDateToStringSafe(
-                          controller.effectiveDate.value,
-                          PATTERN_1,
-                        ),
-                        onTap: () {},
-                      ),
+                      _buildEffectiveDate(),
                       UtilWidget.sizedBox16,
                       _buildInputIssuingAgency(),
                       UtilWidget.sizedBox16,
@@ -62,14 +44,41 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
     );
   }
 
-  Widget _buildInputName() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFromDetail_declarationFromName.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.nameTextCtrl,
-        ),
+  Widget _buildEffectiveDate() {
+    return UtilWidget.buildSelectDate(
+      LocaleKeys.declarationFromDetail_effectiveDate.tr,
+      hintText: PATTERN_1,
+      date: convertDateToStringSafe(
+        controller.effectiveDate.value,
+        PATTERN_1,
       ),
+      onTap: () async {
+        final selectedDate = await UtilWidget.showDateTimePicker(
+          dateTimeInit: controller.effectiveDate.value ?? DateTime.now(),
+        );
+        if (selectedDate != null) {
+          controller.effectiveDate.value = selectedDate;
+        }
+      },
+    );
+  }
+
+  Widget _buildSelectDateOfIssue() {
+    return UtilWidget.buildSelectDate(
+      LocaleKeys.declarationFromDetail_dateOfIssue.tr,
+      hintText: PATTERN_1,
+      date: convertDateToStringSafe(
+        controller.dateOfIssue.value,
+        PATTERN_1,
+      ),
+      onTap: () async {
+        final selectedDate = await UtilWidget.showDateTimePicker(
+          dateTimeInit: controller.dateOfIssue.value ?? DateTime.now(),
+        );
+        if (selectedDate != null) {
+          controller.dateOfIssue.value = selectedDate;
+        }
+      },
     );
   }
 
@@ -80,9 +89,10 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         InputTextModel(
           controller: controller.fullNameTextCtrl,
           isValidate: true,
-          // isReadOnly: true,
+          maxLengthInputForm: 100,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            final trimmedValue = value?.trim();
+            if (trimmedValue == null || trimmedValue.isEmpty) {
               return LocaleKeys.declarationFromDetail_fullNameCannotEmpty.tr;
             }
             return null;
@@ -98,6 +108,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.bhxhTextCtrl,
+          maxLengthInputForm: 10,
         ),
       ),
     );

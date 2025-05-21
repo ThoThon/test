@@ -57,6 +57,8 @@ class DeclareInfoController extends BaseGetxController {
       AppRoutes.declarationFormDetail.path,
       arguments: DeclarationFormDetailArgument(
         action: DeclarationFormDetailAction.create,
+        fullName: d02Tk1State.fullNameTextCtrl.text.trim(),
+        bhxhCode: d02Tk1State.bhxhTextCtrl.text.trim(),
       ),
     );
   }

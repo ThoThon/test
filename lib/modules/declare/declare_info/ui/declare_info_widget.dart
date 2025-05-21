@@ -234,9 +234,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02Tk1State.bhxhTextCtrl,
-          inputFormatters: InputFormatterEnum.digitsOnly,
           maxLengthInputForm: 10,
-          textInputType: TextInputType.number,
         ),
       ),
     );

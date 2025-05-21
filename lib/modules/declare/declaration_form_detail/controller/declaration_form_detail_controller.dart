@@ -8,9 +8,6 @@ class DeclarationFormDetailController extends BaseGetxController {
 
   final formKey = GlobalKey<FormState>();
 
-  /// Tên bảng kê
-  final nameTextCtrl = TextEditingController();
-
   /// Họ và tên *
   final fullNameTextCtrl = TextEditingController();
 
@@ -38,8 +35,17 @@ class DeclarationFormDetailController extends BaseGetxController {
   final contentToBeAssessedTextCtrl = TextEditingController();
 
   @override
+  void onInit() {
+    super.onInit();
+
+    if (argument.action.isCreate) {
+      fullNameTextCtrl.text = argument.fullName ?? '';
+      bhxhTextCtrl.text = argument.bhxhCode ?? '';
+    }
+  }
+
+  @override
   void onClose() {
-    nameTextCtrl.dispose();
     fullNameTextCtrl.dispose();
     bhxhTextCtrl.dispose();
     documentTypeTextCtrl.dispose();

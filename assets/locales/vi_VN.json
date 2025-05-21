@@ -379,7 +379,7 @@
     "isParticipant": "Là người tham gia"
   },
   "declarationFromDetail": {
-    "title": "Thêm mới bảng kê",
+    "title": "Kê khai thông tin bảng kê hồ sơ",
     "declarationFromName": "Tên bảng kê",
     "fullName": "Họ và tên",
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",

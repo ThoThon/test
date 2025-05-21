@@ -884,7 +884,7 @@ class Locales {
     'familyMember_cccdNumber': 'Số CMND/CCCD/HC',
     'familyMember_note': 'Ghi chú',
     'familyMember_isParticipant': 'Là người tham gia',
-    'declarationFromDetail_title': 'Thêm mới bảng kê',
+    'declarationFromDetail_title': 'Kê khai thông tin bảng kê hồ sơ',
     'declarationFromDetail_declarationFromName': 'Tên bảng kê',
     'declarationFromDetail_fullName': 'Họ và tên',
     'declarationFromDetail_fullNameCannotEmpty':
