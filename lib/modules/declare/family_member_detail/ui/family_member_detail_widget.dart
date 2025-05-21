@@ -53,7 +53,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
 
   Widget _buildCheckboxParticipant() {
     return UtilWidget.buildCheckboxWithLabel(
-      label: LocaleKeys.familyMember_isParticipant,
+      label: LocaleKeys.familyMember_isParticipant.tr,
       value: controller.isParticipant.value,
       onChanged: (value) {
         controller.isParticipant.value = value;
