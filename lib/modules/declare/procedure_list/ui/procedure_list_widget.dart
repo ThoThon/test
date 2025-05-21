@@ -97,7 +97,10 @@ extension ProcedureListPageWidget on ProcedureListPage {
           UtilWidget.buildSolidButtonBack(
             title: LocaleKeys.procedureList_declare.tr,
             onPressed: () {
-              Get.toNamed(AppRoutes.declarationPeriod.path);
+              Get.toNamed(
+                AppRoutes.declarationPeriod.path,
+                arguments: procedure,
+              );
             },
           ),
         ],

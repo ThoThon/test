@@ -4,6 +4,8 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import '../../../../base_app/base_app.src.dart';
 
 class DeclarationPeriodController extends BaseGetxController {
+  final argument = Get.arguments as Procedure;
+
   final selectedPeriodDate = DateTime.now().obs;
 
   final declarationPeriods = <DeclarationPeriodModel>[
