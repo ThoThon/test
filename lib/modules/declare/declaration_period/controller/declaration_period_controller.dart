@@ -1,9 +1,12 @@
+import 'package:v_bhxh/modules/declare/declaration_period/repository/declaration_period_repository.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../base_app/base_app.src.dart';
 
 class DeclarationPeriodController extends BaseGetxController {
+  late final _repository = DeclarationPeriodRepository(this);
+
   final selectedPeriodDate = DateTime.now().obs;
 
   final declarationPeriods = <DeclarationPeriodModel>[
@@ -49,5 +52,28 @@ class DeclarationPeriodController extends BaseGetxController {
       confirmTitle: 'Xóa',
       onConfirm: () {},
     );
+  }
+
+  Future<void> createDeclarationPeriod() async {
+    try {
+      final response = await _repository.createDeclarationPeriod(
+        request: CreateDeclarationPeriodRequest(
+          maThuTuc: 6001,
+          nam: selectedPeriodDate.value.year,
+          thang: selectedPeriodDate.value.month,
+        ),
+      );
+
+      if (response.isSuccess && response.result != null) {
+        Get.toNamed(
+          AppRoutes.declareInfo.path,
+          arguments: const DeclareInfoArgument(
+            action: DeclareInfoAction.create,
+          ),
+        );
+      }
+    } catch (e) {
+      logger.e(e);
+    }
   }
 }
