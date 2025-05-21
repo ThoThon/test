@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
+import 'dropdown_custom.dart' as dropdown_custom;
 
 import '../../../modules/src.dart';
 
@@ -360,7 +362,7 @@ class UtilWidget {
     String? Function(T?)? validator,
   }) {
     return FormField<T>(
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: isRequired
           ? (value) {
               if (validator != null) {
@@ -426,6 +428,132 @@ class UtilWidget {
           ],
         );
       },
+    );
+  }
+
+  /// buildDropDownWithLabel cũ không tự động validate lại thông tin khi gán lại giá trị của selectedItem
+  /// nên chuyển sang dùng cái mặc định của Flutter
+  static Widget buildDropDownWithLabel2<T>({
+    bool isRequired = true,
+    required String label,
+    required List<T> items,
+    required String Function(T) display,
+    T? selectedItem,
+    ValueChanged<T?>? onChanged,
+    String? hintText,
+    String? Function(T?)? validator,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: label.isNotEmpty
+              ? const EdgeInsets.only(bottom: AppDimens.paddingSmallest)
+              : EdgeInsets.zero,
+          child: RichText(
+            text: TextSpan(
+              text: label,
+              style: AppTextStyle.font16Bo,
+              children: [
+                if (isRequired)
+                  TextSpan(
+                    text: ' (*)',
+                    style: AppTextStyle.font12Re.copyWith(
+                      color: AppColors.statusRed,
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+        ButtonTheme(
+          // REF: https://stackoverflow.com/a/78302373/15424249
+          // Force dropdown menu có chiều rộng bằng với dropdown button
+          alignedDropdown: true,
+          child: dropdown_custom.DropdownButtonFormField<T>(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            dropdownColor: AppColors.colorWhite,
+            decoration: InputDecoration(
+              errorStyle: AppTextStyle.font12Re.copyWith(
+                color: AppColors.statusRed,
+              ),
+              fillColor: AppColors.colorWhite,
+              filled: true,
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                borderSide: const BorderSide(color: AppColors.dsGray4),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                borderSide: const BorderSide(color: AppColors.dsGray4),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                borderSide: const BorderSide(color: AppColors.dsGray4),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                borderSide: const BorderSide(color: AppColors.statusRed),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radius4),
+                borderSide: const BorderSide(color: AppColors.statusRed),
+              ),
+              isDense: true,
+            ),
+            style: AppTextStyle.font14Re,
+            selectedItemBuilder: (context) => items.map(
+              (e) {
+                return SDSBuildText(
+                  display(e),
+                  style: AppTextStyle.font14Re,
+                  maxLines: 2,
+                );
+              },
+            ).toList(),
+            items: items
+                .map(
+                  (e) => dropdown_custom.DropdownMenuItem<T>(
+                    value: e,
+                    child: SDSBuildText(
+                      display(e),
+                      style: selectedItem == e
+                          ? AppTextStyle.font14Bo
+                          : AppTextStyle.font14Re,
+                      maxLines: 2,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                )
+                .toList(),
+            value: selectedItem,
+            validator: (value) {
+              if (!isRequired) return null;
+
+              if (validator != null) {
+                return validator(value);
+              }
+
+              if (value == null) {
+                return "${label.tr} ${LocaleKeys.input_inputEmpty.tr.toLowerCase()}";
+              }
+
+              return null;
+            },
+            onChanged: onChanged,
+            hint: hintText != null
+                ? SDSBuildText(
+                    hintText,
+                    style: AppTextStyle.font14Re.copyWith(
+                      color: AppColors.dsGray3,
+                    ),
+                    maxLines: 2,
+                  )
+                : null,
+          ),
+        ),
+      ],
     );
   }
 
@@ -772,14 +900,59 @@ class UtilWidget {
     );
   }
 
+  static Future<DateTime?> showDateTimePicker({
+    required DateTime dateTimeInit,
+    DateTime? minTime,
+    DateTime? maxTime,
+  }) async {
+    DateTime? newDateTime = await showRoundedDatePicker(
+      context: Get.context!,
+      height: Get.height / 1.8,
+      initialDate: dateTimeInit,
+      firstDate: minTime ?? DateTime.utc(DateTime.now().year - 10),
+      lastDate: maxTime,
+      // barrierDismissible: true,
+      theme: ThemeData(
+        primaryColor: AppColors.colorWhite,
+        dialogBackgroundColor: AppColors.colorWhite,
+        disabledColor: Colors.black54,
+        textTheme: TextTheme(
+          bodySmall: AppTextStyle.font14Semi.copyWith(color: Colors.black54),
+          bodyMedium: AppTextStyle.font16Bo,
+        ),
+      ),
+      styleDatePicker: MaterialRoundedDatePickerStyle(
+        textStyleMonthYearHeader: AppTextStyle.font16Bo,
+        colorArrowNext: Colors.black54,
+        colorArrowPrevious: Colors.black54,
+        textStyleButtonNegative:
+            AppTextStyle.font16Bo.copyWith(color: Colors.black54),
+        textStyleButtonPositive:
+            AppTextStyle.font16Bo.copyWith(color: AppColors.primaryColor),
+        decorationDateSelected: const BoxDecoration(
+          color: AppColors.primaryColor,
+          shape: BoxShape.circle,
+        ),
+        textStyleCurrentDayOnCalendar: AppTextStyle.font16Bo.copyWith(
+          color: AppColors.primaryColor,
+        ),
+        textStyleYearButton: AppTextStyle.font16Bo,
+        textStyleDayButton: AppTextStyle.font16Bo,
+      ),
+    );
+    return newDateTime;
+  }
+
   static Future<DateTime?> showPeriodDatePicker({
     DateTime? dateTime,
+    bool onlyYear = false,
   }) async {
     final context = Get.context;
     if (context == null) return null;
 
     return showMonthPicker(
       context: context,
+      onlyYear: onlyYear,
       initialDate: dateTime ?? DateTime.now(),
       monthPickerDialogSettings: const MonthPickerDialogSettings(
         headerSettings: PickerHeaderSettings(
@@ -836,13 +1009,11 @@ class UtilWidget {
   static Widget buildCheckboxWithLabel({
     required String label,
     required bool value,
-    ValueChanged<bool?>? onChanged,
+    ValueChanged<bool>? onChanged,
   }) {
     return GestureDetector(
       onTap: () {
-        if (onChanged != null) {
-          onChanged(!value);
-        }
+        onChanged?.call(!value);
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -851,7 +1022,9 @@ class UtilWidget {
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             value: value,
             activeColor: AppColors.primaryColor,
-            onChanged: onChanged,
+            onChanged: (value) {
+              onChanged?.call(value ?? false);
+            },
           ),
           SDSBuildText(
             label,

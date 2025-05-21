@@ -33,16 +33,15 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildTabs() {
-    return Obx(
-      () {
-        return Container(
-          decoration: BoxDecoration(
-            color: AppColors.colorWhite,
-            borderRadius: BorderRadius.circular(AppDimens.radius8),
-          ),
-          padding:
-              const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
-          child: Row(
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.colorWhite,
+        borderRadius: BorderRadius.circular(AppDimens.radius8),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
+      child: Obx(
+        () {
+          return Row(
             children: [
               Expanded(
                 child: _buildTabButton(
@@ -56,6 +55,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
               Expanded(
                 child: _buildTabButton(
                   title: 'TK1-TS',
+                  enabled: controller.enableTk1Tab,
                   isSelected: controller.currentTab.value == DeclareInfoTab.tk1,
                   onTap: () {
                     controller.onTabChanged(DeclareInfoTab.tk1);
@@ -65,6 +65,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
               Expanded(
                 child: _buildTabButton(
                   title: 'D01-TS',
+                  enabled: controller.enableD01Tab,
                   isSelected: controller.currentTab.value == DeclareInfoTab.d01,
                   onTap: () {
                     controller.onTabChanged(DeclareInfoTab.d01);
@@ -72,28 +73,33 @@ extension DeclareInfoWidget on DeclareInfoPage {
                 ),
               ),
             ],
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 
   Widget _buildTabButton({
     required String title,
     required isSelected,
+    bool enabled = true,
     VoidCallback? onTap,
   }) {
     return Material(
       color: isSelected ? AppColors.primaryColor : Colors.transparent,
       borderRadius: BorderRadius.circular(AppDimens.radius8),
       child: InkWell(
-        onTap: onTap,
+        onTap: enabled ? onTap : null,
         borderRadius: BorderRadius.circular(AppDimens.radius8),
         child: Center(
           child: SDSBuildText(
             title,
             style: AppTextStyle.font16Re.copyWith(
-              color: isSelected ? AppColors.colorWhite : AppColors.primaryColor,
+              color: !enabled
+                  ? AppColors.dsGray4
+                  : isSelected
+                      ? AppColors.colorWhite
+                      : AppColors.primaryColor,
             ),
           ).paddingSymmetric(
             horizontal: AppDimens.paddingSmall,
@@ -132,7 +138,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
   Widget _buildInputFullName({
     VoidCallback? onTapSelectStaff,
-    bool showSelectStaff = true,
   }) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -141,11 +146,11 @@ extension DeclareInfoWidget on DeclareInfoPage {
           children: [
             Expanded(
               child: _buildInputTitle(
-                title: 'Họ và tên',
+                title: LocaleKeys.declareInfo_fullName.tr,
                 isRequired: true,
               ),
             ),
-            if (showSelectStaff)
+            if (onTapSelectStaff != null)
               TextButton(
                 onPressed: onTapSelectStaff,
                 style: TextButton.styleFrom(
@@ -157,7 +162,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: SDSBuildText(
-                  'Chọn nhân viên',
+                  LocaleKeys.declareInfo_selectStaff.tr,
                   style: AppTextStyle.font16Re.copyWith(
                     color: AppColors.primaryColor,
                     fontStyle: FontStyle.italic,
@@ -169,12 +174,17 @@ extension DeclareInfoWidget on DeclareInfoPage {
         BuildInputText(
           InputTextModel(
             controller: controller.d02Tk1State.fullNameTextCtrl,
-            hintText: 'Nhập thông tin họ tên',
+            hintText: LocaleKeys.declareInfo_fullNameHint.tr,
             isValidate: true,
+            maxLengthInputForm: 100,
+            onChanged: controller.onChangeFullName,
             validator: (value) {
-              if (value.isNullOrEmpty) {
-                return 'Họ và tên không được để trống';
+              final trimmedValue = value?.trim();
+
+              if (trimmedValue == null || trimmedValue.isEmpty) {
+                return LocaleKeys.declareInfo_fullNameCannotEmpty.tr;
               }
+
               return null;
             },
           ),
@@ -206,58 +216,70 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
   Widget _buildInputCCCD() {
     return BuildInputTextWithLabel(
-      label: 'Số CCCD',
+      label: LocaleKeys.declareInfo_cccdNumber.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02Tk1State.cccdTextCtrl,
           isValidate: true,
+          maxLengthInputForm: 20,
+          onChanged: controller.onChangeCCCD,
         ),
       ),
     );
   }
 
-  Widget _buildInputBHXHNumber() {
+  Widget _buildInputBHXHCode() {
     return BuildInputTextWithLabel(
-      label: 'Mã số BHXH',
+      label: LocaleKeys.declareInfo_bhxhCode.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02Tk1State.bhxhTextCtrl,
+          maxLengthInputForm: 10,
         ),
       ),
     );
   }
 
   Widget _buildSelectGender({
-    ValueChanged<Gender?>? onChanged,
+    ValueChanged<Gender>? onChanged,
   }) {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildInputTitle(
-              title: 'Giới tính',
+              title: LocaleKeys.declareInfo_gender.tr,
               isRequired: true,
             ),
-            Radio<Gender>(
-              value: Gender.male,
-              groupValue: controller.d02Tk1State.gender.value,
-              onChanged: onChanged,
-              activeColor: AppColors.primaryColor,
+            Expanded(
+              child: RadioListTile<Gender>(
+                value: Gender.male,
+                groupValue: controller.d02Tk1State.gender.value,
+                title: SDSBuildText(
+                  LocaleKeys.declareInfo_male.tr,
+                  style: AppTextStyle.font16Re,
+                ),
+                onChanged: (value) {
+                  if (value == null) return;
+                  onChanged?.call(value);
+                },
+                activeColor: AppColors.primaryColor,
+              ),
             ),
-            SDSBuildText(
-              'Nam',
-              style: AppTextStyle.font16Re,
-            ),
-            Radio<Gender>(
-              value: Gender.female,
-              groupValue: controller.d02Tk1State.gender.value,
-              onChanged: onChanged,
-              activeColor: AppColors.primaryColor,
-            ),
-            SDSBuildText(
-              'Nữ',
-              style: AppTextStyle.font16Re,
+            Expanded(
+              child: RadioListTile<Gender>(
+                value: Gender.female,
+                groupValue: controller.d02Tk1State.gender.value,
+                title: SDSBuildText(
+                  LocaleKeys.declareInfo_female.tr,
+                  style: AppTextStyle.font16Re,
+                ),
+                onChanged: (value) {
+                  if (value == null) return;
+                  onChanged?.call(value);
+                },
+                activeColor: AppColors.primaryColor,
+              ),
             ),
           ],
         ),
@@ -267,14 +289,14 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
   Widget _buildSelectEthnic() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Dân tộc',
-      hintText: 'Chọn dân tộc',
+      label: LocaleKeys.declareInfo_ethnic.tr,
+      hintText: LocaleKeys.declareInfo_selectEthnic.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn dân tộc',
+            title: LocaleKeys.declareInfo_ethnic.tr,
             listFilter: ['Kinh', 'Thái', 'Tày'],
-            itemSelect: controller.d02Tk1State.selectedEthnic,
+            selectedItem: controller.d02Tk1State.selectedEthnic.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -289,7 +311,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
-          return "Dân tộc không được để trống";
+          return LocaleKeys.declareInfo_ethnicCannotEmpty.tr;
         }
         return null;
       },
@@ -298,14 +320,14 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
   Widget _buildSelectNationality() {
     return UtilWidget.buildBottomSheetSelect<String>(
-      label: 'Quốc tịch',
-      hintText: 'Chọn quốc tịch',
+      label: LocaleKeys.declareInfo_nationality.tr,
+      hintText: LocaleKeys.declareInfo_selectNationality.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<String>(
-            title: 'Chọn quốc tịch',
+            title: LocaleKeys.declareInfo_selectNationality.tr,
             listFilter: ['Việt Nam', 'Lào', 'Campuchia'],
-            itemSelect: controller.d02Tk1State.selectedNationality,
+            selectedItem: controller.d02Tk1State.selectedNationality.value,
             display: (value) => value,
             onAccept: (value) {
               if (value == null) return;
@@ -320,9 +342,27 @@ extension DeclareInfoWidget on DeclareInfoPage {
       display: (ethnic) => ethnic,
       validator: (value) {
         if (value.isNullOrEmpty) {
-          return "Quốc tịch không được để trống";
+          return LocaleKeys.declareInfo_nationalityCannotEmpty.tr;
         }
         return null;
+      },
+    );
+  }
+
+  Widget _buildSelectDateOfBirth() {
+    return UtilWidget.buildSelectDate(
+      LocaleKeys.declareInfo_dob.tr,
+      hintText: PATTERN_1,
+      date: convertDateToStringSafe(
+        controller.d02Tk1State.dateOfBirth.value,
+        PATTERN_1,
+      ),
+      onTap: () async {
+        final selectedDate =
+            await UtilWidget.showDateTimePicker(dateTimeInit: DateTime.now());
+        if (selectedDate != null) {
+          controller.d02Tk1State.dateOfBirth.value = selectedDate;
+        }
       },
     );
   }
@@ -333,9 +373,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
             title: 'Lưu nháp',
-            onPressed: () {
-              Get.back();
-            },
+            onPressed: controller.saveDraft,
           ),
         ),
         UtilWidget.sizedBoxWidth16,

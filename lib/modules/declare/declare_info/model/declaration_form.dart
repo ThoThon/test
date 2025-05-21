@@ -1,9 +1,9 @@
-class DocumentCheckList {
+class DeclarationForm {
   final int id;
   final String title;
   final String user;
 
-  const DocumentCheckList({
+  const DeclarationForm({
     required this.id,
     required this.title,
     required this.user,

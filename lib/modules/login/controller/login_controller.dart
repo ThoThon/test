@@ -13,7 +13,7 @@ class LoginController extends BaseGetxController {
   // Username test : sd8888k17
   // Password test : Viettel@789
   final usernameTextCtrl = TextEditingController();
-  final passwordTextCtrl = TextEditingController();
+  final passwordTextCtrl = TextEditingController(text: 'Viettel@789');
   final isHaveUsername = false.obs;
   final appController = Get.find<AppController>();
 
