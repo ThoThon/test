@@ -263,7 +263,8 @@
     "updateDate": "Ngày cập nhật",
     "fileNumber": "Số hồ sơ",
     "status": "Trạng thái",
-    "createNewPeriod": "+ Tạo mới đợt"
+    "createNewPeriod": "+ Tạo mới đợt",
+    "period": "Đợt"
   },
   "declarationPeriodDetail": {
     "addNewStaff": "Thêm mới nhân viên",

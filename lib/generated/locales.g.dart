@@ -265,6 +265,7 @@ class LocaleKeys {
   static const declarationPeriod_status = 'declarationPeriod_status';
   static const declarationPeriod_createNewPeriod =
       'declarationPeriod_createNewPeriod';
+  static const declarationPeriod_period = 'declarationPeriod_period';
   static const declarationPeriodDetail_addNewStaff =
       'declarationPeriodDetail_addNewStaff';
   static const declarationPeriodDetail_attachFile =
@@ -789,6 +790,7 @@ class Locales {
     'declarationPeriod_fileNumber': 'Số hồ sơ',
     'declarationPeriod_status': 'Trạng thái',
     'declarationPeriod_createNewPeriod': '+ Tạo mới đợt',
+    'declarationPeriod_period': 'Đợt',
     'declarationPeriodDetail_addNewStaff': 'Thêm mới nhân viên',
     'declarationPeriodDetail_attachFile': 'Đính kèm file',
     'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',

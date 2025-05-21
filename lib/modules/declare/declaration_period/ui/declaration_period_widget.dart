@@ -98,7 +98,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SDSBuildText(
-                    "Đợt ${period.period}",
+                    "${LocaleKeys.declarationPeriod_period.tr} ${period.period}",
                     style: AppTextStyle.font16Bo,
                   ),
                   if (period.updateDate != null)

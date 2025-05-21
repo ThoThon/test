@@ -22,6 +22,7 @@ class DeclarationPeriodController extends BaseGetxController {
   Future<void> _getDeclarationPeriods() async {
     try {
       showLoading();
+      declarationPeriods.clear();
       final response = await _repository.getDeclarationPeriods(
         request: ListDeclarationPeriodRequest(
           periodId: argument.loai,
