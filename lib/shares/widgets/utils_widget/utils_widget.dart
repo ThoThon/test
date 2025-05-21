@@ -547,13 +547,15 @@ class UtilWidget {
               return null;
             },
             onChanged: onChanged,
-            hint: SDSBuildText(
-              LocaleKeys.declareInfo_selectPlan.tr,
-              style: AppTextStyle.font14Re.copyWith(
-                color: AppColors.dsGray4,
-              ),
-              maxLines: 2,
-            ),
+            hint: hintText != null
+                ? SDSBuildText(
+                    hintText,
+                    style: AppTextStyle.font14Re.copyWith(
+                      color: AppColors.dsGray3,
+                    ),
+                    maxLines: 2,
+                  )
+                : null,
           ),
         ),
       ],
