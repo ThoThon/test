@@ -368,7 +368,12 @@
     "selectWardOfBirth": "Chọn xã khai sinh",
     "wardOfBirthCannotEmpty": "Xã khai sinh không được bỏ trống",
     "relationshipWithHeadOfHousehold": "Mối quan hệ với chủ hộ",
-    "selectRelationshipWithHeadOfHousehold": "Chọn mối quan hệ với chủ hộ"
+    "selectRelationshipWithHeadOfHousehold": "Chọn mối quan hệ với chủ hộ",
+    "selectBirthType": "Loại ngày sinh",
+    "selectBirthTypeHint": "Chọn loại ngày sinh",
+    "birthTypeYear": "Năm",
+    "birthTypeMonthYear": "Tháng/năm",
+    "birthTypeFull": "Đầy đủ"
   },
   "declarationFromDetail": {
     "title": "Thêm mới bảng kê",

@@ -12,6 +12,7 @@ const String PATTERN_9 = "HH:mm - dd/MM/yyyy";
 const String PATTERN_10 = "dd/MM/yyyy HH:mm:ss";
 const String PATTERN_11 = "yyyyMMddHHmmss";
 const String PATTERN_12 = "MM/yyyy";
+const String PATTERN_13 = 'yyyy';
 const String PATTERN_DEFAULT = "yyyy-MM-dd";
 
 String formatDateTimeToString(DateTime dateTime) {

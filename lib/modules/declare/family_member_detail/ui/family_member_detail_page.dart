@@ -1,5 +1,7 @@
 import 'package:v_bhxh/modules/src.dart';
 
+import '../model/model_src.dart';
+
 part 'family_member_detail_widget.dart';
 
 class FamilyMemberDetailPage

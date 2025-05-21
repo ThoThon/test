@@ -1,6 +1,7 @@
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../../../base_app/base_app.src.dart';
+import '../model/model_src.dart';
 
 class FamilyMemberDetailController extends BaseGetxController {
   /// Họ và tên *
@@ -11,6 +12,8 @@ class FamilyMemberDetailController extends BaseGetxController {
 
   /// Mã số CCCD *
   final cccdTextCtrl = TextEditingController();
+
+  final birthType = BirthTypeEnum.full.obs;
 
   /// Ngày sinh
   final dateOfBirth = Rxn<DateTime>();

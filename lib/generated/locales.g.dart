@@ -408,6 +408,13 @@ class LocaleKeys {
       'familyMember_relationshipWithHeadOfHousehold';
   static const familyMember_selectRelationshipWithHeadOfHousehold =
       'familyMember_selectRelationshipWithHeadOfHousehold';
+  static const familyMember_selectBirthType = 'familyMember_selectBirthType';
+  static const familyMember_selectBirthTypeHint =
+      'familyMember_selectBirthTypeHint';
+  static const familyMember_birthTypeYear = 'familyMember_birthTypeYear';
+  static const familyMember_birthTypeMonthYear =
+      'familyMember_birthTypeMonthYear';
+  static const familyMember_birthTypeFull = 'familyMember_birthTypeFull';
   static const declarationFromDetail_title = 'declarationFromDetail_title';
   static const declarationFromDetail_declarationFromName =
       'declarationFromDetail_declarationFromName';
@@ -866,6 +873,11 @@ class Locales {
     'familyMember_relationshipWithHeadOfHousehold': 'Mối quan hệ với chủ hộ',
     'familyMember_selectRelationshipWithHeadOfHousehold':
         'Chọn mối quan hệ với chủ hộ',
+    'familyMember_selectBirthType': 'Loại ngày sinh',
+    'familyMember_selectBirthTypeHint': 'Chọn loại ngày sinh',
+    'familyMember_birthTypeYear': 'Năm',
+    'familyMember_birthTypeMonthYear': 'Tháng/năm',
+    'familyMember_birthTypeFull': 'Đầy đủ',
     'declarationFromDetail_title': 'Thêm mới bảng kê',
     'declarationFromDetail_declarationFromName': 'Tên bảng kê',
     'declarationFromDetail_fullName': 'Họ và tên',

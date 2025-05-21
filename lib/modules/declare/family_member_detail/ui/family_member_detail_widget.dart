@@ -17,6 +17,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     _buildInputFullName(),
                     UtilWidget.sizedBox16,
                     _buildInputBHXHNumber(),
+                    UtilWidget.sizedBox8,
+                    _buildBirthTypeDropdown(),
                     UtilWidget.sizedBox16,
                     _buildSelectDateOfBirth(),
                     UtilWidget.sizedBox12,
@@ -102,17 +104,51 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
     );
   }
 
+  Widget _buildBirthTypeDropdown() {
+    return UtilWidget.buildDropDownWithLabel2<BirthTypeEnum>(
+      label: LocaleKeys.familyMember_selectBirthType.tr,
+      hintText: LocaleKeys.familyMember_selectBirthTypeHint.tr,
+      items: BirthTypeEnum.values,
+      display: (item) => item.title,
+      selectedItem: controller.birthType.value,
+      onChanged: (value) {
+        if (value == null) {
+          return;
+        }
+        controller.birthType.value = value;
+      },
+    );
+  }
+
   Widget _buildSelectDateOfBirth() {
     return UtilWidget.buildSelectDate(
       LocaleKeys.familyMember_dob.tr,
-      hintText: PATTERN_1,
+      hintText: controller.birthType.value.pattern,
       date: convertDateToStringSafe(
         controller.dateOfBirth.value,
-        PATTERN_1,
+        controller.birthType.value.pattern,
       ),
       onTap: () async {
-        final selectedDate =
-            await UtilWidget.showDateTimePicker(dateTimeInit: DateTime.now());
+        final DateTime? selectedDate;
+
+        switch (controller.birthType.value) {
+          case BirthTypeEnum.year:
+            selectedDate = await UtilWidget.showPeriodDatePicker(
+              dateTime: controller.dateOfBirth.value,
+              onlyYear: true,
+            );
+            break;
+          case BirthTypeEnum.monthYear:
+            selectedDate = await UtilWidget.showPeriodDatePicker(
+              dateTime: controller.dateOfBirth.value,
+            );
+            break;
+          case BirthTypeEnum.full:
+            selectedDate = await UtilWidget.showDateTimePicker(
+                dateTimeInit: DateTime.now());
+            break;
+        }
+
         if (selectedDate != null) {
           controller.dateOfBirth.value = selectedDate;
         }
@@ -323,7 +359,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildDropdownRelationship() {
-    return UtilWidget.buildDropDownWithLabel<String>(
+    return UtilWidget.buildDropDownWithLabel2<String>(
       label: LocaleKeys.familyMember_relationshipWithHeadOfHousehold.tr,
       hintText:
           LocaleKeys.familyMember_selectRelationshipWithHeadOfHousehold.tr,
