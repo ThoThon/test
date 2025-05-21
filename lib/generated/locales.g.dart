@@ -324,6 +324,8 @@ class LocaleKeys {
   static const lookupC12_october = 'lookupC12_october';
   static const lookupC12_november = 'lookupC12_november';
   static const lookupC12_december = 'lookupC12_december';
+  static const lookupC12_month = 'lookupC12_month';
+  static const lookupC12_see = 'lookupC12_see';
 }
 
 class Locales {
@@ -661,5 +663,7 @@ class Locales {
     'lookupC12_october': 'Tháng 10',
     'lookupC12_november': 'Tháng 11',
     'lookupC12_december': 'Tháng 12',
+    'lookupC12_month': 'Tháng',
+    'lookupC12_see': 'Xem',
   };
 }

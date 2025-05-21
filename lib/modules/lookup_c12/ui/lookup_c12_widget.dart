@@ -13,7 +13,7 @@ extension LookupC12Widget on LookupC12Page {
                   SDSBuildText(LocaleKeys.lookupC12_selectYear.tr),
                   _buildSelectYear(),
                   SDSBuildText(
-                    'Năm ${controller.selectedYear.value.year}',
+                    '${LocaleKeys.lookupC12_year.tr} ${controller.selectedYear.value.year}',
                     style: AppTextStyle.font14Bo,
                   ),
                   sdsSBHeight8,
@@ -82,7 +82,7 @@ extension LookupC12Widget on LookupC12Page {
       children: [
         Expanded(
           child: SDSBuildText(
-            'Tháng ${index + 1}',
+            '${LocaleKeys.lookupC12_month.tr} ${index + 1}',
             style: AppTextStyle.font14Bo,
           ),
         ),
@@ -97,7 +97,7 @@ extension LookupC12Widget on LookupC12Page {
               vertical: AppDimens.paddingSmallest,
             ),
             child: SDSBuildText(
-              'Xem',
+              LocaleKeys.lookupC12_see.tr,
               style:
                   AppTextStyle.font12Bo.copyWith(color: AppColors.primaryColor),
             ),
