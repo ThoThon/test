@@ -1,5 +1,7 @@
 import 'package:v_bhxh/modules/src.dart';
 
+import '../model/model_src.dart';
+
 part 'family_member_detail_widget.dart';
 
 class FamilyMemberDetailPage
@@ -14,9 +16,9 @@ class FamilyMemberDetailPage
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: const BaseAppBar(
+      appBar: BaseAppBar(
         title: BaseAppBarTitle(
-          title: 'Thành viên trong gia đình',
+          title: LocaleKeys.familyMember_title.tr,
         ),
       ),
       body: SafeArea(

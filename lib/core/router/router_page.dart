@@ -68,8 +68,8 @@ class RouteAppPage {
       page: () => FamilyMemberDetailPage(),
     ),
     GetPage(
-      name: AppRoutes.checkListDetail.path,
-      page: () => CheckListDetailPage(),
+      name: AppRoutes.declarationFormDetail.path,
+      page: () => DeclarationFormDetailPage(),
     ),
     GetPage(
       name: AppRoutes.declarationList.path,

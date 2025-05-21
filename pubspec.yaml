@@ -76,6 +76,7 @@ dependencies:
       url: https://github.com/HVLoc/dmrtd
       ref: master
   percent_indicator: ^4.2.5
+  flutter_rounded_date_picker: ^3.0.4
 
 dev_dependencies:
   flutter_lints: ^5.0.0

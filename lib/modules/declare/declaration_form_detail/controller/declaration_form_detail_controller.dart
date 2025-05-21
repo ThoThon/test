@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/modules/declare/check_list_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_form_detail/model/model_src.dart';
 
-class CheckListDetailController extends BaseGetxController {
-  final CheckListDetailArgument argument = Get.arguments;
+class DeclarationFormDetailController extends BaseGetxController {
+  final DeclarationFormDetailArgument argument = Get.arguments;
 
   final formKey = GlobalKey<FormState>();
-
-  /// Tên bảng kê
-  final nameTextCtrl = TextEditingController();
 
   /// Họ và tên *
   final fullNameTextCtrl = TextEditingController();
@@ -35,18 +32,33 @@ class CheckListDetailController extends BaseGetxController {
   final summaryTextCtrl = TextEditingController();
 
   /// Nội dung thẩm định *
-  final contentTextCtrl = TextEditingController();
+  final contentToBeAssessedTextCtrl = TextEditingController();
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    if (argument.action.isCreate) {
+      fullNameTextCtrl.text = argument.fullName ?? '';
+      bhxhTextCtrl.text = argument.bhxhCode ?? '';
+    }
+  }
+
+  void submit() {
+    if (formKey.currentState?.validate() ?? false) {
+      //
+    }
+  }
 
   @override
   void onClose() {
-    nameTextCtrl.dispose();
     fullNameTextCtrl.dispose();
     bhxhTextCtrl.dispose();
     documentTypeTextCtrl.dispose();
     documentNumberTextCtrl.dispose();
     issuingAgencyTextCtrl.dispose();
     summaryTextCtrl.dispose();
-    contentTextCtrl.dispose();
+    contentToBeAssessedTextCtrl.dispose();
     super.onClose();
   }
 }

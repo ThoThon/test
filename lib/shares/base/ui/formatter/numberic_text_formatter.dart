@@ -6,16 +6,27 @@ class NumericTextFormatter extends TextInputFormatter {
   //0: VND, 1: Foreign
   final int type;
 
+  // Nếu định dạng là tiền của Việt Nam : true, ngoại tệ : false
   final bool isDot;
+
+  // Độ dài số thập phân
+  final int? lastDecimal;
+
+  // Độ dài số nguyên
+  final int? maxLengthNum;
 
   NumericTextFormatter({
     this.type = 0,
     this.isDot = false,
+    this.maxLengthNum,
+    this.lastDecimal,
   });
 
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     if (newValue.text.isEmpty) {
       return newValue.copyWith(text: '');
     } else if (newValue.text.compareTo(oldValue.text) != 0) {
@@ -30,9 +41,12 @@ class NumericTextFormatter extends TextInputFormatter {
               ),
               isDot: isDot,
             )
+          // formatCurrencyForeign hỗ trợ số thập phân
           : CurrencyUtils.formatCurrencyForeign(
               newValue.text,
               isDot: isDot,
+              maxLengthNum: maxLengthNum,
+              lastDecimal: lastDecimal,
             );
       return TextEditingValue(
         text: newString,

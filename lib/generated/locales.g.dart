@@ -35,6 +35,9 @@ class LocaleKeys {
   static const app_delete = 'app_delete';
   static const app_edit = 'app_edit';
   static const app_edit2 = 'app_edit2';
+  static const app_save = 'app_save';
+  static const app_cancel = 'app_cancel';
+  static const app_close = 'app_close';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
   static const dialog_logout = 'dialog_logout';
   static const dialog_isLogout = 'dialog_isLogout';
@@ -271,6 +274,186 @@ class LocaleKeys {
   static const declarationPeriodDetail_deposit =
       'declarationPeriodDetail_deposit';
   static const declareInfo_title = 'declareInfo_title';
+  static const declareInfo_fullName = 'declareInfo_fullName';
+  static const declareInfo_fullNameHint = 'declareInfo_fullNameHint';
+  static const declareInfo_fullNameCannotEmpty =
+      'declareInfo_fullNameCannotEmpty';
+  static const declareInfo_selectStaff = 'declareInfo_selectStaff';
+  static const declareInfo_bhxhCode = 'declareInfo_bhxhCode';
+  static const declareInfo_declarationType = 'declareInfo_declarationType';
+  static const declareInfo_selectDeclarationType =
+      'declareInfo_selectDeclarationType';
+  static const declareInfo_plan = 'declareInfo_plan';
+  static const declareInfo_selectPlan = 'declareInfo_selectPlan';
+  static const declareInfo_declarationTypeIncreaseLabor =
+      'declareInfo_declarationTypeIncreaseLabor';
+  static const declareInfo_declarationTypeDecreaseLabor =
+      'declareInfo_declarationTypeDecreaseLabor';
+  static const declareInfo_declarationTypeIncreaseSalary =
+      'declareInfo_declarationTypeIncreaseSalary';
+  static const declareInfo_declarationTypeDecreaseSalary =
+      'declareInfo_declarationTypeDecreaseSalary';
+  static const declareInfo_declarationTypeOther =
+      'declareInfo_declarationTypeOther';
+  static const declareInfo_generateTk1Data = 'declareInfo_generateTk1Data';
+  static const declareInfo_cccdNumber = 'declareInfo_cccdNumber';
+  static const declareInfo_dob = 'declareInfo_dob';
+  static const declareInfo_gender = 'declareInfo_gender';
+  static const declareInfo_male = 'declareInfo_male';
+  static const declareInfo_female = 'declareInfo_female';
+  static const declareInfo_ethnic = 'declareInfo_ethnic';
+  static const declareInfo_selectEthnic = 'declareInfo_selectEthnic';
+  static const declareInfo_ethnicCannotEmpty = 'declareInfo_ethnicCannotEmpty';
+  static const declareInfo_nationality = 'declareInfo_nationality';
+  static const declareInfo_selectNationality = 'declareInfo_selectNationality';
+  static const declareInfo_nationalityCannotEmpty =
+      'declareInfo_nationalityCannotEmpty';
+  static const declareInfo_fromMonthYear = 'declareInfo_fromMonthYear';
+  static const declareInfo_toMonthYear = 'declareInfo_toMonthYear';
+  static const declareInfo_position = 'declareInfo_position';
+  static const declareInfo_workplace = 'declareInfo_workplace';
+  static const declareInfo_payBySalaryCoefficient =
+      'declareInfo_payBySalaryCoefficient';
+  static const declareInfo_salaryCoefficient = 'declareInfo_salaryCoefficient';
+  static const declareInfo_positionAllowance = 'declareInfo_positionAllowance';
+  static const declareInfo_pcTNN = 'declareInfo_pcTNN';
+  static const declareInfo_pcTNVuotKhung = 'declareInfo_pcTNVuotKhung';
+  static const declareInfo_salaryAllowance = 'declareInfo_salaryAllowance';
+  static const declareInfo_otherAllowance = 'declareInfo_otherAllowance';
+  static const declareInfo_note = 'declareInfo_note';
+  static const declareInfo_provinceOfBirth = 'declareInfo_provinceOfBirth';
+  static const declareInfo_selectProvinceOfBirth =
+      'declareInfo_selectProvinceOfBirth';
+  static const declareInfo_provinceOfBirthCannotEmpty =
+      'declareInfo_provinceOfBirthCannotEmpty';
+  static const declareInfo_districtOfBirth = 'declareInfo_districtOfBirth';
+  static const declareInfo_selectDistrictOfBirth =
+      'declareInfo_selectDistrictOfBirth';
+  static const declareInfo_districtOfBirthCannotEmpty =
+      'declareInfo_districtOfBirthCannotEmpty';
+  static const declareInfo_wardOfBirth = 'declareInfo_wardOfBirth';
+  static const declareInfo_selectWardOfBirth = 'declareInfo_selectWardOfBirth';
+  static const declareInfo_wardOfBirthCannotEmpty =
+      'declareInfo_wardOfBirthCannotEmpty';
+  static const declareInfo_birthAddress = 'declareInfo_birthAddress';
+  static const declareInfo_duplicateBirthAddress =
+      'declareInfo_duplicateBirthAddress';
+  static const declareInfo_provinceReceive = 'declareInfo_provinceReceive';
+  static const declareInfo_selectProvinceReceive =
+      'declareInfo_selectProvinceReceive';
+  static const declareInfo_provinceReceiveCannotEmpty =
+      'declareInfo_provinceReceiveCannotEmpty';
+  static const declareInfo_districtReceive = 'declareInfo_districtReceive';
+  static const declareInfo_selectDistrictReceive =
+      'declareInfo_selectDistrictReceive';
+  static const declareInfo_districtReceiveCannotEmpty =
+      'declareInfo_districtReceiveCannotEmpty';
+  static const declareInfo_wardReceive = 'declareInfo_wardReceive';
+  static const declareInfo_selectWardReceive = 'declareInfo_selectWardReceive';
+  static const declareInfo_wardReceiveCannotEmpty =
+      'declareInfo_wardReceiveCannotEmpty';
+  static const declareInfo_addressReceive = 'declareInfo_addressReceive';
+  static const declareInfo_provinceKCB = 'declareInfo_provinceKCB';
+  static const declareInfo_selectProvinceKCB = 'declareInfo_selectProvinceKCB';
+  static const declareInfo_provinceKCBCannotEmpty =
+      'declareInfo_provinceKCBCannotEmpty';
+  static const declareInfo_hospitalKCB = 'declareInfo_hospitalKCB';
+  static const declareInfo_selectHospitalKCB = 'declareInfo_selectHospitalKCB';
+  static const declareInfo_hospitalKCBCannotEmpty =
+      'declareInfo_hospitalKCBCannotEmpty';
+  static const declareInfo_contactPhoneNumber =
+      'declareInfo_contactPhoneNumber';
+  static const declareInfo_participantHeadOfHousehold =
+      'declareInfo_participantHeadOfHousehold';
+  static const declareInfo_headOfHouseholdFullName =
+      'declareInfo_headOfHouseholdFullName';
+  static const declareInfo_headOfHouseholdCCCD =
+      'declareInfo_headOfHouseholdCCCD';
+  static const declareInfo_provinceTT = 'declareInfo_provinceTT';
+  static const declareInfo_selectProvinceTT = 'declareInfo_selectProvinceTT';
+  static const declareInfo_districtTT = 'declareInfo_districtTT';
+  static const declareInfo_selectDistrictTT = 'declareInfo_selectDistrictTT';
+  static const declareInfo_wardTT = 'declareInfo_wardTT';
+  static const declareInfo_selectWardTT = 'declareInfo_selectWardTT';
+  static const declareInfo_addressTT = 'declareInfo_addressTT';
+  static const declareInfo_familyMembers = 'declareInfo_familyMembers';
+  static const familyMember_title = 'familyMember_title';
+  static const familyMember_fullName = 'familyMember_fullName';
+  static const familyMember_fullNameCannotEmpty =
+      'familyMember_fullNameCannotEmpty';
+  static const familyMember_bhxhCode = 'familyMember_bhxhCode';
+  static const familyMember_dob = 'familyMember_dob';
+  static const familyMember_gender = 'familyMember_gender';
+  static const familyMember_ethnic = 'familyMember_ethnic';
+  static const familyMember_selectEthnic = 'familyMember_selectEthnic';
+  static const familyMember_ethnicCannotEmpty =
+      'familyMember_ethnicCannotEmpty';
+  static const familyMember_nationality = 'familyMember_nationality';
+  static const familyMember_selectNationality =
+      'familyMember_selectNationality';
+  static const familyMember_nationalityCannotEmpty =
+      'familyMember_nationalityCannotEmpty';
+  static const familyMember_provinceOfBirth = 'familyMember_provinceOfBirth';
+  static const familyMember_selectProvinceOfBirth =
+      'familyMember_selectProvinceOfBirth';
+  static const familyMember_provinceOfBirthCannotEmpty =
+      'familyMember_provinceOfBirthCannotEmpty';
+  static const familyMember_districtOfBirth = 'familyMember_districtOfBirth';
+  static const familyMember_selectDistrictOfBirth =
+      'familyMember_selectDistrictOfBirth';
+  static const familyMember_districtOfBirthCannotEmpty =
+      'familyMember_districtOfBirthCannotEmpty';
+  static const familyMember_wardOfBirth = 'familyMember_wardOfBirth';
+  static const familyMember_selectWardOfBirth =
+      'familyMember_selectWardOfBirth';
+  static const familyMember_wardOfBirthCannotEmpty =
+      'familyMember_wardOfBirthCannotEmpty';
+  static const familyMember_relationshipWithHeadOfHousehold =
+      'familyMember_relationshipWithHeadOfHousehold';
+  static const familyMember_selectRelationshipWithHeadOfHousehold =
+      'familyMember_selectRelationshipWithHeadOfHousehold';
+  static const familyMember_selectBirthType = 'familyMember_selectBirthType';
+  static const familyMember_selectBirthTypeHint =
+      'familyMember_selectBirthTypeHint';
+  static const familyMember_birthTypeYear = 'familyMember_birthTypeYear';
+  static const familyMember_birthTypeMonthYear =
+      'familyMember_birthTypeMonthYear';
+  static const familyMember_birthTypeFull = 'familyMember_birthTypeFull';
+  static const familyMember_cccdNumber = 'familyMember_cccdNumber';
+  static const familyMember_note = 'familyMember_note';
+  static const familyMember_isParticipant = 'familyMember_isParticipant';
+  static const declarationFromDetail_title = 'declarationFromDetail_title';
+  static const declarationFromDetail_declarationFromName =
+      'declarationFromDetail_declarationFromName';
+  static const declarationFromDetail_fullName =
+      'declarationFromDetail_fullName';
+  static const declarationFromDetail_fullNameCannotEmpty =
+      'declarationFromDetail_fullNameCannotEmpty';
+  static const declarationFromDetail_bhxhCode =
+      'declarationFromDetail_bhxhCode';
+  static const declarationFromDetail_documentType =
+      'declarationFromDetail_documentType';
+  static const declarationFromDetail_documentTypeCannotEmpty =
+      'declarationFromDetail_documentTypeCannotEmpty';
+  static const declarationFromDetail_documentNumber =
+      'declarationFromDetail_documentNumber';
+  static const declarationFromDetail_documentNumberCannotEmpty =
+      'declarationFromDetail_documentNumberCannotEmpty';
+  static const declarationFromDetail_dateOfIssue =
+      'declarationFromDetail_dateOfIssue';
+  static const declarationFromDetail_effectiveDate =
+      'declarationFromDetail_effectiveDate';
+  static const declarationFromDetail_issuingAgency =
+      'declarationFromDetail_issuingAgency';
+  static const declarationFromDetail_issuingAgencyCannotEmpty =
+      'declarationFromDetail_issuingAgencyCannotEmpty';
+  static const declarationFromDetail_summary = 'declarationFromDetail_summary';
+  static const declarationFromDetail_summaryCannotEmpty =
+      'declarationFromDetail_summaryCannotEmpty';
+  static const declarationFromDetail_contentToBeAssessed =
+      'declarationFromDetail_contentToBeAssessed';
+  static const declarationFromDetail_contentToBeAssessedCannotEmpty =
+      'declarationFromDetail_contentToBeAssessedCannotEmpty';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -361,6 +544,9 @@ class Locales {
     'app_delete': 'Xóa',
     'app_edit': 'Sửa',
     'app_edit2': 'Chỉnh sửa',
+    'app_save': 'Lưu',
+    'app_cancel': 'Hủy bỏ',
+    'app_close': 'Đóng',
     'dialog_close': 'Đóng',
     'dialog_errorConnectFailedStr':
         'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',
@@ -608,6 +794,144 @@ class Locales {
     'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',
     'declarationPeriodDetail_deposit': 'Ký gửi',
     'declareInfo_title': 'Kê khai thông tin',
+    'declareInfo_fullName': 'Họ và tên',
+    'declareInfo_fullNameHint': 'Nhập họ và tên',
+    'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
+    'declareInfo_selectStaff': 'Chọn nhân viên',
+    'declareInfo_bhxhCode': 'Mã số BHXH',
+    'declareInfo_declarationType': 'Loại khai báo',
+    'declareInfo_selectDeclarationType': 'Chọn loại khai báo',
+    'declareInfo_plan': 'Phương án',
+    'declareInfo_selectPlan': 'Chọn phương án',
+    'declareInfo_declarationTypeIncreaseLabor': 'Tăng lao động',
+    'declareInfo_declarationTypeDecreaseLabor': 'Giảm lao động',
+    'declareInfo_declarationTypeIncreaseSalary': 'Tăng lương',
+    'declareInfo_declarationTypeDecreaseSalary': 'Giảm lương',
+    'declareInfo_declarationTypeOther': 'Khác',
+    'declareInfo_generateTk1Data': 'Sinh dữ liệu TK1-TS',
+    'declareInfo_cccdNumber': 'Số CCCD',
+    'declareInfo_dob': 'Ngày sinh',
+    'declareInfo_gender': 'Giới tính',
+    'declareInfo_male': 'Nam',
+    'declareInfo_female': 'Nữ',
+    'declareInfo_ethnic': 'Dân tộc',
+    'declareInfo_selectEthnic': 'Chọn dân tộc',
+    'declareInfo_ethnicCannotEmpty': 'Dân tộc không được bỏ trống',
+    'declareInfo_nationality': 'Quốc tịch',
+    'declareInfo_selectNationality': 'Chọn quốc tịch',
+    'declareInfo_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
+    'declareInfo_fromMonthYear': 'Từ tháng/năm',
+    'declareInfo_toMonthYear': 'Đến tháng/năm',
+    'declareInfo_position': 'Cấp bập/chức vụ',
+    'declareInfo_workplace': 'Nơi làm việc',
+    'declareInfo_payBySalaryCoefficient': 'Đóng theo hệ số',
+    'declareInfo_salaryCoefficient': 'Tiền lương/Hệ số',
+    'declareInfo_positionAllowance': 'PC chức vụ',
+    'declareInfo_pcTNN': 'PC TNN (%)',
+    'declareInfo_pcTNVuotKhung': 'PC TN vượt khung (%)',
+    'declareInfo_salaryAllowance': 'Phụ cấp lương',
+    'declareInfo_otherAllowance': 'Các khoản bổ sung',
+    'declareInfo_note': 'Ghi chú',
+    'declareInfo_provinceOfBirth': 'Tỉnh khai sinh',
+    'declareInfo_selectProvinceOfBirth': 'Chọn tỉnh khai sinh',
+    'declareInfo_provinceOfBirthCannotEmpty':
+        'Tỉnh khai sinh không được bỏ trống',
+    'declareInfo_districtOfBirth': 'Huyện khai sinh',
+    'declareInfo_selectDistrictOfBirth': 'Chọn huyện khai sinh',
+    'declareInfo_districtOfBirthCannotEmpty':
+        'Huyện khai sinh không được bỏ trống',
+    'declareInfo_wardOfBirth': 'Xã khai sinh',
+    'declareInfo_selectWardOfBirth': 'Chọn xã khai sinh',
+    'declareInfo_wardOfBirthCannotEmpty': 'Xã khai sinh không được bỏ trống',
+    'declareInfo_birthAddress': 'Địa chỉ khai sinh',
+    'declareInfo_duplicateBirthAddress': 'Trùng địa chỉ khai sinh',
+    'declareInfo_provinceReceive': 'Tỉnh nơi nhận',
+    'declareInfo_selectProvinceReceive': 'Chọn tỉnh nơi nhận',
+    'declareInfo_provinceReceiveCannotEmpty':
+        'Tỉnh nơi nhận không được bỏ trống',
+    'declareInfo_districtReceive': 'Huyện nơi nhận',
+    'declareInfo_selectDistrictReceive': 'Chọn huyện nơi nhận',
+    'declareInfo_districtReceiveCannotEmpty':
+        'Huyện nơi nhận không được bỏ trống',
+    'declareInfo_wardReceive': 'Xã nơi nhận',
+    'declareInfo_selectWardReceive': 'Chọn xã nơi nhận',
+    'declareInfo_wardReceiveCannotEmpty': 'Xã nơi nhận không được bỏ trống',
+    'declareInfo_addressReceive': 'Địa chỉ nơi nhận',
+    'declareInfo_provinceKCB': 'Tỉnh nơi KCB',
+    'declareInfo_selectProvinceKCB': 'Chọn tỉnh nơi KCB',
+    'declareInfo_provinceKCBCannotEmpty': 'Tỉnh nơi KCB không được bỏ trống',
+    'declareInfo_hospitalKCB': 'Bệnh viện nơi KCB',
+    'declareInfo_selectHospitalKCB': 'Chọn bệnh viện nơi KCB',
+    'declareInfo_hospitalKCBCannotEmpty':
+        'Bệnh viện nơi KCB không được bỏ trống',
+    'declareInfo_contactPhoneNumber': 'Số điện thoại liên hệ',
+    'declareInfo_participantHeadOfHousehold': 'Người tham gia là chủ hộ',
+    'declareInfo_headOfHouseholdFullName': 'Họ và tên chủ hộ',
+    'declareInfo_headOfHouseholdCCCD': 'Số CCCD/ĐDCN của chủ hộ',
+    'declareInfo_provinceTT': 'Tỉnh thường trú',
+    'declareInfo_selectProvinceTT': 'Chọn tỉnh thường trú',
+    'declareInfo_districtTT': 'Huyện thường trú',
+    'declareInfo_selectDistrictTT': 'Chọn huyện thường trú',
+    'declareInfo_wardTT': 'Xã thường trú',
+    'declareInfo_selectWardTT': 'Chọn xã thường trú',
+    'declareInfo_addressTT': 'Địa chỉ thường trú',
+    'declareInfo_familyMembers': 'Danh sách thành viên trong gia đình',
+    'familyMember_title': 'Thành viên trong gia đình',
+    'familyMember_fullName': 'Họ và tên',
+    'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
+    'familyMember_bhxhCode': 'Mã số BHXH',
+    'familyMember_dob': 'Ngày sinh',
+    'familyMember_gender': 'Giới tính',
+    'familyMember_ethnic': 'Dân tộc',
+    'familyMember_selectEthnic': 'Chọn dân tộc',
+    'familyMember_ethnicCannotEmpty': 'Dân tộc không được bỏ trống',
+    'familyMember_nationality': 'Quốc tịch',
+    'familyMember_selectNationality': 'Chọn quốc tịch',
+    'familyMember_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
+    'familyMember_provinceOfBirth': 'Tỉnh khai sinh',
+    'familyMember_selectProvinceOfBirth': 'Chọn tỉnh khai sinh',
+    'familyMember_provinceOfBirthCannotEmpty':
+        'Tỉnh khai sinh không được bỏ trống',
+    'familyMember_districtOfBirth': 'Huyện khai sinh',
+    'familyMember_selectDistrictOfBirth': 'Chọn huyện khai sinh',
+    'familyMember_districtOfBirthCannotEmpty':
+        'Huyện khai sinh không được bỏ trống',
+    'familyMember_wardOfBirth': 'Xã khai sinh',
+    'familyMember_selectWardOfBirth': 'Chọn xã khai sinh',
+    'familyMember_wardOfBirthCannotEmpty': 'Xã khai sinh không được bỏ trống',
+    'familyMember_relationshipWithHeadOfHousehold': 'Mối quan hệ với chủ hộ',
+    'familyMember_selectRelationshipWithHeadOfHousehold':
+        'Chọn mối quan hệ với chủ hộ',
+    'familyMember_selectBirthType': 'Loại ngày sinh',
+    'familyMember_selectBirthTypeHint': 'Chọn loại ngày sinh',
+    'familyMember_birthTypeYear': 'Năm',
+    'familyMember_birthTypeMonthYear': 'Tháng/năm',
+    'familyMember_birthTypeFull': 'Đầy đủ',
+    'familyMember_cccdNumber': 'Số CMND/CCCD/HC',
+    'familyMember_note': 'Ghi chú',
+    'familyMember_isParticipant': 'Là người tham gia',
+    'declarationFromDetail_title': 'Kê khai thông tin bảng kê hồ sơ',
+    'declarationFromDetail_declarationFromName': 'Tên bảng kê',
+    'declarationFromDetail_fullName': 'Họ và tên',
+    'declarationFromDetail_fullNameCannotEmpty':
+        'Họ và tên không được bỏ trống',
+    'declarationFromDetail_bhxhCode': 'Mã số BHXH',
+    'declarationFromDetail_documentType': 'Tên loại văn bản',
+    'declarationFromDetail_documentTypeCannotEmpty':
+        'Tên loại văn bản không được bỏ trống',
+    'declarationFromDetail_documentNumber': 'Số văn bản',
+    'declarationFromDetail_documentNumberCannotEmpty':
+        'Số văn bản không được bỏ trống',
+    'declarationFromDetail_dateOfIssue': 'Ngày ban hành',
+    'declarationFromDetail_effectiveDate': 'Ngày hiệu lực',
+    'declarationFromDetail_issuingAgency': 'Cơ quan ban hành',
+    'declarationFromDetail_issuingAgencyCannotEmpty':
+        'Cơ quan ban hành không được bỏ trống',
+    'declarationFromDetail_summary': 'Trích yếu',
+    'declarationFromDetail_summaryCannotEmpty': 'Trích yếu không được bỏ trống',
+    'declarationFromDetail_contentToBeAssessed': 'Nội dung cần thẩm định',
+    'declarationFromDetail_contentToBeAssessedCannotEmpty':
+        'Nội dung cần thẩm định không được bỏ trống',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

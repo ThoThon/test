@@ -1,6 +1,6 @@
-export 'check_list_detail/controller/controller_src.dart';
-export 'check_list_detail/model/model_src.dart';
-export 'check_list_detail/ui/check_list_detail_page.dart';
+export 'declaration_form_detail/controller/controller_src.dart';
+export 'declaration_form_detail/model/model_src.dart';
+export 'declaration_form_detail/ui/declaration_form_detail_page.dart';
 export 'declaration_period/controller/controller_src.dart';
 export 'declaration_period/model/model_src.dart';
 export 'declaration_period/ui/declaration_period_page.dart';

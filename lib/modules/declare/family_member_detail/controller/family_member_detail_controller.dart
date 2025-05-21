@@ -1,8 +1,11 @@
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../../../base_app/base_app.src.dart';
+import '../model/model_src.dart';
 
 class FamilyMemberDetailController extends BaseGetxController {
+  final formKey = GlobalKey<FormState>();
+
   /// Họ và tên *
   final fullNameTextCtrl = TextEditingController();
 
@@ -11,6 +14,11 @@ class FamilyMemberDetailController extends BaseGetxController {
 
   /// Mã số CCCD *
   final cccdTextCtrl = TextEditingController();
+
+  /// Ghi chú
+  final noteTextCtrl = TextEditingController();
+
+  final birthType = BirthTypeEnum.full.obs;
 
   /// Ngày sinh
   final dateOfBirth = Rxn<DateTime>();
@@ -34,16 +42,23 @@ class FamilyMemberDetailController extends BaseGetxController {
   final selectedWard = Rxn<String>();
 
   /// Mối quan hệ với chủ hộ
-  final selectedRelationship = Rxn<String>();
+  final relationship = Rxn<String>();
 
   /// Là người tham gia
   final isParticipant = false.obs;
+
+  void onSubmit() {
+    if (formKey.currentState?.validate() ?? false) {
+      // TODO:
+    }
+  }
 
   @override
   void onClose() {
     fullNameTextCtrl.dispose();
     bhxhTextCtrl.dispose();
     cccdTextCtrl.dispose();
+    noteTextCtrl.dispose();
     super.onClose();
   }
 }

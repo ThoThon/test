@@ -6,16 +6,16 @@ extension D01TabWidget on DeclareInfoPage {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ...controller.d01State.checkLists.mapIndexed(
-            (index, checkList) {
+          ...controller.d01State.forms.mapIndexed(
+            (index, form) {
               return _buildD01Item(
                 index: index,
-                checkList: checkList,
+                form: form,
               );
             },
           ),
           InkWell(
-            onTap: controller.createNewCheckList,
+            onTap: controller.createNewDeclarationForm,
             child: Row(
               children: [
                 Ink(
@@ -26,7 +26,7 @@ extension D01TabWidget on DeclareInfoPage {
                   child: IconButton(
                     icon: const Icon(Icons.add),
                     color: Colors.white,
-                    onPressed: controller.createNewCheckList,
+                    onPressed: controller.createNewDeclarationForm,
                   ),
                 ),
                 UtilWidget.sizedBoxWidth16,
@@ -47,17 +47,17 @@ extension D01TabWidget on DeclareInfoPage {
 
   Widget _buildD01Item({
     required int index,
-    required DocumentCheckList checkList,
+    required DeclarationForm form,
   }) {
     return Slidable(
-      key: ValueKey(checkList.id),
+      key: ValueKey(form.id),
       endActionPane: ActionPane(
         // A motion is a widget used to control how the pane animates.
         motion: const ScrollMotion(),
         children: [
           CustomSlidableAction(
             onPressed: (ctx) {
-              controller.showDialogDeleteCheckList(checkList);
+              controller.showDialogDeleteForm(form);
             },
             backgroundColor: AppColors.primaryColor,
             foregroundColor: Colors.white,
@@ -83,11 +83,11 @@ extension D01TabWidget on DeclareInfoPage {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SDSBuildText(
-                    checkList.title,
+                    form.title,
                     style: AppTextStyle.font16Semi,
                   ),
                   SDSBuildText(
-                    checkList.user,
+                    form.user,
                     style: AppTextStyle.font16Re,
                   ),
                 ],
@@ -97,10 +97,10 @@ extension D01TabWidget on DeclareInfoPage {
               title: 'Sửa',
               onPressed: () {
                 Get.toNamed(
-                  AppRoutes.checkListDetail.path,
-                  arguments: CheckListDetailArgument(
-                    checkList: checkList,
-                    action: CheckListDetailAction.edit,
+                  AppRoutes.declarationFormDetail.path,
+                  arguments: DeclarationFormDetailArgument(
+                    declarationForm: form,
+                    action: DeclarationFormDetailAction.edit,
                   ),
                 );
               },

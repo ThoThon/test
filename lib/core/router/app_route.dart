@@ -7,7 +7,7 @@ enum AppRoutes {
   depositInfo,
   declareInfo,
   familyMemberDetail,
-  checkListDetail,
+  declarationFormDetail,
   declarationList,
   viewPdf,
 

@@ -26,7 +26,7 @@ class BuildInputTextWithLabel extends StatelessWidget {
               SDSBuildText(
                 label,
                 style: textStyle ??
-                    AppTextStyle.font12Bo.copyWith(
+                    AppTextStyle.font16Bo.copyWith(
                       color: AppColors.dsGray1,
                     ),
               ),
