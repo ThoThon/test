@@ -55,7 +55,7 @@ class LocaleKeys {
   static const home_history = 'home_history';
   static const home_lookupC12 = 'home_lookupC12';
   static const home_guide = 'home_guide';
-  static const home_declare = 'home_declare';
+  static const home_procedureList = 'home_procedureList';
   static const home_langugue = 'home_langugue';
   static const home_changePassword = 'home_changePassword';
   static const home_support = 'home_support';
@@ -403,7 +403,7 @@ class Locales {
     'home_history': 'Lịch sử',
     'home_lookupC12': 'Tra cứu \nC12',
     'home_guide': 'Hướng dẫn',
-    'home_declare': 'Kê khai',
+    'home_procedureList': 'Danh sách \nthủ tục',
     'home_langugue': 'Ngôn ngữ',
     'home_changePassword': 'Đổi mật khẩu',
     'home_support': 'CSKH: 1900 1900',

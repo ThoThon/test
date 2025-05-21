@@ -1,4 +1,5 @@
 21/05/2025
+- Sửa text Kê khai thành Danh sách thủ tục tại màn Trang chủ - BHW-2162
 - Giao diện màn tra cứu C12
 
 19/05/2025
