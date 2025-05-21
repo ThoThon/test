@@ -375,6 +375,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         InputTextModel(
           controller: controller.tk1State.headOfHouseholdTextCtrl,
           onChanged: controller.onChangeHeadOfHouseholdFullName,
+          maxLengthInputForm: 100,
         ),
       ),
     );
@@ -387,6 +388,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         InputTextModel(
           controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
           onChanged: controller.onChangeHeadOfHouseholdCCCD,
+          maxLengthInputForm: 20,
         ),
       ),
     );
