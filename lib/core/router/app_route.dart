@@ -24,9 +24,13 @@ enum AppRoutes {
   ///Lịch sử
   history,
 
+  ///Tra cứu C12
+  lookupC12,
+
   ///Chi tiết lịch sử
   historyDetail,
 
+  ///Thông tin user khi scan CCCD
   routeNfcInformationUser,
 
   //Quét CCCD

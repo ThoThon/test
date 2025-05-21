@@ -802,6 +802,37 @@ class UtilWidget {
     );
   }
 
+  static Future<int?> showYearLookUp({
+    DateTime? dateTime,
+  }) async {
+    final context = Get.context;
+    if (context == null) return null;
+    return showYearPicker(
+      context: context,
+      initialDate: dateTime ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+      monthPickerDialogSettings: const MonthPickerDialogSettings(
+        headerSettings: PickerHeaderSettings(
+          headerBackgroundColor: AppColors.primaryColor,
+        ),
+        dialogSettings: PickerDialogSettings(
+          locale: Locale('vi'),
+          dialogRoundedCornersRadius: 4,
+          dialogBackgroundColor: Colors.white,
+        ),
+        dateButtonsSettings: PickerDateButtonsSettings(
+          buttonBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(4),
+            ),
+          ),
+          selectedMonthBackgroundColor: AppColors.primaryColor,
+        ),
+      ),
+    );
+  }
+
   static Widget buildCheckboxWithLabel({
     required String label,
     required bool value,

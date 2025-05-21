@@ -74,22 +74,22 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
       _buildItem(
         index: 0,
         assetName: Assets.ASSETS_ICONS_HOME_IC_HOME_SVG,
-        label: 'Trang chủ',
+        label: LocaleKeys.pageBuilder_home.tr,
       ),
       _buildItem(
         index: 1,
         assetName: Assets.ASSETS_ICONS_HOME_IC_STATIS_SVG,
-        label: 'Báo cáo',
+        label: LocaleKeys.pageBuilder_report.tr,
       ),
       _buildItem(
         index: 2,
         assetName: Assets.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG,
-        label: 'Thông báo',
+        label: LocaleKeys.pageBuilder_notification.tr,
       ),
       _buildItem(
         index: 3,
         assetName: Assets.ASSETS_ICONS_HOME_IC_PROFILE_SVG,
-        label: 'Tài khoản',
+        label: LocaleKeys.pageBuilder_account.tr,
       ),
     ];
   }

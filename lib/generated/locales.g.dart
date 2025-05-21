@@ -250,6 +250,10 @@ class LocaleKeys {
   static const login_inputTaxCode = 'login_inputTaxCode';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_declare = 'procedureList_declare';
+  static const pageBuilder_home = 'pageBuilder_home';
+  static const pageBuilder_report = 'pageBuilder_report';
+  static const pageBuilder_notification = 'pageBuilder_notification';
+  static const pageBuilder_account = 'pageBuilder_account';
   static const declarationPeriod_title = 'declarationPeriod_title';
   static const declarationPeriod_month = 'declarationPeriod_month';
   static const declarationPeriod_selectMonth = 'declarationPeriod_selectMonth';
@@ -304,6 +308,24 @@ class LocaleKeys {
   static const infomationUser_fatherName = 'infomationUser_fatherName';
   static const infomationUser_motherName = 'infomationUser_motherName';
   static const infomationUser_continue = 'infomationUser_continue';
+  static const lookupC12_lookupC12 = 'lookupC12_lookupC12';
+  static const lookupC12_year = 'lookupC12_year';
+  static const lookupC12_selectYear = 'lookupC12_selectYear';
+  static const lookupC12_lookup = 'lookupC12_lookup';
+  static const lookupC12_january = 'lookupC12_january';
+  static const lookupC12_february = 'lookupC12_february';
+  static const lookupC12_march = 'lookupC12_march';
+  static const lookupC12_april = 'lookupC12_april';
+  static const lookupC12_may = 'lookupC12_may';
+  static const lookupC12_june = 'lookupC12_june';
+  static const lookupC12_july = 'lookupC12_july';
+  static const lookupC12_august = 'lookupC12_august';
+  static const lookupC12_september = 'lookupC12_september';
+  static const lookupC12_october = 'lookupC12_october';
+  static const lookupC12_november = 'lookupC12_november';
+  static const lookupC12_december = 'lookupC12_december';
+  static const lookupC12_month = 'lookupC12_month';
+  static const lookupC12_see = 'lookupC12_see';
 }
 
 class Locales {
@@ -570,6 +592,10 @@ class Locales {
     'login_inputTaxCode': 'Mã số thuế/ Mã ngân sách',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_declare': 'Kê khai',
+    'pageBuilder_home': 'Trang chủ',
+    'pageBuilder_report': 'Báo cáo',
+    'pageBuilder_notification': 'Thông báo',
+    'pageBuilder_account': 'Tài khoản',
     'declarationPeriod_title': 'Đợt kê khai',
     'declarationPeriod_month': 'Tháng',
     'declarationPeriod_selectMonth': 'Chọn tháng',
@@ -621,5 +647,23 @@ class Locales {
     'infomationUser_fatherName': 'Họ tên bố',
     'infomationUser_motherName': 'Họ tên mẹ',
     'infomationUser_continue': 'Tiếp tục',
+    'lookupC12_lookupC12': 'Tra cứu C12',
+    'lookupC12_year': 'Năm',
+    'lookupC12_selectYear': 'Chọn năm',
+    'lookupC12_lookup': 'Tra cứu',
+    'lookupC12_january': 'Tháng 1',
+    'lookupC12_february': 'Tháng 2',
+    'lookupC12_march': 'Tháng 3',
+    'lookupC12_april': 'Tháng 4',
+    'lookupC12_may': 'Tháng 5',
+    'lookupC12_june': 'Tháng 6',
+    'lookupC12_july': 'Tháng 7',
+    'lookupC12_august': 'Tháng 8',
+    'lookupC12_september': 'Tháng 9',
+    'lookupC12_october': 'Tháng 10',
+    'lookupC12_november': 'Tháng 11',
+    'lookupC12_december': 'Tháng 12',
+    'lookupC12_month': 'Tháng',
+    'lookupC12_see': 'Xem',
   };
 }
