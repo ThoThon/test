@@ -1,3 +1,6 @@
+21/05/2025
+- Giao diện màn tra cứu C12
+
 19/05/2025
 - Cập nhật logic màn login (logic nhớ tài khoản)
 - Sửa lại view PDF thành scroll
