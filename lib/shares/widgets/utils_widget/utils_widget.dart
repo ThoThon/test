@@ -505,15 +505,10 @@ class UtilWidget {
             style: AppTextStyle.font14Re,
             selectedItemBuilder: (context) => items.map(
               (e) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimens.paddingVerySmall,
-                  ),
-                  child: SDSBuildText(
-                    display(e),
-                    style: AppTextStyle.font14Re,
-                    maxLines: 2,
-                  ),
+                return SDSBuildText(
+                  display(e),
+                  style: AppTextStyle.font14Re,
+                  maxLines: 2,
                 );
               },
             ).toList(),
@@ -950,12 +945,14 @@ class UtilWidget {
 
   static Future<DateTime?> showPeriodDatePicker({
     DateTime? dateTime,
+    bool onlyYear = false,
   }) async {
     final context = Get.context;
     if (context == null) return null;
 
     return showMonthPicker(
       context: context,
+      onlyYear: onlyYear,
       initialDate: dateTime ?? DateTime.now(),
       monthPickerDialogSettings: const MonthPickerDialogSettings(
         headerSettings: PickerHeaderSettings(
