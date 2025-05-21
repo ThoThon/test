@@ -76,4 +76,6 @@ class AppColors {
   static const Color backgroundColorLight = Color(0xFFF9F9F9);
 
   static const Color mainColors = Color.fromRGBO(242, 103, 36, 1);
+
+  static const Color backgroundButton = Color.fromARGB(255, 251, 206, 214);
 }

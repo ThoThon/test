@@ -49,7 +49,7 @@ enum HomeEnum {
       case history:
         return AppRoutes.history.path;
       case lookup_c12:
-        return "";
+        return AppRoutes.lookupC12.path;
       case guide:
         return "";
     }

@@ -139,7 +139,7 @@ class ButtonUtils {
                     strokeWidth: 2,
                     backgroundColor: AppColors.colorWhite,
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      AppColors.statusRed,
+                      AppColors.greyLight,
                     ),
                   ),
                 ),

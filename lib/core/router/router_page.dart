@@ -1,4 +1,5 @@
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
+import 'package:v_bhxh/modules/lookup_c12/ui/ui_src.dart';
 
 import '../../modules/declare/declaration_list/ui/declaration_list_page.dart';
 import '../../modules/declare/deposit_info/ui/deposit_info_page.dart';
@@ -89,6 +90,10 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.forgotLogin.path,
       page: () => ForgotPasswordPage(),
+    ),
+    GetPage(
+      name: AppRoutes.lookupC12.path,
+      page: () => LookupC12Page(),
     ),
   ];
 }
