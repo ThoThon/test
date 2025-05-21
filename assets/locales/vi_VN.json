@@ -50,7 +50,7 @@
     "history": "Lịch sử",
     "lookupC12": "Tra cứu \nC12",
     "guide": "Hướng dẫn",
-    "declare": "Kê khai",
+    "procedureList": "Danh sách \nthủ tục",
     "langugue": "Ngôn ngữ",
     "changePassword": "Đổi mật khẩu",
     "support": "CSKH: 1900 1900",
@@ -330,7 +330,7 @@
     "october": "Tháng 10",
     "november": "Tháng 11",
     "december": "Tháng 12",
-    "month":"Tháng",
-    "see" : "Xem"
+    "month": "Tháng",
+    "see": "Xem"
   }
 }

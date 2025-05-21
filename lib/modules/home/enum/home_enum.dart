@@ -30,7 +30,7 @@ enum HomeEnum {
       case unit_info:
         return LocaleKeys.home_unitInfo;
       case declare:
-        return LocaleKeys.home_declare;
+        return LocaleKeys.home_procedureList;
       case history:
         return LocaleKeys.home_history;
       case lookup_c12:
