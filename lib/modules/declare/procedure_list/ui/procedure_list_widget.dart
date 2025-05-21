@@ -67,7 +67,7 @@ extension ProcedureListPageWidget on ProcedureListPage {
                   ),
                 ),
                 child: SDSBuildText(
-                  procedure.ma,
+                  procedure.code,
                   style: AppTextStyle.font20Bo.copyWith(
                     color: AppColors.primaryColor,
                   ),
@@ -79,13 +79,13 @@ extension ProcedureListPageWidget on ProcedureListPage {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SDSBuildText(
-                      procedure.ten,
+                      procedure.name,
                       style: AppTextStyle.font16Bo,
                       maxLines: 3,
                     ),
                     UtilWidget.sizedBox4,
                     SDSBuildText(
-                      procedure.ghiChu,
+                      procedure.note,
                       maxLines: 3,
                     ),
                   ],

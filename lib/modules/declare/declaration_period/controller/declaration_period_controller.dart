@@ -25,7 +25,7 @@ class DeclarationPeriodController extends BaseGetxController {
       declarationPeriods.clear();
       final response = await _repository.getDeclarationPeriods(
         request: ListDeclarationPeriodRequest(
-          periodId: argument.loai,
+          periodId: argument.type,
           month: selectedPeriodDate.value.month,
           year: selectedPeriodDate.value.year,
         ),
