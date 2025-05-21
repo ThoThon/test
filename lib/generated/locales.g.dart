@@ -415,6 +415,9 @@ class LocaleKeys {
   static const familyMember_birthTypeMonthYear =
       'familyMember_birthTypeMonthYear';
   static const familyMember_birthTypeFull = 'familyMember_birthTypeFull';
+  static const familyMember_cccdNumber = 'familyMember_cccdNumber';
+  static const familyMember_note = 'familyMember_note';
+  static const familyMember_isParticipant = 'familyMember_isParticipant';
   static const declarationFromDetail_title = 'declarationFromDetail_title';
   static const declarationFromDetail_declarationFromName =
       'declarationFromDetail_declarationFromName';
@@ -878,6 +881,9 @@ class Locales {
     'familyMember_birthTypeYear': 'Năm',
     'familyMember_birthTypeMonthYear': 'Tháng/năm',
     'familyMember_birthTypeFull': 'Đầy đủ',
+    'familyMember_cccdNumber': 'Số CMND/CCCD/HC',
+    'familyMember_note': 'Ghi chú',
+    'familyMember_isParticipant': 'Là người tham gia',
     'declarationFromDetail_title': 'Thêm mới bảng kê',
     'declarationFromDetail_declarationFromName': 'Tên bảng kê',
     'declarationFromDetail_fullName': 'Họ và tên',

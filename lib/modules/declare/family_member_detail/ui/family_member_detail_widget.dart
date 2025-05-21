@@ -4,49 +4,60 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildBody() {
     return Column(
       children: [
-        Expanded(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.defaultPadding,
-            ),
-            child: Obx(
-              () {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildInputFullName(),
-                    UtilWidget.sizedBox16,
-                    _buildInputBHXHNumber(),
-                    UtilWidget.sizedBox8,
-                    _buildBirthTypeDropdown(),
-                    UtilWidget.sizedBox16,
-                    _buildSelectDateOfBirth(),
-                    UtilWidget.sizedBox12,
-                    _buildSelectGender(onChanged: (value) {
-                      controller.gender.value = value;
-                    }),
-                    UtilWidget.sizedBox8,
-                    _buildSelectEthnic(),
-                    _buildSelectNationality(),
-                    _buildSelectProvince(),
-                    _buildSelectDistrict(),
-                    _buildSelectWard(),
-                    _buildDropdownRelationship(),
-                    UtilWidget.buildCheckboxWithLabel(
-                      label: 'Là người tham gia',
-                      value: controller.isParticipant.value,
-                      onChanged: (value) {
-                        controller.isParticipant.value = value;
-                      },
-                    ).paddingSymmetric(vertical: AppDimens.paddingVerySmall),
-                  ],
-                );
-              },
+        Form(
+          key: controller.formKey,
+          child: Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.defaultPadding,
+              ),
+              child: Obx(
+                () {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildInputFullName(),
+                      UtilWidget.sizedBox16,
+                      _buildInputBHXHNumber(),
+                      UtilWidget.sizedBox8,
+                      _buildBirthTypeDropdown(),
+                      UtilWidget.sizedBox16,
+                      _buildSelectDateOfBirth(),
+                      UtilWidget.sizedBox12,
+                      _buildSelectGender(onChanged: (value) {
+                        controller.gender.value = value;
+                      }),
+                      UtilWidget.sizedBox8,
+                      _buildSelectEthnic(),
+                      _buildSelectNationality(),
+                      _buildSelectProvince(),
+                      _buildSelectDistrict(),
+                      _buildSelectWard(),
+                      _buildDropdownRelationship(),
+                      UtilWidget.sizedBox16,
+                      _buildInputCCCDNumber(),
+                      _buildInputNote(),
+                      _buildCheckboxParticipant().paddingSymmetric(
+                          vertical: AppDimens.paddingVerySmall),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ),
         _buildBottomButtons(),
       ],
+    );
+  }
+
+  Widget _buildCheckboxParticipant() {
+    return UtilWidget.buildCheckboxWithLabel(
+      label: LocaleKeys.familyMember_isParticipant,
+      value: controller.isParticipant.value,
+      onChanged: (value) {
+        controller.isParticipant.value = value;
+      },
     );
   }
 
@@ -375,13 +386,37 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
     );
   }
 
+  Widget _buildInputCCCDNumber() {
+    return BuildInputTextWithLabel(
+      label: LocaleKeys.familyMember_cccdNumber.tr,
+      buildInputText: BuildInputText(
+        InputTextModel(
+          controller: controller.cccdTextCtrl,
+          maxLengthInputForm: 20,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInputNote() {
+    return BuildInputTextWithLabel(
+      label: LocaleKeys.familyMember_note.tr,
+      buildInputText: BuildInputText(
+        InputTextModel(
+          controller: controller.noteTextCtrl,
+          maxLengthInputForm: 500,
+        ),
+      ),
+    );
+  }
+
   Widget _buildBottomButtons() {
     return Row(
       children: [
         Expanded(
           child: UtilWidget.buildSolidButton(
             title: LocaleKeys.app_save.tr,
-            onPressed: () {},
+            onPressed: controller.onSubmit,
           ),
         ),
         UtilWidget.sizedBoxWidth16,

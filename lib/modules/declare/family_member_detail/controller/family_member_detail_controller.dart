@@ -4,6 +4,8 @@ import '../../../../base_app/base_app.src.dart';
 import '../model/model_src.dart';
 
 class FamilyMemberDetailController extends BaseGetxController {
+  final formKey = GlobalKey<FormState>();
+
   /// Họ và tên *
   final fullNameTextCtrl = TextEditingController();
 
@@ -12,6 +14,9 @@ class FamilyMemberDetailController extends BaseGetxController {
 
   /// Mã số CCCD *
   final cccdTextCtrl = TextEditingController();
+
+  /// Ghi chú
+  final noteTextCtrl = TextEditingController();
 
   final birthType = BirthTypeEnum.full.obs;
 
@@ -42,11 +47,18 @@ class FamilyMemberDetailController extends BaseGetxController {
   /// Là người tham gia
   final isParticipant = false.obs;
 
+  void onSubmit() {
+    if (formKey.currentState?.validate() ?? false) {
+      // TODO:
+    }
+  }
+
   @override
   void onClose() {
     fullNameTextCtrl.dispose();
     bhxhTextCtrl.dispose();
     cccdTextCtrl.dispose();
+    noteTextCtrl.dispose();
     super.onClose();
   }
 }
