@@ -71,7 +71,10 @@ dependencies:
   syncfusion_flutter_pdfviewer: 29.1.38
   syncfusion_flutter_core: 29.1.38
   firebase_core: ^3.13.0
-
+  dmrtd:
+    git:
+      url: https://github.com/HVLoc/dmrtd
+      ref: master
   percent_indicator: ^4.2.5
 
 dev_dependencies:
