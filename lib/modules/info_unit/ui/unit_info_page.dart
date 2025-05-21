@@ -14,9 +14,8 @@ class UnitInfoPage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: SDSBuildText(
-          LocaleKeys.unitInfo_unitInfo.tr,
-          style: AppTextStyle.font16Bo,
+        title: BaseAppBarTitle(
+          title: LocaleKeys.unitInfo_unitInfo.tr,
         ),
       ),
       body: buildLoadingOverlay(() => _buildBody()),

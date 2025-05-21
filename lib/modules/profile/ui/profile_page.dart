@@ -13,9 +13,8 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: SDSBuildText(
-          LocaleKeys.profile_accountInfo.tr,
-          style: AppTextStyle.font16Bo,
+        title: BaseAppBarTitle(
+          title: LocaleKeys.profile_accountInfo.tr,
         ),
         centerTitle: true,
         actions: [
