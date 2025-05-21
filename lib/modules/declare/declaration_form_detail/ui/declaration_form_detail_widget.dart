@@ -219,9 +219,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
             title: LocaleKeys.app_save.tr,
-            onPressed: () {
-              Get.back();
-            },
+            onPressed: controller.submit,
           ),
         ),
         UtilWidget.sizedBoxWidth16,

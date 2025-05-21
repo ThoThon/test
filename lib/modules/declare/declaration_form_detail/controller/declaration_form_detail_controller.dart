@@ -44,6 +44,12 @@ class DeclarationFormDetailController extends BaseGetxController {
     }
   }
 
+  void submit() {
+    if (formKey.currentState?.validate() ?? false) {
+      //
+    }
+  }
+
   @override
   void onClose() {
     fullNameTextCtrl.dispose();
