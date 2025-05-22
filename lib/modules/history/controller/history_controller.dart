@@ -14,12 +14,24 @@ class HistoryController extends BaseRefreshGetxController {
 
   final selectedPeriodDate = DateTime.now().obs;
 
-  Rx<ProcedureFilterEnum?> selectProcedure = Rx<ProcedureFilterEnum?>(null);
+  final selectProcedure = Rx<ListProcedureFilterModel?>(null);
+
+  final listProcedureFilter = <ListProcedureFilterModel>[].obs;
 
   @override
   void onInit() {
     super.onInit();
-    selectProcedure.value = ProcedureFilterEnum.all;
+    // Thêm option "Tất cả" cho bộ lọc thủ tục
+    listProcedureFilter.add(
+      ListProcedureFilterModel(
+        ten: LocaleKeys.history_all.tr,
+        tenCha: '',
+        loai: '',
+        ma: '',
+        ghiChu: '',
+      ),
+    );
+    getProcedureFilter();
     getListHistory();
   }
 
@@ -50,7 +62,7 @@ class HistoryController extends BaseRefreshGetxController {
       pageSize: AppConst.defaultPageSize,
       nam: selectedPeriodDate.value.year.toString(),
       thang: selectedPeriodDate.value.month.toString(),
-      maThuTuc: selectProcedure.value?.procedureCode,
+      maThuTuc: selectProcedure.value?.loai.toString() ?? '',
       soHoSo: "",
     );
   }
@@ -76,6 +88,18 @@ class HistoryController extends BaseRefreshGetxController {
       selectedPeriodDate.value = date;
       listHistory.clear();
       getListHistory();
+    }
+  }
+
+  Future<void> getProcedureFilter() async {
+    try {
+      showLoading();
+      final res = await historyRepository.getListProcedureFilter();
+      if (res.result.isNotEmpty && res.isSuccess) {
+        listProcedureFilter.addAll(res.result);
+      }
+    } catch (e) {
+      logger.d(e);
     }
   }
 

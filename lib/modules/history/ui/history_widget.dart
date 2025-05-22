@@ -20,6 +20,7 @@ extension HistoryWidget on HistoryPage {
       children: [
         Expanded(
           child: Container(
+            height: AppDimens.btnDefaultFigma,
             decoration: BoxDecoration(
               border: Border.all(width: 1, color: AppColors.primaryNavy),
               borderRadius: BorderRadius.circular(AppDimens.radius30),
@@ -38,7 +39,7 @@ extension HistoryWidget on HistoryPage {
                   ),
                 )
               ],
-            ).paddingAll(AppDimens.paddingSmall),
+            ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
           ),
         ),
         _buildFilterButton(),
@@ -66,6 +67,10 @@ extension HistoryWidget on HistoryPage {
         Get.toNamed(
           AppRoutes.historyDetail.path,
           arguments: item,
+        )?.then(
+          (value) async {
+            await controller.getListHistory();
+          },
         );
       },
       child: Row(
@@ -180,34 +185,33 @@ extension HistoryWidget on HistoryPage {
         Get.bottomSheet(
           UtilWidget.buildBottomSheetFigma(
             title: LocaleKeys.history_selectedProcedure.tr,
-            child: ListView.separated(
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                final type = ProcedureFilterEnum.values[index];
-                return Material(
-                  color: AppColors.colorWhite,
-                  child: Obx(
+            child: Expanded(
+              child: ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  final procedure = controller.listProcedureFilter[index];
+                  return Obx(
                     () => _buildItemBottomSheetFilter(
                       onTap: () {
                         //Lọc thủ tục
-                        controller.selectProcedure.value = type;
+                        controller.selectProcedure.value = procedure;
                         // Khi chọn thủ tục thì đóng bottom sheet
                         Get.back();
                         controller.listHistory.clear();
                         controller.getListHistory();
                       },
-                      text: type.title.tr,
-                      style: controller.selectProcedure.value == type
+                      text: '${procedure.ma} - ${procedure.ten.tr}',
+                      style: controller.selectProcedure.value == procedure
                           ? AppTextStyle.font14Bo
                               .copyWith(color: AppColors.primaryColor)
                           : AppTextStyle.font14Re,
                     ),
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) =>
-                  UtilWidget.buildDividerDefault(),
-              itemCount: ProcedureFilterEnum.values.length,
+                  );
+                },
+                separatorBuilder: (context, index) =>
+                    UtilWidget.buildDividerDefault(),
+                itemCount: controller.listProcedureFilter.length,
+              ),
             ),
           ),
         );
