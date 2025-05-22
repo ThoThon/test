@@ -2,23 +2,22 @@ part of 'history_detail_page.dart';
 
 extension HistoryDetailWidget on HistoryDetailPage {
   Widget _buildBody() {
-    return GetBuilder<HistoryDetailController>(
-        init: HistoryDetailController(),
-        builder: (controller) {
-          // final HistoryItemModel model = controller.historyItemModel;
-          final model = controller.historyItemModel;
-          return Column(
-            children: [
-              UtilWidget.buildSolidButton(
-                title: LocaleKeys.history_lookup.tr,
-                onPressed: () {},
-              ),
-              sdsSBHeight8,
-              _buildProfileInfoCard(model),
-              _buildProgressHandleCard(model),
-            ],
-          ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
-        });
+    final model = controller.historyItemModel;
+    return Column(
+      children: [
+        UtilWidget.buildSolidButton(
+          title: LocaleKeys.history_lookup.tr,
+          onPressed: () {
+            model.soHoSo != null
+                ? controller.lookupProgressHistory(model.soHoSo ?? '')
+                : controller.getFileNumber(model.id);
+          },
+        ),
+        sdsSBHeight8,
+        _buildProfileInfoCard(model),
+        _buildProgressHandleCard(model),
+      ],
+    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
   }
 
   Widget _buildProfileInfoCard(
@@ -84,25 +83,55 @@ extension HistoryDetailWidget on HistoryDetailPage {
   Widget _buildProgressHandleCard(
     HistoryItemModel model,
   ) {
-    final titles = [
-      model.ketQuaBuoc1 ?? '',
-      model.ketQuaBuoc2 ?? '',
-      model.ketQuaBuoc3 ?? '',
-      model.ketQuaBuoc4 ?? '',
-    ];
+    final newData = controller.resultLookupHistoryModel != null;
+    final resultLookup = controller.resultLookupHistoryModel;
+    final titles = newData
+        ? [
+            resultLookup?.buoc1?.moTaKetQua ?? '',
+            resultLookup?.buoc2?.moTaKetQua ?? '',
+            resultLookup?.buoc3?.moTaKetQua ?? '',
+            resultLookup?.buoc4?.moTaKetQua ?? '',
+          ]
+        : [
+            model.ketQuaBuoc1 ?? '',
+            model.ketQuaBuoc2 ?? '',
+            model.ketQuaBuoc3 ?? '',
+            model.ketQuaBuoc4 ?? '',
+          ];
 
-    final statuses = [
-      model.maLoiBuoc1 ?? '',
-      model.maLoiBuoc2 ?? '',
-      model.maLoiBuoc3 ?? '',
-      model.maLoiBuoc4 ?? '',
-    ];
+    final statuses = newData
+        ? [
+            resultLookup?.buoc1?.maKetQua ?? '',
+            resultLookup?.buoc2?.maKetQua ?? '',
+            resultLookup?.buoc3?.maKetQua ?? '',
+            resultLookup?.buoc4?.maKetQua ?? '',
+          ]
+        : [
+            model.maLoiBuoc1 ?? '',
+            model.maLoiBuoc2 ?? '',
+            model.maLoiBuoc3 ?? '',
+            model.maLoiBuoc4 ?? '',
+          ];
 
-    final isLastSteps = [
-      model.maLoiBuoc2,
-      model.maLoiBuoc3,
-      model.maLoiBuoc4,
-      null,
+    final isLastSteps = newData
+        ? [
+            resultLookup?.buoc2?.maKetQua ?? '',
+            resultLookup?.buoc3?.maKetQua ?? '',
+            resultLookup?.buoc4?.maKetQua ?? '',
+            null,
+          ]
+        : [
+            model.maLoiBuoc2,
+            model.maLoiBuoc3,
+            model.maLoiBuoc4,
+            null,
+          ];
+
+    final isFail = [
+      resultLookup?.buoc1?.isFail,
+      resultLookup?.buoc2?.isFail,
+      resultLookup?.buoc3?.isFail,
+      resultLookup?.buoc4?.isFail,
     ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,6 +150,7 @@ extension HistoryDetailWidget on HistoryDetailPage {
                   numberStep: '${index + 1}',
                   title: titles[index],
                   isLastStep: isLastSteps[index],
+                  isFail: isFail[index],
                 );
               },
             ),
@@ -135,6 +165,7 @@ extension HistoryDetailWidget on HistoryDetailPage {
     required String title,
     required String status,
     String? isLastStep,
+    bool? isFail,
   }) {
     final indicator = Container(
       width: AppDimens.btnRecommend,
