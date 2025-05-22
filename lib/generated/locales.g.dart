@@ -36,6 +36,7 @@ class LocaleKeys {
   static const app_edit = 'app_edit';
   static const app_edit2 = 'app_edit2';
   static const app_save = 'app_save';
+  static const app_saveDraft = 'app_saveDraft';
   static const app_cancel = 'app_cancel';
   static const app_close = 'app_close';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
@@ -557,6 +558,7 @@ class Locales {
     'app_edit': 'Sửa',
     'app_edit2': 'Chỉnh sửa',
     'app_save': 'Lưu',
+    'app_saveDraft': 'Lưu nháp',
     'app_cancel': 'Hủy bỏ',
     'app_close': 'Đóng',
     'dialog_close': 'Đóng',

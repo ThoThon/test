@@ -72,94 +72,106 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvince() {
-    return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
-      label: LocaleKeys.declareInfo_provinceOfBirth.tr,
-      hintText: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<ProvinceModel>(
-            title: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
-            listFilter: AppData.instance.provinces.toList(),
-            selectedItem: controller.tk1State.provinceOfBirth.value,
-            display: (value) => value.name,
-            onAccept: (value) {
-              if (value == null) return;
-              didChange(value);
-              controller.changeProvinceOfBirth(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+          label: LocaleKeys.declareInfo_provinceOfBirth.tr,
+          hintText: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<ProvinceModel>(
+                title: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
+                listFilter: AppData.instance.provinces.toList(),
+                selectedItem: controller.tk1State.provinceOfBirth.value,
+                display: (value) => value.name,
+                onAccept: (value) {
+                  if (value == null) return;
+                  didChange(value);
+                  controller.changeProvinceOfBirth(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.provinceOfBirth.value,
+          display: (province) => province.name,
+          validator: (value) {
+            if (value == null) {
+              return LocaleKeys.declareInfo_provinceOfBirthCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.tk1State.provinceOfBirth,
-      display: (province) => province.name,
-      validator: (value) {
-        if (value == null) {
-          return LocaleKeys.declareInfo_provinceOfBirthCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
 
   Widget _buildSelectDistrict() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.declareInfo_districtOfBirth.tr,
-      hintText: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.tk1State.districtOfBirth.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              didChange(value);
-              controller.changeDistrictOfBirth(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.declareInfo_districtOfBirth.tr,
+          hintText: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
+                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+                selectedItem: controller.tk1State.districtOfBirth.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  didChange(value);
+                  controller.changeDistrictOfBirth(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.districtOfBirth.value,
+          display: (ethnic) => ethnic,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.declareInfo_districtOfBirthCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.tk1State.districtOfBirth,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.declareInfo_districtOfBirthCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
 
   Widget _buildSelectWard() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.declareInfo_wardOfBirth.tr,
-      hintText: LocaleKeys.declareInfo_selectWardOfBirth.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.declareInfo_selectWardOfBirth.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.tk1State.wardOfBirth.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              didChange(value);
-              controller.changeWardOfBirth(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.declareInfo_wardOfBirth.tr,
+          hintText: LocaleKeys.declareInfo_selectWardOfBirth.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.declareInfo_selectWardOfBirth.tr,
+                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+                selectedItem: controller.tk1State.wardOfBirth.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  didChange(value);
+                  controller.changeWardOfBirth(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.wardOfBirth.value,
+          display: (ethnic) => ethnic,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.declareInfo_wardOfBirthCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.tk1State.wardOfBirth,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.declareInfo_wardOfBirthCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
@@ -179,94 +191,106 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvinceReceive() {
-    return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
-      label: LocaleKeys.declareInfo_provinceReceive.tr,
-      hintText: LocaleKeys.declareInfo_selectProvinceReceive.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<ProvinceModel>(
-            title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
-            listFilter: AppData.instance.provinces.toList(),
-            selectedItem: controller.tk1State.provinceReceive.value,
-            display: (value) => value.name,
-            onAccept: (value) {
-              if (value == null) return;
-              didChange(value);
-              controller.onChangeProvinceReceive(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+          label: LocaleKeys.declareInfo_provinceReceive.tr,
+          hintText: LocaleKeys.declareInfo_selectProvinceReceive.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<ProvinceModel>(
+                title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
+                listFilter: AppData.instance.provinces.toList(),
+                selectedItem: controller.tk1State.provinceReceive.value,
+                display: (value) => value.name,
+                onAccept: (value) {
+                  if (value == null) return;
+                  didChange(value);
+                  controller.onChangeProvinceReceive(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.provinceReceive.value,
+          display: (province) => province.name,
+          validator: (value) {
+            if (value == null) {
+              return LocaleKeys.declareInfo_provinceReceiveCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.tk1State.provinceReceive,
-      display: (province) => province.name,
-      validator: (value) {
-        if (value == null) {
-          return LocaleKeys.declareInfo_provinceReceiveCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
 
   Widget _buildSelectDistrictReceive() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.declareInfo_districtReceive.tr,
-      hintText: LocaleKeys.declareInfo_selectDistrictReceive.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.declareInfo_selectDistrictReceive.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.tk1State.districtReceive.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              didChange(value);
-              controller.onChangeDistrictReceive(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.declareInfo_districtReceive.tr,
+          hintText: LocaleKeys.declareInfo_selectDistrictReceive.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.declareInfo_selectDistrictReceive.tr,
+                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+                selectedItem: controller.tk1State.districtReceive.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  didChange(value);
+                  controller.onChangeDistrictReceive(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.districtReceive.value,
+          display: (ethnic) => ethnic,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.declareInfo_districtReceiveCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.tk1State.districtReceive,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.declareInfo_districtReceiveCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
 
   Widget _buildSelectWardReceive() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.declareInfo_wardReceive.tr,
-      hintText: LocaleKeys.declareInfo_selectWardReceive.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.declareInfo_selectWardReceive.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.tk1State.wardReceive.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              didChange(value);
-              controller.onChangeWardReceive(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.declareInfo_wardReceive.tr,
+          hintText: LocaleKeys.declareInfo_selectWardReceive.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.declareInfo_selectWardReceive.tr,
+                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+                selectedItem: controller.tk1State.wardReceive.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  didChange(value);
+                  controller.onChangeWardReceive(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.wardReceive.value,
+          display: (ethnic) => ethnic,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.declareInfo_wardReceiveCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.tk1State.wardReceive,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.declareInfo_wardReceiveCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
@@ -286,63 +310,71 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvinceKCB() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.declareInfo_provinceKCB.tr,
-      hintText: LocaleKeys.declareInfo_selectProvinceKCB.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.declareInfo_selectProvinceKCB.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.tk1State.provinceKCB.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.tk1State.provinceKCB.value = value;
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+          label: LocaleKeys.declareInfo_provinceKCB.tr,
+          hintText: LocaleKeys.declareInfo_selectProvinceKCB.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<ProvinceModel>(
+                title: LocaleKeys.declareInfo_selectProvinceKCB.tr,
+                listFilter: AppData.instance.provinces.toList(),
+                selectedItem: controller.tk1State.provinceKCB.value,
+                display: (value) => value.name,
+                onAccept: (value) {
+                  if (value == null) return;
+                  controller.tk1State.provinceKCB.value = value;
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.provinceKCB.value,
+          display: (province) => province.name,
+          validator: (value) {
+            if (value == null) {
+              return LocaleKeys.declareInfo_provinceKCBCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.tk1State.provinceKCB,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.declareInfo_provinceKCBCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
 
   Widget _buildSelectHospitalKCB() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.declareInfo_hospitalKCB.tr,
-      hintText: LocaleKeys.declareInfo_selectHospitalKCB.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.declareInfo_selectHospitalKCB.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.tk1State.hospitalKCB.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.tk1State.hospitalKCB.value = value;
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.declareInfo_hospitalKCB.tr,
+          hintText: LocaleKeys.declareInfo_selectHospitalKCB.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.declareInfo_selectHospitalKCB.tr,
+                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+                selectedItem: controller.tk1State.hospitalKCB.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  controller.tk1State.hospitalKCB.value = value;
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.hospitalKCB.value,
+          display: (ethnic) => ethnic,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.declareInfo_hospitalKCBCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.tk1State.hospitalKCB,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.declareInfo_hospitalKCBCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
@@ -395,77 +427,89 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvinceTT() {
-    return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
-      label: LocaleKeys.declareInfo_provinceTT.tr,
-      hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<ProvinceModel>(
-            title: LocaleKeys.declareInfo_selectProvinceTT.tr,
-            listFilter: AppData.instance.provinces.toList(),
-            selectedItem: controller.tk1State.provinceTT.value,
-            display: (value) => value.name,
-            onAccept: (value) {
-              if (value == null) return;
-              didChange(value);
-              controller.onChangeProvinceTT(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+          label: LocaleKeys.declareInfo_provinceTT.tr,
+          hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<ProvinceModel>(
+                title: LocaleKeys.declareInfo_selectProvinceTT.tr,
+                listFilter: AppData.instance.provinces.toList(),
+                selectedItem: controller.tk1State.provinceTT.value,
+                display: (value) => value.name,
+                onAccept: (value) {
+                  if (value == null) return;
+                  didChange(value);
+                  controller.onChangeProvinceTT(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.provinceTT.value,
+          display: (province) => province.name,
         );
       },
-      item: controller.tk1State.provinceTT,
-      display: (province) => province.name,
     );
   }
 
   Widget _buildSelectDistrictTT() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.declareInfo_districtTT.tr,
-      hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.declareInfo_selectDistrictTT.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.tk1State.districtTT.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              didChange(value);
-              controller.onChangeDistrictTT(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.declareInfo_districtTT.tr,
+          hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.declareInfo_selectDistrictTT.tr,
+                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+                selectedItem: controller.tk1State.districtTT.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  didChange(value);
+                  controller.onChangeDistrictTT(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.districtTT.value,
+          display: (ethnic) => ethnic,
         );
       },
-      item: controller.tk1State.districtTT,
-      display: (ethnic) => ethnic,
     );
   }
 
   Widget _buildSelectWardTT() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.declareInfo_wardTT.tr,
-      hintText: LocaleKeys.declareInfo_selectWardTT.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.declareInfo_selectWardTT.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.tk1State.wardTT.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              didChange(value);
-              controller.onChangeWardTT(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.declareInfo_wardTT.tr,
+          hintText: LocaleKeys.declareInfo_selectWardTT.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.declareInfo_selectWardTT.tr,
+                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+                selectedItem: controller.tk1State.wardTT.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  didChange(value);
+                  controller.onChangeWardTT(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.wardTT.value,
+          display: (ethnic) => ethnic,
         );
       },
-      item: controller.tk1State.wardTT,
-      display: (ethnic) => ethnic,
     );
   }
 

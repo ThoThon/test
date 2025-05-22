@@ -137,8 +137,9 @@ extension D02TabWidget on DeclareInfoPage {
         }
 
         return UtilWidget.buildDropDownWithLabel2<PlanEnum>(
-          label: LocaleKeys.declareInfo_declarationType.tr,
-          hintText: LocaleKeys.declareInfo_selectDeclarationType.tr,
+          label: LocaleKeys.declareInfo_plan.tr,
+          hintText: LocaleKeys.declareInfo_selectPlan.tr,
+          autovalidateMode: AutovalidateMode.always,
           items: plans,
           display: (item) => item.title,
           selectedItem: controller.d02State.plan.value,
