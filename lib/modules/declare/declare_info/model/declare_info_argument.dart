@@ -7,7 +7,7 @@ enum DeclareInfoAction {
 
 class DeclareInfoArgument {
   final DeclareInfoAction action;
-  final DeclarationPeriodModel? period;
+  final DeclarationPeriod? period;
 
   const DeclareInfoArgument({
     required this.action,
