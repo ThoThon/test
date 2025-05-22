@@ -117,24 +117,24 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
                       '${LocaleKeys.declarationPeriod_updateDate.tr}: ${convertDateToStringSafe(period.updateDate, PATTERN_1)}',
                       style: AppTextStyle.font16Re,
                     ),
-                  // if (period.fileNumber != null)
-                  //   RichText(
-                  //     text: TextSpan(
-                  //       style: AppTextStyle.font16Re.copyWith(
-                  //         fontStyle: FontStyle.italic,
-                  //       ),
-                  //       children: [
-                  //         TextSpan(
-                  //           text:
-                  //               '${LocaleKeys.declarationPeriod_fileNumber.tr}: ',
-                  //         ),
-                  //         TextSpan(
-                  //           text: period.fileNumber ?? '',
-                  //           style: AppTextStyle.font16Bo,
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
+                  if (period.fileNumber != null)
+                    RichText(
+                      text: TextSpan(
+                        style: AppTextStyle.font16Re.copyWith(
+                          fontStyle: FontStyle.italic,
+                        ),
+                        children: [
+                          TextSpan(
+                            text:
+                                '${LocaleKeys.declarationPeriod_fileNumber.tr}: ',
+                          ),
+                          TextSpan(
+                            text: period.fileNumber ?? '',
+                            style: AppTextStyle.font16Bo,
+                          ),
+                        ],
+                      ),
+                    ),
                   RichText(
                     text: TextSpan(
                       style: AppTextStyle.font16Re.copyWith(
