@@ -168,14 +168,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   Widget _buildBottomButton() {
     return UtilWidget.buildSolidButton(
       title: LocaleKeys.declarationPeriod_createNewPeriod.tr,
-      onPressed: () {
-        Get.toNamed(
-          AppRoutes.declareInfo.path,
-          arguments: const DeclareInfoArgument(
-            action: DeclareInfoAction.create,
-          ),
-        );
-      },
+      onPressed: controller.createDeclarationPeriod,
     );
   }
 }

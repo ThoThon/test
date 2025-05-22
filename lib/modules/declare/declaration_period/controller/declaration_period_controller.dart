@@ -64,9 +64,10 @@ class DeclarationPeriodController extends BaseGetxController {
 
   Future<void> createDeclarationPeriod() async {
     try {
+      showLoadingOverlay();
       final response = await _repository.createDeclarationPeriod(
         request: CreateDeclarationPeriodRequest(
-          maThuTuc: 6001,
+          maThuTuc: argument.type,
           nam: selectedPeriodDate.value.year,
           thang: selectedPeriodDate.value.month,
         ),
@@ -82,6 +83,8 @@ class DeclarationPeriodController extends BaseGetxController {
       }
     } catch (e) {
       logger.e(e);
+    } finally {
+      hideLoadingOverlay();
     }
   }
 }
