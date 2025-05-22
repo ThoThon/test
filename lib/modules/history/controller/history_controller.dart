@@ -15,7 +15,7 @@ class HistoryController extends BaseRefreshGetxController {
   final selectedPeriodDate = DateTime.now().obs;
 
   Rx<ProcedureFilterEnum?> selectProcedure = Rx<ProcedureFilterEnum?>(null);
-  
+
   @override
   void onInit() {
     super.onInit();
@@ -45,7 +45,7 @@ class HistoryController extends BaseRefreshGetxController {
     bool isLoadMore = false,
   }) {
     return HistoryRequest(
-      companyId: appController.accountInfoModel!.toChucId,
+      companyId: appController.accountInfoModel?.toChucId ?? '',
       pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
       pageSize: AppConst.defaultPageSize,
       nam: selectedPeriodDate.value.year.toString(),

@@ -48,7 +48,10 @@ class LoginController extends BaseGetxController {
           hiveApp.put(HiveKeys.keyUsername, username),
           hiveApp.put(HiveKeys.keyJwtToken, response.result),
         ]);
-        await appController.getAccountInfo();
+        await (
+          _getAccountInfo(),
+          _getD02Categories(),
+        ).wait;
         Get.offAndToNamed(AppRoutes.pageBuilder.path);
         return;
       } else {
@@ -58,6 +61,39 @@ class LoginController extends BaseGetxController {
       logger.e(e);
     } finally {
       hideLoadingOverlay();
+    }
+  }
+
+  Future<void> _getAccountInfo() async {
+    try {
+      final res = await _loginRepository.getAccountInfo();
+      if (res.code == AppConst.statusCodeSuccess && res.result != null) {
+        appController.accountInfoModel = res.result;
+        //Lưu tên tổ chức lại để hiện ngoài màn login
+        if (res.result != null) {
+          hiveApp.put(HiveKeys.keyCompanyName, res.result?.tenToChuc);
+        }
+      }
+    } catch (e) {
+      logger.d(e);
+    }
+  }
+
+  Future<void> _getD02Categories() async {
+    try {
+      final res = await _loginRepository.getD02Categories();
+      final d02Categories = res.result;
+      if (res.code == AppConst.statusCodeSuccess && d02Categories != null) {
+        AppData.instance
+          ..declarationTypes = d02Categories.declarationTypes
+          ..ethnics = d02Categories.ethnics
+          ..nations = d02Categories.nations
+          ..provinces = d02Categories.provinces
+          ..adjustmentPlans = d02Categories.adjustmentPlans
+          ..relationships = d02Categories.relationships;
+      }
+    } catch (e) {
+      logger.d(e);
     }
   }
 

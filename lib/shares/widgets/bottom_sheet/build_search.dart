@@ -137,18 +137,18 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
           },
           child: Row(
             children: [
-              SDSBuildText(
-                widget.display(item),
-              ).paddingSymmetric(
-                vertical: AppDimens.paddingSmall,
+              Expanded(
+                child: SDSBuildText(
+                  widget.display(item),
+                ).paddingSymmetric(
+                  vertical: AppDimens.paddingSmall,
+                ),
               ),
-              if (isSelected) ...[
-                const Spacer(),
+              if (isSelected)
                 const Icon(
                   Icons.check_outlined,
                   color: AppColors.primaryColor,
                 ),
-              ],
             ],
           ),
         );

@@ -10,9 +10,11 @@ class DeclarationPeriodList {
 
   factory DeclarationPeriodList.fromJson(Map<String, dynamic> json) {
     return DeclarationPeriodList(
-      periods: (json['kyKeKhais'] as List<dynamic>)
-          .map((e) => DeclarationPeriod.fromJson(e))
-          .toList(),
+      periods: json['kyKeKhais'] != null
+          ? (json['kyKeKhais'] as List<dynamic>)
+              .map((e) => DeclarationPeriod.fromJson(e))
+              .toList()
+          : [],
     );
   }
 }
