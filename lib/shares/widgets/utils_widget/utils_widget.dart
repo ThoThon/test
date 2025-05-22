@@ -561,95 +561,87 @@ class UtilWidget {
     required String label,
     required String hintText,
     required Function(ValueChanged<T> didChange) funcSelect,
-    required Rx<T?> item,
+    required T? selectedItem,
     required String Function(T) display,
     String? Function(T?)? validator,
   }) {
-    return Obx(
-      () {
-        return FormField(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: validator,
-          initialValue: item.value,
-          builder: (FormFieldState<T> state) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.only(bottom: AppDimens.paddingVerySmall),
-                  child: RichText(
-                    text: TextSpan(
-                      text: label,
-                      style: AppTextStyle.font16Bo,
-                      children: [
-                        TextSpan(
-                          text: ' (*)',
-                          style: AppTextStyle.font12Re.copyWith(
-                            color: AppColors.statusRed,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    KeyBoard.hide();
-                    funcSelect(state.didChange);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(AppDimens.paddingSmall),
-                    decoration: BoxDecoration(
-                      color: AppColors.colorWhite,
-                      border: Border.all(
-                        color: state.errorText != null
-                            ? AppColors.statusRed
-                            : AppColors.dsGray5,
-                      ),
-                      borderRadius: BorderRadius.circular(AppDimens.radius4),
-                    ),
-                    child: Obx(
-                      () => Row(
-                        children: [
-                          Expanded(
-                            child: SDSBuildText(
-                              item.value != null
-                                  ? display(item.value as T)
-                                  : hintText,
-                              style: AppTextStyle.font14Re.copyWith(
-                                color: item.value != null
-                                    ? AppColors.colorBlack
-                                    : AppColors.dsGray3,
-                              ),
-                            ),
-                          ),
-                          const Icon(
-                            Icons.arrow_drop_down,
-                            color: AppColors.dsGray3,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                if (state.hasError)
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: AppDimens.paddingSmallest,
-                      left: AppDimens.paddingVerySmall,
-                    ),
-                    child: SDSBuildText(
-                      state.errorText!,
+    return FormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: validator,
+      initialValue: selectedItem,
+      builder: (FormFieldState<T> state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.only(bottom: AppDimens.paddingVerySmall),
+              child: RichText(
+                text: TextSpan(
+                  text: label,
+                  style: AppTextStyle.font16Bo,
+                  children: [
+                    TextSpan(
+                      text: ' (*)',
                       style: AppTextStyle.font12Re.copyWith(
                         color: AppColors.statusRed,
                       ),
                     ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                KeyBoard.hide();
+                funcSelect(state.didChange);
+              },
+              child: Container(
+                padding: const EdgeInsets.all(AppDimens.paddingSmall),
+                decoration: BoxDecoration(
+                  color: AppColors.colorWhite,
+                  border: Border.all(
+                    color: state.errorText != null
+                        ? AppColors.statusRed
+                        : AppColors.dsGray5,
                   ),
-              ],
-            ).paddingOnly(bottom: AppDimens.paddingSmall);
-          },
-        );
+                  borderRadius: BorderRadius.circular(AppDimens.radius4),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: SDSBuildText(
+                        selectedItem != null ? display(selectedItem) : hintText,
+                        style: AppTextStyle.font14Re.copyWith(
+                          color: selectedItem != null
+                              ? AppColors.colorBlack
+                              : AppColors.dsGray3,
+                        ),
+                      ),
+                    ),
+                    const Icon(
+                      Icons.arrow_drop_down,
+                      color: AppColors.dsGray3,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            if (state.hasError)
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: AppDimens.paddingSmallest,
+                  left: AppDimens.paddingVerySmall,
+                ),
+                child: SDSBuildText(
+                  state.errorText!,
+                  style: AppTextStyle.font12Re.copyWith(
+                    color: AppColors.statusRed,
+                  ),
+                ),
+              ),
+          ],
+        ).paddingOnly(bottom: AppDimens.paddingSmall);
       },
     );
   }

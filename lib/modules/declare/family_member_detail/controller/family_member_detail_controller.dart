@@ -1,3 +1,4 @@
+import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../../../base_app/base_app.src.dart';
@@ -33,7 +34,7 @@ class FamilyMemberDetailController extends BaseGetxController {
   final selectedNationality = Rxn<String>();
 
   /// Tỉnh khai sinh *
-  final selectedProvince = Rxn<String>();
+  final selectedProvince = Rxn<ProvinceModel>();
 
   /// Huyện khai sinh *
   final selectedDistrict = Rxn<String>();

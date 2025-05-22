@@ -215,156 +215,176 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildSelectEthnic() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.familyMember_ethnic.tr,
-      hintText: LocaleKeys.familyMember_selectEthnic.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.familyMember_selectEthnic.tr,
-            listFilter: ['Kinh', 'Thái', 'Tày'],
-            selectedItem: controller.selectedEthnic.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.selectedEthnic.value = value;
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.familyMember_ethnic.tr,
+          hintText: LocaleKeys.familyMember_selectEthnic.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.familyMember_selectEthnic.tr,
+                listFilter: ['Kinh', 'Thái', 'Tày'],
+                selectedItem: controller.selectedEthnic.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  controller.selectedEthnic.value = value;
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.selectedEthnic.value,
+          display: (ethnic) => ethnic,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.familyMember_ethnicCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.selectedEthnic,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.familyMember_ethnicCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
 
   Widget _buildSelectNationality() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.familyMember_nationality.tr,
-      hintText: LocaleKeys.familyMember_selectNationality.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.familyMember_selectNationality.tr,
-            listFilter: ['Việt Nam', 'Lào', 'Campuchia'],
-            selectedItem: controller.selectedNationality.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.selectedNationality.value = value;
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.familyMember_nationality.tr,
+          hintText: LocaleKeys.familyMember_selectNationality.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.familyMember_selectNationality.tr,
+                listFilter: ['Việt Nam', 'Lào', 'Campuchia'],
+                selectedItem: controller.selectedNationality.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  controller.selectedNationality.value = value;
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.selectedNationality.value,
+          display: (ethnic) => ethnic,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.familyMember_nationalityCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.selectedNationality,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.familyMember_nationalityCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
 
   Widget _buildSelectProvince() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.familyMember_provinceOfBirth.tr,
-      hintText: LocaleKeys.familyMember_selectProvinceOfBirth.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.familyMember_selectProvinceOfBirth.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.selectedProvince.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.selectedProvince.value = value;
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+          label: LocaleKeys.familyMember_provinceOfBirth.tr,
+          hintText: LocaleKeys.familyMember_selectProvinceOfBirth.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<ProvinceModel>(
+                title: LocaleKeys.familyMember_selectProvinceOfBirth.tr,
+                listFilter: AppData.instance.provinces.toList(),
+                selectedItem: controller.selectedProvince.value,
+                display: (value) => value.name,
+                onAccept: (value) {
+                  if (value == null) return;
+                  controller.selectedProvince.value = value;
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.selectedProvince.value,
+          display: (province) => province.name,
+          validator: (value) {
+            if (value == null) {
+              return LocaleKeys.familyMember_provinceOfBirthCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.selectedProvince,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.familyMember_provinceOfBirthCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
 
   Widget _buildSelectDistrict() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.familyMember_districtOfBirth.tr,
-      hintText: LocaleKeys.familyMember_selectDistrictOfBirth.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.familyMember_selectDistrictOfBirth.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.selectedDistrict.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.selectedDistrict.value = value;
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.familyMember_districtOfBirth.tr,
+          hintText: LocaleKeys.familyMember_selectDistrictOfBirth.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.familyMember_selectDistrictOfBirth.tr,
+                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+                selectedItem: controller.selectedDistrict.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  controller.selectedDistrict.value = value;
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.selectedDistrict.value,
+          display: (ethnic) => ethnic,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.familyMember_districtOfBirthCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.selectedDistrict,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.familyMember_districtOfBirthCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
 
   Widget _buildSelectWard() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.familyMember_wardOfBirth.tr,
-      hintText: LocaleKeys.familyMember_selectWardOfBirth.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.familyMember_selectWardOfBirth.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            selectedItem: controller.selectedWard.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.selectedWard.value = value;
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<String>(
+          label: LocaleKeys.familyMember_wardOfBirth.tr,
+          hintText: LocaleKeys.familyMember_selectWardOfBirth.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<String>(
+                title: LocaleKeys.familyMember_selectWardOfBirth.tr,
+                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+                selectedItem: controller.selectedWard.value,
+                display: (value) => value,
+                onAccept: (value) {
+                  if (value == null) return;
+                  controller.selectedWard.value = value;
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.selectedWard.value,
+          display: (ethnic) => ethnic,
+          validator: (value) {
+            if (value.isNullOrEmpty) {
+              return LocaleKeys.familyMember_wardOfBirthCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.selectedWard,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.familyMember_wardOfBirthCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
