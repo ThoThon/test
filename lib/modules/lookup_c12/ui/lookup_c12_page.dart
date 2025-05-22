@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/lookup_c12/controller/lookup_c12_controller.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
 
 part 'lookup_c12_widget.dart';
 
@@ -19,7 +20,7 @@ class LookupC12Page extends BaseGetWidget {
           title: LocaleKeys.lookupC12_lookupC12.tr,
         ),
       ),
-      body: _buildBody(),
+      body: buildLoadingOverlay(() => _buildBody()),
     );
   }
 }
