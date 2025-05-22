@@ -109,29 +109,40 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectDistrict() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<DistrictModel>(
           label: LocaleKeys.declareInfo_districtOfBirth.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.tk1State.districtOfBirth.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  didChange(value);
-                  controller.changeDistrictOfBirth(value);
-                },
+          funcSelect: (didChange) async {
+            // Get.bottomSheet(
+            //   BottomSheetSearch<String>(
+            //     title: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
+            //     listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+            //     selectedItem: controller.tk1State.districtOfBirth.value,
+            //     display: (value) => value,
+            //     onAccept: (value) {
+            //       if (value == null) return;
+            //       didChange(value);
+            //       controller.changeDistrictOfBirth(value);
+            //     },
+            //   ),
+            //   isScrollControlled: true,
+            // );
+            final result = await Get.bottomSheet<DistrictModel>(
+              SelectDistrictBts(
+                provinceCode: '01',
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              didChange(result);
+              controller.changeDistrictOfBirth(result);
+            }
           },
           selectedItem: controller.tk1State.districtOfBirth.value,
-          display: (ethnic) => ethnic,
+          display: (district) => district.name,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (value == null) {
               return LocaleKeys.declareInfo_districtOfBirthCannotEmpty.tr;
             }
             return null;
@@ -228,29 +239,26 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectDistrictReceive() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<DistrictModel>(
           label: LocaleKeys.declareInfo_districtReceive.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictReceive.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.declareInfo_selectDistrictReceive.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.tk1State.districtReceive.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  didChange(value);
-                  controller.onChangeDistrictReceive(value);
-                },
+          funcSelect: (didChange) async {
+            final result = await Get.bottomSheet<DistrictModel>(
+              SelectDistrictBts(
+                provinceCode: '01',
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              didChange(result);
+              controller.onChangeDistrictReceive(result);
+            }
           },
           selectedItem: controller.tk1State.districtReceive.value,
-          display: (ethnic) => ethnic,
+          display: (district) => district.name,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (value == null) {
               return LocaleKeys.declareInfo_districtReceiveCannotEmpty.tr;
             }
             return null;
@@ -458,27 +466,24 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectDistrictTT() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<DistrictModel>(
           label: LocaleKeys.declareInfo_districtTT.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.declareInfo_selectDistrictTT.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.tk1State.districtTT.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  didChange(value);
-                  controller.onChangeDistrictTT(value);
-                },
+          funcSelect: (didChange) async {
+            final result = await Get.bottomSheet<DistrictModel>(
+              SelectDistrictBts(
+                provinceCode: '01',
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              didChange(result);
+              controller.onChangeDistrictTT(result);
+            }
           },
           selectedItem: controller.tk1State.districtTT.value,
-          display: (ethnic) => ethnic,
+          display: (district) => district.name,
         );
       },
     );
