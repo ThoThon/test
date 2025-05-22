@@ -2,13 +2,20 @@ part of 'declaration_period_page.dart';
 
 extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   Widget _buildBody() {
-    return baseShowLoading(
-      () => Column(
+    return RefreshIndicator(
+      onRefresh: () {
+        return controller.getDeclarationPeriods();
+      },
+      child: Column(
         children: [
           _buildDatePicker()
               .paddingSymmetric(horizontal: AppDimens.defaultPadding),
           UtilWidget.sizedBox16,
-          Expanded(child: _buildPeriods()),
+          Expanded(
+            child: baseShowLoading(
+              () => _buildPeriods(),
+            ),
+          ),
           _buildBottomButton().paddingAll(AppDimens.defaultPadding),
         ],
       ),
@@ -28,6 +35,10 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             UtilWidget.buildSolidButtonBack(
               title: LocaleKeys.declarationPeriod_selectMonth.tr,
               onPressed: () {
+                if (controller.isShowLoading.value) {
+                  return;
+                }
+
                 controller.pickPeriodDate();
               },
             ),

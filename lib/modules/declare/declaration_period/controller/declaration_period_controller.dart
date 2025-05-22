@@ -16,10 +16,10 @@ class DeclarationPeriodController extends BaseGetxController {
   @override
   void onReady() {
     super.onReady();
-    _getDeclarationPeriods();
+    getDeclarationPeriods();
   }
 
-  Future<void> _getDeclarationPeriods() async {
+  Future<void> getDeclarationPeriods() async {
     try {
       showLoading();
       declarationPeriods.clear();
@@ -49,7 +49,7 @@ class DeclarationPeriodController extends BaseGetxController {
     );
     if (date != null) {
       selectedPeriodDate.value = date;
-      _getDeclarationPeriods();
+      getDeclarationPeriods();
     }
   }
 
