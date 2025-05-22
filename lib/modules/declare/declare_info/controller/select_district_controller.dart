@@ -6,15 +6,15 @@ import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repo
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/function/logger.dart';
 
-// Key is provinceCode
-final cachedDistricts = <String, List<DistrictModel>>{};
-
 class SelectDistrictController extends BaseGetxController {
   final String provinceCode;
 
   SelectDistrictController({
     required this.provinceCode,
-  });
+    DistrictModel? district,
+  }) {
+    selectedDistrict.value = district;
+  }
 
   late final _repository = DeclareInfoRepository(this);
 
@@ -30,11 +30,6 @@ class SelectDistrictController extends BaseGetxController {
   }
 
   Future<void> _getDistricts() async {
-    if (cachedDistricts.containsKey(provinceCode)) {
-      districts.value = cachedDistricts[provinceCode]!;
-      return;
-    }
-
     try {
       showLoading();
       final response = await _repository.getDistricts(

@@ -6,15 +6,19 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
   SelectDistrictBts({
     super.key,
     required this.provinceCode,
+    this.selectedDistrict,
   });
 
   @override
   SelectDistrictController get controller => _controller;
 
-  late final _controller =
-      Get.put(SelectDistrictController(provinceCode: provinceCode));
+  late final _controller = Get.put(SelectDistrictController(
+    provinceCode: provinceCode,
+    district: selectedDistrict,
+  ));
 
   final String provinceCode;
+  final DistrictModel? selectedDistrict;
 
   @override
   Widget buildWidgets(BuildContext context) {

@@ -113,23 +113,10 @@ extension Tk1TabWidget on DeclareInfoPage {
           label: LocaleKeys.declareInfo_districtOfBirth.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
           funcSelect: (didChange) async {
-            // Get.bottomSheet(
-            //   BottomSheetSearch<String>(
-            //     title: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
-            //     listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-            //     selectedItem: controller.tk1State.districtOfBirth.value,
-            //     display: (value) => value,
-            //     onAccept: (value) {
-            //       if (value == null) return;
-            //       didChange(value);
-            //       controller.changeDistrictOfBirth(value);
-            //     },
-            //   ),
-            //   isScrollControlled: true,
-            // );
             final result = await Get.bottomSheet<DistrictModel>(
               SelectDistrictBts(
                 provinceCode: '01',
+                selectedDistrict: controller.tk1State.districtOfBirth.value,
               ),
               isScrollControlled: true,
             );
@@ -246,6 +233,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             final result = await Get.bottomSheet<DistrictModel>(
               SelectDistrictBts(
                 provinceCode: '01',
+                selectedDistrict: controller.tk1State.districtReceive.value,
               ),
               isScrollControlled: true,
             );
@@ -473,6 +461,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             final result = await Get.bottomSheet<DistrictModel>(
               SelectDistrictBts(
                 provinceCode: '01',
+                selectedDistrict: controller.tk1State.districtTT.value,
               ),
               isScrollControlled: true,
             );
