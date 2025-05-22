@@ -1,4 +1,5 @@
 import 'package:v_bhxh/modules/declare/deposit_info/model/model_src.dart';
+import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -8,6 +9,8 @@ import '../../../../base_app/base_app.src.dart';
 class DeclareInfoController extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
   final currentTab = DeclareInfoTab.d02.obs;
+
+  final appController = Get.find<AppController>();
 
   /// NOTE: Nhân viên được chọn - Mock tạm với String, sau tạo model riêng
   final selectedStaff = Rxn<String>();
@@ -75,42 +78,65 @@ class DeclareInfoController extends BaseGetxController {
 
   void nextTab() {
     if (currentTab.value == DeclareInfoTab.d02) {
-      currentTab.value = DeclareInfoTab.tk1;
+      if (d02State.isGenerateTk1Data.value) {
+        currentTab.value = DeclareInfoTab.tk1;
+      } else if (d02State.isGenerateD01Data.value) {
+        currentTab.value = DeclareInfoTab.d01;
+      }
     } else if (currentTab.value == DeclareInfoTab.tk1) {
-      currentTab.value = DeclareInfoTab.d01;
-    } else if (currentTab.value == DeclareInfoTab.d01) {
-      ShowDialog.showDialogWithWidget(
-        title: 'Hoàn tất',
-        content: 'Bạn muốn Chuyển ký hay thêm tiếp nhân sự?',
-        child: CompleteDeclareInfoWidget(
-          onTapAddStaff: () {
-            currentTab.value = DeclareInfoTab.d02;
-          },
-          onTapDeposit: () async {
-            final result = await Get.toNamed(AppRoutes.depositInfo.path);
-
-            if (result is DepositInfoResult) {
-              if (result.action == DepositInfoResultAction.selectD02Tab) {
-                currentTab.value = DeclareInfoTab.d02;
-              }
-            }
-          },
-        ),
-      );
+      if (d02State.isGenerateD01Data.value) {
+        currentTab.value = DeclareInfoTab.d01;
+      }
     }
+
+    final invalidTab = _invalidTab;
+    if (invalidTab != null) {
+      currentTab.value = invalidTab;
+      return;
+    }
+
+    ShowDialog.showDialogWithWidget(
+      title: 'Hoàn tất',
+      content: 'Bạn muốn Chuyển ký hay thêm tiếp nhân sự?',
+      child: CompleteDeclareInfoWidget(
+        onTapAddStaff: () {
+          currentTab.value = DeclareInfoTab.d02;
+        },
+        onTapDeposit: () async {
+          final result = await Get.toNamed(AppRoutes.depositInfo.path);
+
+          if (result is DepositInfoResult) {
+            if (result.action == DepositInfoResultAction.selectD02Tab) {
+              currentTab.value = DeclareInfoTab.d02;
+            }
+          }
+        },
+      ),
+    );
   }
 
-  void saveDraft() {
+  /// Validate forms and return the first invalid tab
+  DeclareInfoTab? get _invalidTab {
     if (d02State.formKey.currentState?.validate() != true) {
-      currentTab.value = DeclareInfoTab.d02;
-      return;
+      return DeclareInfoTab.d02;
     }
 
     if (d02State.isGenerateTk1Data.value &&
         tk1State.formKey.currentState?.validate() != true) {
-      currentTab.value = DeclareInfoTab.tk1;
+      return DeclareInfoTab.tk1;
+    }
+
+    return null;
+  }
+
+  void saveDraft() {
+    final invalidTab = _invalidTab;
+    if (invalidTab != null) {
+      currentTab.value = invalidTab;
       return;
     }
+
+    // TODO: Call API save draft
   }
 
   void onChangeSalaryCoefficient({
@@ -162,7 +188,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void changeProvinceOfBirth(String value) {
+  void changeProvinceOfBirth(ProvinceModel value) {
     tk1State.provinceOfBirth.value = value;
 
     // Đồng bộ tỉnh nơi nhận hồ sơ với tỉnh khai sinh
@@ -212,7 +238,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onChangeProvinceReceive(String value) {
+  void onChangeProvinceReceive(ProvinceModel value) {
     if (tk1State.provinceReceive.value != value) {
       // Khi user thay đổi tỉnh nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -283,7 +309,7 @@ class DeclareInfoController extends BaseGetxController {
     tk1State.isParticipantHeadOfHousehold.value = false;
   }
 
-  void onChangeProvinceTT(String value) {
+  void onChangeProvinceTT(ProvinceModel value) {
     if (tk1State.provinceTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
     }

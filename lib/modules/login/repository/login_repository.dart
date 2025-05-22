@@ -36,4 +36,15 @@ class LoginRepository extends BaseRepository {
       fromJson: (json) => AccountInfoModel.fromJson(json),
     );
   }
+
+  Future<BaseResponse<D02Categories>> getD02Categories() async {
+    final response = await baseCallApi(
+      AppApi.urlGetD02Categories,
+      EnumRequestMethod.get,
+    );
+    return BaseResponse<D02Categories>.fromJson(
+      response,
+      fromJson: (json) => D02Categories.fromJson(json),
+    );
+  }
 }

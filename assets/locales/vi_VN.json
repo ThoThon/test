@@ -7,6 +7,7 @@
     "edit": "Sửa",
     "edit2": "Chỉnh sửa",
     "save": "Lưu",
+    "saveDraft": "Lưu nháp",
     "cancel": "Hủy bỏ",
     "close": "Đóng"
   },
@@ -263,7 +264,14 @@
     "updateDate": "Ngày cập nhật",
     "fileNumber": "Số hồ sơ",
     "status": "Trạng thái",
-    "createNewPeriod": "+ Tạo mới đợt"
+    "createNewPeriod": "+ Tạo mới đợt",
+    "period": "Đợt",
+    "statusNotYet": "Chưa kê khai",
+    "statusDraft": "Lưu nháp",
+    "statusSent": "Đã gửi",
+    "statusPending": "Đang chờ xử lý",
+    "statusFailed": "Thất bại",
+    "statusSuccess": "Thành công"
   },
   "declarationPeriodDetail": {
     "addNewStaff": "Thêm mới nhân viên",

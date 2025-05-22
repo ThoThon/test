@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
+import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 import 'family_member.dart';
 
@@ -8,7 +9,7 @@ class Tk1State {
   final formKey = GlobalKey<FormState>();
 
   /// Tỉnh khai sinh *
-  final provinceOfBirth = Rxn<String>();
+  final provinceOfBirth = Rxn<ProvinceModel>();
 
   /// Huyện khai sinh *
   final districtOfBirth = Rxn<String>();
@@ -23,7 +24,7 @@ class Tk1State {
   final isDuplicateBirthAddress = false.obs;
 
   /// Tỉnh nơi nhận *
-  final provinceReceive = Rxn<String>();
+  final provinceReceive = Rxn<ProvinceModel>();
 
   /// Huyện nơi nhận *
   final districtReceive = Rxn<String>();
@@ -35,7 +36,7 @@ class Tk1State {
   final addressReceiveTextCtrl = TextEditingController();
 
   /// Tỉnh nơi KCB *
-  final provinceKCB = Rxn<String>();
+  final provinceKCB = Rxn<ProvinceModel>();
 
   /// Bệnh viện nơi KCB *
   final hospitalKCB = Rxn<String>();
@@ -53,7 +54,7 @@ class Tk1State {
   final headOfHouseholdCCCDTextCtrl = TextEditingController();
 
   /// Tỉnh thường trú
-  final provinceTT = Rxn<String>();
+  final provinceTT = Rxn<ProvinceModel>();
 
   /// Huyện thường trú
   final districtTT = Rxn<String>();

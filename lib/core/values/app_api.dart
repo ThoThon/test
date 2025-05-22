@@ -24,9 +24,13 @@ class AppApi {
   static const String urlUpdateAccountInfo = '/api/Authen/update-account-info';
   static const String urlGetHistory = '/api/History/get-histories';
   static const String urlGetListProcedure = '/api/Categories/get-thu-tuc';
+  static const String urlAddDeclarationPeriod = '/api/Document/add-kykekhai';
+  static const String urlGetListDeclarationPeriod =
+      '/api/Document/get-kykekhai';
   static const String urlLookupC12 = '/api/TraCuu/files-c12';
   static const String urlGetFileNumber = '/api/TraCuu/tien-do-tiep-nhan';
   static const String urlLookupProgressHistory =
       '/api/TraCuu/qua-trinh-xu-ly-ho-so';
   static const String urlGetListProcedureHistory = '/api/History/get-thu-tuc-history';
+  static const String urlGetD02Categories = '/api/HoSoD02/get-d02-categories';
 }

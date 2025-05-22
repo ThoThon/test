@@ -1,25 +1,25 @@
 class Procedure {
-  final String ten;
-  final String tenCha;
-  final int loai;
-  final String ma;
-  final String ghiChu;
+  final String name;
+  final String parentName;
+  final int type;
+  final String code;
+  final String note;
 
   const Procedure({
-    required this.ten,
-    required this.tenCha,
-    required this.loai,
-    required this.ma,
-    required this.ghiChu,
+    required this.name,
+    required this.parentName,
+    required this.type,
+    required this.code,
+    required this.note,
   });
 
   factory Procedure.fromJson(Map<String, dynamic> json) {
     return Procedure(
-      ten: json['ten'] ?? '',
-      tenCha: json['tenCha'] ?? '',
-      loai: json['loai'] ?? 0,
-      ma: json['ma'] ?? '',
-      ghiChu: json['ghiChu'] ?? '',
+      name: json['ten'] ?? '',
+      parentName: json['tenCha'] ?? '',
+      type: json['loai'] ?? 0,
+      code: json['ma'] ?? '',
+      note: json['ghiChu'] ?? '',
     );
   }
 }

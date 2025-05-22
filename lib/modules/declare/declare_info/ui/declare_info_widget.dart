@@ -288,63 +288,71 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectEthnic() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.declareInfo_ethnic.tr,
-      hintText: LocaleKeys.declareInfo_selectEthnic.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.declareInfo_ethnic.tr,
-            listFilter: ['Kinh', 'Thái', 'Tày'],
-            selectedItem: controller.d02Tk1State.selectedEthnic.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.d02Tk1State.selectedEthnic.value = value;
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<EthnicModel>(
+          label: LocaleKeys.declareInfo_ethnic.tr,
+          hintText: LocaleKeys.declareInfo_selectEthnic.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<EthnicModel>(
+                title: LocaleKeys.declareInfo_ethnic.tr,
+                listFilter: AppData.instance.ethnics.toList(),
+                selectedItem: controller.d02Tk1State.selectedEthnic.value,
+                display: (value) => value.text,
+                onAccept: (value) {
+                  if (value == null) return;
+                  controller.d02Tk1State.selectedEthnic.value = value;
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.d02Tk1State.selectedEthnic.value,
+          display: (ethnic) => ethnic.text,
+          validator: (value) {
+            if (value == null) {
+              return LocaleKeys.declareInfo_ethnicCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.d02Tk1State.selectedEthnic,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.declareInfo_ethnicCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
 
   Widget _buildSelectNationality() {
-    return UtilWidget.buildBottomSheetSelect<String>(
-      label: LocaleKeys.declareInfo_nationality.tr,
-      hintText: LocaleKeys.declareInfo_selectNationality.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<String>(
-            title: LocaleKeys.declareInfo_selectNationality.tr,
-            listFilter: ['Việt Nam', 'Lào', 'Campuchia'],
-            selectedItem: controller.d02Tk1State.selectedNationality.value,
-            display: (value) => value,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.d02Tk1State.selectedNationality.value = value;
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<NationModel>(
+          label: LocaleKeys.declareInfo_nationality.tr,
+          hintText: LocaleKeys.declareInfo_selectNationality.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<NationModel>(
+                title: LocaleKeys.declareInfo_selectNationality.tr,
+                listFilter: AppData.instance.nations.toList(),
+                selectedItem: controller.d02Tk1State.selectedNationality.value,
+                display: (value) => value.text,
+                onAccept: (value) {
+                  if (value == null) return;
+                  controller.d02Tk1State.selectedNationality.value = value;
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.d02Tk1State.selectedNationality.value,
+          display: (nation) => nation.text,
+          validator: (value) {
+            if (value == null) {
+              return LocaleKeys.declareInfo_nationalityCannotEmpty.tr;
+            }
+            return null;
+          },
         );
-      },
-      item: controller.d02Tk1State.selectedNationality,
-      display: (ethnic) => ethnic,
-      validator: (value) {
-        if (value.isNullOrEmpty) {
-          return LocaleKeys.declareInfo_nationalityCannotEmpty.tr;
-        }
-        return null;
       },
     );
   }
@@ -372,14 +380,14 @@ extension DeclareInfoWidget on DeclareInfoPage {
       children: [
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
-            title: 'Lưu nháp',
+            title: LocaleKeys.app_saveDraft.tr,
             onPressed: controller.saveDraft,
           ),
         ),
         UtilWidget.sizedBoxWidth16,
         Expanded(
           child: UtilWidget.buildSolidButton(
-            title: 'Chuyển ký',
+            title: LocaleKeys.app_save.tr,
             onPressed: () {
               controller.nextTab();
             },
