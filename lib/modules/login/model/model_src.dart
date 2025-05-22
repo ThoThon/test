@@ -6,3 +6,4 @@ export 'nation_model.dart';
 export 'province_model.dart';
 export 'relationship_model.dart';
 export 'd02_categories.dart';
+export 'district_model.dart';

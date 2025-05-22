@@ -201,7 +201,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void changeDistrictOfBirth(String value) {
+  void changeDistrictOfBirth(DistrictModel value) {
     tk1State.districtOfBirth.value = value;
 
     // Đồng bộ huyện nơi nhận hồ sơ với huyện khai sinh
@@ -251,7 +251,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onChangeDistrictReceive(String value) {
+  void onChangeDistrictReceive(DistrictModel value) {
     if (tk1State.districtReceive.value != value) {
       // Khi user thay đổi huyện nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -317,7 +317,7 @@ class DeclareInfoController extends BaseGetxController {
     tk1State.provinceTT.value = value;
   }
 
-  void onChangeDistrictTT(String value) {
+  void onChangeDistrictTT(DistrictModel value) {
     if (tk1State.districtTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
     }

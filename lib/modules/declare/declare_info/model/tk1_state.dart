@@ -12,7 +12,7 @@ class Tk1State {
   final provinceOfBirth = Rxn<ProvinceModel>();
 
   /// Huyện khai sinh *
-  final districtOfBirth = Rxn<String>();
+  final districtOfBirth = Rxn<DistrictModel>();
 
   /// Xã khai sinh *
   final wardOfBirth = Rxn<String>();
@@ -27,7 +27,7 @@ class Tk1State {
   final provinceReceive = Rxn<ProvinceModel>();
 
   /// Huyện nơi nhận *
-  final districtReceive = Rxn<String>();
+  final districtReceive = Rxn<DistrictModel>();
 
   /// Xã nơi nhận *
   final wardReceive = Rxn<String>();
@@ -57,7 +57,7 @@ class Tk1State {
   final provinceTT = Rxn<ProvinceModel>();
 
   /// Huyện thường trú
-  final districtTT = Rxn<String>();
+  final districtTT = Rxn<DistrictModel>();
 
   /// Xã thường trú
   final wardTT = Rxn<String>();

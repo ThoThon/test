@@ -9,7 +9,7 @@ class ProvinceModel extends Equatable {
   final String name;
 
   /// Mã hành chính
-  final String? code;
+  final String code;
 
   const ProvinceModel({
     required this.id,
@@ -21,7 +21,7 @@ class ProvinceModel extends Equatable {
     return ProvinceModel(
       id: json['maTinh'] ?? '',
       name: json['tenTinh'] ?? '',
-      code: json['maHanhChinh'],
+      code: json['maHanhChinh'] ?? '',
     );
   }
 
