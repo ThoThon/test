@@ -27,9 +27,8 @@ class HistoryPage extends BaseGetWidget {
               controller.backToHome();
             },
           ),
-          title: SDSBuildText(
-            LocaleKeys.history_historyTransaction.tr,
-            style: AppTextStyle.font16Bo,
+          title: BaseAppBarTitle(
+            title: LocaleKeys.history_historyTransaction.tr,
           ),
         ),
         body: _buildBody(),

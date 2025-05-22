@@ -1,6 +1,7 @@
 21/05/2025
 - Sửa text Kê khai thành Danh sách thủ tục tại màn Trang chủ - BHW-2162
-- Giao diện màn tra cứu C12
+- Giao diện màn tra cứu C12 - BHW-2159
+- Bổ sung api tra cứu C12 - BHW-2173
 
 19/05/2025
 - Cập nhật logic màn login (logic nhớ tài khoản)

@@ -22,6 +22,15 @@ class Assets {
   static String get ASSETS_FONTS_NUNITOSANS_SEMIBOLD_TTF =>
       '${isFromModules ? "packages/$package/" : ""}assets/fonts/NunitoSans-SemiBold.ttf';
 
+  static String get ASSETS_FONTS_ROBOTO_BOLD_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/Roboto-Bold.ttf';
+
+  static String get ASSETS_FONTS_ROBOTO_MEDIUM_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/Roboto-Medium.ttf';
+
+  static String get ASSETS_FONTS_ROBOTO_REGULAR_TTF =>
+      '${isFromModules ? "packages/$package/" : ""}assets/fonts/Roboto-Regular.ttf';
+
   /// {@macro assets_generator.ASSETS_ICONS_HOME_DECLARATION_SVG.preview}
   static String get ASSETS_ICONS_HOME_DECLARATION_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/home/declaration.svg';
@@ -262,6 +271,9 @@ final List<String> assetsArray = <String>[
   Assets.ASSETS_FONTS_NUNITOSANS_EXTRABOLD_TTF,
   Assets.ASSETS_FONTS_NUNITOSANS_REGULAR_TTF,
   Assets.ASSETS_FONTS_NUNITOSANS_SEMIBOLD_TTF,
+  Assets.ASSETS_FONTS_ROBOTO_BOLD_TTF,
+  Assets.ASSETS_FONTS_ROBOTO_MEDIUM_TTF,
+  Assets.ASSETS_FONTS_ROBOTO_REGULAR_TTF,
 
   /// {@macro assets_generator.ASSETS_ICONS_HOME_DECLARATION_SVG.preview}
   Assets.ASSETS_ICONS_HOME_DECLARATION_SVG,

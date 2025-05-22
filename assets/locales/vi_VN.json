@@ -263,7 +263,14 @@
     "updateDate": "Ngày cập nhật",
     "fileNumber": "Số hồ sơ",
     "status": "Trạng thái",
-    "createNewPeriod": "+ Tạo mới đợt"
+    "createNewPeriod": "+ Tạo mới đợt",
+    "period": "Đợt",
+    "statusNotYet": "Chưa kê khai",
+    "statusDraft": "Lưu nháp",
+    "statusSent": "Đã gửi",
+    "statusPending": "Đang chờ xử lý",
+    "statusFailed": "Thất bại",
+    "statusSuccess": "Thành công"
   },
   "declarationPeriodDetail": {
     "addNewStaff": "Thêm mới nhân viên",
@@ -463,6 +470,7 @@
     "november": "Tháng 11",
     "december": "Tháng 12",
     "month": "Tháng",
-    "see": "Xem"
+    "see": "Xem",
+    "resultDetail":"Chi tiết kết quả đóng BHXH"
   }
 }

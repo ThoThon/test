@@ -265,6 +265,17 @@ class LocaleKeys {
   static const declarationPeriod_status = 'declarationPeriod_status';
   static const declarationPeriod_createNewPeriod =
       'declarationPeriod_createNewPeriod';
+  static const declarationPeriod_period = 'declarationPeriod_period';
+  static const declarationPeriod_statusNotYet =
+      'declarationPeriod_statusNotYet';
+  static const declarationPeriod_statusDraft = 'declarationPeriod_statusDraft';
+  static const declarationPeriod_statusSent = 'declarationPeriod_statusSent';
+  static const declarationPeriod_statusPending =
+      'declarationPeriod_statusPending';
+  static const declarationPeriod_statusFailed =
+      'declarationPeriod_statusFailed';
+  static const declarationPeriod_statusSuccess =
+      'declarationPeriod_statusSuccess';
   static const declarationPeriodDetail_addNewStaff =
       'declarationPeriodDetail_addNewStaff';
   static const declarationPeriodDetail_attachFile =
@@ -509,6 +520,7 @@ class LocaleKeys {
   static const lookupC12_december = 'lookupC12_december';
   static const lookupC12_month = 'lookupC12_month';
   static const lookupC12_see = 'lookupC12_see';
+  static const lookupC12_resultDetail = 'lookupC12_resultDetail';
 }
 
 class Locales {
@@ -789,6 +801,13 @@ class Locales {
     'declarationPeriod_fileNumber': 'Số hồ sơ',
     'declarationPeriod_status': 'Trạng thái',
     'declarationPeriod_createNewPeriod': '+ Tạo mới đợt',
+    'declarationPeriod_period': 'Đợt',
+    'declarationPeriod_statusNotYet': 'Chưa kê khai',
+    'declarationPeriod_statusDraft': 'Lưu nháp',
+    'declarationPeriod_statusSent': 'Đã gửi',
+    'declarationPeriod_statusPending': 'Đang chờ xử lý',
+    'declarationPeriod_statusFailed': 'Thất bại',
+    'declarationPeriod_statusSuccess': 'Thành công',
     'declarationPeriodDetail_addNewStaff': 'Thêm mới nhân viên',
     'declarationPeriodDetail_attachFile': 'Đính kèm file',
     'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',
@@ -989,5 +1008,6 @@ class Locales {
     'lookupC12_december': 'Tháng 12',
     'lookupC12_month': 'Tháng',
     'lookupC12_see': 'Xem',
+    'lookupC12_resultDetail': 'Chi tiết kết quả đóng BHXH',
   };
 }

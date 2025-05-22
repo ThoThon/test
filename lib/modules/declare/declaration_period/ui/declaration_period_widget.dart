@@ -2,14 +2,16 @@ part of 'declaration_period_page.dart';
 
 extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   Widget _buildBody() {
-    return Column(
-      children: [
-        _buildDatePicker()
-            .paddingSymmetric(horizontal: AppDimens.defaultPadding),
-        UtilWidget.sizedBox16,
-        Expanded(child: _buildPeriods()),
-        _buildBottomButton().paddingAll(AppDimens.defaultPadding),
-      ],
+    return baseShowLoading(
+      () => Column(
+        children: [
+          _buildDatePicker()
+              .paddingSymmetric(horizontal: AppDimens.defaultPadding),
+          UtilWidget.sizedBox16,
+          Expanded(child: _buildPeriods()),
+          _buildBottomButton().paddingAll(AppDimens.defaultPadding),
+        ],
+      ),
     );
   }
 
@@ -36,6 +38,15 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   }
 
   Widget _buildPeriods() {
+    if (controller.declarationPeriods.isEmpty) {
+      return Center(
+        child: SDSBuildText(
+          LocaleKeys.app_noData.tr,
+          style: AppTextStyle.font16Bo,
+        ),
+      );
+    }
+
     return ListView.builder(
       padding: const EdgeInsets.only(bottom: AppDimens.defaultPadding),
       itemCount: controller.declarationPeriods.length,
@@ -50,7 +61,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   }
 
   Widget _buildPeriodItem({
-    required DeclarationPeriodModel period,
+    required DeclarationPeriod period,
     required int index,
   }) {
     return Slidable(
@@ -87,31 +98,32 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SDSBuildText(
-                    period.title,
+                    "${LocaleKeys.declarationPeriod_period.tr} ${period.period}",
                     style: AppTextStyle.font16Bo,
                   ),
-                  SDSBuildText(
-                    '${LocaleKeys.declarationPeriod_updateDate.tr}: ${convertDateToString(period.updateDate, PATTERN_1)}',
-                    style: AppTextStyle.font16Re,
-                  ),
-                  if (period.fileNumber != null)
-                    RichText(
-                      text: TextSpan(
-                        style: AppTextStyle.font16Re.copyWith(
-                          fontStyle: FontStyle.italic,
-                        ),
-                        children: [
-                          TextSpan(
-                            text:
-                                '${LocaleKeys.declarationPeriod_fileNumber.tr}: ',
-                          ),
-                          TextSpan(
-                            text: period.fileNumber ?? '',
-                            style: AppTextStyle.font16Bo,
-                          ),
-                        ],
-                      ),
+                  if (period.updateDate != null)
+                    SDSBuildText(
+                      '${LocaleKeys.declarationPeriod_updateDate.tr}: ${convertDateToStringSafe(period.updateDate, PATTERN_1)}',
+                      style: AppTextStyle.font16Re,
                     ),
+                  // if (period.fileNumber != null)
+                  //   RichText(
+                  //     text: TextSpan(
+                  //       style: AppTextStyle.font16Re.copyWith(
+                  //         fontStyle: FontStyle.italic,
+                  //       ),
+                  //       children: [
+                  //         TextSpan(
+                  //           text:
+                  //               '${LocaleKeys.declarationPeriod_fileNumber.tr}: ',
+                  //         ),
+                  //         TextSpan(
+                  //           text: period.fileNumber ?? '',
+                  //           style: AppTextStyle.font16Bo,
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
                   RichText(
                     text: TextSpan(
                       style: AppTextStyle.font16Re.copyWith(

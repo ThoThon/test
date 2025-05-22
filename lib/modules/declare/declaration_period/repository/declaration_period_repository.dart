@@ -8,6 +8,20 @@ import '../model/model_src.dart';
 class DeclarationPeriodRepository extends BaseRepository {
   DeclarationPeriodRepository(super.controller);
 
+  Future<BaseResponse<DeclarationPeriodList>> getDeclarationPeriods({
+    required ListDeclarationPeriodRequest request,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlGetListDeclarationPeriod,
+      EnumRequestMethod.get,
+      jsonMap: request.toJson(),
+    );
+    return BaseResponse<DeclarationPeriodList>.fromJson(
+      response,
+      fromJson: (json) => DeclarationPeriodList.fromJson(json),
+    );
+  }
+
   Future<BaseResponse<CreateDeclarationPeriodResponse>>
       createDeclarationPeriod({
     required CreateDeclarationPeriodRequest request,
