@@ -1,6 +1,13 @@
 22/05/2025
 - Hoàn thiện chức năng tra cứu chi tiết lịch sử
 - Hoàn thiện bộ lọc mã thủ tục cho màn lịch sử
+- [api] - Bổ sung giao diện Lấy danh sách tỉnh - BHW-2160
+- [api] - Bổ sung giao diện Tạo ký kê khai mới - BHW-2154
+- [api] - Bổ sung giao diện Danh sách ký kê khai theo tháng năm và mã thủ tục - BHW-2153
+- [api] - Bổ sung giao diện lấy danh mục quốc tịch, dân tộc - BHW-2147
+- [AppMobile]_Validate thông tin màn kê khai D01-TS - BHW-2143
+- [AppMobile]_Validate thông tin màn kê khai TK1-TS - BHW-2142
+- [AppMobile]_Validate thông tin màn kê khai D02-LT - BHW-2141
 
 21/05/2025
 - Sửa text Kê khai thành Danh sách thủ tục tại màn Trang chủ - BHW-2162
