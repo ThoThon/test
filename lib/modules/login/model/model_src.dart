@@ -5,3 +5,4 @@ export 'ethnic_model.dart';
 export 'nation_model.dart';
 export 'province_model.dart';
 export 'relationship_model.dart';
+export 'category_group.dart';
