@@ -28,4 +28,5 @@ class AppApi {
   static const String urlGetListDeclarationPeriod =
       '/api/Document/get-kykekhai';
   static const String urlLookupC12 = '/api/TraCuu/files-c12';
+  static const String urlGetD02Categories = '/api/HoSoD02/get-d02-categories';
 }

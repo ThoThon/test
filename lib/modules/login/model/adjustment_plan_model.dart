@@ -20,11 +20,11 @@ class AdjustmentPlanModel extends Equatable {
   factory AdjustmentPlanModel.fromJson(Map<String, dynamic> json) {
     return AdjustmentPlanModel(
       id: json['id'] ?? 0,
-      code: json['code'] ?? '',
-      name: json['name'] ?? '',
-      declarationType1: json['declarationType1'] ?? 0,
-      declarationType2: json['declarationType2'] ?? 0,
-      declarationType3: json['declarationType3'] ?? 0,
+      code: json['maPhuongAn'] ?? '',
+      name: json['tenPhuongAn'] ?? '',
+      declarationType1: json['loaiKeKhai1'] ?? 0,
+      declarationType2: json['loaiKeKhai2'] ?? 0,
+      declarationType3: json['loaiKeKhai3'] ?? 0,
     );
   }
 

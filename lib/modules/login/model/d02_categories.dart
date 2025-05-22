@@ -1,6 +1,6 @@
 import 'model_src.dart';
 
-class CategoryGroup {
+class D02Categories {
   final Set<DeclarationTypeModel> declarationTypes;
   final Set<EthnicModel> ethnics;
   final Set<NationModel> nations;
@@ -8,7 +8,7 @@ class CategoryGroup {
   final Set<AdjustmentPlanModel> adjustmentPlans;
   final Set<RelationshipModel> relationships;
 
-  const CategoryGroup({
+  const D02Categories({
     required this.declarationTypes,
     required this.ethnics,
     required this.nations,
@@ -17,8 +17,8 @@ class CategoryGroup {
     required this.relationships,
   });
 
-  factory CategoryGroup.fromJson(Map<String, dynamic> json) {
-    return CategoryGroup(
+  factory D02Categories.fromJson(Map<String, dynamic> json) {
+    return D02Categories(
       declarationTypes: json['loaiKeKhai'] != null
           ? (json['loaiKeKhai'] as List)
               .map((e) => DeclarationTypeModel.fromJson(e))

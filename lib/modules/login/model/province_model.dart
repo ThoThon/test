@@ -19,9 +19,9 @@ class ProvinceModel extends Equatable {
 
   factory ProvinceModel.fromJson(Map<String, dynamic> json) {
     return ProvinceModel(
-      id: json['id'] ?? '',
-      name: json['name'] ?? '',
-      code: json['code'],
+      id: json['maTinh'] ?? '',
+      name: json['tenTinh'] ?? '',
+      code: json['maHanhChinh'],
     );
   }
 

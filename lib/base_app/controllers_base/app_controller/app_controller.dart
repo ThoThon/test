@@ -15,9 +15,8 @@ late Box hiveApp;
 late PackageInfo packageInfo;
 
 class AppController extends BaseGetxController {
-  late final _loginRepository = LoginRepository(this);
-
   AccountInfoModel? accountInfoModel;
+  D02Categories? d02Categories;
 
   @override
   Future<void> onInit() async {
@@ -43,21 +42,6 @@ class AppController extends BaseGetxController {
     Hive.init(appDocumentDirectory.path);
     hiveApp = await Hive.openBox('vBHXH');
     packageInfo = await PackageInfo.fromPlatform();
-  }
-
-  Future<void> getAccountInfo() async {
-    try {
-      final res = await _loginRepository.getAccountInfo();
-      if (res.code == AppConst.statusCodeSuccess && res.result != null) {
-        accountInfoModel = res.result;
-        //Lưu tên tổ chức lại để hiện ngoài màn login
-        if (accountInfoModel != null) {
-          hiveApp.put(HiveKeys.keyCompanyName, accountInfoModel?.tenToChuc);
-        }
-      }
-    } catch (e) {
-      logger.d(e);
-    }
   }
 
   Future<void> logout() async {
