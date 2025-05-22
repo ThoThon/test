@@ -1,6 +1,5 @@
 import 'package:timelines_plus/timelines_plus.dart';
 import 'package:v_bhxh/modules/history/models/model_src.dart';
-import 'package:v_bhxh/modules/history_detail/model/result_valid_enum.dart';
 
 import '../../src.dart';
 
@@ -23,7 +22,7 @@ class HistoryDetailPage extends BaseGetWidget {
           style: AppTextStyle.font16Bo,
         ),
       ),
-      body: baseShowLoading(
+      body: buildLoadingOverlay(
         () => _buildBody(),
       ),
     );

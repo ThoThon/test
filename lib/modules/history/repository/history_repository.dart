@@ -17,4 +17,16 @@ class HistoryRepository extends BaseRepository {
       fromJson: (json) => HistoryResponse.fromJson(json),
     );
   }
+
+  Future<BaseResponseList<ListProcedureFilterModel>>
+      getListProcedureFilter() async {
+    final response = await baseCallApi(
+      AppApi.urlGetListProcedureHistory,
+      EnumRequestMethod.get,
+    );
+    return BaseResponseList<ListProcedureFilterModel>.fromJson(
+      response,
+      (json) => ListProcedureFilterModel.fromJson(json),
+    );
+  }
 }
