@@ -1,25 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:v_bhxh/generated/locales.g.dart';
 
 enum DeclarationStatus {
-  /// Chưa kê khai
+  /// 0: Chưa kê khai
   notYet,
 
-  /// Lưu nháp
+  /// 1: Lưu nháp
   draft,
 
-  /// Đã gửi
-  sent;
+  /// 2: Đã gửi
+  sent,
+
+  /// 3: Đang chờ xử lý
+  pending,
+
+  /// 4: Thất bại
+  failed,
+
+  /// 5: Thành công
+  success;
 
   bool get canEdit => this == DeclarationStatus.draft;
 
   String get title {
     switch (this) {
       case DeclarationStatus.notYet:
-        return 'Chưa kê khai';
+        return LocaleKeys.declarationPeriod_statusNotYet.tr;
       case DeclarationStatus.draft:
-        return 'Lưu nháp';
+        return LocaleKeys.declarationPeriod_statusDraft.tr;
       case DeclarationStatus.sent:
-        return 'Đã gửi';
+        return LocaleKeys.declarationPeriod_statusSent.tr;
+      case DeclarationStatus.pending:
+        return LocaleKeys.declarationPeriod_statusPending.tr;
+      case DeclarationStatus.failed:
+        return LocaleKeys.declarationPeriod_statusFailed.tr;
+      case DeclarationStatus.success:
+        return LocaleKeys.declarationPeriod_statusSuccess.tr;
     }
   }
 
@@ -31,6 +48,12 @@ enum DeclarationStatus {
         return const Color(0xFFFFCB09);
       case DeclarationStatus.sent:
         return Colors.green;
+      case DeclarationStatus.pending:
+        return const Color(0xFFB7B7B7);
+      case DeclarationStatus.failed:
+        return Colors.red;
+      case DeclarationStatus.success:
+        return const Color(0xFF00BFFF);
     }
   }
 
@@ -42,6 +65,12 @@ enum DeclarationStatus {
         return DeclarationStatus.draft;
       case 2:
         return DeclarationStatus.sent;
+      case 3:
+        return DeclarationStatus.pending;
+      case 4:
+        return DeclarationStatus.failed;
+      case 5:
+        return DeclarationStatus.success;
       default:
         return DeclarationStatus.notYet;
     }

@@ -264,7 +264,13 @@
     "fileNumber": "Số hồ sơ",
     "status": "Trạng thái",
     "createNewPeriod": "+ Tạo mới đợt",
-    "period": "Đợt"
+    "period": "Đợt",
+    "statusNotYet": "Chưa kê khai",
+    "statusDraft": "Lưu nháp",
+    "statusSent": "Đã gửi",
+    "statusPending": "Đang chờ xử lý",
+    "statusFailed": "Thất bại",
+    "statusSuccess": "Thành công"
   },
   "declarationPeriodDetail": {
     "addNewStaff": "Thêm mới nhân viên",
