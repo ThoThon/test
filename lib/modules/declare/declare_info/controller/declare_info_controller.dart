@@ -1,4 +1,5 @@
 import 'package:v_bhxh/modules/declare/deposit_info/model/model_src.dart';
+import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -8,6 +9,8 @@ import '../../../../base_app/base_app.src.dart';
 class DeclareInfoController extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
   final currentTab = DeclareInfoTab.d02.obs;
+
+  final appController = Get.find<AppController>();
 
   /// NOTE: Nhân viên được chọn - Mock tạm với String, sau tạo model riêng
   final selectedStaff = Rxn<String>();
@@ -162,7 +165,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void changeProvinceOfBirth(String value) {
+  void changeProvinceOfBirth(ProvinceModel value) {
     tk1State.provinceOfBirth.value = value;
 
     // Đồng bộ tỉnh nơi nhận hồ sơ với tỉnh khai sinh
@@ -212,7 +215,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onChangeProvinceReceive(String value) {
+  void onChangeProvinceReceive(ProvinceModel value) {
     if (tk1State.provinceReceive.value != value) {
       // Khi user thay đổi tỉnh nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -283,7 +286,7 @@ class DeclareInfoController extends BaseGetxController {
     tk1State.isParticipantHeadOfHousehold.value = false;
   }
 
-  void onChangeProvinceTT(String value) {
+  void onChangeProvinceTT(ProvinceModel value) {
     if (tk1State.provinceTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
     }

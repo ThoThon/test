@@ -6,7 +6,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
-import 'package:v_bhxh/modules/login/repository/login_repository.dart';
 
 import '../../../modules/src.dart';
 
@@ -16,7 +15,6 @@ late PackageInfo packageInfo;
 
 class AppController extends BaseGetxController {
   AccountInfoModel? accountInfoModel;
-  D02Categories? d02Categories;
 
   @override
   Future<void> onInit() async {

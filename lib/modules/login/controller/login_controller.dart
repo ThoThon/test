@@ -82,8 +82,15 @@ class LoginController extends BaseGetxController {
   Future<void> _getD02Categories() async {
     try {
       final res = await _loginRepository.getD02Categories();
-      if (res.code == AppConst.statusCodeSuccess && res.result != null) {
-        appController.d02Categories = res.result;
+      final d02Categories = res.result;
+      if (res.code == AppConst.statusCodeSuccess && d02Categories != null) {
+        AppData.instance
+          ..declarationTypes = d02Categories.declarationTypes
+          ..ethnics = d02Categories.ethnics
+          ..nations = d02Categories.nations
+          ..provinces = d02Categories.provinces
+          ..adjustmentPlans = d02Categories.adjustmentPlans
+          ..relationships = d02Categories.relationships;
       }
     } catch (e) {
       logger.d(e);

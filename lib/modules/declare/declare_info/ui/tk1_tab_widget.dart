@@ -72,16 +72,16 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvince() {
-    return UtilWidget.buildBottomSheetSelect<String>(
+    return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
       label: LocaleKeys.declareInfo_provinceOfBirth.tr,
       hintText: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
-          BottomSheetSearch<String>(
+          BottomSheetSearch<ProvinceModel>(
             title: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+            listFilter: AppData.instance.provinces.toList(),
             selectedItem: controller.tk1State.provinceOfBirth.value,
-            display: (value) => value,
+            display: (value) => value.name,
             onAccept: (value) {
               if (value == null) return;
               didChange(value);
@@ -92,9 +92,9 @@ extension Tk1TabWidget on DeclareInfoPage {
         );
       },
       item: controller.tk1State.provinceOfBirth,
-      display: (ethnic) => ethnic,
+      display: (province) => province.name,
       validator: (value) {
-        if (value.isNullOrEmpty) {
+        if (value == null) {
           return LocaleKeys.declareInfo_provinceOfBirthCannotEmpty.tr;
         }
         return null;
@@ -179,16 +179,16 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvinceReceive() {
-    return UtilWidget.buildBottomSheetSelect<String>(
+    return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
       label: LocaleKeys.declareInfo_provinceReceive.tr,
       hintText: LocaleKeys.declareInfo_selectProvinceReceive.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
-          BottomSheetSearch<String>(
+          BottomSheetSearch<ProvinceModel>(
             title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+            listFilter: AppData.instance.provinces.toList(),
             selectedItem: controller.tk1State.provinceReceive.value,
-            display: (value) => value,
+            display: (value) => value.name,
             onAccept: (value) {
               if (value == null) return;
               didChange(value);
@@ -199,9 +199,9 @@ extension Tk1TabWidget on DeclareInfoPage {
         );
       },
       item: controller.tk1State.provinceReceive,
-      display: (ethnic) => ethnic,
+      display: (province) => province.name,
       validator: (value) {
-        if (value.isNullOrEmpty) {
+        if (value == null) {
           return LocaleKeys.declareInfo_provinceReceiveCannotEmpty.tr;
         }
         return null;
@@ -395,16 +395,16 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvinceTT() {
-    return UtilWidget.buildBottomSheetSelect<String>(
+    return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
       label: LocaleKeys.declareInfo_provinceTT.tr,
       hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
-          BottomSheetSearch<String>(
+          BottomSheetSearch<ProvinceModel>(
             title: LocaleKeys.declareInfo_selectProvinceTT.tr,
-            listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+            listFilter: AppData.instance.provinces.toList(),
             selectedItem: controller.tk1State.provinceTT.value,
-            display: (value) => value,
+            display: (value) => value.name,
             onAccept: (value) {
               if (value == null) return;
               didChange(value);
@@ -415,7 +415,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         );
       },
       item: controller.tk1State.provinceTT,
-      display: (ethnic) => ethnic,
+      display: (province) => province.name,
     );
   }
 
