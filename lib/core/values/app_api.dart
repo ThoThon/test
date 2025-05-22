@@ -24,6 +24,7 @@ class AppApi {
   static const String urlUpdateAccountInfo = '/api/Authen/update-account-info';
   static const String urlGetHistory = '/api/History/get-histories';
   static const String urlGetListProcedure = '/api/Categories/get-thu-tuc';
+  static const String urlAddDeclarationPeriod = '/api/Document/add-kykekhai';
   static const String urlGetListDeclarationPeriod =
       '/api/Document/get-kykekhai';
   static const String urlLookupC12 = '/api/TraCuu/files-c12';

@@ -13,12 +13,14 @@ class DeclarationPeriodPage extends BaseGetWidget<DeclarationPeriodController> {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: BaseAppBarTitle(title: LocaleKeys.declarationPeriod_title.tr),
-      ),
-      body: SafeArea(
-        child: _buildBody(),
+    return buildLoadingOverlay(
+      () => Scaffold(
+        appBar: BaseAppBar(
+          title: BaseAppBarTitle(title: LocaleKeys.declarationPeriod_title.tr),
+        ),
+        body: SafeArea(
+          child: _buildBody(),
+        ),
       ),
     );
   }

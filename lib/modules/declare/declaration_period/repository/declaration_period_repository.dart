@@ -21,4 +21,19 @@ class DeclarationPeriodRepository extends BaseRepository {
       fromJson: (json) => DeclarationPeriodList.fromJson(json),
     );
   }
+
+  Future<BaseResponse<DeclarationPeriod>> createDeclarationPeriod({
+    required CreateDeclarationPeriodRequest request,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlAddDeclarationPeriod,
+      EnumRequestMethod.post,
+      jsonMap: request.toJson(),
+    );
+
+    return BaseResponse<DeclarationPeriod>.fromJson(
+      response,
+      fromJson: (json) => DeclarationPeriod.fromJson(json),
+    );
+  }
 }
