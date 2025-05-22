@@ -2,8 +2,14 @@ import 'model_src.dart';
 
 class DeclarationPeriod {
   final String id;
+
+  /// Mã công ty
   final String companyId;
+
+  /// Mã thủ tục
   final int procedureId;
+
+  /// Trạng thái
   final DeclarationStatus status;
   final int year;
   final int month;
@@ -12,7 +18,7 @@ class DeclarationPeriod {
   final DateTime? createTime;
   final DateTime? updateDate;
   final bool isApp;
-  final int idRef;
+  final int? idRef;
 
   DeclarationPeriod({
     required this.id,
@@ -39,14 +45,10 @@ class DeclarationPeriod {
       month: json['thang'] ?? 0,
       period: json['dot'] ?? 0,
       selected: json['selected'] ?? false,
-      createTime: json['createTime'] != null
-          ? DateTime.tryParse(json['createTime'])
-          : null,
-      updateDate: json['updateDate'] != null
-          ? DateTime.tryParse(json['updateDate'])
-          : null,
+      createTime: DateTime.tryParse(json['createTime'] ?? ''),
+      updateDate: DateTime.tryParse(json['updateDate'] ?? ''),
       isApp: json['isApp'] ?? false,
-      idRef: json['idRef'] ?? 0,
+      idRef: json['idRef'],
     );
   }
 }

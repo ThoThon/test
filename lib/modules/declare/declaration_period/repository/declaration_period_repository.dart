@@ -22,8 +22,7 @@ class DeclarationPeriodRepository extends BaseRepository {
     );
   }
 
-  Future<BaseResponse<CreateDeclarationPeriodResponse>>
-      createDeclarationPeriod({
+  Future<BaseResponse<DeclarationPeriod>> createDeclarationPeriod({
     required CreateDeclarationPeriodRequest request,
   }) async {
     final response = await baseCallApi(
@@ -32,9 +31,9 @@ class DeclarationPeriodRepository extends BaseRepository {
       jsonMap: request.toJson(),
     );
 
-    return BaseResponse<CreateDeclarationPeriodResponse>.fromJson(
+    return BaseResponse<DeclarationPeriod>.fromJson(
       response,
-      fromJson: (json) => CreateDeclarationPeriodResponse.fromJson(json),
+      fromJson: (json) => DeclarationPeriod.fromJson(json),
     );
   }
 }
