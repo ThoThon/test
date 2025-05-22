@@ -442,6 +442,7 @@ class UtilWidget {
     ValueChanged<T?>? onChanged,
     String? hintText,
     String? Function(T?)? validator,
+    AutovalidateMode? autovalidateMode,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -472,7 +473,8 @@ class UtilWidget {
           // Force dropdown menu có chiều rộng bằng với dropdown button
           alignedDropdown: true,
           child: dropdown_custom.DropdownButtonFormField<T>(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            autovalidateMode:
+                autovalidateMode ?? AutovalidateMode.onUserInteraction,
             dropdownColor: AppColors.colorWhite,
             decoration: InputDecoration(
               errorStyle: AppTextStyle.font12Re.copyWith(

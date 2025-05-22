@@ -380,14 +380,14 @@ extension DeclareInfoWidget on DeclareInfoPage {
       children: [
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
-            title: 'Lưu nháp',
+            title: LocaleKeys.app_saveDraft.tr,
             onPressed: controller.saveDraft,
           ),
         ),
         UtilWidget.sizedBoxWidth16,
         Expanded(
           child: UtilWidget.buildSolidButton(
-            title: 'Chuyển ký',
+            title: LocaleKeys.app_save.tr,
             onPressed: () {
               controller.nextTab();
             },

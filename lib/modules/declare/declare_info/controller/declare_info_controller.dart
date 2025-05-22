@@ -78,42 +78,65 @@ class DeclareInfoController extends BaseGetxController {
 
   void nextTab() {
     if (currentTab.value == DeclareInfoTab.d02) {
-      currentTab.value = DeclareInfoTab.tk1;
+      if (d02State.isGenerateTk1Data.value) {
+        currentTab.value = DeclareInfoTab.tk1;
+      } else if (d02State.isGenerateD01Data.value) {
+        currentTab.value = DeclareInfoTab.d01;
+      }
     } else if (currentTab.value == DeclareInfoTab.tk1) {
-      currentTab.value = DeclareInfoTab.d01;
-    } else if (currentTab.value == DeclareInfoTab.d01) {
-      ShowDialog.showDialogWithWidget(
-        title: 'Hoàn tất',
-        content: 'Bạn muốn Chuyển ký hay thêm tiếp nhân sự?',
-        child: CompleteDeclareInfoWidget(
-          onTapAddStaff: () {
-            currentTab.value = DeclareInfoTab.d02;
-          },
-          onTapDeposit: () async {
-            final result = await Get.toNamed(AppRoutes.depositInfo.path);
-
-            if (result is DepositInfoResult) {
-              if (result.action == DepositInfoResultAction.selectD02Tab) {
-                currentTab.value = DeclareInfoTab.d02;
-              }
-            }
-          },
-        ),
-      );
+      if (d02State.isGenerateD01Data.value) {
+        currentTab.value = DeclareInfoTab.d01;
+      }
     }
+
+    final invalidTab = _invalidTab;
+    if (invalidTab != null) {
+      currentTab.value = invalidTab;
+      return;
+    }
+
+    ShowDialog.showDialogWithWidget(
+      title: 'Hoàn tất',
+      content: 'Bạn muốn Chuyển ký hay thêm tiếp nhân sự?',
+      child: CompleteDeclareInfoWidget(
+        onTapAddStaff: () {
+          currentTab.value = DeclareInfoTab.d02;
+        },
+        onTapDeposit: () async {
+          final result = await Get.toNamed(AppRoutes.depositInfo.path);
+
+          if (result is DepositInfoResult) {
+            if (result.action == DepositInfoResultAction.selectD02Tab) {
+              currentTab.value = DeclareInfoTab.d02;
+            }
+          }
+        },
+      ),
+    );
   }
 
-  void saveDraft() {
+  /// Validate forms and return the first invalid tab
+  DeclareInfoTab? get _invalidTab {
     if (d02State.formKey.currentState?.validate() != true) {
-      currentTab.value = DeclareInfoTab.d02;
-      return;
+      return DeclareInfoTab.d02;
     }
 
     if (d02State.isGenerateTk1Data.value &&
         tk1State.formKey.currentState?.validate() != true) {
-      currentTab.value = DeclareInfoTab.tk1;
+      return DeclareInfoTab.tk1;
+    }
+
+    return null;
+  }
+
+  void saveDraft() {
+    final invalidTab = _invalidTab;
+    if (invalidTab != null) {
+      currentTab.value = invalidTab;
       return;
     }
+
+    // TODO: Call API save draft
   }
 
   void onChangeSalaryCoefficient({
