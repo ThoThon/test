@@ -30,9 +30,6 @@ enum AppRoutes {
   ///Chi tiết lịch sử
   historyDetail,
 
-  ///Thông tin user khi scan CCCD
-  routeNfcInformationUser,
-
   //Quét CCCD
   nfc,
 

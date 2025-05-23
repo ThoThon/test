@@ -38,6 +38,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.6.0"
+  asn1lib:
+    dependency: "direct main"
+    description:
+      name: asn1lib
+      sha256: "1c296cd268f486cabcc3930e9b93a8133169305f18d722916e675959a88f6d2c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.5.9"
   async:
     dependency: transitive
     description:
@@ -268,7 +276,7 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "81c99bc7f81c1cddef9cdbe85a110f419e11a344"
+      resolved-ref: d1cc5ded7a7183d7752f755869faf49591378f36
       url: "https://github.com/HVLoc/dmrtd"
     source: git
     version: "2.0.0"

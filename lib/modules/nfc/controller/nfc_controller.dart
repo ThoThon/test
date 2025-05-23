@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../base_app/controllers_base/base_controller/base_controller.src.dart';
@@ -16,13 +15,6 @@ class NfcController extends BaseGetxController {
     super.onInit();
   }
 
-  Future<void> funcCheckIn(Widget child) async {
-    Get.dialog(
-      child,
-      barrierDismissible: false,
-    );
-  }
-
   Future<void> scanNFC() async {
     if (GetPlatform.isIOS) {
       NfcDialogController nfcDialogController = Get.put(NfcDialogController());
@@ -30,9 +22,5 @@ class NfcController extends BaseGetxController {
     } else if (GetPlatform.isAndroid) {
       ShowDialog.funcOpenDialog(const NfcDialog());
     }
-  }
-
-  Future<void> getInfoORC() async {
-    // Get.toNamed(AppRoutes.routeAwaitOCRData);
   }
 }

@@ -1,6 +1,7 @@
 part of 'nfc_information_user_page.dart';
 
 Widget _buildListGuild(NfcInformationUserController controller) {
+  final infoUser = controller.sendNfcRequestModel;
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -11,17 +12,17 @@ Widget _buildListGuild(NfcInformationUserController controller) {
             children: [
               Center(
                 child: Container(
-                  width: 150, // hoặc bất kỳ chiều rộng mong muốn nào
+                  width: 150,
                   height: 200,
                   decoration: BoxDecoration(
                     color: AppColors.dsGray5,
-                    borderRadius: BorderRadius.circular(8), // bo góc nếu muốn
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   child: const Center(
                     child: Icon(
                       Icons.person,
-                      size: 48, // hoặc bất kỳ kích thước nào bạn muốn
-                      color: Colors.black, // đổi màu nếu cần
+                      size: 48,
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -29,11 +30,11 @@ Widget _buildListGuild(NfcInformationUserController controller) {
               sdsSBHeight12,
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_CARD_INFO_SVG,
-                "${LocaleKeys.infomationUser_id.tr}: ",
+                "${LocaleKeys.infomationUser_id.tr}: ${infoUser.sessionId}",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_USER_NAME_CARD_SVG,
-                "${LocaleKeys.infomationUser_name.tr}: ",
+                "${LocaleKeys.infomationUser_name.tr}: ${infoUser.firstName}",
               ),
               _buildTextAndIcon(
                 Assets.ASSETS_ICONS_ICON_USER_NAME_CARD_SVG,
