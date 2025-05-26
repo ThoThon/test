@@ -343,29 +343,27 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectHospitalKCB() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<Hospital>(
           label: LocaleKeys.declareInfo_hospitalKCB.tr,
           hintText: LocaleKeys.declareInfo_selectHospitalKCB.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.declareInfo_selectHospitalKCB.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.tk1State.hospitalKCB.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  controller.tk1State.hospitalKCB.value = value;
-                  didChange(value);
-                },
+          funcSelect: (didChange) async {
+            final result = await Get.bottomSheet<Hospital>(
+              SelectHospitalBts(
+                provinceCode: '01',
+                selectedHospital: controller.tk1State.hospitalKCB.value,
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              didChange(result);
+              controller.tk1State.hospitalKCB.value = result;
+            }
           },
           selectedItem: controller.tk1State.hospitalKCB.value,
-          display: (ethnic) => ethnic,
+          display: (hospital) => hospital.name,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (value == null) {
               return LocaleKeys.declareInfo_hospitalKCBCannotEmpty.tr;
             }
             return null;
