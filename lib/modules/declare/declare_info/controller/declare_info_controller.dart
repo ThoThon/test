@@ -195,6 +195,12 @@ class DeclareInfoController extends BaseGetxController {
     // TH nếu đ/c khai sinh sửa lại thì đ/c nhận hồ sơ cũng thay đổi
     _syncBirthAddress();
     _syncHeadOfHouseholdInfo();
+
+    // Chưa chọn tỉnh nơi nhận mà bấm lưu sẽ validate => Báo lỗi thiếu tỉnh nơi nhận
+    // khi chọn trùng địa chỉ nơi nhận thì tỉnh nơi nhận sẽ được gán bằng tỉnh khai sinh
+    // nhưng validate vẫn báo lỗi thiếu tỉnh nơi nhận
+    // => Cần phải validate lại form một cách thủ công
+    tk1State.formKey.currentState?.validate();
   }
 
   /// Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh
@@ -369,6 +375,9 @@ class DeclareInfoController extends BaseGetxController {
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
     _syncHeadOfHouseholdInfo();
+
+    // Validate thủ công lại form
+    tk1State.formKey.currentState?.validate();
   }
 
   void onChangeProvinceKCB(ProvinceModel value) {
