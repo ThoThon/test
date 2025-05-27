@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:v_bhxh/base_app/model/base_model.src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/ui/select_hospital_bts.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 

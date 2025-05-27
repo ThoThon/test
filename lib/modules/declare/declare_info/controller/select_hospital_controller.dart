@@ -1,42 +1,38 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/generated/locales.g.dart';
+import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
-import 'package:v_bhxh/shares/function/logger.dart';
+import 'package:v_bhxh/modules/src.dart';
 
-class SelectDistrictController extends BaseGetxController {
+class SelectHospitalController extends BaseGetxController {
   final String provinceCode;
 
-  SelectDistrictController({
+  SelectHospitalController({
     required this.provinceCode,
-    DistrictModel? district,
+    Hospital? hospital,
   }) {
-    selectedDistrict.value = district;
+    selectedHospital.value = hospital;
   }
 
   late final _repository = DeclareInfoRepository(this);
 
   final searchTextCtrl = TextEditingController();
   final keyword = ''.obs;
-  final selectedDistrict = Rxn<DistrictModel>();
-  final districts = <DistrictModel>[].obs;
+  final selectedHospital = Rxn<Hospital>();
+  final hospitals = <Hospital>[].obs;
 
   @override
   void onReady() {
     super.onReady();
-    _getDistricts();
+    _getHospitals();
   }
 
-  Future<void> _getDistricts() async {
+  Future<void> _getHospitals() async {
     try {
       showLoading();
-      final response = await _repository.getDistricts(
+      final response = await _repository.getHospitals(
         provinceCode: provinceCode,
       );
       if (response.isSuccess) {
-        districts.value = response.result;
+        hospitals.value = response.result;
       } else {
         showSnackBar(
           response.errorMessage ?? LocaleKeys.app_someThingWentWrong.tr,

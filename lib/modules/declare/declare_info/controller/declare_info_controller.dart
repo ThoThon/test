@@ -189,27 +189,60 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void changeProvinceOfBirth(ProvinceModel value) {
+    if (tk1State.provinceOfBirth.value != value) {
+      // Xóa huyện, xã, địa chỉ khai sinh khi thay đổi tỉnh khai sinh
+      tk1State.districtOfBirth.value = null;
+      tk1State.wardOfBirth.value = null;
+    }
+
     tk1State.provinceOfBirth.value = value;
 
     // Đồng bộ tỉnh nơi nhận hồ sơ với tỉnh khai sinh
     if (tk1State.isDuplicateBirthAddress.value) {
+      if (tk1State.provinceReceive.value != value) {
+        // Xóa huyện, xã nơi nhận hồ sơ khi thay đổi tỉnh nơi nhận hồ sơ
+        tk1State.districtReceive.value = null;
+        tk1State.wardReceive.value = null;
+      }
+
       tk1State.provinceReceive.value = value;
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
+      if (tk1State.provinceTT.value != value) {
+        // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
+        tk1State.districtTT.value = null;
+        tk1State.wardTT.value = null;
+      }
+
       tk1State.provinceTT.value = value;
     }
   }
 
   void changeDistrictOfBirth(DistrictModel value) {
+    if (tk1State.districtOfBirth.value != value) {
+      // Xóa xã khai sinh khi thay đổi huyện khai sinh
+      tk1State.wardOfBirth.value = null;
+    }
+
     tk1State.districtOfBirth.value = value;
 
     // Đồng bộ huyện nơi nhận hồ sơ với huyện khai sinh
     if (tk1State.isDuplicateBirthAddress.value) {
+      if (tk1State.districtReceive.value != value) {
+        // Xóa xã nơi nhận hồ sơ khi thay đổi huyện nơi nhận hồ sơ
+        tk1State.wardReceive.value = null;
+      }
+
       tk1State.districtReceive.value = value;
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
+      if (tk1State.districtTT.value != value) {
+        // Xóa xã thường trú khi thay đổi huyện thường trú
+        tk1State.wardTT.value = null;
+      }
+
       tk1State.districtTT.value = value;
     }
   }
@@ -242,11 +275,21 @@ class DeclareInfoController extends BaseGetxController {
     if (tk1State.provinceReceive.value != value) {
       // Khi user thay đổi tỉnh nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
+
+      // Xóa huyện, xã nơi nhận hồ sơ khi thay đổi tỉnh nơi nhận hồ sơ
+      tk1State.districtReceive.value = null;
+      tk1State.wardReceive.value = null;
     }
 
     tk1State.provinceReceive.value = value;
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
+      if (tk1State.provinceTT.value != value) {
+        // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
+        tk1State.districtTT.value = null;
+        tk1State.wardTT.value = null;
+      }
+
       tk1State.provinceTT.value = value;
     }
   }
@@ -255,10 +298,18 @@ class DeclareInfoController extends BaseGetxController {
     if (tk1State.districtReceive.value != value) {
       // Khi user thay đổi huyện nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
+
+      // Xóa xã nơi nhận hồ sơ khi thay đổi huyện nơi nhận hồ sơ
+      tk1State.wardReceive.value = null;
     }
     tk1State.districtReceive.value = value;
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
+      if (tk1State.districtTT.value != value) {
+        // Xóa xã thường trú khi thay đổi huyện thường trú
+        tk1State.wardTT.value = null;
+      }
+
       tk1State.districtTT.value = value;
     }
   }
@@ -312,6 +363,9 @@ class DeclareInfoController extends BaseGetxController {
   void onChangeProvinceTT(ProvinceModel value) {
     if (tk1State.provinceTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
+      // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
+      tk1State.districtTT.value = null;
+      tk1State.wardTT.value = null;
     }
 
     tk1State.provinceTT.value = value;
@@ -320,6 +374,8 @@ class DeclareInfoController extends BaseGetxController {
   void onChangeDistrictTT(DistrictModel value) {
     if (tk1State.districtTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
+      // Xóa xã thường trú khi thay đổi huyện thường trú
+      tk1State.wardTT.value = null;
     }
 
     tk1State.districtTT.value = value;

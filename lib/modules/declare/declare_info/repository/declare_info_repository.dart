@@ -2,10 +2,12 @@ import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/core/enum/enum_request_method.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/core/values/const.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 // Key is provinceCode
 final cachedDistricts = <String, List<DistrictModel>>{};
+final cachedHospitals = <String, List<Hospital>>{};
 
 class DeclareInfoRepository extends BaseRepository {
   DeclareInfoRepository(super.controller);
@@ -29,9 +31,46 @@ class DeclareInfoRepository extends BaseRepository {
         "provinceCode": provinceCode,
       },
     );
-    return BaseResponseList<DistrictModel>.fromJson(
+    final result = BaseResponseList<DistrictModel>.fromJson(
       response,
       (json) => DistrictModel.fromJson(json),
     );
+
+    if (result.isSuccess) {
+      cachedDistricts[provinceCode] = result.result;
+    }
+
+    return result;
+  }
+
+  Future<BaseResponseList<Hospital>> getHospitals({
+    required String provinceCode,
+  }) async {
+    if (cachedHospitals.containsKey(provinceCode)) {
+      final hospitals = cachedHospitals[provinceCode];
+      return BaseResponseList<Hospital>(
+        code: AppConst.statusCodeSuccess,
+        result: hospitals!,
+        totalNumber: hospitals.length,
+      );
+    }
+
+    final response = await baseCallApi(
+      AppApi.urlGetHospitals,
+      EnumRequestMethod.get,
+      jsonMap: {
+        "provinceCode": provinceCode,
+      },
+    );
+    final result = BaseResponseList<Hospital>.fromJson(
+      response,
+      (json) => Hospital.fromJson(json),
+    );
+
+    if (result.isSuccess) {
+      cachedHospitals[provinceCode] = result.result;
+    }
+
+    return result;
   }
 }
