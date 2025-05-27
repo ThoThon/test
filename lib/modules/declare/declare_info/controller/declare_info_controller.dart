@@ -1,7 +1,6 @@
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
-import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -115,24 +114,7 @@ class DeclareInfoController extends BaseGetxController {
       return;
     }
 
-    ShowDialog.showDialogWithWidget(
-      title: 'Hoàn tất',
-      content: 'Bạn muốn Chuyển ký hay thêm tiếp nhân sự?',
-      child: CompleteDeclareInfoWidget(
-        onTapAddStaff: () {
-          currentTab.value = DeclareInfoTab.d02;
-        },
-        onTapDeposit: () async {
-          final result = await Get.toNamed(AppRoutes.staffList.path);
-
-          if (result is StaffListResult) {
-            if (result.action == StaffListResultAction.selectD02Tab) {
-              currentTab.value = DeclareInfoTab.d02;
-            }
-          }
-        },
-      ),
-    );
+    print("OK");
   }
 
   /// Validate forms and return the first invalid tab

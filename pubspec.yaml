@@ -36,7 +36,7 @@ dependencies:
   dio_log_sds:
     git:
       url: https://github.com/HVLoc/dio_log_sds.git
-      ref: master
+      ref: flutter/3.22.0
   dropdown_button2: ^2.3.9
   equatable: ^2.0.7
   flutter:

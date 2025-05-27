@@ -239,7 +239,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           selectedItem: controller.selectedEthnic.value,
           display: (ethnic) => ethnic.text,
           validator: (value) {
-            if (value == null) {
+            if (controller.selectedEthnic.value == null) {
               return LocaleKeys.familyMember_ethnicCannotEmpty.tr;
             }
             return null;
@@ -274,7 +274,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           selectedItem: controller.selectedNationality.value,
           display: (nation) => nation.text,
           validator: (value) {
-            if (value == null) {
+            if (controller.selectedNationality.value == null) {
               return LocaleKeys.familyMember_nationalityCannotEmpty.tr;
             }
             return null;
@@ -299,7 +299,6 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 display: (value) => value.name,
                 onAccept: (value) {
                   if (value == null) return;
-                  didChange(value);
 
                   if (controller.selectedProvince.value != value) {
                     // Reset district and ward when province changes
@@ -308,6 +307,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                   }
 
                   controller.selectedProvince.value = value;
+
+                  didChange(value);
                 },
               ),
               isScrollControlled: true,
@@ -316,7 +317,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           selectedItem: controller.selectedProvince.value,
           display: (province) => province.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.selectedProvince.value == null) {
               return LocaleKeys.familyMember_provinceOfBirthCannotEmpty.tr;
             }
             return null;
@@ -349,20 +350,20 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
             );
 
             if (result != null) {
-              didChange(result);
-
               if (controller.selectedDistrict.value != result) {
                 // Reset ward when district changes
                 controller.selectedWard.value = null;
               }
 
               controller.selectedDistrict.value = result;
+
+              didChange(result);
             }
           },
           selectedItem: controller.selectedDistrict.value,
           display: (district) => district.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.selectedDistrict.value == null) {
               return LocaleKeys.familyMember_districtOfBirthCannotEmpty.tr;
             }
             return null;
@@ -403,14 +404,15 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
             );
 
             if (result != null) {
-              didChange(result);
               controller.selectedWard.value = result;
+
+              didChange(result);
             }
           },
           selectedItem: controller.selectedWard.value,
           display: (ward) => ward.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.selectedWard.value == null) {
               return LocaleKeys.familyMember_wardOfBirthCannotEmpty.tr;
             }
             return null;

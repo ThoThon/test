@@ -117,7 +117,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }) {
     return InkWell(
       onTap: () {
-        Get.toNamed(AppRoutes.nfc.path);
+        // Get.toNamed(AppRoutes.nfc.path);
+        controller.d02State.declarationType.value =
+            AppData.instance.declarationTypes.first;
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -314,7 +316,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           selectedItem: controller.d02Tk1State.selectedEthnic.value,
           display: (ethnic) => ethnic.text,
           validator: (value) {
-            if (value == null) {
+            if (controller.d02Tk1State.selectedEthnic.value == null) {
               return LocaleKeys.declareInfo_ethnicCannotEmpty.tr;
             }
             return null;
@@ -349,7 +351,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           selectedItem: controller.d02Tk1State.selectedNationality.value,
           display: (nation) => nation.text,
           validator: (value) {
-            if (value == null) {
+            if (controller.d02Tk1State.selectedNationality.value == null) {
               return LocaleKeys.declareInfo_nationalityCannotEmpty.tr;
             }
             return null;

@@ -250,8 +250,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: master
-      resolved-ref: f32d69e3dae32c7b3dce8bfa1b1bc82c422cc05c
+      ref: "flutter/3.22.0"
+      resolved-ref: a6f27b8040af96c8bddb181acd78f865d35dc462
       url: "https://github.com/HVLoc/dio_log_sds.git"
     source: git
     version: "5.0.0"

@@ -40,8 +40,11 @@ class AddD02Request {
         d02State: d02State,
       ),
       tk1Ts: Tk1Request.fromState(tk1State: tk1State),
-      // TODO: Handle family members and D01 requests
-      familyMembers: [],
+      familyMembers: FamilyMemberRequest.fromState(
+        kyKeKhaiId: kyKeKhaiId,
+        tk1State: tk1State,
+        isUpdate: false, // Tạo mới thì isUpdate luôn là false
+      ),
       d01Dts: [],
     );
   }
