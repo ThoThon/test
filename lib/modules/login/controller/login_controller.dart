@@ -17,6 +17,8 @@ class LoginController extends BaseGetxController {
   final isHaveUsername = false.obs;
   final appController = Get.find<AppController>();
 
+  int page = AppConst.defaultPageNumber;
+
   @override
   void onInit() {
     super.onInit();
@@ -51,6 +53,7 @@ class LoginController extends BaseGetxController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
+          _fetchListNotification(),
         ).wait;
         Get.offAndToNamed(AppRoutes.pageBuilder.path);
         return;
@@ -61,6 +64,26 @@ class LoginController extends BaseGetxController {
       logger.e(e);
     } finally {
       hideLoadingOverlay();
+    }
+  }
+
+  Future<void> _fetchListNotification({bool isLoadMore = false}) async {
+    if (!isLoadMore) {
+      showLoading();
+    }
+    try {
+      final res = await _loginRepository.fetchNotification(
+        pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
+        pageSize: AppConst.defaultPageSize,
+      );
+      if (res.result != null && res.isSuccess) {
+        appController.listNotification.addAll(res.result!.data);
+        appController.totalUnread = res.result!.total;
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      hideLoading();
     }
   }
 

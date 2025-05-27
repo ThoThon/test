@@ -31,4 +31,6 @@ class AppApi {
       '/api/History/get-thu-tuc-history';
   static const String urlGetD02Categories = '/api/HoSoD02/get-d02-categories';
   static const String urlGetDistricts = '/api/Categories/get-districts';
+  static const String urlGetNotification = '/api/Notification/page';
+  static const String urlReadNotification = '/api/Notification/read';
 }

@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
+import '../../../modules/notification/model/notification_item_model.dart';
 import '../../../modules/src.dart';
 
 late Box hiveApp;
@@ -15,6 +16,9 @@ late PackageInfo packageInfo;
 
 class AppController extends BaseGetxController {
   AccountInfoModel? accountInfoModel;
+
+  int? totalUnread;
+  final listNotification = <NotificationItemModel>[].obs;
 
   @override
   Future<void> onInit() async {

@@ -1,9 +1,16 @@
+import 'package:v_bhxh/modules/notification/controller/notification_controller.dart';
+
 import '../../../modules/src.dart';
+import '../model/model_src.dart';
 
 part 'notification_widget.dart';
 
 class NotificationPage extends BaseGetWidget {
-  const NotificationPage({super.key});
+  NotificationPage({super.key});
+  @override
+  NotificationController get controller => _controller;
+
+  late final _controller = Get.put(NotificationController());
 
   @override
   Widget buildWidgets(BuildContext context) {
