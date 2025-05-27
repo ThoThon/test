@@ -1,4 +1,6 @@
-import 'package:v_bhxh/modules/declare/deposit_info/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
+import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -10,7 +12,7 @@ class DeclareInfoController extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
   final currentTab = DeclareInfoTab.d02.obs;
 
-  final appController = Get.find<AppController>();
+  late final declareInfoRepository = DeclareInfoRepository(this);
 
   /// NOTE: Nhân viên được chọn - Mock tạm với String, sau tạo model riêng
   final selectedStaff = Rxn<String>();
@@ -37,6 +39,23 @@ class DeclareInfoController extends BaseGetxController {
   bool get isShowScanIDButton {
     return currentTab.value == DeclareInfoTab.d02 ||
         currentTab.value == DeclareInfoTab.tk1;
+  }
+
+  /// Kiểm tra xem có hiển thị nút Tiếp theo hay không
+  ///
+  /// Chỉ hiển thị nút tiếp theo nếu đang không phải tab cuối cùng được hiển thị
+  bool get isShowNextButton {
+    var lastTab = DeclareInfoTab.d02;
+
+    if (d02State.isGenerateTk1Data.value) {
+      lastTab = DeclareInfoTab.tk1;
+    }
+
+    if (d02State.isGenerateD01Data.value) {
+      lastTab = DeclareInfoTab.d01;
+    }
+
+    return lastTab != currentTab.value;
   }
 
   void showDialogSelectStaff() {
@@ -95,24 +114,7 @@ class DeclareInfoController extends BaseGetxController {
       return;
     }
 
-    ShowDialog.showDialogWithWidget(
-      title: 'Hoàn tất',
-      content: 'Bạn muốn Chuyển ký hay thêm tiếp nhân sự?',
-      child: CompleteDeclareInfoWidget(
-        onTapAddStaff: () {
-          currentTab.value = DeclareInfoTab.d02;
-        },
-        onTapDeposit: () async {
-          final result = await Get.toNamed(AppRoutes.depositInfo.path);
-
-          if (result is DepositInfoResult) {
-            if (result.action == DepositInfoResultAction.selectD02Tab) {
-              currentTab.value = DeclareInfoTab.d02;
-            }
-          }
-        },
-      ),
-    );
+    print("OK");
   }
 
   /// Validate forms and return the first invalid tab
@@ -129,14 +131,43 @@ class DeclareInfoController extends BaseGetxController {
     return null;
   }
 
-  void saveDraft() {
+  Future<void> saveDraft() async {
     final invalidTab = _invalidTab;
     if (invalidTab != null) {
       currentTab.value = invalidTab;
       return;
     }
 
-    // TODO: Call API save draft
+    try {
+      showLoadingOverlay();
+      final request = AddD02Request.fromState(
+        kyKeKhaiId: argument.declarationPeriodId,
+        d02Tk1State: d02Tk1State,
+        d02State: d02State,
+        tk1State: tk1State,
+        d01State: d01State,
+      );
+
+      final response = await declareInfoRepository.addD02(request: request);
+
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+
+        Get.toNamed(
+          AppRoutes.staffList.path,
+          arguments: argument.declarationPeriodId,
+        );
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 
   void onChangeSalaryCoefficient({
@@ -400,6 +431,17 @@ class DeclareInfoController extends BaseGetxController {
 
   void onChangeAddressTT(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
+  }
+
+  Future<void> addFmailyMember() async {
+    final result = await Get.toNamed(AppRoutes.familyMemberDetail.path);
+    if (result is FamilyMember) {
+      tk1State.familyMembers.add(result);
+    }
+  }
+
+  void deleteFamilyMember(String id) {
+    tk1State.familyMembers.removeWhere((element) => element.id == id);
   }
 
   @override

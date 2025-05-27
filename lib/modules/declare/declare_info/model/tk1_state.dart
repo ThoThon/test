@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class Tk1State {
@@ -64,44 +65,7 @@ class Tk1State {
   final addressTTTextCtrl = TextEditingController();
 
   /// Danh sách thành viên trong gia đình
-  final familyMembers = <FamilyMember>[
-    FamilyMember(
-      fullName: 'Nguyễn Văn A1',
-      dateOfBirth: DateTime.now(),
-      district: '',
-      ethnic: '',
-      gender: Gender.male,
-      isParticipant: false,
-      nationality: 'Việt Nam',
-      province: 'Phú Thọ',
-      relationship: 'Vợ',
-      ward: '',
-    ),
-    FamilyMember(
-      fullName: 'Nguyễn Văn B',
-      dateOfBirth: DateTime.now(),
-      district: '',
-      ethnic: '',
-      gender: Gender.male,
-      isParticipant: false,
-      nationality: 'Việt Nam',
-      province: 'Phú Thọ',
-      relationship: 'Con gái',
-      ward: '',
-    ),
-    FamilyMember(
-      fullName: 'Nguyễn Văn B',
-      dateOfBirth: DateTime.now(),
-      district: '',
-      ethnic: '',
-      gender: Gender.male,
-      isParticipant: false,
-      nationality: 'Việt Nam',
-      province: 'Phú Thọ',
-      relationship: 'Con trai',
-      ward: '',
-    ),
-  ].obs;
+  final familyMembers = <FamilyMember>[].obs;
 
   void dispose() {
     birthAddressTextCtrl.dispose();

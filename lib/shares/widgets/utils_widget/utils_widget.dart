@@ -562,6 +562,7 @@ class UtilWidget {
   static Widget buildBottomSheetSelect<T>({
     required String label,
     required String hintText,
+    bool isRequired = true,
     required Function(ValueChanged<T> didChange) funcSelect,
     required T? selectedItem,
     required String Function(T) display,
@@ -569,7 +570,7 @@ class UtilWidget {
   }) {
     return FormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: validator,
+      validator: isRequired ? validator : null,
       initialValue: selectedItem,
       builder: (FormFieldState<T> state) {
         return Column(
@@ -583,12 +584,13 @@ class UtilWidget {
                   text: label,
                   style: AppTextStyle.font16Bo,
                   children: [
-                    TextSpan(
-                      text: ' (*)',
-                      style: AppTextStyle.font12Re.copyWith(
-                        color: AppColors.statusRed,
+                    if (isRequired)
+                      TextSpan(
+                        text: ' (*)',
+                        style: AppTextStyle.font12Re.copyWith(
+                          color: AppColors.statusRed,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),

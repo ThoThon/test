@@ -17,7 +17,7 @@ class DeclarationFormDetailPage
       appBar: BaseAppBar(
         title: BaseAppBarTitle(
           title: controller.argument.action.isCreate
-              ? LocaleKeys.declarationFromDetail_title.tr
+              ? LocaleKeys.declarationFormDetail_title.tr
               : controller.argument.declarationForm?.title ?? '',
         ),
       ),

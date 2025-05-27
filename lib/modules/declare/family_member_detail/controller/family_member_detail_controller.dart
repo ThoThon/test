@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../../../base_app/base_app.src.dart';
 import '../model/model_src.dart';
@@ -11,10 +12,10 @@ class FamilyMemberDetailController extends BaseGetxController {
   final fullNameTextCtrl = TextEditingController();
 
   /// Mã số bảo hiểm xã hội
-  final bhxhTextCtrl = TextEditingController();
+  final bhxhNumberTextCtrl = TextEditingController();
 
   /// Mã số CCCD *
-  final cccdTextCtrl = TextEditingController();
+  final cccdNumberTextCtrl = TextEditingController();
 
   /// Ghi chú
   final noteTextCtrl = TextEditingController();
@@ -28,37 +29,56 @@ class FamilyMemberDetailController extends BaseGetxController {
   final gender = Gender.male.obs;
 
   /// Dân tộc *
-  final selectedEthnic = Rxn<String>();
+  final selectedEthnic = Rxn<EthnicModel>();
 
   /// Quốc tịch *
-  final selectedNationality = Rxn<String>();
+  final selectedNationality = Rxn<NationModel>();
 
   /// Tỉnh khai sinh *
   final selectedProvince = Rxn<ProvinceModel>();
 
   /// Huyện khai sinh *
-  final selectedDistrict = Rxn<String>();
+  final selectedDistrict = Rxn<DistrictModel>();
 
   /// Xã khai sinh *
-  final selectedWard = Rxn<String>();
+  final selectedWard = Rxn<WardModel>();
 
   /// Mối quan hệ với chủ hộ
-  final relationship = Rxn<String>();
+  final relationship = Rxn<RelationshipModel>();
 
   /// Là người tham gia
   final isParticipant = false.obs;
 
   void onSubmit() {
     if (formKey.currentState?.validate() ?? false) {
-      // TODO:
+      // Note: đã validate các trường required nên có thể force null
+      Get.back(
+        result: FamilyMember(
+          id: generateUuid(),
+          fullName: fullNameTextCtrl.text.trim(),
+          bhxhNumber: bhxhNumberTextCtrl.text.trim(),
+          cccdNumber: cccdNumberTextCtrl.text.trim(),
+          note: noteTextCtrl.text.trim(),
+          birthType: birthType.value,
+          dateOfBirth: dateOfBirth.value!,
+          gender: gender.value,
+          ethnic: selectedEthnic.value!,
+          nation: selectedNationality.value!,
+          province: selectedProvince.value!,
+          district: selectedDistrict.value!,
+          ward: selectedWard.value!,
+          relationship: relationship.value!,
+          isParticipant: isParticipant.value,
+        ),
+      );
     }
   }
 
   @override
   void onClose() {
     fullNameTextCtrl.dispose();
-    bhxhTextCtrl.dispose();
-    cccdTextCtrl.dispose();
+    bhxhNumberTextCtrl.dispose();
+    cccdNumberTextCtrl.dispose();
     noteTextCtrl.dispose();
     super.onClose();
   }
