@@ -115,7 +115,8 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) async {
             final districtOfBirth = controller.tk1State.provinceOfBirth.value;
             if (districtOfBirth == null) {
-              controller.showSnackBar("Chưa chọn tỉnh khai sinh");
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
               return;
             }
 
@@ -154,13 +155,15 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) async {
             final provinceOfBirth = controller.tk1State.provinceOfBirth.value;
             if (provinceOfBirth == null) {
-              controller.showSnackBar("Chưa chọn tỉnh khai sinh");
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
               return;
             }
 
             final districtOfBirth = controller.tk1State.districtOfBirth.value;
             if (districtOfBirth == null) {
-              controller.showSnackBar("Chưa chọn huyện khai sinh");
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_districtOfBirthNotSelected.tr);
               return;
             }
 
@@ -249,7 +252,8 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) async {
             final provinceReceive = controller.tk1State.provinceReceive.value;
             if (provinceReceive == null) {
-              controller.showSnackBar("Chưa chọn tỉnh nơi nhận");
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceReceiveNotSelected.tr);
               return;
             }
 
@@ -288,13 +292,15 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) async {
             final provinceReceive = controller.tk1State.provinceReceive.value;
             if (provinceReceive == null) {
-              controller.showSnackBar("Chưa chọn tỉnh nơi nhận");
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceReceiveNotSelected.tr);
               return;
             }
 
             final districtReceive = controller.tk1State.districtReceive.value;
             if (districtReceive == null) {
-              controller.showSnackBar("Chưa chọn huyện nơi nhận");
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_districtReceiveNotSelected.tr);
               return;
             }
 
@@ -383,7 +389,8 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) async {
             final provinceKCB = controller.tk1State.provinceKCB.value;
             if (provinceKCB == null) {
-              controller.showSnackBar("Chưa chọn tỉnh nơi KCB");
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceKCBNotSelected.tr);
               return;
             }
 
@@ -498,7 +505,8 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
             if (provinceTT == null) {
-              controller.showSnackBar("Chưa chọn tỉnh thường trú");
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceTTNotSelected.tr);
               return;
             }
 
@@ -531,13 +539,15 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
             if (provinceTT == null) {
-              controller.showSnackBar("Chưa chọn tỉnh thường trú");
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceTTNotSelected.tr);
               return;
             }
 
             final districtTT = controller.tk1State.districtTT.value;
             if (districtTT == null) {
-              controller.showSnackBar("Chưa chọn huyện thường trú");
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_districtTTNotSelected.tr);
               return;
             }
 
