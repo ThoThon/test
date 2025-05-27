@@ -86,8 +86,8 @@ extension Tk1TabWidget on DeclareInfoPage {
                 display: (value) => value.name,
                 onAccept: (value) {
                   if (value == null) return;
-                  didChange(value);
                   controller.changeProvinceOfBirth(value);
+                  didChange(value);
                 },
               ),
               isScrollControlled: true,
@@ -96,7 +96,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           selectedItem: controller.tk1State.provinceOfBirth.value,
           display: (province) => province.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.tk1State.provinceOfBirth.value == null) {
               return LocaleKeys.declareInfo_provinceOfBirthCannotEmpty.tr;
             }
             return null;
@@ -129,14 +129,14 @@ extension Tk1TabWidget on DeclareInfoPage {
             );
 
             if (result != null) {
-              didChange(result);
               controller.changeDistrictOfBirth(result);
+              didChange(result);
             }
           },
           selectedItem: controller.tk1State.districtOfBirth.value,
           display: (district) => district.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.tk1State.districtOfBirth.value == null) {
               return LocaleKeys.declareInfo_districtOfBirthCannotEmpty.tr;
             }
             return null;
@@ -177,14 +177,14 @@ extension Tk1TabWidget on DeclareInfoPage {
             );
 
             if (result != null) {
-              didChange(result);
               controller.changeWardOfBirth(result);
+              didChange(result);
             }
           },
           selectedItem: controller.tk1State.wardOfBirth.value,
           display: (ward) => ward.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.tk1State.wardOfBirth.value == null) {
               return LocaleKeys.declareInfo_wardOfBirthCannotEmpty.tr;
             }
             return null;
@@ -223,8 +223,8 @@ extension Tk1TabWidget on DeclareInfoPage {
                 display: (value) => value.name,
                 onAccept: (value) {
                   if (value == null) return;
-                  didChange(value);
                   controller.onChangeProvinceReceive(value);
+                  didChange(value);
                 },
               ),
               isScrollControlled: true,
@@ -233,7 +233,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           selectedItem: controller.tk1State.provinceReceive.value,
           display: (province) => province.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.tk1State.provinceReceive.value == null) {
               return LocaleKeys.declareInfo_provinceReceiveCannotEmpty.tr;
             }
             return null;
@@ -266,14 +266,14 @@ extension Tk1TabWidget on DeclareInfoPage {
             );
 
             if (result != null) {
-              didChange(result);
               controller.onChangeDistrictReceive(result);
+              didChange(result);
             }
           },
           selectedItem: controller.tk1State.districtReceive.value,
           display: (district) => district.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.tk1State.districtReceive.value == null) {
               return LocaleKeys.declareInfo_districtReceiveCannotEmpty.tr;
             }
             return null;
@@ -314,14 +314,14 @@ extension Tk1TabWidget on DeclareInfoPage {
             );
 
             if (result != null) {
-              didChange(result);
               controller.onChangeWardReceive(result);
+              didChange(result);
             }
           },
           selectedItem: controller.tk1State.wardReceive.value,
           display: (ward) => ward.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.tk1State.wardReceive.value == null) {
               return LocaleKeys.declareInfo_wardReceiveCannotEmpty.tr;
             }
             return null;
@@ -360,8 +360,8 @@ extension Tk1TabWidget on DeclareInfoPage {
                 display: (value) => value.name,
                 onAccept: (value) {
                   if (value == null) return;
-                  didChange(value);
                   controller.onChangeProvinceKCB(value);
+                  didChange(value);
                 },
               ),
               isScrollControlled: true,
@@ -370,7 +370,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           selectedItem: controller.tk1State.provinceKCB.value,
           display: (province) => province.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.tk1State.provinceKCB.value == null) {
               return LocaleKeys.declareInfo_provinceKCBCannotEmpty.tr;
             }
             return null;
@@ -403,14 +403,14 @@ extension Tk1TabWidget on DeclareInfoPage {
             );
 
             if (result != null) {
-              didChange(result);
               controller.tk1State.hospitalKCB.value = result;
+              didChange(result);
             }
           },
           selectedItem: controller.tk1State.hospitalKCB.value,
           display: (hospital) => hospital.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.tk1State.hospitalKCB.value == null) {
               return LocaleKeys.declareInfo_hospitalKCBCannotEmpty.tr;
             }
             return null;
@@ -473,6 +473,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
           label: LocaleKeys.declareInfo_provinceTT.tr,
           hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
+          isRequired: false,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
@@ -482,8 +483,8 @@ extension Tk1TabWidget on DeclareInfoPage {
                 display: (value) => value.name,
                 onAccept: (value) {
                   if (value == null) return;
-                  didChange(value);
                   controller.onChangeProvinceTT(value);
+                  didChange(value);
                 },
               ),
               isScrollControlled: true,
@@ -502,6 +503,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         return UtilWidget.buildBottomSheetSelect<DistrictModel>(
           label: LocaleKeys.declareInfo_districtTT.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
+          isRequired: false,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
             if (provinceTT == null) {
@@ -519,8 +521,8 @@ extension Tk1TabWidget on DeclareInfoPage {
             );
 
             if (result != null) {
-              didChange(result);
               controller.onChangeDistrictTT(result);
+              didChange(result);
             }
           },
           selectedItem: controller.tk1State.districtTT.value,
@@ -536,6 +538,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         return UtilWidget.buildBottomSheetSelect<WardModel>(
           label: LocaleKeys.declareInfo_wardTT.tr,
           hintText: LocaleKeys.declareInfo_selectWardTT.tr,
+          isRequired: false,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
             if (provinceTT == null) {
@@ -561,8 +564,8 @@ extension Tk1TabWidget on DeclareInfoPage {
             );
 
             if (result != null) {
-              didChange(result);
               controller.onChangeWardTT(result);
+              didChange(result);
             }
           },
           selectedItem: controller.tk1State.wardTT.value,
@@ -594,41 +597,38 @@ extension Tk1TabWidget on DeclareInfoPage {
           LocaleKeys.declareInfo_familyMembers.tr,
           style: AppTextStyle.font16Bo,
         ),
-        if (controller.tk1State.familyMembers.isNotEmpty)
-          Container(
-            margin: const EdgeInsets.symmetric(
-                vertical: AppDimens.paddingVerySmall),
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.defaultPadding,
-              vertical: AppDimens.paddingVerySmall,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(
-                color: AppColors.dsGray3,
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: addSeparator(
-                spacer: UtilWidget.sizedBox8,
-                children: controller.tk1State.familyMembers.map(
-                  (member) {
-                    return SDSBuildText(
-                      '${member.fullName} - ${member.relationship}',
-                      style: AppTextStyle.font16Re,
-                    );
-                  },
-                ).toList(),
-              ),
-            ),
-          ),
+        controller.tk1State.familyMembers.isNotEmpty
+            ? Container(
+                margin: const EdgeInsets.symmetric(
+                  vertical: AppDimens.paddingVerySmall,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppDimens.defaultPadding,
+                  vertical: AppDimens.paddingVerySmall,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  border: Border.all(
+                    color: AppColors.dsGray3,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: addSeparator(
+                    spacer: UtilWidget.sizedBox8,
+                    children: controller.tk1State.familyMembers.map(
+                      (member) {
+                        return _buildFamilyMemberItem(member);
+                      },
+                    ).toList(),
+                  ),
+                ),
+              )
+            : UtilWidget.sizedBox8,
         Align(
           alignment: Alignment.center,
           child: OutlinedButton.icon(
-            onPressed: () {
-              Get.toNamed(AppRoutes.familyMemberDetail.path);
-            },
+            onPressed: controller.addFmailyMember,
             style: OutlinedButton.styleFrom(
               shape: const CircleBorder(),
               side: const BorderSide(
@@ -640,6 +640,25 @@ extension Tk1TabWidget on DeclareInfoPage {
               color: AppColors.primaryColor,
             ),
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFamilyMemberItem(FamilyMember member) {
+    return Row(
+      children: [
+        Expanded(
+          child: SDSBuildText(
+            '${member.fullName} - ${member.relationship.text}',
+            style: AppTextStyle.font16Re,
+          ),
+        ),
+        IconButton(
+          onPressed: () {
+            controller.deleteFamilyMember(member.id);
+          },
+          icon: const Icon(Icons.clear, color: AppColors.statusRed),
         ),
       ],
     );

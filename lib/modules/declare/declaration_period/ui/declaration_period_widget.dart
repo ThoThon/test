@@ -167,7 +167,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
                   //     action: DeclareInfoAction.edit,
                   //   ),
                   // );
-                  Get.toNamed(AppRoutes.depositInfo.path);
+                  Get.toNamed(AppRoutes.staffList.path);
                 },
               ),
           ],

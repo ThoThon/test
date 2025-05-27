@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:path/path.dart';
-import 'package:v_bhxh/modules/declare/deposit_info/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../../../base_app/base_app.src.dart';
 
-class DepositInfoController extends BaseGetxController {
+class StaffListController extends BaseGetxController {
   final imagePath = Rxn<String>();
 
   final listImage = <String>[].obs;
