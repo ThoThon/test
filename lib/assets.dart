@@ -167,6 +167,10 @@ class Assets {
   static String get ASSETS_ICONS_IC_REMOVE_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_remove.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG.preview}
+  static String get ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_scan_nfc_get_info.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_SEARCH_SVG.preview}
   static String get ASSETS_ICONS_IC_SEARCH_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_search.svg';
@@ -376,6 +380,9 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_REMOVE_SVG.preview}
   Assets.ASSETS_ICONS_IC_REMOVE_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG.preview}
+  Assets.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_SEARCH_SVG.preview}
   Assets.ASSETS_ICONS_IC_SEARCH_SVG,

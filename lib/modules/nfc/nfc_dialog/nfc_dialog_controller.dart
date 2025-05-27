@@ -55,9 +55,8 @@ class NfcDialogController extends BaseGetxController {
       if (Get.isDialogOpen == true) {
         Get.back();
       }
-      Get.toNamed(
-        AppRoutes.nfcInformationUser.path,
-        arguments: sendNfcRequestModel,
+      Get.back(
+        result: sendNfcRequestModel,
       );
     } else {
       if (!isCloseDialog) {

@@ -110,11 +110,11 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectDeclareType() {
-    return UtilWidget.buildDropDownWithLabel2<DeclarationTypeEnum>(
+    return UtilWidget.buildDropDownWithLabel2<DeclarationTypeModel>(
       label: LocaleKeys.declareInfo_declarationType.tr,
       hintText: LocaleKeys.declareInfo_selectDeclarationType.tr,
-      items: DeclarationTypeEnum.values,
-      display: (item) => item.title,
+      items: AppData.instance.declarationTypes.toList(),
+      display: (item) => item.text,
       selectedItem: controller.d02State.declarationType.value,
       onChanged: (value) {
         if (value == null) {
@@ -130,7 +130,9 @@ extension D02TabWidget on DeclareInfoPage {
     return Obx(
       () {
         final declarationType = controller.d02State.declarationType.value;
-        final plans = declarationType?.plans;
+        // TODO: Map phương án từ API
+        // final plans = declarationType?.plans;
+        final plans = null;
 
         if (plans == null || plans.isEmpty) {
           return UtilWidget.shrink;

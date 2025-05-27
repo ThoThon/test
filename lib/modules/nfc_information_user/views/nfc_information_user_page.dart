@@ -1,24 +1,28 @@
-import '../../src.dart';
-import '../nfc_information_user_src.dart';
+// import 'dart:convert';
 
-part 'nfc_information_user_view.dart';
+// import 'package:flutter_svg/svg.dart';
 
-class NfcInformationUserPage extends BaseGetWidget {
-  NfcInformationUserPage({super.key});
+// import '../../src.dart';
+// import '../nfc_information_user_src.dart';
 
-  @override
-  NfcInformationUserController get controller => _controller;
-  late final _controller = Get.put(NfcInformationUserController());
+// part 'nfc_information_user_view.dart';
 
-  @override
-  Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: const BaseAppBar(
-        title: BaseAppBarTitle(title: "Thông tin"),
-      ),
-      body: SDSSafearea(
-        child: _buildListGuild(controller),
-      ),
-    );
-  }
-}
+// class NfcInformationUserPage extends BaseGetWidget {
+//   NfcInformationUserPage({super.key});
+
+//   @override
+//   NfcInformationUserController get controller => _controller;
+//   late final _controller = Get.put(NfcInformationUserController());
+
+//   @override
+//   Widget buildWidgets(BuildContext context) {
+//     return Scaffold(
+//       appBar: const BaseAppBar(
+//         title: BaseAppBarTitle(title: "Thông tin"),
+//       ),
+//       body: SDSSafearea(
+//         child: _buildListGuild(controller),
+//       ),
+//     );
+//   }
+// }

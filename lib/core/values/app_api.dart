@@ -7,10 +7,6 @@ class AppApi {
   static const String urlGetToken = '/EasyCA/GetToken';
   static const String urlGetListTaxCode = '/Organization/GetListTaxcodeByEmail';
   static const String urlGetInfoUnit = '/Organization/GetDataByTaxcode';
-  static const String urlGetProvinces = '/Location/GetProvinces';
-  static const String urlGetDistricts = '/Location/GetDistricts';
-  static const String urlGetWards = '/Location/GetWards';
-  static const String urlGetSocialAgency = '/Location/GetCcqlBHXH';
   static const String urlFirstRegister = '/HoSoBHXH/FirstRegisterWithECA';
   static const String urlRegisterService = '/HoSoBHXH/RegisterServiceWithECA';
   static const String urlGetListCertificate = '/EasyCA/GetCertificateList';
@@ -31,6 +27,8 @@ class AppApi {
   static const String urlGetFileNumber = '/api/TraCuu/tien-do-tiep-nhan';
   static const String urlLookupProgressHistory =
       '/api/TraCuu/qua-trinh-xu-ly-ho-so';
-  static const String urlGetListProcedureHistory = '/api/History/get-thu-tuc-history';
+  static const String urlGetListProcedureHistory =
+      '/api/History/get-thu-tuc-history';
   static const String urlGetD02Categories = '/api/HoSoD02/get-d02-categories';
+  static const String urlGetDistricts = '/api/Categories/get-districts';
 }

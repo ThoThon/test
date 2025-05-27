@@ -5,9 +5,10 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../../base_app/base_app.src.dart';
+import '../../../nfc/models/nfc_request_model.dart';
 
 class DeclareInfoController extends BaseGetxController {
-  final DeclareInfoArgument argument = Get.arguments;
+  // final DeclareInfoArgument argument = Get.arguments;
   final currentTab = DeclareInfoTab.d02.obs;
 
   final appController = Get.find<AppController>();
@@ -19,6 +20,7 @@ class DeclareInfoController extends BaseGetxController {
   final d02State = D02State();
   final tk1State = Tk1State();
   final d01State = D01State();
+  SendNfcRequestModel sendNfcRequestModel = SendNfcRequestModel();
 
   void onTabChanged(DeclareInfoTab tab) {
     KeyBoard.hide();
@@ -201,7 +203,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void changeDistrictOfBirth(String value) {
+  void changeDistrictOfBirth(DistrictModel value) {
     tk1State.districtOfBirth.value = value;
 
     // Đồng bộ huyện nơi nhận hồ sơ với huyện khai sinh
@@ -251,7 +253,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onChangeDistrictReceive(String value) {
+  void onChangeDistrictReceive(DistrictModel value) {
     if (tk1State.districtReceive.value != value) {
       // Khi user thay đổi huyện nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -317,7 +319,7 @@ class DeclareInfoController extends BaseGetxController {
     tk1State.provinceTT.value = value;
   }
 
-  void onChangeDistrictTT(String value) {
+  void onChangeDistrictTT(DistrictModel value) {
     if (tk1State.districtTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
     }
@@ -343,5 +345,18 @@ class DeclareInfoController extends BaseGetxController {
     d02State.dispose();
     tk1State.dispose();
     super.onClose();
+  }
+
+  void goToScanCCCD() async {
+    final result = await Get.toNamed(AppRoutes.nfc.path);
+    if (result != null) {
+      sendNfcRequestModel = result;
+      Gender? gender = sendNfcRequestModel.sexVMN!.parseGender;
+      d02Tk1State.fullNameTextCtrl.text = sendNfcRequestModel.name ?? '';
+      d02Tk1State.cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? '';
+      d02Tk1State.dateOfBirth.value =
+          convertStringToDate(sendNfcRequestModel.dobVMN ?? '', PATTERN_1);
+      d02Tk1State.gender.value = gender;
+    }
   }
 }

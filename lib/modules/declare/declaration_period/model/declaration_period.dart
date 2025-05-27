@@ -9,7 +9,10 @@ class DeclarationPeriod {
   /// Mã thủ tục
   final int procedureId;
 
-  /// Trạng thái
+  /// Trạng thái hồ sơ
+  ///
+  /// - Web dùng `trangThai`
+  /// - App dùng `trangThaiHoSo`
   final DeclarationStatus status;
   final int year;
   final int month;
@@ -17,8 +20,9 @@ class DeclarationPeriod {
   final bool selected;
   final DateTime? createTime;
   final DateTime? updateDate;
-  final bool isApp;
-  final int? idRef;
+
+  /// Số hồ sơ
+  final String? fileNumber;
 
   DeclarationPeriod({
     required this.id,
@@ -31,8 +35,7 @@ class DeclarationPeriod {
     required this.selected,
     this.createTime,
     this.updateDate,
-    required this.isApp,
-    required this.idRef,
+    this.fileNumber,
   });
 
   factory DeclarationPeriod.fromJson(Map<String, dynamic> json) {
@@ -40,15 +43,14 @@ class DeclarationPeriod {
       id: json['id'] ?? '',
       companyId: json['congTyId'] ?? '',
       procedureId: json['maThuTuc'] ?? 0,
-      status: DeclarationStatus.fromInt(json['trangThai']),
+      status: DeclarationStatus.fromInt(json['trangThaiHoSo']),
       year: json['nam'] ?? 0,
       month: json['thang'] ?? 0,
       period: json['dot'] ?? 0,
       selected: json['selected'] ?? false,
       createTime: DateTime.tryParse(json['createTime'] ?? ''),
       updateDate: DateTime.tryParse(json['updateDate'] ?? ''),
-      isApp: json['isApp'] ?? false,
-      idRef: json['idRef'],
+      fileNumber: json['soHoSo'],
     );
   }
 }
