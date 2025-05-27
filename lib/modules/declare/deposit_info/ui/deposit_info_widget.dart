@@ -164,8 +164,8 @@ extension DepositInfoWidget on DepositInfoPage {
                     Get.offNamed(
                       AppRoutes.declareInfo.path,
                       arguments: const DeclareInfoArgument(
-                        action: DeclareInfoAction.edit,
-                      ),
+                          action: DeclareInfoAction.edit,
+                          declarationPeriodId: ''),
                     );
                   }
                 },
@@ -209,6 +209,7 @@ extension DepositInfoWidget on DepositInfoPage {
             AppRoutes.declareInfo.path,
             arguments: const DeclareInfoArgument(
               action: DeclareInfoAction.edit,
+              declarationPeriodId: '',
             ),
           );
         }

@@ -1,5 +1,3 @@
-import 'package:v_bhxh/modules/declare/declaration_period/model/model_src.dart';
-
 enum DeclareInfoAction {
   create,
   edit,
@@ -7,10 +5,10 @@ enum DeclareInfoAction {
 
 class DeclareInfoArgument {
   final DeclareInfoAction action;
-  final DeclarationPeriod? period;
+  final String declarationPeriodId;
 
   const DeclareInfoArgument({
     required this.action,
-    this.period,
+    required this.declarationPeriodId,
   });
 }

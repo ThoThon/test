@@ -2,6 +2,7 @@ import 'package:v_bhxh/modules/declare/declare_info/model/d02/d01_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/family_member_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/tk1_request.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 
 class AddD02Request {
   final D02Request d02Lt;
@@ -23,5 +24,25 @@ class AddD02Request {
       'phuLucThanhViens': familyMembers.map((e) => e.toJson()).toList(),
       'd01Dts': d01Dts.map((e) => e.toJson()).toList(),
     };
+  }
+
+  static AddD02Request fromState({
+    required String kyKeKhaiId,
+    required D02Tk1State d02Tk1State,
+    required D02State d02State,
+    required Tk1State tk1State,
+    required D01State d01State,
+  }) {
+    return AddD02Request(
+      d02Lt: D02Request.fromState(
+        kyKeKhaiId: kyKeKhaiId,
+        d02Tk1State: d02Tk1State,
+        d02State: d02State,
+      ),
+      tk1Ts: Tk1Request.fromState(tk1State: tk1State),
+      // TODO: Handle family members and D01 requests
+      familyMembers: [],
+      d01Dts: [],
+    );
   }
 }

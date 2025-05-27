@@ -1,3 +1,5 @@
+import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
+import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/deposit_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
@@ -10,7 +12,7 @@ class DeclareInfoController extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
   final currentTab = DeclareInfoTab.d02.obs;
 
-  final appController = Get.find<AppController>();
+  late final declareInfoRepository = DeclareInfoRepository(this);
 
   /// NOTE: Nhân viên được chọn - Mock tạm với String, sau tạo model riêng
   final selectedStaff = Rxn<String>();
@@ -146,14 +148,43 @@ class DeclareInfoController extends BaseGetxController {
     return null;
   }
 
-  void saveDraft() {
+  Future<void> saveDraft() async {
     final invalidTab = _invalidTab;
     if (invalidTab != null) {
       currentTab.value = invalidTab;
       return;
     }
 
-    // TODO: Call API save draft
+    try {
+      showLoadingOverlay();
+      final request = AddD02Request.fromState(
+        kyKeKhaiId: argument.declarationPeriodId,
+        d02Tk1State: d02Tk1State,
+        d02State: d02State,
+        tk1State: tk1State,
+        d01State: d01State,
+      );
+
+      final response = await declareInfoRepository.addD02(request: request);
+
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+
+        Get.toNamed(
+          AppRoutes.depositInfo.path,
+          arguments: argument.declarationPeriodId,
+        );
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 
   void onChangeSalaryCoefficient({

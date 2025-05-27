@@ -2,7 +2,7 @@ import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/core/enum/enum_request_method.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/core/values/const.dart';
-import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_request.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
@@ -113,7 +113,7 @@ class DeclareInfoRepository extends BaseRepository {
   }
 
   Future<BaseResponse> addD02({
-    required D02Request request,
+    required AddD02Request request,
   }) async {
     final response = await baseCallApi(
       AppApi.urlAddD02,

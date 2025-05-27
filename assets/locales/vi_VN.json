@@ -365,7 +365,8 @@
     "provinceKCBNotSelected": "Chưa chọn tỉnh nơi KCB",
     "provinceTTNotSelected": "Chưa chọn tỉnh thường trú",
     "districtTTNotSelected": "Chưa chọn huyện thường trú",
-    "next": "Tiếp theo"
+    "next": "Tiếp theo",
+    "saveDataSuccess": "Lưu dữ liệu thành công"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",

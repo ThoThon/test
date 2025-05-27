@@ -1,52 +1,56 @@
+import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
+import 'package:v_bhxh/shares/base/ui/formatter/currency_utils.dart';
+import 'package:v_bhxh/shares/date/date_utils.dart';
+
 class D02Request {
-  final String id;
-  final String kyKeKhaiId;
-  final String hoTen;
-  final String maSoBhxh;
+  final String? id;
+  final String? kyKeKhaiId;
+  final String? hoTen;
+  final String? maSoBhxh;
   final int loaiHoSo;
-  final String phuongAnId;
+  final String? phuongAnId;
   final bool xuatTk01;
-  final String cmnd;
-  final DateTime ngaySinh;
+  final String? cmnd;
+  final DateTime? ngaySinh;
   final int gioiTinh;
-  final int danTocId;
-  final String quocTichId;
-  final String tuThang;
-  final String denThang;
-  final String chucVu;
-  final String noiLamViec;
-  final double tienLuong;
-  final double phuCapChucVu;
-  final double phuCapThamNienVuotKhung;
-  final double phuCapThamNienNghe;
-  final double phuCapLuong;
-  final double phuCapBoSung;
-  final String ghiChu;
+  final int? danTocId;
+  final String? quocTichId;
+  final String? tuThang;
+  final String? denThang;
+  final String? chucVu;
+  final String? noiLamViec;
+  final double? tienLuong;
+  final double? phuCapChucVu;
+  final double? phuCapThamNienVuotKhung;
+  final double? phuCapThamNienNghe;
+  final double? phuCapLuong;
+  final double? phuCapBoSung;
+  final String? ghiChu;
 
   const D02Request({
-    required this.id,
-    required this.kyKeKhaiId,
-    required this.hoTen,
-    required this.maSoBhxh,
+    this.id,
+    this.kyKeKhaiId,
+    this.hoTen,
+    this.maSoBhxh,
     required this.loaiHoSo,
-    required this.phuongAnId,
+    this.phuongAnId,
     required this.xuatTk01,
-    required this.cmnd,
-    required this.ngaySinh,
+    this.cmnd,
+    this.ngaySinh,
     required this.gioiTinh,
-    required this.danTocId,
-    required this.quocTichId,
-    required this.tuThang,
-    required this.denThang,
-    required this.chucVu,
-    required this.noiLamViec,
-    required this.tienLuong,
-    required this.phuCapChucVu,
-    required this.phuCapThamNienVuotKhung,
-    required this.phuCapThamNienNghe,
-    required this.phuCapLuong,
-    required this.phuCapBoSung,
-    required this.ghiChu,
+    this.danTocId,
+    this.quocTichId,
+    this.tuThang,
+    this.denThang,
+    this.chucVu,
+    this.noiLamViec,
+    this.tienLuong,
+    this.phuCapChucVu,
+    this.phuCapThamNienVuotKhung,
+    this.phuCapThamNienNghe,
+    this.phuCapLuong,
+    this.phuCapBoSung,
+    this.ghiChu,
   });
 
   Map<String, dynamic> toJson() {
@@ -59,7 +63,7 @@ class D02Request {
       'phuongAnId': phuongAnId,
       'xuatTk01': xuatTk01,
       'cmnd': cmnd,
-      'ngaySinh': ngaySinh.toIso8601String(),
+      'ngaySinh': ngaySinh?.toIso8601String(),
       'gioiTinh': gioiTinh,
       'danTocId': danTocId,
       'quocTichId': quocTichId,
@@ -75,5 +79,54 @@ class D02Request {
       'phuCapBoSung': phuCapBoSung,
       'ghiChu': ghiChu,
     };
+  }
+
+  static D02Request fromState({
+    required String kyKeKhaiId,
+    required D02Tk1State d02Tk1State,
+    required D02State d02State,
+  }) {
+    return D02Request(
+      kyKeKhaiId: kyKeKhaiId,
+      hoTen: d02Tk1State.fullNameTextCtrl.text.trim(),
+      maSoBhxh: d02Tk1State.bhxhTextCtrl.text.trim(),
+      loaiHoSo: d02State.declarationType.value?.value ?? 0,
+      phuongAnId: d02State.plan.value?.id,
+      xuatTk01: d02State.isGenerateTk1Data.value,
+      cmnd: d02Tk1State.cccdTextCtrl.text.trim(),
+      ngaySinh: d02Tk1State.dateOfBirth.value,
+      gioiTinh: d02Tk1State.gender.value.rawValue,
+      danTocId: d02Tk1State.selectedEthnic.value?.value,
+      quocTichId: d02Tk1State.selectedNationality.value?.value,
+      tuThang: convertDateToStringSafe(d02State.fromDate.value, PATTERN_12),
+      denThang: convertDateToStringSafe(d02State.toDate.value, PATTERN_12),
+      chucVu: d02State.positionTextCtrl.text.trim(),
+      noiLamViec: d02State.workplaceTextCtrl.text.trim(),
+      tienLuong: CurrencyUtils.formatNumberCurrency(
+        d02State.salaryCoefficientTextCtrl.text,
+        isDot: true,
+      ),
+      phuCapChucVu: CurrencyUtils.formatNumberCurrency(
+        d02State.positionAllowanceTextCtrl.text,
+        isDot: true,
+      ),
+      phuCapThamNienVuotKhung: CurrencyUtils.formatNumberCurrency(
+        d02State.pcTNVuotKhungTextCtrl.text,
+        isDot: true,
+      ),
+      phuCapThamNienNghe: CurrencyUtils.formatNumberCurrency(
+        d02State.pcTNNTextCtrl.text,
+        isDot: true,
+      ),
+      phuCapLuong: CurrencyUtils.formatNumberCurrency(
+        d02State.salaryAllowanceTextCtrl.text,
+        isDot: true,
+      ),
+      phuCapBoSung: CurrencyUtils.formatNumberCurrency(
+        d02State.otherAllowanceTextCtrl.text,
+        isDot: true,
+      ),
+      ghiChu: d02State.noteTextCtrl.text.trim(),
+    );
   }
 }

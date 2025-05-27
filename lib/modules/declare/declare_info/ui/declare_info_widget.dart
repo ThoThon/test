@@ -27,7 +27,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
             },
           ),
         ),
-        _buildBottomButtons(),
+        Obx(
+          () => _buildBottomButtons(),
+        ).paddingAll(AppDimens.defaultPadding),
       ],
     );
   }
@@ -376,31 +378,18 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildBottomButtons() {
-    return Row(
-      children: [
-        Expanded(
-          child: UtilWidget.buildSolidButtonBack(
-            title: LocaleKeys.app_saveDraft.tr,
-            onPressed: controller.saveDraft,
-          ),
-        ),
-        Obx(
-          () {
-            if (!controller.isShowNextButton) {
-              return UtilWidget.shrink;
-            }
+    if (controller.isShowNextButton) {
+      return UtilWidget.buildSolidButton(
+        title: LocaleKeys.declareInfo_next.tr,
+        onPressed: () {
+          controller.nextTab();
+        },
+      );
+    }
 
-            return Expanded(
-              child: UtilWidget.buildSolidButton(
-                title: LocaleKeys.declareInfo_next.tr,
-                onPressed: () {
-                  controller.nextTab();
-                },
-              ).paddingOnly(left: AppDimens.defaultPadding),
-            );
-          },
-        ),
-      ],
-    ).paddingAll(AppDimens.defaultPadding);
+    return UtilWidget.buildSolidButton(
+      title: LocaleKeys.app_save.tr,
+      onPressed: controller.saveDraft,
+    );
   }
 }
