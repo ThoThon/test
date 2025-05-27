@@ -113,9 +113,15 @@ extension Tk1TabWidget on DeclareInfoPage {
           label: LocaleKeys.declareInfo_districtOfBirth.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
           funcSelect: (didChange) async {
+            final districtOfBirth = controller.tk1State.provinceOfBirth.value;
+            if (districtOfBirth == null) {
+              controller.showSnackBar("Chưa chọn tỉnh khai sinh");
+              return;
+            }
+
             final result = await Get.bottomSheet<DistrictModel>(
               SelectDistrictBts(
-                provinceCode: '01',
+                provinceCode: districtOfBirth.id,
                 selectedDistrict: controller.tk1State.districtOfBirth.value,
               ),
               isScrollControlled: true,
@@ -146,10 +152,22 @@ extension Tk1TabWidget on DeclareInfoPage {
           label: LocaleKeys.declareInfo_wardOfBirth.tr,
           hintText: LocaleKeys.declareInfo_selectWardOfBirth.tr,
           funcSelect: (didChange) async {
+            final provinceOfBirth = controller.tk1State.provinceOfBirth.value;
+            if (provinceOfBirth == null) {
+              controller.showSnackBar("Chưa chọn tỉnh khai sinh");
+              return;
+            }
+
+            final districtOfBirth = controller.tk1State.districtOfBirth.value;
+            if (districtOfBirth == null) {
+              controller.showSnackBar("Chưa chọn huyện khai sinh");
+              return;
+            }
+
             final result = await Get.bottomSheet<WardModel>(
               SelectWardBts(
-                provinceCode: '01',
-                districtCode: '001',
+                provinceCode: provinceOfBirth.id,
+                districtCode: districtOfBirth.id,
                 selectedWard: controller.tk1State.wardOfBirth.value,
               ),
               isScrollControlled: true,
@@ -229,9 +247,15 @@ extension Tk1TabWidget on DeclareInfoPage {
           label: LocaleKeys.declareInfo_districtReceive.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictReceive.tr,
           funcSelect: (didChange) async {
+            final provinceReceive = controller.tk1State.provinceReceive.value;
+            if (provinceReceive == null) {
+              controller.showSnackBar("Chưa chọn tỉnh nơi nhận");
+              return;
+            }
+
             final result = await Get.bottomSheet<DistrictModel>(
               SelectDistrictBts(
-                provinceCode: '01',
+                provinceCode: provinceReceive.id,
                 selectedDistrict: controller.tk1State.districtReceive.value,
               ),
               isScrollControlled: true,
@@ -262,10 +286,22 @@ extension Tk1TabWidget on DeclareInfoPage {
           label: LocaleKeys.declareInfo_wardReceive.tr,
           hintText: LocaleKeys.declareInfo_selectWardReceive.tr,
           funcSelect: (didChange) async {
+            final provinceReceive = controller.tk1State.provinceReceive.value;
+            if (provinceReceive == null) {
+              controller.showSnackBar("Chưa chọn tỉnh nơi nhận");
+              return;
+            }
+
+            final districtReceive = controller.tk1State.districtReceive.value;
+            if (districtReceive == null) {
+              controller.showSnackBar("Chưa chọn huyện nơi nhận");
+              return;
+            }
+
             final result = await Get.bottomSheet<WardModel>(
               SelectWardBts(
-                provinceCode: '01',
-                districtCode: '001',
+                provinceCode: provinceReceive.id,
+                districtCode: districtReceive.id,
                 selectedWard: controller.tk1State.wardReceive.value,
               ),
               isScrollControlled: true,
@@ -345,9 +381,15 @@ extension Tk1TabWidget on DeclareInfoPage {
           label: LocaleKeys.declareInfo_hospitalKCB.tr,
           hintText: LocaleKeys.declareInfo_selectHospitalKCB.tr,
           funcSelect: (didChange) async {
+            final provinceKCB = controller.tk1State.provinceKCB.value;
+            if (provinceKCB == null) {
+              controller.showSnackBar("Chưa chọn tỉnh nơi KCB");
+              return;
+            }
+
             final result = await Get.bottomSheet<Hospital>(
               SelectHospitalBts(
-                provinceCode: '01',
+                provinceCode: provinceKCB.id,
                 selectedHospital: controller.tk1State.hospitalKCB.value,
               ),
               isScrollControlled: true,
@@ -454,9 +496,15 @@ extension Tk1TabWidget on DeclareInfoPage {
           label: LocaleKeys.declareInfo_districtTT.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
           funcSelect: (didChange) async {
+            final provinceTT = controller.tk1State.provinceTT.value;
+            if (provinceTT == null) {
+              controller.showSnackBar("Chưa chọn tỉnh thường trú");
+              return;
+            }
+
             final result = await Get.bottomSheet<DistrictModel>(
               SelectDistrictBts(
-                provinceCode: '01',
+                provinceCode: provinceTT.id,
                 selectedDistrict: controller.tk1State.districtTT.value,
               ),
               isScrollControlled: true,
@@ -481,10 +529,22 @@ extension Tk1TabWidget on DeclareInfoPage {
           label: LocaleKeys.declareInfo_wardTT.tr,
           hintText: LocaleKeys.declareInfo_selectWardTT.tr,
           funcSelect: (didChange) async {
+            final provinceTT = controller.tk1State.provinceTT.value;
+            if (provinceTT == null) {
+              controller.showSnackBar("Chưa chọn tỉnh thường trú");
+              return;
+            }
+
+            final districtTT = controller.tk1State.districtTT.value;
+            if (districtTT == null) {
+              controller.showSnackBar("Chưa chọn huyện thường trú");
+              return;
+            }
+
             final result = await Get.bottomSheet<WardModel>(
               SelectWardBts(
-                provinceCode: '01',
-                districtCode: '001',
+                provinceCode: provinceTT.id,
+                districtCode: districtTT.id,
                 selectedWard: controller.tk1State.wardTT.value,
               ),
               isScrollControlled: true,
