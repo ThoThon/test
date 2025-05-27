@@ -59,7 +59,6 @@ extension D02TabWidget on DeclareInfoPage {
                 _buildInputOtherAllowance(),
                 UtilWidget.sizedBox16,
                 _buildInputNote(),
-                UtilWidget.sizedBox16,
                 UtilWidget.buildCheckboxWithLabel(
                   label: 'Sinh dữ liệu D01-TS',
                   value: controller.d02State.isGenerateD01Data.value,

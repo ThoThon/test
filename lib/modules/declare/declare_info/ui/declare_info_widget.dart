@@ -384,14 +384,21 @@ extension DeclareInfoWidget on DeclareInfoPage {
             onPressed: controller.saveDraft,
           ),
         ),
-        UtilWidget.sizedBoxWidth16,
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.app_save.tr,
-            onPressed: () {
-              controller.nextTab();
-            },
-          ),
+        Obx(
+          () {
+            if (!controller.isShowNextButton) {
+              return UtilWidget.shrink;
+            }
+
+            return Expanded(
+              child: UtilWidget.buildSolidButton(
+                title: LocaleKeys.declareInfo_next.tr,
+                onPressed: () {
+                  controller.nextTab();
+                },
+              ).paddingOnly(left: AppDimens.defaultPadding),
+            );
+          },
         ),
       ],
     ).paddingAll(AppDimens.defaultPadding);

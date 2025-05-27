@@ -39,6 +39,23 @@ class DeclareInfoController extends BaseGetxController {
         currentTab.value == DeclareInfoTab.tk1;
   }
 
+  /// Kiểm tra xem có hiển thị nút Tiếp theo hay không
+  ///
+  /// Chỉ hiển thị nút tiếp theo nếu đang không phải tab cuối cùng được hiển thị
+  bool get isShowNextButton {
+    var lastTab = DeclareInfoTab.d02;
+
+    if (d02State.isGenerateTk1Data.value) {
+      lastTab = DeclareInfoTab.tk1;
+    }
+
+    if (d02State.isGenerateD01Data.value) {
+      lastTab = DeclareInfoTab.d01;
+    }
+
+    return lastTab != currentTab.value;
+  }
+
   void showDialogSelectStaff() {
     Get.bottomSheet(
       BottomSheetSearch<String>(

@@ -364,7 +364,8 @@
     "districtReceiveNotSelected": "Chưa chọn huyện nơi nhận",
     "provinceKCBNotSelected": "Chưa chọn tỉnh nơi KCB",
     "provinceTTNotSelected": "Chưa chọn tỉnh thường trú",
-    "districtTTNotSelected": "Chưa chọn huyện thường trú"
+    "districtTTNotSelected": "Chưa chọn huyện thường trú",
+    "next": "Tiếp theo"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",

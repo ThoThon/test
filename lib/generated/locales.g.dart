@@ -403,6 +403,7 @@ class LocaleKeys {
       'declareInfo_provinceTTNotSelected';
   static const declareInfo_districtTTNotSelected =
       'declareInfo_districtTTNotSelected';
+  static const declareInfo_next = 'declareInfo_next';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -918,6 +919,7 @@ class Locales {
     'declareInfo_provinceKCBNotSelected': 'Chưa chọn tỉnh nơi KCB',
     'declareInfo_provinceTTNotSelected': 'Chưa chọn tỉnh thường trú',
     'declareInfo_districtTTNotSelected': 'Chưa chọn huyện thường trú',
+    'declareInfo_next': 'Tiếp theo',
     'familyMember_title': 'Thành viên trong gia đình',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
