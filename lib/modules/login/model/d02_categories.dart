@@ -5,7 +5,6 @@ class D02Categories {
   final Set<EthnicModel> ethnics;
   final Set<NationModel> nations;
   final Set<ProvinceModel> provinces;
-  final Set<AdjustmentPlanModel> adjustmentPlans;
   final Set<RelationshipModel> relationships;
 
   const D02Categories({
@@ -13,7 +12,6 @@ class D02Categories {
     required this.ethnics,
     required this.nations,
     required this.provinces,
-    required this.adjustmentPlans,
     required this.relationships,
   });
 
@@ -39,11 +37,6 @@ class D02Categories {
               .map((e) => ProvinceModel.fromJson(e))
               .toSet()
           : <ProvinceModel>{},
-      adjustmentPlans: json['phuongAnDieuChinhs'] != null
-          ? (json['phuongAnDieuChinhs'] as List)
-              .map((e) => AdjustmentPlanModel.fromJson(e))
-              .toSet()
-          : <AdjustmentPlanModel>{},
       relationships: json['moiQuanHes'] != null
           ? (json['moiQuanHes'] as List)
               .map((e) => RelationshipModel.fromJson(e))
