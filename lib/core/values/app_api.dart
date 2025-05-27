@@ -34,6 +34,9 @@ class AppApi {
   static const String urlGetWards = '/api/Categories/get-wards';
   static const String urlGetHospitals = '/api/Categories/get-benh-vien';
 
-  // API lưu nháp khi kê khai thông tin
+  /// API lưu nháp khi kê khai thông tin
   static const String urlAddD02 = '/api/HoSoD02/add-d02';
+
+  /// API lấy danh sách lao động theo kỳ kê khai
+  static const String urlGetStaffList = '/api/HoSoD02/get-d02-list';
 }
