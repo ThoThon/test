@@ -474,7 +474,9 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
             title: LocaleKeys.app_cancel.tr,
-            onPressed: () {},
+            onPressed: () {
+              Get.back();
+            },
           ),
         ),
       ],

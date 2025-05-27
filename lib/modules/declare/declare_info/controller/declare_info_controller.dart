@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
@@ -448,6 +449,17 @@ class DeclareInfoController extends BaseGetxController {
 
   void onChangeAddressTT(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
+  }
+
+  Future<void> addFmailyMember() async {
+    final result = await Get.toNamed(AppRoutes.familyMemberDetail.path);
+    if (result is FamilyMember) {
+      tk1State.familyMembers.add(result);
+    }
+  }
+
+  void deleteFamilyMember(String id) {
+    tk1State.familyMembers.removeWhere((element) => element.id == id);
   }
 
   @override

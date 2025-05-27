@@ -4,6 +4,9 @@ import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'birth_type_enum.dart';
 
 class FamilyMember {
+  /// ID thành viên gia đình - Gen với uuid
+  final String id;
+
   /// Họ và tên *
   final String fullName;
 
@@ -47,6 +50,7 @@ class FamilyMember {
   final bool isParticipant;
 
   const FamilyMember({
+    required this.id,
     required this.fullName,
     required this.bhxhNumber,
     required this.cccdNumber,

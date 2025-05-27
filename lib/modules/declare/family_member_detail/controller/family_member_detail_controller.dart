@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../../../base_app/base_app.src.dart';
 import '../model/model_src.dart';
@@ -50,8 +51,10 @@ class FamilyMemberDetailController extends BaseGetxController {
 
   void onSubmit() {
     if (formKey.currentState?.validate() ?? false) {
+      // Note: đã validate các trường required nên có thể force null
       Get.back(
         result: FamilyMember(
+          id: generateUuid(),
           fullName: fullNameTextCtrl.text.trim(),
           bhxhNumber: bhxhNumberTextCtrl.text.trim(),
           cccdNumber: cccdNumberTextCtrl.text.trim(),

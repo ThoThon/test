@@ -625,13 +625,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         Align(
           alignment: Alignment.center,
           child: OutlinedButton.icon(
-            onPressed: () async {
-              final result =
-                  await Get.toNamed(AppRoutes.familyMemberDetail.path);
-              if (result is FamilyMember) {
-                controller.tk1State.familyMembers.add(result);
-              }
-            },
+            onPressed: controller.addFmailyMember,
             style: OutlinedButton.styleFrom(
               shape: const CircleBorder(),
               side: const BorderSide(
@@ -658,7 +652,9 @@ extension Tk1TabWidget on DeclareInfoPage {
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            controller.deleteFamilyMember(member.id);
+          },
           icon: const Icon(Icons.clear, color: AppColors.statusRed),
         ),
       ],
