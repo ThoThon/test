@@ -401,9 +401,9 @@
     "note": "Ghi chú",
     "isParticipant": "Là người tham gia"
   },
-  "declarationFromDetail": {
+  "declarationFormDetail": {
     "title": "Kê khai thông tin bảng kê hồ sơ",
-    "declarationFromName": "Tên bảng kê",
+    "declarationFormName": "Tên bảng kê",
     "fullName": "Họ và tên",
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
     "bhxhCode": "Mã số BHXH",
@@ -419,6 +419,9 @@
     "summaryCannotEmpty": "Trích yếu không được bỏ trống",
     "contentToBeAssessed": "Nội dung cần thẩm định",
     "contentToBeAssessedCannotEmpty": "Nội dung cần thẩm định không được bỏ trống"
+  },
+  "staffList": {
+    "title": "Danh sách nhân viên kê khai"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",

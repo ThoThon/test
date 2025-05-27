@@ -1,2 +1,2 @@
 export 'declared_staff_model.dart';
-export 'deposit_info_result.dart';
+export 'staff_list_result.dart';

@@ -1,6 +1,6 @@
-part of 'deposit_info_page.dart';
+part of 'staff_list_page.dart';
 
-extension DepositInfoWidget on DepositInfoPage {
+extension StaffListWidget on StaffListPage {
   Widget _buildBody() {
     return Column(
       children: [
@@ -155,8 +155,8 @@ extension DepositInfoWidget on DepositInfoPage {
                   // Nếu được mở từ màn Kê khai thông tin thì chỉ cần back về và chọn đúng tab
                   if (Get.previousRoute == AppRoutes.declareInfo.path) {
                     Get.back(
-                      result: const DepositInfoResult(
-                        action: DepositInfoResultAction.selectD02Tab,
+                      result: const StaffListResult(
+                        action: StaffListResultAction.selectD02Tab,
                       ),
                     );
                   } else {
@@ -199,8 +199,8 @@ extension DepositInfoWidget on DepositInfoPage {
         // Nếu được mở từ màn Kê khai thông tin thì chỉ cần back về và chọn đúng tab
         if (Get.previousRoute == AppRoutes.declareInfo.path) {
           Get.back(
-            result: const DepositInfoResult(
-              action: DepositInfoResultAction.selectD02Tab,
+            result: const StaffListResult(
+              action: StaffListResultAction.selectD02Tab,
             ),
           );
         } else {
