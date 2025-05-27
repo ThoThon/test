@@ -247,7 +247,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void changeWardOfBirth(String value) {
+  void changeWardOfBirth(WardModel value) {
     tk1State.wardOfBirth.value = value;
 
     // Đồng bộ xã nơi nhận hồ sơ với xã khai sinh
@@ -314,7 +314,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onChangeWardReceive(String value) {
+  void onChangeWardReceive(WardModel value) {
     if (tk1State.wardReceive.value != value) {
       // Khi user thay đổi xã nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -338,6 +338,15 @@ class DeclareInfoController extends BaseGetxController {
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
     _syncHeadOfHouseholdInfo();
+  }
+
+  void onChangeProvinceKCB(ProvinceModel value) {
+    if (tk1State.provinceKCB.value != value) {
+      // Xóa bệnh viện nơi KCB khi thay đổi tỉnh nơi KCB
+      tk1State.hospitalKCB.value = null;
+    }
+
+    tk1State.provinceKCB.value = value;
   }
 
   /// Đồng bộ thông tin của người đại diện với thông tin của người tham gia
@@ -381,7 +390,7 @@ class DeclareInfoController extends BaseGetxController {
     tk1State.districtTT.value = value;
   }
 
-  void onChangeWardTT(String value) {
+  void onChangeWardTT(WardModel value) {
     if (tk1State.wardTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
     }

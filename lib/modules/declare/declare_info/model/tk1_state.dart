@@ -13,7 +13,7 @@ class Tk1State {
   final districtOfBirth = Rxn<DistrictModel>();
 
   /// Xã khai sinh *
-  final wardOfBirth = Rxn<String>();
+  final wardOfBirth = Rxn<WardModel>();
 
   /// Địa chỉ khai sinh *
   final birthAddressTextCtrl = TextEditingController();
@@ -28,7 +28,7 @@ class Tk1State {
   final districtReceive = Rxn<DistrictModel>();
 
   /// Xã nơi nhận *
-  final wardReceive = Rxn<String>();
+  final wardReceive = Rxn<WardModel>();
 
   /// Địa chỉ nơi nhận *
   final addressReceiveTextCtrl = TextEditingController();
@@ -58,7 +58,7 @@ class Tk1State {
   final districtTT = Rxn<DistrictModel>();
 
   /// Xã thường trú
-  final wardTT = Rxn<String>();
+  final wardTT = Rxn<WardModel>();
 
   /// Địa chỉ thường trú
   final addressTTTextCtrl = TextEditingController();

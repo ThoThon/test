@@ -142,29 +142,43 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectWard() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<WardModel>(
           label: LocaleKeys.declareInfo_wardOfBirth.tr,
           hintText: LocaleKeys.declareInfo_selectWardOfBirth.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.declareInfo_selectWardOfBirth.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.tk1State.wardOfBirth.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  didChange(value);
-                  controller.changeWardOfBirth(value);
-                },
+          funcSelect: (didChange) async {
+            // Get.bottomSheet(
+            //   BottomSheetSearch<String>(
+            //     title: LocaleKeys.declareInfo_selectWardOfBirth.tr,
+            //     listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+            //     selectedItem: controller.tk1State.wardOfBirth.value,
+            //     display: (value) => value,
+            //     onAccept: (value) {
+            //       if (value == null) return;
+            //       didChange(value);
+            //       controller.changeWardOfBirth(value);
+            //     },
+            //   ),
+            //   isScrollControlled: true,
+            // );
+
+            final result = await Get.bottomSheet<WardModel>(
+              SelectWardBts(
+                provinceCode: '01',
+                districtCode: '001',
+                selectedWard: controller.tk1State.wardOfBirth.value,
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              didChange(result);
+              controller.changeWardOfBirth(result);
+            }
           },
           selectedItem: controller.tk1State.wardOfBirth.value,
-          display: (ethnic) => ethnic,
+          display: (ward) => ward.name,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (value == null) {
               return LocaleKeys.declareInfo_wardOfBirthCannotEmpty.tr;
             }
             return null;
@@ -259,29 +273,43 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectWardReceive() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<WardModel>(
           label: LocaleKeys.declareInfo_wardReceive.tr,
           hintText: LocaleKeys.declareInfo_selectWardReceive.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.declareInfo_selectWardReceive.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.tk1State.wardReceive.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  didChange(value);
-                  controller.onChangeWardReceive(value);
-                },
+          funcSelect: (didChange) async {
+            // Get.bottomSheet(
+            //   BottomSheetSearch<String>(
+            //     title: LocaleKeys.declareInfo_selectWardReceive.tr,
+            //     listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+            //     selectedItem: controller.tk1State.wardReceive.value,
+            //     display: (value) => value,
+            //     onAccept: (value) {
+            //       if (value == null) return;
+            //       didChange(value);
+            //       controller.onChangeWardReceive(value);
+            //     },
+            //   ),
+            //   isScrollControlled: true,
+            // );
+
+            final result = await Get.bottomSheet<WardModel>(
+              SelectWardBts(
+                provinceCode: '01',
+                districtCode: '001',
+                selectedWard: controller.tk1State.wardReceive.value,
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              didChange(result);
+              controller.onChangeWardReceive(result);
+            }
           },
           selectedItem: controller.tk1State.wardReceive.value,
-          display: (ethnic) => ethnic,
+          display: (ward) => ward.name,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (value == null) {
               return LocaleKeys.declareInfo_wardReceiveCannotEmpty.tr;
             }
             return null;
@@ -320,8 +348,8 @@ extension Tk1TabWidget on DeclareInfoPage {
                 display: (value) => value.name,
                 onAccept: (value) {
                   if (value == null) return;
-                  controller.tk1State.provinceKCB.value = value;
                   didChange(value);
+                  controller.onChangeProvinceKCB(value);
                 },
               ),
               isScrollControlled: true,
@@ -479,27 +507,41 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectWardTT() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<WardModel>(
           label: LocaleKeys.declareInfo_wardTT.tr,
           hintText: LocaleKeys.declareInfo_selectWardTT.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.declareInfo_selectWardTT.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.tk1State.wardTT.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  didChange(value);
-                  controller.onChangeWardTT(value);
-                },
+          funcSelect: (didChange) async {
+            // Get.bottomSheet(
+            //   BottomSheetSearch<String>(
+            //     title: LocaleKeys.declareInfo_selectWardTT.tr,
+            //     listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
+            //     selectedItem: controller.tk1State.wardTT.value,
+            //     display: (value) => value,
+            //     onAccept: (value) {
+            //       if (value == null) return;
+            //       didChange(value);
+            //       controller.onChangeWardTT(value);
+            //     },
+            //   ),
+            //   isScrollControlled: true,
+            // );
+
+            final result = await Get.bottomSheet<WardModel>(
+              SelectWardBts(
+                provinceCode: '01',
+                districtCode: '001',
+                selectedWard: controller.tk1State.wardTT.value,
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              didChange(result);
+              controller.onChangeWardTT(result);
+            }
           },
           selectedItem: controller.tk1State.wardTT.value,
-          display: (ethnic) => ethnic,
+          display: (ward) => ward.name,
         );
       },
     );

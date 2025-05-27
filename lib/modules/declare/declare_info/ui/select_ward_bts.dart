@@ -1,31 +1,32 @@
 import 'package:tiengviet/tiengviet.dart';
-import 'package:v_bhxh/modules/declare/declare_info/controller/select_hospital_controller.dart';
+import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
-class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
-  SelectHospitalBts({
+class SelectWardBts extends BaseGetWidget<SelectWardController> {
+  SelectWardBts({
     super.key,
     required this.provinceCode,
-    this.selectedHospital,
+    required this.districtCode,
+    this.selectedWard,
   });
 
   @override
-  SelectHospitalController get controller => _controller;
+  SelectWardController get controller => _controller;
 
-  late final _controller = Get.put(
-    SelectHospitalController(
-      provinceCode: provinceCode,
-      hospital: selectedHospital,
-    ),
-  );
+  late final _controller = Get.put(SelectWardController(
+    provinceCode: provinceCode,
+    districtCode: districtCode,
+    ward: selectedWard,
+  ));
 
   final String provinceCode;
-  final Hospital? selectedHospital;
+  final String districtCode;
+  final WardModel? selectedWard;
 
   @override
   Widget buildWidgets(BuildContext context) {
     return UtilWidget.baseBottomSheet(
-      title: 'Chọn bệnh viện',
+      title: 'Chọn xã',
       body: Column(
         children: [
           Expanded(
@@ -36,16 +37,16 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
                   child: baseShowLoading(
                     () => Obx(
                       () {
-                        final filteredHospitals = controller.hospitals
+                        final filteredWards = controller.wards
                             .where((item) => TiengViet.parse(item.name)
                                 .toLowerCase()
                                 .contains(controller.keyword.value))
                             .toList();
 
                         return ListView.separated(
-                          itemCount: filteredHospitals.length,
+                          itemCount: filteredWards.length,
                           itemBuilder: (context, index) {
-                            final item = filteredHospitals[index];
+                            final item = filteredWards[index];
                             return _buildItem(item);
                           },
                           separatorBuilder: (context, index) =>
@@ -61,7 +62,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
           UtilWidget.buildSolidButton(
             title: LocaleKeys.certificate_confirm.tr,
             onPressed: () {
-              Get.back(result: controller.selectedHospital.value);
+              Get.back(result: controller.selectedWard.value);
             },
           ),
           sdsSBHeight16,
@@ -74,7 +75,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
     return UtilWidget.buildTextInput(
       height: AppDimens.sizeDialogNotiIcon,
       controller: controller.searchTextCtrl,
-      hintText: 'Nhập tên bệnh viện',
+      hintText: 'Nhập tên huyện',
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
       borderColor: AppColors.dsGray3,
@@ -92,13 +93,13 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
     ).paddingSymmetric(vertical: AppDimens.paddingSmall);
   }
 
-  Widget _buildItem(Hospital item) {
+  Widget _buildItem(WardModel item) {
     return Obx(
       () {
-        final isSelected = controller.selectedHospital.value == item;
+        final isSelected = controller.selectedWard.value == item;
         return InkWell(
           onTap: () {
-            controller.selectedHospital.value = item;
+            controller.selectedWard.value = item;
           },
           child: Row(
             children: [
