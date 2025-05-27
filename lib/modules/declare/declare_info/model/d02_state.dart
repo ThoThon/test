@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class D02State {
@@ -10,7 +9,7 @@ class D02State {
   final declarationType = Rxn<DeclarationTypeModel>();
 
   /// Phương án
-  final plan = Rxn<PlanEnum>();
+  final plan = Rxn<AdjustmentPlanModel>();
 
   /// Sinh dữ liệu Tk1-TS
   final isGenerateTk1Data = false.obs;
