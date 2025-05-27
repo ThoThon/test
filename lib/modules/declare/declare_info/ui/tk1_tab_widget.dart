@@ -594,40 +594,43 @@ extension Tk1TabWidget on DeclareInfoPage {
           LocaleKeys.declareInfo_familyMembers.tr,
           style: AppTextStyle.font16Bo,
         ),
-        if (controller.tk1State.familyMembers.isNotEmpty)
-          Container(
-            margin: const EdgeInsets.symmetric(
-                vertical: AppDimens.paddingVerySmall),
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.defaultPadding,
-              vertical: AppDimens.paddingVerySmall,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(
-                color: AppColors.dsGray3,
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: addSeparator(
-                spacer: UtilWidget.sizedBox8,
-                children: controller.tk1State.familyMembers.map(
-                  (member) {
-                    return SDSBuildText(
-                      '${member.fullName} - ${member.relationship}',
-                      style: AppTextStyle.font16Re,
-                    );
-                  },
-                ).toList(),
-              ),
-            ),
-          ),
+        controller.tk1State.familyMembers.isNotEmpty
+            ? Container(
+                margin: const EdgeInsets.symmetric(
+                  vertical: AppDimens.paddingVerySmall,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppDimens.defaultPadding,
+                  vertical: AppDimens.paddingVerySmall,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  border: Border.all(
+                    color: AppColors.dsGray3,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: addSeparator(
+                    spacer: UtilWidget.sizedBox8,
+                    children: controller.tk1State.familyMembers.map(
+                      (member) {
+                        return _buildFamilyMemberItem(member);
+                      },
+                    ).toList(),
+                  ),
+                ),
+              )
+            : UtilWidget.sizedBox8,
         Align(
           alignment: Alignment.center,
           child: OutlinedButton.icon(
-            onPressed: () {
-              Get.toNamed(AppRoutes.familyMemberDetail.path);
+            onPressed: () async {
+              final result =
+                  await Get.toNamed(AppRoutes.familyMemberDetail.path);
+              if (result is FamilyMember) {
+                controller.tk1State.familyMembers.add(result);
+              }
             },
             style: OutlinedButton.styleFrom(
               shape: const CircleBorder(),
@@ -640,6 +643,23 @@ extension Tk1TabWidget on DeclareInfoPage {
               color: AppColors.primaryColor,
             ),
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFamilyMemberItem(FamilyMember member) {
+    return Row(
+      children: [
+        Expanded(
+          child: SDSBuildText(
+            '${member.fullName} - ${member.relationship.text}',
+            style: AppTextStyle.font16Re,
+          ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.clear, color: AppColors.statusRed),
         ),
       ],
     );

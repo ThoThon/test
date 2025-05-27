@@ -11,10 +11,10 @@ class FamilyMemberDetailController extends BaseGetxController {
   final fullNameTextCtrl = TextEditingController();
 
   /// Mã số bảo hiểm xã hội
-  final bhxhTextCtrl = TextEditingController();
+  final bhxhNumberTextCtrl = TextEditingController();
 
   /// Mã số CCCD *
-  final cccdTextCtrl = TextEditingController();
+  final cccdNumberTextCtrl = TextEditingController();
 
   /// Ghi chú
   final noteTextCtrl = TextEditingController();
@@ -50,15 +50,32 @@ class FamilyMemberDetailController extends BaseGetxController {
 
   void onSubmit() {
     if (formKey.currentState?.validate() ?? false) {
-      // TODO:
+      Get.back(
+        result: FamilyMember(
+          fullName: fullNameTextCtrl.text.trim(),
+          bhxhNumber: bhxhNumberTextCtrl.text.trim(),
+          cccdNumber: cccdNumberTextCtrl.text.trim(),
+          note: noteTextCtrl.text.trim(),
+          birthType: birthType.value,
+          dateOfBirth: dateOfBirth.value!,
+          gender: gender.value,
+          ethnic: selectedEthnic.value!,
+          nation: selectedNationality.value!,
+          province: selectedProvince.value!,
+          district: selectedDistrict.value!,
+          ward: selectedWard.value!,
+          relationship: relationship.value!,
+          isParticipant: isParticipant.value,
+        ),
+      );
     }
   }
 
   @override
   void onClose() {
     fullNameTextCtrl.dispose();
-    bhxhTextCtrl.dispose();
-    cccdTextCtrl.dispose();
+    bhxhNumberTextCtrl.dispose();
+    cccdNumberTextCtrl.dispose();
     noteTextCtrl.dispose();
     super.onClose();
   }

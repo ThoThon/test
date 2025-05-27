@@ -85,7 +85,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       label: LocaleKeys.familyMember_bhxhCode.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          controller: controller.bhxhTextCtrl,
+          controller: controller.bhxhNumberTextCtrl,
           maxLengthInputForm: 10,
           textInputType: TextInputType.number,
           inputFormatters: InputFormatterEnum.digitsOnly,
@@ -442,7 +442,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       label: LocaleKeys.familyMember_cccdNumber.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          controller: controller.cccdTextCtrl,
+          controller: controller.cccdNumberTextCtrl,
           maxLengthInputForm: 20,
         ),
       ),
