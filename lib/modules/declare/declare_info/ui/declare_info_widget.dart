@@ -225,10 +225,21 @@ extension DeclareInfoWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_cccdNumber.tr,
       buildInputText: BuildInputText(
         InputTextModel(
+          autovalidateMode: controller.autovalidateMode.value,
           controller: controller.d02Tk1State.cccdTextCtrl,
           isValidate: true,
           maxLengthInputForm: 20,
+          inputFormatters: InputFormatterEnum.digitsOnly,
           onChanged: controller.onChangeCCCD,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return LocaleKeys.declareInfo_cccdNumberIsNotEmpty.tr;
+            }
+            if (value.length < 12 && value.isNotEmpty) {
+              return LocaleKeys.declareInfo_cccdNumberIsValid.tr;
+            }
+            return null;
+          },
         ),
       ),
     );

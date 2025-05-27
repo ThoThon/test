@@ -129,21 +129,18 @@ extension D02TabWidget on DeclareInfoPage {
   Widget _buildSelectPlan() {
     return Obx(
       () {
-        final declarationType = controller.d02State.declarationType.value;
-        // TODO: Map phương án từ API
-        // final plans = declarationType?.plans;
-        final plans = null;
+        final plans = controller.d02State.declarationType.value?.plans;
 
         if (plans == null || plans.isEmpty) {
           return UtilWidget.shrink;
         }
 
-        return UtilWidget.buildDropDownWithLabel2<PlanEnum>(
+        return UtilWidget.buildDropDownWithLabel2<AdjustmentPlanModel>(
           label: LocaleKeys.declareInfo_plan.tr,
           hintText: LocaleKeys.declareInfo_selectPlan.tr,
           autovalidateMode: AutovalidateMode.always,
-          items: plans,
-          display: (item) => item.title,
+          items: plans.toList(),
+          display: (item) => item.name,
           selectedItem: controller.d02State.plan.value,
           onChanged: (value) {
             if (value == null) {

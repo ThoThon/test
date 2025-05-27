@@ -297,6 +297,8 @@
     "declarationTypeOther": "Khác",
     "generateTk1Data": "Sinh dữ liệu TK1-TS",
     "cccdNumber": "Số CCCD",
+    "cccdNumberIsNotEmpty": "Số CCCD không được bỏ trống",
+    "cccdNumberIsValid": "Số CCCD phải có đủ 12 số",
     "dob": "Ngày sinh",
     "gender": "Giới tính",
     "male": "Nam",
@@ -357,7 +359,14 @@
     "wardTT": "Xã thường trú",
     "selectWardTT": "Chọn xã thường trú",
     "addressTT": "Địa chỉ thường trú",
-    "familyMembers": "Danh sách thành viên trong gia đình"
+    "familyMembers": "Danh sách thành viên trong gia đình",
+    "provinceOfBirthNotSelected": "Chưa chọn tỉnh khai sinh",
+    "districtOfBirthNotSelected": "Chưa chọn huyện khai sinh",
+    "provinceReceiveNotSelected": "Chưa chọn tỉnh nơi nhận",
+    "districtReceiveNotSelected": "Chưa chọn huyện nơi nhận",
+    "provinceKCBNotSelected": "Chưa chọn tỉnh nơi KCB",
+    "provinceTTNotSelected": "Chưa chọn tỉnh thường trú",
+    "districtTTNotSelected": "Chưa chọn huyện thường trú"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",
@@ -432,7 +441,14 @@
     "start": "Bắt đầu",
     "readyScan": "Sẵn sàng quét",
     "scanNFC": "Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến",
-    "cancel": "Hủy"
+    "cancel": "Hủy",
+    "scanNfcError": "Quét CCCD bị lỗi vui lòng thử lại",
+    "bringPhone": "Đưa điện thoại của bạn lại gần CCCD",
+    "readData": "Đang đọc dữ liệu",
+    "keepCardNfc": "Vui lòng giữ nguyên CCCD",
+    "scanNfcSuccess": "Quét thông tin thành công",
+    "scanNfcErrorIOS": "Lỗi quét NFC. Quý khách vui lòng thử lại",
+    "pleaseFillCccd": "Vui lòng nhập số CCCD"
   },
   "infomationUser": {
     "info": "Thông tin",

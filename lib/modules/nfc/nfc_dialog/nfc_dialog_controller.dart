@@ -35,6 +35,9 @@ class NfcDialogController extends BaseGetxController {
 
   @override
   Future<void> onInit() async {
+    if (Get.arguments != null) {
+      idDocument = Get.arguments;
+    }
     if (GetPlatform.isAndroid) {
       await scanNFC();
     }
@@ -49,7 +52,7 @@ class NfcDialogController extends BaseGetxController {
   // }
 
   Future<void> scanNFC() async {
-    setupData();
+    // setupData();
     await readMRTD();
     if (sendNfcRequestModel.number != null) {
       if (Get.isDialogOpen == true) {
@@ -63,7 +66,7 @@ class NfcDialogController extends BaseGetxController {
         if (Get.isDialogOpen == true) {
           Get.back();
         }
-        showSnackBar('Quét nfc bị lỗi vui lòng thử lại');
+        showSnackBar(LocaleKeys.nfc_scanNfcError.tr);
       }
     }
     sendNfcRequestModel = SendNfcRequestModel();
@@ -88,20 +91,7 @@ class NfcDialogController extends BaseGetxController {
   }
 
   void setupData() {
-    try {
-      // if (appController.authProfileRequestModel.identity != null) {
-      //   if (appController.authProfileRequestModel.identity!.length > 6) {
-      //     idDocument = appController.authProfileRequestModel.identity;
-      //   }
-      // }
-      idDocument = '036302008085';
-      dateOfBirth = convertDateToDate(
-          convertStringToDate(
-            "11/04/2002",
-            PATTERN_1,
-          ),
-          PATTERN_DEFAULT);
-    } catch (e) {
+    try {} catch (e) {
       idDocument = dateOfBirth = dateOfExpiry = null;
     }
   }
@@ -111,7 +101,7 @@ class NfcDialogController extends BaseGetxController {
       processQuantity.value = 0;
       await nfc.connect(
         timeout: const Duration(seconds: 10),
-        iosAlertMessage: 'Đưa điện thoại của bạn lại gần CCCD',
+        iosAlertMessage: LocaleKeys.nfc_bringPhone.tr,
       );
       processQuantity.value = 2;
       isReading.value = true;
@@ -131,7 +121,8 @@ class NfcDialogController extends BaseGetxController {
       }
 
       processQuantity.value = 4;
-      await nfc.setIosAlertMessage(formatProgressMsg('Đang đọc dữ liệu', 20));
+      await nfc.setIosAlertMessage(
+          formatProgressMsg(LocaleKeys.nfc_readData.tr, 20));
       mrtdDataTemp.com = await passport.readEfCOM();
 
       if (mrtdDataTemp.com!.dgTags.contains(EfDG1.TAG)) {
@@ -142,14 +133,15 @@ class NfcDialogController extends BaseGetxController {
       }
 
       await nfc.setIosAlertMessage(
-          formatProgressMsg('Vui lòng giữ nguyên CCCD', 40));
+          formatProgressMsg(LocaleKeys.nfc_keepCardNfc.tr, 40));
       if (mrtdDataTemp.com!.dgTags.contains(EfDG13.TAG)) {
         mrtdDataTemp.dg13 = await passport.readEfDG13();
       }
       if (mrtdDataTemp.com!.dgTags.contains(EfDG14.TAG)) {
         mrtdDataTemp.dg14 = await passport.readEfDG14();
       }
-      await nfc.setIosAlertMessage(formatProgressMsg('Đang đọc dữ liệu', 60));
+      await nfc.setIosAlertMessage(
+          formatProgressMsg(LocaleKeys.nfc_readData.tr, 60));
 
       if (mrtdDataTemp.com!.dgTags.contains(EfDG15.TAG)) {
         mrtdDataTemp.dg15 = await passport.readEfDG15();
@@ -157,7 +149,8 @@ class NfcDialogController extends BaseGetxController {
       }
 
       processQuantity.value = 6;
-      await nfc.setIosAlertMessage(formatProgressMsg('Đang đọc dữ liệu', 80));
+      await nfc.setIosAlertMessage(
+          formatProgressMsg(LocaleKeys.nfc_readData.tr, 80));
       mrtdDataTemp.sod = await passport.readEfSOD();
       mrtdData?.value = mrtdDataTemp;
 
@@ -173,15 +166,18 @@ class NfcDialogController extends BaseGetxController {
       String rawData = removeSpecialCharacters(decodedString);
       sendNfcRequestModel.raw = rawData;
       _getDg13VNM(mrtdDataTemp.dg13!.toBytes());
-      showSnackBar('Quest thong tin thanh cong');
+      showSnackBar(
+        LocaleKeys.nfc_scanNfcSuccess.tr,
+        typeAction: AppConst.actionSuccess,
+      );
       await nfc.setIosAlertMessage(
-          formatProgressMsg('Quét thông tin thành công', 100));
+          formatProgressMsg(LocaleKeys.nfc_scanNfcSuccess.tr, 100));
       processQuantity.value = 10;
       await nfc.disconnect();
     } catch (e) {
       if (!isCloseDialog) {
         await nfc.disconnect(
-          iosErrorMessage: 'Lỗi quét NFC. Quý khách vui lòng thử lại',
+          iosErrorMessage: LocaleKeys.nfc_scanNfcErrorIOS.tr,
         );
         processQuantity.value = 0;
         if (Get.isDialogOpen == true) {

@@ -7,11 +7,13 @@ import '../nfc_dialog/nfc_dialog_controller.dart';
 
 class NfcController extends BaseGetxController {
   final maybeContinue = false.obs;
-  // late NfcRepository nfcRepository;
+  String? idDocument;
 
   @override
   void onInit() {
-    // nfcRepository = NfcRepository(this);
+    if (Get.arguments != null) {
+      idDocument = Get.arguments;
+    }
     super.onInit();
   }
 
@@ -20,7 +22,10 @@ class NfcController extends BaseGetxController {
       NfcDialogController nfcDialogController = Get.put(NfcDialogController());
       await nfcDialogController.scanNFC();
     } else if (GetPlatform.isAndroid) {
-      ShowDialog.funcOpenDialog(const NfcDialog());
+      ShowDialog.funcOpenDialog(
+        const NfcDialog(),
+        idDocument,
+      );
     }
   }
 }

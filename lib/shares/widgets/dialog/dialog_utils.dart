@@ -504,10 +504,11 @@ class ShowDialog {
     );
   }
 
-  static Future<void> funcOpenDialog(Widget child) async {
+  static Future<void> funcOpenDialog(Widget child, Object? argument) async {
     Get.dialog(
       buildShowPopupOption(child),
       barrierDismissible: false,
+      arguments: argument,
     );
   }
 

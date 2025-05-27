@@ -1,3 +1,4 @@
+import 'package:tiengviet/tiengviet.dart';
 import 'package:v_bhxh/modules/declare/deposit_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
@@ -20,6 +21,8 @@ class DeclareInfoController extends BaseGetxController {
   final d02State = D02State();
   final tk1State = Tk1State();
   final d01State = D01State();
+
+  final autovalidateMode = AutovalidateMode.disabled.obs;
   SendNfcRequestModel sendNfcRequestModel = SendNfcRequestModel();
 
   void onTabChanged(DeclareInfoTab tab) {
@@ -36,9 +39,9 @@ class DeclareInfoController extends BaseGetxController {
     return d02State.isGenerateD01Data.value == true;
   }
 
+  // Chỉ cho phép quét cccd ở tab D02-LT
   bool get isShowScanIDButton {
-    return currentTab.value == DeclareInfoTab.d02 ||
-        currentTab.value == DeclareInfoTab.tk1;
+    return currentTab.value == DeclareInfoTab.d02;
   }
 
   void showDialogSelectStaff() {
@@ -191,32 +194,65 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void changeProvinceOfBirth(ProvinceModel value) {
+    if (tk1State.provinceOfBirth.value != value) {
+      // Xóa huyện, xã, địa chỉ khai sinh khi thay đổi tỉnh khai sinh
+      tk1State.districtOfBirth.value = null;
+      tk1State.wardOfBirth.value = null;
+    }
+
     tk1State.provinceOfBirth.value = value;
 
     // Đồng bộ tỉnh nơi nhận hồ sơ với tỉnh khai sinh
     if (tk1State.isDuplicateBirthAddress.value) {
+      if (tk1State.provinceReceive.value != value) {
+        // Xóa huyện, xã nơi nhận hồ sơ khi thay đổi tỉnh nơi nhận hồ sơ
+        tk1State.districtReceive.value = null;
+        tk1State.wardReceive.value = null;
+      }
+
       tk1State.provinceReceive.value = value;
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
+      if (tk1State.provinceTT.value != value) {
+        // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
+        tk1State.districtTT.value = null;
+        tk1State.wardTT.value = null;
+      }
+
       tk1State.provinceTT.value = value;
     }
   }
 
   void changeDistrictOfBirth(DistrictModel value) {
+    if (tk1State.districtOfBirth.value != value) {
+      // Xóa xã khai sinh khi thay đổi huyện khai sinh
+      tk1State.wardOfBirth.value = null;
+    }
+
     tk1State.districtOfBirth.value = value;
 
     // Đồng bộ huyện nơi nhận hồ sơ với huyện khai sinh
     if (tk1State.isDuplicateBirthAddress.value) {
+      if (tk1State.districtReceive.value != value) {
+        // Xóa xã nơi nhận hồ sơ khi thay đổi huyện nơi nhận hồ sơ
+        tk1State.wardReceive.value = null;
+      }
+
       tk1State.districtReceive.value = value;
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
+      if (tk1State.districtTT.value != value) {
+        // Xóa xã thường trú khi thay đổi huyện thường trú
+        tk1State.wardTT.value = null;
+      }
+
       tk1State.districtTT.value = value;
     }
   }
 
-  void changeWardOfBirth(String value) {
+  void changeWardOfBirth(WardModel value) {
     tk1State.wardOfBirth.value = value;
 
     // Đồng bộ xã nơi nhận hồ sơ với xã khai sinh
@@ -244,11 +280,21 @@ class DeclareInfoController extends BaseGetxController {
     if (tk1State.provinceReceive.value != value) {
       // Khi user thay đổi tỉnh nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
+
+      // Xóa huyện, xã nơi nhận hồ sơ khi thay đổi tỉnh nơi nhận hồ sơ
+      tk1State.districtReceive.value = null;
+      tk1State.wardReceive.value = null;
     }
 
     tk1State.provinceReceive.value = value;
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
+      if (tk1State.provinceTT.value != value) {
+        // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
+        tk1State.districtTT.value = null;
+        tk1State.wardTT.value = null;
+      }
+
       tk1State.provinceTT.value = value;
     }
   }
@@ -257,15 +303,23 @@ class DeclareInfoController extends BaseGetxController {
     if (tk1State.districtReceive.value != value) {
       // Khi user thay đổi huyện nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
+
+      // Xóa xã nơi nhận hồ sơ khi thay đổi huyện nơi nhận hồ sơ
+      tk1State.wardReceive.value = null;
     }
     tk1State.districtReceive.value = value;
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
+      if (tk1State.districtTT.value != value) {
+        // Xóa xã thường trú khi thay đổi huyện thường trú
+        tk1State.wardTT.value = null;
+      }
+
       tk1State.districtTT.value = value;
     }
   }
 
-  void onChangeWardReceive(String value) {
+  void onChangeWardReceive(WardModel value) {
     if (tk1State.wardReceive.value != value) {
       // Khi user thay đổi xã nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -291,6 +345,15 @@ class DeclareInfoController extends BaseGetxController {
     _syncHeadOfHouseholdInfo();
   }
 
+  void onChangeProvinceKCB(ProvinceModel value) {
+    if (tk1State.provinceKCB.value != value) {
+      // Xóa bệnh viện nơi KCB khi thay đổi tỉnh nơi KCB
+      tk1State.hospitalKCB.value = null;
+    }
+
+    tk1State.provinceKCB.value = value;
+  }
+
   /// Đồng bộ thông tin của người đại diện với thông tin của người tham gia
   void _syncHeadOfHouseholdInfo() {
     if (tk1State.isParticipantHeadOfHousehold.value) {
@@ -314,6 +377,9 @@ class DeclareInfoController extends BaseGetxController {
   void onChangeProvinceTT(ProvinceModel value) {
     if (tk1State.provinceTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
+      // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
+      tk1State.districtTT.value = null;
+      tk1State.wardTT.value = null;
     }
 
     tk1State.provinceTT.value = value;
@@ -322,12 +388,14 @@ class DeclareInfoController extends BaseGetxController {
   void onChangeDistrictTT(DistrictModel value) {
     if (tk1State.districtTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
+      // Xóa xã thường trú khi thay đổi huyện thường trú
+      tk1State.wardTT.value = null;
     }
 
     tk1State.districtTT.value = value;
   }
 
-  void onChangeWardTT(String value) {
+  void onChangeWardTT(WardModel value) {
     if (tk1State.wardTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
     }
@@ -348,15 +416,36 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void goToScanCCCD() async {
-    final result = await Get.toNamed(AppRoutes.nfc.path);
-    if (result != null) {
-      sendNfcRequestModel = result;
-      Gender? gender = sendNfcRequestModel.sexVMN!.parseGender;
-      d02Tk1State.fullNameTextCtrl.text = sendNfcRequestModel.name ?? '';
-      d02Tk1State.cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? '';
-      d02Tk1State.dateOfBirth.value =
-          convertStringToDate(sendNfcRequestModel.dobVMN ?? '', PATTERN_1);
-      d02Tk1State.gender.value = gender;
+    autovalidateMode.value = AutovalidateMode.always;
+    if (d02Tk1State.cccdTextCtrl.text.length < 12) {
+      showSnackBar(LocaleKeys.nfc_pleaseFillCccd.tr);
+    } else {
+      final result = await Get.toNamed(
+        AppRoutes.nfc.path,
+        arguments: d02Tk1State.cccdTextCtrl.text,
+      );
+      if (result != null) {
+        sendNfcRequestModel = result;
+        Gender? gender = sendNfcRequestModel.sexVMN!.parseGender;
+        d02Tk1State.fullNameTextCtrl.text = sendNfcRequestModel.name ?? '';
+        d02Tk1State.cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? '';
+        d02Tk1State.dateOfBirth.value =
+            convertStringToDate(sendNfcRequestModel.dobVMN ?? '', PATTERN_1);
+        d02Tk1State.gender.value = gender;
+        sendNfcRequestModel.nationVNM;
+        d02Tk1State.selectedEthnic.value = AppData.instance.ethnics
+            .toList()
+            .firstWhere(
+                (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM);
+        // Bỏ dấu
+        // Ví dụ: "Việt Nam" sẽ thành "VIET NAM"
+        final query = TiengViet.parse(
+            sendNfcRequestModel.nationalityVMN!.trim().toUpperCase());
+        d02Tk1State.selectedNationality.value =
+            AppData.instance.nations.toList().firstWhere(
+                  (nations) => nations.text == query,
+                );
+      }
     }
   }
 }

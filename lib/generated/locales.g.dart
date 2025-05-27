@@ -309,6 +309,9 @@ class LocaleKeys {
       'declareInfo_declarationTypeOther';
   static const declareInfo_generateTk1Data = 'declareInfo_generateTk1Data';
   static const declareInfo_cccdNumber = 'declareInfo_cccdNumber';
+  static const declareInfo_cccdNumberIsNotEmpty =
+      'declareInfo_cccdNumberIsNotEmpty';
+  static const declareInfo_cccdNumberIsValid = 'declareInfo_cccdNumberIsValid';
   static const declareInfo_dob = 'declareInfo_dob';
   static const declareInfo_gender = 'declareInfo_gender';
   static const declareInfo_male = 'declareInfo_male';
@@ -389,6 +392,20 @@ class LocaleKeys {
   static const declareInfo_selectWardTT = 'declareInfo_selectWardTT';
   static const declareInfo_addressTT = 'declareInfo_addressTT';
   static const declareInfo_familyMembers = 'declareInfo_familyMembers';
+  static const declareInfo_provinceOfBirthNotSelected =
+      'declareInfo_provinceOfBirthNotSelected';
+  static const declareInfo_districtOfBirthNotSelected =
+      'declareInfo_districtOfBirthNotSelected';
+  static const declareInfo_provinceReceiveNotSelected =
+      'declareInfo_provinceReceiveNotSelected';
+  static const declareInfo_districtReceiveNotSelected =
+      'declareInfo_districtReceiveNotSelected';
+  static const declareInfo_provinceKCBNotSelected =
+      'declareInfo_provinceKCBNotSelected';
+  static const declareInfo_provinceTTNotSelected =
+      'declareInfo_provinceTTNotSelected';
+  static const declareInfo_districtTTNotSelected =
+      'declareInfo_districtTTNotSelected';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -485,6 +502,13 @@ class LocaleKeys {
   static const nfc_readyScan = 'nfc_readyScan';
   static const nfc_scanNFC = 'nfc_scanNFC';
   static const nfc_cancel = 'nfc_cancel';
+  static const nfc_scanNfcError = 'nfc_scanNfcError';
+  static const nfc_bringPhone = 'nfc_bringPhone';
+  static const nfc_readData = 'nfc_readData';
+  static const nfc_keepCardNfc = 'nfc_keepCardNfc';
+  static const nfc_scanNfcSuccess = 'nfc_scanNfcSuccess';
+  static const nfc_scanNfcErrorIOS = 'nfc_scanNfcErrorIOS';
+  static const nfc_pleaseFillCccd = 'nfc_pleaseFillCccd';
   static const infomationUser_info = 'infomationUser_info';
   static const infomationUser_id = 'infomationUser_id';
   static const infomationUser_name = 'infomationUser_name';
@@ -831,6 +855,8 @@ class Locales {
     'declareInfo_declarationTypeOther': 'Khác',
     'declareInfo_generateTk1Data': 'Sinh dữ liệu TK1-TS',
     'declareInfo_cccdNumber': 'Số CCCD',
+    'declareInfo_cccdNumberIsNotEmpty': 'Số CCCD không được bỏ trống',
+    'declareInfo_cccdNumberIsValid': 'Số CCCD phải có đủ 12 số',
     'declareInfo_dob': 'Ngày sinh',
     'declareInfo_gender': 'Giới tính',
     'declareInfo_male': 'Nam',
@@ -897,6 +923,13 @@ class Locales {
     'declareInfo_selectWardTT': 'Chọn xã thường trú',
     'declareInfo_addressTT': 'Địa chỉ thường trú',
     'declareInfo_familyMembers': 'Danh sách thành viên trong gia đình',
+    'declareInfo_provinceOfBirthNotSelected': 'Chưa chọn tỉnh khai sinh',
+    'declareInfo_districtOfBirthNotSelected': 'Chưa chọn huyện khai sinh',
+    'declareInfo_provinceReceiveNotSelected': 'Chưa chọn tỉnh nơi nhận',
+    'declareInfo_districtReceiveNotSelected': 'Chưa chọn huyện nơi nhận',
+    'declareInfo_provinceKCBNotSelected': 'Chưa chọn tỉnh nơi KCB',
+    'declareInfo_provinceTTNotSelected': 'Chưa chọn tỉnh thường trú',
+    'declareInfo_districtTTNotSelected': 'Chưa chọn huyện thường trú',
     'familyMember_title': 'Thành viên trong gia đình',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -975,6 +1008,13 @@ class Locales {
     'nfc_scanNFC':
         'Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến',
     'nfc_cancel': 'Hủy',
+    'nfc_scanNfcError': 'Quét CCCD bị lỗi vui lòng thử lại',
+    'nfc_bringPhone': 'Đưa điện thoại của bạn lại gần CCCD',
+    'nfc_readData': 'Đang đọc dữ liệu',
+    'nfc_keepCardNfc': 'Vui lòng giữ nguyên CCCD',
+    'nfc_scanNfcSuccess': 'Quét thông tin thành công',
+    'nfc_scanNfcErrorIOS': 'Lỗi quét NFC. Quý khách vui lòng thử lại',
+    'nfc_pleaseFillCccd': 'Vui lòng nhập số CCCD',
     'infomationUser_info': 'Thông tin',
     'infomationUser_id': 'ID',
     'infomationUser_name': 'Tên',

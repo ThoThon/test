@@ -82,10 +82,6 @@ class RouteAppPage {
       name: AppRoutes.nfc.path,
       page: () => NfcPage(),
     ),
-    // GetPage(
-    //   name: AppRoutes.nfcInformationUser.path,
-    //   page: () => NfcInformationUserPage(),
-    // ),
     GetPage(
       name: AppRoutes.forgotLogin.path,
       page: () => ForgotPasswordPage(),

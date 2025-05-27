@@ -1,42 +1,42 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/generated/locales.g.dart';
+import 'package:v_bhxh/base_app/controllers_base/base_controller.src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
-import 'package:v_bhxh/shares/function/logger.dart';
+import 'package:v_bhxh/modules/src.dart';
 
-class SelectDistrictController extends BaseGetxController {
+class SelectWardController extends BaseGetxController {
   final String provinceCode;
+  final String districtCode;
 
-  SelectDistrictController({
+  SelectWardController({
     required this.provinceCode,
-    DistrictModel? district,
+    required this.districtCode,
+    WardModel? ward,
   }) {
-    selectedDistrict.value = district;
+    selectedWard.value = ward;
   }
 
   late final _repository = DeclareInfoRepository(this);
 
   final searchTextCtrl = TextEditingController();
   final keyword = ''.obs;
-  final selectedDistrict = Rxn<DistrictModel>();
-  final districts = <DistrictModel>[].obs;
+  final selectedWard = Rxn<WardModel>();
+  final wards = <WardModel>[].obs;
 
   @override
   void onReady() {
     super.onReady();
-    _getDistricts();
+    _getWards();
   }
 
-  Future<void> _getDistricts() async {
+  Future<void> _getWards() async {
     try {
       showLoading();
-      final response = await _repository.getDistricts(
+      final response = await _repository.getWards(
         provinceCode: provinceCode,
+        districtCode: districtCode,
       );
       if (response.isSuccess) {
-        districts.value = response.result;
+        wards.value = response.result;
       } else {
         showSnackBar(
           response.errorMessage ?? LocaleKeys.app_someThingWentWrong.tr,
