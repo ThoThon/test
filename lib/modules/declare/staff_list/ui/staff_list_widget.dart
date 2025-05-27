@@ -232,7 +232,7 @@ extension StaffListWidget on StaffListPage {
                     ),
                   ),
                   child: SDSBuildText(
-                    '${staff.name} (${staff.phoneNumber})',
+                    '${staff.name} ${staff.bhxhNumber.isNotEmpty ? "(${staff.bhxhNumber})" : ""}',
                     style: AppTextStyle.font16Bo,
                   ),
                 ),

@@ -24,7 +24,7 @@ class StaffListPage extends BaseGetWidget<StaffListController> {
         ),
       ),
       body: SafeArea(
-        child: _buildBody(),
+        child: baseShowLoading(() => _buildBody()),
       ),
     );
   }
