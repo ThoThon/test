@@ -389,6 +389,20 @@ class LocaleKeys {
   static const declareInfo_selectWardTT = 'declareInfo_selectWardTT';
   static const declareInfo_addressTT = 'declareInfo_addressTT';
   static const declareInfo_familyMembers = 'declareInfo_familyMembers';
+  static const declareInfo_provinceOfBirthNotSelected =
+      'declareInfo_provinceOfBirthNotSelected';
+  static const declareInfo_districtOfBirthNotSelected =
+      'declareInfo_districtOfBirthNotSelected';
+  static const declareInfo_provinceReceiveNotSelected =
+      'declareInfo_provinceReceiveNotSelected';
+  static const declareInfo_districtReceiveNotSelected =
+      'declareInfo_districtReceiveNotSelected';
+  static const declareInfo_provinceKCBNotSelected =
+      'declareInfo_provinceKCBNotSelected';
+  static const declareInfo_provinceTTNotSelected =
+      'declareInfo_provinceTTNotSelected';
+  static const declareInfo_districtTTNotSelected =
+      'declareInfo_districtTTNotSelected';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -897,6 +911,13 @@ class Locales {
     'declareInfo_selectWardTT': 'Chọn xã thường trú',
     'declareInfo_addressTT': 'Địa chỉ thường trú',
     'declareInfo_familyMembers': 'Danh sách thành viên trong gia đình',
+    'declareInfo_provinceOfBirthNotSelected': 'Chưa chọn tỉnh khai sinh',
+    'declareInfo_districtOfBirthNotSelected': 'Chưa chọn huyện khai sinh',
+    'declareInfo_provinceReceiveNotSelected': 'Chưa chọn tỉnh nơi nhận',
+    'declareInfo_districtReceiveNotSelected': 'Chưa chọn huyện nơi nhận',
+    'declareInfo_provinceKCBNotSelected': 'Chưa chọn tỉnh nơi KCB',
+    'declareInfo_provinceTTNotSelected': 'Chưa chọn tỉnh thường trú',
+    'declareInfo_districtTTNotSelected': 'Chưa chọn huyện thường trú',
     'familyMember_title': 'Thành viên trong gia đình',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

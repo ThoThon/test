@@ -7,7 +7,10 @@ import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 // Key is provinceCode
 final cachedDistricts = <String, List<DistrictModel>>{};
+// Key is provinceCode
 final cachedHospitals = <String, List<Hospital>>{};
+// Key is (provinceCode, districtCode)
+final cachedWards = <(String, String), List<WardModel>>{};
 
 class DeclareInfoRepository extends BaseRepository {
   DeclareInfoRepository(super.controller);
@@ -38,6 +41,40 @@ class DeclareInfoRepository extends BaseRepository {
 
     if (result.isSuccess) {
       cachedDistricts[provinceCode] = result.result;
+    }
+
+    return result;
+  }
+
+  Future<BaseResponseList<WardModel>> getWards({
+    required String provinceCode,
+    required String districtCode,
+  }) async {
+    final key = (provinceCode, districtCode);
+    if (cachedWards.containsKey(key)) {
+      final wards = cachedWards[key];
+      return BaseResponseList<WardModel>(
+        code: AppConst.statusCodeSuccess,
+        result: wards!,
+        totalNumber: wards.length,
+      );
+    }
+
+    final response = await baseCallApi(
+      AppApi.urlGetWards,
+      EnumRequestMethod.get,
+      jsonMap: {
+        "provinceCode": provinceCode,
+        "districtCode": districtCode,
+      },
+    );
+    final result = BaseResponseList<WardModel>.fromJson(
+      response,
+      (json) => WardModel.fromJson(json),
+    );
+
+    if (result.isSuccess) {
+      cachedWards[key] = result.result;
     }
 
     return result;

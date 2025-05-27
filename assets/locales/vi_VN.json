@@ -357,7 +357,14 @@
     "wardTT": "Xã thường trú",
     "selectWardTT": "Chọn xã thường trú",
     "addressTT": "Địa chỉ thường trú",
-    "familyMembers": "Danh sách thành viên trong gia đình"
+    "familyMembers": "Danh sách thành viên trong gia đình",
+    "provinceOfBirthNotSelected": "Chưa chọn tỉnh khai sinh",
+    "districtOfBirthNotSelected": "Chưa chọn huyện khai sinh",
+    "provinceReceiveNotSelected": "Chưa chọn tỉnh nơi nhận",
+    "districtReceiveNotSelected": "Chưa chọn huyện nơi nhận",
+    "provinceKCBNotSelected": "Chưa chọn tỉnh nơi KCB",
+    "provinceTTNotSelected": "Chưa chọn tỉnh thường trú",
+    "districtTTNotSelected": "Chưa chọn huyện thường trú"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",
