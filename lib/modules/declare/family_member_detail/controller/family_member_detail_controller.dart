@@ -28,22 +28,22 @@ class FamilyMemberDetailController extends BaseGetxController {
   final gender = Gender.male.obs;
 
   /// Dân tộc *
-  final selectedEthnic = Rxn<String>();
+  final selectedEthnic = Rxn<EthnicModel>();
 
   /// Quốc tịch *
-  final selectedNationality = Rxn<String>();
+  final selectedNationality = Rxn<NationModel>();
 
   /// Tỉnh khai sinh *
   final selectedProvince = Rxn<ProvinceModel>();
 
   /// Huyện khai sinh *
-  final selectedDistrict = Rxn<String>();
+  final selectedDistrict = Rxn<DistrictModel>();
 
   /// Xã khai sinh *
-  final selectedWard = Rxn<String>();
+  final selectedWard = Rxn<WardModel>();
 
   /// Mối quan hệ với chủ hộ
-  final relationship = Rxn<String>();
+  final relationship = Rxn<RelationshipModel>();
 
   /// Là người tham gia
   final isParticipant = false.obs;

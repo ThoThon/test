@@ -217,16 +217,16 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectEthnic() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<EthnicModel>(
           label: LocaleKeys.familyMember_ethnic.tr,
           hintText: LocaleKeys.familyMember_selectEthnic.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
-              BottomSheetSearch<String>(
+              BottomSheetSearch<EthnicModel>(
                 title: LocaleKeys.familyMember_selectEthnic.tr,
-                listFilter: ['Kinh', 'Thái', 'Tày'],
+                listFilter: AppData.instance.ethnics.toList(),
                 selectedItem: controller.selectedEthnic.value,
-                display: (value) => value,
+                display: (value) => value.text,
                 onAccept: (value) {
                   if (value == null) return;
                   controller.selectedEthnic.value = value;
@@ -237,9 +237,9 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
             );
           },
           selectedItem: controller.selectedEthnic.value,
-          display: (ethnic) => ethnic,
+          display: (ethnic) => ethnic.text,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (value == null) {
               return LocaleKeys.familyMember_ethnicCannotEmpty.tr;
             }
             return null;
@@ -252,16 +252,16 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectNationality() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<NationModel>(
           label: LocaleKeys.familyMember_nationality.tr,
           hintText: LocaleKeys.familyMember_selectNationality.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
-              BottomSheetSearch<String>(
+              BottomSheetSearch<NationModel>(
                 title: LocaleKeys.familyMember_selectNationality.tr,
-                listFilter: ['Việt Nam', 'Lào', 'Campuchia'],
+                listFilter: AppData.instance.nations.toList(),
                 selectedItem: controller.selectedNationality.value,
-                display: (value) => value,
+                display: (value) => value.text,
                 onAccept: (value) {
                   if (value == null) return;
                   controller.selectedNationality.value = value;
@@ -272,9 +272,9 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
             );
           },
           selectedItem: controller.selectedNationality.value,
-          display: (ethnic) => ethnic,
+          display: (nation) => nation.text,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (value == null) {
               return LocaleKeys.familyMember_nationalityCannotEmpty.tr;
             }
             return null;
@@ -299,8 +299,15 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 display: (value) => value.name,
                 onAccept: (value) {
                   if (value == null) return;
-                  controller.selectedProvince.value = value;
                   didChange(value);
+
+                  if (controller.selectedProvince.value != value) {
+                    // Reset district and ward when province changes
+                    controller.selectedDistrict.value = null;
+                    controller.selectedWard.value = null;
+                  }
+
+                  controller.selectedProvince.value = value;
                 },
               ),
               isScrollControlled: true,
@@ -322,29 +329,40 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectDistrict() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<DistrictModel>(
           label: LocaleKeys.familyMember_districtOfBirth.tr,
           hintText: LocaleKeys.familyMember_selectDistrictOfBirth.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.familyMember_selectDistrictOfBirth.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.selectedDistrict.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  controller.selectedDistrict.value = value;
-                  didChange(value);
-                },
+          funcSelect: (didChange) async {
+            final districtOfBirth = controller.selectedProvince.value;
+            if (districtOfBirth == null) {
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
+              return;
+            }
+
+            final result = await Get.bottomSheet<DistrictModel>(
+              SelectDistrictBts(
+                provinceCode: districtOfBirth.id,
+                selectedDistrict: controller.selectedDistrict.value,
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              didChange(result);
+
+              if (controller.selectedDistrict.value != result) {
+                // Reset ward when district changes
+                controller.selectedWard.value = null;
+              }
+
+              controller.selectedDistrict.value = result;
+            }
           },
           selectedItem: controller.selectedDistrict.value,
-          display: (ethnic) => ethnic,
+          display: (district) => district.name,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (value == null) {
               return LocaleKeys.familyMember_districtOfBirthCannotEmpty.tr;
             }
             return null;
@@ -357,29 +375,42 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectWard() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<WardModel>(
           label: LocaleKeys.familyMember_wardOfBirth.tr,
           hintText: LocaleKeys.familyMember_selectWardOfBirth.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.familyMember_selectWardOfBirth.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.selectedWard.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  controller.selectedWard.value = value;
-                  didChange(value);
-                },
+          funcSelect: (didChange) async {
+            final provinceOfBirth = controller.selectedProvince.value;
+            if (provinceOfBirth == null) {
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
+              return;
+            }
+
+            final districtOfBirth = controller.selectedDistrict.value;
+            if (districtOfBirth == null) {
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_districtOfBirthNotSelected.tr);
+              return;
+            }
+
+            final result = await Get.bottomSheet<WardModel>(
+              SelectWardBts(
+                provinceCode: provinceOfBirth.id,
+                districtCode: districtOfBirth.id,
+                selectedWard: controller.selectedWard.value,
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              didChange(result);
+              controller.selectedWard.value = result;
+            }
           },
           selectedItem: controller.selectedWard.value,
-          display: (ethnic) => ethnic,
+          display: (ward) => ward.name,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (value == null) {
               return LocaleKeys.familyMember_wardOfBirthCannotEmpty.tr;
             }
             return null;
@@ -390,12 +421,12 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildDropdownRelationship() {
-    return UtilWidget.buildDropDownWithLabel2<String>(
+    return UtilWidget.buildDropDownWithLabel2<RelationshipModel>(
       label: LocaleKeys.familyMember_relationshipWithHeadOfHousehold.tr,
       hintText:
           LocaleKeys.familyMember_selectRelationshipWithHeadOfHousehold.tr,
-      items: ['Vợ', 'Con trai', 'Con gái'],
-      display: (item) => item,
+      items: AppData.instance.relationships.toList(),
+      display: (item) => item.text,
       selectedItem: controller.relationship.value,
       onChanged: (value) {
         if (value == null) {
