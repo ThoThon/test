@@ -79,8 +79,25 @@ class DeclareInfoController extends BaseGetxController {
     );
   }
 
-  void createNewDeclarationForm() {
-    Get.toNamed(AppRoutes.declarationFormDetail.path);
+  Future<void> createNewDeclarationForm() async {
+    final result = await Get.toNamed(AppRoutes.declarationFormDetail.path);
+    if (result is DeclarationForm) {
+      d01State.forms.add(result);
+    }
+  }
+
+  Future<void> editDeclarationForm(DeclarationForm form) async {
+    final result = await Get.toNamed(
+      AppRoutes.declarationFormDetail.path,
+      arguments: form,
+    );
+    if (result is DeclarationForm) {
+      final index =
+          d01State.forms.indexWhere((element) => element.id == form.id);
+      if (index != -1) {
+        d01State.forms[index] = result;
+      }
+    }
   }
 
   void showDialogDeleteForm(DeclarationForm form) {

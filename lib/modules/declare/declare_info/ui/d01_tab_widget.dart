@@ -96,7 +96,7 @@ extension D01TabWidget on DeclareInfoPage {
             UtilWidget.buildSolidButtonBack(
               title: 'Sửa',
               onPressed: () {
-                Get.toNamed(AppRoutes.declarationFormDetail.path);
+                controller.editDeclarationForm(form);
               },
             ),
           ],

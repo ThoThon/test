@@ -55,6 +55,18 @@ class DeclarationFormDetailController extends BaseGetxController {
   }
 
   void submit() {
+    final doi = dateOfIssue.value;
+    if (doi == null) {
+      showSnackBar("Ngày ban hành không được để trống");
+      return;
+    }
+
+    final ed = effectiveDate.value;
+    if (ed == null) {
+      showSnackBar("Ngày hiệu lực không được để trống");
+      return;
+    }
+
     if (formKey.currentState?.validate() ?? false) {
       Get.back(
         result: DeclarationForm(
@@ -63,8 +75,8 @@ class DeclarationFormDetailController extends BaseGetxController {
           bhxhNumber: bhxhTextCtrl.text.trim(),
           documentType: documentTypeTextCtrl.text.trim(),
           documentNumber: documentNumberTextCtrl.text.trim(),
-          dateOfIssue: dateOfIssue.value ?? DateTime.now(),
-          effectiveDate: effectiveDate.value ?? DateTime.now(),
+          dateOfIssue: doi,
+          effectiveDate: ed,
           issuingAgency: issuingAgencyTextCtrl.text.trim(),
           summary: summaryTextCtrl.text.trim(),
           contentToBeAssessed: contentToBeAssessedTextCtrl.text.trim(),
