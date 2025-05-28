@@ -7,6 +7,8 @@ import 'package:v_bhxh/modules/login/model/model_src.dart';
 class Tk1State {
   final formKey = GlobalKey<FormState>();
 
+  final autoValidateMode = AutovalidateMode.disabled.obs;
+
   /// Tỉnh khai sinh *
   final provinceOfBirth = Rxn<ProvinceModel>();
 

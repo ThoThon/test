@@ -2,62 +2,67 @@ part of 'declare_info_page.dart';
 
 extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildTk1TabBody() {
-    return Form(
-      key: controller.tk1State.formKey,
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppDimens.defaultPadding,
-        ),
-        child: Obx(
-          () {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildInputFullName(),
-                UtilWidget.sizedBox16,
-                _buildInputBHXHCode(),
-                UtilWidget.sizedBox16,
-                _buildInputCCCD(),
-                UtilWidget.sizedBox16,
-                _buildSelectDateOfBirth(),
-                UtilWidget.sizedBox12,
-                _buildSelectGender(onChanged: (value) {
-                  controller.d02Tk1State.gender.value = value;
-                }),
-                UtilWidget.sizedBox8,
-                _buildSelectEthnic(),
-                _buildSelectNationality(),
-                _buildSelectProvince(),
-                _buildSelectDistrict(),
-                _buildSelectWard(),
-                _buildInputAddress(),
-                _buildCheckboxDuplicateBirthAddress()
-                    .paddingSymmetric(vertical: AppDimens.paddingVerySmall),
-                _buildSelectProvinceReceive(),
-                _buildSelectDistrictReceive(),
-                _buildSelectWardReceive(),
-                _buildInputAddressReceive(),
-                UtilWidget.sizedBox16,
-                _buildSelectProvinceKCB(),
-                _buildSelectHospitalKCB(),
-                _buildInputPhoneNumber(),
-                _buildParticipantHeadOfHouseholdCheckbox()
-                    .paddingSymmetric(vertical: AppDimens.paddingVerySmall),
-                _buildInputHeadOfHousehold(),
-                UtilWidget.sizedBox16,
-                _buildInputHeadOfHouseholdCCCD(),
-                UtilWidget.sizedBox16,
-                _buildSelectProvinceTT(),
-                _buildSelectDistrictTT(),
-                _buildSelectWardTT(),
-                _buildInputAddressTTTextCtrl(),
-                UtilWidget.sizedBox16,
-                _buildFamilyMember(),
-              ],
-            );
-          },
-        ),
-      ),
+    return Obx(
+      () {
+        return Form(
+          key: controller.tk1State.formKey,
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppDimens.defaultPadding,
+            ),
+            child: Obx(
+              () {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildInputFullName(),
+                    UtilWidget.sizedBox16,
+                    _buildInputBHXHCode(),
+                    UtilWidget.sizedBox16,
+                    _buildInputCCCD(),
+                    UtilWidget.sizedBox16,
+                    _buildSelectDateOfBirth(),
+                    UtilWidget.sizedBox12,
+                    _buildSelectGender(onChanged: (value) {
+                      controller.d02Tk1State.gender.value = value;
+                    }),
+                    UtilWidget.sizedBox8,
+                    _buildSelectEthnic(),
+                    _buildSelectNationality(),
+                    _buildSelectProvince(),
+                    _buildSelectDistrict(),
+                    _buildSelectWard(),
+                    _buildInputAddress(),
+                    _buildCheckboxDuplicateBirthAddress()
+                        .paddingSymmetric(vertical: AppDimens.paddingVerySmall),
+                    _buildSelectProvinceReceive(),
+                    _buildSelectDistrictReceive(),
+                    _buildSelectWardReceive(),
+                    _buildInputAddressReceive(),
+                    UtilWidget.sizedBox16,
+                    _buildSelectProvinceKCB(),
+                    _buildSelectHospitalKCB(),
+                    _buildInputPhoneNumber(),
+                    _buildParticipantHeadOfHouseholdCheckbox()
+                        .paddingSymmetric(vertical: AppDimens.paddingVerySmall),
+                    _buildInputHeadOfHousehold(),
+                    UtilWidget.sizedBox16,
+                    _buildInputHeadOfHouseholdCCCD(),
+                    UtilWidget.sizedBox16,
+                    _buildSelectProvinceTT(),
+                    _buildSelectDistrictTT(),
+                    _buildSelectWardTT(),
+                    _buildInputAddressTTTextCtrl(),
+                    UtilWidget.sizedBox16,
+                    _buildFamilyMember(),
+                  ],
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 
