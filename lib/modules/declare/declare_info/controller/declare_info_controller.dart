@@ -80,19 +80,12 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void createNewDeclarationForm() {
-    Get.toNamed(
-      AppRoutes.declarationFormDetail.path,
-      arguments: DeclarationFormDetailArgument(
-        action: DeclarationFormDetailAction.create,
-        fullName: d02Tk1State.fullNameTextCtrl.text.trim(),
-        bhxhCode: d02Tk1State.bhxhTextCtrl.text.trim(),
-      ),
-    );
+    Get.toNamed(AppRoutes.declarationFormDetail.path);
   }
 
   void showDialogDeleteForm(DeclarationForm form) {
     ShowDialog.showDialogConfirm2(
-      title: 'Xóa "${form.title}"?',
+      title: 'Xóa bảng kê?',
       confirmTitle: 'Xóa',
       onConfirm: () {
         //

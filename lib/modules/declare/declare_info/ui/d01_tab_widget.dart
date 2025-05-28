@@ -83,11 +83,11 @@ extension D01TabWidget on DeclareInfoPage {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SDSBuildText(
-                    form.title,
+                    "Bảng kê hồ sơ ${index + 1}",
                     style: AppTextStyle.font16Semi,
                   ),
                   SDSBuildText(
-                    form.user,
+                    form.fullName,
                     style: AppTextStyle.font16Re,
                   ),
                 ],
@@ -96,13 +96,7 @@ extension D01TabWidget on DeclareInfoPage {
             UtilWidget.buildSolidButtonBack(
               title: 'Sửa',
               onPressed: () {
-                Get.toNamed(
-                  AppRoutes.declarationFormDetail.path,
-                  arguments: DeclarationFormDetailArgument(
-                    declarationForm: form,
-                    action: DeclarationFormDetailAction.edit,
-                  ),
-                );
+                Get.toNamed(AppRoutes.declarationFormDetail.path);
               },
             ),
           ],
