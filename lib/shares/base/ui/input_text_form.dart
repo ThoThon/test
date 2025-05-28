@@ -49,7 +49,9 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.currency:
         return [
-          NumericTextFormatter(),
+          NumericTextFormatter(
+            isDot: true,
+          ),
         ];
       case InputFormatterEnum.password:
         return [

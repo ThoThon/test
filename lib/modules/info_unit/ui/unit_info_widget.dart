@@ -181,6 +181,7 @@ extension UnitInfoWidget on UnitInfoPage {
       _buildInputItemEdit(
         controller: controller.phoneContactController,
         label: LocaleKeys.unitInfo_phoneContact.tr,
+        inputFormatters: InputFormatterEnum.phoneNumber,
       ),
       _buildInputItemEdit(
         controller: controller.emailContactController,
@@ -230,6 +231,7 @@ extension UnitInfoWidget on UnitInfoPage {
       _buildInputItemEdit(
         controller: controller.basicSalaryController,
         label: LocaleKeys.unitInfo_basicSalary.tr,
+        inputFormatters: InputFormatterEnum.currency,
       ),
       UtilWidget.buildDropDownWithLabel<ReceiveResultEnum>(
         label: LocaleKeys.unitInfo_receiveResult.tr,

@@ -30,14 +30,8 @@ enum AppRoutes {
   ///Chi tiết lịch sử
   historyDetail,
 
-  ///Thông tin user khi scan CCCD
-  routeNfcInformationUser,
-
   //Quét CCCD
-  nfc,
-
-  ///View thông tin CCCD
-  nfcInformationUser;
+  nfc;
 
   String get path {
     return '/vbhxh_$name';
