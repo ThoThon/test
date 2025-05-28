@@ -45,7 +45,11 @@ class AddD02Request {
         tk1State: tk1State,
         isUpdate: false, // Tạo mới thì isUpdate luôn là false
       ),
-      d01Dts: [],
+      d01Dts: D01Request.fromState(
+        kyKeKhaiId: kyKeKhaiId,
+        d01State: d01State,
+        isUpdate: false, // Tạo mới thì isUpdate luôn là false
+      ),
     );
   }
 }
