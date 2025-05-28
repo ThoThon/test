@@ -6,6 +6,8 @@ import '../../../../base_app/base_app.src.dart';
 import '../model/model_src.dart';
 
 class FamilyMemberDetailController extends BaseGetxController {
+  final argument = Get.arguments as FamilyMember?;
+
   final formKey = GlobalKey<FormState>();
 
   /// Họ và tên *
@@ -48,6 +50,28 @@ class FamilyMemberDetailController extends BaseGetxController {
 
   /// Là người tham gia
   final isParticipant = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    final member = argument;
+    if (member != null) {
+      fullNameTextCtrl.text = member.fullName;
+      bhxhNumberTextCtrl.text = member.bhxhNumber;
+      birthType.value = member.birthType;
+      dateOfBirth.value = member.dateOfBirth;
+      gender.value = member.gender;
+      selectedEthnic.value = member.ethnic;
+      selectedNationality.value = member.nation;
+      selectedProvince.value = member.province;
+      selectedDistrict.value = member.district;
+      selectedWard.value = member.ward;
+      relationship.value = member.relationship;
+      cccdNumberTextCtrl.text = member.cccdNumber;
+      noteTextCtrl.text = member.note;
+      isParticipant.value = member.isParticipant;
+    }
+  }
 
   void onSubmit() {
     if (formKey.currentState?.validate() ?? false) {

@@ -437,10 +437,24 @@ class DeclareInfoController extends BaseGetxController {
     tk1State.isParticipantHeadOfHousehold.value = false;
   }
 
-  Future<void> addFmailyMember() async {
+  Future<void> addFamilyMember() async {
     final result = await Get.toNamed(AppRoutes.familyMemberDetail.path);
     if (result is FamilyMember) {
       tk1State.familyMembers.add(result);
+    }
+  }
+
+  Future<void> editFamilyMember(FamilyMember member) async {
+    final result = await Get.toNamed(
+      AppRoutes.familyMemberDetail.path,
+      arguments: member,
+    );
+    if (result is FamilyMember) {
+      final index = tk1State.familyMembers
+          .indexWhere((element) => element.id == member.id);
+      if (index != -1) {
+        tk1State.familyMembers[index] = result;
+      }
     }
   }
 
