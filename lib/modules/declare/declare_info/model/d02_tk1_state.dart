@@ -19,7 +19,7 @@ class D02Tk1State {
   final dateOfBirth = Rxn<DateTime>();
 
   /// Giới tính *
-  final gender = Gender.male.obs;
+  final gender = Rxn<Gender>();
 
   /// Dân tộc *
   final selectedEthnic = Rxn<EthnicModel>();

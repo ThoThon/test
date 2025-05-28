@@ -95,7 +95,7 @@ class D02Request {
       xuatTk01: d02State.isGenerateTk1Data.value,
       cmnd: d02Tk1State.cccdTextCtrl.text.trim(),
       ngaySinh: d02Tk1State.dateOfBirth.value,
-      gioiTinh: d02Tk1State.gender.value.rawValue,
+      gioiTinh: d02Tk1State.gender.value?.rawValue ?? Gender.male.rawValue,
       danTocId: d02Tk1State.selectedEthnic.value?.value,
       quocTichId: d02Tk1State.selectedNationality.value?.value,
       tuThang: convertDateToStringSafe(d02State.fromDate.value, PATTERN_12),
