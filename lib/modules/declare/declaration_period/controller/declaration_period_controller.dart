@@ -76,8 +76,9 @@ class DeclarationPeriodController extends BaseGetxController {
       if (response.isSuccess && response.result != null) {
         Get.toNamed(
           AppRoutes.declareInfo.path,
-          arguments: const DeclareInfoArgument(
+          arguments: DeclareInfoArgument(
             action: DeclareInfoAction.create,
+            declarationPeriodId: response.result!.id,
           ),
         );
       }

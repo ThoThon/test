@@ -5,6 +5,8 @@ import 'package:v_bhxh/modules/login/model/model_src.dart';
 class D02State {
   final formKey = GlobalKey<FormState>();
 
+  final autoValidateMode = AutovalidateMode.disabled.obs;
+
   /// Loại khai báo
   final declarationType = Rxn<DeclarationTypeModel>();
 

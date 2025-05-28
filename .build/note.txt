@@ -1,3 +1,12 @@
+27/05/2025:
+- [api] - Bổ sung giao diện Danh sách bệnh viện theo tỉnh - BHW-2167
+- [api] - Bổ sung giao diện Danh sách kê khai - BHW-2166
+- [api] - Bổ sung giao diện Danh sách phương án điều chỉnh - BHW-2165
+- [api] - Bổ sung giao diện Danh sách thủ tục - BHW-2164
+- [api] - Bổ sung giao diện Danh sách xã - BHW-2163
+- [api] - Bổ sung giao diện Lấy danh sách Huyện - BHW-2161
+- [api]- Bổ sung giao diện danh sách nhân viên lưu nháp theo đợt - BHW-2146
+
 22/05/2025
 - Hoàn thiện chức năng tra cứu chi tiết lịch sử
 - Hoàn thiện bộ lọc mã thủ tục cho màn lịch sử

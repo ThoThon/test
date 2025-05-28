@@ -1,9 +1,18 @@
 enum Gender {
-  /// Nam
-  male,
+  /// 0: Nữ
+  female,
 
-  /// Nữ
-  female;
+  /// 1: Nam
+  male;
+
+  int get rawValue {
+    switch (this) {
+      case Gender.female:
+        return 0;
+      case Gender.male:
+        return 1;
+    }
+  }
 }
 
 extension GenderExt on String {

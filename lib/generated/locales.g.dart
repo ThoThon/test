@@ -406,6 +406,8 @@ class LocaleKeys {
       'declareInfo_provinceTTNotSelected';
   static const declareInfo_districtTTNotSelected =
       'declareInfo_districtTTNotSelected';
+  static const declareInfo_next = 'declareInfo_next';
+  static const declareInfo_saveDataSuccess = 'declareInfo_saveDataSuccess';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -451,38 +453,39 @@ class LocaleKeys {
   static const familyMember_cccdNumber = 'familyMember_cccdNumber';
   static const familyMember_note = 'familyMember_note';
   static const familyMember_isParticipant = 'familyMember_isParticipant';
-  static const declarationFromDetail_title = 'declarationFromDetail_title';
-  static const declarationFromDetail_declarationFromName =
-      'declarationFromDetail_declarationFromName';
-  static const declarationFromDetail_fullName =
-      'declarationFromDetail_fullName';
-  static const declarationFromDetail_fullNameCannotEmpty =
-      'declarationFromDetail_fullNameCannotEmpty';
-  static const declarationFromDetail_bhxhCode =
-      'declarationFromDetail_bhxhCode';
-  static const declarationFromDetail_documentType =
-      'declarationFromDetail_documentType';
-  static const declarationFromDetail_documentTypeCannotEmpty =
-      'declarationFromDetail_documentTypeCannotEmpty';
-  static const declarationFromDetail_documentNumber =
-      'declarationFromDetail_documentNumber';
-  static const declarationFromDetail_documentNumberCannotEmpty =
-      'declarationFromDetail_documentNumberCannotEmpty';
-  static const declarationFromDetail_dateOfIssue =
-      'declarationFromDetail_dateOfIssue';
-  static const declarationFromDetail_effectiveDate =
-      'declarationFromDetail_effectiveDate';
-  static const declarationFromDetail_issuingAgency =
-      'declarationFromDetail_issuingAgency';
-  static const declarationFromDetail_issuingAgencyCannotEmpty =
-      'declarationFromDetail_issuingAgencyCannotEmpty';
-  static const declarationFromDetail_summary = 'declarationFromDetail_summary';
-  static const declarationFromDetail_summaryCannotEmpty =
-      'declarationFromDetail_summaryCannotEmpty';
-  static const declarationFromDetail_contentToBeAssessed =
-      'declarationFromDetail_contentToBeAssessed';
-  static const declarationFromDetail_contentToBeAssessedCannotEmpty =
-      'declarationFromDetail_contentToBeAssessedCannotEmpty';
+  static const declarationFormDetail_title = 'declarationFormDetail_title';
+  static const declarationFormDetail_declarationFormName =
+      'declarationFormDetail_declarationFormName';
+  static const declarationFormDetail_fullName =
+      'declarationFormDetail_fullName';
+  static const declarationFormDetail_fullNameCannotEmpty =
+      'declarationFormDetail_fullNameCannotEmpty';
+  static const declarationFormDetail_bhxhCode =
+      'declarationFormDetail_bhxhCode';
+  static const declarationFormDetail_documentType =
+      'declarationFormDetail_documentType';
+  static const declarationFormDetail_documentTypeCannotEmpty =
+      'declarationFormDetail_documentTypeCannotEmpty';
+  static const declarationFormDetail_documentNumber =
+      'declarationFormDetail_documentNumber';
+  static const declarationFormDetail_documentNumberCannotEmpty =
+      'declarationFormDetail_documentNumberCannotEmpty';
+  static const declarationFormDetail_dateOfIssue =
+      'declarationFormDetail_dateOfIssue';
+  static const declarationFormDetail_effectiveDate =
+      'declarationFormDetail_effectiveDate';
+  static const declarationFormDetail_issuingAgency =
+      'declarationFormDetail_issuingAgency';
+  static const declarationFormDetail_issuingAgencyCannotEmpty =
+      'declarationFormDetail_issuingAgencyCannotEmpty';
+  static const declarationFormDetail_summary = 'declarationFormDetail_summary';
+  static const declarationFormDetail_summaryCannotEmpty =
+      'declarationFormDetail_summaryCannotEmpty';
+  static const declarationFormDetail_contentToBeAssessed =
+      'declarationFormDetail_contentToBeAssessed';
+  static const declarationFormDetail_contentToBeAssessedCannotEmpty =
+      'declarationFormDetail_contentToBeAssessedCannotEmpty';
+  static const staffList_title = 'staffList_title';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -930,6 +933,8 @@ class Locales {
     'declareInfo_provinceKCBNotSelected': 'Chưa chọn tỉnh nơi KCB',
     'declareInfo_provinceTTNotSelected': 'Chưa chọn tỉnh thường trú',
     'declareInfo_districtTTNotSelected': 'Chưa chọn huyện thường trú',
+    'declareInfo_next': 'Tiếp theo',
+    'declareInfo_saveDataSuccess': 'Lưu dữ liệu thành công',
     'familyMember_title': 'Thành viên trong gia đình',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -964,28 +969,29 @@ class Locales {
     'familyMember_cccdNumber': 'Số CMND/CCCD/HC',
     'familyMember_note': 'Ghi chú',
     'familyMember_isParticipant': 'Là người tham gia',
-    'declarationFromDetail_title': 'Kê khai thông tin bảng kê hồ sơ',
-    'declarationFromDetail_declarationFromName': 'Tên bảng kê',
-    'declarationFromDetail_fullName': 'Họ và tên',
-    'declarationFromDetail_fullNameCannotEmpty':
+    'declarationFormDetail_title': 'Kê khai thông tin bảng kê hồ sơ',
+    'declarationFormDetail_declarationFormName': 'Tên bảng kê',
+    'declarationFormDetail_fullName': 'Họ và tên',
+    'declarationFormDetail_fullNameCannotEmpty':
         'Họ và tên không được bỏ trống',
-    'declarationFromDetail_bhxhCode': 'Mã số BHXH',
-    'declarationFromDetail_documentType': 'Tên loại văn bản',
-    'declarationFromDetail_documentTypeCannotEmpty':
+    'declarationFormDetail_bhxhCode': 'Mã số BHXH',
+    'declarationFormDetail_documentType': 'Tên loại văn bản',
+    'declarationFormDetail_documentTypeCannotEmpty':
         'Tên loại văn bản không được bỏ trống',
-    'declarationFromDetail_documentNumber': 'Số văn bản',
-    'declarationFromDetail_documentNumberCannotEmpty':
+    'declarationFormDetail_documentNumber': 'Số văn bản',
+    'declarationFormDetail_documentNumberCannotEmpty':
         'Số văn bản không được bỏ trống',
-    'declarationFromDetail_dateOfIssue': 'Ngày ban hành',
-    'declarationFromDetail_effectiveDate': 'Ngày hiệu lực',
-    'declarationFromDetail_issuingAgency': 'Cơ quan ban hành',
-    'declarationFromDetail_issuingAgencyCannotEmpty':
+    'declarationFormDetail_dateOfIssue': 'Ngày ban hành',
+    'declarationFormDetail_effectiveDate': 'Ngày hiệu lực',
+    'declarationFormDetail_issuingAgency': 'Cơ quan ban hành',
+    'declarationFormDetail_issuingAgencyCannotEmpty':
         'Cơ quan ban hành không được bỏ trống',
-    'declarationFromDetail_summary': 'Trích yếu',
-    'declarationFromDetail_summaryCannotEmpty': 'Trích yếu không được bỏ trống',
-    'declarationFromDetail_contentToBeAssessed': 'Nội dung cần thẩm định',
-    'declarationFromDetail_contentToBeAssessedCannotEmpty':
+    'declarationFormDetail_summary': 'Trích yếu',
+    'declarationFormDetail_summaryCannotEmpty': 'Trích yếu không được bỏ trống',
+    'declarationFormDetail_contentToBeAssessed': 'Nội dung cần thẩm định',
+    'declarationFormDetail_contentToBeAssessedCannotEmpty':
         'Nội dung cần thẩm định không được bỏ trống',
+    'staffList_title': 'Danh sách nhân viên kê khai',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

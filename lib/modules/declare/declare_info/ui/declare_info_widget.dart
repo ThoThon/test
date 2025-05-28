@@ -29,7 +29,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
             },
           ),
         ),
-        _buildBottomButtons(),
+        Obx(
+          () => _buildBottomButtons(),
+        ).paddingAll(AppDimens.defaultPadding),
       ],
     );
   }
@@ -120,11 +122,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // const
-          // Icon(
-          //   Icons.qr_code_scanner,
-          //   size: 36,
-          // ),
           SDSImageSvg(
             Assets.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG,
             height: AppDimens.sizeIconLarge,
@@ -329,7 +326,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           selectedItem: controller.d02Tk1State.selectedEthnic.value,
           display: (ethnic) => ethnic.text,
           validator: (value) {
-            if (value == null) {
+            if (controller.d02Tk1State.selectedEthnic.value == null) {
               return LocaleKeys.declareInfo_ethnicCannotEmpty.tr;
             }
             return null;
@@ -364,7 +361,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           selectedItem: controller.d02Tk1State.selectedNationality.value,
           display: (nation) => nation.text,
           validator: (value) {
-            if (value == null) {
+            if (controller.d02Tk1State.selectedNationality.value == null) {
               return LocaleKeys.declareInfo_nationalityCannotEmpty.tr;
             }
             return null;
@@ -393,24 +390,18 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildBottomButtons() {
-    return Row(
-      children: [
-        Expanded(
-          child: UtilWidget.buildSolidButtonBack(
-            title: LocaleKeys.app_saveDraft.tr,
-            onPressed: controller.saveDraft,
-          ),
-        ),
-        UtilWidget.sizedBoxWidth16,
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.app_save.tr,
-            onPressed: () {
-              controller.nextTab();
-            },
-          ),
-        ),
-      ],
-    ).paddingAll(AppDimens.defaultPadding);
+    if (controller.isShowNextButton) {
+      return UtilWidget.buildSolidButton(
+        title: LocaleKeys.declareInfo_next.tr,
+        onPressed: () {
+          controller.nextTab();
+        },
+      );
+    }
+
+    return UtilWidget.buildSolidButton(
+      title: LocaleKeys.app_save.tr,
+      onPressed: controller.saveDraft,
+    );
   }
 }

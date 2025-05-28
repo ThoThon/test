@@ -4,7 +4,7 @@ enum AppRoutes {
   forgotLogin,
   procedureList,
   declarationPeriod,
-  depositInfo,
+  staffList,
   declareInfo,
   familyMemberDetail,
   declarationFormDetail,
