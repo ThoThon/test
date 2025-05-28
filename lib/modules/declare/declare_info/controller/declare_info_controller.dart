@@ -96,25 +96,22 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void nextTab() {
-    if (currentTab.value == DeclareInfoTab.d02) {
-      if (d02State.isGenerateTk1Data.value) {
-        currentTab.value = DeclareInfoTab.tk1;
-      } else if (d02State.isGenerateD01Data.value) {
-        currentTab.value = DeclareInfoTab.d01;
-      }
-    } else if (currentTab.value == DeclareInfoTab.tk1) {
-      if (d02State.isGenerateD01Data.value) {
-        currentTab.value = DeclareInfoTab.d01;
-      }
-    }
-
     final invalidTab = _invalidTab;
     if (invalidTab != null) {
       currentTab.value = invalidTab;
-      return;
+    } else {
+      if (currentTab.value == DeclareInfoTab.d02) {
+        if (d02State.isGenerateTk1Data.value) {
+          currentTab.value = DeclareInfoTab.tk1;
+        } else if (d02State.isGenerateD01Data.value) {
+          currentTab.value = DeclareInfoTab.d01;
+        }
+      } else if (currentTab.value == DeclareInfoTab.tk1) {
+        if (d02State.isGenerateD01Data.value) {
+          currentTab.value = DeclareInfoTab.d01;
+        }
+      }
     }
-
-    print("OK");
   }
 
   /// Validate forms and return the first invalid tab
