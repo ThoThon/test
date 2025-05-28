@@ -2,80 +2,94 @@ part of 'declare_info_page.dart';
 
 extension D02TabWidget on DeclareInfoPage {
   Widget _buildD02TabBody() {
-    return Obx(
-      () {
-        return Form(
-          key: controller.d02State.formKey,
-          autovalidateMode: controller.d02State.autoValidateMode.value,
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.defaultPadding,
-            ),
-            child: Obx(
-              () {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildInputFullName(
-                      onTapSelectStaff: controller.goToSelectStaffPage,
-                    ),
-                    UtilWidget.sizedBox8,
-                    _buildInputBHXHCode(),
-                    UtilWidget.sizedBox8,
-                    _buildSelectDeclareType(),
-                    UtilWidget.sizedBox16,
-                    _buildSelectPlan(),
-                    _buildGenerateTk1DataCheckbox(),
-                    UtilWidget.sizedBox16,
-                    _buildInputCCCD(),
-                    UtilWidget.sizedBox16,
-                    _buildSelectDateOfBirth(),
-                    UtilWidget.sizedBox12,
-                    _buildSelectGender(
-                      onChanged: (value) {
-                        controller.d02Tk1State.gender.value = value;
-                      },
-                    ),
-                    UtilWidget.sizedBox8,
-                    _buildSelectEthnic(),
-                    _buildSelectNationality(),
-                    _buildSelectFromDate(),
-                    UtilWidget.sizedBox16,
-                    _buildSelectToDate(),
-                    UtilWidget.sizedBox16,
-                    _buildInputPosition(),
-                    UtilWidget.sizedBox16,
-                    _buildInputWorkplace(),
-                    UtilWidget.sizedBox16,
-                    _buildSalaryCoefficientCheckbox(),
-                    UtilWidget.sizedBox16,
-                    _buildInputSalaryCoefficient(),
-                    UtilWidget.sizedBox16,
-                    _buildInputPositionAllowance(),
-                    UtilWidget.sizedBox16,
-                    _buildInputPCTNN(),
-                    UtilWidget.sizedBox16,
-                    _buildInputPcTNVuotKhung(),
-                    UtilWidget.sizedBox16,
-                    _buildInputSalaryAllowance(),
-                    UtilWidget.sizedBox16,
-                    _buildInputOtherAllowance(),
-                    UtilWidget.sizedBox16,
-                    _buildInputNote(),
-                    UtilWidget.buildCheckboxWithLabel(
-                      label: 'Sinh dữ liệu D01-TS',
-                      value: controller.d02State.isGenerateD01Data.value,
-                      onChanged: (value) {
-                        controller.d02State.isGenerateD01Data.value = value;
-                      },
-                    ),
-                  ],
-                );
-              },
-            ),
+    return Column(
+      children: [
+        Obx(
+          () {
+            if (controller.isShowScanIDButton) {
+              return _buildScanIDButton(
+                onTap: () {
+                  controller.goToScanCCCD();
+                },
+              );
+            }
+            return UtilWidget.shrink;
+          },
+        ),
+        Expanded(
+          child: Obx(
+            () {
+              return Form(
+                key: controller.d02State.formKey,
+                autovalidateMode: controller.d02State.autoValidateMode.value,
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimens.defaultPadding,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildInputFullName(
+                        onTapSelectStaff: controller.goToSelectStaffPage,
+                      ),
+                      UtilWidget.sizedBox8,
+                      _buildInputBHXHCode(),
+                      UtilWidget.sizedBox8,
+                      _buildSelectDeclareType(),
+                      UtilWidget.sizedBox16,
+                      _buildSelectPlan(),
+                      _buildGenerateTk1DataCheckbox(),
+                      UtilWidget.sizedBox16,
+                      _buildInputCCCD(),
+                      UtilWidget.sizedBox16,
+                      _buildSelectDateOfBirth(),
+                      UtilWidget.sizedBox12,
+                      _buildSelectGender(
+                        onChanged: (value) {
+                          controller.d02Tk1State.gender.value = value;
+                        },
+                      ),
+                      UtilWidget.sizedBox8,
+                      _buildSelectEthnic(),
+                      _buildSelectNationality(),
+                      _buildSelectFromDate(),
+                      UtilWidget.sizedBox16,
+                      _buildSelectToDate(),
+                      UtilWidget.sizedBox16,
+                      _buildInputPosition(),
+                      UtilWidget.sizedBox16,
+                      _buildInputWorkplace(),
+                      UtilWidget.sizedBox16,
+                      _buildSalaryCoefficientCheckbox(),
+                      UtilWidget.sizedBox16,
+                      _buildInputSalaryCoefficient(),
+                      UtilWidget.sizedBox16,
+                      _buildInputPositionAllowance(),
+                      UtilWidget.sizedBox16,
+                      _buildInputPCTNN(),
+                      UtilWidget.sizedBox16,
+                      _buildInputPcTNVuotKhung(),
+                      UtilWidget.sizedBox16,
+                      _buildInputSalaryAllowance(),
+                      UtilWidget.sizedBox16,
+                      _buildInputOtherAllowance(),
+                      UtilWidget.sizedBox16,
+                      _buildInputNote(),
+                      UtilWidget.buildCheckboxWithLabel(
+                        label: 'Sinh dữ liệu D01-TS',
+                        value: controller.d02State.isGenerateD01Data.value,
+                        onChanged: (value) {
+                          controller.d02State.isGenerateD01Data.value = value;
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 
@@ -83,6 +97,7 @@ extension D02TabWidget on DeclareInfoPage {
     return UtilWidget.buildSelectDate(
       LocaleKeys.declareInfo_toMonthYear.tr,
       hintText: PATTERN_12,
+      isRequired: false,
       date: convertDateToStringSafe(
         controller.d02State.toDate.value,
         PATTERN_12,
@@ -100,6 +115,7 @@ extension D02TabWidget on DeclareInfoPage {
     return UtilWidget.buildSelectDate(
       LocaleKeys.declareInfo_fromMonthYear.tr,
       hintText: PATTERN_12,
+      isRequired: false,
       date: convertDateToStringSafe(
         controller.d02State.fromDate.value,
         PATTERN_12,

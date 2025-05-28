@@ -199,40 +199,27 @@ extension StaffListWidget on StaffListPage {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        UtilWidget.buildDividerDefault(),
         ...addSeparator(
-          spacer: UtilWidget.sizedBox16,
+          spacer: UtilWidget.buildDividerDefault(),
           children: controller.declaredStaffs.map(
             (staff) {
               return InkWell(
                 borderRadius: BorderRadius.circular(8),
                 onTap: () {
-                  // Nếu được mở từ màn Kê khai thông tin thì chỉ cần back về và chọn đúng tab
-                  if (Get.previousRoute == AppRoutes.declareInfo.path) {
-                    Get.back(
-                      result: const StaffListResult(
-                        action: StaffListResultAction.selectD02Tab,
-                      ),
-                    );
-                  } else {
-                    // Nếu chưa có thì đóng màn này và mở màn Kê khai thông tin
-                    Get.offNamed(
-                      AppRoutes.declareInfo.path,
-                      arguments: const DeclareInfoArgument(
-                        action: DeclareInfoAction.edit,
-                        declarationPeriodId: '',
-                      ),
-                    );
-                  }
+                  Get.offNamed(
+                    AppRoutes.declareInfo.path,
+                    arguments: DeclareInfoArgument(
+                      action: DeclareInfoAction.edit,
+                      declarationPeriodId: controller.declarationPeriodId,
+                    ),
+                  );
                 },
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(AppDimens.defaultPadding),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppDimens.defaultPadding,
+                    horizontal: AppDimens.paddingVerySmall,
                   ),
                   child: SDSBuildText(
                     '${staff.name} ${staff.bhxhNumber.isNotEmpty ? "(${staff.bhxhNumber})" : ""}',
@@ -243,6 +230,7 @@ extension StaffListWidget on StaffListPage {
             },
           ),
         ),
+        UtilWidget.buildDividerDefault(),
         _buildAddNewStaff(),
       ],
     );
@@ -251,23 +239,13 @@ extension StaffListWidget on StaffListPage {
   Widget _buildAddNewStaff() {
     return InkWell(
       onTap: () {
-        // Nếu được mở từ màn Kê khai thông tin thì chỉ cần back về và chọn đúng tab
-        if (Get.previousRoute == AppRoutes.declareInfo.path) {
-          Get.back(
-            result: const StaffListResult(
-              action: StaffListResultAction.selectD02Tab,
-            ),
-          );
-        } else {
-          // Nếu chưa có thì đóng màn này và mở màn Kê khai thông tin
-          Get.offNamed(
-            AppRoutes.declareInfo.path,
-            arguments: const DeclareInfoArgument(
-              action: DeclareInfoAction.edit,
-              declarationPeriodId: '',
-            ),
-          );
-        }
+        Get.offNamed(
+          AppRoutes.declareInfo.path,
+          arguments: DeclareInfoArgument(
+            action: DeclareInfoAction.create,
+            declarationPeriodId: controller.declarationPeriodId,
+          ),
+        );
       },
       child: Row(
         children: [
@@ -294,9 +272,7 @@ extension StaffListWidget on StaffListPage {
     return UtilWidget.buildSolidButton(
       height: AppDimens.btnLargeFigma,
       title: 'Tiếp theo',
-      onPressed: () {
-        Get.toNamed(AppRoutes.declarationList.path);
-      },
+      onPressed: controller.saveXml,
     );
   }
 }

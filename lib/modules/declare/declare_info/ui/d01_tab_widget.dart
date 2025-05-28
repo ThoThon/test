@@ -6,6 +6,7 @@ extension D01TabWidget on DeclareInfoPage {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          UtilWidget.sizedBox16,
           ...controller.d01State.forms.mapIndexed(
             (index, form) {
               return _buildD01Item(

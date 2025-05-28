@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 import '../controller/controller_src.dart';
@@ -17,14 +16,18 @@ class StaffListPage extends BaseGetWidget<StaffListController> {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: BaseAppBarTitle(
-          title: LocaleKeys.staffList_title.tr,
+    return buildLoadingOverlay(
+      () => Scaffold(
+        appBar: BaseAppBar(
+          title: BaseAppBarTitle(
+            title: LocaleKeys.staffList_title.tr,
+          ),
         ),
-      ),
-      body: SafeArea(
-        child: baseShowLoading(() => _buildBody()),
+        body: SafeArea(
+          child: baseShowLoading(
+            () => _buildBody(),
+          ),
+        ),
       ),
     );
   }

@@ -5,7 +5,6 @@ import 'package:v_bhxh/base_app/repository_base/base_repository.dart';
 import 'package:v_bhxh/core/enum/enum_request_method.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
-import 'package:v_bhxh/shares/function/logger.dart';
 
 class StaffListRepository extends BaseRepository {
   StaffListRepository(super.controller);
@@ -20,7 +19,6 @@ class StaffListRepository extends BaseRepository {
         "kyKeKhaiId": declarationPeriodId,
       },
     );
-    logger.d(declarationPeriodId);
     return BaseResponse<StaffListResponse>.fromJson(
       response,
       fromJson: (json) => StaffListResponse.fromJson(json),
@@ -69,11 +67,27 @@ class StaffListRepository extends BaseRepository {
       jsonMap: formData,
     );
 
-    logger.d(response);
-
     return BaseResponse<String>.fromJson(
       response,
       fromJson: (json) => json.toString(),
+    );
+  }
+
+  Future<BaseResponse<SaveXmlResult>> saveXml({
+    required String declarationPeriodId,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlSaveXml,
+      EnumRequestMethod.post,
+      jsonMap: {
+        "kyKeKhaiId": declarationPeriodId,
+      },
+      isQueryParametersPost: true,
+    );
+
+    return BaseResponse<SaveXmlResult>.fromJson(
+      response,
+      fromJson: (json) => SaveXmlResult.fromJson(json),
     );
   }
 }

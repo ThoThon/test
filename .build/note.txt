@@ -3,6 +3,10 @@
 - [api] - Bổ sung giao diện Upload file đính kèm - BHW-2158
 - Thêm, sửa, xóa bảng kê khi kê khai mới thông tin
 - [AppMobile]_D02-LT_Chọn nhân viên - BHW-2184
+- [api] - Bổ sung giao diện Lưu đợt và tạo file xml - BHW-2157
+- [AppMobile] - Màn D02-LT: Trường [Từ tháng/năm] và [Đến tháng/năm] ->Bỏ hiển thị (*) là trường bắt buộc - BHW-2189
+- [api] - Bổ sung giao diện Màn kê khai thông tin - BHW-2151
+
 
 27/05/2025:
 - [api] - Bổ sung giao diện Danh sách bệnh viện theo tỉnh - BHW-2167

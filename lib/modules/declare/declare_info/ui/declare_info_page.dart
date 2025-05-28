@@ -20,14 +20,16 @@ class DeclareInfoPage extends BaseGetWidget<DeclareInfoController> {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: BaseAppBarTitle(
-          title: LocaleKeys.declareInfo_title.tr,
+    return buildLoadingOverlay(
+      () => Scaffold(
+        appBar: BaseAppBar(
+          title: BaseAppBarTitle(
+            title: LocaleKeys.declareInfo_title.tr,
+          ),
         ),
-      ),
-      body: SafeArea(
-        child: _buildBody(),
+        body: SafeArea(
+          child: _buildBody(),
+        ),
       ),
     );
   }
