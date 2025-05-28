@@ -41,4 +41,6 @@ class AppApi {
   static const String urlGetStaffList = '/api/HoSoD02/get-d02-list';
 
   static const String urlUpLoadFile = '/api/Upload/attachments';
+
+  static const String urlGetStaffListSelect = '/api/Categories/get-list-staff';
 }

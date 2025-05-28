@@ -1,9 +1,10 @@
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/lookup_c12/ui/ui_src.dart';
+import 'package:v_bhxh/modules/select_staff/ui/select_staff_page.dart';
 
 import '../../modules/declare/declaration_list/ui/declaration_list_page.dart';
-import '../../modules/declare/staff_list/ui/staff_list_page.dart';
 import '../../modules/declare/procedure_list/ui/procedure_list_page.dart';
+import '../../modules/declare/staff_list/ui/staff_list_page.dart';
 import '../../modules/home/src.dart';
 import '../../modules/nfc/ui/nfc_page.dart';
 import '../../modules/splash/splash.src.dart';
@@ -90,5 +91,9 @@ class RouteAppPage {
       name: AppRoutes.lookupC12.path,
       page: () => LookupC12Page(),
     ),
+    GetPage(
+      name: AppRoutes.selectStaff.path,
+      page: () =>  SelectStaffPage(),
+    )
   ];
 }

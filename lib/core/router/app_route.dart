@@ -31,7 +31,10 @@ enum AppRoutes {
   historyDetail,
 
   //Quét CCCD
-  nfc;
+  nfc,
+
+  //Chọn nhân viên
+  selectStaff;
 
   String get path {
     return '/vbhxh_$name';

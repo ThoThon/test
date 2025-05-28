@@ -428,7 +428,10 @@
     "attachFile": "Đính kèm file",
     "addAttachedImage": "Thêm hình ảnh đính kèm",
     "continue": "Tiếp tục",
-    "attachFileErorr":"File không hợp lệ"
+    "attachFileErorr": "File không hợp lệ",
+    "fillFullName": "Nhập họ tên",
+    "confirm": "Xác nhận",
+    "selectedStaff": "Chọn nhân viên"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",
