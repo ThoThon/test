@@ -486,6 +486,11 @@ class LocaleKeys {
   static const declarationFormDetail_contentToBeAssessedCannotEmpty =
       'declarationFormDetail_contentToBeAssessedCannotEmpty';
   static const staffList_title = 'staffList_title';
+  static const staffList_addNewStaff = 'staffList_addNewStaff';
+  static const staffList_attachFile = 'staffList_attachFile';
+  static const staffList_addAttachedImage = 'staffList_addAttachedImage';
+  static const staffList_continue = 'staffList_continue';
+  static const staffList_attachFileErorr = 'staffList_attachFileErorr';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -992,6 +997,11 @@ class Locales {
     'declarationFormDetail_contentToBeAssessedCannotEmpty':
         'Nội dung cần thẩm định không được bỏ trống',
     'staffList_title': 'Danh sách nhân viên kê khai',
+    'staffList_addNewStaff': 'Thêm mới nhân viên',
+    'staffList_attachFile': 'Đính kèm file',
+    'staffList_addAttachedImage': 'Thêm hình ảnh đính kèm',
+    'staffList_continue': 'Tiếp tục',
+    'staffList_attachFileErorr': 'File không hợp lệ',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

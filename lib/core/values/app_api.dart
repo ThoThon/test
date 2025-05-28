@@ -39,4 +39,6 @@ class AppApi {
 
   /// API lấy danh sách lao động theo kỳ kê khai
   static const String urlGetStaffList = '/api/HoSoD02/get-d02-list';
+
+  static const String urlUpLoadFile = '/api/Upload/attachments';
 }

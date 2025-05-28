@@ -30,7 +30,6 @@ class DeclarationPeriodRepository extends BaseRepository {
       EnumRequestMethod.post,
       jsonMap: request.toJson(),
     );
-
     return BaseResponse<DeclarationPeriod>.fromJson(
       response,
       fromJson: (json) => DeclarationPeriod.fromJson(json),
