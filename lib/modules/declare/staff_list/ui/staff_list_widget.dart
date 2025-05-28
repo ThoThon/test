@@ -199,8 +199,9 @@ extension StaffListWidget on StaffListPage {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        UtilWidget.buildDividerDefault(),
         ...addSeparator(
-          spacer: UtilWidget.sizedBox16,
+          spacer: UtilWidget.buildDividerDefault(),
           children: controller.declaredStaffs.map(
             (staff) {
               return InkWell(
@@ -226,13 +227,9 @@ extension StaffListWidget on StaffListPage {
                 },
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(AppDimens.defaultPadding),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppDimens.defaultPadding,
+                    horizontal: AppDimens.paddingVerySmall,
                   ),
                   child: SDSBuildText(
                     '${staff.name} ${staff.bhxhNumber.isNotEmpty ? "(${staff.bhxhNumber})" : ""}',
@@ -243,6 +240,7 @@ extension StaffListWidget on StaffListPage {
             },
           ),
         ),
+        UtilWidget.buildDividerDefault(),
         _buildAddNewStaff(),
       ],
     );
