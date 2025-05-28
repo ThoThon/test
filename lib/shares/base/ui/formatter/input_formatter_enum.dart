@@ -34,4 +34,7 @@ class InputFormatterEnum {
 
   /// 11 : Nhập số cho tiền lương/hệ số lương
   static const int salaryCurrency = 11;
+
+  /// 12 : Nhập số nguyên cho tiền lương
+  static const int salaryNormal = 12;
 }

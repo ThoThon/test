@@ -41,7 +41,11 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     personTransactionController.text = accountInfo?.tenNguoiKy ?? '';
     phoneContactController.text = accountInfo?.telReceiver ?? '';
     emailContactController.text = accountInfo?.mailLienLac ?? '';
-    basicSalaryController.text = accountInfo?.luongCoSo.toString() ?? '';
+    basicSalaryController.text = CurrencyUtils.formatCurrencyForeign(
+      accountInfo?.luongCoSo,
+      isDot: true,
+      maxLengthNum: 17,
+    );
     selectedRegion.value = getRegionByCode(accountInfo?.maVung);
     selectedMethod.value = getPaymenteMethod(accountInfo?.phuongThucDong);
     selectedReceive.value = getReceiveResult(accountInfo?.ptNhanKq);
@@ -77,6 +81,9 @@ class UnitInfoControllerImpICare extends UnitInfoController {
             Get.offAllNamed(AppRoutes.pageBuilder.path);
           },
         );
+      },
+      functionFail: (result) {
+        showSnackBar("Có lỗi xảy ra, vui lòng thử lại");
       },
     );
   }

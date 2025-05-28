@@ -22,7 +22,7 @@ extension UnitInfoWidget on UnitInfoPage {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Trạng thái mở/đóng
-              //Thông tin đơn vị
+              // Thông tin đơn vị
               Obx(
                 () => _buildCardToggle(
                   title: LocaleKeys.unitInfo_unitInfo.tr,
@@ -31,7 +31,7 @@ extension UnitInfoWidget on UnitInfoPage {
                   card: _buildCardUnitInfo(),
                 ),
               ),
-              //Thông tin địa chỉ
+              // Thông tin địa chỉ
               Obx(
                 () => _buildCardToggle(
                   isEdit: controller.isAddressInfoEdit,
@@ -40,7 +40,7 @@ extension UnitInfoWidget on UnitInfoPage {
                   title: LocaleKeys.unitInfo_addressInfo.tr,
                 ),
               ),
-              //Thông tin người đại diện
+              // Thông tin người đại diện
               Obx(
                 () => _buildCardToggle(
                   isEdit: controller.isRepresentInfoEdit,
@@ -49,7 +49,7 @@ extension UnitInfoWidget on UnitInfoPage {
                   title: LocaleKeys.unitInfo_representInfo.tr,
                 ),
               ),
-              //Thông tin người giao dịch
+              // Thông tin người giao dịch
               Obx(
                 () => _buildCardToggle(
                   isEdit: controller.isTraderInfoEdit,
@@ -58,7 +58,7 @@ extension UnitInfoWidget on UnitInfoPage {
                   title: LocaleKeys.unitInfo_transactionPersonInfo.tr,
                 ),
               ),
-              //Thông tin khác
+              // Thông tin khác
               Obx(
                 () => _buildCardToggle(
                   isEdit: controller.isOtherInfoEdit,
@@ -75,7 +75,7 @@ extension UnitInfoWidget on UnitInfoPage {
     );
   }
 
-  //Thông tin đơn vị
+  // Thông tin đơn vị
   List<Widget> _buildCardUnitInfoEdit() {
     return [
       Column(
@@ -87,6 +87,7 @@ extension UnitInfoWidget on UnitInfoPage {
           _buildInputItemEdit(
             controller: controller.unitNameController,
             label: LocaleKeys.unitInfo_unitName.tr,
+            maxLengthInputForm: 250,
           ),
           _buildInputDisable(
             label: LocaleKeys.unitInfo_unitCode.tr,
@@ -127,10 +128,12 @@ extension UnitInfoWidget on UnitInfoPage {
       _buildInputItemEdit(
         controller: controller.addressRegisterController,
         label: LocaleKeys.unitInfo_addressRegister.tr,
+        maxLengthInputForm: 300,
       ),
       _buildInputItemEdit(
         controller: controller.addressTransactionController,
         label: LocaleKeys.unitInfo_addressTransaction.tr,
+        maxLengthInputForm: 300,
       ),
     ];
   }
@@ -151,10 +154,12 @@ extension UnitInfoWidget on UnitInfoPage {
       _buildInputItemEdit(
         controller: controller.nameRepresentController,
         label: LocaleKeys.unitInfo_represent.tr,
+        maxLengthInputForm: 100,
       ),
       _buildInputItemEdit(
         controller: controller.positionController,
         label: LocaleKeys.unitInfo_position.tr,
+        maxLengthInputForm: 50,
       ),
     ];
   }
@@ -177,15 +182,18 @@ extension UnitInfoWidget on UnitInfoPage {
       _buildInputItemEdit(
         controller: controller.personTransactionController,
         label: LocaleKeys.unitInfo_transactionPerson.tr,
+        maxLengthInputForm: 100,
       ),
       _buildInputItemEdit(
         controller: controller.phoneContactController,
         label: LocaleKeys.unitInfo_phoneContact.tr,
         inputFormatters: InputFormatterEnum.phoneNumber,
+        maxLengthInputForm: 10,
       ),
       _buildInputItemEdit(
         controller: controller.emailContactController,
         label: LocaleKeys.unitInfo_email.tr,
+        maxLengthInputForm: 250,
       ),
     ];
   }
@@ -231,7 +239,7 @@ extension UnitInfoWidget on UnitInfoPage {
       _buildInputItemEdit(
         controller: controller.basicSalaryController,
         label: LocaleKeys.unitInfo_basicSalary.tr,
-        inputFormatters: InputFormatterEnum.currency,
+        inputFormatters: InputFormatterEnum.salaryNormal,
       ),
       UtilWidget.buildDropDownWithLabel<ReceiveResultEnum>(
         label: LocaleKeys.unitInfo_receiveResult.tr,
@@ -256,7 +264,11 @@ extension UnitInfoWidget on UnitInfoPage {
         "${LocaleKeys.unitInfo_region.tr}: ${controller.selectedRegion.value?.title.tr ?? ''}",
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_basicSalary.tr}: ${controller.basicSalaryController.text}",
+        "${LocaleKeys.unitInfo_basicSalary.tr}: ${CurrencyUtils.formatCurrencyForeign(
+          controller.basicSalaryController.text,
+          isDot: true,
+          maxLengthNum: 17,
+        )}",
       ),
       _buildText(
         "${LocaleKeys.unitInfo_registerResult.tr}: ${controller.selectedReceive.value?.receive.tr ?? ''}",

@@ -76,6 +76,14 @@ class BuildInputTextState extends State<BuildInputText> {
             lastDecimal: 3,
           ),
         ];
+      case InputFormatterEnum.salaryNormal:
+        return [
+          NumericTextFormatter(
+            type: 1,
+            isDot: true,
+            maxLengthNum: 17,
+          ),
+        ];
       default:
         return [
           LengthLimitingTextFieldFormatterFixed(
