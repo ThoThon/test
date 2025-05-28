@@ -491,23 +491,28 @@ class DeclareInfoController extends BaseGetxController {
       );
       if (result != null) {
         sendNfcRequestModel = result;
-        Gender? gender = sendNfcRequestModel.sexVMN!.parseGender;
+        Gender? gender = sendNfcRequestModel.sexVMN?.parseGender;
         d02Tk1State.fullNameTextCtrl.text = sendNfcRequestModel.name ?? '';
         d02Tk1State.cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? '';
         d02Tk1State.dateOfBirth.value =
-            convertStringToDate(sendNfcRequestModel.dobVMN ?? '', PATTERN_1);
-        d02Tk1State.gender.value = gender;
+            convertStringToDateSafe(sendNfcRequestModel.dobVMN, PATTERN_1);
+        d02Tk1State.gender.value = gender ?? Gender.male;
         sendNfcRequestModel.nationVNM;
         d02Tk1State.selectedEthnic.value = AppData.instance.ethnics
             .toList()
-            .firstWhere(
+            .firstWhereOrNull(
                 (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM);
         // Bỏ dấu
         // Ví dụ: "Việt Nam" sẽ thành "VIET NAM"
         final query = TiengViet.parse(
-            sendNfcRequestModel.nationalityVMN!.trim().toUpperCase());
+            sendNfcRequestModel.nationalityVMN?.trim().toUpperCase() ?? '');
+
+        if (query.isEmpty) {
+          return;
+        }
+
         d02Tk1State.selectedNationality.value =
-            AppData.instance.nations.toList().firstWhere(
+            AppData.instance.nations.toList().firstWhereOrNull(
                   (nations) => nations.text == query,
                 );
       }

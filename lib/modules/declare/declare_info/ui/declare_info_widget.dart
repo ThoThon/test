@@ -5,16 +5,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
     return Column(
       children: [
         _buildTabs(),
-        Obx(() {
-          if (controller.isShowScanIDButton) {
-            return _buildScanIDButton(
-              onTap: () {
-                controller.goToScanCCCD();
-              },
-            );
-          }
-          return UtilWidget.shrink;
-        }),
         Expanded(
           child: Obx(
             () {
@@ -135,8 +125,8 @@ extension DeclareInfoWidget on DeclareInfoPage {
             ),
           ),
         ],
-      ).paddingAll(AppDimens.paddingSmall),
-    );
+      ).paddingAll(AppDimens.paddingSmallest),
+    ).paddingAll(AppDimens.paddingSmall);
   }
 
   Widget _buildInputFullName({
