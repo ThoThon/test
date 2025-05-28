@@ -6,6 +6,7 @@
 - [api] - Bổ sung giao diện Lưu đợt và tạo file xml - BHW-2157
 - [AppMobile] - Màn D02-LT: Trường [Từ tháng/năm] và [Đến tháng/năm] ->Bỏ hiển thị (*) là trường bắt buộc - BHW-2189
 - [api] - Bổ sung giao diện Màn kê khai thông tin - BHW-2151
+- [AppMobile] - Màn D02-LT, TK1-TS: Sai giá trị mặc định ban đầu Checkbox GIỚI TÍNH - BHW-2188
 
 
 27/05/2025:
