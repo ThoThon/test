@@ -266,33 +266,19 @@ extension DeclareInfoWidget on DeclareInfoPage {
               isRequired: true,
             ),
             Expanded(
-              child: RadioListTile<Gender>(
+              child: UtilWidget.buildRadioWithTitle<Gender>(
                 value: Gender.male,
                 groupValue: controller.d02Tk1State.gender.value,
-                title: SDSBuildText(
-                  LocaleKeys.declareInfo_male.tr,
-                  style: AppTextStyle.font16Re,
-                ),
-                onChanged: (value) {
-                  if (value == null) return;
-                  onChanged?.call(value);
-                },
-                activeColor: AppColors.primaryColor,
+                title: LocaleKeys.declareInfo_male.tr,
+                onChanged: onChanged,
               ),
             ),
             Expanded(
-              child: RadioListTile<Gender>(
+              child: UtilWidget.buildRadioWithTitle<Gender>(
                 value: Gender.female,
                 groupValue: controller.d02Tk1State.gender.value,
-                title: SDSBuildText(
-                  LocaleKeys.declareInfo_female.tr,
-                  style: AppTextStyle.font16Re,
-                ),
-                onChanged: (value) {
-                  if (value == null) return;
-                  onChanged?.call(value);
-                },
-                activeColor: AppColors.primaryColor,
+                title: LocaleKeys.declareInfo_female.tr,
+                onChanged: onChanged,
               ),
             ),
           ],
