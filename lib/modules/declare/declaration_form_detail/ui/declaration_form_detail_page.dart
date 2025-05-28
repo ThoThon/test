@@ -16,9 +16,7 @@ class DeclarationFormDetailPage
     return Scaffold(
       appBar: BaseAppBar(
         title: BaseAppBarTitle(
-          title: controller.argument.action.isCreate
-              ? LocaleKeys.declarationFormDetail_title.tr
-              : controller.argument.declarationForm?.title ?? '',
+          title: LocaleKeys.declarationFormDetail_title.tr,
         ),
       ),
       body: SafeArea(

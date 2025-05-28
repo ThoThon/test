@@ -74,6 +74,12 @@ class FamilyMemberDetailController extends BaseGetxController {
   }
 
   void onSubmit() {
+    final dob = dateOfBirth.value;
+    if (dob == null) {
+      showSnackBar("Ngày sinh không được để trống");
+      return;
+    }
+
     if (formKey.currentState?.validate() ?? false) {
       // Note: đã validate các trường required nên có thể force null
       Get.back(
@@ -84,7 +90,7 @@ class FamilyMemberDetailController extends BaseGetxController {
           cccdNumber: cccdNumberTextCtrl.text.trim(),
           note: noteTextCtrl.text.trim(),
           birthType: birthType.value,
-          dateOfBirth: dateOfBirth.value!,
+          dateOfBirth: dob,
           gender: gender.value,
           ethnic: selectedEthnic.value!,
           nation: selectedNationality.value!,
