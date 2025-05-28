@@ -92,7 +92,7 @@ class StaffListController extends BaseGetxController {
         ),
       );
       if (!response.isSuccess) {
-        showSnackBar("File không hợp lệ");
+        showSnackBar(LocaleKeys.staffList_attachFileErorr.tr);
       }
     } catch (e) {
       logger.d(e);
