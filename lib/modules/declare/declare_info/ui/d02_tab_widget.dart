@@ -17,7 +17,7 @@ extension D02TabWidget on DeclareInfoPage {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildInputFullName(
-                      onTapSelectStaff: controller.showDialogSelectStaff,
+                      onTapSelectStaff: controller.goToSelectStaffPage,
                     ),
                     UtilWidget.sizedBox8,
                     _buildInputBHXHCode(),

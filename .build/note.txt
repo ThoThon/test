@@ -1,6 +1,7 @@
 28/05/2025:
 - [Appmobile]_Chức năng quét CCCD lấy thông tin cá nhân để kê khai - BHW-2144
 - [api] - Bổ sung giao diện Upload file đính kèm - BHW-2158
+- [AppMobile]_D02-LT_Chọn nhân viên - BHW-2184
 
 27/05/2025:
 - [api] - Bổ sung giao diện Danh sách bệnh viện theo tỉnh - BHW-2167

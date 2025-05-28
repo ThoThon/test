@@ -9,6 +9,7 @@ import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../../base_app/base_app.src.dart';
 import '../../../nfc/models/nfc_request_model.dart';
+import '../../../select_staff/model/select_staff_response.dart';
 
 class DeclareInfoController extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
@@ -63,20 +64,14 @@ class DeclareInfoController extends BaseGetxController {
     return lastTab != currentTab.value;
   }
 
-  void showDialogSelectStaff() {
-    Get.bottomSheet(
-      BottomSheetSearch<String>(
-        title: 'Chọn nhân viên',
-        listFilter: ['Phạm Văn Cường', 'Hoàng Xuân Hiệp', 'Bắc'],
-        selectedItem: selectedStaff.value,
-        display: (value) => value,
-        onAccept: (value) {
-          if (value == null) return;
-          selectedStaff.value = value;
-        },
-      ),
-      isScrollControlled: true,
-    );
+  void goToSelectStaffPage() async {
+    final result = await Get.toNamed(AppRoutes.selectStaff.path);
+    if (result != null && result is SelectStaffResponse) {
+      d02Tk1State.fullNameTextCtrl.text = result.hoTen;
+      d02Tk1State.bhxhTextCtrl.text = result.maSoBHXH;
+      d02Tk1State.cccdTextCtrl.text = result.soCCCD;
+      d02State.positionTextCtrl.text = result.chucVu;
+    }
   }
 
   void createNewDeclarationForm() {
