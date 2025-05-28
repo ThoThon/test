@@ -76,9 +76,7 @@ extension DeclarationListWidget on DeclarationListPage {
         UtilWidget.buildSolidButton(
           height: AppDimens.btnLargeFigma,
           title: 'Ký gửi',
-          onPressed: () {
-            controller.showDialogCheckedSuccess();
-          },
+          onPressed: controller.signDocument,
         ).paddingAll(AppDimens.defaultPadding),
       ],
     );
