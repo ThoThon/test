@@ -14,7 +14,7 @@ class SaveXmlResult {
   factory SaveXmlResult.fromJson(Map<String, dynamic> json) {
     return SaveXmlResult(
       d02PreviewPath: json['d02PreviewPath'],
-      tk1PreviewPaths: (json['tk1PreviewPaths'] as List<dynamic>?)
+      tk1PreviewPaths: (json['tK1PreviewPath'] as List<dynamic>?)
           ?.map((e) => Tk1PreviewPath.fromJson(e as Map<String, dynamic>))
           .toList(),
       d01PreviewPath: json['d01PreviewPath'],

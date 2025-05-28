@@ -17,14 +17,15 @@ class DeclarationListController extends BaseGetxController {
     try {
       _showDialogCheckedSuccess();
 
-      await Future.delayed(const Duration(seconds: 2));
-
       final response = await _repository.signDocument(
         declarationPeriodId: argument.declarationPeriodId,
       );
 
       if (response.isSuccess) {
+        // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
+
+        // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
       } else {
         ShowDialog.dismissDialog();
