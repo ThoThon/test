@@ -147,6 +147,11 @@ class DeclareInfoController extends BaseGetxController {
       return;
     }
 
+    if (d02Tk1State.gender.value == null) {
+      showSnackBar("Giới tính không được để trống");
+      return;
+    }
+
     try {
       showLoadingOverlay();
       final request = AddD02Request.fromState(
