@@ -16,6 +16,8 @@ class DeclarationListRepository extends BaseRepository {
         "kyKeKhaiId": declarationPeriodId,
       },
       isQueryParametersPost: true,
+      // Cần chờ user mở app mysign để ký số nên set timeout là 3 phút
+      timeOut: const Duration(minutes: 3),
     );
     return BaseResponse.fromJson(response);
   }

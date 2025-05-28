@@ -73,10 +73,26 @@ extension DeclarationListWidget on DeclarationListPage {
             ),
           ),
         ),
-        UtilWidget.buildSolidButton(
-          height: AppDimens.btnLargeFigma,
-          title: 'Ký gửi',
-          onPressed: controller.signDocument,
+        Row(
+          children: [
+            Expanded(
+              child: UtilWidget.buildSolidButtonBack(
+                height: AppDimens.btnLargeFigma,
+                title: 'Quay lại',
+                onPressed: () {
+                  Get.back();
+                },
+              ),
+            ),
+            UtilWidget.sizedBoxWidth16,
+            Expanded(
+              child: UtilWidget.buildSolidButton(
+                height: AppDimens.btnLargeFigma,
+                title: 'Ký gửi',
+                onPressed: controller.signDocument,
+              ),
+            ),
+          ],
         ).paddingAll(AppDimens.defaultPadding),
       ],
     );
