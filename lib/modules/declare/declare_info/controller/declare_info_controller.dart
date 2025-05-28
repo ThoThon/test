@@ -105,7 +105,7 @@ class DeclareInfoController extends BaseGetxController {
       title: 'Xóa bảng kê?',
       confirmTitle: 'Xóa',
       onConfirm: () {
-        //
+        d01State.forms.removeWhere((element) => element.id == form.id);
       },
     );
   }
