@@ -170,7 +170,7 @@ class DeclareInfoController extends BaseGetxController {
           typeAction: AppConst.actionSuccess,
         );
 
-        Get.toNamed(
+        Get.offNamed(
           AppRoutes.staffList.path,
           arguments: argument.declarationPeriodId,
         );

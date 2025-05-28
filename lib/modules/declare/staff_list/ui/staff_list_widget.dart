@@ -207,23 +207,13 @@ extension StaffListWidget on StaffListPage {
               return InkWell(
                 borderRadius: BorderRadius.circular(8),
                 onTap: () {
-                  // Nếu được mở từ màn Kê khai thông tin thì chỉ cần back về và chọn đúng tab
-                  if (Get.previousRoute == AppRoutes.declareInfo.path) {
-                    Get.back(
-                      result: const StaffListResult(
-                        action: StaffListResultAction.selectD02Tab,
-                      ),
-                    );
-                  } else {
-                    // Nếu chưa có thì đóng màn này và mở màn Kê khai thông tin
-                    Get.offNamed(
-                      AppRoutes.declareInfo.path,
-                      arguments: const DeclareInfoArgument(
-                        action: DeclareInfoAction.edit,
-                        declarationPeriodId: '',
-                      ),
-                    );
-                  }
+                  Get.offNamed(
+                    AppRoutes.declareInfo.path,
+                    arguments: DeclareInfoArgument(
+                      action: DeclareInfoAction.edit,
+                      declarationPeriodId: controller.declarationPeriodId,
+                    ),
+                  );
                 },
                 child: Container(
                   width: double.infinity,
@@ -249,23 +239,13 @@ extension StaffListWidget on StaffListPage {
   Widget _buildAddNewStaff() {
     return InkWell(
       onTap: () {
-        // Nếu được mở từ màn Kê khai thông tin thì chỉ cần back về và chọn đúng tab
-        if (Get.previousRoute == AppRoutes.declareInfo.path) {
-          Get.back(
-            result: const StaffListResult(
-              action: StaffListResultAction.selectD02Tab,
-            ),
-          );
-        } else {
-          // Nếu chưa có thì đóng màn này và mở màn Kê khai thông tin
-          Get.offNamed(
-            AppRoutes.declareInfo.path,
-            arguments: const DeclareInfoArgument(
-              action: DeclareInfoAction.edit,
-              declarationPeriodId: '',
-            ),
-          );
-        }
+        Get.offNamed(
+          AppRoutes.declareInfo.path,
+          arguments: DeclareInfoArgument(
+            action: DeclareInfoAction.create,
+            declarationPeriodId: controller.declarationPeriodId,
+          ),
+        );
       },
       child: Row(
         children: [
