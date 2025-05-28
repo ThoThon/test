@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 
+/// Loại kê khai/Loại hồ sơ
 enum DeclarationTypeEnum {
   /// Tăng lao động
   increaseLabor,

@@ -13,6 +13,18 @@ enum Gender {
         return 1;
     }
   }
+
+  static Gender? parse(int? value) {
+    if (value == null) return null;
+    switch (value) {
+      case 0:
+        return Gender.female;
+      case 1:
+        return Gender.male;
+      default:
+        return null;
+    }
+  }
 }
 
 extension GenderExt on String {
