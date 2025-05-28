@@ -294,9 +294,7 @@ extension StaffListWidget on StaffListPage {
     return UtilWidget.buildSolidButton(
       height: AppDimens.btnLargeFigma,
       title: 'Tiếp theo',
-      onPressed: () {
-        Get.toNamed(AppRoutes.declarationList.path);
-      },
+      onPressed: controller.saveXml,
     );
   }
 }
