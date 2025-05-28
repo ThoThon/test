@@ -633,7 +633,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         Align(
           alignment: Alignment.center,
           child: OutlinedButton.icon(
-            onPressed: controller.addFmailyMember,
+            onPressed: controller.addFamilyMember,
             style: OutlinedButton.styleFrom(
               shape: const CircleBorder(),
               side: const BorderSide(
@@ -651,21 +651,26 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildFamilyMemberItem(FamilyMember member) {
-    return Row(
-      children: [
-        Expanded(
-          child: SDSBuildText(
-            '${member.fullName} - ${member.relationship.text}',
-            style: AppTextStyle.font16Re,
+    return InkWell(
+      onTap: () {
+        controller.editFamilyMember(member);
+      },
+      child: Row(
+        children: [
+          Expanded(
+            child: SDSBuildText(
+              '${member.fullName} - ${member.relationship.text}',
+              style: AppTextStyle.font16Re,
+            ),
           ),
-        ),
-        IconButton(
-          onPressed: () {
-            controller.deleteFamilyMember(member.id);
-          },
-          icon: const Icon(Icons.clear, color: AppColors.statusRed),
-        ),
-      ],
+          IconButton(
+            onPressed: () {
+              controller.deleteFamilyMember(member.id);
+            },
+            icon: const Icon(Icons.clear, color: AppColors.statusRed),
+          ),
+        ],
+      ),
     );
   }
 }

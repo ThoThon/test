@@ -1,10 +1,12 @@
 import 'package:v_bhxh/modules/declare/declare_src.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
 
 class FamilyMemberRequest {
   final String? id;
   final String? kyKeKhaiId;
   final String? hoTen;
   final String? maSoBhxh;
+  final int chiCoNamSinh;
   final DateTime? ngaySinh;
   final int gioiTinh;
   final String? danToc;
@@ -21,6 +23,7 @@ class FamilyMemberRequest {
     this.kyKeKhaiId,
     this.hoTen,
     this.maSoBhxh,
+    required this.chiCoNamSinh,
     this.ngaySinh,
     required this.gioiTinh,
     this.danToc,
@@ -57,7 +60,7 @@ class FamilyMemberRequest {
     required Tk1State tk1State,
     required bool isUpdate,
   }) {
-    return tk1State.familyMembers.map((member) {
+    return tk1State.familyMembers.map((FamilyMember member) {
       return FamilyMemberRequest(
         kyKeKhaiId: kyKeKhaiId,
         hoTen: member.fullName,
@@ -66,6 +69,7 @@ class FamilyMemberRequest {
         gioiTinh: member.gender.rawValue,
         danToc: member.ethnic.value.toString(),
         quocTich: member.nation.value,
+        chiCoNamSinh: member.birthType.rawValue,
         khaiSinhTinhId: member.province.id,
         khaiSinhHuyenId: member.district.id,
         khaiSinhXaId: member.ward.id,
