@@ -12,49 +12,51 @@ extension DeclarationListWidget on DeclarationListPage {
                 bottom: AppDimens.defaultPadding),
             child: Column(
               children: [
-                _buildDeclarationItem(
-                  title: 'Danh sách lao động tham gia BHXH',
-                  onPressed: () {
-                    Get.toNamed(
-                      AppRoutes.viewPdf.path,
-                      arguments: ViewPdfArgument(
-                        url:
-                            'https://testapi.easyhrm.vn/upload/a97398b7804942598df1e1fa1af518a6/Files/Contract/D02tk1-test.pdf',
-                        title: 'Danh sách lao động',
-                        isRotateHorizontall: true,
-                      ),
-                    );
-                  },
-                ),
+                if (controller.argument.saveXmlResult.d02PreviewPath != null)
+                  _buildDeclarationItem(
+                    title: 'Danh sách lao động tham gia BHXH - (Mẫu D02-LT)',
+                    onPressed: () {
+                      Get.toNamed(
+                        AppRoutes.viewPdf.path,
+                        arguments: ViewPdfArgument(
+                          url:
+                              controller.argument.saveXmlResult.d02PreviewPath!,
+                          title: 'Danh sách lao động',
+                          isRotateHorizontall: true,
+                        ),
+                      );
+                    },
+                  ).paddingOnly(bottom: AppDimens.paddingSmall),
+                if (controller.argument.saveXmlResult.tk1PreviewPaths != null)
+                  _buildDeclarationItem(
+                    title:
+                        'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
+                    onPressed: () {
+                      Get.toNamed(
+                        AppRoutes.viewPdf.path,
+                        arguments: ViewPdfArgument(
+                          url:
+                              'https://testapi.easyhrm.vn/upload/a97398b7804942598df1e1fa1af518a6/Files/Contract/TK01-test.pdf',
+                          title: 'Tờ khai tham gia',
+                        ),
+                      );
+                    },
+                  ),
                 UtilWidget.sizedBox12,
-                _buildDeclarationItem(
-                  title:
-                      'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
-                  onPressed: () {
-                    Get.toNamed(
-                      AppRoutes.viewPdf.path,
-                      arguments: ViewPdfArgument(
-                        url:
-                            'https://testapi.easyhrm.vn/upload/a97398b7804942598df1e1fa1af518a6/Files/Contract/TK01-test.pdf',
-                        title: 'Tờ khai tham gia',
-                      ),
-                    );
-                  },
-                ),
-                UtilWidget.sizedBox12,
-                _buildDeclarationItem(
-                  title: 'Bảng kê thông tin (Mẫu D01-TS)',
-                  onPressed: () {
-                    Get.toNamed(
-                      AppRoutes.viewPdf.path,
-                      arguments: ViewPdfArgument(
-                        url:
-                            'https://testapi.easyhrm.vn/upload/a97398b7804942598df1e1fa1af518a6/Files/Contract/D01ts-test.pdf',
-                        title: 'Tờ khai tham gia',
-                      ),
-                    );
-                  },
-                ),
+                if (controller.argument.saveXmlResult.d01PreviewPath != null)
+                  _buildDeclarationItem(
+                    title: 'Bảng kê thông tin (Mẫu D01-TS)',
+                    onPressed: () {
+                      Get.toNamed(
+                        AppRoutes.viewPdf.path,
+                        arguments: ViewPdfArgument(
+                          url:
+                              controller.argument.saveXmlResult.d01PreviewPath!,
+                          title: 'Tờ khai tham gia',
+                        ),
+                      );
+                    },
+                  ),
                 UtilWidget.sizedBox12,
                 _buildDeclarationItem(
                   title: 'File đính kèm',
