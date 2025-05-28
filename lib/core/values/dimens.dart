@@ -6,6 +6,13 @@ double ratioHeight = Get.height / AppDimens.heightDesign;
 double ratioWidth = Get.width / AppDimens.widthDesign;
 
 class AppDimens {
+  static double fontSize10() => 10.divSF;
+  static double fontSmallest() => 12.divSF;
+  static double fontSmall() => 14.divSF;
+  static double fontMedium() => 16.divSF;
+  static double fontBig() => 18.divSF;
+  static double fontBiggest() => 20.divSF;
+  static double fontSize24() => 24.divSF;
   /// Giá trị px màn hình Mobile design trên figma
   static const int heightDesign = 812;
   static const int widthDesign = 375;
