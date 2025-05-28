@@ -62,6 +62,8 @@ class FamilyMemberRequest {
   }) {
     return tk1State.familyMembers.map((FamilyMember member) {
       return FamilyMemberRequest(
+        // Update thì lấy id từ member, nếu khi tạo mới thì id sẽ là null
+        id: isUpdate ? member.id : null,
         kyKeKhaiId: kyKeKhaiId,
         hoTen: member.fullName,
         maSoBhxh: member.bhxhNumber,
