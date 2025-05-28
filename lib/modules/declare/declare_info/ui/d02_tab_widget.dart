@@ -97,6 +97,7 @@ extension D02TabWidget on DeclareInfoPage {
     return UtilWidget.buildSelectDate(
       LocaleKeys.declareInfo_toMonthYear.tr,
       hintText: PATTERN_12,
+      isRequired: false,
       date: convertDateToStringSafe(
         controller.d02State.toDate.value,
         PATTERN_12,
@@ -114,6 +115,7 @@ extension D02TabWidget on DeclareInfoPage {
     return UtilWidget.buildSelectDate(
       LocaleKeys.declareInfo_fromMonthYear.tr,
       hintText: PATTERN_12,
+      isRequired: false,
       date: convertDateToStringSafe(
         controller.d02State.fromDate.value,
         PATTERN_12,
