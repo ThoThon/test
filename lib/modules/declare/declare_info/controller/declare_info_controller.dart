@@ -1,3 +1,4 @@
+import 'package:tiengviet/tiengviet.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
@@ -7,6 +8,7 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../../base_app/base_app.src.dart';
+import '../../../nfc/models/nfc_request_model.dart';
 
 class DeclareInfoController extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
@@ -22,6 +24,9 @@ class DeclareInfoController extends BaseGetxController {
   final tk1State = Tk1State();
   final d01State = D01State();
 
+  final autovalidateMode = AutovalidateMode.disabled.obs;
+  SendNfcRequestModel sendNfcRequestModel = SendNfcRequestModel();
+
   void onTabChanged(DeclareInfoTab tab) {
     KeyBoard.hide();
     if (currentTab.value == tab) return;
@@ -36,9 +41,9 @@ class DeclareInfoController extends BaseGetxController {
     return d02State.isGenerateD01Data.value == true;
   }
 
+  // Chỉ cho phép quét cccd ở tab D02-LT
   bool get isShowScanIDButton {
-    return currentTab.value == DeclareInfoTab.d02 ||
-        currentTab.value == DeclareInfoTab.tk1;
+    return currentTab.value == DeclareInfoTab.d02;
   }
 
   /// Kiểm tra xem có hiển thị nút Tiếp theo hay không
@@ -96,35 +101,34 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void nextTab() {
-    if (currentTab.value == DeclareInfoTab.d02) {
-      if (d02State.isGenerateTk1Data.value) {
-        currentTab.value = DeclareInfoTab.tk1;
-      } else if (d02State.isGenerateD01Data.value) {
-        currentTab.value = DeclareInfoTab.d01;
-      }
-    } else if (currentTab.value == DeclareInfoTab.tk1) {
-      if (d02State.isGenerateD01Data.value) {
-        currentTab.value = DeclareInfoTab.d01;
-      }
-    }
-
     final invalidTab = _invalidTab;
     if (invalidTab != null) {
       currentTab.value = invalidTab;
-      return;
+    } else {
+      if (currentTab.value == DeclareInfoTab.d02) {
+        if (d02State.isGenerateTk1Data.value) {
+          currentTab.value = DeclareInfoTab.tk1;
+        } else if (d02State.isGenerateD01Data.value) {
+          currentTab.value = DeclareInfoTab.d01;
+        }
+      } else if (currentTab.value == DeclareInfoTab.tk1) {
+        if (d02State.isGenerateD01Data.value) {
+          currentTab.value = DeclareInfoTab.d01;
+        }
+      }
     }
-
-    print("OK");
   }
 
   /// Validate forms and return the first invalid tab
   DeclareInfoTab? get _invalidTab {
     if (d02State.formKey.currentState?.validate() != true) {
+      d02State.autoValidateMode.value = AutovalidateMode.always;
       return DeclareInfoTab.d02;
     }
 
     if (d02State.isGenerateTk1Data.value &&
         tk1State.formKey.currentState?.validate() != true) {
+      tk1State.autoValidateMode.value = AutovalidateMode.always;
       return DeclareInfoTab.tk1;
     }
 
@@ -195,12 +199,6 @@ class DeclareInfoController extends BaseGetxController {
     // TH nếu đ/c khai sinh sửa lại thì đ/c nhận hồ sơ cũng thay đổi
     _syncBirthAddress();
     _syncHeadOfHouseholdInfo();
-
-    // Chưa chọn tỉnh nơi nhận mà bấm lưu sẽ validate => Báo lỗi thiếu tỉnh nơi nhận
-    // khi chọn trùng địa chỉ nơi nhận thì tỉnh nơi nhận sẽ được gán bằng tỉnh khai sinh
-    // nhưng validate vẫn báo lỗi thiếu tỉnh nơi nhận
-    // => Cần phải validate lại form một cách thủ công
-    tk1State.formKey.currentState?.validate();
   }
 
   /// Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh
@@ -375,9 +373,6 @@ class DeclareInfoController extends BaseGetxController {
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
     _syncHeadOfHouseholdInfo();
-
-    // Validate thủ công lại form
-    tk1State.formKey.currentState?.validate();
   }
 
   void onChangeProvinceKCB(ProvinceModel value) {
@@ -459,5 +454,39 @@ class DeclareInfoController extends BaseGetxController {
     d02State.dispose();
     tk1State.dispose();
     super.onClose();
+  }
+
+  void goToScanCCCD() async {
+    autovalidateMode.value = AutovalidateMode.always;
+    if (d02Tk1State.cccdTextCtrl.text.length < 12) {
+      showSnackBar(LocaleKeys.nfc_pleaseFillCccd.tr);
+    } else {
+      final result = await Get.toNamed(
+        AppRoutes.nfc.path,
+        arguments: d02Tk1State.cccdTextCtrl.text,
+      );
+      if (result != null) {
+        sendNfcRequestModel = result;
+        Gender? gender = sendNfcRequestModel.sexVMN!.parseGender;
+        d02Tk1State.fullNameTextCtrl.text = sendNfcRequestModel.name ?? '';
+        d02Tk1State.cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? '';
+        d02Tk1State.dateOfBirth.value =
+            convertStringToDate(sendNfcRequestModel.dobVMN ?? '', PATTERN_1);
+        d02Tk1State.gender.value = gender;
+        sendNfcRequestModel.nationVNM;
+        d02Tk1State.selectedEthnic.value = AppData.instance.ethnics
+            .toList()
+            .firstWhere(
+                (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM);
+        // Bỏ dấu
+        // Ví dụ: "Việt Nam" sẽ thành "VIET NAM"
+        final query = TiengViet.parse(
+            sendNfcRequestModel.nationalityVMN!.trim().toUpperCase());
+        d02Tk1State.selectedNationality.value =
+            AppData.instance.nations.toList().firstWhere(
+                  (nations) => nations.text == query,
+                );
+      }
+    }
   }
 }

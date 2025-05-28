@@ -217,7 +217,7 @@ extension StaffListWidget on StaffListPage {
                     // Nếu chưa có thì đóng màn này và mở màn Kê khai thông tin
                     Get.offNamed(
                       AppRoutes.declareInfo.path,
-                      arguments: DeclareInfoArgument(
+                      arguments: const DeclareInfoArgument(
                         action: DeclareInfoAction.edit,
                         declarationPeriodId: '',
                       ),
@@ -262,7 +262,7 @@ extension StaffListWidget on StaffListPage {
           // Nếu chưa có thì đóng màn này và mở màn Kê khai thông tin
           Get.offNamed(
             AppRoutes.declareInfo.path,
-            arguments: DeclareInfoArgument(
+            arguments: const DeclareInfoArgument(
               action: DeclareInfoAction.edit,
               declarationPeriodId: '',
             ),

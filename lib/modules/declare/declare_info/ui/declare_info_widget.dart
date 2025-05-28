@@ -8,7 +8,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
         Obx(() {
           if (controller.isShowScanIDButton) {
             return _buildScanIDButton(
-              onTap: () {},
+              onTap: () {
+                controller.goToScanCCCD();
+              },
             );
           }
           return UtilWidget.shrink;
@@ -116,17 +118,14 @@ extension DeclareInfoWidget on DeclareInfoPage {
     VoidCallback? onTap,
   }) {
     return InkWell(
-      onTap: () {
-        // Get.toNamed(AppRoutes.nfc.path);
-        controller.d02State.declarationType.value =
-            AppData.instance.declarationTypes.first;
-      },
+      onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
-            Icons.qr_code_scanner,
-            size: 36,
+          SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG,
+            height: AppDimens.sizeIconLarge,
+            width: AppDimens.sizeIconLarge,
           ),
           UtilWidget.sizedBoxWidth8,
           Flexible(
@@ -223,10 +222,21 @@ extension DeclareInfoWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_cccdNumber.tr,
       buildInputText: BuildInputText(
         InputTextModel(
+          autovalidateMode: controller.autovalidateMode.value,
           controller: controller.d02Tk1State.cccdTextCtrl,
           isValidate: true,
           maxLengthInputForm: 20,
+          inputFormatters: InputFormatterEnum.digitsOnly,
           onChanged: controller.onChangeCCCD,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return LocaleKeys.declareInfo_cccdNumberIsNotEmpty.tr;
+            }
+            if (value.length < 12 && value.isNotEmpty) {
+              return LocaleKeys.declareInfo_cccdNumberIsValid.tr;
+            }
+            return null;
+          },
         ),
       ),
     );

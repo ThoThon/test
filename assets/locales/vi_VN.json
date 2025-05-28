@@ -297,6 +297,8 @@
     "declarationTypeOther": "Khác",
     "generateTk1Data": "Sinh dữ liệu TK1-TS",
     "cccdNumber": "Số CCCD",
+    "cccdNumberIsNotEmpty": "Số CCCD không được bỏ trống",
+    "cccdNumberIsValid": "Số CCCD phải có đủ 12 số",
     "dob": "Ngày sinh",
     "gender": "Giới tính",
     "male": "Nam",
@@ -444,7 +446,14 @@
     "start": "Bắt đầu",
     "readyScan": "Sẵn sàng quét",
     "scanNFC": "Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến",
-    "cancel": "Hủy"
+    "cancel": "Hủy",
+    "scanNfcError": "Quét CCCD bị lỗi vui lòng thử lại",
+    "bringPhone": "Đưa điện thoại của bạn lại gần CCCD",
+    "readData": "Đang đọc dữ liệu",
+    "keepCardNfc": "Vui lòng giữ nguyên CCCD",
+    "scanNfcSuccess": "Quét thông tin thành công",
+    "scanNfcErrorIOS": "Lỗi quét NFC. Quý khách vui lòng thử lại",
+    "pleaseFillCccd": "Vui lòng nhập số CCCD"
   },
   "infomationUser": {
     "info": "Thông tin",

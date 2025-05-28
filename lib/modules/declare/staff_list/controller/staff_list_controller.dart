@@ -29,6 +29,7 @@ class StaffListController extends BaseGetxController {
     if (path != null) {
       imagePath.value = path;
       listImage.add(path);
+      upLoadFile();
     }
   }
 
@@ -37,6 +38,7 @@ class StaffListController extends BaseGetxController {
     if (path != null) {
       imagePath.value = path;
       listImage.add(path);
+      upLoadFile();
     }
   }
 
@@ -81,4 +83,19 @@ class StaffListController extends BaseGetxController {
     }
   }
 
+  Future<void> upLoadFile() async {
+    try {
+      final response = await _repository.uploadFile(
+        request: UploadAttachmentsRequest(
+          file: listImage,
+          periodId: declarationPeriodId,
+        ),
+      );
+      if (!response.isSuccess) {
+        showSnackBar("File không hợp lệ");
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {}
+  }
 }
