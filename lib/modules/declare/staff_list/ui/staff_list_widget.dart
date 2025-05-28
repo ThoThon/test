@@ -88,6 +88,8 @@ extension StaffListWidget on StaffListPage {
                 ).paddingSymmetric(vertical: AppDimens.paddingSmall);
               },
             ),
+
+            ///TODO : Gọi API upload file
           ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
         ).paddingOnly(
           top: AppDimens.paddingVerySmall,
@@ -215,9 +217,10 @@ extension StaffListWidget on StaffListPage {
                     // Nếu chưa có thì đóng màn này và mở màn Kê khai thông tin
                     Get.offNamed(
                       AppRoutes.declareInfo.path,
-                      arguments: const DeclareInfoArgument(
-                          action: DeclareInfoAction.edit,
-                          declarationPeriodId: ''),
+                      arguments: DeclareInfoArgument(
+                        action: DeclareInfoAction.edit,
+                        declarationPeriodId: '',
+                      ),
                     );
                   }
                 },
@@ -259,7 +262,7 @@ extension StaffListWidget on StaffListPage {
           // Nếu chưa có thì đóng màn này và mở màn Kê khai thông tin
           Get.offNamed(
             AppRoutes.declareInfo.path,
-            arguments: const DeclareInfoArgument(
+            arguments: DeclareInfoArgument(
               action: DeclareInfoAction.edit,
               declarationPeriodId: '',
             ),
