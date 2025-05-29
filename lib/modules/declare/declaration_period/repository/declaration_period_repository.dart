@@ -35,4 +35,15 @@ class DeclarationPeriodRepository extends BaseRepository {
       fromJson: (json) => DeclarationPeriod.fromJson(json),
     );
   }
+
+  /// Xóa kỳ kê khai
+  Future<BaseResponse> deleteDeclarationPeriod({
+    required String id,
+  }) async {
+    final response = await baseCallApi(
+      '${AppApi.urlDeleteDeclarationPeriod}/$id',
+      EnumRequestMethod.delete,
+    );
+    return BaseResponse.fromJson(response);
+  }
 }

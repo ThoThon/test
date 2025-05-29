@@ -49,4 +49,7 @@ class AppApi {
   static const String urlGetStaffListSelect = '/api/Categories/get-list-staff';
   static const String urlGetD02Detail = '/api/HoSoD02/get-d02-detail';
   static const String urlDeleteMember = '/api/HoSoD02/delete-thanhvien';
+  static const String urlDeleteForm = '/api/HoSoD02/delete-d01';
+  static const String urlDeleteDeclarationPeriod =
+      '/api/Document/delete-kykekhai';
 }
