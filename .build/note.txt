@@ -1,3 +1,7 @@
+29/05/2025:
+- [api] - Bổ sung giao diện Đợt kê khai - sửa - chỉnh sửa từng bản ghi cho từng nhân viên - BHW-2152
+- Sửa nhân viên cho từng đợt kê khai
+
 28/05/2025:
 - [Appmobile]_Chức năng quét CCCD lấy thông tin cá nhân để kê khai - BHW-2144
 - [api] - Bổ sung giao diện Upload file đính kèm - BHW-2158
