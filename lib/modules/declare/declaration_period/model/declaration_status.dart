@@ -21,7 +21,8 @@ enum DeclarationStatus {
   /// 5: Thành công
   success;
 
-  bool get canEdit => this == DeclarationStatus.draft;
+  bool get canEdit =>
+      this == DeclarationStatus.notYet || this == DeclarationStatus.draft;
 
   String get title {
     switch (this) {

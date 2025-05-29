@@ -196,10 +196,16 @@ extension StaffListWidget on StaffListPage {
   }
 
   Widget _buildListStaff() {
+    final isListStaffEmpty = controller.declaredStaffs.isEmpty;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         UtilWidget.buildDividerDefault(),
+        if (isListStaffEmpty)
+          SDSBuildText(
+            "Chưa có nhân viên nào được khai báo",
+            style: AppTextStyle.font16Re,
+          ).paddingAll(AppDimens.defaultPadding),
         ...addSeparator(
           spacer: UtilWidget.buildDividerDefault(),
           children: controller.declaredStaffs.map(
