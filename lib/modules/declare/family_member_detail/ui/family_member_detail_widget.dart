@@ -127,66 +127,41 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           return;
         }
         controller.birthType.value = value;
-        controller.dateOfBirthCtrl.clear();
       },
     );
   }
 
   Widget _buildSelectDateOfBirth() {
-    return UtilWidget.buildSelectDate(
-      inputFormatters: controller.birthType.value.inputFormatter,
-      controller: controller.dateOfBirthCtrl,
+    return UtilWidget.buildSelectDateSafe(
       LocaleKeys.familyMember_dob.tr,
       hintText: controller.birthType.value.pattern,
       date: convertDateToStringSafe(
         controller.dateOfBirth.value,
         controller.birthType.value.pattern,
       ),
-      onChanged: (value) {
-        if (value.trim().isEmpty) {
-          controller.dateOfBirth.value = null;
-        }
-      },
       onTap: () async {
         final DateTime? selectedDate;
 
         switch (controller.birthType.value) {
           case BirthTypeEnum.year:
             selectedDate = await UtilWidget.showPeriodDatePicker(
-              dateTime: convertStringToDateSafe(
-                controller.dateOfBirthCtrl.text,
-                controller.birthType.value.pattern,
-              ),
+              dateTime: controller.dateOfBirth.value,
               onlyYear: true,
-              lastDate: DateTime.now(),
             );
             break;
           case BirthTypeEnum.monthYear:
             selectedDate = await UtilWidget.showPeriodDatePicker(
-              dateTime: convertStringToDateSafe(
-                controller.dateOfBirthCtrl.text,
-                controller.birthType.value.pattern,
-              ),
-              lastDate: DateTime.now(),
+              dateTime: controller.dateOfBirth.value,
             );
             break;
           case BirthTypeEnum.full:
             selectedDate = await UtilWidget.showDateTimePicker(
-              dateTimeInit: convertStringToDateSafe(
-                controller.dateOfBirthCtrl.text,
-                controller.birthType.value.pattern,
-              ),
-              maxTime: DateTime.now(),
-            );
+                dateTimeInit: DateTime.now());
             break;
         }
 
         if (selectedDate != null) {
           controller.dateOfBirth.value = selectedDate;
-          controller.dateOfBirthCtrl.text = convertDateToString(
-            selectedDate,
-            controller.birthType.value.pattern,
-          );
         }
       },
     );

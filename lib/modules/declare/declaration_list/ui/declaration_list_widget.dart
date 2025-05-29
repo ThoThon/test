@@ -41,21 +41,21 @@ extension DeclarationListWidget on DeclarationListPage {
                         ),
                       );
                     },
+                  ).paddingOnly(bottom: AppDimens.paddingSmall),
+                if (controller.argument.saveXmlResult.attachPreviewPath != null)
+                  _buildDeclarationItem(
+                    title: 'File đính kèm',
+                    onPressed: () {
+                      Get.toNamed(
+                        AppRoutes.viewPdf.path,
+                        arguments: ViewPdfArgument(
+                          url: controller
+                              .argument.saveXmlResult.attachPreviewPath!,
+                          title: 'File đính kèm',
+                        ),
+                      );
+                    },
                   ),
-                UtilWidget.sizedBox12,
-                _buildDeclarationItem(
-                  title: 'File đính kèm',
-                  onPressed: () {
-                    Get.toNamed(
-                      AppRoutes.viewPdf.path,
-                      arguments: ViewPdfArgument(
-                        url:
-                            'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf',
-                        title: 'File đính kèm',
-                      ),
-                    );
-                  },
-                ),
               ],
             ),
           ),

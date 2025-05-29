@@ -4,11 +4,13 @@ class SaveXmlResult {
   final String? d02PreviewPath;
   final List<Tk1PreviewPath>? tk1PreviewPaths;
   final String? d01PreviewPath;
+  final String? attachPreviewPath;
 
   const SaveXmlResult({
     this.d02PreviewPath,
     this.tk1PreviewPaths,
     this.d01PreviewPath,
+    this.attachPreviewPath,
   });
 
   factory SaveXmlResult.fromJson(Map<String, dynamic> json) {
@@ -18,6 +20,7 @@ class SaveXmlResult {
           ?.map((e) => Tk1PreviewPath.fromJson(e as Map<String, dynamic>))
           .toList(),
       d01PreviewPath: json['d01PreviewPath'],
+      attachPreviewPath: json['attachPreviewPath'],
     );
   }
 }
