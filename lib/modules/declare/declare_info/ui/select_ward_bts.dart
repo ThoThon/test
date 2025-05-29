@@ -75,7 +75,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
     return UtilWidget.buildTextInput(
       height: AppDimens.sizeDialogNotiIcon,
       controller: controller.searchTextCtrl,
-      hintText: 'Nhập tên huyện',
+      hintText: LocaleKeys.declareInfo_inputWard.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
       borderColor: AppColors.dsGray3,

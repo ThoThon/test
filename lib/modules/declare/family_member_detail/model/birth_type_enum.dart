@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
+import 'package:v_bhxh/shares/base/base.src.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 
 enum BirthTypeEnum {
@@ -58,6 +59,17 @@ enum BirthTypeEnum {
         return BirthTypeEnum.full;
       default:
         return null;
+    }
+  }
+
+  int get inputFormatter {
+    switch (this) {
+      case year:
+        return InputFormatterEnum.dateYear;
+      case monthYear:
+        return InputFormatterEnum.dateMonthYear;
+      case full:
+        return InputFormatterEnum.dateFullBirthDay;
     }
   }
 }

@@ -72,7 +72,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
     return UtilWidget.buildTextInput(
       height: AppDimens.sizeDialogNotiIcon,
       controller: controller.searchTextCtrl,
-      hintText: 'Nhập tên huyện',
+      hintText: LocaleKeys.declareInfo_inputDistrict.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
       borderColor: AppColors.dsGray3,

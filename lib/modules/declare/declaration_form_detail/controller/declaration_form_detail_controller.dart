@@ -24,8 +24,12 @@ class DeclarationFormDetailController extends BaseGetxController {
   /// Ngày ban hành *
   final dateOfIssue = Rxn<DateTime>();
 
+  final dateOfIssueCtrl = TextEditingController();
+
   /// Ngày văn bản có hiệu lực *
   final effectiveDate = Rxn<DateTime>();
+
+  final effectiveDateCtrl = TextEditingController();
 
   /// Cơ quan ban hành *
   final issuingAgencyTextCtrl = TextEditingController();

@@ -216,17 +216,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           controller: controller.d02Tk1State.cccdTextCtrl,
           isValidate: true,
           maxLengthInputForm: 20,
-          inputFormatters: InputFormatterEnum.digitsOnly,
           onChanged: controller.onChangeCCCD,
-          validator: (value) {
-            if (value!.isEmpty) {
-              return LocaleKeys.declareInfo_cccdNumberIsNotEmpty.tr;
-            }
-            if (value.length < 12 && value.isNotEmpty) {
-              return LocaleKeys.declareInfo_cccdNumberIsValid.tr;
-            }
-            return null;
-          },
         ),
       ),
     );
@@ -239,6 +229,8 @@ extension DeclareInfoWidget on DeclareInfoPage {
         InputTextModel(
           controller: controller.d02Tk1State.bhxhTextCtrl,
           maxLengthInputForm: 10,
+          inputFormatters: InputFormatterEnum.digitsOnly,
+          textInputType: TextInputType.number,
         ),
       ),
     );
@@ -349,17 +341,31 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
   Widget _buildSelectDateOfBirth() {
     return UtilWidget.buildSelectDate(
+      controller: controller.d02Tk1State.dateOfBirthCtrl,
       LocaleKeys.declareInfo_dob.tr,
       hintText: PATTERN_1,
+      inputFormatters: InputFormatterEnum.dateFullBirthDay,
       date: convertDateToStringSafe(
         controller.d02Tk1State.dateOfBirth.value,
         PATTERN_1,
       ),
+      onChanged: (value) {
+        if (value.trim().isEmpty) {
+          controller.d02Tk1State.dateOfBirth.value = null;
+        }
+      },
       onTap: () async {
-        final selectedDate =
-            await UtilWidget.showDateTimePicker(dateTimeInit: DateTime.now());
+        final selectedDate = await UtilWidget.showDateTimePicker(
+          dateTimeInit: convertStringToDateSafe(
+                  controller.d02Tk1State.dateOfBirthCtrl.text, PATTERN_1) ??
+              DateTime.now(),
+          maxTime: DateTime.now(),
+        );
+
         if (selectedDate != null) {
           controller.d02Tk1State.dateOfBirth.value = selectedDate;
+          controller.d02Tk1State.dateOfBirthCtrl.text =
+              convertDateToString(selectedDate, PATTERN_1);
         }
       },
     );

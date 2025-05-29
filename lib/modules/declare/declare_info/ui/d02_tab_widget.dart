@@ -95,6 +95,8 @@ extension D02TabWidget on DeclareInfoPage {
 
   Widget _buildSelectToDate() {
     return UtilWidget.buildSelectDate(
+      inputFormatters: InputFormatterEnum.dateMonthYear,
+      controller: controller.d02State.toDateCtrl,
       LocaleKeys.declareInfo_toMonthYear.tr,
       hintText: PATTERN_12,
       isRequired: false,
@@ -102,10 +104,22 @@ extension D02TabWidget on DeclareInfoPage {
         controller.d02State.toDate.value,
         PATTERN_12,
       ),
+      onChanged: (value) {
+        if (value.trim().isEmpty) {
+          controller.d02State.toDate.value = null;
+        }
+      },
       onTap: () async {
-        final selectedDate = await UtilWidget.showPeriodDatePicker();
+        final selectedDate = await UtilWidget.showPeriodDatePicker(
+          dateTime: convertStringToDateSafe(
+            controller.d02State.toDateCtrl.text,
+            PATTERN_12,
+          ),
+        );
         if (selectedDate != null) {
           controller.d02State.toDate.value = selectedDate;
+          controller.d02State.toDateCtrl.text =
+              convertDateToString(selectedDate, PATTERN_12);
         }
       },
     );
@@ -113,17 +127,31 @@ extension D02TabWidget on DeclareInfoPage {
 
   Widget _buildSelectFromDate() {
     return UtilWidget.buildSelectDate(
+      controller: controller.d02State.fromDateCtrl,
       LocaleKeys.declareInfo_fromMonthYear.tr,
       hintText: PATTERN_12,
       isRequired: false,
+      inputFormatters: InputFormatterEnum.dateMonthYear,
       date: convertDateToStringSafe(
         controller.d02State.fromDate.value,
         PATTERN_12,
       ),
+      onChanged: (value) {
+        if (value.trim().isEmpty) {
+          controller.d02State.fromDate.value = null;
+        }
+      },
       onTap: () async {
-        final selectedDate = await UtilWidget.showPeriodDatePicker();
+        final selectedDate = await UtilWidget.showPeriodDatePicker(
+          dateTime: convertStringToDateSafe(
+            controller.d02State.fromDateCtrl.text,
+            PATTERN_12,
+          ),
+        );
         if (selectedDate != null) {
           controller.d02State.fromDate.value = selectedDate;
+          controller.d02State.fromDateCtrl.text =
+              convertDateToString(selectedDate, PATTERN_12);
         }
       },
     );

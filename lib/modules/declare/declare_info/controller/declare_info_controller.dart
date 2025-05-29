@@ -26,7 +26,7 @@ class DeclareInfoController extends BaseGetxController {
   final tk1State = Tk1State();
   final d01State = D01State();
 
-  final autovalidateMode = AutovalidateMode.disabled.obs;
+  final autovalidateMode = Rx<AutovalidateMode?>(null);
   SendNfcRequestModel sendNfcRequestModel = SendNfcRequestModel();
 
   @override
@@ -592,40 +592,41 @@ class DeclareInfoController extends BaseGetxController {
 
   void goToScanCCCD() async {
     autovalidateMode.value = AutovalidateMode.always;
-    if (d02Tk1State.cccdTextCtrl.text.length < 12) {
-      showSnackBar(LocaleKeys.nfc_pleaseFillCccd.tr);
-    } else {
-      final result = await Get.toNamed(
-        AppRoutes.nfc.path,
-        arguments: d02Tk1State.cccdTextCtrl.text,
-      );
-      if (result != null) {
-        sendNfcRequestModel = result;
-        Gender? gender = sendNfcRequestModel.sexVMN?.parseGender;
-        d02Tk1State.fullNameTextCtrl.text = sendNfcRequestModel.name ?? '';
-        d02Tk1State.cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? '';
-        d02Tk1State.dateOfBirth.value =
-            convertStringToDateSafe(sendNfcRequestModel.dobVMN, PATTERN_1);
-        d02Tk1State.gender.value = gender ?? Gender.male;
-        sendNfcRequestModel.nationVNM;
-        d02Tk1State.selectedEthnic.value = AppData.instance.ethnics
-            .toList()
-            .firstWhereOrNull(
-                (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM);
-        // Bỏ dấu
-        // Ví dụ: "Việt Nam" sẽ thành "VIET NAM"
-        final query = TiengViet.parse(
-            sendNfcRequestModel.nationalityVMN?.trim().toUpperCase() ?? '');
 
-        if (query.isEmpty) {
-          return;
-        }
-
-        d02Tk1State.selectedNationality.value =
-            AppData.instance.nations.toList().firstWhereOrNull(
+    final cccd = d02Tk1State.cccdTextCtrl.text.trim();
+    if (!_isValidCCCD(cccd)) return;
+    final result = await Get.toNamed(
+      AppRoutes.nfc.path,
+      arguments: cccd,
+    );
+    if (result != null) {
+      sendNfcRequestModel = result;
+      Gender? gender = sendNfcRequestModel.sexVMN!.parseGender;
+      final query = TiengViet.parse(
+          sendNfcRequestModel.nationalityVMN!.trim().toUpperCase());
+      d02Tk1State
+        ..fullNameTextCtrl.text = sendNfcRequestModel.name ?? ''
+        ..cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? ''
+        ..dateOfBirth.value =
+            convertStringToDate(sendNfcRequestModel.dobVMN ?? '', PATTERN_1)
+        ..gender.value = gender
+        ..selectedEthnic.value = AppData.instance.ethnics.toList().firstWhere(
+            (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM)
+        ..selectedNationality.value =
+            AppData.instance.nations.toList().firstWhere(
                   (nations) => nations.text == query,
                 );
-      }
     }
+  }
+
+  bool _isValidCCCD(String cccd) {
+    if (cccd.isEmpty) {
+      showSnackBar(LocaleKeys.nfc_pleaseFillCccd.tr);
+      return false;
+    } else if (cccd.length < 12) {
+      showSnackBar(LocaleKeys.declareInfo_cccdNumberIsValid.tr);
+      return false;
+    }
+    return true;
   }
 }
