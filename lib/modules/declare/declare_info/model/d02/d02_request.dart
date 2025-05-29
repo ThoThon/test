@@ -90,6 +90,7 @@ class D02Request {
     required D02State d02State,
   }) {
     return D02Request(
+      id: d02State.id,
       kyKeKhaiId: kyKeKhaiId,
       hoTen: d02Tk1State.fullNameTextCtrl.text.trim(),
       maSoBhxh: d02Tk1State.bhxhTextCtrl.text.trim(),

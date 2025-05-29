@@ -20,6 +20,7 @@ class Tk1DetailResponse {
   final DistrictModel? chuHoThuongTruHuyen;
   final WardModel? chuHoThuongTruXa;
   final String? diaChiThuongTruChuHo;
+  final String? diaChiKhaiSinh;
 
   const Tk1DetailResponse({
     this.khaiSinhTinh,
@@ -40,6 +41,7 @@ class Tk1DetailResponse {
     this.chuHoThuongTruHuyen,
     this.chuHoThuongTruXa,
     this.diaChiThuongTruChuHo,
+    this.diaChiKhaiSinh,
   });
 
   factory Tk1DetailResponse.fromJson(Map<String, dynamic> json) {
@@ -83,6 +85,7 @@ class Tk1DetailResponse {
           ? WardModel.fromJson(json['chuHoThuongTruXa'])
           : null,
       diaChiThuongTruChuHo: json['diaChiThuongTruChuHo'],
+      diaChiKhaiSinh: json['diaChiKhaiSinh'],
     );
   }
 }

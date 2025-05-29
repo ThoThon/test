@@ -108,6 +108,10 @@ class Tk1State {
       provinceKCB.value = tk1Ts.benhVienTinh;
     }
 
+    if (tk1Ts.benhVien != null) {
+      hospitalKCB.value = tk1Ts.benhVien;
+    }
+
     if (tk1Ts.dienThoaiLienHe != null) {
       contactPhoneNumberTextCtrl.text = tk1Ts.dienThoaiLienHe!.trim();
     }
@@ -136,6 +140,10 @@ class Tk1State {
 
     if (tk1Ts.diaChiThuongTruChuHo != null) {
       addressTTTextCtrl.text = tk1Ts.diaChiThuongTruChuHo!.trim();
+    }
+
+    if (tk1Ts.diaChiKhaiSinh != null) {
+      birthAddressTextCtrl.text = tk1Ts.diaChiKhaiSinh!.trim();
     }
 
     if (members.isNotEmpty) {

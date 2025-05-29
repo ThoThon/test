@@ -5,6 +5,9 @@ import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/base/ui/formatter/currency_utils.dart';
 
 class D02State {
+  /// id d02Lt dùng khi update
+  String? id;
+
   final formKey = GlobalKey<FormState>();
 
   final autoValidateMode = AutovalidateMode.disabled.obs;
@@ -59,6 +62,8 @@ class D02State {
 
   void updateFromD02Detail(DeclareInfoDetailResponse detail) {
     final d02Lt = detail.d02Lt;
+
+    id = d02Lt.id;
 
     if (d02Lt.loaiHoSo != null) {
       declarationType.value = d02Lt.loaiHoSo;

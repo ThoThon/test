@@ -19,6 +19,7 @@ class Tk1Request {
   final String? chuHoThuongTruHuyenId;
   final String? chuHoThuongTruXaId;
   final String? diaChiThuongTruChuHo;
+  final String? diaChiKhaiSinh;
 
   const Tk1Request({
     this.khaiSinhTinhId,
@@ -39,6 +40,7 @@ class Tk1Request {
     this.chuHoThuongTruHuyenId,
     this.chuHoThuongTruXaId,
     this.diaChiThuongTruChuHo,
+    this.diaChiKhaiSinh,
   });
 
   Map<String, dynamic> toJson() {
@@ -61,6 +63,7 @@ class Tk1Request {
       'chuHoThuongTruHuyenId': chuHoThuongTruHuyenId,
       'chuHoThuongTruXaId': chuHoThuongTruXaId,
       'diaChiThuongTruChuHo': diaChiThuongTruChuHo,
+      'diaChiKhaiSinh': diaChiKhaiSinh,
     };
   }
 
@@ -86,6 +89,7 @@ class Tk1Request {
       chuHoThuongTruHuyenId: tk1State.districtTT.value?.id,
       chuHoThuongTruXaId: tk1State.wardTT.value?.id,
       diaChiThuongTruChuHo: tk1State.addressTTTextCtrl.text.trim(),
+      diaChiKhaiSinh: tk1State.birthAddressTextCtrl.text.trim(),
     );
   }
 }
