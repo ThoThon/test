@@ -8,8 +8,6 @@ class HistoryController extends BaseRefreshGetxController {
 
   late final historyRepository = HistoryRepository(this);
 
-  final appController = Get.find<AppController>();
-
   int page = AppConst.defaultPageNumber;
 
   final selectedPeriodDate = DateTime.now().obs;
@@ -57,7 +55,7 @@ class HistoryController extends BaseRefreshGetxController {
     bool isLoadMore = false,
   }) {
     return HistoryRequest(
-      companyId: appController.accountInfoModel?.toChucId ?? '',
+      companyId: AppData.instance.accountInfoModel.value?.toChucId ?? '',
       pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
       pageSize: AppConst.defaultPageSize,
       nam: selectedPeriodDate.value.year.toString(),

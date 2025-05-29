@@ -68,11 +68,9 @@ class LoginController extends BaseGetxController {
     try {
       final res = await _loginRepository.getAccountInfo();
       if (res.code == AppConst.statusCodeSuccess && res.result != null) {
-        appController.accountInfoModel = res.result;
+        AppData.instance.accountInfoModel.value = res.result;
         //Lưu tên tổ chức lại để hiện ngoài màn login
-        if (res.result != null) {
-          hiveApp.put(HiveKeys.keyCompanyName, res.result?.tenToChuc);
-        }
+        hiveApp.put(HiveKeys.keyCompanyName, res.result?.tenToChuc);
       }
     } catch (e) {
       logger.d(e);

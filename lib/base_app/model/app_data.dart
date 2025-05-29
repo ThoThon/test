@@ -1,3 +1,4 @@
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class AppData {
@@ -10,4 +11,5 @@ class AppData {
   var provinces = <ProvinceModel>{};
   var relationships = <RelationshipModel>{};
   var positions = <PositionModel>{};
+  final Rx<AccountInfoModel?> accountInfoModel = Rx<AccountInfoModel?>(null);
 }
