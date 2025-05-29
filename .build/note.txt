@@ -14,6 +14,7 @@
 - [api] - Bổ sung giao diện Xóa D01 màn kê khai thông tin - BHW-2149
 - [api] - Bổ sung giao diện Xóa Kỳ kê khai - BHW-2249
 - [Appmobile]_Thông tin đơn vị_Thay đổi thông tin thành công nhưng thông tin không thay đổi - BHW-2241
+- [Appmobile]_D02-LT_Sinh tự động checkbox trường sinh dữ liệu tờ khai TK1-TS đối với một số phương án - BHW-2243
 
 
 28/05/2025:
