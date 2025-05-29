@@ -107,27 +107,21 @@ class D02Request {
       noiLamViec: d02State.workplaceTextCtrl.text.trim(),
       tienLuong: CurrencyUtils.formatNumberCurrency(
         d02State.salaryCoefficientTextCtrl.text,
-        isDot: true,
       ),
       phuCapChucVu: CurrencyUtils.formatNumberCurrency(
         d02State.positionAllowanceTextCtrl.text,
-        isDot: true,
       ),
       phuCapThamNienVuotKhung: CurrencyUtils.formatNumberCurrency(
         d02State.pcTNVuotKhungTextCtrl.text,
-        isDot: true,
       ),
       phuCapThamNienNghe: CurrencyUtils.formatNumberCurrency(
         d02State.pcTNNTextCtrl.text,
-        isDot: true,
       ),
       phuCapLuong: CurrencyUtils.formatNumberCurrency(
         d02State.salaryAllowanceTextCtrl.text,
-        isDot: true,
       ),
       phuCapBoSung: CurrencyUtils.formatNumberCurrency(
         d02State.otherAllowanceTextCtrl.text,
-        isDot: true,
       ),
       ghiChu: d02State.noteTextCtrl.text.trim(),
       xuatD01: d02State.isGenerateD01Data.value,

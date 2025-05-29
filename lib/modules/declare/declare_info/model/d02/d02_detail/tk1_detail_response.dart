@@ -11,7 +11,7 @@ class Tk1DetailResponse {
   final WardModel? noiNhanXa;
   final String? noiNhanDiaChiChiTiet;
   final ProvinceModel? benhVienTinh;
-  final Hospital? benhVienId;
+  final Hospital? benhVien;
   final String? dienThoaiLienHe;
   final bool laChuHo;
   final String? hoTenChuHo;
@@ -31,7 +31,7 @@ class Tk1DetailResponse {
     this.noiNhanXa,
     this.noiNhanDiaChiChiTiet,
     this.benhVienTinh,
-    this.benhVienId,
+    this.benhVien,
     this.dienThoaiLienHe,
     required this.laChuHo,
     this.hoTenChuHo,
@@ -67,13 +67,12 @@ class Tk1DetailResponse {
       benhVienTinh: json['benhVienTinh'] != null
           ? ProvinceModel.fromJson(json['benhVienTinh'])
           : null,
-      benhVienId: json['benhVienId'] != null
-          ? Hospital.fromJson(json['benhVienId'])
-          : null,
+      benhVien:
+          json['benhVien'] != null ? Hospital.fromJson(json['benhVien']) : null,
       dienThoaiLienHe: json['dienThoaiLienHe'],
       laChuHo: json['laChuHo'] ?? false,
       hoTenChuHo: json['hoTenChuHo'],
-      chuHoSoCccd: json['chuHoSoCccd'],
+      chuHoSoCccd: json['chuHoSoCCCD'],
       chuHoThuongTruTinh: json['chuHoThuongTruTinh'] != null
           ? ProvinceModel.fromJson(json['chuHoThuongTruTinh'])
           : null,

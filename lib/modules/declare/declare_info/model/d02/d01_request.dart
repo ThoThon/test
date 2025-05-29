@@ -52,12 +52,11 @@ class D01Request {
   static List<D01Request> fromState({
     required String kyKeKhaiId,
     required D01State d01State,
-    required bool isUpdate,
   }) {
     return d01State.forms.map((form) {
       return D01Request(
         // Update thì lấy id từ form, nếu khi tạo mới thì id sẽ là null
-        id: isUpdate ? form.id : null,
+        id: form.isUpdate ? form.id : null,
         kyKeKhaiId: kyKeKhaiId,
         hoTen: form.fullName,
         maSoBhxh: form.bhxhNumber,
@@ -68,7 +67,7 @@ class D01Request {
         trichYeu: form.summary,
         noiDungThamDinh: form.contentToBeAssessed,
         ngayHieuLuc: form.effectiveDate,
-        isUpdate: isUpdate,
+        isUpdate: form.isUpdate,
       );
     }).toList();
   }

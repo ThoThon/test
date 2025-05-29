@@ -12,6 +12,8 @@ enum BirthTypeEnum {
   /// 0 - Đầy đủ - dd/MM/yyyy
   full;
 
+  static BirthTypeEnum defaultValue = BirthTypeEnum.full;
+
   String get title {
     switch (this) {
       case year:
@@ -42,6 +44,20 @@ enum BirthTypeEnum {
         return 1;
       case full:
         return 0;
+    }
+  }
+
+  static BirthTypeEnum? parse(int? value) {
+    if (value == null) return null;
+    switch (value) {
+      case 2:
+        return BirthTypeEnum.year;
+      case 1:
+        return BirthTypeEnum.monthYear;
+      case 0:
+        return BirthTypeEnum.full;
+      default:
+        return null;
     }
   }
 }

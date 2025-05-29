@@ -61,9 +61,9 @@ class D02DetailResponse {
     final declarationType = AppData.instance.declarationTypes.firstWhereOrNull(
       (type) => type.value == loaiHoSo,
     );
-    final String? phuongAn = json['phuongAn'];
-    final plan = AppData.instance.adjustmentPlans.firstWhereOrNull(
-      (plan) => plan.id == phuongAn,
+    final String? phuongAnId = json['phuongAnId'];
+    final plan = declarationType?.plans.firstWhereOrNull(
+      (plan) => plan.id == phuongAnId,
     );
 
     return D02DetailResponse(

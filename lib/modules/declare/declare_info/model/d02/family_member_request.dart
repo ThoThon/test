@@ -15,6 +15,8 @@ class FamilyMemberRequest {
   final String? khaiSinhHuyenId;
   final String? khaiSinhXaId;
   final String? moiQuanHe;
+  final String? cmnd;
+  final String? ghiChu;
   final bool laNguoiThamGia;
   final bool isUpdate;
 
@@ -32,6 +34,8 @@ class FamilyMemberRequest {
     this.khaiSinhHuyenId,
     this.khaiSinhXaId,
     this.moiQuanHe,
+    this.cmnd,
+    this.ghiChu,
     required this.laNguoiThamGia,
     required this.isUpdate,
   });
@@ -50,6 +54,8 @@ class FamilyMemberRequest {
       'khaiSinhHuyenId': khaiSinhHuyenId,
       'khaiSinhXaId': khaiSinhXaId,
       'moiQuanHe': moiQuanHe,
+      'cmnd': cmnd,
+      'ghiChu': ghiChu,
       'laNguoiThamGia': laNguoiThamGia,
       'isUpdate': isUpdate,
     };
@@ -58,12 +64,11 @@ class FamilyMemberRequest {
   static List<FamilyMemberRequest> fromState({
     required String kyKeKhaiId,
     required Tk1State tk1State,
-    required bool isUpdate,
   }) {
     return tk1State.familyMembers.map((FamilyMember member) {
       return FamilyMemberRequest(
         // Update thì lấy id từ member, nếu khi tạo mới thì id sẽ là null
-        id: isUpdate ? member.id : null,
+        id: member.isUpdate ? member.id : null,
         kyKeKhaiId: kyKeKhaiId,
         hoTen: member.fullName,
         maSoBhxh: member.bhxhNumber,
@@ -76,8 +81,10 @@ class FamilyMemberRequest {
         khaiSinhHuyenId: member.district.id,
         khaiSinhXaId: member.ward.id,
         moiQuanHe: member.relationship.value,
+        cmnd: member.cccdNumber,
+        ghiChu: member.note,
         laNguoiThamGia: member.isParticipant,
-        isUpdate: isUpdate,
+        isUpdate: member.isUpdate,
       );
     }).toList();
   }

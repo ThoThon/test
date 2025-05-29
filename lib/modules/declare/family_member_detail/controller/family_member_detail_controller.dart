@@ -22,7 +22,7 @@ class FamilyMemberDetailController extends BaseGetxController {
   /// Ghi chú
   final noteTextCtrl = TextEditingController();
 
-  final birthType = BirthTypeEnum.full.obs;
+  final birthType = BirthTypeEnum.defaultValue.obs;
 
   /// Ngày sinh
   final dateOfBirth = Rxn<DateTime>();

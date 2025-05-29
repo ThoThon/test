@@ -28,6 +28,35 @@ class DeclareInfoController extends BaseGetxController {
   final autovalidateMode = AutovalidateMode.disabled.obs;
   SendNfcRequestModel sendNfcRequestModel = SendNfcRequestModel();
 
+  @override
+  void onReady() {
+    super.onReady();
+    _getD02Detail();
+  }
+
+  Future<void> _getD02Detail() async {
+    try {
+      showLoadingOverlay();
+      final response = await declareInfoRepository.getD02Detail(
+        id: '9388f8185dc6482aa41c540449d7b7f8',
+      );
+      final infoDetail = response.result;
+      if (response.isSuccess && infoDetail != null) {
+        // Update D02Tk1State
+        d02Tk1State.updateFromD02Detail(infoDetail);
+        d02State.updateFromD02Detail(infoDetail);
+        tk1State.updateFromD02Detail(infoDetail);
+        d01State.updateFromD02Detail(infoDetail);
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
   void onTabChanged(DeclareInfoTab tab) {
     KeyBoard.hide();
     if (currentTab.value == tab) return;
@@ -468,7 +497,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void deleteFamilyMember(String id) {
+  void deleteFamilyMember(String? id) {
     tk1State.familyMembers.removeWhere((element) => element.id == id);
   }
 
