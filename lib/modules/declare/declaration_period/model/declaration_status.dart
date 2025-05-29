@@ -9,20 +9,25 @@ enum DeclarationStatus {
   /// 1: Lưu nháp
   draft,
 
-  /// 2: Đã gửi
+  /// 2: Đã lưu
+  saved,
+
+  /// 3: Đã gửi
   sent,
 
-  /// 3: Đang chờ xử lý
+  /// 4: Đang chờ xử lý
   pending,
 
-  /// 4: Thất bại
+  /// 5: Thất bại
   failed,
 
-  /// 5: Thành công
+  /// 6: Thành công
   success;
 
   bool get canEdit =>
-      this == DeclarationStatus.notYet || this == DeclarationStatus.draft;
+      this == DeclarationStatus.notYet ||
+      this == DeclarationStatus.draft ||
+      this == DeclarationStatus.saved;
 
   String get title {
     switch (this) {
@@ -30,6 +35,8 @@ enum DeclarationStatus {
         return LocaleKeys.declarationPeriod_statusNotYet.tr;
       case DeclarationStatus.draft:
         return LocaleKeys.declarationPeriod_statusDraft.tr;
+      case DeclarationStatus.saved:
+        return LocaleKeys.declarationPeriod_statusSaved.tr;
       case DeclarationStatus.sent:
         return LocaleKeys.declarationPeriod_statusSent.tr;
       case DeclarationStatus.pending:
@@ -47,6 +54,8 @@ enum DeclarationStatus {
         return const Color(0xFFB7B7B7);
       case DeclarationStatus.draft:
         return const Color(0xFFFFCB09);
+      case DeclarationStatus.saved:
+        return const Color(0xFF00EFFF);
       case DeclarationStatus.sent:
         return Colors.green;
       case DeclarationStatus.pending:
@@ -65,12 +74,14 @@ enum DeclarationStatus {
       case 1:
         return DeclarationStatus.draft;
       case 2:
-        return DeclarationStatus.sent;
+        return DeclarationStatus.saved;
       case 3:
-        return DeclarationStatus.pending;
+        return DeclarationStatus.sent;
       case 4:
-        return DeclarationStatus.failed;
+        return DeclarationStatus.pending;
       case 5:
+        return DeclarationStatus.failed;
+      case 6:
         return DeclarationStatus.success;
       default:
         return DeclarationStatus.notYet;

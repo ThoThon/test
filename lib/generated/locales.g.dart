@@ -270,6 +270,7 @@ class LocaleKeys {
   static const declarationPeriod_statusNotYet =
       'declarationPeriod_statusNotYet';
   static const declarationPeriod_statusDraft = 'declarationPeriod_statusDraft';
+  static const declarationPeriod_statusSaved = 'declarationPeriod_statusSaved';
   static const declarationPeriod_statusSent = 'declarationPeriod_statusSent';
   static const declarationPeriod_statusPending =
       'declarationPeriod_statusPending';
@@ -841,6 +842,7 @@ class Locales {
     'declarationPeriod_period': 'Đợt',
     'declarationPeriod_statusNotYet': 'Chưa kê khai',
     'declarationPeriod_statusDraft': 'Lưu nháp',
+    'declarationPeriod_statusSaved': 'Đã lưu',
     'declarationPeriod_statusSent': 'Đã gửi',
     'declarationPeriod_statusPending': 'Đang chờ xử lý',
     'declarationPeriod_statusFailed': 'Thất bại',
