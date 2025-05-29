@@ -224,6 +224,33 @@ extension D02TabWidget on DeclareInfoPage {
           controller: controller.d02State.positionTextCtrl,
           isValidate: true,
           maxLengthInputForm: 500,
+          suffixIcon: IconButton(
+            onPressed: () {
+              Get.bottomSheet(
+                BottomSheetSearch<PositionModel>(
+                  title: LocaleKeys.declareInfo_selectNationality.tr,
+                  listFilter: AppData.instance.positions.toList(),
+                  selectedItem: AppData.instance.positions.firstWhereOrNull(
+                    (position) =>
+                        position.name ==
+                        controller.d02State.positionTextCtrl.text.trim(),
+                  ),
+                  display: (value) => value.name,
+                  onAccept: (value) {
+                    if (value == null) {
+                      return;
+                    }
+                    controller.d02State.positionTextCtrl.text = value.name;
+                  },
+                ),
+                isScrollControlled: true,
+              );
+            },
+            icon: const Icon(
+              Icons.arrow_drop_down,
+              color: AppColors.dsGray3,
+            ),
+          ),
         ),
       ),
     );
