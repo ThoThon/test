@@ -31,7 +31,7 @@ extension NotificationWidget on NotificationPage {
           },
           child: Row(
             children: [
-              _buildIconNotifcation(item),
+              _buildIconNotification(item),
               sdsSBWidth16,
               Expanded(
                 child: Column(
@@ -77,7 +77,7 @@ extension NotificationWidget on NotificationPage {
     );
   }
 
-  Widget _buildIconNotifcation(NotificationItemModel item) {
+  Widget _buildIconNotification(NotificationItemModel item) {
     return Icon(
       item.entityType == EnityType.declaraForm
           ? Icons.description
