@@ -453,18 +453,18 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
     return Row(
       children: [
         Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.app_save.tr,
-            onPressed: controller.onSubmit,
-          ),
-        ),
-        UtilWidget.sizedBoxWidth16,
-        Expanded(
           child: UtilWidget.buildSolidButtonBack(
             title: LocaleKeys.app_cancel.tr,
             onPressed: () {
               Get.back();
             },
+          ),
+        ),
+        UtilWidget.sizedBoxWidth16,
+        Expanded(
+          child: UtilWidget.buildSolidButton(
+            title: LocaleKeys.app_save.tr,
+            onPressed: controller.onSubmit,
           ),
         ),
       ],
