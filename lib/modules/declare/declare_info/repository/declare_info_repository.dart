@@ -153,4 +153,17 @@ class DeclareInfoRepository extends BaseRepository {
       fromJson: (json) => DeclareInfoDetailResponse.fromJson(json),
     );
   }
+
+  Future<BaseResponse> deleteMember({
+    required String id,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlDeleteMember,
+      EnumRequestMethod.delete,
+      queryParameters: {
+        "id": id,
+      },
+    );
+    return BaseResponse.fromJson(response);
+  }
 }

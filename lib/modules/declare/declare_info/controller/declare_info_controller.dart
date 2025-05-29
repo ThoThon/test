@@ -543,8 +543,43 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void deleteFamilyMember(String? id) {
-    tk1State.familyMembers.removeWhere((element) => element.id == id);
+  Future<void> deleteFamilyMember(FamilyMember member) async {
+    final memberId = member.id;
+
+    if (memberId == null) {
+      showSnackBar('Có lỗi xảy ra, không thể xóa thành viên');
+      return;
+    }
+
+    if (member.isUpdate) {
+      // Xóa ở DB
+      try {
+        showLoadingOverlay();
+        final response = await declareInfoRepository.deleteMember(id: memberId);
+        if (response.isSuccess) {
+          tk1State.familyMembers.removeWhere(
+            (element) => element.id == memberId,
+          );
+          showSnackBar(
+            "Xóa thành viên thành công",
+            typeAction: AppConst.actionSuccess,
+          );
+        } else {
+          showSnackBar(response.errorMessage);
+        }
+      } catch (e) {
+        logger.e(e);
+      } finally {
+        hideLoadingOverlay();
+      }
+    } else {
+      // Xóa ở local
+      tk1State.familyMembers.removeWhere((element) => element.id == member.id);
+      showSnackBar(
+        "Xóa thành viên thành công",
+        typeAction: AppConst.actionSuccess,
+      );
+    }
   }
 
   @override

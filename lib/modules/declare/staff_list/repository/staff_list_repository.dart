@@ -79,10 +79,9 @@ class StaffListRepository extends BaseRepository {
     final response = await baseCallApi(
       AppApi.urlSaveXml,
       EnumRequestMethod.post,
-      jsonMap: {
+      queryParameters: {
         "kyKeKhaiId": declarationPeriodId,
       },
-      isQueryParametersPost: true,
     );
 
     return BaseResponse<SaveXmlResult>.fromJson(

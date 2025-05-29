@@ -10,6 +10,8 @@
 - [AppMobile] - Validate Nhập CCCD - BHW-2219
 - [AppMobile] - Các trường [Ngày tháng]: Bổ sung cho phép nhập - BHW-2179
 - [AppMobile] - Màn D02-LT: Đồng nhất hiển thị lỗi cho trường CCCD khi để trống - BHW-2211
+- [api] - Bổ sung giao diện xóa thành viên phụ lục - BHW-2156
+
 
 28/05/2025:
 - [Appmobile]_Chức năng quét CCCD lấy thông tin cá nhân để kê khai - BHW-2144
