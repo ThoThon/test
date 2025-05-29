@@ -81,6 +81,26 @@ class DeclareInfoController extends BaseGetxController {
     return currentTab.value == DeclareInfoTab.d02;
   }
 
+  /// Kiểm tra xem có bắt buộc nhập mã BHXH hay không
+  ///
+  /// REF: http://10.100.140.19:8080/browse/BHW-2242
+  bool get isBhxhCodeRequired {
+    final declarationTypeId = d02State.declarationType.value?.value;
+
+    // Tăng lương/Giảm lao động/Giảm lương
+    if (declarationTypeId == 2 ||
+        declarationTypeId == 3 ||
+        declarationTypeId == 4) {
+      return true;
+    }
+
+    if (declarationTypeId == 1) {
+      return ['TD', 'TC', 'ON', 'AD', 'AT'].contains(d02State.plan.value?.id);
+    }
+
+    return false;
+  }
+
   /// Kiểm tra xem có hiển thị nút Tiếp theo hay không
   ///
   /// Chỉ hiển thị nút tiếp theo nếu đang không phải tab cuối cùng được hiển thị

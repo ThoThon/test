@@ -293,6 +293,8 @@ class LocaleKeys {
       'declareInfo_fullNameCannotEmpty';
   static const declareInfo_selectStaff = 'declareInfo_selectStaff';
   static const declareInfo_bhxhCode = 'declareInfo_bhxhCode';
+  static const declareInfo_bhxhCodeCannotEmpty =
+      'declareInfo_bhxhCodeCannotEmpty';
   static const declareInfo_declarationType = 'declareInfo_declarationType';
   static const declareInfo_selectDeclarationType =
       'declareInfo_selectDeclarationType';
@@ -860,6 +862,7 @@ class Locales {
     'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
     'declareInfo_selectStaff': 'Chọn nhân viên',
     'declareInfo_bhxhCode': 'Mã số BHXH',
+    'declareInfo_bhxhCodeCannotEmpty': 'Mã số BHXH không được bỏ trống',
     'declareInfo_declarationType': 'Loại khai báo',
     'declareInfo_selectDeclarationType': 'Chọn loại khai báo',
     'declareInfo_plan': 'Phương án',
