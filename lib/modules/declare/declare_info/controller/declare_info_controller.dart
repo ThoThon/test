@@ -134,9 +134,48 @@ class DeclareInfoController extends BaseGetxController {
       title: 'Xóa bảng kê?',
       confirmTitle: 'Xóa',
       onConfirm: () {
-        d01State.forms.removeWhere((element) => element.id == form.id);
+        deleteDeclarationForm(form);
       },
     );
+  }
+
+  /// Xóa bảng kê
+  Future<void> deleteDeclarationForm(DeclarationForm form) async {
+    final formId = form.id;
+    if (formId == null) {
+      showSnackBar('Có lỗi xảy ra, không thể xóa bảng kê');
+      return;
+    }
+
+    if (form.isUpdate) {
+      // Xóa ở DB
+      try {
+        showLoadingOverlay();
+        final response = await declareInfoRepository.deleteForm(id: formId);
+        if (response.isSuccess) {
+          d01State.forms.removeWhere(
+            (element) => element.id == formId,
+          );
+          showSnackBar(
+            "Xóa bảng kê thành công",
+            typeAction: AppConst.actionSuccess,
+          );
+        } else {
+          showSnackBar(response.errorMessage);
+        }
+      } catch (e) {
+        logger.e(e);
+      } finally {
+        hideLoadingOverlay();
+      }
+    } else {
+      // Xóa ở local
+      d01State.forms.removeWhere((element) => element.id == form.id);
+      showSnackBar(
+        "Xóa bảng kê thành công",
+        typeAction: AppConst.actionSuccess,
+      );
+    }
   }
 
   void nextTab() {

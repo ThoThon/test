@@ -166,4 +166,18 @@ class DeclareInfoRepository extends BaseRepository {
     );
     return BaseResponse.fromJson(response);
   }
+
+  /// Xóa bảng kê
+  Future<BaseResponse> deleteForm({
+    required String id,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlDeleteForm,
+      EnumRequestMethod.delete,
+      queryParameters: {
+        "id": id,
+      },
+    );
+    return BaseResponse.fromJson(response);
+  }
 }
