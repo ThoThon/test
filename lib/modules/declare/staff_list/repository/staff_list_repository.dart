@@ -82,6 +82,8 @@ class StaffListRepository extends BaseRepository {
       queryParameters: {
         "kyKeKhaiId": declarationPeriodId,
       },
+      // Có thể việc gen pdf ở BE tốn thời gian, nên cần tăng thời gian timeout
+      timeOut: const Duration(minutes: 2),
     );
 
     return BaseResponse<SaveXmlResult>.fromJson(
