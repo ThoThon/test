@@ -27,8 +27,6 @@ class FamilyMemberDetailController extends BaseGetxController {
   /// Ngày sinh
   final dateOfBirth = Rxn<DateTime>();
 
-  final dateOfBirthCtrl = TextEditingController();
-
   /// Giới tính *
   final gender = Gender.male.obs;
 

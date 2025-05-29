@@ -101,6 +101,11 @@ class StaffListController extends BaseGetxController {
   }
 
   Future<void> saveXml() async {
+    if (declaredStaffs.isEmpty) {
+      showSnackBar('Chưa có nhân viên nào được khai báo');
+      return;
+    }
+
     try {
       showLoadingOverlay();
 
