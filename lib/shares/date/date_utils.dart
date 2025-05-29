@@ -59,6 +59,15 @@ String? convertDateToStringSafe(DateTime? dateTime, String pattern) {
   }
 }
 
+DateTime? convertDateToDate(DateTime? dateTime, String pattern) {
+  if (dateTime == null) {
+    return null;
+  } else {
+    return convertStringToDate(convertDateToString(dateTime, pattern), pattern);
+  }
+}
+
+
 String convertDateToStringDefault(DateTime dateTime) {
   return DateFormat(PATTERN_DEFAULT).format(dateTime);
 }

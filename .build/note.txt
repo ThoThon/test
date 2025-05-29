@@ -1,3 +1,44 @@
+29/05/2025:
+- [api] - Bổ sung giao diện Đợt kê khai - sửa - chỉnh sửa từng bản ghi cho từng nhân viên - BHW-2152
+- Sửa nhân viên cho từng đợt kê khai
+- [AppMobile] - Màn D02-LT: Danh sách nhân viên: Trả ra Tên +Mã BHXH - BHW-2201
+- [AppMobile] - Màn D02-LT: Lưu không thành công khi chọn ngày sinh trong tương lai - BHW-2195
+- [AppMobile] - Màn D02-LT, TK1-TS: Các trường chọn trong danh sách: Chỉnh sửa hiển thị nút button "Xác nhận" - BHW-2196
+- [AppMobile] - Màn TK1-TS: Sai text placeholder ô Tìm kiếm Xã - BHW-2197
+- [AppMobile] - Màn Date-picker: Đồng nhất chữ tiếng Việt tại Button - BHW-2187
+- [AppMobile] - Sửa kiểu dữu liệu cho phép nhập Nhập Số CCCD - BHW-2237
+- [AppMobile] - Validate Nhập CCCD - BHW-2219
+- [AppMobile] - Các trường [Ngày tháng]: Bổ sung cho phép nhập - BHW-2179
+- [AppMobile] - Màn D02-LT: Đồng nhất hiển thị lỗi cho trường CCCD khi để trống - BHW-2211
+- [api] - Bổ sung giao diện xóa thành viên phụ lục - BHW-2156
+- [api] - Bổ sung giao diện Xóa D01 màn kê khai thông tin - BHW-2149
+- [api] - Bổ sung giao diện Xóa Kỳ kê khai - BHW-2249
+- [Appmobile]_Thông tin đơn vị_Thay đổi thông tin thành công nhưng thông tin không thay đổi - BHW-2241
+- [Appmobile]_D02-LT_Sinh tự động checkbox trường sinh dữ liệu tờ khai TK1-TS đối với một số phương án - BHW-2243
+- [AppMobile] - Màn D02: Trường hợp Mã BHXH là trường bắt buộc - BHW-2242
+- [AppMobile] - Trường Chức vụ: Thiếu tính năng chọn trong combobox - BHW-2245
+- [AppMobile] - Trường Giới tính: Chưa bắt validate là trường bắt buộc - BHW-2240
+
+28/05/2025:
+- [Appmobile]_Chức năng quét CCCD lấy thông tin cá nhân để kê khai - BHW-2144
+- [api] - Bổ sung giao diện Upload file đính kèm - BHW-2158
+- Thêm, sửa, xóa bảng kê khi kê khai mới thông tin
+- [AppMobile]_D02-LT_Chọn nhân viên - BHW-2184
+- [api] - Bổ sung giao diện Lưu đợt và tạo file xml - BHW-2157
+- [AppMobile] - Màn D02-LT: Trường [Từ tháng/năm] và [Đến tháng/năm] ->Bỏ hiển thị (*) là trường bắt buộc - BHW-2189
+- [api] - Bổ sung giao diện Màn kê khai thông tin - BHW-2151
+- [AppMobile] - Màn D02-LT, TK1-TS: Sai giá trị mặc định ban đầu Checkbox GIỚI TÍNH - BHW-2188
+
+
+27/05/2025:
+- [api] - Bổ sung giao diện Danh sách bệnh viện theo tỉnh - BHW-2167
+- [api] - Bổ sung giao diện Danh sách kê khai - BHW-2166
+- [api] - Bổ sung giao diện Danh sách phương án điều chỉnh - BHW-2165
+- [api] - Bổ sung giao diện Danh sách thủ tục - BHW-2164
+- [api] - Bổ sung giao diện Danh sách xã - BHW-2163
+- [api] - Bổ sung giao diện Lấy danh sách Huyện - BHW-2161
+- [api]- Bổ sung giao diện danh sách nhân viên lưu nháp theo đợt - BHW-2146
+
 22/05/2025
 - Hoàn thiện chức năng tra cứu chi tiết lịch sử
 - Hoàn thiện bộ lọc mã thủ tục cho màn lịch sử

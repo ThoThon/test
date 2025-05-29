@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 /// Dân tộc
 class EthnicModel extends Equatable {
-  final String value;
+  final int value;
   final String text;
 
   const EthnicModel({
@@ -12,7 +12,7 @@ class EthnicModel extends Equatable {
 
   factory EthnicModel.fromJson(Map<String, dynamic> json) {
     return EthnicModel(
-      value: json['value'] ?? '',
+      value: int.tryParse(json['value'].toString()) ?? 0,
       text: json['text'] ?? '',
     );
   }

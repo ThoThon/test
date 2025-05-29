@@ -4,7 +4,7 @@ enum AppRoutes {
   forgotLogin,
   procedureList,
   declarationPeriod,
-  depositInfo,
+  staffList,
   declareInfo,
   familyMemberDetail,
   declarationFormDetail,
@@ -30,14 +30,11 @@ enum AppRoutes {
   ///Chi tiết lịch sử
   historyDetail,
 
-  ///Thông tin user khi scan CCCD
-  routeNfcInformationUser,
-
   //Quét CCCD
   nfc,
 
-  ///View thông tin CCCD
-  nfcInformationUser;
+  //Chọn nhân viên
+  selectStaff;
 
   String get path {
     return '/vbhxh_$name';

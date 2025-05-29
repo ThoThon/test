@@ -1,12 +1,12 @@
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/lookup_c12/ui/ui_src.dart';
+import 'package:v_bhxh/modules/select_staff/ui/select_staff_page.dart';
 
 import '../../modules/declare/declaration_list/ui/declaration_list_page.dart';
-import '../../modules/declare/deposit_info/ui/deposit_info_page.dart';
 import '../../modules/declare/procedure_list/ui/procedure_list_page.dart';
+import '../../modules/declare/staff_list/ui/staff_list_page.dart';
 import '../../modules/home/src.dart';
 import '../../modules/nfc/ui/nfc_page.dart';
-import '../../modules/nfc_information_user/nfc_information_user_src.dart';
 import '../../modules/splash/splash.src.dart';
 import '../../modules/splash/splash_page.dart';
 import '../../modules/src.dart';
@@ -56,8 +56,8 @@ class RouteAppPage {
       page: () => DeclarationPeriodPage(),
     ),
     GetPage(
-      name: AppRoutes.depositInfo.path,
-      page: () => DepositInfoPage(),
+      name: AppRoutes.staffList.path,
+      page: () => StaffListPage(),
     ),
     GetPage(
       name: AppRoutes.declareInfo.path,
@@ -84,10 +84,6 @@ class RouteAppPage {
       page: () => NfcPage(),
     ),
     GetPage(
-      name: AppRoutes.nfcInformationUser.path,
-      page: () => NfcInformationUserPage(),
-    ),
-    GetPage(
       name: AppRoutes.forgotLogin.path,
       page: () => ForgotPasswordPage(),
     ),
@@ -95,5 +91,9 @@ class RouteAppPage {
       name: AppRoutes.lookupC12.path,
       page: () => LookupC12Page(),
     ),
+    GetPage(
+      name: AppRoutes.selectStaff.path,
+      page: () =>  SelectStaffPage(),
+    )
   ];
 }

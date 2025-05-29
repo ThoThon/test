@@ -35,4 +35,13 @@ class AppConst {
   static const String procedure600c = '6004';
   static const String procedure600d = '6005';
   static const String procedure600o = '6006';
+
+  ///key CardAccessDataNFCIos
+  static const String keyAccessDataNFCIos =
+      "3134300d060804007f0007020202020101300f060a04007f000702020302020201013012060a04007f0007020204020202010202010d";
+
+  ///status nfc
+  static const String nfcAvailable = "nfc_available";
+  static const String nfcDisabled = "nfc_disabled";
+  static const String nfcDisabledNotSupported = "nfc_not_supported";
 }

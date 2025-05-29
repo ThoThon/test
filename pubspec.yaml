@@ -36,7 +36,7 @@ dependencies:
   dio_log_sds:
     git:
       url: https://github.com/HVLoc/dio_log_sds.git
-      ref: master
+      ref: flutter/3.22.0
   dropdown_button2: ^2.3.9
   equatable: ^2.0.7
   flutter:
@@ -77,6 +77,8 @@ dependencies:
       ref: master
   percent_indicator: ^4.2.5
   flutter_rounded_date_picker: ^3.0.4
+  uuid: ^4.5.1
+  asn1lib: ^1.5.9
 
 dev_dependencies:
   flutter_lints: ^5.0.0

@@ -5,14 +5,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
     return Column(
       children: [
         _buildTabs(),
-        Obx(() {
-          if (controller.isShowScanIDButton) {
-            return _buildScanIDButton(
-              onTap: () {},
-            );
-          }
-          return UtilWidget.shrink;
-        }),
         Expanded(
           child: Obx(
             () {
@@ -27,7 +19,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
             },
           ),
         ),
-        _buildBottomButtons(),
+        Obx(
+          () => _buildBottomButtons(),
+        ).paddingAll(AppDimens.defaultPadding),
       ],
     );
   }
@@ -114,15 +108,14 @@ extension DeclareInfoWidget on DeclareInfoPage {
     VoidCallback? onTap,
   }) {
     return InkWell(
-      onTap: () {
-        Get.toNamed(AppRoutes.nfc.path);
-      },
+      onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
-            Icons.qr_code_scanner,
-            size: 36,
+          SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG,
+            height: AppDimens.sizeIconLarge,
+            width: AppDimens.sizeIconLarge,
           ),
           UtilWidget.sizedBoxWidth8,
           Flexible(
@@ -132,8 +125,8 @@ extension DeclareInfoWidget on DeclareInfoPage {
             ),
           ),
         ],
-      ).paddingAll(AppDimens.paddingSmall),
-    );
+      ).paddingAll(AppDimens.paddingSmallest),
+    ).paddingAll(AppDimens.paddingSmall);
   }
 
   Widget _buildInputFullName({
@@ -219,6 +212,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_cccdNumber.tr,
       buildInputText: BuildInputText(
         InputTextModel(
+          autovalidateMode: controller.autovalidateMode.value,
           controller: controller.d02Tk1State.cccdTextCtrl,
           isValidate: true,
           maxLengthInputForm: 20,
@@ -229,14 +223,34 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildInputBHXHCode() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_bhxhCode.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.d02Tk1State.bhxhTextCtrl,
-          maxLengthInputForm: 10,
-        ),
-      ),
+    return Obx(
+      () {
+        final isRequired = controller.isBhxhCodeRequired;
+        return BuildInputTextWithLabel(
+          label: LocaleKeys.declareInfo_bhxhCode.tr,
+          buildInputText: BuildInputText(
+            InputTextModel(
+              controller: controller.d02Tk1State.bhxhTextCtrl,
+              maxLengthInputForm: 10,
+              inputFormatters: InputFormatterEnum.digitsOnly,
+              textInputType: TextInputType.number,
+              isValidate: isRequired,
+              validator: (value) {
+                if (!isRequired) {
+                  return null;
+                }
+
+                final trimmedValue = value?.trim();
+                if (trimmedValue == null || trimmedValue.isEmpty) {
+                  return LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr;
+                }
+
+                return null;
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -247,38 +261,28 @@ extension DeclareInfoWidget on DeclareInfoPage {
       children: [
         Row(
           children: [
-            _buildInputTitle(
-              title: LocaleKeys.declareInfo_gender.tr,
-              isRequired: true,
+            Obx(
+              () {
+                return _buildInputTitle(
+                  title: LocaleKeys.declareInfo_gender.tr,
+                  isRequired: controller.isGenderRequired,
+                );
+              },
             ),
             Expanded(
-              child: RadioListTile<Gender>(
+              child: UtilWidget.buildRadioWithTitle<Gender>(
                 value: Gender.male,
                 groupValue: controller.d02Tk1State.gender.value,
-                title: SDSBuildText(
-                  LocaleKeys.declareInfo_male.tr,
-                  style: AppTextStyle.font16Re,
-                ),
-                onChanged: (value) {
-                  if (value == null) return;
-                  onChanged?.call(value);
-                },
-                activeColor: AppColors.primaryColor,
+                title: LocaleKeys.declareInfo_male.tr,
+                onChanged: onChanged,
               ),
             ),
             Expanded(
-              child: RadioListTile<Gender>(
+              child: UtilWidget.buildRadioWithTitle<Gender>(
                 value: Gender.female,
                 groupValue: controller.d02Tk1State.gender.value,
-                title: SDSBuildText(
-                  LocaleKeys.declareInfo_female.tr,
-                  style: AppTextStyle.font16Re,
-                ),
-                onChanged: (value) {
-                  if (value == null) return;
-                  onChanged?.call(value);
-                },
-                activeColor: AppColors.primaryColor,
+                title: LocaleKeys.declareInfo_female.tr,
+                onChanged: onChanged,
               ),
             ),
           ],
@@ -312,7 +316,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           selectedItem: controller.d02Tk1State.selectedEthnic.value,
           display: (ethnic) => ethnic.text,
           validator: (value) {
-            if (value == null) {
+            if (controller.d02Tk1State.selectedEthnic.value == null) {
               return LocaleKeys.declareInfo_ethnicCannotEmpty.tr;
             }
             return null;
@@ -347,7 +351,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           selectedItem: controller.d02Tk1State.selectedNationality.value,
           display: (nation) => nation.text,
           validator: (value) {
-            if (value == null) {
+            if (controller.d02Tk1State.selectedNationality.value == null) {
               return LocaleKeys.declareInfo_nationalityCannotEmpty.tr;
             }
             return null;
@@ -359,41 +363,49 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
   Widget _buildSelectDateOfBirth() {
     return UtilWidget.buildSelectDate(
+      controller: controller.d02Tk1State.dateOfBirthCtrl,
       LocaleKeys.declareInfo_dob.tr,
       hintText: PATTERN_1,
+      inputFormatters: InputFormatterEnum.dateFullBirthDay,
       date: convertDateToStringSafe(
         controller.d02Tk1State.dateOfBirth.value,
         PATTERN_1,
       ),
+      onChanged: (value) {
+        if (value.trim().isEmpty) {
+          controller.d02Tk1State.dateOfBirth.value = null;
+        }
+      },
       onTap: () async {
-        final selectedDate =
-            await UtilWidget.showDateTimePicker(dateTimeInit: DateTime.now());
+        final selectedDate = await UtilWidget.showDateTimePicker(
+          dateTimeInit: convertStringToDateSafe(
+                  controller.d02Tk1State.dateOfBirthCtrl.text, PATTERN_1) ??
+              DateTime.now(),
+          maxTime: DateTime.now(),
+        );
+
         if (selectedDate != null) {
           controller.d02Tk1State.dateOfBirth.value = selectedDate;
+          controller.d02Tk1State.dateOfBirthCtrl.text =
+              convertDateToString(selectedDate, PATTERN_1);
         }
       },
     );
   }
 
   Widget _buildBottomButtons() {
-    return Row(
-      children: [
-        Expanded(
-          child: UtilWidget.buildSolidButtonBack(
-            title: LocaleKeys.app_saveDraft.tr,
-            onPressed: controller.saveDraft,
-          ),
-        ),
-        UtilWidget.sizedBoxWidth16,
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.app_save.tr,
-            onPressed: () {
-              controller.nextTab();
-            },
-          ),
-        ),
-      ],
-    ).paddingAll(AppDimens.defaultPadding);
+    if (controller.isShowNextButton) {
+      return UtilWidget.buildSolidButton(
+        title: LocaleKeys.declareInfo_next.tr,
+        onPressed: () {
+          controller.nextTab();
+        },
+      );
+    }
+
+    return UtilWidget.buildSolidButton(
+      title: LocaleKeys.app_save.tr,
+      onPressed: controller.saveDraft,
+    );
   }
 }

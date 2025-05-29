@@ -31,6 +31,27 @@ class AppApi {
       '/api/History/get-thu-tuc-history';
   static const String urlGetD02Categories = '/api/HoSoD02/get-d02-categories';
   static const String urlGetDistricts = '/api/Categories/get-districts';
+  static const String urlGetWards = '/api/Categories/get-wards';
+  static const String urlGetHospitals = '/api/Categories/get-benh-vien';
+
+  /// API lưu nháp khi kê khai thông tin
+  static const String urlAddD02 = '/api/HoSoD02/add-d02';
+
+  static const String urlUpdateD02 = '/api/HoSoD02/update-d02';
+
+  /// API lấy danh sách lao động theo kỳ kê khai
+  static const String urlGetStaffList = '/api/HoSoD02/get-d02-list';
+
+  static const String urlUpLoadFile = '/api/Upload/attachments';
+
+  static const String urlSaveXml = '/api/HoSoD02/save-xml';
+  static const String urlSignDocument = '/api/Document/sign-ho-so';
+  static const String urlGetStaffListSelect = '/api/Categories/get-list-staff';
+  static const String urlGetD02Detail = '/api/HoSoD02/get-d02-detail';
+  static const String urlDeleteMember = '/api/HoSoD02/delete-thanhvien';
+  static const String urlDeleteForm = '/api/HoSoD02/delete-d01';
+  static const String urlDeleteDeclarationPeriod =
+      '/api/Document/delete-kykekhai';
   static const String urlGetNotification = '/api/Notification/page';
   static const String urlReadNotification = '/api/Notification/read';
 }

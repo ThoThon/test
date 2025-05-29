@@ -7,3 +7,5 @@ export 'province_model.dart';
 export 'relationship_model.dart';
 export 'd02_categories.dart';
 export 'district_model.dart';
+export 'ward_model.dart';
+export 'position_model.dart';

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../../core/core.src.dart';
 
-const String kTriggerShowDioLog = "SHOWLOGBHXH";
+const String kTriggerShowDioLog = "SHOW_LOG_VBHXH";
 
 class Diolog {
   static final Diolog _instance = Diolog._();

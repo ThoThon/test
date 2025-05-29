@@ -61,9 +61,12 @@ extension ProfileWidget on ProfilePage {
   }
 
   Widget _buildExpiredDay() {
-    return _buildTitleAccountInfo(
-      text: LocaleKeys.profile_expiredDay.tr,
-      content: controller.accountInfo?.serviceExpiredDate ?? '',
+    return GestureDetector(
+      onDoubleTap: Diolog().showDiolog,
+      child: _buildTitleAccountInfo(
+        text: LocaleKeys.profile_expiredDay.tr,
+        content: controller.accountInfo?.serviceExpiredDate ?? '',
+      ),
     );
   }
 

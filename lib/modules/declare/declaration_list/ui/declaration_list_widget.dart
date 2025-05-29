@@ -12,49 +12,36 @@ extension DeclarationListWidget on DeclarationListPage {
                 bottom: AppDimens.defaultPadding),
             child: Column(
               children: [
-                _buildDeclarationItem(
-                  title: 'Danh sách lao động tham gia BHXH',
-                  onPressed: () {
-                    Get.toNamed(
-                      AppRoutes.viewPdf.path,
-                      arguments: ViewPdfArgument(
-                        url:
-                            'https://testapi.easyhrm.vn/upload/a97398b7804942598df1e1fa1af518a6/Files/Contract/D02tk1-test.pdf',
-                        title: 'Danh sách lao động',
-                        isRotateHorizontall: true,
-                      ),
-                    );
-                  },
-                ),
-                UtilWidget.sizedBox12,
-                _buildDeclarationItem(
-                  title:
-                      'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
-                  onPressed: () {
-                    Get.toNamed(
-                      AppRoutes.viewPdf.path,
-                      arguments: ViewPdfArgument(
-                        url:
-                            'https://testapi.easyhrm.vn/upload/a97398b7804942598df1e1fa1af518a6/Files/Contract/TK01-test.pdf',
-                        title: 'Tờ khai tham gia',
-                      ),
-                    );
-                  },
-                ),
-                UtilWidget.sizedBox12,
-                _buildDeclarationItem(
-                  title: 'Bảng kê thông tin (Mẫu D01-TS)',
-                  onPressed: () {
-                    Get.toNamed(
-                      AppRoutes.viewPdf.path,
-                      arguments: ViewPdfArgument(
-                        url:
-                            'https://testapi.easyhrm.vn/upload/a97398b7804942598df1e1fa1af518a6/Files/Contract/D01ts-test.pdf',
-                        title: 'Tờ khai tham gia',
-                      ),
-                    );
-                  },
-                ),
+                if (controller.argument.saveXmlResult.d02PreviewPath != null)
+                  _buildDeclarationItem(
+                    title: 'Danh sách lao động tham gia BHXH - (Mẫu D02-LT)',
+                    onPressed: () {
+                      Get.toNamed(
+                        AppRoutes.viewPdf.path,
+                        arguments: ViewPdfArgument(
+                          url:
+                              controller.argument.saveXmlResult.d02PreviewPath!,
+                          title: 'Danh sách lao động',
+                          isRotateHorizontall: true,
+                        ),
+                      );
+                    },
+                  ).paddingOnly(bottom: AppDimens.paddingSmall),
+                _buildTk1Preview(),
+                if (controller.argument.saveXmlResult.d01PreviewPath != null)
+                  _buildDeclarationItem(
+                    title: 'Bảng kê thông tin (Mẫu D01-TS)',
+                    onPressed: () {
+                      Get.toNamed(
+                        AppRoutes.viewPdf.path,
+                        arguments: ViewPdfArgument(
+                          url:
+                              controller.argument.saveXmlResult.d01PreviewPath!,
+                          title: 'Tờ khai tham gia',
+                        ),
+                      );
+                    },
+                  ),
                 UtilWidget.sizedBox12,
                 _buildDeclarationItem(
                   title: 'File đính kèm',
@@ -73,15 +60,103 @@ extension DeclarationListWidget on DeclarationListPage {
             ),
           ),
         ),
-        UtilWidget.buildSolidButton(
-          height: AppDimens.btnLargeFigma,
-          title: 'Ký gửi',
-          onPressed: () {
-            controller.showDialogCheckedSuccess();
-          },
+        Row(
+          children: [
+            Expanded(
+              child: UtilWidget.buildSolidButtonBack(
+                height: AppDimens.btnLargeFigma,
+                title: 'Quay lại',
+                onPressed: () {
+                  Get.back();
+                },
+              ),
+            ),
+            UtilWidget.sizedBoxWidth16,
+            Expanded(
+              child: UtilWidget.buildSolidButton(
+                height: AppDimens.btnLargeFigma,
+                title: 'Ký gửi',
+                onPressed: controller.signDocument,
+              ),
+            ),
+          ],
         ).paddingAll(AppDimens.defaultPadding),
       ],
     );
+  }
+
+  Widget _buildTk1Preview() {
+    final paths = controller.argument.saveXmlResult.tk1PreviewPaths;
+    if (paths == null || paths.isEmpty) {
+      return UtilWidget.shrink;
+    }
+
+    return ExpansionTile(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: const BorderSide(color: AppColors.dsGray5),
+      ),
+      collapsedShape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: const BorderSide(color: AppColors.dsGray5),
+      ),
+      backgroundColor: Colors.white,
+      collapsedBackgroundColor: Colors.white,
+      iconColor: AppColors.primaryColor,
+      collapsedIconColor: AppColors.primaryColor,
+      title: SDSBuildText(
+        'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
+        style: AppTextStyle.font16Semi,
+        maxLines: 3,
+      ),
+      children: addSeparator(
+        children: paths
+            .map(
+              (path) => Row(
+                children: [
+                  const SizedBox(
+                    width: AppDimens.padding40,
+                  ),
+                  Expanded(
+                    child: SDSBuildText(
+                      path.hoTen ?? '',
+                      style: AppTextStyle.font14Semi,
+                      maxLines: 1,
+                    ),
+                  ),
+                  UtilWidget.sizedBoxWidth16,
+                  TextButton(
+                    onPressed: () {
+                      final previewPath = path.previewPath;
+                      if (previewPath != null) {
+                        Get.toNamed(
+                          AppRoutes.viewPdf.path,
+                          arguments: ViewPdfArgument(
+                            url: previewPath,
+                            title: 'Tờ khai tham gia',
+                            isRotateHorizontall: true,
+                          ),
+                        );
+                      }
+                    },
+                    child: SDSBuildText(
+                      'Xem',
+                      style: AppTextStyle.font16Re.copyWith(
+                        color: AppColors.primaryColor,
+                        decoration: TextDecoration.underline,
+                        decorationColor: AppColors.primaryColor,
+                      ),
+                    ),
+                  ),
+                  UtilWidget.sizedBoxWidth16,
+                ],
+              ),
+            )
+            .toList(),
+        spacer: UtilWidget.buildDividerDefault()
+            .paddingOnly(left: AppDimens.padding40),
+      ),
+    ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
   Widget _buildDeclarationItem({

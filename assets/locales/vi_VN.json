@@ -268,6 +268,7 @@
     "period": "Đợt",
     "statusNotYet": "Chưa kê khai",
     "statusDraft": "Lưu nháp",
+    "statusSaved": "Đã lưu",
     "statusSent": "Đã gửi",
     "statusPending": "Đang chờ xử lý",
     "statusFailed": "Thất bại",
@@ -286,6 +287,7 @@
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
     "selectStaff": "Chọn nhân viên",
     "bhxhCode": "Mã số BHXH",
+    "bhxhCodeCannotEmpty": "Mã số BHXH không được bỏ trống",
     "declarationType": "Loại khai báo",
     "selectDeclarationType": "Chọn loại khai báo",
     "plan": "Phương án",
@@ -297,8 +299,11 @@
     "declarationTypeOther": "Khác",
     "generateTk1Data": "Sinh dữ liệu TK1-TS",
     "cccdNumber": "Số CCCD",
+    "cccdNumberIsNotEmpty": "Số CCCD không được bỏ trống",
+    "cccdNumberIsValid": "Số CCCD phải có đủ 12 số",
     "dob": "Ngày sinh",
     "gender": "Giới tính",
+    "genderCannotEmpty": "Giới tính không được bỏ trống",
     "male": "Nam",
     "female": "Nữ",
     "ethnic": "Dân tộc",
@@ -357,7 +362,19 @@
     "wardTT": "Xã thường trú",
     "selectWardTT": "Chọn xã thường trú",
     "addressTT": "Địa chỉ thường trú",
-    "familyMembers": "Danh sách thành viên trong gia đình"
+    "familyMembers": "Danh sách thành viên trong gia đình",
+    "provinceOfBirthNotSelected": "Chưa chọn tỉnh khai sinh",
+    "districtOfBirthNotSelected": "Chưa chọn huyện khai sinh",
+    "provinceReceiveNotSelected": "Chưa chọn tỉnh nơi nhận",
+    "districtReceiveNotSelected": "Chưa chọn huyện nơi nhận",
+    "provinceKCBNotSelected": "Chưa chọn tỉnh nơi KCB",
+    "provinceTTNotSelected": "Chưa chọn tỉnh thường trú",
+    "districtTTNotSelected": "Chưa chọn huyện thường trú",
+    "next": "Tiếp theo",
+    "saveDataSuccess": "Lưu dữ liệu thành công",
+    "inputProvince": "Nhập tỉnh/thành phố",
+    "inputDistrict": "Nhập quận/huyện",
+    "inputWard": "Nhập phường/xã"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",
@@ -392,9 +409,9 @@
     "note": "Ghi chú",
     "isParticipant": "Là người tham gia"
   },
-  "declarationFromDetail": {
+  "declarationFormDetail": {
     "title": "Kê khai thông tin bảng kê hồ sơ",
-    "declarationFromName": "Tên bảng kê",
+    "declarationFormName": "Tên bảng kê",
     "fullName": "Họ và tên",
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
     "bhxhCode": "Mã số BHXH",
@@ -410,6 +427,17 @@
     "summaryCannotEmpty": "Trích yếu không được bỏ trống",
     "contentToBeAssessed": "Nội dung cần thẩm định",
     "contentToBeAssessedCannotEmpty": "Nội dung cần thẩm định không được bỏ trống"
+  },
+  "staffList": {
+    "title": "Danh sách nhân viên kê khai",
+    "addNewStaff": "Thêm mới nhân viên",
+    "attachFile": "Đính kèm file",
+    "addAttachedImage": "Thêm hình ảnh đính kèm",
+    "continue": "Tiếp tục",
+    "attachFileErorr": "File không hợp lệ",
+    "fillFullName": "Nhập họ tên",
+    "confirm": "Xác nhận",
+    "selectedStaff": "Chọn nhân viên"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",
@@ -432,7 +460,14 @@
     "start": "Bắt đầu",
     "readyScan": "Sẵn sàng quét",
     "scanNFC": "Bạn hãy đưa CCCD gắn chip lại gần camera,\ndi chuyển lên xuống để nhận cảm biến",
-    "cancel": "Hủy"
+    "cancel": "Hủy",
+    "scanNfcError": "Quét CCCD bị lỗi vui lòng thử lại",
+    "bringPhone": "Đưa điện thoại của bạn lại gần CCCD",
+    "readData": "Đang đọc dữ liệu",
+    "keepCardNfc": "Vui lòng giữ nguyên CCCD",
+    "scanNfcSuccess": "Quét thông tin thành công",
+    "scanNfcErrorIOS": "Lỗi quét NFC. Quý khách vui lòng thử lại",
+    "pleaseFillCccd": "Vui lòng nhập số CCCD"
   },
   "infomationUser": {
     "info": "Thông tin",

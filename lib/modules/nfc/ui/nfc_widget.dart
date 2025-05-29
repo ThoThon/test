@@ -92,32 +92,35 @@ extension NfcWidget on NfcPage {
     return UtilWidget.buildSolidButton(
       title: LocaleKeys.nfc_start.tr,
       onPressed: () async {
-        Get.bottomSheet(UtilWidget.buildBottomSheetFigma(
-          title: LocaleKeys.nfc_readyScan.tr,
-          textColor: AppColors.basicGrey1,
-          child: Column(
-            children: [
-              SDSImageSvg(Assets.ASSETS_ICONS_ICON_SCAN_NFC_SVG),
-              sdsSBHeight16,
-              SDSBuildText(
-                LocaleKeys.nfc_scanNFC.tr,
-                textAlign: TextAlign.center,
-              ),
-              sdsSBHeight16,
-              UtilWidget.buildSolidButtonBack(
-                title: LocaleKeys.nfc_cancel.tr,
-                width: Get.width,
-                onPressed: () {
-                  Get.back();
-                },
-              ),
-              sdsSBHeight32,
-            ],
-          ),
-        ));
-        await Future.delayed(const Duration(seconds: 3));
-        Get.toNamed(AppRoutes.nfcInformationUser.path);
+        await controller.scanNFC();
+        // Get.bottomSheet(
+        //   UtilWidget.buildBottomSheetFigma(
+        //     title: LocaleKeys.nfc_readyScan.tr,
+        //     textColor: AppColors.basicGrey1,
+        //     child: Column(
+        //       children: [
+        //         SDSImageSvg(Assets.ASSETS_ICONS_ICON_SCAN_NFC_SVG),
+        //         sdsSBHeight16,
+        //         SDSBuildText(
+        //           LocaleKeys.nfc_scanNFC.tr,
+        //           textAlign: TextAlign.center,
+        //         ),
+        //         sdsSBHeight16,
+        //         UtilWidget.buildSolidButtonBack(
+        //           title: LocaleKeys.nfc_cancel.tr,
+        //           width: Get.width,
+        //           onPressed: () {
+        //             Get.back();
+        //           },
+        //         ),
+        //         sdsSBHeight32,
+        //       ],
+        //     ),
+        //   ),
+        // );
+        // await Future.delayed(const Duration(seconds: 3));
+        // Get.toNamed(AppRoutes.nfcInformationUser.path);
       },
-    );
+    ).paddingOnly(top: AppDimens.paddingSmall);
   }
 }

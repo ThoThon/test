@@ -54,10 +54,10 @@ class BaseApi {
     String action,
     String requestMethod, {
     dynamic jsonMap,
+    Map<String, dynamic>? queryParameters,
     bool isDownload = false,
     String? urlOther,
     Map<String, String>? headersUrlOther,
-    bool isQueryParametersPost = false,
     required BaseGetxController controller,
     BaseOptions? dioOptions,
     Function(Object error)? functionError,
@@ -89,25 +89,18 @@ class BaseApi {
     controller.addCancelToken(cancelToken);
     try {
       if (requestMethod == EnumRequestMethod.post) {
-        if (isQueryParametersPost) {
-          response = await dio.post(
-            url,
-            queryParameters: jsonMap,
-            options: options,
-            cancelToken: cancelToken,
-          );
-        } else {
-          response = await dio.post(
-            url,
-            data: jsonMap,
-            options: options,
-            cancelToken: cancelToken,
-          );
-        }
+        response = await dio.post(
+          url,
+          data: jsonMap,
+          queryParameters: queryParameters,
+          options: options,
+          cancelToken: cancelToken,
+        );
       } else if (requestMethod == EnumRequestMethod.delete) {
         response = await dio.delete(
           url,
           data: jsonMap,
+          queryParameters: queryParameters,
           options: options,
           cancelToken: cancelToken,
         );
@@ -115,6 +108,7 @@ class BaseApi {
         response = await dio.put(
           url,
           data: jsonMap,
+          queryParameters: queryParameters,
           options: options,
           cancelToken: cancelToken,
         );

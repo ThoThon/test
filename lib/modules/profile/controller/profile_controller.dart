@@ -10,7 +10,7 @@ class ProfileController extends BaseGetxController {
   @override
   void onInit() {
     super.onInit();
-    accountInfo = _appController.accountInfoModel;
+    accountInfo = AppData.instance.accountInfoModel.value;
   }
 
   void showDialogLogout() {

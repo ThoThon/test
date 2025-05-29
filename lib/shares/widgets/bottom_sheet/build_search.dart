@@ -71,9 +71,12 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
               Get.back();
             },
           ),
-          sdsSBHeight16,
+          sdsSBHeight28,
         ],
-      ).paddingAll(AppDimens.defaultPadding),
+      ).paddingSymmetric(
+        horizontal: AppDimens.paddingVerySmall,
+        vertical: AppDimens.defaultPadding,
+      ),
     );
   }
 

@@ -1,28 +1,14 @@
 import 'package:get/get.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 
 import 'model_src.dart';
 
 class D01State {
-  final forms = const <DeclarationForm>[
-    DeclarationForm(
-      id: 1,
-      title: 'Bảng kê hồ sơ 1',
-      user: 'Nguyễn Văn A1',
-    ),
-    DeclarationForm(
-      id: 2,
-      title: 'Bảng kê hồ sơ 2',
-      user: 'Nguyễn Văn A1',
-    ),
-    DeclarationForm(
-      id: 3,
-      title: 'Bảng kê hồ sơ 3',
-      user: 'Nguyễn Văn A1',
-    ),
-    DeclarationForm(
-      id: 4,
-      title: 'Bảng kê hồ sơ 4',
-      user: 'Nguyễn Văn A1',
-    ),
-  ].obs;
+  final forms = const <DeclarationForm>[].obs;
+
+  void updateFromD02Detail(DeclareInfoDetailResponse detail) {
+    forms.value = detail.d01Dts.map((e) {
+      return DeclarationForm.fromResponse(e);
+    }).toList();
+  }
 }

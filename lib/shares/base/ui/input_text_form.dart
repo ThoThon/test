@@ -69,10 +69,37 @@ class BuildInputTextState extends State<BuildInputText> {
         return [
           NumericTextFormatter(
             type: 1,
-            isDot: true,
             maxLengthNum: 17,
             lastDecimal: 3,
           ),
+        ];
+      case InputFormatterEnum.salaryNormal:
+        return [
+          NumericTextFormatter(
+            type: 1,
+            isDot: true,
+            maxLengthNum: 17,
+          ),
+        ];
+      case InputFormatterEnum.dateFullBirthDay:
+        return [
+          FilteringTextInputFormatter.digitsOnly,
+          DateInputFormatter(isBirthDay: true),
+        ];
+      case InputFormatterEnum.dateMonthYear:
+        return [
+          FilteringTextInputFormatter.digitsOnly,
+          DateMonthInputFormatter(),
+        ];
+      case InputFormatterEnum.dateYear:
+        return [
+          FilteringTextInputFormatter.digitsOnly,
+          DateYearInputFormatter(),
+        ];
+      case InputFormatterEnum.dateFull:
+        return [
+          FilteringTextInputFormatter.digitsOnly,
+          DateInputFormatter(),
         ];
       default:
         return [

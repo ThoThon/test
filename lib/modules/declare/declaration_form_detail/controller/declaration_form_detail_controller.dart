@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/modules/declare/declaration_form_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
+import 'package:v_bhxh/shares/utils/uuid_utils.dart';
 
 class DeclarationFormDetailController extends BaseGetxController {
-  final DeclarationFormDetailArgument argument = Get.arguments;
+  final argument = Get.arguments as DeclarationForm?;
 
   final formKey = GlobalKey<FormState>();
 
@@ -20,10 +21,15 @@ class DeclarationFormDetailController extends BaseGetxController {
   /// Số văn bản *
   final documentNumberTextCtrl = TextEditingController();
 
-  /// Ngày ban hành
+  /// Ngày ban hành *
   final dateOfIssue = Rxn<DateTime>();
 
+  final dateOfIssueCtrl = TextEditingController();
+
+  /// Ngày văn bản có hiệu lực *
   final effectiveDate = Rxn<DateTime>();
+
+  final effectiveDateCtrl = TextEditingController();
 
   /// Cơ quan ban hành *
   final issuingAgencyTextCtrl = TextEditingController();
@@ -38,15 +44,52 @@ class DeclarationFormDetailController extends BaseGetxController {
   void onInit() {
     super.onInit();
 
-    if (argument.action.isCreate) {
-      fullNameTextCtrl.text = argument.fullName ?? '';
-      bhxhTextCtrl.text = argument.bhxhCode ?? '';
+    final declarationForm = argument;
+    if (declarationForm != null) {
+      fullNameTextCtrl.text = declarationForm.fullName;
+      bhxhTextCtrl.text = declarationForm.bhxhNumber;
+      documentTypeTextCtrl.text = declarationForm.documentType;
+      documentNumberTextCtrl.text = declarationForm.documentNumber;
+      dateOfIssue.value = declarationForm.dateOfIssue;
+      effectiveDate.value = declarationForm.effectiveDate;
+      issuingAgencyTextCtrl.text = declarationForm.issuingAgency;
+      summaryTextCtrl.text = declarationForm.summary;
+      contentToBeAssessedTextCtrl.text = declarationForm.contentToBeAssessed;
     }
   }
 
   void submit() {
+    final doi = dateOfIssue.value;
+    if (doi == null) {
+      showSnackBar("Ngày ban hành không được để trống");
+      return;
+    }
+
+    final ed = effectiveDate.value;
+    if (ed == null) {
+      showSnackBar("Ngày hiệu lực không được để trống");
+      return;
+    }
+
     if (formKey.currentState?.validate() ?? false) {
-      //
+      Get.back(
+        result: DeclarationForm(
+          // Khi sửa bảng kê ở local hoặc DB thì sẽ giữ id cũ
+          id: argument?.id ?? generateUuid(),
+          fullName: fullNameTextCtrl.text.trim(),
+          bhxhNumber: bhxhTextCtrl.text.trim(),
+          documentType: documentTypeTextCtrl.text.trim(),
+          documentNumber: documentNumberTextCtrl.text.trim(),
+          dateOfIssue: doi,
+          effectiveDate: ed,
+          issuingAgency: issuingAgencyTextCtrl.text.trim(),
+          summary: summaryTextCtrl.text.trim(),
+          contentToBeAssessed: contentToBeAssessedTextCtrl.text.trim(),
+          // Khi update bảng kê ở DB thì sẽ truyền isUpdate = true
+          // Cần keep trạng thái isUpdate để tránh tạo mới
+          isUpdate: argument?.isUpdate ?? false,
+        ),
+      );
     }
   }
 

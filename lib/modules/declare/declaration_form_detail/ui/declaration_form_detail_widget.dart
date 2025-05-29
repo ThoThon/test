@@ -46,18 +46,29 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildEffectiveDate() {
     return UtilWidget.buildSelectDate(
-      LocaleKeys.declarationFromDetail_effectiveDate.tr,
+      inputFormatters: InputFormatterEnum.dateFull,
+      controller: controller.effectiveDateCtrl,
+      LocaleKeys.declarationFormDetail_effectiveDate.tr,
       hintText: PATTERN_1,
       date: convertDateToStringSafe(
         controller.effectiveDate.value,
         PATTERN_1,
       ),
+      onChanged: (value) {
+        if (value.trim().isEmpty) {
+          controller.effectiveDate.value = null;
+        }
+      },
       onTap: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
-          dateTimeInit: controller.effectiveDate.value ?? DateTime.now(),
+          dateTimeInit: convertStringToDateSafe(
+                  controller.effectiveDateCtrl.text, PATTERN_1) ??
+              DateTime.now(),
         );
         if (selectedDate != null) {
           controller.effectiveDate.value = selectedDate;
+          controller.effectiveDateCtrl.text =
+              convertDateToString(selectedDate, PATTERN_1);
         }
       },
     );
@@ -65,18 +76,29 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildSelectDateOfIssue() {
     return UtilWidget.buildSelectDate(
-      LocaleKeys.declarationFromDetail_dateOfIssue.tr,
+      inputFormatters: InputFormatterEnum.dateFull,
+      controller: controller.dateOfIssueCtrl,
+      LocaleKeys.declarationFormDetail_dateOfIssue.tr,
       hintText: PATTERN_1,
       date: convertDateToStringSafe(
         controller.dateOfIssue.value,
         PATTERN_1,
       ),
+      onChanged: (value) {
+        if (value.trim().isEmpty) {
+          controller.dateOfIssue.value = null;
+        }
+      },
       onTap: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
-          dateTimeInit: controller.dateOfIssue.value ?? DateTime.now(),
+          dateTimeInit: convertStringToDateSafe(
+                  controller.dateOfIssueCtrl.text, PATTERN_1) ??
+              DateTime.now(),
         );
         if (selectedDate != null) {
           controller.dateOfIssue.value = selectedDate;
+          controller.dateOfIssueCtrl.text =
+              convertDateToString(selectedDate, PATTERN_1);
         }
       },
     );
@@ -84,7 +106,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputFullName() {
     return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFromDetail_fullName.tr,
+      label: LocaleKeys.declarationFormDetail_fullName.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.fullNameTextCtrl,
@@ -93,7 +115,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
           validator: (value) {
             final trimmedValue = value?.trim();
             if (trimmedValue == null || trimmedValue.isEmpty) {
-              return LocaleKeys.declarationFromDetail_fullNameCannotEmpty.tr;
+              return LocaleKeys.declarationFormDetail_fullNameCannotEmpty.tr;
             }
             return null;
           },
@@ -104,7 +126,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputBHXHNumber() {
     return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFromDetail_bhxhCode.tr,
+      label: LocaleKeys.declarationFormDetail_bhxhCode.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.bhxhTextCtrl,
@@ -116,7 +138,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputDocumentType() {
     return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFromDetail_documentType.tr,
+      label: LocaleKeys.declarationFormDetail_documentType.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.documentTypeTextCtrl,
@@ -125,7 +147,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
           validator: (value) {
             if (value.isNullOrEmpty) {
               return LocaleKeys
-                  .declarationFromDetail_documentTypeCannotEmpty.tr;
+                  .declarationFormDetail_documentTypeCannotEmpty.tr;
             }
             return null;
           },
@@ -136,7 +158,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputDocumentNumber() {
     return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFromDetail_documentNumber.tr,
+      label: LocaleKeys.declarationFormDetail_documentNumber.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.documentNumberTextCtrl,
@@ -145,7 +167,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
           validator: (value) {
             if (value.isNullOrEmpty) {
               return LocaleKeys
-                  .declarationFromDetail_documentNumberCannotEmpty.tr;
+                  .declarationFormDetail_documentNumberCannotEmpty.tr;
             }
             return null;
           },
@@ -156,7 +178,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputIssuingAgency() {
     return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFromDetail_issuingAgency.tr,
+      label: LocaleKeys.declarationFormDetail_issuingAgency.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.issuingAgencyTextCtrl,
@@ -165,7 +187,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
           validator: (value) {
             if (value.isNullOrEmpty) {
               return LocaleKeys
-                  .declarationFromDetail_issuingAgencyCannotEmpty.tr;
+                  .declarationFormDetail_issuingAgencyCannotEmpty.tr;
             }
             return null;
           },
@@ -176,7 +198,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputSummary() {
     return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFromDetail_summary.tr,
+      label: LocaleKeys.declarationFormDetail_summary.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.summaryTextCtrl,
@@ -184,7 +206,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
           maxLengthInputForm: 500,
           validator: (value) {
             if (value.isNullOrEmpty) {
-              return LocaleKeys.declarationFromDetail_summaryCannotEmpty.tr;
+              return LocaleKeys.declarationFormDetail_summaryCannotEmpty.tr;
             }
             return null;
           },
@@ -195,7 +217,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildInputContent() {
     return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFromDetail_contentToBeAssessed.tr,
+      label: LocaleKeys.declarationFormDetail_contentToBeAssessed.tr,
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.contentToBeAssessedTextCtrl,
@@ -204,7 +226,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
           validator: (value) {
             if (value.isNullOrEmpty) {
               return LocaleKeys
-                  .declarationFromDetail_contentToBeAssessedCannotEmpty.tr;
+                  .declarationFormDetail_contentToBeAssessedCannotEmpty.tr;
             }
             return null;
           },
@@ -218,17 +240,17 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       children: [
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
-            title: LocaleKeys.app_save.tr,
-            onPressed: controller.submit,
+            title: LocaleKeys.app_close.tr,
+            onPressed: () {
+              Get.back();
+            },
           ),
         ),
         UtilWidget.sizedBoxWidth16,
         Expanded(
           child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.app_close.tr,
-            onPressed: () {
-              Get.back();
-            },
+            title: LocaleKeys.app_save.tr,
+            onPressed: controller.submit,
           ),
         ),
       ],

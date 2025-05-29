@@ -85,7 +85,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       label: LocaleKeys.familyMember_bhxhCode.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          controller: controller.bhxhTextCtrl,
+          controller: controller.bhxhNumberTextCtrl,
           maxLengthInputForm: 10,
           textInputType: TextInputType.number,
           inputFormatters: InputFormatterEnum.digitsOnly,
@@ -127,41 +127,66 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           return;
         }
         controller.birthType.value = value;
+        controller.dateOfBirthCtrl.clear();
       },
     );
   }
 
   Widget _buildSelectDateOfBirth() {
     return UtilWidget.buildSelectDate(
+      inputFormatters: controller.birthType.value.inputFormatter,
+      controller: controller.dateOfBirthCtrl,
       LocaleKeys.familyMember_dob.tr,
       hintText: controller.birthType.value.pattern,
       date: convertDateToStringSafe(
         controller.dateOfBirth.value,
         controller.birthType.value.pattern,
       ),
+      onChanged: (value) {
+        if (value.trim().isEmpty) {
+          controller.dateOfBirth.value = null;
+        }
+      },
       onTap: () async {
         final DateTime? selectedDate;
 
         switch (controller.birthType.value) {
           case BirthTypeEnum.year:
             selectedDate = await UtilWidget.showPeriodDatePicker(
-              dateTime: controller.dateOfBirth.value,
+              dateTime: convertStringToDateSafe(
+                controller.dateOfBirthCtrl.text,
+                controller.birthType.value.pattern,
+              ),
               onlyYear: true,
+              lastDate: DateTime.now(),
             );
             break;
           case BirthTypeEnum.monthYear:
             selectedDate = await UtilWidget.showPeriodDatePicker(
-              dateTime: controller.dateOfBirth.value,
+              dateTime: convertStringToDateSafe(
+                controller.dateOfBirthCtrl.text,
+                controller.birthType.value.pattern,
+              ),
+              lastDate: DateTime.now(),
             );
             break;
           case BirthTypeEnum.full:
             selectedDate = await UtilWidget.showDateTimePicker(
-                dateTimeInit: DateTime.now());
+              dateTimeInit: convertStringToDateSafe(
+                controller.dateOfBirthCtrl.text,
+                controller.birthType.value.pattern,
+              ),
+              maxTime: DateTime.now(),
+            );
             break;
         }
 
         if (selectedDate != null) {
           controller.dateOfBirth.value = selectedDate;
+          controller.dateOfBirthCtrl.text = convertDateToString(
+            selectedDate,
+            controller.birthType.value.pattern,
+          );
         }
       },
     );
@@ -179,33 +204,19 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
               isRequired: true,
             ),
             Expanded(
-              child: RadioListTile<Gender>(
+              child: UtilWidget.buildRadioWithTitle<Gender>(
                 value: Gender.male,
                 groupValue: controller.gender.value,
-                title: SDSBuildText(
-                  LocaleKeys.declareInfo_male.tr,
-                  style: AppTextStyle.font16Re,
-                ),
-                onChanged: (value) {
-                  if (value == null) return;
-                  onChanged?.call(value);
-                },
-                activeColor: AppColors.primaryColor,
+                title: LocaleKeys.declareInfo_male.tr,
+                onChanged: onChanged,
               ),
             ),
             Expanded(
-              child: RadioListTile<Gender>(
+              child: UtilWidget.buildRadioWithTitle<Gender>(
                 value: Gender.female,
                 groupValue: controller.gender.value,
-                title: SDSBuildText(
-                  LocaleKeys.declareInfo_female.tr,
-                  style: AppTextStyle.font16Re,
-                ),
-                onChanged: (value) {
-                  if (value == null) return;
-                  onChanged?.call(value);
-                },
-                activeColor: AppColors.primaryColor,
+                title: LocaleKeys.declareInfo_female.tr,
+                onChanged: onChanged,
               ),
             ),
           ],
@@ -217,16 +228,16 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectEthnic() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<EthnicModel>(
           label: LocaleKeys.familyMember_ethnic.tr,
           hintText: LocaleKeys.familyMember_selectEthnic.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
-              BottomSheetSearch<String>(
+              BottomSheetSearch<EthnicModel>(
                 title: LocaleKeys.familyMember_selectEthnic.tr,
-                listFilter: ['Kinh', 'Thái', 'Tày'],
+                listFilter: AppData.instance.ethnics.toList(),
                 selectedItem: controller.selectedEthnic.value,
-                display: (value) => value,
+                display: (value) => value.text,
                 onAccept: (value) {
                   if (value == null) return;
                   controller.selectedEthnic.value = value;
@@ -237,9 +248,9 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
             );
           },
           selectedItem: controller.selectedEthnic.value,
-          display: (ethnic) => ethnic,
+          display: (ethnic) => ethnic.text,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (controller.selectedEthnic.value == null) {
               return LocaleKeys.familyMember_ethnicCannotEmpty.tr;
             }
             return null;
@@ -252,16 +263,16 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectNationality() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<NationModel>(
           label: LocaleKeys.familyMember_nationality.tr,
           hintText: LocaleKeys.familyMember_selectNationality.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
-              BottomSheetSearch<String>(
+              BottomSheetSearch<NationModel>(
                 title: LocaleKeys.familyMember_selectNationality.tr,
-                listFilter: ['Việt Nam', 'Lào', 'Campuchia'],
+                listFilter: AppData.instance.nations.toList(),
                 selectedItem: controller.selectedNationality.value,
-                display: (value) => value,
+                display: (value) => value.text,
                 onAccept: (value) {
                   if (value == null) return;
                   controller.selectedNationality.value = value;
@@ -272,9 +283,9 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
             );
           },
           selectedItem: controller.selectedNationality.value,
-          display: (ethnic) => ethnic,
+          display: (nation) => nation.text,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (controller.selectedNationality.value == null) {
               return LocaleKeys.familyMember_nationalityCannotEmpty.tr;
             }
             return null;
@@ -299,7 +310,15 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 display: (value) => value.name,
                 onAccept: (value) {
                   if (value == null) return;
+
+                  if (controller.selectedProvince.value != value) {
+                    // Reset district and ward when province changes
+                    controller.selectedDistrict.value = null;
+                    controller.selectedWard.value = null;
+                  }
+
                   controller.selectedProvince.value = value;
+
                   didChange(value);
                 },
               ),
@@ -309,7 +328,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           selectedItem: controller.selectedProvince.value,
           display: (province) => province.name,
           validator: (value) {
-            if (value == null) {
+            if (controller.selectedProvince.value == null) {
               return LocaleKeys.familyMember_provinceOfBirthCannotEmpty.tr;
             }
             return null;
@@ -322,29 +341,40 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectDistrict() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<DistrictModel>(
           label: LocaleKeys.familyMember_districtOfBirth.tr,
           hintText: LocaleKeys.familyMember_selectDistrictOfBirth.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.familyMember_selectDistrictOfBirth.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.selectedDistrict.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  controller.selectedDistrict.value = value;
-                  didChange(value);
-                },
+          funcSelect: (didChange) async {
+            final districtOfBirth = controller.selectedProvince.value;
+            if (districtOfBirth == null) {
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
+              return;
+            }
+
+            final result = await Get.bottomSheet<DistrictModel>(
+              SelectDistrictBts(
+                provinceCode: districtOfBirth.id,
+                selectedDistrict: controller.selectedDistrict.value,
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              if (controller.selectedDistrict.value != result) {
+                // Reset ward when district changes
+                controller.selectedWard.value = null;
+              }
+
+              controller.selectedDistrict.value = result;
+
+              didChange(result);
+            }
           },
           selectedItem: controller.selectedDistrict.value,
-          display: (ethnic) => ethnic,
+          display: (district) => district.name,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (controller.selectedDistrict.value == null) {
               return LocaleKeys.familyMember_districtOfBirthCannotEmpty.tr;
             }
             return null;
@@ -357,29 +387,43 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectWard() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<String>(
+        return UtilWidget.buildBottomSheetSelect<WardModel>(
           label: LocaleKeys.familyMember_wardOfBirth.tr,
           hintText: LocaleKeys.familyMember_selectWardOfBirth.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<String>(
-                title: LocaleKeys.familyMember_selectWardOfBirth.tr,
-                listFilter: ['Phú Thọ', 'Hà Nội', 'Hà Giang'],
-                selectedItem: controller.selectedWard.value,
-                display: (value) => value,
-                onAccept: (value) {
-                  if (value == null) return;
-                  controller.selectedWard.value = value;
-                  didChange(value);
-                },
+          funcSelect: (didChange) async {
+            final provinceOfBirth = controller.selectedProvince.value;
+            if (provinceOfBirth == null) {
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
+              return;
+            }
+
+            final districtOfBirth = controller.selectedDistrict.value;
+            if (districtOfBirth == null) {
+              controller.showSnackBar(
+                  LocaleKeys.declareInfo_districtOfBirthNotSelected.tr);
+              return;
+            }
+
+            final result = await Get.bottomSheet<WardModel>(
+              SelectWardBts(
+                provinceCode: provinceOfBirth.id,
+                districtCode: districtOfBirth.id,
+                selectedWard: controller.selectedWard.value,
               ),
               isScrollControlled: true,
             );
+
+            if (result != null) {
+              controller.selectedWard.value = result;
+
+              didChange(result);
+            }
           },
           selectedItem: controller.selectedWard.value,
-          display: (ethnic) => ethnic,
+          display: (ward) => ward.name,
           validator: (value) {
-            if (value.isNullOrEmpty) {
+            if (controller.selectedWard.value == null) {
               return LocaleKeys.familyMember_wardOfBirthCannotEmpty.tr;
             }
             return null;
@@ -390,12 +434,12 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildDropdownRelationship() {
-    return UtilWidget.buildDropDownWithLabel2<String>(
+    return UtilWidget.buildDropDownWithLabel2<RelationshipModel>(
       label: LocaleKeys.familyMember_relationshipWithHeadOfHousehold.tr,
       hintText:
           LocaleKeys.familyMember_selectRelationshipWithHeadOfHousehold.tr,
-      items: ['Vợ', 'Con trai', 'Con gái'],
-      display: (item) => item,
+      items: AppData.instance.relationships.toList(),
+      display: (item) => item.text,
       selectedItem: controller.relationship.value,
       onChanged: (value) {
         if (value == null) {
@@ -411,7 +455,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       label: LocaleKeys.familyMember_cccdNumber.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          controller: controller.cccdTextCtrl,
+          controller: controller.cccdNumberTextCtrl,
           maxLengthInputForm: 20,
         ),
       ),
@@ -434,16 +478,18 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
     return Row(
       children: [
         Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.app_save.tr,
-            onPressed: controller.onSubmit,
+          child: UtilWidget.buildSolidButtonBack(
+            title: LocaleKeys.app_cancel.tr,
+            onPressed: () {
+              Get.back();
+            },
           ),
         ),
         UtilWidget.sizedBoxWidth16,
         Expanded(
-          child: UtilWidget.buildSolidButtonBack(
-            title: LocaleKeys.app_cancel.tr,
-            onPressed: () {},
+          child: UtilWidget.buildSolidButton(
+            title: LocaleKeys.app_save.tr,
+            onPressed: controller.onSubmit,
           ),
         ),
       ],

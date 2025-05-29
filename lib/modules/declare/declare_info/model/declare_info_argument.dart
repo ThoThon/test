@@ -1,16 +1,14 @@
-import 'package:v_bhxh/modules/declare/declaration_period/model/model_src.dart';
-
-enum DeclareInfoAction {
-  create,
-  edit,
-}
-
 class DeclareInfoArgument {
-  final DeclareInfoAction action;
-  final DeclarationPeriod? period;
+  /// id kỳ kê khai
+  final String declarationPeriodId;
+
+  /// id của nhân viên trong kỳ khai
+  final String? staffId;
 
   const DeclareInfoArgument({
-    required this.action,
-    this.period,
+    required this.declarationPeriodId,
+    this.staffId,
   });
+
+  bool get isUpdate => staffId != null;
 }

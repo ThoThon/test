@@ -58,8 +58,30 @@ class DeclarationPeriodController extends BaseGetxController {
       title: 'Xóa "${period.period}"',
       content: 'Xóa đợt kê khai cũng sẽ xóa toàn bộ dữ liệu của đợt kê khai',
       confirmTitle: 'Xóa',
-      onConfirm: () {},
+      onConfirm: () {
+        deleteDeclarationPeriod(period);
+      },
     );
+  }
+
+  Future<void> deleteDeclarationPeriod(DeclarationPeriod period) async {
+    try {
+      showLoadingOverlay();
+      final response = await _repository.deleteDeclarationPeriod(
+        id: period.id,
+      );
+
+      if (response.isSuccess) {
+        showSnackBar('Xóa đợt kê khai thành công');
+        getDeclarationPeriods();
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 
   Future<void> createDeclarationPeriod() async {
@@ -76,8 +98,8 @@ class DeclarationPeriodController extends BaseGetxController {
       if (response.isSuccess && response.result != null) {
         Get.toNamed(
           AppRoutes.declareInfo.path,
-          arguments: const DeclareInfoArgument(
-            action: DeclareInfoAction.create,
+          arguments: DeclareInfoArgument(
+            declarationPeriodId: response.result!.id,
           ),
         );
       }

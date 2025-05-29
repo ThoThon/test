@@ -12,7 +12,7 @@ class LoginController extends BaseGetxController {
   final formKey = GlobalKey<FormState>();
   // Username test : sd8888k17
   // Password test : Viettel@789
-  final usernameTextCtrl = TextEditingController();
+  final usernameTextCtrl = TextEditingController(text: 'sd8888k17');
   final passwordTextCtrl = TextEditingController(text: 'Viettel@789');
   final isHaveUsername = false.obs;
   final appController = Get.find<AppController>();
@@ -91,11 +91,9 @@ class LoginController extends BaseGetxController {
     try {
       final res = await _loginRepository.getAccountInfo();
       if (res.code == AppConst.statusCodeSuccess && res.result != null) {
-        appController.accountInfoModel = res.result;
+        AppData.instance.accountInfoModel.value = res.result;
         //Lưu tên tổ chức lại để hiện ngoài màn login
-        if (res.result != null) {
-          hiveApp.put(HiveKeys.keyCompanyName, res.result?.tenToChuc);
-        }
+        hiveApp.put(HiveKeys.keyCompanyName, res.result?.tenToChuc);
       }
     } catch (e) {
       logger.d(e);
@@ -112,8 +110,8 @@ class LoginController extends BaseGetxController {
           ..ethnics = d02Categories.ethnics
           ..nations = d02Categories.nations
           ..provinces = d02Categories.provinces
-          ..adjustmentPlans = d02Categories.adjustmentPlans
-          ..relationships = d02Categories.relationships;
+          ..relationships = d02Categories.relationships
+          ..positions = d02Categories.positions;
       }
     } catch (e) {
       logger.d(e);

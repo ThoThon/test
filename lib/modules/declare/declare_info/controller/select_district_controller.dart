@@ -37,7 +37,6 @@ class SelectDistrictController extends BaseGetxController {
       );
       if (response.isSuccess) {
         districts.value = response.result;
-        cachedDistricts[provinceCode] = response.result;
       } else {
         showSnackBar(
           response.errorMessage ?? LocaleKeys.app_someThingWentWrong.tr,
