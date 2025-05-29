@@ -223,16 +223,34 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildInputBHXHCode() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_bhxhCode.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.d02Tk1State.bhxhTextCtrl,
-          maxLengthInputForm: 10,
-          inputFormatters: InputFormatterEnum.digitsOnly,
-          textInputType: TextInputType.number,
-        ),
-      ),
+    return Obx(
+      () {
+        final isRequired = controller.isBhxhCodeRequired;
+        return BuildInputTextWithLabel(
+          label: LocaleKeys.declareInfo_bhxhCode.tr,
+          buildInputText: BuildInputText(
+            InputTextModel(
+              controller: controller.d02Tk1State.bhxhTextCtrl,
+              maxLengthInputForm: 10,
+              inputFormatters: InputFormatterEnum.digitsOnly,
+              textInputType: TextInputType.number,
+              isValidate: isRequired,
+              validator: (value) {
+                if (!isRequired) {
+                  return null;
+                }
+
+                final trimmedValue = value?.trim();
+                if (trimmedValue == null || trimmedValue.isEmpty) {
+                  return LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr;
+                }
+
+                return null;
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 

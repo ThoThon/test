@@ -287,6 +287,7 @@
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
     "selectStaff": "Chọn nhân viên",
     "bhxhCode": "Mã số BHXH",
+    "bhxhCodeCannotEmpty": "Mã số BHXH không được bỏ trống",
     "declarationType": "Loại khai báo",
     "selectDeclarationType": "Chọn loại khai báo",
     "plan": "Phương án",
@@ -370,9 +371,9 @@
     "districtTTNotSelected": "Chưa chọn huyện thường trú",
     "next": "Tiếp theo",
     "saveDataSuccess": "Lưu dữ liệu thành công",
-    "inputProvince":"Nhập tỉnh/thành phố",
-    "inputDistrict":"Nhập quận/huyện",
-    "inputWard":"Nhập phường/xã"
+    "inputProvince": "Nhập tỉnh/thành phố",
+    "inputDistrict": "Nhập quận/huyện",
+    "inputWard": "Nhập phường/xã"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",
