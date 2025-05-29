@@ -1,3 +1,4 @@
+import 'package:v_bhxh/base_app/model/base_model.src.dart';
 import 'package:v_bhxh/modules/info_unit/models/update_account_info_request.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -6,7 +7,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   @override
   void onInit() {
     super.onInit();
-    accountInfo = appController.accountInfoModel;
+    accountInfo = AppData.instance.accountInfoModel.value;
     fetchDataAccountInfo();
   }
 
@@ -77,8 +78,15 @@ class UnitInfoControllerImpICare extends UnitInfoController {
           title: LocaleKeys.dialog_updateSuccess.tr,
           textBtnRight: LocaleKeys.unitInfo_home.tr,
           activeIcon: true,
-          onPressed: () {
-            Get.offAllNamed(AppRoutes.pageBuilder.path);
+          onPressed: () async {
+            await _getAccountInfo();
+            Get.offAllNamed(
+              AppRoutes.pageBuilder.path,
+            );
+          },
+          funcBack: () async {
+            await _getAccountInfo();
+            Get.back();
           },
         );
       },
@@ -86,5 +94,16 @@ class UnitInfoControllerImpICare extends UnitInfoController {
         showSnackBar("Có lỗi xảy ra, vui lòng thử lại");
       },
     );
+  }
+
+  Future<void> _getAccountInfo() async {
+    try {
+      final res = await unitInfoRepository.getAccountInfo();
+      if (res.code == AppConst.statusCodeSuccess && res.result != null) {
+        AppData.instance.accountInfoModel.value = res.result;
+      }
+    } catch (e) {
+      logger.d(e);
+    }
   }
 }
