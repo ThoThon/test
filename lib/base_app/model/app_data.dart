@@ -9,4 +9,5 @@ class AppData {
   var nations = <NationModel>{};
   var provinces = <ProvinceModel>{};
   var relationships = <RelationshipModel>{};
+  var positions = <PositionModel>{};
 }
