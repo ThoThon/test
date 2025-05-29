@@ -17,7 +17,7 @@
 - [Appmobile]_D02-LT_Sinh tự động checkbox trường sinh dữ liệu tờ khai TK1-TS đối với một số phương án - BHW-2243
 - [AppMobile] - Màn D02: Trường hợp Mã BHXH là trường bắt buộc - BHW-2242
 - [AppMobile] - Trường Chức vụ: Thiếu tính năng chọn trong combobox - BHW-2245
-
+- [AppMobile] - Trường Giới tính: Chưa bắt validate là trường bắt buộc - BHW-2240
 
 28/05/2025:
 - [Appmobile]_Chức năng quét CCCD lấy thông tin cá nhân để kê khai - BHW-2144
