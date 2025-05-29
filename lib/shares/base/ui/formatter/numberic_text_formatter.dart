@@ -15,11 +15,14 @@ class NumericTextFormatter extends TextInputFormatter {
   // Độ dài số nguyên
   final int? maxLengthNum;
 
+  final dynamic customMaxValue;
+
   NumericTextFormatter({
     this.type = 0,
     this.isDot = true,
     this.maxLengthNum,
     this.lastDecimal,
+    this.customMaxValue,
   });
 
   @override
@@ -47,6 +50,7 @@ class NumericTextFormatter extends TextInputFormatter {
               isDot: isDot,
               maxLengthNum: maxLengthNum,
               lastDecimal: lastDecimal,
+              customMaxValue: customMaxValue,
             );
       return TextEditingValue(
         text: newString,
