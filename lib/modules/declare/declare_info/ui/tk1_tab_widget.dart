@@ -16,6 +16,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    UtilWidget.sizedBox16,
                     _buildInputFullName(),
                     UtilWidget.sizedBox16,
                     _buildInputBHXHCode(),

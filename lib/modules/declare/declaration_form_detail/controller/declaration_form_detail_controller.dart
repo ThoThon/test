@@ -74,7 +74,8 @@ class DeclarationFormDetailController extends BaseGetxController {
     if (formKey.currentState?.validate() ?? false) {
       Get.back(
         result: DeclarationForm(
-          id: generateUuid(),
+          // Khi sửa bảng kê ở local hoặc DB thì sẽ giữ id cũ
+          id: argument?.id ?? generateUuid(),
           fullName: fullNameTextCtrl.text.trim(),
           bhxhNumber: bhxhTextCtrl.text.trim(),
           documentType: documentTypeTextCtrl.text.trim(),
@@ -84,6 +85,9 @@ class DeclarationFormDetailController extends BaseGetxController {
           issuingAgency: issuingAgencyTextCtrl.text.trim(),
           summary: summaryTextCtrl.text.trim(),
           contentToBeAssessed: contentToBeAssessedTextCtrl.text.trim(),
+          // Khi update bảng kê ở DB thì sẽ truyền isUpdate = true
+          // Cần keep trạng thái isUpdate để tránh tạo mới
+          isUpdate: argument?.isUpdate ?? false,
         ),
       );
     }

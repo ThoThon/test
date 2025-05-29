@@ -17,7 +17,7 @@ class NumericTextFormatter extends TextInputFormatter {
 
   NumericTextFormatter({
     this.type = 0,
-    this.isDot = false,
+    this.isDot = true,
     this.maxLengthNum,
     this.lastDecimal,
   });

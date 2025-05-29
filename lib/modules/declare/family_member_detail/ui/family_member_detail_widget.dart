@@ -204,33 +204,19 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
               isRequired: true,
             ),
             Expanded(
-              child: RadioListTile<Gender>(
+              child: UtilWidget.buildRadioWithTitle<Gender>(
                 value: Gender.male,
                 groupValue: controller.gender.value,
-                title: SDSBuildText(
-                  LocaleKeys.declareInfo_male.tr,
-                  style: AppTextStyle.font16Re,
-                ),
-                onChanged: (value) {
-                  if (value == null) return;
-                  onChanged?.call(value);
-                },
-                activeColor: AppColors.primaryColor,
+                title: LocaleKeys.declareInfo_male.tr,
+                onChanged: onChanged,
               ),
             ),
             Expanded(
-              child: RadioListTile<Gender>(
+              child: UtilWidget.buildRadioWithTitle<Gender>(
                 value: Gender.female,
                 groupValue: controller.gender.value,
-                title: SDSBuildText(
-                  LocaleKeys.declareInfo_female.tr,
-                  style: AppTextStyle.font16Re,
-                ),
-                onChanged: (value) {
-                  if (value == null) return;
-                  onChanged?.call(value);
-                },
-                activeColor: AppColors.primaryColor,
+                title: LocaleKeys.declareInfo_female.tr,
+                onChanged: onChanged,
               ),
             ),
           ],
@@ -492,18 +478,18 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
     return Row(
       children: [
         Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.app_save.tr,
-            onPressed: controller.onSubmit,
-          ),
-        ),
-        UtilWidget.sizedBoxWidth16,
-        Expanded(
           child: UtilWidget.buildSolidButtonBack(
             title: LocaleKeys.app_cancel.tr,
             onPressed: () {
               Get.back();
             },
+          ),
+        ),
+        UtilWidget.sizedBoxWidth16,
+        Expanded(
+          child: UtilWidget.buildSolidButton(
+            title: LocaleKeys.app_save.tr,
+            onPressed: controller.onSubmit,
           ),
         ),
       ],

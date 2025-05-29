@@ -1101,4 +1101,36 @@ class UtilWidget {
       ],
     );
   }
+
+  static Widget buildRadioWithTitle<T>({
+    required String title,
+    required T value,
+    T? groupValue,
+    required ValueChanged<T>? onChanged,
+  }) {
+    return InkWell(
+      onTap: () {
+        onChanged?.call(value);
+      },
+      child: Row(
+        children: [
+          Radio<T>(
+            value: value,
+            groupValue: groupValue,
+            onChanged: (value) {
+              if (value == null) return;
+              onChanged?.call(value);
+            },
+            activeColor: AppColors.primaryColor,
+          ),
+          Expanded(
+            child: SDSBuildText(
+              title,
+              style: AppTextStyle.font16Re,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

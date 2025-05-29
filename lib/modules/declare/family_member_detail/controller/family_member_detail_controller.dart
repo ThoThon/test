@@ -22,7 +22,7 @@ class FamilyMemberDetailController extends BaseGetxController {
   /// Ghi chú
   final noteTextCtrl = TextEditingController();
 
-  final birthType = BirthTypeEnum.full.obs;
+  final birthType = BirthTypeEnum.defaultValue.obs;
 
   /// Ngày sinh
   final dateOfBirth = Rxn<DateTime>();
@@ -86,7 +86,8 @@ class FamilyMemberDetailController extends BaseGetxController {
       // Note: đã validate các trường required nên có thể force null
       Get.back(
         result: FamilyMember(
-          id: generateUuid(),
+          // Khi sửa thành viên ở local hoặc DB thì sẽ giữ id cũ
+          id: argument?.id ?? generateUuid(),
           fullName: fullNameTextCtrl.text.trim(),
           bhxhNumber: bhxhNumberTextCtrl.text.trim(),
           cccdNumber: cccdNumberTextCtrl.text.trim(),
@@ -101,6 +102,9 @@ class FamilyMemberDetailController extends BaseGetxController {
           ward: selectedWard.value!,
           relationship: relationship.value!,
           isParticipant: isParticipant.value,
+          // Khi update thành viên ở DB thì sẽ truyền isUpdate = true
+          // Cần keep trạng thái isUpdate để tránh tạo mới
+          isUpdate: argument?.isUpdate ?? false,
         ),
       );
     }

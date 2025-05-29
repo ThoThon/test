@@ -3,6 +3,8 @@ import 'package:v_bhxh/core/enum/enum_request_method.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/core/values/const.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
@@ -122,5 +124,33 @@ class DeclareInfoRepository extends BaseRepository {
     );
 
     return BaseResponse.fromJson(response);
+  }
+
+  Future<BaseResponse> updateD02({
+    required UpdateD02Request request,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlUpdateD02,
+      EnumRequestMethod.post,
+      jsonMap: request.toJson(),
+    );
+
+    return BaseResponse.fromJson(response);
+  }
+
+  Future<BaseResponse<DeclareInfoDetailResponse>> getD02Detail({
+    required String id,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlGetD02Detail,
+      EnumRequestMethod.get,
+      jsonMap: {
+        "key": id,
+      },
+    );
+    return BaseResponse<DeclareInfoDetailResponse>.fromJson(
+      response,
+      fromJson: (json) => DeclareInfoDetailResponse.fromJson(json),
+    );
   }
 }

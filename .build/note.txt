@@ -1,4 +1,6 @@
 29/05/2025:
+- [api] - Bổ sung giao diện Đợt kê khai - sửa - chỉnh sửa từng bản ghi cho từng nhân viên - BHW-2152
+- Sửa nhân viên cho từng đợt kê khai
 - [AppMobile] - Màn D02-LT: Danh sách nhân viên: Trả ra Tên +Mã BHXH - BHW-2201
 - [AppMobile] - Màn D02-LT: Lưu không thành công khi chọn ngày sinh trong tương lai - BHW-2195
 - [AppMobile] - Màn D02-LT, TK1-TS: Các trường chọn trong danh sách: Chỉnh sửa hiển thị nút button "Xác nhận" - BHW-2196
@@ -14,6 +16,11 @@
 - [api] - Bổ sung giao diện Upload file đính kèm - BHW-2158
 - Thêm, sửa, xóa bảng kê khi kê khai mới thông tin
 - [AppMobile]_D02-LT_Chọn nhân viên - BHW-2184
+- [api] - Bổ sung giao diện Lưu đợt và tạo file xml - BHW-2157
+- [AppMobile] - Màn D02-LT: Trường [Từ tháng/năm] và [Đến tháng/năm] ->Bỏ hiển thị (*) là trường bắt buộc - BHW-2189
+- [api] - Bổ sung giao diện Màn kê khai thông tin - BHW-2151
+- [AppMobile] - Màn D02-LT, TK1-TS: Sai giá trị mặc định ban đầu Checkbox GIỚI TÍNH - BHW-2188
+
 
 27/05/2025:
 - [api] - Bổ sung giao diện Danh sách bệnh viện theo tỉnh - BHW-2167

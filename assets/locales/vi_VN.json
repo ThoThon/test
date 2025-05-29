@@ -268,6 +268,7 @@
     "period": "Đợt",
     "statusNotYet": "Chưa kê khai",
     "statusDraft": "Lưu nháp",
+    "statusSaved": "Đã lưu",
     "statusSent": "Đã gửi",
     "statusPending": "Đang chờ xử lý",
     "statusFailed": "Thất bại",

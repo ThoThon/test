@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:path/path.dart';
+import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/repository/staff_list_repository.dart';
 import 'package:v_bhxh/modules/src.dart';
@@ -97,5 +98,40 @@ class StaffListController extends BaseGetxController {
     } catch (e) {
       logger.d(e);
     } finally {}
+  }
+
+  Future<void> saveXml() async {
+    try {
+      showLoadingOverlay();
+
+      final response = await _repository.saveXml(
+        // declarationPeriodId: declarationPeriodId,
+        declarationPeriodId: '2137a2ed81074c3e8b934abf5770e100',
+      );
+
+      if (response.isSuccess && response.result != null) {
+        Get.toNamed(
+          AppRoutes.declarationList.path,
+          arguments: DeclarationListArgument(
+            declarationPeriodId: declarationPeriodId,
+            saveXmlResult: response.result!,
+          ),
+        );
+      } else {
+        showSnackBar(response.errorMessage);
+
+        Get.toNamed(
+          AppRoutes.declarationList.path,
+          arguments: DeclarationListArgument(
+            declarationPeriodId: declarationPeriodId,
+            saveXmlResult: const SaveXmlResult(),
+          ),
+        );
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 }

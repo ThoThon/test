@@ -142,7 +142,7 @@ class CurrencyUtils {
 
   static double formatNumberCurrency(
     String text, {
-    bool isDot = false,
+    bool isDot = true,
   }) {
     if (text.isEmpty || text == '-') return 0;
     if (isDot) {
@@ -161,7 +161,7 @@ class CurrencyUtils {
   ///Hỗ trợ số thập phân
   static String formatCurrencyForeign(
     dynamic number, {
-    bool isDot = false,
+    bool isDot = true,
     bool isCheckError = false,
     int? lastDecimal,
     int? maxLengthNum,
