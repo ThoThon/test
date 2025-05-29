@@ -666,7 +666,13 @@ extension Tk1TabWidget on DeclareInfoPage {
           ),
           IconButton(
             onPressed: () {
-              controller.deleteFamilyMember(member.id);
+              ShowDialog.showDialogConfirm2(
+                title: 'Xóa thành viên đã chọn',
+                confirmTitle: 'Xóa',
+                onConfirm: () {
+                  controller.deleteFamilyMember(member);
+                },
+              );
             },
             icon: const Icon(Icons.clear, color: AppColors.statusRed),
           ),
