@@ -14,8 +14,6 @@ class SelectStaffRepository extends BaseRepository {
       EnumRequestMethod.post,
       jsonMap: request.toJson(),
     );
-    logger.d(response);
-    logger.d(request.toJson());
     return BaseResponse<StaffListResponse>.fromJson(
       response,
       fromJson: (json) => StaffListResponse.fromJson(json),

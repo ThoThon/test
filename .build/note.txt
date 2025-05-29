@@ -18,6 +18,7 @@
 - [AppMobile] - Màn D02: Trường hợp Mã BHXH là trường bắt buộc - BHW-2242
 - [AppMobile] - Trường Chức vụ: Thiếu tính năng chọn trong combobox - BHW-2245
 - [AppMobile] - Trường Giới tính: Chưa bắt validate là trường bắt buộc - BHW-2240
+- [AppMobile]_Giao diện màn thông báo - BHW-2132
 
 28/05/2025:
 - [Appmobile]_Chức năng quét CCCD lấy thông tin cá nhân để kê khai - BHW-2144

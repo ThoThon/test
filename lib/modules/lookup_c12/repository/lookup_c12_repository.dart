@@ -12,7 +12,6 @@ class LookupC12Repository extends BaseRepository {
       EnumRequestMethod.get,
       jsonMap: {'year': year},
     );
-    logger.d(response);
     return BaseResponseList<FileC12Model>.fromJson(
       response,
       (json) => FileC12Model.fromJson(json),

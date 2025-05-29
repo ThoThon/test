@@ -11,6 +11,8 @@ class PageBuilderController extends BaseGetxController {
     initialPage: _defaultPageIndex,
   );
 
+  final appController = Get.find<AppController>();
+
   void changePage(int index) {
     pageIndex.value = index;
     pageController.jumpToPage(index);

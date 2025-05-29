@@ -40,7 +40,7 @@ class HistoryController extends BaseRefreshGetxController {
     final request = _buildRequest(isLoadMore: isLoadMore);
     try {
       final response = await historyRepository.getHistory(request);
-      if (response.result!.historyResults.isNotEmpty) {
+      if (response.result != null && response.isSuccess) {
         listHistory.addAll(response.result!.historyResults);
         page = request.pageIndex;
       }

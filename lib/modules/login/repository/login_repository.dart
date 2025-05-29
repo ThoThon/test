@@ -47,4 +47,13 @@ class LoginRepository extends BaseRepository {
       fromJson: (json) => D02Categories.fromJson(json),
     );
   }
+
+  // Lấy số thông báo chưa được đọc
+  Future<BaseResponse<int>> getToTalNotiUnread() async {
+    final response = await baseCallApi(
+      AppApi.urlGetNotificationUnread,
+      EnumRequestMethod.get,
+    );
+    return BaseResponse<int>.fromJson(response);
+  }
 }
