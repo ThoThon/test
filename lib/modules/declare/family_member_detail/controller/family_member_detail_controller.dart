@@ -84,6 +84,7 @@ class FamilyMemberDetailController extends BaseGetxController {
       // Note: đã validate các trường required nên có thể force null
       Get.back(
         result: FamilyMember(
+          // Khi sửa thành viên thì sẽ giữ id cũ
           id: argument?.id ?? generateUuid(),
           fullName: fullNameTextCtrl.text.trim(),
           bhxhNumber: bhxhNumberTextCtrl.text.trim(),
@@ -99,6 +100,8 @@ class FamilyMemberDetailController extends BaseGetxController {
           ward: selectedWard.value!,
           relationship: relationship.value!,
           isParticipant: isParticipant.value,
+          // Khi update thành viên ở DB thì sẽ truyền isUpdate = true
+          // Cần keep trạng thái isUpdate để tránh tạo mới
           isUpdate: argument?.isUpdate ?? false,
         ),
       );
