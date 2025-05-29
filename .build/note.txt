@@ -12,6 +12,7 @@
 - [AppMobile] - Màn D02-LT: Đồng nhất hiển thị lỗi cho trường CCCD khi để trống - BHW-2211
 - [api] - Bổ sung giao diện xóa thành viên phụ lục - BHW-2156
 - [api] - Bổ sung giao diện Xóa D01 màn kê khai thông tin - BHW-2149
+- [api] - Bổ sung giao diện Xóa Kỳ kê khai - BHW-2249
 
 
 28/05/2025:
