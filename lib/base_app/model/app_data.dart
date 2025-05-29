@@ -8,6 +8,5 @@ class AppData {
   var ethnics = <EthnicModel>{};
   var nations = <NationModel>{};
   var provinces = <ProvinceModel>{};
-  var adjustmentPlans = <AdjustmentPlanModel>{};
   var relationships = <RelationshipModel>{};
 }

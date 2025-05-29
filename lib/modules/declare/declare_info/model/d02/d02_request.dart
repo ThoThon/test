@@ -26,6 +26,7 @@ class D02Request {
   final double? phuCapLuong;
   final double? phuCapBoSung;
   final String? ghiChu;
+  final bool xuatD01;
 
   const D02Request({
     this.id,
@@ -51,6 +52,7 @@ class D02Request {
     this.phuCapLuong,
     this.phuCapBoSung,
     this.ghiChu,
+    required this.xuatD01,
   });
 
   Map<String, dynamic> toJson() {
@@ -78,6 +80,7 @@ class D02Request {
       'phuCapLuong': phuCapLuong,
       'phuCapBoSung': phuCapBoSung,
       'ghiChu': ghiChu,
+      'xuatD01': xuatD01,
     };
   }
 
@@ -87,6 +90,7 @@ class D02Request {
     required D02State d02State,
   }) {
     return D02Request(
+      id: d02State.id,
       kyKeKhaiId: kyKeKhaiId,
       hoTen: d02Tk1State.fullNameTextCtrl.text.trim(),
       maSoBhxh: d02Tk1State.bhxhTextCtrl.text.trim(),
@@ -104,29 +108,24 @@ class D02Request {
       noiLamViec: d02State.workplaceTextCtrl.text.trim(),
       tienLuong: CurrencyUtils.formatNumberCurrency(
         d02State.salaryCoefficientTextCtrl.text,
-        isDot: true,
       ),
       phuCapChucVu: CurrencyUtils.formatNumberCurrency(
         d02State.positionAllowanceTextCtrl.text,
-        isDot: true,
       ),
       phuCapThamNienVuotKhung: CurrencyUtils.formatNumberCurrency(
         d02State.pcTNVuotKhungTextCtrl.text,
-        isDot: true,
       ),
       phuCapThamNienNghe: CurrencyUtils.formatNumberCurrency(
         d02State.pcTNNTextCtrl.text,
-        isDot: true,
       ),
       phuCapLuong: CurrencyUtils.formatNumberCurrency(
         d02State.salaryAllowanceTextCtrl.text,
-        isDot: true,
       ),
       phuCapBoSung: CurrencyUtils.formatNumberCurrency(
         d02State.otherAllowanceTextCtrl.text,
-        isDot: true,
       ),
       ghiChu: d02State.noteTextCtrl.text.trim(),
+      xuatD01: d02State.isGenerateD01Data.value,
     );
   }
 }
