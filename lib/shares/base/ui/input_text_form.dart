@@ -101,6 +101,17 @@ class BuildInputTextState extends State<BuildInputText> {
           FilteringTextInputFormatter.digitsOnly,
           DateInputFormatter(),
         ];
+      case InputFormatterEnum.percent:
+        return [
+          NumericTextFormatter(
+            type: 1,
+            isDot: true,
+            lastDecimal: 2,
+            maxLengthNum: 2,
+            // Set max value thành 99.99 thì khi nhập max lại là 100
+            customMaxValue: 99,
+          ),
+        ];
       default:
         return [
           LengthLimitingTextFieldFormatterFixed(

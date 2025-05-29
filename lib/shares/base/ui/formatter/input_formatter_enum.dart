@@ -49,4 +49,7 @@ class InputFormatterEnum {
 
   /// 16 : Nhập ngày/tháng/năm không giới hạn year
   static const int dateFull = 16;
+
+  /// 17 : phần trăm có thập phân 0 -> 99.99
+  static const int percent = 17;
 }
