@@ -101,6 +101,10 @@ class DeclareInfoController extends BaseGetxController {
     return false;
   }
 
+  bool get isGenderRequired {
+    return d02State.isGenerateD01Data.value || d02State.isGenerateTk1Data.value;
+  }
+
   /// Kiểm tra xem có hiển thị nút Tiếp theo hay không
   ///
   /// Chỉ hiển thị nút tiếp theo nếu đang không phải tab cuối cùng được hiển thị
@@ -221,6 +225,12 @@ class DeclareInfoController extends BaseGetxController {
   DeclareInfoTab? get _invalidTab {
     if (d02State.formKey.currentState?.validate() != true) {
       d02State.autoValidateMode.value = AutovalidateMode.always;
+      return DeclareInfoTab.d02;
+    }
+
+    // REF: BHW-2240
+    if (isGenderRequired && d02Tk1State.gender.value == null) {
+      showSnackBar(LocaleKeys.declareInfo_genderCannotEmpty.tr);
       return DeclareInfoTab.d02;
     }
 

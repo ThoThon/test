@@ -303,6 +303,7 @@
     "cccdNumberIsValid": "Số CCCD phải có đủ 12 số",
     "dob": "Ngày sinh",
     "gender": "Giới tính",
+    "genderCannotEmpty": "Giới tính không được bỏ trống",
     "male": "Nam",
     "female": "Nữ",
     "ethnic": "Dân tộc",

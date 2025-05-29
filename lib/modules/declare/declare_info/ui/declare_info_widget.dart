@@ -261,9 +261,13 @@ extension DeclareInfoWidget on DeclareInfoPage {
       children: [
         Row(
           children: [
-            _buildInputTitle(
-              title: LocaleKeys.declareInfo_gender.tr,
-              isRequired: true,
+            Obx(
+              () {
+                return _buildInputTitle(
+                  title: LocaleKeys.declareInfo_gender.tr,
+                  isRequired: controller.isGenderRequired,
+                );
+              },
             ),
             Expanded(
               child: UtilWidget.buildRadioWithTitle<Gender>(

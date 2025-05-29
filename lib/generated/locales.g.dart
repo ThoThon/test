@@ -317,6 +317,7 @@ class LocaleKeys {
   static const declareInfo_cccdNumberIsValid = 'declareInfo_cccdNumberIsValid';
   static const declareInfo_dob = 'declareInfo_dob';
   static const declareInfo_gender = 'declareInfo_gender';
+  static const declareInfo_genderCannotEmpty = 'declareInfo_genderCannotEmpty';
   static const declareInfo_male = 'declareInfo_male';
   static const declareInfo_female = 'declareInfo_female';
   static const declareInfo_ethnic = 'declareInfo_ethnic';
@@ -878,6 +879,7 @@ class Locales {
     'declareInfo_cccdNumberIsValid': 'Số CCCD phải có đủ 12 số',
     'declareInfo_dob': 'Ngày sinh',
     'declareInfo_gender': 'Giới tính',
+    'declareInfo_genderCannotEmpty': 'Giới tính không được bỏ trống',
     'declareInfo_male': 'Nam',
     'declareInfo_female': 'Nữ',
     'declareInfo_ethnic': 'Dân tộc',
