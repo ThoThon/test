@@ -4,34 +4,40 @@ import '../../src.dart';
 import '../notification_src.dart';
 
 class NotificationController extends BaseRefreshGetxController {
-  late final notificationRepository = NotificationRepository(this);
+  late final _notificationRepository = NotificationRepository(this);
 
   final listNotification = <NotificationItemModel>[].obs;
 
   int page = AppConst.defaultPageNumber;
 
-  // Future<void> fetchListNotification({bool isLoadMore = false}) async {
-  //   if (!isLoadMore) {
-  //     showLoading();
-  //   }
-  //   try {
-  //     final res = await notificationRepository.fetchNotification(
-  //       pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
-  //       pageSize: AppConst.defaultPageSize,
-  //     );
-  //     if (res.result != null && res.isSuccess) {
-  //       listNotification.addAll(res.result!.data);
-  //     }
-  //   } catch (e) {
-  //     logger.d(e);
-  //   } finally {
-  //     hideLoading();
-  //   }
-  // }
+  @override
+  void onInit() {
+    super.onInit();
+    fetchListNotification();
+  }
+
+  Future<void> fetchListNotification({bool isLoadMore = false}) async {
+    if (!isLoadMore) {
+      showLoading();
+    }
+    try {
+      final res = await _notificationRepository.fetchNotification(
+        pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
+        pageSize: AppConst.defaultPageSize,
+      );
+      if (res.result != null && res.isSuccess) {
+        listNotification.addAll(res.result!.data);
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      hideLoading();
+    }
+  }
 
   Future<void> readNotification(String id) async {
     try {
-      final res = await notificationRepository.readNotification(id);
+      final res = await _notificationRepository.readNotification(id);
       if (res.result != null && res.isSuccess) {
         // fetchListNotification(isLoadMore: true);
         update();
@@ -43,14 +49,14 @@ class NotificationController extends BaseRefreshGetxController {
 
   @override
   Future<void> onLoadMore() async {
-    // await fetchListNotification(isLoadMore: true);
+    await fetchListNotification(isLoadMore: true);
     refreshController.loadComplete();
   }
 
   @override
   Future<void> onRefresh() async {
     listNotification.clear();
-    // await fetchListNotification();
+    await fetchListNotification();
     refreshController.refreshCompleted();
   }
 
@@ -71,7 +77,29 @@ class NotificationController extends BaseRefreshGetxController {
     }
   }
 
-  // void onTapReadNoti(){
-  //   final notification
-  // }
+  void readNoti(NotificationItemModel item) {
+    // Khi onTap thì đổi status = 2 ở local rồi mới đến call API
+    if (item.status == 1) {
+      item.status = 2;
+      listNotification.refresh();
+      if (AppData.instance.totalUnread.value > 0) {
+        AppData.instance.totalUnread.value =
+            AppData.instance.totalUnread.value - 1;
+      }
+      readNotification(item.id);
+    }
+  }
+
+  Future<void> readAllNotification() async {
+    try {
+      if(AppData.instance.totalUnread.value > 0){
+        final res = await _notificationRepository.readAllNotification();
+        if (res.isSuccess) {
+          AppData.instance.totalUnread.value = 0;
+        }
+      }
+    } catch (e) {
+      logger.d(e);
+    }
+  }
 }

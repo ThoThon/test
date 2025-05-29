@@ -15,14 +15,19 @@ class NotificationPage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: const BaseAppBar(
+      appBar: BaseAppBar(
         title: BaseAppBarTitle(
-          title: "Thông báo",
+          title: LocaleKeys.pageBuilder_notification.tr,
         ),
         actions: [
-          Icon(
-            Icons.check_outlined,
-            color: AppColors.primaryColor,
+          IconButton(
+            onPressed: () {
+              controller.readAllNotification();
+            },
+            icon: const Icon(
+              Icons.check_outlined,
+              color: AppColors.primaryColor,
+            ),
           ),
           sdsSBWidth16,
         ],

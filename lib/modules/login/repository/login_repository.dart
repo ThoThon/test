@@ -3,8 +3,6 @@ import 'package:v_bhxh/base_app/repository_base/base_repository.dart';
 import 'package:v_bhxh/core/enum/enum_request_method.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
 
-import '../../../shares/function/logger.dart';
-import '../../notification/model/notification_model.dart';
 import '../model/model_src.dart';
 
 class LoginRepository extends BaseRepository {
@@ -50,22 +48,12 @@ class LoginRepository extends BaseRepository {
     );
   }
 
-  Future<BaseResponse<NotificationModel>> fetchNotification({
-    required int pageIndex,
-    required int pageSize,
-  }) async {
+  // Lấy số thông báo chưa được đọc
+  Future<BaseResponse<int>> getToTalNotiUnread() async {
     final response = await baseCallApi(
-      AppApi.urlGetNotification,
+      AppApi.urlGetNotificationUnread,
       EnumRequestMethod.get,
-      jsonMap: {
-        'pageIndex': pageIndex,
-        'pageSize': pageSize,
-      },
     );
-    logger.d(response);
-    return BaseResponse<NotificationModel>.fromJson(
-      response,
-      fromJson: (json) => NotificationModel.fromJson(json),
-    );
+    return BaseResponse<int>.fromJson(response);
   }
 }

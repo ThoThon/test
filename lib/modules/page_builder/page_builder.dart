@@ -1,3 +1,4 @@
+import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/notification/ui/notification_page.dart';
 import 'package:v_bhxh/modules/src.dart';
@@ -53,85 +54,59 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
     );
   }
 
-  // BottomNavigationBarItem _buildItem({
-  //   required int index,
-  //   required String assetName,
-  //   required String label,
-  // }) {
-  //   return BottomNavigationBarItem(
-  //     icon: SDSImageSvg(
-  //       assetName,
-  //       color: index == controller.pageIndex.value
-  //           ? AppColors.primaryColor
-  //           : AppColors.basicGrey1,
-  //     ),
-  //     label: label,
-  //   );
-  // }
-
   BottomNavigationBarItem _buildItem({
     required int index,
     required String assetName,
     required String label,
   }) {
-    if (index == 2) {
-      return BottomNavigationBarItem(
-        icon: Obx(() {
-          final unreadCount = controller.appController.totalUnread;
-          return Stack(
-            clipBehavior: Clip.none,
-            children: [
-              SDSImageSvg(
-                assetName,
-                color: index == controller.pageIndex.value
-                    ? AppColors.primaryColor
-                    : AppColors.basicGrey1,
-              ),
-              if (unreadCount! > 0)
-                Positioned(
-                  right: -10,
-                  top: -6,
-                  child: Container(
-                    padding: const EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 1,
-                        color: AppColors.colorWhite,
-                      ),
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(10),
+    final isSelected = index == controller.pageIndex.value;
+    final color = isSelected ? AppColors.primaryColor : AppColors.basicGrey1;
+
+    return BottomNavigationBarItem(
+      icon: index == 2
+          ? _buildIconWithBadge(assetName, color)
+          : SDSImageSvg(assetName, color: color),
+      label: label,
+    );
+  }
+
+  Widget _buildIconWithBadge(String assetName, Color color) {
+    return Obx(
+      () {
+        final unreadCount = AppData.instance.totalUnread.value;
+
+        return Stack(
+          clipBehavior: Clip.none,
+          children: [
+            SDSImageSvg(assetName, color: color),
+            if (unreadCount > 0)
+              Positioned(
+                right: -10,
+                top: -6,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    border: Border.all(width: 1, color: AppColors.colorWhite),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  constraints:
+                      const BoxConstraints(minWidth: 20, minHeight: 16),
+                  child: SDSBuildText(
+                    unreadCount > 99 ? '99+' : '$unreadCount',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
                     ),
-                    constraints: const BoxConstraints(
-                      minWidth: 20,
-                      minHeight: 16,
-                    ),
-                    child: SDSBuildText(
-                      unreadCount > 99 ? '99+' : unreadCount.toString(),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-            ],
-          );
-        }),
-        label: label,
-      );
-    } else {
-      return BottomNavigationBarItem(
-        icon: SDSImageSvg(
-          assetName,
-          color: index == controller.pageIndex.value
-              ? AppColors.primaryColor
-              : AppColors.basicGrey1,
-        ),
-        label: label,
-      );
-    }
+              ),
+          ],
+        );
+      },
+    );
   }
 
   List<BottomNavigationBarItem> _navBarsItems() {

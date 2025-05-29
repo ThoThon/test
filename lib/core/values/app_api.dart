@@ -54,4 +54,7 @@ class AppApi {
       '/api/Document/delete-kykekhai';
   static const String urlGetNotification = '/api/Notification/page';
   static const String urlReadNotification = '/api/Notification/read';
+  static const String urlReadAllNotification = '/api/Notification/read-all';
+  static const String urlGetNotificationUnread =
+      '/api/Notification/total-unread';
 }

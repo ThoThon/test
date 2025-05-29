@@ -31,10 +31,7 @@ extension NotificationWidget on NotificationPage {
         final isUnReadNoti = item.status == 1;
         return InkWell(
           onTap: () {
-            // Khi onTap thì đổi status = 2 ở local rồi mới đến call API
-            item.status = 2;
-            controller.listNotification.refresh();
-            controller.readNotification(item.id);
+            controller.readNoti(item);
           },
           child: Row(
             children: [

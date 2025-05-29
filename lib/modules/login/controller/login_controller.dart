@@ -53,7 +53,7 @@ class LoginController extends BaseGetxController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
-          _fetchListNotification(),
+          _getToTalNotiUnread(),
         ).wait;
         Get.offAndToNamed(AppRoutes.pageBuilder.path);
         return;
@@ -67,23 +67,14 @@ class LoginController extends BaseGetxController {
     }
   }
 
-  Future<void> _fetchListNotification({bool isLoadMore = false}) async {
-    if (!isLoadMore) {
-      showLoading();
-    }
+  Future<void> _getToTalNotiUnread() async {
     try {
-      final res = await _loginRepository.fetchNotification(
-        pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
-        pageSize: AppConst.defaultPageSize,
-      );
-      if (res.result != null && res.isSuccess) {
-        appController.listNotification.addAll(res.result!.data);
-        appController.totalUnread = res.result!.total;
+      final res = await _loginRepository.getToTalNotiUnread();
+      if (res.isSuccess && res.result != null) {
+        AppData.instance.totalUnread.value = res.result!;
       }
     } catch (e) {
       logger.d(e);
-    } finally {
-      hideLoading();
     }
   }
 
