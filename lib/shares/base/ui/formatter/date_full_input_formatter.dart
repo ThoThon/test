@@ -3,6 +3,13 @@ import 'package:flutter/services.dart';
 class DateInputFormatter extends TextInputFormatter {
   final maxLength = 8;
 
+  // Nếu là ngày sinh, thí year không thể lớn hơn year hiện tại
+  final bool isBirthDay;
+
+  DateInputFormatter({
+    this.isBirthDay = false,
+  });
+
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
@@ -32,11 +39,13 @@ class DateInputFormatter extends TextInputFormatter {
     }
 
     // Kiểm tra năm không lớn hơn năm hiện tại
-    if (digitsOnly.length == 8) {
-      int year = int.tryParse(digitsOnly.substring(4, 8)) ?? 0;
-      int currentYear = DateTime.now().year;
-      if (year > currentYear) {
-        return oldValue; // dừng lại nếu năm lớn hơn hiện tại
+    if (isBirthDay) {
+      if (digitsOnly.length == 8) {
+        int year = int.tryParse(digitsOnly.substring(4, 8)) ?? 0;
+        int currentYear = DateTime.now().year;
+        if (year > currentYear) {
+          return oldValue; // dừng lại nếu năm lớn hơn hiện tại
+        }
       }
     }
 

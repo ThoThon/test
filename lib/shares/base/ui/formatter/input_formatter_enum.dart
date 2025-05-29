@@ -39,11 +39,14 @@ class InputFormatterEnum {
   static const int salaryNormal = 12;
 
   /// 13 : Nhập ngày/tháng/năm
-  static const int dateFull = 13;
+  static const int dateFullBirthDay = 13;
 
   /// 14 : Nhập tháng/năm
   static const int dateMonthYear = 14;
 
   /// 15 : Nhập năm
   static const int dateYear = 15;
+
+  /// 16 : Nhập ngày/tháng/năm không giới hạn year
+  static const int dateFull = 16;
 }

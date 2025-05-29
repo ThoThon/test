@@ -368,7 +368,10 @@
     "provinceTTNotSelected": "Chưa chọn tỉnh thường trú",
     "districtTTNotSelected": "Chưa chọn huyện thường trú",
     "next": "Tiếp theo",
-    "saveDataSuccess": "Lưu dữ liệu thành công"
+    "saveDataSuccess": "Lưu dữ liệu thành công",
+    "inputProvince":"Nhập tỉnh/thành phố",
+    "inputDistrict":"Nhập quận/huyện",
+    "inputWard":"Nhập phường/xã"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",

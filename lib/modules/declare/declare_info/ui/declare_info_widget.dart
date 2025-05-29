@@ -226,8 +226,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
           controller: controller.d02Tk1State.cccdTextCtrl,
           isValidate: true,
           maxLengthInputForm: 20,
-          inputFormatters: InputFormatterEnum.digitsOnly,
-          textInputType: TextInputType.number,
           onChanged: controller.onChangeCCCD,
         ),
       ),
@@ -370,7 +368,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       controller: controller.d02Tk1State.dateOfBirthCtrl,
       LocaleKeys.declareInfo_dob.tr,
       hintText: PATTERN_1,
-      inputFormatters: InputFormatterEnum.dateFull,
+      inputFormatters: InputFormatterEnum.dateFullBirthDay,
       date: convertDateToStringSafe(
         controller.d02Tk1State.dateOfBirth.value,
         PATTERN_1,
@@ -383,7 +381,8 @@ extension DeclareInfoWidget on DeclareInfoPage {
       onTap: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
-              controller.d02Tk1State.dateOfBirthCtrl.text, PATTERN_1),
+                  controller.d02Tk1State.dateOfBirthCtrl.text, PATTERN_1) ??
+              DateTime.now(),
           maxTime: DateTime.now(),
         );
 

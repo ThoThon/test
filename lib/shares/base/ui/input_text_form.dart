@@ -84,10 +84,10 @@ class BuildInputTextState extends State<BuildInputText> {
             maxLengthNum: 17,
           ),
         ];
-      case InputFormatterEnum.dateFull:
+      case InputFormatterEnum.dateFullBirthDay:
         return [
           FilteringTextInputFormatter.digitsOnly,
-          DateInputFormatter(),
+          DateInputFormatter(isBirthDay: true),
         ];
       case InputFormatterEnum.dateMonthYear:
         return [
@@ -98,6 +98,11 @@ class BuildInputTextState extends State<BuildInputText> {
         return [
           FilteringTextInputFormatter.digitsOnly,
           DateYearInputFormatter(),
+        ];
+      case InputFormatterEnum.dateFull:
+        return [
+          FilteringTextInputFormatter.digitsOnly,
+          DateInputFormatter(),
         ];
       default:
         return [

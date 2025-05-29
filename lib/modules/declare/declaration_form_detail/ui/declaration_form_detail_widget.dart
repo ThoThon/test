@@ -54,12 +54,21 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         controller.effectiveDate.value,
         PATTERN_1,
       ),
+      onChanged: (value) {
+        if (value.trim().isEmpty) {
+          controller.effectiveDate.value = null;
+        }
+      },
       onTap: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
-          dateTimeInit: controller.effectiveDate.value ?? DateTime.now(),
+          dateTimeInit: convertStringToDateSafe(
+                  controller.effectiveDateCtrl.text, PATTERN_1) ??
+              DateTime.now(),
         );
         if (selectedDate != null) {
           controller.effectiveDate.value = selectedDate;
+          controller.effectiveDateCtrl.text =
+              convertDateToString(selectedDate, PATTERN_1);
         }
       },
     );
@@ -75,12 +84,21 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         controller.dateOfIssue.value,
         PATTERN_1,
       ),
+      onChanged: (value) {
+        if (value.trim().isEmpty) {
+          controller.dateOfIssue.value = null;
+        }
+      },
       onTap: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
-          dateTimeInit: controller.dateOfIssue.value ?? DateTime.now(),
+          dateTimeInit: convertStringToDateSafe(
+                  controller.dateOfIssueCtrl.text, PATTERN_1) ??
+              DateTime.now(),
         );
         if (selectedDate != null) {
           controller.dateOfIssue.value = selectedDate;
+          controller.dateOfIssueCtrl.text =
+              convertDateToString(selectedDate, PATTERN_1);
         }
       },
     );

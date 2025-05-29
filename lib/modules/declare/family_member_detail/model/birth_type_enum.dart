@@ -53,7 +53,7 @@ enum BirthTypeEnum {
       case monthYear:
         return InputFormatterEnum.dateMonthYear;
       case full:
-        return InputFormatterEnum.dateFull;
+        return InputFormatterEnum.dateFullBirthDay;
     }
   }
 }

@@ -909,6 +909,8 @@ class UtilWidget {
           dateTimeInit ?? DateTime.now().subtract(const Duration(days: 1)),
       firstDate: minTime ?? DateTime.utc(DateTime.now().year - 100),
       lastDate: maxTime,
+      textPositiveButton: 'Áp dụng',
+      textNegativeButton: 'Hủy',
       // barrierDismissible: true,
       theme: ThemeData(
         primaryColor: AppColors.colorWhite,
@@ -954,16 +956,28 @@ class UtilWidget {
       onlyYear: onlyYear,
       lastDate: lastDate,
       initialDate: dateTime ?? DateTime.now(),
-      monthPickerDialogSettings: const MonthPickerDialogSettings(
-        headerSettings: PickerHeaderSettings(
+      monthPickerDialogSettings: MonthPickerDialogSettings(
+        actionBarSettings: PickerActionBarSettings(
+          cancelWidget: SDSBuildText(
+            'Hủy',
+            style: AppTextStyle.font14Bo.copyWith(color: AppColors.colorBlack),
+          ),
+          confirmWidget: SDSBuildText(
+            'Áp dụng',
+            style: AppTextStyle.font14Bo.copyWith(
+              color: AppColors.primaryColor,
+            ),
+          ),
+        ),
+        headerSettings: const PickerHeaderSettings(
           headerBackgroundColor: AppColors.primaryColor,
         ),
-        dialogSettings: PickerDialogSettings(
+        dialogSettings: const PickerDialogSettings(
           locale: Locale('vi'),
           dialogRoundedCornersRadius: 4,
           dialogBackgroundColor: Colors.white,
         ),
-        dateButtonsSettings: PickerDateButtonsSettings(
+        dateButtonsSettings: const PickerDateButtonsSettings(
           buttonBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(4),

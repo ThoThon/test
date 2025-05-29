@@ -25,7 +25,7 @@ class DeclareInfoController extends BaseGetxController {
   final tk1State = Tk1State();
   final d01State = D01State();
 
-  final autovalidateMode = AutovalidateMode.disabled.obs;
+  final autovalidateMode = Rx<AutovalidateMode?>(null);
   SendNfcRequestModel sendNfcRequestModel = SendNfcRequestModel();
 
   void onTabChanged(DeclareInfoTab tab) {
