@@ -210,8 +210,8 @@ extension StaffListWidget on StaffListPage {
                   Get.offNamed(
                     AppRoutes.declareInfo.path,
                     arguments: DeclareInfoArgument(
-                      action: DeclareInfoAction.edit,
                       declarationPeriodId: controller.declarationPeriodId,
+                      staffId: staff.id,
                     ),
                   );
                 },
@@ -242,7 +242,6 @@ extension StaffListWidget on StaffListPage {
         Get.offNamed(
           AppRoutes.declareInfo.path,
           arguments: DeclareInfoArgument(
-            action: DeclareInfoAction.create,
             declarationPeriodId: controller.declarationPeriodId,
           ),
         );

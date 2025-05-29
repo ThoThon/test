@@ -4,13 +4,13 @@ import 'package:v_bhxh/modules/declare/declare_info/model/d02/family_member_requ
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/tk1_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 
-class AddD02Request {
+class UpdateD02Request {
   final D02Request d02Lt;
   final Tk1Request tk1Ts;
   final List<FamilyMemberRequest> familyMembers;
   final List<D01Request> d01Dts;
 
-  AddD02Request({
+  UpdateD02Request({
     required this.d02Lt,
     required this.tk1Ts,
     required this.familyMembers,
@@ -26,14 +26,14 @@ class AddD02Request {
     };
   }
 
-  static AddD02Request fromState({
+  static UpdateD02Request fromState({
     required String kyKeKhaiId,
     required D02Tk1State d02Tk1State,
     required D02State d02State,
     required Tk1State tk1State,
     required D01State d01State,
   }) {
-    return AddD02Request(
+    return UpdateD02Request(
       d02Lt: D02Request.fromState(
         kyKeKhaiId: kyKeKhaiId,
         d02Tk1State: d02Tk1State,

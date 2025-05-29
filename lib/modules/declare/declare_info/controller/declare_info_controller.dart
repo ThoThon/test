@@ -1,5 +1,6 @@
 import 'package:tiengviet/tiengviet.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
@@ -35,11 +36,15 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   Future<void> _getD02Detail() async {
+    final staffId = argument.staffId;
+
+    if (staffId == null) {
+      return;
+    }
+
     try {
       showLoadingOverlay();
-      final response = await declareInfoRepository.getD02Detail(
-        id: '9388f8185dc6482aa41c540449d7b7f8',
-      );
+      final response = await declareInfoRepository.getD02Detail(id: staffId);
       final infoDetail = response.result;
       if (response.isSuccess && infoDetail != null) {
         // Update D02Tk1State
@@ -181,6 +186,14 @@ class DeclareInfoController extends BaseGetxController {
       return;
     }
 
+    if (argument.isUpdate) {
+      await _updateD02();
+    } else {
+      await _addD02();
+    }
+  }
+
+  Future<void> _addD02() async {
     try {
       showLoadingOverlay();
       final request = AddD02Request.fromState(
@@ -192,6 +205,39 @@ class DeclareInfoController extends BaseGetxController {
       );
 
       final response = await declareInfoRepository.addD02(request: request);
+
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+
+        Get.offNamed(
+          AppRoutes.staffList.path,
+          arguments: argument.declarationPeriodId,
+        );
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  Future<void> _updateD02() async {
+    try {
+      showLoadingOverlay();
+      final request = UpdateD02Request.fromState(
+        kyKeKhaiId: argument.declarationPeriodId,
+        d02Tk1State: d02Tk1State,
+        d02State: d02State,
+        tk1State: tk1State,
+        d01State: d01State,
+      );
+
+      final response = await declareInfoRepository.updateD02(request: request);
 
       if (response.isSuccess) {
         showSnackBar(

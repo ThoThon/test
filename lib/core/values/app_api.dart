@@ -37,6 +37,8 @@ class AppApi {
   /// API lưu nháp khi kê khai thông tin
   static const String urlAddD02 = '/api/HoSoD02/add-d02';
 
+  static const String urlUpdateD02 = '/api/HoSoD02/update-d02';
+
   /// API lấy danh sách lao động theo kỳ kê khai
   static const String urlGetStaffList = '/api/HoSoD02/get-d02-list';
 
