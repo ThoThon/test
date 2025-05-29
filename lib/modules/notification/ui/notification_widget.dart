@@ -2,29 +2,25 @@ part of 'notification_page.dart';
 
 extension NotificationWidget on NotificationPage {
   Widget _buildBody() {
-    return Column(
-      children: [
-        Expanded(
-          child: UtilWidget.buildCardBase(
-            baseShowLoading(
-              () => UtilWidget.buildSmartRefresher(
-                refreshController: controller.refreshController,
-                onRefresh: controller.onRefresh,
-                onLoadMore: controller.onLoadMore,
-                enablePullUp: true,
-                child: controller.listNotification.isEmpty
-                    ? UtilWidget.buildEmptyList()
-                    : _buildListNotification(),
-              ),
-            ),
-          ),
-        ),
-      ],
+    return Obx(
+      () {
+        if (controller.listNotification.isEmpty) {
+          return UtilWidget.buildEmptyList();
+        }
+        return UtilWidget.buildSmartRefresher(
+          refreshController: controller.refreshController,
+          onRefresh: controller.onRefresh,
+          onLoadMore: controller.onLoadMore,
+          enablePullUp: true,
+          child: _buildListNotification(),
+        );
+      },
     );
   }
 
   Widget _buildListNotification() {
     return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
       itemBuilder: (context, index) {
         final item = controller.listNotification[index];
         // Status = 1 : Noti chưa đọc
@@ -78,7 +74,7 @@ extension NotificationWidget on NotificationPage {
         height: 1,
         color: AppColors.dsGray5,
       ),
-    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
+    );
   }
 
   Widget _buildIconNotifcation(NotificationItemModel item) {

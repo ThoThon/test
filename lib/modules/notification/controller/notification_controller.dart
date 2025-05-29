@@ -55,7 +55,6 @@ class NotificationController extends BaseRefreshGetxController {
 
   @override
   Future<void> onRefresh() async {
-    listNotification.clear();
     await fetchListNotification();
     refreshController.refreshCompleted();
   }
@@ -92,7 +91,7 @@ class NotificationController extends BaseRefreshGetxController {
 
   Future<void> readAllNotification() async {
     try {
-      if(AppData.instance.totalUnread.value > 0){
+      if (AppData.instance.totalUnread.value > 0) {
         final res = await _notificationRepository.readAllNotification();
         if (res.isSuccess) {
           AppData.instance.totalUnread.value = 0;
