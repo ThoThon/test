@@ -508,5 +508,12 @@
     "month": "Tháng",
     "see": "Xem",
     "resultDetail": "Chi tiết kết quả đóng BHXH"
+  },
+  "notification": {
+    "notification": "Thông báo",
+    "dayBefore": "ngày trước",
+    "hourBefore": "giờ trước",
+    "minuteBefore": "phút trước",
+    "secondBefore": "giây trước"
   }
 }

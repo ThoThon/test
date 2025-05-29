@@ -564,6 +564,11 @@ class LocaleKeys {
   static const lookupC12_month = 'lookupC12_month';
   static const lookupC12_see = 'lookupC12_see';
   static const lookupC12_resultDetail = 'lookupC12_resultDetail';
+  static const notification_notification = 'notification_notification';
+  static const notification_dayBefore = 'notification_dayBefore';
+  static const notification_hourBefore = 'notification_hourBefore';
+  static const notification_minuteBefore = 'notification_minuteBefore';
+  static const notification_secondBefore = 'notification_secondBefore';
 }
 
 class Locales {
@@ -1086,5 +1091,10 @@ class Locales {
     'lookupC12_month': 'Tháng',
     'lookupC12_see': 'Xem',
     'lookupC12_resultDetail': 'Chi tiết kết quả đóng BHXH',
+    'notification_notification': 'Thông báo',
+    'notification_dayBefore': 'ngày trước',
+    'notification_hourBefore': 'giờ trước',
+    'notification_minuteBefore': 'phút trước',
+    'notification_secondBefore': 'giây trước',
   };
 }

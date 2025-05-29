@@ -12,4 +12,5 @@ class AppData {
   var relationships = <RelationshipModel>{};
   var positions = <PositionModel>{};
   final Rx<AccountInfoModel?> accountInfoModel = Rx<AccountInfoModel?>(null);
+  final totalUnread = 0.obs;
 }

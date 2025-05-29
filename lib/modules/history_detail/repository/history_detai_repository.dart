@@ -38,7 +38,6 @@ class HistoryDetaiRepository extends BaseRepository {
       EnumRequestMethod.get,
       jsonMap: {'key': key},
     );
-    logger.d(response);
     return BaseResponse<FileNumberModel>.fromJson(
       response,
       fromJson: (json) => FileNumberModel.fromJson(json),
@@ -52,7 +51,6 @@ class HistoryDetaiRepository extends BaseRepository {
       EnumRequestMethod.get,
       jsonMap: {"soHoSo": soHoSo},
     );
-    logger.d(response);
     return BaseResponse<ResultLookupHistoryModel>.fromJson(
       response,
       fromJson: (json) => ResultLookupHistoryModel.fromJson(json),
