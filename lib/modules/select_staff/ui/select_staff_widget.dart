@@ -71,7 +71,7 @@ extension SelectStaffWidget on SelectStaffPage {
                           ),
                           if (item.soCCCD.isNotEmpty)
                             TextSpan(
-                              text: ' (${item.soCCCD})',
+                              text: ' (${item.maSoBHXH})',
                               style: AppTextStyle.font14Re.copyWith(
                                 color: AppColors.colorBlack,
                               ),

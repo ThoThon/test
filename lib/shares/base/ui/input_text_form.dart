@@ -84,6 +84,21 @@ class BuildInputTextState extends State<BuildInputText> {
             maxLengthNum: 17,
           ),
         ];
+      case InputFormatterEnum.dateFull:
+        return [
+          FilteringTextInputFormatter.digitsOnly,
+          DateInputFormatter(),
+        ];
+      case InputFormatterEnum.dateMonthYear:
+        return [
+          FilteringTextInputFormatter.digitsOnly,
+          DateMonthInputFormatter(),
+        ];
+      case InputFormatterEnum.dateYear:
+        return [
+          FilteringTextInputFormatter.digitsOnly,
+          DateYearInputFormatter(),
+        ];
       default:
         return [
           LengthLimitingTextFieldFormatterFixed(

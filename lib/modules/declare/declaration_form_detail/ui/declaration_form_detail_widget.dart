@@ -46,6 +46,8 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildEffectiveDate() {
     return UtilWidget.buildSelectDate(
+      inputFormatters: InputFormatterEnum.dateFull,
+      controller: controller.effectiveDateCtrl,
       LocaleKeys.declarationFormDetail_effectiveDate.tr,
       hintText: PATTERN_1,
       date: convertDateToStringSafe(
@@ -65,6 +67,8 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
 
   Widget _buildSelectDateOfIssue() {
     return UtilWidget.buildSelectDate(
+      inputFormatters: InputFormatterEnum.dateFull,
+      controller: controller.dateOfIssueCtrl,
       LocaleKeys.declarationFormDetail_dateOfIssue.tr,
       hintText: PATTERN_1,
       date: convertDateToStringSafe(

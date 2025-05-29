@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
-import 'dropdown_custom.dart' as dropdown_custom;
 
 import '../../../modules/src.dart';
+import 'dropdown_custom.dart' as dropdown_custom;
 
 class UtilWidget {
   static Widget buildLoading({
@@ -897,15 +897,17 @@ class UtilWidget {
   }
 
   static Future<DateTime?> showDateTimePicker({
-    required DateTime dateTimeInit,
+    DateTime? dateTimeInit,
     DateTime? minTime,
     DateTime? maxTime,
   }) async {
     DateTime? newDateTime = await showRoundedDatePicker(
       context: Get.context!,
       height: Get.height / 1.8,
-      initialDate: dateTimeInit,
-      firstDate: minTime ?? DateTime.utc(DateTime.now().year - 10),
+      // Ngày khởi tạo < lastDate
+      initialDate:
+          dateTimeInit ?? DateTime.now().subtract(const Duration(days: 1)),
+      firstDate: minTime ?? DateTime.utc(DateTime.now().year - 100),
       lastDate: maxTime,
       // barrierDismissible: true,
       theme: ThemeData(
@@ -941,6 +943,7 @@ class UtilWidget {
 
   static Future<DateTime?> showPeriodDatePicker({
     DateTime? dateTime,
+    DateTime? lastDate,
     bool onlyYear = false,
   }) async {
     final context = Get.context;
@@ -949,6 +952,7 @@ class UtilWidget {
     return showMonthPicker(
       context: context,
       onlyYear: onlyYear,
+      lastDate: lastDate,
       initialDate: dateTime ?? DateTime.now(),
       monthPickerDialogSettings: const MonthPickerDialogSettings(
         headerSettings: PickerHeaderSettings(
@@ -1037,6 +1041,9 @@ class UtilWidget {
     String? hintText,
     bool isRequired = true,
     VoidCallback? onTap,
+    void Function(String)? onChanged,
+    required inputFormatters,
+    required TextEditingController controller,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1057,36 +1064,24 @@ class UtilWidget {
             ],
           ),
         ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-        Material(
-          color: AppColors.colorWhite,
-          borderRadius: BorderRadius.circular(AppDimens.radius4),
-          child: InkWell(
-            onTap: onTap,
-            borderRadius: BorderRadius.circular(AppDimens.radius4),
-            child: Container(
-              padding: const EdgeInsets.all(AppDimens.paddingVerySmall),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppDimens.radius4),
-                border: Border.all(color: AppColors.dsGray4),
+        BuildInputText(
+          InputTextModel(
+            controller: controller,
+            suffixIcon: InkWell(
+              onTap: onTap,
+              child: SvgPicture.asset(
+                Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
+                width: AppDimens.sizeIconMedium,
+                height: AppDimens.sizeIconMedium,
+                fit: BoxFit.scaleDown,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SDSBuildText(
-                    date ?? hintText ?? '',
-                    style: AppTextStyle.font16Re.copyWith(
-                      color:
-                          date != null ? AppColors.dsGray1 : AppColors.dsGray3,
-                    ),
-                  ),
-                  SvgPicture.asset(
-                    Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
-                    width: AppDimens.sizeIconMedium,
-                    height: AppDimens.sizeIconMedium,
-                  )
-                ],
-              ).paddingSymmetric(vertical: AppDimens.paddingSmallest),
             ),
+            inputFormatters: inputFormatters,
+            textInputType: TextInputType.number,
+            hintText: date ?? hintText ?? '',
+            hintTextColor: date != null ? AppColors.dsGray1 : AppColors.dsGray3,
+            hintTextSize: AppDimens.fontMedium(),
+            onChanged: onChanged,
           ),
         ),
       ],

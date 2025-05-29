@@ -18,6 +18,8 @@ class D02Tk1State {
   /// Ngày sinh
   final dateOfBirth = Rxn<DateTime>();
 
+  final dateOfBirthCtrl = TextEditingController();
+
   /// Giới tính *
   final gender = Gender.male.obs;
 

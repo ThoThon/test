@@ -19,8 +19,12 @@ class D02State {
   /// Từ tháng/năm *
   final fromDate = Rxn<DateTime>();
 
+  final fromDateCtrl = TextEditingController();
+
   /// Đến tháng/năm *
   final toDate = Rxn<DateTime>();
+
+  final toDateCtrl = TextEditingController();
 
   /// Cấp bập/chức vụ *
   final positionTextCtrl = TextEditingController();
