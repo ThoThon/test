@@ -19,6 +19,8 @@ class StaffListController extends BaseGetxController {
 
   final declaredStaffs = const <DeclaredStaffModel>[].obs;
 
+  String? fileNameFromUrl;
+
   @override
   void onReady() {
     super.onReady();
@@ -86,18 +88,40 @@ class StaffListController extends BaseGetxController {
 
   Future<void> upLoadFile() async {
     try {
-      final response = await _repository.uploadFile(
-        request: UploadAttachmentsRequest(
+      final response = await _repository.uploadImage(
+        request: UploadImageRequest(
           file: listImage,
           periodId: declarationPeriodId,
         ),
       );
-      if (!response.isSuccess) {
-        showSnackBar(LocaleKeys.staffList_attachFileErorr.tr);
+      if (response.isSuccess) {
+        fileNameFromUrl = getFileNameFromUrl(response.result ?? '');
+      } else {
+        showSnackBar(response.errorMessage);
       }
     } catch (e) {
       logger.d(e);
     } finally {}
+  }
+
+  Future<void> deteleImage(int index) async {
+    try {
+      if (fileNameFromUrl != null) {
+        final response = await _repository.deleteImage(
+          declarationPeriodId,
+          fileNameFromUrl ?? '',
+        );
+        if (response.isSuccess) {
+          showSnackBar(
+            LocaleKeys.declarationPeriodDetail_deleteImageSuccess.tr,
+            typeAction: AppConst.actionSuccess,
+          );
+          listImage.removeAt(index);
+        }
+      }
+    } catch (e) {
+      logger.d(e);
+    }
   }
 
   Future<void> saveXml() async {
@@ -138,5 +162,9 @@ class StaffListController extends BaseGetxController {
     } finally {
       hideLoadingOverlay();
     }
+  }
+
+  String getFileNameFromUrl(String url) {
+    return url.split('/').last;
   }
 }

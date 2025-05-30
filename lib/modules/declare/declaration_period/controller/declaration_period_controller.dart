@@ -72,7 +72,10 @@ class DeclarationPeriodController extends BaseGetxController {
       );
 
       if (response.isSuccess) {
-        showSnackBar('Xóa đợt kê khai thành công');
+        showSnackBar(
+          'Xóa đợt kê khai thành công',
+          typeAction: AppConst.actionSuccess,
+        );
         getDeclarationPeriods();
       } else {
         showSnackBar(response.errorMessage);
