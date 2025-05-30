@@ -26,21 +26,25 @@ class NotificationRepository extends BaseRepository {
     return BaseResponse.fromJson(response);
   }
 
-  Future<BaseResponse<NotificationModel>> fetchNotification({
-    required int pageIndex,
-    required int pageSize,
-  }) async {
+  Future<BaseResponse<NotificationResponse>> fetchNotification(
+      NotificationRequest request) async {
     final response = await baseCallApi(
       AppApi.urlGetNotification,
       EnumRequestMethod.get,
-      jsonMap: {
-        'pageIndex': pageIndex,
-        'pageSize': pageSize,
-      },
+      jsonMap: request.toJson(),
     );
-    return BaseResponse<NotificationModel>.fromJson(
+    return BaseResponse<NotificationResponse>.fromJson(
       response,
-      fromJson: (json) => NotificationModel.fromJson(json),
+      fromJson: (json) => NotificationResponse.fromJson(json),
     );
+  }
+
+  // Lấy số thông báo chưa được đọc
+  Future<BaseResponse<int>> getToTalNotiUnread() async {
+    final response = await baseCallApi(
+      AppApi.urlGetNotificationUnread,
+      EnumRequestMethod.get,
+    );
+    return BaseResponse<int>.fromJson(response);
   }
 }
