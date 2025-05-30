@@ -285,7 +285,7 @@ extension D02TabWidget on DeclareInfoPage {
           inputFormatters: InputFormatterEnum.salaryCurrency,
           controller: controller.d02State.salaryCoefficientTextCtrl,
           isValidate: true,
-          textInputType: TextInputType.number,
+          textInputType: const TextInputType.numberWithOptions(decimal: true),
         ),
       ),
     );
