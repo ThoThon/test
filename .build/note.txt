@@ -20,6 +20,7 @@
 - [AppMobile] - Trường Giới tính: Chưa bắt validate là trường bắt buộc - BHW-2240
 - [AppMobile]_Giao diện màn thông báo - BHW-2132
 - Fix refresh & loadmore màn notification
+- [AppMobile] - Màn Đăng nhập: Chặn nhập khoảng trắng ở đầu cuối - BHW-2246
 
 28/05/2025:
 - [Appmobile]_Chức năng quét CCCD lấy thông tin cá nhân để kê khai - BHW-2144
