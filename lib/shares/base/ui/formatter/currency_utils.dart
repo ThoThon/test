@@ -96,7 +96,7 @@ class CurrencyUtils {
 
   static String formatCurrency(
     dynamic number, {
-    bool isDot = false,
+    bool isDot = true,
     bool isCheckError = false,
     int? maxLengthNum,
     dynamic customMaxValue,
@@ -166,7 +166,7 @@ class CurrencyUtils {
     int? lastDecimal,
     int? maxLengthNum,
     dynamic customMaxValue,
-    bool isConvert = true,
+    bool isConvert = false,
   }) {
     if (number == null || number == '' || number == 0 || number == '0') {
       return "0";
@@ -177,8 +177,8 @@ class CurrencyUtils {
 
     String first = number.toString().substring(
         0,
-        number.toString().contains(isDot ? ',' : '.')
-            ? number.toString().lastIndexOf(isDot ? ',' : '.')
+        number.toString().contains(isDot && isConvert ? ',' : '.')
+            ? number.toString().lastIndexOf(isDot && isConvert ? ',' : '.')
             : null);
     if (first != '-0') {
       first = formatCurrency(
@@ -202,8 +202,8 @@ class CurrencyUtils {
     // }
 
     String last = number.toString().substring(
-        number.toString().contains(isDot ? ',' : '.')
-            ? number.toString().lastIndexOf(isDot ? ',' : '.')
+        number.toString().contains(isDot && isConvert ? ',' : '.')
+            ? number.toString().lastIndexOf(isDot && isConvert ? ',' : '.')
             : number.toString().length,
         number.toString().length);
     if (lastDecimal != 0) {
@@ -227,6 +227,10 @@ class CurrencyUtils {
         );
       }
       last = '';
+    }
+
+    if (isDot && last.isNotEmpty && last[0] == '.') {
+      last = last.replaceFirst('.', ',');
     }
 
     String result = NumberFormat.currency(

@@ -51,6 +51,7 @@ class NumericTextFormatter extends TextInputFormatter {
               maxLengthNum: maxLengthNum,
               lastDecimal: lastDecimal,
               customMaxValue: customMaxValue,
+              isConvert: true,
             );
       return TextEditingValue(
         text: newString,
