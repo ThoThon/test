@@ -64,9 +64,9 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
               Get.back(result: controller.selectedHospital.value);
             },
           ),
-          sdsSBHeight16,
+          sdsSBHeight32,
         ],
-      ).paddingAll(AppDimens.defaultPadding),
+      ).paddingAll(AppDimens.paddingVerySmall),
     );
   }
 
