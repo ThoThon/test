@@ -76,7 +76,7 @@ extension StaffListWidget on StaffListPage {
                     const Spacer(),
                     IconButton(
                       onPressed: () {
-                        controller.removeImage(index);
+                        controller.deteleImage(index);
                       },
                       icon: SDSImageSvg(
                         Assets.ASSETS_ICONS_IC_REMOVE_SVG,
@@ -88,8 +88,6 @@ extension StaffListWidget on StaffListPage {
                 ).paddingSymmetric(vertical: AppDimens.paddingSmall);
               },
             ),
-
-            ///TODO : Gọi API upload file
           ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
         ).paddingOnly(
           top: AppDimens.paddingVerySmall,

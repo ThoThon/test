@@ -286,6 +286,8 @@ class LocaleKeys {
       'declarationPeriodDetail_addAttachedImage';
   static const declarationPeriodDetail_deposit =
       'declarationPeriodDetail_deposit';
+  static const declarationPeriodDetail_deleteImageSuccess =
+      'declarationPeriodDetail_deleteImageSuccess';
   static const declareInfo_title = 'declareInfo_title';
   static const declareInfo_fullName = 'declareInfo_fullName';
   static const declareInfo_fullNameHint = 'declareInfo_fullNameHint';
@@ -862,6 +864,7 @@ class Locales {
     'declarationPeriodDetail_attachFile': 'Đính kèm file',
     'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',
     'declarationPeriodDetail_deposit': 'Ký gửi',
+    'declarationPeriodDetail_deleteImageSuccess': 'Xóa ảnh thành công',
     'declareInfo_title': 'Kê khai thông tin',
     'declareInfo_fullName': 'Họ và tên',
     'declareInfo_fullNameHint': 'Nhập họ và tên',

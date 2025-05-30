@@ -1,8 +1,8 @@
-class UploadAttachmentsRequest {
+class UploadImageRequest {
   final List<String> file;
   final String periodId;
 
-  UploadAttachmentsRequest({
+  UploadImageRequest({
     required this.file,
     required this.periodId,
   });
