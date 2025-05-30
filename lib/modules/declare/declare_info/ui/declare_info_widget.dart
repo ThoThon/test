@@ -362,33 +362,39 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectDateOfBirth() {
-    return UtilWidget.buildSelectDate(
-      controller: controller.d02Tk1State.dateOfBirthCtrl,
-      LocaleKeys.declareInfo_dob.tr,
+    return UtilWidget.buildInputSelectDate(
+      title: LocaleKeys.declareInfo_dob.tr,
+      controller: controller.d02Tk1State.dateOfBirthTextCtrl,
       hintText: PATTERN_1,
       inputFormatters: InputFormatterEnum.dateFullBirthDay,
-      date: convertDateToStringSafe(
-        controller.d02Tk1State.dateOfBirth.value,
-        PATTERN_1,
-      ),
-      onChanged: (value) {
-        if (value.trim().isEmpty) {
-          controller.d02Tk1State.dateOfBirth.value = null;
-        }
-      },
-      onTap: () async {
+      onSelectDate: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
-                  controller.d02Tk1State.dateOfBirthCtrl.text, PATTERN_1) ??
+                  controller.d02Tk1State.dateOfBirthTextCtrl.text, PATTERN_1) ??
               DateTime.now(),
           lastDate: DateTime.now(),
         );
-
         if (selectedDate != null) {
-          controller.d02Tk1State.dateOfBirth.value = selectedDate;
-          controller.d02Tk1State.dateOfBirthCtrl.text =
+          controller.d02Tk1State.dateOfBirthTextCtrl.text =
               convertDateToString(selectedDate, PATTERN_1);
         }
+      },
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_dobCannotEmpty.tr;
+        }
+
+        final date = convertStringToDateSafe(trimmedValue, PATTERN_1);
+        if (date == null) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+
+        if (date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_dobCannotFuture.tr;
+        }
+
+        return null;
       },
     );
   }

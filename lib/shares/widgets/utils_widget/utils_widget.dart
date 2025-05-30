@@ -1100,6 +1100,59 @@ class UtilWidget {
     );
   }
 
+  /// Widget allows user to select a date with a text input field
+  static Widget buildInputSelectDate({
+    required String title,
+    String? hintText,
+    bool isRequired = true,
+    VoidCallback? onSelectDate,
+    void Function(String)? onChanged,
+    required int inputFormatters,
+    required TextEditingController controller,
+    FormFieldValidator<String>? validator,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        RichText(
+          text: TextSpan(
+            text: title,
+            style: AppTextStyle.font16Bo,
+            children: [
+              if (isRequired)
+                TextSpan(
+                  text: ' (*)',
+                  style: AppTextStyle.font12Re.copyWith(
+                    color: AppColors.statusRed,
+                  ),
+                ),
+            ],
+          ),
+        ).paddingOnly(bottom: AppDimens.paddingVerySmall),
+        BuildInputText(
+          InputTextModel(
+            controller: controller,
+            suffixIcon: InkWell(
+              onTap: onSelectDate,
+              child: SvgPicture.asset(
+                Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
+                width: AppDimens.sizeIconMedium,
+                height: AppDimens.sizeIconMedium,
+                fit: BoxFit.scaleDown,
+              ),
+            ),
+            inputFormatters: inputFormatters,
+            textInputType: TextInputType.number,
+            hintText: hintText,
+            onChanged: onChanged,
+            validator: validator,
+          ),
+        ),
+      ],
+    );
+  }
+
   static Widget buildSelectDateSafe(
     String title, {
     String? date,

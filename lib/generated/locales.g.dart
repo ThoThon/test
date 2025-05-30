@@ -318,6 +318,9 @@ class LocaleKeys {
       'declareInfo_cccdNumberIsNotEmpty';
   static const declareInfo_cccdNumberIsValid = 'declareInfo_cccdNumberIsValid';
   static const declareInfo_dob = 'declareInfo_dob';
+  static const declareInfo_dobCannotEmpty = 'declareInfo_dobCannotEmpty';
+  static const declareInfo_dobInvalid = 'declareInfo_dobInvalid';
+  static const declareInfo_dobCannotFuture = 'declareInfo_dobCannotFuture';
   static const declareInfo_gender = 'declareInfo_gender';
   static const declareInfo_genderCannotEmpty = 'declareInfo_genderCannotEmpty';
   static const declareInfo_male = 'declareInfo_male';
@@ -886,6 +889,9 @@ class Locales {
     'declareInfo_cccdNumberIsNotEmpty': 'Số CCCD không được bỏ trống',
     'declareInfo_cccdNumberIsValid': 'Số CCCD phải có đủ 12 số',
     'declareInfo_dob': 'Ngày sinh',
+    'declareInfo_dobCannotEmpty': 'Ngày sinh không được bỏ trống',
+    'declareInfo_dobInvalid': 'Ngày sinh không hợp lệ',
+    'declareInfo_dobCannotFuture': 'Ngày sinh không được lớn hơn ngày hiện tại',
     'declareInfo_gender': 'Giới tính',
     'declareInfo_genderCannotEmpty': 'Giới tính không được bỏ trống',
     'declareInfo_male': 'Nam',
