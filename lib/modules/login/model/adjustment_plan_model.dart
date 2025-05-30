@@ -17,7 +17,7 @@ class AdjustmentPlanModel extends Equatable {
     );
   }
 
-  /// Tự động tick chọn sinh tờ khai TK1-TS
+  /// Tự động tick và bỏ tick chọn sinh tờ khai TK1-TS
   ///
   /// REF: http://10.100.140.19:8080/browse/BHW-2243
   bool isGenerateTk1(DeclarationTypeModel? declarationType) {
