@@ -1,18 +1,18 @@
 import 'package:v_bhxh/modules/notification/model/notification_item_model.dart';
 
-class NotificationModel {
+class NotificationResponse {
   final List<NotificationItemModel> data;
   final int total;
   final int totalUnread;
 
-  NotificationModel({
+  NotificationResponse({
     required this.data,
     required this.total,
     required this.totalUnread,
   });
 
-  factory NotificationModel.fromJson(Map<String, dynamic> json) {
-    return NotificationModel(
+  factory NotificationResponse.fromJson(Map<String, dynamic> json) {
+    return NotificationResponse(
       data: (json['data'] as List? ?? [])
           .map((item) => NotificationItemModel.fromJson(item))
           .toList(),

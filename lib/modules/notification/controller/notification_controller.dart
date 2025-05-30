@@ -20,13 +20,12 @@ class NotificationController extends BaseRefreshGetxController {
     if (!isLoadMore) {
       showLoading();
     }
+    final request = _buildRequest(isLoadMore: isLoadMore);
     try {
-      final res = await _notificationRepository.fetchNotification(
-        pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
-        pageSize: AppConst.defaultPageSize,
-      );
+      final res = await _notificationRepository.fetchNotification(request);
       if (res.result != null && res.isSuccess) {
         listNotification.addAll(res.result!.data);
+        page = request.pageIndex;
       }
     } catch (e) {
       logger.d(e);
@@ -35,11 +34,19 @@ class NotificationController extends BaseRefreshGetxController {
     }
   }
 
+  NotificationRequest _buildRequest({
+    bool isLoadMore = false,
+  }) {
+    return NotificationRequest(
+      pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
+      pageSize: AppConst.defaultPageSize,
+    );
+  }
+
   Future<void> readNotification(String id) async {
     try {
       final res = await _notificationRepository.readNotification(id);
       if (res.result != null && res.isSuccess) {
-        // fetchListNotification(isLoadMore: true);
         update();
       }
     } catch (e) {
@@ -55,8 +62,21 @@ class NotificationController extends BaseRefreshGetxController {
 
   @override
   Future<void> onRefresh() async {
+    listNotification.clear();
     await fetchListNotification();
+    _getToTalNotiUnread();
     refreshController.refreshCompleted();
+  }
+
+  Future<void> _getToTalNotiUnread() async {
+    try {
+      final res = await _notificationRepository.getToTalNotiUnread();
+      if (res.isSuccess && res.result != null) {
+        AppData.instance.totalUnread.value = res.result!;
+      }
+    } catch (e) {
+      logger.d(e);
+    }
   }
 
   String timeAgo(DateTime createDate) {
