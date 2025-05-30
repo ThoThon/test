@@ -997,22 +997,33 @@ class UtilWidget {
       initialDate: dateTime ?? DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
-      monthPickerDialogSettings: const MonthPickerDialogSettings(
-        headerSettings: PickerHeaderSettings(
+      monthPickerDialogSettings: MonthPickerDialogSettings(
+        headerSettings: const PickerHeaderSettings(
           headerBackgroundColor: AppColors.primaryColor,
         ),
-        dialogSettings: PickerDialogSettings(
+        dialogSettings: const PickerDialogSettings(
           locale: Locale('vi'),
           dialogRoundedCornersRadius: 4,
           dialogBackgroundColor: Colors.white,
         ),
-        dateButtonsSettings: PickerDateButtonsSettings(
+        dateButtonsSettings: const PickerDateButtonsSettings(
           buttonBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(4),
             ),
           ),
           selectedMonthBackgroundColor: AppColors.primaryColor,
+        ),
+        actionBarSettings: PickerActionBarSettings(
+          cancelWidget: SDSBuildText(
+            "Hủy",
+            style: AppTextStyle.font14Bo.copyWith(color: AppColors.basicBlack),
+          ),
+          confirmWidget: SDSBuildText(
+            "Áp dụng",
+            style:
+                AppTextStyle.font14Bo.copyWith(color: AppColors.primaryColor),
+          ),
         ),
       ),
     );
