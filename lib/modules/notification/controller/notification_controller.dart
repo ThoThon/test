@@ -26,6 +26,7 @@ class NotificationController extends BaseRefreshGetxController {
       if (res.result != null && res.isSuccess) {
         listNotification.addAll(res.result!.data);
         page = request.pageIndex;
+        AppData.instance.totalUnread.value = res.result!.totalUnread;
       }
     } catch (e) {
       logger.d(e);
@@ -112,13 +113,22 @@ class NotificationController extends BaseRefreshGetxController {
   Future<void> readAllNotification() async {
     try {
       if (AppData.instance.totalUnread.value > 0) {
+        showLoading();
         final res = await _notificationRepository.readAllNotification();
         if (res.isSuccess) {
+          for (var item in listNotification) {
+            if (item.status == 1) {
+              item.status = 2;
+            }
+          }
+          listNotification.refresh();
           AppData.instance.totalUnread.value = 0;
         }
       }
     } catch (e) {
       logger.d(e);
+    } finally {
+      hideLoading();
     }
   }
 }
