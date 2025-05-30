@@ -1,5 +1,5 @@
 class UploadImageRequest {
-  final List<String> file;
+  final String file;
   final String periodId;
 
   UploadImageRequest({

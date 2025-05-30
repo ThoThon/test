@@ -30,32 +30,27 @@ class StaffListRepository extends BaseRepository {
     final mapData = request.toJson();
 
     if (request.file.isNotEmpty) {
-      mapData["file"] = await Future.wait(
-        request.file.map(
-          (filePath) async {
-            // Lấy tên file từ đường dẫn
-            final fileName = filePath.split('/').last;
+      final filePath = request.file;
+      final fileName = filePath.split('/').last;
 
-            // Tự xác định contentType đơn giản dựa trên phần mở rộng
-            String? contentType;
-            if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg')) {
-              contentType = 'image/jpeg';
-            } else if (fileName.endsWith('.png')) {
-              contentType = 'image/png';
-            } else if (fileName.endsWith('.pdf')) {
-              contentType = 'application/pdf';
-            } else {
-              contentType = 'application/octet-stream';
-            }
+      String contentType;
+      if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg')) {
+        contentType = 'image/jpeg';
+      } else if (fileName.endsWith('.png')) {
+        contentType = 'image/png';
+      } else if (fileName.endsWith('.pdf')) {
+        contentType = 'application/pdf';
+      } else {
+        contentType = 'application/octet-stream';
+      }
 
-            return await di.MultipartFile.fromFile(
-              filePath,
-              filename: fileName,
-              contentType: MediaType.parse(contentType),
-            );
-          },
-        ),
+      final multipartFile = await di.MultipartFile.fromFile(
+        filePath,
+        filename: fileName,
+        contentType: MediaType.parse(contentType),
       );
+
+      mapData["file"] = multipartFile;
     }
 
     final formData = di.FormData.fromMap(mapData);
