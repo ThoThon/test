@@ -40,37 +40,6 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
                 ),
               ),
             ),
-
-            // Next and Previous buttons
-            Obx(
-              () {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back_ios),
-                      onPressed: controller.currentPage.value > 1
-                          ? () {
-                              controller.pdfViewerController.previousPage();
-                            }
-                          : null,
-                    ),
-                    SDSBuildText(
-                      'Trang ${controller.currentPage.value} / ${controller.totalPage.value}',
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.arrow_forward_ios),
-                      onPressed: controller.currentPage.value <
-                              controller.totalPage.value
-                          ? () {
-                              controller.pdfViewerController.nextPage();
-                            }
-                          : null,
-                    ),
-                  ],
-                );
-              },
-            ),
             _buildBottomButtons(),
           ],
         ),

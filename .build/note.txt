@@ -5,6 +5,7 @@
 - [AppMobile] - Chưa bắt Validate là trường bắt buộc trường [Ngày sinh] - BHW-2256
 - [AppMobile] - Count và hiện thị số thông báo chưa đọc - BHW-2254
 - [AppMobile] - Man thông báo chưa xử lý icon đã đọc tất cả các thông báo - BHW-2255
+- [App] - Bỏ phân trang khi mở tài liệu pdf - BHW-2251
 
 29/05/2025:
 - [api] - Bổ sung giao diện Đợt kê khai - sửa - chỉnh sửa từng bản ghi cho từng nhân viên - BHW-2152

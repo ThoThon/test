@@ -31,7 +31,7 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
       onPageChanged: controller.changePage,
       children: [
         HomePage(),
-        const Center(child: Text("Danh sách")),
+        // const Center(child: Text("Danh sách")),
         NotificationPage(),
         ProfilePage(),
       ],
@@ -63,7 +63,7 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
     final color = isSelected ? AppColors.primaryColor : AppColors.basicGrey1;
 
     return BottomNavigationBarItem(
-      icon: index == 2
+      icon: index == 1
           ? _buildIconWithBadge(assetName, color)
           : SDSImageSvg(assetName, color: color),
       label: label,
@@ -116,18 +116,18 @@ class PageBuilder extends BaseGetWidget<PageBuilderController> {
         assetName: Assets.ASSETS_ICONS_HOME_IC_HOME_SVG,
         label: LocaleKeys.pageBuilder_home.tr,
       ),
+      // _buildItem(
+      //   index: 1,
+      //   assetName: Assets.ASSETS_ICONS_HOME_IC_STATIS_SVG,
+      //   label: LocaleKeys.pageBuilder_report.tr,
+      // ),
       _buildItem(
         index: 1,
-        assetName: Assets.ASSETS_ICONS_HOME_IC_STATIS_SVG,
-        label: LocaleKeys.pageBuilder_report.tr,
-      ),
-      _buildItem(
-        index: 2,
         assetName: Assets.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG,
         label: LocaleKeys.pageBuilder_notification.tr,
       ),
       _buildItem(
-        index: 3,
+        index: 2,
         assetName: Assets.ASSETS_ICONS_HOME_IC_PROFILE_SVG,
         label: LocaleKeys.pageBuilder_account.tr,
       ),
