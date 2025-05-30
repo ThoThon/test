@@ -70,7 +70,7 @@ class Tk1State {
   /// Danh sách thành viên trong gia đình
   final familyMembers = <FamilyMember>[].obs;
 
-  void updateFromD02Detail(DeclareInfoDetailResponse detail) {
+  void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final tk1Ts = detail.tk1Ts;
     final members = detail.familyMembers;
 
@@ -150,6 +150,42 @@ class Tk1State {
       familyMembers.value =
           members.map((e) => FamilyMember.fromResponse(e)).toList();
     }
+  }
+
+  void mapFromStaffDetail(StaffDetailResponse staff) {
+    // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
+    final members = staff.danhSachThanhViens;
+
+    provinceOfBirth.value = staff.khaiSinhTinh;
+
+    districtOfBirth.value = staff.khaiSinhHuyen;
+
+    wardOfBirth.value = staff.khaiSinhXa;
+
+    provinceReceive.value = staff.noiNhanTinh;
+
+    districtReceive.value = staff.noiNhanHuyen;
+
+    wardReceive.value = staff.noiNhanXa;
+
+    provinceKCB.value = staff.benhVienTinh;
+
+    hospitalKCB.value = staff.benhVien;
+
+    contactPhoneNumberTextCtrl.text = staff.dienThoaiLienHe?.trim() ?? '';
+
+    headOfHouseholdTextCtrl.text = staff.hoTenChuHo?.trim() ?? '';
+
+    headOfHouseholdCCCDTextCtrl.text = staff.chuHoSoCCCD?.trim() ?? '';
+
+    provinceTT.value = staff.chuHoTinh;
+
+    districtTT.value = staff.chuHoHuyen;
+
+    wardTT.value = staff.chuHoXa;
+
+    familyMembers.value =
+        members.map((e) => FamilyMember.fromStaff(e)).toList();
   }
 
   void dispose() {

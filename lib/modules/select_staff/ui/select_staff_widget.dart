@@ -135,6 +135,6 @@ extension SelectStaffWidget on SelectStaffPage {
       onPressed: () {
         Get.back(result: controller.staffSelected.value);
       },
-    ).paddingSymmetric(vertical: AppDimens.defaultPadding);
+    );
   }
 }

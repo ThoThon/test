@@ -19,7 +19,7 @@ class SelectStaffPage extends BaseGetWidget {
       appBar: BaseAppBar(
         title: BaseAppBarTitle(title: LocaleKeys.staffList_selectedStaff.tr),
       ),
-      body: _buildBody(),
+      body: SafeArea(child: _buildBody()),
     );
   }
 }

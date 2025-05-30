@@ -30,19 +30,19 @@ class FamilyMember {
   final Gender gender;
 
   /// Dân tộc *
-  final EthnicModel ethnic;
+  final EthnicModel? ethnic;
 
   /// Quốc tịch *
-  final NationModel nation;
+  final NationModel? nation;
 
   /// Tỉnh khai sinh *
-  final ProvinceModel province;
+  final ProvinceModel? province;
 
   /// Huyện khai sinh *
-  final DistrictModel district;
+  final DistrictModel? district;
 
   /// Xã khai sinh *
-  final WardModel ward;
+  final WardModel? ward;
 
   /// Mối quan hệ với chủ hộ *
   final RelationshipModel relationship;
@@ -61,11 +61,11 @@ class FamilyMember {
     required this.birthType,
     this.dateOfBirth,
     required this.gender,
-    required this.ethnic,
-    required this.nation,
-    required this.province,
-    required this.district,
-    required this.ward,
+    this.ethnic,
+    this.nation,
+    this.province,
+    this.district,
+    this.ward,
     required this.relationship,
     required this.isParticipant,
     // Mặc định isUpdate là false khi tạo mới
@@ -91,6 +91,25 @@ class FamilyMember {
       isParticipant: member.laNguoiThamGia,
       // Đọc từ response => đã có dữ liệu, isUpdate sẽ là true để cập nhật ở BE
       isUpdate: true,
+    );
+  }
+
+  factory FamilyMember.fromStaff(StaffFamilyResponse staff) {
+    return FamilyMember(
+      fullName: staff.hoTen ?? '',
+      bhxhNumber: staff.maSoBhxh ?? '',
+      cccdNumber: staff.cmnd ?? '',
+      birthType: staff.chiCoNamSinh,
+      dateOfBirth: staff.ngaySinh,
+      gender: staff.gioiTinh,
+      ethnic: staff.danToc,
+      nation: staff.quocTich,
+      province: staff.tinhKhaiSinh,
+      district: staff.huyenKhaiSinh,
+      ward: staff.xaKhaiSinh,
+      relationship: staff.moiQuanHe,
+      isParticipant: false,
+      note: '',
     );
   }
 }
