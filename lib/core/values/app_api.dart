@@ -1,6 +1,6 @@
 /// class chứa các api để giao tiếp với BE
 class AppApi {
-  static const String url = "https://testapi.easyhrm.vn/vbhxh-mobile-api";
+  static const String url = "https://vbhxh-mobile-api.easyhrm.vn";
   static const String version = "";
 
   static const urlLogin = '/api/Authen/auth';
