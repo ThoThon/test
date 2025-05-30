@@ -180,4 +180,21 @@ class DeclareInfoRepository extends BaseRepository {
     );
     return BaseResponse.fromJson(response);
   }
+
+  /// Chi tiết nhân viên
+  Future<BaseResponse<StaffDetailResponse>> getDetailStaff({
+    required String id,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlGetDetailStaff,
+      EnumRequestMethod.get,
+      jsonMap: {
+        "idStaff": id,
+      },
+    );
+    return BaseResponse<StaffDetailResponse>.fromJson(
+      response,
+      fromJson: (json) => StaffDetailResponse.fromJson(json),
+    );
+  }
 }

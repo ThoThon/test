@@ -29,7 +29,7 @@ class D02Tk1State {
   /// Quốc tịch *
   final selectedNationality = Rxn<NationModel>();
 
-  void updateFromD02Detail(DeclareInfoDetailResponse detail) {
+  void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final d02Lt = detail.d02Lt;
 
     if (d02Lt.hoTen != null) {
@@ -60,6 +60,24 @@ class D02Tk1State {
     if (d02Lt.quocTich != null) {
       selectedNationality.value = d02Lt.quocTich;
     }
+  }
+
+  void mapFromStaffDetail(StaffDetailResponse staff) {
+    // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
+    fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
+
+    bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
+
+    cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
+
+    dateOfBirthTextCtrl.text =
+        convertDateToStringSafe(staff.ngaySinh, PATTERN_1) ?? '';
+
+    gender.value = staff.gioiTinh;
+
+    selectedEthnic.value = staff.danToc;
+
+    selectedNationality.value = staff.quocTich;
   }
 
   void dispose() {

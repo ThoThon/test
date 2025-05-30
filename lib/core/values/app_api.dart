@@ -1,6 +1,6 @@
 /// class chứa các api để giao tiếp với BE
 class AppApi {
-  static const String url = "https://vbhxh-mobile-api.easyhrm.vn";
+  static const String url = "https://testapi.easyhrm.vn/vbhxh-mobile-api";
   static const String version = "";
 
   static const urlLogin = '/api/Authen/auth';
@@ -33,6 +33,7 @@ class AppApi {
   static const String urlGetDistricts = '/api/Categories/get-districts';
   static const String urlGetWards = '/api/Categories/get-wards';
   static const String urlGetHospitals = '/api/Categories/get-benh-vien';
+  static const String urlGetDetailStaff = '/api/Categories/get-detail-staff';
 
   /// API lưu nháp khi kê khai thông tin
   static const String urlAddD02 = '/api/HoSoD02/add-d02';

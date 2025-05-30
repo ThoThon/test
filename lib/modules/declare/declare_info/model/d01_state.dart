@@ -6,7 +6,7 @@ import 'model_src.dart';
 class D01State {
   final forms = const <DeclarationForm>[].obs;
 
-  void updateFromD02Detail(DeclareInfoDetailResponse detail) {
+  void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     forms.value = detail.d01Dts.map((e) {
       return DeclarationForm.fromResponse(e);
     }).toList();

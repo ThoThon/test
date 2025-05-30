@@ -302,16 +302,6 @@ class LocaleKeys {
       'declareInfo_selectDeclarationType';
   static const declareInfo_plan = 'declareInfo_plan';
   static const declareInfo_selectPlan = 'declareInfo_selectPlan';
-  static const declareInfo_declarationTypeIncreaseLabor =
-      'declareInfo_declarationTypeIncreaseLabor';
-  static const declareInfo_declarationTypeDecreaseLabor =
-      'declareInfo_declarationTypeDecreaseLabor';
-  static const declareInfo_declarationTypeIncreaseSalary =
-      'declareInfo_declarationTypeIncreaseSalary';
-  static const declareInfo_declarationTypeDecreaseSalary =
-      'declareInfo_declarationTypeDecreaseSalary';
-  static const declareInfo_declarationTypeOther =
-      'declareInfo_declarationTypeOther';
   static const declareInfo_generateTk1Data = 'declareInfo_generateTk1Data';
   static const declareInfo_cccdNumber = 'declareInfo_cccdNumber';
   static const declareInfo_cccdNumberIsNotEmpty =
@@ -879,11 +869,6 @@ class Locales {
     'declareInfo_selectDeclarationType': 'Chọn loại khai báo',
     'declareInfo_plan': 'Phương án',
     'declareInfo_selectPlan': 'Chọn phương án',
-    'declareInfo_declarationTypeIncreaseLabor': 'Tăng lao động',
-    'declareInfo_declarationTypeDecreaseLabor': 'Giảm lao động',
-    'declareInfo_declarationTypeIncreaseSalary': 'Tăng lương',
-    'declareInfo_declarationTypeDecreaseSalary': 'Giảm lương',
-    'declareInfo_declarationTypeOther': 'Khác',
     'declareInfo_generateTk1Data': 'Sinh dữ liệu TK1-TS',
     'declareInfo_cccdNumber': 'Số CCCD',
     'declareInfo_cccdNumberIsNotEmpty': 'Số CCCD không được bỏ trống',

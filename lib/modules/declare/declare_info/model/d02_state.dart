@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/base/ui/formatter/currency_utils.dart';
 
@@ -64,7 +65,7 @@ class D02State {
   /// Sinh dữ liệu D01-TS
   final isGenerateD01Data = false.obs;
 
-  void updateFromD02Detail(DeclareInfoDetailResponse detail) {
+  void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final d02Lt = detail.d02Lt;
 
     id = d02Lt.id;
@@ -131,6 +132,41 @@ class D02State {
     }
 
     isGenerateD01Data.value = d02Lt.xuatD01;
+  }
+
+  void mapFromStaffDetail(StaffDetailResponse staff) {
+    // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
+    positionTextCtrl.text = staff.chucVu?.trim() ?? '';
+
+    salaryCoefficientTextCtrl.text =
+        staff.tienLuong != null && staff.tienLuong! > 0
+            ? CurrencyUtils.formatCurrencyForeign(staff.tienLuong!)
+            : '';
+
+    positionAllowanceTextCtrl.text =
+        staff.phuCapChucVu != null && staff.phuCapChucVu! > 0
+            ? CurrencyUtils.formatCurrencyForeign(staff.phuCapChucVu!)
+            : '';
+
+    pcTNVuotKhungTextCtrl.text = staff.phuCapThamNienVuotKhung != null &&
+            staff.phuCapThamNienVuotKhung! > 0
+        ? CurrencyUtils.formatCurrencyForeign(staff.phuCapThamNienVuotKhung!)
+        : '';
+
+    pcTNNTextCtrl.text =
+        staff.phuCapThamNienNghe != null && staff.phuCapThamNienNghe! > 0
+            ? CurrencyUtils.formatCurrencyForeign(staff.phuCapThamNienNghe!)
+            : '';
+
+    salaryAllowanceTextCtrl.text =
+        staff.phuCapLuong != null && staff.phuCapLuong! > 0
+            ? CurrencyUtils.formatCurrencyForeign(staff.phuCapLuong!)
+            : '';
+
+    otherAllowanceTextCtrl.text =
+        staff.phuCapBoSung != null && staff.phuCapBoSung! > 0
+            ? CurrencyUtils.formatCurrencyForeign(staff.phuCapBoSung!)
+            : '';
   }
 
   void dispose() {
