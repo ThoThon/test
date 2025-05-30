@@ -70,7 +70,7 @@ class Tk1State {
   /// Danh sách thành viên trong gia đình
   final familyMembers = <FamilyMember>[].obs;
 
-  void updateFromD02Detail(DeclareInfoDetailResponse detail) {
+  void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final tk1Ts = detail.tk1Ts;
     final members = detail.familyMembers;
 
@@ -152,7 +152,7 @@ class Tk1State {
     }
   }
 
-  void updateFromStaffDetail(StaffDetailResponse staff) {
+  void mapFromStaffDetail(StaffDetailResponse staff) {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
     final members = staff.danhSachThanhViens;
 

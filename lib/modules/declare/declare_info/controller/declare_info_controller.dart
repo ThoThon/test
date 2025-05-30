@@ -48,10 +48,10 @@ class DeclareInfoController extends BaseGetxController {
       final infoDetail = response.result;
       if (response.isSuccess && infoDetail != null) {
         // Update D02Tk1State
-        d02Tk1State.updateFromD02Detail(infoDetail);
-        d02State.updateFromD02Detail(infoDetail);
-        tk1State.updateFromD02Detail(infoDetail);
-        d01State.updateFromD02Detail(infoDetail);
+        d02Tk1State.mapFromD02Detail(infoDetail);
+        d02State.mapFromD02Detail(infoDetail);
+        tk1State.mapFromD02Detail(infoDetail);
+        d01State.mapFromD02Detail(infoDetail);
       } else {
         showSnackBar(response.errorMessage);
       }
@@ -70,9 +70,9 @@ class DeclareInfoController extends BaseGetxController {
       final response = await declareInfoRepository.getDetailStaff(id: staffId);
       final staff = response.result;
       if (response.isSuccess && staff != null) {
-        d02Tk1State.updateStaffDetail(staff);
-        d02State.updateFromStaffDetail(staff);
-        tk1State.updateFromStaffDetail(staff);
+        d02Tk1State.mapFromStaffDetail(staff);
+        d02State.mapFromStaffDetail(staff);
+        tk1State.mapFromStaffDetail(staff);
       } else {
         showSnackBar(response.errorMessage);
       }

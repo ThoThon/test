@@ -65,7 +65,7 @@ class D02State {
   /// Sinh dữ liệu D01-TS
   final isGenerateD01Data = false.obs;
 
-  void updateFromD02Detail(DeclareInfoDetailResponse detail) {
+  void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final d02Lt = detail.d02Lt;
 
     id = d02Lt.id;
@@ -134,7 +134,7 @@ class D02State {
     isGenerateD01Data.value = d02Lt.xuatD01;
   }
 
-  void updateFromStaffDetail(StaffDetailResponse staff) {
+  void mapFromStaffDetail(StaffDetailResponse staff) {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
     positionTextCtrl.text = staff.chucVu?.trim() ?? '';
 

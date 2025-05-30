@@ -29,7 +29,7 @@ class D02Tk1State {
   /// Quốc tịch *
   final selectedNationality = Rxn<NationModel>();
 
-  void updateFromD02Detail(DeclareInfoDetailResponse detail) {
+  void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final d02Lt = detail.d02Lt;
 
     if (d02Lt.hoTen != null) {
@@ -62,7 +62,7 @@ class D02Tk1State {
     }
   }
 
-  void updateStaffDetail(StaffDetailResponse staff) {
+  void mapFromStaffDetail(StaffDetailResponse staff) {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
     fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
 
