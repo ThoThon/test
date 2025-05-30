@@ -278,7 +278,8 @@
     "addNewStaff": "Thêm mới nhân viên",
     "attachFile": "Đính kèm file",
     "addAttachedImage": "Thêm hình ảnh đính kèm",
-    "deposit": "Ký gửi"
+    "deposit": "Ký gửi",
+    "deleteImageSuccess":"Xóa ảnh thành công"
   },
   "declareInfo": {
     "title": "Kê khai thông tin",

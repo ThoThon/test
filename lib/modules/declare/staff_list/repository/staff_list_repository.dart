@@ -2,9 +2,8 @@ import 'package:dio/dio.dart' as di;
 import 'package:http_parser/http_parser.dart';
 import 'package:v_bhxh/base_app/model/base_response.dart';
 import 'package:v_bhxh/base_app/repository_base/base_repository.dart';
-import 'package:v_bhxh/core/enum/enum_request_method.dart';
-import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
+import 'package:v_bhxh/modules/src.dart';
 
 class StaffListRepository extends BaseRepository {
   StaffListRepository(super.controller);
@@ -25,8 +24,8 @@ class StaffListRepository extends BaseRepository {
     );
   }
 
-  Future<BaseResponse<String>> uploadFile({
-    required UploadAttachmentsRequest request,
+  Future<BaseResponse<String>> uploadImage({
+    required UploadImageRequest request,
   }) async {
     final mapData = request.toJson();
 
@@ -62,11 +61,11 @@ class StaffListRepository extends BaseRepository {
     final formData = di.FormData.fromMap(mapData);
 
     final response = await baseCallApi(
-      AppApi.urlUpLoadFile,
+      AppApi.urlUpLoadImage,
       EnumRequestMethod.post,
       jsonMap: formData,
     );
-
+    logger.d(response);
     return BaseResponse<String>.fromJson(
       response,
       fromJson: (json) => json.toString(),
@@ -90,5 +89,13 @@ class StaffListRepository extends BaseRepository {
       response,
       fromJson: (json) => SaveXmlResult.fromJson(json),
     );
+  }
+
+  Future<BaseResponse> deleteImage(String kyKeKhaiId, String fileName) async {
+    final response = await baseCallApi(
+      "/api/Upload/delete-images/$kyKeKhaiId/$fileName",
+      EnumRequestMethod.delete,
+    );
+    return BaseResponse.fromJson(response);
   }
 }

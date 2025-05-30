@@ -1,5 +1,7 @@
 30/05/2025:
 - Xử lý thêm tự động bỏ tick sinh tờ khai TK1 - BHW-2243
+- [api] - Bổ sung giao diện Xóa file ảnh đính kèm - BHW-2257
+- [AppMobile] - Sửa đổi hiển thị dialog Xóa đợt kê khai thành công - BHW-2258
 
 29/05/2025:
 - [api] - Bổ sung giao diện Đợt kê khai - sửa - chỉnh sửa từng bản ghi cho từng nhân viên - BHW-2152
