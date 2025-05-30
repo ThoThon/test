@@ -1,3 +1,6 @@
+30/05/2025:
+- Xử lý thêm tự động bỏ tick sinh tờ khai TK1 - BHW-2243
+
 29/05/2025:
 - [api] - Bổ sung giao diện Đợt kê khai - sửa - chỉnh sửa từng bản ghi cho từng nhân viên - BHW-2152
 - Sửa nhân viên cho từng đợt kê khai
