@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/shares/date/date_utils.dart';
 
 import 'model_src.dart';
 
@@ -17,9 +18,7 @@ class D02Tk1State {
   final cccdTextCtrl = TextEditingController();
 
   /// Ngày sinh
-  final dateOfBirth = Rxn<DateTime>();
-
-  final dateOfBirthCtrl = TextEditingController();
+  final dateOfBirthTextCtrl = TextEditingController();
 
   /// Giới tính *
   final gender = Rxn<Gender>();
@@ -46,7 +45,8 @@ class D02Tk1State {
     }
 
     if (d02Lt.ngaySinh != null) {
-      dateOfBirth.value = d02Lt.ngaySinh;
+      dateOfBirthTextCtrl.text =
+          convertDateToStringSafe(d02Lt.ngaySinh, PATTERN_1) ?? '';
     }
 
     if (d02Lt.gioiTinh != null) {
@@ -66,5 +66,6 @@ class D02Tk1State {
     fullNameTextCtrl.dispose();
     bhxhTextCtrl.dispose();
     cccdTextCtrl.dispose();
+    dateOfBirthTextCtrl.dispose();
   }
 }

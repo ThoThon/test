@@ -676,8 +676,7 @@ class DeclareInfoController extends BaseGetxController {
       d02Tk1State
         ..fullNameTextCtrl.text = sendNfcRequestModel.name ?? ''
         ..cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? ''
-        ..dateOfBirth.value =
-            convertStringToDate(sendNfcRequestModel.dobVMN ?? '', PATTERN_1)
+        ..dateOfBirthTextCtrl.text = sendNfcRequestModel.dobVMN ?? ''
         ..gender.value = gender
         ..selectedEthnic.value = AppData.instance.ethnics.toList().firstWhere(
             (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM)

@@ -98,7 +98,8 @@ class D02Request {
       phuongAnId: d02State.plan.value?.id,
       xuatTk01: d02State.isGenerateTk1Data.value,
       cmnd: d02Tk1State.cccdTextCtrl.text.trim(),
-      ngaySinh: d02Tk1State.dateOfBirth.value,
+      ngaySinh: convertStringToDateSafe(
+          d02Tk1State.dateOfBirthTextCtrl.text, PATTERN_1),
       gioiTinh: d02Tk1State.gender.value?.rawValue ?? Gender.male.rawValue,
       danTocId: d02Tk1State.selectedEthnic.value?.value,
       quocTichId: d02Tk1State.selectedNationality.value?.value,
