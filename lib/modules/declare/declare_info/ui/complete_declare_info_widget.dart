@@ -61,7 +61,7 @@ class CompleteDeclareInfoWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        alignment: Alignment.center,
+      alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(
           vertical: AppDimens.defaultPadding,
         ),

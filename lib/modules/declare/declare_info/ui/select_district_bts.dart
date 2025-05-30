@@ -62,9 +62,9 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
               Get.back(result: controller.selectedDistrict.value);
             },
           ),
-          sdsSBHeight16,
+          sdsSBHeight32,
         ],
-      ).paddingAll(AppDimens.defaultPadding),
+      ).paddingAll(AppDimens.paddingVerySmall),
     );
   }
 
