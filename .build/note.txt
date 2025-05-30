@@ -4,6 +4,8 @@
 - [AppMobile] - Sửa đổi hiển thị dialog Xóa đợt kê khai thành công - BHW-2258
 - [AppMobile] - Chưa bắt Validate là trường bắt buộc trường [Ngày sinh] - BHW-2256
 - [AppMobile]_D02-LT_Chọn nhân viên - BHW-2184
+- [AppMobile] - Count và hiện thị số thông báo chưa đọc - BHW-2254
+- [AppMobile] - Man thông báo chưa xử lý icon đã đọc tất cả các thông báo - BHW-2255
 
 29/05/2025:
 - [api] - Bổ sung giao diện Đợt kê khai - sửa - chỉnh sửa từng bản ghi cho từng nhân viên - BHW-2152

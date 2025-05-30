@@ -22,7 +22,6 @@ class NotificationRepository extends BaseRepository {
       AppApi.urlReadAllNotification,
       EnumRequestMethod.post,
     );
-    logger.d(response);
     return BaseResponse.fromJson(response);
   }
 

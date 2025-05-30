@@ -15,25 +15,24 @@ class NotificationPage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(
-        title: BaseAppBarTitle(
-          title: LocaleKeys.pageBuilder_notification.tr,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              controller.readAllNotification();
-            },
-            icon: const Icon(
-              Icons.check_outlined,
-              color: AppColors.primaryColor,
-            ),
+        appBar: BaseAppBar(
+          title: BaseAppBarTitle(
+            title: LocaleKeys.pageBuilder_notification.tr,
           ),
-          sdsSBWidth16,
-        ],
-        centerTitle: true,
-      ),
-      body: _buildBody(),
-    );
+          actions: [
+            IconButton(
+              onPressed: () {
+                controller.readAllNotification();
+              },
+              icon: const Icon(
+                Icons.check_outlined,
+                color: AppColors.primaryColor,
+              ),
+            ),
+            sdsSBWidth16,
+          ],
+          centerTitle: true,
+        ),
+        body: baseShowLoading(_buildBody));
   }
 }

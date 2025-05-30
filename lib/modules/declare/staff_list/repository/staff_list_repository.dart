@@ -65,7 +65,6 @@ class StaffListRepository extends BaseRepository {
       EnumRequestMethod.post,
       jsonMap: formData,
     );
-    logger.d(response);
     return BaseResponse<String>.fromJson(
       response,
       fromJson: (json) => json.toString(),
@@ -84,7 +83,6 @@ class StaffListRepository extends BaseRepository {
       // Có thể việc gen pdf ở BE tốn thời gian, nên cần tăng thời gian timeout
       timeOut: const Duration(minutes: 2),
     );
-
     return BaseResponse<SaveXmlResult>.fromJson(
       response,
       fromJson: (json) => SaveXmlResult.fromJson(json),
