@@ -62,6 +62,24 @@ class D02Tk1State {
     }
   }
 
+  void updateStaffDetail(StaffDetailResponse staff) {
+    // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
+    fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
+
+    bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
+
+    cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
+
+    dateOfBirthTextCtrl.text =
+        convertDateToStringSafe(staff.ngaySinh, PATTERN_1) ?? '';
+
+    gender.value = staff.gioiTinh;
+
+    selectedEthnic.value = staff.danToc;
+
+    selectedNationality.value = staff.quocTich;
+  }
+
   void dispose() {
     fullNameTextCtrl.dispose();
     bhxhTextCtrl.dispose();

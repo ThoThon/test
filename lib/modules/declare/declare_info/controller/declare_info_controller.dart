@@ -62,6 +62,27 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
+  Future<void> _getDetailStaff({
+    required String staffId,
+  }) async {
+    try {
+      showLoadingOverlay();
+      final response = await declareInfoRepository.getDetailStaff(id: staffId);
+      final staff = response.result;
+      if (response.isSuccess && staff != null) {
+        d02Tk1State.updateStaffDetail(staff);
+        d02State.updateFromStaffDetail(staff);
+        tk1State.updateFromStaffDetail(staff);
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
   void onTabChanged(DeclareInfoTab tab) {
     KeyBoard.hide();
     if (currentTab.value == tab) return;
@@ -124,11 +145,8 @@ class DeclareInfoController extends BaseGetxController {
 
   void goToSelectStaffPage() async {
     final result = await Get.toNamed(AppRoutes.selectStaff.path);
-    if (result != null && result is SelectStaffResponse) {
-      d02Tk1State.fullNameTextCtrl.text = result.hoTen;
-      d02Tk1State.bhxhTextCtrl.text = result.maSoBHXH;
-      d02Tk1State.cccdTextCtrl.text = result.soCCCD;
-      d02State.positionTextCtrl.text = result.chucVu;
+    if (result is SelectStaffResponse) {
+      _getDetailStaff(staffId: result.id);
     }
   }
 

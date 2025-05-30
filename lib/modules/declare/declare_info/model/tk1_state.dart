@@ -152,6 +152,42 @@ class Tk1State {
     }
   }
 
+  void updateFromStaffDetail(StaffDetailResponse staff) {
+    // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
+    final members = staff.danhSachThanhViens;
+
+    provinceOfBirth.value = staff.khaiSinhTinh;
+
+    districtOfBirth.value = staff.khaiSinhHuyen;
+
+    wardOfBirth.value = staff.khaiSinhXa;
+
+    provinceReceive.value = staff.noiNhanTinh;
+
+    districtReceive.value = staff.noiNhanHuyen;
+
+    wardReceive.value = staff.noiNhanXa;
+
+    provinceKCB.value = staff.benhVienTinh;
+
+    hospitalKCB.value = staff.benhVien;
+
+    contactPhoneNumberTextCtrl.text = staff.dienThoaiLienHe?.trim() ?? '';
+
+    headOfHouseholdTextCtrl.text = staff.hoTenChuHo?.trim() ?? '';
+
+    headOfHouseholdCCCDTextCtrl.text = staff.chuHoSoCCCD?.trim() ?? '';
+
+    provinceTT.value = staff.chuHoTinh;
+
+    districtTT.value = staff.chuHoHuyen;
+
+    wardTT.value = staff.chuHoXa;
+
+    familyMembers.value =
+        members.map((e) => FamilyMember.fromStaff(e)).toList();
+  }
+
   void dispose() {
     birthAddressTextCtrl.dispose();
     addressReceiveTextCtrl.dispose();
