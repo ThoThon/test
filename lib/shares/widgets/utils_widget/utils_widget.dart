@@ -898,17 +898,15 @@ class UtilWidget {
 
   static Future<DateTime?> showDateTimePicker({
     DateTime? dateTimeInit,
-    DateTime? minTime,
-    DateTime? maxTime,
+    DateTime? firstDate,
+    DateTime? lastDate,
   }) async {
-    DateTime? newDateTime = await showRoundedDatePicker(
+    final newDateTime = await showRoundedDatePicker(
       context: Get.context!,
       height: Get.height / 1.8,
-      // Ngày khởi tạo < lastDate
-      initialDate:
-          dateTimeInit ?? DateTime.now().subtract(const Duration(days: 1)),
-      firstDate: minTime ?? DateTime.utc(DateTime.now().year - 100),
-      lastDate: maxTime,
+      initialDate: dateTimeInit,
+      firstDate: firstDate,
+      lastDate: lastDate,
       textPositiveButton: 'Áp dụng',
       textNegativeButton: 'Hủy',
       // barrierDismissible: true,
@@ -955,7 +953,7 @@ class UtilWidget {
       context: context,
       onlyYear: onlyYear,
       lastDate: lastDate,
-      initialDate: dateTime ?? DateTime.now(),
+      initialDate: dateTime,
       monthPickerDialogSettings: MonthPickerDialogSettings(
         actionBarSettings: PickerActionBarSettings(
           cancelWidget: SDSBuildText(
@@ -1056,7 +1054,7 @@ class UtilWidget {
     bool isRequired = true,
     VoidCallback? onTap,
     void Function(String)? onChanged,
-    required inputFormatters,
+    required int inputFormatters,
     required TextEditingController controller,
   }) {
     return Column(

@@ -381,7 +381,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           dateTimeInit: convertStringToDateSafe(
                   controller.d02Tk1State.dateOfBirthCtrl.text, PATTERN_1) ??
               DateTime.now(),
-          maxTime: DateTime.now(),
+          lastDate: DateTime.now(),
         );
 
         if (selectedDate != null) {
