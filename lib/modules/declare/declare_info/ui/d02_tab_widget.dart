@@ -196,10 +196,8 @@ extension D02TabWidget on DeclareInfoPage {
             }
             controller.d02State.plan.value = value;
 
-            if (value
-                .isGenerateTk1(controller.d02State.declarationType.value)) {
-              controller.d02State.isGenerateTk1Data.value = true;
-            }
+            controller.d02State.isGenerateTk1Data.value =
+                value.isGenerateTk1(controller.d02State.declarationType.value);
           },
         ).paddingOnly(bottom: AppDimens.defaultPadding);
       },
