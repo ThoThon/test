@@ -50,6 +50,8 @@ class FamilyMember {
   /// Là người tham gia
   final bool isParticipant;
 
+  final String? giaDinhId;
+
   final bool isUpdate;
 
   const FamilyMember({
@@ -68,6 +70,7 @@ class FamilyMember {
     this.ward,
     this.relationship,
     required this.isParticipant,
+    this.giaDinhId,
     // Mặc định isUpdate là false khi tạo mới
     this.isUpdate = false,
   });
@@ -109,6 +112,8 @@ class FamilyMember {
       ward: staff.xaKhaiSinh,
       relationship: staff.moiQuanHe,
       isParticipant: false,
+      // Mỗi thành viên của nhân viên có 1 id -> id này sẽ gán tương ứng vs giaDinhId cho từng thành viên đc thêm trong tk1
+      giaDinhId: staff.id,
       note: '',
     );
   }

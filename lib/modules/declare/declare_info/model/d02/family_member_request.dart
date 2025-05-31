@@ -18,6 +18,7 @@ class FamilyMemberRequest {
   final String? cmnd;
   final String? ghiChu;
   final bool laNguoiThamGia;
+  final String? giaDinhId;
   final bool isUpdate;
 
   const FamilyMemberRequest({
@@ -37,6 +38,7 @@ class FamilyMemberRequest {
     this.cmnd,
     this.ghiChu,
     required this.laNguoiThamGia,
+    this.giaDinhId,
     required this.isUpdate,
   });
 
@@ -46,6 +48,7 @@ class FamilyMemberRequest {
       'kyKeKhaiId': kyKeKhaiId,
       'hoTen': hoTen,
       'maSoBhxh': maSoBhxh,
+      'chiCoNamSinh': chiCoNamSinh,
       'ngaySinh': ngaySinh?.toIso8601String(),
       'gioiTinh': gioiTinh,
       'danToc': danToc,
@@ -57,6 +60,7 @@ class FamilyMemberRequest {
       'cmnd': cmnd,
       'ghiChu': ghiChu,
       'laNguoiThamGia': laNguoiThamGia,
+      'giaDinhId': giaDinhId,
       'isUpdate': isUpdate,
     };
   }
@@ -84,6 +88,7 @@ class FamilyMemberRequest {
         cmnd: member.cccdNumber,
         ghiChu: member.note,
         laNguoiThamGia: member.isParticipant,
+        giaDinhId: member.giaDinhId,
         isUpdate: member.isUpdate,
       );
     }).toList();
