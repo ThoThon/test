@@ -6,6 +6,7 @@
 - Cập nhật logic hiển thị ngày cập nhật ở màn danh sách đượt kê khai dựa trên ngày cập nhật và ngày tạo
 - [AppMobile] - Bỏ tích "Đóng theo hệ số" - BHW-2273
 - [AppMobile] - Màn Chức vụ/Tìm kiếm sai title - BHW-2283
+- [AppMobile]_không xem lại được thông tin nhân viên kê khai đối với nhân viên chọn từ Danh sách nhân viên - BHW-2291
 
 30/05/2025:
 - Xử lý thêm tự động bỏ tick sinh tờ khai TK1 - BHW-2243
