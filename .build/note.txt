@@ -9,7 +9,6 @@
 - [App] - Bỏ phân trang khi mở tài liệu pdf - BHW-2251
 - [AppMobile] - Thay đổi bàn phím nhập cho trường Tiền lương/Hệ số - BHW-2248
 - [AppMobile] - Màn Kê khai thông tin: Chặn không cho Lưu và hiển thị thông báo KHi không có bảng kê nào - BHW-2263
-- Fix BHW-2263
 
 29/05/2025:
 - [api] - Bổ sung giao diện Đợt kê khai - sửa - chỉnh sửa từng bản ghi cho từng nhân viên - BHW-2152
