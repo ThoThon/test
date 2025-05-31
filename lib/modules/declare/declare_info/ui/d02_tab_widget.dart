@@ -323,7 +323,7 @@ extension D02TabWidget on DeclareInfoPage {
                   const TextInputType.numberWithOptions(decimal: true),
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return 'Tiền lơng/Hệ số không được bỏ trống';
+                  return 'Tiền lương/Hệ số không được bỏ trống';
                 }
 
                 if (!isSalaryCoefficient && value.contains(',')) {
