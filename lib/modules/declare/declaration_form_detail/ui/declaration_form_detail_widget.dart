@@ -131,6 +131,8 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         InputTextModel(
           controller: controller.bhxhTextCtrl,
           maxLengthInputForm: 10,
+          textInputType: TextInputType.number,
+          inputFormatters: InputFormatterEnum.digitsOnly,
         ),
       ),
     );
