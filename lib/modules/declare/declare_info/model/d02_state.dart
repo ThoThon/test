@@ -4,6 +4,7 @@ import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/base/ui/formatter/currency_utils.dart';
+import 'package:v_bhxh/shares/date/date_utils.dart';
 
 class D02State {
   /// id d02Lt dùng khi update
@@ -23,14 +24,10 @@ class D02State {
   final isGenerateTk1Data = false.obs;
 
   /// Từ tháng/năm *
-  final fromDate = Rxn<DateTime>();
-
-  final fromDateCtrl = TextEditingController();
+  final fromDateTextCtrl = TextEditingController();
 
   /// Đến tháng/năm *
-  final toDate = Rxn<DateTime>();
-
-  final toDateCtrl = TextEditingController();
+  final toDateTextCtrl = TextEditingController();
 
   /// Cấp bập/chức vụ *
   final positionTextCtrl = TextEditingController();
@@ -81,11 +78,13 @@ class D02State {
     isGenerateTk1Data.value = d02Lt.xuatTk01;
 
     if (d02Lt.tuThang != null) {
-      fromDate.value = d02Lt.tuThang;
+      fromDateTextCtrl.text =
+          convertDateToStringSafe(d02Lt.tuThang!, PATTERN_12) ?? '';
     }
 
     if (d02Lt.denThang != null) {
-      toDate.value = d02Lt.denThang;
+      toDateTextCtrl.text =
+          convertDateToStringSafe(d02Lt.denThang!, PATTERN_12) ?? '';
     }
 
     if (d02Lt.chucVu != null) {
@@ -170,6 +169,8 @@ class D02State {
   }
 
   void dispose() {
+    fromDateTextCtrl.dispose();
+    toDateTextCtrl.dispose();
     positionTextCtrl.dispose();
     workplaceTextCtrl.dispose();
     salaryCoefficientTextCtrl.dispose();

@@ -23,17 +23,6 @@ class DateMonthInputFormatter extends TextInputFormatter {
       }
     }
 
-    // Kiểm tra năm không vượt quá hiện tại
-    if (digitsOnly.length == 6) {
-      int month = int.tryParse(digitsOnly.substring(0, 2)) ?? 0;
-      int year = int.tryParse(digitsOnly.substring(2, 6)) ?? 0;
-
-      final now = DateTime.now();
-      if (year > now.year || (year == now.year && month > now.month)) {
-        return oldValue;
-      }
-    }
-
     // Format MM/yyyy
     StringBuffer buffer = StringBuffer();
     for (int i = 0; i < digitsOnly.length; i++) {

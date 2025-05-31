@@ -94,65 +94,91 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectToDate() {
-    return UtilWidget.buildSelectDate(
+    return UtilWidget.buildInputSelectDate(
+      title: LocaleKeys.declareInfo_toMonthYear.tr,
       inputFormatters: InputFormatterEnum.dateMonthYear,
-      controller: controller.d02State.toDateCtrl,
-      LocaleKeys.declareInfo_toMonthYear.tr,
+      controller: controller.d02State.toDateTextCtrl,
       hintText: PATTERN_12,
       isRequired: false,
-      date: convertDateToStringSafe(
-        controller.d02State.toDate.value,
-        PATTERN_12,
-      ),
-      onChanged: (value) {
-        if (value.trim().isEmpty) {
-          controller.d02State.toDate.value = null;
-        }
-      },
-      onTap: () async {
+      onSelectDate: () async {
         final selectedDate = await UtilWidget.showPeriodDatePicker(
           dateTime: convertStringToDateSafe(
-            controller.d02State.toDateCtrl.text,
+            controller.d02State.toDateTextCtrl.text,
             PATTERN_12,
           ),
         );
         if (selectedDate != null) {
-          controller.d02State.toDate.value = selectedDate;
-          controller.d02State.toDateCtrl.text =
+          controller.d02State.toDateTextCtrl.text =
               convertDateToString(selectedDate, PATTERN_12);
         }
+      },
+      validator: (value) {
+        if (value == null || value.trim().isEmpty) {
+          // Không bắt buộc
+          return null;
+        }
+
+        final toDate = convertStringToDateStrict(value, PATTERN_12);
+
+        if (toDate == null) {
+          return 'Đến tháng/năm không hợp lệ';
+        }
+
+        final fromDate = convertStringToDateStrict(
+          controller.d02State.fromDateTextCtrl.text,
+          PATTERN_12,
+        );
+
+        if (fromDate != null && toDate.isBefore(fromDate)) {
+          return 'Đến tháng/năm không được nhỏ hơn Từ tháng/năm';
+        }
+
+        return null;
       },
     );
   }
 
   Widget _buildSelectFromDate() {
-    return UtilWidget.buildSelectDate(
-      controller: controller.d02State.fromDateCtrl,
-      LocaleKeys.declareInfo_fromMonthYear.tr,
+    return UtilWidget.buildInputSelectDate(
+      title: LocaleKeys.declareInfo_fromMonthYear.tr,
+      controller: controller.d02State.fromDateTextCtrl,
       hintText: PATTERN_12,
       isRequired: false,
       inputFormatters: InputFormatterEnum.dateMonthYear,
-      date: convertDateToStringSafe(
-        controller.d02State.fromDate.value,
-        PATTERN_12,
-      ),
-      onChanged: (value) {
-        if (value.trim().isEmpty) {
-          controller.d02State.fromDate.value = null;
-        }
-      },
-      onTap: () async {
+      onSelectDate: () async {
         final selectedDate = await UtilWidget.showPeriodDatePicker(
           dateTime: convertStringToDateSafe(
-            controller.d02State.fromDateCtrl.text,
+            controller.d02State.fromDateTextCtrl.text,
             PATTERN_12,
           ),
         );
         if (selectedDate != null) {
-          controller.d02State.fromDate.value = selectedDate;
-          controller.d02State.fromDateCtrl.text =
+          controller.d02State.fromDateTextCtrl.text =
               convertDateToString(selectedDate, PATTERN_12);
         }
+      },
+      validator: (value) {
+        if (value == null || value.trim().isEmpty) {
+          // Không bắt buộc
+          return null;
+        }
+
+        final fromDate = convertStringToDateStrict(value, PATTERN_12);
+
+        if (fromDate == null) {
+          return 'Từ tháng/năm không hợp lệ';
+        }
+
+        final toDate = convertStringToDateStrict(
+          controller.d02State.toDateTextCtrl.text,
+          PATTERN_12,
+        );
+
+        if (toDate != null && fromDate.isAfter(toDate)) {
+          return 'Từ tháng/năm không được lớn hơn Đến tháng/năm';
+        }
+
+        return null;
       },
     );
   }
