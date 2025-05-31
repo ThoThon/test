@@ -15,6 +15,7 @@
 - [Appmobile]_D01-TS_validate trường mã số BHXH chỉ cho nhập số - BHW-2296
 - [AppMobile] - Tên bảng kê khai hồ sơ hiển thị sai - BHW-2277
 - [Appmobile]_Lịch sử giao dịch_Bổ sung chức năng tìm kiếm số hồ sơ - BHW-2298
+- Đổi app icon
 - [AppMobile] - Count và hiện thị số thông báo chưa đọc - BHW-2254
 
 30/05/2025:
