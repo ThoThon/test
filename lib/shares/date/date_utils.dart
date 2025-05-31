@@ -76,7 +76,7 @@ String convertDateToStringDefault(DateTime dateTime) {
 /// Ví du: 31/02/2025 => null
 ///
 /// Nếu dùng `convertDateToStringSafe` thì sẽ trả về 02/03/2025
-DateTime? convertDateToStringStrict(String? dateTime, String pattern) {
+DateTime? convertStringToDateStrict(String? dateTime, String pattern) {
   if (dateTime == null) {
     return null;
   }

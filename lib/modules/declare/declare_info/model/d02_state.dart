@@ -24,9 +24,7 @@ class D02State {
   final isGenerateTk1Data = false.obs;
 
   /// Từ tháng/năm *
-  final fromDate = Rxn<DateTime>();
-
-  final fromDateCtrl = TextEditingController();
+  final fromDateTextCtrl = TextEditingController();
 
   /// Đến tháng/năm *
   final toDateTextCtrl = TextEditingController();
@@ -80,7 +78,8 @@ class D02State {
     isGenerateTk1Data.value = d02Lt.xuatTk01;
 
     if (d02Lt.tuThang != null) {
-      fromDate.value = d02Lt.tuThang;
+      fromDateTextCtrl.text =
+          convertDateToStringSafe(d02Lt.tuThang!, PATTERN_12) ?? '';
     }
 
     if (d02Lt.denThang != null) {
@@ -170,8 +169,9 @@ class D02State {
   }
 
   void dispose() {
-    positionTextCtrl.dispose();
+    fromDateTextCtrl.dispose();
     toDateTextCtrl.dispose();
+    positionTextCtrl.dispose();
     workplaceTextCtrl.dispose();
     salaryCoefficientTextCtrl.dispose();
     positionAllowanceTextCtrl.dispose();

@@ -385,7 +385,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           return LocaleKeys.declareInfo_dobCannotEmpty.tr;
         }
 
-        final date = convertDateToStringStrict(trimmedValue, PATTERN_1);
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
         if (date == null) {
           return LocaleKeys.declareInfo_dobInvalid.tr;
         }

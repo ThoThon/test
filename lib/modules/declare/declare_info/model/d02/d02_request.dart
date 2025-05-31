@@ -103,7 +103,7 @@ class D02Request {
       gioiTinh: d02Tk1State.gender.value?.rawValue ?? Gender.male.rawValue,
       danTocId: d02Tk1State.selectedEthnic.value?.value,
       quocTichId: d02Tk1State.selectedNationality.value?.value,
-      tuThang: convertDateToStringSafe(d02State.fromDate.value, PATTERN_12),
+      tuThang: d02State.fromDateTextCtrl.text,
       denThang: d02State.toDateTextCtrl.text,
       chucVu: d02State.positionTextCtrl.text.trim(),
       noiLamViec: d02State.workplaceTextCtrl.text.trim(),
