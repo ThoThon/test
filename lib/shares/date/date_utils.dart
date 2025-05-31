@@ -67,9 +67,25 @@ DateTime? convertDateToDate(DateTime? dateTime, String pattern) {
   }
 }
 
-
 String convertDateToStringDefault(DateTime dateTime) {
   return DateFormat(PATTERN_DEFAULT).format(dateTime);
+}
+
+/// Chuyển đổi chuỗi ngày giờ sang DateTime với định dạng nghiêm ngặt
+///
+/// Ví du: 31/02/2025 => null
+///
+/// Nếu dùng `convertDateToStringSafe` thì sẽ trả về 02/03/2025
+DateTime? convertDateToStringStrict(String? dateTime, String pattern) {
+  if (dateTime == null) {
+    return null;
+  }
+  try {
+    final format = DateFormat(pattern);
+    return format.parseStrict(dateTime);
+  } catch (_) {
+    return null;
+  }
 }
 
 String changeDateString(String date, {String pattern = PATTERN_1}) {
