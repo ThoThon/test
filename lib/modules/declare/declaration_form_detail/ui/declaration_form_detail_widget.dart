@@ -157,10 +157,10 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       label: LocaleKeys.declarationFormDetail_bhxhCode.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          inputFormatters: InputFormatterEnum.digitsOnly,
           controller: controller.bhxhTextCtrl,
           maxLengthInputForm: 10,
           textInputType: TextInputType.number,
+          inputFormatters: InputFormatterEnum.digitsOnly,
         ),
       ),
     );

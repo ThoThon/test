@@ -92,6 +92,8 @@ class D02State {
       workplaceTextCtrl.text = d02Lt.noiLamViec!.trim();
     }
 
+    isSalaryCoefficient.value = d02Lt.dongTheoHeSo;
+
     if (d02Lt.tienLuong != null && d02Lt.tienLuong! > 0) {
       salaryCoefficientTextCtrl.text =
           CurrencyUtils.formatCurrencyForeign(d02Lt.tienLuong!);
@@ -133,6 +135,8 @@ class D02State {
   void mapFromStaffDetail(StaffDetailResponse staff) {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
     positionTextCtrl.text = staff.chucVu?.trim() ?? '';
+
+    isSalaryCoefficient.value = staff.dongTheoHeSo;
 
     salaryCoefficientTextCtrl.text =
         staff.tienLuong != null && staff.tienLuong! > 0

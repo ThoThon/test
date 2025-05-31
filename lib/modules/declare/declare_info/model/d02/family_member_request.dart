@@ -80,7 +80,7 @@ class FamilyMemberRequest {
         khaiSinhTinhId: member.province?.id,
         khaiSinhHuyenId: member.district?.id,
         khaiSinhXaId: member.ward?.id,
-        moiQuanHe: member.relationship.value,
+        moiQuanHe: member.relationship?.value,
         cmnd: member.cccdNumber,
         ghiChu: member.note,
         laNguoiThamGia: member.isParticipant,

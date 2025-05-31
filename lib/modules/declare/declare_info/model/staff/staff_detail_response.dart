@@ -11,6 +11,8 @@ class StaffDetailResponse {
   final EthnicModel? danToc;
   final NationModel? quocTich;
   final String? chucVu;
+  final bool dongTheoHeSo;
+  final double? heSoLuongCoBan;
   final double? tienLuong;
   final double? phuCapChucVu;
   final double? phuCapThamNienVuotKhung;
@@ -22,15 +24,18 @@ class StaffDetailResponse {
   final ProvinceModel? khaiSinhTinh;
   final DistrictModel? khaiSinhHuyen;
   final WardModel? khaiSinhXa;
+  final String? diaChiKhaiSinh;
   final ProvinceModel? noiNhanTinh;
   final DistrictModel? noiNhanHuyen;
   final WardModel? noiNhanXa;
+  final String? diaChiNoiNhan;
   final String? dienThoaiLienHe;
   final String? hoTenChuHo;
   final String? chuHoSoCCCD;
-  final ProvinceModel? chuHoTinh;
-  final DistrictModel? chuHoHuyen;
-  final WardModel? chuHoXa;
+  final ProvinceModel? chuHoThuongTruTinh;
+  final DistrictModel? chuHoThuongTruHuyen;
+  final WardModel? chuHoThuongTruXa;
+  final String? diaChiThuongTruChuHo;
   final List<StaffFamilyResponse> danhSachThanhViens;
 
   const StaffDetailResponse({
@@ -43,6 +48,8 @@ class StaffDetailResponse {
     this.danToc,
     this.quocTich,
     this.chucVu,
+    required this.dongTheoHeSo,
+    this.heSoLuongCoBan,
     this.tienLuong,
     this.phuCapChucVu,
     this.phuCapThamNienVuotKhung,
@@ -54,15 +61,18 @@ class StaffDetailResponse {
     this.khaiSinhTinh,
     this.khaiSinhHuyen,
     this.khaiSinhXa,
+    this.diaChiKhaiSinh,
     this.noiNhanTinh,
     this.noiNhanHuyen,
     this.noiNhanXa,
+    this.diaChiNoiNhan,
     this.dienThoaiLienHe,
     this.hoTenChuHo,
     this.chuHoSoCCCD,
-    this.chuHoTinh,
-    this.chuHoHuyen,
-    this.chuHoXa,
+    this.chuHoThuongTruTinh,
+    this.chuHoThuongTruHuyen,
+    this.chuHoThuongTruXa,
+    this.diaChiThuongTruChuHo,
     required this.danhSachThanhViens,
   });
 
@@ -81,24 +91,14 @@ class StaffDetailResponse {
           ? NationModel.fromJson(json['quocTich'])
           : null,
       chucVu: json['chucVu'],
-      tienLuong: json['tienLuong'] != null
-          ? double.tryParse(json['tienLuong'].toString())
-          : null,
-      phuCapChucVu: json['phuCapChucVu'] != null
-          ? double.tryParse(json['phuCapChucVu'].toString())
-          : null,
-      phuCapThamNienVuotKhung: json['phuCapThamNienVuotKhung'] != null
-          ? double.tryParse(json['phuCapThamNienVuotKhung'].toString())
-          : null,
-      phuCapThamNienNghe: json['phuCapThamNienNghe'] != null
-          ? double.tryParse(json['phuCapThamNienNghe'].toString())
-          : null,
-      phuCapLuong: json['phuCapLuong'] != null
-          ? double.tryParse(json['phuCapLuong'].toString())
-          : null,
-      phuCapBoSung: json['phuCapBoSung'] != null
-          ? double.tryParse(json['phuCapBoSung'].toString())
-          : null,
+      dongTheoHeSo: json['dongTheoHeSo'] ?? false,
+      heSoLuongCoBan: json['heSoLuongCoBan']?.toDouble(),
+      tienLuong: json['tienLuong']?.toDouble(),
+      phuCapChucVu: json['phuCapChucVu']?.toDouble(),
+      phuCapThamNienVuotKhung: json['phuCapThamNienVuotKhung']?.toDouble(),
+      phuCapThamNienNghe: json['phuCapThamNienNghe']?.toDouble(),
+      phuCapLuong: json['phuCapLuong']?.toDouble(),
+      phuCapBoSung: json['phuCapBoSung']?.toDouble(),
       benhVienTinh: json['benhVienTinh'] != null
           ? ProvinceModel.fromJson(json['benhVienTinh'])
           : null,
@@ -113,6 +113,7 @@ class StaffDetailResponse {
       khaiSinhXa: json['khaiSinhXa'] != null
           ? WardModel.fromJson(json['khaiSinhXa'])
           : null,
+      diaChiKhaiSinh: json['diaChiKhaiSinh'],
       noiNhanTinh: json['noiNhanTinh'] != null
           ? ProvinceModel.fromJson(json['noiNhanTinh'])
           : null,
@@ -122,17 +123,20 @@ class StaffDetailResponse {
       noiNhanXa: json['noiNhanXa'] != null
           ? WardModel.fromJson(json['noiNhanXa'])
           : null,
+      diaChiNoiNhan: json['diaChiNoiNhan'],
       dienThoaiLienHe: json['dienThoaiLienHe'],
       hoTenChuHo: json['hoTenChuHo'],
       chuHoSoCCCD: json['chuHoSoCCCD'],
-      chuHoTinh: json['chuHoTinh'] != null
-          ? ProvinceModel.fromJson(json['chuHoTinh'])
+      chuHoThuongTruTinh: json['chuHoThuongTruTinh'] != null
+          ? ProvinceModel.fromJson(json['chuHoThuongTruTinh'])
           : null,
-      chuHoHuyen: json['chuHoHuyen'] != null
-          ? DistrictModel.fromJson(json['chuHoHuyen'])
+      chuHoThuongTruHuyen: json['chuHoThuongTruHuyen'] != null
+          ? DistrictModel.fromJson(json['chuHoThuongTruHuyen'])
           : null,
-      chuHoXa:
-          json['chuHoXa'] != null ? WardModel.fromJson(json['chuHoXa']) : null,
+      chuHoThuongTruXa: json['chuHoThuongTruXa'] != null
+          ? WardModel.fromJson(json['chuHoThuongTruXa'])
+          : null,
+      diaChiThuongTruChuHo: json['diaChiThuongTruChuHo'],
       danhSachThanhViens: (json['danhSachThanhViens'] as List?)
               ?.map((e) => StaffFamilyResponse.fromJson(e))
               .toList() ??

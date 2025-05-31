@@ -660,7 +660,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         children: [
           Expanded(
             child: SDSBuildText(
-              '${member.fullName} - ${member.relationship.text}',
+              '${member.fullName} - ${member.relationship?.text ?? ''}',
               style: AppTextStyle.font16Re,
             ),
           ),

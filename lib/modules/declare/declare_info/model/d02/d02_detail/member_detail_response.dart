@@ -10,12 +10,12 @@ class MemberDetailResponse {
   final BirthTypeEnum chiCoNamSinh;
   final DateTime? ngaySinh;
   final Gender gioiTinh;
-  final EthnicModel danToc;
-  final NationModel quocTich;
-  final ProvinceModel khaiSinhTinh;
-  final DistrictModel khaiSinhHuyen;
-  final WardModel khaiSinhXa;
-  final RelationshipModel moiQuanHe;
+  final EthnicModel? danToc;
+  final NationModel? quocTich;
+  final ProvinceModel? khaiSinhTinh;
+  final DistrictModel? khaiSinhHuyen;
+  final WardModel? khaiSinhXa;
+  final RelationshipModel? moiQuanHe;
   final String? cmnd;
   final String? ghiChu;
   final bool laNguoiThamGia;
@@ -29,12 +29,12 @@ class MemberDetailResponse {
     required this.chiCoNamSinh,
     this.ngaySinh,
     required this.gioiTinh,
-    required this.danToc,
-    required this.quocTich,
-    required this.khaiSinhTinh,
-    required this.khaiSinhHuyen,
-    required this.khaiSinhXa,
-    required this.moiQuanHe,
+    this.danToc,
+    this.quocTich,
+    this.khaiSinhTinh,
+    this.khaiSinhHuyen,
+    this.khaiSinhXa,
+    this.moiQuanHe,
     this.cmnd,
     this.ghiChu,
     required this.laNguoiThamGia,
@@ -52,12 +52,24 @@ class MemberDetailResponse {
       ngaySinh:
           json['ngaySinh'] != null ? DateTime.tryParse(json['ngaySinh']) : null,
       gioiTinh: Gender.parse(json['gioiTinh']) ?? Gender.male,
-      danToc: EthnicModel.fromJson(json['danTocs']),
-      quocTich: NationModel.fromJson(json['quocTichs']),
-      khaiSinhTinh: ProvinceModel.fromJson(json['khaiSinhTinh']),
-      khaiSinhHuyen: DistrictModel.fromJson(json['khaiSinhHuyen']),
-      khaiSinhXa: WardModel.fromJson(json['khaiSinhXa']),
-      moiQuanHe: RelationshipModel.fromJson(json['moiQuanHes']),
+      danToc: json['danTocs'] != null
+          ? EthnicModel.fromJson(json['danTocs'])
+          : null,
+      quocTich: json['quocTichs'] != null
+          ? NationModel.fromJson(json['quocTichs'])
+          : null,
+      khaiSinhTinh: json['khaiSinhTinh'] != null
+          ? ProvinceModel.fromJson(json['khaiSinhTinh'])
+          : null,
+      khaiSinhHuyen: json['khaiSinhHuyen'] != null
+          ? DistrictModel.fromJson(json['khaiSinhHuyen'])
+          : null,
+      khaiSinhXa: json['khaiSinhXa'] != null
+          ? WardModel.fromJson(json['khaiSinhXa'])
+          : null,
+      moiQuanHe: json['moiQuanHes'] != null
+          ? RelationshipModel.fromJson(json['moiQuanHes'])
+          : null,
       laNguoiThamGia: json['laNguoiThamGia'] ?? false,
       isUpdate: json['isUpdate'] ?? false,
     );

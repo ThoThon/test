@@ -45,7 +45,7 @@ class FamilyMember {
   final WardModel? ward;
 
   /// Mối quan hệ với chủ hộ *
-  final RelationshipModel relationship;
+  final RelationshipModel? relationship;
 
   /// Là người tham gia
   final bool isParticipant;
@@ -66,7 +66,7 @@ class FamilyMember {
     this.province,
     this.district,
     this.ward,
-    required this.relationship,
+    this.relationship,
     required this.isParticipant,
     // Mặc định isUpdate là false khi tạo mới
     this.isUpdate = false,

@@ -19,6 +19,7 @@ class D02Request {
   final String? denThang;
   final String? chucVu;
   final String? noiLamViec;
+  final bool dongTheoHeSo;
   final double? tienLuong;
   final double? phuCapChucVu;
   final double? phuCapThamNienVuotKhung;
@@ -45,6 +46,7 @@ class D02Request {
     this.denThang,
     this.chucVu,
     this.noiLamViec,
+    required this.dongTheoHeSo,
     this.tienLuong,
     this.phuCapChucVu,
     this.phuCapThamNienVuotKhung,
@@ -73,6 +75,7 @@ class D02Request {
       'denThang': denThang,
       'chucVu': chucVu,
       'noiLamViec': noiLamViec,
+      'dongTheoHeSo': dongTheoHeSo,
       'tienLuong': tienLuong,
       'phuCapChucVu': phuCapChucVu,
       'phuCapThamNienVuotKhung': phuCapThamNienVuotKhung,
@@ -107,6 +110,7 @@ class D02Request {
       denThang: d02State.toDateTextCtrl.text,
       chucVu: d02State.positionTextCtrl.text.trim(),
       noiLamViec: d02State.workplaceTextCtrl.text.trim(),
+      dongTheoHeSo: d02State.isSalaryCoefficient.value,
       tienLuong: CurrencyUtils.formatNumberCurrency(
         d02State.salaryCoefficientTextCtrl.text,
       ),

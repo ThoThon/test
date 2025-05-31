@@ -4,7 +4,12 @@
 - [AppMobile] - Màn D02: Trường [Từ tháng], [Đến tháng] lỗi không cho phép nhập tương lai - BHW-2282
 - [AppMobile] - Popup Xóa đợt: Lỗi hiển thị tên - BHW-2276
 - Cập nhật logic hiển thị ngày cập nhật ở màn danh sách đượt kê khai dựa trên ngày cập nhật và ngày tạo
+- [AppMobile] - Bỏ tích "Đóng theo hệ số" - BHW-2273
 - [AppMobile] - Màn Chức vụ/Tìm kiếm sai title - BHW-2283
+- [AppMobile]_không xem lại được thông tin nhân viên kê khai đối với nhân viên chọn từ Danh sách nhân viên - BHW-2291
+- [AppMobile] - Bổ sung Tìm kiếm môi quan hệ tại Màn Thành viên trong gia đình - BHW-2272
+- [AppMobile] - D01- Trường Mã số HBXH đang cho nhập ký tự - BHW-2292
+- [AppMobile] - Hiển thị lỗi giá trị khi nhập trường Tiền lương/hệ số khi không tích chọn checkbox Đóng theo hệ số - BHW-2293
 
 30/05/2025:
 - Xử lý thêm tự động bỏ tick sinh tờ khai TK1 - BHW-2243

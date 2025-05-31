@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/shares/date/date_utils.dart';
 
 class D02DetailResponse {
   final String id;
@@ -20,6 +21,7 @@ class D02DetailResponse {
   final String? denThang;
   final String? chucVu;
   final String? noiLamViec;
+  final bool dongTheoHeSo;
   final double? tienLuong;
   final double? phuCapChucVu;
   final double? phuCapThamNienVuotKhung;
@@ -46,6 +48,7 @@ class D02DetailResponse {
     this.denThang,
     this.chucVu,
     this.noiLamViec,
+    required this.dongTheoHeSo,
     this.tienLuong,
     this.phuCapChucVu,
     this.phuCapThamNienVuotKhung,
@@ -86,6 +89,7 @@ class D02DetailResponse {
       denThang: json['denThang'] ?? '',
       chucVu: json['chucVu'],
       noiLamViec: json['noiLamViec'],
+      dongTheoHeSo: json['dongTheoHeSo'] ?? false,
       tienLuong: json['tienLuong']?.toDouble(),
       phuCapChucVu: json['phuCapChucVu']?.toDouble(),
       phuCapThamNienVuotKhung: json['phuCapThamNienVuotKhung']?.toDouble(),
