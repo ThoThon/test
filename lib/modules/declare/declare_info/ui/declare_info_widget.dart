@@ -381,24 +381,14 @@ extension DeclareInfoWidget on DeclareInfoPage {
       },
       validator: (value) {
         final trimmedValue = value?.trim();
-        final digitsOnly = trimmedValue?.replaceAll('/', '');
         if (trimmedValue == null || trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_dobCannotEmpty.tr;
         }
-        // Ngày/tháng/năm phải đủ 8 số
-        if (digitsOnly?.length != 8) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
-        }
-
         final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
 
         if (date == null) {
           return LocaleKeys.declareInfo_dobInvalid.tr;
         }
-        if(date.year < 1000){
-          return LocaleKeys.declareInfo_dobInvalid.tr;
-        }
-
         if (date.isAfter(DateTime.now())) {
           return LocaleKeys.declareInfo_dobCannotFuture.tr;
         }

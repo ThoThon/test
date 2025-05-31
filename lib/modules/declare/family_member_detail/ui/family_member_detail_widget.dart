@@ -176,38 +176,13 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       },
       validator: (value) {
         final trimmedValue = value?.trim();
-        final digitsOnly = trimmedValue?.replaceAll('/', '');
         if (trimmedValue == null || trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_dobCannotEmpty.tr;
         }
 
-        switch (controller.birthType.value) {
-          case BirthTypeEnum.year:
-            // yyyy phải đủ 4 số
-            if (digitsOnly!.length < 4) {
-              return LocaleKeys.declareInfo_dobInvalid.tr;
-            }
-            break;
-          case BirthTypeEnum.monthYear:
-            // mm/yyyy phải đủ 6 số
-            if (digitsOnly!.length < 6) {
-              return LocaleKeys.declareInfo_dobInvalid.tr;
-            }
-            break;
-          case BirthTypeEnum.full:
-            // dd/mm/yyyy phải đủ 8 số
-            if (digitsOnly!.length < 8) {
-              return LocaleKeys.declareInfo_dobInvalid.tr;
-            }
-            break;
-        }
         final date = convertStringToDateStrict(
             trimmedValue, controller.birthType.value.pattern);
         if (date == null) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
-        }
-        //Tránh case ví dụ như year = "0999" vẫn hợp lệ
-        if (date.year < 1000) {
           return LocaleKeys.declareInfo_dobInvalid.tr;
         }
         //Ngày sinh phải < ngày hiện tại
