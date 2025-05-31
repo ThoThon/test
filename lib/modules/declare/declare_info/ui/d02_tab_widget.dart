@@ -94,31 +94,25 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectToDate() {
-    return UtilWidget.buildSelectDate(
+    return UtilWidget.buildInputSelectDate(
+      title: LocaleKeys.declareInfo_toMonthYear.tr,
       inputFormatters: InputFormatterEnum.dateMonthYear,
-      controller: controller.d02State.toDateCtrl,
-      LocaleKeys.declareInfo_toMonthYear.tr,
+      controller: controller.d02State.toDateTextCtrl,
       hintText: PATTERN_12,
       isRequired: false,
-      date: convertDateToStringSafe(
-        controller.d02State.toDate.value,
-        PATTERN_12,
-      ),
-      onChanged: (value) {
-        if (value.trim().isEmpty) {
-          controller.d02State.toDate.value = null;
-        }
-      },
-      onTap: () async {
+      // date: convertDateToStringSafe(
+      //   controller.d02State.toDate.value,
+      //   PATTERN_12,
+      // ),
+      onSelectDate: () async {
         final selectedDate = await UtilWidget.showPeriodDatePicker(
           dateTime: convertStringToDateSafe(
-            controller.d02State.toDateCtrl.text,
+            controller.d02State.toDateTextCtrl.text,
             PATTERN_12,
           ),
         );
         if (selectedDate != null) {
-          controller.d02State.toDate.value = selectedDate;
-          controller.d02State.toDateCtrl.text =
+          controller.d02State.toDateTextCtrl.text =
               convertDateToString(selectedDate, PATTERN_12);
         }
       },

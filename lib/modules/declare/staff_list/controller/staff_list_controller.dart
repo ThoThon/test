@@ -121,8 +121,7 @@ class StaffListController extends BaseGetxController {
       showLoadingOverlay();
 
       final response = await _repository.saveXml(
-        // declarationPeriodId: declarationPeriodId,
-        declarationPeriodId: '2137a2ed81074c3e8b934abf5770e100',
+        declarationPeriodId: declarationPeriodId,
       );
 
       if (response.isSuccess && response.result != null) {

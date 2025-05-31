@@ -4,6 +4,7 @@ import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/base/ui/formatter/currency_utils.dart';
+import 'package:v_bhxh/shares/date/date_utils.dart';
 
 class D02State {
   /// id d02Lt dùng khi update
@@ -28,9 +29,7 @@ class D02State {
   final fromDateCtrl = TextEditingController();
 
   /// Đến tháng/năm *
-  final toDate = Rxn<DateTime>();
-
-  final toDateCtrl = TextEditingController();
+  final toDateTextCtrl = TextEditingController();
 
   /// Cấp bập/chức vụ *
   final positionTextCtrl = TextEditingController();
@@ -85,7 +84,8 @@ class D02State {
     }
 
     if (d02Lt.denThang != null) {
-      toDate.value = d02Lt.denThang;
+      toDateTextCtrl.text =
+          convertDateToStringSafe(d02Lt.denThang!, PATTERN_12) ?? '';
     }
 
     if (d02Lt.chucVu != null) {
@@ -171,6 +171,7 @@ class D02State {
 
   void dispose() {
     positionTextCtrl.dispose();
+    toDateTextCtrl.dispose();
     workplaceTextCtrl.dispose();
     salaryCoefficientTextCtrl.dispose();
     positionAllowanceTextCtrl.dispose();

@@ -104,7 +104,7 @@ class D02Request {
       danTocId: d02Tk1State.selectedEthnic.value?.value,
       quocTichId: d02Tk1State.selectedNationality.value?.value,
       tuThang: convertDateToStringSafe(d02State.fromDate.value, PATTERN_12),
-      denThang: convertDateToStringSafe(d02State.toDate.value, PATTERN_12),
+      denThang: d02State.toDateTextCtrl.text,
       chucVu: d02State.positionTextCtrl.text.trim(),
       noiLamViec: d02State.workplaceTextCtrl.text.trim(),
       tienLuong: CurrencyUtils.formatNumberCurrency(
