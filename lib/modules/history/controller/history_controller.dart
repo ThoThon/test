@@ -3,7 +3,7 @@ import 'package:v_bhxh/modules/src.dart';
 import '../../../base_app/base_app.src.dart';
 import '../models/model_src.dart';
 
-class HistoryController extends BaseRefreshGetxController {
+class HistoryController extends BasePageSearchController<HistoryResponse> {
   final listHistory = <HistoryItemModel>[].obs;
 
   late final historyRepository = HistoryRepository(this);
@@ -61,7 +61,7 @@ class HistoryController extends BaseRefreshGetxController {
       nam: selectedPeriodDate.value.year.toString(),
       thang: selectedPeriodDate.value.month.toString(),
       maThuTuc: selectProcedure.value?.loai.toString() ?? '',
-      soHoSo: "",
+      soHoSo: searchController.text,
     );
   }
 
@@ -103,5 +103,14 @@ class HistoryController extends BaseRefreshGetxController {
 
   void backToHome() {
     Get.until(ModalRoute.withName(AppRoutes.pageBuilder.path));
+  }
+
+  @override
+  Future<void> functionSearch() async {
+    debouncer(
+      () {
+        onRefresh();
+      },
+    );
   }
 }
