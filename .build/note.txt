@@ -13,6 +13,8 @@
 - [AppMobile] - Chỉnh sửa trường Ngày/Tháng/Năm - BHW-2289
 - [AppMobile] - Màn D02-LT: Lưu không thành công khi chọn ngày sinh trong tương lai - BHW-2195
 - [Appmobile]_D01-TS_validate trường mã số BHXH chỉ cho nhập số - BHW-2296
+- [AppMobile] - Tên bảng kê khai hồ sơ hiển thị sai - BHW-2277
+- [Appmobile]_Lịch sử giao dịch_Bổ sung chức năng tìm kiếm số hồ sơ - BHW-2298
 
 30/05/2025:
 - Xử lý thêm tự động bỏ tick sinh tờ khai TK1 - BHW-2243
