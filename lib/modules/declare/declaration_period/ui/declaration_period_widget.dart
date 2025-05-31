@@ -160,10 +160,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
               UtilWidget.buildSolidButtonBack(
                 title: LocaleKeys.app_edit2.tr,
                 onPressed: () {
-                  Get.toNamed(
-                    AppRoutes.staffList.path,
-                    arguments: period.id,
-                  );
+                  controller.editDeclarationPeriod(period);
                 },
               ),
           ],
