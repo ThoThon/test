@@ -119,17 +119,8 @@ extension D02TabWidget on DeclareInfoPage {
         }
 
         final toDate = convertStringToDateStrict(value, PATTERN_12);
-
-        final digitsOnly = value.trim().replaceAll('/', '');
-        if (digitsOnly.length < 6) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
-        }
         if (toDate == null) {
           return 'Đến tháng/năm không hợp lệ';
-        }
-
-        if (toDate.year < 1000) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
         }
 
         final fromDate = convertStringToDateStrict(
@@ -170,20 +161,11 @@ extension D02TabWidget on DeclareInfoPage {
           // Không bắt buộc
           return null;
         }
-        final digitsOnly = value.trim().replaceAll('/', '');
-        if (digitsOnly.length < 6) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
-        }
-
         final fromDate = convertStringToDateStrict(value, PATTERN_12);
 
         if (fromDate == null) {
           return 'Từ tháng/năm không hợp lệ';
         }
-        if (fromDate.year < 1000) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
-        }
-
         final toDate = convertStringToDateStrict(
           controller.d02State.toDateTextCtrl.text,
           PATTERN_12,

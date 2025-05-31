@@ -46,11 +46,6 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       controller: controller.effectiveDateCtrl,
       title: LocaleKeys.declarationFormDetail_effectiveDate.tr,
       hintText: PATTERN_1,
-      // onChanged: (value) {
-      //   if (value.trim().isEmpty) {
-      //     controller.effectiveDate.value = null;
-      //   }
-      // },
       onSelectDate: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
@@ -64,21 +59,13 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       },
       validator: (value) {
         final trimmedValue = value?.trim();
-        final digitsOnly = trimmedValue?.replaceAll('/', '');
         if (trimmedValue == null || trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_dobCannotEmpty.tr;
-        }
-        // Ngày/tháng/năm phải đủ 8 số
-        if (digitsOnly?.length != 8) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
         }
 
         final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
 
         if (date == null) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
-        }
-        if (date.year < 1000) {
           return LocaleKeys.declareInfo_dobInvalid.tr;
         }
         return null;
@@ -92,11 +79,6 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       controller: controller.dateOfIssueCtrl,
       title: LocaleKeys.declarationFormDetail_dateOfIssue.tr,
       hintText: PATTERN_1,
-      // onChanged: (value) {
-      //   if (value.trim().isEmpty) {
-      //     controller.dateOfIssue.value = null;
-      //   }
-      // },
       onSelectDate: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
@@ -110,21 +92,12 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       },
       validator: (value) {
         final trimmedValue = value?.trim();
-        final digitsOnly = trimmedValue?.replaceAll('/', '');
         if (trimmedValue == null || trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_dobCannotEmpty.tr;
         }
-        // Ngày/tháng/năm phải đủ 8 số
-        if (digitsOnly?.length != 8) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
-        }
-
         final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
 
         if (date == null) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
-        }
-        if (date.year < 1000) {
           return LocaleKeys.declareInfo_dobInvalid.tr;
         }
         return null;
