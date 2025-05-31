@@ -252,7 +252,7 @@ extension D02TabWidget on DeclareInfoPage {
             onPressed: () {
               Get.bottomSheet(
                 BottomSheetSearch<PositionModel>(
-                  title: LocaleKeys.declareInfo_selectNationality.tr,
+                  title: LocaleKeys.declareInfo_selectPosition.tr,
                   listFilter: AppData.instance.positions.toList(),
                   selectedItem: AppData.instance.positions.firstWhereOrNull(
                     (position) =>

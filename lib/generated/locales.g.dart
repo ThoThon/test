@@ -330,6 +330,7 @@ class LocaleKeys {
   static const declareInfo_fromMonthYear = 'declareInfo_fromMonthYear';
   static const declareInfo_toMonthYear = 'declareInfo_toMonthYear';
   static const declareInfo_position = 'declareInfo_position';
+  static const declareInfo_selectPosition = 'declareInfo_selectPosition';
   static const declareInfo_workplace = 'declareInfo_workplace';
   static const declareInfo_payBySalaryCoefficient =
       'declareInfo_payBySalaryCoefficient';
@@ -900,6 +901,7 @@ class Locales {
     'declareInfo_fromMonthYear': 'Từ tháng/năm',
     'declareInfo_toMonthYear': 'Đến tháng/năm',
     'declareInfo_position': 'Cấp bập/chức vụ',
+    'declareInfo_selectPosition': 'Chọn cấp bậc/Chức vụ',
     'declareInfo_workplace': 'Nơi làm việc',
     'declareInfo_payBySalaryCoefficient': 'Đóng theo hệ số',
     'declareInfo_salaryCoefficient': 'Tiền lương/Hệ số',
