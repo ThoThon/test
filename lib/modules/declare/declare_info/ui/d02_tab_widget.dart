@@ -304,16 +304,38 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildInputSalaryCoefficient() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_salaryCoefficient.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          inputFormatters: InputFormatterEnum.salaryCurrency,
-          controller: controller.d02State.salaryCoefficientTextCtrl,
-          isValidate: true,
-          textInputType: const TextInputType.numberWithOptions(decimal: true),
-        ),
-      ),
+    return Obx(
+      () {
+        // isSalaryCoefficient: true => Đóng theo hệ số => cho phép nhập số thập phân
+        // ngược lại => chỉ cho phép nhập số nguyên
+        final isSalaryCoefficient =
+            controller.d02State.isSalaryCoefficient.value;
+        return BuildInputTextWithLabel(
+          label: LocaleKeys.declareInfo_salaryCoefficient.tr,
+          buildInputText: BuildInputText(
+            InputTextModel(
+              inputFormatters: isSalaryCoefficient
+                  ? InputFormatterEnum.salaryCurrency
+                  : InputFormatterEnum.salaryNormal,
+              controller: controller.d02State.salaryCoefficientTextCtrl,
+              isValidate: true,
+              textInputType:
+                  const TextInputType.numberWithOptions(decimal: true),
+              validator: (value) {
+                if (value == null || value.trim().isEmpty) {
+                  return 'Tiền lương/Hệ số không được bỏ trống';
+                }
+
+                if (!isSalaryCoefficient && value.contains(',')) {
+                  return 'Tiền lương/Hệ số phải là số nguyên';
+                }
+
+                return null;
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 

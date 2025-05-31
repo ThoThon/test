@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/shares/date/date_utils.dart';
 
 class D02DetailResponse {
   final String id;
@@ -84,8 +85,8 @@ class D02DetailResponse {
       quocTich: json['quocTich'] != null
           ? NationModel.fromJson(json['quocTich'])
           : null,
-      tuThang: DateTime.tryParse(json['tuThang'] ?? ''),
-      denThang: DateTime.tryParse(json['denThang'] ?? ''),
+      tuThang: convertStringToDateSafe(json['tuThang'], PATTERN_12),
+      denThang: convertStringToDateSafe(json['denThang'], PATTERN_12),
       chucVu: json['chucVu'],
       noiLamViec: json['noiLamViec'],
       dongTheoHeSo: json['dongTheoHeSo'] ?? false,

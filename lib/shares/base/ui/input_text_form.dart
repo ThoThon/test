@@ -79,6 +79,7 @@ class BuildInputTextState extends State<BuildInputText> {
             type: 1,
             isDot: true,
             maxLengthNum: 17,
+            lastDecimal: 0,
           ),
         ];
       case InputFormatterEnum.dateFullBirthDay:
