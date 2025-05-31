@@ -12,7 +12,7 @@ class BaseApi {
 
   BaseApi._();
 
-  var useSignUrl = false;
+  var useSignUrl = true;
 
   static Dio dio = getBaseDio();
 

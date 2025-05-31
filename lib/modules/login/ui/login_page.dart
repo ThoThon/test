@@ -33,9 +33,9 @@ class LoginPage extends BaseGetWidget<LoginController> {
                             children: [
                               GestureDetector(
                                 onDoubleTap: () {
-                                  BaseApi().useSignUrl = true;
+                                  BaseApi().useSignUrl = false;
                                   controller.showSnackBar(
-                                    "Đã chuyển sang ${AppApi.urlSign}",
+                                    "Đã chuyển sang ${AppApi.url}",
                                     typeAction: AppConst.actionSuccess,
                                   );
                                 },
