@@ -27,4 +27,12 @@ class UnitInfoRepository extends BaseRepository {
       fromJson: (json) => AccountInfoModel.fromJson(json),
     );
   }
+
+   Future<BaseResponse<int>> getToTalNotiUnread() async {
+    final response = await baseCallApi(
+      AppApi.urlGetNotificationUnread,
+      EnumRequestMethod.get,
+    );
+    return BaseResponse<int>.fromJson(response);
+  }
 }

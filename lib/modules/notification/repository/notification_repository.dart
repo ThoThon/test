@@ -38,12 +38,4 @@ class NotificationRepository extends BaseRepository {
     );
   }
 
-  // Lấy số thông báo chưa được đọc
-  Future<BaseResponse<int>> getToTalNotiUnread() async {
-    final response = await baseCallApi(
-      AppApi.urlGetNotificationUnread,
-      EnumRequestMethod.get,
-    );
-    return BaseResponse<int>.fromJson(response);
-  }
 }
