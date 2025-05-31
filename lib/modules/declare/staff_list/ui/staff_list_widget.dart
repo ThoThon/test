@@ -126,13 +126,14 @@ extension StaffListWidget on StaffListPage {
                                   UtilWidget.sizedBoxWidth8,
                                   Expanded(
                                     child: SDSBuildText(
-                                      'Chụp ảnh từ cammera',
+                                      'Chụp ảnh từ camera',
                                       style: AppTextStyle.font16Semi,
                                     ),
                                   ),
                                 ],
                               ).paddingSymmetric(
-                                  vertical: AppDimens.defaultPadding),
+                                vertical: AppDimens.defaultPadding,
+                              ),
                             ),
                           ),
                           const Divider(height: 1),
