@@ -80,12 +80,14 @@ class UnitInfoControllerImpICare extends UnitInfoController {
           activeIcon: true,
           onPressed: () async {
             await _getAccountInfo();
+            await _getToTalNotiUnread();
             Get.offAllNamed(
               AppRoutes.pageBuilder.path,
             );
           },
           funcBack: () async {
             await _getAccountInfo();
+            await _getToTalNotiUnread();
             Get.back();
           },
         );
@@ -101,6 +103,17 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       final res = await unitInfoRepository.getAccountInfo();
       if (res.code == AppConst.statusCodeSuccess && res.result != null) {
         AppData.instance.accountInfoModel.value = res.result;
+      }
+    } catch (e) {
+      logger.d(e);
+    }
+  }
+
+  Future<void> _getToTalNotiUnread() async {
+    try {
+      final res = await unitInfoRepository.getToTalNotiUnread();
+      if (res.isSuccess && res.result != null) {
+        AppData.instance.totalUnread.value = res.result!;
       }
     } catch (e) {
       logger.d(e);

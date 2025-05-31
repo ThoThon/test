@@ -65,20 +65,11 @@ class NotificationController extends BaseRefreshGetxController {
   Future<void> onRefresh() async {
     listNotification.clear();
     await fetchListNotification();
-    _getToTalNotiUnread();
+    // _getToTalNotiUnread();
     refreshController.refreshCompleted();
   }
 
-  Future<void> _getToTalNotiUnread() async {
-    try {
-      final res = await _notificationRepository.getToTalNotiUnread();
-      if (res.isSuccess && res.result != null) {
-        AppData.instance.totalUnread.value = res.result!;
-      }
-    } catch (e) {
-      logger.d(e);
-    }
-  }
+  
 
   String timeAgo(DateTime createDate) {
     final now = DateTime.now();
