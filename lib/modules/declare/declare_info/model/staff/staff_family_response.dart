@@ -13,8 +13,8 @@ class StaffFamilyResponse {
   final WardModel? xaKhaiSinh;
   final String? cmnd;
   final BirthTypeEnum chiCoNamSinh;
-  final NationModel? quocTich;
-  final EthnicModel? danToc;
+  final NationModel? quocTichs;
+  final EthnicModel? danTocs;
 
   const StaffFamilyResponse({
     this.hoTen,
@@ -27,8 +27,8 @@ class StaffFamilyResponse {
     this.xaKhaiSinh,
     this.cmnd,
     required this.chiCoNamSinh,
-    this.quocTich,
-    this.danToc,
+    this.quocTichs,
+    this.danTocs,
   });
 
   factory StaffFamilyResponse.fromJson(Map<String, dynamic> json) {
@@ -51,11 +51,12 @@ class StaffFamilyResponse {
       cmnd: json['cmnd'],
       chiCoNamSinh: BirthTypeEnum.parse(json['chiCoNamSinh']) ??
           BirthTypeEnum.defaultValue,
-      quocTich: json['quocTich'] != null
-          ? NationModel.fromJson(json['quocTich'])
+      quocTichs: json['quocTichs'] != null
+          ? NationModel.fromJson(json['quocTichs'])
           : null,
-      danToc:
-          json['danToc'] != null ? EthnicModel.fromJson(json['danToc']) : null,
+      danTocs: json['danTocs'] != null
+          ? EthnicModel.fromJson(json['danTocs'])
+          : null,
     );
   }
 }
