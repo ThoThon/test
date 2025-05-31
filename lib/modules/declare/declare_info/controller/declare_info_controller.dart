@@ -273,6 +273,11 @@ class DeclareInfoController extends BaseGetxController {
       return;
     }
 
+    if (d01State.forms.isEmpty) {
+      showSnackBar("Tờ khai không có dữ liệu kê khai");
+      return;
+    }
+
     if (argument.isUpdate) {
       await _updateD02();
     } else {
