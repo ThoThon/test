@@ -384,9 +384,18 @@ extension DeclareInfoWidget on DeclareInfoPage {
         if (trimmedValue == null || trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_dobCannotEmpty.tr;
         }
+
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
         final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
 
         if (date == null) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+        // Chỉ được nhập từ năm 1900
+        if (date.year <= 1900) {
           return LocaleKeys.declareInfo_dobInvalid.tr;
         }
         if (date.isAfter(DateTime.now())) {

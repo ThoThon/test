@@ -60,13 +60,23 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.declareInfo_dobCannotEmpty.tr;
+          return LocaleKeys.declarationFormDetail_effectiveDateCannotEmpty.tr;
+        }
+
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.declarationFormDetail_effectiveDateInvalid.tr;
         }
 
         final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
 
         if (date == null) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
+          return LocaleKeys.declarationFormDetail_effectiveDateInvalid.tr;
+        }
+
+        // Chỉ được nhập từ năm 1900 -> 2100 để có thể tạo xml
+        if (date.year <= 1900 || date.year >= 2100) {
+          return LocaleKeys.declarationFormDetail_effectiveDateInvalid.tr;
         }
         return null;
       },
@@ -93,12 +103,22 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.declareInfo_dobCannotEmpty.tr;
+          return LocaleKeys.declarationFormDetail_dateOfIssueCannotEmpty.tr;
+        }
+
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.declarationFormDetail_dateOfIssueInvalid.tr;
         }
         final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
 
         if (date == null) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
+          return LocaleKeys.declarationFormDetail_dateOfIssueInvalid.tr;
+        }
+
+        // Chỉ được nhập từ năm 1900 -> 2100 để có thể tạo xml
+        if (date.year <= 1900 || date.year >= 2100) {
+          return LocaleKeys.declarationFormDetail_dateOfIssueInvalid.tr;
         }
         return null;
       },
