@@ -376,17 +376,26 @@ extension DeclareInfoWidget on DeclareInfoPage {
         );
         if (selectedDate != null) {
           controller.d02Tk1State.dateOfBirthTextCtrl.text =
-              convertDateToString(selectedDate, PATTERN_1);
+              convertDateToStringSafe(selectedDate, PATTERN_1) ?? '';
         }
       },
       validator: (value) {
         final trimmedValue = value?.trim();
+        final digitsOnly = trimmedValue?.replaceAll('/', '');
         if (trimmedValue == null || trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_dobCannotEmpty.tr;
         }
+        // Ngày/tháng/năm phải đủ 8 số
+        if (digitsOnly?.length != 8) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
 
         final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+
         if (date == null) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+        if(date.year < 1000){
           return LocaleKeys.declareInfo_dobInvalid.tr;
         }
 

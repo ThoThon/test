@@ -29,8 +29,11 @@ class HistoryDetailController extends BaseGetxController {
       if (res.result != null && res.isSuccess) {
         lookupProgressHistory(res.result?.rHRecordNumber ?? '');
       }
+      showSnackBar("Tra cứu số hồ sơ bị lỗi");
     } catch (e) {
       logger.d(e);
+    } finally {
+      hideLoadingOverlay();
     }
   }
 
@@ -40,6 +43,10 @@ class HistoryDetailController extends BaseGetxController {
       final res = await historyDetaiRepository.lookupProcessHistory(soHoSo);
       if (res.isSuccess) {
         resultLookupHistoryModel = res.result;
+        showSnackBar(
+          "Tra cứu thành công",
+          typeAction: AppConst.actionSuccess,
+        );
         if (res.result!.buoc1!.maKetQua.isEmpty) {
           showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
         }

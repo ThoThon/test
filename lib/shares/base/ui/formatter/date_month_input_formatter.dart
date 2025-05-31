@@ -8,26 +8,17 @@ class DateMonthInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    String digitsOnly = newValue.text.replaceAll('/', '');
+    String digitsOnly = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
 
-    // Nếu độ dài vượt quá 6 ký tự -> cắt lại
     if (digitsOnly.length > maxLength) {
       digitsOnly = digitsOnly.substring(0, maxLength);
     }
 
-    // Kiểm tra tháng hợp lệ (2 ký tự đầu)
-    if (digitsOnly.length >= 2) {
-      int month = int.tryParse(digitsOnly.substring(0, 2)) ?? 0;
-      if (month < 1 || month > 12) {
-        return oldValue;
-      }
-    }
-
     // Format MM/yyyy
-    StringBuffer buffer = StringBuffer();
+    final buffer = StringBuffer();
     for (int i = 0; i < digitsOnly.length; i++) {
       buffer.write(digitsOnly[i]);
-      if (i == 1 && digitsOnly.length > 2) {
+      if (i == 1 && i != digitsOnly.length - 1) {
         buffer.write('/');
       }
     }

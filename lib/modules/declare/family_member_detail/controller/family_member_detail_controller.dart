@@ -25,7 +25,8 @@ class FamilyMemberDetailController extends BaseGetxController {
   final birthType = BirthTypeEnum.defaultValue.obs;
 
   /// Ngày sinh
-  final dateOfBirth = Rxn<DateTime>();
+  // final dateOfBirth = Rxn<DateTime>();
+  final dateOfBirthCtrl = TextEditingController();
 
   /// Giới tính *
   final gender = Gender.male.obs;
@@ -59,7 +60,9 @@ class FamilyMemberDetailController extends BaseGetxController {
       fullNameTextCtrl.text = member.fullName;
       bhxhNumberTextCtrl.text = member.bhxhNumber;
       birthType.value = member.birthType;
-      dateOfBirth.value = member.dateOfBirth;
+      dateOfBirthCtrl.text = convertDateToStringSafe(
+              member.dateOfBirth, birthType.value.pattern) ??
+          '';
       gender.value = member.gender;
       selectedEthnic.value = member.ethnic;
       selectedNationality.value = member.nation;
@@ -74,8 +77,8 @@ class FamilyMemberDetailController extends BaseGetxController {
   }
 
   void onSubmit() {
-    final dob = dateOfBirth.value;
-    if (dob == null) {
+    final dob = dateOfBirthCtrl.text;
+    if (dob.isEmpty) {
       showSnackBar("Ngày sinh không được để trống");
       return;
     }
@@ -91,7 +94,7 @@ class FamilyMemberDetailController extends BaseGetxController {
           cccdNumber: cccdNumberTextCtrl.text.trim(),
           note: noteTextCtrl.text.trim(),
           birthType: birthType.value,
-          dateOfBirth: dob,
+          dateOfBirth: convertStringToDateSafe(dob, birthType.value.pattern),
           gender: gender.value,
           ethnic: selectedEthnic.value!,
           nation: selectedNationality.value!,
