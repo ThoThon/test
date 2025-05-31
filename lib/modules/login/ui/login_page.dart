@@ -1,3 +1,5 @@
+import 'package:v_bhxh/base_app/repository_base/base_api.dart';
+
 import '../../../base_app/controllers_base/app_controller/app_controller.dart';
 import '../../../modules/src.dart';
 
@@ -29,7 +31,16 @@ class LoginPage extends BaseGetWidget<LoginController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              _buildLogo(),
+                              GestureDetector(
+                                onDoubleTap: () {
+                                  BaseApi().useSignUrl = true;
+                                  controller.showSnackBar(
+                                    "Đã chuyển sang ${AppApi.urlSign}",
+                                    typeAction: AppConst.actionSuccess,
+                                  );
+                                },
+                                child: _buildLogo(),
+                              ),
                               const SizedBox(height: AppDimens.padding40),
                               controller.isHaveUsername.value
                                   ? _buildCompanyName()

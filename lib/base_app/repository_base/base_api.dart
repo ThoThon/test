@@ -12,6 +12,8 @@ class BaseApi {
 
   BaseApi._();
 
+  var useSignUrl = false;
+
   static Dio dio = getBaseDio();
 
   static Dio getBaseDio() {
@@ -68,7 +70,8 @@ class BaseApi {
   }) async {
     dio.options = dioOptions ?? buildDefaultOptions(timeOut: timeOut);
     dynamic response;
-    String url = urlOther ?? AppApi.url + action;
+    String url =
+        urlOther ?? (useSignUrl ? AppApi.urlSign : AppApi.url) + action;
     Map<String, String> headers = isToken
         ? (headersUrlOther ?? getBaseHeader())
         : {"Content-Type": "application/json"};
