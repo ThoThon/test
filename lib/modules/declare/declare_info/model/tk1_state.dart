@@ -162,11 +162,15 @@ class Tk1State {
 
     wardOfBirth.value = staff.khaiSinhXa;
 
+    birthAddressTextCtrl.text = staff.diaChiKhaiSinh?.trim() ?? '';
+
     provinceReceive.value = staff.noiNhanTinh;
 
     districtReceive.value = staff.noiNhanHuyen;
 
     wardReceive.value = staff.noiNhanXa;
+
+    addressReceiveTextCtrl.text = staff.diaChiNoiNhan?.trim() ?? '';
 
     provinceKCB.value = staff.benhVienTinh;
 
@@ -178,11 +182,13 @@ class Tk1State {
 
     headOfHouseholdCCCDTextCtrl.text = staff.chuHoSoCCCD?.trim() ?? '';
 
-    provinceTT.value = staff.chuHoTinh;
+    provinceTT.value = staff.chuHoThuongTruTinh;
 
-    districtTT.value = staff.chuHoHuyen;
+    districtTT.value = staff.chuHoThuongTruHuyen;
 
-    wardTT.value = staff.chuHoXa;
+    wardTT.value = staff.chuHoThuongTruXa;
+
+    addressTTTextCtrl.text = staff.diaChiThuongTruChuHo?.trim() ?? '';
 
     familyMembers.value =
         members.map((e) => FamilyMember.fromStaff(e)).toList();
