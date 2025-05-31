@@ -112,9 +112,9 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
                     "${LocaleKeys.declarationPeriod_period.tr} ${period.period}",
                     style: AppTextStyle.font16Bo,
                   ),
-                  if (period.updateDate != null)
+                  if (period.updateDate != null || period.createTime != null)
                     SDSBuildText(
-                      '${LocaleKeys.declarationPeriod_updateDate.tr}: ${convertDateToStringSafe(period.updateDate, PATTERN_1)}',
+                      '${LocaleKeys.declarationPeriod_updateDate.tr}: ${convertDateToStringSafe(period.updateDate ?? period.createTime, PATTERN_1)}',
                       style: AppTextStyle.font16Re,
                     ),
                   if (period.fileNumber != null)

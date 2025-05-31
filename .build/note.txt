@@ -3,6 +3,7 @@
 - [AppMobile] - Màn Đợt kê khai: Lỗi hiển thị trạng thái - BHW-2278
 - [AppMobile] - Màn D02: Trường [Từ tháng], [Đến tháng] lỗi không cho phép nhập tương lai - BHW-2282
 - [AppMobile] - Popup Xóa đợt: Lỗi hiển thị tên - BHW-2276
+- Cập nhật logic hiển thị ngày cập nhật ở màn danh sách đượt kê khai dựa trên ngày cập nhật và ngày tạo
 
 30/05/2025:
 - Xử lý thêm tự động bỏ tick sinh tờ khai TK1 - BHW-2243
