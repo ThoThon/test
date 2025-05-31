@@ -17,6 +17,7 @@
 - [Appmobile]_Lịch sử giao dịch_Bổ sung chức năng tìm kiếm số hồ sơ - BHW-2298
 - Đổi app icon
 - [AppMobile] - Count và hiện thị số thông báo chưa đọc - BHW-2254
+- fix [AppMobile] - Màn Đăng nhập: Chặn nhập khoảng trắng ở đầu cuối - BHW-2246
 
 30/05/2025:
 - Xử lý thêm tự động bỏ tick sinh tờ khai TK1 - BHW-2243

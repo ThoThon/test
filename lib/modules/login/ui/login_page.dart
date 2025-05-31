@@ -106,6 +106,7 @@ class LoginPage extends BaseGetWidget<LoginController> {
       InputTextModel(
         hintText: LocaleKeys.login_inputPassword.tr,
         controller: controller.passwordTextCtrl,
+        inputFormatters: InputFormatterEnum.password,
         obscureText: true,
         validator: (value) {
           if (value.isNullOrEmpty) {
