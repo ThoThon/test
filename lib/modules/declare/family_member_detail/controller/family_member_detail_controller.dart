@@ -28,7 +28,7 @@ class FamilyMemberDetailController extends BaseGetxController {
   final dateOfBirthCtrl = TextEditingController();
 
   /// Giới tính *
-  final gender = Gender.male.obs;
+  final gender = Rxn<Gender>();
 
   /// Dân tộc *
   final selectedEthnic = Rxn<EthnicModel>();
@@ -76,12 +76,6 @@ class FamilyMemberDetailController extends BaseGetxController {
   }
 
   void onSubmit() {
-    final dob = dateOfBirthCtrl.text;
-    if (dob.isEmpty) {
-      showSnackBar("Ngày sinh không được để trống");
-      return;
-    }
-
     if (formKey.currentState?.validate() ?? false) {
       // Note: đã validate các trường required nên có thể force null
       Get.back(
@@ -93,8 +87,9 @@ class FamilyMemberDetailController extends BaseGetxController {
           cccdNumber: cccdNumberTextCtrl.text.trim(),
           note: noteTextCtrl.text.trim(),
           birthType: birthType.value,
-          dateOfBirth: convertStringToDateSafe(dob, birthType.value.pattern),
-          gender: gender.value,
+          dateOfBirth: convertStringToDateSafe(
+              dateOfBirthCtrl.text, birthType.value.pattern),
+          gender: gender.value!,
           ethnic: selectedEthnic.value!,
           nation: selectedNationality.value!,
           province: selectedProvince.value!,
