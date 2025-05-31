@@ -278,6 +278,11 @@ class LocaleKeys {
       'declarationPeriod_statusFailed';
   static const declarationPeriod_statusSuccess =
       'declarationPeriod_statusSuccess';
+  static const declarationPeriod_contentDeletePeriod =
+      'declarationPeriod_contentDeletePeriod';
+  static const declarationPeriod_contentDeletePeriodSuccess =
+      'declarationPeriod_contentDeletePeriodSuccess';
+  static const declarationPeriod_delete = 'declarationPeriod_delete';
   static const declarationPeriodDetail_addNewStaff =
       'declarationPeriodDetail_addNewStaff';
   static const declarationPeriodDetail_attachFile =
@@ -853,6 +858,11 @@ class Locales {
     'declarationPeriod_statusPending': 'Đang chờ xử lý',
     'declarationPeriod_statusFailed': 'Thất bại',
     'declarationPeriod_statusSuccess': 'Thành công',
+    'declarationPeriod_contentDeletePeriod':
+        'Xóa đợt kê khai cũng sẽ xóa toàn bộ dữ liệu của đợt kê khai',
+    'declarationPeriod_contentDeletePeriodSuccess':
+        'Xóa đợt kê khai thành công',
+    'declarationPeriod_delete': 'Xóa',
     'declarationPeriodDetail_addNewStaff': 'Thêm mới nhân viên',
     'declarationPeriodDetail_attachFile': 'Đính kèm file',
     'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',

@@ -55,9 +55,10 @@ class DeclarationPeriodController extends BaseGetxController {
 
   void showDialogDeletePeriod(DeclarationPeriod period) {
     ShowDialog.showDialogConfirm2(
-      title: 'Xóa "${period.period}"',
-      content: 'Xóa đợt kê khai cũng sẽ xóa toàn bộ dữ liệu của đợt kê khai',
-      confirmTitle: 'Xóa',
+      title:
+          '${LocaleKeys.declarationPeriod_delete.tr} "${LocaleKeys.declarationPeriod_period.tr} ${period.period}"?',
+      content: LocaleKeys.declarationPeriod_contentDeletePeriod.tr,
+      confirmTitle: LocaleKeys.declarationPeriod_delete.tr,
       onConfirm: () {
         deleteDeclarationPeriod(period);
       },
@@ -73,7 +74,7 @@ class DeclarationPeriodController extends BaseGetxController {
 
       if (response.isSuccess) {
         showSnackBar(
-          'Xóa đợt kê khai thành công',
+          LocaleKeys.declarationPeriod_contentDeletePeriodSuccess.tr,
           typeAction: AppConst.actionSuccess,
         );
         getDeclarationPeriods();
