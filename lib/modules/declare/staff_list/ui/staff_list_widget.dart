@@ -31,7 +31,7 @@ extension StaffListWidget on StaffListPage {
   Widget _buidHideImage() {
     return Obx(
       () {
-        if (controller.listImage.isEmpty) {
+        if (controller.listAttachImage.isEmpty) {
           return const SizedBox.shrink();
         }
         return Container(
@@ -45,13 +45,13 @@ extension StaffListWidget on StaffListPage {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: List.generate(
-              controller.listImage.length,
+              controller.listAttachImage.length,
               (index) {
-                final imageSelected = controller.listImage[index];
+                final imageAttach = controller.listAttachImage[index];
                 return Row(
                   children: [
-                    Image.file(
-                      File(imageSelected),
+                    Image.network(
+                      imageAttach.imgPath,
                       fit: BoxFit.cover,
                       height: 80,
                       width: 80,
@@ -62,13 +62,8 @@ extension StaffListWidget on StaffListPage {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SDSBuildText(
-                            controller.getFileName(imageSelected),
+                            controller.getFileName(imageAttach.fileName),
                             maxLines: 2,
-                          ),
-                          SDSBuildText(
-                            controller.getImageSize(
-                              File(imageSelected),
-                            ),
                           ),
                         ],
                       ),
@@ -76,7 +71,10 @@ extension StaffListWidget on StaffListPage {
                     const Spacer(),
                     IconButton(
                       onPressed: () {
-                        controller.deteleImage(index);
+                        controller.deteleImage(
+                          controller.getFileNameFromUrl(imageAttach.imgPath),
+                          index,
+                        );
                       },
                       icon: SDSImageSvg(
                         Assets.ASSETS_ICONS_IC_REMOVE_SVG,
@@ -108,7 +106,7 @@ extension StaffListWidget on StaffListPage {
         UtilWidget.sizedBox8,
         InkWell(
           onTap: () {
-            controller.listImage.length < 5
+            controller.listAttachImage.length < 5
                 ? Get.bottomSheet(
                     UtilWidget.buildBottomSheetFigma(
                       child: Column(
