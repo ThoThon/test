@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
-import 'package:v_bhxh/shares/date/date_utils.dart';
 
 class D02DetailResponse {
   final String id;
