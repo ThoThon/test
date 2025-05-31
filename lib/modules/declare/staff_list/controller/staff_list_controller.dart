@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:path/path.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
@@ -15,11 +13,9 @@ class StaffListController extends BaseGetxController {
 
   final imagePath = Rxn<String>();
 
-  final listImage = <String>[].obs;
-
   final declaredStaffs = const <DeclaredStaffModel>[].obs;
 
-  String? fileNameFromUrl;
+  final listAttachImage = <AttachImageModel>[].obs;
 
   @override
   void onReady() {
@@ -31,7 +27,6 @@ class StaffListController extends BaseGetxController {
     final path = await ImageUtils.pickImage();
     if (path != null) {
       imagePath.value = path;
-      listImage.add(path);
       upLoadFile();
     }
   }
@@ -40,19 +35,7 @@ class StaffListController extends BaseGetxController {
     final path = await ImageUtils.takePhoto();
     if (path != null) {
       imagePath.value = path;
-      listImage.add(path);
       upLoadFile();
-    }
-  }
-
-  String getImageSize(File imageFile) {
-    final int sizeInBytes = imageFile.lengthSync();
-    final double sizeInKB = sizeInBytes / 1024;
-    if (sizeInKB < 1024) {
-      return '${sizeInKB.toStringAsFixed(2)} KB';
-    } else {
-      final double sizeInMB = sizeInKB / 1024;
-      return '${sizeInMB.toStringAsFixed(2)} MB';
     }
   }
 
@@ -61,7 +44,7 @@ class StaffListController extends BaseGetxController {
   }
 
   void removeImage(int index) {
-    listImage.removeAt(index);
+    listAttachImage.removeAt(index);
   }
 
   void maximumUploadFile() {
@@ -76,6 +59,7 @@ class StaffListController extends BaseGetxController {
       );
       if (response.isSuccess) {
         declaredStaffs.value = response.result?.staffs ?? [];
+        listAttachImage.value = response.result?.image ?? [];
       } else {
         showSnackBar(response.errorMessage);
       }
@@ -88,36 +72,39 @@ class StaffListController extends BaseGetxController {
 
   Future<void> upLoadFile() async {
     try {
+      showLoading();
       final response = await _repository.uploadImage(
         request: UploadImageRequest(
-          file: listImage,
+          file: imagePath.value ?? '',
           periodId: declarationPeriodId,
         ),
       );
       if (response.isSuccess) {
-        fileNameFromUrl = getFileNameFromUrl(response.result ?? '');
+        // Vì hiện ảnh lấy từ BE về, nên khi vừa up ảnh xong phải gọi api để lấy link ảnh
+        _getStaffList();
       } else {
         showSnackBar(response.errorMessage);
       }
     } catch (e) {
       logger.d(e);
-    } finally {}
+    } finally {
+      hideLoading();
+    }
   }
 
-  Future<void> deteleImage(int index) async {
+  Future<void> deteleImage(String fileNameFromUrl, int index) async {
     try {
-      if (fileNameFromUrl != null) {
-        final response = await _repository.deleteImage(
-          declarationPeriodId,
-          fileNameFromUrl ?? '',
+      final response = await _repository.deleteImage(
+        declarationPeriodId,
+        fileNameFromUrl,
+      );
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declarationPeriodDetail_deleteImageSuccess.tr,
+          typeAction: AppConst.actionSuccess,
         );
-        if (response.isSuccess) {
-          showSnackBar(
-            LocaleKeys.declarationPeriodDetail_deleteImageSuccess.tr,
-            typeAction: AppConst.actionSuccess,
-          );
-          listImage.removeAt(index);
-        }
+
+        listAttachImage.removeAt(index);
       }
     } catch (e) {
       logger.d(e);
