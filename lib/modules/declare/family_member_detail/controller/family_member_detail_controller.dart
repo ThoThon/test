@@ -25,7 +25,6 @@ class FamilyMemberDetailController extends BaseGetxController {
   final birthType = BirthTypeEnum.defaultValue.obs;
 
   /// Ngày sinh
-  // final dateOfBirth = Rxn<DateTime>();
   final dateOfBirthCtrl = TextEditingController();
 
   /// Giới tính *
@@ -115,6 +114,7 @@ class FamilyMemberDetailController extends BaseGetxController {
   @override
   void onClose() {
     fullNameTextCtrl.dispose();
+    dateOfBirthCtrl.dispose();
     bhxhNumberTextCtrl.dispose();
     cccdNumberTextCtrl.dispose();
     noteTextCtrl.dispose();
