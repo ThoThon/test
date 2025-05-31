@@ -14,6 +14,7 @@
 - [AppMobile] - Màn Kê khai thông tin: Chặn không cho Lưu và hiển thị thông báo KHi không có bảng kê nào - BHW-2263
 - [AppMobile] - Hiển thị lương không khớp với api trả về - BHW-2275
 - [AppMobile] - Bổ sung giao diện màn Danh sách nhân viên kê khai hiện ảnh từ API - BHW-2268
+- [AppMobile] - Phụ lục api có dữ liệu Quốc tịch dân tộc nhưng mobile rỗng - BHW-2279
 
 29/05/2025:
 - [api] - Bổ sung giao diện Đợt kê khai - sửa - chỉnh sửa từng bản ghi cho từng nhân viên - BHW-2152
