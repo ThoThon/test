@@ -20,13 +20,9 @@ class DeclarationFormDetailController extends BaseGetxController {
   final documentNumberTextCtrl = TextEditingController();
 
   /// Ngày ban hành *
-  // final dateOfIssue = Rxn<DateTime>();
-
   final dateOfIssueCtrl = TextEditingController();
 
   /// Ngày văn bản có hiệu lực *
-  // final effectiveDate = Rxn<DateTime>();
-
   final effectiveDateCtrl = TextEditingController();
 
   /// Cơ quan ban hành *
@@ -97,6 +93,8 @@ class DeclarationFormDetailController extends BaseGetxController {
   @override
   void onClose() {
     fullNameTextCtrl.dispose();
+    dateOfIssueCtrl.dispose();
+    effectiveDateCtrl.dispose();
     bhxhTextCtrl.dispose();
     documentTypeTextCtrl.dispose();
     documentNumberTextCtrl.dispose();
