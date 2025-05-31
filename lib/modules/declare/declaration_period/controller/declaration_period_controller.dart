@@ -104,12 +104,25 @@ class DeclarationPeriodController extends BaseGetxController {
           arguments: DeclareInfoArgument(
             declarationPeriodId: response.result!.id,
           ),
-        );
+        )?.whenComplete(() {
+          // Refresh the list of declaration periods after creating a new one
+          getDeclarationPeriods();
+        });
       }
     } catch (e) {
       logger.e(e);
     } finally {
       hideLoadingOverlay();
     }
+  }
+
+  Future<void> editDeclarationPeriod(DeclarationPeriod period) async {
+    Get.toNamed(
+      AppRoutes.staffList.path,
+      arguments: period.id,
+    )?.whenComplete(() {
+      // Refresh the list of declaration periods after editing
+      getDeclarationPeriods();
+    });
   }
 }
