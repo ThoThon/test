@@ -16,8 +16,8 @@ class D02DetailResponse {
   final Gender? gioiTinh;
   final EthnicModel? danToc;
   final NationModel? quocTich;
-  final DateTime? tuThang;
-  final DateTime? denThang;
+  final String? tuThang;
+  final String? denThang;
   final String? chucVu;
   final String? noiLamViec;
   final double? tienLuong;
@@ -82,8 +82,8 @@ class D02DetailResponse {
       quocTich: json['quocTich'] != null
           ? NationModel.fromJson(json['quocTich'])
           : null,
-      tuThang: DateTime.tryParse(json['tuThang'] ?? ''),
-      denThang: DateTime.tryParse(json['denThang'] ?? ''),
+      tuThang: json['tuThang'] ?? '',
+      denThang: json['denThang'] ?? '',
       chucVu: json['chucVu'],
       noiLamViec: json['noiLamViec'],
       tienLuong: json['tienLuong']?.toDouble(),

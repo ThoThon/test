@@ -11,30 +11,26 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
               padding: const EdgeInsets.symmetric(
                 horizontal: AppDimens.defaultPadding,
               ),
-              child: Obx(
-                () {
-                  return Column(
-                    children: [
-                      _buildInputFullName(),
-                      UtilWidget.sizedBox16,
-                      _buildInputBHXHNumber(),
-                      UtilWidget.sizedBox16,
-                      _buildInputDocumentType(),
-                      UtilWidget.sizedBox16,
-                      _buildInputDocumentNumber(),
-                      UtilWidget.sizedBox16,
-                      _buildSelectDateOfIssue(),
-                      UtilWidget.sizedBox16,
-                      _buildEffectiveDate(),
-                      UtilWidget.sizedBox16,
-                      _buildInputIssuingAgency(),
-                      UtilWidget.sizedBox16,
-                      _buildInputSummary(),
-                      UtilWidget.sizedBox16,
-                      _buildInputContent(),
-                    ],
-                  );
-                },
+              child: Column(
+                children: [
+                  _buildInputFullName(),
+                  UtilWidget.sizedBox16,
+                  _buildInputBHXHNumber(),
+                  UtilWidget.sizedBox16,
+                  _buildInputDocumentType(),
+                  UtilWidget.sizedBox16,
+                  _buildInputDocumentNumber(),
+                  UtilWidget.sizedBox16,
+                  _buildSelectDateOfIssue(),
+                  UtilWidget.sizedBox16,
+                  _buildEffectiveDate(),
+                  UtilWidget.sizedBox16,
+                  _buildInputIssuingAgency(),
+                  UtilWidget.sizedBox16,
+                  _buildInputSummary(),
+                  UtilWidget.sizedBox16,
+                  _buildInputContent(),
+                ],
               ),
             ),
           ),
@@ -45,61 +41,93 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
   }
 
   Widget _buildEffectiveDate() {
-    return UtilWidget.buildSelectDate(
+    return UtilWidget.buildInputSelectDate(
       inputFormatters: InputFormatterEnum.dateFull,
       controller: controller.effectiveDateCtrl,
-      LocaleKeys.declarationFormDetail_effectiveDate.tr,
+      title: LocaleKeys.declarationFormDetail_effectiveDate.tr,
       hintText: PATTERN_1,
-      date: convertDateToStringSafe(
-        controller.effectiveDate.value,
-        PATTERN_1,
-      ),
-      onChanged: (value) {
-        if (value.trim().isEmpty) {
-          controller.effectiveDate.value = null;
-        }
-      },
-      onTap: () async {
+      // onChanged: (value) {
+      //   if (value.trim().isEmpty) {
+      //     controller.effectiveDate.value = null;
+      //   }
+      // },
+      onSelectDate: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
                   controller.effectiveDateCtrl.text, PATTERN_1) ??
               DateTime.now(),
         );
         if (selectedDate != null) {
-          controller.effectiveDate.value = selectedDate;
           controller.effectiveDateCtrl.text =
               convertDateToString(selectedDate, PATTERN_1);
         }
+      },
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        final digitsOnly = trimmedValue?.replaceAll('/', '');
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_dobCannotEmpty.tr;
+        }
+        // Ngày/tháng/năm phải đủ 8 số
+        if (digitsOnly?.length != 8) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+
+        if (date == null) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+        if (date.year < 1000) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+        return null;
       },
     );
   }
 
   Widget _buildSelectDateOfIssue() {
-    return UtilWidget.buildSelectDate(
+    return UtilWidget.buildInputSelectDate(
       inputFormatters: InputFormatterEnum.dateFull,
       controller: controller.dateOfIssueCtrl,
-      LocaleKeys.declarationFormDetail_dateOfIssue.tr,
+      title: LocaleKeys.declarationFormDetail_dateOfIssue.tr,
       hintText: PATTERN_1,
-      date: convertDateToStringSafe(
-        controller.dateOfIssue.value,
-        PATTERN_1,
-      ),
-      onChanged: (value) {
-        if (value.trim().isEmpty) {
-          controller.dateOfIssue.value = null;
-        }
-      },
-      onTap: () async {
+      // onChanged: (value) {
+      //   if (value.trim().isEmpty) {
+      //     controller.dateOfIssue.value = null;
+      //   }
+      // },
+      onSelectDate: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
                   controller.dateOfIssueCtrl.text, PATTERN_1) ??
               DateTime.now(),
         );
         if (selectedDate != null) {
-          controller.dateOfIssue.value = selectedDate;
           controller.dateOfIssueCtrl.text =
               convertDateToString(selectedDate, PATTERN_1);
         }
+      },
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        final digitsOnly = trimmedValue?.replaceAll('/', '');
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_dobCannotEmpty.tr;
+        }
+        // Ngày/tháng/năm phải đủ 8 số
+        if (digitsOnly?.length != 8) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+
+        if (date == null) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+        if (date.year < 1000) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+        return null;
       },
     );
   }
@@ -129,8 +157,10 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       label: LocaleKeys.declarationFormDetail_bhxhCode.tr,
       buildInputText: BuildInputText(
         InputTextModel(
+          inputFormatters: InputFormatterEnum.digitsOnly,
           controller: controller.bhxhTextCtrl,
           maxLengthInputForm: 10,
+          textInputType: TextInputType.number,
         ),
       ),
     );

@@ -8,7 +8,7 @@ extension HistoryDetailWidget on HistoryDetailPage {
         UtilWidget.buildSolidButton(
           title: LocaleKeys.history_lookup.tr,
           onPressed: () {
-            model.soHoSo != null
+            model.soHoSo?.isNotEmpty ?? false
                 ? controller.lookupProgressHistory(model.soHoSo ?? '')
                 : controller.getFileNumber(model.id);
           },

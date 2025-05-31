@@ -4,7 +4,6 @@ import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/base/ui/formatter/currency_utils.dart';
-import 'package:v_bhxh/shares/date/date_utils.dart';
 
 class D02State {
   /// id d02Lt dùng khi update
@@ -78,13 +77,11 @@ class D02State {
     isGenerateTk1Data.value = d02Lt.xuatTk01;
 
     if (d02Lt.tuThang != null) {
-      fromDateTextCtrl.text =
-          convertDateToStringSafe(d02Lt.tuThang!, PATTERN_12) ?? '';
+      fromDateTextCtrl.text = d02Lt.tuThang ?? '';
     }
 
     if (d02Lt.denThang != null) {
-      toDateTextCtrl.text =
-          convertDateToStringSafe(d02Lt.denThang!, PATTERN_12) ?? '';
+      toDateTextCtrl.text = d02Lt.denThang ?? '';
     }
 
     if (d02Lt.chucVu != null) {

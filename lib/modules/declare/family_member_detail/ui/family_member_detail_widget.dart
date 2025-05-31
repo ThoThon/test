@@ -126,43 +126,96 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         if (value == null) {
           return;
         }
+        controller.dateOfBirthCtrl.clear();
         controller.birthType.value = value;
       },
     );
   }
 
   Widget _buildSelectDateOfBirth() {
-    return UtilWidget.buildSelectDateSafe(
-      LocaleKeys.familyMember_dob.tr,
+    return UtilWidget.buildInputSelectDate(
+      title: LocaleKeys.familyMember_dob.tr,
       hintText: controller.birthType.value.pattern,
-      date: convertDateToStringSafe(
-        controller.dateOfBirth.value,
-        controller.birthType.value.pattern,
-      ),
-      onTap: () async {
+      inputFormatters: controller.birthType.value.inputFormatter,
+      controller: controller.dateOfBirthCtrl,
+      onSelectDate: () async {
         final DateTime? selectedDate;
 
         switch (controller.birthType.value) {
           case BirthTypeEnum.year:
             selectedDate = await UtilWidget.showPeriodDatePicker(
-              dateTime: controller.dateOfBirth.value,
+              dateTime: convertStringToDateSafe(
+                      controller.dateOfBirthCtrl.text, PATTERN_13) ??
+                  DateTime.now(),
               onlyYear: true,
             );
             break;
           case BirthTypeEnum.monthYear:
             selectedDate = await UtilWidget.showPeriodDatePicker(
-              dateTime: controller.dateOfBirth.value,
+              dateTime: convertStringToDateSafe(
+                      controller.dateOfBirthCtrl.text, PATTERN_12) ??
+                  DateTime.now(),
             );
             break;
           case BirthTypeEnum.full:
             selectedDate = await UtilWidget.showDateTimePicker(
-                dateTimeInit: DateTime.now());
+              dateTimeInit: convertStringToDateSafe(
+                      controller.dateOfBirthCtrl.text, PATTERN_1) ??
+                  DateTime.now(),
+            );
             break;
         }
-
+        // Khởi tạo dateTime trong DatePicker từ giá trị nhập
         if (selectedDate != null) {
-          controller.dateOfBirth.value = selectedDate;
+          controller.dateOfBirthCtrl.text = convertDateToStringSafe(
+                selectedDate,
+                controller.birthType.value.pattern,
+              ) ??
+              '';
         }
+      },
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        final digitsOnly = trimmedValue?.replaceAll('/', '');
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_dobCannotEmpty.tr;
+        }
+
+        switch (controller.birthType.value) {
+          case BirthTypeEnum.year:
+            // yyyy phải đủ 4 số
+            if (digitsOnly!.length < 4) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
+          case BirthTypeEnum.monthYear:
+            // mm/yyyy phải đủ 6 số
+            if (digitsOnly!.length < 6) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
+          case BirthTypeEnum.full:
+            // dd/mm/yyyy phải đủ 8 số
+            if (digitsOnly!.length < 8) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
+        }
+        final date = convertStringToDateStrict(
+            trimmedValue, controller.birthType.value.pattern);
+        if (date == null) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+        //Tránh case ví dụ như year = "0999" vẫn hợp lệ
+        if (date.year < 1000) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+        //Ngày sinh phải < ngày hiện tại
+        if (date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_dobCannotFuture.tr;
+        }
+
+        return null;
       },
     );
   }
