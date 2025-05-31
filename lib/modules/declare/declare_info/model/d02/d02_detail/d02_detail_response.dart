@@ -20,6 +20,7 @@ class D02DetailResponse {
   final DateTime? denThang;
   final String? chucVu;
   final String? noiLamViec;
+  final bool dongTheoHeSo;
   final double? tienLuong;
   final double? phuCapChucVu;
   final double? phuCapThamNienVuotKhung;
@@ -46,6 +47,7 @@ class D02DetailResponse {
     this.denThang,
     this.chucVu,
     this.noiLamViec,
+    required this.dongTheoHeSo,
     this.tienLuong,
     this.phuCapChucVu,
     this.phuCapThamNienVuotKhung,
@@ -86,6 +88,7 @@ class D02DetailResponse {
       denThang: DateTime.tryParse(json['denThang'] ?? ''),
       chucVu: json['chucVu'],
       noiLamViec: json['noiLamViec'],
+      dongTheoHeSo: json['dongTheoHeSo'] ?? false,
       tienLuong: json['tienLuong']?.toDouble(),
       phuCapChucVu: json['phuCapChucVu']?.toDouble(),
       phuCapThamNienVuotKhung: json['phuCapThamNienVuotKhung']?.toDouble(),
