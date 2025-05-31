@@ -159,7 +159,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             if (period.status.canEdit)
               UtilWidget.buildSolidButtonBack(
                 title: LocaleKeys.app_edit2.tr,
-                onPressed: () async {
+                onPressed: () {
                   controller.editDeclarationPeriod(period);
                 },
               ),
