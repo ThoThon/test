@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
+import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/uuid_utils.dart';
 
 class DeclarationFormDetailController extends BaseGetxController {
@@ -22,12 +20,12 @@ class DeclarationFormDetailController extends BaseGetxController {
   final documentNumberTextCtrl = TextEditingController();
 
   /// Ngày ban hành *
-  final dateOfIssue = Rxn<DateTime>();
+  // final dateOfIssue = Rxn<DateTime>();
 
   final dateOfIssueCtrl = TextEditingController();
 
   /// Ngày văn bản có hiệu lực *
-  final effectiveDate = Rxn<DateTime>();
+  // final effectiveDate = Rxn<DateTime>();
 
   final effectiveDateCtrl = TextEditingController();
 
@@ -50,8 +48,11 @@ class DeclarationFormDetailController extends BaseGetxController {
       bhxhTextCtrl.text = declarationForm.bhxhNumber;
       documentTypeTextCtrl.text = declarationForm.documentType;
       documentNumberTextCtrl.text = declarationForm.documentNumber;
-      dateOfIssue.value = declarationForm.dateOfIssue;
-      effectiveDate.value = declarationForm.effectiveDate;
+      dateOfIssueCtrl.text =
+          convertDateToStringSafe(declarationForm.dateOfIssue, PATTERN_1) ?? '';
+      effectiveDateCtrl.text =
+          convertDateToStringSafe(declarationForm.effectiveDate, PATTERN_1) ??
+              '';
       issuingAgencyTextCtrl.text = declarationForm.issuingAgency;
       summaryTextCtrl.text = declarationForm.summary;
       contentToBeAssessedTextCtrl.text = declarationForm.contentToBeAssessed;
@@ -59,14 +60,14 @@ class DeclarationFormDetailController extends BaseGetxController {
   }
 
   void submit() {
-    final doi = dateOfIssue.value;
-    if (doi == null) {
+    final doi = dateOfIssueCtrl.text;
+    if (doi.isEmpty) {
       showSnackBar("Ngày ban hành không được để trống");
       return;
     }
 
-    final ed = effectiveDate.value;
-    if (ed == null) {
+    final ed = effectiveDateCtrl.text;
+    if (ed.isEmpty) {
       showSnackBar("Ngày hiệu lực không được để trống");
       return;
     }
@@ -80,8 +81,8 @@ class DeclarationFormDetailController extends BaseGetxController {
           bhxhNumber: bhxhTextCtrl.text.trim(),
           documentType: documentTypeTextCtrl.text.trim(),
           documentNumber: documentNumberTextCtrl.text.trim(),
-          dateOfIssue: doi,
-          effectiveDate: ed,
+          dateOfIssue: convertStringToDateSafe(doi, PATTERN_1),
+          effectiveDate: convertStringToDateSafe(ed, PATTERN_1),
           issuingAgency: issuingAgencyTextCtrl.text.trim(),
           summary: summaryTextCtrl.text.trim(),
           contentToBeAssessed: contentToBeAssessedTextCtrl.text.trim(),
