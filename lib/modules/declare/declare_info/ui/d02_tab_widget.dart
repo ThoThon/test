@@ -188,7 +188,7 @@ extension D02TabWidget on DeclareInfoPage {
           hintText: LocaleKeys.declareInfo_selectPlan.tr,
           autovalidateMode: AutovalidateMode.always,
           items: plans.toList(),
-          display: (item) => item.name,
+          display: (item) => '${item.id} - ${item.name}',
           selectedItem: controller.d02State.plan.value,
           onChanged: (value) {
             if (value == null) {
