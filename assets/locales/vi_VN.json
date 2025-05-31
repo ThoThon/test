@@ -272,7 +272,10 @@
     "statusSent": "Đã gửi",
     "statusPending": "Đang chờ xử lý",
     "statusFailed": "Thất bại",
-    "statusSuccess": "Thành công"
+    "statusSuccess": "Thành công",
+    "contentDeletePeriod": "Xóa đợt kê khai cũng sẽ xóa toàn bộ dữ liệu của đợt kê khai",
+    "contentDeletePeriodSuccess":"Xóa đợt kê khai thành công",
+    "delete": "Xóa"
   },
   "declarationPeriodDetail": {
     "addNewStaff": "Thêm mới nhân viên",
