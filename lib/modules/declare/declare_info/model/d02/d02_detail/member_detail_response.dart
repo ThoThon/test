@@ -19,6 +19,7 @@ class MemberDetailResponse {
   final String? cmnd;
   final String? ghiChu;
   final bool laNguoiThamGia;
+  final String? giaDinhId;
   final bool isUpdate;
 
   const MemberDetailResponse({
@@ -38,6 +39,7 @@ class MemberDetailResponse {
     this.cmnd,
     this.ghiChu,
     required this.laNguoiThamGia,
+    this.giaDinhId,
     required this.isUpdate,
   });
 
@@ -70,7 +72,10 @@ class MemberDetailResponse {
       moiQuanHe: json['moiQuanHes'] != null
           ? RelationshipModel.fromJson(json['moiQuanHes'])
           : null,
+      cmnd: json['cmnd'],
       laNguoiThamGia: json['laNguoiThamGia'] ?? false,
+      ghiChu: json['ghiChu'],
+      giaDinhId: json['giaDinhId'],
       isUpdate: json['isUpdate'] ?? false,
     );
   }

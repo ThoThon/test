@@ -3,6 +3,7 @@ import 'package:v_bhxh/modules/declare/family_member_detail/model/birth_type_enu
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class StaffFamilyResponse {
+  final String? id;
   final String? hoTen;
   final DateTime? ngaySinh;
   final RelationshipModel moiQuanHe;
@@ -17,6 +18,7 @@ class StaffFamilyResponse {
   final EthnicModel? danTocs;
 
   const StaffFamilyResponse({
+    this.id,
     this.hoTen,
     this.ngaySinh,
     required this.moiQuanHe,
@@ -33,6 +35,7 @@ class StaffFamilyResponse {
 
   factory StaffFamilyResponse.fromJson(Map<String, dynamic> json) {
     return StaffFamilyResponse(
+      id: json['id'],
       hoTen: json['hoTen'],
       ngaySinh:
           json['ngaySinh'] != null ? DateTime.tryParse(json['ngaySinh']) : null,

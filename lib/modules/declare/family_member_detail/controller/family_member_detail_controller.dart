@@ -102,6 +102,7 @@ class FamilyMemberDetailController extends BaseGetxController {
           ward: selectedWard.value!,
           relationship: relationship.value!,
           isParticipant: isParticipant.value,
+          giaDinhId: argument?.giaDinhId,
           // Khi update thành viên ở DB thì sẽ truyền isUpdate = true
           // Cần keep trạng thái isUpdate để tránh tạo mới
           isUpdate: argument?.isUpdate ?? false,
