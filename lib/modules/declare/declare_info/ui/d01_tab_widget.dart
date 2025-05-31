@@ -84,7 +84,7 @@ extension D01TabWidget on DeclareInfoPage {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SDSBuildText(
-                    "Bảng kê hồ sơ ${index + 1}",
+                    form.documentType,
                     style: AppTextStyle.font16Semi,
                   ),
                   SDSBuildText(
