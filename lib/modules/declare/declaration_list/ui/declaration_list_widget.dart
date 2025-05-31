@@ -134,7 +134,6 @@ extension DeclarationListWidget on DeclarationListPage {
                           arguments: ViewPdfArgument(
                             url: previewPath,
                             title: 'Tờ khai tham gia',
-                            isRotateHorizontall: true,
                           ),
                         );
                       }

@@ -19,6 +19,7 @@
 - [AppMobile] - Count và hiện thị số thông báo chưa đọc - BHW-2254
 - fix [AppMobile] - Màn Đăng nhập: Chặn nhập khoảng trắng ở đầu cuối - BHW-2246
 - [AppMobile] - Màn Thành viên trong gia đình: Chưa xử lý trường ngày sinh, giới tính - BHW-2260
+- [AppMobile] - Chỉnh sửa View hiển thị biểu mẫu - BHW-2290
 
 30/05/2025:
 - Xử lý thêm tự động bỏ tick sinh tờ khai TK1 - BHW-2243
