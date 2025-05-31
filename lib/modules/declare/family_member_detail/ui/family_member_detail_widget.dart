@@ -409,18 +409,41 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildDropdownRelationship() {
-    return UtilWidget.buildDropDownWithLabel2<RelationshipModel>(
-      label: LocaleKeys.familyMember_relationshipWithHeadOfHousehold.tr,
-      hintText:
-          LocaleKeys.familyMember_selectRelationshipWithHeadOfHousehold.tr,
-      items: AppData.instance.relationships.toList(),
-      display: (item) => item.text,
-      selectedItem: controller.relationship.value,
-      onChanged: (value) {
-        if (value == null) {
-          return;
-        }
-        controller.relationship.value = value;
+    return Obx(
+      () {
+        return UtilWidget.buildBottomSheetSelect<RelationshipModel>(
+          label: LocaleKeys.familyMember_relationshipWithHeadOfHousehold.tr,
+          hintText:
+              LocaleKeys.familyMember_selectRelationshipWithHeadOfHousehold.tr,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<RelationshipModel>(
+                title: LocaleKeys
+                    .familyMember_selectRelationshipWithHeadOfHousehold.tr,
+                listFilter: AppData.instance.relationships.toList(),
+                selectedItem: controller.relationship.value,
+                display: (value) => value.text,
+                onAccept: (value) {
+                  if (value == null) {
+                    return;
+                  }
+                  controller.relationship.value = value;
+
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.relationship.value,
+          display: (province) => province.text,
+          validator: (value) {
+            if (controller.relationship.value == null) {
+              return "Mối quan hệ với chủ hộ không được bỏ trống";
+            }
+            return null;
+          },
+        );
       },
     );
   }
