@@ -12,8 +12,8 @@ class LoginController extends BaseGetxController {
   final formKey = GlobalKey<FormState>();
   // Username test : sd8888k17
   // Password test : Viettel@789
-  final usernameTextCtrl = TextEditingController(text: 'sd8888k17');
-  final passwordTextCtrl = TextEditingController(text: 'Viettel@789');
+  final usernameTextCtrl = TextEditingController();
+  final passwordTextCtrl = TextEditingController();
   final isHaveUsername = false.obs;
   final appController = Get.find<AppController>();
 
