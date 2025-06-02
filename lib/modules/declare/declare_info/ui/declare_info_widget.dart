@@ -361,8 +361,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
-
-  // TODO: Hỏi lại nghiệp vụ, phải đẩy birthType lên api thì lúc lấy về mới gen được date
   Widget _buildBirthTypeDropdown() {
     return UtilWidget.buildDropDownWithLabel2<BirthTypeEnum>(
       label: LocaleKeys.familyMember_selectBirthType.tr,
@@ -430,12 +428,30 @@ extension DeclareInfoWidget on DeclareInfoPage {
         if (trimmedValue == null || trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_dobCannotEmpty.tr;
         }
-
-        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
-        if (trimmedValue.length < 10) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
+        switch (controller.d02Tk1State.birthType.value) {
+          case BirthTypeEnum.year:
+            // Kiểm tra độ dài chuỗi (yyyy = 4 ký tự)
+            if (trimmedValue.length < 4) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
+          case BirthTypeEnum.monthYear:
+            // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
+            if (trimmedValue.length < 7) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
+          case BirthTypeEnum.full:
+            // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+            if (trimmedValue.length < 10) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
         }
-        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        final date = convertStringToDateStrict(
+          trimmedValue,
+          controller.d02Tk1State.birthType.value.pattern,
+        );
 
         if (date == null) {
           return LocaleKeys.declareInfo_dobInvalid.tr;

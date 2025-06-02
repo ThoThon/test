@@ -47,12 +47,13 @@ class D02Tk1State {
     if (d02Lt.cmnd != null) {
       cccdTextCtrl.text = d02Lt.cmnd!.trim();
     }
-    
 
+    birthType.value = d02Lt.chiCoNamSinh;
 
     if (d02Lt.ngaySinh != null) {
       dateOfBirthTextCtrl.text =
-          convertDateToStringSafe(d02Lt.ngaySinh, birthType.value.pattern) ?? '';
+          convertDateToStringSafe(d02Lt.ngaySinh, birthType.value.pattern) ??
+              '';
     }
 
     if (d02Lt.gioiTinh != null) {
