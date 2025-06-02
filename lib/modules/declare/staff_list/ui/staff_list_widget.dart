@@ -207,35 +207,61 @@ extension StaffListWidget on StaffListPage {
           spacer: UtilWidget.buildDividerDefault(),
           children: controller.declaredStaffs.map(
             (staff) {
-              return InkWell(
-                borderRadius: BorderRadius.circular(8),
-                onTap: () {
-                  Get.offNamed(
-                    AppRoutes.declareInfo.path,
-                    arguments: DeclareInfoArgument(
-                      declarationPeriodId: controller.declarationPeriodId,
-                      staffId: staff.id,
-                    ),
-                  );
-                },
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: AppDimens.defaultPadding,
-                    horizontal: AppDimens.paddingVerySmall,
-                  ),
-                  child: SDSBuildText(
-                    '${staff.name} ${staff.bhxhNumber.isNotEmpty ? "(${staff.bhxhNumber})" : ""}',
-                    style: AppTextStyle.font16Bo,
-                  ),
-                ),
-              );
+              return _buildStaffItem(staff);
             },
           ),
         ),
         UtilWidget.buildDividerDefault(),
         _buildAddNewStaff(),
       ],
+    );
+  }
+
+  Widget _buildStaffItem(DeclaredStaffModel staff) {
+    return Slidable(
+      key: ValueKey(staff.id),
+      endActionPane: ActionPane(
+        // A motion is a widget used to control how the pane animates.
+        motion: const ScrollMotion(),
+        children: [
+          CustomSlidableAction(
+            onPressed: (ctx) {
+              controller.showDialogDeleteStaff(staff);
+            },
+            backgroundColor: AppColors.primaryColor,
+            foregroundColor: Colors.white,
+            child: SDSBuildText(
+              LocaleKeys.app_delete.tr,
+              style: AppTextStyle.font20Bo.copyWith(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: () {
+          Get.offNamed(
+            AppRoutes.declareInfo.path,
+            arguments: DeclareInfoArgument(
+              declarationPeriodId: controller.declarationPeriodId,
+              staffId: staff.id,
+            ),
+          );
+        },
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(
+            vertical: AppDimens.defaultPadding,
+            horizontal: AppDimens.paddingVerySmall,
+          ),
+          child: SDSBuildText(
+            '${staff.name} ${staff.bhxhNumber.isNotEmpty ? "(${staff.bhxhNumber})" : ""}',
+            style: AppTextStyle.font16Bo,
+          ),
+        ),
+      ),
     );
   }
 

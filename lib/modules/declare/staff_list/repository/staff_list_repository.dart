@@ -91,4 +91,15 @@ class StaffListRepository extends BaseRepository {
     );
     return BaseResponse.fromJson(response);
   }
+
+  Future<BaseResponse> deleteD02Tk1D01({required String id}) async {
+    final response = await baseCallApi(
+      AppApi.urlDeleteD02Tk1D01,
+      EnumRequestMethod.delete,
+      queryParameters: {
+        "id": id,
+      },
+    );
+    return BaseResponse.fromJson(response);
+  }
 }

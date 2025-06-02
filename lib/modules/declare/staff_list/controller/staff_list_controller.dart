@@ -3,6 +3,7 @@ import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/repository/staff_list_repository.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../base_app/base_app.src.dart';
 
@@ -152,5 +153,40 @@ class StaffListController extends BaseGetxController {
 
   String getFileNameFromUrl(String url) {
     return url.split('/').last;
+  }
+
+  void showDialogDeleteStaff(DeclaredStaffModel staff) {
+    ShowDialog.showDialogConfirm2(
+      title: LocaleKeys.staffList_deleteStaffConfirmMessage.tr,
+      confirmTitle: LocaleKeys.app_delete.tr,
+      onConfirm: () {
+        deleteStaff(staffId: staff.id);
+      },
+    );
+  }
+
+  Future<void> deleteStaff({
+    required String staffId,
+  }) async {
+    try {
+      showLoadingOverlay();
+      final response = await _repository.deleteD02Tk1D01(
+        id: staffId,
+      );
+
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.staffList_deleteStaffSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        _getStaffList();
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 }
