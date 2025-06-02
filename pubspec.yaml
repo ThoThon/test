@@ -79,6 +79,7 @@ dependencies:
   flutter_rounded_date_picker: ^3.0.4
   uuid: ^4.5.1
   asn1lib: ^1.5.9
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0
