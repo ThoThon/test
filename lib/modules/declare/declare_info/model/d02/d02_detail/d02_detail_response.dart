@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/model/birth_type_enum.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class D02DetailResponse {
@@ -12,6 +13,7 @@ class D02DetailResponse {
   final AdjustmentPlanModel? phuongAn;
   final bool xuatTk01;
   final String? cmnd;
+  final BirthTypeEnum chiCoNamSinh;
   final DateTime? ngaySinh;
   final Gender? gioiTinh;
   final EthnicModel? danToc;
@@ -39,6 +41,7 @@ class D02DetailResponse {
     this.phuongAn,
     required this.xuatTk01,
     this.cmnd,
+    required this.chiCoNamSinh,
     this.ngaySinh,
     this.gioiTinh,
     this.danToc,
@@ -77,7 +80,10 @@ class D02DetailResponse {
       phuongAn: plan,
       xuatTk01: json['xuatTk01'] ?? false,
       cmnd: json['cmnd'],
-      ngaySinh: DateTime.tryParse(json['ngaySinh'] ?? ''),
+      chiCoNamSinh: BirthTypeEnum.parse(json['chiCoNamSinh']) ??
+          BirthTypeEnum.defaultValue,
+      ngaySinh:
+          json['ngaySinh'] != null ? DateTime.tryParse(json['ngaySinh']) : null,
       gioiTinh: Gender.parse(json['gioiTinh']),
       danToc:
           json['danToc'] != null ? EthnicModel.fromJson(json['danToc']) : null,

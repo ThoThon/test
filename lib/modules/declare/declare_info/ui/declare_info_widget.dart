@@ -361,22 +361,66 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
+  Widget _buildBirthTypeDropdown() {
+    return UtilWidget.buildDropDownWithLabel2<BirthTypeEnum>(
+      label: LocaleKeys.familyMember_selectBirthType.tr,
+      hintText: LocaleKeys.familyMember_selectBirthTypeHint.tr,
+      items: BirthTypeEnum.values,
+      display: (item) => item.title,
+      selectedItem: controller.d02Tk1State.birthType.value,
+      onChanged: (value) {
+        if (value == null) {
+          return;
+        }
+        controller.d02Tk1State.dateOfBirthTextCtrl.clear();
+        controller.d02Tk1State.birthType.value = value;
+      },
+    );
+  }
+
   Widget _buildSelectDateOfBirth() {
     return UtilWidget.buildInputSelectDate(
       title: LocaleKeys.declareInfo_dob.tr,
       controller: controller.d02Tk1State.dateOfBirthTextCtrl,
-      hintText: PATTERN_1,
-      inputFormatters: InputFormatterEnum.dateFullBirthDay,
+      hintText: controller.d02Tk1State.birthType.value.pattern,
+      inputFormatters: controller.d02Tk1State.birthType.value.inputFormatter,
       onSelectDate: () async {
-        final selectedDate = await UtilWidget.showDateTimePicker(
-          dateTimeInit: convertStringToDateSafe(
-                  controller.d02Tk1State.dateOfBirthTextCtrl.text, PATTERN_1) ??
-              DateTime.now(),
-          lastDate: DateTime.now(),
-        );
+        final DateTime? selectedDate;
+
+        switch (controller.d02Tk1State.birthType.value) {
+          case BirthTypeEnum.year:
+            selectedDate = await UtilWidget.showPeriodDatePicker(
+              dateTime: convertStringToDateSafe(
+                      controller.d02Tk1State.dateOfBirthTextCtrl.text,
+                      PATTERN_13) ??
+                  DateTime.now(),
+              onlyYear: true,
+            );
+            break;
+          case BirthTypeEnum.monthYear:
+            selectedDate = await UtilWidget.showPeriodDatePicker(
+              dateTime: convertStringToDateSafe(
+                      controller.d02Tk1State.dateOfBirthTextCtrl.text,
+                      PATTERN_12) ??
+                  DateTime.now(),
+            );
+            break;
+          case BirthTypeEnum.full:
+            selectedDate = await UtilWidget.showDateTimePicker(
+              dateTimeInit: convertStringToDateSafe(
+                      controller.d02Tk1State.dateOfBirthTextCtrl.text,
+                      PATTERN_1) ??
+                  DateTime.now(),
+            );
+            break;
+        }
         if (selectedDate != null) {
           controller.d02Tk1State.dateOfBirthTextCtrl.text =
-              convertDateToStringSafe(selectedDate, PATTERN_1) ?? '';
+              convertDateToStringSafe(
+                    selectedDate,
+                    controller.d02Tk1State.birthType.value.pattern,
+                  ) ??
+                  '';
         }
       },
       validator: (value) {
@@ -384,12 +428,30 @@ extension DeclareInfoWidget on DeclareInfoPage {
         if (trimmedValue == null || trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_dobCannotEmpty.tr;
         }
-
-        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
-        if (trimmedValue.length < 10) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
+        switch (controller.d02Tk1State.birthType.value) {
+          case BirthTypeEnum.year:
+            // Kiểm tra độ dài chuỗi (yyyy = 4 ký tự)
+            if (trimmedValue.length < 4) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
+          case BirthTypeEnum.monthYear:
+            // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
+            if (trimmedValue.length < 7) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
+          case BirthTypeEnum.full:
+            // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+            if (trimmedValue.length < 10) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
         }
-        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        final date = convertStringToDateStrict(
+          trimmedValue,
+          controller.d02Tk1State.birthType.value.pattern,
+        );
 
         if (date == null) {
           return LocaleKeys.declareInfo_dobInvalid.tr;

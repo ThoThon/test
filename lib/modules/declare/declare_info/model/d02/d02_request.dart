@@ -11,6 +11,7 @@ class D02Request {
   final String? phuongAnId;
   final bool xuatTk01;
   final String? cmnd;
+  final int chiCoNamSinh;
   final DateTime? ngaySinh;
   final int gioiTinh;
   final int? danTocId;
@@ -38,6 +39,7 @@ class D02Request {
     this.phuongAnId,
     required this.xuatTk01,
     this.cmnd,
+    required this.chiCoNamSinh,
     this.ngaySinh,
     required this.gioiTinh,
     this.danTocId,
@@ -67,6 +69,7 @@ class D02Request {
       'phuongAnId': phuongAnId,
       'xuatTk01': xuatTk01,
       'cmnd': cmnd,
+      'chiCoNamSinh': chiCoNamSinh,
       'ngaySinh': ngaySinh?.toIso8601String(),
       'gioiTinh': gioiTinh,
       'danTocId': danTocId,
@@ -101,8 +104,9 @@ class D02Request {
       phuongAnId: d02State.plan.value?.id,
       xuatTk01: d02State.isGenerateTk1Data.value,
       cmnd: d02Tk1State.cccdTextCtrl.text.trim(),
+      chiCoNamSinh: d02Tk1State.birthType.value.rawValue,
       ngaySinh: convertStringToDateSafe(
-          d02Tk1State.dateOfBirthTextCtrl.text, PATTERN_1),
+          d02Tk1State.dateOfBirthTextCtrl.text, d02Tk1State.birthType.value.pattern),
       gioiTinh: d02Tk1State.gender.value?.rawValue ?? Gender.male.rawValue,
       danTocId: d02Tk1State.selectedEthnic.value?.value,
       quocTichId: d02Tk1State.selectedNationality.value?.value,

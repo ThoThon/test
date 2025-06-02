@@ -42,6 +42,8 @@ extension D02TabWidget on DeclareInfoPage {
                       UtilWidget.sizedBox16,
                       _buildInputCCCD(),
                       UtilWidget.sizedBox16,
+                      _buildBirthTypeDropdown(),
+                      UtilWidget.sizedBox16,
                       _buildSelectDateOfBirth(),
                       UtilWidget.sizedBox12,
                       _buildSelectGender(

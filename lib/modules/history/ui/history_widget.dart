@@ -18,35 +18,11 @@ extension HistoryWidget on HistoryPage {
   Widget _buildSearchAndFilter() {
     return Row(
       children: [
-        // Expanded(
-        //   child: Container(
-        //     height: AppDimens.btnDefaultFigma,
-        //     decoration: BoxDecoration(
-        //       border: Border.all(width: 1, color: AppColors.primaryNavy),
-        //       borderRadius: BorderRadius.circular(AppDimens.radius30),
-        //     ),
-        //     child: Row(
-        //       children: [
-        //         SDSImageSvg(
-        //           Assets.ASSETS_ICONS_IC_SEARCH_SVG,
-        //           width: AppDimens.sizeIcon,
-        //           height: AppDimens.sizeIcon,
-        //         ).paddingOnly(right: AppDimens.paddingVerySmall),
-        //         SDSBuildText(
-        //           LocaleKeys.history_searchProfile.tr,
-        //           style: AppTextStyle.font14Re.copyWith(
-        //             color: AppColors.thumbColorSwitch,
-        //           ),
-        //         )
-        //       ],
-        //     ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
-        //   ),
-        // ),
         Expanded(
           child: BuildInputText(
             InputTextModel(
               controller: controller.searchController,
-              hintText: LocaleKeys.staffList_fillFullName.tr,
+              hintText: LocaleKeys.history_fileNumber.tr,
               iconNextTextInputAction: TextInputAction.done,
               hintTextColor: AppColors.thumbColorSwitch,
               hintTextSize: AppDimens.fontSmall(),
