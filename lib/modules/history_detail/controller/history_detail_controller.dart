@@ -28,8 +28,9 @@ class HistoryDetailController extends BaseGetxController {
       final res = await historyDetaiRepository.getFileNumber(key);
       if (res.result != null && res.isSuccess) {
         lookupProgressHistory(res.result?.rHRecordNumber ?? '');
+      } else {
+        showSnackBar("Tra cứu số hồ sơ bị lỗi");
       }
-      showSnackBar("Tra cứu số hồ sơ bị lỗi");
     } catch (e) {
       logger.d(e);
     } finally {

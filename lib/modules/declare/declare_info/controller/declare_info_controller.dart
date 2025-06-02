@@ -1,4 +1,3 @@
-import 'package:tiengviet/tiengviet.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
@@ -693,19 +692,21 @@ class DeclareInfoController extends BaseGetxController {
     );
     if (result != null) {
       sendNfcRequestModel = result;
-      Gender? gender = sendNfcRequestModel.sexVMN!.parseGender;
-      final query = TiengViet.parse(
-          sendNfcRequestModel.nationalityVMN!.trim().toUpperCase());
+      Gender? gender = sendNfcRequestModel.sexVMN?.parseGender;
+      final query =
+          sendNfcRequestModel.nationalityVMN?.trim().toUpperCase() ?? '';
       d02Tk1State
-        ..fullNameTextCtrl.text = sendNfcRequestModel.name ?? ''
+        ..fullNameTextCtrl.text = sendNfcRequestModel.nameVNM ?? ''
         ..cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? ''
         ..dateOfBirthTextCtrl.text = sendNfcRequestModel.dobVMN ?? ''
         ..gender.value = gender
-        ..selectedEthnic.value = AppData.instance.ethnics.toList().firstWhere(
-            (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM)
+        ..selectedEthnic.value = AppData.instance.ethnics
+            .toList()
+            .firstWhereOrNull(
+                (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM)
         ..selectedNationality.value =
-            AppData.instance.nations.toList().firstWhere(
-                  (nations) => nations.text == query,
+            AppData.instance.nations.toList().firstWhereOrNull(
+                  (nations) => nations.text.trim() == query,
                 );
     }
   }
