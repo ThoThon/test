@@ -179,12 +179,38 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         if (trimmedValue == null || trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_dobCannotEmpty.tr;
         }
+        switch (controller.birthType.value) {
+          case BirthTypeEnum.year:
+            // Kiểm tra độ dài chuỗi (yyyy = 4 ký tự)
+            if (trimmedValue.length < 4) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
+          case BirthTypeEnum.monthYear:
+            // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
+            if (trimmedValue.length < 7) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
+          case BirthTypeEnum.full:
+            // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+            if (trimmedValue.length < 10) {
+              return LocaleKeys.declareInfo_dobInvalid.tr;
+            }
+            break;
+        }
 
         final date = convertStringToDateStrict(
             trimmedValue, controller.birthType.value.pattern);
         if (date == null) {
           return LocaleKeys.declareInfo_dobInvalid.tr;
         }
+
+        // Chỉ được nhập từ năm 1900
+        if (date.year <= 1900) {
+          return LocaleKeys.declareInfo_dobInvalid.tr;
+        }
+
         //Ngày sinh phải < ngày hiện tại
         if (date.isAfter(DateTime.now())) {
           return LocaleKeys.declareInfo_dobCannotFuture.tr;

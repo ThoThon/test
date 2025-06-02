@@ -416,6 +416,12 @@ class LocaleKeys {
   static const declareInfo_inputProvince = 'declareInfo_inputProvince';
   static const declareInfo_inputDistrict = 'declareInfo_inputDistrict';
   static const declareInfo_inputWard = 'declareInfo_inputWard';
+  static const declareInfo_fromDateInvalid = 'declareInfo_fromDateInvalid';
+  static const declareInfo_fromDateCannotAfterToDate =
+      'declareInfo_fromDateCannotAfterToDate';
+  static const declareInfo_toDateInvalid = 'declareInfo_toDateInvalid';
+  static const declareInfo_toDateCannotBeforFromDate =
+      'declareInfo_toDateCannotBeforFromDate';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -493,6 +499,14 @@ class LocaleKeys {
       'declarationFormDetail_contentToBeAssessed';
   static const declarationFormDetail_contentToBeAssessedCannotEmpty =
       'declarationFormDetail_contentToBeAssessedCannotEmpty';
+  static const declarationFormDetail_dateOfIssueCannotEmpty =
+      'declarationFormDetail_dateOfIssueCannotEmpty';
+  static const declarationFormDetail_effectiveDateCannotEmpty =
+      'declarationFormDetail_effectiveDateCannotEmpty';
+  static const declarationFormDetail_effectiveDateInvalid =
+      'declarationFormDetail_effectiveDateInvalid';
+  static const declarationFormDetail_dateOfIssueInvalid =
+      'declarationFormDetail_dateOfIssueInvalid';
   static const staffList_title = 'staffList_title';
   static const staffList_addNewStaff = 'staffList_addNewStaff';
   static const staffList_attachFile = 'staffList_attachFile';
@@ -502,6 +516,9 @@ class LocaleKeys {
   static const staffList_fillFullName = 'staffList_fillFullName';
   static const staffList_confirm = 'staffList_confirm';
   static const staffList_selectedStaff = 'staffList_selectedStaff';
+  static const staffList_deleteStaffConfirmMessage =
+      'staffList_deleteStaffConfirmMessage';
+  static const staffList_deleteStaffSuccess = 'staffList_deleteStaffSuccess';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -967,6 +984,12 @@ class Locales {
     'declareInfo_inputProvince': 'Nhập tỉnh/thành phố',
     'declareInfo_inputDistrict': 'Nhập quận/huyện',
     'declareInfo_inputWard': 'Nhập phường/xã',
+    'declareInfo_fromDateInvalid': 'Từ tháng/năm không hợp lệ',
+    'declareInfo_fromDateCannotAfterToDate':
+        'Từ tháng/năm không được lớn hơn Đến tháng/năm',
+    'declareInfo_toDateInvalid': 'Đến tháng/năm không hợp lệ',
+    'declareInfo_toDateCannotBeforFromDate':
+        'Đến tháng/năm không được nhỏ hơn Từ tháng/năm',
     'familyMember_title': 'Thành viên trong gia đình',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1023,6 +1046,12 @@ class Locales {
     'declarationFormDetail_contentToBeAssessed': 'Nội dung cần thẩm định',
     'declarationFormDetail_contentToBeAssessedCannotEmpty':
         'Nội dung cần thẩm định không được bỏ trống',
+    'declarationFormDetail_dateOfIssueCannotEmpty':
+        'Ngày ban hành không được để trống',
+    'declarationFormDetail_effectiveDateCannotEmpty':
+        'Ngày hiệu lực không được để trống',
+    'declarationFormDetail_effectiveDateInvalid': 'Ngày hiệu lực không hợp lệ',
+    'declarationFormDetail_dateOfIssueInvalid': 'Ngày ban hành không hợp lệ',
     'staffList_title': 'Danh sách nhân viên kê khai',
     'staffList_addNewStaff': 'Thêm mới nhân viên',
     'staffList_attachFile': 'Đính kèm file',
@@ -1032,6 +1061,8 @@ class Locales {
     'staffList_fillFullName': 'Nhập họ tên',
     'staffList_confirm': 'Xác nhận',
     'staffList_selectedStaff': 'Chọn nhân viên',
+    'staffList_deleteStaffConfirmMessage': 'Bạn có đồng ý xóa nhân sự đã chọn?',
+    'staffList_deleteStaffSuccess': 'Xóa nhân sự thành công',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',
