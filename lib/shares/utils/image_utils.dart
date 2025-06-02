@@ -5,20 +5,28 @@ class ImageUtils {
   const ImageUtils._();
 
   static Future<String?> pickImage() async {
-    final result = await FilePicker.platform.pickFiles(
-      allowMultiple: false,
-      type: FileType.image,
-    );
-    return result?.files.firstOrNull?.path;
+    try {
+      final result = await FilePicker.platform.pickFiles(
+        allowMultiple: false,
+        type: FileType.image,
+      );
+      return result?.files.firstOrNull?.path;
+    } catch (_) {
+      return null;
+    }
   }
 
   static Future<String?> takePhoto() async {
-    final file = await ImagePicker().pickImage(
-      source: ImageSource.camera,
-      // maxHeight: 80,
-      // maxWidth: 80,
-      // imageQuality: 100,
-    );
-    return file?.path;
+    try {
+      final file = await ImagePicker().pickImage(
+        source: ImageSource.camera,
+        // maxHeight: 80,
+        // maxWidth: 80,
+        // imageQuality: 100,
+      );
+      return file?.path;
+    } catch (_) {
+      return null;
+    }
   }
 }
