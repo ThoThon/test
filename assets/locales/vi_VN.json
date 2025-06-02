@@ -274,7 +274,7 @@
     "statusFailed": "Thất bại",
     "statusSuccess": "Thành công",
     "contentDeletePeriod": "Xóa đợt kê khai cũng sẽ xóa toàn bộ dữ liệu của đợt kê khai",
-    "contentDeletePeriodSuccess":"Xóa đợt kê khai thành công",
+    "contentDeletePeriodSuccess": "Xóa đợt kê khai thành công",
     "delete": "Xóa"
   },
   "declarationPeriodDetail": {
@@ -378,10 +378,10 @@
     "inputProvince": "Nhập tỉnh/thành phố",
     "inputDistrict": "Nhập quận/huyện",
     "inputWard": "Nhập phường/xã",
-    "fromDateInvalid":"Từ tháng/năm không hợp lệ",
-    "fromDateCannotAfterToDate":"Từ tháng/năm không được lớn hơn Đến tháng/năm",
-    "toDateInvalid":"Đến tháng/năm không hợp lệ",
-    "toDateCannotBeforFromDate":"Đến tháng/năm không được nhỏ hơn Từ tháng/năm"
+    "fromDateInvalid": "Từ tháng/năm không hợp lệ",
+    "fromDateCannotAfterToDate": "Từ tháng/năm không được lớn hơn Đến tháng/năm",
+    "toDateInvalid": "Đến tháng/năm không hợp lệ",
+    "toDateCannotBeforFromDate": "Đến tháng/năm không được nhỏ hơn Từ tháng/năm"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",
@@ -434,10 +434,10 @@
     "summaryCannotEmpty": "Trích yếu không được bỏ trống",
     "contentToBeAssessed": "Nội dung cần thẩm định",
     "contentToBeAssessedCannotEmpty": "Nội dung cần thẩm định không được bỏ trống",
-    "dateOfIssueCannotEmpty":"Ngày ban hành không được để trống",
-    "effectiveDateCannotEmpty":"Ngày hiệu lực không được để trống",
-    "effectiveDateInvalid":"Ngày hiệu lực không hợp lệ",
-    "dateOfIssueInvalid":"Ngày ban hành không hợp lệ"
+    "dateOfIssueCannotEmpty": "Ngày ban hành không được để trống",
+    "effectiveDateCannotEmpty": "Ngày hiệu lực không được để trống",
+    "effectiveDateInvalid": "Ngày hiệu lực không hợp lệ",
+    "dateOfIssueInvalid": "Ngày ban hành không hợp lệ"
   },
   "staffList": {
     "title": "Danh sách nhân viên kê khai",
@@ -448,7 +448,9 @@
     "attachFileErorr": "File không hợp lệ",
     "fillFullName": "Nhập họ tên",
     "confirm": "Xác nhận",
-    "selectedStaff": "Chọn nhân viên"
+    "selectedStaff": "Chọn nhân viên",
+    "deleteStaffConfirmMessage": "Bạn có đồng ý xóa nhân sự đã chọn?",
+    "deleteStaffSuccess": "Xóa nhân sự thành công"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",

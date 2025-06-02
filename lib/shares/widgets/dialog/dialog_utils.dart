@@ -278,8 +278,9 @@ class ShowDialog {
                     ),
             SDSBuildText(
               title,
-              maxLines: 1,
+              maxLines: 2,
               style: AppTextStyle.font20Bo,
+              textAlign: TextAlign.center,
             ),
             content != null
                 ? Container(

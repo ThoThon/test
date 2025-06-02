@@ -1,3 +1,6 @@
+02/06/2025:
+- [AppMobile] - Màn Danh sách nhân viên kê khai: Bổ xung thêm chức năng xóa nhân viên trong danh sách - BHW-2299
+
 31/05/2025:
 - [AppMobile] - Màn D02-LT: Hiển thị Mã - Tên đối với mỗi [Phương án] trong combobox - BHW-2191
 - [AppMobile] - Màn Đợt kê khai: Lỗi hiển thị trạng thái - BHW-2278

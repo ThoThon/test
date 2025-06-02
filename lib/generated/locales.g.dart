@@ -516,6 +516,9 @@ class LocaleKeys {
   static const staffList_fillFullName = 'staffList_fillFullName';
   static const staffList_confirm = 'staffList_confirm';
   static const staffList_selectedStaff = 'staffList_selectedStaff';
+  static const staffList_deleteStaffConfirmMessage =
+      'staffList_deleteStaffConfirmMessage';
+  static const staffList_deleteStaffSuccess = 'staffList_deleteStaffSuccess';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -1058,6 +1061,8 @@ class Locales {
     'staffList_fillFullName': 'Nhập họ tên',
     'staffList_confirm': 'Xác nhận',
     'staffList_selectedStaff': 'Chọn nhân viên',
+    'staffList_deleteStaffConfirmMessage': 'Bạn có đồng ý xóa nhân sự đã chọn?',
+    'staffList_deleteStaffSuccess': 'Xóa nhân sự thành công',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

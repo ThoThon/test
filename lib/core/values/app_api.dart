@@ -62,4 +62,6 @@ class AppApi {
   static const String urlReadAllNotification = '/api/Notification/read-all';
   static const String urlGetNotificationUnread =
       '/api/Notification/total-unread';
+
+  static const String urlDeleteD02Tk1D01 = '/api/HoSoD02/delete-d02tk1-d01';
 }
