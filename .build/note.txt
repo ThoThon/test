@@ -5,6 +5,8 @@
 - [AppMobile] - Lỗi hiển thị thông báo màn Chi tiết lịch sử - BHW-2304
 - [AppMobile] - Hộp calendar Lỗi hiển thị danh sách năm - BHW-2280
 - [AppMobile]_Sửa lại giao diện màn tra cứu C12 - BHW-2308
+- [AppMobile] - Màn Date-picker: Hiển thị lỗi tương thích thiết bị - BHW-2190
+- Sửa các icon có màu cam thành màu đỏ (Primary color)
 
 02/06/2025:
 - [AppMobile] - Màn Danh sách nhân viên kê khai: Bổ xung thêm chức năng xóa nhân viên trong danh sách - BHW-2299
