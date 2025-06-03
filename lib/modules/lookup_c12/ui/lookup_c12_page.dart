@@ -19,6 +19,9 @@ class LookupC12Page extends BaseGetWidget {
         title: BaseAppBarTitle(
           title: LocaleKeys.lookupC12_lookupC12.tr,
         ),
+        actions: [
+          _buildActionSelectYear(),
+        ],
       ),
       body: buildLoadingOverlay(() => _buildBody()),
     );

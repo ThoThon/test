@@ -9,56 +9,14 @@ extension LookupC12Widget on LookupC12Page {
         child: Column(
           children: [
             Expanded(
-              child: Obx(
-                () => Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SDSBuildText(LocaleKeys.lookupC12_selectYear.tr),
-                    _buildSelectYear(),
-                    SDSBuildText(
-                      '${LocaleKeys.lookupC12_year.tr} ${controller.selectedYear.value.year}',
-                      style: AppTextStyle.font20Re,
-                    ),
-                    sdsSBHeight8,
-                    _buildCardMonth(),
-                  ],
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildCardMonth(),
+                ],
               ),
             ),
             _buildButtonLookUp(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSelectYear() {
-    final selectedYear = controller.selectedYear.value.year;
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppDimens.paddingSmall),
-      child: Container(
-        height: AppDimens.btnDefaultFigma,
-        decoration: BoxDecoration(
-          color: AppColors.basicWhite,
-          border: Border.all(
-            width: 1,
-            color: AppColors.dsGray3,
-          ),
-          borderRadius: BorderRadius.circular(AppDimens.radius4),
-        ),
-        padding: const EdgeInsets.only(left: AppDimens.defaultPadding),
-        child: Row(
-          children: [
-            SDSBuildText(
-              '$selectedYear',
-              style: AppTextStyle.font14Bo,
-            ),
-            const Spacer(),
-            IconButton(
-              onPressed: controller.pickPeriodDate,
-              icon: const Icon(Icons.calendar_month),
-            ),
           ],
         ),
       ),
@@ -147,4 +105,39 @@ extension LookupC12Widget on LookupC12Page {
       ),
     );
   }
+
+  Widget _buildActionSelectYear() {
+    return Obx(
+      () {
+        return Padding(
+          padding: const EdgeInsets.only(
+            right: AppDimens.defaultPadding,
+          ),
+          child: InkWell(
+            onTap: controller.pickPeriodDate,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.paddingVerySmall,
+                vertical: AppDimens.paddingSmallest,
+              ),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 2,
+                  color: AppColors.primaryColor,
+                ),
+                borderRadius: BorderRadius.circular(AppDimens.radius8),
+                color: AppColors.basicWhite,
+              ),
+              child: SDSBuildText(
+                '${LocaleKeys.lookupC12_year.tr} ${controller.selectedYear.value.year}',
+                style: AppTextStyle.font16Bo
+                    .copyWith(color: AppColors.primaryColor),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
 }
