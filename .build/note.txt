@@ -3,6 +3,7 @@
 - Validate Màn thông tin đơn vị
 - Đổi hintText màn login
 - [AppMobile] - Lỗi hiển thị thông báo màn Chi tiết lịch sử - BHW-2304
+- [AppMobile] - Hộp calendar Lỗi hiển thị danh sách năm - BHW-2280
 
 02/06/2025:
 - [AppMobile] - Màn Danh sách nhân viên kê khai: Bổ xung thêm chức năng xóa nhân viên trong danh sách - BHW-2299
