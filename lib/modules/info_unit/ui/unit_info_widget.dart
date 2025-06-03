@@ -13,64 +13,61 @@ extension UnitInfoWidget on UnitInfoPage {
   }
 
   Widget _buildViewInfoItem() {
-    return Form(
-      key: controller.formKey,
-      child: Expanded(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Trạng thái mở/đóng
-              // Thông tin đơn vị
-              Obx(
-                () => _buildCardToggle(
-                  title: LocaleKeys.unitInfo_unitInfo.tr,
-                  isEdit: controller.isUnitInfoEdit,
-                  cardEdit: _buildCardUnitInfoEdit(),
-                  card: _buildCardUnitInfo(),
-                ),
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Trạng thái mở/đóng
+            // Thông tin đơn vị
+            Obx(
+              () => _buildCardToggle(
+                title: LocaleKeys.unitInfo_unitInfo.tr,
+                isEdit: controller.isUnitInfoEdit,
+                cardEdit: _buildCardUnitInfoEdit(),
+                card: _buildCardUnitInfo(),
               ),
-              // Thông tin địa chỉ
-              Obx(
-                () => _buildCardToggle(
-                  isEdit: controller.isAddressInfoEdit,
-                  cardEdit: _buildCardAddressInfoEdit(),
-                  card: _buildCardAddressInfo(),
-                  title: LocaleKeys.unitInfo_addressInfo.tr,
-                ),
+            ),
+            // Thông tin địa chỉ
+            Obx(
+              () => _buildCardToggle(
+                isEdit: controller.isAddressInfoEdit,
+                cardEdit: _buildCardAddressInfoEdit(),
+                card: _buildCardAddressInfo(),
+                title: LocaleKeys.unitInfo_addressInfo.tr,
               ),
-              // Thông tin người đại diện
-              Obx(
-                () => _buildCardToggle(
-                  isEdit: controller.isRepresentInfoEdit,
-                  cardEdit: _buildCardRepresentInfoEdit(),
-                  card: _buildCardRepresentInfo(),
-                  title: LocaleKeys.unitInfo_representInfo.tr,
-                ),
+            ),
+            // Thông tin người đại diện
+            Obx(
+              () => _buildCardToggle(
+                isEdit: controller.isRepresentInfoEdit,
+                cardEdit: _buildCardRepresentInfoEdit(),
+                card: _buildCardRepresentInfo(),
+                title: LocaleKeys.unitInfo_representInfo.tr,
               ),
-              // Thông tin người giao dịch
-              Obx(
-                () => _buildCardToggle(
-                  isEdit: controller.isTraderInfoEdit,
-                  cardEdit: _buildCardTraderInfoEdit(),
-                  card: _buildCardTraderInfo(),
-                  title: LocaleKeys.unitInfo_transactionPersonInfo.tr,
-                ),
+            ),
+            // Thông tin người giao dịch
+            Obx(
+              () => _buildCardToggle(
+                isEdit: controller.isTraderInfoEdit,
+                cardEdit: _buildCardTraderInfoEdit(),
+                card: _buildCardTraderInfo(),
+                title: LocaleKeys.unitInfo_transactionPersonInfo.tr,
               ),
-              // Thông tin khác
-              Obx(
-                () => _buildCardToggle(
-                  isEdit: controller.isOtherInfoEdit,
-                  cardEdit: _buildCardOtherInfoEdit(),
-                  card: _buildCardOtherInfo(),
-                  title: LocaleKeys.unitInfo_otherInfo.tr,
-                  hasBottomPadding: false,
-                ),
-              )
-            ],
-          ).paddingSymmetric(horizontal: AppDimens.defaultPadding),
-        ),
+            ),
+            // Thông tin khác
+            Obx(
+              () => _buildCardToggle(
+                isEdit: controller.isOtherInfoEdit,
+                cardEdit: _buildCardOtherInfoEdit(),
+                card: _buildCardOtherInfo(),
+                title: LocaleKeys.unitInfo_otherInfo.tr,
+                hasBottomPadding: false,
+              ),
+            )
+          ],
+        ).paddingSymmetric(horizontal: AppDimens.defaultPadding),
       ),
     );
   }

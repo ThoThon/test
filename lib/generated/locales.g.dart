@@ -164,6 +164,7 @@ class LocaleKeys {
   static const unitInfo_byPostOffice = 'unitInfo_byPostOffice';
   static const unitInfo_bySocialAgency = 'unitInfo_bySocialAgency';
   static const unitInfo_home = 'unitInfo_home';
+  static const unitInfo_hasError = 'unitInfo_hasError';
   static const history_procedure = 'history_procedure';
   static const history_submissionTime = 'history_submissionTime';
   static const history_historyDetail = 'history_historyDetail';
@@ -771,6 +772,7 @@ class Locales {
     'unitInfo_byPostOffice': 'Qua bưu điện',
     'unitInfo_bySocialAgency': 'Nhận tại cơ quan bảo hiểm',
     'unitInfo_home': 'Trang chủ',
+    'unitInfo_hasError': 'Có lỗi xảy ra, vui lòng thử lại',
     'history_procedure': 'Thủ tục',
     'history_submissionTime': 'Thời gian nộp',
     'history_historyDetail': 'Chi tiết lịch sử',

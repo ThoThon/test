@@ -157,7 +157,8 @@
     "sixMonth": "6 tháng",
     "byPostOffice": "Qua bưu điện",
     "bySocialAgency": "Nhận tại cơ quan bảo hiểm",
-    "home": "Trang chủ"
+    "home": "Trang chủ",
+    "hasError":"Có lỗi xảy ra, vui lòng thử lại"
   },
   "history": {
     "procedure": "Thủ tục",

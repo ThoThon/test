@@ -9,6 +9,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     super.onInit();
     accountInfo = AppData.instance.accountInfoModel.value;
     fetchDataAccountInfo();
+    inputInfoIsEmpty();
   }
 
   @override
@@ -53,27 +54,14 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   Future<void> updateAccountInfo() async {
-    callAPIBE(
-      isOverlay: true,
-      functionAPI: unitInfoRepository.updateAccountInfo(
-        UpdateAccountInfoRequest(
-          toChucId: accountInfo?.toChucId ?? "",
-          tenToChuc: unitNameController.text,
-          diaChiDangKy: addressRegisterController.text,
-          diaChi: addressTransactionController.text,
-          mailLienLac: emailContactController.text,
-          tenNguoiKy: personTransactionController.text,
-          telReceiver: phoneContactController.text,
-          jobTitle: positionController.text,
-          loaiDoiTuong: accountInfo?.loaiDoiTuong ?? "",
-          tenNguoiKeKhai: nameRepresentController.text,
-          luongCoSo: int.parse(basicSalaryController.text.replaceAll('.', '')),
-          phuongThucDong: selectedMethod.value!.month,
-          ptNhanKq: selectedReceive.value!.receive.tr,
-          maVung: selectedRegion.value!.codeRegion,
-        ),
-      ),
-      functionSuccess: (result) {
+    try {
+      final request = _buildRequest();
+
+      // Nếu có bất kỳ 1 input nào null thì sẽ dừng ở đây
+      if (inputIsNotValid() == true) return;
+      showLoadingOverlay();
+      final response = await unitInfoRepository.updateAccountInfo(request);
+      if (response.isSuccess) {
         ShowDialog.showDialogConfirm(
           title: LocaleKeys.dialog_updateSuccess.tr,
           textBtnRight: LocaleKeys.unitInfo_home.tr,
@@ -91,10 +79,32 @@ class UnitInfoControllerImpICare extends UnitInfoController {
             Get.back();
           },
         );
-      },
-      functionFail: (result) {
-        showSnackBar("Có lỗi xảy ra, vui lòng thử lại");
-      },
+      } else {
+        showSnackBar(LocaleKeys.unitInfo_hasError.tr);
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  UpdateAccountInfoRequest _buildRequest() {
+    return UpdateAccountInfoRequest(
+      toChucId: accountInfo?.toChucId ?? "",
+      tenToChuc: unitNameController.text,
+      diaChiDangKy: addressRegisterController.text,
+      diaChi: addressTransactionController.text,
+      mailLienLac: emailContactController.text,
+      tenNguoiKy: personTransactionController.text,
+      telReceiver: phoneContactController.text,
+      jobTitle: positionController.text,
+      loaiDoiTuong: accountInfo?.loaiDoiTuong ?? "",
+      tenNguoiKeKhai: nameRepresentController.text,
+      luongCoSo: int.parse(basicSalaryController.text.replaceAll('.', '')),
+      phuongThucDong: selectedMethod.value!.month,
+      ptNhanKq: selectedReceive.value!.receive.tr,
+      maVung: selectedRegion.value!.codeRegion,
     );
   }
 
@@ -118,5 +128,51 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     } catch (e) {
       logger.d(e);
     }
+  }
+
+  bool unitInfoIsEmpty() {
+    return unitCodeController.text.trim().isEmpty;
+  }
+
+  bool addressInfoIsEmpty() {
+    return addressRegisterController.text.trim().isEmpty ||
+        addressTransactionController.text.trim().isEmpty;
+  }
+
+  bool representInfoIsEmpty() {
+    return nameRepresentController.text.trim().isEmpty ||
+        positionController.text.trim().isEmpty;
+  }
+
+  bool traderInfoIsEmpty() {
+    return personTransactionController.text.trim().isEmpty ||
+        phoneContactController.text.trim().isEmpty ||
+        emailContactController.text.trim().isEmpty;
+  }
+
+  bool otherInfoIsEmpty() {
+    return selectedMethod.value == null ||
+        selectedRegion.value == null ||
+        basicSalaryController.text.trim().isEmpty ||
+        selectedReceive.value == null;
+  }
+
+  // Check các input nếu 1 input null thì trả về true
+  void inputInfoIsEmpty() {
+    isUnitInfoEdit.value = unitInfoIsEmpty();
+    isAddressInfoEdit.value = addressInfoIsEmpty();
+    isRepresentInfoEdit.value = representInfoIsEmpty();
+    isTraderInfoEdit.value = traderInfoIsEmpty();
+    isOtherInfoEdit.value = otherInfoIsEmpty();
+  }
+
+  // Vì formKey không check được text khi user chọn card view nên phải check thủ công
+  // Kiểm tra đầu vào đủ hết thì mới cho gọi api Update
+  bool inputIsNotValid() {
+    return unitInfoIsEmpty() ||
+        addressInfoIsEmpty() ||
+        representInfoIsEmpty() ||
+        traderInfoIsEmpty() ||
+        otherInfoIsEmpty();
   }
 }
