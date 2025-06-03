@@ -976,8 +976,9 @@ class UtilWidget {
           dialogRoundedCornersRadius: 4,
           dialogBackgroundColor: Colors.white,
         ),
-        dateButtonsSettings: const PickerDateButtonsSettings(
-          buttonBorder: RoundedRectangleBorder(
+        dateButtonsSettings: PickerDateButtonsSettings(
+          monthTextStyle: AppTextStyle.font12Re,
+          buttonBorder: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(4),
             ),

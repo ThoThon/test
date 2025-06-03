@@ -45,7 +45,7 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
                   textEditingController: textEditingController,
                   function: onChanged,
                   isClear: true.obs,
-                  borderColor: AppColors.dsGray3,
+                  borderColor: AppColors.primaryColor,
                   autofocus: false,
                 ),
                 Expanded(
@@ -109,7 +109,7 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
       },
       prefixIcon: const Icon(
         Icons.search,
-        color: AppColors.mainColors,
+        color: AppColors.primaryColor,
         size: AppDimens.sizeIconMedium,
       ),
       suffixIcon: Obx(() => Visibility(
@@ -122,7 +122,7 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
               },
               icon: const Icon(
                 Icons.clear,
-                color: AppColors.mainColors,
+                color: AppColors.primaryColor,
               ),
             ).paddingOnly(bottom: AppDimens.paddingSmall),
           )),

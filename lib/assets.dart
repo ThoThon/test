@@ -167,6 +167,10 @@ class Assets {
   static String get ASSETS_ICONS_IC_REMOVE_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_remove.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_SCAN_NFC_SVG.preview}
+  static String get ASSETS_ICONS_IC_SCAN_NFC_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_scan_nfc.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG.preview}
   static String get ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_scan_nfc_get_info.svg';
@@ -222,10 +226,6 @@ class Assets {
   /// {@macro assets_generator.ASSETS_ICONS_ICON_NFC_IDENTIFYING_SIGNS_SVG.preview}
   static String get ASSETS_ICONS_ICON_NFC_IDENTIFYING_SIGNS_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_nfc_identifying_signs.svg';
-
-  /// {@macro assets_generator.ASSETS_ICONS_ICON_SCAN_NFC_SVG.preview}
-  static String get ASSETS_ICONS_ICON_SCAN_NFC_SVG =>
-      '${isFromModules ? "packages/$package/" : ""}assets/icons/icon_scan_nfc.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG.preview}
   static String get ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG =>
@@ -381,6 +381,9 @@ final List<String> assetsArray = <String>[
   /// {@macro assets_generator.ASSETS_ICONS_IC_REMOVE_SVG.preview}
   Assets.ASSETS_ICONS_IC_REMOVE_SVG,
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_SCAN_NFC_SVG.preview}
+  Assets.ASSETS_ICONS_IC_SCAN_NFC_SVG,
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG.preview}
   Assets.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG,
 
@@ -422,9 +425,6 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_ICON_NFC_IDENTIFYING_SIGNS_SVG.preview}
   Assets.ASSETS_ICONS_ICON_NFC_IDENTIFYING_SIGNS_SVG,
-
-  /// {@macro assets_generator.ASSETS_ICONS_ICON_SCAN_NFC_SVG.preview}
-  Assets.ASSETS_ICONS_ICON_SCAN_NFC_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG.preview}
   Assets.ASSETS_ICONS_ICON_SNACK_BAR_FAIL_SVG,
