@@ -1,5 +1,7 @@
 03/06/2025:
 - [AppMobile] - Màn thông tin đơn vị: Cho phép lưu mà để trống các trường bắt buộc - BHW-2301
+- Validate Màn thông tin đơn vị
+- Đổi hintText màn login
 
 02/06/2025:
 - [AppMobile] - Màn Danh sách nhân viên kê khai: Bổ xung thêm chức năng xóa nhân viên trong danh sách - BHW-2299

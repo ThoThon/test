@@ -360,6 +360,7 @@ class UtilWidget {
     ValueChanged<T?>? onChanged,
     String? hintText,
     String? Function(T?)? validator,
+    TextStyle? textStyle,
   }) {
     return FormField<T>(
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -386,7 +387,7 @@ class UtilWidget {
               child: RichText(
                 text: TextSpan(
                   text: label,
-                  style: AppTextStyle.font16Bo,
+                  style: textStyle ?? AppTextStyle.font16Bo,
                   children: [
                     if (isRequired)
                       TextSpan(

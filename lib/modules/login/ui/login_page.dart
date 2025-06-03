@@ -87,7 +87,7 @@ class LoginPage extends BaseGetWidget<LoginController> {
   Widget _buildInputAccount() {
     return BuildInputText(
       InputTextModel(
-        hintText: LocaleKeys.login_inputUnitCode.tr,
+        hintText: LocaleKeys.login_inputAccount.tr,
         controller: controller.usernameTextCtrl,
         obscureText: false,
         inputFormatters: InputFormatterEnum.textOnly,

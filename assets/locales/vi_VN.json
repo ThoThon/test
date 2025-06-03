@@ -158,7 +158,7 @@
     "byPostOffice": "Qua bưu điện",
     "bySocialAgency": "Nhận tại cơ quan bảo hiểm",
     "home": "Trang chủ",
-    "hasError":"Có lỗi xảy ra, vui lòng thử lại"
+    "hasError": "Có lỗi xảy ra, vui lòng thử lại"
   },
   "history": {
     "procedure": "Thủ tục",
@@ -189,7 +189,7 @@
     "procedure600c": "600c - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo luật bhxh 2014",
     "procedure600d": "600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP",
     "procedure600o": "600o - Tạm dừng đóng vào quỹ hưu trí",
-    "fileNumber":"Số hồ sơ"
+    "fileNumber": "Số hồ sơ"
   },
   "certificate": {
     "listCertificate": "Danh sách chứng thư số",
@@ -247,7 +247,8 @@
     "backToLogin": "Quay lại đăng nhập",
     "inputUnitCode": "Nhập mã đơn vị",
     "inputPassword": "Nhập mật khẩu",
-    "inputTaxCode": "Mã số thuế/ Mã ngân sách"
+    "inputTaxCode": "Mã số thuế/ Mã ngân sách",
+    "inputAccount": "Tên đăng nhập"
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",
