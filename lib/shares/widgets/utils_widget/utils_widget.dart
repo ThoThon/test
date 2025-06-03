@@ -906,7 +906,7 @@ class UtilWidget {
       context: Get.context!,
       height: Get.height / 1.8,
       initialDate: dateTimeInit,
-      firstDate: firstDate,
+      firstDate: firstDate ?? DateTime(1900),
       lastDate: lastDate,
       textPositiveButton: 'Áp dụng',
       textNegativeButton: 'Hủy',
