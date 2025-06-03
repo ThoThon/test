@@ -26,7 +26,7 @@ class NfcDialog extends BaseGetWidget<NfcDialogController> {
               ).paddingOnly(
                   top: AppDimens.paddingMedium, bottom: AppDimens.padding15),
             ),
-            SvgPicture.asset(Assets.ASSETS_ICONS_ICON_SCAN_NFC_SVG),
+            SvgPicture.asset(Assets.ASSETS_ICONS_IC_SCAN_NFC_SVG),
             SDSBuildText(
               controller.isReading.value ? 'Đang quét CCCD' : 'Sẵn sàng quét',
               style: AppTextStyle.font14Re.copyWith(
