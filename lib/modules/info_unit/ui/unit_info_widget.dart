@@ -242,7 +242,7 @@ extension UnitInfoWidget on UnitInfoPage {
         label: LocaleKeys.unitInfo_basicSalary.tr,
         inputFormatters: InputFormatterEnum.salaryNormal,
         textInputType: TextInputType.number,
-        maxLengthInputForm: 13,
+        maxLengthInputForm: 11,
       ),
       UtilWidget.buildDropDownWithLabel<ReceiveResultEnum>(
         label: LocaleKeys.unitInfo_receiveResult.tr,
