@@ -27,9 +27,13 @@ class HistoryDetailController extends BaseGetxController {
       showLoadingOverlay();
       final res = await historyDetaiRepository.getFileNumber(key);
       if (res.result != null && res.isSuccess) {
-        lookupProgressHistory(res.result?.rHRecordNumber ?? '');
+        if (res.result!.rHRecordNumber.isNotEmpty) {
+          await lookupProgressHistory(res.result?.rHRecordNumber ?? '');
+        } else {
+          showSnackBar(LocaleKeys.history_cannotLookupFileNumber.tr);
+        }
       } else {
-        showSnackBar("Tra cứu số hồ sơ bị lỗi");
+        showSnackBar(LocaleKeys.history_error.tr);
       }
     } catch (e) {
       logger.d(e);
@@ -44,12 +48,13 @@ class HistoryDetailController extends BaseGetxController {
       final res = await historyDetaiRepository.lookupProcessHistory(soHoSo);
       if (res.isSuccess) {
         resultLookupHistoryModel = res.result;
-        showSnackBar(
-          "Tra cứu thành công",
-          typeAction: AppConst.actionSuccess,
-        );
-        if (res.result!.buoc1!.maKetQua.isEmpty) {
+        if (resultLookupHistoryModel!.buoc1!.maKetQua.isEmpty) {
           showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
+        } else {
+          showSnackBar(
+            LocaleKeys.history_lookupSuccess.tr,
+            typeAction: AppConst.actionSuccess,
+          );
         }
       } else {
         showSnackBar(LocaleKeys.app_someThingWentWrong.tr);

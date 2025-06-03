@@ -194,6 +194,9 @@ class LocaleKeys {
   static const history_procedure600d = 'history_procedure600d';
   static const history_procedure600o = 'history_procedure600o';
   static const history_fileNumber = 'history_fileNumber';
+  static const history_cannotLookupFileNumber =
+      'history_cannotLookupFileNumber';
+  static const history_error = 'history_error';
   static const certificate_listCertificate = 'certificate_listCertificate';
   static const certificate_selectCertificate = 'certificate_selectCertificate';
   static const certificate_confirm = 'certificate_confirm';
@@ -805,6 +808,8 @@ class Locales {
         '600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP',
     'history_procedure600o': '600o - Tạm dừng đóng vào quỹ hưu trí',
     'history_fileNumber': 'Số hồ sơ',
+    'history_cannotLookupFileNumber': 'Không tìm thấy số hồ sơ',
+    'history_error': 'Có lỗi xảy ra, vui lòng thử lại sau',
     'certificate_listCertificate': 'Danh sách chứng thư số',
     'certificate_selectCertificate': 'Chọn chứng thư số',
     'certificate_confirm': 'Xác nhận',
