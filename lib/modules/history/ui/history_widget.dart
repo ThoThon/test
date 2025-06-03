@@ -73,6 +73,7 @@ extension HistoryWidget on HistoryPage {
           arguments: item,
         )?.then(
           (value) async {
+            controller.listHistory.clear();
             await controller.getListHistory();
           },
         );

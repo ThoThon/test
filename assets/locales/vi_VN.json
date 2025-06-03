@@ -189,7 +189,9 @@
     "procedure600c": "600c - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo luật bhxh 2014",
     "procedure600d": "600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP",
     "procedure600o": "600o - Tạm dừng đóng vào quỹ hưu trí",
-    "fileNumber": "Số hồ sơ"
+    "fileNumber": "Số hồ sơ",
+    "cannotLookupFileNumber":"Không tìm thấy số hồ sơ",
+    "error":"Có lỗi xảy ra, vui lòng thử lại sau"
   },
   "certificate": {
     "listCertificate": "Danh sách chứng thư số",
