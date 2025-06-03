@@ -43,8 +43,6 @@ abstract class UnitInfoController extends BaseGetxController {
   // Lương cơ sở
   final basicSalaryController = TextEditingController();
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   final isUnitInfoEdit = false.obs;
 
   final isAddressInfoEdit = false.obs;

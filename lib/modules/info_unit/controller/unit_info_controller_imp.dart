@@ -56,31 +56,31 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   Future<void> updateAccountInfo() async {
     try {
       final request = _buildRequest();
+
+      // Nếu có bất kỳ 1 input nào null thì sẽ dừng ở đây
       if (inputIsNotValid() == true) return;
-      if (formKey.currentState?.validate() ?? false) {
-        showLoadingOverlay();
-        final response = await unitInfoRepository.updateAccountInfo(request);
-        if (response.isSuccess) {
-          ShowDialog.showDialogConfirm(
-            title: LocaleKeys.dialog_updateSuccess.tr,
-            textBtnRight: LocaleKeys.unitInfo_home.tr,
-            activeIcon: true,
-            onPressed: () async {
-              await _getAccountInfo();
-              await _getToTalNotiUnread();
-              Get.offAllNamed(
-                AppRoutes.pageBuilder.path,
-              );
-            },
-            funcBack: () async {
-              await _getAccountInfo();
-              await _getToTalNotiUnread();
-              Get.back();
-            },
-          );
-        } else {
-          showSnackBar("Có lỗi xảy ra, vui lòng thử lại");
-        }
+      showLoadingOverlay();
+      final response = await unitInfoRepository.updateAccountInfo(request);
+      if (response.isSuccess) {
+        ShowDialog.showDialogConfirm(
+          title: LocaleKeys.dialog_updateSuccess.tr,
+          textBtnRight: LocaleKeys.unitInfo_home.tr,
+          activeIcon: true,
+          onPressed: () async {
+            await _getAccountInfo();
+            await _getToTalNotiUnread();
+            Get.offAllNamed(
+              AppRoutes.pageBuilder.path,
+            );
+          },
+          funcBack: () async {
+            await _getAccountInfo();
+            await _getToTalNotiUnread();
+            Get.back();
+          },
+        );
+      } else {
+        showSnackBar(LocaleKeys.unitInfo_hasError.tr);
       }
     } catch (e) {
       logger.d(e);
