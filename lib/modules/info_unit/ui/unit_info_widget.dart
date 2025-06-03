@@ -186,11 +186,13 @@ extension UnitInfoWidget on UnitInfoPage {
         label: LocaleKeys.unitInfo_phoneContact.tr,
         inputFormatters: InputFormatterEnum.phoneNumber,
         maxLengthInputForm: 10,
+        textInputType: TextInputType.number,
       ),
       _buildInputItemEdit(
         controller: controller.emailContactController,
         label: LocaleKeys.unitInfo_email.tr,
         maxLengthInputForm: 250,
+        inputFormatters: InputFormatterEnum.email,
       ),
     ];
   }
@@ -215,6 +217,7 @@ extension UnitInfoWidget on UnitInfoPage {
     return [
       UtilWidget.buildDropDownWithLabel<PaymentMethodEnum>(
         label: LocaleKeys.unitInfo_methodClose.tr,
+        textStyle: AppTextStyle.font16Re,
         items: PaymentMethodEnum.values,
         display: (p0) => p0.title.tr,
         selectedItem: controller.selectedMethod.value,
@@ -225,6 +228,7 @@ extension UnitInfoWidget on UnitInfoPage {
       sdsSBHeight12,
       UtilWidget.buildDropDownWithLabel<RegionEnum>(
         label: LocaleKeys.unitInfo_region.tr,
+        textStyle: AppTextStyle.font16Re,
         items: RegionEnum.values,
         display: (p0) => p0.title.tr,
         selectedItem: controller.selectedRegion.value,
@@ -237,9 +241,12 @@ extension UnitInfoWidget on UnitInfoPage {
         controller: controller.basicSalaryController,
         label: LocaleKeys.unitInfo_basicSalary.tr,
         inputFormatters: InputFormatterEnum.salaryNormal,
+        textInputType: TextInputType.number,
+        maxLengthInputForm: 13,
       ),
       UtilWidget.buildDropDownWithLabel<ReceiveResultEnum>(
         label: LocaleKeys.unitInfo_receiveResult.tr,
+        textStyle: AppTextStyle.font16Re,
         items: ReceiveResultEnum.values,
         display: (p0) => p0.receive.tr,
         selectedItem: controller.selectedReceive.value,
@@ -261,11 +268,7 @@ extension UnitInfoWidget on UnitInfoPage {
         "${LocaleKeys.unitInfo_region.tr}: ${controller.selectedRegion.value?.title.tr ?? ''}",
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_basicSalary.tr}: ${CurrencyUtils.formatCurrencyForeign(
-          controller.basicSalaryController.text,
-          isDot: true,
-          maxLengthNum: 17,
-        )}",
+        "${LocaleKeys.unitInfo_basicSalary.tr}: ${controller.basicSalaryController.text}",
       ),
       _buildText(
         "${LocaleKeys.unitInfo_registerResult.tr}: ${controller.selectedReceive.value?.receive.tr ?? ''}",
@@ -280,6 +283,7 @@ extension UnitInfoWidget on UnitInfoPage {
     int? maxLengthInputForm,
     final ValueChanged<String>? onChanged,
     FormFieldValidator<String>? validator,
+    TextInputType? textInputType,
   }) {
     return BuildInputTextWithLabel(
       label: label,
@@ -294,6 +298,7 @@ extension UnitInfoWidget on UnitInfoPage {
           isValidate: true,
           autovalidateMode: AutovalidateMode.always,
           onChanged: onChanged,
+          textInputType: textInputType ?? TextInputType.text,
         ),
       ),
     ).paddingOnly(bottom: AppDimens.paddingSmall);

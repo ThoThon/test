@@ -254,6 +254,7 @@ class LocaleKeys {
   static const login_inputUnitCode = 'login_inputUnitCode';
   static const login_inputPassword = 'login_inputPassword';
   static const login_inputTaxCode = 'login_inputTaxCode';
+  static const login_inputAccount = 'login_inputAccount';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_declare = 'procedureList_declare';
   static const pageBuilder_home = 'pageBuilder_home';
@@ -859,6 +860,7 @@ class Locales {
     'login_inputUnitCode': 'Nhập mã đơn vị',
     'login_inputPassword': 'Nhập mật khẩu',
     'login_inputTaxCode': 'Mã số thuế/ Mã ngân sách',
+    'login_inputAccount': 'Tên đăng nhập',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_declare': 'Kê khai',
     'pageBuilder_home': 'Trang chủ',
