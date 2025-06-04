@@ -171,6 +171,7 @@ class ShowDialog {
     String? title,
     String? status,
     required String textBtnRight,
+    String? textBthLeft,
     Function()? onPressed,
     Function()? funcBack,
     String? name,
@@ -213,7 +214,7 @@ class ShowDialog {
                   children: [
                     Expanded(
                       child: UtilWidget.buildSolidButtonBack(
-                        title: LocaleKeys.dialog_exit.tr,
+                        title: textBthLeft ?? LocaleKeys.dialog_exit.tr,
                         onPressed: funcBack ?? Get.back,
                       ),
                     ),

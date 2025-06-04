@@ -13,6 +13,7 @@ class AppDimens {
   static double fontBig() => 18.divSF;
   static double fontBiggest() => 20.divSF;
   static double fontSize24() => 24.divSF;
+
   /// Giá trị px màn hình Mobile design trên figma
   static const int heightDesign = 812;
   static const int widthDesign = 375;
@@ -44,6 +45,7 @@ class AppDimens {
   static const double sizeIconLarge = 36;
   static const double sizeIconLoadingAwait = 80;
   static const double sizeCardItem = 48;
+  static const double sizeIcon60 = 60;
 
   // radiusBorder
   static const double radius4 = 4;
@@ -77,6 +79,7 @@ class AppDimens {
   static const double padding22 = 22.0;
   static const double padding25 = 25.0;
   static const double padding30 = 30.0;
+  static const double padding32 = 32.0;
   static const double padding40 = 40.0;
   static const double padding50 = 50.0;
   static const double padding60 = 60.0;

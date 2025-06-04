@@ -32,8 +32,10 @@
     "notification": "Thông báo",
     "updateSuccess": "Thay đổi thông tin thành công",
     "logout": "Đăng xuất",
-    "isLogout": "Đăng xuất khỏi tài khoản của bạn",
-    "empty": "Trống"
+    "isLogout": "Bạn có chắc chắn muốn đăng xuất?",
+    "empty": "Trống",
+    "cancel":"Hủy",
+    "confirm":"Đồng ý"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -53,14 +55,16 @@
     "unitInfo": "Thông tin \nđơn vị",
     "history": "Lịch sử",
     "lookupC12": "Tra cứu \nC12",
-    "guide": "Hướng dẫn",
+    "guide": "Hướng dẫn sử dụng",
     "procedureList": "Danh sách \nthủ tục",
     "langugue": "Ngôn ngữ",
     "changePassword": "Đổi mật khẩu",
     "support": "CSKH: 1900 1900",
     "changeAccount": "Đổi tài khoản",
     "taxCode": "MST",
-    "hello": "Xin chào,"
+    "hello": "Xin chào,",
+    "logout":"Đăng xuất",
+    "accountInfo":"Thông tin tài khoản"
   },
   "unitInfo": {
     "transactionRegister": "Đăng ký giao dịch",

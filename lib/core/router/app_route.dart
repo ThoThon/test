@@ -1,5 +1,5 @@
 enum AppRoutes {
-  pageBuilder,
+  // pageBuilder,
   login,
   forgotLogin,
   procedureList,
@@ -34,7 +34,13 @@ enum AppRoutes {
   nfc,
 
   //Chọn nhân viên
-  selectStaff;
+  selectStaff,
+
+  //Thông tin cá nhân
+  profile,
+
+  //Thông báo
+  notification;
 
   String get path {
     return '/vbhxh_$name';

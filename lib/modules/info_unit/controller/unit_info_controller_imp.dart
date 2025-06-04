@@ -72,7 +72,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
             await _getAccountInfo();
             await _getToTalNotiUnread();
             Get.offAllNamed(
-              AppRoutes.pageBuilder.path,
+              AppRoutes.home.path,
             );
           },
           funcBack: () async {

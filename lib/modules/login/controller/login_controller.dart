@@ -55,7 +55,7 @@ class LoginController extends BaseGetxController {
           _getD02Categories(),
           _getToTalNotiUnread(),
         ).wait;
-        Get.offAndToNamed(AppRoutes.pageBuilder.path);
+        Get.offAllNamed(AppRoutes.home.path);
         return;
       } else {
         showSnackBar(LocaleKeys.login_usernameAndPasswordInValid.tr);
