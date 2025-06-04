@@ -369,7 +369,7 @@ extension D02TabWidget on DeclareInfoPage {
         buildInputText: BuildInputText(
           InputTextModel(
             controller: controller.d02State.positionAllowanceTextCtrl,
-            textInputType: TextInputType.number,
+            textInputType: const TextInputType.numberWithOptions(decimal: true),
             isReadOnly: isReadOnly,
             inputFormatters: InputFormatterEnum.percent,
           ),
