@@ -29,7 +29,7 @@ class HomePage extends BaseGetWidget<HomeController> {
             ],
           ),
         ),
-        centerTitle: false,
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(AppDimens.paddingMedium),
