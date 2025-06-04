@@ -5,7 +5,10 @@ extension NotificationWidget on NotificationPage {
     return Obx(
       () {
         if (controller.listNotification.isEmpty) {
-          return UtilWidget.buildEmptyList();
+          return UtilWidget.buildEmptyOnRefresh(
+            refreshController: controller.refreshController,
+            onRefresh: controller.onRefresh,
+          );
         }
         return UtilWidget.buildSmartRefresher(
           refreshController: controller.refreshController,

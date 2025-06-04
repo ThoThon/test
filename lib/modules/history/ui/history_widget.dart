@@ -139,21 +139,27 @@ extension HistoryWidget on HistoryPage {
     return Expanded(
       child: UtilWidget.buildCardBase(
         baseShowLoading(
-          () => UtilWidget.buildSmartRefresher(
-            refreshController: controller.refreshController,
-            onRefresh: controller.onRefresh,
-            onLoadMore: controller.onLoadMore,
-            enablePullUp: true,
-            child: controller.listHistory.isEmpty
-                ? UtilWidget.buildEmptyList()
-                : ListView.builder(
-                    itemBuilder: (context, index) {
-                      final item = controller.listHistory[index];
-                      return _buildCardItemHistory(item);
-                    },
-                    itemCount: controller.listHistory.length,
-                  ),
-          ),
+          () {
+            if (controller.listHistory.isEmpty) {
+              return UtilWidget.buildEmptyOnRefresh(
+                refreshController: controller.refreshController,
+                onRefresh: controller.onRefresh,
+              );
+            }
+            return UtilWidget.buildSmartRefresher(
+              refreshController: controller.refreshController,
+              onRefresh: controller.onRefresh,
+              onLoadMore: controller.onLoadMore,
+              enablePullUp: true,
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  final item = controller.listHistory[index];
+                  return _buildCardItemHistory(item);
+                },
+                itemCount: controller.listHistory.length,
+              ),
+            );
+          },
         ),
       ),
     );
