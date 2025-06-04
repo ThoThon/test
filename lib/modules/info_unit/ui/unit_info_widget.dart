@@ -185,7 +185,7 @@ extension UnitInfoWidget on UnitInfoPage {
         controller: controller.phoneContactController,
         label: LocaleKeys.unitInfo_phoneContact.tr,
         inputFormatters: InputFormatterEnum.phoneNumber,
-        maxLengthInputForm: 10,
+        maxLengthInputForm: 20,
         textInputType: TextInputType.number,
       ),
       _buildInputItemEdit(
@@ -193,6 +193,15 @@ extension UnitInfoWidget on UnitInfoPage {
         label: LocaleKeys.unitInfo_email.tr,
         maxLengthInputForm: 250,
         inputFormatters: InputFormatterEnum.email,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return LocaleKeys.unitInfo_emailContactIsNotEmpty.tr;
+          }
+          if (!value.isEmail) {
+            return LocaleKeys.unitInfo_emailIsNotValid.tr;
+          }
+          return null;
+        },
       ),
     ];
   }
