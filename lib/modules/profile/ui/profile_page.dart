@@ -19,16 +19,6 @@ class ProfilePage extends StatelessWidget {
           title: LocaleKeys.profile_accountInfo.tr,
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: controller.showDialogLogout,
-            icon: const Icon(
-              Icons.logout,
-              color: AppColors.primaryColor,
-            ),
-          ),
-          sdsSBWidth12,
-        ],
       ),
       body: _buildBody(),
     );

@@ -7,8 +7,7 @@ enum HomeEnum {
   unit_info,
   declare,
   history,
-  lookup_c12,
-  guide;
+  lookup_c12;
 
   String get image {
     switch (this) {
@@ -20,8 +19,6 @@ enum HomeEnum {
         return Assets.ASSETS_ICONS_HOME_HISTORY_SVG;
       case lookup_c12:
         return Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG;
-      case guide:
-        return Assets.ASSETS_ICONS_HOME_IC_GUIDE_SVG;
     }
   }
 
@@ -35,8 +32,6 @@ enum HomeEnum {
         return LocaleKeys.home_history;
       case lookup_c12:
         return LocaleKeys.home_lookupC12;
-      case guide:
-        return LocaleKeys.home_guide;
     }
   }
 
@@ -50,8 +45,6 @@ enum HomeEnum {
         return AppRoutes.history.path;
       case lookup_c12:
         return AppRoutes.lookupC12.path;
-      case guide:
-        return "";
     }
   }
 }

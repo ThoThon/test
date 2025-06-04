@@ -57,7 +57,7 @@ class DeclarationListController extends BaseGetxController {
       exitTitle: 'Thoát',
       confirmTitle: 'Lịch sử',
       onCancel: () {
-        Get.until(ModalRoute.withName(AppRoutes.pageBuilder.path));
+        Get.until(ModalRoute.withName(AppRoutes.home.path));
       },
       onConfirm: () {
         Get.toNamed(AppRoutes.history.path);

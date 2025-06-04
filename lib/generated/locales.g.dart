@@ -43,6 +43,8 @@ class LocaleKeys {
   static const dialog_logout = 'dialog_logout';
   static const dialog_isLogout = 'dialog_isLogout';
   static const dialog_empty = 'dialog_empty';
+  static const dialog_cancel = 'dialog_cancel';
+  static const dialog_confirm = 'dialog_confirm';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -66,6 +68,8 @@ class LocaleKeys {
   static const home_changeAccount = 'home_changeAccount';
   static const home_taxCode = 'home_taxCode';
   static const home_hello = 'home_hello';
+  static const home_logout = 'home_logout';
+  static const home_accountInfo = 'home_accountInfo';
   static const unitInfo_transactionRegister = 'unitInfo_transactionRegister';
   static const unitInfo_generalInfo = 'unitInfo_generalInfo';
   static const unitInfo_registerInfo = 'unitInfo_registerInfo';
@@ -661,8 +665,10 @@ class Locales {
     'dialog_notification': 'Thông báo',
     'dialog_updateSuccess': 'Thay đổi thông tin thành công',
     'dialog_logout': 'Đăng xuất',
-    'dialog_isLogout': 'Đăng xuất khỏi tài khoản của bạn',
+    'dialog_isLogout': 'Bạn có chắc chắn muốn đăng xuất?',
     'dialog_empty': 'Trống',
+    'dialog_cancel': 'Hủy',
+    'dialog_confirm': 'Đồng ý',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -676,7 +682,7 @@ class Locales {
     'home_unitInfo': 'Thông tin \nđơn vị',
     'home_history': 'Lịch sử',
     'home_lookupC12': 'Tra cứu \nC12',
-    'home_guide': 'Hướng dẫn',
+    'home_guide': 'Hướng dẫn sử dụng',
     'home_procedureList': 'Danh sách \nthủ tục',
     'home_langugue': 'Ngôn ngữ',
     'home_changePassword': 'Đổi mật khẩu',
@@ -684,6 +690,8 @@ class Locales {
     'home_changeAccount': 'Đổi tài khoản',
     'home_taxCode': 'MST',
     'home_hello': 'Xin chào,',
+    'home_logout': 'Đăng xuất',
+    'home_accountInfo': 'Thông tin tài khoản',
     'unitInfo_transactionRegister': 'Đăng ký giao dịch',
     'unitInfo_generalInfo': 'Thông tin chung',
     'unitInfo_registerInfo': 'Thông tin đăng ký',
