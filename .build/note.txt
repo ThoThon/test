@@ -6,6 +6,7 @@
 - [AppMobile] - Màn D02: Lỗi Text thông báo Trường [Từ tháng/năm], [Đến tháng/năm] - BHW-2317
 - [AppMobile] - Chỉnh sửa trường nhập PC Chức vụ - BHW-2320
 - [AppMobile]_Thay đổi giao diện menu appmobile - BHW-2321
+- [AppMobile]_Thay đổi giao diện màn trang chủ -BHW-2323
 
 03/06/2025:
 - [AppMobile] - Màn thông tin đơn vị: Cho phép lưu mà để trống các trường bắt buộc - BHW-2301
