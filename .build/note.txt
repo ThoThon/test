@@ -1,5 +1,7 @@
 04/06/2025
 - Sửa lại giao diện màn tra cứu C12
+- Sửa lại giao diện màn thông báo, lịch sử khi call api trả về trống
+- [AppMobile] - Chỉnh sửa giao diện trang chủ: Căn giữa tiêu đề trang - BHW-2316
 
 03/06/2025:
 - [AppMobile] - Màn thông tin đơn vị: Cho phép lưu mà để trống các trường bắt buộc - BHW-2301
