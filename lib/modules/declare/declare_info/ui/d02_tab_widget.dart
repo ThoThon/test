@@ -123,7 +123,7 @@ extension D02TabWidget on DeclareInfoPage {
 
         // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
         if (trimmedValue.length < 7) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
+          return LocaleKeys.declareInfo_toDateInvalid.tr;
         }
 
         final toDate = convertStringToDateStrict(trimmedValue, PATTERN_12);
@@ -133,7 +133,7 @@ extension D02TabWidget on DeclareInfoPage {
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
         if (toDate.year <= 1900 || toDate.year >= 2100) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
+          return LocaleKeys.declareInfo_toDateInvalid.tr;
         }
 
         final fromDate = convertStringToDateStrict(
@@ -177,7 +177,7 @@ extension D02TabWidget on DeclareInfoPage {
         }
         // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
         if (trimmedValue.length < 7) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
+          return LocaleKeys.declareInfo_fromDateInvalid.tr;
         }
 
         final fromDate = convertStringToDateStrict(trimmedValue, PATTERN_12);
@@ -188,7 +188,7 @@ extension D02TabWidget on DeclareInfoPage {
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
         if (fromDate.year <= 1900 || fromDate.year >= 2100) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
+          return LocaleKeys.declareInfo_fromDateInvalid.tr;
         }
         final toDate = convertStringToDateStrict(
           controller.d02State.toDateTextCtrl.text,
