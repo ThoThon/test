@@ -897,6 +897,31 @@ class UtilWidget {
     );
   }
 
+  static Widget buildEmptyOnRefresh({
+    required RefreshController refreshController,
+    Function()? onRefresh,
+  }) {
+    return UtilWidget.buildSmartRefresher(
+      refreshController: refreshController,
+      onRefresh: onRefresh,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SDSImageSvg(Assets.ASSETS_ICONS_ICON_LIST_NULL_SVG),
+            sdsSBHeight8,
+            SDSBuildText(
+              LocaleKeys.dialog_empty.tr,
+              style: AppTextStyle.font16Bo.copyWith(
+                color: AppColors.dsGray5,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   static Future<DateTime?> showDateTimePicker({
     DateTime? dateTimeInit,
     DateTime? firstDate,
