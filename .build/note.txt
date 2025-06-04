@@ -1,3 +1,6 @@
+04/06/2025
+- Sửa lại giao diện màn tra cứu C12
+
 03/06/2025:
 - [AppMobile] - Màn thông tin đơn vị: Cho phép lưu mà để trống các trường bắt buộc - BHW-2301
 - Validate Màn thông tin đơn vị
