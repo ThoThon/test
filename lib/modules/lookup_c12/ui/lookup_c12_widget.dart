@@ -8,14 +8,7 @@ extension LookupC12Widget on LookupC12Page {
             const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
         child: Column(
           children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildCardMonth(),
-                ],
-              ),
-            ),
+            Expanded(child: _buildCardMonth()),
             _buildButtonLookUp(),
           ],
         ),
@@ -24,18 +17,14 @@ extension LookupC12Widget on LookupC12Page {
   }
 
   Widget _buildCardMonth() {
-    return Expanded(
-      child: UtilWidget.buildCardBase(
-        ListView.separated(
-          padding:
-              const EdgeInsets.symmetric(horizontal: AppDimens.paddingSmall),
-          itemCount: 12,
-          shrinkWrap: true,
-          itemBuilder: (context, index) => _buildItemMonthView(index),
-          separatorBuilder: (context, index) => const Divider(
-            height: 1,
-            color: AppColors.dsGray5,
-          ),
+    return UtilWidget.buildCardBase(
+      ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: AppDimens.paddingSmall),
+        itemCount: 12,
+        itemBuilder: (context, index) => _buildItemMonthView(index),
+        separatorBuilder: (context, index) => const Divider(
+          height: 1,
+          color: AppColors.dsGray5,
         ),
       ),
     );
@@ -55,7 +44,7 @@ extension LookupC12Widget on LookupC12Page {
             Expanded(
               child: SDSBuildText(
                 '${LocaleKeys.lookupC12_month.tr} $month',
-                style: AppTextStyle.font14Bo,
+                style: AppTextStyle.font16Bo,
               ),
             ),
             InkWell(
@@ -78,7 +67,7 @@ extension LookupC12Widget on LookupC12Page {
                   borderRadius: BorderRadius.circular(AppDimens.radius4),
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimens.paddingVerySmall,
+                  horizontal: AppDimens.defaultPadding,
                   vertical: AppDimens.paddingSmallest,
                 ),
                 child: SDSBuildText(
@@ -107,12 +96,11 @@ extension LookupC12Widget on LookupC12Page {
   }
 
   Widget _buildActionSelectYear() {
-    return Obx(
-      () {
-        return Padding(
-          padding: const EdgeInsets.only(
-            right: AppDimens.defaultPadding,
-          ),
+    return Obx(() {
+      return Padding(
+        padding: const EdgeInsets.only(right: AppDimens.defaultPadding),
+        child: Align(
+          alignment: Alignment.centerRight,
           child: InkWell(
             onTap: controller.pickPeriodDate,
             child: Container(
@@ -121,10 +109,7 @@ extension LookupC12Widget on LookupC12Page {
                 vertical: AppDimens.paddingSmallest,
               ),
               decoration: BoxDecoration(
-                border: Border.all(
-                  width: 2,
-                  color: AppColors.primaryColor,
-                ),
+                border: Border.all(width: 2, color: AppColors.primaryColor),
                 borderRadius: BorderRadius.circular(AppDimens.radius8),
                 color: AppColors.basicWhite,
               ),
@@ -135,9 +120,8 @@ extension LookupC12Widget on LookupC12Page {
               ),
             ),
           ),
-        );
-      },
-    );
+        ),
+      );
+    });
   }
-
 }
