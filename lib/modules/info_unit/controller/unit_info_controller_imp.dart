@@ -58,7 +58,9 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       final request = _buildRequest();
 
       // Nếu có bất kỳ 1 input nào null thì sẽ dừng ở đây
-      if (inputIsNotValid() == true) return;
+      if (inputIsNotValid() == true) {
+        return inputInfoIsEmpty();
+      }
       showLoadingOverlay();
       final response = await unitInfoRepository.updateAccountInfo(request);
       if (response.isSuccess) {
@@ -130,27 +132,28 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     }
   }
 
-  bool unitInfoIsEmpty() {
+  bool unitInfoIsNotValid() {
     return unitCodeController.text.trim().isEmpty;
   }
 
-  bool addressInfoIsEmpty() {
+  bool addressInfoIsNotValid() {
     return addressRegisterController.text.trim().isEmpty ||
         addressTransactionController.text.trim().isEmpty;
   }
 
-  bool representInfoIsEmpty() {
+  bool representInfoIsNotValid() {
     return nameRepresentController.text.trim().isEmpty ||
         positionController.text.trim().isEmpty;
   }
 
-  bool traderInfoIsEmpty() {
+  bool traderInfoIsNotValid() {
     return personTransactionController.text.trim().isEmpty ||
         phoneContactController.text.trim().isEmpty ||
-        emailContactController.text.trim().isEmpty;
+        emailContactController.text.trim().isEmpty ||
+        !emailContactController.text.isEmail;
   }
 
-  bool otherInfoIsEmpty() {
+  bool otherInfoIsNotValid() {
     return selectedMethod.value == null ||
         selectedRegion.value == null ||
         basicSalaryController.text.trim().isEmpty ||
@@ -159,20 +162,20 @@ class UnitInfoControllerImpICare extends UnitInfoController {
 
   // Check các input nếu 1 input null thì trả về true
   void inputInfoIsEmpty() {
-    isUnitInfoEdit.value = unitInfoIsEmpty();
-    isAddressInfoEdit.value = addressInfoIsEmpty();
-    isRepresentInfoEdit.value = representInfoIsEmpty();
-    isTraderInfoEdit.value = traderInfoIsEmpty();
-    isOtherInfoEdit.value = otherInfoIsEmpty();
+    isUnitInfoEdit.value = unitInfoIsNotValid();
+    isAddressInfoEdit.value = addressInfoIsNotValid();
+    isRepresentInfoEdit.value = representInfoIsNotValid();
+    isTraderInfoEdit.value = traderInfoIsNotValid();
+    isOtherInfoEdit.value = otherInfoIsNotValid();
   }
 
   // Vì formKey không check được text khi user chọn card view nên phải check thủ công
   // Kiểm tra đầu vào đủ hết thì mới cho gọi api Update
   bool inputIsNotValid() {
-    return unitInfoIsEmpty() ||
-        addressInfoIsEmpty() ||
-        representInfoIsEmpty() ||
-        traderInfoIsEmpty() ||
-        otherInfoIsEmpty();
+    return unitInfoIsNotValid() ||
+        addressInfoIsNotValid() ||
+        representInfoIsNotValid() ||
+        traderInfoIsNotValid() ||
+        otherInfoIsNotValid();
   }
 }

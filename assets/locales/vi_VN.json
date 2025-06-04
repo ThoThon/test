@@ -158,7 +158,9 @@
     "byPostOffice": "Qua bưu điện",
     "bySocialAgency": "Nhận tại cơ quan bảo hiểm",
     "home": "Trang chủ",
-    "hasError": "Có lỗi xảy ra, vui lòng thử lại"
+    "hasError": "Có lỗi xảy ra, vui lòng thử lại",
+    "emailContactIsNotEmpty":"Email liên hệ không được bỏ trống",
+    "emailIsNotValid":"Email không hợp lệ"
   },
   "history": {
     "procedure": "Thủ tục",
