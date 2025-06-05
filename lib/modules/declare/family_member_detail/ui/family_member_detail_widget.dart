@@ -199,9 +199,12 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildSelectedGender() {
-    return UtilWidget.buildSelectGender(
-      leftValue: Gender.male,
-      rightValue: Gender.female,
+    return UtilWidget.buildListRadio<Gender>(
+      options: [
+        Gender.male,
+        Gender.female,
+      ],
+      getTitle: (gender) => gender.title,
       groupValue: controller.gender.value,
       initialValue: controller.gender.value,
       onChanged: (value) {

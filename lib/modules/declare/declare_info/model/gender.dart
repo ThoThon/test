@@ -1,3 +1,5 @@
+import 'package:v_bhxh/modules/src.dart';
+
 enum Gender {
   /// 0: Nữ
   female,
@@ -11,6 +13,15 @@ enum Gender {
         return 0;
       case Gender.male:
         return 1;
+    }
+  }
+
+  String get title {
+    switch (this) {
+      case Gender.female:
+        return LocaleKeys.declareInfo_female.tr;
+      case Gender.male:
+        return LocaleKeys.declareInfo_male.tr;
     }
   }
 

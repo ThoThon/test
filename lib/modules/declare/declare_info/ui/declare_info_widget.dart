@@ -255,9 +255,12 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectGender() {
-    return UtilWidget.buildSelectGender(
-      leftValue: Gender.male,
-      rightValue: Gender.female,
+    return UtilWidget.buildListRadio(
+      options: [
+        Gender.male,
+        Gender.female,
+      ],
+      getTitle: (gender) => gender.title,
       initialValue: controller.d02Tk1State.gender.value,
       groupValue: controller.d02Tk1State.gender.value,
       onChanged: (value) {

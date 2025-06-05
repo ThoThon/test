@@ -1285,12 +1285,12 @@ class UtilWidget {
     );
   }
 
-  static Widget buildSelectGender<T>({
+  static Widget buildListRadio<T>({
     ValueChanged<T>? onChanged,
     T? initialValue,
     T? groupValue,
-    required T leftValue,
-    required T rightValue,
+    required List<T> options,
+    required String Function(T) getTitle,
   }) {
     return FormField<T>(
       initialValue: initialValue,
@@ -1315,30 +1315,19 @@ class UtilWidget {
                     ],
                   ),
                 ),
-                Expanded(
-                  child: UtilWidget.buildRadioWithTitle<T>(
-                    value: leftValue,
-                    groupValue: groupValue,
-                    title: LocaleKeys.declareInfo_male.tr,
-                    onChanged: (value) {
-                      state.didChange(value);
-                      if (onChanged != null) {
-                        onChanged(value);
-                      }
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: UtilWidget.buildRadioWithTitle<T>(
-                    value: rightValue,
-                    groupValue: groupValue,
-                    title: LocaleKeys.declareInfo_female.tr,
-                    onChanged: (value) {
-                      state.didChange(value);
-                      if (onChanged != null) {
-                        onChanged(value);
-                      }
-                    },
+                ...options.map(
+                  (e) => Expanded(
+                    child: UtilWidget.buildRadioWithTitle<T>(
+                      value: e,
+                      groupValue: groupValue,
+                      title: getTitle(e),
+                      onChanged: (value) {
+                        state.didChange(value);
+                        if (onChanged != null) {
+                          onChanged(value);
+                        }
+                      },
+                    ),
                   ),
                 ),
               ],
