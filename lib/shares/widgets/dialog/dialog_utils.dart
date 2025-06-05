@@ -252,6 +252,7 @@ class ShowDialog {
     DialogIconType? iconType,
     VoidCallback? onCancel,
     VoidCallback? onConfirm,
+    bool showConfirmButton = true,
     bool isActiveBack = true,
   }) async {
     _showDialog(
@@ -300,29 +301,37 @@ class ShowDialog {
                     ),
                   )
                 : UtilWidget.sizedBox16,
-            Row(
-              children: [
-                Expanded(
-                  child: UtilWidget.buildSolidButtonBack(
+            showConfirmButton
+                ? Row(
+                    children: [
+                      Expanded(
+                        child: UtilWidget.buildSolidButtonBack(
+                          title: exitTitle ?? 'Hủy',
+                          onPressed: () {
+                            dismissDialog();
+                            onCancel?.call();
+                          },
+                        ),
+                      ),
+                      UtilWidget.sizedBoxWidth20,
+                      Expanded(
+                        child: UtilWidget.buildSolidButton(
+                          title: confirmTitle ?? 'Đồng ý',
+                          onPressed: () {
+                            dismissDialog();
+                            onConfirm?.call();
+                          },
+                        ),
+                      ),
+                    ],
+                  )
+                : UtilWidget.buildSolidButtonBack(
                     title: exitTitle ?? 'Hủy',
                     onPressed: () {
                       dismissDialog();
                       onCancel?.call();
                     },
                   ),
-                ),
-                UtilWidget.sizedBoxWidth20,
-                Expanded(
-                  child: UtilWidget.buildSolidButton(
-                    title: confirmTitle ?? 'Đồng ý',
-                    onPressed: () {
-                      dismissDialog();
-                      onConfirm?.call();
-                    },
-                  ),
-                ),
-              ],
-            ),
           ],
         ).paddingAll(AppDimens.defaultPadding),
       ),

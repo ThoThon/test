@@ -9,15 +9,17 @@ class DeclarationListRepository extends BaseRepository {
     required String declarationPeriodId,
   }) async {
     final response = await baseCallApi(
-      AppApi.urlSignDocument,
-      EnumRequestMethod.post,
+      AppApi.urlSignDocument, EnumRequestMethod.post,
       queryParameters: {
         "kyKeKhaiId": declarationPeriodId,
       },
       // Cần chờ user mở app mysign để ký số nên set timeout là 3 phút
-      timeOut: const Duration(minutes: 3),
+      timeOut: const Duration(seconds: 10),
+      functionError: (err) {
+        logger.e(err);
+        throw err;
+      },
     );
-    logger.d(declarationPeriodId);
     return BaseResponse.fromJson(response);
   }
 }
