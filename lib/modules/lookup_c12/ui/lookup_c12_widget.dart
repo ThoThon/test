@@ -3,15 +3,23 @@ part of 'lookup_c12_page.dart';
 extension LookupC12Widget on LookupC12Page {
   Widget _buildBody() {
     return SDSSafearea(
-      child: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
-        child: Column(
-          children: [
-            Expanded(child: _buildCardMonth()),
-            _buildButtonLookUp(),
-          ],
-        ),
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.defaultPadding,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildCardMonth(),
+                ],
+              ),
+            ),
+          ),
+          _buildButtonLookUp(),
+        ],
       ),
     );
   }
@@ -19,8 +27,10 @@ extension LookupC12Widget on LookupC12Page {
   Widget _buildCardMonth() {
     return UtilWidget.buildCardBase(
       ListView.separated(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: AppDimens.paddingSmall),
-        itemCount: 12,
+        itemCount: AppConst.countMonth,
         itemBuilder: (context, index) => _buildItemMonthView(index),
         separatorBuilder: (context, index) => const Divider(
           height: 1,
@@ -87,7 +97,7 @@ extension LookupC12Widget on LookupC12Page {
 
   Widget _buildButtonLookUp() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppDimens.defaultPadding),
+      padding: const EdgeInsets.all(AppDimens.defaultPadding),
       child: UtilWidget.buildSolidButton(
         title: LocaleKeys.lookupC12_lookup.tr,
         onPressed: controller.getC12File,
@@ -96,32 +106,34 @@ extension LookupC12Widget on LookupC12Page {
   }
 
   Widget _buildActionSelectYear() {
-    return Obx(() {
-      return Padding(
-        padding: const EdgeInsets.only(right: AppDimens.defaultPadding),
-        child: Align(
-          alignment: Alignment.centerRight,
-          child: InkWell(
-            onTap: controller.pickPeriodDate,
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppDimens.paddingVerySmall,
-                vertical: AppDimens.paddingSmallest,
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(width: 2, color: AppColors.primaryColor),
-                borderRadius: BorderRadius.circular(AppDimens.radius8),
-                color: AppColors.basicWhite,
-              ),
-              child: SDSBuildText(
-                '${LocaleKeys.lookupC12_year.tr} ${controller.selectedYear.value.year}',
-                style: AppTextStyle.font16Bo
-                    .copyWith(color: AppColors.primaryColor),
+    return Obx(
+      () {
+        return Padding(
+          padding: const EdgeInsets.only(right: AppDimens.defaultPadding),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: InkWell(
+              onTap: controller.pickPeriodDate,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppDimens.paddingVerySmall,
+                  vertical: AppDimens.paddingSmallest,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2, color: AppColors.primaryColor),
+                  borderRadius: BorderRadius.circular(AppDimens.radius8),
+                  color: AppColors.basicWhite,
+                ),
+                child: SDSBuildText(
+                  '${LocaleKeys.lookupC12_year.tr} ${controller.selectedYear.value.year}',
+                  style: AppTextStyle.font16Bo
+                      .copyWith(color: AppColors.primaryColor),
+                ),
               ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }

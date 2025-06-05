@@ -44,4 +44,6 @@ class AppConst {
   static const String nfcAvailable = "nfc_available";
   static const String nfcDisabled = "nfc_disabled";
   static const String nfcDisabledNotSupported = "nfc_not_supported";
+
+  static const int countMonth = 12;
 }
