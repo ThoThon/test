@@ -3,12 +3,14 @@ class ResultLookupHistoryModel {
   final Buoc? buoc2;
   final Buoc? buoc3;
   final Buoc? buoc4;
+  final String trangThai;
 
   ResultLookupHistoryModel({
     required this.buoc1,
     required this.buoc2,
     required this.buoc3,
     required this.buoc4,
+    required this.trangThai,
   });
 
   factory ResultLookupHistoryModel.fromJson(Map<String, dynamic> json) {
@@ -17,6 +19,7 @@ class ResultLookupHistoryModel {
       buoc2: Buoc.fromJson(json['buoc_2'] ?? {}),
       buoc3: Buoc.fromJson(json['buoc_3'] ?? {}),
       buoc4: Buoc.fromJson(json['buoc_4'] ?? {}),
+      trangThai: json['trangThai'] ?? '',
     );
   }
 

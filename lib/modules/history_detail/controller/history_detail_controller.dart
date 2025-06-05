@@ -22,13 +22,17 @@ class HistoryDetailController extends BaseGetxController {
   }
 
   Future<void> getFileNumber(String key) async {
-    // Nếu chi tiết lịch sử trống thì sẽ gọi api này để lấy số hồ sơ
+    // Nếu không có số hồ sơ thì sẽ gọi api này để lấy số hồ sơ
     try {
       showLoadingOverlay();
       final res = await historyDetaiRepository.getFileNumber(key);
       if (res.result != null && res.isSuccess) {
         if (res.result!.rHRecordNumber.isNotEmpty) {
+          // Tra cứu số hồ sơ thành công thì gọi đến tra cứu lịch sử
           await lookupProgressHistory(res.result?.rHRecordNumber ?? '');
+
+          // Cập nhật số hồ sơ
+          historyItemModel.soHoSo = res.result?.rHRecordNumber ?? '';
         } else {
           showSnackBar(LocaleKeys.history_cannotLookupFileNumber.tr);
         }
@@ -48,9 +52,13 @@ class HistoryDetailController extends BaseGetxController {
       final res = await historyDetaiRepository.lookupProcessHistory(soHoSo);
       if (res.isSuccess) {
         resultLookupHistoryModel = res.result;
+
+        // Kiểm tra Bước 1 xem có null hay không
         if (resultLookupHistoryModel!.buoc1!.maKetQua.isEmpty) {
           showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
         } else {
+          // Cập nhật trạng thái
+          historyItemModel.trangThai = res.result?.trangThai ?? '';
           showSnackBar(
             LocaleKeys.history_lookupSuccess.tr,
             typeAction: AppConst.actionSuccess,
