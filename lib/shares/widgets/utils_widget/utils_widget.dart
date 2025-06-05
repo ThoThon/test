@@ -1284,4 +1284,82 @@ class UtilWidget {
       ),
     );
   }
+
+  static Widget buildSelectGender<T>({
+    ValueChanged<T>? onChanged,
+    T? initialValue,
+    T? groupValue,
+    required T leftValue,
+    required T rightValue,
+  }) {
+    return FormField<T>(
+      initialValue: initialValue,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      builder: (FormFieldState<T> state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                RichText(
+                  text: TextSpan(
+                    text: LocaleKeys.declareInfo_gender.tr,
+                    style: AppTextStyle.font16Bo,
+                    children: [
+                      TextSpan(
+                        text: ' (*)',
+                        style: AppTextStyle.font12Re.copyWith(
+                          color: AppColors.statusRed,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: UtilWidget.buildRadioWithTitle<T>(
+                    value: leftValue,
+                    groupValue: groupValue,
+                    title: LocaleKeys.declareInfo_male.tr,
+                    onChanged: (value) {
+                      state.didChange(value);
+                      if (onChanged != null) {
+                        onChanged(value);
+                      }
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: UtilWidget.buildRadioWithTitle<T>(
+                    value: rightValue,
+                    groupValue: groupValue,
+                    title: LocaleKeys.declareInfo_female.tr,
+                    onChanged: (value) {
+                      state.didChange(value);
+                      if (onChanged != null) {
+                        onChanged(value);
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+            if (state.hasError)
+              Padding(
+                padding: const EdgeInsets.only(left: AppDimens.paddingSmall),
+                child: Text(
+                  state.errorText ?? '',
+                  style: AppTextStyle.font12Re.copyWith(color: Colors.red),
+                ),
+              )
+          ],
+        );
+      },
+      validator: (value) {
+        if (value == null) {
+          return LocaleKeys.familyMember_selectGender.tr;
+        }
+        return null;
+      },
+    );
+  }
 }

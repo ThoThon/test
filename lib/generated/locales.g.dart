@@ -480,6 +480,7 @@ class LocaleKeys {
   static const familyMember_cccdNumber = 'familyMember_cccdNumber';
   static const familyMember_note = 'familyMember_note';
   static const familyMember_isParticipant = 'familyMember_isParticipant';
+  static const familyMember_selectGender = 'familyMember_selectGender';
   static const declarationFormDetail_title = 'declarationFormDetail_title';
   static const declarationFormDetail_declarationFormName =
       'declarationFormDetail_declarationFormName';
@@ -1048,6 +1049,7 @@ class Locales {
     'familyMember_cccdNumber': 'Số CMND/CCCD/HC',
     'familyMember_note': 'Ghi chú',
     'familyMember_isParticipant': 'Là người tham gia',
+    'familyMember_selectGender': 'Vui lòng chọn giới tính',
     'declarationFormDetail_title': 'Kê khai thông tin bảng kê hồ sơ',
     'declarationFormDetail_declarationFormName': 'Tên bảng kê',
     'declarationFormDetail_fullName': 'Họ và tên',

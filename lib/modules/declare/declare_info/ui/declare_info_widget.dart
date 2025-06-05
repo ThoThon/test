@@ -254,40 +254,15 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
-  Widget _buildSelectGender({
-    ValueChanged<Gender>? onChanged,
-  }) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Obx(
-              () {
-                return _buildInputTitle(
-                  title: LocaleKeys.declareInfo_gender.tr,
-                  isRequired: controller.isGenderRequired,
-                );
-              },
-            ),
-            Expanded(
-              child: UtilWidget.buildRadioWithTitle<Gender>(
-                value: Gender.male,
-                groupValue: controller.d02Tk1State.gender.value,
-                title: LocaleKeys.declareInfo_male.tr,
-                onChanged: onChanged,
-              ),
-            ),
-            Expanded(
-              child: UtilWidget.buildRadioWithTitle<Gender>(
-                value: Gender.female,
-                groupValue: controller.d02Tk1State.gender.value,
-                title: LocaleKeys.declareInfo_female.tr,
-                onChanged: onChanged,
-              ),
-            ),
-          ],
-        ),
-      ],
+  Widget _buildSelectGender() {
+    return UtilWidget.buildSelectGender(
+      leftValue: Gender.male,
+      rightValue: Gender.female,
+      initialValue: controller.d02Tk1State.gender.value,
+      groupValue: controller.d02Tk1State.gender.value,
+      onChanged: (value) {
+        controller.d02Tk1State.gender.value = value;
+      },
     );
   }
 
