@@ -4,7 +4,8 @@
 - Tăng số lượng item khi lấy về danh sách lịch sử
 - [AppMobile] - Giới tính Màn D02 chỉnh sửa lại là trường luôn bắt buộc
 - [AppMobile]_Sửa lại giao diện màn tra cứu C12 - BHW-2308
-- [api] - Không hiển thị báo "Không bỏ trống cho trường giới tính" - 2318
+- [api] - Không hiển thị báo "Không bỏ trống cho trường giới tính" - BHW-2318
+- [AppMobile] - Trường Mã số BHXH cần nhập đủ 10 chữ số - BHW-2343
 - [AppMobile] - Chỉnh sửa Ngày cập nhật Tại màn Danh sách đợt - BHW-2342
 
 05/06/2025

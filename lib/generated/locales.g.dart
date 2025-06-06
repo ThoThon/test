@@ -314,6 +314,7 @@ class LocaleKeys {
   static const declareInfo_bhxhCode = 'declareInfo_bhxhCode';
   static const declareInfo_bhxhCodeCannotEmpty =
       'declareInfo_bhxhCodeCannotEmpty';
+  static const declareInfo_bhxhCodeInValid = 'declareInfo_bhxhCodeInValid';
   static const declareInfo_declarationType = 'declareInfo_declarationType';
   static const declareInfo_selectDeclarationType =
       'declareInfo_selectDeclarationType';
@@ -439,6 +440,7 @@ class LocaleKeys {
   static const familyMember_fullNameCannotEmpty =
       'familyMember_fullNameCannotEmpty';
   static const familyMember_bhxhCode = 'familyMember_bhxhCode';
+  static const familyMember_bhxhCodeInValid = 'familyMember_bhxhCodeInValid';
   static const familyMember_dob = 'familyMember_dob';
   static const familyMember_gender = 'familyMember_gender';
   static const familyMember_ethnic = 'familyMember_ethnic';
@@ -489,6 +491,8 @@ class LocaleKeys {
       'declarationFormDetail_fullNameCannotEmpty';
   static const declarationFormDetail_bhxhCode =
       'declarationFormDetail_bhxhCode';
+  static const declarationFormDetail_bhxhCodeInValid =
+      'declarationFormDetail_bhxhCodeInValid';
   static const declarationFormDetail_documentType =
       'declarationFormDetail_documentType';
   static const declarationFormDetail_documentTypeCannotEmpty =
@@ -916,6 +920,7 @@ class Locales {
     'declareInfo_selectStaff': 'Chọn nhân viên',
     'declareInfo_bhxhCode': 'Mã số BHXH',
     'declareInfo_bhxhCodeCannotEmpty': 'Mã số BHXH không được bỏ trống',
+    'declareInfo_bhxhCodeInValid': 'Mã số BHXH phải đủ 10 số',
     'declareInfo_declarationType': 'Loại khai báo',
     'declareInfo_selectDeclarationType': 'Chọn loại khai báo',
     'declareInfo_plan': 'Phương án',
@@ -1017,6 +1022,7 @@ class Locales {
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
     'familyMember_bhxhCode': 'Mã số BHXH',
+    'familyMember_bhxhCodeInValid': 'Mã số BHXH phải đủ 10 số',
     'familyMember_dob': 'Ngày sinh',
     'familyMember_gender': 'Giới tính',
     'familyMember_ethnic': 'Dân tộc',
@@ -1054,6 +1060,7 @@ class Locales {
     'declarationFormDetail_fullNameCannotEmpty':
         'Họ và tên không được bỏ trống',
     'declarationFormDetail_bhxhCode': 'Mã số BHXH',
+    'declarationFormDetail_bhxhCodeInValid': 'Mã số BHXH phải đủ 10 số',
     'declarationFormDetail_documentType': 'Tên loại văn bản',
     'declarationFormDetail_documentTypeCannotEmpty':
         'Tên loại văn bản không được bỏ trống',

@@ -154,6 +154,18 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
           maxLengthInputForm: 10,
           textInputType: TextInputType.number,
           inputFormatters: InputFormatterEnum.digitsOnly,
+          validator: (value) {
+            final trimmedValue = value?.trim();
+
+            if (trimmedValue == null || trimmedValue.isEmpty) {
+              return null;
+            }
+            if (trimmedValue.length < 10) {
+              return LocaleKeys.declarationFormDetail_bhxhCodeInValid.tr;
+            }
+
+            return null;
+          },
         ),
       ),
     );
