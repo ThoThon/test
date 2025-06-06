@@ -425,7 +425,8 @@
     "birthTypeFull": "Đầy đủ",
     "cccdNumber": "Số CMND/CCCD/HC",
     "note": "Ghi chú",
-    "isParticipant": "Là người tham gia"
+    "isParticipant": "Là người tham gia",
+    "selectGender": "Vui lòng chọn giới tính"
   },
   "declarationFormDetail": {
     "title": "Kê khai thông tin bảng kê hồ sơ",

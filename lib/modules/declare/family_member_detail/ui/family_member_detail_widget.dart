@@ -24,9 +24,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                       UtilWidget.sizedBox16,
                       _buildSelectDateOfBirth(),
                       UtilWidget.sizedBox12,
-                      _buildSelectGender(onChanged: (value) {
-                        controller.gender.value = value;
-                      }),
+                      _buildSelectedGender(),
                       UtilWidget.sizedBox8,
                       _buildSelectEthnic(),
                       _buildSelectNationality(),
@@ -90,27 +88,6 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           textInputType: TextInputType.number,
           inputFormatters: InputFormatterEnum.digitsOnly,
         ),
-      ),
-    );
-  }
-
-  Widget _buildInputTitle({
-    required String title,
-    bool isRequired = false,
-  }) {
-    return RichText(
-      text: TextSpan(
-        text: title,
-        style: AppTextStyle.font16Bo,
-        children: [
-          if (isRequired)
-            TextSpan(
-              text: ' (*)',
-              style: AppTextStyle.font12Re.copyWith(
-                color: AppColors.statusRed,
-              ),
-            ),
-        ],
       ),
     );
   }
@@ -221,36 +198,18 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
     );
   }
 
-  Widget _buildSelectGender({
-    ValueChanged<Gender>? onChanged,
-  }) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            _buildInputTitle(
-              title: LocaleKeys.declareInfo_gender.tr,
-              isRequired: true,
-            ),
-            Expanded(
-              child: UtilWidget.buildRadioWithTitle<Gender>(
-                value: Gender.male,
-                groupValue: controller.gender.value,
-                title: LocaleKeys.declareInfo_male.tr,
-                onChanged: onChanged,
-              ),
-            ),
-            Expanded(
-              child: UtilWidget.buildRadioWithTitle<Gender>(
-                value: Gender.female,
-                groupValue: controller.gender.value,
-                title: LocaleKeys.declareInfo_female.tr,
-                onChanged: onChanged,
-              ),
-            ),
-          ],
-        ),
+  Widget _buildSelectedGender() {
+    return UtilWidget.buildListRadio<Gender>(
+      options: [
+        Gender.male,
+        Gender.female,
       ],
+      getTitle: (gender) => gender.title,
+      groupValue: controller.gender.value,
+      initialValue: controller.gender.value,
+      onChanged: (value) {
+        controller.gender.value = value;
+      },
     );
   }
 

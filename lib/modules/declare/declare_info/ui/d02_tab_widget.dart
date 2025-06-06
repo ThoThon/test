@@ -46,11 +46,7 @@ extension D02TabWidget on DeclareInfoPage {
                       UtilWidget.sizedBox16,
                       _buildSelectDateOfBirth(),
                       UtilWidget.sizedBox12,
-                      _buildSelectGender(
-                        onChanged: (value) {
-                          controller.d02Tk1State.gender.value = value;
-                        },
-                      ),
+                      _buildSelectGender(),
                       UtilWidget.sizedBox8,
                       _buildSelectEthnic(),
                       _buildSelectNationality(),
