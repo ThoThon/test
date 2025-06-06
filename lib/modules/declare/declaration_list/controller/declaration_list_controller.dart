@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/core/router/app_route.dart';
 import 'package:v_bhxh/core/values/dimens.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/declaration_list_argument.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/repository/declaration_list_repository.dart';
-import 'package:v_bhxh/shares/function/logger.dart';
+import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog.src.dart';
 
 class DeclarationListController extends BaseGetxController {
@@ -29,11 +28,16 @@ class DeclarationListController extends BaseGetxController {
         _showDialogVerifySuccess();
       } else {
         ShowDialog.dismissDialog();
-        showSnackBar(response.errorMessage);
+        _showDialogVerifyFailed(errorMessage: response.errorMessage);
       }
     } catch (e) {
-      logger.e(e);
       ShowDialog.dismissDialog();
+      if (e is DioException) {
+        _showDialogVerifyFailed(
+          errorMessage: 'Không thể kết nối tới hệ thống ký số.',
+          onRetry: signDocument,
+        );
+      }
     }
   }
 
@@ -62,6 +66,24 @@ class DeclarationListController extends BaseGetxController {
       onConfirm: () {
         Get.toNamed(AppRoutes.history.path);
       },
+    );
+  }
+
+  void _showDialogVerifyFailed({
+    required String errorMessage,
+    VoidCallback? onRetry,
+  }) {
+    ShowDialog.showDialogConfirm2(
+      title: 'Thất bại!',
+      content: errorMessage,
+      iconType: DialogIconType.failure,
+      exitTitle: 'Thoát',
+      showConfirmButton: onRetry != null,
+      confirmTitle: onRetry != null ? 'Gửi lại' : null,
+      onCancel: () {
+        Get.until(ModalRoute.withName(AppRoutes.home.path));
+      },
+      onConfirm: onRetry,
     );
   }
 }
