@@ -28,14 +28,7 @@ class DeclarationListController extends BaseGetxController {
         _showDialogVerifySuccess();
       } else {
         ShowDialog.dismissDialog();
-        // showSnackBar(response.errorMessage);
-        _showDialogVerifyFailed(
-          errorMessage: response.errorMessage,
-          // onRetry: () {
-          //   Get.back();
-          //   signDocument();
-          // },
-        );
+        _showDialogVerifyFailed(errorMessage: response.errorMessage);
       }
     } catch (e) {
       ShowDialog.dismissDialog();

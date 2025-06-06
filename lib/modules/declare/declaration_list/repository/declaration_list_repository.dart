@@ -18,7 +18,7 @@ class DeclarationListRepository extends BaseRepository {
       // Cần chờ user mở app mysign để ký số nên set timeout là 3 phút
       timeOut: _signDocumentTimeOut,
       functionError: (err) {
-        logger.e(err);
+        // rethrow error để xử lý ở controller
         throw err;
       },
     );
