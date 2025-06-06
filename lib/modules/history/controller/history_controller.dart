@@ -57,7 +57,7 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
     return HistoryRequest(
       companyId: AppData.instance.accountInfoModel.value?.toChucId ?? '',
       pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
-      pageSize: AppConst.largePageSize,
+      pageSize: isTablet() ? AppConst.largePageSize : AppConst.defaultPageSize,
       nam: selectedPeriodDate.value.year.toString(),
       thang: selectedPeriodDate.value.month.toString(),
       maThuTuc: selectProcedure.value?.loai.toString() ?? '',
@@ -112,5 +112,11 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
         onRefresh();
       },
     );
+  }
+
+  bool isTablet() {
+    // Tránh crash app khi Get.mediaQuery được truy cập khi layout chưa được build xong
+    if (Get.mediaQuery.size == Size.zero) return false;
+    return Get.mediaQuery.size.shortestSide >= 600;
   }
 }
