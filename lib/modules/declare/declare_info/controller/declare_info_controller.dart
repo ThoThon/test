@@ -150,7 +150,10 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   Future<void> createNewDeclarationForm() async {
-    final result = await Get.toNamed(AppRoutes.declarationFormDetail.path);
+    final result = await Get.toNamed(
+      AppRoutes.declarationFormDetail.path,
+      arguments: d02Tk1State,
+    );
     if (result is DeclarationForm) {
       d01State.forms.add(result);
     }

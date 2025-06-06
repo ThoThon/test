@@ -8,6 +8,7 @@
 - [AppMobile] - Trường Mã số BHXH cần nhập đủ 10 chữ số - BHW-2343
 - [AppMobile] - Chỉnh sửa Ngày cập nhật Tại màn Danh sách đợt - BHW-2342
 - Sửa lỗi thiếu button "Gửi lại" khi ký gửi thất bại - HW-2314
+- [AppMobile] - Liên kết dữ liệu trường Họ và tên và Mã số BHXH từ màn D02 sang D01 - BHW-2344
 
 05/06/2025
 - [AppMobile] - Hiển thị Popup Khi ký gửi Thất bại - BHW-2314
