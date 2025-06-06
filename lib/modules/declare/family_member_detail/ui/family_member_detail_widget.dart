@@ -87,6 +87,18 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           maxLengthInputForm: 10,
           textInputType: TextInputType.number,
           inputFormatters: InputFormatterEnum.digitsOnly,
+          validator: (value) {
+            final trimmedValue = value?.trim();
+
+            if (trimmedValue == null || trimmedValue.isEmpty) {
+              return null;
+            }
+            if (trimmedValue.length < 10) {
+              return LocaleKeys.familyMember_bhxhCodeInValid.tr;
+            }
+
+            return null;
+          },
         ),
       ),
     );

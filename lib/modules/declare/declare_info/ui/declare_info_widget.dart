@@ -236,13 +236,15 @@ extension DeclareInfoWidget on DeclareInfoPage {
               textInputType: TextInputType.number,
               isValidate: isRequired,
               validator: (value) {
-                if (!isRequired) {
-                  return null;
-                }
-
                 final trimmedValue = value?.trim();
+
                 if (trimmedValue == null || trimmedValue.isEmpty) {
-                  return LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr;
+                  return isRequired
+                      ? LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr
+                      : null;
+                }
+                if (trimmedValue.length < 10) {
+                  return LocaleKeys.declareInfo_bhxhCodeInValid.tr;
                 }
 
                 return null;
