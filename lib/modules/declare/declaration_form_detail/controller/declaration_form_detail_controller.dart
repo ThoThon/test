@@ -38,8 +38,8 @@ class DeclarationFormDetailController extends BaseGetxController {
   @override
   void onInit() {
     super.onInit();
+    if (Get.arguments == null) return;
     final args = Get.arguments;
-
     if (args is DeclarationForm) {
       declarationForm = args;
 
