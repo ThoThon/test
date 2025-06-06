@@ -250,7 +250,6 @@ class LocaleKeys {
       'login_usernameAndPasswordInValid';
   static const login_username = 'login_username';
   static const login_password = 'login_password';
-  static const login_usernameCannotEmpty = 'login_usernameCannotEmpty';
   static const login_passwordCannotEmpty = 'login_passwordCannotEmpty';
   static const login_forgetPassword = 'login_forgetPassword';
   static const login_resetPassword = 'login_resetPassword';
@@ -869,7 +868,6 @@ class Locales {
     'login_usernameAndPasswordInValid': 'Tài khoản hoặc mật khẩu không đúng',
     'login_username': 'Tài khoản',
     'login_password': 'Mật khẩu',
-    'login_usernameCannotEmpty': 'Tài khoản không được bỏ trống',
     'login_passwordCannotEmpty': 'Mật khẩu không được bỏ trống',
     'login_forgetPassword': 'Quên mật khẩu?',
     'login_resetPassword': 'Lấy lại mật khẩu',
