@@ -2,6 +2,9 @@
 - [AppMobile] - Lỗi text thông báo Validate màn Đăng nhập - BHW-2340
 - Sửa UI màn Tra cứu C12
 - Tăng số lượng item khi lấy về danh sách lịch sử
+- [AppMobile] - Giới tính Màn D02 chỉnh sửa lại là trường luôn bắt buộc
+- [AppMobile]_Sửa lại giao diện màn tra cứu C12 - BHW-2308
+- [api] - Không hiển thị báo "Không bỏ trống cho trường giới tính" - 2318
 
 04/06/2025
 - Sửa lại giao diện màn tra cứu C12
