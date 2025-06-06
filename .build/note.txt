@@ -8,6 +8,7 @@
 - [AppMobile] - Chỉnh sửa Ngày cập nhật Tại màn Danh sách đợt - BHW-2342
 
 05/06/2025
+- [AppMobile] - Hiển thị Popup Khi ký gửi Thất bại - BHW-2314
 - [AppMobile] - Lỗi hiển thị Màn chi tiết lịch sử sau khi tra cứu - BHW-2322
 - [api] - Không hiển thị báo "Không bỏ trống cho trường giới tính" - BHW-2318
 
@@ -20,7 +21,6 @@
 - [AppMobile] - Chỉnh sửa trường nhập PC Chức vụ - BHW-2320
 - [AppMobile]_Thay đổi giao diện menu appmobile - BHW-2321
 - [AppMobile]_Thay đổi giao diện màn trang chủ -BHW-2323
-- [AppMobile] - Hiển thị Popup Khi ký gửi Thất bại - BHW-2314
 
 03/06/2025:
 - [AppMobile] - Màn thông tin đơn vị: Cho phép lưu mà để trống các trường bắt buộc - BHW-2301
