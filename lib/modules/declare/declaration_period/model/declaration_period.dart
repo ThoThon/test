@@ -49,7 +49,7 @@ class DeclarationPeriod {
       period: json['dot'] ?? 0,
       selected: json['selected'] ?? false,
       createTime: DateTime.tryParse(json['createTime'] ?? ''),
-      updateDate: DateTime.tryParse(json['updateDate'] ?? ''),
+      updateDate: DateTime.tryParse(json['updateTime'] ?? ''),
       fileNumber: json['soHoSo'],
     );
   }
