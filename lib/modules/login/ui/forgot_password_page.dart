@@ -61,7 +61,7 @@ class ForgotPasswordPage extends BaseGetWidget {
         obscureText: false,
         validator: (value) {
           if (value.isNullOrEmpty) {
-            return LocaleKeys.login_unitCodeCannotEmpty.tr;
+            return LocaleKeys.login_userNameCannotEmpty.tr;
           }
           return null;
         },

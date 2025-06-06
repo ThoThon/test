@@ -34,8 +34,8 @@
     "logout": "Đăng xuất",
     "isLogout": "Bạn có chắc chắn muốn đăng xuất?",
     "empty": "Trống",
-    "cancel":"Hủy",
-    "confirm":"Đồng ý"
+    "cancel": "Hủy",
+    "confirm": "Đồng ý"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -63,8 +63,8 @@
     "changeAccount": "Đổi tài khoản",
     "taxCode": "MST",
     "hello": "Xin chào,",
-    "logout":"Đăng xuất",
-    "accountInfo":"Thông tin tài khoản"
+    "logout": "Đăng xuất",
+    "accountInfo": "Thông tin tài khoản"
   },
   "unitInfo": {
     "transactionRegister": "Đăng ký giao dịch",
@@ -163,8 +163,8 @@
     "bySocialAgency": "Nhận tại cơ quan bảo hiểm",
     "home": "Trang chủ",
     "hasError": "Có lỗi xảy ra, vui lòng thử lại",
-    "emailContactIsNotEmpty":"Email liên hệ không được bỏ trống",
-    "emailIsNotValid":"Email không hợp lệ"
+    "emailContactIsNotEmpty": "Email liên hệ không được bỏ trống",
+    "emailIsNotValid": "Email không hợp lệ"
   },
   "history": {
     "procedure": "Thủ tục",
@@ -196,8 +196,8 @@
     "procedure600d": "600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP",
     "procedure600o": "600o - Tạm dừng đóng vào quỹ hưu trí",
     "fileNumber": "Số hồ sơ",
-    "cannotLookupFileNumber":"Không tìm thấy số hồ sơ",
-    "error":"Có lỗi xảy ra, vui lòng thử lại sau"
+    "cannotLookupFileNumber": "Không tìm thấy số hồ sơ",
+    "error": "Có lỗi xảy ra, vui lòng thử lại sau"
   },
   "certificate": {
     "listCertificate": "Danh sách chứng thư số",
@@ -242,7 +242,6 @@
     "usernameAndPasswordInValid": "Tài khoản hoặc mật khẩu không đúng",
     "username": "Tài khoản",
     "password": "Mật khẩu",
-    "usernameCannotEmpty": "Tài khoản không được bỏ trống",
     "passwordCannotEmpty": "Mật khẩu không được bỏ trống",
     "forgetPassword": "Quên mật khẩu?",
     "resetPassword": "Lấy lại mật khẩu",
