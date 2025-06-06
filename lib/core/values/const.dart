@@ -17,6 +17,8 @@ class AppConst {
 
   static const int defaultPageSize = 10;
 
+  static const int largePageSize = 20;
+
   static const int defaultPageNumber = 1;
 
   ///action snackbar

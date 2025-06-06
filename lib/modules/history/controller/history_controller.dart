@@ -57,7 +57,7 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
     return HistoryRequest(
       companyId: AppData.instance.accountInfoModel.value?.toChucId ?? '',
       pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
-      pageSize: AppConst.defaultPageSize,
+      pageSize: AppConst.largePageSize,
       nam: selectedPeriodDate.value.year.toString(),
       thang: selectedPeriodDate.value.month.toString(),
       maThuTuc: selectProcedure.value?.loai.toString() ?? '',

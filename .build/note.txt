@@ -1,3 +1,8 @@
+06/06/2025
+- [AppMobile] - Lỗi text thông báo Validate màn Đăng nhập - BHW-2340
+- Sửa UI màn Tra cứu C12
+- Tăng số lượng item khi lấy về danh sách lịch sử
+
 04/06/2025
 - Sửa lại giao diện màn tra cứu C12
 - Sửa lại giao diện màn thông báo, lịch sử khi call api trả về trống
