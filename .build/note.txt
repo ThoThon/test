@@ -1,3 +1,7 @@
+05/06/2025
+- [AppMobile] - Lỗi hiển thị Màn chi tiết lịch sử sau khi tra cứu - BHW-2322
+- [api] - Không hiển thị báo "Không bỏ trống cho trường giới tính" - BHW-2318
+
 04/06/2025
 - Sửa lại giao diện màn tra cứu C12
 - Sửa lại giao diện màn thông báo, lịch sử khi call api trả về trống
@@ -7,7 +11,6 @@
 - [AppMobile] - Chỉnh sửa trường nhập PC Chức vụ - BHW-2320
 - [AppMobile]_Thay đổi giao diện menu appmobile - BHW-2321
 - [AppMobile]_Thay đổi giao diện màn trang chủ -BHW-2323
-- [AppMobile] - Lỗi hiển thị Màn chi tiết lịch sử sau khi tra cứu - BHW-2322
 - [AppMobile] - Hiển thị Popup Khi ký gửi Thất bại - BHW-2314
 
 03/06/2025:
