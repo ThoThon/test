@@ -250,7 +250,7 @@
     "hello": "Xin chào,",
     "serviceCenter": "Tổng đài CSKH:",
     "phoneNumber": "1800.1800 (nhánh 1)",
-    "unitCodeCannotEmpty": "Mã đơn vị không được bỏ trống",
+    "userNameCannotEmpty": "Tên đăng nhập không được bỏ trống",
     "taxCodeCannotEmpty": "Mã số thuế/ Mã ngân sách không được bỏ trống",
     "backToLogin": "Quay lại đăng nhập",
     "inputUnitCode": "Nhập mã đơn vị",

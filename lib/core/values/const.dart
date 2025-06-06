@@ -17,6 +17,8 @@ class AppConst {
 
   static const int defaultPageSize = 10;
 
+  static const int largePageSize = 20;
+
   static const int defaultPageNumber = 1;
 
   ///action snackbar
@@ -44,4 +46,6 @@ class AppConst {
   static const String nfcAvailable = "nfc_available";
   static const String nfcDisabled = "nfc_disabled";
   static const String nfcDisabledNotSupported = "nfc_not_supported";
+
+  static const int countMonth = 12;
 }
