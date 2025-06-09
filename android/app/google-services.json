@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:457157614636:android:3a941110ed3d8f6a318589",
+        "mobilesdk_app_id": "1:457157614636:android:b3a1a1a668557ac3318589",
         "android_client_info": {
-          "package_name": "vn.viettel.vbhxh"
+          "package_name": "com.viettel.vbhxh"
         }
       },
       "oauth_client": [],

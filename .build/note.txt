@@ -1,3 +1,6 @@
+09/06/2025
+- Đổi bundle id từ vn.viettel.vbhxh sang com.viettel.vbhxh
+
 06/06/2025
 - [AppMobile] - Lỗi text thông báo Validate màn Đăng nhập - BHW-2340
 - Sửa UI màn Tra cứu C12

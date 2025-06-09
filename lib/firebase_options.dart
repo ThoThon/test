@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAcqiSjGVXx312Vym5HJmvlo5_X1u0VUv8',
-    appId: '1:457157614636:android:3a941110ed3d8f6a318589',
+    appId: '1:457157614636:android:b3a1a1a668557ac3318589',
     messagingSenderId: '457157614636',
     projectId: 'vbhxh-viettel',
     storageBucket: 'vbhxh-viettel.firebasestorage.app',
@@ -59,11 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAIZL6hy_p6UJf13VoJZT08ExRa7Rl9ygI',
-    appId: '1:457157614636:ios:5497c69b937e2c4d318589',
+    appId: '1:457157614636:ios:bf268f5845dea3c3318589',
     messagingSenderId: '457157614636',
     projectId: 'vbhxh-viettel',
     storageBucket: 'vbhxh-viettel.firebasestorage.app',
-    iosBundleId: 'vn.viettel.vbhxh',
+    iosBundleId: 'com.viettel.vbhxh',
   );
 
 }
