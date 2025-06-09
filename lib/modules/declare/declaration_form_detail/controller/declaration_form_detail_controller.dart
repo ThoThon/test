@@ -57,8 +57,8 @@ class DeclarationFormDetailController extends BaseGetxController {
         contentToBeAssessedTextCtrl.text =
             declarationForm?.contentToBeAssessed ?? '';
       } else {
-        fullNameTextCtrl.text = arg.fullName;
-        bhxhTextCtrl.text = arg.bhxhCode;
+        fullNameTextCtrl.text = arg.fullName ?? '';
+        bhxhTextCtrl.text = arg.bhxhCode ?? '';
       }
     }
   }

@@ -165,11 +165,7 @@ class DeclareInfoController extends BaseGetxController {
   Future<void> editDeclarationForm(DeclarationForm form) async {
     final result = await Get.toNamed(
       AppRoutes.declarationFormDetail.path,
-      arguments: DeclarationFormDetailArgument(
-        form: form,
-        bhxhCode: d02Tk1State.bhxhTextCtrl.text,
-        fullName: d02Tk1State.fullNameTextCtrl.text,
-      ),
+      arguments: DeclarationFormDetailArgument(form: form),
     );
     if (result is DeclarationForm) {
       final index =

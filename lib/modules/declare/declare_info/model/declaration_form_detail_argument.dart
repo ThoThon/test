@@ -2,12 +2,12 @@ import 'package:v_bhxh/modules/src.dart';
 
 class DeclarationFormDetailArgument {
   final DeclarationForm? form;
-  final String fullName;
-  final String bhxhCode;
+  final String? fullName;
+  final String? bhxhCode;
 
   DeclarationFormDetailArgument({
     this.form,
-    required this.fullName,
-    required this.bhxhCode,
+    this.fullName,
+    this.bhxhCode,
   });
 }
