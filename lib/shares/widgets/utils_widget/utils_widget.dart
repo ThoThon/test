@@ -474,6 +474,7 @@ class UtilWidget {
           // Force dropdown menu có chiều rộng bằng với dropdown button
           alignedDropdown: true,
           child: dropdown_custom.DropdownButtonFormField<T>(
+            isExpanded: true,
             autovalidateMode:
                 autovalidateMode ?? AutovalidateMode.onUserInteraction,
             dropdownColor: AppColors.colorWhite,
@@ -511,7 +512,6 @@ class UtilWidget {
                 return SDSBuildText(
                   display(e),
                   style: AppTextStyle.font14Re,
-                  maxLines: 2,
                 );
               },
             ).toList(),
