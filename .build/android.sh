@@ -8,7 +8,7 @@ note_file=".build/note.txt"
 fvm flutter build apk lib/main.dart --release
 
 firebase appdistribution:distribute './build/app/outputs/flutter-apk/app-release.apk'  \
-    --app 1:457157614636:android:3a941110ed3d8f6a318589  \
+    --app 1:457157614636:android:b3a1a1a668557ac3318589  \
     --release-notes-file "$note_file" \
     --groups "sds-android"
 
