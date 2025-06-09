@@ -3,7 +3,7 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/uuid_utils.dart';
 
 class DeclarationFormDetailController extends BaseGetxController {
-  DeclarationForm? declarationForm;
+  final argument = Get.arguments as DeclarationFormDetailArgument?;
 
   final formKey = GlobalKey<FormState>();
 
@@ -38,27 +38,25 @@ class DeclarationFormDetailController extends BaseGetxController {
   void onInit() {
     super.onInit();
 
-    final arg = Get.arguments;
-    if (arg != null && arg is DeclarationFormDetailArgument) {
-      if (arg.form != null) {
-        declarationForm = arg.form;
-        fullNameTextCtrl.text = declarationForm?.fullName ?? '';
-        bhxhTextCtrl.text = declarationForm?.bhxhNumber ?? '';
-        documentTypeTextCtrl.text = declarationForm?.documentType ?? '';
-        documentNumberTextCtrl.text = declarationForm?.documentNumber ?? '';
+    if (argument != null) {
+      if (argument?.form != null) {
+        fullNameTextCtrl.text = argument?.form?.fullName ?? '';
+        bhxhTextCtrl.text = argument?.form?.bhxhNumber ?? '';
+        documentTypeTextCtrl.text = argument?.form?.documentType ?? '';
+        documentNumberTextCtrl.text = argument?.form?.documentNumber ?? '';
         dateOfIssueCtrl.text =
-            convertDateToStringSafe(declarationForm?.dateOfIssue, PATTERN_1) ??
+            convertDateToStringSafe(argument?.form?.dateOfIssue, PATTERN_1) ??
                 '';
-        effectiveDateCtrl.text = convertDateToStringSafe(
-                declarationForm?.effectiveDate, PATTERN_1) ??
-            '';
-        issuingAgencyTextCtrl.text = declarationForm?.issuingAgency ?? '';
-        summaryTextCtrl.text = declarationForm?.summary ?? '';
+        effectiveDateCtrl.text =
+            convertDateToStringSafe(argument?.form?.effectiveDate, PATTERN_1) ??
+                '';
+        issuingAgencyTextCtrl.text = argument?.form?.issuingAgency ?? '';
+        summaryTextCtrl.text = argument?.form?.summary ?? '';
         contentToBeAssessedTextCtrl.text =
-            declarationForm?.contentToBeAssessed ?? '';
+            argument?.form?.contentToBeAssessed ?? '';
       } else {
-        fullNameTextCtrl.text = arg.fullName ?? '';
-        bhxhTextCtrl.text = arg.bhxhCode ?? '';
+        fullNameTextCtrl.text = argument?.fullName ?? '';
+        bhxhTextCtrl.text = argument?.bhxhCode ?? '';
       }
     }
   }
@@ -68,7 +66,7 @@ class DeclarationFormDetailController extends BaseGetxController {
       Get.back(
         result: DeclarationForm(
           // Khi sửa bảng kê ở local hoặc DB thì sẽ giữ id cũ
-          id: declarationForm?.id ?? generateUuid(),
+          id: argument?.form?.id ?? generateUuid(),
           fullName: fullNameTextCtrl.text.trim(),
           bhxhNumber: bhxhTextCtrl.text.trim(),
           documentType: documentTypeTextCtrl.text.trim(),
@@ -81,7 +79,7 @@ class DeclarationFormDetailController extends BaseGetxController {
           contentToBeAssessed: contentToBeAssessedTextCtrl.text.trim(),
           // Khi update bảng kê ở DB thì sẽ truyền isUpdate = true
           // Cần keep trạng thái isUpdate để tránh tạo mới
-          isUpdate: declarationForm?.isUpdate ?? false,
+          isUpdate: argument?.form?.isUpdate ?? false,
         ),
       );
     }
