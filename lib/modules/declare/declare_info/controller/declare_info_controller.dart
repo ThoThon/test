@@ -334,11 +334,6 @@ class DeclareInfoController extends BaseGetxController {
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
         );
-
-        // Get.offNamed(
-        //   AppRoutes.staffList.path,
-        //   arguments: argument.declarationPeriodId,
-        // );
         Get.back(
           result: argument.declarationPeriodId,
         );
