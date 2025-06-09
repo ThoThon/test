@@ -242,12 +242,8 @@ extension StaffListWidget on StaffListPage {
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
         onTap: () {
-          Get.offNamed(
-            AppRoutes.declareInfo.path,
-            arguments: DeclareInfoArgument(
-              declarationPeriodId: controller.declarationPeriodId,
-              staffId: staff.id,
-            ),
+          controller.openDeclareInfo(
+            staff: staff,
           );
         },
         child: Container(
@@ -268,12 +264,7 @@ extension StaffListWidget on StaffListPage {
   Widget _buildAddNewStaff() {
     return InkWell(
       onTap: () {
-        Get.offNamed(
-          AppRoutes.declareInfo.path,
-          arguments: DeclareInfoArgument(
-            declarationPeriodId: controller.declarationPeriodId,
-          ),
-        );
+        controller.openDeclareInfo();
       },
       child: Row(
         children: [
