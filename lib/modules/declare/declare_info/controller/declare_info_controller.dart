@@ -303,9 +303,8 @@ class DeclareInfoController extends BaseGetxController {
           typeAction: AppConst.actionSuccess,
         );
 
-        Get.offNamed(
-          AppRoutes.staffList.path,
-          arguments: argument.declarationPeriodId,
+        Get.back(
+          result: argument.declarationPeriodId,
         );
       } else {
         showSnackBar(response.errorMessage);
@@ -336,9 +335,12 @@ class DeclareInfoController extends BaseGetxController {
           typeAction: AppConst.actionSuccess,
         );
 
-        Get.offNamed(
-          AppRoutes.staffList.path,
-          arguments: argument.declarationPeriodId,
+        // Get.offNamed(
+        //   AppRoutes.staffList.path,
+        //   arguments: argument.declarationPeriodId,
+        // );
+        Get.back(
+          result: argument.declarationPeriodId,
         );
       } else {
         showSnackBar(response.errorMessage);

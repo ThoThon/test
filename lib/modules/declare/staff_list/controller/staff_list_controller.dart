@@ -189,4 +189,17 @@ class StaffListController extends BaseGetxController {
       hideLoadingOverlay();
     }
   }
+
+  Future<void> openDeclareInfo({DeclaredStaffModel? staff}) async {
+    final result = await Get.toNamed(
+      AppRoutes.declareInfo.path,
+      arguments: DeclareInfoArgument(
+        declarationPeriodId: declarationPeriodId,
+        staffId: staff?.id,
+      ),
+    );
+    if (result != null) {
+      _getStaffList();
+    }
+  }
 }
