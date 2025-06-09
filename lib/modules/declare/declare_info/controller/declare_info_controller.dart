@@ -150,7 +150,13 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   Future<void> createNewDeclarationForm() async {
-    final result = await Get.toNamed(AppRoutes.declarationFormDetail.path);
+    final result = await Get.toNamed(
+      AppRoutes.declarationFormDetail.path,
+      arguments: DeclarationFormDetailArgument(
+        bhxhCode: d02Tk1State.bhxhTextCtrl.text,
+        fullName: d02Tk1State.fullNameTextCtrl.text,
+      ),
+    );
     if (result is DeclarationForm) {
       d01State.forms.add(result);
     }
@@ -159,7 +165,7 @@ class DeclareInfoController extends BaseGetxController {
   Future<void> editDeclarationForm(DeclarationForm form) async {
     final result = await Get.toNamed(
       AppRoutes.declarationFormDetail.path,
-      arguments: form,
+      arguments: DeclarationFormDetailArgument(form: form),
     );
     if (result is DeclarationForm) {
       final index =

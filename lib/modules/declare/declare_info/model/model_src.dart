@@ -8,3 +8,4 @@ export 'declare_info_argument.dart';
 export 'declaration_form.dart';
 export 'hospital.dart';
 export 'staff/staff_src.dart';
+export 'declaration_form_detail_argument.dart';
