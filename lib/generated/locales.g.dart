@@ -440,6 +440,9 @@ class LocaleKeys {
   static const declareInfo_selectWard = 'declareInfo_selectWard';
   static const declareInfo_selectHospital = 'declareInfo_selectHospital';
   static const declareInfo_inputHospitalName = 'declareInfo_inputHospitalName';
+  static const declareInfo_inputPCTNN = 'declareInfo_inputPCTNN';
+  static const declareInfo_inputPCTNVuotKhung =
+      'declareInfo_inputPCTNVuotKhung';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1028,6 +1031,8 @@ class Locales {
     'declareInfo_selectWard': 'Chọn Phường/Xã',
     'declareInfo_selectHospital': 'Chọn bệnh viện',
     'declareInfo_inputHospitalName': 'Nhập tên bệnh viện',
+    'declareInfo_inputPCTNN': 'PC TNN phải là số nguyên',
+    'declareInfo_inputPCTNVuotKhung': 'PC TN vượt khung phải là số nguyên',
     'familyMember_title': 'Thành viên trong gia đình',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

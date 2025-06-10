@@ -397,7 +397,9 @@
     "selectDistrict":"Chọn Quận/Huyện",
     "selectWard":"Chọn Phường/Xã",
     "selectHospital":"Chọn bệnh viện",
-    "inputHospitalName":"Nhập tên bệnh viện"
+    "inputHospitalName":"Nhập tên bệnh viện",
+    "inputPCTNN":"PC TNN phải là số nguyên",
+    "inputPCTNVuotKhung":"PC TN vượt khung phải là số nguyên"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",
