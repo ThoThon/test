@@ -24,27 +24,14 @@ class DeclareInfoPage extends BaseGetWidget<DeclareInfoController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return buildLoadingOverlay(
-      () => PopScope(
-        canPop: false,
-        onPopInvokedWithResult: (didPop, _) {
-          if (didPop) return;
-          // BHW-2367
-          // Nếu vào màn "Kê khai" từ màn "Danh sách nhân viên" thì khi back về sẽ về màn "Danh sách nhân viên"
-          // Nếu từ màn "Đợt kê khai" vào luôn màn "Kê khai" thì khi back về sẽ về màn "Đợt kê khai"
-          Get.previousRoute == AppRoutes.staffList.path
-              ? Get.back()
-              : Get.until(
-                  ModalRoute.withName(AppRoutes.declarationPeriod.path));
-        },
-        child: Scaffold(
-          appBar: BaseAppBar(
-            title: BaseAppBarTitle(
-              title: LocaleKeys.declareInfo_title.tr,
-            ),
+      () => Scaffold(
+        appBar: BaseAppBar(
+          title: BaseAppBarTitle(
+            title: LocaleKeys.declareInfo_title.tr,
           ),
-          body: SafeArea(
-            child: _buildBody(),
-          ),
+        ),
+        body: SafeArea(
+          child: _buildBody(),
         ),
       ),
     );
