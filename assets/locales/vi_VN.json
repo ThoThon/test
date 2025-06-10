@@ -392,7 +392,12 @@
     "fromDateInvalid": "Từ tháng/năm không hợp lệ",
     "fromDateCannotAfterToDate": "Từ tháng/năm không được lớn hơn Đến tháng/năm",
     "toDateInvalid": "Đến tháng/năm không hợp lệ",
-    "toDateCannotBeforFromDate": "Đến tháng/năm không được nhỏ hơn Từ tháng/năm"
+    "toDateCannotBeforFromDate": "Đến tháng/năm không được nhỏ hơn Từ tháng/năm",
+    "selectProvince":"Chọn Tỉnh/Thành phố",
+    "selectDistrict":"Chọn Quận/Huyện",
+    "selectWard":"Chọn Phường/Xã",
+    "selectHospital":"Chọn bệnh viện",
+    "inputHospitalName":"Nhập tên bệnh viện"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",

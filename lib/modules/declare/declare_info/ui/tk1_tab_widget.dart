@@ -86,7 +86,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
-                title: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceOfBirth.value,
                 display: (value) => value.name,

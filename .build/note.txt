@@ -1,3 +1,6 @@
+10/06/2025
+- [AppMobile] - Chỉnh sửa trường tìm kiếm Huyện, Xã - BHW-2363
+
 09/06/2025
 - Đổi bundle id từ vn.viettel.vbhxh sang com.viettel.vbhxh
 - [AppMobile] - Cập nhật [Ngày cập nhât] và [Trạng thái] tại màn danh sách đợt kê khai - BHW-2360
