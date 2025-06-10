@@ -24,21 +24,14 @@ class DeclareInfoPage extends BaseGetWidget<DeclareInfoController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return buildLoadingOverlay(
-      () => PopScope(
-        canPop: false,
-        onPopInvokedWithResult: (didPop, _) {
-          if (didPop) return;
-          Get.until(ModalRoute.withName(AppRoutes.declarationPeriod.path));
-        },
-        child: Scaffold(
-          appBar: BaseAppBar(
-            title: BaseAppBarTitle(
-              title: LocaleKeys.declareInfo_title.tr,
-            ),
+      () => Scaffold(
+        appBar: BaseAppBar(
+          title: BaseAppBarTitle(
+            title: LocaleKeys.declareInfo_title.tr,
           ),
-          body: SafeArea(
-            child: _buildBody(),
-          ),
+        ),
+        body: SafeArea(
+          child: _buildBody(),
         ),
       ),
     );
