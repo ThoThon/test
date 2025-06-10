@@ -435,6 +435,11 @@ class LocaleKeys {
   static const declareInfo_toDateInvalid = 'declareInfo_toDateInvalid';
   static const declareInfo_toDateCannotBeforFromDate =
       'declareInfo_toDateCannotBeforFromDate';
+  static const declareInfo_selectProvince = 'declareInfo_selectProvince';
+  static const declareInfo_selectDistrict = 'declareInfo_selectDistrict';
+  static const declareInfo_selectWard = 'declareInfo_selectWard';
+  static const declareInfo_selectHospital = 'declareInfo_selectHospital';
+  static const declareInfo_inputHospitalName = 'declareInfo_inputHospitalName';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1018,6 +1023,11 @@ class Locales {
     'declareInfo_toDateInvalid': 'Đến tháng/năm không hợp lệ',
     'declareInfo_toDateCannotBeforFromDate':
         'Đến tháng/năm không được nhỏ hơn Từ tháng/năm',
+    'declareInfo_selectProvince': 'Chọn Tỉnh/Thành phố',
+    'declareInfo_selectDistrict': 'Chọn Quận/Huyện',
+    'declareInfo_selectWard': 'Chọn Phường/Xã',
+    'declareInfo_selectHospital': 'Chọn bệnh viện',
+    'declareInfo_inputHospitalName': 'Nhập tên bệnh viện',
     'familyMember_title': 'Thành viên trong gia đình',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

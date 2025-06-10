@@ -25,7 +25,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return UtilWidget.baseBottomSheet(
-      title: 'Chọn bệnh viện',
+      title: LocaleKeys.declareInfo_selectHospital.tr,
       body: Column(
         children: [
           Expanded(
@@ -74,10 +74,10 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
     return UtilWidget.buildTextInput(
       height: AppDimens.sizeDialogNotiIcon,
       controller: controller.searchTextCtrl,
-      hintText: 'Nhập tên bệnh viện',
+      hintText: LocaleKeys.declareInfo_inputHospitalName.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
-      borderColor: AppColors.dsGray3,
+      borderColor: AppColors.primaryColor,
       autofocus: false,
       fillColor: AppColors.colorWhite,
       borderRadius: const BorderRadius.all(Radius.circular(25)),
@@ -86,7 +86,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
       },
       prefixIcon: const Icon(
         Icons.search,
-        color: AppColors.mainColors,
+        color: AppColors.primaryColor,
         size: AppDimens.sizeIconMedium,
       ),
     ).paddingSymmetric(vertical: AppDimens.paddingSmall);

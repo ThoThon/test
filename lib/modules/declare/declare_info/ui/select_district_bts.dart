@@ -23,7 +23,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return UtilWidget.baseBottomSheet(
-      title: 'Chọn huyện',
+      title: LocaleKeys.declareInfo_selectDistrict.tr,
       body: Column(
         children: [
           Expanded(
@@ -75,7 +75,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
       hintText: LocaleKeys.declareInfo_inputDistrict.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
-      borderColor: AppColors.dsGray3,
+      borderColor: AppColors.primaryColor,
       autofocus: false,
       fillColor: AppColors.colorWhite,
       borderRadius: const BorderRadius.all(Radius.circular(25)),
@@ -84,7 +84,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
       },
       prefixIcon: const Icon(
         Icons.search,
-        color: AppColors.mainColors,
+        color: AppColors.primaryColor,
         size: AppDimens.sizeIconMedium,
       ),
     ).paddingSymmetric(vertical: AppDimens.paddingSmall);
