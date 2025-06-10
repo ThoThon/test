@@ -26,7 +26,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return UtilWidget.baseBottomSheet(
-      title: 'Chọn xã',
+      title: LocaleKeys.declareInfo_selectWard.tr,
       body: Column(
         children: [
           Expanded(
@@ -78,7 +78,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
       hintText: LocaleKeys.declareInfo_inputWard.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
-      borderColor: AppColors.dsGray3,
+      borderColor: AppColors.primaryColor,
       autofocus: false,
       fillColor: AppColors.colorWhite,
       borderRadius: const BorderRadius.all(Radius.circular(25)),
@@ -87,7 +87,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
       },
       prefixIcon: const Icon(
         Icons.search,
-        color: AppColors.mainColors,
+        color: AppColors.primaryColor,
         size: AppDimens.sizeIconMedium,
       ),
     ).paddingSymmetric(vertical: AppDimens.paddingSmall);
