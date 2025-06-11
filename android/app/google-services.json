@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:457157614636:android:0976dbb7853c1458318589",
+        "android_client_info": {
+          "package_name": "com.viettel.ttcntt.vbhxh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcqiSjGVXx312Vym5HJmvlo5_X1u0VUv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:457157614636:android:b3a1a1a668557ac3318589",
         "android_client_info": {
           "package_name": "com.viettel.vbhxh"

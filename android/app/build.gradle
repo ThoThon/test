@@ -33,7 +33,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     compileSdkVersion 35
-    namespace "com.viettel.vbhxh"
+    namespace "com.viettel.ttcntt.vbhxh"
     lintOptions {
         disable 'InvalidPackage'
     }
@@ -48,7 +48,7 @@ android {
         jvmTarget = "17"
     }
     defaultConfig {
-        applicationId "com.viettel.vbhxh"
+        applicationId "com.viettel.ttcntt.vbhxh"
         minSdkVersion 24
         targetSdkVersion 35
         versionCode 15
