@@ -40,7 +40,10 @@ enum AppRoutes {
   profile,
 
   //Thông báo
-  notification;
+  notification,
+
+  //Đăng ký dịch vụ
+  registerService;
 
   String get path {
     return '/vbhxh_$name';

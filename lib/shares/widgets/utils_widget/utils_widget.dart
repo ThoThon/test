@@ -180,6 +180,7 @@ class UtilWidget {
     VoidCallback? onPressed,
     double? width,
     double? height,
+    double? borderRadius,
   }) {
     return SizedBox(
       width: width,
@@ -188,7 +189,8 @@ class UtilWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppDimens.radius4),
+            borderRadius:
+                BorderRadius.circular(borderRadius ?? AppDimens.radius4),
           ),
         ),
         onPressed: onPressed,

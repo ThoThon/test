@@ -612,6 +612,34 @@ class LocaleKeys {
   static const notification_hourBefore = 'notification_hourBefore';
   static const notification_minuteBefore = 'notification_minuteBefore';
   static const notification_secondBefore = 'notification_secondBefore';
+  static const registerService_registerService =
+      'registerService_registerService';
+  static const registerService_unitInfo = 'registerService_unitInfo';
+  static const registerService_taxCode = 'registerService_taxCode';
+  static const registerService_unitCode = 'registerService_unitCode';
+  static const registerService_unitName = 'registerService_unitName';
+  static const registerService_manageAgencyName =
+      'registerService_manageAgencyName';
+  static const registerService_manageAgencyCode =
+      'registerService_manageAgencyCode';
+  static const registerService_signatureInfo = 'registerService_signatureInfo';
+  static const registerService_inputMySignUsername =
+      'registerService_inputMySignUsername';
+  static const registerService_subjectNameCert =
+      'registerService_subjectNameCert';
+  static const registerService_organizationNameOfCert =
+      'registerService_organizationNameOfCert';
+  static const registerService_certificateNumber =
+      'registerService_certificateNumber';
+  static const registerService_expiryDateFrom =
+      'registerService_expiryDateFrom';
+  static const registerService_expiryDateTo = 'registerService_expiryDateTo';
+  static const registerService_phoneNumber = 'registerService_phoneNumber';
+  static const registerService_email = 'registerService_email';
+  static const registerService_register = 'registerService_register';
+  static const registerService_listCertificate =
+      'registerService_listCertificate';
+  static const registerService_durationDate = 'registerService_durationDate';
 }
 
 class Locales {
@@ -1179,5 +1207,24 @@ class Locales {
     'notification_hourBefore': 'giờ trước',
     'notification_minuteBefore': 'phút trước',
     'notification_secondBefore': 'giây trước',
+    'registerService_registerService': 'Đăng ký dịch vụ',
+    'registerService_unitInfo': 'Thông tin đơn vị',
+    'registerService_taxCode': 'Mã số thuế',
+    'registerService_unitCode': 'Mã đơn vị',
+    'registerService_unitName': 'Tên đơn vị',
+    'registerService_manageAgencyName': 'Tên cơ quan quản lý',
+    'registerService_manageAgencyCode': 'Mã cơ quan quản lý',
+    'registerService_signatureInfo': 'Thông tin chữ ký số',
+    'registerService_inputMySignUsername': 'Nhập tên đăng nhập MySign',
+    'registerService_subjectNameCert': 'Tên chủ thể CTS',
+    'registerService_organizationNameOfCert': 'Tên tổ chức trực thuộc CTS',
+    'registerService_certificateNumber': 'Số CTS',
+    'registerService_expiryDateFrom': 'Thời hạn sử dụng từ',
+    'registerService_expiryDateTo': 'Thời hạn sử dụng đến',
+    'registerService_phoneNumber': 'Số điện thoại',
+    'registerService_email': 'Email',
+    'registerService_register': 'Đăng ký',
+    'registerService_listCertificate': 'Danh sách chứng thư số',
+    'registerService_durationDate': 'Thời hạn',
   };
 }

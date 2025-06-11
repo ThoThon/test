@@ -4,6 +4,7 @@ import '../../../assets.dart';
 import '../../../core/core.src.dart';
 
 enum HomeEnum {
+  // register_service,
   unit_info,
   declare,
   history,
@@ -11,6 +12,8 @@ enum HomeEnum {
 
   String get image {
     switch (this) {
+      // case register_service:
+      //   return Assets.ASSETS_ICONS_HOME_IC_REGISTER_SERVICE_SVG;
       case unit_info:
         return Assets.ASSETS_ICONS_HOME_UNIT_INFO_SVG;
       case declare:
@@ -24,6 +27,8 @@ enum HomeEnum {
 
   String get string {
     switch (this) {
+      // case register_service:
+      //   return 'Đăng ký dịch vụ';
       case unit_info:
         return LocaleKeys.home_unitInfo;
       case declare:
@@ -37,6 +42,8 @@ enum HomeEnum {
 
   String get path {
     switch (this) {
+      // case register_service:
+      //   return AppRoutes.registerService.path;
       case unit_info:
         return AppRoutes.infoUnit.path;
       case declare:
