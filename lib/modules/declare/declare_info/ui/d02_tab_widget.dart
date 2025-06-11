@@ -387,15 +387,6 @@ extension D02TabWidget on DeclareInfoPage {
             inputFormatters: InputFormatterEnum.digitsOnly,
             maxLengthInputForm: 2,
             isReadOnly: isReadOnly,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return null;
-              }
-              if (int.tryParse(value) == null) {
-                return LocaleKeys.declareInfo_inputPCTNN.tr;
-              }
-              return null;
-            },
           ),
         ),
       ),
@@ -410,20 +401,12 @@ extension D02TabWidget on DeclareInfoPage {
         label: LocaleKeys.declareInfo_pcTNVuotKhung.tr,
         buildInputText: BuildInputText(
           InputTextModel(
-              controller: controller.d02State.pcTNVuotKhungTextCtrl,
-              textInputType: TextInputType.number,
-              inputFormatters: InputFormatterEnum.digitsOnly,
-              maxLengthInputForm: 2,
-              isReadOnly: isReadOnly,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return null;
-                }
-                if (int.tryParse(value) == null) {
-                  return LocaleKeys.declareInfo_inputPCTNVuotKhung.tr;
-                }
-                return null;
-              }),
+            controller: controller.d02State.pcTNVuotKhungTextCtrl,
+            textInputType: TextInputType.number,
+            inputFormatters: InputFormatterEnum.digitsOnly,
+            maxLengthInputForm: 2,
+            isReadOnly: isReadOnly,
+          ),
         ),
       ),
     );

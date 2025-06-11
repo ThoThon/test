@@ -145,7 +145,10 @@ class D02State {
 
     positionAllowanceTextCtrl.text =
         staff.phuCapChucVu != null && staff.phuCapChucVu! > 0
-            ? CurrencyUtils.formatCurrencyForeign(staff.phuCapChucVu!)
+            ? CurrencyUtils.formatCurrencyForeign(
+                staff.phuCapChucVu!,
+                lastDecimal: 2,
+              )
             : '';
 
     pcTNVuotKhungTextCtrl.text = staff.phuCapThamNienVuotKhung != null &&
