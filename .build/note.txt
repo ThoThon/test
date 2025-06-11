@@ -1,3 +1,6 @@
+11/06/2025
+- [AppMobile] - Xây dựng giao diện màn Đăng ký dịch vụ - BHW-2371
+
 10/06/2025
 - [AppMobile] - Chỉnh sửa trường tìm kiếm Huyện, Xã - BHW-2363
 - [Appmobile]_Lỗi chỉnh sửa đợt kê khai xem thông tin chi tiết nhân sự chưa back lại màn Danh sách nhân viên đã kê khai - BHW-2367
