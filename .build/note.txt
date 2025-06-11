@@ -1,6 +1,7 @@
 10/06/2025
 - [AppMobile] - Chỉnh sửa trường tìm kiếm Huyện, Xã - BHW-2363
 - [Appmobile]_Lỗi chỉnh sửa đợt kê khai xem thông tin chi tiết nhân sự chưa back lại màn Danh sách nhân viên đã kê khai - BHW-2367
+- [AppMobile] - Xử lý lỗi hiển thị trường Phương án trên màn hình có kích thước nhỏ	- BHW-2364
 
 09/06/2025
 - Đổi bundle id từ vn.viettel.vbhxh sang com.viettel.vbhxh
