@@ -19,8 +19,10 @@ class RegisterServicePage extends BaseGetWidget {
           title: LocaleKeys.registerService_registerService.tr,
         ),
       ),
-      body: SDSSafearea(
-        child: _buildBody(),
+      body: buildLoadingOverlay(
+        () => SDSSafearea(
+          child: _buildBody(),
+        ),
       ),
     );
   }

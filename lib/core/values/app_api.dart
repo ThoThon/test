@@ -64,4 +64,6 @@ class AppApi {
       '/api/Notification/total-unread';
 
   static const String urlDeleteD02Tk1D01 = '/api/HoSoD02/delete-d02tk1-d01';
+  static const String urlGetListCert =
+      '/api/RegisterService/get-list-credentials';
 }

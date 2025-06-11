@@ -569,6 +569,7 @@
     "email": "Email",
     "register": "Đăng ký",
     "listCertificate": "Danh sách chứng thư số",
-    "durationDate": "Thời hạn"
+    "durationDate": "Thời hạn",
+    "cannotSearchUsername":"Không tìm thấy tên đăng nhập"
   }
 }

@@ -640,6 +640,8 @@ class LocaleKeys {
   static const registerService_listCertificate =
       'registerService_listCertificate';
   static const registerService_durationDate = 'registerService_durationDate';
+  static const registerService_cannotSearchUsername =
+      'registerService_cannotSearchUsername';
 }
 
 class Locales {
@@ -1226,5 +1228,6 @@ class Locales {
     'registerService_register': 'Đăng ký',
     'registerService_listCertificate': 'Danh sách chứng thư số',
     'registerService_durationDate': 'Thời hạn',
+    'registerService_cannotSearchUsername': 'Không tìm thấy tên đăng nhập',
   };
 }
