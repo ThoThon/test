@@ -25,13 +25,13 @@ abstract class UnitInfoController extends BaseGetxController {
   // Địa chỉ giao dịch hồ sơ
   final addressTransactionController = TextEditingController();
 
-  // Người đại diện
+  /// Người đại diện - ten_nguoi_ky
   final nameRepresentController = TextEditingController();
 
   // Chức vụ
   final positionController = TextEditingController();
 
-  // Người giao dịch BHXH
+  /// Người giao dịch BHXH - ten_nguoi_ke_khai
   final personTransactionController = TextEditingController();
 
   // Điện thoại liên hệ
