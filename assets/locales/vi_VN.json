@@ -393,13 +393,13 @@
     "fromDateCannotAfterToDate": "Từ tháng/năm không được lớn hơn Đến tháng/năm",
     "toDateInvalid": "Đến tháng/năm không hợp lệ",
     "toDateCannotBeforFromDate": "Đến tháng/năm không được nhỏ hơn Từ tháng/năm",
-    "selectProvince":"Chọn Tỉnh/Thành phố",
-    "selectDistrict":"Chọn Quận/Huyện",
-    "selectWard":"Chọn Phường/Xã",
-    "selectHospital":"Chọn bệnh viện",
-    "inputHospitalName":"Nhập tên bệnh viện",
-    "inputPCTNN":"PC TNN phải là số nguyên",
-    "inputPCTNVuotKhung":"PC TN vượt khung phải là số nguyên"
+    "selectProvince": "Chọn Tỉnh/Thành phố",
+    "selectDistrict": "Chọn Quận/Huyện",
+    "selectWard": "Chọn Phường/Xã",
+    "selectHospital": "Chọn bệnh viện",
+    "inputHospitalName": "Nhập tên bệnh viện",
+    "inputPCTNN": "PC TNN phải là số nguyên",
+    "inputPCTNVuotKhung": "PC TN vượt khung phải là số nguyên"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",
@@ -549,5 +549,26 @@
     "hourBefore": "giờ trước",
     "minuteBefore": "phút trước",
     "secondBefore": "giây trước"
+  },
+  "registerService": {
+    "registerService": "Đăng ký dịch vụ",
+    "unitInfo": "Thông tin đơn vị",
+    "taxCode": "Mã số thuế",
+    "unitCode": "Mã đơn vị",
+    "unitName": "Tên đơn vị",
+    "manageAgencyName": "Tên cơ quan quản lý",
+    "manageAgencyCode": "Mã cơ quan quản lý",
+    "signatureInfo": "Thông tin chữ ký số",
+    "inputMySignUsername": "Nhập tên đăng nhập MySign",
+    "subjectNameCert": "Tên chủ thể CTS",
+    "organizationNameOfCert": "Tên tổ chức trực thuộc CTS",
+    "certificateNumber": "Số CTS",
+    "expiryDateFrom": "Thời hạn sử dụng từ",
+    "expiryDateTo": "Thời hạn sử dụng đến",
+    "phoneNumber": "Số điện thoại",
+    "email": "Email",
+    "register": "Đăng ký",
+    "listCertificate": "Danh sách chứng thư số",
+    "durationDate": "Thời hạn"
   }
 }
