@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAcqiSjGVXx312Vym5HJmvlo5_X1u0VUv8',
-    appId: '1:457157614636:android:b3a1a1a668557ac3318589',
+    appId: '1:457157614636:android:0976dbb7853c1458318589',
     messagingSenderId: '457157614636',
     projectId: 'vbhxh-viettel',
     storageBucket: 'vbhxh-viettel.firebasestorage.app',

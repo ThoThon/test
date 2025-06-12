@@ -1,4 +1,5 @@
 11/06/2025
+- Fix map nhầm dữ liệu thông tin đơn vị
 - [AppMobile] - Xây dựng giao diện màn Đăng ký dịch vụ - BHW-2371
 - [AppMobile] - Bổ sung giao diện màn Danh sách chứng từ số - BHW-2372
 

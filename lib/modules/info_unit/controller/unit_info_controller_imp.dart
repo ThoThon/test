@@ -38,9 +38,9 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     socialAgencyCodeCtrl.text = accountInfo?.maCoQuanQuanLy ?? '';
     addressRegisterController.text = accountInfo?.diaChiDk ?? '';
     addressTransactionController.text = accountInfo?.diaChi ?? '';
-    nameRepresentController.text = accountInfo?.tenNguoiKeKhai ?? '';
+    nameRepresentController.text = accountInfo?.tenNguoiKy ?? '';
     positionController.text = accountInfo?.jobTitle ?? '';
-    personTransactionController.text = accountInfo?.tenNguoiKy ?? '';
+    personTransactionController.text = accountInfo?.tenNguoiKeKhai ?? '';
     phoneContactController.text = accountInfo?.telReceiver ?? '';
     emailContactController.text = accountInfo?.mailLienLac ?? '';
     basicSalaryController.text = CurrencyUtils.formatCurrencyForeign(
@@ -98,11 +98,11 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       diaChiDangKy: addressRegisterController.text,
       diaChi: addressTransactionController.text,
       mailLienLac: emailContactController.text,
-      tenNguoiKy: personTransactionController.text,
+      tenNguoiKy: nameRepresentController.text,
       telReceiver: phoneContactController.text,
       jobTitle: positionController.text,
       loaiDoiTuong: accountInfo?.loaiDoiTuong ?? "",
-      tenNguoiKeKhai: nameRepresentController.text,
+      tenNguoiKeKhai: personTransactionController.text,
       luongCoSo: int.parse(basicSalaryController.text.replaceAll('.', '')),
       phuongThucDong: selectedMethod.value!.month,
       ptNhanKq: selectedReceive.value!.receive.tr,
