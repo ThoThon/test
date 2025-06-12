@@ -13,7 +13,6 @@ class RegisterServiceRepository extends BaseRepository {
         "userId": userId,
       },
     );
-    logger.d(response);
     return BaseResponseList<CertificateModel>.fromJson(
       response,
       (json) => CertificateModel.fromJson(json),

@@ -8,7 +8,7 @@ class RegisterServiceController extends BaseGetxController {
   final usernameMySignCtrl = TextEditingController();
   final listCert = <CertificateModel>[].obs;
 
-  final certificate = Rxn<CertificateModel>(null);
+  final certificate = Rxn<CertificateModel>();
 
   late final _registerServiceRepository = RegisterServiceRepository(this);
 
@@ -20,16 +20,7 @@ class RegisterServiceController extends BaseGetxController {
       final response =
           await _registerServiceRepository.getListCert(usernameMySignCtrl.text);
       if (response.isSuccess) {
-        listCert.addAll(response.result);
-        hideLoadingOverlay();
-        final result = await Get.bottomSheet(
-          SelectCertificateBts(
-            listCert: listCert,
-          ),
-        );
-        if (result != null) {
-          certificate.value = result;
-        }
+        listCert.value = response.result;
       } else {
         showSnackBar(LocaleKeys.registerService_cannotSearchUsername.tr);
       }
@@ -37,6 +28,20 @@ class RegisterServiceController extends BaseGetxController {
       logger.d(e);
     } finally {
       hideLoadingOverlay();
+    }
+  }
+
+  Future<void> selectCertificate() async {
+    await fetchListCert();
+    if (listCert.isNotEmpty) {
+      final result = await Get.bottomSheet(
+        SelectCertificateBts(
+          listCert: listCert,
+        ),
+      );
+      if (result != null) {
+        certificate.value = result;
+      }
     }
   }
 }
