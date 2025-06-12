@@ -1,25 +1,25 @@
 import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
 
 class SaveXmlResult {
-  final String? d02PreviewPath;
-  final List<Tk1PreviewPath>? tk1PreviewPaths;
-  final String? d01PreviewPath;
+  final bool hasD01;
+  final bool hasD02;
+  final List<Tk1PreviewPath>? tk1s;
   final String? attachPreviewPath;
 
   const SaveXmlResult({
-    this.d02PreviewPath,
-    this.tk1PreviewPaths,
-    this.d01PreviewPath,
+    required this.hasD01,
+    required this.hasD02,
+    this.tk1s,
     this.attachPreviewPath,
   });
 
   factory SaveXmlResult.fromJson(Map<String, dynamic> json) {
     return SaveXmlResult(
-      d02PreviewPath: json['d02PreviewPath'],
-      tk1PreviewPaths: (json['tK1PreviewPath'] as List<dynamic>?)
+      hasD01: json['hasD01'] ?? false,
+      hasD02: json['hasD02'] ?? false,
+      tk1s: (json['tK1s'] as List<dynamic>?)
           ?.map((e) => Tk1PreviewPath.fromJson(e as Map<String, dynamic>))
           .toList(),
-      d01PreviewPath: json['d01PreviewPath'],
       attachPreviewPath: json['attachPreviewPath'],
     );
   }

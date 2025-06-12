@@ -51,6 +51,7 @@ class AppApi {
 
   static const String urlSaveXml = '/api/HoSoD02/save-xml';
   static const String urlSignDocument = '/api/Document/sign-ho-so';
+  static const String urlGetPreviewPdf = '/api/HoSoD02/preview-pdf';
   static const String urlGetStaffListSelect = '/api/Categories/get-list-staff';
   static const String urlGetD02Detail = '/api/HoSoD02/get-d02-detail';
   static const String urlDeleteMember = '/api/HoSoD02/delete-thanhvien';
