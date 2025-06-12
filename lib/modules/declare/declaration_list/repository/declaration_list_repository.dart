@@ -46,6 +46,14 @@ class DeclarationListRepository extends BaseRepository {
       // Có thể việc gen pdf ở BE tốn thời gian, nên cần tăng thời gian timeout
       timeOut: const Duration(minutes: 2),
     );
-    return BaseResponse.fromJson(response);
+
+    final result = BaseResponse.fromJson(response);
+
+    // Lưu URL vào cache
+    if (result.isSuccess && result.result is String) {
+      _cachedPdfUrls[request] = result.result;
+    }
+
+    return result;
   }
 }
