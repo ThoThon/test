@@ -650,6 +650,8 @@ class LocaleKeys {
       'registerService_certificateNotFound';
   static const registerService_usernameMySignNotFound =
       'registerService_usernameMySignNotFound';
+  static const registerService_userNameMySignCannotEmpty =
+      'registerService_userNameMySignCannotEmpty';
 }
 
 class Locales {
@@ -1246,5 +1248,7 @@ class Locales {
     'registerService_certificateNotFound': 'Không tìm thấy chứng thư số',
     'registerService_usernameMySignNotFound':
         'Không tìm thấy tên đăng nhập MySign',
+    'registerService_userNameMySignCannotEmpty':
+        'Nhập tên đăng nhập My Sign để lấy thông tin CTS',
   };
 }

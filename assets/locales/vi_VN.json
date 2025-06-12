@@ -576,6 +576,7 @@
     "durationDate": "Thời hạn",
     "cannotSearchUsername": "Không tìm thấy tên đăng nhập",
     "certificateNotFound": "Không tìm thấy chứng thư số",
-    "usernameMySignNotFound": "Không tìm thấy tên đăng nhập MySign"
+    "usernameMySignNotFound": "Không tìm thấy tên đăng nhập MySign",
+    "userNameMySignCannotEmpty":"Nhập tên đăng nhập My Sign để lấy thông tin CTS"
   }
 }
