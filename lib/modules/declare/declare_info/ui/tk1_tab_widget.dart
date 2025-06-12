@@ -206,7 +206,6 @@ extension Tk1TabWidget on DeclareInfoPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.tk1State.birthAddressTextCtrl,
-          isValidate: true,
           maxLengthInputForm: 300,
           onChanged: controller.onChangeBirthAddress,
         ),
@@ -343,7 +342,6 @@ extension Tk1TabWidget on DeclareInfoPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.tk1State.addressReceiveTextCtrl,
-          isValidate: true,
           maxLengthInputForm: 300,
           onChanged: controller.onChangeAddressReceive,
         ),
