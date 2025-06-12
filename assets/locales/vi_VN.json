@@ -570,6 +570,8 @@
     "register": "Đăng ký",
     "listCertificate": "Danh sách chứng thư số",
     "durationDate": "Thời hạn",
-    "cannotSearchUsername":"Không tìm thấy tên đăng nhập"
+    "cannotSearchUsername":"Không tìm thấy tên đăng nhập",
+    "certificateNotFound":"Không tìm thấy chứng thư số",
+    "usernameMySignNotFound":"Không tìm thấy tên đăng nhập MySign"
   }
 }

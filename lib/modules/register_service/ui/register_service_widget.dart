@@ -84,9 +84,10 @@ extension RegisterServiceWidget on RegisterServicePage {
 
             // Tên tổ chức trực thuộc CTS
             _buildSingleItem(
-                title: LocaleKeys.registerService_organizationNameOfCert.tr,
-                // Phía BE chưa có thuộc tính này, tạm thời fix cứng
-                contenTitle: "Viettel - CA"),
+              title: LocaleKeys.registerService_organizationNameOfCert.tr,
+              // TODO: Phía BE chưa có thuộc tính này, tạm thời fix cứng
+              contenTitle: "Viettel - CA",
+            ),
             sdsSBHeight12,
 
             // Số CTS
@@ -168,10 +169,11 @@ extension RegisterServiceWidget on RegisterServicePage {
                 borderRadius: BorderRadius.circular(AppDimens.radius12),
               ),
               padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimens.defaultPadding), // vừa phải
+                horizontal: AppDimens.defaultPadding,
+              ),
             ),
             onPressed: () {
-              controller.fetchListCert();
+              controller.selectCertificate();
             },
             child: const Icon(
               Icons.send,

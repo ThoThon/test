@@ -12,17 +12,19 @@ class RegisterServiceController extends BaseGetxController {
 
   late final _registerServiceRepository = RegisterServiceRepository(this);
 
+  // userID dùng để test
   // 0105987432_tk3
 
   Future<void> fetchListCert() async {
     try {
       showLoadingOverlay();
+      listCert.clear();
       final response =
           await _registerServiceRepository.getListCert(usernameMySignCtrl.text);
       if (response.isSuccess) {
         listCert.value = response.result;
       } else {
-        showSnackBar(LocaleKeys.registerService_cannotSearchUsername.tr);
+        showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
       }
     } catch (e) {
       logger.d(e);
@@ -42,6 +44,8 @@ class RegisterServiceController extends BaseGetxController {
       if (result != null) {
         certificate.value = result;
       }
+    } else {
+      showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
     }
   }
 }
