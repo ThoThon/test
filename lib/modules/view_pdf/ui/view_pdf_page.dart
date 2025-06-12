@@ -27,7 +27,7 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
               child: Expanded(
                 child: RotatedBox(
                   quarterTurns:
-                      controller.argument.isRotateHorizontall ?? false ? 1 : 0,
+                      controller.argument.isRotateHorizontal ?? false ? 1 : 0,
                   child: SfPdfViewer.network(
                     controller.argument.url,
                     controller: controller.pdfViewerController,

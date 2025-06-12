@@ -1,16 +1,16 @@
 class Tk1PreviewPath {
   final String? hoTen;
-  final String? previewPath;
+  final String? documentRecordId;
 
   const Tk1PreviewPath({
     this.hoTen,
-    this.previewPath,
+    this.documentRecordId,
   });
 
   factory Tk1PreviewPath.fromJson(Map<String, dynamic> json) {
     return Tk1PreviewPath(
       hoTen: json['hoTen'],
-      previewPath: json['previewPath'],
+      documentRecordId: json['documentRecordId'],
     );
   }
 }

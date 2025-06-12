@@ -135,14 +135,6 @@ class StaffListController extends BaseGetxController {
         );
       } else {
         showSnackBar(response.errorMessage);
-
-        Get.toNamed(
-          AppRoutes.declarationList.path,
-          arguments: DeclarationListArgument(
-            declarationPeriodId: declarationPeriodId,
-            saveXmlResult: const SaveXmlResult(),
-          ),
-        );
       }
     } catch (e) {
       logger.e(e);
