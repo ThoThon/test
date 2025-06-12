@@ -2,6 +2,7 @@
 - [Mobile- ký số]- Ký số đăng ký dịch vụ - BHW-2374
 - [api] - Bổ sung giao diện Lấy thông tin đăng ký dịch vụ - BHW-2377
 - [Appmobile]_Bắt Maxlength các trường enable Màn Thông tin đơn vị - BHW-2382
+- [Appmobile]_Thay đổi label màn Thông tin đơn vị - BHW-2385
 
 11/06/2025
 - Fix map nhầm dữ liệu thông tin đơn vị
