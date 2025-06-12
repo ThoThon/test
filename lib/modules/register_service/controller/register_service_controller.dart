@@ -1,7 +1,5 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/modules/register_service/model/certificate_model.dart';
-import 'package:v_bhxh/modules/register_service/repository/repository_src.dart';
-import 'package:v_bhxh/modules/register_service/ui/select_certificate_bts.dart';
+import 'package:v_bhxh/modules/register_service/register_service_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 class RegisterServiceController extends BaseGetxController {
@@ -12,8 +10,16 @@ class RegisterServiceController extends BaseGetxController {
 
   late final _registerServiceRepository = RegisterServiceRepository(this);
 
+  final registerServiceInfo = Rxn<RegisterServiceInfoModel>();
+
   // userID dùng để test
   // 0105987432_tk3
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchRegisterServiceInfo();
+  }
 
   Future<void> fetchListCert() async {
     try {
@@ -44,6 +50,21 @@ class RegisterServiceController extends BaseGetxController {
       }
     } else {
       showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
+    }
+  }
+
+  Future<void> fetchRegisterServiceInfo() async {
+    try {
+      showLoadingOverlay();
+      final response =
+          await _registerServiceRepository.fetchRegisterServiceInfo();
+      if (response.isSuccess && response.result != null) {
+        registerServiceInfo.value = response.result;
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      hideLoadingOverlay();
     }
   }
 }

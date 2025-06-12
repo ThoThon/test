@@ -18,4 +18,16 @@ class RegisterServiceRepository extends BaseRepository {
       (json) => CertificateModel.fromJson(json),
     );
   }
+
+  Future<BaseResponse<RegisterServiceInfoModel>>
+      fetchRegisterServiceInfo() async {
+    final response = await baseCallApi(
+      AppApi.urlFetchRegisterServiceInfo,
+      EnumRequestMethod.get,
+    );
+    return BaseResponse<RegisterServiceInfoModel>.fromJson(
+      response,
+      fromJson: (json) => RegisterServiceInfoModel.fromJson(json),
+    );
+  }
 }
