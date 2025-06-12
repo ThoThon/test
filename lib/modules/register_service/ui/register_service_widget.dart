@@ -34,26 +34,30 @@ extension RegisterServiceWidget on RegisterServicePage {
         // Mã số thuế
         _buildDoubleItem(
           titleLeft: LocaleKeys.registerService_taxCode.tr,
-          contenTitleLeft: '0123456789',
+          contenTitleLeft: controller.registerServiceInfo?.maSoThue,
           titleRight: LocaleKeys.registerService_unitCode.tr,
+          contenTitleRight: controller.registerServiceInfo?.maDonVi,
         ),
         sdsSBHeight12,
 
         // Tên đơn vị
         _buildSingleItem(
           title: LocaleKeys.registerService_unitName.tr,
+          contenTitle: controller.registerServiceInfo?.tenCongTy,
         ),
         sdsSBHeight12,
 
         // Tên cơ quan quản lý
         _buildSingleItem(
           title: LocaleKeys.registerService_manageAgencyName.tr,
+          contenTitle: controller.registerServiceInfo?.tenCQQL,
         ),
         sdsSBHeight12,
 
         // Mã cơ quan quản lý
         _buildSingleItem(
           title: LocaleKeys.registerService_manageAgencyCode.tr,
+          contenTitle: controller.registerServiceInfo?.maCQQL,
         ),
       ],
     );
@@ -109,12 +113,14 @@ extension RegisterServiceWidget on RegisterServicePage {
             // Số điện thoại
             _buildSingleItem(
               title: LocaleKeys.registerService_phoneNumber.tr,
+              contenTitle: controller.registerServiceInfo?.dienThoai,
             ),
             sdsSBHeight12,
 
             // Email
             _buildSingleItem(
               title: LocaleKeys.registerService_email.tr,
+              contenTitle: controller.registerServiceInfo?.email,
             ),
           ],
         );
