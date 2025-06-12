@@ -125,12 +125,12 @@ extension UnitInfoWidget on UnitInfoPage {
       _buildInputItemEdit(
         controller: controller.addressRegisterController,
         label: LocaleKeys.unitInfo_addressRegister.tr,
-        maxLengthInputForm: 300,
+        maxLengthInputForm: 255,
       ),
       _buildInputItemEdit(
         controller: controller.addressTransactionController,
         label: LocaleKeys.unitInfo_addressTransaction.tr,
-        maxLengthInputForm: 300,
+        maxLengthInputForm: 255,
       ),
     ];
   }
