@@ -25,7 +25,6 @@ class RegisterServiceRepository extends BaseRepository {
       AppApi.urlFetchRegisterServiceInfo,
       EnumRequestMethod.get,
     );
-    logger.d(response);
     return BaseResponse<RegisterServiceInfoModel>.fromJson(
       response,
       fromJson: (json) => RegisterServiceInfoModel.fromJson(json),
