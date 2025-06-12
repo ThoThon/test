@@ -6,7 +6,7 @@ extension HistoryWidget on HistoryPage {
       child: Column(
         children: [
           _buildSearchAndFilter(),
-          _buildDatePicker(),
+          // _buildDatePicker(),
           _buildViewListHistory(),
         ],
       ).paddingSymmetric(
@@ -165,27 +165,27 @@ extension HistoryWidget on HistoryPage {
     );
   }
 
-  Widget _buildDatePicker() {
-    return Obx(
-      () {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SDSBuildText(
-              '${LocaleKeys.declarationPeriod_month.tr} ${convertDateToString(controller.selectedPeriodDate.value, PATTERN_12)}',
-              style: AppTextStyle.font16Bo,
-            ),
-            UtilWidget.buildSolidButtonBack(
-              title: LocaleKeys.declarationPeriod_selectMonth.tr,
-              onPressed: () {
-                controller.pickPeriodDate();
-              },
-            ),
-          ],
-        );
-      },
-    ).paddingSymmetric(vertical: AppDimens.paddingSmall);
-  }
+  // Widget _buildDatePicker() {
+  //   return Obx(
+  //     () {
+  //       return Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //           SDSBuildText(
+  //             '${LocaleKeys.declarationPeriod_month.tr} ${convertDateToString(controller.selectedPeriodDate.value, PATTERN_12)}',
+  //             style: AppTextStyle.font16Bo,
+  //           ),
+  //           UtilWidget.buildSolidButtonBack(
+  //             title: LocaleKeys.declarationPeriod_selectMonth.tr,
+  //             onPressed: () {
+  //               controller.pickPeriodDate();
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   ).paddingSymmetric(vertical: AppDimens.paddingSmall);
+  // }
 
   Widget _buildFilterButton() {
     return IconButton(
