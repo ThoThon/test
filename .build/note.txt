@@ -1,3 +1,7 @@
+12/06/2025
+- [Mobile- ký số]- Ký số đăng ký dịch vụ - BHW-2374
+- [api] - Bổ sung giao diện Lấy thông tin đăng ký dịch vụ - BHW-2377
+
 11/06/2025
 - Fix map nhầm dữ liệu thông tin đơn vị
 - [AppMobile] - Xây dựng giao diện màn Đăng ký dịch vụ - BHW-2371

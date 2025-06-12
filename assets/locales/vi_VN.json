@@ -35,7 +35,11 @@
     "isLogout": "Bạn có chắc chắn muốn đăng xuất?",
     "empty": "Trống",
     "cancel": "Hủy",
-    "confirm": "Đồng ý"
+    "confirm": "Đồng ý",
+    "successTransfer": "Chuyển ký thành công !",
+    "fileSendToSignature": "Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập mysign để tiến hành phê duyệt.",
+    "submitDeclareToSuccess": "Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.",
+    "resend":"Gửi lại"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -570,8 +574,9 @@
     "register": "Đăng ký",
     "listCertificate": "Danh sách chứng thư số",
     "durationDate": "Thời hạn",
-    "cannotSearchUsername":"Không tìm thấy tên đăng nhập",
-    "certificateNotFound":"Không tìm thấy chứng thư số",
-    "usernameMySignNotFound":"Không tìm thấy tên đăng nhập MySign"
+    "cannotSearchUsername": "Không tìm thấy tên đăng nhập",
+    "certificateNotFound": "Không tìm thấy chứng thư số",
+    "usernameMySignNotFound": "Không tìm thấy tên đăng nhập MySign",
+    "userNameMySignCannotEmpty":"Nhập tên đăng nhập My Sign để lấy thông tin CTS"
   }
 }

@@ -69,4 +69,6 @@ class AppApi {
 
   static const String urlFetchRegisterServiceInfo =
       '/api/RegisterService/get-registration-info';
+  static const String urlRegisterNewService =
+      '/api/RegisterService/register-new-service';
 }

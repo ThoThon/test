@@ -13,14 +13,14 @@ class RegisterServicePage extends BaseGetWidget {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: BaseAppBarTitle(
-          title: LocaleKeys.registerService_registerService.tr,
+    return buildLoadingOverlay(
+      () => Scaffold(
+        appBar: BaseAppBar(
+          title: BaseAppBarTitle(
+            title: LocaleKeys.registerService_registerService.tr,
+          ),
         ),
-      ),
-      body: buildLoadingOverlay(
-        () => SDSSafearea(
+        body: SDSSafearea(
           child: _buildBody(),
         ),
       ),

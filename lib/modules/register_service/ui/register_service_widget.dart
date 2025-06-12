@@ -160,40 +160,28 @@ extension RegisterServiceWidget on RegisterServicePage {
   }
 
   Widget _buildInputUsernameMySign() {
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment:
-            CrossAxisAlignment.stretch, // kéo giãn theo chiều dọc
-        children: [
-          Expanded(
-            child: BuildInputText(
-              InputTextModel(
-                controller: controller.usernameMySignCtrl,
-                hintText: LocaleKeys.registerService_inputMySignUsername.tr,
-              ),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: BuildInputText(
+            InputTextModel(
+              controller: controller.usernameMySignCtrl,
+              autovalidateMode: AutovalidateMode.always,
+              hintText: LocaleKeys.registerService_inputMySignUsername.tr,
+              validator: (value) {
+                if (value.isNullOrEmpty) {
+                  return LocaleKeys
+                      .registerService_userNameMySignCannotEmpty.tr;
+                }
+                return null;
+              },
             ),
           ),
-          sdsSBWidth8,
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(AppDimens.radius12),
-              ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppDimens.defaultPadding,
-              ),
-            ),
-            onPressed: () {
-              controller.selectCertificate();
-            },
-            child: const Icon(
-              Icons.send,
-              color: AppColors.basicWhite,
-            ),
-          ),
-        ],
-      ),
+        ),
+        sdsSBWidth8,
+        _buildButtonGetListCert(),
+      ],
     );
   }
 
@@ -244,11 +232,46 @@ extension RegisterServiceWidget on RegisterServicePage {
     );
   }
 
+  Widget _buildButtonGetListCert() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppDimens.radius12),
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppDimens.defaultPadding,
+            ),
+          ),
+          onPressed: () {
+            controller.selectCertificate();
+          },
+          child: const Icon(
+            Icons.send,
+            color: AppColors.basicWhite,
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildButtonRegister() {
-    return UtilWidget.buildSolidButton(
-      title: LocaleKeys.registerService_register.tr,
-      borderRadius: AppDimens.radius30,
-      onPressed: () {},
+    return Obx(
+      () {
+        return UtilWidget.buildSolidButton(
+          title: LocaleKeys.registerService_register.tr,
+          borderRadius: AppDimens.radius30,
+          onPressed: controller.certificate.value?.cerdentialID != null
+              ? () {
+                  controller.registerNewService();
+                }
+              : null,
+        );
+      },
     );
   }
 }
