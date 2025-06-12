@@ -23,8 +23,6 @@ class RegisterServiceController extends BaseGetxController {
           await _registerServiceRepository.getListCert(usernameMySignCtrl.text);
       if (response.isSuccess) {
         listCert.value = response.result;
-      } else {
-        showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
       }
     } catch (e) {
       logger.d(e);
