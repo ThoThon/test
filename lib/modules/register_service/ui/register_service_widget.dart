@@ -60,54 +60,65 @@ extension RegisterServiceWidget on RegisterServicePage {
   }
 
   Widget _buildCardSignatureInfo() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SDSBuildText(
-          LocaleKeys.registerService_signatureInfo.tr,
-          style: AppTextStyle.font16Bo,
-        ),
-        sdsSBHeight12,
+    return Obx(
+      () {
+        final cert = controller.certificate.value;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SDSBuildText(
+              LocaleKeys.registerService_signatureInfo.tr,
+              style: AppTextStyle.font16Bo,
+            ),
+            sdsSBHeight12,
 
-        // Ô input nhập username My Sign
-        _buildInputUsernameMySign(),
-        sdsSBHeight12,
-        // Tên chủ thể CTS
-        _buildSingleItem(
-          title: LocaleKeys.registerService_subjectNameCert.tr,
-        ),
-        sdsSBHeight12,
+            // Ô input nhập username My Sign
+            _buildInputUsernameMySign(),
+            sdsSBHeight12,
+            // Tên chủ thể CTS
+            _buildSingleItem(
+              title: LocaleKeys.registerService_subjectNameCert.tr,
+              contenTitle: cert?.name,
+            ),
+            sdsSBHeight12,
 
-        // Tên tổ chức trực thuộc CTS
-        _buildSingleItem(
-          title: LocaleKeys.registerService_organizationNameOfCert.tr,
-        ),
-        sdsSBHeight12,
+            // Tên tổ chức trực thuộc CTS
+            _buildSingleItem(
+              title: LocaleKeys.registerService_organizationNameOfCert.tr,
+              // TODO: Phía BE chưa có thuộc tính này, tạm thời fix cứng
+              contenTitle: "Viettel - CA",
+            ),
+            sdsSBHeight12,
 
-        // Số CTS
-        _buildSingleItem(
-          title: LocaleKeys.registerService_certificateNumber.tr,
-        ),
-        sdsSBHeight12,
+            // Số CTS
+            _buildSingleItem(
+              title: LocaleKeys.registerService_certificateNumber.tr,
+              contenTitle: cert?.serialNumber,
+            ),
+            sdsSBHeight12,
 
-        // "Thời hạn sử dụng từ" và "Thời hạn sử dụng đến"
-        _buildDoubleItem(
-          titleLeft: LocaleKeys.registerService_expiryDateFrom.tr,
-          titleRight: LocaleKeys.registerService_expiryDateTo.tr,
-        ),
-        sdsSBHeight12,
+            // "Thời hạn sử dụng từ" và "Thời hạn sử dụng đến"
+            _buildDoubleItem(
+              titleLeft: LocaleKeys.registerService_expiryDateFrom.tr,
+              contenTitleLeft: cert?.validFrom,
+              titleRight: LocaleKeys.registerService_expiryDateTo.tr,
+              contenTitleRight: cert?.validTo,
+            ),
+            sdsSBHeight12,
 
-        // Số điện thoại
-        _buildSingleItem(
-          title: LocaleKeys.registerService_phoneNumber.tr,
-        ),
-        sdsSBHeight12,
+            // Số điện thoại
+            _buildSingleItem(
+              title: LocaleKeys.registerService_phoneNumber.tr,
+            ),
+            sdsSBHeight12,
 
-        // Email
-        _buildSingleItem(
-          title: LocaleKeys.registerService_email.tr,
-        ),
-      ],
+            // Email
+            _buildSingleItem(
+              title: LocaleKeys.registerService_email.tr,
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -157,9 +168,13 @@ extension RegisterServiceWidget on RegisterServicePage {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppDimens.radius12),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding), // vừa phải
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.defaultPadding,
+              ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              controller.selectCertificate();
+            },
             child: const Icon(
               Icons.send,
               color: AppColors.basicWhite,
