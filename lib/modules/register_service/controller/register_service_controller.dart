@@ -10,7 +10,7 @@ class RegisterServiceController extends BaseGetxController {
 
   late final _registerServiceRepository = RegisterServiceRepository(this);
 
-  RegisterServiceInfoModel? registerServiceInfo;
+  final registerServiceInfo = Rxn<RegisterServiceInfoModel>();
 
   // userID dùng để test
   // 0105987432_tk3
@@ -59,7 +59,7 @@ class RegisterServiceController extends BaseGetxController {
       final response =
           await _registerServiceRepository.fetchRegisterServiceInfo();
       if (response.isSuccess && response.result != null) {
-        registerServiceInfo = response.result;
+        registerServiceInfo.value = response.result;
       }
     } catch (e) {
       logger.d(e);
