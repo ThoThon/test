@@ -28,6 +28,9 @@ class DeclareInfoController extends BaseGetxController {
   final autovalidateMode = Rx<AutovalidateMode?>(null);
   SendNfcRequestModel sendNfcRequestModel = SendNfcRequestModel();
 
+  final declarationPeriodController =
+      Get.findOrNull<DeclarationPeriodController>();
+
   @override
   void onReady() {
     super.onReady();
@@ -309,9 +312,12 @@ class DeclareInfoController extends BaseGetxController {
           typeAction: AppConst.actionSuccess,
         );
 
-        Get.back(
-          result: argument.declarationPeriodId,
-        );
+        Get.offNamed(
+          AppRoutes.staffList.path,
+          arguments: argument.declarationPeriodId,
+        )?.then((value) {
+          declarationPeriodController?.getDeclarationPeriods();
+        });
       } else {
         showSnackBar(response.errorMessage);
       }
