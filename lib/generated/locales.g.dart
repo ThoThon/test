@@ -45,6 +45,10 @@ class LocaleKeys {
   static const dialog_empty = 'dialog_empty';
   static const dialog_cancel = 'dialog_cancel';
   static const dialog_confirm = 'dialog_confirm';
+  static const dialog_successTransfer = 'dialog_successTransfer';
+  static const dialog_fileSendToSignature = 'dialog_fileSendToSignature';
+  static const dialog_submitDeclareToSuccess = 'dialog_submitDeclareToSuccess';
+  static const dialog_resend = 'dialog_resend';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -715,6 +719,12 @@ class Locales {
     'dialog_empty': 'Trống',
     'dialog_cancel': 'Hủy',
     'dialog_confirm': 'Đồng ý',
+    'dialog_successTransfer': 'Chuyển ký thành công !',
+    'dialog_fileSendToSignature':
+        'Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập mysign để tiến hành phê duyệt.',
+    'dialog_submitDeclareToSuccess':
+        'Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.',
+    'dialog_resend': 'Gửi lại',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',

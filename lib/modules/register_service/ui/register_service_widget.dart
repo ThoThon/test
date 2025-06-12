@@ -22,44 +22,49 @@ extension RegisterServiceWidget on RegisterServicePage {
   }
 
   Widget _buildCardUnitInfo() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SDSBuildText(
-          LocaleKeys.registerService_unitInfo.tr,
-          style: AppTextStyle.font16Bo,
-        ),
-        sdsSBHeight12,
+    return Obx(
+      () {
+        final registerInfo = controller.registerServiceInfo.value;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SDSBuildText(
+              LocaleKeys.registerService_unitInfo.tr,
+              style: AppTextStyle.font16Bo,
+            ),
+            sdsSBHeight12,
 
-        // Mã số thuế
-        _buildDoubleItem(
-          titleLeft: LocaleKeys.registerService_taxCode.tr,
-          contenTitleLeft: controller.registerServiceInfo?.maSoThue,
-          titleRight: LocaleKeys.registerService_unitCode.tr,
-          contenTitleRight: controller.registerServiceInfo?.maDonVi,
-        ),
-        sdsSBHeight12,
+            // Mã số thuế
+            _buildDoubleItem(
+              titleLeft: LocaleKeys.registerService_taxCode.tr,
+              contenTitleLeft: registerInfo?.maSoThue,
+              titleRight: LocaleKeys.registerService_unitCode.tr,
+              contenTitleRight: registerInfo?.maDonVi,
+            ),
+            sdsSBHeight12,
 
-        // Tên đơn vị
-        _buildSingleItem(
-          title: LocaleKeys.registerService_unitName.tr,
-          contenTitle: controller.registerServiceInfo?.tenCongTy,
-        ),
-        sdsSBHeight12,
+            // Tên đơn vị
+            _buildSingleItem(
+              title: LocaleKeys.registerService_unitName.tr,
+              contenTitle: registerInfo?.tenCongTy,
+            ),
+            sdsSBHeight12,
 
-        // Tên cơ quan quản lý
-        _buildSingleItem(
-          title: LocaleKeys.registerService_manageAgencyName.tr,
-          contenTitle: controller.registerServiceInfo?.tenCQQL,
-        ),
-        sdsSBHeight12,
+            // Tên cơ quan quản lý
+            _buildSingleItem(
+              title: LocaleKeys.registerService_manageAgencyName.tr,
+              contenTitle: registerInfo?.tenCQQL,
+            ),
+            sdsSBHeight12,
 
-        // Mã cơ quan quản lý
-        _buildSingleItem(
-          title: LocaleKeys.registerService_manageAgencyCode.tr,
-          contenTitle: controller.registerServiceInfo?.maCQQL,
-        ),
-      ],
+            // Mã cơ quan quản lý
+            _buildSingleItem(
+              title: LocaleKeys.registerService_manageAgencyCode.tr,
+              contenTitle: registerInfo?.maCQQL,
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -67,6 +72,7 @@ extension RegisterServiceWidget on RegisterServicePage {
     return Obx(
       () {
         final cert = controller.certificate.value;
+        final registerInfo = controller.registerServiceInfo.value;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -113,14 +119,14 @@ extension RegisterServiceWidget on RegisterServicePage {
             // Số điện thoại
             _buildSingleItem(
               title: LocaleKeys.registerService_phoneNumber.tr,
-              contenTitle: controller.registerServiceInfo?.dienThoai,
+              contenTitle: registerInfo?.dienThoai,
             ),
             sdsSBHeight12,
 
             // Email
             _buildSingleItem(
               title: LocaleKeys.registerService_email.tr,
-              contenTitle: controller.registerServiceInfo?.email,
+              contenTitle: registerInfo?.email,
             ),
           ],
         );
@@ -239,10 +245,18 @@ extension RegisterServiceWidget on RegisterServicePage {
   }
 
   Widget _buildButtonRegister() {
-    return UtilWidget.buildSolidButton(
-      title: LocaleKeys.registerService_register.tr,
-      borderRadius: AppDimens.radius30,
-      onPressed: () {},
+    return Obx(
+      () {
+        return UtilWidget.buildSolidButton(
+          title: LocaleKeys.registerService_register.tr,
+          borderRadius: AppDimens.radius30,
+          onPressed: controller.certificate.value?.cerdentialID != null
+              ? () {
+                  controller.registerNewService();
+                }
+              : null,
+        );
+      },
     );
   }
 }
