@@ -12,7 +12,6 @@ class UpdateAccountInfoRequest {
   final int luongCoSo;
   final int phuongThucDong;
   final String ptNhanKq;
-  final int maVung;
 
   UpdateAccountInfoRequest({
     required this.toChucId,
@@ -28,7 +27,6 @@ class UpdateAccountInfoRequest {
     required this.luongCoSo,
     required this.phuongThucDong,
     required this.ptNhanKq,
-    required this.maVung,
   });
 
   Map<String, dynamic> toJson() {
@@ -46,7 +44,6 @@ class UpdateAccountInfoRequest {
       "luong_co_so": luongCoSo,
       "phuong_thuc_dong": phuongThucDong,
       "pt_nhan_kq": ptNhanKq,
-      "ma_vung": maVung,
     };
   }
 }

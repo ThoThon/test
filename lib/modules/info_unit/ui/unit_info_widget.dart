@@ -235,17 +235,6 @@ extension UnitInfoWidget on UnitInfoPage {
         },
       ),
       sdsSBHeight12,
-      UtilWidget.buildDropDownWithLabel<RegionEnum>(
-        label: LocaleKeys.unitInfo_region.tr,
-        textStyle: AppTextStyle.font16Re,
-        items: RegionEnum.values,
-        display: (p0) => p0.title.tr,
-        selectedItem: controller.selectedRegion.value,
-        onChanged: (value) {
-          controller.selectedRegion.value = value;
-        },
-      ),
-      sdsSBHeight12,
       _buildInputItemEdit(
         controller: controller.basicSalaryController,
         label: LocaleKeys.unitInfo_basicSalary.tr,
@@ -272,9 +261,6 @@ extension UnitInfoWidget on UnitInfoPage {
     return [
       _buildText(
         "${LocaleKeys.unitInfo_methodClose.tr}: ${controller.selectedMethod.value?.title.tr ?? ''}",
-      ),
-      _buildText(
-        "${LocaleKeys.unitInfo_region.tr}: ${controller.selectedRegion.value?.title.tr ?? ''}",
       ),
       _buildText(
         "${LocaleKeys.unitInfo_basicSalary.tr}: ${controller.basicSalaryController.text}",
