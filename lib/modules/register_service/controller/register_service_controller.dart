@@ -169,4 +169,20 @@ class RegisterServiceController extends BaseGetxController {
         hasInfo.thoiHanDenNgay != null ||
         hasInfo.soSerialCTS.isNotEmpty;
   }
+
+  bool get isDisableRegisterButton {
+    final cert = certificate.value;
+
+    // Nếu đã đăng ký rồi thì disable luôn
+    if (hasBeenRegister) return true;
+
+    // Nếu chưa có chứng thư số thì cũng disable
+    if (cert == null) return true;
+
+    // Nếu một trong các field bị null hoặc rỗng thì cũng disable
+    return cert.serialNumber.isEmpty ||
+        cert.name.isEmpty ||
+        cert.validFrom.isEmpty ||
+        cert.validTo.isEmpty;
+  }
 }

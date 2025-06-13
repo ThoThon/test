@@ -260,9 +260,11 @@ extension RegisterServiceWidget on RegisterServicePage {
               horizontal: AppDimens.defaultPadding,
             ),
           ),
-          onPressed: () {
-            controller.getListCertificate();
-          },
+          onPressed: controller.hasBeenRegister
+              ? null
+              : () {
+                  controller.getListCertificate();
+                },
           child: const Icon(
             Icons.send,
             color: AppColors.basicWhite,
@@ -278,11 +280,11 @@ extension RegisterServiceWidget on RegisterServicePage {
         return UtilWidget.buildSolidButton(
           title: LocaleKeys.registerService_register.tr,
           borderRadius: AppDimens.radius30,
-          onPressed: controller.certificate.value?.cerdentialID != null
-              ? () {
+          onPressed: controller.isDisableRegisterButton
+              ? null
+              : () {
                   controller.registerNewService();
-                }
-              : null,
+                },
         );
       },
     );

@@ -6,6 +6,7 @@
 - [Appmobile]_Tìm kiếm nhân viên màn D02-LT - BHW-2390
 - [Appmobile]_Tra cứu C12_Mất thông tin dữ liệu khi thoát khỏi màn Tra cứu C12 - BHW-2392
 - [api] - Gọi API trả về các thông tin màn đăng ký dịch vụ - BHW-2377
+- [Appmobile]_Màn Đăng ký dịch vụ_Disable button Đăng ký trường hợp tài khoản đã đăng ký dịch vụ rồi. - BHW-2387
 
 12/06/2025
 - [Mobile- ký số]- Ký số đăng ký dịch vụ - BHW-2374
