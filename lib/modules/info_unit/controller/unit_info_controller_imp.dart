@@ -48,7 +48,6 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       isDot: true,
       maxLengthNum: 17,
     );
-    selectedRegion.value = getRegionByCode(accountInfo?.maVung);
     selectedMethod.value = getPaymenteMethod(accountInfo?.phuongThucDong);
     selectedReceive.value = getReceiveResult(accountInfo?.ptNhanKq);
   }
@@ -106,7 +105,6 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       luongCoSo: int.parse(basicSalaryController.text.replaceAll('.', '')),
       phuongThucDong: selectedMethod.value!.month,
       ptNhanKq: selectedReceive.value!.receive.tr,
-      maVung: selectedRegion.value!.codeRegion,
     );
   }
 
@@ -155,7 +153,6 @@ class UnitInfoControllerImpICare extends UnitInfoController {
 
   bool otherInfoIsNotValid() {
     return selectedMethod.value == null ||
-        selectedRegion.value == null ||
         basicSalaryController.text.trim().isEmpty ||
         selectedReceive.value == null;
   }
