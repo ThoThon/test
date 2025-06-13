@@ -104,6 +104,7 @@ class DeclarationPeriodController extends BaseGetxController {
           AppRoutes.declareInfo.path,
           arguments: DeclareInfoArgument(
             declarationPeriodId: response.result!.id,
+            type: D02TypeEnum.addPeriod,
           ),
         )?.whenComplete(() {
           // Refresh the list of declaration periods after creating a new one

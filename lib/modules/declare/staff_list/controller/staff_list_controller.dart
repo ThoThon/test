@@ -188,6 +188,8 @@ class StaffListController extends BaseGetxController {
       arguments: DeclareInfoArgument(
         declarationPeriodId: declarationPeriodId,
         staffId: staff?.id,
+        // Staff == null là luồng thêm mới nhân viên
+        type: staff == null ? D02TypeEnum.addStaff : D02TypeEnum.updateStaff,
       ),
     );
     if (result != null) {
