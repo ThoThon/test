@@ -7,8 +7,8 @@ class RegisterServiceInfoModel {
   final String tenCQQL;
   final String tenChuTheCTS;
   final String tenToChucCKS;
-  final String thoiHanTuNgay;
-  final String thoiHanDenNgay;
+  final DateTime? thoiHanTuNgay;
+  final DateTime? thoiHanDenNgay;
   final String email;
   final String dienThoai;
   final String soSerialCTS;
@@ -39,8 +39,12 @@ class RegisterServiceInfoModel {
       tenCQQL: json['tenCQQL'] ?? '',
       tenChuTheCTS: json['tenChuTheCTS'] ?? '',
       tenToChucCKS: json['tenToChucCKS'] ?? '',
-      thoiHanTuNgay: json['thoiHanTuNgay'] ?? '',
-      thoiHanDenNgay: json['thoiHanDenNgay'] ?? '',
+      thoiHanTuNgay: json['thoiHanTuNgay'] != null
+          ? DateTime.tryParse(json['thoiHanTuNgay'])
+          : null,
+      thoiHanDenNgay: json['thoiHanDenNgay'] != null
+          ? DateTime.tryParse(json['thoiHanDenNgay'])
+          : null,
       email: json['email'] ?? '',
       dienThoai: json['dienThoai'] ?? '',
       soSerialCTS: json['soSerialCTS'] ?? '',
@@ -57,8 +61,8 @@ class RegisterServiceInfoModel {
       'tenCQQL': tenCQQL,
       'tenChuTheCTS': tenChuTheCTS,
       'tenToChucCKS': tenToChucCKS,
-      'thoiHanTuNgay': thoiHanTuNgay,
-      'thoiHanDenNgay': thoiHanDenNgay,
+      'thoiHanTuNgay': thoiHanTuNgay?.toIso8601String(),
+      'thoiHanDenNgay': thoiHanDenNgay?.toIso8601String(),
       'email': email,
       'dienThoai': dienThoai,
       'soSerialCTS': soSerialCTS,
