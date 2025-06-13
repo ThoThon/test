@@ -278,11 +278,11 @@ extension RegisterServiceWidget on RegisterServicePage {
         return UtilWidget.buildSolidButton(
           title: LocaleKeys.registerService_register.tr,
           borderRadius: AppDimens.radius30,
-          onPressed: controller.certificate.value?.cerdentialID != null
-              ? () {
+          onPressed: controller.disableButton
+              ? null
+              : () {
                   controller.registerNewService();
-                }
-              : null,
+                },
         );
       },
     );
