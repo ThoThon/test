@@ -55,9 +55,6 @@ abstract class UnitInfoController extends BaseGetxController {
 
   late final unitInfoRepository = UnitInfoRepository(this);
 
-  // Vùng
-  Rx<RegionEnum?> selectedRegion = Rx<RegionEnum?>(null);
-
   // Phương thức đóng
   Rx<PaymentMethodEnum?> selectedMethod = Rx<PaymentMethodEnum?>(null);
 

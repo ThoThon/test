@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/core/router/app_route.dart';
 import 'package:v_bhxh/core/values/dimens.dart';
-import 'package:v_bhxh/modules/declare/declaration_list/model/declaration_list_argument.dart';
+import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/repository/declaration_list_repository.dart';
+import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
+import 'package:v_bhxh/shares/function/logger.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog.src.dart';
 
@@ -94,5 +96,43 @@ class DeclarationListController extends BaseGetxController {
       },
       onConfirm: onRetry,
     );
+  }
+
+  Future<void> getPreviewPdf({
+    required PreviewDocumentTypeEnum previewDocumentType,
+    String? documentRecordId,
+    required String title,
+    bool isRotateHorizontal = false,
+  }) async {
+    try {
+      showLoadingOverlay();
+
+      final response = await _repository.getPreviewPdf(
+        request: GetPreviewPdfRequest(
+          declarationPeriodId: argument.declarationPeriodId,
+          documentRecordId: documentRecordId,
+          previewDocumentType: previewDocumentType,
+        ),
+      );
+
+      final url = response.result;
+
+      if (response.isSuccess && url != null) {
+        Get.toNamed(
+          AppRoutes.viewPdf.path,
+          arguments: ViewPdfArgument(
+            url: url,
+            title: title,
+            isRotateHorizontal: isRotateHorizontal,
+          ),
+        );
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 }

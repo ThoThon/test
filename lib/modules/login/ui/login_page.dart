@@ -50,7 +50,7 @@ class LoginPage extends BaseGetWidget<LoginController> {
                               sdsSBHeight8,
                               Row(
                                 children: [
-                                  _buildForgetPassword(),
+                                  // _buildForgetPassword(),
                                   const Spacer(),
                                   controller.isHaveUsername.value
                                       ? _buildChangeAccount()

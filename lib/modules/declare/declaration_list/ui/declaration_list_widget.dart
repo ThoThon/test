@@ -12,33 +12,25 @@ extension DeclarationListWidget on DeclarationListPage {
                 bottom: AppDimens.defaultPadding),
             child: Column(
               children: [
-                if (controller.argument.saveXmlResult.d02PreviewPath != null)
+                if (controller.argument.saveXmlResult.hasD02)
                   _buildDeclarationItem(
                     title: 'Danh sách lao động tham gia BHXH - (Mẫu D02-LT)',
                     onPressed: () {
-                      Get.toNamed(
-                        AppRoutes.viewPdf.path,
-                        arguments: ViewPdfArgument(
-                          url:
-                              controller.argument.saveXmlResult.d02PreviewPath!,
-                          title: 'Danh sách lao động',
-                          isRotateHorizontall: true,
-                        ),
+                      controller.getPreviewPdf(
+                        previewDocumentType: PreviewDocumentTypeEnum.d02,
+                        title: 'Danh sách lao động',
+                        isRotateHorizontal: true,
                       );
                     },
                   ).paddingOnly(bottom: AppDimens.paddingSmall),
                 _buildTk1Preview(),
-                if (controller.argument.saveXmlResult.d01PreviewPath != null)
+                if (controller.argument.saveXmlResult.hasD01)
                   _buildDeclarationItem(
                     title: 'Bảng kê thông tin (Mẫu D01-TS)',
                     onPressed: () {
-                      Get.toNamed(
-                        AppRoutes.viewPdf.path,
-                        arguments: ViewPdfArgument(
-                          url:
-                              controller.argument.saveXmlResult.d01PreviewPath!,
-                          title: 'Tờ khai tham gia',
-                        ),
+                      controller.getPreviewPdf(
+                        previewDocumentType: PreviewDocumentTypeEnum.d01,
+                        title: 'Tờ khai tham gia',
                       );
                     },
                   ).paddingOnly(bottom: AppDimens.paddingSmall),
@@ -86,7 +78,7 @@ extension DeclarationListWidget on DeclarationListPage {
   }
 
   Widget _buildTk1Preview() {
-    final paths = controller.argument.saveXmlResult.tk1PreviewPaths;
+    final paths = controller.argument.saveXmlResult.tk1s;
     if (paths == null || paths.isEmpty) {
       return UtilWidget.shrink;
     }
@@ -127,16 +119,21 @@ extension DeclarationListWidget on DeclarationListPage {
                   UtilWidget.sizedBoxWidth16,
                   TextButton(
                     onPressed: () {
-                      final previewPath = path.previewPath;
-                      if (previewPath != null) {
-                        Get.toNamed(
-                          AppRoutes.viewPdf.path,
-                          arguments: ViewPdfArgument(
-                            url: previewPath,
-                            title: 'Tờ khai tham gia',
-                          ),
-                        );
-                      }
+                      // final previewPath = path.previewPath;
+                      // if (previewPath != null) {
+                      //   Get.toNamed(
+                      //     AppRoutes.viewPdf.path,
+                      //     arguments: ViewPdfArgument(
+                      //       url: previewPath,
+                      //       title: 'Tờ khai tham gia',
+                      //     ),
+                      //   );
+                      // }
+                      controller.getPreviewPdf(
+                        previewDocumentType: PreviewDocumentTypeEnum.tk1,
+                        documentRecordId: path.documentRecordId,
+                        title: 'Tờ khai tham gia',
+                      );
                     },
                     child: SDSBuildText(
                       'Xem',

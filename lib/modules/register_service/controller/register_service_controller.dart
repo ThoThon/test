@@ -43,7 +43,7 @@ class RegisterServiceController extends BaseGetxController {
     }
   }
 
-  Future<void> selectCertificate() async {
+  Future<void> getListCertificate() async {
     await fetchListCert();
     if (listCert.isNotEmpty) {
       final result = await Get.bottomSheet(
@@ -158,5 +158,31 @@ class RegisterServiceController extends BaseGetxController {
       },
       onConfirm: onRetry,
     );
+  }
+
+  bool get hasBeenRegister {
+    final hasInfo = registerServiceInfo.value;
+    if (hasInfo == null) return false;
+    return hasInfo.tenChuTheCTS.isNotEmpty ||
+        hasInfo.tenToChucCKS.isNotEmpty ||
+        hasInfo.thoiHanTuNgay != null ||
+        hasInfo.thoiHanDenNgay != null ||
+        hasInfo.soSerialCTS.isNotEmpty;
+  }
+
+  bool get isDisableRegisterButton {
+    final cert = certificate.value;
+
+    // Nếu đã đăng ký rồi thì disable luôn
+    if (hasBeenRegister) return true;
+
+    // Nếu chưa có chứng thư số thì cũng disable
+    if (cert == null) return true;
+
+    // Nếu một trong các field bị null hoặc rỗng thì cũng disable
+    return cert.serialNumber.isEmpty ||
+        cert.name.isEmpty ||
+        cert.validFrom.isEmpty ||
+        cert.validTo.isEmpty;
   }
 }

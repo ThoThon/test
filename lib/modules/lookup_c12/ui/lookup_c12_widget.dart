@@ -65,7 +65,7 @@ extension LookupC12Widget on LookupC12Page {
                     arguments: ViewPdfArgument(
                       url: file.c12FilePath,
                       title: LocaleKeys.lookupC12_resultDetail.tr,
-                      isRotateHorizontall: false,
+                      isRotateHorizontal: false,
                     ),
                   );
                 }

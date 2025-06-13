@@ -286,7 +286,7 @@ class DeclareInfoController extends BaseGetxController {
       return;
     }
 
-    if (argument.isUpdate) {
+    if (argument.isUpdateStaff) {
       await _updateD02();
     } else {
       await _addD02();
@@ -311,13 +311,18 @@ class DeclareInfoController extends BaseGetxController {
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
         );
-
-        Get.offNamed(
-          AppRoutes.staffList.path,
-          arguments: argument.declarationPeriodId,
-        )?.then((value) {
-          declarationPeriodController?.getDeclarationPeriods();
-        });
+        if (argument.isAddPeriodFromDeclarePeriod) {
+          Get.offNamed(
+            AppRoutes.staffList.path,
+            arguments: argument.declarationPeriodId,
+          )?.then((value) {
+            declarationPeriodController?.getDeclarationPeriods();
+          });
+        } else if (argument.isAddStaffFromStaffList) {
+          Get.back(
+            result: argument.declarationPeriodId,
+          );
+        }
       } else {
         showSnackBar(response.errorMessage);
       }

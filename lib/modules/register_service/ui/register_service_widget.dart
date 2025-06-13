@@ -88,7 +88,7 @@ extension RegisterServiceWidget on RegisterServicePage {
             // Tên chủ thể CTS
             _buildSingleItem(
               title: LocaleKeys.registerService_subjectNameCert.tr,
-              contenTitle: cert?.name,
+              contenTitle: cert?.name ?? registerInfo?.tenChuTheCTS,
             ),
             sdsSBHeight12,
 
@@ -96,23 +96,34 @@ extension RegisterServiceWidget on RegisterServicePage {
             _buildSingleItem(
               title: LocaleKeys.registerService_organizationNameOfCert.tr,
               // TODO: Phía BE chưa có thuộc tính này, tạm thời fix cứng
-              contenTitle: "Viettel - CA",
+              contenTitle: controller.hasBeenRegister
+                  ? registerInfo?.tenToChucCKS
+                  // Fix cứng "Viettel - CA RS" khi chọn xong chứng thư số
+                  : (cert == null ? '' : "Viettel - CA RS"),
             ),
             sdsSBHeight12,
 
             // Số CTS
             _buildSingleItem(
               title: LocaleKeys.registerService_certificateNumber.tr,
-              contenTitle: cert?.serialNumber,
+              contenTitle: cert?.serialNumber ?? registerInfo?.soSerialCTS,
             ),
             sdsSBHeight12,
 
             // "Thời hạn sử dụng từ" và "Thời hạn sử dụng đến"
             _buildDoubleItem(
               titleLeft: LocaleKeys.registerService_expiryDateFrom.tr,
-              contenTitleLeft: cert?.validFrom,
+              contenTitleLeft: cert?.validFrom ??
+                  convertDateToStringSafe(
+                    registerInfo?.thoiHanTuNgay,
+                    PATTERN_1,
+                  ),
               titleRight: LocaleKeys.registerService_expiryDateTo.tr,
-              contenTitleRight: cert?.validTo,
+              contenTitleRight: cert?.validTo ??
+                  convertDateToStringSafe(
+                    registerInfo?.thoiHanDenNgay,
+                    PATTERN_1,
+                  ),
             ),
             sdsSBHeight12,
 
@@ -169,13 +180,15 @@ extension RegisterServiceWidget on RegisterServicePage {
               controller: controller.usernameMySignCtrl,
               autovalidateMode: AutovalidateMode.always,
               hintText: LocaleKeys.registerService_inputMySignUsername.tr,
-              validator: (value) {
-                if (value.isNullOrEmpty) {
-                  return LocaleKeys
-                      .registerService_userNameMySignCannotEmpty.tr;
-                }
-                return null;
-              },
+              validator: controller.hasBeenRegister
+                  ? null
+                  : (value) {
+                      if (value.isNullOrEmpty) {
+                        return LocaleKeys
+                            .registerService_userNameMySignCannotEmpty.tr;
+                      }
+                      return null;
+                    },
             ),
           ),
         ),
@@ -247,9 +260,11 @@ extension RegisterServiceWidget on RegisterServicePage {
               horizontal: AppDimens.defaultPadding,
             ),
           ),
-          onPressed: () {
-            controller.selectCertificate();
-          },
+          onPressed: controller.hasBeenRegister
+              ? null
+              : () {
+                  controller.getListCertificate();
+                },
           child: const Icon(
             Icons.send,
             color: AppColors.basicWhite,
@@ -265,11 +280,11 @@ extension RegisterServiceWidget on RegisterServicePage {
         return UtilWidget.buildSolidButton(
           title: LocaleKeys.registerService_register.tr,
           borderRadius: AppDimens.radius30,
-          onPressed: controller.certificate.value?.cerdentialID != null
-              ? () {
+          onPressed: controller.isDisableRegisterButton
+              ? null
+              : () {
                   controller.registerNewService();
-                }
-              : null,
+                },
         );
       },
     );

@@ -135,14 +135,6 @@ class StaffListController extends BaseGetxController {
         );
       } else {
         showSnackBar(response.errorMessage);
-
-        Get.toNamed(
-          AppRoutes.declarationList.path,
-          arguments: DeclarationListArgument(
-            declarationPeriodId: declarationPeriodId,
-            saveXmlResult: const SaveXmlResult(),
-          ),
-        );
       }
     } catch (e) {
       logger.e(e);
@@ -190,12 +182,27 @@ class StaffListController extends BaseGetxController {
     }
   }
 
-  Future<void> openDeclareInfo({DeclaredStaffModel? staff}) async {
+  Future<void> createStaff() async {
     final result = await Get.toNamed(
       AppRoutes.declareInfo.path,
       arguments: DeclareInfoArgument(
         declarationPeriodId: declarationPeriodId,
-        staffId: staff?.id,
+        staffId: null,
+        action: D02ActionEnum.addStaffFromStaffList,
+      ),
+    );
+    if (result != null) {
+      _getStaffList();
+    }
+  }
+
+  Future<void> updateStaff(DeclaredStaffModel staff) async {
+    final result = await Get.toNamed(
+      AppRoutes.declareInfo.path,
+      arguments: DeclareInfoArgument(
+        declarationPeriodId: declarationPeriodId,
+        staffId: staff.id,
+        action: D02ActionEnum.updateStaffFromStaffList,
       ),
     );
     if (result != null) {

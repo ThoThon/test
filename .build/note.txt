@@ -1,3 +1,13 @@
+13/06/2025
+- Ẩn đăng ký dich vụ
+- Ẩn quên mật khẩu
+- [Appmobile]_Kê khai hồ sơ nhân viên không thành công - BHW-2388
+- [AppMobile]_Màn thông tin đơn vị_Bỏ thông tin vùng - BHW-2391
+- [Appmobile]_Tìm kiếm nhân viên màn D02-LT - BHW-2390
+- [Appmobile]_Tra cứu C12_Mất thông tin dữ liệu khi thoát khỏi màn Tra cứu C12 - BHW-2392
+- [api] - Gọi API trả về các thông tin màn đăng ký dịch vụ - BHW-2377
+- [Appmobile]_Màn Đăng ký dịch vụ_Disable button Đăng ký trường hợp tài khoản đã đăng ký dịch vụ rồi. - BHW-2387
+
 12/06/2025
 - [Mobile- ký số]- Ký số đăng ký dịch vụ - BHW-2374
 - [api] - Bổ sung giao diện Lấy thông tin đăng ký dịch vụ - BHW-2377
@@ -5,6 +15,7 @@
 - [Appmobile]_Thay đổi label màn Thông tin đơn vị - BHW-2385
 - [Appmobile]_Chỉnh sửa giá trị trong combobox trường Đăng ký nhận kết quả Màn Thông tin đơn vị - BHW-2384
 - [Appmobile]_Màn TK1-TS: Chỉnh lại trường Địa chỉ khai sinh và địa chỉ nơi nhận không là trường bắt buộc - BHW-2375
+- [Appmobile]_Chỉnh sửa API lưu đợt và tạo file xml - BHW-2383
 
 11/06/2025
 - Fix map nhầm dữ liệu thông tin đơn vị
