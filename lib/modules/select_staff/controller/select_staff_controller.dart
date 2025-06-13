@@ -44,7 +44,7 @@ class SelectStaffController
     return StaffListRequest(
       pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
       pageSize: 20,
-      hoTen: searchController.text,
+      hoTen: searchController.text.trim(),
       maSoBHXH: "",
     );
   }
