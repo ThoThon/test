@@ -1,3 +1,7 @@
+13/06/2025
+- Ẩn đăng ký dich vụ
+- Ẩn quên mật khẩu
+
 12/06/2025
 - [Mobile- ký số]- Ký số đăng ký dịch vụ - BHW-2374
 - [api] - Bổ sung giao diện Lấy thông tin đăng ký dịch vụ - BHW-2377
