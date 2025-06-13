@@ -242,9 +242,7 @@ extension StaffListWidget on StaffListPage {
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
         onTap: () {
-          controller.openDeclareInfo(
-            staff: staff,
-          );
+          controller.updateStaff(staff);
         },
         child: Container(
           width: double.infinity,
@@ -264,7 +262,7 @@ extension StaffListWidget on StaffListPage {
   Widget _buildAddNewStaff() {
     return InkWell(
       onTap: () {
-        controller.openDeclareInfo();
+        controller.createStaff();
       },
       child: Row(
         children: [

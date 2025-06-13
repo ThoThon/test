@@ -24,8 +24,6 @@ class DeclareInfoArgument {
     required this.action,
   });
 
-  bool get isUpdate => staffId != null;
-
   bool get isUpdateStaff => action == D02ActionEnum.updateStaffFromStaffList;
 
   bool get isAddStaffFromStaffList =>

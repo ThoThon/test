@@ -286,7 +286,7 @@ class DeclareInfoController extends BaseGetxController {
       return;
     }
 
-    if (argument.isUpdate) {
+    if (argument.isUpdateStaff) {
       await _updateD02();
     } else {
       await _addD02();

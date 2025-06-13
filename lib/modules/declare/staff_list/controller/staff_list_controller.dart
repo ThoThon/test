@@ -182,14 +182,6 @@ class StaffListController extends BaseGetxController {
     }
   }
 
-  Future<void> openDeclareInfo({DeclaredStaffModel? staff}) async {
-    if (staff == null) {
-      await createStaff();
-    } else {
-      await updateStaff(staff);
-    }
-  }
-
   Future<void> createStaff() async {
     final result = await Get.toNamed(
       AppRoutes.declareInfo.path,
