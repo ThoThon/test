@@ -10,6 +10,12 @@ class LookupC12Controller extends BaseGetxController {
 
   late final _lookupC12Repository = LookupC12Repository(this);
 
+  @override
+  void onInit() {
+    super.onInit();
+    getC12File();
+  }
+
   void pickPeriodDate() async {
     final date = await UtilWidget.showYearLookUp(
       dateTime: selectedYear.value,

@@ -2,6 +2,9 @@
 - Ẩn đăng ký dich vụ
 - Ẩn quên mật khẩu
 - [Appmobile]_Kê khai hồ sơ nhân viên không thành công - BHW-2388
+- [AppMobile]_Màn thông tin đơn vị_Bỏ thông tin vùng - BHW-2391
+- [Appmobile]_Tìm kiếm nhân viên màn D02-LT - BHW-2390
+- [Appmobile]_Tra cứu C12_Mất thông tin dữ liệu khi thoát khỏi màn Tra cứu C12 - BHW-2392
 - [api] - Gọi API trả về các thông tin màn đăng ký dịch vụ - BHW-2377
 
 12/06/2025
