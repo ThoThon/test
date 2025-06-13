@@ -43,7 +43,7 @@ class RegisterServiceController extends BaseGetxController {
     }
   }
 
-  Future<void> selectCertificate() async {
+  Future<void> getListCertificate() async {
     await fetchListCert();
     if (listCert.isNotEmpty) {
       final result = await Get.bottomSheet(
@@ -158,5 +158,15 @@ class RegisterServiceController extends BaseGetxController {
       },
       onConfirm: onRetry,
     );
+  }
+
+  bool get hasBeenRegister {
+    final hasInfo = registerServiceInfo.value;
+    if (hasInfo == null) return false;
+    return hasInfo.tenChuTheCTS.isNotEmpty ||
+        hasInfo.tenToChucCKS.isNotEmpty ||
+        hasInfo.thoiHanTuNgay != null ||
+        hasInfo.thoiHanDenNgay != null ||
+        hasInfo.soSerialCTS.isNotEmpty;
   }
 }
