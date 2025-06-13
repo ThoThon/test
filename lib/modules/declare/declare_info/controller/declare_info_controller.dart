@@ -311,14 +311,14 @@ class DeclareInfoController extends BaseGetxController {
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
         );
-        if (argument.type == D02TypeEnum.addPeriod) {
+        if (argument.isAddPeriodFromDeclarePeriod) {
           Get.offNamed(
             AppRoutes.staffList.path,
             arguments: argument.declarationPeriodId,
           )?.then((value) {
             declarationPeriodController?.getDeclarationPeriods();
           });
-        } else if (argument.type == D02TypeEnum.addStaff) {
+        } else if (argument.isAddStaffFromStaffList) {
           Get.back(
             result: argument.declarationPeriodId,
           );
@@ -351,11 +351,9 @@ class DeclareInfoController extends BaseGetxController {
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
         );
-        if(argument.type == D02TypeEnum.updateStaff){
-          Get.back(
-            result: argument.declarationPeriodId,
-          );
-        }
+        Get.back(
+          result: argument.declarationPeriodId,
+        );
       } else {
         showSnackBar(response.errorMessage);
       }

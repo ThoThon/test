@@ -183,13 +183,34 @@ class StaffListController extends BaseGetxController {
   }
 
   Future<void> openDeclareInfo({DeclaredStaffModel? staff}) async {
+    if (staff == null) {
+      await createStaff();
+    } else {
+      await updateStaff(staff);
+    }
+  }
+
+  Future<void> createStaff() async {
     final result = await Get.toNamed(
       AppRoutes.declareInfo.path,
       arguments: DeclareInfoArgument(
         declarationPeriodId: declarationPeriodId,
-        staffId: staff?.id,
-        // Staff == null là luồng thêm mới nhân viên
-        type: staff == null ? D02TypeEnum.addStaff : D02TypeEnum.updateStaff,
+        staffId: null,
+        type: D02ActionEnum.addStaffFromStaffList,
+      ),
+    );
+    if (result != null) {
+      _getStaffList();
+    }
+  }
+
+  Future<void> updateStaff(DeclaredStaffModel staff) async {
+    final result = await Get.toNamed(
+      AppRoutes.declareInfo.path,
+      arguments: DeclareInfoArgument(
+        declarationPeriodId: declarationPeriodId,
+        staffId: staff.id,
+        type: D02ActionEnum.updateStaffupdateStaffFromStaffList,
       ),
     );
     if (result != null) {
