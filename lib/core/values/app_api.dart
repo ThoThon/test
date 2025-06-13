@@ -14,7 +14,6 @@ class AppApi {
   static const String urlFirstRegister = '/HoSoBHXH/FirstRegisterWithECA';
   static const String urlRegisterService = '/HoSoBHXH/RegisterServiceWithECA';
   static const String urlGetListCertificate = '/EasyCA/GetCertificateList';
-  static const String urlGetHistoryRegister = '/HoSoBHXH/GetHistoryRegister';
   static const String urlSearchProcessDocumentByKey =
       '/HoSoBHXH/SearchProcessDocumentByKey';
   static const String urlUpdateHistoryRigister =
@@ -22,7 +21,7 @@ class AppApi {
   //
   static const String urlGetAccountInfo = '/api/Authen/get-account-info';
   static const String urlUpdateAccountInfo = '/api/Authen/update-account-info';
-  static const String urlGetHistory = '/api/History/get-histories';
+  static const String urlGetHistoryDeclare = '/api/History/get-histories';
   static const String urlGetListProcedure = '/api/Categories/get-thu-tuc';
   static const String urlAddDeclarationPeriod = '/api/Document/add-kykekhai';
   static const String urlGetListDeclarationPeriod =
@@ -71,4 +70,6 @@ class AppApi {
       '/api/RegisterService/get-registration-info';
   static const String urlRegisterNewService =
       '/api/RegisterService/register-new-service';
+  static const String urlGetHistoryRegister =
+      '/api/History/get-histories-register';
 }

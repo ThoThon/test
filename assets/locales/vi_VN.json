@@ -201,7 +201,8 @@
     "procedure600o": "600o - Tạm dừng đóng vào quỹ hưu trí",
     "fileNumber": "Số hồ sơ",
     "cannotLookupFileNumber": "Không tìm thấy số hồ sơ",
-    "error": "Có lỗi xảy ra, vui lòng thử lại sau"
+    "error": "Có lỗi xảy ra, vui lòng thử lại sau",
+    "history":"Lịch sử"
   },
   "certificate": {
     "listCertificate": "Danh sách chứng thư số",

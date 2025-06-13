@@ -1,12 +1,17 @@
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../base_app/base_app.src.dart';
-import '../models/model_src.dart';
+import '../repository/history_repository.dart';
 
 class HistoryController extends BasePageSearchController<HistoryResponse> {
-  final listHistory = <HistoryItemModel>[].obs;
+  final listHistoryDeclare = <HistoryDeclareItemModel>[].obs;
 
-  late final historyRepository = HistoryRepository(this);
+  final listHistoryRegister = <HistoryRegisterItemModel>[].obs;
+
+  late final _historyRepository = HistoryRepository(this);
+
+  final currentTab = HistoryTabEnum.file_declare.obs;
 
   int page = AppConst.defaultPageNumber;
 
@@ -30,18 +35,19 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
       ),
     );
     getProcedureFilter();
-    getListHistory();
+    getListHistoryDeclare();
+    getHistoryRegister();
   }
 
-  Future<void> getListHistory({bool isLoadMore = false}) async {
+  Future<void> getListHistoryDeclare({bool isLoadMore = false}) async {
     if (!isLoadMore) {
       showLoading();
     }
     final request = _buildRequest(isLoadMore: isLoadMore);
     try {
-      final response = await historyRepository.getHistory(request);
+      final response = await _historyRepository.getHistoryDeclare(request);
       if (response.result != null && response.isSuccess) {
-        listHistory.addAll(response.result!.historyResults);
+        listHistoryDeclare.addAll(response.result!.historyResults);
         page = request.pageIndex;
       }
     } catch (e) {
@@ -51,10 +57,10 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
     }
   }
 
-  HistoryRequest _buildRequest({
+  HistoryDeclareRequest _buildRequest({
     bool isLoadMore = false,
   }) {
-    return HistoryRequest(
+    return HistoryDeclareRequest(
       companyId: AppData.instance.accountInfoModel.value?.toChucId ?? '',
       pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
       pageSize: Get.context?.isTablet ?? false
@@ -69,14 +75,14 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
 
   @override
   Future<void> onLoadMore() async {
-    await getListHistory(isLoadMore: true);
+    await getListHistoryDeclare(isLoadMore: true);
     refreshController.loadComplete();
   }
 
   @override
   Future<void> onRefresh() async {
-    listHistory.clear();
-    await getListHistory();
+    listHistoryDeclare.clear();
+    await getListHistoryDeclare();
     refreshController.refreshCompleted();
   }
 
@@ -86,15 +92,15 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
     );
     if (date != null) {
       selectedPeriodDate.value = date;
-      listHistory.clear();
-      getListHistory();
+      listHistoryDeclare.clear();
+      getListHistoryDeclare();
     }
   }
 
   Future<void> getProcedureFilter() async {
     try {
       showLoading();
-      final res = await historyRepository.getListProcedureFilter();
+      final res = await _historyRepository.getListProcedureFilter();
       if (res.result.isNotEmpty && res.isSuccess) {
         listProcedureFilter.addAll(res.result);
       }
@@ -114,5 +120,32 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
         onRefresh();
       },
     );
+  }
+
+  void onTabChanged(HistoryTabEnum tab) {
+    KeyBoard.hide();
+    if (currentTab.value == tab) return;
+    currentTab.value = tab;
+  }
+
+  Future<void> getHistoryRegister() async {
+    try {
+      showLoading();
+      final response = await _historyRepository.getHistoryRegister(
+        HistoryRegisterRequest(
+          pageIndex: 1,
+          pageSize: 100,
+          thang: 6,
+          nam: 2025,
+        ),
+      );
+      if (response.isSuccess && response.result != null) {
+        listHistoryRegister.value = response.result!.historyResults;
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      hideLoading();
+    }
   }
 }

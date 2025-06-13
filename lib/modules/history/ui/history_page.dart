@@ -3,6 +3,8 @@ import 'package:v_bhxh/modules/history/models/model_src.dart';
 import '../../src.dart';
 
 part 'history_widget.dart';
+part 'history_declare_tab.dart';
+part 'history_register_tab.dart';
 
 class HistoryPage extends BaseGetWidget {
   HistoryPage({super.key});
@@ -36,38 +38,6 @@ class HistoryPage extends BaseGetWidget {
         ),
         body: _buildBody(),
       ),
-    );
-  }
-
-  Widget _buildActionSelectMonth() {
-    return Obx(
-      () {
-        return Padding(
-          padding: const EdgeInsets.only(right: AppDimens.defaultPadding),
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: InkWell(
-              onTap: controller.pickPeriodDate,
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimens.paddingVerySmall,
-                  vertical: AppDimens.paddingSmallest,
-                ),
-                decoration: BoxDecoration(
-                  border: Border.all(width: 2, color: AppColors.primaryColor),
-                  borderRadius: BorderRadius.circular(AppDimens.radius8),
-                  color: AppColors.basicWhite,
-                ),
-                child: SDSBuildText(
-                  '${controller.selectedPeriodDate.value.month}/${controller.selectedPeriodDate.value.year}',
-                  style: AppTextStyle.font16Bo
-                      .copyWith(color: AppColors.primaryColor),
-                ),
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

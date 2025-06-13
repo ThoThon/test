@@ -21,7 +21,7 @@ extension HistoryDetailWidget on HistoryDetailPage {
   }
 
   Widget _buildProfileInfoCard(
-    HistoryItemModel model,
+    HistoryDeclareItemModel model,
   ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +81,7 @@ extension HistoryDetailWidget on HistoryDetailPage {
   }
 
   Widget _buildProgressHandleCard(
-    HistoryItemModel model,
+    HistoryDeclareItemModel model,
   ) {
     final newData = controller.resultLookupHistoryModel != null;
     final resultLookup = controller.resultLookupHistoryModel;

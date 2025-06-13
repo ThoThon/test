@@ -1,7 +1,5 @@
-import '../../src.dart';
-
-class HistoryResponse {
-  final List<HistoryItemModel> historyResults;
+class HistoryResponse<T> {
+  final List<T> historyResults;
   final int totalCount;
 
   HistoryResponse({
@@ -9,12 +7,15 @@ class HistoryResponse {
     required this.totalCount,
   });
 
-  factory HistoryResponse.fromJson(Map<String, dynamic> json) {
+  factory HistoryResponse.fromJson(
+    Map<String, dynamic> json,
+    T Function(Map<String, dynamic>) fromJson,
+  ) {
     return HistoryResponse(
-      historyResults: (json['historyResults'] as List)
-          .map((e) => HistoryItemModel.fromJson(e))
+      historyResults: (json['historyResults'] as List<dynamic>)
+          .map((e) => fromJson(e as Map<String, dynamic>))
           .toList(),
-      totalCount: json['totalCount'] ?? 0,
+      totalCount: json['totalCount'] as int,
     );
   }
 }

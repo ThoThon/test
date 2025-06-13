@@ -1,20 +1,22 @@
 import '../../../base_app/base_app.src.dart';
 import '../../src.dart';
-import '../models/model_src.dart';
 
 class HistoryRepository extends BaseRepository {
   HistoryRepository(super.controller);
 
-  Future<BaseResponse<HistoryResponse>> getHistory(
-      HistoryRequest request) async {
+  Future<BaseResponse<HistoryResponse<HistoryDeclareItemModel>>>
+      getHistoryDeclare(HistoryDeclareRequest request) async {
     final response = await baseCallApi(
-      AppApi.urlGetHistory,
+      AppApi.urlGetHistoryDeclare,
       EnumRequestMethod.post,
       jsonMap: request.toJson(),
     );
-    return BaseResponse<HistoryResponse>.fromJson(
+    return BaseResponse<HistoryResponse<HistoryDeclareItemModel>>.fromJson(
       response,
-      fromJson: (json) => HistoryResponse.fromJson(json),
+      fromJson: (json) => HistoryResponse.fromJson(
+        json,
+        (json) => HistoryDeclareItemModel.fromJson(json),
+      ),
     );
   }
 
@@ -27,6 +29,22 @@ class HistoryRepository extends BaseRepository {
     return BaseResponseList<ListProcedureFilterModel>.fromJson(
       response,
       (json) => ListProcedureFilterModel.fromJson(json),
+    );
+  }
+
+  Future<BaseResponse<HistoryResponse<HistoryRegisterItemModel>>>
+      getHistoryRegister(HistoryRegisterRequest request) async {
+    final response = await baseCallApi(
+      AppApi.urlGetHistoryRegister,
+      EnumRequestMethod.post,
+      jsonMap: request.toJson(),
+    );
+    return BaseResponse<HistoryResponse<HistoryRegisterItemModel>>.fromJson(
+      response,
+      fromJson: (json) => HistoryResponse.fromJson(
+        json,
+        (json) => HistoryRegisterItemModel.fromJson(json),
+      ),
     );
   }
 }

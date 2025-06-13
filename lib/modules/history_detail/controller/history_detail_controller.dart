@@ -2,7 +2,7 @@ import '../../../base_app/base_app.src.dart';
 import '../../src.dart';
 
 class HistoryDetailController extends BaseGetxController {
-  late final HistoryItemModel historyItemModel;
+  late final HistoryDeclareItemModel historyItemModel;
 
   late final historyDetaiRepository = HistoryDetaiRepository(this);
 
@@ -16,7 +16,7 @@ class HistoryDetailController extends BaseGetxController {
 
   void getArg() {
     final arg = Get.arguments;
-    if (arg is HistoryItemModel) {
+    if (arg is HistoryDeclareItemModel) {
       historyItemModel = arg;
     }
   }
