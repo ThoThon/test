@@ -2,7 +2,7 @@ enum D02ActionEnum {
   // Thêm mới nhân viên từ màn "Danh sách nhân viên"
   addStaffFromStaffList,
   // Chỉnh sửa thông tin nhân viên từ màn "Danh sách nhân viên"
-  updateStaffupdateStaffFromStaffList,
+  updateStaffFromStaffList,
   // Tạo đợt mới từ màn "Đợt kê khai"
   addPeriodFromDeclarePeriod,
 
@@ -26,8 +26,7 @@ class DeclareInfoArgument {
 
   bool get isUpdate => staffId != null;
 
-  bool get isUpdateStaffFromStaffList =>
-      action == D02ActionEnum.updateStaffupdateStaffFromStaffList;
+  bool get isUpdateStaff => action == D02ActionEnum.updateStaffFromStaffList;
 
   bool get isAddStaffFromStaffList =>
       action == D02ActionEnum.addStaffFromStaffList;
