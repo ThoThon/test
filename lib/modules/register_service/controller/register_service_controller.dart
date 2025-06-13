@@ -170,7 +170,7 @@ class RegisterServiceController extends BaseGetxController {
         hasInfo.soSerialCTS.isNotEmpty;
   }
 
-  bool get disableButton {
+  bool get isDisableRegisterButton {
     final cert = certificate.value;
 
     // Nếu đã đăng ký rồi thì disable luôn
