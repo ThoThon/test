@@ -196,7 +196,7 @@ class StaffListController extends BaseGetxController {
       arguments: DeclareInfoArgument(
         declarationPeriodId: declarationPeriodId,
         staffId: null,
-        type: D02ActionEnum.addStaffFromStaffList,
+        action: D02ActionEnum.addStaffFromStaffList,
       ),
     );
     if (result != null) {
@@ -210,7 +210,7 @@ class StaffListController extends BaseGetxController {
       arguments: DeclareInfoArgument(
         declarationPeriodId: declarationPeriodId,
         staffId: staff.id,
-        type: D02ActionEnum.updateStaffupdateStaffFromStaffList,
+        action: D02ActionEnum.updateStaffupdateStaffFromStaffList,
       ),
     );
     if (result != null) {
