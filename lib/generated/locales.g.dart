@@ -208,6 +208,11 @@ class LocaleKeys {
   static const history_cannotLookupFileNumber =
       'history_cannotLookupFileNumber';
   static const history_error = 'history_error';
+  static const history_history = 'history_history';
+  static const history_selectedTransaction = 'history_selectedTransaction';
+  static const history_registerTransaction = 'history_registerTransaction';
+  static const history_registerChanged = 'history_registerChanged';
+  static const history_cancelTransaction = 'history_cancelTransaction';
   static const certificate_listCertificate = 'certificate_listCertificate';
   static const certificate_selectCertificate = 'certificate_selectCertificate';
   static const certificate_confirm = 'certificate_confirm';
@@ -881,6 +886,11 @@ class Locales {
     'history_fileNumber': 'Số hồ sơ',
     'history_cannotLookupFileNumber': 'Không tìm thấy số hồ sơ',
     'history_error': 'Có lỗi xảy ra, vui lòng thử lại sau',
+    'history_history': 'Lịch sử',
+    'history_selectedTransaction': 'Chọn loại giao dịch',
+    'history_registerTransaction': 'Đăng ký giao dịch',
+    'history_registerChanged': 'Đăng ký thay đổi',
+    'history_cancelTransaction': 'Hủy giao dịch',
     'certificate_listCertificate': 'Danh sách chứng thư số',
     'certificate_selectCertificate': 'Chọn chứng thư số',
     'certificate_confirm': 'Xác nhận',

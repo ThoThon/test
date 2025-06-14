@@ -1,3 +1,7 @@
+14/06/2025
+- [Appmobile]_Bổ sung giao diện màn Lịch sử giao dịch - BHW-2379
+- [api] - Bổ sung giao diện màn danh sách lịch sử - BHW-2381
+
 13/06/2025
 - Ẩn đăng ký dich vụ
 - Ẩn quên mật khẩu

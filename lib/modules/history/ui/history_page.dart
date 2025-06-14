@@ -1,7 +1,7 @@
-import 'package:v_bhxh/modules/history/models/model_src.dart';
-
 import '../../src.dart';
 
+part 'history_declare_tab.dart';
+part 'history_register_tab.dart';
 part 'history_widget.dart';
 
 class HistoryPage extends BaseGetWidget {
@@ -30,6 +30,9 @@ class HistoryPage extends BaseGetWidget {
           title: BaseAppBarTitle(
             title: LocaleKeys.history_historyTransaction.tr,
           ),
+          actions: [
+            _buildActionSelectMonth(),
+          ],
         ),
         body: _buildBody(),
       ),

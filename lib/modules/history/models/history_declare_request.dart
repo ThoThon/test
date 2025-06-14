@@ -1,4 +1,4 @@
-class HistoryRequest {
+class HistoryDeclareRequest {
   final String companyId;
   final int pageIndex;
   final int pageSize;
@@ -7,7 +7,7 @@ class HistoryRequest {
   final String? maThuTuc;
   final String? soHoSo;
 
-  HistoryRequest({
+  HistoryDeclareRequest({
     required this.companyId,
     required this.pageIndex,
     required this.pageSize,

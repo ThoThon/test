@@ -1,20 +1,37 @@
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../base_app/base_app.src.dart';
-import '../models/model_src.dart';
+import '../repository/history_repository.dart';
+
+part 'history_declare_ext_controller.dart';
+part 'history_register_ext_controller.dart';
 
 class HistoryController extends BasePageSearchController<HistoryResponse> {
-  final listHistory = <HistoryItemModel>[].obs;
+  final listHistoryDeclare = <HistoryDeclareItemModel>[].obs;
 
-  late final historyRepository = HistoryRepository(this);
+  final listHistoryRegister = <HistoryRegisterItemModel>[].obs;
 
-  int page = AppConst.defaultPageNumber;
+  late final _historyRepository = HistoryRepository(this);
+
+  final currentTab = HistoryTabEnum.register_transaction.obs;
+
+  int pageHistoryRegister = AppConst.defaultPageNumber;
+
+  int pageHistoryDeclare = AppConst.defaultPageNumber;
 
   final selectedPeriodDate = DateTime.now().obs;
 
   final selectProcedure = Rx<ListProcedureFilterModel?>(null);
 
   final listProcedureFilter = <ListProcedureFilterModel>[].obs;
+
+  final declareRefreshCtrl = RefreshController();
+
+  final registerRefreshCtrl = RefreshController();
+
+  final selectFilterHistoryRegister = HistoryRegisterTypeFilterEnum.all.obs;
 
   @override
   void onInit() {
@@ -30,55 +47,15 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
       ),
     );
     getProcedureFilter();
-    getListHistory();
-  }
-
-  Future<void> getListHistory({bool isLoadMore = false}) async {
-    if (!isLoadMore) {
-      showLoading();
-    }
-    final request = _buildRequest(isLoadMore: isLoadMore);
-    try {
-      final response = await historyRepository.getHistory(request);
-      if (response.result != null && response.isSuccess) {
-        listHistory.addAll(response.result!.historyResults);
-        page = request.pageIndex;
-      }
-    } catch (e) {
-      logger.d(e);
-    } finally {
-      hideLoading();
-    }
-  }
-
-  HistoryRequest _buildRequest({
-    bool isLoadMore = false,
-  }) {
-    return HistoryRequest(
-      companyId: AppData.instance.accountInfoModel.value?.toChucId ?? '',
-      pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
-      pageSize: Get.context?.isTablet ?? false
-          ? AppConst.largePageSize
-          : AppConst.defaultPageSize,
-      nam: selectedPeriodDate.value.year.toString(),
-      thang: selectedPeriodDate.value.month.toString(),
-      maThuTuc: selectProcedure.value?.loai.toString() ?? '',
-      soHoSo: searchController.text,
-    );
+    getHistoryDeclare();
+    getHistoryRegister();
   }
 
   @override
-  Future<void> onLoadMore() async {
-    await getListHistory(isLoadMore: true);
-    refreshController.loadComplete();
-  }
+  Future<void> onLoadMore() async {}
 
   @override
-  Future<void> onRefresh() async {
-    listHistory.clear();
-    await getListHistory();
-    refreshController.refreshCompleted();
-  }
+  Future<void> onRefresh() async {}
 
   void pickPeriodDate() async {
     final date = await UtilWidget.showPeriodDatePicker(
@@ -86,20 +63,10 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
     );
     if (date != null) {
       selectedPeriodDate.value = date;
-      listHistory.clear();
-      getListHistory();
-    }
-  }
-
-  Future<void> getProcedureFilter() async {
-    try {
-      showLoading();
-      final res = await historyRepository.getListProcedureFilter();
-      if (res.result.isNotEmpty && res.isSuccess) {
-        listProcedureFilter.addAll(res.result);
-      }
-    } catch (e) {
-      logger.d(e);
+      listHistoryDeclare.clear();
+      listHistoryRegister.clear();
+      getHistoryDeclare();
+      getHistoryRegister();
     }
   }
 
@@ -111,8 +78,15 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
   Future<void> functionSearch() async {
     debouncer(
       () {
-        onRefresh();
+        onRefreshRegister();
+        onRefreshDeclare();
       },
     );
+  }
+
+  void onTabChanged(HistoryTabEnum tab) {
+    KeyBoard.hide();
+    if (currentTab.value == tab) return;
+    currentTab.value = tab;
   }
 }

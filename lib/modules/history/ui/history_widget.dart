@@ -6,8 +6,20 @@ extension HistoryWidget on HistoryPage {
       child: Column(
         children: [
           _buildSearchAndFilter(),
-          _buildDatePicker(),
-          _buildViewListHistory(),
+          _buildTabs(),
+          Expanded(
+            child: Obx(
+              () {
+                return IndexedStack(
+                  index: controller.currentTab.value.index,
+                  children: [
+                    _buildHistoryDeclare(),
+                    _buildHistoryRegister(),
+                  ],
+                );
+              },
+            ),
+          ),
         ],
       ).paddingSymmetric(
         horizontal: AppDimens.defaultPadding,
@@ -53,140 +65,6 @@ extension HistoryWidget on HistoryPage {
     );
   }
 
-  Widget _buildItemBottomSheetFilter({
-    required Function()? onTap,
-    required String text,
-    TextStyle? style,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      child: SDSBuildText(
-        text,
-        style: style,
-      ),
-    ).paddingOnly(bottom: AppDimens.paddingVerySmall);
-  }
-
-  Widget _buildCardItemHistory(HistoryItemModel item) {
-    return InkWell(
-      onTap: () {
-        Get.toNamed(
-          AppRoutes.historyDetail.path,
-          arguments: item,
-        )?.then(
-          (value) async {
-            controller.listHistory.clear();
-            await controller.getListHistory();
-          },
-        );
-      },
-      child: Row(
-        children: [
-          const Icon(
-            Icons.assignment_outlined,
-            color: AppColors.primaryColor,
-            size: AppDimens.sizeIconMedium,
-          ).paddingOnly(right: AppDimens.paddingVerySmall),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    SDSBuildText(
-                      "${LocaleKeys.history_procedure.tr} ${item.maThuTuc}",
-                    ),
-                    Expanded(
-                      child: SDSBuildText(
-                        "${LocaleKeys.history_number.tr}${item.soHoSo ?? ''}",
-                        style: AppTextStyle.font14Bo,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ).paddingOnly(bottom: AppDimens.paddingSmallest),
-                SDSBuildText(
-                  "${LocaleKeys.history_submissionTime.tr}: ${changeDateString(item.thoiGianGui, pattern: PATTERN_9)}",
-                  maxLines: 1,
-                ).paddingOnly(bottom: AppDimens.paddingSmallest),
-                Row(
-                  children: [
-                    SDSBuildText(
-                      "${LocaleKeys.history_status.tr}: ",
-                    ),
-                    SDSBuildText(
-                      item.trangThai.titleStatus,
-                      style: AppTextStyle.font14Bo.copyWith(
-                        color: item.trangThai.historyStatusColor,
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-          SDSImageSvg(
-            Assets.ASSETS_ICONS_IC_ARROW_RIGHT_SVG,
-            height: AppDimens.sizeIcon,
-            width: AppDimens.sizeIcon,
-          ),
-        ],
-      ).paddingAll(AppDimens.paddingSmall),
-    );
-  }
-
-  Widget _buildViewListHistory() {
-    return Expanded(
-      child: UtilWidget.buildCardBase(
-        baseShowLoading(
-          () {
-            if (controller.listHistory.isEmpty) {
-              return UtilWidget.buildEmptyOnRefresh(
-                refreshController: controller.refreshController,
-                onRefresh: controller.onRefresh,
-              );
-            }
-            return UtilWidget.buildSmartRefresher(
-              refreshController: controller.refreshController,
-              onRefresh: controller.onRefresh,
-              onLoadMore: controller.onLoadMore,
-              enablePullUp: true,
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  final item = controller.listHistory[index];
-                  return _buildCardItemHistory(item);
-                },
-                itemCount: controller.listHistory.length,
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
-
-  Widget _buildDatePicker() {
-    return Obx(
-      () {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SDSBuildText(
-              '${LocaleKeys.declarationPeriod_month.tr} ${convertDateToString(controller.selectedPeriodDate.value, PATTERN_12)}',
-              style: AppTextStyle.font16Bo,
-            ),
-            UtilWidget.buildSolidButtonBack(
-              title: LocaleKeys.declarationPeriod_selectMonth.tr,
-              onPressed: () {
-                controller.pickPeriodDate();
-              },
-            ),
-          ],
-        );
-      },
-    ).paddingSymmetric(vertical: AppDimens.paddingSmall);
-  }
-
   Widget _buildFilterButton() {
     return IconButton(
       icon: SDSImageSvg(
@@ -197,39 +75,195 @@ extension HistoryWidget on HistoryPage {
       ),
       onPressed: () {
         Get.bottomSheet(
-          UtilWidget.buildBottomSheetFigma(
-            title: LocaleKeys.history_selectedProcedure.tr,
-            child: Expanded(
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  final procedure = controller.listProcedureFilter[index];
-                  return Obx(
-                    () => _buildItemBottomSheetFilter(
-                      onTap: () {
-                        //Lọc thủ tục
-                        controller.selectProcedure.value = procedure;
-                        // Khi chọn thủ tục thì đóng bottom sheet
-                        Get.back();
-                        controller.listHistory.clear();
-                        controller.getListHistory();
-                      },
-                      text: '${procedure.ma} - ${procedure.ten.tr}',
-                      style: controller.selectProcedure.value == procedure
-                          ? AppTextStyle.font14Bo
-                              .copyWith(color: AppColors.primaryColor)
-                          : AppTextStyle.font14Re,
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) =>
-                    UtilWidget.buildDividerDefault(),
-                itemCount: controller.listProcedureFilter.length,
+          controller.currentTab.value == HistoryTabEnum.file_declare
+              ? _buildFilterHistoryDeclare()
+              : _buildFilterHistoryRegister(),
+        );
+      },
+    ).paddingOnly(left: AppDimens.paddingSmall);
+  }
+
+  Widget _buildTabs() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: AppDimens.defaultPadding),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.colorWhite,
+          borderRadius: BorderRadius.circular(AppDimens.radius30),
+        ),
+        child: Obx(
+          () {
+            return Row(
+              children: [
+                Expanded(
+                  child: _buildTabButton(
+                    title: 'Đăng ký giao dịch',
+                    // enabled: controller.enableTk1Tab,
+                    isSelected: controller.currentTab.value ==
+                        HistoryTabEnum.register_transaction,
+                    onTap: () {
+                      controller
+                          .onTabChanged(HistoryTabEnum.register_transaction);
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: _buildTabButton(
+                    title: 'Hồ sơ kê khai',
+                    isSelected: controller.currentTab.value ==
+                        HistoryTabEnum.file_declare,
+                    onTap: () {
+                      controller.onTabChanged(HistoryTabEnum.file_declare);
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTabButton({
+    required String title,
+    required isSelected,
+    VoidCallback? onTap,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        color: isSelected ? AppColors.lighterPrimaryColor : Colors.transparent,
+        borderRadius: BorderRadius.circular(AppDimens.radius30),
+        border: isSelected
+            ? Border.all(width: 1, color: AppColors.primaryColor)
+            : null,
+      ),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(AppDimens.radius30),
+        child: Center(
+          child: SDSBuildText(
+            title,
+            style: isSelected
+                ? AppTextStyle.font14Bo.copyWith(color: AppColors.primaryColor)
+                : AppTextStyle.font14Re.copyWith(
+                    color: AppColors.colorBlack,
+                  ),
+          ).paddingSymmetric(
+            horizontal: AppDimens.paddingSmall,
+            vertical: AppDimens.paddingVerySmall,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildActionSelectMonth() {
+    return Obx(
+      () {
+        return Padding(
+          padding: const EdgeInsets.only(right: AppDimens.defaultPadding),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: InkWell(
+              onTap: controller.pickPeriodDate,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppDimens.paddingVerySmall,
+                  vertical: AppDimens.paddingSmallest,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2, color: AppColors.primaryColor),
+                  borderRadius: BorderRadius.circular(AppDimens.radius8),
+                  color: AppColors.basicWhite,
+                ),
+                child: SDSBuildText(
+                  '${controller.selectedPeriodDate.value.month}/${controller.selectedPeriodDate.value.year}',
+                  style: AppTextStyle.font16Bo
+                      .copyWith(color: AppColors.primaryColor),
+                ),
               ),
             ),
           ),
         );
       },
-    ).paddingOnly(left: AppDimens.paddingSmall);
+    );
+  }
+
+  Widget _buildFilterHistoryDeclare() {
+    return SDSSafearea(
+      child: UtilWidget.buildBottomSheetFigma(
+        title: LocaleKeys.history_selectedProcedure.tr,
+        child: Expanded(
+          child: ListView.separated(
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              final procedure = controller.listProcedureFilter[index];
+              return Obx(
+                () => _buildItemBottomSheetFilter(
+                  onTap: () {
+                    //Lọc thủ tục
+                    controller.selectProcedure.value = procedure;
+                    // Khi chọn thủ tục thì đóng bottom sheet
+                    Get.back();
+                    controller.listHistoryDeclare.clear();
+                    controller.getHistoryDeclare();
+                  },
+                  text: '${procedure.ma} - ${procedure.ten.tr}',
+                  style: controller.selectProcedure.value == procedure
+                      ? AppTextStyle.font14Bo
+                          .copyWith(color: AppColors.primaryColor)
+                      : AppTextStyle.font14Re,
+                ),
+              );
+            },
+            separatorBuilder: (context, index) =>
+                UtilWidget.buildDividerDefault(),
+            itemCount: controller.listProcedureFilter.length,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFilterHistoryRegister() {
+    final historyRegisterType = HistoryRegisterTypeFilterEnum.values;
+    return SDSSafearea(
+      child: UtilWidget.baseBottomSheet(
+        isMiniSize: true,
+        isHeightMin: true,
+        title: LocaleKeys.history_selectedTransaction.tr,
+        body: ListView.separated(
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            final filter = historyRegisterType[index];
+            return Obx(
+              () => Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimens.paddingSmall),
+                child: _buildItemBottomSheetFilter(
+                  onTap: () {
+                    // Lọc thủ tục
+                    controller.selectFilterHistoryRegister.value = filter;
+                    // Khi chọn thủ tục thì đóng bottom sheet
+                    Get.back();
+                    controller.listHistoryRegister.clear();
+                    controller.getHistoryRegister();
+                  },
+                  text: filter.title,
+                  style: controller.selectFilterHistoryRegister.value == filter
+                      ? AppTextStyle.font14Bo
+                          .copyWith(color: AppColors.primaryColor)
+                      : AppTextStyle.font14Re,
+                ),
+              ),
+            );
+          },
+          separatorBuilder: (context, index) =>
+              UtilWidget.buildDividerDefault(),
+          itemCount: historyRegisterType.length,
+        ),
+      ),
+    );
   }
 }

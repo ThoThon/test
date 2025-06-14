@@ -1,4 +1,4 @@
-class HistoryItemModel {
+class HistoryDeclareItemModel {
   String id;
   String maThuTuc;
   String thoiGianGui;
@@ -15,7 +15,7 @@ class HistoryItemModel {
   String? maLoiBuoc4;
   String? ketQuaBuoc4;
 
-  HistoryItemModel({
+  HistoryDeclareItemModel({
     required this.id,
     required this.maThuTuc,
     required this.thoiGianGui,
@@ -33,8 +33,8 @@ class HistoryItemModel {
     this.ketQuaBuoc4,
   });
 
-  factory HistoryItemModel.fromJson(Map<String, dynamic> json) {
-    return HistoryItemModel(
+  factory HistoryDeclareItemModel.fromJson(Map<String, dynamic> json) {
+    return HistoryDeclareItemModel(
       id: json['id'] ?? '',
       maThuTuc: json['maThuTuc'] ?? '',
       thoiGianGui: json['thoiGianGui'] ?? '',
