@@ -1,10 +1,8 @@
-import 'package:v_bhxh/modules/history/models/model_src.dart';
-
 import '../../src.dart';
 
-part 'history_widget.dart';
 part 'history_declare_tab.dart';
 part 'history_register_tab.dart';
+part 'history_widget.dart';
 
 class HistoryPage extends BaseGetWidget {
   HistoryPage({super.key});

@@ -7,29 +7,22 @@ extension HistoryRegisterTab on HistoryPage {
         () {
           if (controller.listHistoryRegister.isEmpty) {
             return UtilWidget.buildEmptyOnRefresh(
-              refreshController: controller.refreshController,
-              onRefresh: controller.onRefresh,
+              refreshController: controller.registerRefreshCtrl,
+              onRefresh: controller.onRefreshRegister,
             );
           }
-          // return UtilWidget.buildSmartRefresher(
-          //   refreshController: controller.refreshController,
-          //   onRefresh: controller.onRefresh,
-          //   onLoadMore: controller.onLoadMore,
-          //   enablePullUp: true,
-          //   child: ListView.builder(
-          //     itemBuilder: (context, index) {
-          //       final item = controller.listHistoryDeclare[index];
-          //       return _buildCardItemHistory(item);
-          //     },
-          //     itemCount: controller.listHistoryDeclare.length,
-          //   ),
-          // );
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              final item = controller.listHistoryRegister[index];
-              return _buildCardItemHistoryRegister(item);
-            },
-            itemCount: controller.listHistoryRegister.length,
+          return UtilWidget.buildSmartRefresher(
+            refreshController: controller.registerRefreshCtrl,
+            onRefresh: controller.onRefreshRegister,
+            onLoadMore: controller.onLoadMoreRegister,
+            enablePullUp: true,
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                final item = controller.listHistoryRegister[index];
+                return _buildCardItemHistoryRegister(item);
+              },
+              itemCount: controller.listHistoryRegister.length,
+            ),
           );
         },
       ),
@@ -39,15 +32,17 @@ extension HistoryRegisterTab on HistoryPage {
   Widget _buildCardItemHistoryRegister(HistoryRegisterItemModel item) {
     return InkWell(
       onTap: () {
-        Get.toNamed(
-          AppRoutes.historyDetail.path,
-          arguments: item,
-        )?.then(
-          (value) async {
-            // controller.listHistoryDeclare.clear();
-            // await controller.getListHistoryDeclare();
-          },
-        );
+        // Get.toNamed(
+        //   AppRoutes.historyDetail.path,
+        //   arguments: HistoryArguments(
+        //     historyRegister: item
+        //   ),
+        // )?.then(
+        //   (value) async {
+        //     controller.listHistoryRegister.clear();
+        //     await controller.getHistoryRegister();
+        //   },
+        // );
       },
       child: Row(
         children: [

@@ -202,7 +202,11 @@
     "fileNumber": "Số hồ sơ",
     "cannotLookupFileNumber": "Không tìm thấy số hồ sơ",
     "error": "Có lỗi xảy ra, vui lòng thử lại sau",
-    "history":"Lịch sử"
+    "history":"Lịch sử",
+    "selectedTransaction":"Chọn loại giao dịch",
+    "registerTransaction":"Đăng ký giao dịch",
+    "registerChanged":"Đăng ký thay đổi",
+    "cancelTransaction":"Hủy giao dịch"
   },
   "certificate": {
     "listCertificate": "Danh sách chứng thư số",

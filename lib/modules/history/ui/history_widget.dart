@@ -75,37 +75,9 @@ extension HistoryWidget on HistoryPage {
       ),
       onPressed: () {
         Get.bottomSheet(
-          UtilWidget.buildBottomSheetFigma(
-            title: LocaleKeys.history_selectedProcedure.tr,
-            child: Expanded(
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  final procedure = controller.listProcedureFilter[index];
-                  return Obx(
-                    () => _buildItemBottomSheetFilter(
-                      onTap: () {
-                        //Lọc thủ tục
-                        controller.selectProcedure.value = procedure;
-                        // Khi chọn thủ tục thì đóng bottom sheet
-                        Get.back();
-                        controller.listHistoryDeclare.clear();
-                        controller.getListHistoryDeclare();
-                      },
-                      text: '${procedure.ma} - ${procedure.ten.tr}',
-                      style: controller.selectProcedure.value == procedure
-                          ? AppTextStyle.font14Bo
-                              .copyWith(color: AppColors.primaryColor)
-                          : AppTextStyle.font14Re,
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) =>
-                    UtilWidget.buildDividerDefault(),
-                itemCount: controller.listProcedureFilter.length,
-              ),
-            ),
-          ),
+          controller.currentTab.value == HistoryTabEnum.file_declare
+              ? _buildFilterHistoryDeclare()
+              : _buildFilterHistoryRegister(),
         );
       },
     ).paddingOnly(left: AppDimens.paddingSmall);
@@ -125,16 +97,6 @@ extension HistoryWidget on HistoryPage {
               children: [
                 Expanded(
                   child: _buildTabButton(
-                    title: 'Hồ sơ kê khai',
-                    isSelected: controller.currentTab.value ==
-                        HistoryTabEnum.file_declare,
-                    onTap: () {
-                      controller.onTabChanged(HistoryTabEnum.file_declare);
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: _buildTabButton(
                     title: 'Đăng ký giao dịch',
                     // enabled: controller.enableTk1Tab,
                     isSelected: controller.currentTab.value ==
@@ -142,6 +104,16 @@ extension HistoryWidget on HistoryPage {
                     onTap: () {
                       controller
                           .onTabChanged(HistoryTabEnum.register_transaction);
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: _buildTabButton(
+                    title: 'Hồ sơ kê khai',
+                    isSelected: controller.currentTab.value ==
+                        HistoryTabEnum.file_declare,
+                    onTap: () {
+                      controller.onTabChanged(HistoryTabEnum.file_declare);
                     },
                   ),
                 ),
@@ -215,6 +187,83 @@ extension HistoryWidget on HistoryPage {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildFilterHistoryDeclare() {
+    return SDSSafearea(
+      child: UtilWidget.buildBottomSheetFigma(
+        title: LocaleKeys.history_selectedProcedure.tr,
+        child: Expanded(
+          child: ListView.separated(
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              final procedure = controller.listProcedureFilter[index];
+              return Obx(
+                () => _buildItemBottomSheetFilter(
+                  onTap: () {
+                    //Lọc thủ tục
+                    controller.selectProcedure.value = procedure;
+                    // Khi chọn thủ tục thì đóng bottom sheet
+                    Get.back();
+                    controller.listHistoryDeclare.clear();
+                    controller.getHistoryDeclare();
+                  },
+                  text: '${procedure.ma} - ${procedure.ten.tr}',
+                  style: controller.selectProcedure.value == procedure
+                      ? AppTextStyle.font14Bo
+                          .copyWith(color: AppColors.primaryColor)
+                      : AppTextStyle.font14Re,
+                ),
+              );
+            },
+            separatorBuilder: (context, index) =>
+                UtilWidget.buildDividerDefault(),
+            itemCount: controller.listProcedureFilter.length,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFilterHistoryRegister() {
+    final historyRegisterType = HistoryRegisterTypeFilterEnum.values;
+    return SDSSafearea(
+      child: UtilWidget.baseBottomSheet(
+        isMiniSize: true,
+        isHeightMin: true,
+        title: LocaleKeys.history_selectedTransaction.tr,
+        body: ListView.separated(
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            final filter = historyRegisterType[index];
+            return Obx(
+              () => Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimens.paddingSmall),
+                child: _buildItemBottomSheetFilter(
+                  onTap: () {
+                    // Lọc thủ tục
+                    controller.selectFilterHistoryRegister.value = filter;
+                    // Khi chọn thủ tục thì đóng bottom sheet
+                    Get.back();
+                    controller.listHistoryRegister.clear();
+                    controller.getHistoryRegister();
+                  },
+                  text: filter.title,
+                  style: controller.selectFilterHistoryRegister.value == filter
+                      ? AppTextStyle.font14Bo
+                          .copyWith(color: AppColors.primaryColor)
+                      : AppTextStyle.font14Re,
+                ),
+              ),
+            );
+          },
+          separatorBuilder: (context, index) =>
+              UtilWidget.buildDividerDefault(),
+          itemCount: historyRegisterType.length,
+        ),
+      ),
     );
   }
 }

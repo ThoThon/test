@@ -1,3 +1,4 @@
+export 'enum/history_register_type_filter_enum.dart';
 export 'enum/history_status_enum.dart';
 export 'enum/history_tab_enum.dart';
 export 'history_declare_item_model.dart';

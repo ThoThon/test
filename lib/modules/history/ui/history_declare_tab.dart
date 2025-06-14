@@ -7,29 +7,22 @@ extension HistoryDeclareTab on HistoryPage {
         () {
           if (controller.listHistoryDeclare.isEmpty) {
             return UtilWidget.buildEmptyOnRefresh(
-              refreshController: controller.refreshController,
-              onRefresh: controller.onRefresh,
+              refreshController: controller.declareRefreshCtrl,
+              onRefresh: controller.onRefreshDeclare,
             );
           }
-          // return UtilWidget.buildSmartRefresher(
-          //   refreshController: controller.refreshController,
-          //   onRefresh: controller.onRefresh,
-          //   onLoadMore: controller.onLoadMore,
-          //   enablePullUp: true,
-          //   child: ListView.builder(
-          //     itemBuilder: (context, index) {
-          //       final item = controller.listHistory[index];
-          //       return _buildCardItemHistory(item);
-          //     },
-          //     itemCount: controller.listHistory.length,
-          //   ),
-          // );
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              final item = controller.listHistoryDeclare[index];
-              return _buildCardItemHistoryDeclare(item);
-            },
-            itemCount: controller.listHistoryDeclare.length,
+          return UtilWidget.buildSmartRefresher(
+            refreshController: controller.declareRefreshCtrl,
+            onRefresh: controller.onRefreshDeclare,
+            onLoadMore: controller.onLoadMoreDeclare,
+            enablePullUp: true,
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                final item = controller.listHistoryDeclare[index];
+                return _buildCardItemHistoryDeclare(item);
+              },
+              itemCount: controller.listHistoryDeclare.length,
+            ),
           );
         },
       ),
@@ -39,15 +32,15 @@ extension HistoryDeclareTab on HistoryPage {
   Widget _buildCardItemHistoryDeclare(HistoryDeclareItemModel item) {
     return InkWell(
       onTap: () {
-        Get.toNamed(
-          AppRoutes.historyDetail.path,
-          arguments: item,
-        )?.then(
-          (value) async {
-            controller.listHistoryDeclare.clear();
-            await controller.getListHistoryDeclare();
-          },
-        );
+        // Get.toNamed(
+        //   AppRoutes.historyDetail.path,
+        //   arguments: HistoryArguments(historyDeclare: item),
+        // )?.then(
+        //   (value) async {
+        //     controller.listHistoryDeclare.clear();
+        //     await controller.getHistoryDeclare();
+        //   },
+        // );
       },
       child: Row(
         children: [
