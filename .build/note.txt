@@ -1,3 +1,6 @@
+15/06/2025
+- [Appmobile]_Bổ sung giao diện màn Chi tiết lịch sử - BHW-2380
+
 14/06/2025
 - [Appmobile]_Bổ sung giao diện màn Lịch sử giao dịch - BHW-2379
 - [api] - Bổ sung giao diện màn danh sách lịch sử - BHW-2381
