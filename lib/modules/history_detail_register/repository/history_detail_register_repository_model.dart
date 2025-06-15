@@ -13,7 +13,6 @@ class HistoryDetailRegisterRepository extends BaseRepository {
       EnumRequestMethod.get,
       jsonMap: {"ma_tra_cuu": ma_tra_cuu},
     );
-    logger.d(response);
     return BaseResponse<ResultLookupHistoryRegisterModel>.fromJson(
       response,
       fromJson: (json) => ResultLookupHistoryRegisterModel.fromJson(json),

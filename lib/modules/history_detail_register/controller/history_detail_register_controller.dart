@@ -35,11 +35,10 @@ class HistoryDetailRegisterController extends BaseGetxController {
         if (resultLookupHistoryModel!.buoc1!.maKetQua.isEmpty) {
           showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
         } else {
-          // Cập nhật trạng thái
+          // Cập nhật trạng thái và số hồ sơ
           historyRegisterItem
             ..trangThaiTK = res.result?.trangThai ?? ''
-            ..soHoSo = res.result?.soHoSo ?? ''
-            ..thoiGianGui = res.result?.thoiGianGui ?? '';
+            ..soHoSo = res.result?.soHoSo ?? '';
           showSnackBar(
             LocaleKeys.history_lookupSuccess.tr,
             typeAction: AppConst.actionSuccess,
