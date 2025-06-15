@@ -18,14 +18,13 @@ class ResultLookupHistoryRegisterModel {
   });
 
   factory ResultLookupHistoryRegisterModel.fromJson(Map<String, dynamic> json) {
-    final result = json['result'] ?? {};
     return ResultLookupHistoryRegisterModel(
       buoc1: Buoc.fromJson(json['buoc_1'] ?? {}),
       buoc2: Buoc.fromJson(json['buoc_2'] ?? {}),
       buoc3: Buoc.fromJson(json['buoc_3'] ?? {}),
-      trangThai: result['trangThai'] ?? '',
-      soHoSo: result['soHoSo'] ?? '',
-      thoiGianGui: result['thoiGianGui'] ?? '',
+      trangThai: json['trangThai'] ?? '',
+      soHoSo: json['soHoSo'] ?? '',
+      thoiGianGui: json['thoiGianGui'] ?? '',
     );
   }
 }

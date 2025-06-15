@@ -38,10 +38,8 @@ class HistoryDetailRegisterController extends BaseGetxController {
           // Cập nhật trạng thái
           historyRegisterItem
             ..trangThaiTK = res.result?.trangThai ?? ''
-            ..soHoSo = res.result?.soHoSo ?? '';
-
-          ///TODO: Đợi BE sửa format DateTime
-          // ..thoiGianGui = res.result?.thoiGianGui ?? '';
+            ..soHoSo = res.result?.soHoSo ?? ''
+            ..thoiGianGui = res.result?.thoiGianGui ?? '';
           showSnackBar(
             LocaleKeys.history_lookupSuccess.tr,
             typeAction: AppConst.actionSuccess,
