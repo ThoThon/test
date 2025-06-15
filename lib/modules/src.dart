@@ -10,7 +10,7 @@ export '../shares/base/base.src.dart';
 export '../shares/shares.src.dart';
 export 'declare/declare_src.dart';
 export 'history/history_src.dart';
-export 'history_detail/history_detail_src.dart';
+export 'history_detail_declare/history_detail_declare_src.dart';
 export 'info_unit/info_unit_src.dart';
 export 'login/login_src.dart';
 export 'mock_data/mock_data.src.dart';

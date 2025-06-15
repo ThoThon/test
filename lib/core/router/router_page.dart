@@ -1,3 +1,4 @@
+import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/lookup_c12/ui/ui_src.dart';
 import 'package:v_bhxh/modules/notification/ui/notification_page.dart';
@@ -42,8 +43,12 @@ class RouteAppPage {
       page: () => HistoryPage(),
     ),
     GetPage(
-      name: AppRoutes.historyDetail.path,
-      page: () => HistoryDetailPage(),
+      name: AppRoutes.historyDetailDeclare.path,
+      page: () => HistoryDetailDeclarePage(),
+    ),
+    GetPage(
+      name: AppRoutes.historyDetailRegister.path,
+      page: () => HistoryDetailRegisterPage(),
     ),
     GetPage(
       name: AppRoutes.procedureList.path,
@@ -103,7 +108,7 @@ class RouteAppPage {
     ),
     GetPage(
       name: AppRoutes.registerService.path,
-      page: () =>  RegisterServicePage(),
+      page: () => RegisterServicePage(),
     ),
   ];
 }

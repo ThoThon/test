@@ -1,8 +1,8 @@
-part of 'history_detail_page.dart';
+part of 'history_detail_declare_page.dart';
 
-extension HistoryDetailWidget on HistoryDetailPage {
+extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   Widget _buildBody() {
-    final model = controller.historyItemModel;
+    final model = controller.historyDeclareItem;
     return Column(
       children: [
         UtilWidget.buildSolidButton(
