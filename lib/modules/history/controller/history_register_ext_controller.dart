@@ -12,7 +12,7 @@ extension HistoryRegisterExtController on HistoryController {
           : AppConst.defaultPageSize,
       nam: selectedPeriodDate.value.year,
       thang: selectedPeriodDate.value.month,
-      soHoSo: searchController.text,
+      soHoSo: searchController.text.trim(),
       loaiGiaoDich: selectFilterHistoryRegister.value.type,
     );
   }

@@ -43,7 +43,7 @@ extension HistoryDeclareExtController on HistoryController {
       nam: selectedPeriodDate.value.year.toString(),
       thang: selectedPeriodDate.value.month.toString(),
       maThuTuc: selectProcedure.value?.loai.toString() ?? '',
-      soHoSo: searchController.text,
+      soHoSo: searchController.text.trim(),
     );
   }
 
