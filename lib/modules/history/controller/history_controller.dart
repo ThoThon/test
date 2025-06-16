@@ -46,9 +46,17 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
         ghiChu: '',
       ),
     );
+    getArg();
     getProcedureFilter();
     getHistoryDeclare();
     getHistoryRegister();
+  }
+
+  void getArg() {
+    final arg = Get.arguments;
+    if (arg != null && arg is HistoryTabEnum) {
+      currentTab.value = arg;
+    }
   }
 
   @override

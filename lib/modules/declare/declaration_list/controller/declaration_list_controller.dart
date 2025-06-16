@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/core/router/app_route.dart';
-import 'package:v_bhxh/core/values/dimens.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/repository/declaration_list_repository.dart';
 import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
-import 'package:v_bhxh/shares/function/logger.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog.src.dart';
+
+import '../../../src.dart';
 
 // Nếu mã lỗi là 58061 thì có thể retry ký số (from a Chương)
 const _allowRetryCode = "58061";
@@ -75,7 +74,10 @@ class DeclarationListController extends BaseGetxController {
         Get.until(ModalRoute.withName(AppRoutes.home.path));
       },
       onConfirm: () {
-        Get.toNamed(AppRoutes.history.path);
+        Get.toNamed(
+          AppRoutes.history.path,
+          arguments: HistoryTabEnum.file_declare,
+        );
       },
     );
   }
