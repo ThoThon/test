@@ -7,9 +7,7 @@ import '../repository/history_detail_register_repository_model.dart';
 class HistoryDetailRegisterController extends BaseGetxController {
   late final _historyDetaiRepository = HistoryDetailRegisterRepository(this);
 
-  ResultLookupHistoryRegisterModel? resultLookupHistoryModel;
-
-  final argument = Get.arguments as HistoryRegisterItemModel;
+  ResultLookupHistoryRegisterModel? resultLookupHistoryRegister;
 
   late final HistoryRegisterItemModel historyRegisterItem;
 
@@ -20,7 +18,12 @@ class HistoryDetailRegisterController extends BaseGetxController {
   }
 
   void getArg() {
-    historyRegisterItem = argument;
+    final args = Get.arguments;
+    if (args == null) return;
+    if (args is HistoryRegisterItemModel) {
+      historyRegisterItem = args;
+    }
+    return;
   }
 
   Future<void> lookupHistoryRegister() async {
@@ -29,10 +32,10 @@ class HistoryDetailRegisterController extends BaseGetxController {
       final res = await _historyDetaiRepository
           .lookupHistoryRegister(historyRegisterItem.messId);
       if (res.isSuccess && res.result != null) {
-        resultLookupHistoryModel = res.result;
+        resultLookupHistoryRegister = res.result;
 
         // Kiểm tra Bước 1 xem có null hay không
-        if (resultLookupHistoryModel!.buoc1!.maKetQua.isEmpty) {
+        if (resultLookupHistoryRegister!.buoc1!.maKetQua.isEmpty) {
           showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
         } else {
           // Cập nhật trạng thái và số hồ sơ

@@ -81,8 +81,8 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
   Widget _buildProgressHandleCard(
     HistoryRegisterItemModel item,
   ) {
-    final isNewData = controller.resultLookupHistoryModel != null;
-    final resultLookup = controller.resultLookupHistoryModel;
+    final isNewData = controller.resultLookupHistoryRegister != null;
+    final resultLookup = controller.resultLookupHistoryRegister;
 
     final titles = isNewData
         ? [

@@ -83,8 +83,8 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   Widget _buildProgressHandleCard(
     HistoryDeclareItemModel model,
   ) {
-    final newData = controller.resultLookupHistoryModel != null;
-    final resultLookup = controller.resultLookupHistoryModel;
+    final newData = controller.resultLookupHistoryDeclare != null;
+    final resultLookup = controller.resultLookupHistoryDeclare;
     final titles = newData
         ? [
             resultLookup?.buoc1?.moTaKetQua ?? '',

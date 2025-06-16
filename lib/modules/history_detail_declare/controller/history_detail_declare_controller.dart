@@ -4,12 +4,10 @@ import '../../src.dart';
 class HistoryDetailDeclareController extends BaseGetxController {
   late final HistoryDeclareItemModel historyDeclareItem;
 
-  final argument = Get.arguments as HistoryDeclareItemModel;
-
   late final _historyDetaiDeclareRepository =
       HistoryDetailDeclareRepository(this);
 
-  ResultLookupHistoryDeclareModel? resultLookupHistoryModel;
+  ResultLookupHistoryDeclareModel? resultLookupHistoryDeclare;
 
   @override
   void onInit() async {
@@ -18,7 +16,12 @@ class HistoryDetailDeclareController extends BaseGetxController {
   }
 
   void getArg() {
-    historyDeclareItem = argument;
+    final args = Get.arguments;
+    if (args == null) return;
+    if (args is HistoryDeclareItemModel) {
+      historyDeclareItem = args;
+    }
+    return;
   }
 
   Future<void> getFileNumber(String key) async {
@@ -52,10 +55,10 @@ class HistoryDetailDeclareController extends BaseGetxController {
       final res =
           await _historyDetaiDeclareRepository.lookupProcessHistory(soHoSo);
       if (res.isSuccess) {
-        resultLookupHistoryModel = res.result;
+        resultLookupHistoryDeclare = res.result;
 
         // Kiểm tra Bước 1 xem có null hay không
-        if (resultLookupHistoryModel!.buoc1!.maKetQua.isEmpty) {
+        if (resultLookupHistoryDeclare!.buoc1!.maKetQua.isEmpty) {
           showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
         } else {
           // Cập nhật trạng thái
