@@ -90,7 +90,7 @@ class LoginPage extends BaseGetWidget<LoginController> {
         hintText: LocaleKeys.login_inputAccount.tr,
         controller: controller.usernameTextCtrl,
         obscureText: false,
-        inputFormatters: InputFormatterEnum.textOnly,
+        inputFormatters: InputFormatterEnum.password,
         validator: (value) {
           if (value.isNullOrEmpty) {
             return LocaleKeys.login_userNameCannotEmpty.tr;

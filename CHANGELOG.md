@@ -1,3 +1,6 @@
+16/06/2025
+- [AppMobile] - Tên đăng nhập cho phép nhập ký tự đặc biệt - BHW-2394
+
 15/06/2025
 - [Appmobile]_Bổ sung giao diện màn Chi tiết lịch sử - BHW-2380
 
