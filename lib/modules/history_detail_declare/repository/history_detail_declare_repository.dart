@@ -1,8 +1,8 @@
 import '../../../base_app/base_app.src.dart';
 import '../../src.dart';
 
-class HistoryDetaiRepository extends BaseRepository {
-  HistoryDetaiRepository(super.controller);
+class HistoryDetailDeclareRepository extends BaseRepository {
+  HistoryDetailDeclareRepository(super.controller);
 
   Future<BaseResponse<FileNumberModel>> getFileNumber(String key) async {
     final response = await baseCallApi(
@@ -16,16 +16,16 @@ class HistoryDetaiRepository extends BaseRepository {
     );
   }
 
-  Future<BaseResponse<ResultLookupHistoryModel>> lookupProcessHistory(
+  Future<BaseResponse<ResultLookupHistoryDeclareModel>> lookupProcessHistory(
       String soHoSo) async {
     final response = await baseCallApi(
       AppApi.urlLookupProgressHistory,
       EnumRequestMethod.get,
       jsonMap: {"soHoSo": soHoSo},
     );
-    return BaseResponse<ResultLookupHistoryModel>.fromJson(
+    return BaseResponse<ResultLookupHistoryDeclareModel>.fromJson(
       response,
-      fromJson: (json) => ResultLookupHistoryModel.fromJson(json),
+      fromJson: (json) => ResultLookupHistoryDeclareModel.fromJson(json),
     );
   }
 }

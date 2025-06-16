@@ -1,28 +1,34 @@
 class HistoryRegisterItemModel {
-  final String messId;
-  final String toKhai;
-  final String thoiGianGui;
-  final String kqBuoc1;
-  final String kqBuoc2;
-  final String kqBuoc3;
-  final String trangThaiTK;
-  final String soHoSo;
-  final String tiepNhan;
-  final int nam;
-  final int thang;
+  String messId;
+  String toKhai;
+  String thoiGianGui;
+  String? kqBuoc1;
+  String? kqBuoc2;
+  String? kqBuoc3;
+  String trangThaiTK;
+  String? soHoSo;
+  String? tiepNhan;
+  int nam;
+  int thang;
+  bool? trangThaiBuoc1;
+  bool? trangThaiBuoc2;
+  bool? trangThaiBuoc3;
 
   HistoryRegisterItemModel({
     required this.messId,
     required this.toKhai,
     required this.thoiGianGui,
-    required this.kqBuoc1,
-    required this.kqBuoc2,
-    required this.kqBuoc3,
+    this.kqBuoc1,
+    this.kqBuoc2,
+    this.kqBuoc3,
     required this.trangThaiTK,
-    required this.soHoSo,
-    required this.tiepNhan,
+    this.soHoSo,
+    this.tiepNhan,
     required this.nam,
     required this.thang,
+    this.trangThaiBuoc1,
+    this.trangThaiBuoc2,
+    this.trangThaiBuoc3,
   });
 
   factory HistoryRegisterItemModel.fromJson(Map<String, dynamic> json) {
@@ -38,6 +44,9 @@ class HistoryRegisterItemModel {
       tiepNhan: json['tiepNhan'] ?? '',
       nam: json['nam'] ?? 0,
       thang: json['thang'] ?? 0,
+      trangThaiBuoc1: json['trangThaiBuoc1'],
+      trangThaiBuoc2: json['trangThaiBuoc2'],
+      trangThaiBuoc3: json['trangThaiBuoc3'],
     );
   }
 }

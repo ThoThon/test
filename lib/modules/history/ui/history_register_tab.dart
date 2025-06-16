@@ -32,17 +32,15 @@ extension HistoryRegisterTab on HistoryPage {
   Widget _buildCardItemHistoryRegister(HistoryRegisterItemModel item) {
     return InkWell(
       onTap: () {
-        // Get.toNamed(
-        //   AppRoutes.historyDetail.path,
-        //   arguments: HistoryArguments(
-        //     historyRegister: item
-        //   ),
-        // )?.then(
-        //   (value) async {
-        //     controller.listHistoryRegister.clear();
-        //     await controller.getHistoryRegister();
-        //   },
-        // );
+        Get.toNamed(
+          AppRoutes.historyDetailRegister.path,
+          arguments: item,
+        )?.then(
+          (value) async {
+            controller.listHistoryRegister.clear();
+            await controller.getHistoryRegister();
+          },
+        );
       },
       child: Row(
         children: [

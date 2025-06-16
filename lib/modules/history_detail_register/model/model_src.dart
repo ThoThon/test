@@ -1,0 +1,1 @@
+export 'result_lookup_history_register_model.dart';

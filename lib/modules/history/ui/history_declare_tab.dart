@@ -32,15 +32,15 @@ extension HistoryDeclareTab on HistoryPage {
   Widget _buildCardItemHistoryDeclare(HistoryDeclareItemModel item) {
     return InkWell(
       onTap: () {
-        // Get.toNamed(
-        //   AppRoutes.historyDetail.path,
-        //   arguments: HistoryArguments(historyDeclare: item),
-        // )?.then(
-        //   (value) async {
-        //     controller.listHistoryDeclare.clear();
-        //     await controller.getHistoryDeclare();
-        //   },
-        // );
+        Get.toNamed(
+          AppRoutes.historyDetailDeclare.path,
+          arguments: item,
+        )?.then(
+          (value) async {
+            controller.listHistoryDeclare.clear();
+            await controller.getHistoryDeclare();
+          },
+        );
       },
       child: Row(
         children: [
@@ -96,18 +96,4 @@ extension HistoryDeclareTab on HistoryPage {
       ).paddingAll(AppDimens.paddingSmall),
     );
   }
-
-  // Widget _buildItemBottomSheetFilter({
-  //   required Function()? onTap,
-  //   required String text,
-  //   TextStyle? style,
-  // }) {
-  //   return InkWell(
-  //     onTap: onTap,
-  //     child: SDSBuildText(
-  //       text,
-  //       style: style,
-  //     ),
-  //   ).paddingOnly(bottom: AppDimens.paddingVerySmall);
-  // }
 }

@@ -1,0 +1,1 @@
+export 'history_detail_declare_controller.dart';

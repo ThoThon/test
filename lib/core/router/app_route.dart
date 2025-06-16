@@ -27,8 +27,11 @@ enum AppRoutes {
   ///Tra cứu C12
   lookupC12,
 
-  ///Chi tiết lịch sử
-  historyDetail,
+  ///Chi tiết lịch sử hồ sơ kê khai
+  historyDetailDeclare,
+
+  ///Chi tiết lịch sử đăng ký giao dịch
+  historyDetailRegister,
 
   //Quét CCCD
   nfc,

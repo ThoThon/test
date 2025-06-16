@@ -1,8 +1,8 @@
-part of 'history_detail_page.dart';
+part of 'history_detail_declare_page.dart';
 
-extension HistoryDetailWidget on HistoryDetailPage {
+extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   Widget _buildBody() {
-    final model = controller.historyItemModel;
+    final model = controller.historyDeclareItem;
     return Column(
       children: [
         UtilWidget.buildSolidButton(
@@ -83,8 +83,8 @@ extension HistoryDetailWidget on HistoryDetailPage {
   Widget _buildProgressHandleCard(
     HistoryDeclareItemModel model,
   ) {
-    final newData = controller.resultLookupHistoryModel != null;
-    final resultLookup = controller.resultLookupHistoryModel;
+    final newData = controller.resultLookupHistoryDeclare != null;
+    final resultLookup = controller.resultLookupHistoryDeclare;
     final titles = newData
         ? [
             resultLookup?.buoc1?.moTaKetQua ?? '',
