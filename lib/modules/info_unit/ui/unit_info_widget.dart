@@ -198,7 +198,7 @@ extension UnitInfoWidget on UnitInfoPage {
           if (trimmedValue == null || trimmedValue.isEmpty) {
             return LocaleKeys.unitInfo_emailContactIsNotEmpty.tr;
           }
-          if (controller.getEmailInvalid(trimmedValue)) {
+          if (!trimmedValue.isEmailValid) {
             return LocaleKeys.unitInfo_emailIsNotValid.tr;
           }
           return null;
