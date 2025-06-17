@@ -4,3 +4,4 @@
 - Màn Thông tin đơn vị: Validate: Yêu cầu nhập đúng định dạng email
 - Sửa lại text thông báo Trong Popup thành công gửi hồ sơ Khi đăng ký dịch vụ
 - Đổi Số điện thoại CSKH
+- Bổ sung Maxlength cho Tên đănh nhập và mật khẩu
