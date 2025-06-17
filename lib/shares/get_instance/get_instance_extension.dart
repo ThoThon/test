@@ -1,4 +1,6 @@
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_interface.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 
 extension GetInstanceExtension on GetInterface {
@@ -9,5 +11,9 @@ extension GetInstanceExtension on GetInterface {
       return find<S>(tag: tag);
     }
     return null;
+  }
+
+  T? safeArguments<T>() {
+    return Get.arguments is T? ? Get.arguments as T? : null;
   }
 }
