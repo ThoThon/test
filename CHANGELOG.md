@@ -1,3 +1,6 @@
+17/06/2025
+- [AppMobile] - Màn Thông tin đơn vị: Validate: Yêu cầu nhập đúng định dạng email - BHW-2315
+
 16/06/2025
 - [AppMobile] - Tên đăng nhập cho phép nhập ký tự đặc biệt - BHW-2394
 

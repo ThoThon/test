@@ -1,4 +1,2 @@
-16/06/2025
-- Bổ sung giao diện màn Chi tiết lịch sử
-- Bỏ quyền READ_MEDIA_IMAGES và MANAGE_EXTERNAL_STORAGE
-- Sửa "Tên đăng nhập" cho phép nhập ký tự đặc biệt
+17/06/2025
+- Màn Thông tin đơn vị: Validate: Yêu cầu nhập đúng định dạng email

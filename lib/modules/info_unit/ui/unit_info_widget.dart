@@ -200,6 +200,10 @@ extension UnitInfoWidget on UnitInfoPage {
           if (!value.isEmail) {
             return LocaleKeys.unitInfo_emailIsNotValid.tr;
           }
+          final emailRegex = RegExp(r'^[\w\-._+%]+@(?:[\w\-]+\.)+[\w]{2,6}$');
+          if (!emailRegex.hasMatch(value)) {
+            return LocaleKeys.unitInfo_emailIsNotValid.tr;
+          }
           return null;
         },
       ),
