@@ -2,6 +2,9 @@
 - [Appmobile]_Màn đăng ký dịch vụ: cho phép hiển thị xem thêm nếu giá trị quá dài - BHW-2400
 - [Appmobile]_Điều hướng trang: Kê khai hồ sơ sang màn lịch sử - BHW-2395
 - [AppMobile] - Màn Thông tin đơn vị: Validate: Yêu cầu nhập đúng định dạng email - BHW-2315
+- [Appmobile]_Sửa lại text thông báo Trong Popup thành công gửi hồ sơ Khi đăng ký dịch vụ - BHW-2403
+- [Appmobile]_Đổi Số điện thoại CSKH - BHW-2402
+- [Appmobile]_Bổ sung Maxlength cho Tên đănh nhập và mật khẩu - BHW-2404
 - [Appmobile]_Thêm chức năng xóa tại Các trường chọn trong combobox không bắt buộc - BHW-2399
 
 16/06/2025

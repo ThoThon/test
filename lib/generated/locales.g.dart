@@ -48,7 +48,10 @@ class LocaleKeys {
   static const dialog_successTransfer = 'dialog_successTransfer';
   static const dialog_fileSendToSignature = 'dialog_fileSendToSignature';
   static const dialog_submitDeclareToSuccess = 'dialog_submitDeclareToSuccess';
+  static const dialog_submitRegisterToSuccess =
+      'dialog_submitRegisterToSuccess';
   static const dialog_resend = 'dialog_resend';
+  static const dialog_cannotConnectMySign = 'dialog_cannotConnectMySign';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -731,7 +734,10 @@ class Locales {
         'Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập mysign để tiến hành phê duyệt.',
     'dialog_submitDeclareToSuccess':
         'Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.',
+    'dialog_submitRegisterToSuccess':
+        'Gửi hồ sơ lên cổng tiếp nhận của BHXH thành công.',
     'dialog_resend': 'Gửi lại',
+    'dialog_cannotConnectMySign': 'Không thể kết nối tới hệ thống ký số.',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -749,7 +755,7 @@ class Locales {
     'home_procedureList': 'Danh sách \nthủ tục',
     'home_langugue': 'Ngôn ngữ',
     'home_changePassword': 'Đổi mật khẩu',
-    'home_support': 'CSKH: 1900 1900',
+    'home_support': 'CSKH: 1800 8000',
     'home_changeAccount': 'Đổi tài khoản',
     'home_taxCode': 'MST',
     'home_hello': 'Xin chào,',
