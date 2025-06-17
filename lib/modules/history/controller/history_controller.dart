@@ -34,8 +34,6 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
 
   final selectFilterHistoryRegister = HistoryRegisterTypeFilterEnum.all.obs;
 
-  // final argument = Get.arguments as HistoryArgument?;
-
   final argument = Get.safeArguments<HistoryArgument>();
 
   @override
@@ -51,11 +49,9 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
         ghiChu: '',
       ),
     );
-    if (argument != null) {
-      if (argument?.selectedTab == HistoryTabEnum.file_declare) {
-        currentTab.value =
-            argument?.selectedTab ?? HistoryTabEnum.register_transaction;
-      }
+    if (argument?.selectedTab == HistoryTabEnum.file_declare) {
+      currentTab.value =
+          argument?.selectedTab ?? HistoryTabEnum.register_transaction;
     }
     getProcedureFilter();
     getHistoryDeclare();
