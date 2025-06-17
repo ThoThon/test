@@ -39,7 +39,9 @@
     "successTransfer": "Chuyển ký thành công !",
     "fileSendToSignature": "Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập mysign để tiến hành phê duyệt.",
     "submitDeclareToSuccess": "Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.",
-    "resend":"Gửi lại"
+    "submitRegisterToSuccess": "Gửi hồ sơ lên cổng tiếp nhận của BHXH thành công.",
+    "resend": "Gửi lại",
+    "cannotConnectMySign":"Không thể kết nối tới hệ thống ký số."
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -202,11 +204,11 @@
     "fileNumber": "Số hồ sơ",
     "cannotLookupFileNumber": "Không tìm thấy số hồ sơ",
     "error": "Có lỗi xảy ra, vui lòng thử lại sau",
-    "history":"Lịch sử",
-    "selectedTransaction":"Chọn loại giao dịch",
-    "registerTransaction":"Đăng ký giao dịch",
-    "registerChanged":"Đăng ký thay đổi",
-    "cancelTransaction":"Hủy giao dịch"
+    "history": "Lịch sử",
+    "selectedTransaction": "Chọn loại giao dịch",
+    "registerTransaction": "Đăng ký giao dịch",
+    "registerChanged": "Đăng ký thay đổi",
+    "cancelTransaction": "Hủy giao dịch"
   },
   "certificate": {
     "listCertificate": "Danh sách chứng thư số",
@@ -582,6 +584,6 @@
     "cannotSearchUsername": "Không tìm thấy tên đăng nhập",
     "certificateNotFound": "Không tìm thấy chứng thư số",
     "usernameMySignNotFound": "Không tìm thấy tên đăng nhập MySign",
-    "userNameMySignCannotEmpty":"Nhập tên đăng nhập My Sign để lấy thông tin CTS"
+    "userNameMySignCannotEmpty": "Nhập tên đăng nhập My Sign để lấy thông tin CTS"
   }
 }

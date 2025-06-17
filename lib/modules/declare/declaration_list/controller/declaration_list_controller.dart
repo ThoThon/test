@@ -45,7 +45,7 @@ class DeclarationListController extends BaseGetxController {
       ShowDialog.dismissDialog();
       if (e is DioException) {
         _showDialogVerifyFailed(
-          errorMessage: 'Không thể kết nối tới hệ thống ký số.',
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
           onRetry: signDocument,
         );
       }
@@ -55,9 +55,8 @@ class DeclarationListController extends BaseGetxController {
   void _showDialogCheckedSuccess() {
     ShowDialog.showDialogWithWidget(
       // isActiveBack: false,
-      title: 'Chuyển ký thành công !',
-      content:
-          'Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập mysign để tiến hành phê duyệt.',
+      title: LocaleKeys.dialog_successTransfer.tr,
+      content: LocaleKeys.dialog_fileSendToSignature.tr,
       child: const CupertinoActivityIndicator(
         radius: 20,
       ).paddingOnly(top: AppDimens.defaultPadding),
@@ -66,11 +65,11 @@ class DeclarationListController extends BaseGetxController {
 
   void _showDialogVerifySuccess() {
     ShowDialog.showDialogConfirm2(
-      title: 'Thành Công!',
-      content: 'Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.',
+      title: LocaleKeys.dialog_success.tr,
+      content: LocaleKeys.dialog_submitDeclareToSuccess.tr,
       iconType: DialogIconType.success,
-      exitTitle: 'Thoát',
-      confirmTitle: 'Lịch sử',
+      exitTitle: LocaleKeys.dialog_exit.tr,
+      confirmTitle: LocaleKeys.dialog_history.tr,
       onCancel: () {
         Get.until(ModalRoute.withName(AppRoutes.home.path));
       },
@@ -90,12 +89,12 @@ class DeclarationListController extends BaseGetxController {
     VoidCallback? onRetry,
   }) {
     ShowDialog.showDialogConfirm2(
-      title: 'Thất bại!',
+      title: LocaleKeys.dialog_fail.tr,
       content: errorMessage,
       iconType: DialogIconType.failure,
-      exitTitle: 'Thoát',
+      exitTitle: LocaleKeys.dialog_exit.tr,
       showConfirmButton: onRetry != null,
-      confirmTitle: onRetry != null ? 'Gửi lại' : null,
+      confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
       onCancel: () {
         Get.until(ModalRoute.withName(AppRoutes.home.path));
       },

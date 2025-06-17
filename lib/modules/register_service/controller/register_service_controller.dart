@@ -102,7 +102,7 @@ class RegisterServiceController extends BaseGetxController {
       ShowDialog.dismissDialog();
       if (e is DioException) {
         _showDialogVerifyFailed(
-          errorMessage: 'Không thể kết nối tới hệ thống ký số.',
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
           onRetry: registerNewService,
         );
       }
@@ -129,7 +129,7 @@ class RegisterServiceController extends BaseGetxController {
   void _showDialogVerifySuccess() {
     ShowDialog.showDialogConfirm2(
       title: LocaleKeys.dialog_success.tr,
-      content: LocaleKeys.dialog_submitDeclareToSuccess.tr,
+      content: LocaleKeys.dialog_submitRegisterToSuccess.tr,
       iconType: DialogIconType.success,
       exitTitle: LocaleKeys.dialog_exit.tr,
       confirmTitle: LocaleKeys.dialog_history.tr,
