@@ -1,3 +1,4 @@
 17/06/2025
 - Điều hướng trang: Kê khai hồ sơ sang màn lịch sử
 - Màn đăng ký dịch vụ: cho phép hiển thị xem thêm nếu giá trị quá dài
+- Màn Thông tin đơn vị: Validate: Yêu cầu nhập đúng định dạng email
