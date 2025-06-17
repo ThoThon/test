@@ -41,7 +41,7 @@
     "submitDeclareToSuccess": "Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.",
     "submitRegisterToSuccess": "Gửi hồ sơ lên cổng tiếp nhận của BHXH thành công.",
     "resend": "Gửi lại",
-    "cannotConnectMySign":"Không thể kết nối tới hệ thống ký số."
+    "cannotConnectMySign": "Không thể kết nối tới hệ thống ký số."
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -65,7 +65,7 @@
     "procedureList": "Danh sách \nthủ tục",
     "langugue": "Ngôn ngữ",
     "changePassword": "Đổi mật khẩu",
-    "support": "CSKH: 1900 1900",
+    "support": "CSKH: 1800 8000",
     "changeAccount": "Đổi tài khoản",
     "taxCode": "MST",
     "hello": "Xin chào,",
