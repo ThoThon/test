@@ -236,6 +236,7 @@ extension RegisterServiceWidget on RegisterServicePage {
             ),
             sdsSBHeight4,
             SDSBuildText(
+              maxLines: 5,
               contenTitle ?? '',
               style: AppTextStyle.font14Re,
             ),
