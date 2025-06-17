@@ -4,6 +4,7 @@
 - [AppMobile] - Màn Thông tin đơn vị: Validate: Yêu cầu nhập đúng định dạng email - BHW-2315
 - [Appmobile]_Sửa lại text thông báo Trong Popup thành công gửi hồ sơ Khi đăng ký dịch vụ - BHW-2403
 - [Appmobile]_Đổi Số điện thoại CSKH - BHW-2402
+- [Appmobile]_Bổ sung Maxlength cho Tên đănh nhập và mật khẩu - BHW-2404
 
 
 16/06/2025

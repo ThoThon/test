@@ -91,6 +91,7 @@ class LoginPage extends BaseGetWidget<LoginController> {
         controller: controller.usernameTextCtrl,
         obscureText: false,
         inputFormatters: InputFormatterEnum.password,
+        maxLengthInputForm: 25,
         validator: (value) {
           if (value.isNullOrEmpty) {
             return LocaleKeys.login_userNameCannotEmpty.tr;
@@ -107,6 +108,7 @@ class LoginPage extends BaseGetWidget<LoginController> {
         hintText: LocaleKeys.login_inputPassword.tr,
         controller: controller.passwordTextCtrl,
         inputFormatters: InputFormatterEnum.password,
+        maxLengthInputForm: 50,
         obscureText: true,
         validator: (value) {
           if (value.isNullOrEmpty) {
