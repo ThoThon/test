@@ -148,7 +148,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     return personTransactionController.text.trim().isEmpty ||
         phoneContactController.text.trim().isEmpty ||
         emailContactController.text.trim().isEmpty ||
-        !emailContactController.text.isEmail;
+        getEmailInvalid(emailContactController.text);
   }
 
   bool otherInfoIsNotValid() {
@@ -174,5 +174,10 @@ class UnitInfoControllerImpICare extends UnitInfoController {
         representInfoIsNotValid() ||
         traderInfoIsNotValid() ||
         otherInfoIsNotValid();
+  }
+
+  bool getEmailInvalid(String email) {
+    final emailRegex = RegExp(r'^[\w\-.+%]+@(?:[\w-]+\.)+[\w]{2,6}$');
+    return !emailRegex.hasMatch(email);
   }
 }
