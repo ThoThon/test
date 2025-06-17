@@ -755,7 +755,7 @@ class Locales {
     'home_procedureList': 'Danh sách \nthủ tục',
     'home_langugue': 'Ngôn ngữ',
     'home_changePassword': 'Đổi mật khẩu',
-    'home_support': 'CSKH: 1900 1900',
+    'home_support': 'CSKH: 1800 8000',
     'home_changeAccount': 'Đổi tài khoản',
     'home_taxCode': 'MST',
     'home_hello': 'Xin chào,',
