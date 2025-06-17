@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
+import 'package:v_bhxh/modules/declare/declaration_list/model/history_argument.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/repository/declaration_list_repository.dart';
 import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
@@ -76,7 +77,9 @@ class DeclarationListController extends BaseGetxController {
       onConfirm: () {
         Get.toNamed(
           AppRoutes.history.path,
-          arguments: HistoryTabEnum.file_declare,
+          arguments: HistoryArgument(
+            selectedTab: HistoryTabEnum.file_declare,
+          ),
         );
       },
     );

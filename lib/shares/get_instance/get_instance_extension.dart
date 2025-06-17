@@ -1,5 +1,4 @@
-import 'package:get/get_core/src/get_interface.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get.dart';
 
 extension GetInstanceExtension on GetInterface {
   /// The findOrNull method will return the instance if it is registered;
@@ -9,5 +8,9 @@ extension GetInstanceExtension on GetInterface {
       return find<S>(tag: tag);
     }
     return null;
+  }
+
+  T? safeArguments<T>() {
+    return Get.arguments is T? ? Get.arguments as T? : null;
   }
 }

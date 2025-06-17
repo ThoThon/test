@@ -1,4 +1,5 @@
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:v_bhxh/modules/declare/declaration_list/model/history_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
@@ -33,6 +34,10 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
 
   final selectFilterHistoryRegister = HistoryRegisterTypeFilterEnum.all.obs;
 
+  // final argument = Get.arguments as HistoryArgument?;
+
+  final argument = Get.safeArguments<HistoryArgument>();
+
   @override
   void onInit() {
     super.onInit();
@@ -46,17 +51,15 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
         ghiChu: '',
       ),
     );
-    getArg();
+    if (argument != null) {
+      if (argument?.selectedTab == HistoryTabEnum.file_declare) {
+        currentTab.value =
+            argument?.selectedTab ?? HistoryTabEnum.register_transaction;
+      }
+    }
     getProcedureFilter();
     getHistoryDeclare();
     getHistoryRegister();
-  }
-
-  void getArg() {
-    final arg = Get.arguments;
-    if (arg != null && arg is HistoryTabEnum) {
-      currentTab.value = arg;
-    }
   }
 
   @override
