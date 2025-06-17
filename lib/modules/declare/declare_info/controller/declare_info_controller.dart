@@ -735,4 +735,19 @@ class DeclareInfoController extends BaseGetxController {
     }
     return true;
   }
+
+  void onTapClearProvinceTT() {
+    tk1State.provinceTT.value = null;
+    tk1State.districtTT.value = null;
+    tk1State.wardTT.value = null;
+  }
+
+  void onTapClearDistrictTT() {
+    tk1State.districtTT.value = null;
+    tk1State.wardTT.value = null;
+  }
+
+  void onTapClearWardTT() {
+    tk1State.wardTT.value = null;
+  }
 }
