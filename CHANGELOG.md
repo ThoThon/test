@@ -1,3 +1,8 @@
+17/06/2025
+- [Appmobile]_Màn đăng ký dịch vụ: cho phép hiển thị xem thêm nếu giá trị quá dài - BHW-2400
+- [Appmobile]_Điều hướng trang: Kê khai hồ sơ sang màn lịch sử - BHW-2395
+- [AppMobile] - Màn Thông tin đơn vị: Validate: Yêu cầu nhập đúng định dạng email - BHW-2315
+
 16/06/2025
 - [AppMobile] - Tên đăng nhập cho phép nhập ký tự đặc biệt - BHW-2394
 

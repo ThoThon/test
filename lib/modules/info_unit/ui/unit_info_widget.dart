@@ -194,10 +194,15 @@ extension UnitInfoWidget on UnitInfoPage {
         maxLengthInputForm: 250,
         inputFormatters: InputFormatterEnum.email,
         validator: (value) {
-          if (value!.isEmpty) {
+          final trimmedValue = value?.trim();
+          if (trimmedValue == null || trimmedValue.isEmpty) {
             return LocaleKeys.unitInfo_emailContactIsNotEmpty.tr;
           }
-          if (!value.isEmail) {
+          if (trimmedValue.isEmail) {
+            return LocaleKeys.unitInfo_emailIsNotValid.tr;
+          }
+          final emailRegex = RegExp(r'^[\w\-._+%]+@(?:[\w\-]+\.)+[\w]{2,6}$');
+          if (!emailRegex.hasMatch(trimmedValue)) {
             return LocaleKeys.unitInfo_emailIsNotValid.tr;
           }
           return null;
