@@ -1,5 +1,6 @@
 18/06/2025
 - [Appmobile]_Chỉnh sửa trường Từ tháng/năm - BHW-2411
+- [Appmobile]_Chỉnh sửa trường Đén tháng/năm - BHW-2412
 
 17/06/2025
 - [Appmobile]_Màn đăng ký dịch vụ: cho phép hiển thị xem thêm nếu giá trị quá dài - BHW-2400

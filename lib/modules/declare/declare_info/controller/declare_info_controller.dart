@@ -781,4 +781,36 @@ class DeclareInfoController extends BaseGetxController {
     }
     return false;
   }
+
+  /// Nếu "Loại khai báo" có các "Phương án" giống với những type này
+  /// Thì "Đến tháng/năm" sẽ trở thành trường required
+  ///
+  /// REF: http://10.100.140.19:8080/projects/BHW/issues/BHW-2412
+  bool get isToDateRequired {
+    final declarationTypeId = d02State.declarationType.value?.value;
+
+    // Tăng lao động
+    if (declarationTypeId == 1) {
+      return ['AD'].contains(d02State.plan.value?.id);
+    }
+    // Tăng lương
+    if (declarationTypeId == 2) {
+      return ['TT'].contains(d02State.plan.value?.id);
+    }
+    // Giảm lao động
+    if (declarationTypeId == 3) {
+      return ['GH', 'GC', 'GD', 'SB', 'OF', 'TS', 'KL']
+          .contains(d02State.plan.value?.id);
+    }
+    // Giảm lương
+    if (declarationTypeId == 4) {
+      return ['GN', 'TU'].contains(d02State.plan.value?.id);
+    }
+    // Khác
+    if (declarationTypeId == 5) {
+      return ['GL'].contains(d02State.plan.value?.id);
+    }
+
+    return false;
+  }
 }
