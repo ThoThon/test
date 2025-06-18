@@ -60,7 +60,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<!-- Start NFC Configuration Section -->
-	<key>NFCReaderUsageDescription</key>
+	<!-- <key>NFCReaderUsageDescription</key>
 	<string>Quét thẻ NFC</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
@@ -82,7 +82,7 @@
 		<string>A0000002472001</string>
 		<string>A000000151000000</string>
 		<string>D2760000850101</string>
-	</array>
+	</array> -->
 	<!-- End NFC Configuration Section -->
 </dict>
 </plist>
