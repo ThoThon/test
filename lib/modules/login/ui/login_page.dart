@@ -120,17 +120,17 @@ class LoginPage extends BaseGetWidget<LoginController> {
     );
   }
 
-  Widget _buildForgetPassword() {
-    return InkWell(
-      onTap: () {
-        Get.toNamed(AppRoutes.forgotLogin.path);
-      },
-      child: SDSBuildText(
-        LocaleKeys.login_forgetPassword.tr,
-        style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
-      ),
-    );
-  }
+  // Widget _buildForgetPassword() {
+  //   return InkWell(
+  //     onTap: () {
+  //       Get.toNamed(AppRoutes.forgotLogin.path);
+  //     },
+  //     child: SDSBuildText(
+  //       LocaleKeys.login_forgetPassword.tr,
+  //       style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+  //     ),
+  //   );
+  // }
 
   Widget _buildChangeAccount() {
     return InkWell(

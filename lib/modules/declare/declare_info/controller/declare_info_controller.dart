@@ -695,59 +695,44 @@ class DeclareInfoController extends BaseGetxController {
     super.onClose();
   }
 
-  void goToScanCCCD() async {
-    autovalidateMode.value = AutovalidateMode.always;
+  // void goToScanCCCD() async {
+  //   autovalidateMode.value = AutovalidateMode.always;
 
-    final cccd = d02Tk1State.cccdTextCtrl.text.trim();
-    if (!_isValidCCCD(cccd)) return;
-    final result = await Get.toNamed(
-      AppRoutes.nfc.path,
-      arguments: cccd,
-    );
-    if (result != null) {
-      sendNfcRequestModel = result;
-      Gender? gender = sendNfcRequestModel.sexVMN?.parseGender;
-      final query =
-          sendNfcRequestModel.nationalityVMN?.trim().toUpperCase() ?? '';
-      d02Tk1State
-        ..fullNameTextCtrl.text = sendNfcRequestModel.nameVNM ?? ''
-        ..cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? ''
-        ..dateOfBirthTextCtrl.text = sendNfcRequestModel.dobVMN ?? ''
-        ..gender.value = gender
-        ..selectedEthnic.value = AppData.instance.ethnics
-            .toList()
-            .firstWhereOrNull(
-                (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM)
-        ..selectedNationality.value =
-            AppData.instance.nations.toList().firstWhereOrNull(
-                  (nations) => nations.text.trim() == query,
-                );
-    }
-  }
+  //   final cccd = d02Tk1State.cccdTextCtrl.text.trim();
+  //   if (!_isValidCCCD(cccd)) return;
+  //   final result = await Get.toNamed(
+  //     AppRoutes.nfc.path,
+  //     arguments: cccd,
+  //   );
+  //   if (result != null) {
+  //     sendNfcRequestModel = result;
+  //     Gender? gender = sendNfcRequestModel.sexVMN?.parseGender;
+  //     final query =
+  //         sendNfcRequestModel.nationalityVMN?.trim().toUpperCase() ?? '';
+  //     d02Tk1State
+  //       ..fullNameTextCtrl.text = sendNfcRequestModel.nameVNM ?? ''
+  //       ..cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? ''
+  //       ..dateOfBirthTextCtrl.text = sendNfcRequestModel.dobVMN ?? ''
+  //       ..gender.value = gender
+  //       ..selectedEthnic.value = AppData.instance.ethnics
+  //           .toList()
+  //           .firstWhereOrNull(
+  //               (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM)
+  //       ..selectedNationality.value =
+  //           AppData.instance.nations.toList().firstWhereOrNull(
+  //                 (nations) => nations.text.trim() == query,
+  //               );
+  //   }
+  // }
 
-  bool _isValidCCCD(String cccd) {
-    if (cccd.isEmpty) {
-      showSnackBar(LocaleKeys.nfc_pleaseFillCccd.tr);
-      return false;
-    } else if (cccd.length < 12) {
-      showSnackBar(LocaleKeys.declareInfo_cccdNumberIsValid.tr);
-      return false;
-    }
-    return true;
-  }
-
-  void onTapClearProvinceTT() {
-    tk1State.provinceTT.value = null;
-    tk1State.districtTT.value = null;
-    tk1State.wardTT.value = null;
-  }
-
-  void onTapClearDistrictTT() {
-    tk1State.districtTT.value = null;
-    tk1State.wardTT.value = null;
-  }
-
-  void onTapClearWardTT() {
-    tk1State.wardTT.value = null;
-  }
+  // bool _isValidCCCD(String cccd) {
+  //   if (cccd.isEmpty) {
+  //     showSnackBar(LocaleKeys.nfc_pleaseFillCccd.tr);
+  //     return false;
+  //   } else if (cccd.length < 12) {
+  //     showSnackBar(LocaleKeys.declareInfo_cccdNumberIsValid.tr);
+  //     return false;
+  //   }
+  //   return true;
+  // }
 }

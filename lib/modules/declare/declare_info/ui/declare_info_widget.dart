@@ -104,30 +104,30 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
-  Widget _buildScanIDButton({
-    VoidCallback? onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SDSImageSvg(
-            Assets.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG,
-            height: AppDimens.sizeIconLarge,
-            width: AppDimens.sizeIconLarge,
-          ),
-          UtilWidget.sizedBoxWidth8,
-          Flexible(
-            child: SDSBuildText(
-              'Quét căn cước công dân để lấy thông tin',
-              style: AppTextStyle.font14Semi,
-            ),
-          ),
-        ],
-      ).paddingAll(AppDimens.paddingSmallest),
-    ).paddingAll(AppDimens.paddingSmall);
-  }
+  // Widget _buildScanIDButton({
+  //   VoidCallback? onTap,
+  // }) {
+  //   return InkWell(
+  //     onTap: onTap,
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         SDSImageSvg(
+  //           Assets.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG,
+  //           height: AppDimens.sizeIconLarge,
+  //           width: AppDimens.sizeIconLarge,
+  //         ),
+  //         UtilWidget.sizedBoxWidth8,
+  //         Flexible(
+  //           child: SDSBuildText(
+  //             'Quét căn cước công dân để lấy thông tin',
+  //             style: AppTextStyle.font14Semi,
+  //           ),
+  //         ),
+  //       ],
+  //     ).paddingAll(AppDimens.paddingSmallest),
+  //   ).paddingAll(AppDimens.paddingSmall);
+  // }
 
   Widget _buildInputFullName({
     VoidCallback? onTapSelectStaff,

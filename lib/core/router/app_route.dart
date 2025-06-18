@@ -34,7 +34,7 @@ enum AppRoutes {
   historyDetailRegister,
 
   //Quét CCCD
-  nfc,
+  // nfc,
 
   //Chọn nhân viên
   selectStaff,

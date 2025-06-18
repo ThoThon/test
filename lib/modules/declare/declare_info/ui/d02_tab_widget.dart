@@ -4,18 +4,19 @@ extension D02TabWidget on DeclareInfoPage {
   Widget _buildD02TabBody() {
     return Column(
       children: [
-        Obx(
-          () {
-            if (controller.isShowScanIDButton) {
-              return _buildScanIDButton(
-                onTap: () {
-                  controller.goToScanCCCD();
-                },
-              );
-            }
-            return UtilWidget.shrink;
-          },
-        ),
+        // Obx(
+        //   () {
+        //     if (controller.isShowScanIDButton) {
+        //       return _buildScanIDButton(
+        //         onTap: () {
+        //           controller.goToScanCCCD();
+        //         },
+        //       );
+        //     }
+        //     return UtilWidget.shrink;
+        //   },
+        // ),
+        UtilWidget.sizedBox8,
         Expanded(
           child: Obx(
             () {
