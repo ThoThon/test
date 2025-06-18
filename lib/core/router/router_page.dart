@@ -9,7 +9,6 @@ import '../../modules/declare/declaration_list/ui/declaration_list_page.dart';
 import '../../modules/declare/procedure_list/ui/procedure_list_page.dart';
 import '../../modules/declare/staff_list/ui/staff_list_page.dart';
 import '../../modules/home/src.dart';
-import '../../modules/nfc/ui/nfc_page.dart';
 import '../../modules/splash/splash.src.dart';
 import '../../modules/splash/splash_page.dart';
 import '../../modules/src.dart';
@@ -82,10 +81,10 @@ class RouteAppPage {
       name: AppRoutes.viewPdf.path,
       page: () => ViewPdfPage(),
     ),
-    GetPage(
-      name: AppRoutes.nfc.path,
-      page: () => NfcPage(),
-    ),
+    // GetPage(
+    //   name: AppRoutes.nfc.path,
+    //   page: () => NfcPage(),
+    // ),
     GetPage(
       name: AppRoutes.forgotLogin.path,
       page: () => ForgotPasswordPage(),
