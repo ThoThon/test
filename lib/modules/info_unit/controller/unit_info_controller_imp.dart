@@ -1,6 +1,7 @@
 import 'package:v_bhxh/base_app/model/base_model.src.dart';
 import 'package:v_bhxh/modules/info_unit/models/update_account_info_request.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/utils/string_utils.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 class UnitInfoControllerImpICare extends UnitInfoController {
@@ -148,7 +149,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     return personTransactionController.text.trim().isEmpty ||
         phoneContactController.text.trim().isEmpty ||
         emailContactController.text.trim().isEmpty ||
-        !emailContactController.text.isEmail;
+        !emailContactController.text.isEmailValid;
   }
 
   bool otherInfoIsNotValid() {

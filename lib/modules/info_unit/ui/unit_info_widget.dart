@@ -198,11 +198,7 @@ extension UnitInfoWidget on UnitInfoPage {
           if (trimmedValue == null || trimmedValue.isEmpty) {
             return LocaleKeys.unitInfo_emailContactIsNotEmpty.tr;
           }
-          if (trimmedValue.isEmail) {
-            return LocaleKeys.unitInfo_emailIsNotValid.tr;
-          }
-          final emailRegex = RegExp(r'^[\w\-._+%]+@(?:[\w\-]+\.)+[\w]{2,6}$');
-          if (!emailRegex.hasMatch(trimmedValue)) {
+          if (!trimmedValue.isEmailValid) {
             return LocaleKeys.unitInfo_emailIsNotValid.tr;
           }
           return null;
