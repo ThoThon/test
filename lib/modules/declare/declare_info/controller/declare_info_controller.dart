@@ -695,6 +695,21 @@ class DeclareInfoController extends BaseGetxController {
     super.onClose();
   }
 
+  void onTapClearProvinceTT() {
+    tk1State.provinceTT.value = null;
+    tk1State.districtTT.value = null;
+    tk1State.wardTT.value = null;
+  }
+
+  void onTapClearDistrictTT() {
+    tk1State.districtTT.value = null;
+    tk1State.wardTT.value = null;
+  }
+
+  void onTapClearWardTT() {
+    tk1State.wardTT.value = null;
+  }
+
   // void goToScanCCCD() async {
   //   autovalidateMode.value = AutovalidateMode.always;
 
