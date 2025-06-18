@@ -750,4 +750,30 @@ class DeclareInfoController extends BaseGetxController {
   //   }
   //   return true;
   // }
+
+
+  /// Nếu chọn loại khai báo và phương án trong các type sau 
+  /// "Từ tháng/năm" sẽ thành isRequired
+  /// 
+  /// REF: http://10.100.140.19:8080/projects/BHW/issues/BHW-2411
+  bool get isFromDateRequired {
+    final declarationTypeId = d02State.declarationType.value?.value;
+    if (declarationTypeId == 1) {
+      return ['TM', 'TD', 'TC', 'TH', 'AD', 'AT', 'ON']
+          .contains(d02State.plan.value?.id);
+    }
+    if (declarationTypeId == 2) {
+      return ['DC', 'DN', 'TN', 'TT'].contains(d02State.plan.value?.id);
+    }
+    if (declarationTypeId == 3) {
+      return ['SB'].contains(d02State.plan.value?.id);
+    }
+    if (declarationTypeId == 4) {
+      return ['TU'].contains(d02State.plan.value?.id);
+    }
+    if (declarationTypeId == 5) {
+      return ['DC', 'CD', 'TD', 'DL'].contains(d02State.plan.value?.id);
+    }
+    return false;
+  }
 }

@@ -152,7 +152,7 @@ extension D02TabWidget on DeclareInfoPage {
       title: LocaleKeys.declareInfo_fromMonthYear.tr,
       controller: controller.d02State.fromDateTextCtrl,
       hintText: PATTERN_12,
-      isRequired: false,
+      isRequired: controller.isFromDateRequired,
       inputFormatters: InputFormatterEnum.dateMonthYear,
       onSelectDate: () async {
         final selectedDate = await UtilWidget.showPeriodDatePicker(
