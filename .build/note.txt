@@ -1,8 +1,2 @@
-17/06/2025
-- Điều hướng trang: Kê khai hồ sơ sang màn lịch sử
-- Màn đăng ký dịch vụ: cho phép hiển thị xem thêm nếu giá trị quá dài
-- Màn Thông tin đơn vị: Validate: Yêu cầu nhập đúng định dạng email
-- Sửa lại text thông báo Trong Popup thành công gửi hồ sơ Khi đăng ký dịch vụ
-- Đổi Số điện thoại CSKH
-- Bổ sung Maxlength cho Tên đănh nhập và mật khẩu
-- Thêm chức năng xóa tại Các trường chọn trong combobox không bắt buộc
+18/06/2025
+- Chỉnh sửa trường Đén tháng/năm
