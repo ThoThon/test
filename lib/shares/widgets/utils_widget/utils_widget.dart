@@ -570,6 +570,7 @@ class UtilWidget {
     required T? selectedItem,
     required String Function(T) display,
     String? Function(T?)? validator,
+    VoidCallback? onTapClear,
   }) {
     return FormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -626,10 +627,15 @@ class UtilWidget {
                         ),
                       ),
                     ),
-                    const Icon(
-                      Icons.arrow_drop_down,
-                      color: AppColors.dsGray3,
-                    ),
+                    selectedItem != null
+                        ? GestureDetector(
+                            onTap: onTapClear,
+                            child: const Icon(Icons.close),
+                          )
+                        : const Icon(
+                            Icons.arrow_drop_down,
+                            color: AppColors.dsGray3,
+                          ),
                   ],
                 ),
               ),

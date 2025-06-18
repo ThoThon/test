@@ -498,6 +498,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           },
           selectedItem: controller.tk1State.provinceTT.value,
           display: (province) => province.name,
+          onTapClear: controller.onTapClearProvinceTT,
           validator: (value) {
             if (controller.tk1State.provinceTT.value == null) {
               return LocaleKeys.declareInfo_provinceTTCannotEmpty.tr;
@@ -539,6 +540,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           },
           selectedItem: controller.tk1State.districtTT.value,
           display: (district) => district.name,
+          onTapClear: controller.onTapClearDistrictTT,
           validator: (value) {
             if (controller.tk1State.districtTT.value == null) {
               return LocaleKeys.declareInfo_districtTTCannotEmpty.tr;
@@ -588,6 +590,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           },
           selectedItem: controller.tk1State.wardTT.value,
           display: (ward) => ward.name,
+          onTapClear: controller.onTapClearWardTT,
           validator: (value) {
             if (controller.tk1State.wardTT.value == null) {
               return LocaleKeys.declareInfo_wardTTCannotEmpty.tr;

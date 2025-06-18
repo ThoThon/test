@@ -5,3 +5,4 @@
 - Sửa lại text thông báo Trong Popup thành công gửi hồ sơ Khi đăng ký dịch vụ
 - Đổi Số điện thoại CSKH
 - Bổ sung Maxlength cho Tên đănh nhập và mật khẩu
+- Thêm chức năng xóa tại Các trường chọn trong combobox không bắt buộc
