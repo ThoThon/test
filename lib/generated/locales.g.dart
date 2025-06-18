@@ -1015,7 +1015,7 @@ class Locales {
     'declareInfo_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
     'declareInfo_fromMonthYear': 'Từ tháng/năm',
     'declareInfo_toMonthYear': 'Đến tháng/năm',
-    'declareInfo_position': 'Cấp bập/chức vụ',
+    'declareInfo_position': 'Cấp bậc/chức vụ',
     'declareInfo_selectPosition': 'Chọn cấp bậc/Chức vụ',
     'declareInfo_workplace': 'Nơi làm việc',
     'declareInfo_payBySalaryCoefficient': 'Đóng theo hệ số',

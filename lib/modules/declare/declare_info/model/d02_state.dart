@@ -28,7 +28,7 @@ class D02State {
   /// Đến tháng/năm *
   final toDateTextCtrl = TextEditingController();
 
-  /// Cấp bập/chức vụ *
+  /// Cấp bậc/chức vụ *
   final positionTextCtrl = TextEditingController();
 
   /// Nơi làm việc *
