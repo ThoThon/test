@@ -587,6 +587,7 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void onChangeHeadOfHouseholdFullName(String value) {
+    tk1State.headOfHouseholdCCCDTextCtrl.text;
     tk1State.isParticipantHeadOfHousehold.value = false;
   }
 
@@ -734,5 +735,13 @@ class DeclareInfoController extends BaseGetxController {
       return false;
     }
     return true;
+  }
+
+  bool get isHeadOfHouseRequired {
+    return tk1State.headOfHouseholdTextCtrl.text.isNotEmpty ||
+        tk1State.headOfHouseholdCCCDTextCtrl.text.isNotEmpty ||
+        tk1State.provinceTT.value != null ||
+        tk1State.districtTT.value != null ||
+        tk1State.wardTT.value != null;
   }
 }

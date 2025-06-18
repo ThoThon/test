@@ -410,7 +410,10 @@
     "selectHospital": "Chọn bệnh viện",
     "inputHospitalName": "Nhập tên bệnh viện",
     "inputPCTNN": "PC TNN phải là số nguyên",
-    "inputPCTNVuotKhung": "PC TN vượt khung phải là số nguyên"
+    "inputPCTNVuotKhung": "PC TN vượt khung phải là số nguyên",
+    "provinceTTCannotEmpty": "Tỉnh thường trú không được để trống",
+    "districtTTCannotEmpty": "Huyện thường trú không được để trống",
+    "wardTTCannotEmpty": "Xã thường trú không được để trống"
   },
   "familyMember": {
     "title": "Thành viên trong gia đình",
