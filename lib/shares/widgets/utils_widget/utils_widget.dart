@@ -570,7 +570,7 @@ class UtilWidget {
     required T? selectedItem,
     required String Function(T) display,
     String? Function(T?)? validator,
-    Function()? onTapClear,
+    VoidCallback? onTapClear,
   }) {
     return FormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
