@@ -450,7 +450,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_headOfHouseholdFullName.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          isValidate: controller.isHeadOfHouseRequired,
+          isValidate: !controller.isBhxhCodeRequired,
           controller: controller.tk1State.headOfHouseholdTextCtrl,
           onChanged: controller.onChangeHeadOfHouseholdFullName,
           maxLengthInputForm: 100,
@@ -464,7 +464,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_headOfHouseholdCCCD.tr,
       buildInputText: BuildInputText(
         InputTextModel(
-          isValidate: controller.isHeadOfHouseRequired,
+          isValidate: !controller.isBhxhCodeRequired,
           controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
           onChanged: controller.onChangeHeadOfHouseholdCCCD,
           maxLengthInputForm: 20,
@@ -479,7 +479,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
           label: LocaleKeys.declareInfo_provinceTT.tr,
           hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
-          isRequired: controller.isBhxhCodeRequired,
+          isRequired: !controller.isBhxhCodeRequired,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
@@ -516,7 +516,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         return UtilWidget.buildBottomSheetSelect<DistrictModel>(
           label: LocaleKeys.declareInfo_districtTT.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
-          isRequired: controller.isBhxhCodeRequired,
+          isRequired: !controller.isBhxhCodeRequired,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
             if (provinceTT == null) {
@@ -558,7 +558,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         return UtilWidget.buildBottomSheetSelect<WardModel>(
           label: LocaleKeys.declareInfo_wardTT.tr,
           hintText: LocaleKeys.declareInfo_selectWardTT.tr,
-          isRequired: controller.isBhxhCodeRequired,
+          isRequired: !controller.isBhxhCodeRequired,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
             if (provinceTT == null) {

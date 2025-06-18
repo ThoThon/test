@@ -711,6 +711,14 @@ class DeclareInfoController extends BaseGetxController {
     tk1State.wardTT.value = null;
   }
 
+  bool get isHeadOfHouseRequired {
+    return tk1State.headOfHouseholdTextCtrl.text.isNotEmpty ||
+        tk1State.headOfHouseholdCCCDTextCtrl.text.isNotEmpty ||
+        tk1State.provinceTT.value != null ||
+        tk1State.districtTT.value != null ||
+        tk1State.wardTT.value != null;
+  }
+
   // void goToScanCCCD() async {
   //   autovalidateMode.value = AutovalidateMode.always;
 
