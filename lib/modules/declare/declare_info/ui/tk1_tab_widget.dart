@@ -496,6 +496,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           },
           selectedItem: controller.tk1State.provinceTT.value,
           display: (province) => province.name,
+          enableClearIcon: true,
           onTapClear: controller.onTapClearProvinceTT,
         );
       },
@@ -532,6 +533,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           },
           selectedItem: controller.tk1State.districtTT.value,
           display: (district) => district.name,
+          enableClearIcon: true,
           onTapClear: controller.onTapClearDistrictTT,
         );
       },
@@ -576,6 +578,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           },
           selectedItem: controller.tk1State.wardTT.value,
           display: (ward) => ward.name,
+          enableClearIcon: true,
           onTapClear: controller.onTapClearWardTT,
         );
       },

@@ -571,6 +571,7 @@ class UtilWidget {
     required String Function(T) display,
     String? Function(T?)? validator,
     VoidCallback? onTapClear,
+    bool enableClearIcon = false,
   }) {
     return FormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -627,7 +628,7 @@ class UtilWidget {
                         ),
                       ),
                     ),
-                    selectedItem != null
+                    selectedItem != null && enableClearIcon
                         ? GestureDetector(
                             onTap: onTapClear,
                             child: const Icon(Icons.close),
