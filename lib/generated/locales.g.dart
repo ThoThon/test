@@ -731,7 +731,7 @@ class Locales {
     'dialog_confirm': 'Đồng ý',
     'dialog_successTransfer': 'Chuyển ký thành công !',
     'dialog_fileSendToSignature':
-        'Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập mysign để tiến hành phê duyệt.',
+        'Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập MySign để tiến hành phê duyệt.',
     'dialog_submitDeclareToSuccess':
         'Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.',
     'dialog_submitRegisterToSuccess':
