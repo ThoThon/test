@@ -148,56 +148,58 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectFromDate() {
-    return UtilWidget.buildInputSelectDate(
-      title: LocaleKeys.declareInfo_fromMonthYear.tr,
-      controller: controller.d02State.fromDateTextCtrl,
-      hintText: PATTERN_12,
-      isRequired: controller.isFromDateRequired,
-      inputFormatters: InputFormatterEnum.dateMonthYear,
-      onSelectDate: () async {
-        final selectedDate = await UtilWidget.showPeriodDatePicker(
-          dateTime: convertStringToDateSafe(
-            controller.d02State.fromDateTextCtrl.text,
+    return Obx(
+      () => UtilWidget.buildInputSelectDate(
+        title: LocaleKeys.declareInfo_fromMonthYear.tr,
+        controller: controller.d02State.fromDateTextCtrl,
+        hintText: PATTERN_12,
+        isRequired: controller.isFromDateRequired,
+        inputFormatters: InputFormatterEnum.dateMonthYear,
+        onSelectDate: () async {
+          final selectedDate = await UtilWidget.showPeriodDatePicker(
+            dateTime: convertStringToDateSafe(
+              controller.d02State.fromDateTextCtrl.text,
+              PATTERN_12,
+            ),
+          );
+          if (selectedDate != null) {
+            controller.d02State.fromDateTextCtrl.text =
+                convertDateToStringSafe(selectedDate, PATTERN_12) ?? '';
+          }
+        },
+        validator: (value) {
+          final trimmedValue = value?.trim();
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            // Không bắt buộc
+            return null;
+          }
+          // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
+          if (trimmedValue.length < 7) {
+            return LocaleKeys.declareInfo_fromDateInvalid.tr;
+          }
+
+          final fromDate = convertStringToDateStrict(trimmedValue, PATTERN_12);
+
+          if (fromDate == null) {
+            return LocaleKeys.declareInfo_fromDateInvalid.tr;
+          }
+
+          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+          if (fromDate.year <= 1900 || fromDate.year >= 2100) {
+            return LocaleKeys.declareInfo_fromDateInvalid.tr;
+          }
+          final toDate = convertStringToDateStrict(
+            controller.d02State.toDateTextCtrl.text,
             PATTERN_12,
-          ),
-        );
-        if (selectedDate != null) {
-          controller.d02State.fromDateTextCtrl.text =
-              convertDateToStringSafe(selectedDate, PATTERN_12) ?? '';
-        }
-      },
-      validator: (value) {
-        final trimmedValue = value?.trim();
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          // Không bắt buộc
+          );
+
+          if (toDate != null && fromDate.isAfter(toDate)) {
+            return LocaleKeys.declareInfo_fromDateCannotAfterToDate.tr;
+          }
+
           return null;
-        }
-        // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
-        if (trimmedValue.length < 7) {
-          return LocaleKeys.declareInfo_fromDateInvalid.tr;
-        }
-
-        final fromDate = convertStringToDateStrict(trimmedValue, PATTERN_12);
-
-        if (fromDate == null) {
-          return LocaleKeys.declareInfo_fromDateInvalid.tr;
-        }
-
-        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (fromDate.year <= 1900 || fromDate.year >= 2100) {
-          return LocaleKeys.declareInfo_fromDateInvalid.tr;
-        }
-        final toDate = convertStringToDateStrict(
-          controller.d02State.toDateTextCtrl.text,
-          PATTERN_12,
-        );
-
-        if (toDate != null && fromDate.isAfter(toDate)) {
-          return LocaleKeys.declareInfo_fromDateCannotAfterToDate.tr;
-        }
-
-        return null;
-      },
+        },
+      ),
     );
   }
 
