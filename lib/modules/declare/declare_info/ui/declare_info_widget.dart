@@ -281,6 +281,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
             Get.bottomSheet(
               BottomSheetSearch<EthnicModel>(
                 title: LocaleKeys.declareInfo_ethnic.tr,
+                maxLength: 20,
                 listFilter: AppData.instance.ethnics.toList(),
                 selectedItem: controller.d02Tk1State.selectedEthnic.value,
                 display: (value) => value.text,
@@ -316,6 +317,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
             Get.bottomSheet(
               BottomSheetSearch<NationModel>(
                 title: LocaleKeys.declareInfo_selectNationality.tr,
+                maxLength: 20,
                 listFilter: AppData.instance.nations.toList(),
                 selectedItem: controller.d02Tk1State.selectedNationality.value,
                 display: (value) => value.text,

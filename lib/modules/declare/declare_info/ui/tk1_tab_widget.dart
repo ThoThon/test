@@ -86,6 +86,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
+                maxLength: 20,
                 title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceOfBirth.value,
@@ -222,6 +223,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
+                maxLength: 20,
                 title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceReceive.value,
@@ -358,6 +360,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
+                maxLength: 20,
                 title: LocaleKeys.declareInfo_selectProvinceKCB.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceKCB.value,
@@ -481,6 +484,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
+                maxLength: 20,
                 title: LocaleKeys.declareInfo_selectProvinceTT.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceTT.value,

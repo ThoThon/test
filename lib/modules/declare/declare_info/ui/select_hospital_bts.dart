@@ -72,7 +72,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
 
   Widget buildSearch() {
     return UtilWidget.buildTextInput(
-      height: AppDimens.sizeDialogNotiIcon,
+      maxLength: 100,
       controller: controller.searchTextCtrl,
       hintText: LocaleKeys.declareInfo_inputHospitalName.tr,
       textColor: AppColors.colorBlack,

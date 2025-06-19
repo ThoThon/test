@@ -73,7 +73,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
 
   Widget buildSearch() {
     return UtilWidget.buildTextInput(
-      height: AppDimens.sizeDialogNotiIcon,
+      maxLength: 20,
       controller: controller.searchTextCtrl,
       hintText: LocaleKeys.declareInfo_inputWard.tr,
       textColor: AppColors.colorBlack,
