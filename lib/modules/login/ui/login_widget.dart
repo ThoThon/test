@@ -173,7 +173,7 @@ extension LoginWidget on LoginPage {
   Widget _buildRegisterForCode() {
     return Center(
       child: InkWell(
-        onTap: () {},
+        onTap: controller.goToRegisterCodePage,
         child: SDSBuildText(
           LocaleKeys.login_registerForCode.tr,
           style: AppTextStyle.font14Re.copyWith(
