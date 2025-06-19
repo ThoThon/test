@@ -30,13 +30,14 @@ class HomeController extends BaseGetxController {
     );
   }
 
-  void goToGuideViewPdf(){
+  void goToGuideViewPdf() {
     Get.toNamed(
       AppRoutes.viewPdf.path,
       arguments: ViewPdfArgument(
         url: 'https://vbhxh-mobile-api.easyhrm.vn/user_guide.pdf',
         title: LocaleKeys.home_guide.tr,
         isRotateHorizontal: false,
+        enableDownloadButton: false,
       ),
     );
   }
