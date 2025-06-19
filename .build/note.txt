@@ -4,3 +4,4 @@
 - Bổ sung Hướng dẫn sử dụng
 - Ẩn thay đổi mật khẩu
 - Đăng ký lần đầu: Bổ sung giao diện Đăng nhập
+- Tên đơn vị bỏ trống nhưng vẫn cho lưu
