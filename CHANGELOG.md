@@ -1,5 +1,6 @@
 19/06/2025
 - [Appmobile]_Bổ sung maxlength cho các trường Tìm kiếm - BHW-2432
+- [Appmobile]_Chỉnh sửa trường Địa chỉ nơi nhận (Màn TK1) là trường bắt buộc - BHW-2435
 
 18/06/2025
 - [Appmobile]_Chỉnh sửa trường Từ tháng/năm - BHW-2411
