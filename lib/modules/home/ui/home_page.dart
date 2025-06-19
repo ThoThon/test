@@ -126,6 +126,9 @@ class HomePage extends BaseGetWidget<HomeController> {
             _buildItemDrawer(
               icon: Icons.book_outlined,
               text: LocaleKeys.home_guide.tr,
+              onTap: () {
+                controller.goToGuideViewPdf();
+              },
             ),
             _buildItemDrawer(
               icon: Icons.phone_outlined,
