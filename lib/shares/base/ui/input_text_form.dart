@@ -206,6 +206,9 @@ class BuildInputTextState extends State<BuildInputText> {
           }
         },
         decoration: InputDecoration(
+          label: widget.inputTextFormModel.label,
+          floatingLabelBehavior:
+              widget.inputTextFormModel.floatingLabelBehavior,
           counterText: widget.inputTextFormModel.isShowCounterText ? null : '',
           filled: true,
           fillColor:

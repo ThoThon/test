@@ -5,3 +5,4 @@
 - Ẩn thay đổi mật khẩu
 - Đăng ký lần đầu: Bổ sung giao diện Đăng nhập
 - Tên đơn vị bỏ trống nhưng vẫn cho lưu
+- Bổ sung giao diện màn "Đăng ký cấp mã"
