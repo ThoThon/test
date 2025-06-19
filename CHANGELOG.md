@@ -1,3 +1,6 @@
+19/06/2025
+- [Appmobile]_Bổ sung maxlength cho các trường Tìm kiếm - BHW-2432
+
 18/06/2025
 - [Appmobile]_Chỉnh sửa trường Từ tháng/năm - BHW-2411
 - [Appmobile]_Chỉnh sửa trường Đén tháng/năm - BHW-2412

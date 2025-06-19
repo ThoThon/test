@@ -11,6 +11,8 @@ class BottomSheetSearch<T> extends StatefulWidget {
     this.hintText,
     this.selectedItem,
     required this.onAccept,
+    this.maxLength,
+    this.height,
   });
 
   final List<T> listFilter;
@@ -18,7 +20,8 @@ class BottomSheetSearch<T> extends StatefulWidget {
   final String? hintText;
   final String Function(T) display;
   final Function(T?) onAccept;
-
+  final int? maxLength;
+  final double? height;
   final T? selectedItem;
 
   @override
@@ -41,6 +44,8 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
             child: Column(
               children: [
                 buildSearch(
+                  maxLength: widget.maxLength,
+                  height: widget.height,
                   hintSearch: widget.hintText,
                   textEditingController: textEditingController,
                   function: onChanged,
@@ -90,11 +95,14 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
     bool? autofocus,
     Color? backgroundColor,
     double? padding,
+    int? maxLength,
+    double? height,
   }) {
     hintSearch ??= LocaleKeys.unitInfo_search.tr;
     isClear.value = textEditingController.text.isNotEmpty;
     return UtilWidget.buildTextInput(
-      height: AppDimens.sizeDialogNotiIcon,
+      maxLength: maxLength,
+      height: height,
       controller: textEditingController,
       hintText: hintSearch,
       textColor: AppColors.colorBlack,

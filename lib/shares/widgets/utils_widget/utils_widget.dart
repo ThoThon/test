@@ -817,7 +817,7 @@ class UtilWidget {
   }
 
   static Widget buildTextInput({
-    var height,
+    double? height,
     Color? textColor,
     String? hintText,
     Color? hintColor,
@@ -831,11 +831,13 @@ class UtilWidget {
     Color? borderColor,
     bool? autofocus,
     BorderRadius? borderRadius,
+    int? maxLength,
   }) {
     return SizedBox(
       height: height,
       child: TextField(
         textAlignVertical: TextAlignVertical.center,
+        maxLength: maxLength,
         focusNode: focusNode,
         autofocus: autofocus ?? true,
         style: TextStyle(

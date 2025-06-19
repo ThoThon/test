@@ -70,12 +70,12 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
 
   Widget buildSearch() {
     return UtilWidget.buildTextInput(
-      height: AppDimens.sizeDialogNotiIcon,
       controller: controller.searchTextCtrl,
       hintText: LocaleKeys.declareInfo_inputDistrict.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
       borderColor: AppColors.primaryColor,
+      maxLength: 20,
       autofocus: false,
       fillColor: AppColors.colorWhite,
       borderRadius: const BorderRadius.all(Radius.circular(25)),
