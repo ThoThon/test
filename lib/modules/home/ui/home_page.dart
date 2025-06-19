@@ -119,10 +119,10 @@ class HomePage extends BaseGetWidget<HomeController> {
                 Get.toNamed(AppRoutes.profile.path);
               },
             ),
-            _buildItemDrawer(
-              icon: Icons.lock_outline,
-              text: LocaleKeys.home_changePassword.tr,
-            ),
+            // _buildItemDrawer(
+            //   icon: Icons.lock_outline,
+            //   text: LocaleKeys.home_changePassword.tr,
+            // ),
             _buildItemDrawer(
               icon: Icons.book_outlined,
               text: LocaleKeys.home_guide.tr,
