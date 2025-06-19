@@ -1,5 +1,5 @@
 19/06/2025
 - Bổ sung maxlength cho các trường Tìm kiếm
-- Chỉnh sửa trường Địa chỉ nơi nhận (Màn TK1) là trường bắt buộc
+- Chỉnh sửa trường Địa chỉ khai sinh, địa chỉ nơi nhận (Màn TK1) là trường bắt buộc
 - Bổ sung Hướng dẫn sử dụng
 - Ẩn thay đổi mật khẩu

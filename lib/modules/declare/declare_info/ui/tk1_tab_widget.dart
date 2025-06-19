@@ -206,6 +206,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_birthAddress.tr,
       buildInputText: BuildInputText(
         InputTextModel(
+          isValidate: true,
           controller: controller.tk1State.birthAddressTextCtrl,
           maxLengthInputForm: 300,
           onChanged: controller.onChangeBirthAddress,
