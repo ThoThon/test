@@ -266,7 +266,9 @@
     "inputUnitCode": "Nhập mã đơn vị",
     "inputPassword": "Nhập mật khẩu",
     "inputTaxCode": "Mã số thuế/ Mã ngân sách",
-    "inputAccount": "Tên đăng nhập"
+    "inputAccount": "Tên đăng nhập",
+    "registerForCode":"Đăng ký cấp mã",
+    "switchTo":"Đã chuyển sang"
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",
