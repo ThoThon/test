@@ -89,6 +89,7 @@ class LoginPage extends BaseGetWidget<LoginController> {
       InputTextModel(
         hintText: LocaleKeys.login_inputAccount.tr,
         controller: controller.usernameTextCtrl,
+        isShowCounterText: false,
         obscureText: false,
         inputFormatters: InputFormatterEnum.password,
         maxLengthInputForm: 25,
@@ -107,6 +108,7 @@ class LoginPage extends BaseGetWidget<LoginController> {
       InputTextModel(
         hintText: LocaleKeys.login_inputPassword.tr,
         controller: controller.passwordTextCtrl,
+        isShowCounterText: false,
         inputFormatters: InputFormatterEnum.password,
         maxLengthInputForm: 50,
         obscureText: true,
