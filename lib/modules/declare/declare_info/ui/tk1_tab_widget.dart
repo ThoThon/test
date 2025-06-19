@@ -343,6 +343,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_addressReceive.tr,
       buildInputText: BuildInputText(
         InputTextModel(
+          isValidate: true,
           controller: controller.tk1State.addressReceiveTextCtrl,
           maxLengthInputForm: 300,
           onChanged: controller.onChangeAddressReceive,
