@@ -10,7 +10,6 @@ class RegisterCodeRepository extends BaseRepository {
       AppApi.urlGetRegisterFirstCategories,
       EnumRequestMethod.get,
     );
-    logger.d(response);
     return BaseResponse<RegisterCodeCategories>.fromJson(
       response,
       fromJson: (json) => RegisterCodeCategories.fromJson(json),
@@ -25,7 +24,6 @@ class RegisterCodeRepository extends BaseRepository {
         "userId": userId,
       },
     );
-    logger.d(response);
     return BaseResponseList<CertificateModel>.fromJson(
       response,
       (json) => CertificateModel.fromJson(json),
