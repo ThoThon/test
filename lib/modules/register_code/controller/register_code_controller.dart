@@ -63,12 +63,9 @@ class RegisterCodeController extends BaseGetxController {
   // Nơi nhận huyện
   final districtReceive = Rxn<DistrictModel>();
 
-  final listDistrictReceive = <DistrictModel>[].obs;
-
   // Nơi nhận xã
   final wardReceive = Rxn<WardModel>();
 
-  final listWardReceive = <WardModel>[].obs;
   // Đăng ký nhận kết quả
   final registerResult = Rxn<RegisterReceiveResultModel>();
 
@@ -201,5 +198,49 @@ class RegisterCodeController extends BaseGetxController {
 
   void deleteImage(int index) {
     listImage.removeAt(index);
+  }
+
+  FirstRegisterRequest _buildRequest() {
+    return FirstRegisterRequest(
+      coQuanBHXHQuanLy: socialAgency.value?.tenCoQuanBHXH ?? '',
+      coQuanBHXHTinh: coQuanBHXHTinh,
+      credentialID: credentialID,
+      diaChi: addressUnitCtrl.text,
+      diaChiHuyen: districtReceive.value?.name ?? '',
+      diaChiTinh: provinceReceive.value?.name ?? '',
+      diaChiXa: wardReceive.value?.name ?? '',
+      diaChiDangKyKinhDoanh: addressRegisterBusinessCtrl.text,
+      dienThoai: phoneUnitCtrl.text,
+      dienThoaiLienHe: phoneContactCtrl.text,
+      email: emailUnitCtrl.text,
+      hoSoKemTheo: fileIncludeCtrl.text,
+      loaiDoiTuong: loaiDoiTuong,
+      loaiHinhDonVi: unitTypeCtrl.text,
+      maSoThue: taxCodeCtrl.text,
+      nganhNgheSX: productIndustryCtrl.text,
+      ngayDangKy: ngayDangKy,
+      ngayLap: ngayLap,
+      nguoiGiaoDich: personTransactionBhxhCtrl.text,
+      noiCapQuyetDinh: addressDecisionCtrl.text,
+      noiDung: contentCtrl.text,
+      phuongThucDong: paymentMethod.value?.text ?? '',
+      phuongThucNhanKetQua: registerResult.value?.text ?? '',
+      soQuyetDinh: decisionNumberCtrl.text,
+      tenDonVi: unitNameCtrl.text,
+      userId: usernameMySignCtrl.text,
+      phuongThucNhan: resultReceiveMethod.value?.text ?? '',
+    );
+  }
+
+  Future<void> registerCodeFirst() async {
+    try {
+      final res =
+          await _registerCodeRepository.registerCodeFirst(_buildRequest());
+      if (res.isSuccess) {
+        showSnackBar('Thành công');
+      }
+    } catch (e) {
+      logger.d(e);
+    }
   }
 }
