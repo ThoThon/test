@@ -16,7 +16,7 @@ extension RegisterServiceWidget on RegisterServicePage {
           ),
         ),
         sdsSBHeight12,
-        _buildBottomButtons(),
+        Obx(_buildBottomButtons),
       ],
     ).paddingSymmetric(horizontal: AppDimens.paddingSmall);
   }
@@ -261,11 +261,7 @@ extension RegisterServiceWidget on RegisterServicePage {
               horizontal: AppDimens.defaultPadding,
             ),
           ),
-          onPressed: controller.hasBeenRegister
-              ? null
-              : () {
-                  controller.getListCertificate();
-                },
+          onPressed: controller.getListCertificate,
           child: const Icon(
             Icons.send,
             color: AppColors.basicWhite,
@@ -305,17 +301,17 @@ extension RegisterServiceWidget on RegisterServicePage {
       children: [
         Expanded(
           child: UtilWidget.buildSolidButton(
-            title: 'Thay đổi',
+            title: LocaleKeys.registerService_changeInfo.tr,
             borderRadius: AppDimens.radius30,
-            onPressed: () {
-              // controller.resetRegisterService();
-            },
+            onPressed: controller.certificate.value != null
+                ? controller.changeInfo
+                : null,
           ),
         ),
         sdsSBWidth8,
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
-            title: 'Ngừng dịch vụ',
+            title: LocaleKeys.registerService_cancelRegister.tr,
             borderRadius: AppDimens.radius30,
             onPressed: controller.cancelRegister,
           ),

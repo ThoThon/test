@@ -49,6 +49,29 @@ class RegisterServiceRepository extends BaseRepository {
     );
   }
 
+  Future<BaseResponse> changeInfo({
+    required String userId,
+    required String credentialID,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlChangeInfo,
+      EnumRequestMethod.post,
+      queryParameters: {
+        'userId': userId,
+        'credentialID': credentialID,
+      },
+      // Cần chờ user mở app mysign để ký số nên set timeout là 3 phút
+      timeOut: _signDocumentTimeOut,
+      functionError: (err) {
+        // rethrow error để xử lý ở controller
+        throw err;
+      },
+    );
+    return BaseResponse.fromJson(
+      response,
+    );
+  }
+
   Future<BaseResponse> registerNewService({
     required String userId,
     required String credentialID,
