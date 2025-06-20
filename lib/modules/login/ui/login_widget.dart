@@ -43,8 +43,8 @@ extension LoginWidget on LoginPage {
                         ),
                         sdsSBHeight8,
                         _buildButtonLogin(),
-                        sdsSBHeight8,
-                        _buildRegisterForCode(),
+                        // sdsSBHeight8,
+                        // _buildRegisterForCode(),
                       ],
                     ),
                   ),
@@ -170,20 +170,20 @@ extension LoginWidget on LoginPage {
     );
   }
 
-  Widget _buildRegisterForCode() {
-    return Center(
-      child: InkWell(
-        onTap: () {},
-        child: SDSBuildText(
-          LocaleKeys.login_registerForCode.tr,
-          style: AppTextStyle.font14Re.copyWith(
-            color: AppColors.primaryColor,
-            fontStyle: FontStyle.italic,
-            decoration: TextDecoration.underline,
-            decorationColor: AppColors.primaryColor,
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget _buildRegisterForCode() {
+  //   return Center(
+  //     child: InkWell(
+  //       onTap: () {},
+  //       child: SDSBuildText(
+  //         LocaleKeys.login_registerForCode.tr,
+  //         style: AppTextStyle.font14Re.copyWith(
+  //           color: AppColors.primaryColor,
+  //           fontStyle: FontStyle.italic,
+  //           decoration: TextDecoration.underline,
+  //           decorationColor: AppColors.primaryColor,
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 }
