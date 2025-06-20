@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/modules/register_service/register_service_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';

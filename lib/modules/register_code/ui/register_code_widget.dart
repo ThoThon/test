@@ -25,12 +25,19 @@ extension RegisterCodeWidget on RegisterCodePage {
             Padding(
               padding: const EdgeInsets.only(top: AppDimens.defaultPadding),
               child: Obx(
-                () => UtilWidget.buildSolidButton(
-                  title: controller.currentTab.value ==
-                          RegisterCodeTabEnum.commmon_info
-                      ? 'Tiếp tục'
-                      : 'Đăng ký',
-                ),
+                () {
+                  final isRegisterBtn = controller.currentTab.value ==
+                      RegisterCodeTabEnum.register_info;
+                  return UtilWidget.buildSolidButton(
+                    title: isRegisterBtn ? 'Đăng ký' : 'Tiếp tục',
+                    onPressed: () {
+                      isRegisterBtn
+                          ? null
+                          : controller
+                              .onTabChanged(RegisterCodeTabEnum.register_info);
+                    },
+                  );
+                },
               ),
             )
           ],

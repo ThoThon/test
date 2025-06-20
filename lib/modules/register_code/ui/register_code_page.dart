@@ -1,7 +1,8 @@
-import 'package:v_bhxh/modules/src.dart';
-import 'package:v_bhxh/shares/base/ui/card_input_select_date_with_label.dart';
+import 'dart:io';
 
-import '../../../shares/base/ui/card_input_text_form_with_label.dart';
+import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/modules/src.dart';
 
 part 'common_info_tab.dart';
 part 'register_code_widget.dart';
@@ -23,7 +24,9 @@ class RegisterCodePage extends BaseGetWidget {
           title: 'Đăng ký cấp mã',
         ),
       ),
-      body: _buildBody(),
+      body: buildLoadingOverlay(
+        () => _buildBody(),
+      ),
     );
   }
 }

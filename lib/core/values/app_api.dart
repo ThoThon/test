@@ -74,4 +74,6 @@ class AppApi {
   static const String urlGetHistoryRegister =
       '/api/History/get-histories-register';
   static const String urlLookupHistoryRegister = '/api/TraCuu/tien-do-dang-ky';
+  static const String urlGetRegisterFirstCategories =
+      '/api/RegisterService/get-dkld-categories';
 }

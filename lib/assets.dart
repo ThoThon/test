@@ -107,10 +107,6 @@ class Assets {
   static String get ASSETS_ICONS_IC_CALENDAR_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_calendar.svg';
 
-  /// {@macro assets_generator.ASSETS_ICONS_IC_CALENDER_SVG.preview}
-  static String get ASSETS_ICONS_IC_CALENDER_SVG =>
-      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_calender.svg';
-
   /// {@macro assets_generator.ASSETS_ICONS_IC_CCCD_SVG.preview}
   static String get ASSETS_ICONS_IC_CCCD_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_cccd.svg';
@@ -339,9 +335,6 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_CALENDAR_SVG.preview}
   Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
-
-  /// {@macro assets_generator.ASSETS_ICONS_IC_CALENDER_SVG.preview}
-  Assets.ASSETS_ICONS_IC_CALENDER_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_CCCD_SVG.preview}
   Assets.ASSETS_ICONS_IC_CCCD_SVG,
