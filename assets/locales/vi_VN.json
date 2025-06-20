@@ -267,8 +267,8 @@
     "inputPassword": "Nhập mật khẩu",
     "inputTaxCode": "Mã số thuế/ Mã ngân sách",
     "inputAccount": "Tên đăng nhập",
-    "registerForCode":"Đăng ký cấp mã",
-    "switchTo":"Đã chuyển sang"
+    "registerForCode": "Đăng ký cấp mã",
+    "switchTo": "Đã chuyển sang"
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",
@@ -586,6 +586,8 @@
     "cannotSearchUsername": "Không tìm thấy tên đăng nhập",
     "certificateNotFound": "Không tìm thấy chứng thư số",
     "usernameMySignNotFound": "Không tìm thấy tên đăng nhập MySign",
-    "userNameMySignCannotEmpty": "Nhập tên đăng nhập My Sign để lấy thông tin CTS"
+    "userNameMySignCannotEmpty": "Nhập tên đăng nhập My Sign để lấy thông tin CTS",
+    "cancelRegister": "Ngừng dịch vụ",
+    "changeInfo": "Thay đổi"
   }
 }

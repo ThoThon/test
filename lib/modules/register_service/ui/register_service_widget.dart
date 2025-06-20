@@ -16,7 +16,7 @@ extension RegisterServiceWidget on RegisterServicePage {
           ),
         ),
         sdsSBHeight12,
-        _buildButtonRegister(),
+        _buildBottomButtons(),
       ],
     ).paddingSymmetric(horizontal: AppDimens.paddingSmall);
   }
@@ -288,6 +288,39 @@ extension RegisterServiceWidget on RegisterServicePage {
                 },
         );
       },
+    );
+  }
+
+  Widget _buildBottomButtons() {
+    final isRegistered = controller.hasBeenRegister;
+    if (isRegistered) {
+      return _buildChangeInfoAndCancelRegisterButtons();
+    } else {
+      return _buildButtonRegister();
+    }
+  }
+
+  Widget _buildChangeInfoAndCancelRegisterButtons() {
+    return Row(
+      children: [
+        Expanded(
+          child: UtilWidget.buildSolidButton(
+            title: 'Thay đổi',
+            borderRadius: AppDimens.radius30,
+            onPressed: () {
+              // controller.resetRegisterService();
+            },
+          ),
+        ),
+        sdsSBWidth8,
+        Expanded(
+          child: UtilWidget.buildSolidButtonBack(
+            title: 'Ngừng dịch vụ',
+            borderRadius: AppDimens.radius30,
+            onPressed: controller.cancelRegister,
+          ),
+        ),
+      ],
     );
   }
 }

@@ -160,6 +160,37 @@ class RegisterServiceController extends BaseGetxController {
     );
   }
 
+  Future<void> cancelRegister() async {
+    try {
+      _showDialogCheckedSuccess();
+      final response = await _registerServiceRepository.cancelRegister();
+      if (response.isSuccess) {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
+        // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
+        _showDialogVerifySuccess();
+      } else {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
+        final canRetry = response.code == _allowRetryCode;
+        _showDialogVerifyFailed(
+          errorMessage: response.errorMessage,
+          onRetry: canRetry ? cancelRegister : null,
+        );
+      }
+    } catch (e) {
+      ShowDialog.dismissDialog();
+      if (e is DioException) {
+        _showDialogVerifyFailed(
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
+          onRetry: cancelRegister,
+        );
+      }
+    }
+  }
+
   bool get hasBeenRegister {
     final hasInfo = registerServiceInfo.value;
     if (hasInfo == null) return false;
