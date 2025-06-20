@@ -1,4 +1,4 @@
-export 'currency_utils.dart';
+export 'currency_utils_num.dart';
 export 'date_full_input_formatter.dart';
 export 'date_month_input_formatter.dart';
 export 'date_year_input_formatter.dart';

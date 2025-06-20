@@ -1,6 +1,4 @@
-import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
-import 'package:v_bhxh/shares/base/ui/formatter/currency_utils.dart';
-import 'package:v_bhxh/shares/date/date_utils.dart';
+import 'package:v_bhxh/modules/src.dart';
 
 class D02Request {
   final String? id;
@@ -21,12 +19,12 @@ class D02Request {
   final String? chucVu;
   final String? noiLamViec;
   final bool dongTheoHeSo;
-  final double? tienLuong;
+  final String? tienLuong;
   final double? phuCapChucVu;
   final double? phuCapThamNienVuotKhung;
   final double? phuCapThamNienNghe;
-  final double? phuCapLuong;
-  final double? phuCapBoSung;
+  final String? phuCapLuong;
+  final String? phuCapBoSung;
   final String? ghiChu;
   final bool xuatD01;
 
@@ -105,8 +103,8 @@ class D02Request {
       xuatTk01: d02State.isGenerateTk1Data.value,
       cmnd: d02Tk1State.cccdTextCtrl.text.trim(),
       chiCoNamSinh: d02Tk1State.birthType.value.rawValue,
-      ngaySinh: convertStringToDateSafe(
-          d02Tk1State.dateOfBirthTextCtrl.text, d02Tk1State.birthType.value.pattern),
+      ngaySinh: convertStringToDateSafe(d02Tk1State.dateOfBirthTextCtrl.text,
+          d02Tk1State.birthType.value.pattern),
       gioiTinh: d02Tk1State.gender.value?.rawValue ?? Gender.male.rawValue,
       danTocId: d02Tk1State.selectedEthnic.value?.value,
       quocTichId: d02Tk1State.selectedNationality.value?.value,
@@ -115,7 +113,7 @@ class D02Request {
       chucVu: d02State.positionTextCtrl.text.trim(),
       noiLamViec: d02State.workplaceTextCtrl.text.trim(),
       dongTheoHeSo: d02State.isSalaryCoefficient.value,
-      tienLuong: CurrencyUtils.formatNumberCurrency(
+      tienLuong: CurrencyUtils.formatNumberCurrencyString(
         d02State.salaryCoefficientTextCtrl.text,
       ),
       phuCapChucVu: CurrencyUtils.formatNumberCurrency(
@@ -127,10 +125,10 @@ class D02Request {
       phuCapThamNienNghe: CurrencyUtils.formatNumberCurrency(
         d02State.pcTNNTextCtrl.text,
       ),
-      phuCapLuong: CurrencyUtils.formatNumberCurrency(
+      phuCapLuong: CurrencyUtils.formatNumberCurrencyString(
         d02State.salaryAllowanceTextCtrl.text,
       ),
-      phuCapBoSung: CurrencyUtils.formatNumberCurrency(
+      phuCapBoSung: CurrencyUtils.formatNumberCurrencyString(
         d02State.otherAllowanceTextCtrl.text,
       ),
       ghiChu: d02State.noteTextCtrl.text.trim(),

@@ -1,4 +1,6 @@
-class RegisterReceiveResultModel {
+import 'package:equatable/equatable.dart';
+
+class RegisterReceiveResultModel extends Equatable {
   final String value;
   final String text;
 
@@ -13,4 +15,7 @@ class RegisterReceiveResultModel {
       text: json['text'] ?? '',
     );
   }
+
+  @override
+  List<Object?> get props => [value, text];
 }

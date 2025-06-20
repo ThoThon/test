@@ -23,12 +23,12 @@ class D02DetailResponse {
   final String? chucVu;
   final String? noiLamViec;
   final bool dongTheoHeSo;
-  final double? tienLuong;
+  final String? tienLuong;
   final double? phuCapChucVu;
   final double? phuCapThamNienVuotKhung;
   final double? phuCapThamNienNghe;
-  final double? phuCapLuong;
-  final double? phuCapBoSung;
+  final String? phuCapLuong;
+  final String? phuCapBoSung;
   final String? ghiChu;
   final bool xuatD01;
 
@@ -95,12 +95,12 @@ class D02DetailResponse {
       chucVu: json['chucVu'],
       noiLamViec: json['noiLamViec'],
       dongTheoHeSo: json['dongTheoHeSo'] ?? false,
-      tienLuong: json['tienLuong']?.toDouble(),
+      tienLuong: json['tienLuong'],
       phuCapChucVu: json['phuCapChucVu']?.toDouble(),
       phuCapThamNienVuotKhung: json['phuCapThamNienVuotKhung']?.toDouble(),
       phuCapThamNienNghe: json['phuCapThamNienNghe']?.toDouble(),
-      phuCapLuong: json['phuCapLuong']?.toDouble(),
-      phuCapBoSung: json['phuCapBoSung']?.toDouble(),
+      phuCapLuong: json['phuCapLuong'],
+      phuCapBoSung: json['phuCapBoSung'],
       ghiChu: json['ghiChu'],
       xuatD01: json['xuatD01'] ?? false,
     );
