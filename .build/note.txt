@@ -2,6 +2,7 @@
 - Bổ sung chức năng thay đổi - BHW-2422
 - Bổ sung chức năng Ngừng dịch vụ - HW-2423
 - Bổ sung giao diện màn "Đăng ký cấp mã"
+- Lỗi tràn số tại trường lương - BHW-2398
 
 19/06/2025
 - Bổ sung maxlength cho các trường Tìm kiếm
