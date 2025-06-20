@@ -1,4 +1,6 @@
-class PaymentMethodModel {
+import 'package:equatable/equatable.dart';
+
+class PaymentMethodModel extends Equatable {
   final String value;
   final String text;
 
@@ -13,4 +15,7 @@ class PaymentMethodModel {
       text: json['text'] ?? '',
     );
   }
+
+  @override
+  List<Object?> get props => [value, text];
 }

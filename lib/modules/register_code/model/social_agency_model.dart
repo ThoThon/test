@@ -1,4 +1,6 @@
-class SocialAgencyModel {
+import 'package:equatable/equatable.dart';
+
+class SocialAgencyModel extends Equatable {
   final String maCoQuanBHXH;
   final String tenCoQuanBHXH;
   final String maTinh;
@@ -19,4 +21,8 @@ class SocialAgencyModel {
       tenTinhThanhPho: json['tenTinhThanhPho'] ?? '',
     );
   }
+
+  @override
+  List<Object?> get props =>
+      [maCoQuanBHXH, tenCoQuanBHXH, tenTinhThanhPho, maTinh];
 }

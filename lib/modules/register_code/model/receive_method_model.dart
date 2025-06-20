@@ -1,4 +1,6 @@
-class ReceiveMethodModel {
+import 'package:equatable/equatable.dart';
+
+class ReceiveMethodModel extends Equatable {
   final String value;
   final String text;
 
@@ -13,4 +15,7 @@ class ReceiveMethodModel {
       text: json['text'] ?? '',
     );
   }
+
+  @override
+  List<Object?> get props => [value, text];
 }
