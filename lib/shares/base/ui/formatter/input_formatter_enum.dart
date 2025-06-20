@@ -52,4 +52,7 @@ class InputFormatterEnum {
 
   /// 17 : phần trăm có thập phân 0 -> 99.99
   static const int percent = 17;
+
+  /// 18 : Chỉ nhập text, số, khoảng trắng
+  static const int textNormal = 18;
 }

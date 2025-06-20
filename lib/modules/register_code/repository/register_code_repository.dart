@@ -4,6 +4,8 @@ import 'package:http_parser/http_parser.dart';
 import '../../../base_app/base_app.src.dart';
 import '../../src.dart';
 
+const _signDocumentTimeOut = Duration(minutes: 3);
+
 class RegisterCodeRepository extends BaseRepository {
   RegisterCodeRepository(super.controller);
 
@@ -33,33 +35,53 @@ class RegisterCodeRepository extends BaseRepository {
     );
   }
 
-  Future<BaseResponse<String>> registerCodeFirst(
+  Future<BaseResponse> registerCodeFirst(
     FirstRegisterRequest request,
   ) async {
     final mapData = request.toJson();
+
     if (request.imageFilePath != null && request.imageFilePath!.isNotEmpty) {
-      mapData["attachedFile"] = await Future.wait(
-        request.imageFilePath!
-            .map(
-              (filePath) => di.MultipartFile.fromFile(
-                filePath,
-                filename: 'image',
-                contentType: MediaType('image', 'jpg'),
-              ),
-            )
-            .toList(),
-      );
+      final List<di.MultipartFile> multipartFiles = [];
+
+      for (final filePath in request.imageFilePath!) {
+        final fileName = filePath.split('/').last;
+
+        String contentType;
+        if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg')) {
+          contentType = 'image/jpeg';
+        } else if (fileName.endsWith('.png')) {
+          contentType = 'image/png';
+        } else if (fileName.endsWith('.pdf')) {
+          contentType = 'application/pdf';
+        } else {
+          contentType = 'application/octet-stream';
+        }
+
+        final multipartFile = await di.MultipartFile.fromFile(
+          filePath,
+          filename: fileName,
+          contentType: MediaType.parse(contentType),
+        );
+
+        multipartFiles.add(multipartFile);
+      }
+
+      mapData["TepDinhKem"] = multipartFiles;
     }
-    di.FormData formData = di.FormData.fromMap(mapData);
+
+    final formData = di.FormData.fromMap(mapData);
+
     final response = await baseCallApi(
       AppApi.urlRegisterFirstForCode,
       EnumRequestMethod.post,
       jsonMap: formData,
-      timeOut: const Duration(minutes: 2),
+      // Cần chờ user mở app mysign để ký số nên set timeout là 3 phút
+      timeOut: _signDocumentTimeOut,
+      functionError: (err) {
+        // rethrow error để xử lý ở controller
+        throw err;
+      },
     );
-    return BaseResponse<String>.fromJson(
-      response,
-      fromJson: (json) => json.toString(),
-    );
+    return BaseResponse.fromJson(response);
   }
 }

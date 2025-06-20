@@ -113,6 +113,13 @@ class BuildInputTextState extends State<BuildInputText> {
             customMaxValue: 99,
           ),
         ];
+      case InputFormatterEnum.textNormal:
+        return [
+          FilteringTextInputFormatter.allow(
+            RegExp(r'''[a-zA-ZÀ-ỹ0-9\s.,_\-@#\$%\^&*+=?!:;"'()\[\]{}\/\\]'''),
+          ),
+        ];
+
       default:
         return [
           LengthLimitingTextFieldFormatterFixed(

@@ -7,6 +7,7 @@ class RegisterCodeCategories {
   final Set<ReceiveMethodModel> receiveMethods;
   final Set<PaymentMethodModel> paymentMethods;
   final Set<RegisterReceiveResultModel> resultReceivingOptions;
+  final Set<ObjectTypeModel> objectType;
 
   const RegisterCodeCategories({
     required this.provinces,
@@ -14,6 +15,7 @@ class RegisterCodeCategories {
     required this.receiveMethods,
     required this.paymentMethods,
     required this.resultReceivingOptions,
+    required this.objectType,
   });
 
   factory RegisterCodeCategories.fromJson(Map<String, dynamic> json) {
@@ -38,6 +40,10 @@ class RegisterCodeCategories {
               ?.map((e) => RegisterReceiveResultModel.fromJson(e))
               .toSet() ??
           <RegisterReceiveResultModel>{},
+      objectType: (json['loaiDoiTuongs'] as List?)
+              ?.map((e) => ObjectTypeModel.fromJson(e))
+              .toSet() ??
+          <ObjectTypeModel>{},
     );
   }
 }

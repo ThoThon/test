@@ -1,10 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/shares/package/export_package.dart';
+import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../login/model/model_src.dart';
 import '../../src.dart';
+
+// Nếu mã lỗi là 58061 thì có thể retry ký số (from a Chương)
+const _allowRetryCode = "58061";
 
 class RegisterCodeController extends BaseGetxController {
   final currentTab = RegisterCodeTabEnum.commmon_info.obs;
@@ -16,7 +22,7 @@ class RegisterCodeController extends BaseGetxController {
   final unitNameCtrl = TextEditingController();
 
   // Loại đối tượng
-  final selectedObject = Rx<ObjectTypeEnum?>(null);
+  final selectedObject = Rxn<ObjectTypeModel>();
 
   // Loại hình đơn vị
   final unitTypeCtrl = TextEditingController();
@@ -94,6 +100,10 @@ class RegisterCodeController extends BaseGetxController {
 
   final listImage = <String>[].obs;
 
+  final formKeyCommonTab = GlobalKey<FormState>();
+
+  final formKeyRegisterTab = GlobalKey<FormState>();
+
   @override
   void onInit() {
     super.onInit();
@@ -118,7 +128,8 @@ class RegisterCodeController extends BaseGetxController {
           ..socialAgency = registerCategories.agencies
           ..receiveMethod = registerCategories.receiveMethods
           ..paymentMethods = registerCategories.paymentMethods
-          ..resultReceivingOptions = registerCategories.resultReceivingOptions;
+          ..resultReceivingOptions = registerCategories.resultReceivingOptions
+          ..objectType = registerCategories.objectType;
       }
     } catch (e) {
       logger.d(e);
@@ -202,45 +213,156 @@ class RegisterCodeController extends BaseGetxController {
 
   FirstRegisterRequest _buildRequest() {
     return FirstRegisterRequest(
-      coQuanBHXHQuanLy: socialAgency.value?.tenCoQuanBHXH ?? '',
-      coQuanBHXHTinh: coQuanBHXHTinh,
-      credentialID: credentialID,
+      coQuanBHXHQuanLy: socialAgency.value?.maCoQuanBHXH ?? '',
+      coQuanBHXHTinh: '01',
+      credentialID: certificate.value?.cerdentialID ?? '',
       diaChi: addressUnitCtrl.text,
-      diaChiHuyen: districtReceive.value?.name ?? '',
-      diaChiTinh: provinceReceive.value?.name ?? '',
-      diaChiXa: wardReceive.value?.name ?? '',
+      diaChiHuyen: districtReceive.value?.id ?? '',
+      diaChiTinh: provinceReceive.value?.id ?? '',
+      diaChiXa: wardReceive.value?.id ?? '',
       diaChiDangKyKinhDoanh: addressRegisterBusinessCtrl.text,
       dienThoai: phoneUnitCtrl.text,
       dienThoaiLienHe: phoneContactCtrl.text,
       email: emailUnitCtrl.text,
       hoSoKemTheo: fileIncludeCtrl.text,
-      loaiDoiTuong: loaiDoiTuong,
+      loaiDoiTuong: selectedObject.value?.value ?? '',
       loaiHinhDonVi: unitTypeCtrl.text,
       maSoThue: taxCodeCtrl.text,
       nganhNgheSX: productIndustryCtrl.text,
-      ngayDangKy: ngayDangKy,
-      ngayLap: ngayLap,
+      ngayDangKy: registerDateCtrl.text,
+      ngayLap: setupDateCtrl.text,
       nguoiGiaoDich: personTransactionBhxhCtrl.text,
       noiCapQuyetDinh: addressDecisionCtrl.text,
       noiDung: contentCtrl.text,
-      phuongThucDong: paymentMethod.value?.text ?? '',
-      phuongThucNhanKetQua: registerResult.value?.text ?? '',
+      phuongThucDong: paymentMethod.value?.value ?? '',
+      phuongThucNhanKetQua: registerResult.value?.value ?? '',
       soQuyetDinh: decisionNumberCtrl.text,
       tenDonVi: unitNameCtrl.text,
       userId: usernameMySignCtrl.text,
-      phuongThucNhan: resultReceiveMethod.value?.text ?? '',
+      phuongThucNhan: resultReceiveMethod.value?.value ?? '',
+      imageFilePath: listImage,
     );
   }
 
   Future<void> registerCodeFirst() async {
     try {
-      final res =
+      final isValidCommon = formKeyCommonTab.currentState?.validate() ?? false;
+      final isValidRegister =
+          formKeyRegisterTab.currentState?.validate() ?? false;
+
+      // Tránh trường hợp chỉ điền thông tin 2 tab mà không thêm thông tin chứng thư số
+      if (!isValidCommon || !isValidRegister || certificate.value == null) {
+        return;
+      }
+
+      _showDialogCheckedSuccess();
+
+      final response =
           await _registerCodeRepository.registerCodeFirst(_buildRequest());
-      if (res.isSuccess) {
-        showSnackBar('Thành công');
+
+      if (response.isSuccess) {
+        ShowDialog.dismissDialog();
+        _showDialogVerifySuccess();
+      } else {
+        ShowDialog.dismissDialog();
+
+        final canRetry = response.code == _allowRetryCode;
+        _showDialogVerifyFailed(
+          errorMessage: response.errorMessage,
+          onRetry: canRetry ? registerCodeFirst : null,
+        );
       }
     } catch (e) {
-      logger.d(e);
+      ShowDialog.dismissDialog();
+      if (e is DioException) {
+        _showDialogVerifyFailed(
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
+          onRetry: registerCodeFirst,
+        );
+      }
     }
   }
+
+  void _showDialogCheckedSuccess() {
+    ShowDialog.showDialogWithWidget(
+      // isActiveBack: false,
+      title: LocaleKeys.dialog_successTransfer.tr,
+      content: LocaleKeys.dialog_fileSendToSignature.tr,
+      child: const CupertinoActivityIndicator(
+        radius: 20,
+      ).paddingOnly(top: AppDimens.defaultPadding),
+    );
+  }
+
+  void _showDialogVerifySuccess() {
+    ShowDialog.showDialogConfirm2(
+      title:
+          'Vui lòng kiểm tra email đã đăng ký (thời gian xử lý 3 - 5 ngày làm việc)',
+      content: LocaleKeys.dialog_submitRegisterToSuccess.tr,
+      iconType: DialogIconType.success,
+      exitTitle: LocaleKeys.dialog_exit.tr,
+      confirmTitle: LocaleKeys.dialog_history.tr,
+      isDisableButtonConfirm: true,
+      onCancel: () {
+        Get.offAllNamed(AppRoutes.login.path);
+      },
+    );
+  }
+
+  void _showDialogVerifyFailed({
+    required String errorMessage,
+    VoidCallback? onRetry,
+  }) {
+    ShowDialog.showDialogConfirm2(
+      title: LocaleKeys.dialog_fail.tr,
+      content: errorMessage,
+      iconType: DialogIconType.failure,
+      exitTitle: LocaleKeys.dialog_exit.tr,
+      showConfirmButton: onRetry != null,
+      confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
+      onCancel: () {
+        Get.offAllNamed(AppRoutes.login.path);
+      },
+      onConfirm: onRetry,
+    );
+  }
+
+  @override
+  void onClose() {
+    taxCodeCtrl.dispose();
+    unitNameCtrl.dispose();
+    unitTypeCtrl.dispose();
+    productIndustryCtrl.dispose();
+    decisionNumberCtrl.dispose();
+    setupDateCtrl.dispose();
+    registerDateCtrl.dispose();
+    addressDecisionCtrl.dispose();
+    addressRegisterBusinessCtrl.dispose();
+    addressUnitCtrl.dispose();
+    phoneUnitCtrl.dispose();
+    emailUnitCtrl.dispose();
+    personTransactionBhxhCtrl.dispose();
+    phoneContactCtrl.dispose();
+    usernameMySignCtrl.dispose();
+    fileIncludeCtrl.dispose();
+    contentCtrl.dispose();
+    super.onClose();
+  }
+
+  // void<bool> validateFormsAndFocusTab() {
+  //   final isValidCommon = formKeyCommonTab.currentState?.validate() ?? false;
+  //   if (!isValidCommon) {
+  //     currentTab.value = RegisterCodeTabEnum.commmon_info;
+  //     return false;
+  //   }
+
+  //   final isValidRegister =
+  //       formKeyRegisterTab.currentState?.validate() ?? false;
+  //   if (!isValidRegister) {
+  //     currentTab.value = RegisterCodeTabEnum.register_info;
+  //     return false;
+  //   }
+
+  //   return true;
+  // }
 }

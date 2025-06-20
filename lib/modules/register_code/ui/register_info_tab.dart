@@ -2,27 +2,30 @@ part of 'register_code_page.dart';
 
 extension RegisterInfoTab on RegisterCodePage {
   Widget _buildRegisterInfoTab() {
-    return Column(
-      children: [
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                _buildBhxhInfoCard(),
-                sdsSBHeight20,
-                _buildOtherInfoCard(),
-                sdsSBHeight12,
-                // Ô input nhập username My Sign
-                _buildInputUsernameMySign(),
-                sdsSBHeight12,
-                _buildButtonPickFile(),
-                _buidHideImage(),
-                _buildCardSignatureInfo(),
-              ],
+    return Form(
+      key: controller.formKeyRegisterTab,
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  _buildBhxhInfoCard(),
+                  sdsSBHeight20,
+                  _buildOtherInfoCard(),
+                  sdsSBHeight12,
+                  // Ô input nhập username My Sign
+                  _buildInputUsernameMySign(),
+                  sdsSBHeight12,
+                  _buildButtonPickFile(),
+                  _buidHideImage(),
+                  _buildCardSignatureInfo(),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -268,6 +271,7 @@ extension RegisterInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_fileInclude.tr,
       controller: controller.fileIncludeCtrl,
+      inputFormatters: InputFormatterEnum.textNormal,
       isValidate: true,
     );
   }
@@ -277,6 +281,7 @@ extension RegisterInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_content.tr,
       controller: controller.contentCtrl,
+      inputFormatters: InputFormatterEnum.textNormal,
       isValidate: true,
     );
   }

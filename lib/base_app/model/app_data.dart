@@ -15,6 +15,7 @@ class AppData {
   var socialAgency = <SocialAgencyModel>{};
   var receiveMethod = <ReceiveMethodModel>{};
   var paymentMethods = <PaymentMethodModel>{};
+  var objectType = <ObjectTypeModel>{};
   var resultReceivingOptions = <RegisterReceiveResultModel>{};
   final Rx<AccountInfoModel?> accountInfoModel = Rx<AccountInfoModel?>(null);
   final totalUnread = 0.obs;

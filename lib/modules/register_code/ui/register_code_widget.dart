@@ -32,7 +32,7 @@ extension RegisterCodeWidget on RegisterCodePage {
                     title: isRegisterBtn ? 'Đăng ký' : 'Tiếp tục',
                     onPressed: () {
                       isRegisterBtn
-                          ? null
+                          ? controller.registerCodeFirst()
                           : controller
                               .onTabChanged(RegisterCodeTabEnum.register_info);
                     },
