@@ -211,19 +211,21 @@ class UtilWidget {
     VoidCallback? onPressed,
     double? width,
     double? height,
+    double? borderRadius,
   }) {
-    return Container(
+    return SizedBox(
       width: width,
       height: height ?? AppDimens.btnDefaultFigma,
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: AppColors.primaryColor),
-        borderRadius: BorderRadius.circular(AppDimens.radius4),
-      ),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
           backgroundColor: AppColors.colorWhite,
+          side: const BorderSide(
+            color: AppColors.primaryColor,
+            width: 1,
+          ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppDimens.radius4),
+            borderRadius:
+                BorderRadius.circular(borderRadius ?? AppDimens.radius4),
           ),
         ),
         onPressed: onPressed,

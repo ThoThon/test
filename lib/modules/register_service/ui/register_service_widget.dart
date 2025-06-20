@@ -16,7 +16,7 @@ extension RegisterServiceWidget on RegisterServicePage {
           ),
         ),
         sdsSBHeight12,
-        _buildButtonRegister(),
+        Obx(_buildBottomButtons),
       ],
     ).paddingSymmetric(horizontal: AppDimens.paddingSmall);
   }
@@ -261,11 +261,7 @@ extension RegisterServiceWidget on RegisterServicePage {
               horizontal: AppDimens.defaultPadding,
             ),
           ),
-          onPressed: controller.hasBeenRegister
-              ? null
-              : () {
-                  controller.getListCertificate();
-                },
+          onPressed: controller.getListCertificate,
           child: const Icon(
             Icons.send,
             color: AppColors.basicWhite,
@@ -288,6 +284,39 @@ extension RegisterServiceWidget on RegisterServicePage {
                 },
         );
       },
+    );
+  }
+
+  Widget _buildBottomButtons() {
+    final isRegistered = controller.hasBeenRegister;
+    if (isRegistered) {
+      return _buildChangeInfoAndCancelRegisterButtons();
+    } else {
+      return _buildButtonRegister();
+    }
+  }
+
+  Widget _buildChangeInfoAndCancelRegisterButtons() {
+    return Row(
+      children: [
+        Expanded(
+          child: UtilWidget.buildSolidButton(
+            title: LocaleKeys.registerService_changeInfo.tr,
+            borderRadius: AppDimens.radius30,
+            onPressed: controller.certificate.value != null
+                ? controller.changeInfo
+                : null,
+          ),
+        ),
+        sdsSBWidth8,
+        Expanded(
+          child: UtilWidget.buildSolidButtonBack(
+            title: LocaleKeys.registerService_cancelRegister.tr,
+            borderRadius: AppDimens.radius30,
+            onPressed: controller.cancelRegister,
+          ),
+        ),
+      ],
     );
   }
 }

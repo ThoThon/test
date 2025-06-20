@@ -18,10 +18,10 @@ extension LoginWidget on LoginPage {
                         GestureDetector(
                           onDoubleTap: () {
                             BaseApi().useSignUrl = false;
-                            controller.showSnackBar(
-                              "${LocaleKeys.login_switchTo.tr} ${AppApi.url}",
-                              typeAction: AppConst.actionSuccess,
-                            );
+                            // controller.showSnackBar(
+                            //   "${LocaleKeys.login_switchTo.tr} ${AppApi.url}",
+                            //   typeAction: AppConst.actionSuccess,
+                            // );
                           },
                           child: _buildLogo(),
                         ),

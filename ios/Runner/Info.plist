@@ -35,7 +35,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Truy cập camera để chụp ảnh</string>
+	<string>Truy cập camera để chụp ảnh CCCD, ảnh hợp đồng lao động</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Truy cập micro để giúp tạo video sinh động hơn</string>
 	<key>NSPhotoLibraryUsageDescription</key>
