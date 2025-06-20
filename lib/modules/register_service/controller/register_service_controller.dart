@@ -78,7 +78,7 @@ class RegisterServiceController extends BaseGetxController {
     try {
       _showDialogCheckedSuccess();
       final response = await _registerServiceRepository.registerNewService(
-        userId: usernameMySignCtrl.text,
+        userId: usernameMySignCtrl.text.trim(),
         credentialID: certificate.value?.cerdentialID ?? '',
       );
 
@@ -191,6 +191,40 @@ class RegisterServiceController extends BaseGetxController {
     }
   }
 
+  Future<void> changeInfo() async {
+    try {
+      _showDialogCheckedSuccess();
+      final response = await _registerServiceRepository.changeInfo(
+        userId: usernameMySignCtrl.text.trim(),
+        credentialID: certificate.value?.cerdentialID ?? '',
+      );
+      if (response.isSuccess) {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
+        // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
+        _showDialogVerifySuccess();
+      } else {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
+        final canRetry = response.code == _allowRetryCode;
+        _showDialogVerifyFailed(
+          errorMessage: response.errorMessage,
+          onRetry: canRetry ? changeInfo : null,
+        );
+      }
+    } catch (e) {
+      ShowDialog.dismissDialog();
+      if (e is DioException) {
+        _showDialogVerifyFailed(
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
+          onRetry: changeInfo,
+        );
+      }
+    }
+  }
+
   bool get hasBeenRegister {
     final hasInfo = registerServiceInfo.value;
     if (hasInfo == null) return false;
@@ -208,12 +242,6 @@ class RegisterServiceController extends BaseGetxController {
     if (hasBeenRegister) return true;
 
     // Nếu chưa có chứng thư số thì cũng disable
-    if (cert == null) return true;
-
-    // Nếu một trong các field bị null hoặc rỗng thì cũng disable
-    return cert.serialNumber.isEmpty ||
-        cert.name.isEmpty ||
-        cert.validFrom.isEmpty ||
-        cert.validTo.isEmpty;
+    return cert == null;
   }
 }
