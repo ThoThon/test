@@ -181,6 +181,7 @@ class UtilWidget {
     double? width,
     double? height,
     double? borderRadius,
+    TextStyle? textStyle,
   }) {
     return SizedBox(
       width: width,
@@ -197,7 +198,8 @@ class UtilWidget {
         child: Center(
           child: SDSBuildText(
             title,
-            style: AppTextStyle.font16Bo.copyWith(color: AppColors.colorWhite),
+            style: textStyle ??
+                AppTextStyle.font16Bo.copyWith(color: AppColors.colorWhite),
           ),
         ),
       ),
@@ -628,6 +630,102 @@ class UtilWidget {
                               ? AppColors.colorBlack
                               : AppColors.dsGray3,
                         ),
+                      ),
+                    ),
+                    selectedItem != null && enableClearIcon
+                        ? GestureDetector(
+                            onTap: onTapClear,
+                            child: const Icon(Icons.close),
+                          )
+                        : const Icon(
+                            Icons.arrow_drop_down,
+                            color: AppColors.dsGray3,
+                          ),
+                  ],
+                ),
+              ),
+            ),
+            if (state.hasError)
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: AppDimens.paddingSmallest,
+                  left: AppDimens.paddingVerySmall,
+                ),
+                child: SDSBuildText(
+                  state.errorText!,
+                  style: AppTextStyle.font12Re.copyWith(
+                    color: AppColors.statusRed,
+                  ),
+                ),
+              ),
+          ],
+        ).paddingOnly(bottom: AppDimens.paddingSmall);
+      },
+    );
+  }
+
+  static Widget buildCardBottomSheetSelect<T>({
+    required String label,
+    bool isRequired = true,
+    required Function(ValueChanged<T> didChange) funcSelect,
+    required T? selectedItem,
+    required String Function(T) display,
+    String? Function(T?)? validator,
+    VoidCallback? onTapClear,
+    bool enableClearIcon = false,
+  }) {
+    return FormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: isRequired ? validator : null,
+      initialValue: selectedItem,
+      builder: (FormFieldState<T> state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () {
+                KeyBoard.hide();
+                funcSelect(state.didChange);
+              },
+              child: Container(
+                padding: const EdgeInsets.all(AppDimens.paddingSmall),
+                decoration: BoxDecoration(
+                  color: AppColors.colorWhite,
+                  borderRadius: BorderRadius.circular(AppDimens.radius4),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: label,
+                              style: AppTextStyle.font14Re,
+                              children: [
+                                if (isRequired)
+                                  TextSpan(
+                                    text: ' *',
+                                    style: AppTextStyle.font12Re.copyWith(
+                                      color: AppColors.statusRed,
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
+                          sdsSBHeight4,
+                          SDSBuildText(
+                            selectedItem != null
+                                ? display(selectedItem)
+                                : "Chọn ${label.toLowerCase()}",
+                            style: AppTextStyle.font14Re.copyWith(
+                              color: selectedItem != null
+                                  ? AppColors.colorBlack
+                                  : AppColors.dsGray3,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     selectedItem != null && enableClearIcon

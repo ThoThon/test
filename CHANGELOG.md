@@ -1,9 +1,13 @@
+20/06/2025
+- [Appmobile]_Bổ sung giao diện màn "Đăng ký cấp mã" - BHW-2406
+
 19/06/2025
 - [Appmobile]_Bổ sung maxlength cho các trường Tìm kiếm - BHW-2432
 - [Appmobile]_Chỉnh sửa trường Địa chỉ khai sinh, địa chỉ nơi nhận (Màn TK1) là trường bắt buộc
 - Bổ sung HDSD và ẩn Đổi mật khẩu ở menu draw
 - [AppMobile] - Đăng ký lần đầu: Bổ sung giao diện Đăng nhập - BHW-2405
 - [Appmobile]_Tên đơn vị bỏ trống nhưng vẫn cho lưu - BHW-2446
+- [Appmobile]_Bổ sung giao diện màn "Đăng ký cấp mã" - BHW-2406
 
 18/06/2025
 - [Appmobile]_Chỉnh sửa trường Từ tháng/năm - BHW-2411

@@ -115,4 +115,8 @@ class LoginController extends BaseGetxController {
     passwordTextCtrl.dispose();
     super.onClose();
   }
+
+  void goToRegisterCodePage() {
+    Get.toNamed(AppRoutes.registerCode.path);
+  }
 }

@@ -2,14 +2,18 @@ import '../../../src.dart';
 
 enum ReceiveResultEnum {
   //Nhận qua bưu điện
-  postOffice(LocaleKeys.unitInfo_byPostOffice),
+  postOffice(1, LocaleKeys.unitInfo_byPostOffice),
 
   //Nhận qua cơ quan BHXH
-  socialAgency(LocaleKeys.unitInfo_bySocialAgency);
+  socialAgency(2, LocaleKeys.unitInfo_bySocialAgency);
 
   final String receive;
+  final int type;
 
-  const ReceiveResultEnum(this.receive);
+  const ReceiveResultEnum(
+    this.type,
+    this.receive,
+  );
 }
 
 ReceiveResultEnum? getReceiveResult(String? receiveSelected) {

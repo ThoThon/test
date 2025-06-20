@@ -1,5 +1,4 @@
 import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/modules/register_service/register_service_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 const _signDocumentTimeOut = Duration(minutes: 3);

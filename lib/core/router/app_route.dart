@@ -33,9 +33,6 @@ enum AppRoutes {
   ///Chi tiết lịch sử đăng ký giao dịch
   historyDetailRegister,
 
-  //Quét CCCD
-  // nfc,
-
   //Chọn nhân viên
   selectStaff,
 
@@ -46,7 +43,10 @@ enum AppRoutes {
   notification,
 
   //Đăng ký dịch vụ
-  registerService;
+  registerService,
+
+  //Đăng ký cấp mã
+  registerCode;
 
   String get path {
     return '/vbhxh_$name';
