@@ -1,2 +1,12 @@
 20/06/2025
+- Bổ sung chức năng thay đổi - BHW-2422
+- Bổ sung chức năng Ngừng dịch vụ - HW-2423
 - Bổ sung giao diện màn "Đăng ký cấp mã"
+
+19/06/2025
+- Bổ sung maxlength cho các trường Tìm kiếm
+- Chỉnh sửa trường Địa chỉ khai sinh, địa chỉ nơi nhận (Màn TK1) là trường bắt buộc
+- Bổ sung Hướng dẫn sử dụng
+- Ẩn thay đổi mật khẩu
+- Đăng ký lần đầu: Bổ sung giao diện Đăng nhập
+- Tên đơn vị bỏ trống nhưng vẫn cho lưu
