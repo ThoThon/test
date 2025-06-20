@@ -662,6 +662,9 @@ class LocaleKeys {
       'registerService_usernameMySignNotFound';
   static const registerService_userNameMySignCannotEmpty =
       'registerService_userNameMySignCannotEmpty';
+  static const registerService_cancelRegister =
+      'registerService_cancelRegister';
+  static const registerService_changeInfo = 'registerService_changeInfo';
 }
 
 class Locales {
@@ -1270,5 +1273,7 @@ class Locales {
         'Không tìm thấy tên đăng nhập MySign',
     'registerService_userNameMySignCannotEmpty':
         'Nhập tên đăng nhập My Sign để lấy thông tin CTS',
+    'registerService_cancelRegister': 'Ngừng dịch vụ',
+    'registerService_changeInfo': 'Thay đổi',
   };
 }

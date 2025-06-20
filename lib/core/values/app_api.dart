@@ -71,6 +71,8 @@ class AppApi {
       '/api/RegisterService/get-registration-info';
   static const String urlRegisterNewService =
       '/api/RegisterService/register-new-service';
+  static const String urlCancelRegister =
+      '/api/RegisterService/cancel-register';
   static const String urlGetHistoryRegister =
       '/api/History/get-histories-register';
   static const String urlLookupHistoryRegister = '/api/TraCuu/tien-do-dang-ky';
