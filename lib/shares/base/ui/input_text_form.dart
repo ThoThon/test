@@ -69,7 +69,7 @@ class BuildInputTextState extends State<BuildInputText> {
         return [
           NumericTextFormatter(
             type: 1,
-            maxLengthNum: 17,
+            maxLengthNum: 18,
             lastDecimal: 3,
           ),
         ];
@@ -78,7 +78,7 @@ class BuildInputTextState extends State<BuildInputText> {
           NumericTextFormatter(
             type: 1,
             isDot: true,
-            maxLengthNum: 17,
+            maxLengthNum: 18,
             lastDecimal: 0,
           ),
         ];
