@@ -16,13 +16,7 @@ extension LoginWidget on LoginPage {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         GestureDetector(
-                          onDoubleTap: () {
-                            BaseApi().useSignUrl = false;
-                            // controller.showSnackBar(
-                            //   "${LocaleKeys.login_switchTo.tr} ${AppApi.url}",
-                            //   typeAction: AppConst.actionSuccess,
-                            // );
-                          },
+                          onDoubleTap: EnvSwitcher.instance.switchEnv,
                           child: _buildLogo(),
                         ),
                         const SizedBox(height: AppDimens.padding40),
