@@ -304,7 +304,9 @@ class RegisterCodeController extends BaseGetxController {
       confirmTitle: LocaleKeys.dialog_history.tr,
       isDisableButtonConfirm: true,
       onCancel: () {
-        Get.offAllNamed(AppRoutes.login.path);
+        // Get.offAllNamed(AppRoutes.login.path);
+        // Get back vì màn trước của nó đang là màn login
+        Get.back();
       },
     );
   }
@@ -321,7 +323,9 @@ class RegisterCodeController extends BaseGetxController {
       showConfirmButton: onRetry != null,
       confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
       onCancel: () {
-        Get.offAllNamed(AppRoutes.login.path);
+        // Get.offAllNamed(AppRoutes.login.path);
+        // Get back vì màn trước của nó đang là màn login
+        Get.back();
       },
       onConfirm: onRetry,
     );
