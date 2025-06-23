@@ -26,16 +26,16 @@ extension RegisterCodeWidget on RegisterCodePage {
               padding: const EdgeInsets.only(top: AppDimens.defaultPadding),
               child: Obx(
                 () {
-                  final isRegisterBtn = controller.currentTab.value ==
-                      RegisterCodeTabEnum.register_info;
+                  final String title;
+                  switch (controller.currentTab.value) {
+                    case RegisterCodeTabEnum.common_info:
+                      title = 'Tiếp tục';
+                    case RegisterCodeTabEnum.register_info:
+                      title = 'Đăng ký';
+                  }
                   return UtilWidget.buildSolidButton(
-                    title: isRegisterBtn ? 'Đăng ký' : 'Tiếp tục',
-                    onPressed: () {
-                      isRegisterBtn
-                          ? controller.registerCodeFirst()
-                          : controller
-                              .onTabChanged(RegisterCodeTabEnum.register_info);
-                    },
+                    title: title,
+                    onPressed: controller.registerCodeFirst,
                   );
                 },
               ),
@@ -66,9 +66,9 @@ extension RegisterCodeWidget on RegisterCodePage {
                     title: 'Thông tin chung',
                     // enabled: controller.enableTk1Tab,
                     isSelected: controller.currentTab.value ==
-                        RegisterCodeTabEnum.commmon_info,
+                        RegisterCodeTabEnum.common_info,
                     onTap: () {
-                      controller.onTabChanged(RegisterCodeTabEnum.commmon_info);
+                      controller.onTabChanged(RegisterCodeTabEnum.common_info);
                     },
                   ),
                 ),

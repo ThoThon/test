@@ -13,7 +13,7 @@ import '../../src.dart';
 const _allowRetryCode = "58061";
 
 class RegisterCodeController extends BaseGetxController {
-  final currentTab = RegisterCodeTabEnum.commmon_info.obs;
+  final currentTab = RegisterCodeTabEnum.common_info.obs;
 
   // Mã số thuế
   final taxCodeCtrl = TextEditingController();
@@ -244,14 +244,32 @@ class RegisterCodeController extends BaseGetxController {
     );
   }
 
-  Future<void> registerCodeFirst() async {
-    try {
-      final isValidCommon = formKeyCommonTab.currentState?.validate() ?? false;
-      final isValidRegister =
-          formKeyRegisterTab.currentState?.validate() ?? false;
+  RegisterCodeTabEnum? get _invalidTab {
+    if (formKeyCommonTab.currentState?.validate() != true) {
+      return RegisterCodeTabEnum.common_info;
+    }
 
-      // Tránh trường hợp chỉ điền thông tin 2 tab mà không thêm thông tin chứng thư số
-      if (!isValidCommon || !isValidRegister || certificate.value == null) {
+    if (formKeyRegisterTab.currentState?.validate() != true) {
+      return RegisterCodeTabEnum.register_info;
+    }
+
+    return null;
+  }
+
+  Future<void> registerCodeFirst() async {
+    final invalidTab = _invalidTab;
+
+    if (invalidTab == null) {
+      // Nếu tất cả các tab đều hợp lệ thì chuyển đến tab cuối cùng (tab thông tin đăng ký)
+      currentTab.value = RegisterCodeTabEnum.register_info;
+    } else {
+      // Nếu có tab không hợp lệ thì chuyển đến tab đó
+      currentTab.value = invalidTab;
+      return;
+    }
+
+    try {
+      if (certificate.value == null) {
         return;
       }
 
@@ -352,21 +370,4 @@ class RegisterCodeController extends BaseGetxController {
     contentCtrl.dispose();
     super.onClose();
   }
-
-  // void<bool> validateFormsAndFocusTab() {
-  //   final isValidCommon = formKeyCommonTab.currentState?.validate() ?? false;
-  //   if (!isValidCommon) {
-  //     currentTab.value = RegisterCodeTabEnum.commmon_info;
-  //     return false;
-  //   }
-
-  //   final isValidRegister =
-  //       formKeyRegisterTab.currentState?.validate() ?? false;
-  //   if (!isValidRegister) {
-  //     currentTab.value = RegisterCodeTabEnum.register_info;
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
 }
