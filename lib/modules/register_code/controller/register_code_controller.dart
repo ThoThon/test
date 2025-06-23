@@ -270,6 +270,10 @@ class RegisterCodeController extends BaseGetxController {
 
     try {
       if (certificate.value == null) {
+        showSnackBar(
+          'Chưa có thông tin chứng thư số',
+          typeAction: AppConst.actionFail,
+        );
         return;
       }
 
