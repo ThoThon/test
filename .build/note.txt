@@ -1,3 +1,8 @@
+23/06/2025
+- Xử lý đổi link test Khi kích dup "Viettel" tại màn đăng nhập - BHW-2438
+- Màn đăng ký cấp mã - Lỗi valiadte - Màn thông tin chung - BHW-2466
+- Đổi logo - BHW-2464
+
 20/06/2025
 - Bổ sung chức năng thay đổi - BHW-2422
 - Bổ sung chức năng Ngừng dịch vụ - HW-2423
