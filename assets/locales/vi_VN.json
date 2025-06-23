@@ -626,9 +626,9 @@
     "selectedObjectType": "Chọn loại đối tượng",
     "objectTypeCannotEmpty": "Loại đối tượng không được để trống",
     "registerDateCannotEmpty": "Ngày đăng ký không được để trống",
-    "registerDateIsNotValid": "Ngày dăng ký không hợp lệ",
+    "registerDateIsNotValid": "Ngày đăng ký không hợp lệ",
     "setupDateCannotEmpty": "Ngày lập không được để trống",
-    "sepupDateIsNotValid": "Ngày lập không hợp lệ",
+    "setupDateIsNotValid": "Ngày lập không hợp lệ",
     "socialInfo": "Thông tin đóng BHXH"
   }
 }

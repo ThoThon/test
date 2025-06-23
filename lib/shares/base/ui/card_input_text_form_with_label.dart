@@ -10,6 +10,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
   final String? Function(String?)? validator;
   final int inputFormatters;
   final TextInputType textInputType;
+  final bool isShowCounterText;
 
   const CardInputTextFormWithLabel({
     super.key,
@@ -22,6 +23,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
     this.validator,
     this.inputFormatters = 0,
     this.textInputType = TextInputType.text,
+    this.isShowCounterText = true,
   });
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
             ),
           ],
         ),
-        isShowCounterText: false,
+        isShowCounterText: isShowCounterText,
         inputFormatters: inputFormatters,
         showIconClear: true,
         maxLengthInputForm: maxLengthInputForm,

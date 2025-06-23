@@ -176,7 +176,7 @@ extension LoginWidget on LoginPage {
             decoration: TextDecoration.underline,
             decorationColor: AppColors.primaryColor,
           ),
-        ),
+        ).paddingAll(AppDimens.paddingVerySmall),
       ),
     );
   }

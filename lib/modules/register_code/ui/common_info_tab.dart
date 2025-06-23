@@ -167,6 +167,33 @@ extension CommonInfoTab on RegisterCodePage {
               convertDateToString(selectedDate, PATTERN_1);
         }
       },
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_setupDateCannotEmpty.tr;
+        }
+
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.registerCode_setupDateIsNotValid.tr;
+        }
+
+        final date = convertStringToDateStrict(
+          trimmedValue,
+          PATTERN_1,
+        );
+
+        if (date == null) {
+          return LocaleKeys.registerCode_setupDateIsNotValid.tr;
+        }
+
+        // Chỉ được nhập từ năm 1900
+        if (date.year <= 1900) {
+          return LocaleKeys.registerCode_setupDateIsNotValid.tr;
+        }
+
+        return null;
+      },
     );
   }
 
@@ -200,7 +227,7 @@ extension CommonInfoTab on RegisterCodePage {
         }
         // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
         if (trimmedValue.length < 10) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
+          return LocaleKeys.registerCode_registerDateIsNotValid.tr;
         }
         final date = convertStringToDateStrict(
           trimmedValue,
@@ -208,15 +235,13 @@ extension CommonInfoTab on RegisterCodePage {
         );
 
         if (date == null) {
-          return LocaleKeys.declareInfo_dobInvalid.tr;
+          return LocaleKeys.registerCode_registerDateIsNotValid.tr;
         }
+
         // Chỉ được nhập từ năm 1900
         if (date.year <= 1900) {
           return LocaleKeys.registerCode_registerDateIsNotValid.tr;
         }
-        // if (date.isAfter(DateTime.now())) {
-        //   return LocaleKeys.declareInfo_dobCannotFuture.tr;
-        // }
 
         return null;
       },

@@ -711,8 +711,8 @@ class LocaleKeys {
       'registerCode_registerDateIsNotValid';
   static const registerCode_setupDateCannotEmpty =
       'registerCode_setupDateCannotEmpty';
-  static const registerCode_sepupDateIsNotValid =
-      'registerCode_sepupDateIsNotValid';
+  static const registerCode_setupDateIsNotValid =
+      'registerCode_setupDateIsNotValid';
   static const registerCode_socialInfo = 'registerCode_socialInfo';
 }
 
@@ -1359,9 +1359,9 @@ class Locales {
     'registerCode_selectedObjectType': 'Chọn loại đối tượng',
     'registerCode_objectTypeCannotEmpty': 'Loại đối tượng không được để trống',
     'registerCode_registerDateCannotEmpty': 'Ngày đăng ký không được để trống',
-    'registerCode_registerDateIsNotValid': 'Ngày dăng ký không hợp lệ',
+    'registerCode_registerDateIsNotValid': 'Ngày đăng ký không hợp lệ',
     'registerCode_setupDateCannotEmpty': 'Ngày lập không được để trống',
-    'registerCode_sepupDateIsNotValid': 'Ngày lập không hợp lệ',
+    'registerCode_setupDateIsNotValid': 'Ngày lập không hợp lệ',
     'registerCode_socialInfo': 'Thông tin đóng BHXH',
   };
 }
