@@ -170,33 +170,42 @@ extension RegisterServiceWidget on RegisterServicePage {
     );
   }
 
-  Widget _buildInputUsernameMySign() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: BuildInputText(
-            InputTextModel(
-              controller: controller.usernameMySignCtrl,
-              autovalidateMode: AutovalidateMode.always,
-              hintText: LocaleKeys.registerService_inputMySignUsername.tr,
-              validator: controller.hasBeenRegister
-                  ? null
-                  : (value) {
-                      if (value.isNullOrEmpty) {
-                        return LocaleKeys
-                            .registerService_userNameMySignCannotEmpty.tr;
-                      }
-                      return null;
-                    },
-            ),
+Widget _buildInputUsernameMySign() {
+  // Nếu đã đăng ký dịch vụ, thì hiển thị userId đã đăng ký
+  // Nếu chưa đăng ký, thì hiển thị ô input để nhập username MySign
+  final registerInfo = controller.registerServiceInfo.value;
+  if (controller.hasBeenRegister &&
+      registerInfo?.userId != null &&
+      controller.usernameMySignCtrl.text != registerInfo?.userId) {
+    controller.usernameMySignCtrl.text = registerInfo!.userId;
+  }
+
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Expanded(
+        child: BuildInputText(
+          InputTextModel(
+            controller: controller.usernameMySignCtrl,
+            autovalidateMode: AutovalidateMode.always,
+            hintText: LocaleKeys.registerService_inputMySignUsername.tr,
+            validator: controller.hasBeenRegister
+                ? null
+                : (value) {
+                    if (value.isNullOrEmpty) {
+                      return LocaleKeys
+                          .registerService_userNameMySignCannotEmpty.tr;
+                    }
+                    return null;
+                  },
           ),
         ),
-        sdsSBWidth8,
-        _buildButtonGetListCert(),
-      ],
-    );
-  }
+      ),
+      sdsSBWidth8,
+      _buildButtonGetListCert(),
+    ],
+  );
+}
 
   Widget _buildSingleItem({
     required String title,
