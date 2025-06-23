@@ -8,6 +8,8 @@ class CardInputTextFormWithLabel extends StatelessWidget {
   final int? maxLengthInputForm;
   final String? hintText;
   final String? Function(String?)? validator;
+  final int inputFormatters;
+  final TextInputType textInputType;
 
   const CardInputTextFormWithLabel({
     super.key,
@@ -18,6 +20,8 @@ class CardInputTextFormWithLabel extends StatelessWidget {
     this.maxLengthInputForm,
     this.hintText,
     this.validator,
+    this.inputFormatters = 0,
+    this.textInputType = TextInputType.text,
   });
   @override
   Widget build(BuildContext context) {
@@ -46,6 +50,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
           ],
         ),
         isShowCounterText: false,
+        inputFormatters: inputFormatters,
         showIconClear: true,
         maxLengthInputForm: maxLengthInputForm,
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -56,6 +61,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
           right: AppDimens.paddingSmall,
           top: AppDimens.paddingSmall,
         ),
+        textInputType: textInputType,
         border: InputBorder.none,
         enabledBorder: InputBorder.none,
         focusedBorder: InputBorder.none,

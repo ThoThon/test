@@ -2,20 +2,23 @@ part of 'register_code_page.dart';
 
 extension CommonInfoTab on RegisterCodePage {
   Widget _buildCommonInfoTab() {
-    return Column(
-      children: [
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                _buildUnitInfoCard(),
-                sdsSBHeight20,
-                _buildContactInfoCard(),
-              ],
+    return Form(
+      key: controller.formKeyCommonTab,
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  _buildUnitInfoCard(),
+                  sdsSBHeight20,
+                  _buildContactInfoCard(),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -80,7 +83,8 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_taxCode.tr,
       controller: controller.taxCodeCtrl,
       isValidate: true,
-      maxLengthInputForm: 13,
+      inputFormatters: InputFormatterEnum.taxCode,
+      maxLengthInputForm: 14,
     );
   }
 
@@ -90,17 +94,18 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_unitName.tr,
       controller: controller.unitNameCtrl,
       isValidate: true,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 250,
     );
   }
 
   // Loại đối tượng
   CardDropdownWithLabel _buildSelectObjectType() {
-    return CardDropdownWithLabel<ObjectTypeEnum>(
+    return CardDropdownWithLabel(
       labelText: 'Loại đối tượng',
       isValidate: true,
-      items: ObjectTypeEnum.values,
-      display: (p0) => p0.text,
+      items: AppData.instance.objectType.toList(),
+      display: (object) => object.text,
       selectedItem: controller.selectedObject.value,
       onChanged: (value) {
         controller.selectedObject.value = value;
@@ -114,6 +119,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_unitType.tr,
       controller: controller.unitTypeCtrl,
       isValidate: true,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
   }
@@ -124,6 +130,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_productIndustry.tr,
       controller: controller.productIndustryCtrl,
       isValidate: true,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
     );
   }
@@ -134,6 +141,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_decisionNumber.tr,
       controller: controller.decisionNumberCtrl,
       isValidate: true,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
   }
@@ -141,6 +149,7 @@ extension CommonInfoTab on RegisterCodePage {
   // Ngày lập
   CardInputSelectDateWithLabel _buildSelectDateSetup() {
     return CardInputSelectDateWithLabel(
+      hintText: PATTERN_1,
       inputFormatters: InputFormatterEnum.dateFullBirthDay,
       labelText: LocaleKeys.registerCode_setupDate.tr,
       controller: controller.setupDateCtrl,
@@ -164,6 +173,7 @@ extension CommonInfoTab on RegisterCodePage {
   // Ngày đăng ký
   CardInputSelectDateWithLabel _buildSelectDateRegister() {
     return CardInputSelectDateWithLabel(
+      hintText: PATTERN_1,
       inputFormatters: InputFormatterEnum.dateFullBirthDay,
       labelText: LocaleKeys.registerCode_registerDate.tr,
       controller: controller.registerDateCtrl,
@@ -219,6 +229,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_addressDecision.tr,
       controller: controller.addressDecisionCtrl,
       isValidate: true,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
   }
@@ -229,6 +240,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_addressRegisterBusiness.tr,
       controller: controller.addressRegisterBusinessCtrl,
       isValidate: true,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
     );
   }
@@ -239,6 +251,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_addressUnit.tr,
       controller: controller.addressUnitCtrl,
       isValidate: true,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
     );
   }
@@ -277,7 +290,8 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_phoneUnit.tr,
       controller: controller.phoneUnitCtrl,
       isValidate: true,
-      maxLengthInputForm: 20,
+      textInputType: TextInputType.number,
+      inputFormatters: InputFormatterEnum.phoneNumber,
     );
   }
 
@@ -287,7 +301,18 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_emailUnit.tr,
       controller: controller.emailUnitCtrl,
       isValidate: true,
+      inputFormatters: InputFormatterEnum.email,
       maxLengthInputForm: 50,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.unitInfo_emailContactIsNotEmpty.tr;
+        }
+        if (!trimmedValue.isEmailValid) {
+          return LocaleKeys.unitInfo_emailIsNotValid.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -307,7 +332,8 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_phoneContact.tr,
       controller: controller.phoneContactCtrl,
       isValidate: true,
-      maxLengthInputForm: 20,
+      textInputType: TextInputType.number,
+      inputFormatters: InputFormatterEnum.phoneNumber,
     );
   }
 }

@@ -254,6 +254,7 @@ class ShowDialog {
     VoidCallback? onConfirm,
     bool showConfirmButton = true,
     bool isActiveBack = true,
+    bool isDisableButtonConfirm = false,
   }) async {
     _showDialog(
       Dialog(
@@ -313,14 +314,18 @@ class ShowDialog {
                           },
                         ),
                       ),
+                      if(!isDisableButtonConfirm)
                       UtilWidget.sizedBoxWidth20,
-                      Expanded(
-                        child: UtilWidget.buildSolidButton(
-                          title: confirmTitle ?? 'Đồng ý',
-                          onPressed: () {
-                            dismissDialog();
-                            onConfirm?.call();
-                          },
+                      Visibility(
+                        visible: !isDisableButtonConfirm,
+                        child: Expanded(
+                          child: UtilWidget.buildSolidButton(
+                            title: confirmTitle ?? 'Đồng ý',
+                            onPressed: () {
+                              dismissDialog();
+                              onConfirm?.call();
+                            },
+                          ),
                         ),
                       ),
                     ],
