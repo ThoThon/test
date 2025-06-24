@@ -617,7 +617,6 @@
     "provinceReceive": "Nơi nhận tỉnh",
     "provinceReceiveCannotEmpty": "Nơi nhận tỉnh không được bỏ trống",
     "selectProvinceReceive": "Chọn Nơi nhận tỉnh",
-    "districReceiveCannotEmpty": "Nơi nhận huyện không được bỏ trống",
     "districtReceive": "Nơi nhận huyện",
     "selectDistrictReceive": "Chọn Nơi nhận huyện",
     "wardReceive": "Nơi nhận xã",

@@ -698,8 +698,6 @@ class LocaleKeys {
       'registerCode_provinceReceiveCannotEmpty';
   static const registerCode_selectProvinceReceive =
       'registerCode_selectProvinceReceive';
-  static const registerCode_districReceiveCannotEmpty =
-      'registerCode_districReceiveCannotEmpty';
   static const registerCode_districtReceive = 'registerCode_districtReceive';
   static const registerCode_selectDistrictReceive =
       'registerCode_selectDistrictReceive';
@@ -730,6 +728,14 @@ class LocaleKeys {
   static const registerCode_setupDateIsNotValid =
       'registerCode_setupDateIsNotValid';
   static const registerCode_socialInfo = 'registerCode_socialInfo';
+  static const registerCode_districtReceiveCannotEmpty =
+      'registerCode_districtReceiveCannotEmpty';
+  static const registerCode_provinceReceiveIsEmpty =
+      'registerCode_provinceReceiveIsEmpty';
+  static const registerCode_districtReceiveIsEmpty =
+      'registerCode_districtReceiveIsEmpty';
+  static const registerCode_imageFromCamera = 'registerCode_imageFromCamera';
+  static const registerCode_imageFromLibrary = 'registerCode_imageFromLibrary';
 }
 
 class Locales {
@@ -1367,8 +1373,6 @@ class Locales {
     'registerCode_provinceReceiveCannotEmpty':
         'Nơi nhận tỉnh không được bỏ trống',
     'registerCode_selectProvinceReceive': 'Chọn Nơi nhận tỉnh',
-    'registerCode_districReceiveCannotEmpty':
-        'Nơi nhận huyện không được bỏ trống',
     'registerCode_districtReceive': 'Nơi nhận huyện',
     'registerCode_selectDistrictReceive': 'Chọn Nơi nhận huyện',
     'registerCode_wardReceive': 'Nơi nhận xã',
@@ -1389,5 +1393,11 @@ class Locales {
     'registerCode_setupDateCannotEmpty': 'Ngày lập không được để trống',
     'registerCode_setupDateIsNotValid': 'Ngày lập không hợp lệ',
     'registerCode_socialInfo': 'Thông tin đóng BHXH',
+    'registerCode_districtReceiveCannotEmpty':
+        'Nơi nhận huyện không được để trống',
+    'registerCode_provinceReceiveIsEmpty': 'Chưa chọn nơi nhận tỉnh',
+    'registerCode_districtReceiveIsEmpty': 'Chưa chọn nơi nhận huyện',
+    'registerCode_imageFromCamera': 'Chọn ảnh từ camera',
+    'registerCode_imageFromLibrary': 'Chọn ảnh từ điện thoại',
   };
 }

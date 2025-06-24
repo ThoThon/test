@@ -5,6 +5,7 @@
 - Màn đăng ký cấp mã - Lỗi valiadte - Màn thông tin chung - BHW-2466
 - Đổi logo - BHW-2464
 - Màn Đăng ký cấp mã - Tab Thông tin chung - Nhấn button "Tiếp theo" -> yêu cầu:Check và bắt hết validate trong tab - BHW-2469
+- [Appmobile]_Màn đăng ký cấp mã - Trường Mã số thuế đang không cho nhập chữ và ký tự đặc biết - BHW-2465
 
 20/06/2025
 - [Appmobile]_Bổ sung giao diện màn "Đăng ký cấp mã" - BHW-2406
