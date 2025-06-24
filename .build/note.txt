@@ -5,6 +5,10 @@
 - Sửa giao diện chọn CTS ở màn Đăng ký cấp mã
 - [AppMobile]_Màn Đăng ký cấp mã_Sai text title trường chọn tỉnh - BHW -2457
 - [Appmobile]_Màn đăng ký cấp mã - Trường Mã số thuế đang không cho nhập chữ và ký tự đặc biết - BHW-2465
+- Màn thay đổi và Ngừng dịch vụ, Trả ra hiển thị userId - BHW-2462
+- Đăng ký cấp mã - tab Thông tin đăng ký - Sai text tại màn tìm kiếm Nơi nhận huyện - BHW-2468
+- Màn đăng ký cấp mã - Lỗi valiadte tab Thông tin đăng ký - BHW-2467
+- Màn đăng ký cấp mã: Sai text tại tab Thông tin đăng ký - BHW-2474
 
 23/06/2025
 - Xử lý đổi link test Khi kích dup "Viettel" tại màn đăng nhập - BHW-2438
