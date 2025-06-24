@@ -83,7 +83,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_taxCode.tr,
       controller: controller.taxCodeCtrl,
       isValidate: true,
-      inputFormatters: InputFormatterEnum.password,
+      inputFormatters: InputFormatterEnum.taxCodeNormal,
       maxLengthInputForm: 14,
     );
   }

@@ -119,6 +119,10 @@ class BuildInputTextState extends State<BuildInputText> {
             RegExp(r'''[a-zA-ZÀ-ỹ0-9\s.,_\-@#\$%\^&*+=?!:;"'()\[\]{}\/\\]'''),
           ),
         ];
+      case InputFormatterEnum.taxCodeNormal:
+        return [
+          FilteringTextInputFormatter.deny(RegExp(r'( )')),
+        ];
 
       default:
         return [
