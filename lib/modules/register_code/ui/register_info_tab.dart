@@ -16,10 +16,10 @@ extension RegisterInfoTab on RegisterCodePage {
                   sdsSBHeight12,
                   // Ô input nhập username My Sign
                   _buildInputUsernameMySign(),
+                   _buildCardSignatureInfo(),
                   sdsSBHeight12,
                   _buildButtonPickFile(),
                   _buidHideImage(),
-                  _buildCardSignatureInfo(),
                 ],
               ),
             ),

@@ -2,6 +2,7 @@
 - Chỉnh sửa button tại popup check trùng MST khi ký (Thoát -> Đóng) - BHW-2470
 - [Appmobile]_Màn đăng ký cấp mã_Sửa lại validate trường mã số thuế - BHW-2458
 - Bổ sung màn đổi đường dẫn
+- Sửa giao diện chọn CTS ở màn Đăng ký cấp mã
 - [AppMobile]_Màn Đăng ký cấp mã_Sai text title trường chọn tỉnh - BHW -2457
 - [Appmobile]_Màn đăng ký cấp mã - Trường Mã số thuế đang không cho nhập chữ và ký tự đặc biết - BHW-2465
 

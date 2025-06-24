@@ -355,7 +355,11 @@ class LocaleKeys {
   static const declareInfo_nationalityCannotEmpty =
       'declareInfo_nationalityCannotEmpty';
   static const declareInfo_fromMonthYear = 'declareInfo_fromMonthYear';
+  static const declareInfo_fromMonthYearCannotEmpty =
+      'declareInfo_fromMonthYearCannotEmpty';
   static const declareInfo_toMonthYear = 'declareInfo_toMonthYear';
+  static const declareInfo_toMonthYearCannotEmpty =
+      'declareInfo_toMonthYearCannotEmpty';
   static const declareInfo_position = 'declareInfo_position';
   static const declareInfo_selectPosition = 'declareInfo_selectPosition';
   static const declareInfo_workplace = 'declareInfo_workplace';
@@ -1092,7 +1096,9 @@ class Locales {
     'declareInfo_selectNationality': 'Chọn quốc tịch',
     'declareInfo_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
     'declareInfo_fromMonthYear': 'Từ tháng/năm',
+    'declareInfo_fromMonthYearCannotEmpty': 'Từ tháng/năm không được bỏ trống',
     'declareInfo_toMonthYear': 'Đến tháng/năm',
+    'declareInfo_toMonthYearCannotEmpty': 'Đến tháng/năm không được bỏ trống',
     'declareInfo_position': 'Cấp bậc/chức vụ',
     'declareInfo_selectPosition': 'Chọn cấp bậc/Chức vụ',
     'declareInfo_workplace': 'Nơi làm việc',
