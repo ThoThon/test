@@ -149,7 +149,7 @@ extension RegisterInfoTab on RegisterCodePage {
       display: (item) => item.name,
       validator: (value) {
         if (controller.districtReceive.value == null) {
-          return LocaleKeys.registerCode_districReceiveCannotEmpty.tr;
+          return LocaleKeys.registerCode_districtReceiveCannotEmpty.tr;
         }
         return null;
       },
@@ -276,6 +276,7 @@ extension RegisterInfoTab on RegisterCodePage {
       controller: controller.fileIncludeCtrl,
       inputFormatters: InputFormatterEnum.textNormal,
       isValidate: true,
+      maxLengthInputForm: 500,
     );
   }
 
@@ -286,6 +287,7 @@ extension RegisterInfoTab on RegisterCodePage {
       controller: controller.contentCtrl,
       inputFormatters: InputFormatterEnum.textNormal,
       isValidate: true,
+      maxLengthInputForm: 500,
     );
   }
 

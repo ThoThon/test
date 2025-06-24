@@ -1,5 +1,6 @@
 24/06/2025
 - Chỉnh sửa button tại popup check trùng MST khi ký (Thoát -> Đóng) - BHW-2470
+- [Appmobile]_Màn đăng ký cấp mã_Sửa lại validate trường mã số thuế - BHW-2458
 - [AppMobile]_Màn Đăng ký cấp mã_Sai text title trường chọn tỉnh - BHW -2457
 
 

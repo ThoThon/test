@@ -730,12 +730,6 @@ class LocaleKeys {
   static const registerCode_setupDateIsNotValid =
       'registerCode_setupDateIsNotValid';
   static const registerCode_socialInfo = 'registerCode_socialInfo';
-  static const registerCode_provinceReceiveIsEmpty =
-      'registerCode_provinceReceiveIsEmpty';
-  static const registerCode_districtReceiveIsEmpty =
-      'registerCode_districtReceiveIsEmpty';
-  static const registerCode_imageFromCamera = 'registerCode_imageFromCamera';
-  static const registerCode_imageFromLibrary = 'registerCode_imageFromLibrary';
 }
 
 class Locales {
@@ -1395,9 +1389,5 @@ class Locales {
     'registerCode_setupDateCannotEmpty': 'Ngày lập không được để trống',
     'registerCode_setupDateIsNotValid': 'Ngày lập không hợp lệ',
     'registerCode_socialInfo': 'Thông tin đóng BHXH',
-    'registerCode_provinceReceiveIsEmpty': 'Chưa chọn nơi nhận tỉnh',
-    'registerCode_districtReceiveIsEmpty': 'Chưa chọn nơi nhận huyện',
-    'registerCode_imageFromCamera': 'Chọn ảnh từ camera',
-    'registerCode_imageFromLibrary': 'Chọn ảnh từ điện thoại',
   };
 }
