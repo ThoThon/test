@@ -630,6 +630,6 @@
     "setupDateCannotEmpty": "Ngày lập không được để trống",
     "setupDateIsNotValid": "Ngày lập không hợp lệ",
     "socialInfo": "Thông tin đóng BHXH",
-    "districtReceiveCannotEmpty": "Huyện nơi nhận không được để trống"
+    "districtReceiveCannotEmpty": "Nơi nhận huyện không được để trống"
   }
 }

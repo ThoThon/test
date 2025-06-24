@@ -1366,6 +1366,6 @@ class Locales {
     'registerCode_setupDateIsNotValid': 'Ngày lập không hợp lệ',
     'registerCode_socialInfo': 'Thông tin đóng BHXH',
     'registerCode_districtReceiveCannotEmpty':
-        'Huyện nơi nhận không được để trống',
+        'Nơi nhận huyện không được để trống',
   };
 }
