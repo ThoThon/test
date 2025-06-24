@@ -63,7 +63,7 @@ extension RegisterInfoTab on RegisterCodePage {
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<SocialAgencyModel>(
-            title: LocaleKeys.declareInfo_ethnic.tr,
+            title: LocaleKeys.registerCode_selectSocialAgency.tr,
             maxLength: 20,
             listFilter: AppData.instance.socialAgency.toList(),
             selectedItem: controller.socialAgency.value,
@@ -81,7 +81,7 @@ extension RegisterInfoTab on RegisterCodePage {
       display: (item) => item.tenCoQuanBHXH,
       validator: (value) {
         if (controller.socialAgency.value == null) {
-          return 'Cơ quan BHXH không được để trống';
+          return LocaleKeys.registerCode_socialAgencyCannotEmpty.tr;
         }
         return null;
       },
@@ -95,7 +95,7 @@ extension RegisterInfoTab on RegisterCodePage {
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<ProvinceModel>(
-            title: LocaleKeys.declareInfo_ethnic.tr,
+            title: LocaleKeys.unitInfo_selectProvince.tr,
             maxLength: 20,
             listFilter: AppData.instance.provinces.toList(),
             selectedItem: controller.provinceReceive.value,
@@ -113,7 +113,7 @@ extension RegisterInfoTab on RegisterCodePage {
       display: (item) => item.name,
       validator: (value) {
         if (controller.provinceReceive.value == null) {
-          return 'Nơi nhận tỉnh không được để trống';
+          return LocaleKeys.registerCode_provinceReceiveCannotEmpty.tr;
         }
         return null;
       },
@@ -127,7 +127,8 @@ extension RegisterInfoTab on RegisterCodePage {
       funcSelect: (didChange) async {
         final province = controller.provinceReceive.value;
         if (province == null) {
-          controller.showSnackBar("Chưa chọn nơi nhận tỉnh");
+          controller
+              .showSnackBar(LocaleKeys.registerCode_provinceReceiveIsEmpty.tr);
           return;
         }
 
@@ -148,7 +149,7 @@ extension RegisterInfoTab on RegisterCodePage {
       display: (item) => item.name,
       validator: (value) {
         if (controller.districtReceive.value == null) {
-          return 'Huyện nơi nhận không được để trống';
+          return LocaleKeys.registerCode_districReceiveCannotEmpty.tr;
         }
         return null;
       },
@@ -162,13 +163,15 @@ extension RegisterInfoTab on RegisterCodePage {
       funcSelect: (didChange) async {
         final province = controller.provinceReceive.value;
         if (province == null) {
-          controller.showSnackBar("Chưa chọn nơi nhận tỉnh");
+          controller
+              .showSnackBar(LocaleKeys.registerCode_provinceReceiveIsEmpty.tr);
           return;
         }
 
         final district = controller.districtReceive.value;
         if (district == null) {
-          controller.showSnackBar("Chưa chọn nơi nhận huyện");
+          controller
+              .showSnackBar(LocaleKeys.registerCode_districtReceiveIsEmpty.tr);
           return;
         }
 
@@ -190,7 +193,7 @@ extension RegisterInfoTab on RegisterCodePage {
       display: (ward) => ward.name,
       validator: (value) {
         if (controller.wardReceive.value == null) {
-          return 'Nơi nhận xã không được để trống';
+          return LocaleKeys.registerCode_wardReceiveCannotEmpty.tr;
         }
         return null;
       },
@@ -200,7 +203,7 @@ extension RegisterInfoTab on RegisterCodePage {
   // Đăng ký nhận kết quả
   CardDropdownWithLabel _buildSelectRegisterResult() {
     return CardDropdownWithLabel<RegisterReceiveResultModel>(
-      labelText: 'Đăng ký nhận kết quả',
+      labelText: LocaleKeys.registerCode_registerResult.tr,
       isValidate: true,
       items: AppData.instance.resultReceivingOptions.toList(),
       display: (result) => result.text,
@@ -216,7 +219,7 @@ extension RegisterInfoTab on RegisterCodePage {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SDSBuildText(
-          LocaleKeys.registerCode_socialInfo.tr,
+          LocaleKeys.registerCode_otherInfo.tr,
           style: AppTextStyle.font16Bo,
         ),
         sdsSBHeight8,
@@ -241,7 +244,7 @@ extension RegisterInfoTab on RegisterCodePage {
   // Phương thức nhận kết quả
   CardDropdownWithLabel _buildSelectMethodResult() {
     return CardDropdownWithLabel<ReceiveMethodModel>(
-      labelText: 'Phương thức nhận kết quả',
+      labelText: LocaleKeys.registerCode_methodReceiveResult.tr,
       isValidate: true,
       items: AppData.instance.receiveMethod.toList(),
       display: (result) => result.text,
@@ -255,7 +258,7 @@ extension RegisterInfoTab on RegisterCodePage {
   // Phương thức đóng
   CardDropdownWithLabel _buildSelectMethodClose() {
     return CardDropdownWithLabel<PaymentMethodModel>(
-      labelText: 'Phương thức đóng',
+      labelText: LocaleKeys.registerCode_methodPayment.tr,
       isValidate: true,
       items: AppData.instance.paymentMethods.toList(),
       display: (result) => result.text,
@@ -344,7 +347,7 @@ extension RegisterInfoTab on RegisterCodePage {
     return Row(
       children: [
         UtilWidget.buildSolidButton(
-          title: 'Tệp đính kèm',
+          title: LocaleKeys.registerCode_attachment.tr,
           borderRadius: AppDimens.radius8,
           textStyle:
               AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
@@ -368,7 +371,7 @@ extension RegisterInfoTab on RegisterCodePage {
                             UtilWidget.sizedBoxWidth8,
                             Expanded(
                               child: SDSBuildText(
-                                'Chụp ảnh từ camera',
+                                LocaleKeys.registerCode_imageFromCamera.tr,
                                 style: AppTextStyle.font16Semi,
                               ),
                             ),
@@ -393,7 +396,7 @@ extension RegisterInfoTab on RegisterCodePage {
                             UtilWidget.sizedBoxWidth8,
                             Expanded(
                               child: SDSBuildText(
-                                'Chọn ảnh từ điện thoại',
+                                LocaleKeys.registerCode_imageFromLibrary.tr,
                                 style: AppTextStyle.font16Semi,
                               ),
                             ),

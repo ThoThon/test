@@ -102,7 +102,7 @@ extension CommonInfoTab on RegisterCodePage {
   // Loại đối tượng
   CardDropdownWithLabel _buildSelectObjectType() {
     return CardDropdownWithLabel(
-      labelText: 'Loại đối tượng',
+      labelText: LocaleKeys.registerCode_objectType.tr,
       isValidate: true,
       items: AppData.instance.objectType.toList(),
       display: (object) => object.text,
