@@ -65,6 +65,11 @@ class RegisterServiceController extends BaseGetxController {
           await _registerServiceRepository.fetchRegisterServiceInfo();
       if (response.isSuccess && response.result != null) {
         registerServiceInfo.value = response.result;
+        // Nếu đã đăng ký thì set giá trị cho usernameMySignCtrl
+        final userId = response.result!.userId;
+        if (userId != null && userId.isNotEmpty) {
+          usernameMySignCtrl.text = userId;
+        } 
       }
     } catch (e) {
       logger.d(e);
