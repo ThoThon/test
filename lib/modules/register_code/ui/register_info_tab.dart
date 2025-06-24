@@ -148,7 +148,7 @@ extension RegisterInfoTab on RegisterCodePage {
       display: (item) => item.name,
       validator: (value) {
         if (controller.districtReceive.value == null) {
-          return 'Nơi nhận huyện không được để trống'; //Sửa lỗi text báo đỏ "Huyện nơi nhận không được để trống" -> Chuyển thành "Nơi nhận huyện không được để trống"
+          return LocaleKeys.registerCode_districtReceiveCannotEmpty.tr;
         }
         return null;
       },
@@ -273,7 +273,7 @@ extension RegisterInfoTab on RegisterCodePage {
       controller: controller.fileIncludeCtrl,
       inputFormatters: InputFormatterEnum.textNormal,
       isValidate: true,
-      maxLengthInputForm: 500, // Giới hạn 500 ký tự
+      maxLengthInputForm: 500,
     );
   }
 
@@ -284,7 +284,7 @@ extension RegisterInfoTab on RegisterCodePage {
       controller: controller.contentCtrl,
       inputFormatters: InputFormatterEnum.textNormal,
       isValidate: true,
-      maxLengthInputForm: 500, // Giới hạn 500 ký tự
+      maxLengthInputForm: 500,
     );
   }
 

@@ -714,6 +714,8 @@ class LocaleKeys {
   static const registerCode_setupDateIsNotValid =
       'registerCode_setupDateIsNotValid';
   static const registerCode_socialInfo = 'registerCode_socialInfo';
+  static const registerCode_districtReceiveCannotEmpty =
+      'registerCode_districtReceiveCannotEmpty';
 }
 
 class Locales {
@@ -1363,5 +1365,7 @@ class Locales {
     'registerCode_setupDateCannotEmpty': 'Ngày lập không được để trống',
     'registerCode_setupDateIsNotValid': 'Ngày lập không hợp lệ',
     'registerCode_socialInfo': 'Thông tin đóng BHXH',
+    'registerCode_districtReceiveCannotEmpty':
+        'Huyện nơi nhận không được để trống',
   };
 }
