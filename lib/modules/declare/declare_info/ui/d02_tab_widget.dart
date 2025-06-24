@@ -115,7 +115,6 @@ extension D02TabWidget on DeclareInfoPage {
         validator: (value) {
           final trimmedValue = value?.trim();
           if (trimmedValue == null || trimmedValue.isEmpty) {
-            // Không bắt buộc
             return null;
           }
 
@@ -171,6 +170,12 @@ extension D02TabWidget on DeclareInfoPage {
         },
         validator: (value) {
           final trimmedValue = value?.trim();
+          // Nếu bắt buộc và không nhập thì báo lỗi
+          if (controller.isFromDateRequired &&
+              (trimmedValue == null || trimmedValue.isEmpty)) {
+            return LocaleKeys.declareInfo_fromMonthYearCannotEmpty.tr;
+          }
+
           if (trimmedValue == null || trimmedValue.isEmpty) {
             // Không bắt buộc
             return null;
