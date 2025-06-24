@@ -341,14 +341,9 @@ class RegisterCodeController extends BaseGetxController {
       title: LocaleKeys.dialog_fail.tr,
       content: errorMessage,
       iconType: DialogIconType.failure,
-      exitTitle: LocaleKeys.dialog_exit.tr,
+      exitTitle: LocaleKeys.dialog_close.tr,
       showConfirmButton: onRetry != null,
       confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
-      onCancel: () {
-        // Get.offAllNamed(AppRoutes.login.path);
-        // Get back vì màn trước của nó đang là màn login
-        Get.back();
-      },
       onConfirm: onRetry,
     );
   }
