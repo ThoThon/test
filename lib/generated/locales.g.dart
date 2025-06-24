@@ -693,14 +693,28 @@ class LocaleKeys {
   static const registerCode_phoneContact = 'registerCode_phoneContact';
   static const registerCode_socialSecurityAgency =
       'registerCode_socialSecurityAgency';
+  static const registerCode_selectSocialAgency =
+      'registerCode_selectSocialAgency';
+  static const registerCode_socialAgencyCannotEmpty =
+      'registerCode_socialAgencyCannotEmpty';
   static const registerCode_provinceReceive = 'registerCode_provinceReceive';
+  static const registerCode_provinceReceiveCannotEmpty =
+      'registerCode_provinceReceiveCannotEmpty';
+  static const registerCode_selectProvinceReceive =
+      'registerCode_selectProvinceReceive';
   static const registerCode_districtReceive = 'registerCode_districtReceive';
+  static const registerCode_selectDistrictReceive =
+      'registerCode_selectDistrictReceive';
   static const registerCode_wardReceive = 'registerCode_wardReceive';
+  static const registerCode_wardReceiveCannotEmpty =
+      'registerCode_wardReceiveCannotEmpty';
+  static const registerCode_selectWardReceive =
+      'registerCode_selectWardReceive';
   static const registerCode_registerResult = 'registerCode_registerResult';
   static const registerCode_otherInfo = 'registerCode_otherInfo';
   static const registerCode_methodReceiveResult =
       'registerCode_methodReceiveResult';
-  static const registerCode_methodClose = 'registerCode_methodClose';
+  static const registerCode_methodPayment = 'registerCode_methodPayment';
   static const registerCode_fileInclude = 'registerCode_fileInclude';
   static const registerCode_content = 'registerCode_content';
   static const registerCode_attachment = 'registerCode_attachment';
@@ -720,6 +734,12 @@ class LocaleKeys {
   static const registerCode_socialInfo = 'registerCode_socialInfo';
   static const registerCode_districtReceiveCannotEmpty =
       'registerCode_districtReceiveCannotEmpty';
+  static const registerCode_provinceReceiveIsEmpty =
+      'registerCode_provinceReceiveIsEmpty';
+  static const registerCode_districtReceiveIsEmpty =
+      'registerCode_districtReceiveIsEmpty';
+  static const registerCode_imageFromCamera = 'registerCode_imageFromCamera';
+  static const registerCode_imageFromLibrary = 'registerCode_imageFromLibrary';
 }
 
 class Locales {
@@ -1353,13 +1373,21 @@ class Locales {
     'registerCode_personTransactionSocial': 'Người giao dịch BHXH',
     'registerCode_phoneContact': 'Điện thoại liên hệ',
     'registerCode_socialSecurityAgency': 'Cơ quan BHXH',
+    'registerCode_selectSocialAgency': 'Chọn cơ quan BHXH',
+    'registerCode_socialAgencyCannotEmpty': 'Cơ quan BHXH không được để trống',
     'registerCode_provinceReceive': 'Nơi nhận tỉnh',
+    'registerCode_provinceReceiveCannotEmpty':
+        'Nơi nhận tỉnh không được bỏ trống',
+    'registerCode_selectProvinceReceive': 'Chọn Nơi nhận tỉnh',
     'registerCode_districtReceive': 'Nơi nhận huyện',
+    'registerCode_selectDistrictReceive': 'Chọn Nơi nhận huyện',
     'registerCode_wardReceive': 'Nơi nhận xã',
+    'registerCode_wardReceiveCannotEmpty': 'Nơi nhận xã không được bỏ trống',
+    'registerCode_selectWardReceive': 'Chọn nơi nhận xã',
     'registerCode_registerResult': 'Đăng ký nhận kết quả',
     'registerCode_otherInfo': 'Thông tin khác',
     'registerCode_methodReceiveResult': 'Phương thức nhận kết quả',
-    'registerCode_methodClose': 'Phương thức đóng',
+    'registerCode_methodPayment': 'Phương thức đóng',
     'registerCode_fileInclude': 'Hồ sơ kèm theo',
     'registerCode_content': 'Nội dung',
     'registerCode_attachment': 'Tệp đính kèm',
@@ -1373,5 +1401,9 @@ class Locales {
     'registerCode_socialInfo': 'Thông tin đóng BHXH',
     'registerCode_districtReceiveCannotEmpty':
         'Nơi nhận huyện không được để trống',
+    'registerCode_provinceReceiveIsEmpty': 'Chưa chọn nơi nhận tỉnh',
+    'registerCode_districtReceiveIsEmpty': 'Chưa chọn nơi nhận huyện',
+    'registerCode_imageFromCamera': 'Chọn ảnh từ camera',
+    'registerCode_imageFromLibrary': 'Chọn ảnh từ điện thoại',
   };
 }

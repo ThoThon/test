@@ -55,4 +55,7 @@ class InputFormatterEnum {
 
   /// 18 : Chỉ nhập text, số, khoảng trắng
   static const int textNormal = 18;
+
+  /// 19 : Mã số thuế cho nhập text thường, ký tự đặc biệt, trử khoảng trống
+  static const int taxCodeNormal = 19;
 }

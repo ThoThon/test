@@ -81,92 +81,85 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
     required String labelText,
     String? hintText,
   }) {
-    return InputDecorator(
-      decoration: InputDecoration(
-        label: Row(
-          children: [
-            SDSBuildText(
-              labelText,
-              style: textStyle ??
-                  AppTextStyle.font16Re.copyWith(
-                    color: AppColors.dsGray1,
-                  ),
-            ),
-            Visibility(
-              visible: isValidate,
-              child: SDSBuildText(
-                ' *',
-                style: AppTextStyle.font12Re.copyWith(
-                  color: AppColors.statusRed,
-                ),
-              ),
-            ),
-          ],
-        ),
-        contentPadding: const EdgeInsets.only(
-          left: AppDimens.paddingSmall,
-          right: AppDimens.paddingSmall,
-          top: AppDimens.paddingSmall,
-        ),
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        labelStyle: AppTextStyle.font14Re,
-        border: InputBorder.none,
-        enabledBorder: InputBorder.none,
-        focusedBorder: InputBorder.none,
-        errorBorder: InputBorder.none,
-        focusedErrorBorder: InputBorder.none,
-        filled: true,
-        fillColor: AppColors.colorWhite,
+    return Container(
+      padding: const EdgeInsets.only(
+        right: AppDimens.paddingSmall,
+        left: AppDimens.paddingSmall,
+        top: AppDimens.paddingSmall,
       ),
-      isEmpty: selectedItem == null,
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<T>(
-          isExpanded: true,
-          value: selectedItem,
-          onChanged: onChanged,
-          dropdownColor: AppColors.colorWhite,
-          hint: hintText != null
-              ? SDSBuildText(
-                  hintText,
-                  style: AppTextStyle.font14Re.copyWith(
-                    color: AppColors.dsGray3,
+      decoration: BoxDecoration(
+        color: AppColors.colorWhite,
+        borderRadius: BorderRadius.circular(AppDimens.radius4),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          RichText(
+            text: TextSpan(
+              text: labelText,
+              style: AppTextStyle.font14Re,
+              children: [
+                if (isValidate)
+                  TextSpan(
+                    text: ' *',
+                    style: AppTextStyle.font12Re.copyWith(
+                      color: AppColors.statusRed,
+                    ),
                   ),
-                  maxLines: 2,
-                )
-              : null,
-          selectedItemBuilder: (context) => items.map(
-            (e) {
-              return Align(
-                alignment: Alignment.centerLeft,
-                child: SDSBuildText(
-                  display(e),
-                  style: AppTextStyle.font14Re,
-                  maxLines: 2,
-                  textAlign: TextAlign.start,
-                ),
-              );
-            },
-          ).toList(),
-          items: items
-              .map(
-                (e) => DropdownMenuItem<T>(
-                  value: e,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: AppDimens.paddingVerySmall),
+              ],
+            ),
+          ),
+          sdsSBHeight4,
+          DropdownButtonHideUnderline(
+            child: DropdownButton<T>(
+              isExpanded: true,
+              value: selectedItem,
+              onChanged: onChanged,
+              dropdownColor: AppColors.colorWhite,
+              hint: hintText != null
+                  ? SDSBuildText(
+                      hintText,
+                      style: AppTextStyle.font14Re.copyWith(
+                        color: AppColors.dsGray3,
+                      ),
+                      maxLines: 2,
+                    )
+                  : null,
+              selectedItemBuilder: (context) => items.map(
+                (e) {
+                  return Align(
+                    alignment: Alignment.centerLeft,
                     child: SDSBuildText(
                       display(e),
-                      style: selectedItem == e
-                          ? AppTextStyle.font14Bo
-                          : AppTextStyle.font14Re,
+                      style: AppTextStyle.font14Re,
                       maxLines: 2,
                       textAlign: TextAlign.start,
                     ),
-                  ),
-                ),
-              )
-              .toList(),
-        ),
+                  );
+                },
+              ).toList(),
+              items: items
+                  .map(
+                    (e) => DropdownMenuItem<T>(
+                      value: e,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: AppDimens.paddingVerySmall),
+                        child: SDSBuildText(
+                          display(e),
+                          style: selectedItem == e
+                              ? AppTextStyle.font14Bo
+                              : AppTextStyle.font14Re,
+                          maxLines: 2,
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        ],
       ),
     );
   }

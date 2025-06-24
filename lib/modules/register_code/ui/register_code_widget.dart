@@ -63,7 +63,7 @@ extension RegisterCodeWidget on RegisterCodePage {
               children: [
                 Expanded(
                   child: _buildTabButton(
-                    title: 'Thông tin chung',
+                    title: LocaleKeys.registerCode_commonInfo.tr,
                     // enabled: controller.enableTk1Tab,
                     isSelected: controller.currentTab.value ==
                         RegisterCodeTabEnum.common_info,
@@ -74,7 +74,7 @@ extension RegisterCodeWidget on RegisterCodePage {
                 ),
                 Expanded(
                   child: _buildTabButton(
-                    title: 'Thông tin đăng ký',
+                    title: LocaleKeys.registerCode_registerInfo.tr,
                     isSelected: controller.currentTab.value ==
                         RegisterCodeTabEnum.register_info,
                     onTap: () {
