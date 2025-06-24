@@ -63,7 +63,7 @@ extension RegisterInfoTab on RegisterCodePage {
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<SocialAgencyModel>(
-            title: LocaleKeys.unitInfo_selectSocialAgency.tr, // Chuyển từ "Dân tộc" thành "Chọn cơ quan BHXH"
+            title: LocaleKeys.unitInfo_selectSocialAgency.tr,
             maxLength: 20,
             listFilter: AppData.instance.socialAgency.toList(),
             selectedItem: controller.socialAgency.value,
@@ -95,7 +95,7 @@ extension RegisterInfoTab on RegisterCodePage {
       funcSelect: (didChange) {
         Get.bottomSheet(
           BottomSheetSearch<ProvinceModel>(
-            title: LocaleKeys.unitInfo_selectProvince.tr, // Chuyển từ "Dân tộc" thành "Chọn tỉnh/thành phố"
+            title: LocaleKeys.unitInfo_selectProvince.tr,
             maxLength: 20,
             listFilter: AppData.instance.provinces.toList(),
             selectedItem: controller.provinceReceive.value,
