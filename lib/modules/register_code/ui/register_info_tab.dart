@@ -216,7 +216,7 @@ extension RegisterInfoTab on RegisterCodePage {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SDSBuildText(
-          LocaleKeys.registerCode_socialInfo.tr,
+          LocaleKeys.registerCode_otherInfo.tr,
           style: AppTextStyle.font16Bo,
         ),
         sdsSBHeight8,
