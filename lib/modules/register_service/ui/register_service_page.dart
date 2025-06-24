@@ -1,4 +1,3 @@
-import 'package:v_bhxh/modules/register_service/register_service_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 part 'register_service_widget.dart';
