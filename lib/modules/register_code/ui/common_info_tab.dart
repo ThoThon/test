@@ -156,12 +156,12 @@ extension CommonInfoTab on RegisterCodePage {
       isValidate: true,
       onSelectDate: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
-            dateTimeInit: convertStringToDateSafe(
-                  controller.setupDateCtrl.text,
-                  PATTERN_1,
-                ) ??
-                DateTime.now(),
-            lastDate: DateTime.now());
+          dateTimeInit: convertStringToDateSafe(
+                controller.setupDateCtrl.text,
+                PATTERN_1,
+              ) ??
+              DateTime.now(),
+        );
         if (selectedDate != null) {
           controller.setupDateCtrl.text =
               convertDateToString(selectedDate, PATTERN_1);
@@ -188,7 +188,7 @@ extension CommonInfoTab on RegisterCodePage {
         }
 
         // Chỉ được nhập từ năm 1900
-        if (date.year <= 1900) {
+        if (date.year <= 1900 || date.year >= 2100) {
           return LocaleKeys.registerCode_setupDateIsNotValid.tr;
         }
 
@@ -207,12 +207,12 @@ extension CommonInfoTab on RegisterCodePage {
       isValidate: true,
       onSelectDate: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
-            dateTimeInit: convertStringToDateSafe(
-                  controller.registerDateCtrl.text,
-                  PATTERN_1,
-                ) ??
-                DateTime.now(),
-            lastDate: DateTime.now());
+          dateTimeInit: convertStringToDateSafe(
+                controller.registerDateCtrl.text,
+                PATTERN_1,
+              ) ??
+              DateTime.now(),
+        );
         if (selectedDate != null) {
           controller.registerDateCtrl.text = convertDateToString(
             selectedDate,
@@ -239,7 +239,7 @@ extension CommonInfoTab on RegisterCodePage {
         }
 
         // Chỉ được nhập từ năm 1900
-        if (date.year <= 1900) {
+        if (date.year <= 1900 || date.year >= 2100) {
           return LocaleKeys.registerCode_registerDateIsNotValid.tr;
         }
 
