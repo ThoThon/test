@@ -37,7 +37,7 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
             SDSBuildText(
               labelText,
               style: textStyle ??
-                  AppTextStyle.font16Re.copyWith(
+                  AppTextStyle.font20Re.copyWith(
                     color: AppColors.dsGray1,
                   ),
             ),
