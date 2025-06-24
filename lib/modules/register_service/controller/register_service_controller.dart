@@ -17,6 +17,8 @@ class RegisterServiceController extends BaseGetxController {
 
   final registerServiceInfo = Rxn<RegisterServiceInfoModel>();
 
+  final userNameMySignEmpty = true.obs;
+
   // userID dùng để test
   // 0105987432_tk3
 
@@ -69,7 +71,7 @@ class RegisterServiceController extends BaseGetxController {
         final userId = response.result!.userId;
         if (userId != null && userId.isNotEmpty) {
           usernameMySignCtrl.text = userId;
-        } 
+        }
       }
     } catch (e) {
       logger.d(e);
@@ -239,10 +241,11 @@ class RegisterServiceController extends BaseGetxController {
   bool get isDisableRegisterButton {
     final cert = certificate.value;
 
-    // Nếu đã đăng ký rồi thì disable luôn
+    // Đã đăng ký rồi thì disable luôn
     if (hasBeenRegister) return true;
 
-    // Nếu chưa có chứng thư số thì cũng disable
+    if (userNameMySignEmpty.value) return true;
+    // Nếu không có username hoặc không có chứng thư số thì disable
     return cert == null;
   }
 }
