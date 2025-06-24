@@ -629,6 +629,7 @@
     "registerDateIsNotValid": "Ngày đăng ký không hợp lệ",
     "setupDateCannotEmpty": "Ngày lập không được để trống",
     "setupDateIsNotValid": "Ngày lập không hợp lệ",
-    "socialInfo": "Thông tin đóng BHXH"
+    "socialInfo": "Thông tin đóng BHXH",
+    "districtReceiveCannotEmpty": "Nơi nhận huyện không được để trống"
   }
 }
