@@ -248,4 +248,12 @@ class RegisterServiceController extends BaseGetxController {
     // Nếu không có username hoặc không có chứng thư số thì disable
     return cert == null;
   }
+
+  String? validateUsernameMySign(String? value) {
+    if (value.isNullOrEmpty && !hasBeenRegister) {
+      return LocaleKeys.registerService_userNameMySignCannotEmpty.tr;
+    }
+    return null;
+  }
+
 }
