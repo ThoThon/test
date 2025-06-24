@@ -37,12 +37,6 @@ class DeclareInfoController extends BaseGetxController {
     _getD02Detail();
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    updateHouseholdInfoRequired();
-  }
-
   Future<void> _getD02Detail() async {
     final staffId = argument.staffId;
 
@@ -60,6 +54,7 @@ class DeclareInfoController extends BaseGetxController {
         d02State.mapFromD02Detail(infoDetail);
         tk1State.mapFromD02Detail(infoDetail);
         d01State.mapFromD02Detail(infoDetail);
+        updateHouseholdInfoRequired();
       } else {
         showSnackBar(response.errorMessage);
       }
@@ -843,14 +838,15 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void updateHouseholdInfoRequired() {
+    // Nếu "Mã số BHXH" không required thì Thông tin chủ hộ sẽ là required
     if (!isBhxhCodeRequired) {
       tk1State.isHouseholdInfoRequired.value = true;
-    } else {
-      if (isHouseholdInfoEmpty) {
-        tk1State.isHouseholdInfoRequired.value = false;
-      } else {
-        tk1State.isHouseholdInfoRequired.value = !isHouseholdInfoEmpty;
-      }
+    }
+
+    // Nếu "Mã số BHXH" required thì thông tin chủ hộ sẽ không required
+    // Nếu 1 trong các thông tin của chủ hộ được điền thì sẽ phải điền tất cả 
+    else {
+      tk1State.isHouseholdInfoRequired.value = !isHouseholdInfoEmpty;
     }
   }
 }

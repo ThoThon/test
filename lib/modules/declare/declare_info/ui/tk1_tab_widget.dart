@@ -451,17 +451,20 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildInputHeadOfHousehold() {
-    return Obx(() => BuildInputTextWithLabel(
-          label: LocaleKeys.declareInfo_headOfHouseholdFullName.tr,
-          buildInputText: BuildInputText(
-            InputTextModel(
-              isValidate: controller.tk1State.isHouseholdInfoRequired.value,
-              controller: controller.tk1State.headOfHouseholdTextCtrl,
-              onChanged: controller.onChangeHeadOfHouseholdFullName,
-              maxLengthInputForm: 100,
-            ),
+    return Obx(
+      () => BuildInputTextWithLabel(
+        label: LocaleKeys.declareInfo_headOfHouseholdFullName.tr,
+        buildInputText: BuildInputText(
+          InputTextModel(
+            autovalidateMode: controller.tk1State.autoValidateMode.value,
+            isValidate: controller.tk1State.isHouseholdInfoRequired.value,
+            controller: controller.tk1State.headOfHouseholdTextCtrl,
+            onChanged: controller.onChangeHeadOfHouseholdFullName,
+            maxLengthInputForm: 100,
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget _buildInputHeadOfHouseholdCCCD() {
@@ -470,6 +473,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         label: LocaleKeys.declareInfo_headOfHouseholdCCCD.tr,
         buildInputText: BuildInputText(
           InputTextModel(
+            autovalidateMode: controller.tk1State.autoValidateMode.value,
             isValidate: controller.tk1State.isHouseholdInfoRequired.value,
             controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
             onChanged: controller.onChangeHeadOfHouseholdCCCD,
@@ -484,6 +488,7 @@ extension Tk1TabWidget on DeclareInfoPage {
     return Obx(
       () {
         return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_provinceTT.tr,
           hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
           isRequired: controller.tk1State.isHouseholdInfoRequired.value,
@@ -524,6 +529,7 @@ extension Tk1TabWidget on DeclareInfoPage {
     return Obx(
       () {
         return UtilWidget.buildBottomSheetSelect<DistrictModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_districtTT.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
           isRequired: controller.tk1State.isHouseholdInfoRequired.value,
@@ -568,6 +574,7 @@ extension Tk1TabWidget on DeclareInfoPage {
     return Obx(
       () {
         return UtilWidget.buildBottomSheetSelect<WardModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_wardTT.tr,
           hintText: LocaleKeys.declareInfo_selectWardTT.tr,
           isRequired: controller.tk1State.isHouseholdInfoRequired.value,
@@ -617,17 +624,20 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildInputAddressTTTextCtrl() {
-    return Obx(() => BuildInputTextWithLabel(
-          label: LocaleKeys.declareInfo_addressTT.tr,
-          buildInputText: BuildInputText(
-            InputTextModel(
-              isValidate: controller.tk1State.isHouseholdInfoRequired.value,
-              controller: controller.tk1State.addressTTTextCtrl,
-              onChanged: controller.onChangeAddressTT,
-              maxLengthInputForm: 300,
-            ),
+    return Obx(
+      () => BuildInputTextWithLabel(
+        label: LocaleKeys.declareInfo_addressTT.tr,
+        buildInputText: BuildInputText(
+          InputTextModel(
+            autovalidateMode: controller.tk1State.autoValidateMode.value,
+            isValidate: controller.tk1State.isHouseholdInfoRequired.value,
+            controller: controller.tk1State.addressTTTextCtrl,
+            onChanged: controller.onChangeAddressTT,
+            maxLengthInputForm: 300,
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget _buildFamilyMember() {

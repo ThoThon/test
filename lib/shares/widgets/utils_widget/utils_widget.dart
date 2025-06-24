@@ -576,9 +576,10 @@ class UtilWidget {
     String? Function(T?)? validator,
     VoidCallback? onTapClear,
     bool enableClearIcon = false,
+    AutovalidateMode? autovalidateMode,
   }) {
     return FormField(
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: autovalidateMode,
       validator: isRequired ? validator : null,
       initialValue: selectedItem,
       builder: (FormFieldState<T> state) {
