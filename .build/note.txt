@@ -9,6 +9,7 @@
 - Đăng ký cấp mã - tab Thông tin đăng ký - Sai text tại màn tìm kiếm Nơi nhận huyện - BHW-2468
 - Màn đăng ký cấp mã - Lỗi valiadte tab Thông tin đăng ký - BHW-2467
 - Màn đăng ký cấp mã: Sai text tại tab Thông tin đăng ký - BHW-2474
+- [Appmobile]_Đăng ký dịch vụ_Xóa thông tin UserId thì disable Button đăng ký. - BHW-2478
 - [Appmobile]_Khi Không có Mã số BHXH => Tất cả thông tin về chủ hộ màn TK1 là bắt buộc - BHW-2401
 
 23/06/2025
