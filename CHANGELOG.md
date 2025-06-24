@@ -1,5 +1,6 @@
 20/06/2025
 - [Appmobile]_Bổ sung giao diện màn "Đăng ký cấp mã" - BHW-2406
+- [Appmobile]_Màn đăng ký cấp mã_Sửa lại validate trường mã số thuế - BHW-2458
 
 19/06/2025
 - [Appmobile]_Bổ sung maxlength cho các trường Tìm kiếm - BHW-2432
