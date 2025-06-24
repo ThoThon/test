@@ -94,7 +94,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_unitName.tr,
       controller: controller.unitNameCtrl,
       isValidate: true,
-      inputFormatters: InputFormatterEnum.textNormal,
+      inputFormatters: InputFormatterEnum.password,
       maxLengthInputForm: 250,
     );
   }
