@@ -35,6 +35,11 @@ class DeclareInfoController extends BaseGetxController {
   void onReady() {
     super.onReady();
     _getD02Detail();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
     updateHouseholdInfoRequired();
   }
 
@@ -838,11 +843,14 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void updateHouseholdInfoRequired() {
-    
     if (!isBhxhCodeRequired) {
-      tk1State.isHouseholdInfoRequired.value = isHouseholdInfoEmpty;
+      tk1State.isHouseholdInfoRequired.value = true;
+    } else {
+      if (isHouseholdInfoEmpty) {
+        tk1State.isHouseholdInfoRequired.value = false;
+      } else {
+        tk1State.isHouseholdInfoRequired.value = !isHouseholdInfoEmpty;
+      }
     }
-    tk1State.isHouseholdInfoRequired.value =
-        (isBhxhCodeRequired && isHouseholdInfoEmpty);
   }
 }
