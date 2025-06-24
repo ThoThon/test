@@ -35,6 +35,7 @@ class DeclareInfoController extends BaseGetxController {
   void onReady() {
     super.onReady();
     _getD02Detail();
+    updateHouseholdInfoRequired();
   }
 
   Future<void> _getD02Detail() async {
@@ -587,12 +588,13 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void onChangeHeadOfHouseholdFullName(String value) {
-    tk1State.headOfHouseholdCCCDTextCtrl.text;
-    tk1State.isParticipantHeadOfHousehold.value = false;
+    tk1State.headOfHouseholdTextCtrl.text = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeHeadOfHouseholdCCCD(String value) {
-    tk1State.isParticipantHeadOfHousehold.value = false;
+    tk1State.headOfHouseholdCCCDTextCtrl.text = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeProvinceTT(ProvinceModel value) {
@@ -604,6 +606,7 @@ class DeclareInfoController extends BaseGetxController {
     }
 
     tk1State.provinceTT.value = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeDistrictTT(DistrictModel value) {
@@ -614,6 +617,7 @@ class DeclareInfoController extends BaseGetxController {
     }
 
     tk1State.districtTT.value = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeWardTT(WardModel value) {
@@ -622,10 +626,12 @@ class DeclareInfoController extends BaseGetxController {
     }
 
     tk1State.wardTT.value = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeAddressTT(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
+    updateHouseholdInfoRequired();
   }
 
   Future<void> addFamilyMember() async {
@@ -760,10 +766,9 @@ class DeclareInfoController extends BaseGetxController {
   //   return true;
   // }
 
-
-  /// Nếu chọn loại khai báo và phương án trong các type sau 
+  /// Nếu chọn loại khai báo và phương án trong các type sau
   /// "Từ tháng/năm" sẽ thành isRequired
-  /// 
+  ///
   /// REF: http://10.100.140.19:8080/projects/BHW/issues/BHW-2411
   bool get isFromDateRequired {
     final declarationTypeId = d02State.declarationType.value?.value;
@@ -821,5 +826,23 @@ class DeclareInfoController extends BaseGetxController {
     }
 
     return false;
+  }
+
+  bool get isHouseholdInfoEmpty {
+    return tk1State.headOfHouseholdTextCtrl.text.trim().isEmpty &&
+        tk1State.headOfHouseholdCCCDTextCtrl.text.trim().isEmpty &&
+        tk1State.provinceTT.value == null &&
+        tk1State.districtTT.value == null &&
+        tk1State.wardTT.value == null &&
+        tk1State.addressTTTextCtrl.text.trim().isEmpty;
+  }
+
+  void updateHouseholdInfoRequired() {
+    
+    if (!isBhxhCodeRequired) {
+      tk1State.isHouseholdInfoRequired.value = isHouseholdInfoEmpty;
+    }
+    tk1State.isHouseholdInfoRequired.value =
+        (isBhxhCodeRequired && isHouseholdInfoEmpty);
   }
 }
