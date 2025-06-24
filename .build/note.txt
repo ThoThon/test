@@ -1,5 +1,7 @@
 24/06/2025
 - Chỉnh sửa button tại popup check trùng MST khi ký (Thoát -> Đóng) - BHW-2470
+- [AppMobile]_Màn Đăng ký cấp mã_Sai text title trường chọn tỉnh - BHW -2457
+
 
 23/06/2025
 - Xử lý đổi link test Khi kích dup "Viettel" tại màn đăng nhập - BHW-2438
