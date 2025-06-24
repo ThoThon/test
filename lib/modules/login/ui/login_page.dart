@@ -1,4 +1,4 @@
-import 'package:v_bhxh/shares/env_switcher/env_switcher.dart';
+import 'package:v_bhxh/shares/base_url_helper/base_url_helper.dart';
 
 import '../../../base_app/controllers_base/app_controller/app_controller.dart';
 import '../../../modules/src.dart';

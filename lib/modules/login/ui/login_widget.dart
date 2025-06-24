@@ -16,7 +16,7 @@ extension LoginWidget on LoginPage {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         GestureDetector(
-                          onDoubleTap: EnvSwitcher.instance.switchEnv,
+                          onDoubleTap: BaseUrlHelper.instance.switchEnv,
                           child: _buildLogo(),
                         ),
                         const SizedBox(height: AppDimens.padding40),

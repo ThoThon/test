@@ -1,5 +1,5 @@
 import 'package:v_bhxh/base_app/repository_base/interceptor/jwt_token_interceptor.dart';
-import 'package:v_bhxh/shares/env_switcher/env_switcher.dart';
+import 'package:v_bhxh/shares/base_url_helper/base_url_helper.dart';
 
 import '../../core/core.src.dart';
 import '../../shares/log/dio_log.dart';
@@ -69,7 +69,7 @@ class BaseApi {
   }) async {
     dio.options = dioOptions ?? buildDefaultOptions(timeOut: timeOut);
     dynamic response;
-    String url = urlOther ?? EnvSwitcher.instance.currentUrl + action;
+    String url = urlOther ?? BaseUrlHelper.instance.currentUrl + action;
     Map<String, String> headers = isToken
         ? (headersUrlOther ?? getBaseHeader())
         : {"Content-Type": "application/json"};
