@@ -170,33 +170,30 @@ extension RegisterServiceWidget on RegisterServicePage {
     );
   }
 
-Widget _buildInputUsernameMySign() {
-  return Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Expanded(
-        child: BuildInputText(
-          InputTextModel(
-            controller: controller.usernameMySignCtrl,
-            autovalidateMode: AutovalidateMode.always,
-            hintText: LocaleKeys.registerService_inputMySignUsername.tr,
-            validator: controller.hasBeenRegister
-                ? null
-                : (value) {
-                    if (value.isNullOrEmpty) {
-                      return LocaleKeys
-                          .registerService_userNameMySignCannotEmpty.tr;
-                    }
-                    return null;
-                  },
+  Widget _buildInputUsernameMySign() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: BuildInputText(
+            InputTextModel(
+              controller: controller.usernameMySignCtrl,
+              autovalidateMode: AutovalidateMode.always,
+              hintText: LocaleKeys.registerService_inputMySignUsername.tr,
+              onChanged: (value) {
+                controller.userNameMySignEmpty.value = value.isEmpty;
+              },
+              validator: (value) {
+                return controller.validateUsernameMySign(value);
+              },
+            ),
           ),
         ),
-      ),
-      sdsSBWidth8,
-      _buildButtonGetListCert(),
-    ],
-  );
-}
+        sdsSBWidth8,
+        _buildButtonGetListCert(),
+      ],
+    );
+  }
 
   Widget _buildSingleItem({
     required String title,
