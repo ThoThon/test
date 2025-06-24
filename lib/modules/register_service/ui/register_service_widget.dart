@@ -171,15 +171,6 @@ extension RegisterServiceWidget on RegisterServicePage {
   }
 
 Widget _buildInputUsernameMySign() {
-  // Nếu đã đăng ký dịch vụ, thì hiển thị userId đã đăng ký
-  // Nếu chưa đăng ký, thì hiển thị ô input để nhập username MySign
-  final registerInfo = controller.registerServiceInfo.value;
-  if (controller.hasBeenRegister &&
-      registerInfo?.userId != null &&
-      controller.usernameMySignCtrl.text != registerInfo?.userId) {
-    controller.usernameMySignCtrl.text = registerInfo!.userId;
-  }
-
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
