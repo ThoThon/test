@@ -69,7 +69,7 @@ class RegisterServiceController extends BaseGetxController {
         final userId = response.result!.userId;
         if (userId != null && userId.isNotEmpty) {
           usernameMySignCtrl.text = userId;
-        } 
+        }
       }
     } catch (e) {
       logger.d(e);

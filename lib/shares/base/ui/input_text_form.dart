@@ -54,6 +54,7 @@ class BuildInputTextState extends State<BuildInputText> {
       case InputFormatterEnum.password:
         return [
           FilteringTextInputFormatter.deny(RegExp(r'( )')),
+          RegexpEmojiUtil.emojiDenyFormatter,
         ];
       case InputFormatterEnum.phoneNumber:
         return [
@@ -115,17 +116,16 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.textNormal:
         return [
-          FilteringTextInputFormatter.allow(
-            RegExp(r'''[a-zA-ZÀ-ỹ0-9\s.,_\-@#\$%\^&*+=?!:;"'()\[\]{}\/\\]'''),
-          ),
+          RegexpEmojiUtil.emojiDenyFormatter,
         ];
       case InputFormatterEnum.taxCodeNormal:
         return [
+          RegexpEmojiUtil.emojiDenyFormatter,
           FilteringTextInputFormatter.deny(RegExp(r'( )')),
         ];
-
       default:
         return [
+          RegexpEmojiUtil.emojiDenyFormatter,
           LengthLimitingTextFieldFormatterFixed(
               widget.inputTextFormModel.maxLengthInputForm)
         ];

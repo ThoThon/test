@@ -936,6 +936,9 @@ class UtilWidget {
     return SizedBox(
       height: height,
       child: TextField(
+        inputFormatters: [
+          RegexpEmojiUtil.emojiDenyFormatter,
+        ],
         textAlignVertical: TextAlignVertical.center,
         maxLength: maxLength,
         focusNode: focusNode,

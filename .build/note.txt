@@ -9,6 +9,7 @@
 - Đăng ký cấp mã - tab Thông tin đăng ký - Sai text tại màn tìm kiếm Nơi nhận huyện - BHW-2468
 - Màn đăng ký cấp mã - Lỗi valiadte tab Thông tin đăng ký - BHW-2467
 - Màn đăng ký cấp mã: Sai text tại tab Thông tin đăng ký - BHW-2474
+- [Appmobile]_Chặn nhập icon tại những trường điền textbox - BHW-2448
 
 23/06/2025
 - Xử lý đổi link test Khi kích dup "Viettel" tại màn đăng nhập - BHW-2438
