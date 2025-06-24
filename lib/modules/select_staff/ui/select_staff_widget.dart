@@ -19,6 +19,7 @@ extension SelectStaffWidget on SelectStaffPage {
         hintText: LocaleKeys.staffList_fillFullName.tr,
         iconNextTextInputAction: TextInputAction.done,
         hintTextColor: AppColors.thumbColorSwitch,
+        maxLengthInputForm: 100,
         hintTextSize: AppDimens.fontSmall(),
         iconAssets: Assets.ASSETS_ICONS_IC_SEARCH_SVG,
         onChanged: (_) {

@@ -33,6 +33,8 @@ extension HistoryWidget on HistoryPage {
         Expanded(
           child: BuildInputText(
             InputTextModel(
+              maxLengthInputForm: 20,
+              isShowCounterText: false,
               controller: controller.searchController,
               hintText: LocaleKeys.history_fileNumber.tr,
               iconNextTextInputAction: TextInputAction.done,

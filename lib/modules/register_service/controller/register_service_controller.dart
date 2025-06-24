@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/modules/register_service/register_service_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -66,6 +65,11 @@ class RegisterServiceController extends BaseGetxController {
           await _registerServiceRepository.fetchRegisterServiceInfo();
       if (response.isSuccess && response.result != null) {
         registerServiceInfo.value = response.result;
+        // Nếu đã đăng ký thì set giá trị cho usernameMySignCtrl
+        final userId = response.result!.userId;
+        if (userId != null && userId.isNotEmpty) {
+          usernameMySignCtrl.text = userId;
+        } 
       }
     } catch (e) {
       logger.d(e);
@@ -78,7 +82,7 @@ class RegisterServiceController extends BaseGetxController {
     try {
       _showDialogCheckedSuccess();
       final response = await _registerServiceRepository.registerNewService(
-        userId: usernameMySignCtrl.text,
+        userId: usernameMySignCtrl.text.trim(),
         credentialID: certificate.value?.cerdentialID ?? '',
       );
 
@@ -150,14 +154,76 @@ class RegisterServiceController extends BaseGetxController {
       title: LocaleKeys.dialog_fail.tr,
       content: errorMessage,
       iconType: DialogIconType.failure,
-      exitTitle: LocaleKeys.dialog_exit.tr,
+      exitTitle: LocaleKeys.dialog_close.tr,
       showConfirmButton: onRetry != null,
       confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
-      onCancel: () {
-        Get.until(ModalRoute.withName(AppRoutes.home.path));
-      },
       onConfirm: onRetry,
     );
+  }
+
+  Future<void> cancelRegister() async {
+    try {
+      _showDialogCheckedSuccess();
+      final response = await _registerServiceRepository.cancelRegister();
+      if (response.isSuccess) {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
+        // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
+        _showDialogVerifySuccess();
+      } else {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
+        final canRetry = response.code == _allowRetryCode;
+        _showDialogVerifyFailed(
+          errorMessage: response.errorMessage,
+          onRetry: canRetry ? cancelRegister : null,
+        );
+      }
+    } catch (e) {
+      ShowDialog.dismissDialog();
+      if (e is DioException) {
+        _showDialogVerifyFailed(
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
+          onRetry: cancelRegister,
+        );
+      }
+    }
+  }
+
+  Future<void> changeInfo() async {
+    try {
+      _showDialogCheckedSuccess();
+      final response = await _registerServiceRepository.changeInfo(
+        userId: usernameMySignCtrl.text.trim(),
+        credentialID: certificate.value?.cerdentialID ?? '',
+      );
+      if (response.isSuccess) {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
+        // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
+        _showDialogVerifySuccess();
+      } else {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
+        final canRetry = response.code == _allowRetryCode;
+        _showDialogVerifyFailed(
+          errorMessage: response.errorMessage,
+          onRetry: canRetry ? changeInfo : null,
+        );
+      }
+    } catch (e) {
+      ShowDialog.dismissDialog();
+      if (e is DioException) {
+        _showDialogVerifyFailed(
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
+          onRetry: changeInfo,
+        );
+      }
+    }
   }
 
   bool get hasBeenRegister {
@@ -177,12 +243,6 @@ class RegisterServiceController extends BaseGetxController {
     if (hasBeenRegister) return true;
 
     // Nếu chưa có chứng thư số thì cũng disable
-    if (cert == null) return true;
-
-    // Nếu một trong các field bị null hoặc rỗng thì cũng disable
-    return cert.serialNumber.isEmpty ||
-        cert.name.isEmpty ||
-        cert.validFrom.isEmpty ||
-        cert.validTo.isEmpty;
+    return cert == null;
   }
 }

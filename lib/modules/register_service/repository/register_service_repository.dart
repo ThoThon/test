@@ -1,5 +1,4 @@
 import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/modules/register_service/register_service_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 const _signDocumentTimeOut = Duration(minutes: 3);
@@ -33,6 +32,45 @@ class RegisterServiceRepository extends BaseRepository {
     );
   }
 
+  Future<BaseResponse> cancelRegister() async {
+    final response = await baseCallApi(
+      AppApi.urlCancelRegister,
+      EnumRequestMethod.post,
+      // Cần chờ user mở app mysign để ký số nên set timeout là 3 phút
+      timeOut: _signDocumentTimeOut,
+      functionError: (err) {
+        // rethrow error để xử lý ở controller
+        throw err;
+      },
+    );
+    return BaseResponse.fromJson(
+      response,
+    );
+  }
+
+  Future<BaseResponse> changeInfo({
+    required String userId,
+    required String credentialID,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlChangeInfo,
+      EnumRequestMethod.post,
+      queryParameters: {
+        'userId': userId,
+        'credentialID': credentialID,
+      },
+      // Cần chờ user mở app mysign để ký số nên set timeout là 3 phút
+      timeOut: _signDocumentTimeOut,
+      functionError: (err) {
+        // rethrow error để xử lý ở controller
+        throw err;
+      },
+    );
+    return BaseResponse.fromJson(
+      response,
+    );
+  }
+
   Future<BaseResponse> registerNewService({
     required String userId,
     required String credentialID,
@@ -46,8 +84,11 @@ class RegisterServiceRepository extends BaseRepository {
       },
       // Cần chờ user mở app mysign để ký số nên set timeout là 3 phút
       timeOut: _signDocumentTimeOut,
+      functionError: (err) {
+        // rethrow error để xử lý ở controller
+        throw err;
+      },
     );
-    logger.d(response);
     return BaseResponse.fromJson(response);
   }
 }

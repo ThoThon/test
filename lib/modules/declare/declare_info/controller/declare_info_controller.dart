@@ -759,4 +759,67 @@ class DeclareInfoController extends BaseGetxController {
   //   }
   //   return true;
   // }
+
+
+  /// Nếu chọn loại khai báo và phương án trong các type sau 
+  /// "Từ tháng/năm" sẽ thành isRequired
+  /// 
+  /// REF: http://10.100.140.19:8080/projects/BHW/issues/BHW-2411
+  bool get isFromDateRequired {
+    final declarationTypeId = d02State.declarationType.value?.value;
+    // Tăng lao động
+    if (declarationTypeId == 1) {
+      return ['TM', 'TD', 'TC', 'TH', 'AD', 'AT', 'ON']
+          .contains(d02State.plan.value?.id);
+    }
+    // Tăng lương
+    if (declarationTypeId == 2) {
+      return ['DC', 'DN', 'TN', 'TT'].contains(d02State.plan.value?.id);
+    }
+    // Giảm lao động
+    if (declarationTypeId == 3) {
+      return ['SB'].contains(d02State.plan.value?.id);
+    }
+    // Giảm lương
+    if (declarationTypeId == 4) {
+      return ['TU'].contains(d02State.plan.value?.id);
+    }
+    // Khác
+    if (declarationTypeId == 5) {
+      return ['DC', 'CD', 'TD', 'DL'].contains(d02State.plan.value?.id);
+    }
+    return false;
+  }
+
+  /// Nếu "Loại khai báo" có các "Phương án" giống với những type này
+  /// Thì "Đến tháng/năm" sẽ trở thành trường required
+  ///
+  /// REF: http://10.100.140.19:8080/projects/BHW/issues/BHW-2412
+  bool get isToDateRequired {
+    final declarationTypeId = d02State.declarationType.value?.value;
+
+    // Tăng lao động
+    if (declarationTypeId == 1) {
+      return ['AD'].contains(d02State.plan.value?.id);
+    }
+    // Tăng lương
+    if (declarationTypeId == 2) {
+      return ['TT'].contains(d02State.plan.value?.id);
+    }
+    // Giảm lao động
+    if (declarationTypeId == 3) {
+      return ['GH', 'GC', 'GD', 'SB', 'OF', 'TS', 'KL']
+          .contains(d02State.plan.value?.id);
+    }
+    // Giảm lương
+    if (declarationTypeId == 4) {
+      return ['GN', 'TU'].contains(d02State.plan.value?.id);
+    }
+    // Khác
+    if (declarationTypeId == 5) {
+      return ['GL'].contains(d02State.plan.value?.id);
+    }
+
+    return false;
+  }
 }

@@ -1,8 +1,8 @@
+import 'package:v_bhxh/modules/change_base_url/ui/change_base_url_page.dart';
 import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/lookup_c12/ui/ui_src.dart';
 import 'package:v_bhxh/modules/notification/ui/notification_page.dart';
-import 'package:v_bhxh/modules/register_service/ui/register_service_page.dart';
 import 'package:v_bhxh/modules/select_staff/ui/select_staff_page.dart';
 
 import '../../modules/declare/declaration_list/ui/declaration_list_page.dart';
@@ -108,6 +108,14 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.registerService.path,
       page: () => RegisterServicePage(),
+    ),
+    GetPage(
+      name: AppRoutes.registerCode.path,
+      page: () => RegisterCodePage(),
+    ),
+    GetPage(
+      name: AppRoutes.changeBaseUrl.path,
+      page: () => const ChangeBaseUrlPage(),
     ),
   ];
 }

@@ -276,6 +276,8 @@ class LocaleKeys {
   static const login_inputPassword = 'login_inputPassword';
   static const login_inputTaxCode = 'login_inputTaxCode';
   static const login_inputAccount = 'login_inputAccount';
+  static const login_registerForCode = 'login_registerForCode';
+  static const login_switchTo = 'login_switchTo';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_declare = 'procedureList_declare';
   static const pageBuilder_home = 'pageBuilder_home';
@@ -353,7 +355,11 @@ class LocaleKeys {
   static const declareInfo_nationalityCannotEmpty =
       'declareInfo_nationalityCannotEmpty';
   static const declareInfo_fromMonthYear = 'declareInfo_fromMonthYear';
+  static const declareInfo_fromMonthYearCannotEmpty =
+      'declareInfo_fromMonthYearCannotEmpty';
   static const declareInfo_toMonthYear = 'declareInfo_toMonthYear';
+  static const declareInfo_toMonthYearCannotEmpty =
+      'declareInfo_toMonthYearCannotEmpty';
   static const declareInfo_position = 'declareInfo_position';
   static const declareInfo_selectPosition = 'declareInfo_selectPosition';
   static const declareInfo_workplace = 'declareInfo_workplace';
@@ -665,6 +671,80 @@ class LocaleKeys {
       'registerService_usernameMySignNotFound';
   static const registerService_userNameMySignCannotEmpty =
       'registerService_userNameMySignCannotEmpty';
+  static const registerService_cancelRegister =
+      'registerService_cancelRegister';
+  static const registerService_changeInfo = 'registerService_changeInfo';
+  static const registerCode_commonInfo = 'registerCode_commonInfo';
+  static const registerCode_registerInfo = 'registerCode_registerInfo';
+  static const registerCode_unitInfo = 'registerCode_unitInfo';
+  static const registerCode_taxCode = 'registerCode_taxCode';
+  static const registerCode_unitCode = 'registerCode_unitCode';
+  static const registerCode_unitName = 'registerCode_unitName';
+  static const registerCode_objectType = 'registerCode_objectType';
+  static const registerCode_unitType = 'registerCode_unitType';
+  static const registerCode_productIndustry = 'registerCode_productIndustry';
+  static const registerCode_decisionNumber = 'registerCode_decisionNumber';
+  static const registerCode_setupDate = 'registerCode_setupDate';
+  static const registerCode_registerDate = 'registerCode_registerDate';
+  static const registerCode_addressDecision = 'registerCode_addressDecision';
+  static const registerCode_addressRegisterBusiness =
+      'registerCode_addressRegisterBusiness';
+  static const registerCode_addressUnit = 'registerCode_addressUnit';
+  static const registerCode_contactInfo = 'registerCode_contactInfo';
+  static const registerCode_phoneUnit = 'registerCode_phoneUnit';
+  static const registerCode_emailUnit = 'registerCode_emailUnit';
+  static const registerCode_personTransactionSocial =
+      'registerCode_personTransactionSocial';
+  static const registerCode_phoneContact = 'registerCode_phoneContact';
+  static const registerCode_socialSecurityAgency =
+      'registerCode_socialSecurityAgency';
+  static const registerCode_selectSocialAgency =
+      'registerCode_selectSocialAgency';
+  static const registerCode_socialAgencyCannotEmpty =
+      'registerCode_socialAgencyCannotEmpty';
+  static const registerCode_provinceReceive = 'registerCode_provinceReceive';
+  static const registerCode_provinceReceiveCannotEmpty =
+      'registerCode_provinceReceiveCannotEmpty';
+  static const registerCode_selectProvinceReceive =
+      'registerCode_selectProvinceReceive';
+  static const registerCode_districtReceive = 'registerCode_districtReceive';
+  static const registerCode_selectDistrictReceive =
+      'registerCode_selectDistrictReceive';
+  static const registerCode_wardReceive = 'registerCode_wardReceive';
+  static const registerCode_wardReceiveCannotEmpty =
+      'registerCode_wardReceiveCannotEmpty';
+  static const registerCode_selectWardReceive =
+      'registerCode_selectWardReceive';
+  static const registerCode_registerResult = 'registerCode_registerResult';
+  static const registerCode_otherInfo = 'registerCode_otherInfo';
+  static const registerCode_methodReceiveResult =
+      'registerCode_methodReceiveResult';
+  static const registerCode_methodPayment = 'registerCode_methodPayment';
+  static const registerCode_fileInclude = 'registerCode_fileInclude';
+  static const registerCode_content = 'registerCode_content';
+  static const registerCode_attachment = 'registerCode_attachment';
+  static const registerCode_format = 'registerCode_format';
+  static const registerCode_selectedObjectType =
+      'registerCode_selectedObjectType';
+  static const registerCode_objectTypeCannotEmpty =
+      'registerCode_objectTypeCannotEmpty';
+  static const registerCode_registerDateCannotEmpty =
+      'registerCode_registerDateCannotEmpty';
+  static const registerCode_registerDateIsNotValid =
+      'registerCode_registerDateIsNotValid';
+  static const registerCode_setupDateCannotEmpty =
+      'registerCode_setupDateCannotEmpty';
+  static const registerCode_setupDateIsNotValid =
+      'registerCode_setupDateIsNotValid';
+  static const registerCode_socialInfo = 'registerCode_socialInfo';
+  static const registerCode_districtReceiveCannotEmpty =
+      'registerCode_districtReceiveCannotEmpty';
+  static const registerCode_provinceReceiveIsEmpty =
+      'registerCode_provinceReceiveIsEmpty';
+  static const registerCode_districtReceiveIsEmpty =
+      'registerCode_districtReceiveIsEmpty';
+  static const registerCode_imageFromCamera = 'registerCode_imageFromCamera';
+  static const registerCode_imageFromLibrary = 'registerCode_imageFromLibrary';
 }
 
 class Locales {
@@ -736,7 +816,7 @@ class Locales {
     'dialog_confirm': 'Đồng ý',
     'dialog_successTransfer': 'Chuyển ký thành công !',
     'dialog_fileSendToSignature':
-        'Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập mysign để tiến hành phê duyệt.',
+        'Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập MySign để tiến hành phê duyệt.',
     'dialog_submitDeclareToSuccess':
         'Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.',
     'dialog_submitRegisterToSuccess':
@@ -957,6 +1037,8 @@ class Locales {
     'login_inputPassword': 'Nhập mật khẩu',
     'login_inputTaxCode': 'Mã số thuế/ Mã ngân sách',
     'login_inputAccount': 'Tên đăng nhập',
+    'login_registerForCode': 'Đăng ký cấp mã',
+    'login_switchTo': 'Đã chuyển sang',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_declare': 'Kê khai',
     'pageBuilder_home': 'Trang chủ',
@@ -1019,8 +1101,10 @@ class Locales {
     'declareInfo_selectNationality': 'Chọn quốc tịch',
     'declareInfo_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
     'declareInfo_fromMonthYear': 'Từ tháng/năm',
+    'declareInfo_fromMonthYearCannotEmpty': 'Từ tháng/năm không được bỏ trống',
     'declareInfo_toMonthYear': 'Đến tháng/năm',
-    'declareInfo_position': 'Cấp bập/chức vụ',
+    'declareInfo_toMonthYearCannotEmpty': 'Đến tháng/năm không được bỏ trống',
+    'declareInfo_position': 'Cấp bậc/chức vụ',
     'declareInfo_selectPosition': 'Chọn cấp bậc/Chức vụ',
     'declareInfo_workplace': 'Nơi làm việc',
     'declareInfo_payBySalaryCoefficient': 'Đóng theo hệ số',
@@ -1274,5 +1358,60 @@ class Locales {
         'Không tìm thấy tên đăng nhập MySign',
     'registerService_userNameMySignCannotEmpty':
         'Nhập tên đăng nhập My Sign để lấy thông tin CTS',
+    'registerService_cancelRegister': 'Ngừng dịch vụ',
+    'registerService_changeInfo': 'Thay đổi',
+    'registerCode_commonInfo': 'Thông tin chung',
+    'registerCode_registerInfo': 'Thông tin đăng ký',
+    'registerCode_unitInfo': 'Thông tin đơn vị',
+    'registerCode_taxCode': 'Mã số thuế',
+    'registerCode_unitCode': 'Mã đơn vị',
+    'registerCode_unitName': 'Tên đơn vị',
+    'registerCode_objectType': 'Loại đối tượng',
+    'registerCode_unitType': 'Loại hình đơn vị',
+    'registerCode_productIndustry': 'Ngành nghề sản xuất',
+    'registerCode_decisionNumber': 'Số quyết định',
+    'registerCode_setupDate': 'Ngày lập',
+    'registerCode_registerDate': 'Ngày đăng ký',
+    'registerCode_addressDecision': 'Nơi cấp quyết định',
+    'registerCode_addressRegisterBusiness': 'Địa chỉ đăng ký kinh doanh',
+    'registerCode_addressUnit': 'Địa chỉ đơn vị',
+    'registerCode_contactInfo': 'Thông tin liên hệ',
+    'registerCode_phoneUnit': 'Điện thoại đơn vị',
+    'registerCode_emailUnit': 'Email đơn vị',
+    'registerCode_personTransactionSocial': 'Người giao dịch BHXH',
+    'registerCode_phoneContact': 'Điện thoại liên hệ',
+    'registerCode_socialSecurityAgency': 'Cơ quan BHXH',
+    'registerCode_selectSocialAgency': 'Chọn cơ quan BHXH',
+    'registerCode_socialAgencyCannotEmpty': 'Cơ quan BHXH không được để trống',
+    'registerCode_provinceReceive': 'Nơi nhận tỉnh',
+    'registerCode_provinceReceiveCannotEmpty':
+        'Nơi nhận tỉnh không được bỏ trống',
+    'registerCode_selectProvinceReceive': 'Chọn Nơi nhận tỉnh',
+    'registerCode_districtReceive': 'Nơi nhận huyện',
+    'registerCode_selectDistrictReceive': 'Chọn Nơi nhận huyện',
+    'registerCode_wardReceive': 'Nơi nhận xã',
+    'registerCode_wardReceiveCannotEmpty': 'Nơi nhận xã không được bỏ trống',
+    'registerCode_selectWardReceive': 'Chọn nơi nhận xã',
+    'registerCode_registerResult': 'Đăng ký nhận kết quả',
+    'registerCode_otherInfo': 'Thông tin khác',
+    'registerCode_methodReceiveResult': 'Phương thức nhận kết quả',
+    'registerCode_methodPayment': 'Phương thức đóng',
+    'registerCode_fileInclude': 'Hồ sơ kèm theo',
+    'registerCode_content': 'Nội dung',
+    'registerCode_attachment': 'Tệp đính kèm',
+    'registerCode_format': 'Định dạng jpg, png,...',
+    'registerCode_selectedObjectType': 'Chọn loại đối tượng',
+    'registerCode_objectTypeCannotEmpty': 'Loại đối tượng không được để trống',
+    'registerCode_registerDateCannotEmpty': 'Ngày đăng ký không được để trống',
+    'registerCode_registerDateIsNotValid': 'Ngày đăng ký không hợp lệ',
+    'registerCode_setupDateCannotEmpty': 'Ngày lập không được để trống',
+    'registerCode_setupDateIsNotValid': 'Ngày lập không hợp lệ',
+    'registerCode_socialInfo': 'Thông tin đóng BHXH',
+    'registerCode_districtReceiveCannotEmpty':
+        'Nơi nhận huyện không được để trống',
+    'registerCode_provinceReceiveIsEmpty': 'Chưa chọn nơi nhận tỉnh',
+    'registerCode_districtReceiveIsEmpty': 'Chưa chọn nơi nhận huyện',
+    'registerCode_imageFromCamera': 'Chọn ảnh từ camera',
+    'registerCode_imageFromLibrary': 'Chọn ảnh từ điện thoại',
   };
 }

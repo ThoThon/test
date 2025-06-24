@@ -82,6 +82,8 @@ class InputTextModel {
   final InputBorder? disabledBorder;
   final InputBorder? enabledBorder;
   final InputBorder? focusedErrorBorder;
+  final FloatingLabelBehavior? floatingLabelBehavior;
+  final Widget? label;
 
   final AutovalidateMode? autovalidateMode;
 
@@ -129,5 +131,7 @@ class InputTextModel {
     this.enabledBorder,
     this.focusedErrorBorder,
     this.autovalidateMode,
+    this.floatingLabelBehavior,
+    this.label,
   });
 }

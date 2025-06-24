@@ -86,6 +86,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
+                maxLength: 20,
                 title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceOfBirth.value,
@@ -205,6 +206,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_birthAddress.tr,
       buildInputText: BuildInputText(
         InputTextModel(
+          isValidate: true,
           controller: controller.tk1State.birthAddressTextCtrl,
           maxLengthInputForm: 300,
           onChanged: controller.onChangeBirthAddress,
@@ -222,6 +224,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
+                maxLength: 20,
                 title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceReceive.value,
@@ -341,6 +344,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_addressReceive.tr,
       buildInputText: BuildInputText(
         InputTextModel(
+          isValidate: true,
           controller: controller.tk1State.addressReceiveTextCtrl,
           maxLengthInputForm: 300,
           onChanged: controller.onChangeAddressReceive,
@@ -358,6 +362,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
+                maxLength: 20,
                 title: LocaleKeys.declareInfo_selectProvinceKCB.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceKCB.value,
@@ -483,6 +488,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
+                maxLength: 20,
                 title: LocaleKeys.declareInfo_selectProvinceTT.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceTT.value,
@@ -498,6 +504,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           },
           selectedItem: controller.tk1State.provinceTT.value,
           display: (province) => province.name,
+          enableClearIcon: true,
           onTapClear: controller.onTapClearProvinceTT,
           validator: (value) {
             if (controller.tk1State.provinceTT.value == null) {
@@ -540,6 +547,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           },
           selectedItem: controller.tk1State.districtTT.value,
           display: (district) => district.name,
+          enableClearIcon: true,
           onTapClear: controller.onTapClearDistrictTT,
           validator: (value) {
             if (controller.tk1State.districtTT.value == null) {
@@ -590,6 +598,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           },
           selectedItem: controller.tk1State.wardTT.value,
           display: (ward) => ward.name,
+          enableClearIcon: true,
           onTapClear: controller.onTapClearWardTT,
           validator: (value) {
             if (controller.tk1State.wardTT.value == null) {

@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
-import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
-import 'package:v_bhxh/shares/base/ui/formatter/currency_utils.dart';
+import 'package:v_bhxh/modules/src.dart';
+
+import '../../../login/model/model_src.dart';
 
 class D02State {
   /// id d02Lt dùng khi update
@@ -28,7 +26,7 @@ class D02State {
   /// Đến tháng/năm *
   final toDateTextCtrl = TextEditingController();
 
-  /// Cấp bập/chức vụ *
+  /// Cấp bậc/chức vụ *
   final positionTextCtrl = TextEditingController();
 
   /// Nơi làm việc *
@@ -94,7 +92,7 @@ class D02State {
 
     isSalaryCoefficient.value = d02Lt.dongTheoHeSo;
 
-    if (d02Lt.tienLuong != null && d02Lt.tienLuong! > 0) {
+    if (d02Lt.tienLuong.isStringNotEmpty) {
       salaryCoefficientTextCtrl.text =
           CurrencyUtils.formatCurrencyForeign(d02Lt.tienLuong!);
     }
@@ -115,12 +113,12 @@ class D02State {
           CurrencyUtils.formatCurrencyForeign(d02Lt.phuCapThamNienNghe!);
     }
 
-    if (d02Lt.phuCapLuong != null && d02Lt.phuCapLuong! > 0) {
+    if (d02Lt.phuCapLuong.isStringNotEmpty) {
       salaryAllowanceTextCtrl.text =
           CurrencyUtils.formatCurrencyForeign(d02Lt.phuCapLuong!);
     }
 
-    if (d02Lt.phuCapBoSung != null && d02Lt.phuCapBoSung! > 0) {
+    if (d02Lt.phuCapBoSung.isStringNotEmpty) {
       otherAllowanceTextCtrl.text =
           CurrencyUtils.formatCurrencyForeign(d02Lt.phuCapBoSung!);
     }

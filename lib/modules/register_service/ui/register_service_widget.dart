@@ -16,7 +16,7 @@ extension RegisterServiceWidget on RegisterServicePage {
           ),
         ),
         sdsSBHeight12,
-        _buildButtonRegister(),
+        Obx(_buildBottomButtons),
       ],
     ).paddingSymmetric(horizontal: AppDimens.paddingSmall);
   }
@@ -170,33 +170,33 @@ extension RegisterServiceWidget on RegisterServicePage {
     );
   }
 
-  Widget _buildInputUsernameMySign() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: BuildInputText(
-            InputTextModel(
-              controller: controller.usernameMySignCtrl,
-              autovalidateMode: AutovalidateMode.always,
-              hintText: LocaleKeys.registerService_inputMySignUsername.tr,
-              validator: controller.hasBeenRegister
-                  ? null
-                  : (value) {
-                      if (value.isNullOrEmpty) {
-                        return LocaleKeys
-                            .registerService_userNameMySignCannotEmpty.tr;
-                      }
-                      return null;
-                    },
-            ),
+Widget _buildInputUsernameMySign() {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Expanded(
+        child: BuildInputText(
+          InputTextModel(
+            controller: controller.usernameMySignCtrl,
+            autovalidateMode: AutovalidateMode.always,
+            hintText: LocaleKeys.registerService_inputMySignUsername.tr,
+            validator: controller.hasBeenRegister
+                ? null
+                : (value) {
+                    if (value.isNullOrEmpty) {
+                      return LocaleKeys
+                          .registerService_userNameMySignCannotEmpty.tr;
+                    }
+                    return null;
+                  },
           ),
         ),
-        sdsSBWidth8,
-        _buildButtonGetListCert(),
-      ],
-    );
-  }
+      ),
+      sdsSBWidth8,
+      _buildButtonGetListCert(),
+    ],
+  );
+}
 
   Widget _buildSingleItem({
     required String title,
@@ -261,11 +261,7 @@ extension RegisterServiceWidget on RegisterServicePage {
               horizontal: AppDimens.defaultPadding,
             ),
           ),
-          onPressed: controller.hasBeenRegister
-              ? null
-              : () {
-                  controller.getListCertificate();
-                },
+          onPressed: controller.getListCertificate,
           child: const Icon(
             Icons.send,
             color: AppColors.basicWhite,
@@ -288,6 +284,39 @@ extension RegisterServiceWidget on RegisterServicePage {
                 },
         );
       },
+    );
+  }
+
+  Widget _buildBottomButtons() {
+    final isRegistered = controller.hasBeenRegister;
+    if (isRegistered) {
+      return _buildChangeInfoAndCancelRegisterButtons();
+    } else {
+      return _buildButtonRegister();
+    }
+  }
+
+  Widget _buildChangeInfoAndCancelRegisterButtons() {
+    return Row(
+      children: [
+        Expanded(
+          child: UtilWidget.buildSolidButton(
+            title: LocaleKeys.registerService_changeInfo.tr,
+            borderRadius: AppDimens.radius30,
+            onPressed: controller.certificate.value != null
+                ? controller.changeInfo
+                : null,
+          ),
+        ),
+        sdsSBWidth8,
+        Expanded(
+          child: UtilWidget.buildSolidButtonBack(
+            title: LocaleKeys.registerService_cancelRegister.tr,
+            borderRadius: AppDimens.radius30,
+            onPressed: controller.cancelRegister,
+          ),
+        ),
+      ],
     );
   }
 }

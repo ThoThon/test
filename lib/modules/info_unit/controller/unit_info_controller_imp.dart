@@ -132,7 +132,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   bool unitInfoIsNotValid() {
-    return unitCodeController.text.trim().isEmpty;
+    return unitNameController.text.trim().isEmpty;
   }
 
   bool addressInfoIsNotValid() {

@@ -1,4 +1,5 @@
 import 'package:v_bhxh/base_app/repository_base/interceptor/jwt_token_interceptor.dart';
+import 'package:v_bhxh/shares/base_url_helper/base_url_helper.dart';
 
 import '../../core/core.src.dart';
 import '../../shares/log/dio_log.dart';
@@ -11,8 +12,6 @@ class BaseApi {
   factory BaseApi() => _singleton;
 
   BaseApi._();
-
-  var useSignUrl = true;
 
   static Dio dio = getBaseDio();
 
@@ -70,8 +69,7 @@ class BaseApi {
   }) async {
     dio.options = dioOptions ?? buildDefaultOptions(timeOut: timeOut);
     dynamic response;
-    String url =
-        urlOther ?? (useSignUrl ? AppApi.urlSign : AppApi.url) + action;
+    String url = urlOther ?? BaseUrlHelper.instance.currentUrl + action;
     Map<String, String> headers = isToken
         ? (headersUrlOther ?? getBaseHeader())
         : {"Content-Type": "application/json"};

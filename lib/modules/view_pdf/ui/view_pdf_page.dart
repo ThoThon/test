@@ -50,10 +50,13 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
   Widget _buildBottomButtons() {
     return Row(
       children: [
-        Expanded(
-          child: UtilWidget.buildSolidButtonBack(
-            title: 'Tải về',
-            onPressed: () {},
+        Visibility(
+          visible: controller.argument.enableDownloadButton ?? true,
+          child: Expanded(
+            child: UtilWidget.buildSolidButtonBack(
+              title: 'Tải về',
+              onPressed: () {},
+            ),
           ),
         ),
         UtilWidget.sizedBoxWidth16,

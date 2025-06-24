@@ -1,4 +1,3 @@
-import 'package:v_bhxh/modules/register_service/model/certificate_model.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 class SelectCertificateBts extends StatelessWidget {
