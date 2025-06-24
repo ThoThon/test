@@ -12,7 +12,7 @@ class RegisterServiceInfoModel {
   final String email;
   final String dienThoai;
   final String soSerialCTS;
-  final String userId; // Mã người dùng trong hệ thống MySign
+  final String? userId; // Mã người dùng trong hệ thống MySign
 
   RegisterServiceInfoModel({
     required this.idCongTy,
@@ -28,7 +28,7 @@ class RegisterServiceInfoModel {
     required this.email,
     required this.dienThoai,
     required this.soSerialCTS,
-    required this.userId, // Mã người dùng trong hệ thống MySign
+    this.userId, // Mã người dùng trong hệ thống MySign
   });
 
   factory RegisterServiceInfoModel.fromJson(Map<String, dynamic> json) {
@@ -50,7 +50,7 @@ class RegisterServiceInfoModel {
       email: json['email'] ?? '',
       dienThoai: json['dienThoai'] ?? '',
       soSerialCTS: json['soSerialCTS'] ?? '',
-      userId: json['userId'] ?? '',
+      userId: json['userId']
     );
   }
 
