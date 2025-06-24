@@ -1,6 +1,8 @@
 24/06/2025
 - Chỉnh sửa button tại popup check trùng MST khi ký (Thoát -> Đóng) - BHW-2470
 - [Appmobile]_Màn đăng ký cấp mã_Sửa lại validate trường mã số thuế - BHW-2458
+- Bổ sung màn đổi đường dẫn
+- Sửa giao diện chọn CTS ở màn Đăng ký cấp mã
 
 23/06/2025
 - Xử lý đổi link test Khi kích dup "Viettel" tại màn đăng nhập - BHW-2438
