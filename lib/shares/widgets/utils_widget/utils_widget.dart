@@ -579,7 +579,7 @@ class UtilWidget {
     AutovalidateMode? autovalidateMode,
   }) {
     return FormField(
-      autovalidateMode: autovalidateMode,
+      autovalidateMode: autovalidateMode ?? AutovalidateMode.onUserInteraction,
       validator: isRequired ? validator : null,
       initialValue: selectedItem,
       builder: (FormFieldState<T> state) {

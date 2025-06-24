@@ -717,14 +717,6 @@ class DeclareInfoController extends BaseGetxController {
     tk1State.wardTT.value = null;
   }
 
-  bool get isHeadOfHouseRequired {
-    return tk1State.headOfHouseholdTextCtrl.text.isNotEmpty ||
-        tk1State.headOfHouseholdCCCDTextCtrl.text.isNotEmpty ||
-        tk1State.provinceTT.value != null ||
-        tk1State.districtTT.value != null ||
-        tk1State.wardTT.value != null;
-  }
-
   // void goToScanCCCD() async {
   //   autovalidateMode.value = AutovalidateMode.always;
 
@@ -841,12 +833,16 @@ class DeclareInfoController extends BaseGetxController {
     // Nếu "Mã số BHXH" không required thì Thông tin chủ hộ sẽ là required
     if (!isBhxhCodeRequired) {
       tk1State.isHouseholdInfoRequired.value = true;
+      return;
     }
 
-    // Nếu "Mã số BHXH" required thì thông tin chủ hộ sẽ không required
-    // Nếu 1 trong các thông tin của chủ hộ được điền thì sẽ phải điền tất cả 
-    else {
-      tk1State.isHouseholdInfoRequired.value = !isHouseholdInfoEmpty;
+    // Nếu 1 trong các thông tin của chủ hộ được điền thì sẽ phải điền tất cả
+    if (!isHouseholdInfoEmpty) {
+      tk1State.isHouseholdInfoRequired.value = true;
+      return;
     }
+
+    // Nếu không có điều kiện nào thỏa mãn
+    tk1State.isHouseholdInfoRequired.value = false;
   }
 }
