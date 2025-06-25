@@ -70,6 +70,8 @@ class Tk1State {
   /// Danh sách thành viên trong gia đình
   final familyMembers = <FamilyMember>[].obs;
 
+  final isHouseholdInfoRequired = false.obs;
+
   void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final tk1Ts = detail.tk1Ts;
     final members = detail.familyMembers;
