@@ -115,7 +115,7 @@ class BuildInputTextState extends State<BuildInputText> {
             customMaxValue: 99,
           ),
         ];
-      case InputFormatterEnum.blockEmoji:
+      case InputFormatterEnum.textNormal:
         return [
           RegexpEmojiUtil.allowCommonCharacters,
         ];

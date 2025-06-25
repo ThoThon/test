@@ -119,7 +119,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_unitType.tr,
       controller: controller.unitTypeCtrl,
       isValidate: true,
-      inputFormatters: InputFormatterEnum.blockEmoji,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
   }
@@ -130,7 +130,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_productIndustry.tr,
       controller: controller.productIndustryCtrl,
       isValidate: true,
-      inputFormatters: InputFormatterEnum.blockEmoji,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
     );
   }
@@ -141,7 +141,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_decisionNumber.tr,
       controller: controller.decisionNumberCtrl,
       isValidate: true,
-      inputFormatters: InputFormatterEnum.blockEmoji,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
   }
@@ -254,7 +254,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_addressDecision.tr,
       controller: controller.addressDecisionCtrl,
       isValidate: true,
-      inputFormatters: InputFormatterEnum.blockEmoji,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
   }
@@ -265,7 +265,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_addressRegisterBusiness.tr,
       controller: controller.addressRegisterBusinessCtrl,
       isValidate: true,
-      inputFormatters: InputFormatterEnum.blockEmoji,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
     );
   }
@@ -276,7 +276,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_addressUnit.tr,
       controller: controller.addressUnitCtrl,
       isValidate: true,
-      inputFormatters: InputFormatterEnum.blockEmoji,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
     );
   }

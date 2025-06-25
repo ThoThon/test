@@ -72,6 +72,9 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
 
   Widget buildSearch() {
     return UtilWidget.buildTextInput(
+      inputFormatters: [
+        RegexpEmojiUtil.allowCommonCharacters,
+      ],
       maxLength: 100,
       controller: controller.searchTextCtrl,
       hintText: LocaleKeys.declareInfo_inputHospitalName.tr,

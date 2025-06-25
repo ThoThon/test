@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
@@ -933,13 +934,12 @@ class UtilWidget {
     bool? autofocus,
     BorderRadius? borderRadius,
     int? maxLength,
+    List<TextInputFormatter>? inputFormatters,
   }) {
     return SizedBox(
       height: height,
       child: TextField(
-        inputFormatters: [
-          RegexpEmojiUtil.allowCommonCharacters,
-        ],
+        inputFormatters: inputFormatters,
         textAlignVertical: TextAlignVertical.center,
         maxLength: maxLength,
         focusNode: focusNode,

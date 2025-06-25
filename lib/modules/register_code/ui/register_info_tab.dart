@@ -274,7 +274,7 @@ extension RegisterInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_fileInclude.tr,
       controller: controller.fileIncludeCtrl,
-      inputFormatters: InputFormatterEnum.blockEmoji,
+      inputFormatters: InputFormatterEnum.textNormal,
       isValidate: true,
       maxLengthInputForm: 500,
     );
@@ -285,7 +285,7 @@ extension RegisterInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_content.tr,
       controller: controller.contentCtrl,
-      inputFormatters: InputFormatterEnum.blockEmoji,
+      inputFormatters: InputFormatterEnum.textNormal,
       isValidate: true,
       maxLengthInputForm: 500,
     );
