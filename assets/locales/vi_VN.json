@@ -40,7 +40,7 @@
     "fileSendToSignature": "Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập MySign để tiến hành phê duyệt.",
     "submitDeclareToSuccess": "Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.",
     "submitRegisterToSuccess": "Gửi hồ sơ lên cổng tiếp nhận của BHXH thành công.",
-    "submitRegisterToSuccessMessage": "Thành công\nVui lòng kiểm tra email đã đăng ký (thời gian xử lý 3 - 5 ngày làm việc).",
+    "submitRegisterToSuccessMessage": "Vui lòng kiểm tra email đã đăng ký\n(Thời gian xử lý 3 - 5 ngày làm việc)",
     "resend": "Gửi lại",
     "cannotConnectMySign": "Không thể kết nối tới hệ thống ký số."
   },

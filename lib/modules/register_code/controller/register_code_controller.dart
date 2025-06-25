@@ -318,11 +318,10 @@ class RegisterCodeController extends BaseGetxController {
 
   void _showDialogVerifySuccess() {
     ShowDialog.showDialogConfirm2(
-      title: LocaleKeys.dialog_submitRegisterToSuccessMessage.tr,
-      content: LocaleKeys.dialog_submitRegisterToSuccess.tr,
+      title: LocaleKeys.dialog_success.tr,
+      content: LocaleKeys.dialog_submitRegisterToSuccessMessage.tr,
       iconType: DialogIconType.success,
       exitTitle: LocaleKeys.dialog_exit.tr,
-      confirmTitle: LocaleKeys.dialog_history.tr,
       isDisableButtonConfirm: true,
       onCancel: () {
         // Get.offAllNamed(AppRoutes.login.path);

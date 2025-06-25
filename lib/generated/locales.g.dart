@@ -824,7 +824,7 @@ class Locales {
     'dialog_submitRegisterToSuccess':
         'Gửi hồ sơ lên cổng tiếp nhận của BHXH thành công.',
     'dialog_submitRegisterToSuccessMessage':
-        'Thành công\nVui lòng kiểm tra email đã đăng ký (thời gian xử lý 3 - 5 ngày làm việc).',
+        'Vui lòng kiểm tra email đã đăng ký\n(Thời gian xử lý 3 - 5 ngày làm việc)',
     'dialog_resend': 'Gửi lại',
     'dialog_cannotConnectMySign': 'Không thể kết nối tới hệ thống ký số.',
     'input_inputEmpty': 'Không được bỏ trống',
