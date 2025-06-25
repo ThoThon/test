@@ -185,6 +185,12 @@ extension RegisterServiceWidget on RegisterServicePage {
                 controller.isUsernameMySignEmpty.value = value.trim().isEmpty;
               },
               validator: (value) {
+                if (controller.certificate.value != null) {
+                  return controller.validateUsernameMySign(value);
+                }
+                if (controller.hasBeenRegister) {
+                  return null;
+                }
                 return controller.validateUsernameMySign(value);
               },
             ),
@@ -302,7 +308,9 @@ extension RegisterServiceWidget on RegisterServicePage {
             title: LocaleKeys.registerService_changeInfo.tr,
             borderRadius: AppDimens.radius30,
             onPressed: controller.certificate.value != null
-                ? controller.changeInfo
+                ? controller.isDiableChangeInfoButton
+                    ? null
+                    : controller.changeInfo
                 : null,
           ),
         ),
