@@ -181,7 +181,7 @@ extension RegisterServiceWidget on RegisterServicePage {
               autovalidateMode: AutovalidateMode.always,
               hintText: LocaleKeys.registerService_inputMySignUsername.tr,
               onChanged: (value) {
-                controller.userNameMySignEmpty.value = value.isEmpty;
+                controller.isUsernameMySignEmpty.value = value.isEmpty;
               },
               validator: (value) {
                 return controller.validateUsernameMySign(value);
