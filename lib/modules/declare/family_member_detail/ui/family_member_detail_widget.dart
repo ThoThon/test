@@ -218,10 +218,15 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         Gender.female,
       ],
       getTitle: (gender) => gender.title,
-      groupValue: controller.gender.value,
-      initialValue: controller.gender.value,
+      selectedItem: controller.gender.value,
       onChanged: (value) {
         controller.gender.value = value;
+      },
+      validator: (value) {
+        if (value == null) {
+          return LocaleKeys.familyMember_selectGender.tr;
+        }
+        return null;
       },
     );
   }
