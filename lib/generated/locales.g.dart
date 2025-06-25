@@ -50,6 +50,8 @@ class LocaleKeys {
   static const dialog_submitDeclareToSuccess = 'dialog_submitDeclareToSuccess';
   static const dialog_submitRegisterToSuccess =
       'dialog_submitRegisterToSuccess';
+  static const dialog_submitRegisterToSuccessMessage =
+      'dialog_submitRegisterToSuccessMessage';
   static const dialog_resend = 'dialog_resend';
   static const dialog_cannotConnectMySign = 'dialog_cannotConnectMySign';
   static const input_inputEmpty = 'input_inputEmpty';
@@ -821,6 +823,8 @@ class Locales {
         'Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.',
     'dialog_submitRegisterToSuccess':
         'Gửi hồ sơ lên cổng tiếp nhận của BHXH thành công.',
+    'dialog_submitRegisterToSuccessMessage':
+        'Thành công\nVui lòng kiểm tra email đã đăng ký (thời gian xử lý 3 - 5 ngày làm việc).',
     'dialog_resend': 'Gửi lại',
     'dialog_cannotConnectMySign': 'Không thể kết nối tới hệ thống ký số.',
     'input_inputEmpty': 'Không được bỏ trống',

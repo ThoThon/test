@@ -318,8 +318,7 @@ class RegisterCodeController extends BaseGetxController {
 
   void _showDialogVerifySuccess() {
     ShowDialog.showDialogConfirm2(
-      title:
-          'Vui lòng kiểm tra email đã đăng ký (thời gian xử lý 3 - 5 ngày làm việc)',
+      title: LocaleKeys.dialog_submitRegisterToSuccessMessage.tr,
       content: LocaleKeys.dialog_submitRegisterToSuccess.tr,
       iconType: DialogIconType.success,
       exitTitle: LocaleKeys.dialog_exit.tr,

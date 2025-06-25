@@ -281,7 +281,7 @@ class ShowDialog {
                     ),
             SDSBuildText(
               title,
-              maxLines: 2,
+              maxLines: 3,
               style: AppTextStyle.font20Bo,
               textAlign: TextAlign.center,
             ),
@@ -314,8 +314,7 @@ class ShowDialog {
                           },
                         ),
                       ),
-                      if(!isDisableButtonConfirm)
-                      UtilWidget.sizedBoxWidth20,
+                      if (!isDisableButtonConfirm) UtilWidget.sizedBoxWidth20,
                       Visibility(
                         visible: !isDisableButtonConfirm,
                         child: Expanded(
