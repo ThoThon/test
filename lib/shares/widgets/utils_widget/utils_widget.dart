@@ -1402,10 +1402,17 @@ class UtilWidget {
     T? groupValue,
     required List<T> options,
     required String Function(T) getTitle,
+    AutovalidateMode? autovalidateMode,
   }) {
     return FormField<T>(
       initialValue: initialValue,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: autovalidateMode ?? AutovalidateMode.onUserInteraction,
+      validator: (value) {
+        if (value == null) {
+          return LocaleKeys.familyMember_selectGender.tr;
+        }
+        return null;
+      },
       builder: (FormFieldState<T> state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1453,12 +1460,6 @@ class UtilWidget {
               )
           ],
         );
-      },
-      validator: (value) {
-        if (value == null) {
-          return LocaleKeys.familyMember_selectGender.tr;
-        }
-        return null;
       },
     );
   }

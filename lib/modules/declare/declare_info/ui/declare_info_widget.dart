@@ -265,6 +265,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
       getTitle: (gender) => gender.title,
       initialValue: controller.d02Tk1State.gender.value,
       groupValue: controller.d02Tk1State.gender.value,
+      // initialValue: Gender.male,
+      // groupValue: controller.d02Tk1State.gender.value,
+      autovalidateMode: AutovalidateMode.always,
       onChanged: (value) {
         controller.d02Tk1State.gender.value = value;
       },
