@@ -830,7 +830,7 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void updateHouseholdInfoRequired() {
-    // Nếu "Mã số BHXH" null thì Thông tin chủ hộ sẽ là required
+    // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
     if (d02Tk1State.bhxhTextCtrl.text.trim().isEmpty) {
       tk1State.isHouseholdInfoRequired.value = true;
       return;
