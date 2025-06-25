@@ -17,7 +17,7 @@ class RegisterServiceController extends BaseGetxController {
 
   final registerServiceInfo = Rxn<RegisterServiceInfoModel>();
 
-  final userNameMySignEmpty = true.obs;
+  final userNameMySignEmpty = false.obs;
 
   // userID dùng để test
   // 0105987432_tk3
