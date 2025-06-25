@@ -6,6 +6,7 @@
 - [Appmobile]_Chỉnh sửa thông tin chủ hộ theo Mã số BHXH - BHW-2484
 - Lỗi thông tin địa chỉ thường trú của chủ hộ - BHW-2485
 - [Appmobile]_Khi tra cứu đăng ký chưa có kết quả trả về -> Trả ra thông báo theo BE trả về
+- [Appmobile]_Màn Thành viên trong gia đình: Thêm maxlength cho ô tìm kiếm: dân tộc, Quốc tịch, tỉnh, huyện xã - BHW-2486
 
 24/06/2025
 - Chỉnh sửa button tại popup check trùng MST khi ký (Thoát -> Đóng) - BHW-2470

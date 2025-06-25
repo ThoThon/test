@@ -240,6 +240,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<EthnicModel>(
+                maxLength: 20,
                 title: LocaleKeys.familyMember_selectEthnic.tr,
                 listFilter: AppData.instance.ethnics.toList(),
                 selectedItem: controller.selectedEthnic.value,
@@ -275,6 +276,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<NationModel>(
+                maxLength: 20,
                 title: LocaleKeys.familyMember_selectNationality.tr,
                 listFilter: AppData.instance.nations.toList(),
                 selectedItem: controller.selectedNationality.value,
@@ -310,6 +312,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
+                maxLength: 20,
                 title: LocaleKeys.familyMember_selectProvinceOfBirth.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.selectedProvince.value,
