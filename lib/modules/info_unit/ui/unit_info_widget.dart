@@ -288,7 +288,7 @@ extension UnitInfoWidget on UnitInfoPage {
         InputTextModel(
           validator: validator,
           controller: controller,
-          inputFormatters: inputFormatters ?? 0,
+          inputFormatters: inputFormatters ?? InputFormatterEnum.textNormal,
           maxLengthInputForm: maxLengthInputForm,
           isShowCounterText: false,
           isValidate: true,

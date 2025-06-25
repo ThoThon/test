@@ -66,6 +66,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         InputTextModel(
           controller: controller.fullNameTextCtrl,
           isValidate: true,
+          inputFormatters: InputFormatterEnum.textNormal,
           maxLengthInputForm: 100,
           validator: (value) {
             if (value.isNullOrEmpty) {
@@ -480,6 +481,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         InputTextModel(
           controller: controller.cccdNumberTextCtrl,
           maxLengthInputForm: 20,
+          inputFormatters: InputFormatterEnum.textNormal,
         ),
       ),
     );
@@ -491,6 +493,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.noteTextCtrl,
+          inputFormatters: InputFormatterEnum.textNormal,
           maxLengthInputForm: 500,
         ),
       ),
