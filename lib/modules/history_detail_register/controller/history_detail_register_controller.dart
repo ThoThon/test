@@ -36,7 +36,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
 
         // Kiểm tra Bước 1 xem có null hay không
         if (resultLookupHistoryRegister!.buoc1!.maKetQua.isEmpty) {
-          showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
+          showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái và số hồ sơ
           historyRegisterItem
@@ -48,7 +48,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
           );
         }
       } else {
-        showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
+        showSnackBar(res.errorMessage);
       }
     } catch (e) {
       logger.d(e);

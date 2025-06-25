@@ -4,6 +4,7 @@
 - [Appmobile]_Màn đăng ký cấp mã: Chỉnh lại dòng text hiển thị trên popup trả về sau khi xác nhận ký bên MySign - BHW-2479
 - Màn đăng nhập đang hiển thị làm mờ cột sóng điện thoại, wifi ... trên header - BHW-2417
 - [Appmobile]_Chỉnh sửa thông tin chủ hộ theo Mã số BHXH - BHW-2484
+- [Appmobile]_Khi tra cứu đăng ký chưa có kết quả trả về -> Trả ra thông báo theo BE trả về
 
 24/06/2025
 - Chỉnh sửa button tại popup check trùng MST khi ký (Thoát -> Đóng) - BHW-2470
