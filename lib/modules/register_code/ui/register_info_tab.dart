@@ -16,7 +16,7 @@ extension RegisterInfoTab on RegisterCodePage {
                   sdsSBHeight12,
                   // Ô input nhập username My Sign
                   _buildInputUsernameMySign(),
-                   _buildCardSignatureInfo(),
+                  _buildCardSignatureInfo(),
                   sdsSBHeight12,
                   _buildButtonPickFile(),
                   _buidHideImage(),
@@ -274,7 +274,7 @@ extension RegisterInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_fileInclude.tr,
       controller: controller.fileIncludeCtrl,
-      inputFormatters: InputFormatterEnum.textNormal,
+      inputFormatters: InputFormatterEnum.blockEmoji,
       isValidate: true,
       maxLengthInputForm: 500,
     );
@@ -285,7 +285,7 @@ extension RegisterInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_content.tr,
       controller: controller.contentCtrl,
-      inputFormatters: InputFormatterEnum.textNormal,
+      inputFormatters: InputFormatterEnum.blockEmoji,
       isValidate: true,
       maxLengthInputForm: 500,
     );

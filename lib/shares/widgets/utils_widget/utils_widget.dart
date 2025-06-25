@@ -938,7 +938,7 @@ class UtilWidget {
       height: height,
       child: TextField(
         inputFormatters: [
-          RegexpEmojiUtil.emojiDenyFormatter,
+          RegexpEmojiUtil.allowCommonCharacters,
         ],
         textAlignVertical: TextAlignVertical.center,
         maxLength: maxLength,
