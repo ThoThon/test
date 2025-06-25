@@ -190,9 +190,9 @@ extension RegisterServiceWidget on RegisterServicePage {
                   return LocaleKeys
                       .registerService_userNameMySignCannotEmpty.tr;
                 }
-                // Nếu có thông tin của CTS thì mới bắt đầu check username MySign
+                // Nếu có thông tin của CTS thì trả về null
                 if (controller.certificate.value != null) return null;
-                // Nếu đã đăng ký thì disable
+                // Nếu đã đăng ký thì trả về null
                 if (controller.hasBeenRegister) return null;
 
                 return null;
