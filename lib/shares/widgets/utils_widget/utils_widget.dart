@@ -1398,18 +1398,20 @@ class UtilWidget {
   }
 
   static Widget buildListRadio<T>({
-    ValueChanged<T>? onChanged,
-    T? initialValue,
-    T? groupValue,
+    required T? selectedItem,
     required List<T> options,
     required String Function(T) getTitle,
+    required Function(ValueChanged<T> didChange) funcSelect,
+    ValueChanged<T>? onChanged,
+    bool isRequired = true,
     AutovalidateMode? autovalidateMode,
   }) {
     return FormField<T>(
-      initialValue: initialValue,
+      key: ValueKey(selectedItem),
+      initialValue: selectedItem,
       autovalidateMode: autovalidateMode ?? AutovalidateMode.onUserInteraction,
       validator: (value) {
-        if (value == null) {
+        if (isRequired && value == null) {
           return LocaleKeys.familyMember_selectGender.tr;
         }
         return null;
@@ -1425,12 +1427,13 @@ class UtilWidget {
                     text: LocaleKeys.declareInfo_gender.tr,
                     style: AppTextStyle.font16Bo,
                     children: [
-                      TextSpan(
-                        text: ' (*)',
-                        style: AppTextStyle.font12Re.copyWith(
-                          color: AppColors.statusRed,
+                      if (isRequired)
+                        TextSpan(
+                          text: ' (*)',
+                          style: AppTextStyle.font12Re.copyWith(
+                            color: AppColors.statusRed,
+                          ),
                         ),
-                      ),
                     ],
                   ),
                 ),
@@ -1438,13 +1441,11 @@ class UtilWidget {
                   (e) => Expanded(
                     child: UtilWidget.buildRadioWithTitle<T>(
                       value: e,
-                      groupValue: groupValue,
+                      groupValue: state.value,
                       title: getTitle(e),
                       onChanged: (value) {
                         state.didChange(value);
-                        if (onChanged != null) {
-                          onChanged(value);
-                        }
+                        if (onChanged != null) onChanged(value);
                       },
                     ),
                   ),
@@ -1456,9 +1457,10 @@ class UtilWidget {
                 padding: const EdgeInsets.only(left: AppDimens.paddingSmall),
                 child: Text(
                   state.errorText ?? '',
-                  style: AppTextStyle.font12Re.copyWith(color: Colors.red),
+                  style: AppTextStyle.font12Re
+                      .copyWith(color: AppColors.statusRed),
                 ),
-              )
+              ),
           ],
         );
       },

@@ -217,8 +217,11 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         Gender.female,
       ],
       getTitle: (gender) => gender.title,
-      groupValue: controller.gender.value,
-      initialValue: controller.gender.value,
+      selectedItem: controller.gender.value,
+      isRequired: true,
+      funcSelect: (didChange) {
+        controller.gender.value;
+      },
       onChanged: (value) {
         controller.gender.value = value;
       },
