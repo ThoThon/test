@@ -170,6 +170,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
             hintText: LocaleKeys.declareInfo_fullNameHint.tr,
             isValidate: true,
             maxLengthInputForm: 100,
+            inputFormatters:  InputFormatterEnum.textNormal,
             onChanged: controller.onChangeFullName,
             validator: (value) {
               final trimmedValue = value?.trim();
@@ -216,6 +217,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           controller: controller.d02Tk1State.cccdTextCtrl,
           isValidate: true,
           maxLengthInputForm: 20,
+          inputFormatters: InputFormatterEnum.textNormal,
           onChanged: controller.onChangeCCCD,
         ),
       ),

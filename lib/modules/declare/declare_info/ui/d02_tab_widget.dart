@@ -281,6 +281,7 @@ extension D02TabWidget on DeclareInfoPage {
           controller: controller.d02State.positionTextCtrl,
           isValidate: true,
           maxLengthInputForm: 500,
+          inputFormatters: InputFormatterEnum.textNormal,
           suffixIcon: IconButton(
             onPressed: () {
               Get.bottomSheet(
@@ -321,6 +322,7 @@ extension D02TabWidget on DeclareInfoPage {
         InputTextModel(
           controller: controller.d02State.workplaceTextCtrl,
           isValidate: true,
+          inputFormatters: InputFormatterEnum.textNormal,
           maxLengthInputForm: 500,
         ),
       ),
@@ -471,6 +473,7 @@ extension D02TabWidget on DeclareInfoPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.d02State.noteTextCtrl,
+          inputFormatters: InputFormatterEnum.textNormal,
           maxLengthInputForm: 500,
         ),
       ),

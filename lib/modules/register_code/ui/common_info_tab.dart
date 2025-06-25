@@ -348,6 +348,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_personTransactionSocial.tr,
       controller: controller.personTransactionBhxhCtrl,
       isValidate: true,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
   }
