@@ -178,6 +178,7 @@ extension RegisterServiceWidget on RegisterServicePage {
           child: BuildInputText(
             InputTextModel(
               controller: controller.usernameMySignCtrl,
+              inputFormatters: InputFormatterEnum.textNormal,
               autovalidateMode: AutovalidateMode.always,
               hintText: LocaleKeys.registerService_inputMySignUsername.tr,
               onChanged: (value) {

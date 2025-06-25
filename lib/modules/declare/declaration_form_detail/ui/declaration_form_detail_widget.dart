@@ -131,6 +131,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       buildInputText: BuildInputText(
         InputTextModel(
           controller: controller.fullNameTextCtrl,
+          inputFormatters: InputFormatterEnum.textNormal,
           isValidate: true,
           maxLengthInputForm: 100,
           validator: (value) {
@@ -178,6 +179,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         InputTextModel(
           controller: controller.documentTypeTextCtrl,
           isValidate: true,
+          inputFormatters: InputFormatterEnum.textNormal,
           maxLengthInputForm: 100,
           validator: (value) {
             if (value.isNullOrEmpty) {
@@ -198,6 +200,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         InputTextModel(
           controller: controller.documentNumberTextCtrl,
           isValidate: true,
+          inputFormatters: InputFormatterEnum.textNormal,
           maxLengthInputForm: 50,
           validator: (value) {
             if (value.isNullOrEmpty) {
@@ -218,6 +221,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         InputTextModel(
           controller: controller.issuingAgencyTextCtrl,
           isValidate: true,
+          inputFormatters: InputFormatterEnum.textNormal,
           maxLengthInputForm: 255,
           validator: (value) {
             if (value.isNullOrEmpty) {
@@ -238,6 +242,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         InputTextModel(
           controller: controller.summaryTextCtrl,
           isValidate: true,
+          inputFormatters: InputFormatterEnum.textNormal,
           maxLengthInputForm: 500,
           validator: (value) {
             if (value.isNullOrEmpty) {
@@ -257,6 +262,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
         InputTextModel(
           controller: controller.contentToBeAssessedTextCtrl,
           isValidate: true,
+          inputFormatters: InputFormatterEnum.textNormal,
           maxLengthInputForm: 1000,
           validator: (value) {
             if (value.isNullOrEmpty) {
