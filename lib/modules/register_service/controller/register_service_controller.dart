@@ -71,7 +71,6 @@ class RegisterServiceController extends BaseGetxController {
         final userId = response.result!.userId;
         if (userId != null && userId.isNotEmpty) {
           usernameMySignCtrl.text = userId;
-          isUsernameMySignEmpty.value = false;
         }
         isUsernameMySignEmpty.value = usernameMySignCtrl.text.trim().isEmpty;
       }
