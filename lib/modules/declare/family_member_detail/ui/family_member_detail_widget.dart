@@ -219,11 +219,14 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       getTitle: (gender) => gender.title,
       selectedItem: controller.gender.value,
       isRequired: true,
-      funcSelect: (didChange) {
-        controller.gender.value;
-      },
       onChanged: (value) {
         controller.gender.value = value;
+      },
+      validator: (value) {
+        if (value == null) {
+          return LocaleKeys.familyMember_selectGender.tr;
+        }
+        return null;
       },
     );
   }
