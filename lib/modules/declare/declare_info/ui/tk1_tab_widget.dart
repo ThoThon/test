@@ -523,7 +523,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           onTapClear: controller.onTapClearProvinceTT,
           validator: (value) {
             if (controller.tk1State.isHouseholdInfoRequired.value &&
-                value == null) {
+                controller.tk1State.provinceTT.value == null) {
               return LocaleKeys.declareInfo_provinceTTCannotEmpty.tr;
             }
             return null;
@@ -568,7 +568,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           onTapClear: controller.onTapClearDistrictTT,
           validator: (value) {
             if (controller.tk1State.isHouseholdInfoRequired.value &&
-                value == null) {
+                controller.tk1State.wardTT.value == null) {
               return LocaleKeys.declareInfo_districtTTCannotEmpty.tr;
             }
             return null;
@@ -621,7 +621,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           onTapClear: controller.onTapClearWardTT,
           validator: (value) {
             if (controller.tk1State.isHouseholdInfoRequired.value &&
-                value == null) {
+                controller.tk1State.wardTT.value == null) {
               return LocaleKeys.declareInfo_wardTTCannotEmpty.tr;
             }
             return null;
