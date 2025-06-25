@@ -1,3 +1,6 @@
+25/06/2025
+- [Appmobile]_Màn đăng ký cấp mã: Trường Số điện thoại: Thêm hiển thị check số ký tự điền/maxlenth - BHW-2480
+
 24/06/2025
 - Chỉnh sửa button tại popup check trùng MST khi ký (Thoát -> Đóng) - BHW-2470
 - [Appmobile]_Màn đăng ký cấp mã_Sửa lại validate trường mã số thuế - BHW-2458
