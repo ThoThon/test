@@ -1029,7 +1029,7 @@ class Locales {
     'login_changeAccount': 'Đổi tài khoản',
     'login_hello': 'Xin chào,',
     'login_serviceCenter': 'Tổng đài CSKH:',
-    'login_phoneNumber': '1800.1800 (nhánh 1)',
+    'login_phoneNumber': '1800.8000',
     'login_userNameCannotEmpty': 'Tên đăng nhập không được bỏ trống',
     'login_taxCodeCannotEmpty': 'Mã số thuế/ Mã ngân sách không được bỏ trống',
     'login_backToLogin': 'Quay lại đăng nhập',
