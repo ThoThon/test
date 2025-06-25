@@ -170,7 +170,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
             hintText: LocaleKeys.declareInfo_fullNameHint.tr,
             isValidate: true,
             maxLengthInputForm: 100,
-            inputFormatters:  InputFormatterEnum.textNormal,
+            inputFormatters: InputFormatterEnum.textNormal,
             onChanged: controller.onChangeFullName,
             validator: (value) {
               final trimmedValue = value?.trim();
@@ -237,6 +237,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
               inputFormatters: InputFormatterEnum.digitsOnly,
               textInputType: TextInputType.number,
               isValidate: isRequired,
+              onChanged: (value) {
+                controller.updateHouseholdInfoRequired();
+              },
               validator: (value) {
                 final trimmedValue = value?.trim();
 
@@ -259,17 +262,22 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectGender() {
-    return UtilWidget.buildListRadio(
-      options: [
-        Gender.male,
-        Gender.female,
-      ],
-      getTitle: (gender) => gender.title,
-      initialValue: controller.d02Tk1State.gender.value,
-      groupValue: controller.d02Tk1State.gender.value,
-      onChanged: (value) {
-        controller.d02Tk1State.gender.value = value;
-      },
+    return Obx(
+      () => UtilWidget.buildListRadio<Gender>(
+        options: [Gender.male, Gender.female],
+        getTitle: (gender) => gender.title,
+        selectedItem: controller.d02Tk1State.gender.value,
+        autovalidateMode: controller.autovalidateMode.value,
+        onChanged: (value) {
+          controller.d02Tk1State.gender.value = value;
+        },
+        validator: (value) {
+          if (value == null) {
+            return LocaleKeys.familyMember_selectGender.tr;
+          }
+          return null;
+        },
+      ),
     );
   }
 
