@@ -170,7 +170,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
             hintText: LocaleKeys.declareInfo_fullNameHint.tr,
             isValidate: true,
             maxLengthInputForm: 100,
-            inputFormatters:  InputFormatterEnum.textNormal,
+            inputFormatters: InputFormatterEnum.textNormal,
             onChanged: controller.onChangeFullName,
             validator: (value) {
               final trimmedValue = value?.trim();
@@ -264,7 +264,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
         options: [Gender.male, Gender.female],
         getTitle: (gender) => gender.title,
         selectedItem: controller.d02Tk1State.gender.value,
-        isRequired: true,
         autovalidateMode: controller.autovalidateMode.value,
         onChanged: (value) {
           controller.d02Tk1State.gender.value = value;

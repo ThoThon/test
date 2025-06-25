@@ -1405,7 +1405,6 @@ class UtilWidget {
     required List<T> options,
     required String Function(T) getTitle,
     ValueChanged<T>? onChanged,
-    bool isRequired = true,
     AutovalidateMode? autovalidateMode,
     String? Function(T?)? validator,
   }) {
@@ -1413,7 +1412,7 @@ class UtilWidget {
       key: ValueKey(selectedItem),
       initialValue: selectedItem,
       autovalidateMode: autovalidateMode ?? AutovalidateMode.onUserInteraction,
-      validator: isRequired ? validator : null,
+      validator: validator,
       builder: (FormFieldState<T> state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1425,13 +1424,12 @@ class UtilWidget {
                     text: LocaleKeys.declareInfo_gender.tr,
                     style: AppTextStyle.font16Bo,
                     children: [
-                      if (isRequired)
-                        TextSpan(
-                          text: ' (*)',
-                          style: AppTextStyle.font12Re.copyWith(
-                            color: AppColors.statusRed,
-                          ),
+                      TextSpan(
+                        text: ' (*)',
+                        style: AppTextStyle.font12Re.copyWith(
+                          color: AppColors.statusRed,
                         ),
+                      ),
                     ],
                   ),
                 ),
@@ -1442,8 +1440,8 @@ class UtilWidget {
                       groupValue: state.value,
                       title: getTitle(e),
                       onChanged: (value) {
-                        state.didChange(value); // cần thiết
-                        onChanged?.call(value); // controller cập nhật
+                        state.didChange(value);
+                        onChanged?.call(value);
                       },
                     ),
                   ),

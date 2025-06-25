@@ -219,7 +219,6 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       ],
       getTitle: (gender) => gender.title,
       selectedItem: controller.gender.value,
-      isRequired: true,
       onChanged: (value) {
         controller.gender.value = value;
       },
