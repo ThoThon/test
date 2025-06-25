@@ -94,7 +94,7 @@ extension CommonInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_unitName.tr,
       controller: controller.unitNameCtrl,
       isValidate: true,
-      inputFormatters: InputFormatterEnum.password,
+      inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 250,
     );
   }
@@ -317,6 +317,7 @@ extension CommonInfoTab on RegisterCodePage {
       isValidate: true,
       textInputType: TextInputType.number,
       inputFormatters: InputFormatterEnum.phoneNumber,
+      maxLengthInputForm: 20,
     );
   }
 
@@ -359,6 +360,7 @@ extension CommonInfoTab on RegisterCodePage {
       isValidate: true,
       textInputType: TextInputType.number,
       inputFormatters: InputFormatterEnum.phoneNumber,
+      maxLengthInputForm: 20,
     );
   }
 }

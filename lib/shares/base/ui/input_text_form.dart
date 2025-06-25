@@ -53,6 +53,8 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.password:
         return [
+          // Chặn emoji
+          RegexpEmojiUtil.allowCommonCharacters,
           FilteringTextInputFormatter.deny(RegExp(r'( )')),
         ];
       case InputFormatterEnum.phoneNumber:
@@ -115,15 +117,13 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.textNormal:
         return [
-          FilteringTextInputFormatter.allow(
-            RegExp(r'''[a-zA-ZÀ-ỹ0-9\s.,_\-@#\$%\^&*+=?!:;"'()\[\]{}\/\\]'''),
-          ),
+          RegexpEmojiUtil.allowCommonCharacters,
         ];
       case InputFormatterEnum.taxCodeNormal:
         return [
+          RegexpEmojiUtil.allowCommonCharacters,
           FilteringTextInputFormatter.deny(RegExp(r'( )')),
         ];
-
       default:
         return [
           LengthLimitingTextFieldFormatterFixed(

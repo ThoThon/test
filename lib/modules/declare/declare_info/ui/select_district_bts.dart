@@ -70,6 +70,9 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
 
   Widget buildSearch() {
     return UtilWidget.buildTextInput(
+      inputFormatters: [
+        RegexpEmojiUtil.allowCommonCharacters,
+      ],
       controller: controller.searchTextCtrl,
       hintText: LocaleKeys.declareInfo_inputDistrict.tr,
       textColor: AppColors.colorBlack,

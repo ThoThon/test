@@ -1,5 +1,9 @@
 25/06/2025
+- [Appmobile]_Màn đăng ký cấp mã: Trường Số điện thoại: Thêm hiển thị check số ký tự điền/maxlenth - BHW-2480
 - [Appmobile]_Màn login_Sửa lại sđt liên hệ - BHW-2483
+- [Appmobile]_Màn đăng ký cấp mã: Chỉnh lại dòng text hiển thị trên popup trả về sau khi xác nhận ký bên MySign - BHW-2479
+- Màn đăng nhập đang hiển thị làm mờ cột sóng điện thoại, wifi ... trên header - BHW-2417
+
 
 24/06/2025
 - Chỉnh sửa button tại popup check trùng MST khi ký (Thoát -> Đóng) - BHW-2470
@@ -15,6 +19,7 @@
 - [Appmobile]_Đăng ký dịch vụ_Xóa thông tin UserId thì disable Button đăng ký. - BHW-2478
 - [Appmobile]_Khi Không có Mã số BHXH => Tất cả thông tin về chủ hộ màn TK1 là bắt buộc - BHW-2401
 - [Appmobile]_Hiển thị thống báo trường Huyện, Xã mặc dù đã đưcọ điền giá trị - BH2-2476
+- [Appmobile]_Chặn nhập icon tại những trường điền textbox - BHW-2448
 
 23/06/2025
 - Xử lý đổi link test Khi kích dup "Viettel" tại màn đăng nhập - BHW-2438

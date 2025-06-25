@@ -6,3 +6,4 @@ export 'formatter.dart';
 export 'input_formatter_enum.dart';
 export 'limit_textfield.dart';
 export 'numberic_text_formatter.dart';
+export 'regexp_emoji_util.dart';
