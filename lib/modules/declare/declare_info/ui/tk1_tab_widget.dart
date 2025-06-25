@@ -451,26 +451,34 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildInputHeadOfHousehold() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_headOfHouseholdFullName.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.tk1State.headOfHouseholdTextCtrl,
-          onChanged: controller.onChangeHeadOfHouseholdFullName,
-          maxLengthInputForm: 100,
+    return Obx(
+      () => BuildInputTextWithLabel(
+        label: LocaleKeys.declareInfo_headOfHouseholdFullName.tr,
+        buildInputText: BuildInputText(
+          InputTextModel(
+            autovalidateMode: controller.tk1State.autoValidateMode.value,
+            isValidate: controller.tk1State.isHouseholdInfoRequired.value,
+            controller: controller.tk1State.headOfHouseholdTextCtrl,
+            onChanged: controller.onChangeHeadOfHouseholdFullName,
+            maxLengthInputForm: 100,
+          ),
         ),
       ),
     );
   }
 
   Widget _buildInputHeadOfHouseholdCCCD() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_headOfHouseholdCCCD.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
-          onChanged: controller.onChangeHeadOfHouseholdCCCD,
-          maxLengthInputForm: 20,
+    return Obx(
+      () => BuildInputTextWithLabel(
+        label: LocaleKeys.declareInfo_headOfHouseholdCCCD.tr,
+        buildInputText: BuildInputText(
+          InputTextModel(
+            autovalidateMode: controller.tk1State.autoValidateMode.value,
+            isValidate: controller.tk1State.isHouseholdInfoRequired.value,
+            controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
+            onChanged: controller.onChangeHeadOfHouseholdCCCD,
+            maxLengthInputForm: 20,
+          ),
         ),
       ),
     );
@@ -480,9 +488,10 @@ extension Tk1TabWidget on DeclareInfoPage {
     return Obx(
       () {
         return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_provinceTT.tr,
           hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
-          isRequired: false,
+          isRequired: controller.tk1State.isHouseholdInfoRequired.value,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
@@ -504,6 +513,13 @@ extension Tk1TabWidget on DeclareInfoPage {
           display: (province) => province.name,
           enableClearIcon: true,
           onTapClear: controller.onTapClearProvinceTT,
+          validator: (value) {
+            if (controller.tk1State.isHouseholdInfoRequired.value &&
+                value == null) {
+              return LocaleKeys.declareInfo_provinceTTCannotEmpty.tr;
+            }
+            return null;
+          },
         );
       },
     );
@@ -513,9 +529,10 @@ extension Tk1TabWidget on DeclareInfoPage {
     return Obx(
       () {
         return UtilWidget.buildBottomSheetSelect<DistrictModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_districtTT.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
-          isRequired: false,
+          isRequired: controller.tk1State.isHouseholdInfoRequired.value,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
             if (provinceTT == null) {
@@ -541,6 +558,13 @@ extension Tk1TabWidget on DeclareInfoPage {
           display: (district) => district.name,
           enableClearIcon: true,
           onTapClear: controller.onTapClearDistrictTT,
+          validator: (value) {
+            if (controller.tk1State.isHouseholdInfoRequired.value &&
+                value == null) {
+              return LocaleKeys.declareInfo_districtTTCannotEmpty.tr;
+            }
+            return null;
+          },
         );
       },
     );
@@ -550,9 +574,10 @@ extension Tk1TabWidget on DeclareInfoPage {
     return Obx(
       () {
         return UtilWidget.buildBottomSheetSelect<WardModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_wardTT.tr,
           hintText: LocaleKeys.declareInfo_selectWardTT.tr,
-          isRequired: false,
+          isRequired: controller.tk1State.isHouseholdInfoRequired.value,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
             if (provinceTT == null) {
@@ -586,19 +611,30 @@ extension Tk1TabWidget on DeclareInfoPage {
           display: (ward) => ward.name,
           enableClearIcon: true,
           onTapClear: controller.onTapClearWardTT,
+          validator: (value) {
+            if (controller.tk1State.isHouseholdInfoRequired.value &&
+                value == null) {
+              return LocaleKeys.declareInfo_wardTTCannotEmpty.tr;
+            }
+            return null;
+          },
         );
       },
     );
   }
 
   Widget _buildInputAddressTTTextCtrl() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_addressTT.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.tk1State.addressTTTextCtrl,
-          maxLengthInputForm: 300,
-          onChanged: controller.onChangeAddressTT,
+    return Obx(
+      () => BuildInputTextWithLabel(
+        label: LocaleKeys.declareInfo_addressTT.tr,
+        buildInputText: BuildInputText(
+          InputTextModel(
+            autovalidateMode: controller.tk1State.autoValidateMode.value,
+            isValidate: controller.tk1State.isHouseholdInfoRequired.value,
+            controller: controller.tk1State.addressTTTextCtrl,
+            onChanged: controller.onChangeAddressTT,
+            maxLengthInputForm: 300,
+          ),
         ),
       ),
     );
