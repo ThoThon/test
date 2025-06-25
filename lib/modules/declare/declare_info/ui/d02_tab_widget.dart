@@ -254,7 +254,7 @@ extension D02TabWidget on DeclareInfoPage {
               return;
             }
             controller.d02State.plan.value = value;
-
+            controller.updateHouseholdInfoRequired();
             controller.d02State.isGenerateTk1Data.value =
                 value.isGenerateTk1(controller.d02State.declarationType.value);
           },
