@@ -185,13 +185,26 @@ extension RegisterServiceWidget on RegisterServicePage {
                 controller.isUsernameMySignEmpty.value = value.trim().isEmpty;
               },
               validator: (value) {
+                final trimmedValue = value?.trim();
+                // Nếu có thông tin của CTS thì mới bắt đầu check username MySign
                 if (controller.certificate.value != null) {
-                  return controller.validateUsernameMySign(value);
+                  if (trimmedValue.isNullOrEmpty) {
+                    return LocaleKeys
+                        .registerService_userNameMySignCannotEmpty.tr;
+                  }
+                  return null;
                 }
+                // Nếu đã đăng ký thì disable
                 if (controller.hasBeenRegister) {
                   return null;
                 }
-                return controller.validateUsernameMySign(value);
+
+                if (trimmedValue.isNullOrEmpty) {
+                  return LocaleKeys
+                      .registerService_userNameMySignCannotEmpty.tr;
+                }
+
+                return null;
               },
             ),
           ),
