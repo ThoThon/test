@@ -235,6 +235,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
               inputFormatters: InputFormatterEnum.digitsOnly,
               textInputType: TextInputType.number,
               isValidate: isRequired,
+              onChanged: (value) {
+                controller.updateHouseholdInfoRequired();
+              },
               validator: (value) {
                 final trimmedValue = value?.trim();
 
