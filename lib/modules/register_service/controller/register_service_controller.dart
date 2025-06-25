@@ -250,10 +250,11 @@ class RegisterServiceController extends BaseGetxController {
     return cert == null;
   }
 
-  String? validateUsernameMySign(String? value) {
-    if (value.isNullOrEmpty && !hasBeenRegister) {
-      return LocaleKeys.registerService_userNameMySignCannotEmpty.tr;
+  bool get isDiableChangeInfoButton {
+    // Nếu không có username MySign thì disable
+    if (isUsernameMySignEmpty.value) {
+      return true;
     }
-    return null;
+    return certificate.value == null;
   }
 }
