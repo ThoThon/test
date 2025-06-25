@@ -109,7 +109,6 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
               ],
             ),
           ),
-          sdsSBHeight4,
           DropdownButtonHideUnderline(
             child: DropdownButton<T>(
               isExpanded: true,
