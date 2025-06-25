@@ -259,7 +259,7 @@
     "changeAccount": "Đổi tài khoản",
     "hello": "Xin chào,",
     "serviceCenter": "Tổng đài CSKH:",
-    "phoneNumber": "1800.1800 (nhánh 1)",
+    "phoneNumber": "1800.8000",
     "userNameCannotEmpty": "Tên đăng nhập không được bỏ trống",
     "taxCodeCannotEmpty": "Mã số thuế/ Mã ngân sách không được bỏ trống",
     "backToLogin": "Quay lại đăng nhập",
@@ -643,9 +643,9 @@
     "setupDateIsNotValid": "Ngày lập không hợp lệ",
     "socialInfo": "Thông tin đóng BHXH",
     "districtReceiveCannotEmpty": "Nơi nhận huyện không được để trống",
-    "provinceReceiveIsEmpty":"Chưa chọn nơi nhận tỉnh",
-    "districtReceiveIsEmpty":"Chưa chọn nơi nhận huyện",
-    "imageFromCamera":"Chọn ảnh từ camera",
-    "imageFromLibrary":"Chọn ảnh từ điện thoại"
+    "provinceReceiveIsEmpty": "Chưa chọn nơi nhận tỉnh",
+    "districtReceiveIsEmpty": "Chưa chọn nơi nhận huyện",
+    "imageFromCamera": "Chọn ảnh từ camera",
+    "imageFromLibrary": "Chọn ảnh từ điện thoại"
   }
 }
