@@ -219,6 +219,7 @@ extension Tk1TabWidget on DeclareInfoPage {
     return Obx(
       () {
         return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_provinceReceive.tr,
           hintText: LocaleKeys.declareInfo_selectProvinceReceive.tr,
           funcSelect: (didChange) {
@@ -255,6 +256,7 @@ extension Tk1TabWidget on DeclareInfoPage {
     return Obx(
       () {
         return UtilWidget.buildBottomSheetSelect<DistrictModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_districtReceive.tr,
           hintText: LocaleKeys.declareInfo_selectDistrictReceive.tr,
           funcSelect: (didChange) async {
@@ -295,6 +297,7 @@ extension Tk1TabWidget on DeclareInfoPage {
     return Obx(
       () {
         return UtilWidget.buildBottomSheetSelect<WardModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_wardReceive.tr,
           hintText: LocaleKeys.declareInfo_selectWardReceive.tr,
           funcSelect: (didChange) async {
@@ -344,6 +347,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       label: LocaleKeys.declareInfo_addressReceive.tr,
       buildInputText: BuildInputText(
         InputTextModel(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
           isValidate: true,
           controller: controller.tk1State.addressReceiveTextCtrl,
           maxLengthInputForm: 300,
