@@ -1,7 +1,8 @@
 25/06/2025
-
-
+- [Appmobile]_Màn đăng ký cấp mã: Trường Số điện thoại: Thêm hiển thị check số ký tự điền/maxlenth - BHW-2480
+- [Appmobile]_Màn login_Sửa lại sđt liên hệ - BHW-2483
 - [Appmobile]_Màn đăng ký cấp mã: Chỉnh lại dòng text hiển thị trên popup trả về sau khi xác nhận ký bên MySign - BHW-2479
+
 
 24/06/2025
 - Chỉnh sửa button tại popup check trùng MST khi ký (Thoát -> Đóng) - BHW-2470
