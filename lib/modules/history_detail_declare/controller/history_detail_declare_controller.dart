@@ -37,10 +37,10 @@ class HistoryDetailDeclareController extends BaseGetxController {
           // Cập nhật số hồ sơ
           historyDeclareItem.soHoSo = res.result?.rHRecordNumber ?? '';
         } else {
-          showSnackBar(LocaleKeys.history_cannotLookupFileNumber.tr);
+          showSnackBar(res.errorMessage);
         }
       } else {
-        showSnackBar(LocaleKeys.history_error.tr);
+        showSnackBar(res.errorMessage);
       }
     } catch (e) {
       logger.d(e);
@@ -59,7 +59,7 @@ class HistoryDetailDeclareController extends BaseGetxController {
 
         // Kiểm tra Bước 1 xem có null hay không
         if (resultLookupHistoryDeclare!.buoc1!.maKetQua.isEmpty) {
-          showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
+          showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái
           historyDeclareItem.trangThai = res.result?.trangThai ?? '';
@@ -69,7 +69,7 @@ class HistoryDetailDeclareController extends BaseGetxController {
           );
         }
       } else {
-        showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
+        showSnackBar(res.errorMessage);
       }
     } catch (e) {
       logger.d(e);
