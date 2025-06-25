@@ -317,6 +317,7 @@ extension CommonInfoTab on RegisterCodePage {
       isValidate: true,
       textInputType: TextInputType.number,
       inputFormatters: InputFormatterEnum.phoneNumber,
+      maxLengthInputForm: 20,
     );
   }
 
@@ -359,6 +360,7 @@ extension CommonInfoTab on RegisterCodePage {
       isValidate: true,
       textInputType: TextInputType.number,
       inputFormatters: InputFormatterEnum.phoneNumber,
+      maxLengthInputForm: 20,
     );
   }
 }

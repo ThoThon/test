@@ -1,4 +1,5 @@
 25/06/2025
+- [Appmobile]_Màn đăng ký cấp mã: Trường Số điện thoại: Thêm hiển thị check số ký tự điền/maxlenth - BHW-2480
 - [Appmobile]_Màn login_Sửa lại sđt liên hệ - BHW-2483
 
 24/06/2025
