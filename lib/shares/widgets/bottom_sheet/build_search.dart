@@ -101,6 +101,9 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
     hintSearch ??= LocaleKeys.unitInfo_search.tr;
     isClear.value = textEditingController.text.isNotEmpty;
     return UtilWidget.buildTextInput(
+      inputFormatters: [
+        RegexpEmojiUtil.allowCommonCharacters,
+      ],
       maxLength: maxLength,
       height: height,
       controller: textEditingController,
