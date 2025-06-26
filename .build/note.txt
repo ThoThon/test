@@ -8,6 +8,7 @@
 - [Appmobile]_Khi tra cứu đăng ký chưa có kết quả trả về -> Trả ra thông báo theo BE trả về
 - [Appmobile]_Màn Thành viên trong gia đình: Thêm maxlength cho ô tìm kiếm: dân tộc, Quốc tịch, tỉnh, huyện xã - BHW-2486
 - [Appmobile]_Màn thay đổi, ngừng dịch vụ: Disable button Thay đổi khi xóa Tên đăng nhập MySign - BHW-2482
+- [Appmobile]_Chặn Bấm nhanh tap 2 lần nút call add-d02 - BHW-2481
 
 24/06/2025
 - Chỉnh sửa button tại popup check trùng MST khi ký (Thoát -> Đóng) - BHW-2470
