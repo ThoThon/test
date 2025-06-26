@@ -1,7 +1,5 @@
 import 'package:v_bhxh/modules/src.dart';
 
-import '../controller/controller.src.dart';
-
 part 'forgot_password_widget.dart';
 
 class ForgotPasswordPage extends BaseGetWidget {
@@ -16,7 +14,10 @@ class ForgotPasswordPage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return buildLoadingOverlay(
-      () => Scaffold(body: _buildBody()),
+      () => Scaffold(
+        appBar: const BaseAppBar(title: UtilWidget.shrink),
+        body: _buildBody(),
+      ),
     );
   }
 }
