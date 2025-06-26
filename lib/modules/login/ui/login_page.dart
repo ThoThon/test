@@ -18,6 +18,8 @@ class LoginPage extends BaseGetWidget<LoginController> {
     return buildLoadingOverlay(
       () {
         return Scaffold(
+          // Thêm appbar để status bar của hệ thống hiển thị đúng màu sắc
+          appBar: const BaseAppBar(title: UtilWidget.shrink),
           body: _buildBody(),
         );
       },

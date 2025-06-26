@@ -1,5 +1,3 @@
-import 'package:flutter/services.dart';
-
 import '../../../modules/src.dart';
 import '../../base_app/base_app.src.dart';
 
@@ -13,16 +11,9 @@ class SplashPage extends BaseGetWidget<AppController> {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
-        systemNavigationBarIconBrightness: Brightness.light,
-      ),
-      child: Scaffold(
-        body: Center(
-          child: UtilWidget.buildLoading(),
-        ),
+    return Scaffold(
+      body: Center(
+        child: UtilWidget.buildLoading(),
       ),
     );
   }
