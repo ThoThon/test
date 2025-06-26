@@ -35,7 +35,7 @@ class Diolog {
     final ClipboardData? cbData = await Clipboard.getData(Clipboard.kTextPlain);
 
     if (cbData == null || cbData.text?.isEmpty == true) {
-      return kDebugMode;
+      return false;
     }
 
     return _isValidClipboardData(cbData.text!);
