@@ -1,5 +1,4 @@
 import 'package:v_bhxh/modules/change_base_url/ui/change_base_url_page.dart';
-import 'package:v_bhxh/modules/forgot_password/ui/forgot_password_page.dart';
 import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/lookup_c12/ui/ui_src.dart';

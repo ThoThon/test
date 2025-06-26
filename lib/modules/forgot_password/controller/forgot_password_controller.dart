@@ -1,7 +1,6 @@
 import '../../../base_app/controllers_base/base_controller/base_controller.dart';
 import '../../../shares/widgets/dialog/dialog.src.dart';
 import '../../src.dart';
-import '../forgot_password.src.dart';
 
 class ForgotPasswordController extends BaseGetxController {
   final taxCodeController = TextEditingController();
