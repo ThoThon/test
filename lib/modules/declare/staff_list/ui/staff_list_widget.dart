@@ -262,7 +262,13 @@ extension StaffListWidget on StaffListPage {
   Widget _buildAddNewStaff() {
     return InkWell(
       onTap: () {
-        controller.createStaff();
+        EasyThrottle.throttle(
+          'createStaff',
+          const Duration(seconds: 1),
+          () {
+            controller.createStaff();
+          },
+        );
       },
       child: Row(
         children: [
