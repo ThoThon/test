@@ -273,6 +273,7 @@ class LocaleKeys {
   static const login_phoneNumber = 'login_phoneNumber';
   static const login_userNameCannotEmpty = 'login_userNameCannotEmpty';
   static const login_taxCodeCannotEmpty = 'login_taxCodeCannotEmpty';
+  static const login_unitCodeCannotEmpty = 'login_unitCodeCannotEmpty';
   static const login_backToLogin = 'login_backToLogin';
   static const login_inputUnitCode = 'login_inputUnitCode';
   static const login_inputPassword = 'login_inputPassword';
@@ -801,8 +802,8 @@ class Locales {
         'Không tìm thấy đường dẫn này, xin vui lòng liên hệ Admin',
     'dialog_error401':
         'Phiên đăng nhập đã hết hạn. Quý khách vui lòng đăng nhập lại',
-    'dialog_success': 'Thành công!',
-    'dialog_fail': 'Thất bại!',
+    'dialog_success': 'Thành công',
+    'dialog_fail': 'Thất bại',
     'dialog_checkEmail': 'Vui lòng kiểm tra lại email đã đăng ký',
     'dialog_processTime': '(Thời gian xử lý từ 3-5 ngày làm việc).',
     'dialog_registerFail': 'Đăng ký thất bại, vui lòng thử lại',
@@ -1036,6 +1037,7 @@ class Locales {
     'login_phoneNumber': '1800.8000',
     'login_userNameCannotEmpty': 'Tên đăng nhập không được bỏ trống',
     'login_taxCodeCannotEmpty': 'Mã số thuế/ Mã ngân sách không được bỏ trống',
+    'login_unitCodeCannotEmpty': 'Mã đơn vị không được bỏ trống',
     'login_backToLogin': 'Quay lại đăng nhập',
     'login_inputUnitCode': 'Nhập mã đơn vị',
     'login_inputPassword': 'Nhập mật khẩu',
