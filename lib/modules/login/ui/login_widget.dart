@@ -28,7 +28,7 @@ extension LoginWidget on LoginPage {
                         sdsSBHeight8,
                         Row(
                           children: [
-                            // _buildForgetPassword(),
+                            _buildForgetPassword(),
                             const Spacer(),
                             controller.isHaveUsername.value
                                 ? _buildChangeAccount()
@@ -99,17 +99,17 @@ extension LoginWidget on LoginPage {
     );
   }
 
-  // Widget _buildForgetPassword() {
-  //   return InkWell(
-  //     onTap: () {
-  //       Get.toNamed(AppRoutes.forgotLogin.path);
-  //     },
-  //     child: SDSBuildText(
-  //       LocaleKeys.login_forgetPassword.tr,
-  //       style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
-  //     ),
-  //   );
-  // }
+  Widget _buildForgetPassword() {
+    return InkWell(
+      onTap: () {
+        Get.toNamed(AppRoutes.forgotLogin.path);
+      },
+      child: SDSBuildText(
+        LocaleKeys.login_forgetPassword.tr,
+        style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+      ),
+    );
+  }
 
   Widget _buildChangeAccount() {
     return InkWell(

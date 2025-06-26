@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:v_bhxh/assets.dart';
-import 'package:v_bhxh/generated/locales.g.dart';
-import 'package:v_bhxh/shares/base/ui/sds_build_text.dart';
-import 'package:v_bhxh/shares/package/export_package.dart';
-
-import '../../../core/core.src.dart';
-import '../../shares.src.dart';
+import 'package:v_bhxh/modules/src.dart';
 
 enum DialogIconType {
   success,
@@ -543,6 +536,112 @@ class ShowDialog {
         width: Get.width,
         child: child,
       ),
+    );
+  }
+
+  static Future<void> showDialogConfirmNew({
+    required String title,
+    String? content,
+    String? exitTitle,
+    String? confirmTitle,
+    TextStyle? styleContent,
+    DialogIconType? iconType,
+    VoidCallback? onCancel,
+    VoidCallback? onConfirm,
+    bool showConfirmButton = true,
+    bool isActiveBack = true,
+    bool isDisableButtonConfirm = false,
+  }) async {
+    _showDialog(
+      Dialog(
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.all(AppDimens.defaultPadding),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            if (iconType != null)
+              iconType == DialogIconType.success
+                  ? SDSImageSvg(
+                      Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
+                      width: 60,
+                      height: 60,
+                    )
+                  : SDSImageSvg(
+                      Assets.ASSETS_IMAGES_IMG_CHECK_FAILURE_SVG,
+                      width: 60,
+                      height: 60,
+                    ),
+            sdsSBHeight12,
+            SDSBuildText(
+              title,
+              maxLines: 3,
+              style: AppTextStyle.font18Bo,
+              textAlign: TextAlign.center,
+            ),
+            content != null
+                ? Container(
+                    padding: const EdgeInsets.only(
+                      top: AppDimens.paddingSmall,
+                      bottom: AppDimens.padding25,
+                    ),
+                    constraints: const BoxConstraints(maxHeight: 200),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        content,
+                        style: styleContent ?? AppTextStyle.font14Re,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.clip,
+                      ).paddingSymmetric(horizontal: AppDimens.padding6),
+                    ),
+                  )
+                : UtilWidget.sizedBox16,
+            showConfirmButton
+                ? Row(
+                    children: [
+                      Expanded(
+                        child: UtilWidget.buildSolidButtonBack(
+                          title: exitTitle ?? LocaleKeys.dialog_close.tr,
+                          onPressed: () {
+                            dismissDialog();
+                            onCancel?.call();
+                          },
+                        ),
+                      ),
+                      if (!isDisableButtonConfirm) UtilWidget.sizedBoxWidth20,
+                      Visibility(
+                        visible: !isDisableButtonConfirm,
+                        child: Expanded(
+                          child: UtilWidget.buildSolidButton(
+                            title: confirmTitle ?? LocaleKeys.dialog_confirm.tr,
+                            onPressed: () {
+                              dismissDialog();
+                              onConfirm?.call();
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                : UtilWidget.buildSolidButtonBack(
+                    title: exitTitle ?? LocaleKeys.dialog_close.tr,
+                    borderRadius: AppDimens.radius30,
+                    width: double.infinity,
+                    backgroundColor: AppColors.primaryColor,
+                    textStyle: AppTextStyle.font16Re
+                        .copyWith(color: AppColors.basicWhite),
+                    onPressed: () {
+                      dismissDialog();
+                      onCancel?.call();
+                    },
+                  ),
+          ],
+        ).paddingAll(AppDimens.defaultPadding),
+      ),
+      isActiveBack,
     );
   }
 }

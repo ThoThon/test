@@ -79,5 +79,8 @@ class AppApi {
   static const String urlLookupHistoryRegister = '/api/TraCuu/tien-do-dang-ky';
   static const String urlGetRegisterFirstCategories =
       '/api/RegisterService/get-dkld-categories';
-  static const String urlRegisterFirstForCode = '/api/RegisterService/first-register';
+  static const String urlRegisterFirstForCode =
+      '/api/RegisterService/first-register';
+  static const String urlForgotPassword = '/api/Authen/forgot-password';
 }
+

@@ -18,3 +18,4 @@ export 'page_builder/page_builder_src.dart';
 export 'profile/profile_src.dart';
 export 'register_code/register_code.src.dart';
 export 'register_service/register_service_src.dart';
+export 'forgot_password/forgot_password.src.dart';

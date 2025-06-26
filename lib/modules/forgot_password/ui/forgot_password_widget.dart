@@ -1,18 +1,10 @@
-import 'package:v_bhxh/modules/src.dart';
+part of 'forgot_password_page.dart';
 
-class ForgotPasswordPage extends BaseGetWidget {
-  ForgotPasswordPage({super.key});
-
-  @override
-  ForgotPasswordController get controller => _controller;
-
-  late final _controller = Get.put(ForgotPasswordController());
-
-  @override
-  @override
-  Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      body: SDSSafearea(
+extension ForgotPasswordWidget on ForgotPasswordPage {
+  Widget _buildBody() {
+    return SDSSafearea(
+      child: Form(
+        key: controller.formKey,
         child: Column(
           children: [
             Expanded(
@@ -25,15 +17,20 @@ class ForgotPasswordPage extends BaseGetWidget {
                   const SizedBox(height: AppDimens.padding40),
                   _buildInputTaxCode(),
                   UtilWidget.sizedBox16,
-                  _buildInputUnit(),
-                  sdsSBHeight8,
-                  _buildBackToLogin(),
-                  sdsSBHeight8,
+                  _buildInputUnitCode(),
+                  sdsSBHeight16,
                   UtilWidget.buildSolidButton(
                     title: LocaleKeys.login_resetPassword.tr,
                     height: AppDimens.btnLargeFigma,
-                    onPressed: () {},
+                    textStyle: AppTextStyle.font16Re
+                        .copyWith(color: AppColors.basicWhite),
+                    borderRadius: AppDimens.radius30,
+                    onPressed: () {
+                      controller.forgotPassword();
+                    },
                   ),
+                  sdsSBHeight8,
+                  _buildBackToLogin(),
                 ],
               )),
             ),
@@ -53,15 +50,24 @@ class ForgotPasswordPage extends BaseGetWidget {
     ).paddingOnly(top: AppDimens.padding25);
   }
 
-  Widget _buildInputUnit() {
+  Widget _buildInputUnitCode() {
     return BuildInputText(
       InputTextModel(
+        maxLengthInputForm: 7,
+        inputFormatters: InputFormatterEnum.textOnly,
         hintText: LocaleKeys.login_inputUnitCode.tr,
         controller: controller.unitCodeController,
+        borderRadius: AppDimens.radius8,
+        border: InputBorder.none,
+        errorBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        disabledBorder: InputBorder.none,
+        focusedErrorBorder: InputBorder.none,
         obscureText: false,
         validator: (value) {
           if (value.isNullOrEmpty) {
-            return LocaleKeys.login_userNameCannotEmpty.tr;
+            return LocaleKeys.login_unitCodeCannotEmpty.tr;
           }
           return null;
         },
@@ -72,9 +78,18 @@ class ForgotPasswordPage extends BaseGetWidget {
   Widget _buildInputTaxCode() {
     return BuildInputText(
       InputTextModel(
+        maxLengthInputForm: 20,
+        inputFormatters: InputFormatterEnum.textNormal,
         hintText: LocaleKeys.login_inputTaxCode.tr,
         controller: controller.taxCodeController,
+        borderRadius: AppDimens.radius8,
         obscureText: false,
+        border: InputBorder.none,
+        errorBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        disabledBorder: InputBorder.none,
+        focusedErrorBorder: InputBorder.none,
         validator: (value) {
           if (value.isNullOrEmpty) {
             return LocaleKeys.login_taxCodeCannotEmpty.tr;
@@ -86,13 +101,15 @@ class ForgotPasswordPage extends BaseGetWidget {
   }
 
   Widget _buildBackToLogin() {
-    return InkWell(
-      onTap: () {
-        Get.back();
-      },
-      child: SDSBuildText(
-        LocaleKeys.login_backToLogin.tr,
-        style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+    return Center(
+      child: InkWell(
+        onTap: () {
+          Get.back();
+        },
+        child: SDSBuildText(
+          LocaleKeys.login_backToLogin.tr,
+          style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+        ),
       ),
     );
   }

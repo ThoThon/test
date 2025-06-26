@@ -213,15 +213,18 @@ class UtilWidget {
     double? width,
     double? height,
     double? borderRadius,
+    Color? borderColor,
+    Color? backgroundColor,
+    TextStyle? textStyle,
   }) {
     return SizedBox(
       width: width,
       height: height ?? AppDimens.btnDefaultFigma,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
-          backgroundColor: AppColors.colorWhite,
-          side: const BorderSide(
-            color: AppColors.primaryColor,
+          backgroundColor: backgroundColor ?? AppColors.colorWhite,
+          side: BorderSide(
+            color: borderColor ?? AppColors.primaryColor,
             width: 1,
           ),
           shape: RoundedRectangleBorder(
@@ -232,7 +235,8 @@ class UtilWidget {
         onPressed: onPressed,
         child: SDSBuildText(
           title,
-          style: AppTextStyle.font16Bo.copyWith(color: AppColors.primaryColor),
+          style: textStyle ??
+              AppTextStyle.font16Bo.copyWith(color: AppColors.primaryColor),
         ),
       ),
     );
