@@ -129,6 +129,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       inputFormatters: controller.birthType.value.inputFormatter,
       controller: controller.dateOfBirthCtrl,
       onSelectDate: () async {
+        KeyBoard.hide();
         final DateTime? selectedDate;
 
         switch (controller.birthType.value) {
