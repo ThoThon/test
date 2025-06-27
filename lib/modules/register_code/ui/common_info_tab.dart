@@ -85,6 +85,13 @@ extension CommonInfoTab on RegisterCodePage {
       isRequired: true,
       inputFormatters: InputFormatterEnum.taxCodeNormal,
       maxLengthInputForm: 14,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Mã số thuế không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -96,6 +103,13 @@ extension CommonInfoTab on RegisterCodePage {
       isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 250,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Tên đơn vị không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -110,6 +124,12 @@ extension CommonInfoTab on RegisterCodePage {
       onChanged: (value) {
         controller.selectedObject.value = value;
       },
+      validator: (value) {
+        if (value == null) {
+          return "Loại đối tượng không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -121,6 +141,13 @@ extension CommonInfoTab on RegisterCodePage {
       isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Loại hình đơn vị không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -132,6 +159,13 @@ extension CommonInfoTab on RegisterCodePage {
       isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Ngành nghề sản xuất không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -143,6 +177,13 @@ extension CommonInfoTab on RegisterCodePage {
       isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Số quyết định không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -256,6 +297,13 @@ extension CommonInfoTab on RegisterCodePage {
       isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Nơi cấp quyết định không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -267,6 +315,13 @@ extension CommonInfoTab on RegisterCodePage {
       isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Địa chỉ đăng ký kinh doanh không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -278,6 +333,13 @@ extension CommonInfoTab on RegisterCodePage {
       isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Địa chỉ đơn vị không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -318,6 +380,13 @@ extension CommonInfoTab on RegisterCodePage {
       textInputType: TextInputType.number,
       inputFormatters: InputFormatterEnum.phoneNumber,
       maxLengthInputForm: 20,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Điện thoại đơn vị không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -350,6 +419,13 @@ extension CommonInfoTab on RegisterCodePage {
       isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Người giao dịch BHXH không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -362,6 +438,13 @@ extension CommonInfoTab on RegisterCodePage {
       textInputType: TextInputType.number,
       inputFormatters: InputFormatterEnum.phoneNumber,
       maxLengthInputForm: 20,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Điện thoại liên hệ không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 }

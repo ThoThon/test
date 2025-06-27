@@ -211,6 +211,12 @@ extension RegisterInfoTab on RegisterCodePage {
       onChanged: (value) {
         controller.registerResult.value = value;
       },
+      validator: (value) {
+        if (value == null) {
+          return "Đăng ký nhận kết quả không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -252,6 +258,12 @@ extension RegisterInfoTab on RegisterCodePage {
       onChanged: (value) {
         controller.resultReceiveMethod.value = value;
       },
+      validator: (value) {
+        if (value == null) {
+          return "Phương thức nhận kết quả không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -266,6 +278,12 @@ extension RegisterInfoTab on RegisterCodePage {
       onChanged: (value) {
         controller.paymentMethod.value = value;
       },
+      validator: (value) {
+        if (value == null) {
+          return "Phương thức đóng không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -277,6 +295,13 @@ extension RegisterInfoTab on RegisterCodePage {
       inputFormatters: InputFormatterEnum.textNormal,
       isRequired: true,
       maxLengthInputForm: 500,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Hồ sơ kèm theo không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -288,6 +313,13 @@ extension RegisterInfoTab on RegisterCodePage {
       inputFormatters: InputFormatterEnum.textNormal,
       isRequired: true,
       maxLengthInputForm: 500,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Nội dung không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 

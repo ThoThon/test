@@ -41,7 +41,8 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
               labelText: labelText,
               selectedItem: selectedItem,
               isDense: true,
-              padding: const EdgeInsets.only(bottom: AppDimens.paddingVerySmall),
+              padding:
+                  const EdgeInsets.only(bottom: AppDimens.paddingVerySmall),
               onChanged: (value) {
                 state.didChange(value);
                 onChanged(value);
@@ -79,8 +80,8 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
   }) {
     return Container(
       padding: const EdgeInsets.only(
-        right: AppDimens.paddingSmall,
-        left: AppDimens.paddingSmall,
+        right: AppDimens.defaultPadding,
+        left: AppDimens.defaultPadding,
         top: AppDimens.paddingSmall,
       ),
       decoration: BoxDecoration(

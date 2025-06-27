@@ -55,6 +55,14 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
       controller: controller.unitCodeController,
       hintText: LocaleKeys.login_unitCode.tr,
       maxLengthInputForm: 7,
+      isShowCounterText: false,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Mã đơn vị không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 
@@ -63,6 +71,14 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
       controller: controller.taxCodeController,
       hintText: LocaleKeys.login_inputTaxCode.tr,
       maxLengthInputForm: 20,
+      isShowCounterText: false,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return "Mã số thuế/Mã ngân sách không được bỏ trống";
+        }
+        return null;
+      },
     );
   }
 

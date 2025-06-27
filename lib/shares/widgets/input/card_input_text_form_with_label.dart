@@ -46,6 +46,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(
               left: AppDimens.defaultPadding,
+              right: AppDimens.defaultPadding,
               top: AppDimens.paddingVerySmall,
             ),
             child: Row(
