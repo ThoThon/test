@@ -103,7 +103,7 @@ extension CommonInfoTab on RegisterCodePage {
   CardDropdownWithLabel _buildSelectObjectType() {
     return CardDropdownWithLabel(
       labelText: LocaleKeys.registerCode_objectType.tr,
-      isValidate: true,
+      isRequired: true,
       items: AppData.instance.objectType.toList(),
       display: (object) => object.text,
       selectedItem: controller.selectedObject.value,
@@ -153,7 +153,7 @@ extension CommonInfoTab on RegisterCodePage {
       inputFormatters: InputFormatterEnum.dateFullBirthDay,
       labelText: LocaleKeys.registerCode_setupDate.tr,
       controller: controller.setupDateCtrl,
-      isValidate: true,
+      isRequired: true,
       onSelectDate: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
@@ -204,7 +204,7 @@ extension CommonInfoTab on RegisterCodePage {
       inputFormatters: InputFormatterEnum.dateFullBirthDay,
       labelText: LocaleKeys.registerCode_registerDate.tr,
       controller: controller.registerDateCtrl,
-      isValidate: true,
+      isRequired: true,
       onSelectDate: () async {
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(

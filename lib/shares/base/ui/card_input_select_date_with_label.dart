@@ -5,83 +5,114 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
   final String labelText;
   final TextStyle? textStyle;
   final TextEditingController controller;
-  final bool isValidate;
-  final int? maxLengthInputForm;
+  final bool isRequired;
   final String? hintText;
   final FormFieldValidator<String>? validator;
   final VoidCallback? onSelectDate;
   final void Function(String)? onChanged;
   final int inputFormatters;
+  final double? borderRadius;
 
   const CardInputSelectDateWithLabel({
     super.key,
     required this.labelText,
     this.textStyle,
     required this.controller,
-    required this.isValidate,
-    this.maxLengthInputForm,
+    required this.isRequired,
     this.hintText,
     this.validator,
     this.onSelectDate,
     this.onChanged,
     required this.inputFormatters,
+    this.borderRadius,
   });
   @override
   Widget build(BuildContext context) {
-    return BuildInputText(
-      InputTextModel(
-        controller: controller,
-        isValidate: isValidate,
-        label: Row(
-          children: [
-            SDSBuildText(
-              labelText,
-              style: textStyle ??
-                  AppTextStyle.font20Re.copyWith(
-                    color: AppColors.dsGray1,
-                  ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(AppDimens.radius8),
             ),
-            Visibility(
-              visible: isValidate,
-              child: SDSBuildText(
-                ' *',
-                style: AppTextStyle.font12Re.copyWith(
-                  color: AppColors.statusRed,
+            color: AppColors.basicWhite,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: AppDimens.defaultPadding,
+              top: AppDimens.paddingVerySmall,
+            ),
+            child: Row(
+              children: [
+                SDSBuildText(
+                  labelText,
+                  style: textStyle ??
+                      AppTextStyle.font14Re.copyWith(
+                        color: AppColors.dsGray1,
+                      ),
+                ),
+                Visibility(
+                  visible: isRequired,
+                  child: SDSBuildText(
+                    ' *',
+                    style: AppTextStyle.font12Re.copyWith(
+                      color: AppColors.statusRed,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        BuildInputText(
+          InputTextModel(
+            controller: controller,
+            isValidate: isRequired,
+            suffixIcon: InkWell(
+              onTap: onSelectDate,
+              child: Padding(
+                padding: const EdgeInsets.only(right: AppDimens.paddingSmall),
+                child: SvgPicture.asset(
+                  Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
+                  width: AppDimens.sizeIconMedium,
+                  height: AppDimens.sizeIconMedium,
+                  fit: BoxFit.scaleDown,
                 ),
               ),
             ),
-          ],
-        ),
-        suffixIcon: InkWell(
-          onTap: onSelectDate,
-          child: SvgPicture.asset(
-            Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
-            width: AppDimens.sizeIconMedium,
-            height: AppDimens.sizeIconMedium,
-            fit: BoxFit.scaleDown,
+            inputFormatters: inputFormatters,
+            isShowCounterText: false,
+            showIconClear: true,
+            hintText: hintText,
+            contentPadding: const EdgeInsets.only(
+              bottom: AppDimens.paddingVerySmall,
+              left: AppDimens.paddingSmall,
+              right: AppDimens.paddingSmall,
+              top: AppDimens.paddingSmall,
+            ),
+            isDense: true,
+            textInputType: TextInputType.number,
+            border: _buildOutlineInputNoBorder(),
+            errorBorder: _buildOutlineInputNoBorder(),
+            focusedBorder: _buildOutlineInputNoBorder(),
+            enabledBorder: _buildOutlineInputNoBorder(),
+            disabledBorder: _buildOutlineInputNoBorder(),
+            focusedErrorBorder: _buildOutlineInputNoBorder(),
+            validator: validator,
+            onChanged: onChanged,
           ),
         ),
-        inputFormatters: inputFormatters,
-        isShowCounterText: false,
-        showIconClear: true,
-        maxLengthInputForm: maxLengthInputForm,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        hintText: hintText ?? "Nhập ${labelText.toLowerCase()}",
-        contentPadding: const EdgeInsets.only(
-          bottom: AppDimens.paddingVerySmall,
-          left: AppDimens.paddingSmall,
-          right: AppDimens.paddingSmall,
-          top: AppDimens.paddingSmall,
-        ),
-        textInputType: TextInputType.number,
-        border: InputBorder.none,
-        enabledBorder: InputBorder.none,
-        focusedBorder: InputBorder.none,
-        errorBorder: InputBorder.none,
-        focusedErrorBorder: InputBorder.none,
-        validator: validator,
-        onChanged: onChanged,
-      ),
+      ],
+    );
+  }
+
+  OutlineInputBorder _buildOutlineInputNoBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(borderRadius ?? AppDimens.radius8)),
+      borderSide: BorderSide.none,
     );
   }
 }

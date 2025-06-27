@@ -19,6 +19,7 @@ class CardInputTextForm extends StatelessWidget {
     required this.controller,
     required this.hintText,
     this.inputFormatters,
+    // Bắt buộc set maxLength
     required this.maxLengthInputForm,
     this.validator,
     this.borderRadius,
@@ -50,17 +51,7 @@ class CardInputTextForm extends StatelessWidget {
             enabledBorder: _buildOutlineInputNoBorder(),
             disabledBorder: _buildOutlineInputNoBorder(),
             focusedErrorBorder: _buildOutlineInputNoBorder(),
-            validator: (value) {
-              if (validator != null) {
-                return validator!(value);
-              }
-
-              if (value.isNullOrEmpty) {
-                return "${hintText.tr} ${LocaleKeys.input_inputEmpty.tr.toLowerCase()}";
-              }
-
-              return null;
-            },
+            validator: validator,
             textInputType: textInputType,
           ),
         ),

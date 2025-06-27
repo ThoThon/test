@@ -38,10 +38,11 @@ class CardInputTextFormWithLabel extends StatelessWidget {
       children: [
         Container(
           decoration: const BoxDecoration(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(AppDimens.radius8),
-              ),
-              color: AppColors.basicWhite),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(AppDimens.radius8),
+            ),
+            color: AppColors.basicWhite,
+          ),
           child: Padding(
             padding: const EdgeInsets.only(
               left: AppDimens.defaultPadding,
@@ -71,6 +72,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
         ),
         BuildInputText(
           InputTextModel(
+            isValidate: isRequired,
             controller: controller,
             hintText: hintText ?? 'Nhập ${labelText.toLowerCase()}',
             maxLengthInputForm: maxLengthInputForm,
@@ -89,19 +91,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
               right: AppDimens.defaultPadding,
             ),
             isDense: true,
-            validator: (value) {
-              if (!isRequired) return null;
-
-              if (validator != null) {
-                return validator!(value);
-              }
-
-              if (value.isNullOrEmpty) {
-                return "${labelText.tr} ${LocaleKeys.input_inputEmpty.tr.toLowerCase()}";
-              }
-
-              return null;
-            },
+            validator: validator,
             textInputType: textInputType,
           ),
         ),
@@ -111,7 +101,8 @@ class CardInputTextFormWithLabel extends StatelessWidget {
 
   OutlineInputBorder _buildOutlineInputNoBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(borderRadius ?? AppDimens.radius8),
+      borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(borderRadius ?? AppDimens.radius8)),
       borderSide: BorderSide.none,
     );
   }

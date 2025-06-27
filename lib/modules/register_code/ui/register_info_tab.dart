@@ -204,7 +204,7 @@ extension RegisterInfoTab on RegisterCodePage {
   CardDropdownWithLabel _buildSelectRegisterResult() {
     return CardDropdownWithLabel<RegisterReceiveResultModel>(
       labelText: LocaleKeys.registerCode_registerResult.tr,
-      isValidate: true,
+      isRequired: true,
       items: AppData.instance.resultReceivingOptions.toList(),
       display: (result) => result.text,
       selectedItem: controller.registerResult.value,
@@ -245,7 +245,7 @@ extension RegisterInfoTab on RegisterCodePage {
   CardDropdownWithLabel _buildSelectMethodResult() {
     return CardDropdownWithLabel<ReceiveMethodModel>(
       labelText: LocaleKeys.registerCode_methodReceiveResult.tr,
-      isValidate: true,
+      isRequired: true,
       items: AppData.instance.receiveMethod.toList(),
       display: (result) => result.text,
       selectedItem: controller.resultReceiveMethod.value,
@@ -259,7 +259,7 @@ extension RegisterInfoTab on RegisterCodePage {
   CardDropdownWithLabel _buildSelectMethodClose() {
     return CardDropdownWithLabel<PaymentMethodModel>(
       labelText: LocaleKeys.registerCode_methodPayment.tr,
-      isValidate: true,
+      isRequired: true,
       items: AppData.instance.paymentMethods.toList(),
       display: (result) => result.text,
       selectedItem: controller.paymentMethod.value,
