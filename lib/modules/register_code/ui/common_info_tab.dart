@@ -155,6 +155,7 @@ extension CommonInfoTab on RegisterCodePage {
       controller: controller.setupDateCtrl,
       isValidate: true,
       onSelectDate: () async {
+        KeyBoard.hide();
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
                 controller.setupDateCtrl.text,
@@ -206,6 +207,7 @@ extension CommonInfoTab on RegisterCodePage {
       controller: controller.registerDateCtrl,
       isValidate: true,
       onSelectDate: () async {
+        KeyBoard.hide();
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
                 controller.registerDateCtrl.text,
