@@ -1,11 +1,11 @@
 import '../../../src.dart';
 
 enum ReceiveResultEnum {
-  //Nhận qua bưu điện
-  postOffice(1, LocaleKeys.unitInfo_byPostOffice),
+  // Nhận tại CQBH
+  postOffice(0, LocaleKeys.unitInfo_byPostOffice),
 
-  //Nhận qua cơ quan BHXH
-  socialAgency(2, LocaleKeys.unitInfo_bySocialAgency);
+  // Qua bưu điện
+  socialAgency(1, LocaleKeys.unitInfo_bySocialAgency);
 
   final String receive;
   final int type;
