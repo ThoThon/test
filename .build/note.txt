@@ -1,6 +1,9 @@
 27/06/2025
 - [Appmobile]_Lỗi giao diện tại ô Tìm kiếm - BHW-2514
 - Màn THông tin đơn vị_Sửa giá trị trường Nhận kết quả hồ sơ qua - BHW-2521
+- Lỗi giao diện tại ô Tìm kiếm - BHW-2514
+- Lỗi Focus chuột - BHW-2513
+
 
 26/06/2025
 - Thủ tục 600 -Màn TK1: Lỗi checkbox Người tham gia là chủ hộ - BHW-2500
