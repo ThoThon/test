@@ -284,6 +284,7 @@ extension D02TabWidget on DeclareInfoPage {
           inputFormatters: InputFormatterEnum.textNormal,
           suffixIcon: IconButton(
             onPressed: () {
+              KeyBoard.hide();
               Get.bottomSheet(
                 BottomSheetSearch<PositionModel>(
                   maxLength: 500,
