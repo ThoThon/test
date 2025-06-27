@@ -922,7 +922,7 @@ class UtilWidget {
     );
   }
 
-  static Widget buildTextInput(required List<TextInputFormatter> inputFormatters, {
+  static Widget buildTextInput({
     double? height,
     Color? textColor,
     String? hintText,
