@@ -3,7 +3,8 @@
 - Màn THông tin đơn vị_Sửa giá trị trường Nhận kết quả hồ sơ qua - BHW-2521
 - Lỗi giao diện tại ô Tìm kiếm - BHW-2514
 - Lỗi Focus chuột - BHW-2513
-- Lỗi hiển thị trường bắt buộc Các thông tin chủ hộ trạng thái ban đầu - Màn TK1 - BHW-2517 
+- Lỗi hiển thị trường bắt buộc Các thông tin chủ hộ trạng thái ban đầu - Màn TK1 - BHW-2517
+- Lỗi focus chuột màn đăng ký cấp mã - BHW-2518
 
 
 26/06/2025
