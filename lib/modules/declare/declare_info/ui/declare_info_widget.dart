@@ -377,6 +377,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       hintText: controller.d02Tk1State.birthType.value.pattern,
       inputFormatters: controller.d02Tk1State.birthType.value.inputFormatter,
       onSelectDate: () async {
+        KeyBoard.hide();
         final DateTime? selectedDate;
 
         switch (controller.d02Tk1State.birthType.value) {
