@@ -21,6 +21,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
 
   final String provinceCode;
   final Hospital? selectedHospital;
+  final _isShowButtonClear = false.obs;
 
   @override
   Widget buildWidgets(BuildContext context) {
@@ -86,12 +87,27 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
       borderRadius: const BorderRadius.all(Radius.circular(25)),
       onChanged: (value) {
         controller.keyword.value = TiengViet.parse(value.trim()).toLowerCase();
+        _isShowButtonClear.value = value.isNotEmpty;
       },
       prefixIcon: const Icon(
         Icons.search,
         color: AppColors.primaryColor,
         size: AppDimens.sizeIconMedium,
       ),
+      suffixIcon: Obx(() => Visibility(
+            visible: _isShowButtonClear.value,
+            child: IconButton(
+              onPressed: () {
+                controller.searchTextCtrl.clear();
+                controller.keyword.value = '';
+                _isShowButtonClear.value = false;
+              },
+              icon: const Icon(
+                Icons.clear,
+                color: AppColors.primaryColor,
+              ),
+            ),
+          )),
     ).paddingSymmetric(vertical: AppDimens.paddingSmall);
   }
 

@@ -1,3 +1,6 @@
+27/06/2025
+- [Appmobile]_Lỗi giao diện tại ô Tìm kiếm - BHW-2514
+
 26/06/2025
 - Thủ tục 600 -Màn TK1: Lỗi checkbox Người tham gia là chủ hộ - BHW-2500
 - Màn đăng nhập đang hiển thị làm mờ cột sóng điện thoại, wifi ... trên header - BHW-2417
