@@ -278,6 +278,7 @@ class LocaleKeys {
   static const login_inputUnitCode = 'login_inputUnitCode';
   static const login_inputPassword = 'login_inputPassword';
   static const login_inputTaxCode = 'login_inputTaxCode';
+  static const login_unitCode = 'login_unitCode';
   static const login_inputAccount = 'login_inputAccount';
   static const login_registerForCode = 'login_registerForCode';
   static const login_switchTo = 'login_switchTo';
@@ -1042,6 +1043,7 @@ class Locales {
     'login_inputUnitCode': 'Nhập mã đơn vị',
     'login_inputPassword': 'Nhập mật khẩu',
     'login_inputTaxCode': 'Mã số thuế/ Mã ngân sách',
+    'login_unitCode': 'Mã đơn vị',
     'login_inputAccount': 'Tên đăng nhập',
     'login_registerForCode': 'Đăng ký cấp mã',
     'login_switchTo': 'Đã chuyển sang',

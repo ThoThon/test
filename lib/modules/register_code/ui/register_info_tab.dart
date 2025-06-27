@@ -275,7 +275,7 @@ extension RegisterInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_fileInclude.tr,
       controller: controller.fileIncludeCtrl,
       inputFormatters: InputFormatterEnum.textNormal,
-      isValidate: true,
+      isRequired: true,
       maxLengthInputForm: 500,
     );
   }
@@ -286,7 +286,7 @@ extension RegisterInfoTab on RegisterCodePage {
       labelText: LocaleKeys.registerCode_content.tr,
       controller: controller.contentCtrl,
       inputFormatters: InputFormatterEnum.textNormal,
-      isValidate: true,
+      isRequired: true,
       maxLengthInputForm: 500,
     );
   }

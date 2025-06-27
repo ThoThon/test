@@ -84,6 +84,7 @@ class InputTextModel {
   final InputBorder? focusedErrorBorder;
   final FloatingLabelBehavior? floatingLabelBehavior;
   final Widget? label;
+  final bool isDense;
 
   final AutovalidateMode? autovalidateMode;
 
@@ -133,5 +134,6 @@ class InputTextModel {
     this.autovalidateMode,
     this.floatingLabelBehavior,
     this.label,
+    this.isDense = false,
   });
 }

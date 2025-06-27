@@ -160,10 +160,15 @@ class BuildInputTextState extends State<BuildInputText> {
                 _isShowButtonClear.value = false;
                 widget.inputTextFormModel.onChanged?.call("");
               },
-              child: Icon(
-                Icons.clear,
-                color:
-                    widget.inputTextFormModel.suffixColor ?? AppColors.dsGray1,
+              child: Padding(
+                padding: widget.inputTextFormModel.isDense
+                    ? const EdgeInsets.only(right: 12)
+                    : EdgeInsets.zero,
+                child: Icon(
+                  Icons.clear,
+                  color: widget.inputTextFormModel.suffixColor ??
+                      AppColors.dsGray1,
+                ),
               ),
             ),
           );
@@ -217,6 +222,7 @@ class BuildInputTextState extends State<BuildInputText> {
           }
         },
         decoration: InputDecoration(
+          isDense: widget.inputTextFormModel.isDense,
           label: widget.inputTextFormModel.label,
           floatingLabelBehavior:
               widget.inputTextFormModel.floatingLabelBehavior,
@@ -260,6 +266,8 @@ class BuildInputTextState extends State<BuildInputText> {
               const EdgeInsets.all(AppDimens.paddingSmall),
           suffixIcon:
               widget.inputTextFormModel.showIconClear ? _suffixIcon() : null,
+          suffixIconConstraints:
+              widget.inputTextFormModel.isDense ? const BoxConstraints() : null,
           focusedBorder: widget.inputTextFormModel.focusedBorder ??
               OutlineInputBorder(
                 borderRadius: _radius,

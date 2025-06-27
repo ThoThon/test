@@ -268,6 +268,7 @@
     "inputUnitCode": "Nhập mã đơn vị",
     "inputPassword": "Nhập mật khẩu",
     "inputTaxCode": "Mã số thuế/ Mã ngân sách",
+    "unitCode":"Mã đơn vị",
     "inputAccount": "Tên đăng nhập",
     "registerForCode": "Đăng ký cấp mã",
     "switchTo": "Đã chuyển sang"

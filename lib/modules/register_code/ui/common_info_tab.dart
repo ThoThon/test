@@ -82,7 +82,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_taxCode.tr,
       controller: controller.taxCodeCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.taxCodeNormal,
       maxLengthInputForm: 14,
     );
@@ -93,7 +93,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_unitName.tr,
       controller: controller.unitNameCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 250,
     );
@@ -118,7 +118,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_unitType.tr,
       controller: controller.unitTypeCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
@@ -129,7 +129,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_productIndustry.tr,
       controller: controller.productIndustryCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
     );
@@ -140,7 +140,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_decisionNumber.tr,
       controller: controller.decisionNumberCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
@@ -253,7 +253,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_addressDecision.tr,
       controller: controller.addressDecisionCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
@@ -264,7 +264,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_addressRegisterBusiness.tr,
       controller: controller.addressRegisterBusinessCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
     );
@@ -275,7 +275,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_addressUnit.tr,
       controller: controller.addressUnitCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
     );
@@ -314,7 +314,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_phoneUnit.tr,
       controller: controller.phoneUnitCtrl,
-      isValidate: true,
+      isRequired: true,
       textInputType: TextInputType.number,
       inputFormatters: InputFormatterEnum.phoneNumber,
       maxLengthInputForm: 20,
@@ -326,7 +326,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_emailUnit.tr,
       controller: controller.emailUnitCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.email,
       maxLengthInputForm: 50,
       validator: (value) {
@@ -347,7 +347,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_personTransactionSocial.tr,
       controller: controller.personTransactionBhxhCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
     );
@@ -358,7 +358,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_phoneContact.tr,
       controller: controller.phoneContactCtrl,
-      isValidate: true,
+      isRequired: true,
       textInputType: TextInputType.number,
       inputFormatters: InputFormatterEnum.phoneNumber,
       maxLengthInputForm: 20,
