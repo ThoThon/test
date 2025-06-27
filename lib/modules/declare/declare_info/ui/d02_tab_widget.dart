@@ -269,6 +269,7 @@ extension D02TabWidget on DeclareInfoPage {
       value: controller.d02State.isGenerateTk1Data.value,
       onChanged: (value) {
         controller.d02State.isGenerateTk1Data.value = value;
+        controller.updateHouseholdInfoRequired();
       },
     );
   }
