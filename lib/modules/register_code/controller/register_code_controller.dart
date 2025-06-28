@@ -33,10 +33,14 @@ class RegisterCodeController extends BaseGetxController {
   final decisionNumberCtrl = TextEditingController();
 
   // Ngày lập
-  final setupDateCtrl = TextEditingController();
+  final setupDateCtrl = TextEditingController(
+    text: convertDateToStringSafe(DateTime.now(), PATTERN_1),
+  );
 
   // Ngày đăng ký
-  final registerDateCtrl = TextEditingController();
+  final registerDateCtrl = TextEditingController(
+    text: convertDateToStringSafe(DateTime.now(), PATTERN_1),
+  );
 
   // Nơi cấp quyết định
   final addressDecisionCtrl = TextEditingController();

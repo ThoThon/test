@@ -1,6 +1,7 @@
 28/06/2025
 - [Appmobile]_Sửa lại giao diện màn Đăng ký cấp mã - BHW-2511
 - [AppMobile]_Sửa lại UI màn đăng nhập. - BHW-2507
+- [Appmobile]_Màn đăng ký cấp mã - Trường Ngày lập, Ngày đăng ký: Chỉnh sửa giá trị ban đầu là ngày hiện tại - BHW-2538
 
 27/06/2025
 - [Appmobile]_Lỗi giao diện tại ô Tìm kiếm - BHW-2514
