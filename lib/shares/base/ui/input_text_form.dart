@@ -256,6 +256,8 @@ class BuildInputTextState extends State<BuildInputText> {
                       child: Center(
                         child: SDSImageSvg(
                           widget.inputTextFormModel.iconAssets!,
+                          color: widget.inputTextFormModel.prefixIconColor ??
+                              AppColors.statusRed,
                         ),
                       ),
                     )

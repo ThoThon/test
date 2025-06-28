@@ -13,7 +13,7 @@
 - Lỗi Focus chuột - BHW-2513
 - Lỗi hiển thị trường bắt buộc Các thông tin chủ hộ trạng thái ban đầu - Màn TK1 - BHW-2517
 - Lỗi focus chuột màn đăng ký cấp mã - BHW-2518
-
+- [Appmobile]_Chỉnh sửa giao diện ô tìm kiếm nhâ viên màn D02 - BHW-2515
 
 26/06/2025
 - Thủ tục 600 -Màn TK1: Lỗi checkbox Người tham gia là chủ hộ - BHW-2500
