@@ -28,7 +28,7 @@ class HomePage extends BaseGetWidget<HomeController> {
         children: [
           GridView.count(
             shrinkWrap: true,
-            crossAxisCount: 2,
+            crossAxisCount: Get.context?.isTablet ?? false ? 3 : 2,
             mainAxisSpacing: AppDimens.padding24,
             crossAxisSpacing: AppDimens.padding24,
             physics: const NeverScrollableScrollPhysics(),
