@@ -289,6 +289,7 @@ class LocaleKeys {
   static const login_inputAccount = 'login_inputAccount';
   static const login_registerForCode = 'login_registerForCode';
   static const login_switchTo = 'login_switchTo';
+  static const login_register = 'login_register';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_declare = 'procedureList_declare';
   static const pageBuilder_home = 'pageBuilder_home';
@@ -1098,7 +1099,7 @@ class Locales {
     'login_passwordCannotEmpty': 'Mật khẩu không được bỏ trống',
     'login_forgetPassword': 'Quên mật khẩu?',
     'login_resetPassword': 'Lấy lại mật khẩu',
-    'login_changeAccount': 'Đổi tài khoản',
+    'login_changeAccount': 'Tài khoản khác',
     'login_hello': 'Xin chào,',
     'login_serviceCenter': 'Tổng đài CSKH:',
     'login_phoneNumber': '1800.8000',
@@ -1113,6 +1114,7 @@ class Locales {
     'login_inputAccount': 'Tên đăng nhập',
     'login_registerForCode': 'Đăng ký cấp mã',
     'login_switchTo': 'Đã chuyển sang',
+    'login_register': 'Đăng ký',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_declare': 'Kê khai',
     'pageBuilder_home': 'Trang chủ',
