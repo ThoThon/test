@@ -181,8 +181,8 @@ class LocaleKeys {
   static const unitInfo_oneMonth = 'unitInfo_oneMonth';
   static const unitInfo_threeMonth = 'unitInfo_threeMonth';
   static const unitInfo_sixMonth = 'unitInfo_sixMonth';
-  static const unitInfo_byPostOffice = 'unitInfo_byPostOffice';
   static const unitInfo_bySocialAgency = 'unitInfo_bySocialAgency';
+  static const unitInfo_byPostOffice = 'unitInfo_byPostOffice';
   static const unitInfo_home = 'unitInfo_home';
   static const unitInfo_hasError = 'unitInfo_hasError';
   static const unitInfo_emailContactIsNotEmpty =
@@ -1010,8 +1010,8 @@ class Locales {
     'unitInfo_oneMonth': '1 tháng',
     'unitInfo_threeMonth': '3 tháng',
     'unitInfo_sixMonth': '6 tháng',
-    'unitInfo_byPostOffice': 'Nhận qua bưu điện',
     'unitInfo_bySocialAgency': 'Nhận tại CQBH',
+    'unitInfo_byPostOffice': 'Qua bưu điện',
     'unitInfo_home': 'Trang chủ',
     'unitInfo_hasError': 'Có lỗi xảy ra, vui lòng thử lại',
     'unitInfo_emailContactIsNotEmpty': 'Email liên hệ không được bỏ trống',

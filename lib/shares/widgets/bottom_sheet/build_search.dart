@@ -124,18 +124,19 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
         size: AppDimens.sizeIconMedium,
       ),
       suffixIcon: Obx(() => Visibility(
-            visible: isClear.value,
-            child: IconButton(
-              onPressed: () {
-                textEditingController.clear();
-                isClear.value = false;
-                function();
-              },
-              icon: const Icon(
-                Icons.clear,
-                color: AppColors.primaryColor,
-              ),
-            ).paddingOnly(bottom: AppDimens.paddingSmall),
+          visible: isClear.value,
+          child: IconButton(
+            onPressed: () {
+              textEditingController.clear();
+              isClear.value = false;
+              function();
+            },
+            icon: const Icon(
+              Icons.clear,
+              color: AppColors.primaryColor,
+            ),
+          )
+          // .paddingOnly(bottom: AppDimens.paddingSmall),
           )),
     ).paddingSymmetric(vertical: padding ?? AppDimens.paddingSmall);
   }

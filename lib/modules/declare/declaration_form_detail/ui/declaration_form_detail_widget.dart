@@ -47,6 +47,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       title: LocaleKeys.declarationFormDetail_effectiveDate.tr,
       hintText: PATTERN_1,
       onSelectDate: () async {
+        KeyBoard.hide();
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
                   controller.effectiveDateCtrl.text, PATTERN_1) ??
@@ -90,6 +91,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       title: LocaleKeys.declarationFormDetail_dateOfIssue.tr,
       hintText: PATTERN_1,
       onSelectDate: () async {
+        KeyBoard.hide();
         final selectedDate = await UtilWidget.showDateTimePicker(
           dateTimeInit: convertStringToDateSafe(
                   controller.dateOfIssueCtrl.text, PATTERN_1) ??

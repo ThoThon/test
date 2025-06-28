@@ -28,7 +28,7 @@ extension LoginWidget on LoginPage {
                         sdsSBHeight8,
                         Row(
                           children: [
-                            _buildForgetPassword(),
+                            // _buildForgetPassword(),
                             const Spacer(),
                             controller.isHaveUsername.value
                                 ? _buildChangeAccount()

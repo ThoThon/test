@@ -101,6 +101,7 @@ extension D02TabWidget on DeclareInfoPage {
         hintText: PATTERN_12,
         isRequired: controller.isToDateRequired,
         onSelectDate: () async {
+          KeyBoard.hide();
           final selectedDate = await UtilWidget.showPeriodDatePicker(
             dateTime: convertStringToDateSafe(
               controller.d02State.toDateTextCtrl.text,
@@ -163,6 +164,7 @@ extension D02TabWidget on DeclareInfoPage {
         isRequired: controller.isFromDateRequired,
         inputFormatters: InputFormatterEnum.dateMonthYear,
         onSelectDate: () async {
+          KeyBoard.hide();
           final selectedDate = await UtilWidget.showPeriodDatePicker(
             dateTime: convertStringToDateSafe(
               controller.d02State.fromDateTextCtrl.text,
@@ -269,6 +271,7 @@ extension D02TabWidget on DeclareInfoPage {
       value: controller.d02State.isGenerateTk1Data.value,
       onChanged: (value) {
         controller.d02State.isGenerateTk1Data.value = value;
+        controller.updateHouseholdInfoRequired();
       },
     );
   }

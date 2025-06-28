@@ -1,3 +1,12 @@
+27/06/2025
+- [Appmobile]_Lỗi giao diện tại ô Tìm kiếm - BHW-2514
+- Màn THông tin đơn vị_Sửa giá trị trường Nhận kết quả hồ sơ qua - BHW-2521
+- Lỗi giao diện tại ô Tìm kiếm - BHW-2514
+- Lỗi Focus chuột - BHW-2513
+- Lỗi hiển thị trường bắt buộc Các thông tin chủ hộ trạng thái ban đầu - Màn TK1 - BHW-2517
+- Lỗi focus chuột màn đăng ký cấp mã - BHW-2518
+
+
 26/06/2025
 - Thủ tục 600 -Màn TK1: Lỗi checkbox Người tham gia là chủ hộ - BHW-2500
 - Màn đăng nhập đang hiển thị làm mờ cột sóng điện thoại, wifi ... trên header - BHW-2417
