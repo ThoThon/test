@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/src.dart';
 
+// Dùng thay thế cho BuildInputTextWithLabel
 class CardInputTextFormWithLabel extends StatelessWidget {
   final String labelText;
   final TextStyle? textStyle;
@@ -41,7 +42,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
         Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.vertical(
-              top: Radius.circular(AppDimens.radius8),
+              top: Radius.circular(AppDimens.radius10),
             ),
             color: AppColors.basicWhite,
           ),

@@ -10,7 +10,7 @@
     "saveDraft": "Lưu nháp",
     "cancel": "Hủy bỏ",
     "close": "Đóng",
-    "select":"--Chọn--"
+    "select": "--Chọn--"
   },
   "dialog": {
     "close": "Đóng",
@@ -49,7 +49,7 @@
     "signatureTimeOut": "Hết thời gian ký số\nVui lòng thực hiện lại",
     "cancelRequest": "Hủy yêu cầu",
     "confirmSignatureMySign": "Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian",
-    "sendRequestSignature":"Gửi yêu cầu ký thành công"
+    "sendRequestSignature": "Gửi yêu cầu ký thành công"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -264,7 +264,7 @@
     "passwordCannotEmpty": "Mật khẩu không được bỏ trống",
     "forgetPassword": "Quên mật khẩu?",
     "resetPassword": "Lấy lại mật khẩu",
-    "changeAccount": "Đổi tài khoản",
+    "changeAccount": "Tài khoản khác",
     "hello": "Xin chào,",
     "serviceCenter": "Tổng đài CSKH:",
     "phoneNumber": "1800.8000",
@@ -278,7 +278,8 @@
     "unitCode": "Mã đơn vị",
     "inputAccount": "Tên đăng nhập",
     "registerForCode": "Đăng ký cấp mã",
-    "switchTo": "Đã chuyển sang"
+    "switchTo": "Đã chuyển sang",
+    "register": "Đăng ký"
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",

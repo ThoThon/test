@@ -1,5 +1,7 @@
 import 'package:v_bhxh/modules/src.dart';
 
+
+// Dùng thay thế cho UtilWidgets.buildDropDownWithLabel2
 class CardDropdownWithLabel<T> extends StatelessWidget {
   final String labelText;
   final TextStyle? textStyle;

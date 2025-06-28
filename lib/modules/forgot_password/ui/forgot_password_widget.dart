@@ -22,7 +22,7 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
                   UtilWidget.buildSolidButton(
                     title: LocaleKeys.login_resetPassword.tr,
                     height: AppDimens.btnLargeFigma,
-                    textStyle: AppTextStyle.font16Re
+                    textStyle: AppTextStyle.font14Re
                         .copyWith(color: AppColors.basicWhite),
                     borderRadius: AppDimens.radius30,
                     onPressed: () {
@@ -56,10 +56,11 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
       hintText: LocaleKeys.login_unitCode.tr,
       maxLengthInputForm: 7,
       isShowCounterText: false,
+      borderRadius: AppDimens.radius6,
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Mã đơn vị không được bỏ trống";
+          return LocaleKeys.login_unitCodeCannotEmpty.tr;
         }
         return null;
       },
@@ -72,10 +73,11 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
       hintText: LocaleKeys.login_inputTaxCode.tr,
       maxLengthInputForm: 20,
       isShowCounterText: false,
+      borderRadius: AppDimens.radius6,
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Mã số thuế/Mã ngân sách không được bỏ trống";
+          return LocaleKeys.login_taxCodeCannotEmpty.tr;
         }
         return null;
       },
