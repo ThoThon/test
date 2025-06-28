@@ -9,7 +9,8 @@
     "save": "Lưu",
     "saveDraft": "Lưu nháp",
     "cancel": "Hủy bỏ",
-    "close": "Đóng"
+    "close": "Đóng",
+    "select":"--Chọn--"
   },
   "dialog": {
     "close": "Đóng",
@@ -24,7 +25,7 @@
     "success": "Thành công",
     "fail": "Thất bại",
     "checkEmail": "Vui lòng kiểm tra lại email đã đăng ký",
-    "processTime": "(Thời gian xử lý từ 3-5 ngày làm việc).",
+    "processTime": "Thời gian làm việc từ 3-5 ngày",
     "registerFail": "Đăng ký thất bại, vui lòng thử lại",
     "exit": "Thoát",
     "history": "Lịch sử",
@@ -40,9 +41,15 @@
     "fileSendToSignature": "Đã gửi hồ sơ tới hệ thống ký số, vui lòng đăng nhập MySign để tiến hành phê duyệt.",
     "submitDeclareToSuccess": "Gửi tờ khai lên cổng tiếp nhận của BHXH thành công.",
     "submitRegisterToSuccess": "Gửi hồ sơ lên cổng tiếp nhận của BHXH thành công.",
-    "submitRegisterToSuccessMessage": "Vui lòng kiểm tra email đã đăng ký\n(Thời gian xử lý 3 - 5 ngày làm việc)",
+    "submitRegisterToSuccessMessage": "Vui lòng kiểm tra email đã đăng ký\nThời gian làm việc từ 3-5 ngày",
     "resend": "Gửi lại",
-    "cannotConnectMySign": "Không thể kết nối tới hệ thống ký số."
+    "cannotConnectMySign": "Không thể kết nối tới hệ thống ký số.",
+    "sendFileSuccess": "Gửi hồ sơ thành công",
+    "sendFileFail": "Gửi hồ sơ thất bại",
+    "signatureTimeOut": "Hết thời gian ký số\nVui lòng thực hiện lại",
+    "cancelRequest": "Hủy yêu cầu",
+    "confirmSignatureMySign": "Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian",
+    "sendRequestSignature":"Gửi yêu cầu ký thành công"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -268,6 +275,7 @@
     "inputUnitCode": "Nhập mã đơn vị",
     "inputPassword": "Nhập mật khẩu",
     "inputTaxCode": "Mã số thuế/ Mã ngân sách",
+    "unitCode": "Mã đơn vị",
     "inputAccount": "Tên đăng nhập",
     "registerForCode": "Đăng ký cấp mã",
     "switchTo": "Đã chuyển sang"
@@ -635,7 +643,7 @@
     "methodPayment": "Phương thức đóng",
     "fileInclude": "Hồ sơ kèm theo",
     "content": "Nội dung",
-    "attachment": "Tệp đính kèm",
+    "downloadAttachment": "Tải tệp đính kèm",
     "format": "Định dạng jpg, png,...",
     "selectedObjectType": "Chọn loại đối tượng",
     "objectTypeCannotEmpty": "Loại đối tượng không được để trống",
@@ -648,6 +656,33 @@
     "provinceReceiveIsEmpty": "Chưa chọn nơi nhận tỉnh",
     "districtReceiveIsEmpty": "Chưa chọn nơi nhận huyện",
     "imageFromCamera": "Chọn ảnh từ camera",
-    "imageFromLibrary": "Chọn ảnh từ điện thoại"
+    "imageFromLibrary": "Chọn ảnh từ điện thoại",
+    "continue": "Tiếp tục",
+    "back": "Quay lại",
+    "register": "Đăng ký",
+    "taxCodeCannotEmpty": "Mã số thuế không được để trống",
+    "unitCodeCannotEmpty": "Mã đơn vị không được để trống",
+    "unitNameCannotEmpty": "Tên đơn vị không được để trống",
+    "unitTypeCannotEmpty": "Loại hình đơn vị không được để trống",
+    "productIndustryCannotEmpty": "Ngành nghề sản xuất không được để trống",
+    "decisionNumberCannotEmpty": "Số quyết định không được để trống",
+    "addressDecisionCannotEmpty": "Nơi cấp quyết định không được để trống",
+    "addressRegisterBusinessCannotEmpty": "Địa chỉ đăng ký kinh doanh không được để trống",
+    "addressUnitCannotEmpty": "Địa chỉ đơn vị không được để trống",
+    "contactInfoCannotEmpty": "Thông tin liên hệ không được để trống",
+    "phoneUnitCannotEmpty": "Điện thoại đơn vị không được để trống",
+    "emailUnitCannotEmpty": "Email đơn vị không được để trống",
+    "personTransactionSocialCannotEmpty": "Người giao dịch BHXH không được để trống",
+    "phoneContactCannotEmpty": "Điện thoại liên hệ không được để trống",
+    "selectSocialAgencyCannotEmpty": "Chọn cơ quan BHXH không được để trống",
+    "selectDistrictReceiveCannotEmpty": "Chọn nơi nhận huyện không được để trống",
+    "registerResultCannotEmpty": "Đăng ký nhận kết quả không được để trống",
+    "otherInfoCannotEmpty": "Thông tin khác không được để trống",
+    "methodReceiveResultCannotEmpty": "Phương thức nhận kết quả không được để trống",
+    "methodPaymentCannotEmpty": "Phương thức đóng không được để trống",
+    "fileIncludeCannotEmpty": "Hồ sơ kèm theo không được để trống",
+    "contentCannotEmpty": "Nội dung không được để trống",
+    "contentDownloadAttachment": "[JPG, PNG,...]",
+    "signature": "Chữ ký số"
   }
 }

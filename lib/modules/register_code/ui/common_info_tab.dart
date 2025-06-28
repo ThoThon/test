@@ -11,12 +11,21 @@ extension CommonInfoTab on RegisterCodePage {
               child: Column(
                 children: [
                   _buildUnitInfoCard(),
-                  sdsSBHeight20,
+                  sdsSBHeight12,
                   _buildContactInfoCard(),
                 ],
               ),
             ),
           ),
+          sdsSBHeight12,
+          UtilWidget.buildSolidButton(
+              title: LocaleKeys.registerCode_continue.tr,
+              onPressed: () {
+                controller.onTabChanged(RegisterCodeTabEnum.register_info);
+              },
+              borderRadius: AppDimens.radius30,
+              textStyle:
+                  AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite)),
         ],
       ),
     );
@@ -55,12 +64,8 @@ extension CommonInfoTab on RegisterCodePage {
         _buildInputDecisionNumber(),
         sdsSBHeight12,
 
-        // Ngày lập
-        _buildSelectDateSetup(),
-        sdsSBHeight12,
-
-        // Ngày đăng ký
-        _buildSelectDateRegister(),
+        // Ngày lập và ngày đăng ký
+        _buildDoubleDate(),
         sdsSBHeight12,
 
         // Nơi cấp quyết định
@@ -82,9 +87,16 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_taxCode.tr,
       controller: controller.taxCodeCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.taxCodeNormal,
       maxLengthInputForm: 14,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_taxCodeCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -93,9 +105,16 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_unitName.tr,
       controller: controller.unitNameCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 250,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_unitCodeCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -103,12 +122,18 @@ extension CommonInfoTab on RegisterCodePage {
   CardDropdownWithLabel _buildSelectObjectType() {
     return CardDropdownWithLabel(
       labelText: LocaleKeys.registerCode_objectType.tr,
-      isValidate: true,
+      isRequired: true,
       items: AppData.instance.objectType.toList(),
       display: (object) => object.text,
       selectedItem: controller.selectedObject.value,
       onChanged: (value) {
         controller.selectedObject.value = value;
+      },
+      validator: (value) {
+        if (value == null) {
+          return LocaleKeys.registerCode_objectTypeCannotEmpty.tr;
+        }
+        return null;
       },
     );
   }
@@ -118,9 +143,16 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_unitType.tr,
       controller: controller.unitTypeCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_unitTypeCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -129,9 +161,16 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_productIndustry.tr,
       controller: controller.productIndustryCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_productIndustryCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -140,9 +179,16 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_decisionNumber.tr,
       controller: controller.decisionNumberCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_decisionNumberCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -153,7 +199,7 @@ extension CommonInfoTab on RegisterCodePage {
       inputFormatters: InputFormatterEnum.dateFullBirthDay,
       labelText: LocaleKeys.registerCode_setupDate.tr,
       controller: controller.setupDateCtrl,
-      isValidate: true,
+      isRequired: true,
       onSelectDate: () async {
         KeyBoard.hide();
         final selectedDate = await UtilWidget.showDateTimePicker(
@@ -205,7 +251,7 @@ extension CommonInfoTab on RegisterCodePage {
       inputFormatters: InputFormatterEnum.dateFullBirthDay,
       labelText: LocaleKeys.registerCode_registerDate.tr,
       controller: controller.registerDateCtrl,
-      isValidate: true,
+      isRequired: true,
       onSelectDate: () async {
         KeyBoard.hide();
         final selectedDate = await UtilWidget.showDateTimePicker(
@@ -255,9 +301,16 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_addressDecision.tr,
       controller: controller.addressDecisionCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_addressDecisionCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -266,9 +319,16 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_addressRegisterBusiness.tr,
       controller: controller.addressRegisterBusinessCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_addressRegisterBusinessCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -277,9 +337,16 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_addressUnit.tr,
       controller: controller.addressUnitCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_addressUnitCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -291,7 +358,7 @@ extension CommonInfoTab on RegisterCodePage {
           LocaleKeys.registerCode_contactInfo.tr,
           style: AppTextStyle.font16Bo,
         ),
-        sdsSBHeight8,
+        sdsSBHeight12,
 
         // Điện thoại đơn vị
         _buildInputPhoneUnit(),
@@ -316,10 +383,17 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_phoneUnit.tr,
       controller: controller.phoneUnitCtrl,
-      isValidate: true,
+      isRequired: true,
       textInputType: TextInputType.number,
       inputFormatters: InputFormatterEnum.phoneNumber,
       maxLengthInputForm: 20,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_phoneUnitCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -328,7 +402,7 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_emailUnit.tr,
       controller: controller.emailUnitCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.email,
       maxLengthInputForm: 50,
       validator: (value) {
@@ -349,9 +423,16 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_personTransactionSocial.tr,
       controller: controller.personTransactionBhxhCtrl,
-      isValidate: true,
+      isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 100,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_personTransactionSocialCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -360,10 +441,36 @@ extension CommonInfoTab on RegisterCodePage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.registerCode_phoneContact.tr,
       controller: controller.phoneContactCtrl,
-      isValidate: true,
+      isRequired: true,
       textInputType: TextInputType.number,
       inputFormatters: InputFormatterEnum.phoneNumber,
       maxLengthInputForm: 20,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_phoneContactCannotEmpty.tr;
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildDoubleDate() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: IntrinsicHeight(
+            child: _buildSelectDateSetup(),
+          ),
+        ),
+        sdsSBWidth12,
+        Expanded(
+          child: IntrinsicHeight(
+            child: _buildSelectDateRegister(),
+          ),
+        ),
+      ],
     );
   }
 }

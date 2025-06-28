@@ -183,14 +183,17 @@ class UtilWidget {
     double? height,
     double? borderRadius,
     TextStyle? textStyle,
+    Color? backgroundColor,
+    BorderSide? side,
   }) {
     return SizedBox(
       width: width,
       height: height ?? AppDimens.btnDefaultFigma,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: backgroundColor ?? AppColors.primaryColor,
           shape: RoundedRectangleBorder(
+            side: side ?? BorderSide.none,
             borderRadius:
                 BorderRadius.circular(borderRadius ?? AppDimens.radius4),
           ),
@@ -743,6 +746,120 @@ class UtilWidget {
                             Icons.arrow_drop_down,
                             color: AppColors.dsGray3,
                           ),
+                  ],
+                ),
+              ),
+            ),
+            if (state.hasError)
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: AppDimens.paddingSmallest,
+                  left: AppDimens.paddingVerySmall,
+                ),
+                child: SDSBuildText(
+                  state.errorText!,
+                  style: AppTextStyle.font12Re.copyWith(
+                    color: AppColors.statusRed,
+                  ),
+                ),
+              ),
+          ],
+        ).paddingOnly(bottom: AppDimens.paddingSmall);
+      },
+    );
+  }
+
+  static Widget buildCardBottomSheetSelect2<T>({
+    required String label,
+    bool isRequired = true,
+    required Function(ValueChanged<T> didChange) funcSelect,
+    required T? selectedItem,
+    required String Function(T) display,
+    String? Function(T?)? validator,
+    VoidCallback? onTapClear,
+    bool enableClearIcon = false,
+    TextStyle? textStyleLabel,
+  }) {
+    return FormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: isRequired ? validator : null,
+      initialValue: selectedItem,
+      builder: (FormFieldState<T> state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () {
+                KeyBoard.hide();
+                funcSelect(state.didChange);
+              },
+              child: Container(
+                padding: const EdgeInsets.only(
+                  bottom: AppDimens.paddingVerySmall,
+                  left: AppDimens.defaultPadding,
+                  right: AppDimens.defaultPadding,
+                  top: AppDimens.paddingVerySmall,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.colorWhite,
+                  borderRadius: BorderRadius.circular(AppDimens.radius10),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              SDSBuildText(
+                                label,
+                                style: textStyleLabel ??
+                                    AppTextStyle.font14Re.copyWith(
+                                      color: AppColors.textColorGrey,
+                                    ),
+                              ),
+                              Visibility(
+                                visible: isRequired,
+                                child: SDSBuildText(
+                                  ' *',
+                                  style: AppTextStyle.font12Re.copyWith(
+                                    color: AppColors.statusRed,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          sdsSBHeight8,
+                          Row(
+                            children: [
+                              Expanded(
+                                child: SDSBuildText(
+                                  selectedItem != null
+                                      ? display(selectedItem)
+                                      : LocaleKeys.app_select.tr,
+                                  style: AppTextStyle.font14Re.copyWith(
+                                    color: selectedItem != null
+                                        ? AppColors.colorBlack
+                                        : AppColors.textColorGrey,
+                                  ),
+                                ),
+                              ),
+                              selectedItem != null && enableClearIcon
+                                  ? GestureDetector(
+                                      onTap: onTapClear,
+                                      child: const Icon(Icons.close),
+                                    )
+                                  : SDSImageSvg(
+                                      Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
+                                      height: AppDimens.sizeIconMedium,
+                                      width: AppDimens.sizeIconMedium,
+                                    ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

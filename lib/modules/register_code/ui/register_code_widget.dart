@@ -3,13 +3,14 @@ part of 'register_code_page.dart';
 extension RegisterCodeWidget on RegisterCodePage {
   Widget _buildBody() {
     return SDSSafearea(
-      child: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
-        child: Column(
-          children: [
-            _buildTabs(),
-            Expanded(
+      child: Column(
+        children: [
+          _buildTabs(),
+          sdsSBHeight12,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppDimens.defaultPadding),
               child: Obx(
                 () {
                   return IndexedStack(
@@ -22,100 +23,118 @@ extension RegisterCodeWidget on RegisterCodePage {
                 },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: AppDimens.defaultPadding),
-              child: Obx(
-                () {
-                  final String title;
-                  switch (controller.currentTab.value) {
-                    case RegisterCodeTabEnum.common_info:
-                      title = 'Tiếp tục';
-                    case RegisterCodeTabEnum.register_info:
-                      title = 'Đăng ký';
-                  }
-                  return UtilWidget.buildSolidButton(
-                    title: title,
-                    onPressed: controller.registerCodeFirst,
-                  );
-                },
-              ),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildTabs() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: AppDimens.defaultPadding,
-        // horizontal: AppDimens.defaultPadding,
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.basicWhite,
+        borderRadius: BorderRadius.circular(AppDimens.radius8),
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.basicWhite,
-          borderRadius: BorderRadius.circular(AppDimens.radius8),
-        ),
-        child: Obx(
-          () {
-            return Row(
-              children: [
-                Expanded(
-                  child: _buildTabButton(
-                    title: LocaleKeys.registerCode_commonInfo.tr,
-                    // enabled: controller.enableTk1Tab,
-                    isSelected: controller.currentTab.value ==
-                        RegisterCodeTabEnum.common_info,
-                    onTap: () {
-                      controller.onTabChanged(RegisterCodeTabEnum.common_info);
-                    },
-                  ),
+      child: Obx(
+        () {
+          return Row(
+            children: [
+              Expanded(
+                child: _buildTabButton(
+                  step: '1',
+                  title: LocaleKeys.registerCode_commonInfo.tr,
+                  isSelected: controller.currentTab.value ==
+                      RegisterCodeTabEnum.common_info,
+                  onTap: () {
+                    controller.onTabChanged(RegisterCodeTabEnum.common_info);
+                  },
                 ),
-                Expanded(
-                  child: _buildTabButton(
-                    title: LocaleKeys.registerCode_registerInfo.tr,
-                    isSelected: controller.currentTab.value ==
-                        RegisterCodeTabEnum.register_info,
-                    onTap: () {
-                      controller
-                          .onTabChanged(RegisterCodeTabEnum.register_info);
-                    },
-                  ),
+              ),
+              SDSImageSvg(
+                Assets.ASSETS_ICONS_IC_ARROW_RIGHT_SVG,
+                color: AppColors.colorBlack,
+              ).paddingOnly(bottom: AppDimens.defaultPadding),
+              Expanded(
+                child: _buildTabButton(
+                  step: '2',
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  title: LocaleKeys.registerCode_registerInfo.tr,
+                  isSelected: controller.currentTab.value ==
+                      RegisterCodeTabEnum.register_info,
+                  onTap: () {
+                    controller.onTabChanged(RegisterCodeTabEnum.register_info);
+                  },
                 ),
-              ],
-            );
-          },
-        ),
+              ),
+            ],
+          ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
+        },
       ),
     );
   }
 
   _buildTabButton({
     required String title,
-    required isSelected,
+    required bool isSelected,
     VoidCallback? onTap,
+    required String step,
+    MainAxisAlignment? mainAxisAlignment,
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: isSelected ? AppColors.primaryColor : Colors.transparent,
-        borderRadius: BorderRadius.circular(AppDimens.radius8),
-        border: isSelected
-            ? Border.all(width: 1, color: AppColors.primaryColor)
-            : null,
+        color: AppColors.basicWhite,
+        border: Border(
+          bottom: BorderSide(
+            width: 4,
+            color: isSelected ? AppColors.primaryColor : AppColors.basicWhite,
+          ),
+        ),
       ),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppDimens.radius30),
         child: Center(
-          child: SDSBuildText(
-            title,
-            style: isSelected
-                ? AppTextStyle.font14Bo.copyWith(color: AppColors.basicWhite)
-                : AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
-          ).paddingSymmetric(
-            horizontal: AppDimens.paddingSmall,
-            vertical: AppDimens.paddingVerySmall,
+          child: Row(
+            mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+            children: [
+              Container(
+                height: 28,
+                width: 28,
+                decoration: BoxDecoration(
+                  color: isSelected
+                      ? AppColors.primaryColor
+                      : AppColors.basicWhite,
+                  borderRadius: BorderRadius.circular(AppDimens.radius30),
+                  border: Border.all(
+                    width: 1,
+                    color: isSelected
+                        ? AppColors.primaryColor
+                        : AppColors.colorBlack,
+                  ),
+                ),
+                child: Center(
+                  child: SDSBuildText(
+                    step,
+                    style: AppTextStyle.font14Re.copyWith(
+                      color: isSelected
+                          ? AppColors.basicWhite
+                          : AppColors.colorBlack,
+                    ),
+                  ),
+                ),
+              ),
+              sdsSBWidth4,
+              SDSBuildText(
+                title,
+                style: AppTextStyle.font14Re.copyWith(
+                  color: isSelected
+                      ? AppColors.primaryColor
+                      : AppColors.colorBlack,
+                ),
+              ),
+            ],
+          ).paddingOnly(
+            bottom: AppDimens.paddingSmall,
           ),
         ),
       ),

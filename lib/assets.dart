@@ -143,6 +143,10 @@ class Assets {
   static String get ASSETS_ICONS_IC_IMPORT_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_import.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG.preview}
+  static String get ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_lookup_my_sign.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_NATION_SVG.preview}
   static String get ASSETS_ICONS_IC_NATION_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_nation.svg';
@@ -182,6 +186,10 @@ class Assets {
   /// {@macro assets_generator.ASSETS_ICONS_IC_START_DAY_SVG.preview}
   static String get ASSETS_ICONS_IC_START_DAY_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_start_day.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_UP_FILE_SVG.preview}
+  static String get ASSETS_ICONS_IC_UP_FILE_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_up_file.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_USER_SVG.preview}
   static String get ASSETS_ICONS_IC_USER_SVG =>
@@ -363,6 +371,9 @@ final List<String> assetsArray = <String>[
   /// {@macro assets_generator.ASSETS_ICONS_IC_IMPORT_SVG.preview}
   Assets.ASSETS_ICONS_IC_IMPORT_SVG,
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG.preview}
+  Assets.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG,
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_NATION_SVG.preview}
   Assets.ASSETS_ICONS_IC_NATION_SVG,
 
@@ -392,6 +403,9 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_START_DAY_SVG.preview}
   Assets.ASSETS_ICONS_IC_START_DAY_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_UP_FILE_SVG.preview}
+  Assets.ASSETS_ICONS_IC_UP_FILE_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_USER_SVG.preview}
   Assets.ASSETS_ICONS_IC_USER_SVG,
