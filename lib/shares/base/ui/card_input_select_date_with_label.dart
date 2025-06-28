@@ -1,6 +1,7 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:v_bhxh/modules/src.dart';
 
+// Dùng thay thế cho UtilWidgets.buildInputSelectDate
 class CardInputSelectDateWithLabel extends StatelessWidget {
   final String labelText;
   final TextStyle? textStyle;

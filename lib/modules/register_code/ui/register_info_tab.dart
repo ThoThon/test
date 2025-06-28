@@ -13,7 +13,6 @@ extension RegisterInfoTab on RegisterCodePage {
                   _buildBhxhInfoCard(),
                   sdsSBHeight12,
                   _buildOtherInfoCard(),
-                  sdsSBHeight12,
                   _buidHideImage(),
                   sdsSBHeight12,
                   _buildSelectUploadFile(),
@@ -607,56 +606,57 @@ extension RegisterInfoTab on RegisterCodePage {
         if (controller.listImage.isEmpty) {
           return const SizedBox.shrink();
         }
-        return Container(
-          decoration: BoxDecoration(
-            color: AppColors.basicWhite,
-            borderRadius: BorderRadius.circular(AppDimens.radius10),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: List.generate(
-              controller.listImage.length,
-              (index) {
-                final imageAttach = controller.listImage[index];
-                return Row(
-                  children: [
-                    Image.file(
-                      File(imageAttach),
-                      height: 60,
-                      width: 60,
-                      fit: BoxFit.cover,
-                    ),
-                    sdsSBWidth8,
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SDSBuildText(
-                            controller.getFileName(imageAttach),
-                            maxLines: 2,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      onPressed: () {
-                        controller.deleteImage(index);
-                      },
-                      icon: SDSImageSvg(
-                        Assets.ASSETS_ICONS_IC_REMOVE_SVG,
-                        color: AppColors.colorBlack,
-                        width: AppDimens.sizeIconMedium,
-                        height: AppDimens.sizeIconMedium,
-                      ),
-                    ),
-                  ],
-                ).paddingSymmetric(vertical: AppDimens.paddingSmall);
-              },
+        return Padding(
+          padding: const EdgeInsets.only(top: AppDimens.paddingSmall),
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.basicWhite,
+              borderRadius: BorderRadius.circular(AppDimens.radius10),
             ),
-          ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
-        ).paddingOnly(
-          top: AppDimens.paddingVerySmall,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: List.generate(
+                controller.listImage.length,
+                (index) {
+                  final imageAttach = controller.listImage[index];
+                  return Row(
+                    children: [
+                      Image.file(
+                        File(imageAttach),
+                        height: 60,
+                        width: 60,
+                        fit: BoxFit.cover,
+                      ),
+                      sdsSBWidth8,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SDSBuildText(
+                              controller.getFileName(imageAttach),
+                              maxLines: 2,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () {
+                          controller.deleteImage(index);
+                        },
+                        icon: SDSImageSvg(
+                          Assets.ASSETS_ICONS_IC_REMOVE_SVG,
+                          color: AppColors.colorBlack,
+                          width: AppDimens.sizeIconMedium,
+                          height: AppDimens.sizeIconMedium,
+                        ),
+                      ),
+                    ],
+                  ).paddingSymmetric(vertical: AppDimens.paddingSmall);
+                },
+              ),
+            ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
+          ),
         );
       },
     );
