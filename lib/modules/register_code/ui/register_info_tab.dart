@@ -11,19 +11,22 @@ extension RegisterInfoTab on RegisterCodePage {
               child: Column(
                 children: [
                   _buildBhxhInfoCard(),
-                  sdsSBHeight20,
+                  sdsSBHeight12,
                   _buildOtherInfoCard(),
                   sdsSBHeight12,
-                  // Ô input nhập username My Sign
-                  _buildInputUsernameMySign(),
-                  _buildCardSignatureInfo(),
-                  sdsSBHeight12,
-                  _buildButtonPickFile(),
                   _buidHideImage(),
+                  sdsSBHeight12,
+                  _buildSelectUploadFile(),
+                  sdsSBHeight12,
+                  _buildSingatureInfo(),
+                  _buildCardSignatureInfo(),
                 ],
               ),
             ),
           ),
+          sdsSBHeight12,
+          // Button "Quay lại" và "Đăng ký"
+          _buildDoubleButton(),
         ],
       ),
     );
@@ -37,7 +40,7 @@ extension RegisterInfoTab on RegisterCodePage {
           LocaleKeys.registerCode_socialInfo.tr,
           style: AppTextStyle.font16Bo,
         ),
-        sdsSBHeight8,
+        sdsSBHeight12,
         // Cơ quan BHXH
         _buildSelectBhxhAgency(),
 
@@ -58,7 +61,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Cơ quan BHXH
   Widget _buildSelectBhxhAgency() {
-    return UtilWidget.buildCardBottomSheetSelect(
+    return UtilWidget.buildCardBottomSheetSelect2(
       label: LocaleKeys.registerCode_socialSecurityAgency.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
@@ -90,7 +93,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Nơi nhận tỉnh
   Widget _buildSelectProvinceReceive() {
-    return UtilWidget.buildCardBottomSheetSelect(
+    return UtilWidget.buildCardBottomSheetSelect2(
       label: LocaleKeys.registerCode_provinceReceive.tr,
       funcSelect: (didChange) {
         Get.bottomSheet(
@@ -122,7 +125,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Nơi nhận huyện
   Widget _buildSelectDistrictReceive() {
-    return UtilWidget.buildCardBottomSheetSelect(
+    return UtilWidget.buildCardBottomSheetSelect2(
       label: LocaleKeys.registerCode_districtReceive.tr,
       funcSelect: (didChange) async {
         final province = controller.provinceReceive.value;
@@ -158,7 +161,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Nơi nhận xã
   Widget _buildSelectWardReceive() {
-    return UtilWidget.buildCardBottomSheetSelect(
+    return UtilWidget.buildCardBottomSheetSelect2(
       label: LocaleKeys.registerCode_wardReceive.tr,
       funcSelect: (didChange) async {
         final province = controller.provinceReceive.value;
@@ -213,7 +216,7 @@ extension RegisterInfoTab on RegisterCodePage {
       },
       validator: (value) {
         if (value == null) {
-          return "Đăng ký nhận kết quả không được bỏ trống";
+          return LocaleKeys.registerCode_registerResultCannotEmpty.tr;
         }
         return null;
       },
@@ -228,7 +231,7 @@ extension RegisterInfoTab on RegisterCodePage {
           LocaleKeys.registerCode_otherInfo.tr,
           style: AppTextStyle.font16Bo,
         ),
-        sdsSBHeight8,
+        sdsSBHeight12,
         // Phương thức nhận kết quả
         _buildSelectMethodResult(),
         sdsSBHeight12,
@@ -260,7 +263,7 @@ extension RegisterInfoTab on RegisterCodePage {
       },
       validator: (value) {
         if (value == null) {
-          return "Phương thức nhận kết quả không được bỏ trống";
+          return LocaleKeys.registerCode_methodReceiveResultCannotEmpty.tr;
         }
         return null;
       },
@@ -280,7 +283,7 @@ extension RegisterInfoTab on RegisterCodePage {
       },
       validator: (value) {
         if (value == null) {
-          return "Phương thức đóng không được bỏ trống";
+          return LocaleKeys.registerCode_methodPaymentCannotEmpty.tr;
         }
         return null;
       },
@@ -298,7 +301,7 @@ extension RegisterInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Hồ sơ kèm theo không được bỏ trống";
+          return LocaleKeys.registerCode_fileIncludeCannotEmpty.tr;
         }
         return null;
       },
@@ -316,146 +319,167 @@ extension RegisterInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Nội dung không được bỏ trống";
+          return LocaleKeys.registerCode_contentCannotEmpty.tr;
         }
         return null;
       },
     );
   }
 
-  Widget _buildInputUsernameMySign() {
-    return Row(
+  Widget _buildSingatureInfo() {
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          child: BuildInputText(
-            InputTextModel(
-              controller: controller.usernameMySignCtrl,
-              autovalidateMode: AutovalidateMode.always,
-              hintText: LocaleKeys.registerService_inputMySignUsername.tr,
-              validator: (value) {
-                if (value.isNullOrEmpty) {
-                  return LocaleKeys
-                      .registerService_userNameMySignCannotEmpty.tr;
-                }
-                return null;
-              },
-            ),
-          ),
+        SDSBuildText(
+          LocaleKeys.registerCode_signature.tr,
+          style: AppTextStyle.font16Bo,
         ),
-        sdsSBWidth8,
-        _buildButtonGetListCert(),
+        sdsSBHeight12,
+        // Ô input nhập username My Sign
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: CardInputTextForm(
+                controller: controller.usernameMySignCtrl,
+                hintText: LocaleKeys.registerService_inputMySignUsername.tr,
+                maxLengthInputForm: 50,
+                isShowCounterText: false,
+                onChanged: (value) {
+                  controller.updateStateBtnSearchCert();
+                },
+                validator: (value) {
+                  final trimmedValue = value?.trim();
+                  if (trimmedValue == null || trimmedValue.isEmpty) {
+                    return LocaleKeys
+                        .registerService_userNameMySignCannotEmpty.tr;
+                  }
+                  return null;
+                },
+              ),
+            ),
+            sdsSBWidth12,
+            _buildButtonGetListCert(),
+          ],
+        ),
       ],
     );
   }
 
   Widget _buildButtonGetListCert() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ElevatedButton(
+    final isEnableBtn = controller.isEnableBtnSearchCert.value;
+    return IntrinsicHeight(
+      child: SizedBox(
+        width: 50,
+        child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppDimens.radius12),
             ),
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.defaultPadding,
-            ),
+            padding: EdgeInsets.zero,
           ),
-          onPressed: () {
-            controller.getListCertificate();
-          },
-          child: const Icon(
-            Icons.send,
-            color: AppColors.basicWhite,
+          onPressed: isEnableBtn
+              ? () {
+                  controller.getListCertificate();
+                }
+              : null,
+          child: Center(
+            child: SDSImageSvg(Assets.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG),
           ),
         ),
-      ],
+      ),
     );
   }
 
   // Tệp đính kèm
-  Widget _buildButtonPickFile() {
-    return Row(
-      children: [
-        UtilWidget.buildSolidButton(
-          title: LocaleKeys.registerCode_attachment.tr,
-          borderRadius: AppDimens.radius8,
-          textStyle:
-              AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-          onPressed: () {
-            Get.bottomSheet(
-              UtilWidget.buildBottomSheetFigma(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Material(
-                      color: Colors.white,
-                      child: InkWell(
-                        onTap: () {
-                          // Close the bottom sheet
-                          Get.back();
-                          controller.takePhoto();
-                        },
-                        child: Row(
-                          children: [
-                            const Icon(Icons.camera_alt_outlined),
-                            UtilWidget.sizedBoxWidth8,
-                            Expanded(
-                              child: SDSBuildText(
-                                LocaleKeys.registerCode_imageFromCamera.tr,
-                                style: AppTextStyle.font16Semi,
-                              ),
-                            ),
-                          ],
-                        ).paddingSymmetric(
-                          vertical: AppDimens.defaultPadding,
-                        ),
-                      ),
-                    ),
-                    const Divider(height: 1),
-                    Material(
-                      color: Colors.white,
-                      child: InkWell(
-                        onTap: () {
-                          // Close the bottom sheet
-                          Get.back();
-                          controller.pickImage();
-                        },
-                        child: Row(
-                          children: [
-                            const Icon(Icons.image_outlined),
-                            UtilWidget.sizedBoxWidth8,
-                            Expanded(
-                              child: SDSBuildText(
-                                LocaleKeys.registerCode_imageFromLibrary.tr,
-                                style: AppTextStyle.font16Semi,
-                              ),
-                            ),
-                          ],
-                        ).paddingSymmetric(vertical: AppDimens.defaultPadding),
-                      ),
-                    ),
-                    UtilWidget.sizedBox16,
-                  ],
+  Widget _buildSelectUploadFile() {
+    return DottedBorder(
+      color: AppColors.colorBorder,
+      strokeWidth: 2,
+      dashPattern: [4, 4],
+      borderType: BorderType.RRect,
+      radius: const Radius.circular(16),
+      child: InkWell(
+        onTap: _showBottomSheetUploadOptions,
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: AppColors.basicWhite,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: AppDimens.padding24),
+          child: Center(
+            child: Column(
+              children: [
+                SDSImageSvg(Assets.ASSETS_ICONS_IC_UP_FILE_SVG),
+                SDSBuildText(
+                  LocaleKeys.registerCode_downloadAttachment.tr,
+                  style: AppTextStyle.font14Re
+                      .copyWith(color: AppColors.primaryColor),
                 ),
-              ),
-            );
-          },
-        ),
-        sdsSBWidth8,
-        Expanded(
-          child: SDSBuildText(
-            LocaleKeys.registerCode_format.tr,
-            style: AppTextStyle.font14Re.copyWith(
-              color: AppColors.dsGray2,
-              fontStyle: FontStyle.italic,
+                SDSBuildText(
+                  LocaleKeys.registerCode_contentDownloadAttachment.tr,
+                  style: AppTextStyle.font14Re
+                      .copyWith(color: AppColors.textColorGrey),
+                ),
+              ],
             ),
           ),
         ),
-      ],
+      ),
+    );
+  }
+
+  void _showBottomSheetUploadOptions() {
+    Get.bottomSheet(
+      UtilWidget.buildBottomSheetFigma(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildUploadOption(
+              icon: Icons.camera_alt_outlined,
+              text: LocaleKeys.registerCode_imageFromCamera.tr,
+              onTap: controller.takePhoto,
+            ),
+            const Divider(height: 1),
+            _buildUploadOption(
+              icon: Icons.image_outlined,
+              text: LocaleKeys.registerCode_imageFromLibrary.tr,
+              onTap: controller.pickImage,
+            ),
+            UtilWidget.sizedBox16,
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUploadOption({
+    required IconData icon,
+    required String text,
+    required VoidCallback onTap,
+  }) {
+    return Material(
+      color: Colors.white,
+      child: InkWell(
+        onTap: () {
+          Get.back();
+          onTap();
+        },
+        child: Row(
+          children: [
+            Icon(icon),
+            UtilWidget.sizedBoxWidth8,
+            Expanded(
+              child: SDSBuildText(
+                text,
+                style: AppTextStyle.font16Semi,
+              ),
+            ),
+          ],
+        ).paddingSymmetric(vertical: AppDimens.defaultPadding),
+      ),
     );
   }
 
@@ -585,11 +609,8 @@ extension RegisterInfoTab on RegisterCodePage {
         }
         return Container(
           decoration: BoxDecoration(
-            border: Border.all(
-              width: 1,
-              color: AppColors.dsGray5,
-            ),
-            borderRadius: BorderRadius.circular(AppDimens.radius8),
+            color: AppColors.basicWhite,
+            borderRadius: BorderRadius.circular(AppDimens.radius10),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -601,8 +622,8 @@ extension RegisterInfoTab on RegisterCodePage {
                   children: [
                     Image.file(
                       File(imageAttach),
-                      height: 80,
-                      width: 80,
+                      height: 60,
+                      width: 60,
                       fit: BoxFit.cover,
                     ),
                     sdsSBWidth8,
@@ -624,6 +645,7 @@ extension RegisterInfoTab on RegisterCodePage {
                       },
                       icon: SDSImageSvg(
                         Assets.ASSETS_ICONS_IC_REMOVE_SVG,
+                        color: AppColors.colorBlack,
                         width: AppDimens.sizeIconMedium,
                         height: AppDimens.sizeIconMedium,
                       ),
@@ -637,6 +659,41 @@ extension RegisterInfoTab on RegisterCodePage {
           top: AppDimens.paddingVerySmall,
         );
       },
+    );
+  }
+
+  Widget _buildDoubleButton() {
+    return Row(
+      children: [
+        Expanded(
+          child: UtilWidget.buildSolidButton(
+            title: LocaleKeys.registerCode_back.tr,
+            borderRadius: AppDimens.radius30,
+            backgroundColor: AppColors.basicWhite,
+            side: const BorderSide(
+              width: 1,
+              color: AppColors.colorBlack,
+            ),
+            textStyle:
+                AppTextStyle.font14Re.copyWith(color: AppColors.colorBlack),
+            onPressed: () {
+              controller.onTabChanged(RegisterCodeTabEnum.common_info);
+            },
+          ),
+        ),
+        sdsSBWidth12,
+        Expanded(
+          child: UtilWidget.buildSolidButton(
+            title: LocaleKeys.registerCode_register.tr,
+            borderRadius: AppDimens.radius30,
+            textStyle:
+                AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+            onPressed: () {
+              controller.registerCodeFirst();
+            },
+          ),
+        ),
+      ],
     );
   }
 }

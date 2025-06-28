@@ -12,6 +12,7 @@ class CardInputTextForm extends StatelessWidget {
   final bool isShowCounterText;
   final TextInputType textInputType;
   final bool showIconClear;
+  final void Function(String)? onChanged;
 
   const CardInputTextForm({
     super.key,
@@ -19,8 +20,7 @@ class CardInputTextForm extends StatelessWidget {
     required this.controller,
     required this.hintText,
     this.inputFormatters,
-    // Bắt buộc set maxLength
-    required this.maxLengthInputForm,
+    this.maxLengthInputForm,
     this.validator,
     this.borderRadius,
     this.obscureText = false,
@@ -28,6 +28,7 @@ class CardInputTextForm extends StatelessWidget {
     // Đầu vào bàn phím
     this.textInputType = TextInputType.text,
     this.showIconClear = true,
+    this.onChanged,
   });
 
   @override
@@ -44,6 +45,7 @@ class CardInputTextForm extends StatelessWidget {
             inputFormatters: inputFormatters ?? InputFormatterEnum.textNormal,
             obscureText: obscureText,
             showIconClear: showIconClear,
+            onChanged: onChanged,
             isShowCounterText: isShowCounterText,
             border: _buildOutlineInputNoBorder(),
             errorBorder: _buildOutlineInputNoBorder(),
@@ -62,7 +64,7 @@ class CardInputTextForm extends StatelessWidget {
   // Config bỏ line ở border
   OutlineInputBorder _buildOutlineInputNoBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(borderRadius ?? AppDimens.radius8),
+      borderRadius: BorderRadius.circular(borderRadius ?? AppDimens.radius10),
       borderSide: BorderSide.none,
     );
   }

@@ -19,7 +19,7 @@ class AppColors {
   static const Color basicGreyPin = Color(0x66E9EBEE);
   static const Color basicGreyHeader = Color(0xFF79747E);
 
-  static const Color primaryColor = Color(0xFFED1B2F);
+  static const Color primaryColor = Color(0xFFEE0033);
   static const Color primaryNavy = Color(0xFF1C1E66);
   static const Color basicBlack = Color(0xFF333333);
   static const Color primaryCam1 = Color(0xFFFD5C00);
@@ -80,4 +80,8 @@ class AppColors {
   static const Color backgroundButton = Color.fromARGB(255, 251, 206, 214);
 
   static const Color lighterPrimaryColor = Color(0xFFFDE8EA);
+  static const Color textColorGrey = Color(0xFF737373);
+  static const Color colorBorder = Color(0xFFBCC1CA);
+  static const Color colorIconSuccess = Color(0xFF34C759);
+  
 }

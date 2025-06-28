@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dotted_border/dotted_border.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
@@ -20,10 +21,19 @@ class RegisterCodePage extends BaseGetWidget {
   @override
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
-      appBar: const BaseAppBar(
-        title: BaseAppBarTitle(
-          title: 'Đăng ký cấp mã',
+      appBar: BaseAppBar(
+        backgroundColor: AppColors.basicWhite,
+        leading: InkWell(
+          onTap: Get.back,
+          child: SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_ARROW_LEFT_SVG,
+            fit: BoxFit.none,
+          ),
         ),
+        title:  BaseAppBarTitle(
+          title:LocaleKeys.login_registerForCode.tr,
+        ),
+        centerTitle: true,
       ),
       body: buildLoadingOverlay(
         () => _buildBody(),

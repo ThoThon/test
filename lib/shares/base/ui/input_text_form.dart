@@ -162,10 +162,11 @@ class BuildInputTextState extends State<BuildInputText> {
               },
               child: Padding(
                 padding: widget.inputTextFormModel.isDense
-                    ? const EdgeInsets.only(right: 12)
+                    ? const EdgeInsets.only(right: AppDimens.defaultPadding)
                     : EdgeInsets.zero,
                 child: Icon(
                   Icons.clear,
+                  size: AppDimens.sizeIconMedium,
                   color: widget.inputTextFormModel.suffixColor ??
                       AppColors.dsGray1,
                 ),

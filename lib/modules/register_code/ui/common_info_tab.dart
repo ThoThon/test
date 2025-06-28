@@ -11,12 +11,21 @@ extension CommonInfoTab on RegisterCodePage {
               child: Column(
                 children: [
                   _buildUnitInfoCard(),
-                  sdsSBHeight20,
+                  sdsSBHeight12,
                   _buildContactInfoCard(),
                 ],
               ),
             ),
           ),
+          sdsSBHeight12,
+          UtilWidget.buildSolidButton(
+              title: LocaleKeys.registerCode_continue.tr,
+              onPressed: () {
+                controller.onTabChanged(RegisterCodeTabEnum.register_info);
+              },
+              borderRadius: AppDimens.radius30,
+              textStyle:
+                  AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite)),
         ],
       ),
     );
@@ -55,12 +64,8 @@ extension CommonInfoTab on RegisterCodePage {
         _buildInputDecisionNumber(),
         sdsSBHeight12,
 
-        // Ngày lập
-        _buildSelectDateSetup(),
-        sdsSBHeight12,
-
-        // Ngày đăng ký
-        _buildSelectDateRegister(),
+        // Ngày lập và ngày đăng ký
+        _buildDoubleDate(),
         sdsSBHeight12,
 
         // Nơi cấp quyết định
@@ -88,7 +93,7 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Mã số thuế không được bỏ trống";
+          return LocaleKeys.registerCode_taxCodeCannotEmpty.tr;
         }
         return null;
       },
@@ -106,7 +111,7 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Tên đơn vị không được bỏ trống";
+          return LocaleKeys.registerCode_unitCodeCannotEmpty.tr;
         }
         return null;
       },
@@ -126,7 +131,7 @@ extension CommonInfoTab on RegisterCodePage {
       },
       validator: (value) {
         if (value == null) {
-          return "Loại đối tượng không được bỏ trống";
+          return LocaleKeys.registerCode_objectTypeCannotEmpty.tr;
         }
         return null;
       },
@@ -144,7 +149,7 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Loại hình đơn vị không được bỏ trống";
+          return LocaleKeys.registerCode_unitTypeCannotEmpty.tr;
         }
         return null;
       },
@@ -162,7 +167,7 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Ngành nghề sản xuất không được bỏ trống";
+          return LocaleKeys.registerCode_productIndustryCannotEmpty.tr;
         }
         return null;
       },
@@ -180,7 +185,7 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Số quyết định không được bỏ trống";
+          return LocaleKeys.registerCode_decisionNumberCannotEmpty.tr;
         }
         return null;
       },
@@ -300,7 +305,7 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Nơi cấp quyết định không được bỏ trống";
+          return LocaleKeys.registerCode_addressDecisionCannotEmpty.tr;
         }
         return null;
       },
@@ -318,7 +323,7 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Địa chỉ đăng ký kinh doanh không được bỏ trống";
+          return LocaleKeys.registerCode_addressRegisterBusinessCannotEmpty.tr;
         }
         return null;
       },
@@ -336,7 +341,7 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Địa chỉ đơn vị không được bỏ trống";
+          return LocaleKeys.registerCode_addressUnitCannotEmpty.tr;
         }
         return null;
       },
@@ -351,7 +356,7 @@ extension CommonInfoTab on RegisterCodePage {
           LocaleKeys.registerCode_contactInfo.tr,
           style: AppTextStyle.font16Bo,
         ),
-        sdsSBHeight8,
+        sdsSBHeight12,
 
         // Điện thoại đơn vị
         _buildInputPhoneUnit(),
@@ -383,7 +388,7 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Điện thoại đơn vị không được bỏ trống";
+          return LocaleKeys.registerCode_phoneUnitCannotEmpty.tr;
         }
         return null;
       },
@@ -422,7 +427,7 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Người giao dịch BHXH không được bỏ trống";
+          return LocaleKeys.registerCode_personTransactionSocialCannotEmpty.tr;
         }
         return null;
       },
@@ -441,10 +446,29 @@ extension CommonInfoTab on RegisterCodePage {
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return "Điện thoại liên hệ không được bỏ trống";
+          return LocaleKeys.registerCode_phoneContactCannotEmpty.tr;
         }
         return null;
       },
+    );
+  }
+
+  Widget _buildDoubleDate() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: IntrinsicHeight(
+            child: _buildSelectDateSetup(),
+          ),
+        ),
+        sdsSBWidth12,
+        Expanded(
+          child: IntrinsicHeight(
+            child: _buildSelectDateRegister(),
+          ),
+        ),
+      ],
     );
   }
 }

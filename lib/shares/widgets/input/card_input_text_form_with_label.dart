@@ -13,6 +13,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
   final bool isShowCounterText;
   final TextInputType textInputType;
   final bool isRequired;
+  final void Function(String)? onChanged;
 
   const CardInputTextFormWithLabel({
     super.key,
@@ -28,6 +29,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
     this.isShowCounterText = false,
     this.textInputType = TextInputType.text,
     this.isRequired = false,
+    this.onChanged,
   });
 
   @override
@@ -55,7 +57,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
                   labelText,
                   style: textStyle ??
                       AppTextStyle.font14Re.copyWith(
-                        color: AppColors.dsGray1,
+                        color: AppColors.textColorGrey,
                       ),
                 ),
                 Visibility(
@@ -86,6 +88,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
             enabledBorder: _buildOutlineInputNoBorder(),
             disabledBorder: _buildOutlineInputNoBorder(),
             focusedErrorBorder: _buildOutlineInputNoBorder(),
+            onChanged: onChanged,
             contentPadding: const EdgeInsets.only(
               bottom: AppDimens.paddingSmall,
               left: AppDimens.defaultPadding,
@@ -103,7 +106,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
   OutlineInputBorder _buildOutlineInputNoBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(borderRadius ?? AppDimens.radius8)),
+          bottom: Radius.circular(borderRadius ?? AppDimens.radius10)),
       borderSide: BorderSide.none,
     );
   }

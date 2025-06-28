@@ -10,6 +10,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
   final String Function(T) display;
   final T? selectedItem;
   final ValueChanged<T?> onChanged;
+  final double? borderRadius;
 
   const CardDropdownWithLabel({
     super.key,
@@ -22,6 +23,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
     required this.display,
     this.selectedItem,
     required this.onChanged,
+    this.borderRadius,
   });
 
   @override
@@ -37,12 +39,11 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
             _buildCardDropdownWithLabel(
               items: items,
               display: display,
-              hintText: hintText ?? "Chọn ${labelText.toLowerCase()}",
+              hintText: hintText ?? "--Chọn--",
               labelText: labelText,
               selectedItem: selectedItem,
               isDense: true,
-              padding:
-                  const EdgeInsets.only(bottom: AppDimens.paddingVerySmall),
+              borderRadius: borderRadius,
               onChanged: (value) {
                 state.didChange(value);
                 onChanged(value);
@@ -74,7 +75,6 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
     ValueChanged<T?>? onChanged,
     required String labelText,
     String? hintText,
-    EdgeInsetsGeometry? padding,
     bool isDense = false,
     double? borderRadius,
   }) {
@@ -86,7 +86,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: AppColors.colorWhite,
-        borderRadius: BorderRadius.circular(borderRadius ?? AppDimens.radius8),
+        borderRadius: BorderRadius.circular(borderRadius ?? AppDimens.radius10),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +97,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
                 labelText,
                 style: textStyle ??
                     AppTextStyle.font14Re.copyWith(
-                      color: AppColors.dsGray1,
+                      color: AppColors.textColorGrey,
                     ),
               ),
               Visibility(
@@ -111,14 +111,21 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
               ),
             ],
           ),
+          sdsSBHeight8,
           DropdownButtonHideUnderline(
             child: DropdownButton<T>(
               isDense: isDense,
               isExpanded: true,
-              padding: padding,
+              padding:
+                  const EdgeInsets.only(bottom: AppDimens.paddingVerySmall),
               value: selectedItem,
               onChanged: onChanged,
               dropdownColor: AppColors.colorWhite,
+              icon: SDSImageSvg(
+                Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
+                height: AppDimens.sizeIconMedium,
+                width: AppDimens.sizeIconMedium,
+              ),
               hint: hintText != null
                   ? SDSBuildText(
                       hintText,

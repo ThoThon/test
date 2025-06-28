@@ -28,83 +28,99 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(AppDimens.radius8),
-            ),
-            color: AppColors.basicWhite,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: AppDimens.defaultPadding,
-              top: AppDimens.paddingVerySmall,
-            ),
-            child: Row(
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SDSBuildText(
-                  labelText,
-                  style: textStyle ??
-                      AppTextStyle.font14Re.copyWith(
-                        color: AppColors.dsGray1,
-                      ),
-                ),
-                Visibility(
-                  visible: isRequired,
-                  child: SDSBuildText(
-                    ' *',
-                    style: AppTextStyle.font12Re.copyWith(
-                      color: AppColors.statusRed,
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(AppDimens.radius8),
                     ),
+                    color: AppColors.basicWhite,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: AppDimens.defaultPadding,
+                      top: AppDimens.paddingVerySmall,
+                    ),
+                    child: Row(
+                      children: [
+                        SDSBuildText(
+                          labelText,
+                          style: textStyle ??
+                              AppTextStyle.font14Re.copyWith(
+                                color: AppColors.dsGray1,
+                              ),
+                        ),
+                        Visibility(
+                          visible: isRequired,
+                          child: SDSBuildText(
+                            ' *',
+                            style: AppTextStyle.font12Re.copyWith(
+                              color: AppColors.statusRed,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                BuildInputText(
+                  InputTextModel(
+                    controller: controller,
+                    isValidate: isRequired,
+                    inputFormatters: inputFormatters,
+                    isShowCounterText: false,
+                    suffixIcon: Container(
+                      padding:
+                          const EdgeInsets.only(right: AppDimens.paddingSmall),
+                      decoration: const BoxDecoration(
+                        color: AppColors.basicWhite,
+                        borderRadius: BorderRadius.horizontal(
+                          right: Radius.circular(
+                            AppDimens.radius8,
+                          ),
+                        ),
+                      ),
+                      child: InkWell(
+                        onTap: onSelectDate,
+                        child: SvgPicture.asset(
+                          Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
+                          width: AppDimens.sizeIconMedium,
+                          height: AppDimens.sizeIconMedium,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                    showIconClear: true,
+                    hintText: hintText,
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: AppDimens.paddingVerySmall,
+                      horizontal: AppDimens.paddingSmall,
+                    ),
+                    isDense: true,
+                    textInputType: TextInputType.number,
+                    border: _buildOutlineInputNoBorder(),
+                    errorBorder: _buildOutlineInputNoBorder(),
+                    focusedBorder: _buildOutlineInputNoBorder(),
+                    enabledBorder: _buildOutlineInputNoBorder(),
+                    disabledBorder: _buildOutlineInputNoBorder(),
+                    focusedErrorBorder: _buildOutlineInputNoBorder(),
+                    validator: validator,
+                    onChanged: onChanged,
                   ),
                 ),
               ],
             ),
           ),
-        ),
-        BuildInputText(
-          InputTextModel(
-            controller: controller,
-            isValidate: isRequired,
-            suffixIcon: InkWell(
-              onTap: onSelectDate,
-              child: Padding(
-                padding: const EdgeInsets.only(right: AppDimens.paddingSmall),
-                child: SvgPicture.asset(
-                  Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
-                  width: AppDimens.sizeIconMedium,
-                  height: AppDimens.sizeIconMedium,
-                  fit: BoxFit.scaleDown,
-                ),
-              ),
-            ),
-            inputFormatters: inputFormatters,
-            isShowCounterText: false,
-            showIconClear: true,
-            hintText: hintText,
-            contentPadding: const EdgeInsets.only(
-              bottom: AppDimens.paddingVerySmall,
-              left: AppDimens.paddingSmall,
-              right: AppDimens.paddingSmall,
-              top: AppDimens.paddingSmall,
-            ),
-            isDense: true,
-            textInputType: TextInputType.number,
-            border: _buildOutlineInputNoBorder(),
-            errorBorder: _buildOutlineInputNoBorder(),
-            focusedBorder: _buildOutlineInputNoBorder(),
-            enabledBorder: _buildOutlineInputNoBorder(),
-            disabledBorder: _buildOutlineInputNoBorder(),
-            focusedErrorBorder: _buildOutlineInputNoBorder(),
-            validator: validator,
-            onChanged: onChanged,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

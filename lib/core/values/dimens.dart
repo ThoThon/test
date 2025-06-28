@@ -51,6 +51,7 @@ class AppDimens {
   static const double radius4 = 4;
   static const double radius8 = 8;
   static const double radius12 = 12;
+  static const double radius10 = 10;
   static const double radius14 = 14;
   static const double radius16 = 16;
   static const double radius22 = 22;
@@ -62,7 +63,7 @@ class AppDimens {
   static const double btnDefault = 40;
   static const double btnMedium = 50;
   static const double btnLarge = 70;
-  static const double btnDefaultFigma = 38;
+  static const double btnDefaultFigma = 44;
   static const double btnLargeFigma = 42;
   static const double btnLoginFigmaHeight = 54;
   static const double btnFloatingButton = 48;
@@ -77,6 +78,7 @@ class AppDimens {
   static const double padding15 = 15.0;
   static const double padding14 = 14.0;
   static const double padding22 = 22.0;
+  static const double padding24 = 24.0;
   static const double padding25 = 25.0;
   static const double padding30 = 30.0;
   static const double padding32 = 32.0;
