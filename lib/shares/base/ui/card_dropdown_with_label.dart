@@ -1,43 +1,38 @@
 import 'package:v_bhxh/modules/src.dart';
 
+
+// Dùng thay thế cho UtilWidgets.buildDropDownWithLabel2
 class CardDropdownWithLabel<T> extends StatelessWidget {
   final String labelText;
   final TextStyle? textStyle;
-  final bool isValidate;
-  // final String? hintText;
-  final String? Function(String?)? validator;
+  final bool isRequired;
+  final String? hintText;
+  final String? Function(T?)? validator;
   final List<T> items;
   final String Function(T) display;
   final T? selectedItem;
   final ValueChanged<T?> onChanged;
+  final double? borderRadius;
 
   const CardDropdownWithLabel({
     super.key,
     required this.labelText,
+    this.hintText,
     this.textStyle,
-    required this.isValidate,
+    required this.isRequired,
     this.validator,
     required this.items,
     required this.display,
     this.selectedItem,
     required this.onChanged,
+    this.borderRadius,
   });
 
   @override
   Widget build(BuildContext context) {
     return FormField<T>(
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: isValidate
-          ? (value) {
-              if (validator != null) {
-                return validator!(value?.toString());
-              }
-              if (value == null) {
-                return "${labelText.tr} ${LocaleKeys.input_inputEmpty.tr.toLowerCase()}";
-              }
-              return null;
-            }
-          : null,
+      validator: validator,
       initialValue: selectedItem,
       builder: (FormFieldState<T> state) {
         return Column(
@@ -46,9 +41,11 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
             _buildCardDropdownWithLabel(
               items: items,
               display: display,
-              hintText: "Chọn ${labelText.toLowerCase()}",
+              hintText: hintText ?? "--Chọn--",
               labelText: labelText,
               selectedItem: selectedItem,
+              isDense: true,
+              borderRadius: borderRadius,
               onChanged: (value) {
                 state.didChange(value);
                 onChanged(value);
@@ -80,41 +77,57 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
     ValueChanged<T?>? onChanged,
     required String labelText,
     String? hintText,
+    bool isDense = false,
+    double? borderRadius,
   }) {
     return Container(
       padding: const EdgeInsets.only(
-        right: AppDimens.paddingSmall,
-        left: AppDimens.paddingSmall,
+        right: AppDimens.defaultPadding,
+        left: AppDimens.defaultPadding,
         top: AppDimens.paddingSmall,
       ),
       decoration: BoxDecoration(
         color: AppColors.colorWhite,
-        borderRadius: BorderRadius.circular(AppDimens.radius4),
+        borderRadius: BorderRadius.circular(borderRadius ?? AppDimens.radius10),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RichText(
-            text: TextSpan(
-              text: labelText,
-              style: AppTextStyle.font14Re,
-              children: [
-                if (isValidate)
-                  TextSpan(
-                    text: ' *',
-                    style: AppTextStyle.font12Re.copyWith(
-                      color: AppColors.statusRed,
+          Row(
+            children: [
+              SDSBuildText(
+                labelText,
+                style: textStyle ??
+                    AppTextStyle.font14Re.copyWith(
+                      color: AppColors.textColorGrey,
                     ),
+              ),
+              Visibility(
+                visible: isRequired,
+                child: SDSBuildText(
+                  ' *',
+                  style: AppTextStyle.font12Re.copyWith(
+                    color: AppColors.statusRed,
                   ),
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
+          sdsSBHeight8,
           DropdownButtonHideUnderline(
             child: DropdownButton<T>(
+              isDense: isDense,
               isExpanded: true,
+              padding:
+                  const EdgeInsets.only(bottom: AppDimens.paddingVerySmall),
               value: selectedItem,
               onChanged: onChanged,
               dropdownColor: AppColors.colorWhite,
+              icon: SDSImageSvg(
+                Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
+                height: AppDimens.sizeIconMedium,
+                width: AppDimens.sizeIconMedium,
+              ),
               hint: hintText != null
                   ? SDSBuildText(
                       hintText,

@@ -23,21 +23,20 @@ extension LoginWidget on LoginPage {
                         controller.isHaveUsername.value
                             ? _buildCompanyName()
                             : _buildInputAccount(),
-                        UtilWidget.sizedBox16,
+                        sdsSBHeight12,
                         _buildInputPassword(),
-                        sdsSBHeight8,
+                        sdsSBHeight12,
                         Row(
                           children: [
-                            _buildForgetPassword(),
-                            const Spacer(),
                             controller.isHaveUsername.value
                                 ? _buildChangeAccount()
-                                : const SizedBox.shrink()
+                                : const SizedBox.shrink(),
+                            const Spacer(),
+                            _buildForgetPassword(),
                           ],
                         ),
-                        sdsSBHeight8,
                         _buildButtonLogin(),
-                        sdsSBHeight8,
+                        sdsSBHeight12,
                         _buildRegisterForCode(),
                       ],
                     ),
@@ -62,64 +61,70 @@ extension LoginWidget on LoginPage {
   }
 
   Widget _buildInputAccount() {
-    return BuildInputText(
-      InputTextModel(
-        hintText: LocaleKeys.login_inputAccount.tr,
-        controller: controller.usernameTextCtrl,
-        obscureText: false,
-        inputFormatters: InputFormatterEnum.password,
-        isShowCounterText: false,
-        maxLengthInputForm: 25,
-        validator: (value) {
-          if (value.isNullOrEmpty) {
-            return LocaleKeys.login_userNameCannotEmpty.tr;
-          }
-          return null;
-        },
-      ),
+    return CardInputTextForm(
+      controller: controller.usernameTextCtrl,
+      hintText: LocaleKeys.login_inputAccount.tr,
+      inputFormatters: InputFormatterEnum.password,
+      maxLengthInputForm: 25,
+      isShowCounterText: false,
+      borderRadius: AppDimens.radius6,
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return LocaleKeys.login_userNameCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildInputPassword() {
-    return BuildInputText(
-      InputTextModel(
-        hintText: LocaleKeys.login_inputPassword.tr,
-        controller: controller.passwordTextCtrl,
-        isShowCounterText: false,
-        inputFormatters: InputFormatterEnum.password,
-        maxLengthInputForm: 50,
-        obscureText: true,
-        validator: (value) {
-          if (value.isNullOrEmpty) {
-            return LocaleKeys.login_passwordCannotEmpty.tr;
-          }
-          return null;
-        },
-      ),
+    return CardInputTextForm(
+      hintText: LocaleKeys.login_inputPassword.tr,
+      controller: controller.passwordTextCtrl,
+      isShowCounterText: false,
+      inputFormatters: InputFormatterEnum.password,
+      maxLengthInputForm: 50,
+      obscureText: true,
+      borderRadius: AppDimens.radius6,
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return LocaleKeys.login_passwordCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildForgetPassword() {
-    return InkWell(
-      onTap: () {
-        Get.toNamed(AppRoutes.forgotLogin.path);
-      },
-      child: SDSBuildText(
-        LocaleKeys.login_forgetPassword.tr,
-        style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+    return Padding(
+      padding: const EdgeInsets.only(
+        bottom: AppDimens.paddingSmall,
+        left: AppDimens.defaultPadding,
+      ),
+      child: InkWell(
+        onTap: () {
+          Get.toNamed(AppRoutes.forgotLogin.path);
+        },
+        child: SDSBuildText(
+          LocaleKeys.login_forgetPassword.tr,
+          style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+        ),
       ),
     );
   }
 
   Widget _buildChangeAccount() {
-    return InkWell(
-      onTap: () {
-        controller.isHaveUsername.value = false;
-        controller.usernameTextCtrl.clear();
-      },
-      child: SDSBuildText(
-        LocaleKeys.login_changeAccount.tr,
-        style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AppDimens.paddingSmall),
+      child: InkWell(
+        onTap: () {
+          controller.isHaveUsername.value = false;
+          controller.usernameTextCtrl.clear();
+        },
+        child: SDSBuildText(
+          LocaleKeys.login_changeAccount.tr,
+          style: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+        ),
       ),
     );
   }
@@ -129,6 +134,7 @@ extension LoginWidget on LoginPage {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SDSBuildText(LocaleKeys.login_hello.tr),
+        sdsSBHeight8,
         SDSBuildText(
           "${hiveApp.get(HiveKeys.keyCompanyName) ?? ''}",
           style: AppTextStyle.font16Bo,
@@ -139,6 +145,8 @@ extension LoginWidget on LoginPage {
 
   Widget _buildButtonLogin() {
     return UtilWidget.buildSolidButton(
+      borderRadius: AppDimens.radius30,
+      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
       title: LocaleKeys.login_login.tr,
       height: AppDimens.btnLargeFigma,
       onPressed: () {
@@ -165,19 +173,15 @@ extension LoginWidget on LoginPage {
   }
 
   Widget _buildRegisterForCode() {
-    return Center(
-      child: InkWell(
-        onTap: controller.goToRegisterCodePage,
-        child: SDSBuildText(
-          LocaleKeys.login_registerForCode.tr,
-          style: AppTextStyle.font14Re.copyWith(
-            color: AppColors.primaryColor,
-            fontStyle: FontStyle.italic,
-            decoration: TextDecoration.underline,
-            decorationColor: AppColors.primaryColor,
-          ),
-        ).paddingAll(AppDimens.paddingVerySmall),
-      ),
+    return UtilWidget.buildSolidButton(
+      borderRadius: AppDimens.radius30,
+      title: LocaleKeys.login_register.tr,
+      backgroundColor: AppColors.basicWhite,
+      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+      side: const BorderSide(width: 1, color: AppColors.primaryColor),
+      onPressed: () {
+        controller.goToRegisterCodePage();
+      },
     );
   }
 }

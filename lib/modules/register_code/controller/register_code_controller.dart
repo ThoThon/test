@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
@@ -34,10 +33,14 @@ class RegisterCodeController extends BaseGetxController {
   final decisionNumberCtrl = TextEditingController();
 
   // Ngày lập
-  final setupDateCtrl = TextEditingController();
+  final setupDateCtrl = TextEditingController(
+    text: convertDateToStringSafe(DateTime.now(), PATTERN_1),
+  );
 
   // Ngày đăng ký
-  final registerDateCtrl = TextEditingController();
+  final registerDateCtrl = TextEditingController(
+    text: convertDateToStringSafe(DateTime.now(), PATTERN_1),
+  );
 
   // Nơi cấp quyết định
   final addressDecisionCtrl = TextEditingController();
@@ -103,6 +106,8 @@ class RegisterCodeController extends BaseGetxController {
   final formKeyCommonTab = GlobalKey<FormState>();
 
   final formKeyRegisterTab = GlobalKey<FormState>();
+
+  final isEnableBtnSearchCert = false.obs;
 
   @override
   void onInit() {
@@ -258,7 +263,6 @@ class RegisterCodeController extends BaseGetxController {
 
   Future<void> registerCodeFirst() async {
     final invalidTab = _invalidTab;
-
     if (invalidTab == null) {
       // Nếu tất cả các tab đều hợp lệ thì chuyển đến tab cuối cùng (tab thông tin đăng ký)
       currentTab.value = RegisterCodeTabEnum.register_info;
@@ -267,7 +271,6 @@ class RegisterCodeController extends BaseGetxController {
       currentTab.value = invalidTab;
       return;
     }
-
     try {
       if (certificate.value == null) {
         showSnackBar(
@@ -298,7 +301,7 @@ class RegisterCodeController extends BaseGetxController {
       ShowDialog.dismissDialog();
       if (e is DioException) {
         _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
+          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
           onRetry: registerCodeFirst,
         );
       }
@@ -306,25 +309,27 @@ class RegisterCodeController extends BaseGetxController {
   }
 
   void _showDialogCheckedSuccess() {
-    ShowDialog.showDialogWithWidget(
-      // isActiveBack: false,
-      title: LocaleKeys.dialog_successTransfer.tr,
-      content: LocaleKeys.dialog_fileSendToSignature.tr,
-      child: const CupertinoActivityIndicator(
-        radius: 20,
-      ).paddingOnly(top: AppDimens.defaultPadding),
+    ShowDialog.showDialogTimerCount(
+      timerCount: 10,
+      content: LocaleKeys.dialog_confirmSignatureMySign.tr,
+      title: LocaleKeys.dialog_sendRequestSignature.tr,
+      onFinish: () {
+        _showDialogVerifyFailed(
+          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+          onRetry: registerCodeFirst,
+        );
+      },
     );
   }
 
   void _showDialogVerifySuccess() {
     ShowDialog.showDialogConfirm2(
-      title: LocaleKeys.dialog_success.tr,
+      title: LocaleKeys.dialog_sendFileSuccess.tr,
       content: LocaleKeys.dialog_submitRegisterToSuccessMessage.tr,
       iconType: DialogIconType.success,
-      exitTitle: LocaleKeys.dialog_exit.tr,
+      exitTitle: LocaleKeys.dialog_close.tr,
       isDisableButtonConfirm: true,
       onCancel: () {
-        // Get.offAllNamed(AppRoutes.login.path);
         // Get back vì màn trước của nó đang là màn login
         Get.back();
       },
@@ -336,7 +341,7 @@ class RegisterCodeController extends BaseGetxController {
     VoidCallback? onRetry,
   }) {
     ShowDialog.showDialogConfirm2(
-      title: LocaleKeys.dialog_fail.tr,
+      title: LocaleKeys.dialog_sendFileFail.tr,
       content: errorMessage,
       iconType: DialogIconType.failure,
       exitTitle: LocaleKeys.dialog_close.tr,
@@ -366,5 +371,9 @@ class RegisterCodeController extends BaseGetxController {
     fileIncludeCtrl.dispose();
     contentCtrl.dispose();
     super.onClose();
+  }
+
+  void updateStateBtnSearchCert() {
+    isEnableBtnSearchCert.value = usernameMySignCtrl.text.trim().isNotEmpty;
   }
 }

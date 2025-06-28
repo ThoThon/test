@@ -260,29 +260,31 @@ class ShowDialog {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            SDSBuildText(
+              title,
+              maxLines: 3,
+              style: AppTextStyle.font18Bo,
+              textAlign: TextAlign.center,
+            ),
+            sdsSBHeight24,
             if (iconType != null)
               iconType == DialogIconType.success
                   ? SDSImageSvg(
                       Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
-                      width: 80,
-                      height: 80,
+                      color: AppColors.colorIconSuccess,
+                      width: 60,
+                      height: 60,
                     )
                   : SDSImageSvg(
                       Assets.ASSETS_IMAGES_IMG_CHECK_FAILURE_SVG,
-                      width: 80,
-                      height: 80,
+                      color: AppColors.primaryColor,
+                      width: 60,
+                      height: 60,
                     ),
-            SDSBuildText(
-              title,
-              maxLines: 3,
-              style: AppTextStyle.font20Bo,
-              textAlign: TextAlign.center,
-            ),
             content != null
                 ? Container(
-                    padding: const EdgeInsets.only(
-                      top: AppDimens.paddingSmall,
-                      bottom: AppDimens.padding25,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: AppDimens.padding24,
                     ),
                     constraints: const BoxConstraints(maxHeight: 200),
                     child: SingleChildScrollView(
@@ -301,6 +303,10 @@ class ShowDialog {
                       Expanded(
                         child: UtilWidget.buildSolidButtonBack(
                           title: exitTitle ?? 'Hủy',
+                          borderRadius: AppDimens.radius30,
+                          backgroundColor: AppColors.primaryColor,
+                          textStyle: AppTextStyle.font14Bo
+                              .copyWith(color: AppColors.basicWhite),
                           onPressed: () {
                             dismissDialog();
                             onCancel?.call();
@@ -312,6 +318,7 @@ class ShowDialog {
                         visible: !isDisableButtonConfirm,
                         child: Expanded(
                           child: UtilWidget.buildSolidButton(
+                            borderRadius: AppDimens.radius30,
                             title: confirmTitle ?? 'Đồng ý',
                             onPressed: () {
                               dismissDialog();
@@ -323,14 +330,72 @@ class ShowDialog {
                     ],
                   )
                 : UtilWidget.buildSolidButtonBack(
+                    width: double.infinity,
                     title: exitTitle ?? 'Hủy',
+                    borderRadius: AppDimens.radius30,
+                    backgroundColor: AppColors.primaryColor,
+                    textStyle: AppTextStyle.font14Bo
+                        .copyWith(color: AppColors.basicWhite),
                     onPressed: () {
                       dismissDialog();
                       onCancel?.call();
                     },
                   ),
           ],
-        ).paddingAll(AppDimens.defaultPadding),
+        ).paddingAll(AppDimens.padding24),
+      ),
+      isActiveBack,
+    );
+  }
+
+  static Future<void> showDialogTimerCount({
+    required String title,
+    required String content,
+    VoidCallback? onFinish,
+    bool isActiveBack = true,
+    int? timerCount,
+  }) async {
+    _showDialog(
+      Dialog(
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.all(AppDimens.defaultPadding),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SDSBuildText(
+              title,
+              maxLines: 3,
+              style: AppTextStyle.font18Bo,
+              textAlign: TextAlign.center,
+            ),
+            sdsSBHeight16,
+            CountDownTimer(
+              start: timerCount ?? 120,
+              onFinish: () {
+                dismissDialog();
+                onFinish?.call();
+              },
+            ),
+            Container(
+              padding: const EdgeInsets.only(
+                top: AppDimens.defaultPadding,
+              ),
+              constraints: const BoxConstraints(maxHeight: 200),
+              child: SingleChildScrollView(
+                child: Text(
+                  content,
+                  style: AppTextStyle.font16Semi,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.clip,
+                ),
+              ),
+            ),
+          ],
+        ).paddingAll(AppDimens.padding24),
       ),
       isActiveBack,
     );

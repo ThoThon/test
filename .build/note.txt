@@ -1,4 +1,17 @@
+28/06/2025
+- [Appmobile]_Sửa lại giao diện màn Đăng ký cấp mã - BHW-2511
+- [AppMobile]_Sửa lại UI màn đăng nhập. - BHW-2507
+- [Appmobile]_Màn đăng ký cấp mã - Trường Ngày lập, Ngày đăng ký: Chỉnh sửa giá trị ban đầu là ngày hiện tại - BHW-2538
+- [Appmobile]_Enable một số ký tự trên bàn phím nhập tại các trường textbox đã chặn icon - BHW-2509
+- [Appmobile]_Thủ tục 600 - Màn D02: Xóa 2 trường dân tộc, quốc tịch - BHW-2535
+
 27/06/2025
+- [Appmobile]_Lỗi giao diện tại ô Tìm kiếm - BHW-2514
+- Màn THông tin đơn vị_Sửa giá trị trường Nhận kết quả hồ sơ qua - BHW-2521
+- Lỗi giao diện tại ô Tìm kiếm - BHW-2514
+- Lỗi Focus chuột - BHW-2513
+- Lỗi hiển thị trường bắt buộc Các thông tin chủ hộ trạng thái ban đầu - Màn TK1 - BHW-2517
+- Lỗi focus chuột màn đăng ký cấp mã - BHW-2518
 - [Appmobile]_Chỉnh sửa giao diện ô tìm kiếm nhâ viên màn D02 - BHW-2515
 
 26/06/2025

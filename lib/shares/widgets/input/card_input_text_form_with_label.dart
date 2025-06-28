@@ -1,32 +1,38 @@
-import 'package:flutter_svg/svg.dart';
 import 'package:v_bhxh/modules/src.dart';
 
-// Dùng thay thế cho UtilWidgets.buildInputSelectDate
-class CardInputSelectDateWithLabel extends StatelessWidget {
+// Dùng thay thế cho BuildInputTextWithLabel
+class CardInputTextFormWithLabel extends StatelessWidget {
   final String labelText;
   final TextStyle? textStyle;
   final TextEditingController controller;
-  final bool isRequired;
   final String? hintText;
-  final FormFieldValidator<String>? validator;
-  final VoidCallback? onSelectDate;
-  final void Function(String)? onChanged;
-  final int inputFormatters;
+  final int? inputFormatters;
+  final int? maxLengthInputForm;
+  final String? Function(String?)? validator;
   final double? borderRadius;
+  final bool obscureText;
+  final bool isShowCounterText;
+  final TextInputType textInputType;
+  final bool isRequired;
+  final void Function(String)? onChanged;
 
-  const CardInputSelectDateWithLabel({
+  const CardInputTextFormWithLabel({
     super.key,
     required this.labelText,
     this.textStyle,
     required this.controller,
-    required this.isRequired,
     this.hintText,
+    this.inputFormatters,
+    this.maxLengthInputForm,
     this.validator,
-    this.onSelectDate,
-    this.onChanged,
-    required this.inputFormatters,
     this.borderRadius,
+    this.obscureText = false,
+    this.isShowCounterText = false,
+    this.textInputType = TextInputType.text,
+    this.isRequired = false,
+    this.onChanged,
   });
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,13 +42,14 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
         Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.vertical(
-              top: Radius.circular(AppDimens.radius8),
+              top: Radius.circular(AppDimens.radius10),
             ),
             color: AppColors.basicWhite,
           ),
           child: Padding(
             padding: const EdgeInsets.only(
               left: AppDimens.defaultPadding,
+              right: AppDimens.defaultPadding,
               top: AppDimens.paddingVerySmall,
             ),
             child: Row(
@@ -51,7 +58,7 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
                   labelText,
                   style: textStyle ??
                       AppTextStyle.font14Re.copyWith(
-                        color: AppColors.dsGray1,
+                        color: AppColors.textColorGrey,
                       ),
                 ),
                 Visibility(
@@ -69,46 +76,28 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
         ),
         BuildInputText(
           InputTextModel(
-            controller: controller,
             isValidate: isRequired,
-            inputFormatters: inputFormatters,
-            isShowCounterText: false,
-            suffixIcon: Container(
-              padding: const EdgeInsets.only(right: AppDimens.paddingSmall),
-              decoration: const BoxDecoration(
-                color: AppColors.basicWhite,
-                borderRadius: BorderRadius.horizontal(
-                  right: Radius.circular(
-                    AppDimens.radius8,
-                  ),
-                ),
-              ),
-              child: InkWell(
-                onTap: onSelectDate,
-                child: SvgPicture.asset(
-                  Assets.ASSETS_ICONS_IC_CALENDAR_SVG,
-                  width: AppDimens.sizeIconMedium,
-                  height: AppDimens.sizeIconMedium,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            showIconClear: true,
-            hintText: hintText,
-            contentPadding: const EdgeInsets.symmetric(
-              vertical: AppDimens.paddingVerySmall,
-              horizontal: AppDimens.paddingSmall,
-            ),
-            isDense: true,
-            textInputType: TextInputType.number,
+            controller: controller,
+            hintText: hintText ?? 'Nhập ${labelText.toLowerCase()}',
+            maxLengthInputForm: maxLengthInputForm,
+            inputFormatters: inputFormatters ?? InputFormatterEnum.textNormal,
+            obscureText: obscureText,
+            isShowCounterText: isShowCounterText,
             border: _buildOutlineInputNoBorder(),
             errorBorder: _buildOutlineInputNoBorder(),
             focusedBorder: _buildOutlineInputNoBorder(),
             enabledBorder: _buildOutlineInputNoBorder(),
             disabledBorder: _buildOutlineInputNoBorder(),
             focusedErrorBorder: _buildOutlineInputNoBorder(),
-            validator: validator,
             onChanged: onChanged,
+            contentPadding: const EdgeInsets.only(
+              bottom: AppDimens.paddingSmall,
+              left: AppDimens.defaultPadding,
+              right: AppDimens.defaultPadding,
+            ),
+            isDense: true,
+            validator: validator,
+            textInputType: textInputType,
           ),
         ),
       ],
@@ -118,7 +107,7 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
   OutlineInputBorder _buildOutlineInputNoBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(borderRadius ?? AppDimens.radius8)),
+          bottom: Radius.circular(borderRadius ?? AppDimens.radius10)),
       borderSide: BorderSide.none,
     );
   }

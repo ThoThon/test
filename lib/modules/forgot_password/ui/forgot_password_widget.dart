@@ -22,7 +22,7 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
                   UtilWidget.buildSolidButton(
                     title: LocaleKeys.login_resetPassword.tr,
                     height: AppDimens.btnLargeFigma,
-                    textStyle: AppTextStyle.font16Re
+                    textStyle: AppTextStyle.font14Re
                         .copyWith(color: AppColors.basicWhite),
                     borderRadius: AppDimens.radius30,
                     onPressed: () {
@@ -51,52 +51,36 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
   }
 
   Widget _buildInputUnitCode() {
-    return BuildInputText(
-      InputTextModel(
-        maxLengthInputForm: 7,
-        inputFormatters: InputFormatterEnum.textOnly,
-        hintText: LocaleKeys.login_inputUnitCode.tr,
-        controller: controller.unitCodeController,
-        borderRadius: AppDimens.radius8,
-        border: InputBorder.none,
-        errorBorder: InputBorder.none,
-        focusedBorder: InputBorder.none,
-        enabledBorder: InputBorder.none,
-        disabledBorder: InputBorder.none,
-        focusedErrorBorder: InputBorder.none,
-        obscureText: false,
-        validator: (value) {
-          if (value.isNullOrEmpty) {
-            return LocaleKeys.login_unitCodeCannotEmpty.tr;
-          }
-          return null;
-        },
-      ),
+    return CardInputTextForm(
+      controller: controller.unitCodeController,
+      hintText: LocaleKeys.login_unitCode.tr,
+      maxLengthInputForm: 7,
+      isShowCounterText: false,
+      borderRadius: AppDimens.radius6,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.login_unitCodeCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildInputTaxCode() {
-    return BuildInputText(
-      InputTextModel(
-        maxLengthInputForm: 20,
-        inputFormatters: InputFormatterEnum.textNormal,
-        hintText: LocaleKeys.login_inputTaxCode.tr,
-        controller: controller.taxCodeController,
-        borderRadius: AppDimens.radius8,
-        obscureText: false,
-        border: InputBorder.none,
-        errorBorder: InputBorder.none,
-        focusedBorder: InputBorder.none,
-        enabledBorder: InputBorder.none,
-        disabledBorder: InputBorder.none,
-        focusedErrorBorder: InputBorder.none,
-        validator: (value) {
-          if (value.isNullOrEmpty) {
-            return LocaleKeys.login_taxCodeCannotEmpty.tr;
-          }
-          return null;
-        },
-      ),
+    return CardInputTextForm(
+      controller: controller.taxCodeController,
+      hintText: LocaleKeys.login_inputTaxCode.tr,
+      maxLengthInputForm: 20,
+      isShowCounterText: false,
+      borderRadius: AppDimens.radius6,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.login_taxCodeCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 

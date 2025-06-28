@@ -6,8 +6,9 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 class UnitInfoControllerImpICare extends UnitInfoController {
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    await _getAccountInfo();
     accountInfo = AppData.instance.accountInfoModel.value;
     fetchDataAccountInfo();
     inputInfoIsEmpty();
@@ -110,6 +111,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   Future<void> _getAccountInfo() async {
+    showLoading();
     try {
       final res = await unitInfoRepository.getAccountInfo();
       if (res.code == AppConst.statusCodeSuccess && res.result != null) {
@@ -117,6 +119,8 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       }
     } catch (e) {
       logger.d(e);
+    } finally {
+      hideLoading();
     }
   }
 
