@@ -20,7 +20,11 @@ class UnitInfoPage extends BaseGetWidget {
           title: LocaleKeys.unitInfo_unitInfo.tr,
         ),
       ),
-      body: buildLoadingOverlay(() => _buildBody()),
+      body: buildLoadingOverlay(() => baseShowLoading(
+            () {
+              return _buildBody();
+            },
+          )),
     );
   }
 }
