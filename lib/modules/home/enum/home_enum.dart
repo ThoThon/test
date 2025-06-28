@@ -4,16 +4,14 @@ import '../../../assets.dart';
 import '../../../core/core.src.dart';
 
 enum HomeEnum {
-  register_service,
   unit_info,
   declare,
   history,
-  lookup_c12;
+  lookup_c12,
+  register_service;
 
   String get image {
     switch (this) {
-      case register_service:
-        return Assets.ASSETS_ICONS_HOME_IC_REGISTER_SERVICE_SVG;
       case unit_info:
         return Assets.ASSETS_ICONS_HOME_UNIT_INFO_SVG;
       case declare:
@@ -22,13 +20,13 @@ enum HomeEnum {
         return Assets.ASSETS_ICONS_HOME_HISTORY_SVG;
       case lookup_c12:
         return Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG;
+      case register_service:
+        return Assets.ASSETS_ICONS_HOME_IC_REGISTER_SERVICE_SVG;
     }
   }
 
   String get string {
     switch (this) {
-      case register_service:
-        return LocaleKeys.registerService_registerService;
       case unit_info:
         return LocaleKeys.home_unitInfo;
       case declare:
@@ -37,13 +35,13 @@ enum HomeEnum {
         return LocaleKeys.home_history;
       case lookup_c12:
         return LocaleKeys.home_lookupC12;
+      case register_service:
+        return LocaleKeys.home_registerService;
     }
   }
 
   String get path {
     switch (this) {
-      case register_service:
-        return AppRoutes.registerService.path;
       case unit_info:
         return AppRoutes.infoUnit.path;
       case declare:
@@ -52,6 +50,8 @@ enum HomeEnum {
         return AppRoutes.history.path;
       case lookup_c12:
         return AppRoutes.lookupC12.path;
+      case register_service:
+        return AppRoutes.registerService.path;
     }
   }
 }

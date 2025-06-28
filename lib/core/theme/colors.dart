@@ -83,5 +83,17 @@ class AppColors {
   static const Color textColorGrey = Color(0xFF737373);
   static const Color colorBorder = Color(0xFFBCC1CA);
   static const Color colorIconSuccess = Color(0xFF34C759);
-  
+
+  static const LinearGradient gradientGray = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      Color(0xFFFFCCD7),
+      basicWhite,
+    ],
+    stops: [
+      0,
+      0.85,
+    ],
+  );
 }

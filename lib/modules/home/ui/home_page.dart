@@ -23,19 +23,16 @@ class HomePage extends BaseGetWidget<HomeController> {
 
   Widget _buildBody() {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: AppDimens.padding32,
-        horizontal: AppDimens.paddingVerySmall,
-      ),
+      padding: const EdgeInsets.all(AppDimens.defaultPadding),
       child: ListView(
         children: [
           GridView.count(
             shrinkWrap: true,
-            crossAxisCount: 3,
-            mainAxisSpacing: AppDimens.defaultPadding,
-            crossAxisSpacing: AppDimens.defaultPadding,
+            crossAxisCount: 2,
+            mainAxisSpacing: AppDimens.padding24,
+            crossAxisSpacing: AppDimens.padding24,
             physics: const NeverScrollableScrollPhysics(),
-            childAspectRatio: 0.95,
+            childAspectRatio: 1.55,
             children:
                 HomeEnum.values.map((item) => _buildMenuItem(item)).toList(),
           ),
@@ -49,35 +46,29 @@ class HomePage extends BaseGetWidget<HomeController> {
       onTap: () {
         Get.toNamed(item.path);
       },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.paddingSmall,
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppDimens.radius22),
+      child: UtilWidget.buildCardBase(
+        Stack(
+          children: [
+            Positioned(
+              top: AppDimens.paddingSmall,
+              left: AppDimens.paddingSmall,
+              child: SDSBuildText(
+                item.string.tr,
+                style: AppTextStyle.font14Re,
               ),
+            ),
+            Positioned(
+              bottom: AppDimens.paddingSmallest,
+              right: AppDimens.paddingSmallest,
               child: SDSImageSvg(
                 item.image,
-                height: AppDimens.sizeIcon60,
+                height: 56,
+                width: 56,
               ),
             ),
-          ),
-          sdsSBHeight8,
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: SDSBuildText(
-              item.string.tr,
-              textAlign: TextAlign.center,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              style: AppTextStyle.font14Bo,
-            ),
-          ),
-        ],
+          ],
+        ),
+        gradient: AppColors.gradientGray,
       ),
     );
   }
@@ -182,15 +173,26 @@ class HomePage extends BaseGetWidget<HomeController> {
   BaseAppBar _buildAppBar() {
     return BaseAppBar(
       iconTheme: const IconThemeData(
-        color: Colors.white,
-        size: AppDimens.sizeIcon32,
+        color: AppColors.colorBlack,
+        size: AppDimens.sizeIcon,
       ),
-      backgroundColor: AppColors.primaryColor,
-      title: SDSBuildText(
-        '${controller.accountInfo?.tenToChuc}',
-        style: AppTextStyle.font20Bo.copyWith(
-          color: AppColors.basicWhite,
-        ),
+      backgroundColor: AppColors.basicWhite,
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SDSBuildText(
+            '${controller.accountInfo?.tenToChuc}',
+            style: AppTextStyle.font16Bo.copyWith(
+              color: AppColors.colorBlack,
+            ),
+          ),
+          sdsSBHeight4,
+          SDSBuildText(
+            'MST: ${controller.accountInfo?.taxCode}',
+            style: AppTextStyle.font14Re,
+          ),
+          sdsSBHeight12,
+        ],
       ),
       actions: [
         Padding(
@@ -208,7 +210,7 @@ class HomePage extends BaseGetWidget<HomeController> {
                   children: [
                     SDSImageSvg(
                       Assets.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG,
-                      color: AppColors.basicWhite,
+                      color: AppColors.colorBlack,
                     ),
                     if (unreadCount > 0)
                       Positioned(
@@ -242,7 +244,6 @@ class HomePage extends BaseGetWidget<HomeController> {
           ),
         ),
       ],
-      centerTitle: true,
     );
   }
 }

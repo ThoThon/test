@@ -66,11 +66,12 @@
     "historyRegister": "Lịch sử đăng ký"
   },
   "home": {
-    "unitInfo": "Thông tin \nđơn vị",
-    "history": "Lịch sử",
-    "lookupC12": "Tra cứu \nC12",
+    "unitInfo": "Thông tin\nđơn vị",
+    "history": "Lịch sử\nkê khai",
+    "lookupC12": "Tra cứu\nhồ sơ C12",
     "guide": "Hướng dẫn sử dụng",
-    "procedureList": "Danh sách \nthủ tục",
+    "procedureList": "Danh sách\nthủ tục",
+    "registerService": "Đăng ký\ndịch vụ",
     "langugue": "Ngôn ngữ",
     "changePassword": "Đổi mật khẩu",
     "support": "CSKH: 1800 8000",
