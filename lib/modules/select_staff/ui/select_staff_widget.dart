@@ -37,7 +37,7 @@ extension SelectStaffWidget on SelectStaffPage {
       borderRadius: BorderRadius.circular(AppDimens.radius30),
       borderSide: const BorderSide(
         width: 1,
-        color: AppColors.colorBlack,
+        color: AppColors.statusRed,
       ),
     );
   }
