@@ -460,15 +460,11 @@ extension CommonInfoTab on RegisterCodePage {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: IntrinsicHeight(
-            child: _buildSelectDateSetup(),
-          ),
+          child: _buildSelectDateSetup(),
         ),
         sdsSBWidth12,
         Expanded(
-          child: IntrinsicHeight(
-            child: _buildSelectDateRegister(),
-          ),
+          child: _buildSelectDateRegister(),
         ),
       ],
     );
