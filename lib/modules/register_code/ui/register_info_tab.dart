@@ -367,25 +367,23 @@ extension RegisterInfoTab on RegisterCodePage {
 
   Widget _buildButtonGetListCert() {
     final isEnableBtn = controller.isEnableBtnSearchCert.value;
-    return IntrinsicHeight(
-      child: SizedBox(
-        width: 50,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppDimens.radius12),
-            ),
-            padding: EdgeInsets.zero,
+    return SizedBox(
+      width: 50,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppDimens.radius12),
           ),
-          onPressed: isEnableBtn
-              ? () {
-                  controller.getListCertificate();
-                }
-              : null,
-          child: Center(
-            child: SDSImageSvg(Assets.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG),
-          ),
+          padding: EdgeInsets.zero,
+        ),
+        onPressed: isEnableBtn
+            ? () {
+                controller.getListCertificate();
+              }
+            : null,
+        child: Center(
+          child: SDSImageSvg(Assets.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG),
         ),
       ),
     );

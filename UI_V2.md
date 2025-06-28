@@ -1,5 +1,5 @@
 Những UI được tạo mới dùng để thay thế UI cũ
-- UtilWidgets.buildDropDownWithLabel2 -> CardDropdownWithLabel
-- UtilWidgets.buildInputSelectDate -> CardInputSelectDateWithLabel
+- UtilWidget.buildDropDownWithLabel2 -> CardDropdownWithLabel
+- UtilWidget.buildInputSelectDate -> CardInputSelectDateWithLabel
 - BuildInputTextWithLabel -> CardInputTextFormWithLabel
-- UtilWidgets.buildCardBottomSheetSelect2 -> UtilWidgets.buildCardBottomSheetSelect
+- UtilWidget.buildCardBottomSheetSelect2 -> UtilWidgets.buildCardBottomSheetSelect
