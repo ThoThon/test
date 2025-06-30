@@ -121,9 +121,11 @@ class UtilWidget {
     Color? colorBorder,
     Color? backgroundColor,
     double? radius,
+    Gradient? gradient,
   }) =>
       Container(
         decoration: BoxDecoration(
+          gradient: gradient,
           color: backgroundColor ?? Colors.white,
           borderRadius:
               BorderRadius.all(Radius.circular(radius ?? AppDimens.radius8)),
