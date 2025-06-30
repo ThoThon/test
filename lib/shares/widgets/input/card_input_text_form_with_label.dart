@@ -60,7 +60,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
                   labelText,
                   style: textStyle ??
                       AppTextStyle.font14Re.copyWith(
-                        color: AppColors.dsGray2,
+                        color: AppColors.dsGray1,
                       ),
                 ),
                 Visibility(

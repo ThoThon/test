@@ -1132,7 +1132,7 @@ class Locales {
     'declarationPeriod_updateDate': 'Ngày cập nhật',
     'declarationPeriod_fileNumber': 'Số hồ sơ',
     'declarationPeriod_status': 'Trạng thái',
-    'declarationPeriod_createNewPeriod': '+ Tạo mới đợt',
+    'declarationPeriod_createNewPeriod': 'Thêm mới',
     'declarationPeriod_period': 'Đợt',
     'declarationPeriod_statusNotYet': 'Chưa kê khai',
     'declarationPeriod_statusDraft': 'Lưu nháp',

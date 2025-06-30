@@ -1,4 +1,3 @@
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 part 'declaration_period_widget.dart';
@@ -14,12 +13,24 @@ class DeclarationPeriodPage extends BaseGetWidget<DeclarationPeriodController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return buildLoadingOverlay(
-      () => Scaffold(
-        appBar: BaseAppBar(
-          title: BaseAppBarTitle(title: LocaleKeys.declarationPeriod_title.tr),
-        ),
-        body: SafeArea(
-          child: _buildBody(),
+      () => Container(
+        color: AppColors.primaryColor,
+        child: Scaffold(
+          appBar: BaseAppBar(
+            backgroundColor: AppColors.primaryColor,
+            title: BaseAppBarTitle(
+              title: LocaleKeys.declarationPeriod_title.tr,
+              textStyle:
+                  AppTextStyle.font18Bo.copyWith(color: AppColors.basicWhite),
+            ),
+            centerTitle: true,
+            leading: UtilWidget.buildButtonBackAppbar(
+              color: AppColors.basicWhite,
+            ),
+          ),
+          body: BaseCardBody(
+            child: _buildBody(),
+          ),
         ),
       ),
     );
