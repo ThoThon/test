@@ -12,11 +12,30 @@ class ProcedureListPage extends BaseGetWidget<ProcedureListController> {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: BaseAppBarTitle(title: LocaleKeys.procedureList_pageTitle.tr),
+    return Container(
+      color: AppColors.primaryColor,
+      child: Scaffold(
+        appBar: BaseAppBar(
+          title: BaseAppBarTitle(
+            title: LocaleKeys.procedureList_pageTitle.tr,
+            textStyle:
+                AppTextStyle.font18Bo.copyWith(color: AppColors.basicWhite),
+          ),
+          centerTitle: true,
+          leading: InkWell(
+            onTap: Get.back,
+            child: SDSImageSvg(
+              Assets.ASSETS_ICONS_IC_ARROW_LEFT_SVG,
+              fit: BoxFit.none,
+              color: AppColors.basicWhite,
+            ),
+          ),
+          backgroundColor: AppColors.primaryColor,
+        ),
+        body: BaseCardBody(
+          child: _buildBody(),
+        ),
       ),
-      body: SafeArea(child: _buildBody()),
     );
   }
 }

@@ -292,6 +292,7 @@
     "account": "Tài khoản"
   },
   "declarationPeriod": {
+    "selectedProcedure":"Chọn thủ tục kê khai",
     "title": "Đợt kê khai",
     "month": "Tháng",
     "selectMonth": "Chọn tháng",

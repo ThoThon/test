@@ -6,15 +6,17 @@ class BaseAppBarTitle extends StatelessWidget {
   const BaseAppBarTitle({
     super.key,
     required this.title,
+    this.textStyle,
   });
 
   final String title;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
     return SDSBuildText(
       title,
-      style: AppTextStyle.font20Bo,
+      style: textStyle ?? AppTextStyle.font20Bo,
     );
   }
 }
