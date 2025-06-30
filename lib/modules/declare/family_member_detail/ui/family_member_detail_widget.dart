@@ -453,6 +453,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<RelationshipModel>(
+                maxLength: 20,
                 title: LocaleKeys
                     .familyMember_selectRelationshipWithHeadOfHousehold.tr,
                 listFilter: AppData.instance.relationships.toList(),
