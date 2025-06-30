@@ -58,6 +58,7 @@ class AppDimens {
   static const double radius22 = 22;
   static const double radius20 = 20;
   static const double radius30 = 30;
+  static const double radius36 = 36;
 
   static const double btnSmall = 20;
   static const double btnRecommend = 30;

@@ -170,8 +170,10 @@ class HomePage extends BaseGetWidget<HomeController> {
     );
   }
 
-  BaseAppBar _buildAppBar() {
-    return BaseAppBar(
+  AppBar _buildAppBar() {
+    return AppBar(
+      scrolledUnderElevation: 0,
+      titleSpacing: 0,
       iconTheme: const IconThemeData(
         color: AppColors.colorBlack,
         size: AppDimens.sizeIcon,

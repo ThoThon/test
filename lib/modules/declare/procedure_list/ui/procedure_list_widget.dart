@@ -2,7 +2,24 @@ part of 'procedure_list_page.dart';
 
 extension ProcedureListPageWidget on ProcedureListPage {
   Widget _buildBody() {
-    return baseShowLoading(() => _buildProcedureList());
+    return baseShowLoading(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              left: AppDimens.paddingMedium,
+              top: AppDimens.defaultPadding,
+            ),
+            child: SDSBuildText(
+              LocaleKeys.declarationPeriod_selectedProcedure.tr,
+              style: AppTextStyle.font16Bo,
+            ),
+          ),
+          Expanded(child: _buildProcedureList())
+        ],
+      ),
+    );
   }
 
   Widget _buildProcedureList() {
@@ -18,10 +35,9 @@ extension ProcedureListPageWidget on ProcedureListPage {
         }
 
         return ListView.separated(
-          padding: const EdgeInsets.only(
-            left: AppDimens.defaultPadding,
-            right: AppDimens.defaultPadding,
-            bottom: AppDimens.defaultPadding,
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppDimens.paddingMedium,
+            vertical: AppDimens.defaultPadding,
           ),
           itemCount: controller.procedures.length,
           itemBuilder: (context, index) {
@@ -40,69 +56,66 @@ extension ProcedureListPageWidget on ProcedureListPage {
     required Procedure procedure,
   }) {
     return Container(
-      padding: const EdgeInsets.all(AppDimens.paddingSmall),
+      padding: const EdgeInsets.symmetric(vertical: AppDimens.paddingSmall),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppDimens.radius8),
-        border: Border.all(
-          color: AppColors.primaryColor,
-          width: 1,
-        ),
-      ),
+          borderRadius: BorderRadius.circular(AppDimens.radius16),
+          border: Border.all(
+            color: AppColors.primaryColor,
+            width: 1,
+          ),
+          color: AppColors.basicWhite),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: AppDimens.paddingVerySmall,
-                  horizontal: AppDimens.paddingSmall,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(AppDimens.radius8),
-                  border: Border.all(
-                    color: AppColors.primaryColor,
-                    width: 1,
-                  ),
-                ),
-                child: SDSBuildText(
-                  procedure.code,
-                  style: AppTextStyle.font20Bo.copyWith(
-                    color: AppColors.primaryColor,
-                  ),
+              SDSImageSvg(Assets.ASSETS_ICONS_IC_PROCEDURE_SVG),
+              sdsSBWidth8,
+              SDSBuildText(
+                procedure.code,
+                style: AppTextStyle.font14Bo.copyWith(
+                  color: AppColors.colorBlack,
                 ),
               ),
-              UtilWidget.sizedBoxWidth16,
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            ],
+          ).paddingSymmetric(horizontal: AppDimens.defaultPadding),
+          sdsSBHeight8,
+          const Divider(
+            height: 1,
+          ),
+          sdsSBHeight8,
+          SDSBuildText(
+            procedure.note,
+            maxLines: 3,
+          ).paddingSymmetric(horizontal: AppDimens.defaultPadding),
+          Row(
+            children: [
+              const Spacer(),
+              InkWell(
+                onTap: () {
+                  Get.toNamed(
+                    AppRoutes.declarationPeriod.path,
+                    arguments: procedure,
+                  );
+                },
+                child: Row(
                   children: [
                     SDSBuildText(
-                      procedure.name,
-                      style: AppTextStyle.font16Bo,
-                      maxLines: 3,
+                      LocaleKeys.procedureList_declare.tr,
+                      style: AppTextStyle.font14Re
+                          .copyWith(color: AppColors.primaryColor),
                     ),
-                    UtilWidget.sizedBox4,
-                    SDSBuildText(
-                      procedure.note,
-                      maxLines: 3,
+                    sdsSBWidth4,
+                    SDSImageSvg(
+                      Assets.ASSETS_ICONS_IC_ARROW_RIGHT_SVG,
+                      color: AppColors.primaryColor,
                     ),
                   ],
                 ),
               ),
             ],
-          ),
-          UtilWidget.sizedBox8,
-          UtilWidget.buildSolidButtonBack(
-            title: LocaleKeys.procedureList_declare.tr,
-            onPressed: () {
-              Get.toNamed(
-                AppRoutes.declarationPeriod.path,
-                arguments: procedure,
-              );
-            },
-          ),
+          ).paddingSymmetric(horizontal: AppDimens.defaultPadding),
         ],
       ),
     );

@@ -73,7 +73,7 @@ class AppColors {
   static const Color trackColorSwitch = Color(0xFFA9A9A9);
   static const Color thumbColorSwitch = Color(0xFF7E7E7E);
 
-  static const Color backgroundColorLight = Color(0xFFF9F9F9);
+  static const Color backgroundColorLight = Color(0xFFF7F8FA);
 
   static const Color mainColors = Color.fromRGBO(242, 103, 36, 1);
 
@@ -83,6 +83,7 @@ class AppColors {
   static const Color textColorGrey = Color(0xFF737373);
   static const Color colorBorder = Color(0xFFBCC1CA);
   static const Color colorIconSuccess = Color(0xFF34C759);
+  static const Color dividerColor = Color(0xFFF5F5F5);
 
   static const LinearGradient gradientGray = LinearGradient(
     begin: Alignment.topLeft,

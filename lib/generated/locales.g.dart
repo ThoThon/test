@@ -297,6 +297,8 @@ class LocaleKeys {
   static const pageBuilder_report = 'pageBuilder_report';
   static const pageBuilder_notification = 'pageBuilder_notification';
   static const pageBuilder_account = 'pageBuilder_account';
+  static const declarationPeriod_selectedProcedure =
+      'declarationPeriod_selectedProcedure';
   static const declarationPeriod_title = 'declarationPeriod_title';
   static const declarationPeriod_month = 'declarationPeriod_month';
   static const declarationPeriod_selectMonth = 'declarationPeriod_selectMonth';
@@ -1123,6 +1125,7 @@ class Locales {
     'pageBuilder_report': 'Báo cáo',
     'pageBuilder_notification': 'Thông báo',
     'pageBuilder_account': 'Tài khoản',
+    'declarationPeriod_selectedProcedure': 'Chọn thủ tục kê khai',
     'declarationPeriod_title': 'Đợt kê khai',
     'declarationPeriod_month': 'Tháng',
     'declarationPeriod_selectMonth': 'Chọn tháng',
