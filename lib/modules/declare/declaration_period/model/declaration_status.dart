@@ -51,15 +51,15 @@ enum DeclarationStatus {
   Color get color {
     switch (this) {
       case DeclarationStatus.notYet:
-        return const Color(0xFFB7B7B7);
+        return Colors.black;
       case DeclarationStatus.draft:
-        return const Color(0xFFFFCB09);
+        return const Color(0xFFFE9705);
       case DeclarationStatus.saved:
         return const Color(0xFF00EFFF);
       case DeclarationStatus.sent:
-        return Colors.green;
+        return const Color(0xFF409C37);
       case DeclarationStatus.pending:
-        return const Color(0xFFB7B7B7);
+        return Colors.black;
       case DeclarationStatus.failed:
         return Colors.red;
       case DeclarationStatus.success:
@@ -85,6 +85,25 @@ enum DeclarationStatus {
         return DeclarationStatus.success;
       default:
         return DeclarationStatus.notYet;
+    }
+  }
+
+  Color get cardColor {
+    switch (this) {
+      case DeclarationStatus.notYet:
+        return const Color(0xFFEDEDED);
+      case DeclarationStatus.draft:
+        return const Color(0xFFFFF1DF);
+      case DeclarationStatus.saved:
+        return const Color(0xFFE0FBFF);
+      case DeclarationStatus.sent:
+        return const Color(0xFFE9FFE6);
+      case DeclarationStatus.pending:
+        return const Color(0xFFEDEDED);
+      case DeclarationStatus.failed:
+        return const Color(0xFFFFE5E5);
+      case DeclarationStatus.success:
+        return const Color(0xFFD9F3FF);
     }
   }
 }

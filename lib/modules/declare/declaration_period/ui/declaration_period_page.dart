@@ -1,4 +1,3 @@
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 part 'declaration_period_widget.dart';
@@ -29,7 +28,7 @@ class DeclarationPeriodPage extends BaseGetWidget<DeclarationPeriodController> {
               color: AppColors.basicWhite,
             ),
           ),
-          body: SafeArea(
+          body: BaseCardBody(
             child: _buildBody(),
           ),
         ),

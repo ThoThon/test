@@ -83,6 +83,7 @@ extension ProcedureListPageWidget on ProcedureListPage {
           sdsSBHeight8,
           const Divider(
             height: 1,
+            color: AppColors.dividerColor,
           ),
           sdsSBHeight8,
           SDSBuildText(
