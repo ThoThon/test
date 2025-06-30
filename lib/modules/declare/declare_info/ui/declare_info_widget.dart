@@ -2,71 +2,79 @@ part of 'declare_info_page.dart';
 
 extension DeclareInfoWidget on DeclareInfoPage {
   Widget _buildBody() {
-    return Column(
-      children: [
-        _buildTabs(),
-        Expanded(
-          child: Obx(
-            () {
-              return IndexedStack(
-                index: controller.currentTab.value.index,
-                children: [
-                  _buildD02TabBody(),
-                  _buildTk1TabBody(),
-                  _buildD01TabBody(),
-                ],
-              );
-            },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
+      child: Column(
+        children: [
+          _buildTabs(),
+          Expanded(
+            child: Obx(
+              () {
+                return IndexedStack(
+                  index: controller.currentTab.value.index,
+                  children: [
+                    _buildD02TabBody(),
+                    _buildTk1TabBody(),
+                    _buildD01TabBody(),
+                  ],
+                );
+              },
+            ),
           ),
-        ),
-        Obx(
-          () => _buildBottomButtons(),
-        ).paddingAll(AppDimens.defaultPadding),
-      ],
+          Obx(
+            () => _buildBottomButtons(),
+          ).paddingOnly(top: AppDimens.defaultPadding),
+        ],
+      ),
     );
   }
 
   Widget _buildTabs() {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.colorWhite,
-        borderRadius: BorderRadius.circular(AppDimens.radius8),
+        color: AppColors.primaryColor,
+        borderRadius: BorderRadius.circular(18),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
       child: Obx(
         () {
-          return Row(
-            children: [
-              Expanded(
-                child: _buildTabButton(
-                  title: 'D02-LT',
-                  isSelected: controller.currentTab.value == DeclareInfoTab.d02,
-                  onTap: () {
-                    controller.onTabChanged(DeclareInfoTab.d02);
-                  },
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 3),
+            child: Row(
+              children: [
+                Expanded(
+                  child: _buildTabButton(
+                    title: 'D02-LT',
+                    isSelected:
+                        controller.currentTab.value == DeclareInfoTab.d02,
+                    onTap: () {
+                      controller.onTabChanged(DeclareInfoTab.d02);
+                    },
+                  ),
                 ),
-              ),
-              Expanded(
-                child: _buildTabButton(
-                  title: 'TK1-TS',
-                  enabled: controller.enableTk1Tab,
-                  isSelected: controller.currentTab.value == DeclareInfoTab.tk1,
-                  onTap: () {
-                    controller.onTabChanged(DeclareInfoTab.tk1);
-                  },
+                Expanded(
+                  child: _buildTabButton(
+                    title: 'TK1-TS',
+                    enabled: controller.enableTk1Tab,
+                    isSelected:
+                        controller.currentTab.value == DeclareInfoTab.tk1,
+                    onTap: () {
+                      controller.onTabChanged(DeclareInfoTab.tk1);
+                    },
+                  ),
                 ),
-              ),
-              Expanded(
-                child: _buildTabButton(
-                  title: 'D01-TS',
-                  enabled: controller.enableD01Tab,
-                  isSelected: controller.currentTab.value == DeclareInfoTab.d01,
-                  onTap: () {
-                    controller.onTabChanged(DeclareInfoTab.d01);
-                  },
+                Expanded(
+                  child: _buildTabButton(
+                    title: 'D01-TS',
+                    enabled: controller.enableD01Tab,
+                    isSelected:
+                        controller.currentTab.value == DeclareInfoTab.d01,
+                    onTap: () {
+                      controller.onTabChanged(DeclareInfoTab.d01);
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),
@@ -79,25 +87,28 @@ extension DeclareInfoWidget on DeclareInfoPage {
     bool enabled = true,
     VoidCallback? onTap,
   }) {
-    return Material(
-      color: isSelected ? AppColors.primaryColor : Colors.transparent,
-      borderRadius: BorderRadius.circular(AppDimens.radius8),
-      child: InkWell(
-        onTap: enabled ? onTap : null,
-        borderRadius: BorderRadius.circular(AppDimens.radius8),
-        child: Center(
-          child: SDSBuildText(
-            title,
-            style: AppTextStyle.font16Re.copyWith(
-              color: !enabled
-                  ? AppColors.dsGray4
-                  : isSelected
-                      ? AppColors.colorWhite
-                      : AppColors.primaryColor,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 3),
+      child: Material(
+        color: isSelected ? AppColors.basicWhite : Colors.transparent,
+        borderRadius: BorderRadius.circular(AppDimens.radius16),
+        child: InkWell(
+          onTap: enabled ? onTap : null,
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+          child: Center(
+            child: SDSBuildText(
+              title,
+              style: AppTextStyle.font16Re.copyWith(
+                color: !enabled
+                    ? const Color(0xFFF56584)
+                    : isSelected
+                        ? AppColors.primaryColor
+                        : AppColors.basicWhite,
+              ),
+            ).paddingSymmetric(
+              horizontal: AppDimens.paddingSmall,
+              vertical: AppDimens.paddingVerySmall,
             ),
-          ).paddingSymmetric(
-            horizontal: AppDimens.paddingSmall,
-            vertical: AppDimens.paddingVerySmall,
           ),
         ),
       ),
@@ -129,60 +140,26 @@ extension DeclareInfoWidget on DeclareInfoPage {
   //   ).paddingAll(AppDimens.paddingSmall);
   // }
 
-  Widget _buildInputFullName({
-    VoidCallback? onTapSelectStaff,
-  }) {
+  Widget _buildInputFullName() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: _buildInputTitle(
-                title: LocaleKeys.declareInfo_fullName.tr,
-                isRequired: true,
-              ),
-            ),
-            if (onTapSelectStaff != null)
-              TextButton(
-                onPressed: onTapSelectStaff,
-                style: TextButton.styleFrom(
-                  minimumSize: Size.zero,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: AppDimens.paddingSmallest,
-                    horizontal: AppDimens.paddingSmall,
-                  ),
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                ),
-                child: SDSBuildText(
-                  LocaleKeys.declareInfo_selectStaff.tr,
-                  style: AppTextStyle.font16Re.copyWith(
-                    color: AppColors.primaryColor,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-              ),
-          ],
-        ).paddingOnly(bottom: AppDimens.paddingSmallest),
-        BuildInputText(
-          InputTextModel(
-            controller: controller.d02Tk1State.fullNameTextCtrl,
-            hintText: LocaleKeys.declareInfo_fullNameHint.tr,
-            isValidate: true,
-            maxLengthInputForm: 100,
-            inputFormatters: InputFormatterEnum.textNormal,
-            onChanged: controller.onChangeFullName,
-            validator: (value) {
-              final trimmedValue = value?.trim();
+        CardInputTextFormWithLabel(
+          labelText: LocaleKeys.declareInfo_fullName.tr,
+          controller: controller.d02Tk1State.fullNameTextCtrl,
+          isRequired: true,
+          maxLengthInputForm: 100,
+          onChanged: controller.onChangeFullName,
+          validator: (value) {
+            final trimmedValue = value?.trim();
 
-              if (trimmedValue == null || trimmedValue.isEmpty) {
-                return LocaleKeys.declareInfo_fullNameCannotEmpty.tr;
-              }
+            if (trimmedValue == null || trimmedValue.isEmpty) {
+              return LocaleKeys.declareInfo_fullNameCannotEmpty.tr;
+            }
 
-              return null;
-            },
-          ),
-        ),
+            return null;
+          },
+        )
       ],
     );
   }
@@ -209,18 +186,14 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildInputCCCD() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_cccdNumber.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          autovalidateMode: controller.autovalidateMode.value,
-          controller: controller.d02Tk1State.cccdTextCtrl,
-          isValidate: true,
-          maxLengthInputForm: 20,
-          inputFormatters: InputFormatterEnum.textNormal,
-          onChanged: controller.onChangeCCCD,
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declareInfo_cccdNumber.tr,
+      autovalidateMode: controller.autovalidateMode.value,
+      controller: controller.d02Tk1State.cccdTextCtrl,
+      isRequired: true,
+      maxLengthInputForm: 20,
+      inputFormatters: InputFormatterEnum.textNormal,
+      onChanged: controller.onChangeCCCD,
     );
   }
 
@@ -228,57 +201,68 @@ extension DeclareInfoWidget on DeclareInfoPage {
     return Obx(
       () {
         final isRequired = controller.isBhxhCodeRequired;
-        return BuildInputTextWithLabel(
-          label: LocaleKeys.declareInfo_bhxhCode.tr,
-          buildInputText: BuildInputText(
-            InputTextModel(
-              controller: controller.d02Tk1State.bhxhTextCtrl,
-              maxLengthInputForm: 10,
-              inputFormatters: InputFormatterEnum.digitsOnly,
-              textInputType: TextInputType.number,
-              isValidate: isRequired,
-              onChanged: (value) {
-                controller.updateHouseholdInfoRequired();
-              },
-              validator: (value) {
-                final trimmedValue = value?.trim();
+        return CardInputTextFormWithLabel(
+          labelText: LocaleKeys.declareInfo_bhxhCode.tr,
+          controller: controller.d02Tk1State.bhxhTextCtrl,
+          maxLengthInputForm: 10,
+          inputFormatters: InputFormatterEnum.digitsOnly,
+          textInputType: TextInputType.number,
+          isRequired: isRequired,
+          onChanged: (value) {
+            controller.updateHouseholdInfoRequired();
+          },
+          validator: (value) {
+            final trimmedValue = value?.trim();
 
-                if (trimmedValue == null || trimmedValue.isEmpty) {
-                  return isRequired
-                      ? LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr
-                      : null;
-                }
-                if (trimmedValue.length < 10) {
-                  return LocaleKeys.declareInfo_bhxhCodeInValid.tr;
-                }
+            if (trimmedValue == null || trimmedValue.isEmpty) {
+              return isRequired
+                  ? LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr
+                  : null;
+            }
+            if (trimmedValue.length < 10) {
+              return LocaleKeys.declareInfo_bhxhCodeInValid.tr;
+            }
 
-                return null;
-              },
-            ),
-          ),
+            return null;
+          },
         );
       },
     );
   }
 
   Widget _buildSelectGender() {
-    return Obx(
-      () => UtilWidget.buildListRadio<Gender>(
-        options: [Gender.male, Gender.female],
-        getTitle: (gender) => gender.title,
-        selectedItem: controller.d02Tk1State.gender.value,
-        autovalidateMode: controller.autovalidateMode.value,
-        onChanged: (value) {
-          controller.d02Tk1State.gender.value = value;
-        },
-        validator: (value) {
-          if (value == null) {
-            return LocaleKeys.familyMember_selectGender.tr;
-          }
-          return null;
-        },
-      ),
+    return CardDropdownWithLabel<Gender>(
+      labelText: LocaleKeys.declareInfo_gender.tr,
+      items: Gender.values,
+      display: (item) => item.title,
+      isRequired: true,
+      onChanged: (value) {
+        controller.d02Tk1State.gender.value = value;
+      },
+      validator: (value) {
+        if (value == null) {
+          return LocaleKeys.familyMember_selectGender.tr;
+        }
+        return null;
+      },
     );
+    // Obx(
+    //   () => UtilWidget.buildListRadio<Gender>(
+    //     options: [Gender.male, Gender.female],
+    //     getTitle: (gender) => gender.title,
+    //     selectedItem: controller.d02Tk1State.gender.value,
+    //     autovalidateMode: controller.autovalidateMode.value,
+    //     onChanged: (value) {
+    //       controller.d02Tk1State.gender.value = value;
+    //     },
+    // validator: (value) {
+    //   if (value == null) {
+    //     return LocaleKeys.familyMember_selectGender.tr;
+    //   }
+    //   return null;
+    // },
+    //   ),
+    // );
   }
 
   Widget _buildSelectEthnic() {
@@ -354,8 +338,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildBirthTypeDropdown() {
-    return UtilWidget.buildDropDownWithLabel2<BirthTypeEnum>(
-      label: LocaleKeys.familyMember_selectBirthType.tr,
+    return CardDropdownWithLabel<BirthTypeEnum>(
+      labelText: LocaleKeys.familyMember_selectBirthType.tr,
+      isRequired: true,
       hintText: LocaleKeys.familyMember_selectBirthTypeHint.tr,
       items: BirthTypeEnum.values,
       display: (item) => item.title,
@@ -371,8 +356,10 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectDateOfBirth() {
-    return UtilWidget.buildInputSelectDate(
-      title: LocaleKeys.declareInfo_dob.tr,
+    return CardInputSelectDateWithLabel(
+      labelText: LocaleKeys.declareInfo_dob.tr,
+      isRequired: true,
+      borderRadius: AppDimens.radius10,
       controller: controller.d02Tk1State.dateOfBirthTextCtrl,
       hintText: controller.d02Tk1State.birthType.value.pattern,
       inputFormatters: controller.d02Tk1State.birthType.value.inputFormatter,
@@ -465,7 +452,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
   Widget _buildBottomButtons() {
     if (controller.isShowNextButton) {
       return UtilWidget.buildSolidButton(
+        borderRadius: AppDimens.radius30,
         title: LocaleKeys.declareInfo_next.tr,
+        textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
         onPressed: () {
           controller.nextTab();
         },
@@ -473,7 +462,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
     }
 
     return UtilWidget.buildSolidButton(
+      borderRadius: AppDimens.radius30,
       title: LocaleKeys.app_save.tr,
+      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
       onPressed: controller.saveDraft,
     );
   }

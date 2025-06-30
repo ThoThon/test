@@ -1,11 +1,10 @@
 import 'package:v_bhxh/modules/src.dart';
 
-
 // Dùng thay thế cho UtilWidgets.buildDropDownWithLabel2
 class CardDropdownWithLabel<T> extends StatelessWidget {
   final String labelText;
   final TextStyle? textStyle;
-  final bool isRequired;
+  final bool? isRequired;
   final String? hintText;
   final String? Function(T?)? validator;
   final List<T> items;
@@ -19,7 +18,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
     required this.labelText,
     this.hintText,
     this.textStyle,
-    required this.isRequired,
+    this.isRequired,
     this.validator,
     required this.items,
     required this.display,
@@ -84,7 +83,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
       padding: const EdgeInsets.only(
         right: AppDimens.defaultPadding,
         left: AppDimens.defaultPadding,
-        top: AppDimens.paddingSmall,
+        top: AppDimens.paddingVerySmall,
       ),
       decoration: BoxDecoration(
         color: AppColors.colorWhite,
@@ -99,11 +98,11 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
                 labelText,
                 style: textStyle ??
                     AppTextStyle.font14Re.copyWith(
-                      color: AppColors.textColorGrey,
+                      color: AppColors.dsGray2,
                     ),
               ),
               Visibility(
-                visible: isRequired,
+                visible: isRequired ?? false,
                 child: SDSBuildText(
                   ' *',
                   style: AppTextStyle.font12Re.copyWith(
@@ -118,8 +117,9 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
             child: DropdownButton<T>(
               isDense: isDense,
               isExpanded: true,
-              padding:
-                  const EdgeInsets.only(bottom: AppDimens.paddingVerySmall),
+              padding: const EdgeInsets.only(
+                bottom: AppDimens.paddingVerySmall,
+              ),
               value: selectedItem,
               onChanged: onChanged,
               dropdownColor: AppColors.colorWhite,

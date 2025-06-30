@@ -24,31 +24,42 @@ extension D02TabWidget on DeclareInfoPage {
                 key: controller.d02State.formKey,
                 autovalidateMode: controller.d02State.autoValidateMode.value,
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimens.defaultPadding,
-                  ),
+                  // padding: const EdgeInsets.symmetric(
+                  //   horizontal: AppDimens.defaultPadding,
+                  // ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildInputFullName(
+                      _buildInfoPerson(
                         onTapSelectStaff: controller.goToSelectStaffPage,
                       ),
-                      UtilWidget.sizedBox8,
+                      sdsSBHeight8,
+                      _buildInputFullName(),
+                      sdsSBHeight12,
                       _buildInputBHXHCode(),
-                      UtilWidget.sizedBox8,
+                      sdsSBHeight12,
+                      _buildInputCCCD(),
+                      sdsSBHeight12,
+                      _buildBirthTypeDropdown(),
+                      sdsSBHeight12,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: _buildSelectDateOfBirth()),
+                          sdsSBWidth12,
+                          Expanded(child: _buildSelectGender()),
+                        ],
+                      ),
+                      sdsSBHeight12,
+
                       _buildSelectDeclareType(),
                       UtilWidget.sizedBox16,
                       _buildSelectPlan(),
                       _buildGenerateTk1DataCheckbox(),
                       UtilWidget.sizedBox16,
-                      _buildInputCCCD(),
-                      UtilWidget.sizedBox16,
-                      _buildBirthTypeDropdown(),
-                      UtilWidget.sizedBox16,
+
                       _buildSelectDateOfBirth(),
                       UtilWidget.sizedBox12,
-                      _buildSelectGender(),
-                      UtilWidget.sizedBox8,
                       // _buildSelectEthnic(),
                       // _buildSelectNationality(),
                       _buildSelectFromDate(),
@@ -88,6 +99,40 @@ extension D02TabWidget on DeclareInfoPage {
             },
           ),
         ),
+      ],
+    );
+  }
+
+  Widget _buildInfoPerson({
+    VoidCallback? onTapSelectStaff,
+  }) {
+    return Row(
+      children: [
+        Expanded(
+          child: SDSBuildText(
+            'Thông tin cá nhân',
+            style: AppTextStyle.font16Bo.copyWith(color: AppColors.colorBlack),
+          ),
+        ),
+        if (onTapSelectStaff != null)
+          TextButton(
+            onPressed: onTapSelectStaff,
+            style: TextButton.styleFrom(
+              minimumSize: Size.zero,
+              padding: const EdgeInsets.symmetric(
+                vertical: AppDimens.paddingSmallest,
+                horizontal: AppDimens.paddingSmall,
+              ),
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            child: SDSBuildText(
+              LocaleKeys.declareInfo_selectStaff.tr,
+              style: AppTextStyle.font14Re.copyWith(
+                color: AppColors.primaryColor,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ),
       ],
     );
   }

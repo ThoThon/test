@@ -30,6 +30,8 @@ class DeclareInfoPage extends BaseGetWidget<DeclareInfoController> {
           title: BaseAppBarTitle(
             title: LocaleKeys.declareInfo_title.tr,
           ),
+          leading: UtilWidget.buildButtonBackAppbar(),
+          centerTitle: true,
         ),
         body: SafeArea(
           child: _buildBody(),
