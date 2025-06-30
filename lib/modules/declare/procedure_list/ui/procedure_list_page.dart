@@ -22,8 +22,8 @@ class ProcedureListPage extends BaseGetWidget<ProcedureListController> {
                 AppTextStyle.font18Bo.copyWith(color: AppColors.basicWhite),
           ),
           centerTitle: true,
-          leading: UtilWidget.buildActionBackAppbar(
-            colorBtnBack: AppColors.basicWhite,
+          leading: UtilWidget.buildButtonBackAppbar(
+            color: AppColors.basicWhite,
           ),
           backgroundColor: AppColors.primaryColor,
         ),

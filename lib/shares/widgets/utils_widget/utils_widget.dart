@@ -1588,15 +1588,15 @@ class UtilWidget {
     );
   }
 
-  static Widget buildActionBackAppbar({
-    Color? colorBtnBack,
+  static Widget buildButtonBackAppbar({
+    Color? color,
   }) {
     return InkWell(
       onTap: Get.back,
       child: SDSImageSvg(
         Assets.ASSETS_ICONS_IC_ARROW_LEFT_SVG,
         fit: BoxFit.none,
-        color: colorBtnBack ?? AppColors.colorBlack,
+        color: color ?? AppColors.colorBlack,
       ),
     );
   }
