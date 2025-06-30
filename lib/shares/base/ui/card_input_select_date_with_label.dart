@@ -75,11 +75,11 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
             isShowCounterText: false,
             suffixIcon: Container(
               padding: const EdgeInsets.only(right: AppDimens.paddingSmall),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.basicWhite,
                 borderRadius: BorderRadius.horizontal(
                   right: Radius.circular(
-                    AppDimens.radius8,
+                    borderRadius ?? AppDimens.radius8,
                   ),
                 ),
               ),
@@ -97,7 +97,7 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
             hintText: hintText,
             contentPadding: const EdgeInsets.symmetric(
               vertical: AppDimens.paddingVerySmall,
-              horizontal: AppDimens.paddingSmall,
+              horizontal: AppDimens.defaultPadding,
             ),
             isDense: true,
             textInputType: TextInputType.number,
@@ -118,7 +118,7 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
   OutlineInputBorder _buildOutlineInputNoBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(borderRadius ?? AppDimens.radius8)),
+          bottom: Radius.circular(borderRadius ?? AppDimens.radius10)),
       borderSide: BorderSide.none,
     );
   }
