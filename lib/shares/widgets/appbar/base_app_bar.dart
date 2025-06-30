@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../../../modules/src.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -9,6 +7,8 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final Color? backgroundColor;
   final IconThemeData? iconTheme;
+  final VoidCallback? onTap;
+  final Color? colorIconBack;
 
   const BaseAppBar({
     super.key,
@@ -18,6 +18,8 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.backgroundColor,
     this.iconTheme,
+    this.onTap,
+    this.colorIconBack,
   });
 
   @override
@@ -26,7 +28,15 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       scrolledUnderElevation: 0,
       backgroundColor: backgroundColor,
       titleSpacing: 0,
-      leading: leading,
+      leading: leading ??
+          InkWell(
+            onTap: onTap ?? Get.back,
+            child: SDSImageSvg(
+              Assets.ASSETS_ICONS_IC_ARROW_LEFT_SVG,
+              fit: BoxFit.none,
+              color: colorIconBack ?? AppColors.colorBlack,
+            ),
+          ),
       title: title,
       centerTitle: centerTitle,
       actions: actions,

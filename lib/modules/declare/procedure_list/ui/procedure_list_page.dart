@@ -22,14 +22,7 @@ class ProcedureListPage extends BaseGetWidget<ProcedureListController> {
                 AppTextStyle.font18Bo.copyWith(color: AppColors.basicWhite),
           ),
           centerTitle: true,
-          leading: InkWell(
-            onTap: Get.back,
-            child: SDSImageSvg(
-              Assets.ASSETS_ICONS_IC_ARROW_LEFT_SVG,
-              fit: BoxFit.none,
-              color: AppColors.basicWhite,
-            ),
-          ),
+          colorIconBack: AppColors.basicWhite,
           backgroundColor: AppColors.primaryColor,
         ),
         body: BaseCardBody(
