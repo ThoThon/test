@@ -78,6 +78,7 @@ class LocaleKeys {
   static const home_lookupC12 = 'home_lookupC12';
   static const home_guide = 'home_guide';
   static const home_procedureList = 'home_procedureList';
+  static const home_registerService = 'home_registerService';
   static const home_langugue = 'home_langugue';
   static const home_changePassword = 'home_changePassword';
   static const home_support = 'home_support';
@@ -908,11 +909,12 @@ class Locales {
     'declaration_declarationTaxCode': 'Mã số thuế',
     'declaration_noUnitCode': 'Chưa có mã đơn vị',
     'declaration_historyRegister': 'Lịch sử đăng ký',
-    'home_unitInfo': 'Thông tin \nđơn vị',
-    'home_history': 'Lịch sử',
-    'home_lookupC12': 'Tra cứu \nC12',
+    'home_unitInfo': 'Thông tin\nđơn vị',
+    'home_history': 'Lịch sử\nkê khai',
+    'home_lookupC12': 'Tra cứu\nhồ sơ C12',
     'home_guide': 'Hướng dẫn sử dụng',
-    'home_procedureList': 'Danh sách \nthủ tục',
+    'home_procedureList': 'Danh sách\nthủ tục',
+    'home_registerService': 'Đăng ký\ndịch vụ',
     'home_langugue': 'Ngôn ngữ',
     'home_changePassword': 'Đổi mật khẩu',
     'home_support': 'CSKH: 1800 8000',

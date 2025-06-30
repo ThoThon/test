@@ -1,5 +1,6 @@
 30/06/2025
 - [Appmobile]_Sửa lại giao diện màn Danh sách thủ tục - BHW-2523
+- [Appmobile]_Thủ tục 600 -Màn TK1: Bổ sung maxlength ô tìm kiếm mối quan hệ với chủ hộ (Màn thành viên trong gia đình) - BHW-2524
 
 28/06/2025
 - [Appmobile]_Sửa lại giao diện màn Đăng ký cấp mã - BHW-2511
@@ -8,6 +9,7 @@
 - [Appmobile]_Enable một số ký tự trên bàn phím nhập tại các trường textbox đã chặn icon - BHW-2509
 - [Appmobile]_Thủ tục 600 - Màn D02: Xóa 2 trường dân tộc, quốc tịch - BHW-2535
 - [Appmobile]_Bổ sung chức năng xóa (Thêm icon dấu "x") tại các ô Tìm kiếm khi nhập giá trị - BHW-2539
+- [Appmobile]_Sửa lại giao diện màn Trang chủ - BHW-2519
 
 27/06/2025
 - [Appmobile]_Lỗi giao diện tại ô Tìm kiếm - BHW-2514
