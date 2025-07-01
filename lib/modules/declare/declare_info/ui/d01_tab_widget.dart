@@ -2,47 +2,65 @@ part of 'declare_info_page.dart';
 
 extension D01TabWidget on DeclareInfoPage {
   Widget _buildD01TabBody() {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          UtilWidget.sizedBox16,
-          ...controller.d01State.forms.mapIndexed(
-            (index, form) {
-              return _buildD01Item(
-                index: index,
-                form: form,
-              );
-            },
-          ),
-          InkWell(
-            onTap: controller.createNewDeclarationForm,
-            child: Row(
+    return Column(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Ink(
-                  decoration: const ShapeDecoration(
-                    color: AppColors.primaryColor,
-                    shape: CircleBorder(),
-                  ),
-                  child: IconButton(
-                    icon: const Icon(Icons.add),
-                    color: Colors.white,
-                    onPressed: controller.createNewDeclarationForm,
-                  ),
+                UtilWidget.sizedBox16,
+                ...controller.d01State.forms.mapIndexed(
+                  (index, form) {
+                    return _buildD01Item(
+                      index: index,
+                      form: form,
+                    );
+                  },
                 ),
-                UtilWidget.sizedBoxWidth16,
-                SDSBuildText(
-                  'Thêm mới bảng kê',
-                  style: AppTextStyle.font16Re,
-                ),
+                // InkWell(
+                //   onTap: controller.createNewDeclarationForm,
+                //   child: Row(
+                //     children: [
+                //       Ink(
+                //         decoration: const ShapeDecoration(
+                //           color: AppColors.primaryColor,
+                //           shape: CircleBorder(),
+                //         ),
+                //         child: IconButton(
+                //           icon: const Icon(Icons.add),
+                //           color: Colors.white,
+                //           onPressed: controller.createNewDeclarationForm,
+                //         ),
+                //       ),
+                //       UtilWidget.sizedBoxWidth16,
+                //       SDSBuildText(
+                //         'Thêm mới bảng kê',
+                //         style: AppTextStyle.font16Re,
+                //       ),
+                //     ],
+                //   ).paddingSymmetric(
+                //     vertical: AppDimens.paddingVerySmall,
+                //     horizontal: AppDimens.defaultPadding,
+                //   ),
+                // ),
               ],
-            ).paddingSymmetric(
-              vertical: AppDimens.paddingVerySmall,
-              horizontal: AppDimens.defaultPadding,
             ),
           ),
-        ],
-      ),
+        ),
+        UtilWidget.buildSolidButton(
+          title: 'Thêm bảng kê',
+          onPressed: controller.createNewDeclarationForm,
+          side: const BorderSide(
+            color: AppColors.colorBlack,
+            width: 1,
+          ),
+          backgroundColor: AppColors.basicWhite,
+          textStyle:
+              AppTextStyle.font14Re.copyWith(color: AppColors.colorBlack),
+          borderRadius: AppDimens.radius30,
+        ),
+      ],
     );
   }
 
@@ -72,36 +90,144 @@ extension D01TabWidget on DeclareInfoPage {
         ],
       ),
       child: Container(
-        padding: const EdgeInsets.all(AppDimens.defaultPadding),
-        decoration: BoxDecoration(
-          color: index % 2 == 0 ? Colors.white : Colors.grey[100],
+        padding: const EdgeInsets.only(
+          top: AppDimens.paddingSmall,
+          bottom: AppDimens.defaultPadding,
         ),
-        child: Row(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(AppDimens.radius16),
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.defaultPadding,
+              ),
+              child: Row(
                 children: [
-                  SDSBuildText(
-                    form.documentType,
-                    style: AppTextStyle.font16Semi,
+                  Expanded(
+                    child: SDSBuildText(
+                      form.fullName,
+                      style: AppTextStyle.font16Re,
+                    ),
                   ),
-                  SDSBuildText(
-                    form.fullName,
-                    style: AppTextStyle.font16Re,
+                  PopupMenuButton<ActionD01FormEnum>(
+                    surfaceTintColor: AppColors.basicWhite,
+                    constraints: const BoxConstraints(),
+                    color: AppColors.basicWhite,
+                    icon: const Icon(Icons.more_vert),
+                    onSelected: (value) {
+                      if (value == ActionD01FormEnum.edit) {
+                        // Gọi hàm sửa
+                        controller.editDeclarationForm(form);
+                      } else if (value == ActionD01FormEnum.delete) {
+                        // Gọi hàm xóa
+                        controller.showDialogDeleteForm(form);
+                      }
+                    },
+                    itemBuilder: (context) => [
+                      const PopupMenuItem(
+                        value: ActionD01FormEnum.edit,
+                        child: Row(
+                          children: [
+                            SDSBuildText('Sửa'),
+                            sdsSBWidth16,
+                            Icon(
+                              Icons.autorenew,
+                              color: AppColors.dsGray3,
+                            ),
+                          ],
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: ActionD01FormEnum.delete,
+                        child: Row(
+                          children: [
+                            const SDSBuildText('Xóa'),
+                            sdsSBWidth16,
+                            SDSImageSvg(Assets.ASSETS_ICONS_IC_DELETE_SVG),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
-            UtilWidget.buildSolidButtonBack(
-              title: 'Sửa',
-              onPressed: () {
-                controller.editDeclarationForm(form);
-              },
+            sdsSBHeight8,
+            const Divider(
+              height: 1,
+              color: AppColors.dsGray5,
+            ),
+            sdsSBHeight12,
+            _buildTitleAndContent(
+              title: LocaleKeys.declarationFormDetail_documentType.tr,
+              content: form.documentType,
+            ),
+            sdsSBHeight12,
+            _buildTitleAndContent(
+              title: LocaleKeys.declarationFormDetail_documentNumber.tr,
+              content: form.documentNumber,
+            ),
+            sdsSBHeight12,
+            _buildTitleAndContent(
+              title: LocaleKeys.declarationFormDetail_dateOfIssue.tr,
+              content:
+                  convertDateToStringSafe(form.dateOfIssue, PATTERN_1) ?? '',
+            ),
+            sdsSBHeight12,
+            _buildTitleAndContent(
+                title: LocaleKeys.declarationFormDetail_effectiveDate.tr,
+                content: convertDateToStringSafe(
+                      form.effectiveDate,
+                      PATTERN_1,
+                    ) ??
+                    ''),
+            sdsSBHeight12,
+            _buildTitleAndContent(
+              title: LocaleKeys.declarationFormDetail_issuingAgency.tr,
+              content: form.issuingAgency,
+            ),
+            sdsSBHeight12,
+            _buildTitleAndContent(
+              title: LocaleKeys.declarationFormDetail_summary.tr,
+              content: form.summary,
+            ),
+            sdsSBHeight12,
+            _buildTitleAndContent(
+              title: LocaleKeys.declarationFormDetail_summaryCannotEmpty.tr,
+              content: form.contentToBeAssessed,
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildTitleAndContent({
+    required String title,
+    required String content,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
+      child: Row(
+        children: [
+          Expanded(
+            child: SDSBuildText(
+              '$title:',
+              style: AppTextStyle.font14Re.copyWith(color: AppColors.dsGray1),
+            ),
+          ),
+          SDSBuildText(
+            content,
+            style: AppTextStyle.font14Re.copyWith(color: AppColors.dsGray1),
+          ),
+        ],
       ),
     );
   }

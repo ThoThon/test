@@ -51,7 +51,7 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
                   labelText,
                   style: textStyle ??
                       AppTextStyle.font14Re.copyWith(
-                        color: AppColors.dsGray2,
+                        color: AppColors.dsGray1,
                       ),
                 ),
                 Visibility(
@@ -74,8 +74,8 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
             inputFormatters: inputFormatters,
             isShowCounterText: false,
             suffixIcon: Container(
-              padding: const EdgeInsets.only(right: AppDimens.paddingSmall),
-              decoration:  BoxDecoration(
+              padding: const EdgeInsets.only(right: AppDimens.defaultPadding),
+              decoration: BoxDecoration(
                 color: AppColors.basicWhite,
                 borderRadius: BorderRadius.horizontal(
                   right: Radius.circular(

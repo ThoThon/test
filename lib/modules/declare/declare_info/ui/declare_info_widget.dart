@@ -23,7 +23,10 @@ extension DeclareInfoWidget on DeclareInfoPage {
           ),
           Obx(
             () => _buildBottomButtons(),
-          ).paddingOnly(top: AppDimens.defaultPadding),
+          ).paddingOnly(
+            top: AppDimens.defaultPadding,
+            bottom: AppDimens.paddingVerySmall,
+          ),
         ],
       ),
     );
@@ -33,7 +36,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.primaryColor,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(14),
       ),
       child: Obx(
         () {
@@ -91,7 +94,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       padding: const EdgeInsets.symmetric(vertical: 3),
       child: Material(
         color: isSelected ? AppColors.basicWhite : Colors.transparent,
-        borderRadius: BorderRadius.circular(AppDimens.radius16),
+        borderRadius: BorderRadius.circular(AppDimens.radius12),
         child: InkWell(
           onTap: enabled ? onTap : null,
           borderRadius: BorderRadius.circular(AppDimens.radius8),
@@ -114,31 +117,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
       ),
     );
   }
-
-  // Widget _buildScanIDButton({
-  //   VoidCallback? onTap,
-  // }) {
-  //   return InkWell(
-  //     onTap: onTap,
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         SDSImageSvg(
-  //           Assets.ASSETS_ICONS_IC_SCAN_NFC_GET_INFO_SVG,
-  //           height: AppDimens.sizeIconLarge,
-  //           width: AppDimens.sizeIconLarge,
-  //         ),
-  //         UtilWidget.sizedBoxWidth8,
-  //         Flexible(
-  //           child: SDSBuildText(
-  //             'Quét căn cước công dân để lấy thông tin',
-  //             style: AppTextStyle.font14Semi,
-  //           ),
-  //         ),
-  //       ],
-  //     ).paddingAll(AppDimens.paddingSmallest),
-  //   ).paddingAll(AppDimens.paddingSmall);
-  // }
 
   Widget _buildInputFullName() {
     return Column(
@@ -164,36 +142,25 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
-  Widget _buildInputTitle({
-    required String title,
-    bool isRequired = false,
-  }) {
-    return RichText(
-      text: TextSpan(
-        text: title,
-        style: AppTextStyle.font16Bo,
-        children: [
-          if (isRequired)
-            TextSpan(
-              text: ' (*)',
-              style: AppTextStyle.font12Re.copyWith(
-                color: AppColors.statusRed,
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildInputCCCD() {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.declareInfo_cccdNumber.tr,
       autovalidateMode: controller.autovalidateMode.value,
       controller: controller.d02Tk1State.cccdTextCtrl,
+      hintText: LocaleKeys.declareInfo_inputCCCD.tr,
       isRequired: true,
       maxLengthInputForm: 20,
       inputFormatters: InputFormatterEnum.textNormal,
       onChanged: controller.onChangeCCCD,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_cccdNumberIsNotEmpty.tr;
+        }
+
+        return null;
+      },
     );
   }
 
@@ -232,10 +199,13 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
   Widget _buildSelectGender() {
     return CardDropdownWithLabel<Gender>(
+      key: ValueKey(controller.d02Tk1State.gender.value),
       labelText: LocaleKeys.declareInfo_gender.tr,
       items: Gender.values,
       display: (item) => item.title,
+      autovalidateMode: controller.autovalidateMode.value,
       isRequired: true,
+      selectedItem: controller.d02Tk1State.gender.value,
       onChanged: (value) {
         controller.d02Tk1State.gender.value = value;
       },
@@ -246,31 +216,13 @@ extension DeclareInfoWidget on DeclareInfoPage {
         return null;
       },
     );
-    // Obx(
-    //   () => UtilWidget.buildListRadio<Gender>(
-    //     options: [Gender.male, Gender.female],
-    //     getTitle: (gender) => gender.title,
-    //     selectedItem: controller.d02Tk1State.gender.value,
-    //     autovalidateMode: controller.autovalidateMode.value,
-    //     onChanged: (value) {
-    //       controller.d02Tk1State.gender.value = value;
-    //     },
-    // validator: (value) {
-    //   if (value == null) {
-    //     return LocaleKeys.familyMember_selectGender.tr;
-    //   }
-    //   return null;
-    // },
-    //   ),
-    // );
   }
 
   Widget _buildSelectEthnic() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<EthnicModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<EthnicModel>(
           label: LocaleKeys.declareInfo_ethnic.tr,
-          hintText: LocaleKeys.declareInfo_selectEthnic.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<EthnicModel>(
@@ -304,9 +256,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
   Widget _buildSelectNationality() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<NationModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<NationModel>(
           label: LocaleKeys.declareInfo_nationality.tr,
-          hintText: LocaleKeys.declareInfo_selectNationality.tr,
+          // hintText: LocaleKeys.declareInfo_selectNationality.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<NationModel>(

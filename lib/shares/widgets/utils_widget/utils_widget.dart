@@ -782,9 +782,11 @@ class UtilWidget {
     VoidCallback? onTapClear,
     bool enableClearIcon = false,
     TextStyle? textStyleLabel,
+    String? hintText,
+    AutovalidateMode? autovalidateMode,
   }) {
     return FormField(
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: autovalidateMode ?? AutovalidateMode.onUserInteraction,
       validator: isRequired ? validator : null,
       initialValue: selectedItem,
       builder: (FormFieldState<T> state) {
@@ -819,7 +821,7 @@ class UtilWidget {
                                 label,
                                 style: textStyleLabel ??
                                     AppTextStyle.font14Re.copyWith(
-                                      color: AppColors.textColorGrey,
+                                      color: AppColors.dsGray1,
                                     ),
                               ),
                               Visibility(
@@ -840,7 +842,7 @@ class UtilWidget {
                                 child: SDSBuildText(
                                   selectedItem != null
                                       ? display(selectedItem)
-                                      : LocaleKeys.app_select.tr,
+                                      : hintText ?? LocaleKeys.app_select.tr,
                                   style: AppTextStyle.font14Re.copyWith(
                                     color: selectedItem != null
                                         ? AppColors.colorBlack
@@ -875,6 +877,7 @@ class UtilWidget {
                 ),
                 child: SDSBuildText(
                   state.errorText!,
+                  maxLines: 2,
                   style: AppTextStyle.font12Re.copyWith(
                     color: AppColors.statusRed,
                   ),
@@ -1317,7 +1320,7 @@ class UtilWidget {
           ),
           SDSBuildText(
             label,
-            style: AppTextStyle.font16Semi,
+            style: AppTextStyle.font14Re,
           ),
         ],
       ),
