@@ -1,6 +1,4 @@
-import 'package:v_bhxh/shares/base/ui/base_card_body.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
-import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../src.dart';
 
@@ -28,7 +26,7 @@ class UnitInfoPage extends BaseGetWidget {
           ),
           title: BaseAppBarTitle(
             title: LocaleKeys.unitInfo_unitInfo.tr,
-            style: AppTextStyle.font18Bo.copyWith(
+            textStyle: AppTextStyle.font18Bo.copyWith(
               color: Colors.white,
             ),
           ),
