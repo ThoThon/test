@@ -41,6 +41,7 @@ class AppDimens {
   static const double sizeIconDefault = 16;
   static const double sizeIcon = 20;
   static const double sizeIconMedium = 24;
+  static const double sizeIcon28 = 28;
   static const double sizeIcon32 = 32;
   static const double sizeIconLarge = 36;
   static const double sizeIconLoadingAwait = 80;

@@ -8,32 +8,61 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           key: controller.formKey,
           child: Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppDimens.defaultPadding,
-              ),
               child: Obx(
                 () {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      //Họ và tên
                       _buildInputFullName(),
-                      UtilWidget.sizedBox16,
+                      sdsSBHeight12,
+
+                      //Mã số BHXH
                       _buildInputBHXHNumber(),
-                      UtilWidget.sizedBox8,
+                      sdsSBHeight12,
+
+                      //Loại ngày sinh
                       _buildBirthTypeDropdown(),
-                      UtilWidget.sizedBox16,
-                      _buildSelectDateOfBirth(),
-                      UtilWidget.sizedBox12,
-                      _buildSelectedGender(),
-                      UtilWidget.sizedBox8,
-                      _buildSelectEthnic(),
-                      _buildSelectNationality(),
+                      sdsSBHeight12,
+
+                      //"Ngày sinh" và "Giới tính"
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: _buildSelectDateOfBirth()),
+                          sdsSBWidth12,
+                          Expanded(child: _buildSelectedGender()),
+                        ],
+                      ),
+                      sdsSBHeight12,
+
+                      //"Dân tộc" và "Quốc tịch"
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: _buildSelectEthnic()),
+                          sdsSBWidth12,
+                          Expanded(child: _buildSelectNationality()),
+                        ],
+                      ),
+
+                      //Tỉnh khai sinh
                       _buildSelectProvince(),
+
+                      //Huyện khai sinh
                       _buildSelectDistrict(),
+
+                      //Xã khai sinh
                       _buildSelectWard(),
+
+                      //Mối quan hệ với chủ hộ
                       _buildDropdownRelationship(),
-                      UtilWidget.sizedBox16,
+
+                      //Số CCCD
                       _buildInputCCCDNumber(),
+                      sdsSBHeight12,
+
+                      //Ghi chú
                       _buildInputNote(),
                       _buildCheckboxParticipant().paddingSymmetric(
                           vertical: AppDimens.paddingVerySmall),
@@ -46,7 +75,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         ),
         _buildBottomButtons(),
       ],
-    );
+    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
   }
 
   Widget _buildCheckboxParticipant() {
@@ -60,54 +89,47 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildInputFullName() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.familyMember_fullName.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.fullNameTextCtrl,
-          isValidate: true,
-          inputFormatters: InputFormatterEnum.textNormal,
-          maxLengthInputForm: 100,
-          validator: (value) {
-            if (value.isNullOrEmpty) {
-              return LocaleKeys.familyMember_fullNameCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.familyMember_fullName.tr,
+      controller: controller.fullNameTextCtrl,
+      isRequired: true,
+      inputFormatters: InputFormatterEnum.textNormal,
+      maxLengthInputForm: 100,
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return LocaleKeys.familyMember_fullNameCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildInputBHXHNumber() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.familyMember_bhxhCode.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.bhxhNumberTextCtrl,
-          maxLengthInputForm: 10,
-          textInputType: TextInputType.number,
-          inputFormatters: InputFormatterEnum.digitsOnly,
-          validator: (value) {
-            final trimmedValue = value?.trim();
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.familyMember_bhxhCode.tr,
+      controller: controller.bhxhNumberTextCtrl,
+      maxLengthInputForm: 10,
+      textInputType: TextInputType.number,
+      inputFormatters: InputFormatterEnum.digitsOnly,
+      validator: (value) {
+        final trimmedValue = value?.trim();
 
-            if (trimmedValue == null || trimmedValue.isEmpty) {
-              return null;
-            }
-            if (trimmedValue.length < 10) {
-              return LocaleKeys.familyMember_bhxhCodeInValid.tr;
-            }
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return null;
+        }
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.familyMember_bhxhCodeInValid.tr;
+        }
 
-            return null;
-          },
-        ),
-      ),
+        return null;
+      },
     );
   }
 
   Widget _buildBirthTypeDropdown() {
-    return UtilWidget.buildDropDownWithLabel2<BirthTypeEnum>(
-      label: LocaleKeys.familyMember_selectBirthType.tr,
+    return CardDropdownWithLabel<BirthTypeEnum>(
+      isRequired: true,
+      labelText: LocaleKeys.familyMember_selectBirthType.tr,
       hintText: LocaleKeys.familyMember_selectBirthTypeHint.tr,
       items: BirthTypeEnum.values,
       display: (item) => item.title,
@@ -123,8 +145,9 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildSelectDateOfBirth() {
-    return UtilWidget.buildInputSelectDate(
-      title: LocaleKeys.familyMember_dob.tr,
+    return CardInputSelectDateWithLabel(
+      isRequired: true,
+      labelText: LocaleKeys.familyMember_dob.tr,
       hintText: controller.birthType.value.pattern,
       inputFormatters: controller.birthType.value.inputFormatter,
       controller: controller.dateOfBirthCtrl,
@@ -213,12 +236,11 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildSelectedGender() {
-    return UtilWidget.buildListRadio<Gender>(
-      options: [
-        Gender.male,
-        Gender.female,
-      ],
-      getTitle: (gender) => gender.title,
+    return CardDropdownWithLabel<Gender>(
+      labelText: LocaleKeys.declareInfo_gender.tr,
+      items: Gender.values,
+      display: (item) => item.title,
+      isRequired: true,
       selectedItem: controller.gender.value,
       onChanged: (value) {
         controller.gender.value = value;
@@ -235,9 +257,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectEthnic() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<EthnicModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<EthnicModel>(
           label: LocaleKeys.familyMember_ethnic.tr,
-          hintText: LocaleKeys.familyMember_selectEthnic.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<EthnicModel>(
@@ -271,9 +292,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectNationality() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<NationModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<NationModel>(
           label: LocaleKeys.familyMember_nationality.tr,
-          hintText: LocaleKeys.familyMember_selectNationality.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<NationModel>(
@@ -307,9 +327,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectProvince() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
           label: LocaleKeys.familyMember_provinceOfBirth.tr,
-          hintText: LocaleKeys.familyMember_selectProvinceOfBirth.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
@@ -351,9 +370,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectDistrict() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<DistrictModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
           label: LocaleKeys.familyMember_districtOfBirth.tr,
-          hintText: LocaleKeys.familyMember_selectDistrictOfBirth.tr,
           funcSelect: (didChange) async {
             final districtOfBirth = controller.selectedProvince.value;
             if (districtOfBirth == null) {
@@ -397,9 +415,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildSelectWard() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<WardModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
           label: LocaleKeys.familyMember_wardOfBirth.tr,
-          hintText: LocaleKeys.familyMember_selectWardOfBirth.tr,
           funcSelect: (didChange) async {
             final provinceOfBirth = controller.selectedProvince.value;
             if (provinceOfBirth == null) {
@@ -446,10 +463,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildDropdownRelationship() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<RelationshipModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<RelationshipModel>(
           label: LocaleKeys.familyMember_relationshipWithHeadOfHousehold.tr,
-          hintText:
-              LocaleKeys.familyMember_selectRelationshipWithHeadOfHousehold.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<RelationshipModel>(
@@ -475,7 +490,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
           display: (province) => province.text,
           validator: (value) {
             if (controller.relationship.value == null) {
-              return "Mối quan hệ với chủ hộ không được bỏ trống";
+              return LocaleKeys
+                  .familyMember_relationToHouseholdOwnerCannotEmpty.tr;
             }
             return null;
           },
@@ -485,50 +501,50 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildInputCCCDNumber() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.familyMember_cccdNumber.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.cccdNumberTextCtrl,
-          maxLengthInputForm: 20,
-          inputFormatters: InputFormatterEnum.textNormal,
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.familyMember_cccdNumber.tr,
+      controller: controller.cccdNumberTextCtrl,
+      isRequired: true,
+      hintText: LocaleKeys.familyMember_inputNumberCCCD.tr,
+      maxLengthInputForm: 20,
+      inputFormatters: InputFormatterEnum.textNormal,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.familyMember_numberCCCDCannotEmpty.tr;
+        }
+
+        return null;
+      },
     );
   }
 
   Widget _buildInputNote() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.familyMember_note.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.noteTextCtrl,
-          inputFormatters: InputFormatterEnum.textNormal,
-          maxLengthInputForm: 500,
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.familyMember_note.tr,
+      controller: controller.noteTextCtrl,
+      isRequired: true,
+      inputFormatters: InputFormatterEnum.textNormal,
+      maxLengthInputForm: 500,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.familyMember_noteCannotEmpty.tr;
+        }
+
+        return null;
+      },
     );
   }
 
   Widget _buildBottomButtons() {
-    return Row(
-      children: [
-        Expanded(
-          child: UtilWidget.buildSolidButtonBack(
-            title: LocaleKeys.app_cancel.tr,
-            onPressed: () {
-              Get.back();
-            },
-          ),
-        ),
-        UtilWidget.sizedBoxWidth16,
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.app_save.tr,
-            onPressed: controller.onSubmit,
-          ),
-        ),
-      ],
-    ).paddingAll(AppDimens.defaultPadding);
+    return UtilWidget.buildSolidButton(
+      title: LocaleKeys.app_save.tr,
+      onPressed: controller.onSubmit,
+      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+      borderRadius: AppDimens.radius30,
+    ).paddingOnly(bottom: AppDimens.paddingVerySmall);
   }
 }

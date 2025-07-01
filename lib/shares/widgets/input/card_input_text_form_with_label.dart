@@ -17,6 +17,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
   final void Function(String)? onChanged;
   final AutovalidateMode? autovalidateMode;
   final bool isReadOnly;
+  final Widget? suffixIcon;
   final Color? fillColor;
 
   const CardInputTextFormWithLabel({
@@ -36,6 +37,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
     this.onChanged,
     this.autovalidateMode,
     this.isReadOnly = false,
+    this.suffixIcon,
     this.fillColor,
   });
 
@@ -64,7 +66,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
                   labelText,
                   style: textStyle ??
                       AppTextStyle.font14Re.copyWith(
-                        color: AppColors.textColorGrey,
+                        color: AppColors.dsGray1,
                       ),
                 ),
                 Visibility(
@@ -86,11 +88,12 @@ class CardInputTextFormWithLabel extends StatelessWidget {
             isValidate: isRequired,
             controller: controller,
             isReadOnly: isReadOnly,
-            fillColor: fillColor ?? AppColors.basicWhite,
+            fillColor: fillColor,
             hintText: hintText ?? 'Nhập ${labelText.toLowerCase()}',
             maxLengthInputForm: maxLengthInputForm,
             inputFormatters: inputFormatters ?? InputFormatterEnum.textNormal,
             obscureText: obscureText,
+            suffixIcon: suffixIcon,
             isShowCounterText: isShowCounterText,
             border: _buildOutlineInputNoBorder(),
             errorBorder: _buildOutlineInputNoBorder(),

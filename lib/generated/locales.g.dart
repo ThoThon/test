@@ -301,6 +301,8 @@ class LocaleKeys {
   static const pageBuilder_report = 'pageBuilder_report';
   static const pageBuilder_notification = 'pageBuilder_notification';
   static const pageBuilder_account = 'pageBuilder_account';
+  static const declarationPeriod_selectedProcedure =
+      'declarationPeriod_selectedProcedure';
   static const declarationPeriod_title = 'declarationPeriod_title';
   static const declarationPeriod_month = 'declarationPeriod_month';
   static const declarationPeriod_selectMonth = 'declarationPeriod_selectMonth';
@@ -349,8 +351,11 @@ class LocaleKeys {
   static const declareInfo_declarationType = 'declareInfo_declarationType';
   static const declareInfo_selectDeclarationType =
       'declareInfo_selectDeclarationType';
+  static const declareInfo_declarationTypeCannotEmpty =
+      'declareInfo_declarationTypeCannotEmpty';
   static const declareInfo_plan = 'declareInfo_plan';
   static const declareInfo_selectPlan = 'declareInfo_selectPlan';
+  static const declareInfo_planCannotEmpty = 'declareInfo_planCannotEmpty';
   static const declareInfo_generateTk1Data = 'declareInfo_generateTk1Data';
   static const declareInfo_cccdNumber = 'declareInfo_cccdNumber';
   static const declareInfo_cccdNumberIsNotEmpty =
@@ -378,8 +383,12 @@ class LocaleKeys {
   static const declareInfo_toMonthYearCannotEmpty =
       'declareInfo_toMonthYearCannotEmpty';
   static const declareInfo_position = 'declareInfo_position';
+  static const declareInfo_positionCannotEmpty =
+      'declareInfo_positionCannotEmpty';
   static const declareInfo_selectPosition = 'declareInfo_selectPosition';
   static const declareInfo_workplace = 'declareInfo_workplace';
+  static const declareInfo_workplaceCannotEmpty =
+      'declareInfo_workplaceCannotEmpty';
   static const declareInfo_payBySalaryCoefficient =
       'declareInfo_payBySalaryCoefficient';
   static const declareInfo_salaryCoefficient = 'declareInfo_salaryCoefficient';
@@ -404,6 +413,9 @@ class LocaleKeys {
   static const declareInfo_wardOfBirthCannotEmpty =
       'declareInfo_wardOfBirthCannotEmpty';
   static const declareInfo_birthAddress = 'declareInfo_birthAddress';
+  static const declareInfo_birthAddressCannotEmpty =
+      'declareInfo_birthAddressCannotEmpty';
+  static const declareInfo_inputAddress = 'declareInfo_inputAddress';
   static const declareInfo_duplicateBirthAddress =
       'declareInfo_duplicateBirthAddress';
   static const declareInfo_provinceReceive = 'declareInfo_provinceReceive';
@@ -421,6 +433,8 @@ class LocaleKeys {
   static const declareInfo_wardReceiveCannotEmpty =
       'declareInfo_wardReceiveCannotEmpty';
   static const declareInfo_addressReceive = 'declareInfo_addressReceive';
+  static const declareInfo_addressReceiveCannotEmpty =
+      'declareInfo_addressReceiveCannotEmpty';
   static const declareInfo_provinceKCB = 'declareInfo_provinceKCB';
   static const declareInfo_selectProvinceKCB = 'declareInfo_selectProvinceKCB';
   static const declareInfo_provinceKCBCannotEmpty =
@@ -444,6 +458,8 @@ class LocaleKeys {
   static const declareInfo_wardTT = 'declareInfo_wardTT';
   static const declareInfo_selectWardTT = 'declareInfo_selectWardTT';
   static const declareInfo_addressTT = 'declareInfo_addressTT';
+  static const declareInfo_addressTTCannotEmpty =
+      'declareInfo_addressTTCannotEmpty';
   static const declareInfo_familyMembers = 'declareInfo_familyMembers';
   static const declareInfo_provinceOfBirthNotSelected =
       'declareInfo_provinceOfBirthNotSelected';
@@ -483,6 +499,28 @@ class LocaleKeys {
   static const declareInfo_districtTTCannotEmpty =
       'declareInfo_districtTTCannotEmpty';
   static const declareInfo_wardTTCannotEmpty = 'declareInfo_wardTTCannotEmpty';
+  static const declareInfo_inputAllowance = 'declareInfo_inputAllowance';
+  static const declareInfo_inputAllowancePercent =
+      'declareInfo_inputAllowancePercent';
+  static const declareInfo_inputPhoneNumber = 'declareInfo_inputPhoneNumber';
+  static const declareInfo_salaryBhxhInfo = 'declareInfo_salaryBhxhInfo';
+  static const declareInfo_otherInfo = 'declareInfo_otherInfo';
+  static const declareInfo_generateD01tsData = 'declareInfo_generateD01tsData';
+  static const declareInfo_personalInfo = 'declareInfo_personalInfo';
+  static const declareInfo_salaryOrCoefficientCannotEmpty =
+      'declareInfo_salaryOrCoefficientCannotEmpty';
+  static const declareInfo_salaryOrCoefficientMustBeInteger =
+      'declareInfo_salaryOrCoefficientMustBeInteger';
+  static const declareInfo_addressInfo = 'declareInfo_addressInfo';
+  static const declareInfo_medicalFacilityInfo =
+      'declareInfo_medicalFacilityInfo';
+  static const declareInfo_householdOwnerInfo =
+      'declareInfo_householdOwnerInfo';
+  static const declareInfo_addFamilyMember = 'declareInfo_addFamilyMember';
+  static const declareInfo_deleteSelectedMember =
+      'declareInfo_deleteSelectedMember';
+  static const declareInfo_delete = 'declareInfo_delete';
+  static const declareInfo_inputCCCD = 'declareInfo_inputCCCD';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -530,6 +568,12 @@ class LocaleKeys {
   static const familyMember_note = 'familyMember_note';
   static const familyMember_isParticipant = 'familyMember_isParticipant';
   static const familyMember_selectGender = 'familyMember_selectGender';
+  static const familyMember_numberCCCDCannotEmpty =
+      'familyMember_numberCCCDCannotEmpty';
+  static const familyMember_inputNumberCCCD = 'familyMember_inputNumberCCCD';
+  static const familyMember_noteCannotEmpty = 'familyMember_noteCannotEmpty';
+  static const familyMember_relationToHouseholdOwnerCannotEmpty =
+      'familyMember_relationToHouseholdOwnerCannotEmpty';
   static const declarationFormDetail_title = 'declarationFormDetail_title';
   static const declarationFormDetail_declarationFormName =
       'declarationFormDetail_declarationFormName';
@@ -1131,13 +1175,14 @@ class Locales {
     'pageBuilder_report': 'Báo cáo',
     'pageBuilder_notification': 'Thông báo',
     'pageBuilder_account': 'Tài khoản',
+    'declarationPeriod_selectedProcedure': 'Chọn thủ tục kê khai',
     'declarationPeriod_title': 'Đợt kê khai',
     'declarationPeriod_month': 'Tháng',
     'declarationPeriod_selectMonth': 'Chọn tháng',
     'declarationPeriod_updateDate': 'Ngày cập nhật',
     'declarationPeriod_fileNumber': 'Số hồ sơ',
     'declarationPeriod_status': 'Trạng thái',
-    'declarationPeriod_createNewPeriod': '+ Tạo mới đợt',
+    'declarationPeriod_createNewPeriod': 'Thêm mới',
     'declarationPeriod_period': 'Đợt',
     'declarationPeriod_statusNotYet': 'Chưa kê khai',
     'declarationPeriod_statusDraft': 'Lưu nháp',
@@ -1166,8 +1211,11 @@ class Locales {
     'declareInfo_bhxhCodeInValid': 'Mã số BHXH phải đủ 10 số',
     'declareInfo_declarationType': 'Loại khai báo',
     'declareInfo_selectDeclarationType': 'Chọn loại khai báo',
+    'declareInfo_declarationTypeCannotEmpty':
+        'Loại khai báo không được bỏ trống',
     'declareInfo_plan': 'Phương án',
     'declareInfo_selectPlan': 'Chọn phương án',
+    'declareInfo_planCannotEmpty': 'Phương án không được bỏ trống',
     'declareInfo_generateTk1Data': 'Sinh dữ liệu TK1-TS',
     'declareInfo_cccdNumber': 'Số CCCD',
     'declareInfo_cccdNumberIsNotEmpty': 'Số CCCD không được bỏ trống',
@@ -1191,14 +1239,16 @@ class Locales {
     'declareInfo_toMonthYear': 'Đến tháng/năm',
     'declareInfo_toMonthYearCannotEmpty': 'Đến tháng/năm không được bỏ trống',
     'declareInfo_position': 'Cấp bậc/chức vụ',
+    'declareInfo_positionCannotEmpty': 'Cấp bậc/chức vụ không được bỏ trống',
     'declareInfo_selectPosition': 'Chọn cấp bậc/Chức vụ',
     'declareInfo_workplace': 'Nơi làm việc',
+    'declareInfo_workplaceCannotEmpty': 'Nơi làm việc không đợc bỏ trống',
     'declareInfo_payBySalaryCoefficient': 'Đóng theo hệ số',
-    'declareInfo_salaryCoefficient': 'Tiền lương/Hệ số',
+    'declareInfo_salaryCoefficient': 'Tiền lương',
     'declareInfo_positionAllowance': 'PC chức vụ',
-    'declareInfo_pcTNN': 'PC TNN (%)',
-    'declareInfo_pcTNVuotKhung': 'PC TN vượt khung (%)',
-    'declareInfo_salaryAllowance': 'Phụ cấp lương',
+    'declareInfo_pcTNN': 'PC thâm niên nghề',
+    'declareInfo_pcTNVuotKhung': 'PC thâm niên vượt khung',
+    'declareInfo_salaryAllowance': 'PC lương',
     'declareInfo_otherAllowance': 'Các khoản bổ sung',
     'declareInfo_note': 'Ghi chú',
     'declareInfo_provinceOfBirth': 'Tỉnh khai sinh',
@@ -1213,7 +1263,10 @@ class Locales {
     'declareInfo_selectWardOfBirth': 'Chọn xã khai sinh',
     'declareInfo_wardOfBirthCannotEmpty': 'Xã khai sinh không được bỏ trống',
     'declareInfo_birthAddress': 'Địa chỉ khai sinh',
-    'declareInfo_duplicateBirthAddress': 'Trùng địa chỉ khai sinh',
+    'declareInfo_birthAddressCannotEmpty':
+        'Địa chỉ khai sinh không được bỏ trống',
+    'declareInfo_inputAddress': 'Nhập địa chỉ',
+    'declareInfo_duplicateBirthAddress': 'Trùng thông tin nơi khai sinh',
     'declareInfo_provinceReceive': 'Tỉnh nơi nhận',
     'declareInfo_selectProvinceReceive': 'Chọn tỉnh nơi nhận',
     'declareInfo_provinceReceiveCannotEmpty':
@@ -1226,17 +1279,20 @@ class Locales {
     'declareInfo_selectWardReceive': 'Chọn xã nơi nhận',
     'declareInfo_wardReceiveCannotEmpty': 'Xã nơi nhận không được bỏ trống',
     'declareInfo_addressReceive': 'Địa chỉ nơi nhận',
-    'declareInfo_provinceKCB': 'Tỉnh nơi KCB',
-    'declareInfo_selectProvinceKCB': 'Chọn tỉnh nơi KCB',
-    'declareInfo_provinceKCBCannotEmpty': 'Tỉnh nơi KCB không được bỏ trống',
-    'declareInfo_hospitalKCB': 'Bệnh viện nơi KCB',
-    'declareInfo_selectHospitalKCB': 'Chọn bệnh viện nơi KCB',
+    'declareInfo_addressReceiveCannotEmpty':
+        'Địa chỉ nơi nhận không được bỏ trống',
+    'declareInfo_provinceKCB': 'Tỉnh nơi khám chữa bệnh',
+    'declareInfo_selectProvinceKCB': 'Chọn tỉnh nơi khám chữa bệnh',
+    'declareInfo_provinceKCBCannotEmpty':
+        'Tỉnh nơi khám chữa bệnh không được bỏ trống',
+    'declareInfo_hospitalKCB': 'Bệnh viện nơi khám chữa bệnh',
+    'declareInfo_selectHospitalKCB': 'Chọn bệnh viện nơi khám chữa bệnh',
     'declareInfo_hospitalKCBCannotEmpty':
-        'Bệnh viện nơi KCB không được bỏ trống',
+        'Bệnh viện nơi khám chữa bệnh không được bỏ trống',
     'declareInfo_contactPhoneNumber': 'Số điện thoại liên hệ',
     'declareInfo_participantHeadOfHousehold': 'Người tham gia là chủ hộ',
     'declareInfo_headOfHouseholdFullName': 'Họ và tên chủ hộ',
-    'declareInfo_headOfHouseholdCCCD': 'Số CCCD/ĐDCN của chủ hộ',
+    'declareInfo_headOfHouseholdCCCD': 'Số CCCD của chủ hộ',
     'declareInfo_provinceTT': 'Tỉnh thường trú',
     'declareInfo_selectProvinceTT': 'Chọn tỉnh thường trú',
     'declareInfo_districtTT': 'Huyện thường trú',
@@ -1244,12 +1300,14 @@ class Locales {
     'declareInfo_wardTT': 'Xã thường trú',
     'declareInfo_selectWardTT': 'Chọn xã thường trú',
     'declareInfo_addressTT': 'Địa chỉ thường trú',
+    'declareInfo_addressTTCannotEmpty':
+        'Địa chỉ thường trú không được bỏ trống',
     'declareInfo_familyMembers': 'Danh sách thành viên trong gia đình',
     'declareInfo_provinceOfBirthNotSelected': 'Chưa chọn tỉnh khai sinh',
     'declareInfo_districtOfBirthNotSelected': 'Chưa chọn huyện khai sinh',
     'declareInfo_provinceReceiveNotSelected': 'Chưa chọn tỉnh nơi nhận',
     'declareInfo_districtReceiveNotSelected': 'Chưa chọn huyện nơi nhận',
-    'declareInfo_provinceKCBNotSelected': 'Chưa chọn tỉnh nơi KCB',
+    'declareInfo_provinceKCBNotSelected': 'Chưa chọn tỉnh nơi khám chữa bệnh',
     'declareInfo_provinceTTNotSelected': 'Chưa chọn tỉnh thường trú',
     'declareInfo_districtTTNotSelected': 'Chưa chọn huyện thường trú',
     'declareInfo_next': 'Tiếp theo',
@@ -1273,7 +1331,25 @@ class Locales {
     'declareInfo_provinceTTCannotEmpty': 'Tỉnh thường trú không được để trống',
     'declareInfo_districtTTCannotEmpty': 'Huyện thường trú không được để trống',
     'declareInfo_wardTTCannotEmpty': 'Xã thường trú không được để trống',
-    'familyMember_title': 'Thành viên trong gia đình',
+    'declareInfo_inputAllowance': 'Nhập phụ cấp',
+    'declareInfo_inputAllowancePercent': 'Nhập phụ cấp (%)',
+    'declareInfo_inputPhoneNumber': 'Nhập số điện thoại',
+    'declareInfo_salaryBhxhInfo': 'Thông tin lương đóng BHXH',
+    'declareInfo_otherInfo': 'Thông tin khác',
+    'declareInfo_generateD01tsData': 'Sinh dữ liệu D01-TS',
+    'declareInfo_personalInfo': 'Thông tin cá nhân',
+    'declareInfo_salaryOrCoefficientCannotEmpty':
+        'Tiền lương/Hệ số không được bỏ trống',
+    'declareInfo_salaryOrCoefficientMustBeInteger':
+        'Tiền lương/Hệ số phải là số nguyên',
+    'declareInfo_addressInfo': 'Thông tin địa chỉ',
+    'declareInfo_medicalFacilityInfo': 'Thông tin nơi khám chữa bệnh',
+    'declareInfo_householdOwnerInfo': 'Thông tin chủ hộ',
+    'declareInfo_addFamilyMember': 'Thêm thành viên',
+    'declareInfo_deleteSelectedMember': 'Xóa thành viên đã chọn',
+    'declareInfo_delete': 'Xóa',
+    'declareInfo_inputCCCD': 'Nhập số CCCD',
+    'familyMember_title': 'Kê khai thông tin thành viên HGĐ',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
     'familyMember_bhxhCode': 'Mã số BHXH',
@@ -1305,10 +1381,15 @@ class Locales {
     'familyMember_birthTypeYear': 'Năm',
     'familyMember_birthTypeMonthYear': 'Tháng/năm',
     'familyMember_birthTypeFull': 'Đầy đủ',
-    'familyMember_cccdNumber': 'Số CMND/CCCD/HC',
+    'familyMember_cccdNumber': 'Số CCCD',
     'familyMember_note': 'Ghi chú',
     'familyMember_isParticipant': 'Là người tham gia',
     'familyMember_selectGender': 'Vui lòng chọn giới tính',
+    'familyMember_numberCCCDCannotEmpty': 'Số CCCD không được để trống',
+    'familyMember_inputNumberCCCD': 'Nhập số căn cước công dân',
+    'familyMember_noteCannotEmpty': 'Ghi chú không được để trống',
+    'familyMember_relationToHouseholdOwnerCannotEmpty':
+        'Mối quan hệ với chủ hộ không được bỏ trống',
     'declarationFormDetail_title': 'Kê khai thông tin bảng kê hồ sơ',
     'declarationFormDetail_declarationFormName': 'Tên bảng kê',
     'declarationFormDetail_fullName': 'Họ và tên',

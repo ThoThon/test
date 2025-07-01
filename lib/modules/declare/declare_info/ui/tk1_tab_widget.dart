@@ -8,55 +8,144 @@ extension Tk1TabWidget on DeclareInfoPage {
           key: controller.tk1State.formKey,
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.defaultPadding,
-            ),
             child: Obx(
               () {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    UtilWidget.sizedBox16,
+                    sdsSBHeight8,
+
+                    //Thông tin cá nhân
+                    _buildInfoPerson(),
+                    sdsSBHeight8,
+
+                    //Họ và tên
                     _buildInputFullName(),
-                    UtilWidget.sizedBox16,
+                    sdsSBHeight12,
+
+                    //Mã số BHXH
                     _buildInputBHXHCode(),
-                    UtilWidget.sizedBox16,
+                    sdsSBHeight12,
+
+                    //Số CCCD
                     _buildInputCCCD(),
-                    UtilWidget.sizedBox16,
+                    sdsSBHeight12,
+
+                    //Loại ngày sinh
                     _buildBirthTypeDropdown(),
-                    UtilWidget.sizedBox16,
-                    _buildSelectDateOfBirth(),
-                    UtilWidget.sizedBox12,
-                    _buildSelectGender(),
-                    UtilWidget.sizedBox8,
-                    _buildSelectEthnic(),
-                    _buildSelectNationality(),
+                    sdsSBHeight12,
+
+                    //Ngày sinh và giới tính
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(child: _buildSelectDateOfBirth()),
+                        sdsSBWidth12,
+                        Expanded(child: _buildSelectGender())
+                      ],
+                    ),
+                    sdsSBHeight12,
+
+                    //Dân tộc và quốc tịch
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(child: _buildSelectEthnic()),
+                        sdsSBWidth12,
+                        Expanded(child: _buildSelectNationality()),
+                      ],
+                    ),
+
+                    //Số điện thoại liên hệ
+                    _buildInputPhoneNumber(),
+                    sdsSBHeight12,
+
+                    //Thông tin địa chỉ
+                    SDSBuildText(
+                      LocaleKeys.declareInfo_addressInfo.tr,
+                      style: AppTextStyle.font16Bo
+                          .copyWith(color: AppColors.colorBlack),
+                    ),
+                    sdsSBHeight12,
+
+                    //Tỉnh khai sinh
                     _buildSelectProvince(),
+
+                    //Huyện khai sinh
                     _buildSelectDistrict(),
+
+                    //Xã khai sinh
                     _buildSelectWard(),
+
+                    //Địa chỉ khai sinh
                     _buildInputAddress(),
+
+                    //Trùng thông tin nơi khai sinh
                     _buildCheckboxDuplicateBirthAddress()
                         .paddingSymmetric(vertical: AppDimens.paddingVerySmall),
+
+                    //Tỉnh nơi nhận
                     _buildSelectProvinceReceive(),
+
+                    //Huyện nơi nhận
                     _buildSelectDistrictReceive(),
+
+                    //Xã nơi nhận
                     _buildSelectWardReceive(),
+
+                    //Địa chỉ nơi nhận
                     _buildInputAddressReceive(),
+                    sdsSBHeight12,
+
+                    //Thông tin nơi khám chữa bệnh
+                    SDSBuildText(
+                      LocaleKeys.declareInfo_medicalFacilityInfo.tr,
+                      style: AppTextStyle.font16Bo
+                          .copyWith(color: AppColors.colorBlack),
+                    ),
                     UtilWidget.sizedBox16,
+
+                    //Tỉnh nơi khám chữa bệnh
                     _buildSelectProvinceKCB(),
+
+                    //Bệnh viện nơi khám chữa bệnh
                     _buildSelectHospitalKCB(),
-                    _buildInputPhoneNumber(),
+
+                    //Thông tin chủ hộ
+                    SDSBuildText(
+                      LocaleKeys.declareInfo_householdOwnerInfo.tr,
+                      style: AppTextStyle.font16Bo
+                          .copyWith(color: AppColors.colorBlack),
+                    ),
+
+                    //Người tham gia là chủ hộ
                     _buildParticipantHeadOfHouseholdCheckbox()
                         .paddingSymmetric(vertical: AppDimens.paddingVerySmall),
+
+                    // Họ và tên chủ hộ
                     _buildInputHeadOfHousehold(),
-                    UtilWidget.sizedBox16,
+                    sdsSBHeight12,
+
+                    //Số CCCD/ĐDCN của chủ hộ
                     _buildInputHeadOfHouseholdCCCD(),
-                    UtilWidget.sizedBox16,
+                    sdsSBHeight12,
+
+                    //Tỉnh thường trú
                     _buildSelectProvinceTT(),
+
+                    //Huyện thường trú
                     _buildSelectDistrictTT(),
+
+                    //Xã thường trú
                     _buildSelectWardTT(),
+
+                    //Địa chỉ thường trú
                     _buildInputAddressTTTextCtrl(),
-                    UtilWidget.sizedBox16,
+                    sdsSBHeight12,
+
+                    //Thêm thành viên
                     _buildFamilyMember(),
+                    sdsSBHeight4,
                   ],
                 );
               },
@@ -80,9 +169,9 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectProvince() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
           label: LocaleKeys.declareInfo_provinceOfBirth.tr,
-          hintText: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
+          // hintText: LocaleKeys.declareInfo_selectProvinceOfBirth.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
@@ -116,9 +205,9 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectDistrict() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<DistrictModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
           label: LocaleKeys.declareInfo_districtOfBirth.tr,
-          hintText: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
+          // hintText: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
           funcSelect: (didChange) async {
             final districtOfBirth = controller.tk1State.provinceOfBirth.value;
             if (districtOfBirth == null) {
@@ -156,9 +245,9 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectWard() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<WardModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
           label: LocaleKeys.declareInfo_wardOfBirth.tr,
-          hintText: LocaleKeys.declareInfo_selectWardOfBirth.tr,
+          // hintText: LocaleKeys.declareInfo_selectWardOfBirth.tr,
           funcSelect: (didChange) async {
             final provinceOfBirth = controller.tk1State.provinceOfBirth.value;
             if (provinceOfBirth == null) {
@@ -202,27 +291,33 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildInputAddress() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_birthAddress.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          isValidate: true,
-          controller: controller.tk1State.birthAddressTextCtrl,
-          maxLengthInputForm: 300,
-          inputFormatters: InputFormatterEnum.textNormal,
-          onChanged: controller.onChangeBirthAddress,
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declareInfo_birthAddress.tr,
+      hintText: LocaleKeys.declareInfo_inputAddress.tr,
+      isRequired: true,
+      controller: controller.tk1State.birthAddressTextCtrl,
+      maxLengthInputForm: 300,
+      inputFormatters: InputFormatterEnum.textNormal,
+      onChanged: controller.onChangeBirthAddress,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_birthAddressCannotEmpty.tr;
+        }
+
+        return null;
+      },
     );
   }
 
   Widget _buildSelectProvinceReceive() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_provinceReceive.tr,
-          hintText: LocaleKeys.declareInfo_selectProvinceReceive.tr,
+          // hintText: LocaleKeys.declareInfo_selectProvinceReceive.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
@@ -256,10 +351,10 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectDistrictReceive() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<DistrictModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_districtReceive.tr,
-          hintText: LocaleKeys.declareInfo_selectDistrictReceive.tr,
+          // hintText: LocaleKeys.declareInfo_selectDistrictReceive.tr,
           funcSelect: (didChange) async {
             final provinceReceive = controller.tk1State.provinceReceive.value;
             if (provinceReceive == null) {
@@ -297,10 +392,10 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectWardReceive() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<WardModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_wardReceive.tr,
-          hintText: LocaleKeys.declareInfo_selectWardReceive.tr,
+          // hintText: LocaleKeys.declareInfo_selectWardReceive.tr,
           funcSelect: (didChange) async {
             final provinceReceive = controller.tk1State.provinceReceive.value;
             if (provinceReceive == null) {
@@ -344,27 +439,33 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildInputAddressReceive() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_addressReceive.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          autovalidateMode: controller.tk1State.autoValidateMode.value,
-          isValidate: true,
-          inputFormatters: InputFormatterEnum.textNormal,
-          controller: controller.tk1State.addressReceiveTextCtrl,
-          maxLengthInputForm: 300,
-          onChanged: controller.onChangeAddressReceive,
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      hintText: LocaleKeys.declareInfo_inputAddress.tr,
+      labelText: LocaleKeys.declareInfo_addressReceive.tr,
+      autovalidateMode: controller.tk1State.autoValidateMode.value,
+      isRequired: true,
+      inputFormatters: InputFormatterEnum.textNormal,
+      controller: controller.tk1State.addressReceiveTextCtrl,
+      maxLengthInputForm: 300,
+      onChanged: controller.onChangeAddressReceive,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_addressReceiveCannotEmpty.tr;
+        }
+
+        return null;
+      },
     );
   }
 
   Widget _buildSelectProvinceKCB() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
           label: LocaleKeys.declareInfo_provinceKCB.tr,
-          hintText: LocaleKeys.declareInfo_selectProvinceKCB.tr,
+          // hintText: LocaleKeys.declareInfo_selectProvinceKCB.tr,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
@@ -398,9 +499,9 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectHospitalKCB() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<Hospital>(
+        return UtilWidget.buildCardBottomSheetSelect2<Hospital>(
           label: LocaleKeys.declareInfo_hospitalKCB.tr,
-          hintText: LocaleKeys.declareInfo_selectHospitalKCB.tr,
+          // hintText: LocaleKeys.declareInfo_selectHospitalKCB.tr,
           funcSelect: (didChange) async {
             final provinceKCB = controller.tk1State.provinceKCB.value;
             if (provinceKCB == null) {
@@ -436,15 +537,11 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildInputPhoneNumber() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declareInfo_contactPhoneNumber.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.tk1State.contactPhoneNumberTextCtrl,
-          textInputType: TextInputType.phone,
-          maxLengthInputForm: 20,
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declareInfo_contactPhoneNumber.tr,
+      controller: controller.tk1State.contactPhoneNumberTextCtrl,
+      textInputType: TextInputType.phone,
+      maxLengthInputForm: 20,
     );
   }
 
@@ -458,36 +555,28 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildInputHeadOfHousehold() {
     return Obx(
-      () => BuildInputTextWithLabel(
-        label: LocaleKeys.declareInfo_headOfHouseholdFullName.tr,
-        buildInputText: BuildInputText(
-          InputTextModel(
-            autovalidateMode: controller.tk1State.autoValidateMode.value,
-            isValidate: controller.tk1State.isHouseholdInfoRequired.value,
-            controller: controller.tk1State.headOfHouseholdTextCtrl,
-            onChanged: controller.onChangeHeadOfHouseholdFullName,
-            inputFormatters: InputFormatterEnum.textNormal,
-            maxLengthInputForm: 100,
-          ),
-        ),
+      () => CardInputTextFormWithLabel(
+        labelText: LocaleKeys.declareInfo_headOfHouseholdFullName.tr,
+        autovalidateMode: controller.tk1State.autoValidateMode.value,
+        isRequired: controller.tk1State.isHouseholdInfoRequired.value,
+        controller: controller.tk1State.headOfHouseholdTextCtrl,
+        onChanged: controller.onChangeHeadOfHouseholdFullName,
+        inputFormatters: InputFormatterEnum.textNormal,
+        maxLengthInputForm: 100,
       ),
     );
   }
 
   Widget _buildInputHeadOfHouseholdCCCD() {
     return Obx(
-      () => BuildInputTextWithLabel(
-        label: LocaleKeys.declareInfo_headOfHouseholdCCCD.tr,
-        buildInputText: BuildInputText(
-          InputTextModel(
-            autovalidateMode: controller.tk1State.autoValidateMode.value,
-            isValidate: controller.tk1State.isHouseholdInfoRequired.value,
-            controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
-            inputFormatters: InputFormatterEnum.textNormal,
-            onChanged: controller.onChangeHeadOfHouseholdCCCD,
-            maxLengthInputForm: 20,
-          ),
-        ),
+      () => CardInputTextFormWithLabel(
+        labelText: LocaleKeys.declareInfo_headOfHouseholdCCCD.tr,
+        autovalidateMode: controller.tk1State.autoValidateMode.value,
+        isRequired: controller.tk1State.isHouseholdInfoRequired.value,
+        controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
+        inputFormatters: InputFormatterEnum.textNormal,
+        onChanged: controller.onChangeHeadOfHouseholdCCCD,
+        maxLengthInputForm: 20,
       ),
     );
   }
@@ -495,10 +584,10 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectProvinceTT() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<ProvinceModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_provinceTT.tr,
-          hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
+          // hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
           isRequired: controller.tk1State.isHouseholdInfoRequired.value,
           funcSelect: (didChange) {
             Get.bottomSheet(
@@ -536,10 +625,10 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectDistrictTT() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<DistrictModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_districtTT.tr,
-          hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
+          // hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
           isRequired: controller.tk1State.isHouseholdInfoRequired.value,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
@@ -581,10 +670,10 @@ extension Tk1TabWidget on DeclareInfoPage {
   Widget _buildSelectWardTT() {
     return Obx(
       () {
-        return UtilWidget.buildBottomSheetSelect<WardModel>(
+        return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_wardTT.tr,
-          hintText: LocaleKeys.declareInfo_selectWardTT.tr,
+          // hintText: LocaleKeys.declareInfo_selectWardTT.tr,
           isRequired: controller.tk1State.isHouseholdInfoRequired.value,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
@@ -633,18 +722,24 @@ extension Tk1TabWidget on DeclareInfoPage {
 
   Widget _buildInputAddressTTTextCtrl() {
     return Obx(
-      () => BuildInputTextWithLabel(
-        label: LocaleKeys.declareInfo_addressTT.tr,
-        buildInputText: BuildInputText(
-          InputTextModel(
-            autovalidateMode: controller.tk1State.autoValidateMode.value,
-            isValidate: controller.tk1State.isHouseholdInfoRequired.value,
-            controller: controller.tk1State.addressTTTextCtrl,
-            inputFormatters: InputFormatterEnum.textNormal,
-            onChanged: controller.onChangeAddressTT,
-            maxLengthInputForm: 300,
-          ),
-        ),
+      () => CardInputTextFormWithLabel(
+        labelText: LocaleKeys.declareInfo_addressTT.tr,
+        hintText: LocaleKeys.declareInfo_inputAddress.tr,
+        autovalidateMode: controller.tk1State.autoValidateMode.value,
+        isRequired: controller.tk1State.isHouseholdInfoRequired.value,
+        controller: controller.tk1State.addressTTTextCtrl,
+        inputFormatters: InputFormatterEnum.textNormal,
+        onChanged: controller.onChangeAddressTT,
+        maxLengthInputForm: 300,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            return LocaleKeys.declareInfo_addressTTCannotEmpty.tr;
+          }
+
+          return null;
+        },
       ),
     );
   }
@@ -661,22 +756,20 @@ extension Tk1TabWidget on DeclareInfoPage {
         controller.tk1State.familyMembers.isNotEmpty
             ? Container(
                 margin: const EdgeInsets.symmetric(
-                  vertical: AppDimens.paddingVerySmall,
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimens.defaultPadding,
-                  vertical: AppDimens.paddingVerySmall,
+                  vertical: AppDimens.paddingSmall,
                 ),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: AppColors.dsGray3,
+                    color: AppColors.dsGray4,
                   ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: addSeparator(
-                    spacer: UtilWidget.sizedBox8,
+                    spacer: const Divider(
+                      height: 1,
+                    ),
                     children: controller.tk1State.familyMembers.map(
                       (member) {
                         return _buildFamilyMemberItem(member);
@@ -686,20 +779,28 @@ extension Tk1TabWidget on DeclareInfoPage {
                 ),
               )
             : UtilWidget.sizedBox8,
-        Align(
-          alignment: Alignment.center,
-          child: OutlinedButton.icon(
-            onPressed: controller.addFamilyMember,
-            style: OutlinedButton.styleFrom(
-              shape: const CircleBorder(),
-              side: const BorderSide(
-                color: AppColors.primaryColor,
+        InkWell(
+          onTap: controller.addFamilyMember,
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.primaryColor,
+                ),
+                child: const Icon(
+                  Icons.add,
+                  color: AppColors.basicWhite,
+                  size: AppDimens.sizeIcon28,
+                ),
               ),
-            ),
-            label: const Icon(
-              Icons.add,
-              color: AppColors.primaryColor,
-            ),
+              sdsSBWidth12,
+              SDSBuildText(
+                LocaleKeys.declareInfo_addFamilyMember.tr,
+                style: AppTextStyle.font16Re.copyWith(color: AppColors.dsGray1),
+              ),
+            ],
           ),
         ),
       ],
@@ -713,6 +814,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       },
       child: Row(
         children: [
+          sdsSBWidth12,
           Expanded(
             child: SDSBuildText(
               '${member.fullName} - ${member.relationship?.text ?? ''}',
@@ -722,14 +824,17 @@ extension Tk1TabWidget on DeclareInfoPage {
           IconButton(
             onPressed: () {
               ShowDialog.showDialogConfirm2(
-                title: 'Xóa thành viên đã chọn',
-                confirmTitle: 'Xóa',
+                title: LocaleKeys.declareInfo_deleteSelectedMember.tr,
+                confirmTitle: LocaleKeys.declareInfo_delete.tr,
                 onConfirm: () {
                   controller.deleteFamilyMember(member);
                 },
               );
             },
-            icon: const Icon(Icons.clear, color: AppColors.statusRed),
+            icon: const Icon(
+              Icons.clear,
+              color: AppColors.statusRed,
+            ),
           ),
         ],
       ),

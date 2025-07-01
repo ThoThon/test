@@ -14,21 +14,21 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
               child: Column(
                 children: [
                   _buildInputFullName(),
-                  UtilWidget.sizedBox16,
+                  sdsSBHeight12,
                   _buildInputBHXHNumber(),
-                  UtilWidget.sizedBox16,
+                  sdsSBHeight12,
                   _buildInputDocumentType(),
-                  UtilWidget.sizedBox16,
+                  sdsSBHeight12,
                   _buildInputDocumentNumber(),
-                  UtilWidget.sizedBox16,
+                  sdsSBHeight12,
                   _buildSelectDateOfIssue(),
-                  UtilWidget.sizedBox16,
+                  sdsSBHeight12,
                   _buildEffectiveDate(),
-                  UtilWidget.sizedBox16,
+                  sdsSBHeight12,
                   _buildInputIssuingAgency(),
-                  UtilWidget.sizedBox16,
+                  sdsSBHeight12,
                   _buildInputSummary(),
-                  UtilWidget.sizedBox16,
+                  sdsSBHeight12,
                   _buildInputContent(),
                 ],
               ),
@@ -41,10 +41,11 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
   }
 
   Widget _buildEffectiveDate() {
-    return UtilWidget.buildInputSelectDate(
+    return CardInputSelectDateWithLabel(
       inputFormatters: InputFormatterEnum.dateFull,
       controller: controller.effectiveDateCtrl,
-      title: LocaleKeys.declarationFormDetail_effectiveDate.tr,
+      isRequired: true,
+      labelText: LocaleKeys.declarationFormDetail_effectiveDate.tr,
       hintText: PATTERN_1,
       onSelectDate: () async {
         KeyBoard.hide();
@@ -85,10 +86,11 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
   }
 
   Widget _buildSelectDateOfIssue() {
-    return UtilWidget.buildInputSelectDate(
+    return CardInputSelectDateWithLabel(
+      isRequired: true,
       inputFormatters: InputFormatterEnum.dateFull,
       controller: controller.dateOfIssueCtrl,
-      title: LocaleKeys.declarationFormDetail_dateOfIssue.tr,
+      labelText: LocaleKeys.declarationFormDetail_dateOfIssue.tr,
       hintText: PATTERN_1,
       onSelectDate: () async {
         KeyBoard.hide();
@@ -128,153 +130,122 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
   }
 
   Widget _buildInputFullName() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFormDetail_fullName.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.fullNameTextCtrl,
-          inputFormatters: InputFormatterEnum.textNormal,
-          isValidate: true,
-          maxLengthInputForm: 100,
-          validator: (value) {
-            final trimmedValue = value?.trim();
-            if (trimmedValue == null || trimmedValue.isEmpty) {
-              return LocaleKeys.declarationFormDetail_fullNameCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declarationFormDetail_fullName.tr,
+      controller: controller.fullNameTextCtrl,
+      inputFormatters: InputFormatterEnum.textNormal,
+      isRequired: true,
+      maxLengthInputForm: 100,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declarationFormDetail_fullNameCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildInputBHXHNumber() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFormDetail_bhxhCode.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.bhxhTextCtrl,
-          maxLengthInputForm: 10,
-          textInputType: TextInputType.number,
-          inputFormatters: InputFormatterEnum.digitsOnly,
-          validator: (value) {
-            final trimmedValue = value?.trim();
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declarationFormDetail_bhxhCode.tr,
+      controller: controller.bhxhTextCtrl,
+      maxLengthInputForm: 10,
+      textInputType: TextInputType.number,
+      inputFormatters: InputFormatterEnum.digitsOnly,
+      validator: (value) {
+        final trimmedValue = value?.trim();
 
-            if (trimmedValue == null || trimmedValue.isEmpty) {
-              return null;
-            }
-            if (trimmedValue.length < 10) {
-              return LocaleKeys.declarationFormDetail_bhxhCodeInValid.tr;
-            }
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return null;
+        }
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.declarationFormDetail_bhxhCodeInValid.tr;
+        }
 
-            return null;
-          },
-        ),
-      ),
+        return null;
+      },
     );
   }
 
   Widget _buildInputDocumentType() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFormDetail_documentType.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.documentTypeTextCtrl,
-          isValidate: true,
-          inputFormatters: InputFormatterEnum.textNormal,
-          maxLengthInputForm: 100,
-          validator: (value) {
-            if (value.isNullOrEmpty) {
-              return LocaleKeys
-                  .declarationFormDetail_documentTypeCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declarationFormDetail_documentType.tr,
+      controller: controller.documentTypeTextCtrl,
+      isRequired: true,
+      inputFormatters: InputFormatterEnum.textNormal,
+      maxLengthInputForm: 100,
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return LocaleKeys.declarationFormDetail_documentTypeCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildInputDocumentNumber() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFormDetail_documentNumber.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.documentNumberTextCtrl,
-          isValidate: true,
-          inputFormatters: InputFormatterEnum.textNormal,
-          maxLengthInputForm: 50,
-          validator: (value) {
-            if (value.isNullOrEmpty) {
-              return LocaleKeys
-                  .declarationFormDetail_documentNumberCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declarationFormDetail_documentNumber.tr,
+      controller: controller.documentNumberTextCtrl,
+      isRequired: true,
+      inputFormatters: InputFormatterEnum.textNormal,
+      maxLengthInputForm: 50,
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return LocaleKeys.declarationFormDetail_documentNumberCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildInputIssuingAgency() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFormDetail_issuingAgency.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.issuingAgencyTextCtrl,
-          isValidate: true,
-          inputFormatters: InputFormatterEnum.textNormal,
-          maxLengthInputForm: 255,
-          validator: (value) {
-            if (value.isNullOrEmpty) {
-              return LocaleKeys
-                  .declarationFormDetail_issuingAgencyCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declarationFormDetail_issuingAgency.tr,
+      controller: controller.issuingAgencyTextCtrl,
+      isRequired: true,
+      inputFormatters: InputFormatterEnum.textNormal,
+      maxLengthInputForm: 255,
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return LocaleKeys.declarationFormDetail_issuingAgencyCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildInputSummary() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFormDetail_summary.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.summaryTextCtrl,
-          isValidate: true,
-          inputFormatters: InputFormatterEnum.textNormal,
-          maxLengthInputForm: 500,
-          validator: (value) {
-            if (value.isNullOrEmpty) {
-              return LocaleKeys.declarationFormDetail_summaryCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declarationFormDetail_summary.tr,
+      controller: controller.summaryTextCtrl,
+      isRequired: true,
+      inputFormatters: InputFormatterEnum.textNormal,
+      maxLengthInputForm: 500,
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return LocaleKeys.declarationFormDetail_summaryCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildInputContent() {
-    return BuildInputTextWithLabel(
-      label: LocaleKeys.declarationFormDetail_contentToBeAssessed.tr,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          controller: controller.contentToBeAssessedTextCtrl,
-          isValidate: true,
-          inputFormatters: InputFormatterEnum.textNormal,
-          maxLengthInputForm: 1000,
-          validator: (value) {
-            if (value.isNullOrEmpty) {
-              return LocaleKeys
-                  .declarationFormDetail_contentToBeAssessedCannotEmpty.tr;
-            }
-            return null;
-          },
-        ),
-      ),
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declarationFormDetail_contentToBeAssessed.tr,
+      controller: controller.contentToBeAssessedTextCtrl,
+      isRequired: true,
+      inputFormatters: InputFormatterEnum.textNormal,
+      maxLengthInputForm: 1000,
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return LocaleKeys
+              .declarationFormDetail_contentToBeAssessedCannotEmpty.tr;
+        }
+        return null;
+      },
     );
   }
 
@@ -282,18 +253,12 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
     return Row(
       children: [
         Expanded(
-          child: UtilWidget.buildSolidButtonBack(
-            title: LocaleKeys.app_close.tr,
-            onPressed: () {
-              Get.back();
-            },
-          ),
-        ),
-        UtilWidget.sizedBoxWidth16,
-        Expanded(
           child: UtilWidget.buildSolidButton(
             title: LocaleKeys.app_save.tr,
             onPressed: controller.submit,
+            textStyle:
+                AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+            borderRadius: AppDimens.radius30,
           ),
         ),
       ],
