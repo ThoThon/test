@@ -5,6 +5,7 @@ import 'package:v_bhxh/shares/utils/string_utils.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 class UnitInfoControllerImpICare extends UnitInfoController {
+  final RxBool isEditAll = false.obs;
   @override
   void onInit() async {
     super.onInit();
@@ -65,25 +66,37 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       showLoadingOverlay();
       final response = await unitInfoRepository.updateAccountInfo(request);
       if (response.isSuccess) {
-        ShowDialog.showDialogConfirm(
+        ShowDialog.showDialogConfirm2(
           title: LocaleKeys.dialog_updateSuccess.tr,
-          textBtnRight: LocaleKeys.unitInfo_home.tr,
-          activeIcon: true,
-          onPressed: () async {
+          iconType: DialogIconType.success,
+          showConfirmButton: false,
+          content: LocaleKeys.dialog_updateSuccessDialog.tr,
+          contentTextStyle: AppTextStyle.font14Re,
+          exitTitle: LocaleKeys.dialog_close.tr,
+          onCancel: () async {
             await _getAccountInfo();
             await _getToTalNotiUnread();
             Get.offAllNamed(
               AppRoutes.home.path,
             );
           },
-          funcBack: () async {
-            await _getAccountInfo();
-            await _getToTalNotiUnread();
-            Get.back();
-          },
         );
       } else {
-        showSnackBar(LocaleKeys.unitInfo_hasError.tr);
+        ShowDialog.showDialogConfirm2(
+          title: LocaleKeys.dialog_updateFailure.tr,
+          iconType: DialogIconType.failure,
+          showConfirmButton: false,
+          content: LocaleKeys.dialog_updateFailureDialog.tr,
+          contentTextStyle: AppTextStyle.font14Re,
+          exitTitle: LocaleKeys.dialog_close.tr,
+          onCancel: () async {
+            await _getAccountInfo();
+            await _getToTalNotiUnread();
+            Get.offAllNamed(
+              AppRoutes.home.path,
+            );
+          },
+        );
       }
     } catch (e) {
       logger.d(e);

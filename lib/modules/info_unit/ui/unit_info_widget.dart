@@ -8,97 +8,92 @@ extension UnitInfoWidget on UnitInfoPage {
           _buildViewInfoItem(),
           _buildButtonChange(),
         ],
-      ),
+      ).paddingSymmetric(vertical: AppDimens.defaultPadding),
     );
   }
 
   Widget _buildViewInfoItem() {
     return Expanded(
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Trạng thái mở/đóng
-            // Thông tin đơn vị
-            Obx(
-              () => _buildCardToggle(
-                title: LocaleKeys.unitInfo_unitInfo.tr,
-                isEdit: controller.isUnitInfoEdit,
+        child: Obx(() {
+          final isEdit = controller.isEditAll;
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildTitleAndIcon(title: LocaleKeys.unitInfo_unitInfo.tr),
+              _buildCardToggle(
+                isEdit: isEdit,
                 cardEdit: _buildCardUnitInfoEdit(),
                 card: _buildCardUnitInfo(),
               ),
-            ),
-            // Thông tin địa chỉ
-            Obx(
-              () => _buildCardToggle(
-                isEdit: controller.isAddressInfoEdit,
+              _buildTitleAndIcon(title: LocaleKeys.unitInfo_addressInfo.tr),
+              _buildCardToggle(
+                isEdit: isEdit,
                 cardEdit: _buildCardAddressInfoEdit(),
                 card: _buildCardAddressInfo(),
-                title: LocaleKeys.unitInfo_addressInfo.tr,
               ),
-            ),
-            // Thông tin người đại diện
-            Obx(
-              () => _buildCardToggle(
-                isEdit: controller.isRepresentInfoEdit,
+              _buildTitleAndIcon(title: LocaleKeys.unitInfo_representInfo.tr),
+              _buildCardToggle(
+                isEdit: isEdit,
                 cardEdit: _buildCardRepresentInfoEdit(),
                 card: _buildCardRepresentInfo(),
-                title: LocaleKeys.unitInfo_representInfo.tr,
               ),
-            ),
-            // Thông tin người giao dịch
-            Obx(
-              () => _buildCardToggle(
-                isEdit: controller.isTraderInfoEdit,
+              _buildTitleAndIcon(
+                  title: LocaleKeys.unitInfo_transactionPersonInfo.tr),
+              _buildCardToggle(
+                isEdit: isEdit,
                 cardEdit: _buildCardTraderInfoEdit(),
                 card: _buildCardTraderInfo(),
-                title: LocaleKeys.unitInfo_transactionPersonInfo.tr,
               ),
-            ),
-            // Thông tin khác
-            Obx(
-              () => _buildCardToggle(
-                isEdit: controller.isOtherInfoEdit,
+              _buildTitleAndIcon(title: LocaleKeys.unitInfo_otherInfo.tr),
+              _buildCardToggle(
+                isEdit: isEdit,
                 cardEdit: _buildCardOtherInfoEdit(),
                 card: _buildCardOtherInfo(),
-                title: LocaleKeys.unitInfo_otherInfo.tr,
-                hasBottomPadding: false,
               ),
-            )
-          ],
-        ).paddingSymmetric(horizontal: AppDimens.defaultPadding),
+            ],
+          )
+              .paddingSymmetric(horizontal: AppDimens.defaultPadding)
+              .paddingOnly();
+        }),
       ),
     );
   }
 
   // Thông tin đơn vị
+
   List<Widget> _buildCardUnitInfoEdit() {
     return [
-      Column(
+      Row(
         children: [
-          _buildInputDisable(
-            label: LocaleKeys.unitInfo_inputTaxCode.tr,
-            controller: controller.taxCodeController,
+          Expanded(
+            child: _buildInputDisable(
+              label: LocaleKeys.unitInfo_inputTaxCode.tr,
+              controller: controller.taxCodeController,
+            ),
           ),
-          _buildInputItemEdit(
-            controller: controller.unitNameController,
-            label: LocaleKeys.unitInfo_unitName.tr,
-            maxLengthInputForm: 250,
-          ),
-          _buildInputDisable(
-            label: LocaleKeys.unitInfo_unitCode.tr,
-            controller: controller.unitCodeController,
-          ),
-          _buildInputDisable(
-            label: LocaleKeys.unitInfo_socialAgencyName.tr,
-            controller: controller.socialAgencyNameCtrl,
-          ),
-          _buildInputDisable(
-            label: LocaleKeys.unitInfo_socialAgencyCode.tr,
-            controller: controller.socialAgencyCodeCtrl,
+          const SizedBox(width: AppDimens.paddingSmall),
+          Expanded(
+            child: _buildInputDisable(
+              label: LocaleKeys.unitInfo_unitCode.tr,
+              controller: controller.unitCodeController,
+            ),
           ),
         ],
+      ),
+      _buildInputItemEdit(
+        controller: controller.unitNameController,
+        label: LocaleKeys.unitInfo_unitName.tr,
+        maxLengthInputForm: 250,
+      ),
+      _buildInputDisable(
+        label: LocaleKeys.unitInfo_socialAgencyName.tr,
+        controller: controller.socialAgencyNameCtrl,
+      ),
+      _buildInputDisable(
+        label: LocaleKeys.unitInfo_socialAgencyCode.tr,
+        controller: controller.socialAgencyCodeCtrl,
       ),
     ];
   }
@@ -225,9 +220,10 @@ extension UnitInfoWidget on UnitInfoPage {
   //Thông tin khác
   List<Widget> _buildCardOtherInfoEdit() {
     return [
-      UtilWidget.buildDropDownWithLabel<PaymentMethodEnum>(
-        label: LocaleKeys.unitInfo_methodClose.tr,
-        textStyle: AppTextStyle.font16Re,
+      CardDropdownWithLabel<PaymentMethodEnum>(
+        isRequired: true,
+        labelText: LocaleKeys.unitInfo_methodClose.tr,
+        textStyle: AppTextStyle.font14Re,
         items: PaymentMethodEnum.values,
         display: (p0) => p0.title.tr,
         selectedItem: controller.selectedMethod.value,
@@ -243,9 +239,10 @@ extension UnitInfoWidget on UnitInfoPage {
         textInputType: TextInputType.number,
         maxLengthInputForm: 11,
       ),
-      UtilWidget.buildDropDownWithLabel<ReceiveResultEnum>(
-        label: LocaleKeys.unitInfo_receiveResult.tr,
-        textStyle: AppTextStyle.font16Re,
+      CardDropdownWithLabel<ReceiveResultEnum>(
+        isRequired: true,
+        labelText: LocaleKeys.unitInfo_receiveResult.tr,
+        textStyle: AppTextStyle.font14Re,
         items: ReceiveResultEnum.values,
         display: (p0) => p0.receive.tr,
         selectedItem: controller.selectedReceive.value,
@@ -281,29 +278,23 @@ extension UnitInfoWidget on UnitInfoPage {
     FormFieldValidator<String>? validator,
     TextInputType? textInputType,
   }) {
-    return BuildInputTextWithLabel(
-      label: label,
+    return CardInputTextFormWithLabel(
+      labelText: label,
       textStyle: AppTextStyle.font14Re,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          validator: validator,
-          controller: controller,
-          inputFormatters: inputFormatters ?? InputFormatterEnum.textNormal,
-          maxLengthInputForm: maxLengthInputForm,
-          isShowCounterText: false,
-          isValidate: true,
-          autovalidateMode: AutovalidateMode.always,
-          onChanged: onChanged,
-          textInputType: textInputType ?? TextInputType.text,
-        ),
-      ),
+      validator: validator,
+      controller: controller,
+      inputFormatters: inputFormatters ?? InputFormatterEnum.textNormal,
+      maxLengthInputForm: maxLengthInputForm,
+      isShowCounterText: false,
+      isRequired: true,
+      autovalidateMode: AutovalidateMode.always,
+      onChanged: onChanged,
+      textInputType: textInputType ?? TextInputType.text,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
   Widget _buildTitleAndIcon({
     required String title,
-    required RxBool isEdit,
-    required VoidCallback onTap,
   }) {
     return Row(
       children: [
@@ -311,17 +302,9 @@ extension UnitInfoWidget on UnitInfoPage {
           title,
           style: AppTextStyle.font16Bo,
         ),
-        const Spacer(),
-        GestureDetector(
-          onTap: onTap,
-          child: isEdit.value
-              ? SDSImageSvg(Assets.ASSETS_ICONS_IC_ARROW_UP_SVG)
-              : SDSImageSvg(Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG),
-        )
       ],
     ).paddingOnly(
-      top: AppDimens.paddingSmall,
-      bottom: AppDimens.paddingVerySmall,
+      bottom: AppDimens.defaultPadding,
     );
   }
 
@@ -330,23 +313,58 @@ extension UnitInfoWidget on UnitInfoPage {
     int? maxLines,
     TextStyle? style,
   }) {
-    return SDSBuildText(
-      text,
-      style: style,
-      maxLines: maxLines ?? 3,
-    ).paddingOnly(bottom: AppDimens.paddingVerySmall);
+    final int colonIndex = text.indexOf(':');
+    String left = text;
+    String right = '';
+    if (colonIndex != -1) {
+      left = text.substring(0, colonIndex + 1);
+      right = text.substring(colonIndex + 1).trim();
+    }
+
+    return Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: SDSBuildText(
+            left,
+            style: (style ?? AppTextStyle.font14Re).copyWith(
+              color: AppColors.dsGray2,
+            ),
+            maxLines: maxLines ?? 3,
+          ),
+        ),
+        Expanded(
+          flex: 3,
+          child: SDSBuildText(
+            right,
+            style: style ?? AppTextStyle.font14Re,
+            maxLines: maxLines ?? 3,
+            textAlign: TextAlign.right,
+          ),
+        ),
+      ],
+    ).paddingOnly(
+        bottom: AppDimens.paddingSmallest, top: AppDimens.paddingSmallest);
   }
 
   Widget _buildButtonChange() {
-    return Padding(
-      padding: const EdgeInsets.all(AppDimens.defaultPadding),
-      child: UtilWidget.buildSolidButton(
-        title: LocaleKeys.unitInfo_change.tr,
-        onPressed: () {
-          controller.updateAccountInfo();
-        },
-      ),
-    );
+    return Obx(() => Padding(
+          padding: const EdgeInsets.all(AppDimens.defaultPadding),
+          child: UtilWidget.buildSolidButton(
+            title: controller.isEditAll.value
+                ? LocaleKeys.unitInfo_change.tr
+                : LocaleKeys.unitInfo_fix.tr,
+            onPressed: () async {
+              if (controller.isEditAll.value) {
+                await controller.updateAccountInfo();
+                controller.isEditAll.value = false;
+              } else {
+                controller.isEditAll.value = true;
+              }
+            },
+            borderRadius: AppDimens.radius30,
+          ),
+        ));
   }
 
   //Thông tin đơn vị không được sửa, chỉ view thôi
@@ -354,53 +372,42 @@ extension UnitInfoWidget on UnitInfoPage {
     required TextEditingController controller,
     required String label,
   }) {
-    return BuildInputTextWithLabel(
-      textStyle: AppTextStyle.font14Re,
-      label: label,
-      buildInputText: BuildInputText(
-        InputTextModel(
-          enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: AppColors.dsGray7)),
-          focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: AppColors.dsGray7)),
-          isShowBorder: false,
-          isReadOnly: true,
-          fillColor: AppColors.dsGray7,
-          controller: controller,
-          showIconClear: false,
-          isShowCounterText: false,
-          isValidate: false,
-        ),
-      ),
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return CardInputTextFormWithLabel(
+            labelText: label,
+            textStyle: AppTextStyle.font14Re,
+            controller: controller,
+            isReadOnly: true,
+            fillColor: AppColors.dsGray6)
+        .paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
   Widget _buildCardToggle({
     required RxBool isEdit,
     required List<Widget> cardEdit,
     required List<Widget> card,
-    required String title,
     bool hasBottomPadding = true,
   }) {
     return Padding(
       padding: hasBottomPadding
           ? const EdgeInsets.only(bottom: AppDimens.defaultPadding)
           : EdgeInsets.zero,
-      child: UtilWidget.buildCardBase(
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildTitleAndIcon(
-              isEdit: isEdit,
-              title: title,
-              onTap: () {
-                isEdit.toggle();
-              },
+      child: isEdit.value
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: cardEdit,
+            )
+          : UtilWidget.buildCardBase(
+              SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: card,
+                ).paddingSymmetric(
+                  horizontal: AppDimens.defaultPadding,
+                  vertical: AppDimens.paddingSmall,
+                ),
+              ),
             ),
-            ...(isEdit.value ? cardEdit : card),
-          ],
-        ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
-      ),
     );
   }
 }

@@ -248,6 +248,7 @@ class ShowDialog {
     bool showConfirmButton = true,
     bool isActiveBack = true,
     bool isDisableButtonConfirm = false,
+    TextStyle? contentTextStyle,
   }) async {
     _showDialog(
       Dialog(
@@ -290,7 +291,7 @@ class ShowDialog {
                     child: SingleChildScrollView(
                       child: Text(
                         content,
-                        style: AppTextStyle.font16Semi,
+                        style: contentTextStyle ?? AppTextStyle.font16Semi,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.clip,
                       ).paddingSymmetric(horizontal: AppDimens.padding6),

@@ -15,6 +15,9 @@ class CardInputTextFormWithLabel extends StatelessWidget {
   final TextInputType textInputType;
   final bool isRequired;
   final void Function(String)? onChanged;
+  final AutovalidateMode? autovalidateMode;
+  final bool isReadOnly;
+  final Color? fillColor;
 
   const CardInputTextFormWithLabel({
     super.key,
@@ -31,6 +34,9 @@ class CardInputTextFormWithLabel extends StatelessWidget {
     this.textInputType = TextInputType.text,
     this.isRequired = false,
     this.onChanged,
+    this.autovalidateMode,
+    this.isReadOnly = false,
+    this.fillColor,
   });
 
   @override
@@ -40,11 +46,11 @@ class CardInputTextFormWithLabel extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.vertical(
               top: Radius.circular(AppDimens.radius10),
             ),
-            color: AppColors.basicWhite,
+            color: fillColor ?? AppColors.basicWhite,
           ),
           child: Padding(
             padding: const EdgeInsets.only(
@@ -76,8 +82,11 @@ class CardInputTextFormWithLabel extends StatelessWidget {
         ),
         BuildInputText(
           InputTextModel(
+            autovalidateMode: autovalidateMode,
             isValidate: isRequired,
             controller: controller,
+            isReadOnly: isReadOnly,
+            fillColor: fillColor ?? AppColors.basicWhite,
             hintText: hintText ?? 'Nhập ${labelText.toLowerCase()}',
             maxLengthInputForm: maxLengthInputForm,
             inputFormatters: inputFormatters ?? InputFormatterEnum.textNormal,

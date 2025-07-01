@@ -41,6 +41,9 @@ class LocaleKeys {
   static const app_close = 'app_close';
   static const app_select = 'app_select';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
+  static const dialog_updateSuccessDialog = 'dialog_updateSuccessDialog';
+  static const dialog_updateFailure = 'dialog_updateFailure';
+  static const dialog_updateFailureDialog = 'dialog_updateFailureDialog';
   static const dialog_logout = 'dialog_logout';
   static const dialog_isLogout = 'dialog_isLogout';
   static const dialog_empty = 'dialog_empty';
@@ -170,6 +173,7 @@ class LocaleKeys {
   static const unitInfo_fileIncludeInValid = 'unitInfo_fileIncludeInValid';
   static const unitInfo_search = 'unitInfo_search';
   static const unitInfo_change = 'unitInfo_change';
+  static const unitInfo_fix = 'unitInfo_fix';
   static const unitInfo_socialAgencyName = 'unitInfo_socialAgencyName';
   static const unitInfo_socialAgencyCode = 'unitInfo_socialAgencyCode';
   static const unitInfo_region = 'unitInfo_region';
@@ -873,7 +877,10 @@ class Locales {
     'dialog_history': 'Lịch sử',
     'dialog_consignment': 'Ký gửi',
     'dialog_notification': 'Thông báo',
-    'dialog_updateSuccess': 'Thay đổi thông tin thành công',
+    'dialog_updateSuccess': 'Thay đổi thành công',
+    'dialog_updateSuccessDialog': 'Lưu thông tin thay đổi thành công',
+    'dialog_updateFailure': 'Thay đổi thất bại',
+    'dialog_updateFailureDialog': 'Lưu thông tin thay đổi thất bại',
     'dialog_logout': 'Đăng xuất',
     'dialog_isLogout': 'Bạn có chắc chắn muốn đăng xuất?',
     'dialog_empty': 'Trống',
@@ -929,13 +936,13 @@ class Locales {
     'unitInfo_unitCode': 'Mã đơn vị',
     'unitInfo_phone': 'Số điện thoại',
     'unitInfo_addressInfo': 'Thông tin địa chỉ',
-    'unitInfo_addressRegister': 'Địa chỉ đăng ký kinh doanh',
+    'unitInfo_addressRegister': 'Địa chỉ ĐKKD',
     'unitInfo_addressRegisterDKKD': 'Địa chỉ ĐKKD: ',
-    'unitInfo_addressTransaction': 'Địa chỉ giao dịch hồ sơ',
+    'unitInfo_addressTransaction': 'Địa chỉ giao dịch',
     'unitInfo_businessIndustry': 'Ngành nghề sản xuất',
     'unitInfo_representInfo': 'Thông tin người đại diện',
     'unitInfo_transactionPersonInfo': 'Thông tin người giao dịch',
-    'unitInfo_represent': 'Người ký hồ sơ',
+    'unitInfo_represent': 'Người đại diện',
     'unitInfo_position': 'Chức vụ',
     'unitInfo_decisionInfo': 'Thông tin quyết định',
     'unitInfo_decisionNumber': 'Số quyết định',
@@ -968,7 +975,7 @@ class Locales {
     'unitInfo_unitGroup': 'Khối đơn vị',
     'unitInfo_content': 'Nội dung',
     'unitInfo_transactionPerson': 'Người kê khai',
-    'unitInfo_phoneContact': 'Điện thoại liên hệ',
+    'unitInfo_phoneContact': 'Điện thoại di động',
     'unitInfo_email': 'Email liên hệ',
     'unitInfo_fileInclude': 'Hồ sơ kèm theo',
     'unitInfo_attached': 'Đính kèm',
@@ -1001,8 +1008,9 @@ class Locales {
     'unitInfo_fileIncludeInValid': 'File đính kèm không được bỏ trống',
     'unitInfo_search': 'Tìm kiếm',
     'unitInfo_change': 'Thay đổi',
-    'unitInfo_socialAgencyName': 'Cơ quan quản lý BHXH',
-    'unitInfo_socialAgencyCode': 'Mã CQQL BHXH',
+    'unitInfo_fix': 'Sửa thông tin',
+    'unitInfo_socialAgencyName': 'Tên CQQL',
+    'unitInfo_socialAgencyCode': 'Mã CQQL',
     'unitInfo_region': 'Vùng',
     'unitInfo_basicSalary': 'Lương cơ sở',
     'unitInfo_registerResult': 'Đăng ký nhận kết quả',
