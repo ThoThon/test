@@ -7,6 +7,7 @@ extension StaffListWidget on StaffListPage {
         Expanded(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(
+              vertical: AppDimens.defaultPadding,
               horizontal: AppDimens.defaultPadding,
             ),
             child: Obx(
@@ -14,6 +15,10 @@ extension StaffListWidget on StaffListPage {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SDSBuildText(
+                      'Danh sách nhân viên',
+                      style: AppTextStyle.font16Bo,
+                    ),
                     _buildListStaff(),
                     _buildSelectImage(),
                     _buidHideImage(),
@@ -197,66 +202,106 @@ extension StaffListWidget on StaffListPage {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        UtilWidget.buildDividerDefault(),
         if (isListStaffEmpty)
           SDSBuildText(
             "Chưa có nhân viên nào được khai báo",
             style: AppTextStyle.font16Re,
           ).paddingAll(AppDimens.defaultPadding),
         ...addSeparator(
-          spacer: UtilWidget.buildDividerDefault(),
+          spacer: const SizedBox.shrink(),
           children: controller.declaredStaffs.map(
             (staff) {
               return _buildStaffItem(staff);
             },
           ),
         ),
-        UtilWidget.buildDividerDefault(),
-        _buildAddNewStaff(),
+        // UtilWidget.buildDividerDefault(),
+        // _buildAddNewStaff(),
       ],
     );
   }
 
   Widget _buildStaffItem(DeclaredStaffModel staff) {
     return Slidable(
-      key: ValueKey(staff.id),
-      endActionPane: ActionPane(
-        // A motion is a widget used to control how the pane animates.
-        motion: const ScrollMotion(),
-        children: [
-          CustomSlidableAction(
-            onPressed: (ctx) {
-              controller.showDialogDeleteStaff(staff);
-            },
-            backgroundColor: AppColors.primaryColor,
-            foregroundColor: Colors.white,
-            child: SDSBuildText(
-              LocaleKeys.app_delete.tr,
-              style: AppTextStyle.font20Bo.copyWith(
-                color: Colors.white,
+        key: ValueKey(staff.id),
+        endActionPane: ActionPane(
+          // A motion is a widget used to control how the pane animates.
+          motion: const ScrollMotion(),
+          children: [
+            CustomSlidableAction(
+              onPressed: (ctx) {
+                controller.showDialogDeleteStaff(staff);
+              },
+              backgroundColor: AppColors.primaryColor,
+              foregroundColor: Colors.white,
+              child: SDSBuildText(
+                LocaleKeys.app_delete.tr,
+                style: AppTextStyle.font20Bo.copyWith(
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(8),
-        onTap: () {
-          controller.updateStaff(staff);
-        },
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(
-            vertical: AppDimens.defaultPadding,
-            horizontal: AppDimens.paddingVerySmall,
-          ),
-          child: SDSBuildText(
-            '${staff.name} ${staff.bhxhNumber.isNotEmpty ? "(${staff.bhxhNumber})" : ""}',
-            style: AppTextStyle.font16Bo,
-          ),
+          ],
         ),
-      ),
-    );
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.basicWhite,
+            borderRadius: BorderRadius.circular(AppDimens.radius16),
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  SDSImageSvg(Assets.ASSETS_ICONS_IC_PERSONAL_SVG),
+                  sdsSBWidth8,
+                  SDSBuildText(
+                    staff.name,
+                    style: AppTextStyle.font16Bo,
+                  ),
+                  const Spacer(),
+                  SDSImageSvg(Assets.ASSETS_ICONS_IC_DELETE_SVG),
+                ],
+              ),
+              sdsSBHeight12,
+              Row(
+                children: [
+                  const Expanded(child: SDSBuildText('')),
+                  InkWell(
+                      onTap: () {
+                        controller.updateStaff(staff);
+                      },
+                      child: SDSBuildText(
+                        'Chỉnh sửa',
+                        style: AppTextStyle.font14Re.copyWith(
+                          color: AppColors.primaryColor,
+                        ),
+                      )),
+                ],
+              ),
+            ],
+          ).paddingSymmetric(
+            vertical: AppDimens.paddingSmall,
+            horizontal: AppDimens.defaultPadding,
+          ),
+        )
+        // InkWell(
+        //   borderRadius: BorderRadius.circular(8),
+        //   onTap: () {
+        //     controller.updateStaff(staff);
+        //   },
+        //   child: Container(
+        //     width: double.infinity,
+        //     padding: const EdgeInsets.symmetric(
+        //       vertical: AppDimens.defaultPadding,
+        //       horizontal: AppDimens.paddingVerySmall,
+        //     ),
+        //     child: SDSBuildText(
+        //       '${staff.name} ${staff.bhxhNumber.isNotEmpty ? "(${staff.bhxhNumber})" : ""}',
+        //       style: AppTextStyle.font16Bo,
+        //     ),
+        //   ),
+        // ),
+        );
   }
 
   Widget _buildAddNewStaff() {
@@ -293,6 +338,8 @@ extension StaffListWidget on StaffListPage {
 
   Widget _buildSubmitButton() {
     return UtilWidget.buildSolidButton(
+      borderRadius: AppDimens.radius30,
+      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
       height: AppDimens.btnLargeFigma,
       title: 'Tiếp theo',
       onPressed: controller.saveXml,

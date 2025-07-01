@@ -20,11 +20,17 @@ class StaffListPage extends BaseGetWidget<StaffListController> {
     return buildLoadingOverlay(
       () => Scaffold(
         appBar: BaseAppBar(
+          backgroundColor: AppColors.primaryColor,
           title: BaseAppBarTitle(
             title: LocaleKeys.staffList_title.tr,
+            textStyle:
+                AppTextStyle.font18Bo.copyWith(color: AppColors.basicWhite),
           ),
+          leading:
+              UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
+          centerTitle: true,
         ),
-        body: SafeArea(
+        body: BaseCardBody(
           child: baseShowLoading(
             () => _buildBody(),
           ),

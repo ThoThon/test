@@ -122,7 +122,6 @@ class DeclareInfoRepository extends BaseRepository {
       EnumRequestMethod.post,
       jsonMap: request.toJson(),
     );
-
     return BaseResponse.fromJson(response);
   }
 
