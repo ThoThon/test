@@ -25,8 +25,7 @@ class StaffListPage extends BaseGetWidget<StaffListController> {
           backgroundColor: AppColors.primaryColor,
           title: BaseAppBarTitle(
             title: LocaleKeys.staffList_title.tr,
-            textStyle:
-                AppTextStyle.font18Bo.copyWith(color: AppColors.basicWhite),
+            textColor: AppColors.basicWhite,
           ),
           leading:
               UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),

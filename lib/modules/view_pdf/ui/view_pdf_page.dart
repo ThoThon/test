@@ -15,6 +15,8 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
+        leading: UtilWidget.buildButtonBackAppbar(),
+        centerTitle: true,
         title: BaseAppBarTitle(title: controller.argument.title),
       ),
       body: SafeArea(
@@ -53,7 +55,12 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
         Visibility(
           visible: controller.argument.enableDownloadButton ?? true,
           child: Expanded(
-            child: UtilWidget.buildSolidButtonBack(
+            child: UtilWidget.buildSolidButton(
+              borderRadius: AppDimens.radius30,
+              side: const BorderSide(width: 1, color: AppColors.primaryColor),
+              backgroundColor: AppColors.basicWhite,
+              textStyle:
+                  AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
               title: 'Tải về',
               onPressed: () {},
             ),
@@ -62,9 +69,12 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
         UtilWidget.sizedBoxWidth16,
         Expanded(
           child: UtilWidget.buildSolidButton(
-            title: 'Đóng',
+            borderRadius: AppDimens.radius30,
+            title: 'Chia sẻ',
+            textStyle:
+                AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
             onPressed: () {
-              Get.back();
+              // Get.back();
             },
           ),
         ),

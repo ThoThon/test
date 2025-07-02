@@ -1,5 +1,6 @@
 2/7/2025
 - [Appmobile]_Chỉnh sửa giao diện màn Danh sách nhân viên kê khai - BHW-2547
+- [Appmobile]_Chỉnh sửa hiển thị Popup timeout màn Đăng ký cấp mã - BHW-2555
 
 1/07/2025
 - [Appmobile]_Sửa lại giao diện Tờ khai TK1-TS - BHW-2542
