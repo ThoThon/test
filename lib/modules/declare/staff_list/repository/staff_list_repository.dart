@@ -20,7 +20,7 @@ class StaffListRepository extends BaseRepository {
     );
     return BaseResponse<StaffListResponse>.fromJson(
       response,
-      fromJson: (json) => StaffListResponse.fromJson(json),
+      fromJson: (json) => StaffListResponse.fromJsonD02(json),
     );
   }
 
