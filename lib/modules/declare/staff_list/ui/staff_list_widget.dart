@@ -15,7 +15,7 @@ extension StaffListWidget on StaffListPage {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SDSBuildText(
-                      LocaleKeys.staffList_listEmployy.tr,
+                      LocaleKeys.staffList_listEmployee.tr,
                       style: AppTextStyle.font16Bo,
                     ),
                     sdsSBHeight8,
