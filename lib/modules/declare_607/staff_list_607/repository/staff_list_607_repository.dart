@@ -2,7 +2,7 @@ import 'package:v_bhxh/base_app/model/base_response.dart';
 import 'package:v_bhxh/base_app/repository_base/base_repository.dart';
 import 'package:v_bhxh/core/enum/enum_request_method.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
-import 'package:v_bhxh/modules/declare_607/staff_list_607/model/staff_list_607_response.dart';
+import 'package:v_bhxh/modules/declare_607/staff_list_607/model/model_src.dart';
 
 class StaffList607Repository extends BaseRepository {
   StaffList607Repository(super.controller);
@@ -65,23 +65,23 @@ class StaffList607Repository extends BaseRepository {
   //   );
   // }
 
-  // Future<BaseResponse<SaveXmlResult>> saveXml({
-  //   required String declarationPeriodId,
-  // }) async {
-  //   final response = await baseCallApi(
-  //     AppApi.urlSaveXml,
-  //     EnumRequestMethod.post,
-  //     queryParameters: {
-  //       "kyKeKhaiId": declarationPeriodId,
-  //     },
-  //     // Có thể việc gen pdf ở BE tốn thời gian, nên cần tăng thời gian timeout
-  //     timeOut: const Duration(minutes: 2),
-  //   );
-  //   return BaseResponse<SaveXmlResult>.fromJson(
-  //     response,
-  //     fromJson: (json) => SaveXmlResult.fromJson(json),
-  //   );
-  // }
+  Future<BaseResponse<SaveXml607Result>> saveXml({
+    required String declarationPeriodId,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlSaveXml607,
+      EnumRequestMethod.post,
+      queryParameters: {
+        "kyKeKhaiId": declarationPeriodId,
+      },
+      // Có thể việc gen pdf ở BE tốn thời gian, nên cần tăng thời gian timeout
+      timeOut: const Duration(minutes: 2),
+    );
+    return BaseResponse<SaveXml607Result>.fromJson(
+      response,
+      fromJson: (json) => SaveXml607Result.fromJson(json),
+    );
+  }
 
   // Future<BaseResponse> deleteImage(String kyKeKhaiId, String fileName) async {
   //   final response = await baseCallApi(

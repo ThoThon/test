@@ -113,22 +113,21 @@ class StaffList607Controller extends BaseGetxController {
 
     try {
       showLoadingOverlay();
+      final response = await _repository.saveXml(
+        declarationPeriodId: declarationPeriodId,
+      );
 
-      // final response = await _repository.saveXml(
-      //   declarationPeriodId: declarationPeriodId,
-      // );
-
-      // if (response.isSuccess && response.result != null) {
-      //   Get.toNamed(
-      //     AppRoutes.declarationList.path,
-      //     arguments: DeclarationListArgument(
-      //       declarationPeriodId: declarationPeriodId,
-      //       saveXmlResult: response.result!,
-      //     ),
-      //   );
-      // } else {
-      //   showSnackBar(response.errorMessage);
-      // }
+      if (response.isSuccess && response.result != null) {
+        // Get.toNamed(
+        //   AppRoutes.declarationList.path,
+        //   arguments: DeclarationListArgument(
+        //     declarationPeriodId: declarationPeriodId,
+        //     saveXmlResult: response.result!,
+        //   ),
+        // );
+      } else {
+        showSnackBar(response.errorMessage);
+      }
     } catch (e) {
       logger.e(e);
     } finally {

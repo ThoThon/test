@@ -85,6 +85,7 @@ class AppApi {
 
   // === Danh sách các api liên quan đến thủ tục 607 ===
   static const String urlGetStaffList607 = '/api/HoSoTk1/get-list';
+  static const String urlSaveXml607 = '/api/HoSoTk1/save-xml';
 
   // === Kết thúc các api liên quan đến thủ tục 607 ===
 }
