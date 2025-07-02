@@ -119,8 +119,18 @@ class DeclarationPeriodController extends BaseGetxController {
   }
 
   Future<void> editDeclarationPeriod(DeclarationPeriod period) async {
+    final String targetPath;
+    switch (period.type) {
+      case ProcedureType.procedure600:
+        targetPath = AppRoutes.staffList.path;
+        break;
+      case ProcedureType.procedure607:
+        targetPath = AppRoutes.staffList607.path;
+        break;
+    }
+
     Get.toNamed(
-      AppRoutes.staffList.path,
+      targetPath,
       arguments: period.id,
     )?.whenComplete(() {
       // Refresh the list of declaration periods after editing

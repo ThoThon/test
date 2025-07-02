@@ -49,7 +49,9 @@ enum AppRoutes {
   registerCode,
 
   // Thay đổi đường dẫn
-  changeBaseUrl;
+  changeBaseUrl,
+
+  staffList607;
 
   String get path {
     return '/vbhxh_$name';

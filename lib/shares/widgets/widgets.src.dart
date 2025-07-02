@@ -7,3 +7,4 @@ export 'text/text_utils.dart';
 export 'text/font_style.dart';
 export 'utils_widget/utils_widget.src.dart';
 export 'appbar/app_bar_src.dart';
+export 'app_widget/app_widget_src.dart';

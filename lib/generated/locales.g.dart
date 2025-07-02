@@ -629,7 +629,7 @@ class LocaleKeys {
       'staffList_noEmployeeDeclaredMessage';
   static const staffList_edit = 'staffList_edit';
   static const staffList_delete = 'staffList_delete';
-  static const staffList_listEmployy = 'staffList_listEmployy';
+  static const staffList_listEmployee = 'staffList_listEmployee';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -1433,7 +1433,7 @@ class Locales {
         'Chưa có nhân viên nào được khai báo',
     'staffList_edit': 'Sửa',
     'staffList_delete': 'Xóa',
-    'staffList_listEmployy': 'Danh sách nhân viên',
+    'staffList_listEmployee': 'Danh sách nhân viên',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',
