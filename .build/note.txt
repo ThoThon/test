@@ -1,3 +1,8 @@
+1/07/2025
+- [Appmobile]_Sửa lại giao diện Tờ khai TK1-TS - BHW-2542
+- [Appmobile]_Chỉnh sửa giao diện tờ khai màn D02 - BHW-2544
+- [Appmobile]_Chỉnh sửa giao diện Tờ khai D01-TS - BHW-2543
+
 30/06/2025
 - [Appmobile]_Sửa lại giao diện màn Danh sách thủ tục - BHW-2523
 - [Appmobile]_Thủ tục 600 -Màn TK1: Bổ sung maxlength ô tìm kiếm mối quan hệ với chủ hộ (Màn thành viên trong gia đình) - BHW-2524

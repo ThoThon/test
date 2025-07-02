@@ -74,7 +74,7 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
             inputFormatters: inputFormatters,
             isShowCounterText: false,
             suffixIcon: Container(
-              padding: const EdgeInsets.only(right: AppDimens.paddingSmall),
+              padding: const EdgeInsets.only(right: AppDimens.defaultPadding),
               decoration: BoxDecoration(
                 color: AppColors.basicWhite,
                 borderRadius: BorderRadius.horizontal(

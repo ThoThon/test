@@ -9,3 +9,4 @@ export 'declaration_form.dart';
 export 'hospital.dart';
 export 'staff/staff_src.dart';
 export 'declaration_form_detail_argument.dart';
+export 'action_d01_form_enum.dart';
