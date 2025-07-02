@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
+import 'package:v_bhxh/core/values/const.dart';
+import 'package:v_bhxh/generated/locales.g.dart';
+import 'package:v_bhxh/shares/model/upload_attachments_request.dart';
 import 'package:v_bhxh/modules/declare_607/staff_list_607/model/model_src.dart';
 import 'package:v_bhxh/modules/declare_607/staff_list_607/repository/staff_list_607_repository.dart';
 import 'package:v_bhxh/shares/function/logger.dart';
@@ -66,44 +69,52 @@ class StaffList607Controller extends BaseGetxController {
 
   Future<void> upLoadFile(String imagePath) async {
     try {
-      showLoading();
-      // final response = await _repository.uploadImage(
-      //   request: UploadImageRequest(
-      //     file: imagePath,
-      //     periodId: declarationPeriodId,
-      //   ),
-      // );
-      // if (response.isSuccess) {
-      //   // Vì hiện ảnh lấy từ BE về, nên khi vừa up ảnh xong phải gọi api để lấy link ảnh
-      //   _getStaffList();
-      // } else {
-      //   showSnackBar(response.errorMessage);
-      // }
+      showLoadingOverlay();
+      final response = await _repository.uploadImage(
+        request: UploadImageRequest(
+          file: imagePath,
+          periodId: declarationPeriodId,
+        ),
+      );
+      if (response.isSuccess) {
+        // Vì hiện ảnh lấy từ BE về, nên khi vừa up ảnh xong phải gọi api để lấy link ảnh
+        _getStaffList();
+      } else {
+        showSnackBar(response.errorMessage);
+      }
     } catch (e) {
       logger.d(e);
     } finally {
-      hideLoading();
+      hideLoadingOverlay();
     }
   }
 
-  // Future<void> deleteImage(String fileNameFromUrl, int index) async {
-  //   try {
-  //     final response = await _repository.deleteImage(
-  //       declarationPeriodId,
-  //       fileNameFromUrl,
-  //     );
-  //     if (response.isSuccess) {
-  //       showSnackBar(
-  //         LocaleKeys.declarationPeriodDetail_deleteImageSuccess.tr,
-  //         typeAction: AppConst.actionSuccess,
-  //       );
+  Future<void> deleteImage(String fileNameFromUrl, int index) async {
+    try {
+      showLoadingOverlay();
+      final fileName = getFileNameFromUrl(fileNameFromUrl);
+      if (fileName == null || fileName.trim().isEmpty) {
+        showSnackBar('Có lỗi xảy ra, không thể xóa ảnh');
+        return;
+      }
 
-  //       listAttachImage.removeAt(index);
-  //     }
-  //   } catch (e) {
-  //     logger.d(e);
-  //   }
-  // }
+      final response = await _repository.deleteImage(
+        declarationPeriodId,
+        fileNameFromUrl,
+      );
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declarationPeriodDetail_deleteImageSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        listAttachImage.removeAt(index);
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
 
   Future<void> saveXml() async {
     if (declaredStaffs.isEmpty) {
@@ -135,9 +146,9 @@ class StaffList607Controller extends BaseGetxController {
     }
   }
 
-  // String getFileNameFromUrl(String url) {
-  //   return url.split('/').last;
-  // }
+  String? getFileNameFromUrl(String url) {
+    return url.split('/').lastOrNull;
+  }
 
   // void showDialogDeleteStaff(DeclaredStaffModel staff) {
   //   ShowDialog.showDialogConfirm2(

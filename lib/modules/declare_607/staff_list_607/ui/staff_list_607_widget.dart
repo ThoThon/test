@@ -81,10 +81,10 @@ extension StaffList607Widget on StaffList607Page {
                       ),
                       IconButton(
                         onPressed: () {
-                          // controller.deteleImage(
-                          //   controller.getFileNameFromUrl(imageAttach.imgPath),
-                          //   index,
-                          // );
+                          controller.deleteImage(
+                            imageAttach.imgPath,
+                            index,
+                          );
                         },
                         icon: SDSImageSvg(
                           Assets.ASSETS_ICONS_IC_REMOVE_SVG,
