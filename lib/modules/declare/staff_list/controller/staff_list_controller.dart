@@ -1,6 +1,7 @@
 import 'package:path/path.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/staff_list/repository/staff_list_607_repository.dart';
 import 'package:v_bhxh/modules/declare/staff_list/repository/staff_list_repository.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -8,11 +9,10 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import '../../../../base_app/base_app.src.dart';
 
 class StaffListController extends BaseGetxController {
-  final declarationPeriodId = Get.arguments as String;
+  final argument = Get.arguments as StaffListArgument;
 
   late final _repository = StaffListRepository(this);
-
-  final imagePath = Rxn<String>();
+  late final _repository607 = StaffList607Repository(this);
 
   final declaredStaffs = const <DeclaredStaffModel>[].obs;
 
@@ -24,19 +24,20 @@ class StaffListController extends BaseGetxController {
     _getStaffList();
   }
 
+  String get declarationPeriodId => argument.declarationPeriodId;
+  ProcedureType get procedureType => argument.procedureType;
+
   Future<void> pickImage() async {
     final path = await ImageUtils.pickImage();
     if (path != null) {
-      imagePath.value = path;
-      upLoadFile();
+      upLoadFile(path);
     }
   }
 
   Future<void> takePhoto() async {
     final path = await ImageUtils.takePhoto();
     if (path != null) {
-      imagePath.value = path;
-      upLoadFile();
+      upLoadFile(path);
     }
   }
 
@@ -55,9 +56,21 @@ class StaffListController extends BaseGetxController {
   Future<void> _getStaffList() async {
     try {
       showLoading();
-      final response = await _repository.getStaffList(
-        declarationPeriodId: declarationPeriodId,
-      );
+      final BaseResponse<StaffListResponse> response;
+
+      switch (procedureType) {
+        case ProcedureType.procedure600:
+          response = await _repository.getStaffList(
+            declarationPeriodId: declarationPeriodId,
+          );
+          break;
+        case ProcedureType.procedure607:
+          response = await _repository607.getStaffList(
+            declarationPeriodId: declarationPeriodId,
+          );
+          break;
+      }
+
       if (response.isSuccess) {
         declaredStaffs.value = response.result?.staffs ?? [];
         listAttachImage.value = response.result?.image ?? [];
@@ -71,12 +84,12 @@ class StaffListController extends BaseGetxController {
     }
   }
 
-  Future<void> upLoadFile() async {
+  Future<void> upLoadFile(String imagePath) async {
     try {
       showLoading();
       final response = await _repository.uploadImage(
         request: UploadImageRequest(
-          file: imagePath.value ?? '',
+          file: imagePath,
           periodId: declarationPeriodId,
         ),
       );
@@ -93,11 +106,18 @@ class StaffListController extends BaseGetxController {
     }
   }
 
-  Future<void> deteleImage(String fileNameFromUrl, int index) async {
+  Future<void> deleteImage(String fileNameFromUrl, int index) async {
     try {
+      showLoadingOverlay();
+      final fileName = _getFileNameFromUrl(fileNameFromUrl);
+      if (fileName == null || fileName.trim().isEmpty) {
+        showSnackBar('Có lỗi xảy ra, không thể xóa ảnh');
+        return;
+      }
+
       final response = await _repository.deleteImage(
         declarationPeriodId,
-        fileNameFromUrl,
+        fileName,
       );
       if (response.isSuccess) {
         showSnackBar(
@@ -109,6 +129,8 @@ class StaffListController extends BaseGetxController {
       }
     } catch (e) {
       logger.d(e);
+    } finally {
+      hideLoadingOverlay();
     }
   }
 
@@ -120,10 +142,19 @@ class StaffListController extends BaseGetxController {
 
     try {
       showLoadingOverlay();
-
-      final response = await _repository.saveXml(
-        declarationPeriodId: declarationPeriodId,
-      );
+      final BaseResponse<SaveXmlResult> response;
+      switch (procedureType) {
+        case ProcedureType.procedure600:
+          response = await _repository.saveXml(
+            declarationPeriodId: declarationPeriodId,
+          );
+          break;
+        case ProcedureType.procedure607:
+          response = await _repository607.saveXml(
+            declarationPeriodId: declarationPeriodId,
+          );
+          break;
+      }
 
       if (response.isSuccess && response.result != null) {
         Get.toNamed(
@@ -143,8 +174,8 @@ class StaffListController extends BaseGetxController {
     }
   }
 
-  String getFileNameFromUrl(String url) {
-    return url.split('/').last;
+  String? _getFileNameFromUrl(String url) {
+    return url.split('/').lastOrNull;
   }
 
   void showDialogDeleteStaff(DeclaredStaffModel staff) {

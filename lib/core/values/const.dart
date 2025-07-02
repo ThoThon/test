@@ -3,6 +3,8 @@ class AppConst {
   static const int requestTimeOut = 30000; //ms
   static const int requestTimeOutLong = 90000; //ms
 
+  static const defaultButtonThrottleDuration = Duration(seconds: 1);
+
   /// error const
   static const int error500 = 500;
   static const int error404 = 404;

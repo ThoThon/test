@@ -15,7 +15,7 @@ extension StaffListWidget on StaffListPage {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SDSBuildText(
-                      LocaleKeys.staffList_listEmployy.tr,
+                      LocaleKeys.staffList_listEmployee.tr,
                       style: AppTextStyle.font16Bo,
                     ),
                     sdsSBHeight8,
@@ -26,8 +26,11 @@ extension StaffListWidget on StaffListPage {
                       style: AppTextStyle.font16Bo,
                     ),
                     sdsSBHeight8,
-                    _buildSelectUploadFile(),
-                    _buidHideImage(),
+                    AppSelectImageWidget(
+                      onPickImage: controller.pickImage,
+                      onTakePhoto: controller.takePhoto,
+                    ),
+                    _buildAttachImages(),
                   ],
                 );
               },
@@ -42,7 +45,7 @@ extension StaffListWidget on StaffListPage {
     ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
   }
 
-  Widget _buidHideImage() {
+  Widget _buildAttachImages() {
     return Obx(
       () {
         if (controller.listAttachImage.isEmpty) {
@@ -78,10 +81,7 @@ extension StaffListWidget on StaffListPage {
                       ),
                       IconButton(
                         onPressed: () {
-                          controller.deteleImage(
-                            controller.getFileNameFromUrl(imageAttach.imgPath),
-                            index,
-                          );
+                          controller.deleteImage(imageAttach.imgPath, index);
                         },
                         icon: SDSImageSvg(
                           Assets.ASSETS_ICONS_IC_REMOVE_SVG,
@@ -98,96 +98,6 @@ extension StaffListWidget on StaffListPage {
           ),
         );
       },
-    );
-  }
-
-  Widget _buildSelectUploadFile() {
-    return DottedBorder(
-      color: AppColors.colorBorder,
-      strokeWidth: 2,
-      dashPattern: [4, 4],
-      borderType: BorderType.RRect,
-      radius: const Radius.circular(16),
-      child: InkWell(
-        onTap: _showBottomSheetUploadOptions,
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: AppColors.basicWhite,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: AppDimens.padding24),
-          child: Center(
-            child: Column(
-              children: [
-                SDSImageSvg(Assets.ASSETS_ICONS_IC_UP_FILE_SVG),
-                SDSBuildText(
-                  'Tải ảnh lên',
-                  style: AppTextStyle.font14Re
-                      .copyWith(color: AppColors.primaryColor),
-                ),
-                SDSBuildText(
-                  LocaleKeys.registerCode_contentDownloadAttachment.tr,
-                  style: AppTextStyle.font14Re
-                      .copyWith(color: AppColors.textColorGrey),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _showBottomSheetUploadOptions() {
-    Get.bottomSheet(
-      UtilWidget.buildBottomSheetFigma(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildUploadOption(
-              icon: Icons.camera_alt_outlined,
-              text: LocaleKeys.registerCode_imageFromCamera.tr,
-              onTap: controller.takePhoto,
-            ),
-            const Divider(height: 1),
-            _buildUploadOption(
-              icon: Icons.image_outlined,
-              text: LocaleKeys.registerCode_imageFromLibrary.tr,
-              onTap: controller.pickImage,
-            ),
-            UtilWidget.sizedBox16,
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildUploadOption({
-    required IconData icon,
-    required String text,
-    required VoidCallback onTap,
-  }) {
-    return Material(
-      color: Colors.white,
-      child: InkWell(
-        onTap: () {
-          Get.back();
-          onTap();
-        },
-        child: Row(
-          children: [
-            Icon(icon),
-            UtilWidget.sizedBoxWidth8,
-            Expanded(
-              child: SDSBuildText(
-                text,
-                style: AppTextStyle.font16Semi,
-              ),
-            ),
-          ],
-        ).paddingSymmetric(vertical: AppDimens.defaultPadding),
-      ),
     );
   }
 
@@ -275,70 +185,49 @@ extension StaffListWidget on StaffListPage {
       constraints: const BoxConstraints(),
       color: AppColors.basicWhite,
       icon: const Icon(Icons.more_horiz),
-      onSelected: (value) {
-        if (value == ActionPopupStaffEnum.edit) {
+      onSelected: (action) {
+        if (action == ActionPopupStaffEnum.edit) {
           // Gọi hàm sửa
           controller.updateStaff(staff);
-        } else if (value == ActionPopupStaffEnum.delete) {
+        } else if (action == ActionPopupStaffEnum.delete) {
           // Gọi hàm xóa
           controller.showDialogDeleteStaff(staff);
         }
       },
-      itemBuilder: (context) => [
-        PopupMenuItem(
-          value: ActionPopupStaffEnum.edit,
-          child: Row(
-            children: [
-              SDSBuildText(LocaleKeys.staffList_edit.tr),
-              sdsSBWidth16,
-              const Icon(
-                Icons.autorenew,
-                color: AppColors.dsGray3,
+      itemBuilder: (ctx) {
+        return ActionPopupStaffEnum.values.map(
+          (action) {
+            return PopupMenuItem<ActionPopupStaffEnum>(
+              value: action,
+              child: Row(
+                children: [
+                  SDSBuildText(action.title),
+                  sdsSBWidth16,
+                  Icon(
+                    action.icon,
+                    color: AppColors.dsGray3,
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-        PopupMenuItem(
-          value: ActionPopupStaffEnum.delete,
-          child: Row(
-            children: [
-              SDSBuildText(LocaleKeys.staffList_delete.tr),
-              sdsSBWidth16,
-              SDSImageSvg(Assets.ASSETS_ICONS_IC_DELETE_SVG),
-            ],
-          ),
-        ),
-      ],
+            );
+          },
+        ).toList();
+      },
     );
   }
 
   Widget _buildSubmitButton() {
-    return UtilWidget.buildSolidButton(
-      borderRadius: AppDimens.radius30,
-      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-      height: AppDimens.btnLargeFigma,
+    return AppSolidButton(
       title: LocaleKeys.staffList_continue.tr,
       onPressed: controller.saveXml,
     );
   }
 
   Widget _buildAddNewStaffButton() {
-    return UtilWidget.buildSolidButton(
-      borderRadius: AppDimens.radius30,
-      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.colorBlack),
-      side: const BorderSide(width: 1, color: AppColors.colorBlack),
-      backgroundColor: AppColors.basicWhite,
-      height: AppDimens.btnLargeFigma,
+    return AppOutlineButton(
       title: LocaleKeys.staffList_addNewStaff.tr,
-      onPressed: () {
-        EasyThrottle.throttle(
-          'createStaff',
-          const Duration(seconds: 1),
-          () {
-            controller.createStaff();
-          },
-        );
-      },
+      throttleKey: 'createStaff',
+      onPressed: controller.createStaff,
     );
   }
 }

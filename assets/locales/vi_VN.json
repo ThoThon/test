@@ -535,7 +535,7 @@
     "noEmployeeDeclaredMessage": "Chưa có nhân viên nào được khai báo",
     "edit": "Sửa",
     "delete": "Xóa",
-    "listEmployy":"Danh sách nhân viên"
+    "listEmployee": "Danh sách nhân viên"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",
