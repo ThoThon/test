@@ -55,7 +55,7 @@ class DeclarationPeriod {
   }
 
   /// Loại thủ tục của kỳ khai báo
-  ProcedureType get type {
+  ProcedureType get procedureType {
     return ProcedureType.fromInt(procedureId);
   }
 }
