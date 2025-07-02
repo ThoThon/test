@@ -248,6 +248,9 @@ class ShowDialog {
     bool showConfirmButton = true,
     bool isActiveBack = true,
     bool isDisableButtonConfirm = false,
+    TextStyle? textStyleBack,
+    TextStyle? textStyleConfirm,
+    Color? backgroundColorBack,
   }) async {
     _showDialog(
       Dialog(
@@ -290,7 +293,7 @@ class ShowDialog {
                     child: SingleChildScrollView(
                       child: Text(
                         content,
-                        style: AppTextStyle.font16Semi,
+                        style: AppTextStyle.font14Re,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.clip,
                       ).paddingSymmetric(horizontal: AppDimens.padding6),
@@ -304,9 +307,11 @@ class ShowDialog {
                         child: UtilWidget.buildSolidButtonBack(
                           title: exitTitle ?? 'Hủy',
                           borderRadius: AppDimens.radius30,
-                          backgroundColor: AppColors.primaryColor,
-                          textStyle: AppTextStyle.font14Bo
-                              .copyWith(color: AppColors.basicWhite),
+                          backgroundColor:
+                              backgroundColorBack ?? AppColors.primaryColor,
+                          textStyle: textStyleBack ??
+                              AppTextStyle.font14Re
+                                  .copyWith(color: AppColors.basicWhite),
                           onPressed: () {
                             dismissDialog();
                             onCancel?.call();
@@ -319,6 +324,8 @@ class ShowDialog {
                         child: Expanded(
                           child: UtilWidget.buildSolidButton(
                             borderRadius: AppDimens.radius30,
+                            textStyle: AppTextStyle.font14Re
+                                .copyWith(color: AppColors.basicWhite),
                             title: confirmTitle ?? 'Đồng ý',
                             onPressed: () {
                               dismissDialog();

@@ -20,8 +20,7 @@ class DeclarationPeriodPage extends BaseGetWidget<DeclarationPeriodController> {
             backgroundColor: AppColors.primaryColor,
             title: BaseAppBarTitle(
               title: LocaleKeys.declarationPeriod_title.tr,
-              textStyle:
-                  AppTextStyle.font18Bo.copyWith(color: AppColors.basicWhite),
+              textColor: AppColors.basicWhite,
             ),
             centerTitle: true,
             leading: UtilWidget.buildButtonBackAppbar(

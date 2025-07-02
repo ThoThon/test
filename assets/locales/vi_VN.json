@@ -49,7 +49,8 @@
     "signatureTimeOut": "Hết thời gian ký số\nVui lòng thực hiện lại",
     "cancelRequest": "Hủy yêu cầu",
     "confirmSignatureMySign": "Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian",
-    "sendRequestSignature": "Gửi yêu cầu ký thành công"
+    "sendRequestSignature": "Gửi yêu cầu ký thành công",
+    "sendFileToBHXH": "Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",

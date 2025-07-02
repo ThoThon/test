@@ -61,6 +61,7 @@ class LocaleKeys {
   static const dialog_cancelRequest = 'dialog_cancelRequest';
   static const dialog_confirmSignatureMySign = 'dialog_confirmSignatureMySign';
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
+  static const dialog_sendFileToBHXH = 'dialog_sendFileToBHXH';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -947,6 +948,8 @@ class Locales {
     'dialog_confirmSignatureMySign':
         'Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian',
     'dialog_sendRequestSignature': 'Gửi yêu cầu ký thành công',
+    'dialog_sendFileToBHXH':
+        'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
