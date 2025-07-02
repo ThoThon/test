@@ -1,3 +1,6 @@
+2/7/2025
+- [Appmobile]_Chỉnh sửa giao diện màn Danh sách nhân viên kê khai - BHW-2547
+
 1/07/2025
 - [Appmobile]_Sửa lại giao diện Tờ khai TK1-TS - BHW-2542
 - [Appmobile]_Chỉnh sửa giao diện tờ khai màn D02 - BHW-2544

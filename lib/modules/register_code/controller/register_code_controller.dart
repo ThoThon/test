@@ -310,7 +310,6 @@ class RegisterCodeController extends BaseGetxController {
 
   void _showDialogCheckedSuccess() {
     ShowDialog.showDialogTimerCount(
-      timerCount: 10,
       content: LocaleKeys.dialog_confirmSignatureMySign.tr,
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       onFinish: () {
