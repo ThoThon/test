@@ -31,11 +31,13 @@ class UnitInfoPage extends BaseGetWidget {
             ),
           ),
         ),
-        body: buildLoadingOverlay(() => baseShowLoading(
-              () {
-                return BaseCardBody(child: _buildBody());
-              },
-            )),
+        body: BaseCardBody(
+          child: buildLoadingOverlay(
+            () => baseShowLoading(
+              () => _buildBody(),
+            ),
+          ),
+        ),
       ),
     );
   }

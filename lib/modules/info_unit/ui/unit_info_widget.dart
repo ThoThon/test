@@ -8,7 +8,9 @@ extension UnitInfoWidget on UnitInfoPage {
           _buildViewInfoItem(),
           _buildButtonChange(),
         ],
-      ).paddingSymmetric(vertical: AppDimens.defaultPadding),
+      ).paddingSymmetric(
+          vertical: AppDimens.paddingSmallest,
+          horizontal: AppDimens.paddingSmallest),
     );
   }
 
@@ -322,9 +324,10 @@ extension UnitInfoWidget on UnitInfoPage {
     }
 
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          flex: 2,
           child: SDSBuildText(
             left,
             style: (style ?? AppTextStyle.font14Re).copyWith(
@@ -334,7 +337,6 @@ extension UnitInfoWidget on UnitInfoPage {
           ),
         ),
         Expanded(
-          flex: 3,
           child: SDSBuildText(
             right,
             style: style ?? AppTextStyle.font14Re,
@@ -349,7 +351,10 @@ extension UnitInfoWidget on UnitInfoPage {
 
   Widget _buildButtonChange() {
     return Obx(() => Padding(
-          padding: const EdgeInsets.all(AppDimens.defaultPadding),
+          padding: const EdgeInsets.only(
+            left: AppDimens.defaultPadding,
+            right: AppDimens.defaultPadding,
+          ),
           child: UtilWidget.buildSolidButton(
             title: controller.isEditAll.value
                 ? LocaleKeys.unitInfo_change.tr
