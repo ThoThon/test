@@ -13,9 +13,9 @@ extension RegisterInfoTab on RegisterCodePage {
                   _buildBhxhInfoCard(),
                   sdsSBHeight12,
                   _buildOtherInfoCard(),
-                  _buidHideImage(),
                   sdsSBHeight12,
                   _buildSelectUploadFile(),
+                  _buidHideImage(),
                   sdsSBHeight12,
                   _buildSingatureInfo(),
                   _buildCardSignatureInfo(),
@@ -627,17 +627,11 @@ extension RegisterInfoTab on RegisterCodePage {
                       ),
                       sdsSBWidth8,
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SDSBuildText(
-                              controller.getFileName(imageAttach),
-                              maxLines: 2,
-                            ),
-                          ],
+                        child: SDSBuildText(
+                          controller.getFileName(imageAttach),
+                          maxLines: 2,
                         ),
                       ),
-                      const Spacer(),
                       IconButton(
                         onPressed: () {
                           controller.deleteImage(index);
