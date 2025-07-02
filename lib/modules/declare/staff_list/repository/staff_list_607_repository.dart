@@ -22,4 +22,22 @@ class StaffList607Repository extends BaseRepository {
       fromJson: (json) => StaffListResponse.fromJsonTk1(json),
     );
   }
+
+  Future<BaseResponse<SaveXmlResult>> saveXml({
+    required String declarationPeriodId,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlSaveXml607,
+      EnumRequestMethod.post,
+      queryParameters: {
+        "kyKeKhaiId": declarationPeriodId,
+      },
+      // Có thể việc gen pdf ở BE tốn thời gian, nên cần tăng thời gian timeout
+      timeOut: const Duration(minutes: 2),
+    );
+    return BaseResponse<SaveXmlResult>.fromJson(
+      response,
+      fromJson: (json) => SaveXmlResult.fromJson(json),
+    );
+  }
 }

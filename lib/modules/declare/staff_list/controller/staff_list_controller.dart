@@ -142,10 +142,19 @@ class StaffListController extends BaseGetxController {
 
     try {
       showLoadingOverlay();
-
-      final response = await _repository.saveXml(
-        declarationPeriodId: declarationPeriodId,
-      );
+      final BaseResponse<SaveXmlResult> response;
+      switch (procedureType) {
+        case ProcedureType.procedure600:
+          response = await _repository.saveXml(
+            declarationPeriodId: declarationPeriodId,
+          );
+          break;
+        case ProcedureType.procedure607:
+          response = await _repository607.saveXml(
+            declarationPeriodId: declarationPeriodId,
+          );
+          break;
+      }
 
       if (response.isSuccess && response.result != null) {
         Get.toNamed(
