@@ -105,7 +105,7 @@ class D02Request {
       chiCoNamSinh: d02Tk1State.birthType.value.rawValue,
       ngaySinh: convertStringToDateSafe(d02Tk1State.dateOfBirthTextCtrl.text,
           d02Tk1State.birthType.value.pattern),
-      gioiTinh: d02Tk1State.gender.value?.rawValue ?? Gender.male.rawValue,
+      gioiTinh: d02Tk1State.gender.value.rawValue,
       danTocId: d02Tk1State.selectedEthnic.value?.value,
       quocTichId: d02Tk1State.selectedNationality.value?.value,
       tuThang: d02State.fromDateTextCtrl.text,
