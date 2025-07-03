@@ -707,15 +707,21 @@ class DeclareInfoController extends BaseGetxController {
     tk1State.provinceTT.value = null;
     tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
+
+    updateHouseholdInfoRequired();
   }
 
   void onTapClearDistrictTT() {
     tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
+
+    updateHouseholdInfoRequired();
   }
 
   void onTapClearWardTT() {
     tk1State.wardTT.value = null;
+
+    updateHouseholdInfoRequired();
   }
 
   // void goToScanCCCD() async {
