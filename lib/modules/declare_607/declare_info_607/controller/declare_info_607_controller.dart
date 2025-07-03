@@ -1,19 +1,21 @@
+import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/modules/declare_607/declare_info_607/model/declare_info_607_tab.dart';
+import 'package:v_bhxh/modules/login/model/district_model.dart';
+import 'package:v_bhxh/modules/login/model/province_model.dart';
+import 'package:v_bhxh/modules/login/model/ward_model.dart';
+import 'package:v_bhxh/modules/select_staff/model/select_staff_response.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
-import '../../../../base_app/base_app.src.dart';
-import '../../../select_staff/model/select_staff_response.dart';
-
-class DeclareInfoController extends BaseGetxController {
+class DeclareInfo607Controller extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
-  final currentTab = DeclareInfoTab.d02.obs;
+  final currentTab = DeclareInfo607Tab.tk1.obs;
 
   late final declareInfoRepository = DeclareInfoRepository(this);
 
@@ -82,7 +84,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onTabChanged(DeclareInfoTab tab) {
+  void onTabChanged(DeclareInfo607Tab tab) {
     KeyBoard.hide();
     if (currentTab.value == tab) return;
     currentTab.value = tab;
@@ -94,11 +96,6 @@ class DeclareInfoController extends BaseGetxController {
 
   bool get enableD01Tab {
     return d02State.isGenerateD01Data.value == true;
-  }
-
-  // Chỉ cho phép quét cccd ở tab D02-LT
-  bool get isShowScanIDButton {
-    return currentTab.value == DeclareInfoTab.d02;
   }
 
   /// Kiểm tra xem có bắt buộc nhập mã BHXH hay không
@@ -129,14 +126,14 @@ class DeclareInfoController extends BaseGetxController {
   ///
   /// Chỉ hiển thị nút tiếp theo nếu đang không phải tab cuối cùng được hiển thị
   bool get isShowNextButton {
-    var lastTab = DeclareInfoTab.d02;
+    var lastTab = DeclareInfo607Tab.tk1;
 
     if (d02State.isGenerateTk1Data.value) {
-      lastTab = DeclareInfoTab.tk1;
+      lastTab = DeclareInfo607Tab.tk1;
     }
 
     if (d02State.isGenerateD01Data.value) {
-      lastTab = DeclareInfoTab.d01;
+      lastTab = DeclareInfo607Tab.d01;
     }
 
     return lastTab != currentTab.value;
@@ -230,31 +227,31 @@ class DeclareInfoController extends BaseGetxController {
     if (invalidTab != null) {
       currentTab.value = invalidTab;
     } else {
-      if (currentTab.value == DeclareInfoTab.d02) {
+      if (currentTab.value == DeclareInfo607Tab.tk1) {
         if (d02State.isGenerateTk1Data.value) {
-          currentTab.value = DeclareInfoTab.tk1;
+          currentTab.value = DeclareInfo607Tab.tk1;
         } else if (d02State.isGenerateD01Data.value) {
-          currentTab.value = DeclareInfoTab.d01;
+          currentTab.value = DeclareInfo607Tab.d01;
         }
-      } else if (currentTab.value == DeclareInfoTab.tk1) {
+      } else if (currentTab.value == DeclareInfo607Tab.tk1) {
         if (d02State.isGenerateD01Data.value) {
-          currentTab.value = DeclareInfoTab.d01;
+          currentTab.value = DeclareInfo607Tab.d01;
         }
       }
     }
   }
 
   /// Validate forms and return the first invalid tab
-  DeclareInfoTab? get _invalidTab {
+  DeclareInfo607Tab? get _invalidTab {
     if (d02State.formKey.currentState?.validate() != true) {
       d02State.autoValidateMode.value = AutovalidateMode.always;
-      return DeclareInfoTab.d02;
+      return DeclareInfo607Tab.tk1;
     }
 
     if (d02State.isGenerateTk1Data.value &&
         tk1State.formKey.currentState?.validate() != true) {
       tk1State.autoValidateMode.value = AutovalidateMode.always;
-      return DeclareInfoTab.tk1;
+      return DeclareInfo607Tab.tk1;
     }
 
     return null;
