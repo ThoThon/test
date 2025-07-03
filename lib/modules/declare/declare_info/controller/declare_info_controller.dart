@@ -256,12 +256,6 @@ class DeclareInfoController extends BaseGetxController {
       return DeclareInfoTab.d02;
     }
 
-    // REF: BHW-2240
-    if (isGenderRequired && d02Tk1State.gender.value == null) {
-      showSnackBar(LocaleKeys.declareInfo_genderCannotEmpty.tr);
-      return DeclareInfoTab.d02;
-    }
-
     if (d02State.isGenerateTk1Data.value &&
         tk1State.formKey.currentState?.validate() != true) {
       tk1State.autoValidateMode.value = AutovalidateMode.always;
@@ -278,10 +272,10 @@ class DeclareInfoController extends BaseGetxController {
       return;
     }
 
-    if (d02Tk1State.gender.value == null) {
-      showSnackBar("Giới tính không được để trống");
-      return;
-    }
+    // if (d02Tk1State.gender.value == null) {
+    //   showSnackBar("Giới tính không được để trống");
+    //   return;
+    // }
 
     if (d02State.isGenerateD01Data.value && d01State.forms.isEmpty) {
       showSnackBar("Tờ khai không có dữ liệu kê khai");
