@@ -26,9 +26,7 @@ class UnitInfoPage extends BaseGetWidget {
           ),
           title: BaseAppBarTitle(
             title: LocaleKeys.unitInfo_unitInfo.tr,
-            textStyle: AppTextStyle.font18Bo.copyWith(
-              color: Colors.white,
-            ),
+            textColor: Colors.white,
           ),
         ),
         body: BaseCardBody(

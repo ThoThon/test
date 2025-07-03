@@ -71,7 +71,6 @@ class UnitInfoControllerImpICare extends UnitInfoController {
           iconType: DialogIconType.success,
           showConfirmButton: false,
           content: LocaleKeys.dialog_updateSuccessDialog.tr,
-          contentTextStyle: AppTextStyle.font14Re,
           exitTitle: LocaleKeys.dialog_close.tr,
           onCancel: () async {
             await _getAccountInfo();
@@ -87,7 +86,6 @@ class UnitInfoControllerImpICare extends UnitInfoController {
           iconType: DialogIconType.failure,
           showConfirmButton: false,
           content: LocaleKeys.dialog_updateFailureDialog.tr,
-          contentTextStyle: AppTextStyle.font14Re,
           exitTitle: LocaleKeys.dialog_close.tr,
           onCancel: () async {
             await _getAccountInfo();
