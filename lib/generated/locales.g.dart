@@ -87,6 +87,7 @@ class LocaleKeys {
   static const home_taxCode = 'home_taxCode';
   static const home_hello = 'home_hello';
   static const home_logout = 'home_logout';
+  static const home_home = 'home_home';
   static const home_accountInfo = 'home_accountInfo';
   static const unitInfo_transactionRegister = 'unitInfo_transactionRegister';
   static const unitInfo_generalInfo = 'unitInfo_generalInfo';
@@ -973,6 +974,7 @@ class Locales {
     'home_taxCode': 'MST',
     'home_hello': 'Xin chào,',
     'home_logout': 'Đăng xuất',
+    'home_home': 'Trang chủ',
     'home_accountInfo': 'Thông tin tài khoản',
     'unitInfo_transactionRegister': 'Đăng ký giao dịch',
     'unitInfo_generalInfo': 'Thông tin chung',
