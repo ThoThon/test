@@ -7,188 +7,97 @@ extension StaffListWidget on StaffListPage {
         Expanded(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.defaultPadding,
+              vertical: AppDimens.defaultPadding,
             ),
             child: Obx(
               () {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SDSBuildText(
+                      LocaleKeys.staffList_listEmployee.tr,
+                      style: AppTextStyle.font16Bo,
+                    ),
+                    sdsSBHeight8,
                     _buildListStaff(),
-                    _buildSelectImage(),
-                    _buidHideImage(),
+                    sdsSBHeight12,
+                    SDSBuildText(
+                      LocaleKeys.staffList_attachFile.tr,
+                      style: AppTextStyle.font16Bo,
+                    ),
+                    sdsSBHeight8,
+                    AppSelectImageWidget(
+                      onPickImage: controller.pickImage,
+                      onTakePhoto: controller.takePhoto,
+                    ),
+                    _buildAttachImages(),
                   ],
                 );
               },
             ),
           ),
         ),
-        _buildSubmitButton().paddingAll(AppDimens.defaultPadding),
+        _buildAddNewStaffButton(),
+        sdsSBHeight16,
+        _buildSubmitButton(),
+        sdsSBHeight32,
       ],
-    );
+    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
   }
 
-  Widget _buidHideImage() {
+  Widget _buildAttachImages() {
     return Obx(
       () {
         if (controller.listAttachImage.isEmpty) {
           return const SizedBox.shrink();
         }
-        return Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1,
-              color: AppColors.dsGray5,
-            ),
-            borderRadius: BorderRadius.circular(AppDimens.radius8),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: List.generate(
-              controller.listAttachImage.length,
-              (index) {
-                final imageAttach = controller.listAttachImage[index];
-                return Row(
-                  children: [
-                    Image.network(
-                      imageAttach.imgPath,
-                      fit: BoxFit.cover,
-                      height: 80,
-                      width: 80,
-                    ),
-                    sdsSBWidth8,
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SDSBuildText(
-                            controller.getFileName(imageAttach.fileName),
-                            maxLines: 2,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      onPressed: () {
-                        controller.deteleImage(
-                          controller.getFileNameFromUrl(imageAttach.imgPath),
-                          index,
-                        );
-                      },
-                      icon: SDSImageSvg(
-                        Assets.ASSETS_ICONS_IC_REMOVE_SVG,
-                        width: AppDimens.sizeIconMedium,
-                        height: AppDimens.sizeIconMedium,
-                      ),
-                    ),
-                  ],
-                ).paddingSymmetric(vertical: AppDimens.paddingSmall);
-              },
-            ),
-          ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
-        ).paddingOnly(
-          top: AppDimens.paddingVerySmall,
-        );
-      },
-    );
-  }
-
-  Widget _buildSelectImage() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        SDSBuildText(
-          LocaleKeys.declarationPeriodDetail_attachFile.tr,
-          style: AppTextStyle.font16Bo,
-        ),
-        UtilWidget.sizedBox8,
-        InkWell(
-          onTap: () {
-            controller.listAttachImage.length < 5
-                ? Get.bottomSheet(
-                    UtilWidget.buildBottomSheetFigma(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Material(
-                            color: Colors.white,
-                            child: InkWell(
-                              onTap: () {
-                                // Close the bottom sheet
-                                Get.back();
-                                controller.takePhoto();
-                              },
-                              child: Row(
-                                children: [
-                                  const Icon(Icons.camera_alt_outlined),
-                                  UtilWidget.sizedBoxWidth8,
-                                  Expanded(
-                                    child: SDSBuildText(
-                                      'Chụp ảnh từ camera',
-                                      style: AppTextStyle.font16Semi,
-                                    ),
-                                  ),
-                                ],
-                              ).paddingSymmetric(
-                                vertical: AppDimens.defaultPadding,
-                              ),
-                            ),
-                          ),
-                          const Divider(height: 1),
-                          Material(
-                            color: Colors.white,
-                            child: InkWell(
-                              onTap: () {
-                                // Close the bottom sheet
-                                Get.back();
-                                controller.pickImage();
-                              },
-                              child: Row(
-                                children: [
-                                  const Icon(Icons.image_outlined),
-                                  UtilWidget.sizedBoxWidth8,
-                                  Expanded(
-                                    child: SDSBuildText(
-                                      'Chọn ảnh từ điện thoại',
-                                      style: AppTextStyle.font16Semi,
-                                    ),
-                                  ),
-                                ],
-                              ).paddingSymmetric(
-                                  vertical: AppDimens.defaultPadding),
-                            ),
-                          ),
-                          UtilWidget.sizedBox16,
-                        ],
-                      ),
-                    ),
-                  )
-                : controller.maximumUploadFile();
-          },
-          borderRadius: BorderRadius.circular(8),
+        return Padding(
+          padding: const EdgeInsets.only(top: AppDimens.paddingSmall),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                color: Colors.grey,
-                width: 1,
+              color: AppColors.basicWhite,
+              borderRadius: BorderRadius.circular(AppDimens.radius10),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: List.generate(
+                controller.listAttachImage.length,
+                (index) {
+                  final imageAttach = controller.listAttachImage[index];
+                  return Row(
+                    children: [
+                      Image.network(
+                        imageAttach.imgPath,
+                        height: 60,
+                        width: 60,
+                        fit: BoxFit.cover,
+                      ),
+                      sdsSBWidth8,
+                      Expanded(
+                        child: SDSBuildText(
+                          controller.getFileName(imageAttach.fileName),
+                          maxLines: 2,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          controller.deleteImage(imageAttach.imgPath, index);
+                        },
+                        icon: SDSImageSvg(
+                          Assets.ASSETS_ICONS_IC_REMOVE_SVG,
+                          color: AppColors.colorBlack,
+                          width: AppDimens.sizeIconMedium,
+                          height: AppDimens.sizeIconMedium,
+                        ),
+                      ),
+                    ],
+                  ).paddingSymmetric(vertical: AppDimens.paddingSmall);
+                },
               ),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.image_outlined, size: 48),
-                UtilWidget.sizedBoxWidth8,
-                SDSBuildText(
-                  LocaleKeys.declarationPeriodDetail_addAttachedImage.tr,
-                  style: AppTextStyle.font16Re,
-                ),
-              ],
-            ),
+            ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
           ),
-        ),
-      ],
+        );
+      },
     );
   }
 
@@ -197,22 +106,19 @@ extension StaffListWidget on StaffListPage {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        UtilWidget.buildDividerDefault(),
         if (isListStaffEmpty)
           SDSBuildText(
-            "Chưa có nhân viên nào được khai báo",
+            LocaleKeys.staffList_noEmployeeDeclaredMessage.tr,
             style: AppTextStyle.font16Re,
           ).paddingAll(AppDimens.defaultPadding),
         ...addSeparator(
-          spacer: UtilWidget.buildDividerDefault(),
+          spacer: sdsSBHeight12,
           children: controller.declaredStaffs.map(
             (staff) {
               return _buildStaffItem(staff);
             },
           ),
         ),
-        UtilWidget.buildDividerDefault(),
-        _buildAddNewStaff(),
       ],
     );
   }
@@ -239,63 +145,89 @@ extension StaffListWidget on StaffListPage {
           ),
         ],
       ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(8),
-        onTap: () {
-          controller.updateStaff(staff);
-        },
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(
-            vertical: AppDimens.defaultPadding,
-            horizontal: AppDimens.paddingVerySmall,
-          ),
-          child: SDSBuildText(
-            '${staff.name} ${staff.bhxhNumber.isNotEmpty ? "(${staff.bhxhNumber})" : ""}',
-            style: AppTextStyle.font16Bo,
-          ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.basicWhite,
+          borderRadius: BorderRadius.circular(AppDimens.radius16),
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                SDSImageSvg(Assets.ASSETS_ICONS_IC_PERSONAL_SVG),
+                sdsSBWidth8,
+                SDSBuildText(
+                  staff.name,
+                  style: AppTextStyle.font16Bo,
+                ),
+                if (staff.bhxhNumber.isNotEmpty)
+                  SDSBuildText(
+                    ' - ${staff.bhxhNumber}',
+                    style: AppTextStyle.font16Bo,
+                  ),
+                const Spacer(),
+                // SDSImageSvg(Assets.ASSETS_ICONS_IC_DELETE_SVG),
+                _buildMenuPopupOnption(staff),
+              ],
+            ),
+          ],
+        ).paddingSymmetric(
+          vertical: AppDimens.paddingSmall,
+          horizontal: AppDimens.defaultPadding,
         ),
       ),
     );
   }
 
-  Widget _buildAddNewStaff() {
-    return InkWell(
-      onTap: () {
-        EasyThrottle.throttle(
-          'createStaff',
-          const Duration(seconds: 1),
-          () {
-            controller.createStaff();
-          },
-        );
+  Widget _buildMenuPopupOnption(DeclaredStaffModel staff) {
+    return PopupMenuButton<ActionPopupStaffEnum>(
+      surfaceTintColor: AppColors.basicWhite,
+      constraints: const BoxConstraints(),
+      color: AppColors.basicWhite,
+      icon: const Icon(Icons.more_horiz),
+      onSelected: (action) {
+        if (action == ActionPopupStaffEnum.edit) {
+          // Gọi hàm sửa
+          controller.updateStaff(staff);
+        } else if (action == ActionPopupStaffEnum.delete) {
+          // Gọi hàm xóa
+          controller.showDialogDeleteStaff(staff);
+        }
       },
-      child: Row(
-        children: [
-          const CircleAvatar(
-            backgroundColor: AppColors.primaryColor,
-            child: Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-          ),
-          UtilWidget.sizedBoxWidth8,
-          SDSBuildText(
-            LocaleKeys.declarationPeriodDetail_addNewStaff.tr,
-            style: AppTextStyle.font16Semi.copyWith(
-              color: Colors.grey,
-            ),
-          ),
-        ],
-      ).paddingSymmetric(vertical: AppDimens.defaultPadding),
+      itemBuilder: (ctx) {
+        return ActionPopupStaffEnum.values.map(
+          (action) {
+            return PopupMenuItem<ActionPopupStaffEnum>(
+              value: action,
+              child: Row(
+                children: [
+                  SDSBuildText(action.title),
+                  sdsSBWidth16,
+                  Icon(
+                    action.icon,
+                    color: AppColors.dsGray3,
+                  ),
+                ],
+              ),
+            );
+          },
+        ).toList();
+      },
     );
   }
 
   Widget _buildSubmitButton() {
-    return UtilWidget.buildSolidButton(
-      height: AppDimens.btnLargeFigma,
-      title: 'Tiếp theo',
+    return AppSolidButton(
+      title: LocaleKeys.staffList_continue.tr,
       onPressed: controller.saveXml,
+    );
+  }
+
+  Widget _buildAddNewStaffButton() {
+    return AppOutlineButton(
+      title: LocaleKeys.staffList_addNewStaff.tr,
+      throttleKey: 'createStaff',
+      onPressed: controller.createStaff,
     );
   }
 }

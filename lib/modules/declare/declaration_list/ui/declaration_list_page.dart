@@ -16,14 +16,22 @@ class DeclarationListPage extends BaseGetWidget<DeclarationListController> {
   @override
   Widget buildWidgets(BuildContext context) {
     return buildLoadingOverlay(
-      () => Scaffold(
-        appBar: const BaseAppBar(
-          title: BaseAppBarTitle(
-            title: "Danh sách biểu mẫu tờ khai",
+      () => Container(
+        color: AppColors.primaryColor,
+        child: Scaffold(
+          appBar: BaseAppBar(
+            centerTitle: true,
+            leading:
+                UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
+            backgroundColor: AppColors.primaryColor,
+            title: const BaseAppBarTitle(
+              title: "Danh sách biểu mẫu tờ khai",
+              textColor: AppColors.basicWhite,
+            ),
           ),
-        ),
-        body: SafeArea(
-          child: _buildBody(),
+          body: BaseCardBody(
+            child: _buildBody(),
+          ),
         ),
       ),
     );

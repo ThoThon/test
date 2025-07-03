@@ -1,4 +1,5 @@
 import 'package:v_bhxh/modules/declare/declaration_period/repository/declaration_period_repository.dart';
+import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
@@ -121,7 +122,10 @@ class DeclarationPeriodController extends BaseGetxController {
   Future<void> editDeclarationPeriod(DeclarationPeriod period) async {
     Get.toNamed(
       AppRoutes.staffList.path,
-      arguments: period.id,
+      arguments: StaffListArgument(
+        declarationPeriodId: period.id,
+        procedureType: period.procedureType,
+      ),
     )?.whenComplete(() {
       // Refresh the list of declaration periods after editing
       getDeclarationPeriods();

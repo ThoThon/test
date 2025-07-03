@@ -52,7 +52,8 @@
     "signatureTimeOut": "Hết thời gian ký số\nVui lòng thực hiện lại",
     "cancelRequest": "Hủy yêu cầu",
     "confirmSignatureMySign": "Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian",
-    "sendRequestSignature": "Gửi yêu cầu ký thành công"
+    "sendRequestSignature": "Gửi yêu cầu ký thành công",
+    "sendFileToBHXH": "Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -397,7 +398,7 @@
     "selectWardReceive": "Chọn xã nơi nhận",
     "wardReceiveCannotEmpty": "Xã nơi nhận không được bỏ trống",
     "addressReceive": "Địa chỉ nơi nhận",
-    "addressReceiveCannotEmpty":"Địa chỉ nơi nhận không được bỏ trống",
+    "addressReceiveCannotEmpty": "Địa chỉ nơi nhận không được bỏ trống",
     "provinceKCB": "Tỉnh nơi khám chữa bệnh",
     "selectProvinceKCB": "Chọn tỉnh nơi khám chữa bệnh",
     "provinceKCBCannotEmpty": "Tỉnh nơi khám chữa bệnh không được bỏ trống",
@@ -415,7 +416,7 @@
     "wardTT": "Xã thường trú",
     "selectWardTT": "Chọn xã thường trú",
     "addressTT": "Địa chỉ thường trú",
-    "addressTTCannotEmpty":"Địa chỉ thường trú không được bỏ trống",
+    "addressTTCannotEmpty": "Địa chỉ thường trú không được bỏ trống",
     "familyMembers": "Danh sách thành viên trong gia đình",
     "provinceOfBirthNotSelected": "Chưa chọn tỉnh khai sinh",
     "districtOfBirthNotSelected": "Chưa chọn huyện khai sinh",
@@ -525,7 +526,7 @@
   },
   "staffList": {
     "title": "Danh sách nhân viên kê khai",
-    "addNewStaff": "Thêm mới nhân viên",
+    "addNewStaff": "Thêm nhân viên",
     "attachFile": "Đính kèm file",
     "addAttachedImage": "Thêm hình ảnh đính kèm",
     "continue": "Tiếp tục",
@@ -534,7 +535,12 @@
     "confirm": "Xác nhận",
     "selectedStaff": "Chọn nhân viên",
     "deleteStaffConfirmMessage": "Bạn có đồng ý xóa nhân sự đã chọn?",
-    "deleteStaffSuccess": "Xóa nhân sự thành công"
+    "deleteStaffSuccess": "Xóa nhân sự thành công",
+    "uploadImage": "Tải ảnh lên",
+    "noEmployeeDeclaredMessage": "Chưa có nhân viên nào được khai báo",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "listEmployee": "Danh sách nhân viên"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",

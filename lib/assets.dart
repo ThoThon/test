@@ -131,6 +131,10 @@ class Assets {
   static String get ASSETS_ICONS_IC_EDIT_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_edit.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_EYE_SVG.preview}
+  static String get ASSETS_ICONS_IC_EYE_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_eye.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_FILTER_SVG.preview}
   static String get ASSETS_ICONS_IC_FILTER_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_filter.svg';
@@ -162,6 +166,10 @@ class Assets {
   /// {@macro assets_generator.ASSETS_ICONS_IC_PERSON_SVG.preview}
   static String get ASSETS_ICONS_IC_PERSON_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_person.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_PERSONAL_SVG.preview}
+  static String get ASSETS_ICONS_IC_PERSONAL_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_personal.svg';
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_PROCEDURE_SVG.preview}
   static String get ASSETS_ICONS_IC_PROCEDURE_SVG =>
@@ -370,6 +378,9 @@ final List<String> assetsArray = <String>[
   /// {@macro assets_generator.ASSETS_ICONS_IC_EDIT_SVG.preview}
   Assets.ASSETS_ICONS_IC_EDIT_SVG,
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_EYE_SVG.preview}
+  Assets.ASSETS_ICONS_IC_EYE_SVG,
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_FILTER_SVG.preview}
   Assets.ASSETS_ICONS_IC_FILTER_SVG,
 
@@ -393,6 +404,9 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_PERSON_SVG.preview}
   Assets.ASSETS_ICONS_IC_PERSON_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_PERSONAL_SVG.preview}
+  Assets.ASSETS_ICONS_IC_PERSONAL_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_PROCEDURE_SVG.preview}
   Assets.ASSETS_ICONS_IC_PROCEDURE_SVG,

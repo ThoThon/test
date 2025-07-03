@@ -29,7 +29,6 @@ class DeclareInfoPage extends BaseGetWidget<DeclareInfoController> {
         appBar: BaseAppBar(
           title: BaseAppBarTitle(
             title: LocaleKeys.declareInfo_title.tr,
-            textStyle: AppTextStyle.font18Bo,
           ),
           leading: UtilWidget.buildButtonBackAppbar(),
           centerTitle: true,
