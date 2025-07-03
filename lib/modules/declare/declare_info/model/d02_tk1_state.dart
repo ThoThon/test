@@ -25,7 +25,7 @@ class D02Tk1State {
   final dateOfBirthTextCtrl = TextEditingController();
 
   /// Giới tính *
-  final gender = Rxn<Gender>(Gender.female);
+  final gender = Gender.female.obs;
 
   /// Dân tộc *
   final selectedEthnic = Rxn<EthnicModel>();
@@ -57,7 +57,7 @@ class D02Tk1State {
     }
 
     if (d02Lt.gioiTinh != null) {
-      gender.value = d02Lt.gioiTinh;
+      gender.value = d02Lt.gioiTinh ?? Gender.female;
     }
 
     if (d02Lt.danToc != null) {
@@ -80,7 +80,7 @@ class D02Tk1State {
     dateOfBirthTextCtrl.text =
         convertDateToStringSafe(staff.ngaySinh, PATTERN_1) ?? '';
 
-    gender.value = staff.gioiTinh;
+    gender.value = staff.gioiTinh ?? Gender.female;
 
     selectedEthnic.value = staff.danToc;
 

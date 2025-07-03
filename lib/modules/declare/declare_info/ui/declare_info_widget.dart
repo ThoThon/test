@@ -207,7 +207,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       isRequired: true,
       selectedItem: controller.d02Tk1State.gender.value,
       onChanged: (value) {
-        controller.d02Tk1State.gender.value = value;
+        controller.d02Tk1State.gender.value = value ?? Gender.female;
       },
       validator: (value) {
         if (value == null) {
