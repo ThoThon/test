@@ -56,6 +56,7 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
             child: UtilWidget.buildSolidButtonBack(
               title: 'Tải về',
               onPressed: () {},
+              borderRadius: AppDimens.radius20,
             ),
           ),
         ),
@@ -66,6 +67,7 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
             onPressed: () {
               Get.back();
             },
+            borderRadius: AppDimens.radius20,
           ),
         ),
       ],
