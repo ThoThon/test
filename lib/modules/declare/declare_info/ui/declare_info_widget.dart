@@ -150,7 +150,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       hintText: LocaleKeys.declareInfo_inputCCCD.tr,
       isRequired: true,
       maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormal,
+      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
       onChanged: controller.onChangeCCCD,
       validator: (value) {
         final trimmedValue = value?.trim();
