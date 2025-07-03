@@ -1,3 +1,4 @@
+import 'package:v_bhxh/modules/declare/declaration_period/repository/declaration_period_607_repository.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/repository/declaration_period_repository.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
@@ -9,6 +10,7 @@ class DeclarationPeriodController extends BaseGetxController {
   final argument = Get.arguments as Procedure;
 
   late final _repository = DeclarationPeriodRepository(this);
+  late final _repository607 = DeclarationPeriod607Repository(this);
 
   final selectedPeriodDate = DateTime.now().obs;
 
@@ -69,9 +71,20 @@ class DeclarationPeriodController extends BaseGetxController {
   Future<void> deleteDeclarationPeriod(DeclarationPeriod period) async {
     try {
       showLoadingOverlay();
-      final response = await _repository.deleteDeclarationPeriod(
-        id: period.id,
-      );
+      final BaseResponse response;
+
+      switch (period.procedureType) {
+        case ProcedureType.procedure600:
+          response = await _repository.deleteDeclarationPeriod(
+            id: period.id,
+          );
+          break;
+        case ProcedureType.procedure607:
+          response = await _repository607.deleteDeclarationPeriod607(
+            id: period.id,
+          );
+          break;
+      }
 
       if (response.isSuccess) {
         showSnackBar(
