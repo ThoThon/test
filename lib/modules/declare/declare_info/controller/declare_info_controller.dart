@@ -36,6 +36,8 @@ class DeclareInfoController extends BaseGetxController {
   void onReady() {
     super.onReady();
     _getD02Detail();
+    d02Tk1State.onInitEthnic();
+    d02Tk1State.onInitNation();
   }
 
   Future<void> _getD02Detail() async {
@@ -253,12 +255,6 @@ class DeclareInfoController extends BaseGetxController {
   DeclareInfoTab? get _invalidTab {
     if (d02State.formKey.currentState?.validate() != true) {
       d02State.autoValidateMode.value = AutovalidateMode.always;
-      return DeclareInfoTab.d02;
-    }
-
-    // REF: BHW-2240
-    if (isGenderRequired) {
-      // showSnackBar(LocaleKeys.declareInfo_genderCannotEmpty.tr);
       return DeclareInfoTab.d02;
     }
 

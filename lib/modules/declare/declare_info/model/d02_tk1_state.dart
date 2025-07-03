@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
@@ -5,6 +6,7 @@ import 'package:v_bhxh/modules/declare/family_member_detail/model/birth_type_enu
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 
+import '../../../../base_app/model/app_data.dart';
 import 'model_src.dart';
 
 /// Các state dùng chung ở 2 form D02 vầ TK1
@@ -92,5 +94,18 @@ class D02Tk1State {
     bhxhTextCtrl.dispose();
     cccdTextCtrl.dispose();
     dateOfBirthTextCtrl.dispose();
+  }
+
+  // Luôn khởi tạo Dân tộc là "Kinh"
+  void onInitEthnic() {
+    selectedEthnic.value = AppData.instance.ethnics
+        .firstWhereOrNull((ethnics) => ethnics.value == 1);
+  }
+
+  // Luôn khởi tạo quốc tịch là "VIỆT NAM"
+  void onInitNation() {
+    selectedNationality.value = AppData.instance.nations.firstWhereOrNull(
+      (nation) => nation.value == "VN",
+    );
   }
 }

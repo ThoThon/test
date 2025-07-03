@@ -1,12 +1,10 @@
 import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/core/enum/enum_request_method.dart';
-import 'package:v_bhxh/core/values/app_api.dart';
-import 'package:v_bhxh/core/values/const.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
-import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
+
+import '../../../src.dart';
 
 // Key is provinceCode
 final cachedDistricts = <String, List<DistrictModel>>{};
@@ -147,6 +145,7 @@ class DeclareInfoRepository extends BaseRepository {
         "key": id,
       },
     );
+    logger.d(response);
     return BaseResponse<DeclareInfoDetailResponse>.fromJson(
       response,
       fromJson: (json) => DeclareInfoDetailResponse.fromJson(json),

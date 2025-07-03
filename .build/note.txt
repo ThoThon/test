@@ -1,3 +1,6 @@
+3/7/2025
+- Chỉnh sửa giá trị mặc định ban đầu ở màn kê khai D02,Tk1
+
 2/7/2025
 - [Appmobile]_Chỉnh sửa giao diện màn Danh sách nhân viên kê khai - BHW-2547
 - [Appmobile]_Chỉnh sửa hiển thị Popup timeout màn Đăng ký cấp mã - BHW-2555
