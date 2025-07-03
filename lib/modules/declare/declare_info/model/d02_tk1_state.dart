@@ -25,7 +25,7 @@ class D02Tk1State {
   final dateOfBirthTextCtrl = TextEditingController();
 
   /// Giới tính *
-  final gender = Rxn<Gender>();
+  final gender = Rxn<Gender>(Gender.female);
 
   /// Dân tộc *
   final selectedEthnic = Rxn<EthnicModel>();
