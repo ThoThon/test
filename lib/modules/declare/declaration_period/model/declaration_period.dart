@@ -53,4 +53,9 @@ class DeclarationPeriod {
       fileNumber: json['soHoSo'],
     );
   }
+
+  /// Loại thủ tục của kỳ khai báo
+  ProcedureType get procedureType {
+    return ProcedureType.fromInt(procedureId);
+  }
 }

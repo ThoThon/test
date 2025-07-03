@@ -61,6 +61,7 @@ class LocaleKeys {
   static const dialog_cancelRequest = 'dialog_cancelRequest';
   static const dialog_confirmSignatureMySign = 'dialog_confirmSignatureMySign';
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
+  static const dialog_sendFileToBHXH = 'dialog_sendFileToBHXH';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -624,6 +625,12 @@ class LocaleKeys {
   static const staffList_deleteStaffConfirmMessage =
       'staffList_deleteStaffConfirmMessage';
   static const staffList_deleteStaffSuccess = 'staffList_deleteStaffSuccess';
+  static const staffList_uploadImage = 'staffList_uploadImage';
+  static const staffList_noEmployeeDeclaredMessage =
+      'staffList_noEmployeeDeclaredMessage';
+  static const staffList_edit = 'staffList_edit';
+  static const staffList_delete = 'staffList_delete';
+  static const staffList_listEmployee = 'staffList_listEmployee';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -941,6 +948,8 @@ class Locales {
     'dialog_confirmSignatureMySign':
         'Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian',
     'dialog_sendRequestSignature': 'Gửi yêu cầu ký thành công',
+    'dialog_sendFileToBHXH':
+        'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -1412,7 +1421,7 @@ class Locales {
     'declarationFormDetail_effectiveDateInvalid': 'Ngày hiệu lực không hợp lệ',
     'declarationFormDetail_dateOfIssueInvalid': 'Ngày ban hành không hợp lệ',
     'staffList_title': 'Danh sách nhân viên kê khai',
-    'staffList_addNewStaff': 'Thêm mới nhân viên',
+    'staffList_addNewStaff': 'Thêm nhân viên',
     'staffList_attachFile': 'Đính kèm file',
     'staffList_addAttachedImage': 'Thêm hình ảnh đính kèm',
     'staffList_continue': 'Tiếp tục',
@@ -1422,6 +1431,12 @@ class Locales {
     'staffList_selectedStaff': 'Chọn nhân viên',
     'staffList_deleteStaffConfirmMessage': 'Bạn có đồng ý xóa nhân sự đã chọn?',
     'staffList_deleteStaffSuccess': 'Xóa nhân sự thành công',
+    'staffList_uploadImage': 'Tải ảnh lên',
+    'staffList_noEmployeeDeclaredMessage':
+        'Chưa có nhân viên nào được khai báo',
+    'staffList_edit': 'Sửa',
+    'staffList_delete': 'Xóa',
+    'staffList_listEmployee': 'Danh sách nhân viên',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

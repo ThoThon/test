@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/history_argument.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/repository/declaration_list_repository.dart';
 import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
-import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog.src.dart';
 
+import '../../../../shares/package/export_package.dart';
 import '../../../src.dart';
 
 // Nếu mã lỗi là 58061 thì có thể retry ký số (from a Chương)
@@ -53,23 +52,27 @@ class DeclarationListController extends BaseGetxController {
   }
 
   void _showDialogCheckedSuccess() {
-    ShowDialog.showDialogWithWidget(
-      // isActiveBack: false,
-      title: LocaleKeys.dialog_successTransfer.tr,
-      content: LocaleKeys.dialog_fileSendToSignature.tr,
-      child: const CupertinoActivityIndicator(
-        radius: 20,
-      ).paddingOnly(top: AppDimens.defaultPadding),
+    ShowDialog.showDialogTimerCount(
+      content: LocaleKeys.dialog_confirmSignatureMySign.tr,
+      title: LocaleKeys.dialog_sendRequestSignature.tr,
+      onFinish: () {
+        _showDialogVerifyFailed(
+          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+        );
+      },
     );
   }
 
   void _showDialogVerifySuccess() {
     ShowDialog.showDialogConfirm2(
-      title: LocaleKeys.dialog_success.tr,
-      content: LocaleKeys.dialog_submitDeclareToSuccess.tr,
+      title: LocaleKeys.dialog_sendFileSuccess.tr,
+      content: LocaleKeys.dialog_sendFileToBHXH.tr,
       iconType: DialogIconType.success,
       exitTitle: LocaleKeys.dialog_exit.tr,
       confirmTitle: LocaleKeys.dialog_history.tr,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+      backgroundColorBack: AppColors.basicWhite,
       onCancel: () {
         Get.until(ModalRoute.withName(AppRoutes.home.path));
       },
@@ -89,16 +92,11 @@ class DeclarationListController extends BaseGetxController {
     VoidCallback? onRetry,
   }) {
     ShowDialog.showDialogConfirm2(
-      title: LocaleKeys.dialog_fail.tr,
+      title: LocaleKeys.dialog_sendFileFail.tr,
       content: errorMessage,
+      showConfirmButton: false,
       iconType: DialogIconType.failure,
-      exitTitle: LocaleKeys.dialog_exit.tr,
-      showConfirmButton: onRetry != null,
-      confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
-      onCancel: () {
-        Get.until(ModalRoute.withName(AppRoutes.home.path));
-      },
-      onConfirm: onRetry,
+      exitTitle: LocaleKeys.dialog_close.tr,
     );
   }
 

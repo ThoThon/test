@@ -2,6 +2,7 @@ import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.da
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -315,7 +316,11 @@ class DeclareInfoController extends BaseGetxController {
         if (argument.isAddPeriodFromDeclarePeriod) {
           Get.offNamed(
             AppRoutes.staffList.path,
-            arguments: argument.declarationPeriodId,
+            // TODO: correct value of procedureType
+            arguments: StaffListArgument(
+              declarationPeriodId: argument.declarationPeriodId,
+              procedureType: ProcedureType.procedure600,
+            ),
           )?.then((value) {
             declarationPeriodController?.getDeclarationPeriods();
           });

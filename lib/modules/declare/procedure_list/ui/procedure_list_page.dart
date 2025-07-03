@@ -18,8 +18,8 @@ class ProcedureListPage extends BaseGetWidget<ProcedureListController> {
         appBar: BaseAppBar(
           title: BaseAppBarTitle(
             title: LocaleKeys.procedureList_pageTitle.tr,
-            textStyle:
-                AppTextStyle.font18Bo.copyWith(color: AppColors.basicWhite),
+            textColor:
+                AppColors.basicWhite
           ),
           centerTitle: true,
           leading: UtilWidget.buildButtonBackAppbar(

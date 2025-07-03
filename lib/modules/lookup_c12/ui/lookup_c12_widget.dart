@@ -5,10 +5,11 @@ extension LookupC12Widget on LookupC12Page {
     return SDSSafearea(
       child: Column(
         children: [
+          sdsSBHeight16,
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(
-                horizontal: AppDimens.paddingMedium,
+                horizontal: AppDimens.defaultPadding,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -16,8 +17,6 @@ extension LookupC12Widget on LookupC12Page {
                   _buildCardMonth(),
                 ],
               ),
-            ).paddingSymmetric(
-              vertical: AppDimens.paddingSmall,
             ),
           ),
           _buildButtonLookUp(),
@@ -27,75 +26,82 @@ extension LookupC12Widget on LookupC12Page {
   }
 
   Widget _buildCardMonth() {
-    return ListView.builder(
+    return ListView.separated(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: AppConst.countMonth,
       itemBuilder: (context, index) => _buildItemMonthView(index),
+      separatorBuilder: (context, index) => sdsSBHeight12,
     );
   }
 
   Widget _buildItemMonthView(int index) {
-    return Obx(() {
-      final month = index + 1;
-      final file =
-          controller.listFileC12.firstWhereOrNull((e) => e.thang == month);
-      final isActive = file != null;
+    return Obx(
+      () {
+        final month = index + 1;
+        final file =
+            controller.listFileC12.firstWhereOrNull((e) => e.thang == month);
+        final isActive = file != null;
 
-      return Container(
-        margin: const EdgeInsets.symmetric(vertical: AppDimens.paddingSmallest),
-        decoration: BoxDecoration(
-          color: isActive ? AppColors.basicWhite : AppColors.dsGray6,
-          borderRadius: BorderRadius.circular(AppDimens.radius8),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-              vertical: AppDimens.paddingSmall,
-              horizontal: AppDimens.defaultPadding),
-          child: Row(
-            children: [
-              Expanded(
-                child: SDSBuildText(
-                  '${LocaleKeys.lookupC12_month.tr} $month',
-                  style: (AppTextStyle.font16Re).copyWith(
-                      color: isActive ? AppColors.dsGray1 : AppColors.dsGray3),
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  if (file != null) {
-                    Get.toNamed(
-                      AppRoutes.viewPdf.path,
-                      arguments: ViewPdfArgument(
-                        url: file.c12FilePath,
-                        // title: LocaleKeys.lookupC12_resultDetail.tr,
-                        title: "${LocaleKeys.lookupC12_month.tr} $month ",
-                        isRotateHorizontal: false,
-                      ),
-                    );
-                  }
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimens.paddingSmallest,
-                    vertical: AppDimens.paddingSmallest,
-                  ),
-                  child: Icon(
-                    Icons.remove_red_eye_outlined,
-                    color: isActive ? AppColors.dsGray1 : AppColors.dsGray3,
-                  ),
-                ),
-              ),
-            ],
+        return Container(
+          decoration: BoxDecoration(
+            color: isActive ? AppColors.basicWhite : AppColors.dsGray6,
+            borderRadius: BorderRadius.circular(AppDimens.radius8),
           ),
-        ),
-      );
-    });
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+                vertical: AppDimens.paddingSmall,
+                horizontal: AppDimens.defaultPadding),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SDSBuildText(
+                    '${LocaleKeys.lookupC12_month.tr} $month',
+                    style: (AppTextStyle.font16Re).copyWith(
+                        color:
+                            isActive ? AppColors.dsGray1 : AppColors.dsGray3),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    if (file != null) {
+                      Get.toNamed(
+                        AppRoutes.viewPdf.path,
+                        arguments: ViewPdfArgument(
+                          url: file.c12FilePath,
+                          title: "${LocaleKeys.lookupC12_month.tr} $month ",
+                          isRotateHorizontal: false,
+                        ),
+                      );
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppDimens.paddingSmallest,
+                      vertical: AppDimens.paddingSmallest,
+                    ),
+                    child: Icon(
+                      Icons.remove_red_eye_outlined,
+                      color: isActive ? AppColors.dsGray1 : AppColors.dsGray3,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   Widget _buildButtonLookUp() {
     return Padding(
-      padding: const EdgeInsets.all(AppDimens.defaultPadding),
+      padding: const EdgeInsets.only(
+        top: AppDimens.defaultPadding,
+        left: AppDimens.defaultPadding,
+        right: AppDimens.defaultPadding,
+        bottom: AppDimens.paddingVerySmall,
+      ),
       child: UtilWidget.buildSolidButton(
         title: LocaleKeys.lookupC12_lookup.tr,
         borderRadius: AppDimens.radius30,

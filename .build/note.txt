@@ -1,3 +1,12 @@
+3/7/2025
+- [Appmobile]_Thủ tục 607 - Bổ sung api Xóa toàn bộ Hồ sơ TK1, D01
+
+2/7/2025
+- [Appmobile]_Chỉnh sửa giao diện màn Danh sách nhân viên kê khai - BHW-2547
+- [Appmobile]_Chỉnh sửa hiển thị Popup timeout màn Đăng ký cấp mã - BHW-2555
+- [Appmobile]_Thủ tục 607 - Xây dựng giao diện mà danh sách nhân viên kê khai - BHW-2566
+- [Appmobile]_Chỉnh sửa giao diện màn Danh sách biểu mãu tờ khai - BHW-2548
+
 1/07/2025
 - [Appmobile]_Sửa lại giao diện Tờ khai TK1-TS - BHW-2542
 - [Appmobile]_Chỉnh sửa giao diện tờ khai màn D02 - BHW-2544

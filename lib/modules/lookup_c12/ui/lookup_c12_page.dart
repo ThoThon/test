@@ -25,9 +25,7 @@ class LookupC12Page extends BaseGetWidget {
               leading: UtilWidget.buildButtonBackAppbar(color: Colors.white),
               title: BaseAppBarTitle(
                 title: LocaleKeys.lookupC12_lookupC12.tr,
-                textStyle: AppTextStyle.font18Bo.copyWith(
-                  color: Colors.white,
-                ),
+                textColor: Colors.white,
               ),
               actions: [
                 _buildActionSelectYear(),

@@ -40,7 +40,7 @@ class LookupC12Controller extends BaseGetxController {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Tra cứu thành công!',
+                'Tra cứu thành công',
                 style: AppTextStyle.font14Re.copyWith(
                   color: AppColors.basicWhite,
                 ),
@@ -50,7 +50,9 @@ class LookupC12Controller extends BaseGetxController {
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                   minimumSize: const Size(
-                      AppDimens.sizeIconDefault, AppDimens.sizeIconDefault),
+                    AppDimens.sizeIconDefault,
+                    AppDimens.sizeIconDefault,
+                  ),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: Text(
@@ -64,12 +66,15 @@ class LookupC12Controller extends BaseGetxController {
           ),
           backgroundColor: AppColors.dsGray2,
           margin: const EdgeInsets.symmetric(
-              horizontal: 16, vertical: 72), // Adjust vertical margin as needed
+            horizontal: 16,
+            vertical: 0,
+          ),
           padding: const EdgeInsets.only(
-              left: AppDimens.paddingSmall,
-              right: AppDimens.paddingSmall,
-              top: AppDimens.paddingVerySmall,
-              bottom: AppDimens.paddingSmall),
+            left: AppDimens.paddingSmall,
+            right: AppDimens.paddingSmall,
+            top: AppDimens.paddingVerySmall,
+            bottom: AppDimens.paddingSmall,
+          ),
           borderRadius: AppDimens.radius8,
         );
       }
