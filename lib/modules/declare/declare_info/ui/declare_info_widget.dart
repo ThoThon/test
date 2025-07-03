@@ -209,12 +209,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
       onChanged: (value) {
         controller.d02Tk1State.gender.value = value ?? Gender.female;
       },
-      validator: (value) {
-        if (value == null) {
-          return LocaleKeys.familyMember_selectGender.tr;
-        }
-        return null;
-      },
     );
   }
 
