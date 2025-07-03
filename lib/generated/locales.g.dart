@@ -1166,7 +1166,7 @@ class Locales {
     'login_inputPassword': 'Nhập mật khẩu',
     'login_inputTaxCode': 'Mã số thuế/ Mã ngân sách',
     'login_unitCode': 'Mã đơn vị',
-    'login_inputAccount': 'Tên đăng nhập',
+    'login_inputAccount': 'Nhập tên đăng nhập',
     'login_registerForCode': 'Đăng ký cấp mã',
     'login_switchTo': 'Đã chuyển sang',
     'login_register': 'Đăng ký',
