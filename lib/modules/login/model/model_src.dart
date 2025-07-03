@@ -9,3 +9,5 @@ export 'd02_categories.dart';
 export 'district_model.dart';
 export 'ward_model.dart';
 export 'position_model.dart';
+export 'receive_result_model.dart';
+export 'birth_type_model.dart';
