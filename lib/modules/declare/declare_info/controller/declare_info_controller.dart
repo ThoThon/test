@@ -36,8 +36,6 @@ class DeclareInfoController extends BaseGetxController {
   void onReady() {
     super.onReady();
     _getD02Detail();
-    d02Tk1State.onInitEthnic();
-    d02Tk1State.onInitNation();
   }
 
   Future<void> _getD02Detail() async {

@@ -30,10 +30,15 @@ class D02Tk1State {
   final gender = Gender.female.obs;
 
   /// Dân tộc *
-  final selectedEthnic = Rxn<EthnicModel>();
+  /// Luôn khởi tạo Dân tộc là "Kinh"
+  final selectedEthnic = Rxn<EthnicModel>(
+    AppData.instance.ethnics.firstWhereOrNull((ethnics) => ethnics.value == 1),
+  );
 
   /// Quốc tịch *
-  final selectedNationality = Rxn<NationModel>();
+  /// Luôn khởi tạo Quốc tịch là "VIỆT NAM"
+  final selectedNationality = Rxn<NationModel>(AppData.instance.nations
+      .firstWhereOrNull((nations) => nations.value == "VN"));
 
   void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final d02Lt = detail.d02Lt;
@@ -94,18 +99,5 @@ class D02Tk1State {
     bhxhTextCtrl.dispose();
     cccdTextCtrl.dispose();
     dateOfBirthTextCtrl.dispose();
-  }
-
-  // Luôn khởi tạo Dân tộc là "Kinh"
-  void onInitEthnic() {
-    selectedEthnic.value = AppData.instance.ethnics
-        .firstWhereOrNull((ethnics) => ethnics.value == 1);
-  }
-
-  // Luôn khởi tạo quốc tịch là "VIỆT NAM"
-  void onInitNation() {
-    selectedNationality.value = AppData.instance.nations.firstWhereOrNull(
-      (nation) => nation.value == "VN",
-    );
   }
 }

@@ -145,7 +145,6 @@ class DeclareInfoRepository extends BaseRepository {
         "key": id,
       },
     );
-    logger.d(response);
     return BaseResponse<DeclareInfoDetailResponse>.fromJson(
       response,
       fromJson: (json) => DeclareInfoDetailResponse.fromJson(json),
