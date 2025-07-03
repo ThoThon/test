@@ -1,5 +1,6 @@
 3/7/2025
 - [Appmobile]_Thủ tục 607 - Bổ sung api Xóa toàn bộ Hồ sơ TK1, D01
+- [Appmobile]_Sửa lại giao diện màn Lịch sử - BHW-2537
 
 2/7/2025
 - [Appmobile]_Chỉnh sửa giao diện màn Danh sách nhân viên kê khai - BHW-2547

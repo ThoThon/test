@@ -190,6 +190,7 @@ class LocaleKeys {
   static const unitInfo_emailContactIsNotEmpty =
       'unitInfo_emailContactIsNotEmpty';
   static const unitInfo_emailIsNotValid = 'unitInfo_emailIsNotValid';
+  static const history_title = 'history_title';
   static const history_procedure = 'history_procedure';
   static const history_submissionTime = 'history_submissionTime';
   static const history_historyDetail = 'history_historyDetail';
@@ -219,6 +220,7 @@ class LocaleKeys {
   static const history_procedure600d = 'history_procedure600d';
   static const history_procedure600o = 'history_procedure600o';
   static const history_fileNumber = 'history_fileNumber';
+  static const history_inputFileNumber = 'history_inputFileNumber';
   static const history_cannotLookupFileNumber =
       'history_cannotLookupFileNumber';
   static const history_error = 'history_error';
@@ -1072,6 +1074,7 @@ class Locales {
     'unitInfo_hasError': 'Có lỗi xảy ra, vui lòng thử lại',
     'unitInfo_emailContactIsNotEmpty': 'Email liên hệ không được bỏ trống',
     'unitInfo_emailIsNotValid': 'Email không hợp lệ',
+    'history_title': 'Lịch sử kê khai',
     'history_procedure': 'Thủ tục',
     'history_submissionTime': 'Thời gian nộp',
     'history_historyDetail': 'Chi tiết lịch sử',
@@ -1079,7 +1082,7 @@ class Locales {
     'history_status': 'Trạng thái',
     'history_profileNumber': 'Số hồ sơ:',
     'history_timeResgiter': 'Thời gian:',
-    'history_progressHandle': 'Tiến độ xử lý',
+    'history_progressHandle': 'Tiến độ xử lý hồ sơ',
     'history_profileCheckResult': 'Kết quả kiểm tra hồ sơ',
     'history_declarationForm': 'Hồ sơ kê khai',
     'history_historyTransaction': 'Lịch sử giao dịch',
@@ -1103,6 +1106,7 @@ class Locales {
         '600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP',
     'history_procedure600o': '600o - Tạm dừng đóng vào quỹ hưu trí',
     'history_fileNumber': 'Số hồ sơ',
+    'history_inputFileNumber': 'Nhập số hồ sơ',
     'history_cannotLookupFileNumber': 'Không tìm thấy số hồ sơ',
     'history_error': 'Có lỗi xảy ra, vui lòng thử lại sau',
     'history_history': 'Lịch sử',

@@ -63,9 +63,10 @@ class HistoryDetailDeclareController extends BaseGetxController {
         } else {
           // Cập nhật trạng thái
           historyDeclareItem.trangThai = res.result?.trangThai ?? '';
-          showSnackBar(
+          showSnackBarCustom(
             LocaleKeys.history_lookupSuccess.tr,
-            typeAction: AppConst.actionSuccess,
+            duration: const Duration(seconds: 3),
+            align: Alignment(2.0, 0.8),
           );
         }
       } else {

@@ -22,17 +22,19 @@ class HistoryPage extends BaseGetWidget {
       },
       child: Scaffold(
         appBar: BaseAppBar(
-          leading: BackButton(
-            onPressed: () {
+          backgroundColor: AppColors.basicWhite,
+          leading: UtilWidget.buildButtonBackAppbar(
+            onTap: () {
               controller.backToHome();
             },
           ),
+          centerTitle: true,
           title: BaseAppBarTitle(
-            title: LocaleKeys.history_historyTransaction.tr,
+            title: LocaleKeys.history_title.tr,
           ),
-          actions: [
-            _buildActionSelectMonth(),
-          ],
+          // actions: [
+          //   _buildActionSelectMonth(),
+          // ],
         ),
         body: _buildBody(),
       ),

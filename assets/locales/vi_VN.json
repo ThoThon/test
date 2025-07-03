@@ -183,6 +183,7 @@
     "emailIsNotValid": "Email không hợp lệ"
   },
   "history": {
+    "title": "Lịch sử kê khai",
     "procedure": "Thủ tục",
     "submissionTime": "Thời gian nộp",
     "historyDetail": "Chi tiết lịch sử",
@@ -190,7 +191,7 @@
     "status": "Trạng thái",
     "profileNumber": "Số hồ sơ:",
     "timeResgiter": "Thời gian:",
-    "progressHandle": "Tiến độ xử lý",
+    "progressHandle": "Tiến độ xử lý hồ sơ",
     "profileCheckResult": "Kết quả kiểm tra hồ sơ",
     "declarationForm": "Hồ sơ kê khai",
     "historyTransaction": "Lịch sử giao dịch",
@@ -212,6 +213,7 @@
     "procedure600d": "600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP",
     "procedure600o": "600o - Tạm dừng đóng vào quỹ hưu trí",
     "fileNumber": "Số hồ sơ",
+    "inputFileNumber": "Nhập số hồ sơ",
     "cannotLookupFileNumber": "Không tìm thấy số hồ sơ",
     "error": "Có lỗi xảy ra, vui lòng thử lại sau",
     "history": "Lịch sử",
