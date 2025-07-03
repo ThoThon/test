@@ -16,6 +16,8 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
     return Scaffold(
       appBar: BaseAppBar(
         title: BaseAppBarTitle(title: controller.argument.title),
+        centerTitle: true,
+        leading: UtilWidget.buildButtonBackAppbar(color: AppColors.colorBlack),
       ),
       body: SafeArea(
         child: Column(

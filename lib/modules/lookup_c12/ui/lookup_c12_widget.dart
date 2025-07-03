@@ -8,7 +8,7 @@ extension LookupC12Widget on LookupC12Page {
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(
-                horizontal: AppDimens.defaultPadding,
+                horizontal: AppDimens.paddingMedium,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +51,7 @@ extension LookupC12Widget on LookupC12Page {
         child: Padding(
           padding: const EdgeInsets.symmetric(
               vertical: AppDimens.paddingSmall,
-              horizontal: AppDimens.paddingSmall),
+              horizontal: AppDimens.defaultPadding),
           child: Row(
             children: [
               Expanded(
@@ -68,7 +68,8 @@ extension LookupC12Widget on LookupC12Page {
                       AppRoutes.viewPdf.path,
                       arguments: ViewPdfArgument(
                         url: file.c12FilePath,
-                        title: LocaleKeys.lookupC12_resultDetail.tr,
+                        // title: LocaleKeys.lookupC12_resultDetail.tr,
+                        title: "${LocaleKeys.lookupC12_month.tr} $month ",
                         isRotateHorizontal: false,
                       ),
                     );
