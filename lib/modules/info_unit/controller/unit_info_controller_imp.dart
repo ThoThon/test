@@ -6,6 +6,7 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 class UnitInfoControllerImpICare extends UnitInfoController {
   final RxBool isEditAll = false.obs;
+  late UpdateAccountInfoRequest originalInfo;
   @override
   void onInit() async {
     super.onInit();
@@ -53,6 +54,12 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     );
     selectedMethod.value = getPaymenteMethod(accountInfo?.phuongThucDong);
     selectedReceive.value = getReceiveResult(accountInfo?.ptNhanKq);
+    originalInfo = _buildRequest();
+  }
+
+  bool isInputUnchanged() {
+    return _buildRequest().toJson().toString() ==
+        originalInfo.toJson().toString();
   }
 
   Future<void> updateAccountInfo() async {

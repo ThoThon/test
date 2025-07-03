@@ -8,9 +8,11 @@ extension UnitInfoWidget on UnitInfoPage {
           _buildViewInfoItem(),
           _buildButtonChange(),
         ],
-      ).paddingSymmetric(
-          vertical: AppDimens.paddingSmallest,
-          horizontal: AppDimens.paddingSmallest),
+      ).paddingOnly(
+          top: AppDimens.paddingMedium,
+          right: AppDimens.paddingSmallest,
+          left: AppDimens.paddingSmallest,
+          bottom: AppDimens.paddingSmallest),
     );
   }
 
@@ -88,6 +90,13 @@ extension UnitInfoWidget on UnitInfoPage {
         controller: controller.unitNameController,
         label: LocaleKeys.unitInfo_unitName.tr,
         maxLengthInputForm: 250,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            return LocaleKeys.unitInfo_unitNameCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
       _buildInputDisable(
         label: LocaleKeys.unitInfo_socialAgencyName.tr,
@@ -104,15 +113,25 @@ extension UnitInfoWidget on UnitInfoPage {
   List<Widget> _buildCardUnitInfo() {
     return [
       _buildText(
-          "${LocaleKeys.unitInfo_inputTaxCode.tr}: ${controller.taxCodeController.text}"),
+        left: LocaleKeys.unitInfo_inputTaxCode.tr,
+        right: controller.taxCodeController.text,
+      ),
       _buildText(
-          "${LocaleKeys.unitInfo_unitName.tr}: ${controller.unitNameController.text}"),
+        left: LocaleKeys.unitInfo_unitName.tr,
+        right: controller.unitNameController.text,
+      ),
       _buildText(
-          "${LocaleKeys.unitInfo_unitCode.tr}: ${controller.unitCodeController.text}"),
+        left: LocaleKeys.unitInfo_unitCode.tr,
+        right: controller.unitCodeController.text,
+      ),
       _buildText(
-          "${LocaleKeys.unitInfo_socialAgencyName.tr}: ${controller.socialAgencyNameCtrl.text}"),
+        left: LocaleKeys.unitInfo_socialAgencyName.tr,
+        right: controller.socialAgencyNameCtrl.text,
+      ),
       _buildText(
-          "${LocaleKeys.unitInfo_socialAgencyCode.tr}: ${controller.socialAgencyCodeCtrl.text}"),
+        left: LocaleKeys.unitInfo_socialAgencyCode.tr,
+        right: controller.socialAgencyCodeCtrl.text,
+      ),
     ];
   }
 
@@ -123,11 +142,25 @@ extension UnitInfoWidget on UnitInfoPage {
         controller: controller.addressRegisterController,
         label: LocaleKeys.unitInfo_addressRegister.tr,
         maxLengthInputForm: 255,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            return LocaleKeys.unitInfo_addressRegisterCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
       _buildInputItemEdit(
         controller: controller.addressTransactionController,
         label: LocaleKeys.unitInfo_addressTransaction.tr,
         maxLengthInputForm: 255,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            return LocaleKeys.unitInfo_addressTransactionCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
     ];
   }
@@ -135,10 +168,14 @@ extension UnitInfoWidget on UnitInfoPage {
   //Thông tin địa chỉ
   List<Widget> _buildCardAddressInfo() {
     return [
-      _buildText(
-          "${LocaleKeys.unitInfo_addressRegisterDKKD.tr} ${controller.addressRegisterController.text}"),
-      _buildText(
-          "${LocaleKeys.unitInfo_addressTransaction.tr}: ${controller.addressTransactionController.text}"),
+      _buildText2(
+        left: LocaleKeys.unitInfo_addressRegister.tr,
+        right: controller.addressRegisterController.text,
+      ),
+      _buildText2(
+        left: LocaleKeys.unitInfo_addressTransaction.tr,
+        right: controller.addressTransactionController.text,
+      ),
     ];
   }
 
@@ -149,11 +186,25 @@ extension UnitInfoWidget on UnitInfoPage {
         controller: controller.nameRepresentController,
         label: LocaleKeys.unitInfo_represent.tr,
         maxLengthInputForm: 100,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            return LocaleKeys.unitInfo_representCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
       _buildInputItemEdit(
         controller: controller.positionController,
         label: LocaleKeys.unitInfo_position.tr,
         maxLengthInputForm: 50,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            return LocaleKeys.unitInfo_positionCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
     ];
   }
@@ -162,10 +213,12 @@ extension UnitInfoWidget on UnitInfoPage {
   List<Widget> _buildCardRepresentInfo() {
     return [
       _buildText(
-        "${LocaleKeys.unitInfo_represent.tr}: ${controller.nameRepresentController.text}",
+        left: LocaleKeys.unitInfo_represent.tr,
+        right: controller.nameRepresentController.text,
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_position.tr}: ${controller.positionController.text}",
+        left: LocaleKeys.unitInfo_position.tr,
+        right: controller.positionController.text,
       ),
     ];
   }
@@ -177,6 +230,13 @@ extension UnitInfoWidget on UnitInfoPage {
         controller: controller.personTransactionController,
         label: LocaleKeys.unitInfo_transactionPerson.tr,
         maxLengthInputForm: 100,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            return LocaleKeys.unitInfo_transactionPersonCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
       _buildInputItemEdit(
         controller: controller.phoneContactController,
@@ -184,6 +244,13 @@ extension UnitInfoWidget on UnitInfoPage {
         inputFormatters: InputFormatterEnum.phoneNumber,
         maxLengthInputForm: 20,
         textInputType: TextInputType.number,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            return LocaleKeys.unitInfo_phoneContactCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
       _buildInputItemEdit(
         controller: controller.emailContactController,
@@ -208,13 +275,16 @@ extension UnitInfoWidget on UnitInfoPage {
   List<Widget> _buildCardTraderInfo() {
     return [
       _buildText(
-        "${LocaleKeys.unitInfo_transactionPerson.tr}: ${controller.personTransactionController.text}",
+        left: LocaleKeys.unitInfo_transactionPerson.tr,
+        right: controller.personTransactionController.text,
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_phoneContact.tr}: ${controller.phoneContactController.text}",
+        left: LocaleKeys.unitInfo_phoneContact.tr,
+        right: controller.phoneContactController.text,
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_email.tr}: ${controller.emailContactController.text}",
+        left: LocaleKeys.unitInfo_email.tr,
+        right: controller.emailContactController.text,
       ),
     ];
   }
@@ -240,6 +310,13 @@ extension UnitInfoWidget on UnitInfoPage {
         inputFormatters: InputFormatterEnum.salaryNormal,
         textInputType: TextInputType.number,
         maxLengthInputForm: 11,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            return LocaleKeys.unitInfo_basicSalaryCannotEmpty.tr;
+          }
+          return null;
+        },
       ),
       CardDropdownWithLabel<ReceiveResultEnum>(
         isRequired: true,
@@ -260,13 +337,16 @@ extension UnitInfoWidget on UnitInfoPage {
   List<Widget> _buildCardOtherInfo() {
     return [
       _buildText(
-        "${LocaleKeys.unitInfo_methodClose.tr}: ${controller.selectedMethod.value?.title.tr ?? ''}",
+        left: LocaleKeys.unitInfo_methodClose.tr,
+        right: controller.selectedMethod.value?.title.tr ?? '',
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_basicSalary.tr}: ${controller.basicSalaryController.text}",
+        left: LocaleKeys.unitInfo_basicSalary.tr,
+        right: controller.basicSalaryController.text,
       ),
       _buildText(
-        "${LocaleKeys.unitInfo_registerResult.tr}: ${controller.selectedReceive.value?.receive.tr ?? ''}",
+        left: LocaleKeys.unitInfo_registerResult.tr,
+        right: controller.selectedReceive.value?.receive.tr ?? '',
       ),
     ];
   }
@@ -310,19 +390,12 @@ extension UnitInfoWidget on UnitInfoPage {
     );
   }
 
-  Widget _buildText(
-    String text, {
+  Widget _buildText({
     int? maxLines,
     TextStyle? style,
+    required String left,
+    required String right,
   }) {
-    final int colonIndex = text.indexOf(':');
-    String left = text;
-    String right = '';
-    if (colonIndex != -1) {
-      left = text.substring(0, colonIndex + 1);
-      right = text.substring(colonIndex + 1).trim();
-    }
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -349,26 +422,99 @@ extension UnitInfoWidget on UnitInfoPage {
         bottom: AppDimens.paddingSmallest, top: AppDimens.paddingSmallest);
   }
 
+  //Thông tin địa chỉ
+  Widget _buildText2({
+    int? maxLines,
+    TextStyle? style,
+    required String left,
+    required String right,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SDSBuildText(
+          left,
+          style: (style ?? AppTextStyle.font14Re).copyWith(
+            color: AppColors.dsGray2,
+          ),
+          maxLines: maxLines ?? 3,
+        ),
+        SDSBuildText(
+          right,
+          style: style ?? AppTextStyle.font14Re,
+          maxLines: maxLines ?? 3,
+        ),
+      ],
+    ).paddingOnly(
+      bottom: AppDimens.paddingSmallest,
+      top: AppDimens.paddingSmallest,
+    );
+  }
+
   Widget _buildButtonChange() {
     return Obx(() => Padding(
           padding: const EdgeInsets.only(
             left: AppDimens.defaultPadding,
             right: AppDimens.defaultPadding,
           ),
-          child: UtilWidget.buildSolidButton(
-            title: controller.isEditAll.value
-                ? LocaleKeys.unitInfo_change.tr
-                : LocaleKeys.unitInfo_fix.tr,
-            onPressed: () async {
-              if (controller.isEditAll.value) {
-                await controller.updateAccountInfo();
-                controller.isEditAll.value = false;
-              } else {
-                controller.isEditAll.value = true;
-              }
-            },
-            borderRadius: AppDimens.radius30,
-          ),
+          child: controller.isEditAll.value
+              ? Row(
+                  children: [
+                    Expanded(
+                      child: UtilWidget.buildSolidButton(
+                        backgroundColor: AppColors.basicWhite,
+                        textStyle: (AppTextStyle.font16Bo)
+                            .copyWith(color: AppColors.basicBlack),
+                        title: LocaleKeys.unitInfo_cancel.tr,
+                        onPressed: () async {
+                          if (controller.isInputUnchanged()) {
+                            controller.isEditAll.value = false;
+                          } else {
+                            ShowDialog.showDialogConfirm2(
+                              title: LocaleKeys.dialog_cancelUpdate.tr,
+                              content: LocaleKeys.dialog_cancelUpdateDialog.tr,
+                              exitTitle: LocaleKeys.unitInfo_cancel.tr,
+                              confirmTitle: LocaleKeys.unitInfo_continue.tr,
+                              // iconType: ,
+                              backgroundColorBack: Colors.white,
+                              textStyleBack: AppTextStyle.font14Bo
+                                  .copyWith(color: AppColors.basicBlack),
+                              textStyleConfirm: AppTextStyle.font14Bo,
+                              onCancel: () {
+                                controller.fetchDataAccountInfo();
+                                controller.isEditAll.value = false;
+                              },
+                              onConfirm: () {},
+                            );
+                          }
+                        },
+                        borderRadius: AppDimens.radius30,
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: UtilWidget.buildSolidButton(
+                        title: LocaleKeys.unitInfo_change.tr,
+                        onPressed: () async {
+                          if (controller.inputIsNotValid()) {
+                            controller.inputInfoIsEmpty();
+                            return;
+                          }
+                          await controller.updateAccountInfo();
+                          // controller.isEditAll.value = false;
+                        },
+                        borderRadius: AppDimens.radius30,
+                      ),
+                    ),
+                  ],
+                )
+              : UtilWidget.buildSolidButton(
+                  title: LocaleKeys.unitInfo_fix.tr,
+                  onPressed: () {
+                    controller.isEditAll.value = true;
+                  },
+                  borderRadius: AppDimens.radius30,
+                ),
         ));
   }
 
