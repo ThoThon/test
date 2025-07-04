@@ -7,6 +7,8 @@ class D02Categories {
   final Set<ProvinceModel> provinces;
   final Set<RelationshipModel> relationships;
   final Set<PositionModel> positions;
+  final Set<BirthTypeModel> birthTypes;
+  final Set<ReceiveResultModel> receiveResults;
 
   const D02Categories({
     required this.declarationTypes,
@@ -15,6 +17,8 @@ class D02Categories {
     required this.provinces,
     required this.relationships,
     required this.positions,
+    required this.birthTypes,
+    required this.receiveResults,
   });
 
   factory D02Categories.fromJson(Map<String, dynamic> json) {
@@ -43,6 +47,14 @@ class D02Categories {
               ?.map((e) => PositionModel.fromJson(e))
               .toSet() ??
           <PositionModel>{},
+      birthTypes: (json['chiCoNamSinhs'] as List?)
+              ?.map((e) => BirthTypeModel.fromJson(e))
+              .toSet() ??
+          <BirthTypeModel>{},
+      receiveResults: (json['dangKyNhanSoThes'] as List?)
+              ?.map((e) => ReceiveResultModel.fromJson(e))
+              .toSet() ??
+          <ReceiveResultModel>{},
     );
   }
 }

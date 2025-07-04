@@ -17,6 +17,9 @@ class AppData {
   var paymentMethods = <PaymentMethodModel>{};
   var objectType = <ObjectTypeModel>{};
   var resultReceivingOptions = <RegisterReceiveResultModel>{};
+  var birthTypes = <BirthTypeModel>{};
+  var receiveResults = <ReceiveResultModel>{};
+
   final Rx<AccountInfoModel?> accountInfoModel = Rx<AccountInfoModel?>(null);
   final totalUnread = 0.obs;
 }

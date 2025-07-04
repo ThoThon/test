@@ -150,7 +150,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
       hintText: LocaleKeys.declareInfo_inputCCCD.tr,
       isRequired: true,
       maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormal,
+      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
       onChanged: controller.onChangeCCCD,
       validator: (value) {
         final trimmedValue = value?.trim();
@@ -207,13 +207,9 @@ extension DeclareInfoWidget on DeclareInfoPage {
       isRequired: true,
       selectedItem: controller.d02Tk1State.gender.value,
       onChanged: (value) {
-        controller.d02Tk1State.gender.value = value;
-      },
-      validator: (value) {
-        if (value == null) {
-          return LocaleKeys.familyMember_selectGender.tr;
+        if (value != null) {
+          controller.d02Tk1State.gender.value = value;
         }
-        return null;
       },
     );
   }

@@ -245,12 +245,6 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       onChanged: (value) {
         controller.gender.value = value;
       },
-      validator: (value) {
-        if (value == null) {
-          return LocaleKeys.familyMember_selectGender.tr;
-        }
-        return null;
-      },
     );
   }
 

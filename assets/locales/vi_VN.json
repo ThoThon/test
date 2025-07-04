@@ -80,6 +80,7 @@
     "taxCode": "MST",
     "hello": "Xin chào,",
     "logout": "Đăng xuất",
+    "home":"Trang chủ",
     "accountInfo": "Thông tin tài khoản"
   },
   "unitInfo": {
@@ -183,6 +184,7 @@
     "emailIsNotValid": "Email không hợp lệ"
   },
   "history": {
+    "title": "Lịch sử kê khai",
     "procedure": "Thủ tục",
     "submissionTime": "Thời gian nộp",
     "historyDetail": "Chi tiết lịch sử",
@@ -190,7 +192,7 @@
     "status": "Trạng thái",
     "profileNumber": "Số hồ sơ:",
     "timeResgiter": "Thời gian:",
-    "progressHandle": "Tiến độ xử lý",
+    "progressHandle": "Tiến độ xử lý hồ sơ",
     "profileCheckResult": "Kết quả kiểm tra hồ sơ",
     "declarationForm": "Hồ sơ kê khai",
     "historyTransaction": "Lịch sử giao dịch",
@@ -212,6 +214,7 @@
     "procedure600d": "600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP",
     "procedure600o": "600o - Tạm dừng đóng vào quỹ hưu trí",
     "fileNumber": "Số hồ sơ",
+    "inputFileNumber": "Nhập số hồ sơ",
     "cannotLookupFileNumber": "Không tìm thấy số hồ sơ",
     "error": "Có lỗi xảy ra, vui lòng thử lại sau",
     "history": "Lịch sử",
@@ -278,7 +281,7 @@
     "inputPassword": "Nhập mật khẩu",
     "inputTaxCode": "Mã số thuế/ Mã ngân sách",
     "unitCode": "Mã đơn vị",
-    "inputAccount": "Tên đăng nhập",
+    "inputAccount": "Nhập tên đăng nhập",
     "registerForCode": "Đăng ký cấp mã",
     "switchTo": "Đã chuyển sang",
     "register": "Đăng ký"
@@ -485,8 +488,8 @@
     "selectBirthType": "Loại ngày sinh",
     "selectBirthTypeHint": "Chọn loại ngày sinh",
     "birthTypeYear": "Năm",
-    "birthTypeMonthYear": "Tháng/năm",
-    "birthTypeFull": "Đầy đủ",
+    "birthTypeMonthYear": "Tháng/Năm",
+    "birthTypeFull": "Ngày/Tháng/Năm",
     "cccdNumber": "Số CCCD",
     "note": "Ghi chú",
     "isParticipant": "Là người tham gia",
