@@ -46,7 +46,7 @@ extension DeclareInfo607Widget on DeclareInfo607Page {
                 Expanded(
                   child: _buildTabButton(
                     title: 'TK1-TS',
-                    enabled: controller.enableTk1Tab,
+                    enabled: true,
                     isSelected:
                         controller.currentTab.value == DeclareInfo607Tab.tk1,
                     onTap: () {

@@ -1,14 +1,10 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
-import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
-import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
-import 'package:v_bhxh/modules/declare_607/declare_info_607/model/declare_info_607_tab.dart';
+import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/district_model.dart';
 import 'package:v_bhxh/modules/login/model/province_model.dart';
 import 'package:v_bhxh/modules/login/model/ward_model.dart';
-import 'package:v_bhxh/modules/select_staff/model/select_staff_response.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -19,9 +15,7 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   late final declareInfoRepository = DeclareInfoRepository(this);
 
-  final d02Tk1State = D02Tk1State();
-  final d02State = D02State();
-  final tk1State = Tk1State();
+  final tk1State = Tk1State607();
   final d01State = D01State();
 
   final autovalidateMode = Rx<AutovalidateMode?>(null);
@@ -48,8 +42,6 @@ class DeclareInfo607Controller extends BaseGetxController {
       final infoDetail = response.result;
       if (response.isSuccess && infoDetail != null) {
         // Update D02Tk1State
-        d02Tk1State.mapFromD02Detail(infoDetail);
-        d02State.mapFromD02Detail(infoDetail);
         tk1State.mapFromD02Detail(infoDetail);
         d01State.mapFromD02Detail(infoDetail);
         updateHouseholdInfoRequired();
@@ -63,63 +55,13 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
-  Future<void> _getDetailStaff({
-    required String staffId,
-  }) async {
-    try {
-      showLoadingOverlay();
-      final response = await declareInfoRepository.getDetailStaff(id: staffId);
-      final staff = response.result;
-      if (response.isSuccess && staff != null) {
-        d02Tk1State.mapFromStaffDetail(staff);
-        d02State.mapFromStaffDetail(staff);
-        tk1State.mapFromStaffDetail(staff);
-      } else {
-        showSnackBar(response.errorMessage);
-      }
-    } catch (e) {
-      logger.e(e);
-    } finally {
-      hideLoadingOverlay();
-    }
-  }
-
   void onTabChanged(DeclareInfo607Tab tab) {
     KeyBoard.hide();
-    if (currentTab.value == tab) return;
     currentTab.value = tab;
   }
 
-  bool get enableTk1Tab {
-    return d02State.isGenerateTk1Data.value == true;
-  }
-
   bool get enableD01Tab {
-    return d02State.isGenerateD01Data.value == true;
-  }
-
-  /// Kiểm tra xem có bắt buộc nhập mã BHXH hay không
-  ///
-  /// REF: http://10.100.140.19:8080/browse/BHW-2242
-  bool get isBhxhCodeRequired {
-    final declarationTypeId = d02State.declarationType.value?.value;
-
-    // Tăng lương/Giảm lao động/Giảm lương
-    if (declarationTypeId == 2 ||
-        declarationTypeId == 3 ||
-        declarationTypeId == 4) {
-      return true;
-    }
-
-    if (declarationTypeId == 1) {
-      return ['TD', 'TC', 'ON', 'AD', 'AT'].contains(d02State.plan.value?.id);
-    }
-
-    return false;
-  }
-
-  bool get isGenderRequired {
-    return d02State.isGenerateD01Data.value || d02State.isGenerateTk1Data.value;
+    return tk1State.isGenerateD01Data.value == true;
   }
 
   /// Kiểm tra xem có hiển thị nút Tiếp theo hay không
@@ -128,30 +70,19 @@ class DeclareInfo607Controller extends BaseGetxController {
   bool get isShowNextButton {
     var lastTab = DeclareInfo607Tab.tk1;
 
-    if (d02State.isGenerateTk1Data.value) {
-      lastTab = DeclareInfo607Tab.tk1;
-    }
-
-    if (d02State.isGenerateD01Data.value) {
+    if (tk1State.isGenerateD01Data.value) {
       lastTab = DeclareInfo607Tab.d01;
     }
 
     return lastTab != currentTab.value;
   }
 
-  void goToSelectStaffPage() async {
-    final result = await Get.toNamed(AppRoutes.selectStaff.path);
-    if (result is SelectStaffResponse) {
-      _getDetailStaff(staffId: result.id);
-    }
-  }
-
   Future<void> createNewDeclarationForm() async {
     final result = await Get.toNamed(
       AppRoutes.declarationFormDetail.path,
       arguments: DeclarationFormDetailArgument(
-        bhxhCode: d02Tk1State.bhxhTextCtrl.text,
-        fullName: d02Tk1State.fullNameTextCtrl.text,
+        bhxhCode: tk1State.bhxhTextCtrl.text,
+        fullName: tk1State.fullNameTextCtrl.text,
       ),
     );
     if (result is DeclarationForm) {
@@ -228,13 +159,7 @@ class DeclareInfo607Controller extends BaseGetxController {
       currentTab.value = invalidTab;
     } else {
       if (currentTab.value == DeclareInfo607Tab.tk1) {
-        if (d02State.isGenerateTk1Data.value) {
-          currentTab.value = DeclareInfo607Tab.tk1;
-        } else if (d02State.isGenerateD01Data.value) {
-          currentTab.value = DeclareInfo607Tab.d01;
-        }
-      } else if (currentTab.value == DeclareInfo607Tab.tk1) {
-        if (d02State.isGenerateD01Data.value) {
+        if (tk1State.isGenerateD01Data.value) {
           currentTab.value = DeclareInfo607Tab.d01;
         }
       }
@@ -243,13 +168,7 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   /// Validate forms and return the first invalid tab
   DeclareInfo607Tab? get _invalidTab {
-    if (d02State.formKey.currentState?.validate() != true) {
-      d02State.autoValidateMode.value = AutovalidateMode.always;
-      return DeclareInfo607Tab.tk1;
-    }
-
-    if (d02State.isGenerateTk1Data.value &&
-        tk1State.formKey.currentState?.validate() != true) {
+    if (tk1State.formKey.currentState?.validate() != true) {
       tk1State.autoValidateMode.value = AutovalidateMode.always;
       return DeclareInfo607Tab.tk1;
     }
@@ -264,12 +183,7 @@ class DeclareInfo607Controller extends BaseGetxController {
       return;
     }
 
-    // if (d02Tk1State.gender.value == null) {
-    //   showSnackBar("Giới tính không được để trống");
-    //   return;
-    // }
-
-    if (d02State.isGenerateD01Data.value && d01State.forms.isEmpty) {
+    if (tk1State.isGenerateD01Data.value && d01State.forms.isEmpty) {
       showSnackBar("Tờ khai không có dữ liệu kê khai");
       return;
     }
@@ -282,93 +196,78 @@ class DeclareInfo607Controller extends BaseGetxController {
   }
 
   Future<void> _addD02() async {
-    try {
-      showLoadingOverlay();
-      final request = AddD02Request.fromState(
-        kyKeKhaiId: argument.declarationPeriodId,
-        d02Tk1State: d02Tk1State,
-        d02State: d02State,
-        tk1State: tk1State,
-        d01State: d01State,
-      );
+    // try {
+    //   showLoadingOverlay();
+    //   final request = AddD02Request.fromState(
+    //     kyKeKhaiId: argument.declarationPeriodId,
+    //     d02Tk1State: d02Tk1State,
+    //     d02State: d02State,
+    //     tk1State: tk1State,
+    //     d01State: d01State,
+    //   );
 
-      final response = await declareInfoRepository.addD02(request: request);
+    //   final response = await declareInfoRepository.addD02(request: request);
 
-      if (response.isSuccess) {
-        showSnackBar(
-          LocaleKeys.declareInfo_saveDataSuccess.tr,
-          typeAction: AppConst.actionSuccess,
-        );
-        if (argument.isAddPeriodFromDeclarePeriod) {
-          Get.offNamed(
-            AppRoutes.staffList.path,
-            // TODO: correct value of procedureType
-            arguments: StaffListArgument(
-              declarationPeriodId: argument.declarationPeriodId,
-              procedureType: ProcedureType.procedure600,
-            ),
-          )?.then((value) {
-            declarationPeriodController?.getDeclarationPeriods();
-          });
-        } else if (argument.isAddStaffFromStaffList) {
-          Get.back(
-            result: argument.declarationPeriodId,
-          );
-        }
-      } else {
-        showSnackBar(response.errorMessage);
-      }
-    } catch (e) {
-      logger.e(e);
-    } finally {
-      hideLoadingOverlay();
-    }
+    //   if (response.isSuccess) {
+    //     showSnackBar(
+    //       LocaleKeys.declareInfo_saveDataSuccess.tr,
+    //       typeAction: AppConst.actionSuccess,
+    //     );
+    //     if (argument.isAddPeriodFromDeclarePeriod) {
+    //       Get.offNamed(
+    //         AppRoutes.staffList.path,
+    //         // TODO: correct value of procedureType
+    //         arguments: StaffListArgument(
+    //           declarationPeriodId: argument.declarationPeriodId,
+    //           procedureType: ProcedureType.procedure600,
+    //         ),
+    //       )?.then((value) {
+    //         declarationPeriodController?.getDeclarationPeriods();
+    //       });
+    //     } else if (argument.isAddStaffFromStaffList) {
+    //       Get.back(
+    //         result: argument.declarationPeriodId,
+    //       );
+    //     }
+    //   } else {
+    //     showSnackBar(response.errorMessage);
+    //   }
+    // } catch (e) {
+    //   logger.e(e);
+    // } finally {
+    //   hideLoadingOverlay();
+    // }
   }
 
   Future<void> _updateD02() async {
-    try {
-      showLoadingOverlay();
-      final request = UpdateD02Request.fromState(
-        kyKeKhaiId: argument.declarationPeriodId,
-        d02Tk1State: d02Tk1State,
-        d02State: d02State,
-        tk1State: tk1State,
-        d01State: d01State,
-      );
+    // try {
+    //   showLoadingOverlay();
+    //   final request = UpdateD02Request.fromState(
+    //     kyKeKhaiId: argument.declarationPeriodId,
+    //     d02Tk1State: d02Tk1State,
+    //     d02State: d02State,
+    //     tk1State: tk1State,
+    //     d01State: d01State,
+    //   );
 
-      final response = await declareInfoRepository.updateD02(request: request);
+    //   final response = await declareInfoRepository.updateD02(request: request);
 
-      if (response.isSuccess) {
-        showSnackBar(
-          LocaleKeys.declareInfo_saveDataSuccess.tr,
-          typeAction: AppConst.actionSuccess,
-        );
-        Get.back(
-          result: argument.declarationPeriodId,
-        );
-      } else {
-        showSnackBar(response.errorMessage);
-      }
-    } catch (e) {
-      logger.e(e);
-    } finally {
-      hideLoadingOverlay();
-    }
-  }
-
-  void onChangeSalaryCoefficient({
-    required bool value,
-  }) {
-    d02State.isSalaryCoefficient.value = value;
-
-    if (value) {
-      d02State.salaryAllowanceTextCtrl.clear();
-      d02State.otherAllowanceTextCtrl.clear();
-    } else {
-      d02State.positionAllowanceTextCtrl.clear();
-      d02State.pcTNNTextCtrl.clear();
-      d02State.pcTNVuotKhungTextCtrl.clear();
-    }
+    //   if (response.isSuccess) {
+    //     showSnackBar(
+    //       LocaleKeys.declareInfo_saveDataSuccess.tr,
+    //       typeAction: AppConst.actionSuccess,
+    //     );
+    //     Get.back(
+    //       result: argument.declarationPeriodId,
+    //     );
+    //   } else {
+    //     showSnackBar(response.errorMessage);
+    //   }
+    // } catch (e) {
+    //   logger.e(e);
+    // } finally {
+    //   hideLoadingOverlay();
+    // }
   }
 
   void onChangeDuplicateBirthAddress({
@@ -569,8 +468,8 @@ class DeclareInfo607Controller extends BaseGetxController {
   /// Đồng bộ thông tin của người đại diện với thông tin của người tham gia
   void _syncHeadOfHouseholdInfo() {
     if (tk1State.isParticipantHeadOfHousehold.value) {
-      tk1State.headOfHouseholdTextCtrl.text = d02Tk1State.fullNameTextCtrl.text;
-      tk1State.headOfHouseholdCCCDTextCtrl.text = d02Tk1State.cccdTextCtrl.text;
+      tk1State.headOfHouseholdTextCtrl.text = tk1State.fullNameTextCtrl.text;
+      tk1State.headOfHouseholdCCCDTextCtrl.text = tk1State.cccdTextCtrl.text;
       tk1State.provinceTT.value = tk1State.provinceReceive.value;
       tk1State.districtTT.value = tk1State.districtReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
@@ -689,8 +588,6 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   @override
   void onClose() {
-    d02Tk1State.dispose();
-    d02State.dispose();
     tk1State.dispose();
     super.onClose();
   }
@@ -716,109 +613,6 @@ class DeclareInfo607Controller extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
-  // void goToScanCCCD() async {
-  //   autovalidateMode.value = AutovalidateMode.always;
-
-  //   final cccd = d02Tk1State.cccdTextCtrl.text.trim();
-  //   if (!_isValidCCCD(cccd)) return;
-  //   final result = await Get.toNamed(
-  //     AppRoutes.nfc.path,
-  //     arguments: cccd,
-  //   );
-  //   if (result != null) {
-  //     sendNfcRequestModel = result;
-  //     Gender? gender = sendNfcRequestModel.sexVMN?.parseGender;
-  //     final query =
-  //         sendNfcRequestModel.nationalityVMN?.trim().toUpperCase() ?? '';
-  //     d02Tk1State
-  //       ..fullNameTextCtrl.text = sendNfcRequestModel.nameVNM ?? ''
-  //       ..cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? ''
-  //       ..dateOfBirthTextCtrl.text = sendNfcRequestModel.dobVMN ?? ''
-  //       ..gender.value = gender
-  //       ..selectedEthnic.value = AppData.instance.ethnics
-  //           .toList()
-  //           .firstWhereOrNull(
-  //               (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM)
-  //       ..selectedNationality.value =
-  //           AppData.instance.nations.toList().firstWhereOrNull(
-  //                 (nations) => nations.text.trim() == query,
-  //               );
-  //   }
-  // }
-
-  // bool _isValidCCCD(String cccd) {
-  //   if (cccd.isEmpty) {
-  //     showSnackBar(LocaleKeys.nfc_pleaseFillCccd.tr);
-  //     return false;
-  //   } else if (cccd.length < 12) {
-  //     showSnackBar(LocaleKeys.declareInfo_cccdNumberIsValid.tr);
-  //     return false;
-  //   }
-  //   return true;
-  // }
-
-  /// Nếu chọn loại khai báo và phương án trong các type sau
-  /// "Từ tháng/năm" sẽ thành isRequired
-  ///
-  /// REF: http://10.100.140.19:8080/projects/BHW/issues/BHW-2411
-  bool get isFromDateRequired {
-    final declarationTypeId = d02State.declarationType.value?.value;
-    // Tăng lao động
-    if (declarationTypeId == 1) {
-      return ['TM', 'TD', 'TC', 'TH', 'AD', 'AT', 'ON']
-          .contains(d02State.plan.value?.id);
-    }
-    // Tăng lương
-    if (declarationTypeId == 2) {
-      return ['DC', 'DN', 'TN', 'TT'].contains(d02State.plan.value?.id);
-    }
-    // Giảm lao động
-    if (declarationTypeId == 3) {
-      return ['SB'].contains(d02State.plan.value?.id);
-    }
-    // Giảm lương
-    if (declarationTypeId == 4) {
-      return ['TU'].contains(d02State.plan.value?.id);
-    }
-    // Khác
-    if (declarationTypeId == 5) {
-      return ['DC', 'CD', 'TD', 'DL'].contains(d02State.plan.value?.id);
-    }
-    return false;
-  }
-
-  /// Nếu "Loại khai báo" có các "Phương án" giống với những type này
-  /// Thì "Đến tháng/năm" sẽ trở thành trường required
-  ///
-  /// REF: http://10.100.140.19:8080/projects/BHW/issues/BHW-2412
-  bool get isToDateRequired {
-    final declarationTypeId = d02State.declarationType.value?.value;
-
-    // Tăng lao động
-    if (declarationTypeId == 1) {
-      return ['AD'].contains(d02State.plan.value?.id);
-    }
-    // Tăng lương
-    if (declarationTypeId == 2) {
-      return ['TT'].contains(d02State.plan.value?.id);
-    }
-    // Giảm lao động
-    if (declarationTypeId == 3) {
-      return ['GH', 'GC', 'GD', 'SB', 'OF', 'TS', 'KL']
-          .contains(d02State.plan.value?.id);
-    }
-    // Giảm lương
-    if (declarationTypeId == 4) {
-      return ['GN', 'TU'].contains(d02State.plan.value?.id);
-    }
-    // Khác
-    if (declarationTypeId == 5) {
-      return ['GL'].contains(d02State.plan.value?.id);
-    }
-
-    return false;
-  }
-
   bool get isHouseholdInfoEmpty {
     return tk1State.headOfHouseholdTextCtrl.text.trim().isEmpty &&
         tk1State.headOfHouseholdCCCDTextCtrl.text.trim().isEmpty &&
@@ -830,7 +624,7 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void updateHouseholdInfoRequired() {
     // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
-    if (d02Tk1State.bhxhTextCtrl.text.trim().isEmpty) {
+    if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
       tk1State.isHouseholdInfoRequired.value = true;
       return;
     }

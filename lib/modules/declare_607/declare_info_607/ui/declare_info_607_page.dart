@@ -1,6 +1,12 @@
+import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/model/birth_type_enum.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/controller/declare_info_607_controller.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/declare_info_607_tab.dart';
+import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
+import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 part 'declare_info_607_widget.dart';
 part 'tk1_tab_607_widget.dart';
