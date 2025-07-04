@@ -463,30 +463,11 @@ extension UnitInfoWidget on UnitInfoPage {
                     Expanded(
                       child: UtilWidget.buildSolidButton(
                         backgroundColor: AppColors.basicWhite,
-                        textStyle: (AppTextStyle.font16Bo)
+                        textStyle: AppTextStyle.font16Bo
                             .copyWith(color: AppColors.basicBlack),
                         title: LocaleKeys.unitInfo_cancel.tr,
-                        onPressed: () async {
-                          if (controller.isInputUnchanged()) {
-                            controller.isEditAll.value = false;
-                          } else {
-                            ShowDialog.showDialogConfirm2(
-                              title: LocaleKeys.dialog_cancelUpdate.tr,
-                              content: LocaleKeys.dialog_cancelUpdateDialog.tr,
-                              exitTitle: LocaleKeys.unitInfo_cancel.tr,
-                              confirmTitle: LocaleKeys.unitInfo_continue.tr,
-                              // iconType: ,
-                              backgroundColorBack: Colors.white,
-                              textStyleBack: AppTextStyle.font14Bo
-                                  .copyWith(color: AppColors.basicBlack),
-                              textStyleConfirm: AppTextStyle.font14Bo,
-                              onCancel: () {
-                                controller.fetchDataAccountInfo();
-                                controller.isEditAll.value = false;
-                              },
-                              onConfirm: () {},
-                            );
-                          }
+                        onPressed: () {
+                          controller.handleCancelEdit();
                         },
                         borderRadius: AppDimens.radius30,
                       ),
@@ -496,7 +477,8 @@ extension UnitInfoWidget on UnitInfoPage {
                       child: UtilWidget.buildSolidButton(
                         title: LocaleKeys.unitInfo_change.tr,
                         onPressed: () async {
-                          if (controller.inputIsNotValid()) {
+                          if (controller.inputIsNotValid() ||
+                              controller.isInputUnchanged()) {
                             controller.inputInfoIsEmpty();
                             return;
                           }

@@ -6,7 +6,7 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 class UnitInfoControllerImpICare extends UnitInfoController {
   final RxBool isEditAll = false.obs;
-  late UpdateAccountInfoRequest originalInfo;
+  UpdateAccountInfoRequest? originalInfo;
   @override
   void onInit() async {
     super.onInit();
@@ -58,8 +58,31 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   bool isInputUnchanged() {
-    return _buildRequest().toJson().toString() ==
-        originalInfo.toJson().toString();
+    final currentRequest = _buildRequest();
+    return originalInfo != null &&
+        currentRequest.toJson().toString() == originalInfo!.toJson().toString();
+  }
+
+  void handleCancelEdit() {
+    if (isInputUnchanged()) {
+      isEditAll.value = false;
+    } else {
+      ShowDialog.showDialogConfirm2(
+        title: LocaleKeys.dialog_cancelUpdate.tr,
+        content: LocaleKeys.dialog_cancelUpdateDialog.tr,
+        exitTitle: LocaleKeys.unitInfo_cancel.tr,
+        confirmTitle: LocaleKeys.unitInfo_continue.tr,
+        backgroundColorBack: Colors.white,
+        textStyleBack:
+            AppTextStyle.font14Bo.copyWith(color: AppColors.basicBlack),
+        textStyleConfirm: AppTextStyle.font14Bo,
+        onCancel: () {
+          fetchDataAccountInfo();
+          isEditAll.value = false;
+        },
+        onConfirm: () {},
+      );
+    }
   }
 
   Future<void> updateAccountInfo() async {
