@@ -267,14 +267,14 @@ class BaseGetxController extends GetxController {
     }
   }
 
-  Future<void> showSnackBarCustom<T>(
+  void showSnackBarCustom<T>(
     String message, {
     Duration duration = const Duration(seconds: 2),
     Alignment? align,
   }) async {
     BotToast.showCustomText(
       duration: message.length > 100 ? 5.seconds : duration,
-      align: align,
+      align: align ?? Alignment.topCenter,
       toastBuilder: (cancel) {
         return Material(
           color: Colors.transparent,
@@ -311,7 +311,7 @@ class BaseGetxController extends GetxController {
                 InkWell(
                   onTap: cancel,
                   child: SDSBuildText(
-                    "Đóng",
+                    LocaleKeys.dialog_close.tr,
                     style: AppTextStyle.font14Bo
                         .copyWith(color: AppColors.basicWhite),
                   ).paddingOnly(left: AppDimens.padding14),

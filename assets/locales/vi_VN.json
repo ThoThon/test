@@ -80,6 +80,7 @@
     "taxCode": "MST",
     "hello": "Xin chào,",
     "logout": "Đăng xuất",
+    "home":"Trang chủ",
     "accountInfo": "Thông tin tài khoản"
   },
   "unitInfo": {
@@ -280,7 +281,7 @@
     "inputPassword": "Nhập mật khẩu",
     "inputTaxCode": "Mã số thuế/ Mã ngân sách",
     "unitCode": "Mã đơn vị",
-    "inputAccount": "Tên đăng nhập",
+    "inputAccount": "Nhập tên đăng nhập",
     "registerForCode": "Đăng ký cấp mã",
     "switchTo": "Đã chuyển sang",
     "register": "Đăng ký"
