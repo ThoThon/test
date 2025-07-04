@@ -266,4 +266,61 @@ class BaseGetxController extends GetxController {
       }
     }
   }
+
+  void showSnackBarCustom<T>(
+    String message, {
+    Duration duration = const Duration(seconds: 2),
+    Alignment? align,
+  }) {
+    BotToast.showCustomText(
+      duration: message.length > 100 ? 5.seconds : duration,
+      align: align ?? Alignment.bottomCenter,
+      toastBuilder: (cancel) {
+        return Material(
+          color: Colors.transparent,
+          child: Container(
+            padding: const EdgeInsets.all(AppDimens.paddingSmall),
+            margin: const EdgeInsets.symmetric(
+              horizontal: AppDimens.padding5,
+              vertical: AppDimens.padding10,
+            ),
+            decoration: BoxDecoration(
+              color: const Color(0xFF44494D),
+              borderRadius: BorderRadius.circular(
+                AppDimens.radius8,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  offset: const Offset(2, 4),
+                  blurRadius: 8.1,
+                  color: Colors.black.withValues(alpha: 0.15),
+                )
+              ],
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: SDSBuildText(
+                    message.tr,
+                    style: AppTextStyle.font14Bo
+                        .copyWith(color: AppColors.basicWhite),
+                    maxLines: 3,
+                  ),
+                ),
+                InkWell(
+                  onTap: cancel,
+                  child: SDSBuildText(
+                    LocaleKeys.dialog_close.tr,
+                    style: AppTextStyle.font14Bo
+                        .copyWith(color: AppColors.basicWhite),
+                  ).paddingOnly(left: AppDimens.padding14),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 }

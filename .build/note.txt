@@ -5,6 +5,7 @@
 - [Appmobile]_Thủ tục 600: Màn TK1: Lỗi hiển thị Là trường bắt buộc đối với thông tin chủ hộ - BHW-2578
 - [Appmobile]_Chỉnh sửa giao diện màn đăng nhập: Lỗi text trường nhập tại màn Đăng nhập - BHW-2545
 - [Appmobile]_Chỉnh sửa giao diện màn trang chủ - BHW-2553
+- [Appmobile]_Sửa lại giao diện màn Lịch sử - BHW-2537
 
 2/7/2025
 - [Appmobile]_Chỉnh sửa giao diện màn Danh sách nhân viên kê khai - BHW-2547

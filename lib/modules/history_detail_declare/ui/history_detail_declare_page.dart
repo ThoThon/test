@@ -14,15 +14,24 @@ class HistoryDetailDeclarePage extends BaseGetWidget {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: SDSBuildText(
-          LocaleKeys.history_historyDetail.tr,
-          style: AppTextStyle.font16Bo,
+    return Container(
+      color: AppColors.primaryColor,
+      child: Scaffold(
+        appBar: BaseAppBar(
+          leading:
+              UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
+          backgroundColor: AppColors.primaryColor,
+          title: BaseAppBarTitle(
+            title: LocaleKeys.history_lookup.tr,
+            textColor: AppColors.basicWhite,
+          ),
+          centerTitle: true,
         ),
-      ),
-      body: buildLoadingOverlay(
-        () => _buildBody(),
+        body: buildLoadingOverlay(
+          () => BaseCardBody(
+            child: _buildBody(),
+          ),
+        ),
       ),
     );
   }

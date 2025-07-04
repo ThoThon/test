@@ -5,57 +5,59 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
     final model = controller.historyDeclareItem;
     return Column(
       children: [
-        UtilWidget.buildSolidButton(
-          title: LocaleKeys.history_lookup.tr,
-          onPressed: () {
-            model.soHoSo?.isNotEmpty ?? false
-                ? controller.lookupProgressHistory(model.soHoSo ?? '')
-                : controller.getFileNumber(model.id);
-          },
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(
+              AppDimens.defaultPadding,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SDSBuildText(
+                  LocaleKeys.history_profileInfo.tr,
+                  style: AppTextStyle.font14Bo,
+                ).paddingOnly(bottom: AppDimens.paddingVerySmall),
+                _buildProfileInfoCard(model),
+                _buildProgressHandleCard(model),
+              ],
+            ),
+          ),
         ),
-        sdsSBHeight8,
-        _buildProfileInfoCard(model),
-        _buildProgressHandleCard(model),
+        _buildButtonLookup(model),
       ],
-    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
+    );
   }
 
   Widget _buildProfileInfoCard(
     HistoryDeclareItemModel model,
   ) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SDSBuildText(
-          LocaleKeys.history_profileInfo.tr,
-          style: AppTextStyle.font14Bo,
-        ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-        UtilWidget.buildCardBase(
-          Column(
-            children: [
-              _buildProfleInfoItem(
-                textLeft: LocaleKeys.history_status.tr,
-                textRight: model.trangThai.titleStatus,
-                color: model.trangThai.historyStatusColor,
-              ),
-              sdsSBHeight8,
-              _buildProfleInfoItem(
-                textLeft: LocaleKeys.history_profileNumber.tr,
-                textRight: model.soHoSo ?? '',
-              ),
-              sdsSBHeight8,
-              _buildProfleInfoItem(
-                textLeft: LocaleKeys.history_timeResgiter.tr,
-                textRight:
-                    changeDateString(model.thoiGianGui, pattern: PATTERN_9),
-              ),
-            ],
-          ).paddingSymmetric(
-            horizontal: AppDimens.defaultPadding,
-            vertical: AppDimens.paddingSmall,
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.basicWhite,
+        borderRadius: BorderRadius.circular(AppDimens.radius16),
+      ),
+      child: Column(
+        children: [
+          _buildProfleInfoItem(
+            textLeft: LocaleKeys.history_status.tr,
+            textRight: model.trangThai.titleStatus,
+            color: model.trangThai.historyStatusColor,
           ),
-        ),
-      ],
+          sdsSBHeight8,
+          _buildProfleInfoItem(
+            textLeft: LocaleKeys.history_profileNumber.tr,
+            textRight: model.soHoSo ?? '',
+          ),
+          sdsSBHeight8,
+          _buildProfleInfoItem(
+            textLeft: LocaleKeys.history_timeResgiter.tr,
+            textRight: changeDateString(model.thoiGianGui, pattern: PATTERN_9),
+          ),
+        ],
+      ).paddingSymmetric(
+        horizontal: AppDimens.defaultPadding,
+        vertical: AppDimens.paddingSmall,
+      ),
     );
   }
 
@@ -68,12 +70,13 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
       children: [
         SDSBuildText(
           textLeft,
+          style: AppTextStyle.font14Re.copyWith(color: AppColors.dsGray1),
         ),
         const Spacer(),
         SDSBuildText(
           textRight,
-          style: AppTextStyle.font14Bo.copyWith(
-            color: color,
+          style: AppTextStyle.font14Re.copyWith(
+            color: color ?? AppColors.dsGray1,
           ),
         ),
       ],
@@ -140,21 +143,19 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
           LocaleKeys.history_progressHandle.tr,
           style: AppTextStyle.font14Bo,
         ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-        UtilWidget.buildCardBase(
-          Column(
-            children: List.generate(
-              4,
-              (index) {
-                return _buildStatusItem(
-                  status: statuses[index],
-                  numberStep: '${index + 1}',
-                  title: titles[index],
-                  isLastStep: isLastSteps[index],
-                  isFail: isFail[index],
-                );
-              },
-            ),
-          ).paddingAll(AppDimens.paddingSmall),
+        Column(
+          children: List.generate(
+            4,
+            (index) {
+              return _buildStatusItem(
+                status: statuses[index],
+                numberStep: '${index + 1}',
+                title: titles[index],
+                isLastStep: isLastSteps[index],
+                isFail: isFail[index],
+              );
+            },
+          ),
         ),
       ],
     ).paddingOnly(top: AppDimens.defaultPadding);
@@ -188,6 +189,9 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
       ),
     );
     final connector = DashedLineConnector(
+      thickness: 1.5,
+      gap: 6,
+      dash: 3,
       color: isLastStep != null
           ? isLastStep.isNotEmpty
               ? AppColors.statusGreen
@@ -206,14 +210,38 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
           ),
           SDSBuildText(
             title,
-            maxLines: 3,
-          ).paddingOnly(top: AppDimens.paddingSmallest)
+            maxLines: 4,
+          ).paddingOnly(
+            top: AppDimens.paddingSmallest,
+            bottom: AppDimens.defaultPadding,
+          ),
         ],
-      ).paddingAll(AppDimens.paddingVerySmall),
+      ).paddingSymmetric(horizontal: AppDimens.paddingVerySmall),
       node: TimelineNode(
         indicator: indicator,
         endConnector: numberStep == "4" ? null : connector,
         indicatorPosition: 0,
+      ),
+    );
+  }
+
+  Widget _buildButtonLookup(HistoryDeclareItemModel model) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: AppDimens.defaultPadding,
+        right: AppDimens.defaultPadding,
+        top: AppDimens.paddingSmall,
+        bottom: AppDimens.padding32,
+      ),
+      child: UtilWidget.buildSolidButton(
+        borderRadius: AppDimens.radius30,
+        textStyle: AppTextStyle.font16Re.copyWith(color: AppColors.basicWhite),
+        title: LocaleKeys.history_lookup.tr,
+        onPressed: () {
+          model.soHoSo?.isNotEmpty ?? false
+              ? controller.lookupProgressHistory(model.soHoSo ?? '')
+              : controller.getFileNumber(model.id);
+        },
       ),
     );
   }

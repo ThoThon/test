@@ -111,6 +111,10 @@ class Assets {
   static String get ASSETS_ICONS_IC_CCCD_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_cccd.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_CLEAR_SVG.preview}
+  static String get ASSETS_ICONS_IC_CLEAR_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_clear.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_DELETE_SVG.preview}
   static String get ASSETS_ICONS_IC_DELETE_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_delete.svg';
@@ -362,6 +366,9 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_CCCD_SVG.preview}
   Assets.ASSETS_ICONS_IC_CCCD_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_CLEAR_SVG.preview}
+  Assets.ASSETS_ICONS_IC_CLEAR_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_DELETE_SVG.preview}
   Assets.ASSETS_ICONS_IC_DELETE_SVG,

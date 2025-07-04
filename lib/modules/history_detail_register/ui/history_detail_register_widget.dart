@@ -5,55 +5,59 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
     final itemRegister = controller.historyRegisterItem;
     return Column(
       children: [
-        UtilWidget.buildSolidButton(
-          title: LocaleKeys.history_lookup.tr,
-          onPressed: () {
-            controller.lookupHistoryRegister();
-          },
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(
+              AppDimens.defaultPadding,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SDSBuildText(
+                  LocaleKeys.history_profileInfo.tr,
+                  style: AppTextStyle.font14Bo,
+                ).paddingOnly(bottom: AppDimens.paddingVerySmall),
+                _buildProfileInfoCard(itemRegister),
+                _buildProgressHandleCard(itemRegister),
+              ],
+            ),
+          ),
         ),
-        sdsSBHeight8,
-        _buildProfileInfoCard(itemRegister),
-        _buildProgressHandleCard(itemRegister),
+        _buildButtonLookup(),
       ],
-    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
+    );
   }
 
   Widget _buildProfileInfoCard(
     HistoryRegisterItemModel item,
   ) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SDSBuildText(
-          LocaleKeys.history_profileInfo.tr,
-          style: AppTextStyle.font14Bo,
-        ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-        UtilWidget.buildCardBase(
-          Column(
-            children: [
-              _buildProfleInfoItem(
-                textLeft: LocaleKeys.history_status.tr,
-                textRight: item.trangThaiTK.titleStatus,
-                color: item.trangThaiTK.historyStatusColor,
-              ),
-              sdsSBHeight8,
-              _buildProfleInfoItem(
-                textLeft: LocaleKeys.history_profileNumber.tr,
-                textRight: item.soHoSo,
-              ),
-              sdsSBHeight8,
-              _buildProfleInfoItem(
-                textLeft: LocaleKeys.history_timeResgiter.tr,
-                textRight:
-                    changeDateString(item.thoiGianGui, pattern: PATTERN_9),
-              ),
-            ],
-          ).paddingSymmetric(
-            horizontal: AppDimens.defaultPadding,
-            vertical: AppDimens.paddingSmall,
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.basicWhite,
+        borderRadius: BorderRadius.circular(AppDimens.radius16),
+      ),
+      child: Column(
+        children: [
+          _buildProfleInfoItem(
+            textLeft: LocaleKeys.history_status.tr,
+            textRight: item.trangThaiTK.titleStatus,
+            color: item.trangThaiTK.historyStatusColor,
           ),
-        ),
-      ],
+          sdsSBHeight8,
+          _buildProfleInfoItem(
+            textLeft: LocaleKeys.history_profileNumber.tr,
+            textRight: item.soHoSo,
+          ),
+          sdsSBHeight8,
+          _buildProfleInfoItem(
+            textLeft: LocaleKeys.history_timeResgiter.tr,
+            textRight: changeDateString(item.thoiGianGui, pattern: PATTERN_9),
+          ),
+        ],
+      ).paddingSymmetric(
+        horizontal: AppDimens.defaultPadding,
+        vertical: AppDimens.paddingSmall,
+      ),
     );
   }
 
@@ -66,12 +70,13 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
       children: [
         SDSBuildText(
           textLeft,
+          style: AppTextStyle.font14Re.copyWith(color: AppColors.dsGray1),
         ),
         const Spacer(),
         SDSBuildText(
           textRight ?? '',
-          style: AppTextStyle.font14Bo.copyWith(
-            color: color,
+          style: AppTextStyle.font14Re.copyWith(
+            color: color ?? AppColors.dsGray1,
           ),
         ),
       ],
@@ -127,22 +132,20 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
           LocaleKeys.history_progressHandle.tr,
           style: AppTextStyle.font14Bo,
         ).paddingOnly(bottom: AppDimens.paddingVerySmall),
-        UtilWidget.buildCardBase(
-          Column(
-            children: List.generate(
-              3,
-              (index) {
-                return _buildStatusItem(
-                  status: statuses[index],
-                  numberStep: '${index + 1}',
-                  title: titles[index] ?? '',
-                  isLastStep: isLastSteps[index],
-                  isNewData: isNewData,
-                  stepState: stepStates[index],
-                );
-              },
-            ),
-          ).paddingAll(AppDimens.paddingSmall),
+        Column(
+          children: List.generate(
+            3,
+            (index) {
+              return _buildStatusItem(
+                status: statuses[index],
+                numberStep: '${index + 1}',
+                title: titles[index] ?? '',
+                isLastStep: isLastSteps[index],
+                isNewData: isNewData,
+                stepState: stepStates[index],
+              );
+            },
+          ),
         ),
       ],
     ).paddingOnly(top: AppDimens.defaultPadding);
@@ -180,6 +183,9 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
     );
 
     final connector = DashedLineConnector(
+      thickness: 1.5,
+      gap: 6,
+      dash: 3,
       color: isLastStep != null
           ? isLastStep.isNotEmpty
               ? AppColors.statusGreen
@@ -199,10 +205,13 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
           ),
           SDSBuildText(
             title,
-            maxLines: 3,
-          ).paddingOnly(top: AppDimens.paddingSmallest),
+            maxLines: 4,
+          ).paddingOnly(
+            top: AppDimens.paddingSmallest,
+            bottom: AppDimens.defaultPadding,
+          ),
         ],
-      ).paddingAll(AppDimens.paddingVerySmall),
+      ).paddingSymmetric(horizontal: AppDimens.paddingVerySmall),
       node: TimelineNode(
         indicator: indicator,
         endConnector: numberStep == "3" ? null : connector,
@@ -226,5 +235,24 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
       if (stepState == false) return AppColors.statusRed;
       return AppColors.dsGray5;
     }
+  }
+
+  Widget _buildButtonLookup() {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: AppDimens.defaultPadding,
+        right: AppDimens.defaultPadding,
+        top: AppDimens.paddingSmall,
+        bottom: AppDimens.padding32,
+      ),
+      child: UtilWidget.buildSolidButton(
+        borderRadius: AppDimens.radius30,
+        textStyle: AppTextStyle.font16Re.copyWith(color: AppColors.basicWhite),
+        title: LocaleKeys.history_lookup.tr,
+        onPressed: () {
+          controller.lookupHistoryRegister();
+        },
+      ),
+    );
   }
 }
