@@ -50,7 +50,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
               children: [
                 SDSBuildText(
                   '${LocaleKeys.declarationPeriod_month.tr} ${convertDateToString(controller.selectedPeriodDate.value, PATTERN_12)}',
-                  style: AppTextStyle.font16Re,
+                  style: AppTextStyle.font16Bo,
                 ),
                 sdsSBWidth4,
                 SDSImageSvg(Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG)
@@ -173,7 +173,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             sdsSBWidth8,
             SDSBuildText(
               period.status.title,
-              style: AppTextStyle.font12Re.copyWith(color: period.status.color),
+              style: AppTextStyle.font14Re.copyWith(color: period.status.color),
             ),
           ],
         ),
@@ -190,12 +190,12 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
         sdsSBWidth8,
         SDSBuildText(
           "${LocaleKeys.declarationPeriod_period.tr} ${period.period}",
-          style: AppTextStyle.font14Bo,
+          style: AppTextStyle.font16Bo,
         ),
         if (period.fileNumber != null)
           SDSBuildText(
             ' - Số ${period.fileNumber}',
-            style: AppTextStyle.font14Bo,
+            style: AppTextStyle.font16Bo,
           ),
       ],
     ).paddingSymmetric(horizontal: AppDimens.defaultPadding);

@@ -269,7 +269,7 @@ class BaseGetxController extends GetxController {
 
   void showSnackBarCustom<T>(
     String message, {
-    Duration duration = const Duration(seconds: 2),
+    Duration duration = const Duration(seconds: 3),
     Alignment? align,
   }) {
     BotToast.showCustomText(

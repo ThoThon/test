@@ -44,8 +44,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
             ..soHoSo = res.result?.soHoSo ?? '';
           showSnackBarCustom(
             LocaleKeys.history_lookupSuccess.tr,
-            duration: const Duration(seconds: 3),
-            align: const Alignment(2.0, 0.8),
+            align: const Alignment(0.0, 0.8),
           );
         }
       } else {

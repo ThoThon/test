@@ -288,7 +288,8 @@
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",
-    "declare": "Kê khai"
+    "declare": "Kê khai",
+    "title": "Thủ tục "
   },
   "pageBuilder": {
     "home": "Trang chủ",

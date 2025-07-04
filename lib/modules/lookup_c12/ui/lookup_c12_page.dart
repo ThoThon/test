@@ -14,16 +14,29 @@ class LookupC12Page extends BaseGetWidget {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: BaseAppBarTitle(
-          title: LocaleKeys.lookupC12_lookupC12.tr,
-        ),
-        actions: [
-          _buildActionSelectYear(),
-        ],
-      ),
-      body: buildLoadingOverlay(() => _buildBody()),
+    return buildLoadingOverlay(
+      () {
+        return Container(
+          color: AppColors.primaryColor,
+          child: Scaffold(
+            appBar: BaseAppBar(
+              backgroundColor: AppColors.primaryColor,
+              centerTitle: true,
+              leading: UtilWidget.buildButtonBackAppbar(color: Colors.white),
+              title: BaseAppBarTitle(
+                title: LocaleKeys.lookupC12_lookupC12.tr,
+                textColor: Colors.white,
+              ),
+              actions: [
+                _buildActionSelectYear(),
+              ],
+            ),
+            body: BaseCardBody(
+              child: _buildBody(),
+            ),
+          ),
+        );
+      },
     );
   }
 }
