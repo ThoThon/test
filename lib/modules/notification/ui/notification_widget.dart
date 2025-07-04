@@ -2,37 +2,163 @@ part of 'notification_page.dart';
 
 extension NotificationWidget on NotificationPage {
   Widget _buildBody() {
-    return Obx(
-      () {
-        if (controller.listNotification.isEmpty) {
-          return UtilWidget.buildEmptyOnRefresh(
-            refreshController: controller.refreshController,
-            onRefresh: controller.onRefresh,
-          );
-        }
-        return UtilWidget.buildSmartRefresher(
-          refreshController: controller.refreshController,
-          onRefresh: controller.onRefresh,
-          onLoadMore: controller.onLoadMore,
-          enablePullUp: true,
-          child: _buildListNotification(),
-        );
-      },
+    final enableButtonDelete = controller.selectedID.isNotEmpty;
+    return Column(
+      children: [
+        Expanded(
+          child: Obx(
+            () {
+              if (controller.listNotification.isEmpty) {
+                return UtilWidget.buildEmptyOnRefresh(
+                  refreshController: controller.refreshController,
+                  onRefresh: controller.onRefresh,
+                );
+              }
+
+              return UtilWidget.buildSmartRefresher(
+                refreshController: controller.refreshController,
+                onRefresh: controller.onRefresh,
+                onLoadMore: controller.onLoadMore,
+                enablePullUp: false,
+                child: _buildListNotification(),
+              );
+            },
+          ),
+        ),
+        if (controller.isShowCheckbox.value)
+          Padding(
+            padding: const EdgeInsets.all(AppDimens.defaultPadding),
+            child: UtilWidget.buildSolidButton(
+              backgroundColor: enableButtonDelete
+                  ? AppColors.primaryColor
+                  : const Color.fromARGB(255, 255, 154, 176),
+              title: enableButtonDelete
+                  ? '${LocaleKeys.notification_delete.tr} (${controller.selectedID.length})'
+                  : LocaleKeys.notification_delete.tr,
+              borderRadius: AppDimens.radius30,
+              onPressed: () {
+                if (enableButtonDelete) {
+                  controller.deleteListNotification();
+                } else {
+                  return;
+                }
+              },
+            ),
+          ),
+      ],
     );
   }
 
   Widget _buildListNotification() {
+    final enableCheckobx = controller.isShowCheckbox.value;
     return ListView.separated(
-      padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
       itemBuilder: (context, index) {
         final item = controller.listNotification[index];
-        // Status = 1 : Noti chưa đọc
-        final isUnReadNoti = item.status == 1;
         return InkWell(
           onTap: () {
-            controller.readNoti(item);
+            if (!enableCheckobx) {
+              controller.readNoti(item);
+            } else {
+              if (controller.selectedID.contains(item)) {
+                controller.selectedID.remove(item);
+              } else {
+                controller.selectedID.add(item);
+              }
+            }
           },
+          child: Obx(
+            () => Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (enableCheckobx)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppDimens.paddingSmall,
+                    ),
+                    child: UtilWidget.buildCircleCheckbox(
+                      isChecked: controller.selectedID.contains(item),
+                      onTap: () {
+                        final isSelected = controller.selectedID.contains(item);
+                        if (isSelected) {
+                          controller.selectedID.remove(item);
+                        } else {
+                          controller.selectedID.add(item);
+                        }
+                      },
+                    ),
+                  ),
+                Expanded(
+                  child: Padding(
+                    padding: enableCheckobx
+                        ? EdgeInsets.zero
+                        : const EdgeInsets.symmetric(
+                            horizontal: AppDimens.defaultPadding,
+                          ),
+                    child: _buildCardItem(index),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+      itemCount: controller.listNotification.length,
+      separatorBuilder: (context, index) => sdsSBHeight12,
+    );
+  }
+
+  Widget _buildIconNotification(NotificationItemModel item) {
+    return SDSImageSvg(
+      item.entityType == EnityType.declaraForm
+          ? Assets.ASSETS_ICONS_IC_NOTIFICATION_DECLARE_SVG
+          : Assets.ASSETS_ICONS_IC_NOTIFICATION_UNIT_INFO_SVG,
+      color: AppColors.primaryColor,
+    );
+  }
+
+  void _buildBtsActionNoti() {
+    Get.bottomSheet(
+      UtilWidget.buildBottomSheetFigma(
+        child: Column(
+          children: [
+            InkWell(
+              onTap: () {
+                controller.isShowCheckbox.toggle();
+                controller.selectedID.clear();
+                Get.back();
+              },
+              child: Row(
+                children: [
+                  SDSImageSvg(Assets.ASSETS_ICONS_IC_NOTIFICATION_DELETE_SVG),
+                  sdsSBWidth12,
+                  SDSBuildText(LocaleKeys.notification_deleteNotification.tr),
+                ],
+              ),
+            ),
+            sdsSBHeight16,
+          ],
+        ).paddingOnly(left: AppDimens.paddingVerySmall),
+      ),
+    );
+  }
+
+  Widget _buildCardItem(int index) {
+    final item = controller.listNotification[index];
+    return Obx(
+      () {
+        final enableCheckobx = controller.isShowCheckbox.value;
+        return Container(
+          decoration: BoxDecoration(
+            color: AppColors.basicWhite,
+            border: Border.all(width: 1, color: AppColors.dsGray6),
+            borderRadius: enableCheckobx
+                ? const BorderRadius.horizontal(
+                    left: Radius.circular(AppDimens.radius16),
+                  )
+                : BorderRadius.circular(AppDimens.radius16),
+          ),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildIconNotification(item),
               sdsSBWidth16,
@@ -40,52 +166,43 @@ extension NotificationWidget on NotificationPage {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SDSBuildText(
-                      item.name,
-                      style: AppTextStyle.font14Bo.copyWith(
-                        color: isUnReadNoti
-                            ? AppColors.colorBlack
-                            : AppColors.dsGray3,
-                      ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: SDSBuildText(
+                            item.name,
+                            style: AppTextStyle.font14Bo.copyWith(
+                              color: AppColors.colorBlack,
+                            ),
+                          ),
+                        ),
+                        SDSBuildText(
+                          convertDateToStringSafe(item.createDate, PATTERN_6) ??
+                              '',
+                          style: AppTextStyle.font12Re
+                              .copyWith(color: AppColors.dsGray1),
+                        ),
+                      ],
                     ),
+                    sdsSBHeight8,
                     SDSBuildText(
                       item.message,
-                      style: AppTextStyle.font14Re.copyWith(
-                        color: isUnReadNoti
-                            ? AppColors.colorBlack
-                            : AppColors.dsGray3,
-                      ),
                       maxLines: 3,
-                    ),
-                    SDSBuildText(
-                      controller.timeAgo(item.createDate),
-                      style: AppTextStyle.font12Re.copyWith(
-                        color: isUnReadNoti
-                            ? AppColors.colorBlack
-                            : AppColors.dsGray3,
-                      ),
                     ),
                   ],
                 ),
               ),
             ],
-          ).paddingSymmetric(vertical: AppDimens.paddingSmall),
+          ).paddingOnly(
+            top: AppDimens.paddingSmall,
+            bottom: AppDimens.paddingSmall,
+            left: AppDimens.defaultPadding,
+            right: enableCheckobx
+                ? AppDimens.paddingVerySmall
+                : AppDimens.defaultPadding,
+          ),
         );
       },
-      itemCount: controller.listNotification.length,
-      separatorBuilder: (context, index) => const Divider(
-        height: 1,
-        color: AppColors.dsGray5,
-      ),
-    );
-  }
-
-  Widget _buildIconNotification(NotificationItemModel item) {
-    return Icon(
-      item.entityType == EnityType.declaraForm
-          ? Icons.description
-          : Icons.autorenew,
-      color: AppColors.primaryColor,
     );
   }
 }

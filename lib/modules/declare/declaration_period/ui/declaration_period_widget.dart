@@ -129,8 +129,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
           sdsSBHeight8,
           _buildPeriodNumber(period: period),
           sdsSBHeight12,
-          if (period.updateDate != null || period.createTime != null)
-            _buildDateAndButton(period),
+          _buildDateAndButton(period),
         ],
       ),
     );
@@ -206,7 +205,9 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
     return Row(
       children: [
         SDSBuildText(
-          '${convertDateToStringSafe(period.updateDate ?? period.createTime, PATTERN_14)}',
+          convertDateToStringSafe(
+                  period.updateDate ?? period.createTime, PATTERN_14) ??
+              '',
           style: AppTextStyle.font12Re.copyWith(color: Colors.grey),
         ),
         const Spacer(),

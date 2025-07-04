@@ -14,25 +14,58 @@ class NotificationPage extends BaseGetWidget {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
+    return Container(
+      color: AppColors.primaryColor,
+      child: Scaffold(
         appBar: BaseAppBar(
+          backgroundColor: AppColors.primaryColor,
           title: BaseAppBarTitle(
             title: LocaleKeys.pageBuilder_notification.tr,
+            textColor: AppColors.basicWhite,
           ),
+          leading:
+              UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
           actions: [
-            IconButton(
-              onPressed: () {
-                controller.readAllNotification();
+            Obx(
+              () {
+                return controller.isShowCheckbox.value
+                    ? IconButton(
+                        onPressed: () {
+                          controller.selectedID
+                              .addAll(controller.listNotification);
+                        },
+                        icon: SDSBuildText(
+                          LocaleKeys.notification_selectedAll.tr,
+                          style: AppTextStyle.font12Re
+                              .copyWith(color: AppColors.basicWhite),
+                        ),
+                      )
+                    : IconButton(
+                        onPressed: () {
+                          _buildBtsActionNoti();
+                        },
+                        icon: const Icon(
+                          size: AppDimens.sizeIcon28,
+                          Icons.more_horiz,
+                          color: AppColors.basicWhite,
+                        ),
+                      );
               },
-              icon: const Icon(
-                Icons.check_outlined,
-                color: AppColors.primaryColor,
-              ),
             ),
-            sdsSBWidth16,
+            sdsSBWidth12,
           ],
           centerTitle: true,
         ),
-        body: baseShowLoading(_buildBody));
+        body: BaseCardBody(
+          child: baseShowLoading(
+            () => Padding(
+              padding: const EdgeInsets.symmetric(
+                  vertical: AppDimens.defaultPadding),
+              child: _buildBody(),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

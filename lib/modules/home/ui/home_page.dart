@@ -185,6 +185,7 @@ class HomePage extends BaseGetWidget<HomeController> {
 
   AppBar _buildAppBar() {
     return AppBar(
+      centerTitle: false,
       leading: Builder(
         builder: (context) {
           return IconButton(
@@ -194,7 +195,7 @@ class HomePage extends BaseGetWidget<HomeController> {
               color: AppColors.colorBlack,
             ),
             onPressed: () {
-              Scaffold.of(context).openDrawer(); // ✅ context nằm sau Scaffold
+              Scaffold.of(context).openDrawer();
             },
           );
         },

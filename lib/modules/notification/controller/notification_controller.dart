@@ -8,11 +8,17 @@ class NotificationController extends BaseRefreshGetxController {
 
   final listNotification = <NotificationItemModel>[].obs;
 
+  final isShowCheckbox = false.obs;
+
+  // Dùng kiểu Set để tránh phần tử trùng nhau
+  final selectedID = <NotificationItemModel>{}.obs;
+
   int page = AppConst.defaultPageNumber;
 
   @override
   void onInit() {
     super.onInit();
+    readAllNotification();
     fetchListNotification();
   }
 
@@ -63,6 +69,7 @@ class NotificationController extends BaseRefreshGetxController {
 
   @override
   Future<void> onRefresh() async {
+    selectedID.clear();
     listNotification.clear();
     await fetchListNotification();
     refreshController.refreshCompleted();
@@ -117,6 +124,21 @@ class NotificationController extends BaseRefreshGetxController {
       logger.d(e);
     } finally {
       hideLoading();
+    }
+  }
+
+  Future<void> deleteListNotification() async {
+    try {
+      final listID = selectedID.map((item) => item.id).toList();
+      final response =
+          await _notificationRepository.deleteListNotification(listID);
+      if (response.isSuccess && response.result != null) {
+        isShowCheckbox.value = false;
+        listNotification.clear();
+        fetchListNotification();
+      }
+    } catch (e) {
+      logger.d(e);
     }
   }
 }

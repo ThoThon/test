@@ -702,6 +702,12 @@ class LocaleKeys {
   static const notification_hourBefore = 'notification_hourBefore';
   static const notification_minuteBefore = 'notification_minuteBefore';
   static const notification_secondBefore = 'notification_secondBefore';
+  static const notification_delete = 'notification_delete';
+  static const notification_deleteNotification =
+      'notification_deleteNotification';
+  static const notification_onOffNotification =
+      'notification_onOffNotification';
+  static const notification_selectedAll = 'notification_selectedAll';
   static const registerService_registerService =
       'registerService_registerService';
   static const registerService_unitInfo = 'registerService_unitInfo';
@@ -1513,6 +1519,10 @@ class Locales {
     'notification_hourBefore': 'giờ trước',
     'notification_minuteBefore': 'phút trước',
     'notification_secondBefore': 'giây trước',
+    'notification_delete': 'Xóa',
+    'notification_deleteNotification': 'Xóa thông báo',
+    'notification_onOffNotification': 'Bật/Tắt nhận thông báo',
+    'notification_selectedAll': 'Chọn tất cả',
     'registerService_registerService': 'Đăng ký dịch vụ',
     'registerService_unitInfo': 'Thông tin đơn vị',
     'registerService_taxCode': 'Mã số thuế',
