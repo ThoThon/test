@@ -80,7 +80,7 @@
     "taxCode": "MST",
     "hello": "Xin chào,",
     "logout": "Đăng xuất",
-    "home":"Trang chủ",
+    "home": "Trang chủ",
     "accountInfo": "Thông tin tài khoản"
   },
   "unitInfo": {
@@ -288,7 +288,8 @@
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",
-    "declare": "Kê khai"
+    "declare": "Kê khai",
+    "title": "Thủ tục "
   },
   "pageBuilder": {
     "home": "Trang chủ",

@@ -297,6 +297,7 @@ class LocaleKeys {
   static const login_register = 'login_register';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_declare = 'procedureList_declare';
+  static const procedureList_title = 'procedureList_title';
   static const pageBuilder_home = 'pageBuilder_home';
   static const pageBuilder_report = 'pageBuilder_report';
   static const pageBuilder_notification = 'pageBuilder_notification';
@@ -1178,6 +1179,7 @@ class Locales {
     'login_register': 'Đăng ký',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_declare': 'Kê khai',
+    'procedureList_title': 'Thủ tục ',
     'pageBuilder_home': 'Trang chủ',
     'pageBuilder_report': 'Báo cáo',
     'pageBuilder_notification': 'Thông báo',
