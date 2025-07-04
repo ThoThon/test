@@ -34,48 +34,9 @@ class LookupC12Controller extends BaseGetxController {
           await _lookupC12Repository.getC12File(selectedYear.value.year);
       if (response.result.isNotEmpty && response.isSuccess) {
         listFileC12.addAll(response.result);
-        Get.rawSnackbar(
-          titleText: const SizedBox.shrink(),
-          messageText: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Tra cứu thành công',
-                style: AppTextStyle.font14Re.copyWith(
-                  color: AppColors.basicWhite,
-                ),
-              ),
-              TextButton(
-                onPressed: () => Get.closeCurrentSnackbar(),
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                  minimumSize: const Size(
-                    AppDimens.sizeIconDefault,
-                    AppDimens.sizeIconDefault,
-                  ),
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                ),
-                child: Text(
-                  'Đóng',
-                  style: AppTextStyle.font14Bo.copyWith(
-                    color: AppColors.basicWhite,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          backgroundColor: AppColors.dsGray2,
-          margin: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 0,
-          ),
-          padding: const EdgeInsets.only(
-            left: AppDimens.paddingSmall,
-            right: AppDimens.paddingSmall,
-            top: AppDimens.paddingVerySmall,
-            bottom: AppDimens.paddingSmall,
-          ),
-          borderRadius: AppDimens.radius8,
+        showSnackBarCustom(
+          LocaleKeys.history_lookupSuccess.tr,
+          align: const Alignment(2.0, 0.8),
         );
       }
     } catch (e) {
