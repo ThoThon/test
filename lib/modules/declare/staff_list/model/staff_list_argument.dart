@@ -2,6 +2,8 @@ import 'package:v_bhxh/modules/declare/declaration_period/model/procedure_type.d
 
 class StaffListArgument {
   final String declarationPeriodId;
+
+  /// Loại thủ tục
   final ProcedureType procedureType;
 
   const StaffListArgument({
