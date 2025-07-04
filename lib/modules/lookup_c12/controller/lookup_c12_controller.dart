@@ -36,7 +36,7 @@ class LookupC12Controller extends BaseGetxController {
         listFileC12.addAll(response.result);
         showSnackBarCustom(
           LocaleKeys.history_lookupSuccess.tr,
-          align: const Alignment(2.0, 0.8),
+          align: const Alignment(0.0, 0.8),
         );
       }
     } catch (e) {

@@ -65,7 +65,7 @@ class HistoryDetailDeclareController extends BaseGetxController {
           historyDeclareItem.trangThai = res.result?.trangThai ?? '';
           showSnackBarCustom(
             LocaleKeys.history_lookupSuccess.tr,
-            align: const Alignment(2.0, 0.8),
+            align: const Alignment(0.0, 0.8),
           );
         }
       } else {
