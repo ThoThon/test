@@ -271,7 +271,7 @@ class BaseGetxController extends GetxController {
     String message, {
     Duration duration = const Duration(seconds: 2),
     Alignment? align,
-  }) async {
+  }) {
     BotToast.showCustomText(
       duration: message.length > 100 ? 5.seconds : duration,
       align: align ?? Alignment.bottomCenter,
