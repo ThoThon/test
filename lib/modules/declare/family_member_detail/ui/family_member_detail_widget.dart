@@ -498,19 +498,19 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.familyMember_cccdNumber.tr,
       controller: controller.cccdNumberTextCtrl,
-      isRequired: true,
+      isRequired: false,
       hintText: LocaleKeys.familyMember_inputNumberCCCD.tr,
       maxLengthInputForm: 20,
       inputFormatters: InputFormatterEnum.textNormal,
-      validator: (value) {
-        final trimmedValue = value?.trim();
+      // validator: (value) {
+      //   final trimmedValue = value?.trim();
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.familyMember_numberCCCDCannotEmpty.tr;
-        }
+      //   if (trimmedValue == null || trimmedValue.isEmpty) {
+      //     return LocaleKeys.familyMember_numberCCCDCannotEmpty.tr;
+      //   }
 
-        return null;
-      },
+      //   return null;
+      // },
     );
   }
 
@@ -518,18 +518,18 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.familyMember_note.tr,
       controller: controller.noteTextCtrl,
-      isRequired: true,
+      isRequired: false,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
-      validator: (value) {
-        final trimmedValue = value?.trim();
+      // validator: (value) {
+      //   final trimmedValue = value?.trim();
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.familyMember_noteCannotEmpty.tr;
-        }
+      //   if (trimmedValue == null || trimmedValue.isEmpty) {
+      //     return LocaleKeys.familyMember_noteCannotEmpty.tr;
+      //   }
 
-        return null;
-      },
+      //   return null;
+      // },
     );
   }
 
