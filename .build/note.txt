@@ -3,6 +3,7 @@
 - [Appmobile]_Màn TK1 -Thành viên trong gia đình: Trường Số CCCD và Ghi chú không là trường bắt buộc - BHW-2575
 - [Appmobile]_Chỉnh sửa giao diện màn Danh sách thủ tục - BHW-2554
 - [Appmobile]_Chỉnh sửa giao diện: Đợt kê khai - BHW-2573
+- [Appmobile]_Chỉnh sửa Validate trường Mã số thuế màn Quên mật khẩu - BHW-2546
 
 
 3/7/2025
