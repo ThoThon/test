@@ -502,15 +502,6 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       hintText: LocaleKeys.familyMember_inputNumberCCCD.tr,
       maxLengthInputForm: 20,
       inputFormatters: InputFormatterEnum.textNormal,
-      // validator: (value) {
-      //   final trimmedValue = value?.trim();
-
-      //   if (trimmedValue == null || trimmedValue.isEmpty) {
-      //     return LocaleKeys.familyMember_numberCCCDCannotEmpty.tr;
-      //   }
-
-      //   return null;
-      // },
     );
   }
 
@@ -521,15 +512,6 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       isRequired: false,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
-      // validator: (value) {
-      //   final trimmedValue = value?.trim();
-
-      //   if (trimmedValue == null || trimmedValue.isEmpty) {
-      //     return LocaleKeys.familyMember_noteCannotEmpty.tr;
-      //   }
-
-      //   return null;
-      // },
     );
   }
 
