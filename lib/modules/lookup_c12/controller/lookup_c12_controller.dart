@@ -34,6 +34,10 @@ class LookupC12Controller extends BaseGetxController {
           await _lookupC12Repository.getC12File(selectedYear.value.year);
       if (response.result.isNotEmpty && response.isSuccess) {
         listFileC12.addAll(response.result);
+        showSnackBarCustom(
+          LocaleKeys.history_lookupSuccess.tr,
+          align: const Alignment(0.0, 0.8),
+        );
       }
     } catch (e) {
       logger.d(e);
