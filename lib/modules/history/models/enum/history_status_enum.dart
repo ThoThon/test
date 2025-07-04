@@ -15,13 +15,26 @@ extension HistoryStatusEnumExt on String? {
   Color? get historyStatusColor {
     switch (this) {
       case HistoryStatusEnum.processing:
-        return AppColors.statusNoti;
+        return const Color(0xFFFE9705);
       case HistoryStatusEnum.success:
-        return AppColors.statusGreen;
+        return const Color(0xFF409C37);
       case HistoryStatusEnum.fail:
-        return AppColors.statusRed;
+        return AppColors.primaryColor;
       default:
-        return AppColors.statusNoti;
+        return const Color(0xFFFE9705);
+    }
+  }
+
+  Color? get cardStatusColor {
+    switch (this) {
+      case HistoryStatusEnum.processing:
+        return const Color(0xFFFFF1DF);
+      case HistoryStatusEnum.success:
+        return const Color(0xFFE9FFE6);
+      case HistoryStatusEnum.fail:
+        return const Color(0xFFFEEBF0);
+      default:
+        return const Color(0xFFFFF1DF);
     }
   }
 

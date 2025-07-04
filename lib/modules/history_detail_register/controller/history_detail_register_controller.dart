@@ -42,9 +42,9 @@ class HistoryDetailRegisterController extends BaseGetxController {
           historyRegisterItem
             ..trangThaiTK = res.result?.trangThai ?? ''
             ..soHoSo = res.result?.soHoSo ?? '';
-          showSnackBar(
+          showSnackBarCustom(
             LocaleKeys.history_lookupSuccess.tr,
-            typeAction: AppConst.actionSuccess,
+            align: const Alignment(0.0, 0.8),
           );
         }
       } else {

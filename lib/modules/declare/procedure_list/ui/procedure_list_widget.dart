@@ -73,7 +73,7 @@ extension ProcedureListPageWidget on ProcedureListPage {
               SDSImageSvg(Assets.ASSETS_ICONS_IC_PROCEDURE_SVG),
               sdsSBWidth8,
               SDSBuildText(
-                procedure.code,
+                '${LocaleKeys.procedureList_title.tr} ${procedure.code}',
                 style: AppTextStyle.font14Bo.copyWith(
                   color: AppColors.colorBlack,
                 ),

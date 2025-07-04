@@ -87,6 +87,7 @@ class LocaleKeys {
   static const home_taxCode = 'home_taxCode';
   static const home_hello = 'home_hello';
   static const home_logout = 'home_logout';
+  static const home_home = 'home_home';
   static const home_accountInfo = 'home_accountInfo';
   static const unitInfo_transactionRegister = 'unitInfo_transactionRegister';
   static const unitInfo_generalInfo = 'unitInfo_generalInfo';
@@ -190,6 +191,7 @@ class LocaleKeys {
   static const unitInfo_emailContactIsNotEmpty =
       'unitInfo_emailContactIsNotEmpty';
   static const unitInfo_emailIsNotValid = 'unitInfo_emailIsNotValid';
+  static const history_title = 'history_title';
   static const history_procedure = 'history_procedure';
   static const history_submissionTime = 'history_submissionTime';
   static const history_historyDetail = 'history_historyDetail';
@@ -219,6 +221,7 @@ class LocaleKeys {
   static const history_procedure600d = 'history_procedure600d';
   static const history_procedure600o = 'history_procedure600o';
   static const history_fileNumber = 'history_fileNumber';
+  static const history_inputFileNumber = 'history_inputFileNumber';
   static const history_cannotLookupFileNumber =
       'history_cannotLookupFileNumber';
   static const history_error = 'history_error';
@@ -294,6 +297,7 @@ class LocaleKeys {
   static const login_register = 'login_register';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_declare = 'procedureList_declare';
+  static const procedureList_title = 'procedureList_title';
   static const pageBuilder_home = 'pageBuilder_home';
   static const pageBuilder_report = 'pageBuilder_report';
   static const pageBuilder_notification = 'pageBuilder_notification';
@@ -973,6 +977,7 @@ class Locales {
     'home_taxCode': 'MST',
     'home_hello': 'Xin chào,',
     'home_logout': 'Đăng xuất',
+    'home_home': 'Trang chủ',
     'home_accountInfo': 'Thông tin tài khoản',
     'unitInfo_transactionRegister': 'Đăng ký giao dịch',
     'unitInfo_generalInfo': 'Thông tin chung',
@@ -1072,6 +1077,7 @@ class Locales {
     'unitInfo_hasError': 'Có lỗi xảy ra, vui lòng thử lại',
     'unitInfo_emailContactIsNotEmpty': 'Email liên hệ không được bỏ trống',
     'unitInfo_emailIsNotValid': 'Email không hợp lệ',
+    'history_title': 'Lịch sử kê khai',
     'history_procedure': 'Thủ tục',
     'history_submissionTime': 'Thời gian nộp',
     'history_historyDetail': 'Chi tiết lịch sử',
@@ -1079,7 +1085,7 @@ class Locales {
     'history_status': 'Trạng thái',
     'history_profileNumber': 'Số hồ sơ:',
     'history_timeResgiter': 'Thời gian:',
-    'history_progressHandle': 'Tiến độ xử lý',
+    'history_progressHandle': 'Tiến độ xử lý hồ sơ',
     'history_profileCheckResult': 'Kết quả kiểm tra hồ sơ',
     'history_declarationForm': 'Hồ sơ kê khai',
     'history_historyTransaction': 'Lịch sử giao dịch',
@@ -1103,6 +1109,7 @@ class Locales {
         '600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP',
     'history_procedure600o': '600o - Tạm dừng đóng vào quỹ hưu trí',
     'history_fileNumber': 'Số hồ sơ',
+    'history_inputFileNumber': 'Nhập số hồ sơ',
     'history_cannotLookupFileNumber': 'Không tìm thấy số hồ sơ',
     'history_error': 'Có lỗi xảy ra, vui lòng thử lại sau',
     'history_history': 'Lịch sử',
@@ -1166,12 +1173,13 @@ class Locales {
     'login_inputPassword': 'Nhập mật khẩu',
     'login_inputTaxCode': 'Mã số thuế/ Mã ngân sách',
     'login_unitCode': 'Mã đơn vị',
-    'login_inputAccount': 'Tên đăng nhập',
+    'login_inputAccount': 'Nhập tên đăng nhập',
     'login_registerForCode': 'Đăng ký cấp mã',
     'login_switchTo': 'Đã chuyển sang',
     'login_register': 'Đăng ký',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_declare': 'Kê khai',
+    'procedureList_title': 'Thủ tục ',
     'pageBuilder_home': 'Trang chủ',
     'pageBuilder_report': 'Báo cáo',
     'pageBuilder_notification': 'Thông báo',

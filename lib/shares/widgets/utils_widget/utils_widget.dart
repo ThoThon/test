@@ -1593,9 +1593,10 @@ class UtilWidget {
 
   static Widget buildButtonBackAppbar({
     Color? color,
+    VoidCallback? onTap,
   }) {
     return InkWell(
-      onTap: Get.back,
+      onTap: onTap ?? Get.back,
       child: SDSImageSvg(
         Assets.ASSETS_ICONS_IC_ARROW_LEFT_SVG,
         fit: BoxFit.none,
