@@ -274,7 +274,7 @@ class BaseGetxController extends GetxController {
   }) async {
     BotToast.showCustomText(
       duration: message.length > 100 ? 5.seconds : duration,
-      align: align ?? Alignment.topCenter,
+      align: align ?? Alignment.bottomCenter,
       toastBuilder: (cancel) {
         return Material(
           color: Colors.transparent,
