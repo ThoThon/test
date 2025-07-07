@@ -1,6 +1,8 @@
 7/7/2025
 - [Appmobile]_Sửa giao diện màn trang chủ: Tên đơn vị, MST căn trái - BHW-2595
 - [Appmobile]_Chỉnh sửa giao diện màn Tra cứu - BHW-2594
+- [Appmobile]_Sửa đổi giao diện màn lịch sử - BHW-2593
+
 
 4/7/2025
 - [Appmobile]_Sửa lại giao diện màn tra cứu C12 - BHW-2522

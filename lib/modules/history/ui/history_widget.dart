@@ -197,9 +197,16 @@ extension HistoryWidget on HistoryPage {
           ),
           child: InkWell(
             onTap: controller.pickPeriodDate,
-            child: SDSBuildText(
-              'Tháng $month/$year',
-              style: AppTextStyle.font14Re.copyWith(color: AppColors.dsGray1),
+            child: Row(
+              children: [
+                SDSBuildText(
+                  'Tháng $month/$year',
+                  style:
+                      AppTextStyle.font14Bo.copyWith(color: AppColors.dsGray1),
+                ),
+                sdsSBWidth4,
+                SDSImageSvg(Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG)
+              ],
             ),
           ),
         );
