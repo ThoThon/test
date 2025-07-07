@@ -51,7 +51,10 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
           sdsSBHeight8,
           _buildProfleInfoItem(
             textLeft: LocaleKeys.history_timeResgiter.tr,
-            textRight: changeDateString(item.thoiGianGui, pattern: PATTERN_9),
+            textRight: changeDateString(
+              item.thoiGianGui,
+              pattern: PATTERN_14,
+            ),
           ),
         ],
       ).paddingSymmetric(

@@ -204,12 +204,11 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   Widget _buildDateAndButton(DeclarationPeriod period) {
     return Row(
       children: [
-        SDSBuildText(
-          convertDateToStringSafe(
-                  period.updateDate ?? period.createTime, PATTERN_14) ??
-              '',
-          style: AppTextStyle.font12Re.copyWith(color: Colors.grey),
-        ),
+        if (period.updateDate != null || period.createTime != null)
+          SDSBuildText(
+            '${convertDateToStringSafe(period.updateDate ?? period.createTime, PATTERN_14)}',
+            style: AppTextStyle.font14Re.copyWith(color: Colors.grey),
+          ),
         const Spacer(),
         if (period.status.canEdit)
           InkWell(

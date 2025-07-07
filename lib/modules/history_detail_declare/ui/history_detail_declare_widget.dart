@@ -51,7 +51,10 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
           sdsSBHeight8,
           _buildProfleInfoItem(
             textLeft: LocaleKeys.history_timeResgiter.tr,
-            textRight: changeDateString(model.thoiGianGui, pattern: PATTERN_9),
+            textRight: changeDateString(
+              model.thoiGianGui,
+              pattern: PATTERN_14,
+            ),
           ),
         ],
       ).paddingSymmetric(
