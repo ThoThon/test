@@ -124,8 +124,6 @@ class Tk1State607 {
   /// Danh sách thành viên trong gia đình
   final familyMembers = <FamilyMember>[].obs;
 
-  final isHouseholdInfoRequired = false.obs;
-
   /// Sinh dữ liệu D01-TS
   final isGenerateD01Data = false.obs;
 
