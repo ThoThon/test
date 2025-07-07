@@ -129,6 +129,15 @@ class BuildInputTextState extends State<BuildInputText> {
           RegexpEmojiUtil.allowCommonCharacters,
           VietnameseWithoutDiacriticsFormatter(),
         ];
+      case InputFormatterEnum.coefficient:
+        return [
+          NumericTextFormatter(
+            type: 1,
+            isDot: true,
+            maxLengthNum: 2,
+            lastDecimal: 3,
+          ),
+        ];
       default:
         return [
           LengthLimitingTextFieldFormatterFixed(
