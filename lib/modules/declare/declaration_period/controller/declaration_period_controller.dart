@@ -1,4 +1,3 @@
-import 'package:v_bhxh/modules/declare/declaration_period/repository/declaration_period_607_repository.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/repository/declaration_period_repository.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
@@ -10,7 +9,6 @@ class DeclarationPeriodController extends BaseGetxController {
   final argument = Get.arguments as Procedure;
 
   late final _repository = DeclarationPeriodRepository(this);
-  late final _repository607 = DeclarationPeriod607Repository(this);
 
   final selectedPeriodDate = DateTime.now().obs;
 
@@ -71,20 +69,9 @@ class DeclarationPeriodController extends BaseGetxController {
   Future<void> deleteDeclarationPeriod(DeclarationPeriod period) async {
     try {
       showLoadingOverlay();
-      final BaseResponse response;
-
-      switch (period.procedureType) {
-        case ProcedureType.procedure600:
-          response = await _repository.deleteDeclarationPeriod(
-            id: period.id,
-          );
-          break;
-        case ProcedureType.procedure607:
-          response = await _repository607.deleteDeclarationPeriod607(
-            id: period.id,
-          );
-          break;
-      }
+      final response = await _repository.deleteDeclarationPeriod(
+        id: period.id,
+      );
 
       if (response.isSuccess) {
         showSnackBar(
@@ -114,8 +101,18 @@ class DeclarationPeriodController extends BaseGetxController {
       );
 
       if (response.isSuccess && response.result != null) {
+        final String path;
+        switch (argument.procedureType) {
+          case ProcedureType.procedure600:
+            path = AppRoutes.declareInfo.path;
+            break;
+          case ProcedureType.procedure607:
+            path = AppRoutes.declareInfo607.path;
+            break;
+        }
+
         Get.toNamed(
-          AppRoutes.declareInfo.path,
+          path,
           arguments: DeclareInfoArgument(
             declarationPeriodId: response.result!.id,
             action: D02ActionEnum.addPeriodFromDeclarePeriod,
