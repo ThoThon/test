@@ -384,6 +384,9 @@ class DeclareInfoController extends BaseGetxController {
     // TH nếu đ/c khai sinh sửa lại thì đ/c nhận hồ sơ cũng thay đổi
     _syncBirthAddress();
     _syncHeadOfHouseholdInfo();
+    if (value == false) {
+      _clearBirthAddress();
+    }
   }
 
   /// Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh
@@ -393,6 +396,16 @@ class DeclareInfoController extends BaseGetxController {
       tk1State.districtReceive.value = tk1State.districtOfBirth.value;
       tk1State.wardReceive.value = tk1State.wardOfBirth.value;
       tk1State.addressReceiveTextCtrl.text = tk1State.birthAddressTextCtrl.text;
+    }
+  }
+
+  /// Xóa địa chỉ nơi nhận khi hủy checkbox
+  void _clearBirthAddress() {
+    if (!tk1State.isDuplicateBirthAddress.value) {
+      tk1State.provinceReceive.value = null;
+      tk1State.districtReceive.value = null;
+      tk1State.wardReceive.value = null;
+      tk1State.addressReceiveTextCtrl.text = '';
     }
   }
 
