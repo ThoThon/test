@@ -84,6 +84,7 @@ class AppColors {
   static const Color colorBorder = Color(0xFFBCC1CA);
   static const Color colorIconSuccess = Color(0xFF34C759);
   static const Color dividerColor = Color(0xFFF5F5F5);
+  static const Color primaryColorDisable = Color(0xFFE48595);
 
   static const LinearGradient gradientGray = LinearGradient(
     begin: Alignment.topLeft,
