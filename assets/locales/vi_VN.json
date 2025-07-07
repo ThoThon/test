@@ -472,7 +472,9 @@
     "selectDistrictReceivePaper": "Chọn huyện nhận hồ sơ giấy",
     "wardReceivePaper": "Xã nhận hồ sơ giấy",
     "selectWardReceivePaper": "Chọn xã nhận hồ sơ giấy",
-    "addressReceivePaper": "Địa chỉ nhận hồ sơ giấy"
+    "addressReceivePaper": "Địa chỉ nhận hồ sơ giấy",
+    "receiveResultElectronic": "Nhận kết quả bản điện tử",
+    "receiveResultPaper": "Nhận kết quả bản giấy"
   },
   "familyMember": {
     "title": "Kê khai thông tin thành viên HGĐ",

@@ -544,6 +544,10 @@ class LocaleKeys {
       'declareInfo_selectWardReceivePaper';
   static const declareInfo_addressReceivePaper =
       'declareInfo_addressReceivePaper';
+  static const declareInfo_receiveResultElectronic =
+      'declareInfo_receiveResultElectronic';
+  static const declareInfo_receiveResultPaper =
+      'declareInfo_receiveResultPaper';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1393,6 +1397,8 @@ class Locales {
     'declareInfo_wardReceivePaper': 'Xã nhận hồ sơ giấy',
     'declareInfo_selectWardReceivePaper': 'Chọn xã nhận hồ sơ giấy',
     'declareInfo_addressReceivePaper': 'Địa chỉ nhận hồ sơ giấy',
+    'declareInfo_receiveResultElectronic': 'Nhận kết quả bản điện tử',
+    'declareInfo_receiveResultPaper': 'Nhận kết quả bản giấy',
     'familyMember_title': 'Kê khai thông tin thành viên HGĐ',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

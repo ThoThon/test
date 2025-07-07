@@ -830,11 +830,8 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
         _buildSelectReceiveResult(),
         sdsSBHeight12,
         _buildSelectProvinceReceivePaper(),
-        sdsSBHeight12,
         _buildSelectDistrictReceivePaper(),
-        sdsSBHeight12,
         _buildSelectWardReceivePaper(),
-        sdsSBHeight12,
         _buildInputAddressReceivePaper(),
       ],
     );
@@ -866,11 +863,11 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
 
   /// Nhận kết quả hồ sơ
   Widget _buildSelectReceiveResult() {
-    return CardDropdownWithLabel<ReceiveResultModel>(
+    return CardDropdownWithLabel<ReceiveProfileResultEnum>(
       key: ValueKey(controller.tk1State.receiveResult.value),
       labelText: LocaleKeys.declareInfo_receiveProfileResult.tr,
-      items: AppData.instance.receiveResults.toList(),
-      display: (item) => item.text,
+      items: ReceiveProfileResultEnum.values,
+      display: (item) => item.title,
       autovalidateMode: controller.autovalidateMode.value,
       isRequired: true,
       selectedItem: controller.tk1State.receiveResult.value,

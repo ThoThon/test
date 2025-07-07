@@ -5,6 +5,7 @@ import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare_607/declare_info_607/model/receive_profile_result_enum.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class Tk1State607 {
@@ -81,8 +82,8 @@ class Tk1State607 {
   final attachedProfileTextCtrl = TextEditingController();
 
   /// Nhận kết quả hồ sơ
-  final receiveResult = Rxn<ReceiveResultModel>(AppData.instance.receiveResults
-      .firstWhereOrNull((receiveResult) => receiveResult.value == "DT"));
+  final receiveResult =
+      Rx<ReceiveProfileResultEnum>(ReceiveProfileResultEnum.electronic);
 
   /// Tỉnh nhận hồ sơ giấy
   final provinceReceivePaper = Rxn<ProvinceModel>();
