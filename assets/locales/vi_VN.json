@@ -50,7 +50,8 @@
     "cancelRequest": "Hủy yêu cầu",
     "confirmSignatureMySign": "Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian",
     "sendRequestSignature": "Gửi yêu cầu ký thành công",
-    "sendFileToBHXH": "Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!"
+    "sendFileToBHXH": "Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!",
+    "max5File":"Chỉ cho phép chọn tối đa 5 file"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
