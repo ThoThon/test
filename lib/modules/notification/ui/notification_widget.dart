@@ -51,15 +51,15 @@ extension NotificationWidget on NotificationPage {
 
   Widget _buildListNotification() {
     final enableCheckobx = controller.isShowCheckbox.value;
+
     return ListView.separated(
       itemBuilder: (context, index) {
         final item = controller.listNotification[index];
+        final isSelected = controller.selectedID.contains(item.id);
         return InkWell(
           onTap: () {
-            if (!enableCheckobx) {
-              controller.readNoti(item);
-            } else {
-              if (controller.selectedID.contains(item.id)) {
+            if (enableCheckobx) {
+              if (isSelected) {
                 controller.selectedID.remove(item.id);
               } else {
                 controller.selectedID.add(item.id);
@@ -76,10 +76,8 @@ extension NotificationWidget on NotificationPage {
                       horizontal: AppDimens.paddingSmall,
                     ),
                     child: UtilWidget.buildCircleCheckbox(
-                      isChecked: controller.selectedID.contains(item.id),
+                      isChecked: isSelected,
                       onTap: () {
-                        final isSelected =
-                            controller.selectedID.contains(item.id);
                         if (isSelected) {
                           controller.selectedID.remove(item.id);
                         } else {

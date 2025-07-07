@@ -50,17 +50,6 @@ class NotificationController extends BaseRefreshGetxController {
     );
   }
 
-  Future<void> readNotification(String id) async {
-    try {
-      final res = await _notificationRepository.readNotification(id);
-      if (res.result != null && res.isSuccess) {
-        update();
-      }
-    } catch (e) {
-      logger.d(e);
-    }
-  }
-
   @override
   Future<void> onLoadMore() async {
     await fetchListNotification(isLoadMore: true);
@@ -89,19 +78,6 @@ class NotificationController extends BaseRefreshGetxController {
       return '${difference.inDays} ${LocaleKeys.notification_dayBefore.tr}';
     } else {
       return convertDateToString(createDate, PATTERN_1);
-    }
-  }
-
-  void readNoti(NotificationItemModel item) {
-    // Khi onTap thì đổi status = 2 ở local rồi mới đến call API
-    if (item.status == 1) {
-      item.status = 2;
-      listNotification.refresh();
-      if (AppData.instance.totalUnread.value > 0) {
-        AppData.instance.totalUnread.value =
-            AppData.instance.totalUnread.value - 1;
-      }
-      readNotification(item.id);
     }
   }
 
