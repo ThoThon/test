@@ -190,14 +190,22 @@ extension HistoryWidget on HistoryPage {
       () {
         final month = controller.selectedPeriodDate.value.month;
         final year = controller.selectedPeriodDate.value.year;
-        return Padding(
+        return Container(
           padding: const EdgeInsets.symmetric(
-            horizontal: AppDimens.defaultPadding,
-            vertical: AppDimens.paddingSmall,
+            horizontal: AppDimens.paddingVerySmall,
+            vertical: AppDimens.paddingVerySmall,
           ),
+          decoration: BoxDecoration(
+            color: AppColors.basicWhite,
+            borderRadius: BorderRadius.circular(
+              AppDimens.radius20,
+            ),
+          ),
+          margin: const EdgeInsets.all(12),
           child: InkWell(
             onTap: controller.pickPeriodDate,
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 SDSBuildText(
                   'Tháng $month/$year',
