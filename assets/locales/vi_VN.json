@@ -478,7 +478,8 @@
     "addressReceivePaper": "Địa chỉ nhận hồ sơ giấy",
     "receiveResultElectronic": "Nhận kết quả bản điện tử",
     "receiveResultPaper": "Nhận kết quả bản giấy",
-    "listTable":"Danh sách bảng kê"
+    "listTable": "Danh sách bảng kê",
+    "coefficient": "Hệ số"
   },
   "familyMember": {
     "title": "Thêm thành viên",
