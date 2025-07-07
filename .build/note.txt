@@ -6,6 +6,7 @@
 - [Appmobile]_Giao diện sau chỉnh sửa lỗi hiển thị tương thích thiết bị - BHW-2591
 - [Appmobile]_Chỉnh sửa giao diện màn Đăng ký dịch vụ - BHW-2592
 - [Appmobile]_Sửa đổi giao diện màn lịch sử - BHW-2593
+- [Appmobile]_Giao diện sau chỉnh sửa: Màn danh sách nhân viên kê khai: Chưa chặn tối đa 5 file ảnh
 
 
 4/7/2025
