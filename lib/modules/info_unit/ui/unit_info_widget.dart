@@ -53,13 +53,12 @@ extension UnitInfoWidget on UnitInfoPage {
               _buildTitleAndIcon(title: LocaleKeys.unitInfo_otherInfo.tr),
               _buildCardToggle(
                 isEdit: isEdit,
+                hasBottomPadding: false,
                 cardEdit: _buildCardOtherInfoEdit(),
                 card: _buildCardOtherInfo(),
               ),
             ],
-          )
-              .paddingSymmetric(horizontal: AppDimens.defaultPadding)
-              .paddingOnly();
+          ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
         }),
       ),
     );
@@ -329,7 +328,6 @@ extension UnitInfoWidget on UnitInfoPage {
           controller.selectedReceive.value = value;
         },
       ),
-      sdsSBHeight12,
     ];
   }
 
@@ -386,7 +384,7 @@ extension UnitInfoWidget on UnitInfoPage {
         ),
       ],
     ).paddingOnly(
-      bottom: AppDimens.defaultPadding,
+      bottom: AppDimens.paddingSmall,
     );
   }
 
@@ -478,7 +476,7 @@ extension UnitInfoWidget on UnitInfoPage {
                         title: LocaleKeys.unitInfo_change.tr,
                         onPressed: () async {
                           if (controller.inputIsNotValid() ||
-                              controller.isInputUnchanged()) {
+                              controller.isInputUnchanged) {
                             controller.inputInfoIsEmpty();
                             return;
                           }

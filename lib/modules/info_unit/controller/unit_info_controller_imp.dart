@@ -5,8 +5,6 @@ import 'package:v_bhxh/shares/utils/string_utils.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 class UnitInfoControllerImpICare extends UnitInfoController {
-  final RxBool isEditAll = false.obs;
-  UpdateAccountInfoRequest? originalInfo;
   @override
   void onInit() async {
     super.onInit();
@@ -57,14 +55,14 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     originalInfo = _buildRequest();
   }
 
-  bool isInputUnchanged() {
+  bool get isInputUnchanged {
     final currentRequest = _buildRequest();
     return originalInfo != null &&
         currentRequest.toJson().toString() == originalInfo!.toJson().toString();
   }
 
   void handleCancelEdit() {
-    if (isInputUnchanged()) {
+    if (isInputUnchanged) {
       isEditAll.value = false;
     } else {
       ShowDialog.showDialogConfirm2(
