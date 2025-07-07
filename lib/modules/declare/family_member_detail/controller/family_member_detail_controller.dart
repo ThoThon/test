@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
@@ -28,13 +29,18 @@ class FamilyMemberDetailController extends BaseGetxController {
   final dateOfBirthCtrl = TextEditingController();
 
   /// Giới tính *
-  final gender = Rxn<Gender>();
+  final gender = Gender.female.obs;
 
   /// Dân tộc *
-  final selectedEthnic = Rxn<EthnicModel>();
+  /// Luôn khởi tạo Dân tộc là "Kinh"
+  final selectedEthnic = Rxn<EthnicModel>(
+    AppData.instance.ethnics.firstWhereOrNull((ethnics) => ethnics.value == 1),
+  );
 
   /// Quốc tịch *
-  final selectedNationality = Rxn<NationModel>();
+  /// Luôn khởi tạo Quốc tịch là "VIỆT NAM"
+  final selectedNationality = Rxn<NationModel>(AppData.instance.nations
+      .firstWhereOrNull((nations) => nations.value == "VN"));
 
   /// Tỉnh khai sinh *
   final selectedProvince = Rxn<ProvinceModel>();
@@ -89,7 +95,7 @@ class FamilyMemberDetailController extends BaseGetxController {
           birthType: birthType.value,
           dateOfBirth: convertStringToDateSafe(
               dateOfBirthCtrl.text, birthType.value.pattern),
-          gender: gender.value!,
+          gender: gender.value,
           ethnic: selectedEthnic.value!,
           nation: selectedNationality.value!,
           province: selectedProvince.value!,

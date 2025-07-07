@@ -729,6 +729,7 @@ class LocaleKeys {
   static const notification_hourBefore = 'notification_hourBefore';
   static const notification_minuteBefore = 'notification_minuteBefore';
   static const notification_secondBefore = 'notification_secondBefore';
+  static const registerService_registerTitle = 'registerService_registerTitle';
   static const registerService_registerService =
       'registerService_registerService';
   static const registerService_unitInfo = 'registerService_unitInfo';
@@ -751,6 +752,8 @@ class LocaleKeys {
   static const registerService_expiryDateFrom =
       'registerService_expiryDateFrom';
   static const registerService_expiryDateTo = 'registerService_expiryDateTo';
+  static const registerService_dayStart = 'registerService_dayStart';
+  static const registerService_dayEnd = 'registerService_dayEnd';
   static const registerService_phoneNumber = 'registerService_phoneNumber';
   static const registerService_email = 'registerService_email';
   static const registerService_register = 'registerService_register';
@@ -768,6 +771,13 @@ class LocaleKeys {
   static const registerService_cancelRegister =
       'registerService_cancelRegister';
   static const registerService_changeInfo = 'registerService_changeInfo';
+  static const registerService_updateInfo = 'registerService_updateInfo';
+  static const registerService_inputCCCDregisterMySign =
+      'registerService_inputCCCDregisterMySign';
+  static const registerService_signature = 'registerService_signature';
+  static const registerService_serialNumber = 'registerService_serialNumber';
+  static const registerService_inputCCCDregisterMySignCannotEmpty =
+      'registerService_inputCCCDregisterMySignCannotEmpty';
   static const registerCode_commonInfo = 'registerCode_commonInfo';
   static const registerCode_registerInfo = 'registerCode_registerInfo';
   static const registerCode_unitInfo = 'registerCode_unitInfo';
@@ -1399,7 +1409,7 @@ class Locales {
     'declareInfo_addressReceivePaper': 'Địa chỉ nhận hồ sơ giấy',
     'declareInfo_receiveResultElectronic': 'Nhận kết quả bản điện tử',
     'declareInfo_receiveResultPaper': 'Nhận kết quả bản giấy',
-    'familyMember_title': 'Kê khai thông tin thành viên HGĐ',
+    'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
     'familyMember_bhxhCode': 'Mã số BHXH',
@@ -1556,6 +1566,7 @@ class Locales {
     'notification_hourBefore': 'giờ trước',
     'notification_minuteBefore': 'phút trước',
     'notification_secondBefore': 'giây trước',
+    'registerService_registerTitle': 'Thông tin giao dịch',
     'registerService_registerService': 'Đăng ký dịch vụ',
     'registerService_unitInfo': 'Thông tin đơn vị',
     'registerService_taxCode': 'Mã số thuế',
@@ -1570,6 +1581,8 @@ class Locales {
     'registerService_certificateNumber': 'Số CTS',
     'registerService_expiryDateFrom': 'Thời hạn sử dụng từ',
     'registerService_expiryDateTo': 'Thời hạn sử dụng đến',
+    'registerService_dayStart': 'Ngày bắt đầu',
+    'registerService_dayEnd': 'Ngày kết thúc',
     'registerService_phoneNumber': 'Số điện thoại',
     'registerService_email': 'Email',
     'registerService_register': 'Đăng ký',
@@ -1581,8 +1594,14 @@ class Locales {
         'Không tìm thấy tên đăng nhập MySign',
     'registerService_userNameMySignCannotEmpty':
         'Nhập tên đăng nhập My Sign để lấy thông tin CTS',
-    'registerService_cancelRegister': 'Ngừng dịch vụ',
+    'registerService_cancelRegister': 'Ngừng',
     'registerService_changeInfo': 'Thay đổi',
+    'registerService_updateInfo': 'Cập nhật',
+    'registerService_inputCCCDregisterMySign': 'Nhập CCCD đăng ký MySign',
+    'registerService_signature': 'Chữ ký số',
+    'registerService_serialNumber': 'Số serial',
+    'registerService_inputCCCDregisterMySignCannotEmpty':
+        'Nhập CCCD đăng ký MySign để lấy thông tin CTS',
     'registerCode_commonInfo': 'Thông tin chung',
     'registerCode_registerInfo': 'Thông tin đăng ký',
     'registerCode_unitInfo': 'Thông tin đơn vị',

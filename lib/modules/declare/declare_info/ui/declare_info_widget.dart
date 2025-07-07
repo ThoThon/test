@@ -103,7 +103,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
               title,
               style: AppTextStyle.font16Re.copyWith(
                 color: !enabled
-                    ? const Color(0xFFF56584)
+                    ? const Color(0xFFE48595)
                     : isSelected
                         ? AppColors.primaryColor
                         : AppColors.basicWhite,

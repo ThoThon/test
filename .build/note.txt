@@ -2,6 +2,11 @@
 - Appmobile_Thủ tục 607: Thêm mới kỳ kê khai - BHW-2561
 - [Appmobile]_Sửa giao diện màn trang chủ: Tên đơn vị, MST căn trái - BHW-2595
 - [Appmobile]_Chỉnh sửa giao diện màn Tra cứu - BHW-2594
+- [Appmobile]_Chỉnh sửa giao diện Màn TK1-Thành viên gia đình - BHW-2574
+- [Appmobile]_Giao diện sau chỉnh sửa lỗi hiển thị tương thích thiết bị - BHW-2591
+- [Appmobile]_Chỉnh sửa giao diện màn Đăng ký dịch vụ - BHW-2592
+- [Appmobile]_Sửa đổi giao diện màn lịch sử - BHW-2593
+
 
 4/7/2025
 - [Appmobile]_Sửa lại giao diện màn tra cứu C12 - BHW-2522

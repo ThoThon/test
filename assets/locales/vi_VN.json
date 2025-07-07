@@ -477,7 +477,7 @@
     "receiveResultPaper": "Nhận kết quả bản giấy"
   },
   "familyMember": {
-    "title": "Kê khai thông tin thành viên HGĐ",
+    "title": "Thêm thành viên",
     "fullName": "Họ và tên",
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
     "bhxhCode": "Mã số BHXH",
@@ -635,6 +635,7 @@
     "secondBefore": "giây trước"
   },
   "registerService": {
+    "registerTitle": "Thông tin giao dịch",
     "registerService": "Đăng ký dịch vụ",
     "unitInfo": "Thông tin đơn vị",
     "taxCode": "Mã số thuế",
@@ -649,6 +650,8 @@
     "certificateNumber": "Số CTS",
     "expiryDateFrom": "Thời hạn sử dụng từ",
     "expiryDateTo": "Thời hạn sử dụng đến",
+    "dayStart": "Ngày bắt đầu",
+    "dayEnd": "Ngày kết thúc",
     "phoneNumber": "Số điện thoại",
     "email": "Email",
     "register": "Đăng ký",
@@ -658,8 +661,13 @@
     "certificateNotFound": "Không tìm thấy chứng thư số",
     "usernameMySignNotFound": "Không tìm thấy tên đăng nhập MySign",
     "userNameMySignCannotEmpty": "Nhập tên đăng nhập My Sign để lấy thông tin CTS",
-    "cancelRegister": "Ngừng dịch vụ",
-    "changeInfo": "Thay đổi"
+    "cancelRegister": "Ngừng",
+    "changeInfo": "Thay đổi",
+    "updateInfo": "Cập nhật",
+    "inputCCCDregisterMySign": "Nhập CCCD đăng ký MySign",
+    "signature": "Chữ ký số",
+    "serialNumber": "Số serial",
+    "inputCCCDregisterMySignCannotEmpty": "Nhập CCCD đăng ký MySign để lấy thông tin CTS"
   },
   "registerCode": {
     "commonInfo": "Thông tin chung",

@@ -20,9 +20,11 @@ class FamilyMemberDetailPage
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
+        centerTitle: true,
         title: BaseAppBarTitle(
           title: LocaleKeys.familyMember_title.tr,
         ),
+        leading: UtilWidget.buildButtonBackAppbar(),
       ),
       body: SafeArea(
         child: _buildBody(),
