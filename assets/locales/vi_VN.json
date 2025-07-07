@@ -617,7 +617,11 @@
     "dayBefore": "ngày trước",
     "hourBefore": "giờ trước",
     "minuteBefore": "phút trước",
-    "secondBefore": "giây trước"
+    "secondBefore": "giây trước",
+    "delete": "Xóa",
+    "deleteNotification": "Xóa thông báo",
+    "onOffNotification": "Bật/Tắt nhận thông báo",
+    "selectedAll":"Chọn tất cả"
   },
   "registerService": {
     "registerTitle": "Thông tin giao dịch",

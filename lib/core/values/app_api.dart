@@ -82,6 +82,9 @@ class AppApi {
   static const String urlRegisterFirstForCode =
       '/api/RegisterService/first-register';
   static const String urlForgotPassword = '/api/Authen/forgot-password';
+  static const String urlDeleteListNotification =
+      '/api/Notification/delete-list';
+  static const String urlDeleteAllNotification = '/api/Notification/delete-all';
 
   // === Danh sách các api liên quan đến thủ tục 607 ===
   static const String urlGetStaffList607 = '/api/HoSoTk1/get-list';
