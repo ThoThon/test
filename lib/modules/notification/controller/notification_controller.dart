@@ -8,11 +8,17 @@ class NotificationController extends BaseRefreshGetxController {
 
   final listNotification = <NotificationItemModel>[].obs;
 
+  final isShowCheckbox = false.obs;
+
+  // Dùng kiểu Set để tránh phần tử trùng nhau
+  final selectedID = <String>{}.obs;
+
   int page = AppConst.defaultPageNumber;
 
   @override
   void onInit() {
     super.onInit();
+    readAllNotification();
     fetchListNotification();
   }
 
@@ -44,17 +50,6 @@ class NotificationController extends BaseRefreshGetxController {
     );
   }
 
-  Future<void> readNotification(String id) async {
-    try {
-      final res = await _notificationRepository.readNotification(id);
-      if (res.result != null && res.isSuccess) {
-        update();
-      }
-    } catch (e) {
-      logger.d(e);
-    }
-  }
-
   @override
   Future<void> onLoadMore() async {
     await fetchListNotification(isLoadMore: true);
@@ -63,6 +58,7 @@ class NotificationController extends BaseRefreshGetxController {
 
   @override
   Future<void> onRefresh() async {
+    selectedID.clear();
     listNotification.clear();
     await fetchListNotification();
     refreshController.refreshCompleted();
@@ -85,19 +81,6 @@ class NotificationController extends BaseRefreshGetxController {
     }
   }
 
-  void readNoti(NotificationItemModel item) {
-    // Khi onTap thì đổi status = 2 ở local rồi mới đến call API
-    if (item.status == 1) {
-      item.status = 2;
-      listNotification.refresh();
-      if (AppData.instance.totalUnread.value > 0) {
-        AppData.instance.totalUnread.value =
-            AppData.instance.totalUnread.value - 1;
-      }
-      readNotification(item.id);
-    }
-  }
-
   Future<void> readAllNotification() async {
     try {
       if (AppData.instance.totalUnread.value > 0) {
@@ -117,6 +100,20 @@ class NotificationController extends BaseRefreshGetxController {
       logger.d(e);
     } finally {
       hideLoading();
+    }
+  }
+
+  Future<void> deleteListNotification() async {
+    try {
+      final response = await _notificationRepository
+          .deleteListNotification(selectedID.toList());
+      if (response.isSuccess && response.result != null) {
+        isShowCheckbox.value = false;
+        listNotification.clear();
+        fetchListNotification();
+      }
+    } catch (e) {
+      logger.d(e);
     }
   }
 }
