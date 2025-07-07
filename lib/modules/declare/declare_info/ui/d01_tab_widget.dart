@@ -2,7 +2,6 @@ part of 'declare_info_page.dart';
 
 extension D01TabWidget on DeclareInfoPage {
   Widget _buildD01TabBody() {
-    final isListTableEmpty = controller.d01State.forms.isEmpty;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -11,11 +10,6 @@ extension D01TabWidget on DeclareInfoPage {
           LocaleKeys.declareInfo_listOfTables.tr,
           style: AppTextStyle.font16Bo,
         ),
-        if (isListTableEmpty)
-          SDSBuildText(
-            LocaleKeys.declareInfo_tableIsEmpty.tr,
-            style: AppTextStyle.font16Re,
-          ),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
@@ -100,7 +94,7 @@ extension D01TabWidget on DeclareInfoPage {
         vertical: AppDimens.paddingSmall,
         horizontal: AppDimens.defaultPadding,
       ),
-    );
+    ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
   Widget _buildMenuPopupOnption(DeclarationForm form) {

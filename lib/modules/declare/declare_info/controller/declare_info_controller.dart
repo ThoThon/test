@@ -159,6 +159,10 @@ class DeclareInfoController extends BaseGetxController {
     );
     if (result is DeclarationForm) {
       d01State.forms.add(result);
+      showSnackBarCustom(
+        'Thêm bảng kê thành công',
+        align: const Alignment(0, 0.6),
+      );
     }
   }
 

@@ -51,7 +51,7 @@
     "confirmSignatureMySign": "Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian",
     "sendRequestSignature": "Gửi yêu cầu ký thành công",
     "sendFileToBHXH": "Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!",
-    "max5File":"Chỉ cho phép chọn tối đa 5 file"
+    "max5File": "Chỉ cho phép chọn tối đa 5 file"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -476,9 +476,10 @@
     "addressReceivePaper": "Địa chỉ nhận hồ sơ giấy",
     "receiveResultElectronic": "Nhận kết quả bản điện tử",
     "receiveResultPaper": "Nhận kết quả bản giấy",
-    "listOfTables":"Danh sách bảng kê",
-    "addTable":"Thêm bảng kê",
-    "tableIsEmpty":"Chưa có bảng kê nào được khai báo"
+    "listOfTables": "Danh sách bảng kê",
+    "addTable": "Thêm bảng kê",
+    "tableIsEmpty": "Chưa có bảng kê nào được khai báo",
+    "addTableSuccess": "Thêm bảng kê thành công"
   },
   "familyMember": {
     "title": "Thêm thành viên",
@@ -640,7 +641,7 @@
     "delete": "Xóa",
     "deleteNotification": "Xóa thông báo",
     "onOffNotification": "Bật/Tắt nhận thông báo",
-    "selectedAll":"Chọn tất cả"
+    "selectedAll": "Chọn tất cả"
   },
   "registerService": {
     "registerTitle": "Thông tin giao dịch",
