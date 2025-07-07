@@ -59,10 +59,10 @@ extension NotificationWidget on NotificationPage {
             if (!enableCheckobx) {
               controller.readNoti(item);
             } else {
-              if (controller.selectedID.contains(item)) {
-                controller.selectedID.remove(item);
+              if (controller.selectedID.contains(item.id)) {
+                controller.selectedID.remove(item.id);
               } else {
-                controller.selectedID.add(item);
+                controller.selectedID.add(item.id);
               }
             }
           },
@@ -76,13 +76,14 @@ extension NotificationWidget on NotificationPage {
                       horizontal: AppDimens.paddingSmall,
                     ),
                     child: UtilWidget.buildCircleCheckbox(
-                      isChecked: controller.selectedID.contains(item),
+                      isChecked: controller.selectedID.contains(item.id),
                       onTap: () {
-                        final isSelected = controller.selectedID.contains(item);
+                        final isSelected =
+                            controller.selectedID.contains(item.id);
                         if (isSelected) {
-                          controller.selectedID.remove(item);
+                          controller.selectedID.remove(item.id);
                         } else {
-                          controller.selectedID.add(item);
+                          controller.selectedID.add(item.id);
                         }
                       },
                     ),

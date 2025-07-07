@@ -31,8 +31,9 @@ class NotificationPage extends BaseGetWidget {
                 return controller.isShowCheckbox.value
                     ? IconButton(
                         onPressed: () {
-                          controller.selectedID
-                              .addAll(controller.listNotification);
+                          controller.selectedID.addAll(
+                            controller.listNotification.map((noti) => noti.id),
+                          );
                         },
                         icon: SDSBuildText(
                           LocaleKeys.notification_selectedAll.tr,

@@ -11,7 +11,7 @@ class NotificationController extends BaseRefreshGetxController {
   final isShowCheckbox = false.obs;
 
   // Dùng kiểu Set để tránh phần tử trùng nhau
-  final selectedID = <NotificationItemModel>{}.obs;
+  final selectedID = <String>{}.obs;
 
   int page = AppConst.defaultPageNumber;
 
@@ -129,9 +129,8 @@ class NotificationController extends BaseRefreshGetxController {
 
   Future<void> deleteListNotification() async {
     try {
-      final listID = selectedID.map((item) => item.id).toList();
-      final response =
-          await _notificationRepository.deleteListNotification(listID);
+      final response = await _notificationRepository
+          .deleteListNotification(selectedID.toList());
       if (response.isSuccess && response.result != null) {
         isShowCheckbox.value = false;
         listNotification.clear();
