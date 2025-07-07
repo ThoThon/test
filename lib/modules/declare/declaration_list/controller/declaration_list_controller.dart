@@ -54,7 +54,7 @@ class DeclarationListController extends BaseGetxController {
   void _showDialogCheckedSuccess() {
     ShowDialog.showDialogTimerCount(
       timerCount: 125,
-      showButton: true,
+      showCloseButton: true,
       content: LocaleKeys.dialog_confirmSignatureMySign.tr,
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       onFinish: () {

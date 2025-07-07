@@ -361,7 +361,7 @@ class ShowDialog {
     VoidCallback? onFinish,
     bool isActiveBack = true,
     int? timerCount,
-    bool showButton = false,
+    bool showCloseButton = false,
   }) async {
     _showDialog(
       Dialog(
@@ -403,7 +403,7 @@ class ShowDialog {
               ),
             ),
             const SizedBox(height: 16),
-            if (showButton)
+            if (showCloseButton)
               SizedBox(
                 width: double.infinity,
                 child: UtilWidget.buildSolidButton(
@@ -414,7 +414,6 @@ class ShowDialog {
                       .copyWith(color: AppColors.basicWhite),
                   onPressed: () {
                     dismissDialog();
-                    onFinish?.call();
                   },
                 ),
               ),
