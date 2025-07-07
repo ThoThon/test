@@ -5,6 +5,7 @@ import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare_607/declare_info_607/model/receive_profile_result_enum.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class Tk1State607 {
@@ -74,6 +75,28 @@ class Tk1State607 {
   /// Bệnh viện nơi KCB *
   final hospitalKCB = Rxn<Hospital>();
 
+  /// Nội dung thay đổi *
+  final contentChangesTextCtrl = TextEditingController();
+
+  /// Hồ sơ kèm theo
+  final attachedProfileTextCtrl = TextEditingController();
+
+  /// Nhận kết quả hồ sơ
+  final receiveResult =
+      Rx<ReceiveProfileResultEnum>(ReceiveProfileResultEnum.electronic);
+
+  /// Tỉnh nhận hồ sơ giấy
+  final provinceReceivePaper = Rxn<ProvinceModel>();
+
+  /// Huyện nhận hồ sơ giấy
+  final districtReceivePaper = Rxn<DistrictModel>();
+
+  /// Xã nhận hồ sơ giấy
+  final wardReceivePaper = Rxn<WardModel>();
+
+  /// Địa chỉ thường trú
+  final addressReceivePaperTextCtrl = TextEditingController();
+
   /// SĐT liên hệ
   final contactPhoneNumberTextCtrl = TextEditingController();
 
@@ -100,8 +123,6 @@ class Tk1State607 {
 
   /// Danh sách thành viên trong gia đình
   final familyMembers = <FamilyMember>[].obs;
-
-  final isHouseholdInfoRequired = false.obs;
 
   /// Sinh dữ liệu D01-TS
   final isGenerateD01Data = false.obs;
@@ -196,6 +217,9 @@ class Tk1State607 {
     dateOfBirthTextCtrl.dispose();
     birthAddressTextCtrl.dispose();
     addressReceiveTextCtrl.dispose();
+    contentChangesTextCtrl.dispose();
+    attachedProfileTextCtrl.dispose();
+    addressReceivePaperTextCtrl.dispose();
     contactPhoneNumberTextCtrl.dispose();
     headOfHouseholdTextCtrl.dispose();
     headOfHouseholdCCCDTextCtrl.dispose();

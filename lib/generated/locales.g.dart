@@ -523,6 +523,32 @@ class LocaleKeys {
       'declareInfo_deleteSelectedMember';
   static const declareInfo_delete = 'declareInfo_delete';
   static const declareInfo_inputCCCD = 'declareInfo_inputCCCD';
+  static const declareInfo_profileInfo = 'declareInfo_profileInfo';
+  static const declareInfo_contentChanges = 'declareInfo_contentChanges';
+  static const declareInfo_enterContentChanges =
+      'declareInfo_enterContentChanges';
+  static const declareInfo_attachedProfile = 'declareInfo_attachedProfile';
+  static const declareInfo_enterAttachedProfile =
+      'declareInfo_enterAttachedProfile';
+  static const declareInfo_receiveProfileResult =
+      'declareInfo_receiveProfileResult';
+  static const declareInfo_provinceReceivePaper =
+      'declareInfo_provinceReceivePaper';
+  static const declareInfo_selectProvinceReceivePaper =
+      'declareInfo_selectProvinceReceivePaper';
+  static const declareInfo_districtReceivePaper =
+      'declareInfo_districtReceivePaper';
+  static const declareInfo_selectDistrictReceivePaper =
+      'declareInfo_selectDistrictReceivePaper';
+  static const declareInfo_wardReceivePaper = 'declareInfo_wardReceivePaper';
+  static const declareInfo_selectWardReceivePaper =
+      'declareInfo_selectWardReceivePaper';
+  static const declareInfo_addressReceivePaper =
+      'declareInfo_addressReceivePaper';
+  static const declareInfo_receiveResultElectronic =
+      'declareInfo_receiveResultElectronic';
+  static const declareInfo_receiveResultPaper =
+      'declareInfo_receiveResultPaper';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1376,6 +1402,21 @@ class Locales {
     'declareInfo_deleteSelectedMember': 'Xóa thành viên đã chọn',
     'declareInfo_delete': 'Xóa',
     'declareInfo_inputCCCD': 'Nhập số CCCD',
+    'declareInfo_profileInfo': 'Thông tin hồ sơ',
+    'declareInfo_contentChanges': 'Nội dung thay đổi',
+    'declareInfo_enterContentChanges': 'Nhập nội dung thay đổi',
+    'declareInfo_attachedProfile': 'Hồ sơ kèm theo',
+    'declareInfo_enterAttachedProfile': 'Nhập hồ sơ kèm theo',
+    'declareInfo_receiveProfileResult': 'Nhận kết quả hồ sơ',
+    'declareInfo_provinceReceivePaper': 'Tỉnh nhận hồ sơ giấy',
+    'declareInfo_selectProvinceReceivePaper': 'Chọn tỉnh nhận hồ sơ giấy',
+    'declareInfo_districtReceivePaper': 'Huyện nhận hồ sơ giấy',
+    'declareInfo_selectDistrictReceivePaper': 'Chọn huyện nhận hồ sơ giấy',
+    'declareInfo_wardReceivePaper': 'Xã nhận hồ sơ giấy',
+    'declareInfo_selectWardReceivePaper': 'Chọn xã nhận hồ sơ giấy',
+    'declareInfo_addressReceivePaper': 'Địa chỉ nhận hồ sơ giấy',
+    'declareInfo_receiveResultElectronic': 'Nhận kết quả bản điện tử',
+    'declareInfo_receiveResultPaper': 'Nhận kết quả bản giấy',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

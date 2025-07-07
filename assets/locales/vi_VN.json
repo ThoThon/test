@@ -460,7 +460,22 @@
     "addFamilyMember": "Thêm thành viên",
     "deleteSelectedMember": "Xóa thành viên đã chọn",
     "delete": "Xóa",
-    "inputCCCD": "Nhập số CCCD"
+    "inputCCCD": "Nhập số CCCD",
+    "profileInfo": "Thông tin hồ sơ",
+    "contentChanges": "Nội dung thay đổi",
+    "enterContentChanges": "Nhập nội dung thay đổi",
+    "attachedProfile": "Hồ sơ kèm theo",
+    "enterAttachedProfile": "Nhập hồ sơ kèm theo",
+    "receiveProfileResult": "Nhận kết quả hồ sơ",
+    "provinceReceivePaper": "Tỉnh nhận hồ sơ giấy",
+    "selectProvinceReceivePaper": "Chọn tỉnh nhận hồ sơ giấy",
+    "districtReceivePaper": "Huyện nhận hồ sơ giấy",
+    "selectDistrictReceivePaper": "Chọn huyện nhận hồ sơ giấy",
+    "wardReceivePaper": "Xã nhận hồ sơ giấy",
+    "selectWardReceivePaper": "Chọn xã nhận hồ sơ giấy",
+    "addressReceivePaper": "Địa chỉ nhận hồ sơ giấy",
+    "receiveResultElectronic": "Nhận kết quả bản điện tử",
+    "receiveResultPaper": "Nhận kết quả bản giấy"
   },
   "familyMember": {
     "title": "Thêm thành viên",

@@ -100,7 +100,7 @@ extension HistoryDeclareTab on HistoryPage {
         if (item.soHoSo?.isNotEmpty ?? false)
           Expanded(
             child: SDSBuildText(
-              "${item.soHoSo ?? ''}",
+              item.soHoSo ?? '',
               style: AppTextStyle.font14Bo,
               overflow: TextOverflow.ellipsis,
             ),
