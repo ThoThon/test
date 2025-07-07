@@ -457,7 +457,7 @@ extension D02TabWidget on DeclareInfoPage {
               ? LocaleKeys.declareInfo_coefficient.tr
               : LocaleKeys.declareInfo_salaryCoefficient.tr,
           inputFormatters: isSalaryCoefficient
-              ? InputFormatterEnum.salaryCurrency
+              ? InputFormatterEnum.coefficient
               : InputFormatterEnum.salaryNormal,
           controller: controller.d02State.salaryCoefficientTextCtrl,
           isRequired: true,
