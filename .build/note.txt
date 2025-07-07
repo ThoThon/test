@@ -1,3 +1,6 @@
+7/7/2025
+- Appmobile_Thủ tục 607: Thêm mới kỳ kê khai - BHW-2561
+
 4/7/2025
 - [Appmobile]_Sửa lại giao diện màn tra cứu C12 - BHW-2522
 - [Appmobile]_Màn TK1 -Thành viên trong gia đình: Trường Số CCCD và Ghi chú không là trường bắt buộc - BHW-2575
@@ -7,7 +10,7 @@
 
 
 3/7/2025
-- [Appmobile]_Thủ tục 607 - Bổ sung api Xóa toàn bộ Hồ sơ TK1, D01
+- [Appmobile]_Thủ tục 607 - Xóa đợt kê khai - BHW-2597
 - Chỉnh sửa giá trị mặc định ban đầu ở màn kê khai D02,Tk1
 - [Appmobile]_Lỗi UI/UX Khi nhập CCCD tiếng việt Luồng 600 - BHW-2580
 - [Appmobile]_Thủ tục 600: Màn TK1: Lỗi hiển thị Là trường bắt buộc đối với thông tin chủ hộ - BHW-2578
