@@ -408,6 +408,74 @@ class ShowDialog {
     );
   }
 
+  static Future<void> showDialogTimerCount2({
+    required String title,
+    required String content,
+    VoidCallback? onFinish,
+    bool isActiveBack = true,
+    int? timerCount,
+  }) async {
+    _showDialog(
+      Dialog(
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.all(AppDimens.defaultPadding),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SDSBuildText(
+              title,
+              maxLines: 3,
+              style: AppTextStyle.font18Bo,
+              textAlign: TextAlign.center,
+            ),
+            sdsSBHeight16,
+            CountDownTimer(
+              start: timerCount ?? 120,
+              onFinish: () {
+                dismissDialog();
+                onFinish?.call();
+              },
+            ),
+            Container(
+              padding: const EdgeInsets.only(
+                top: AppDimens.defaultPadding,
+              ),
+              constraints: const BoxConstraints(maxHeight: 200),
+              child: SingleChildScrollView(
+                child: Text(
+                  content,
+                  style: AppTextStyle.font16Semi,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.clip,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: double.infinity,
+              child: UtilWidget.buildSolidButton(
+                title: 'Đóng',
+                backgroundColor: AppColors.primaryColor,
+                borderRadius: AppDimens.radius30,
+                textStyle:
+                    AppTextStyle.font14Bo.copyWith(color: AppColors.basicWhite),
+                onPressed: () {
+                  dismissDialog();
+                  onFinish?.call();
+                },
+              ),
+            ),
+          ],
+        ).paddingAll(AppDimens.padding24),
+      ),
+      isActiveBack,
+    );
+  }
+
   static Future<void> showDialogWithWidget({
     required String title,
     String? content,
