@@ -451,8 +451,12 @@ class LocaleKeys {
       'declareInfo_participantHeadOfHousehold';
   static const declareInfo_headOfHouseholdFullName =
       'declareInfo_headOfHouseholdFullName';
+  static const declareInfo_headOfHouseholdFullNameCannotEmpty =
+      'declareInfo_headOfHouseholdFullNameCannotEmpty';
   static const declareInfo_headOfHouseholdCCCD =
       'declareInfo_headOfHouseholdCCCD';
+  static const declareInfo_headOfHouseholdCCCDCannotEmpty =
+      'declareInfo_headOfHouseholdCCCDCannotEmpty';
   static const declareInfo_provinceTT = 'declareInfo_provinceTT';
   static const declareInfo_selectProvinceTT = 'declareInfo_selectProvinceTT';
   static const declareInfo_districtTT = 'declareInfo_districtTT';
@@ -1345,7 +1349,11 @@ class Locales {
     'declareInfo_contactPhoneNumber': 'Số điện thoại liên hệ',
     'declareInfo_participantHeadOfHousehold': 'Người tham gia là chủ hộ',
     'declareInfo_headOfHouseholdFullName': 'Họ và tên chủ hộ',
+    'declareInfo_headOfHouseholdFullNameCannotEmpty':
+        'Họ và tên chủ hộ không được để trống',
     'declareInfo_headOfHouseholdCCCD': 'Số CCCD của chủ hộ',
+    'declareInfo_headOfHouseholdCCCDCannotEmpty':
+        'Số CCCD của chủ hộ không được để trống',
     'declareInfo_provinceTT': 'Tỉnh thường trú',
     'declareInfo_selectProvinceTT': 'Chọn tỉnh thường trú',
     'declareInfo_districtTT': 'Huyện thường trú',
