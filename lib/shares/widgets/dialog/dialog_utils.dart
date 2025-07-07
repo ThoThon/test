@@ -361,6 +361,7 @@ class ShowDialog {
     VoidCallback? onFinish,
     bool isActiveBack = true,
     int? timerCount,
+    bool showCloseButton = false,
   }) async {
     _showDialog(
       Dialog(
@@ -401,6 +402,21 @@ class ShowDialog {
                 ),
               ),
             ),
+            const SizedBox(height: 16),
+            if (showCloseButton)
+              SizedBox(
+                width: double.infinity,
+                child: UtilWidget.buildSolidButton(
+                  title: 'Đóng',
+                  backgroundColor: AppColors.primaryColor,
+                  borderRadius: AppDimens.radius30,
+                  textStyle: AppTextStyle.font14Bo
+                      .copyWith(color: AppColors.basicWhite),
+                  onPressed: () {
+                    dismissDialog();
+                  },
+                ),
+              ),
           ],
         ).paddingAll(AppDimens.padding24),
       ),

@@ -1624,4 +1624,36 @@ class UtilWidget {
       ),
     );
   }
+
+  static Widget buildCircleCheckbox({
+    required bool isChecked,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 20,
+        height: 20,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: isChecked ? AppColors.primaryColor : Colors.grey,
+            width: 2,
+          ),
+        ),
+        child: isChecked
+            ? Center(
+                child: Container(
+                  width: 10,
+                  height: 10,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.primaryColor,
+                  ),
+                ),
+              )
+            : null,
+      ),
+    );
+  }
 }
