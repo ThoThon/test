@@ -1,3 +1,6 @@
+7/7/2025
+- [Appmobile]_Sửa giao diện màn trang chủ: Tên đơn vị, MST căn trái - BHW-2595
+
 4/7/2025
 - [Appmobile]_Sửa lại giao diện màn tra cứu C12 - BHW-2522
 - [Appmobile]_Màn TK1 -Thành viên trong gia đình: Trường Số CCCD và Ghi chú không là trường bắt buộc - BHW-2575
