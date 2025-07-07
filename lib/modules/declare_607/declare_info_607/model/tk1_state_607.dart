@@ -74,6 +74,28 @@ class Tk1State607 {
   /// Bệnh viện nơi KCB *
   final hospitalKCB = Rxn<Hospital>();
 
+  /// Nội dung thay đổi *
+  final contentChangesTextCtrl = TextEditingController();
+
+  /// Hồ sơ kèm theo
+  final attachedProfileTextCtrl = TextEditingController();
+
+  /// Nhận kết quả hồ sơ
+  final receiveResult = Rxn<ReceiveResultModel>(AppData.instance.receiveResults
+      .firstWhereOrNull((receiveResult) => receiveResult.value == "DT"));
+
+  /// Tỉnh nhận hồ sơ giấy
+  final provinceReceivePaper = Rxn<ProvinceModel>();
+
+  /// Huyện nhận hồ sơ giấy
+  final districtReceivePaper = Rxn<DistrictModel>();
+
+  /// Xã nhận hồ sơ giấy
+  final wardReceivePaper = Rxn<WardModel>();
+
+  /// Địa chỉ thường trú
+  final addressReceivePaperTextCtrl = TextEditingController();
+
   /// SĐT liên hệ
   final contactPhoneNumberTextCtrl = TextEditingController();
 
@@ -196,6 +218,9 @@ class Tk1State607 {
     dateOfBirthTextCtrl.dispose();
     birthAddressTextCtrl.dispose();
     addressReceiveTextCtrl.dispose();
+    contentChangesTextCtrl.dispose();
+    attachedProfileTextCtrl.dispose();
+    addressReceivePaperTextCtrl.dispose();
     contactPhoneNumberTextCtrl.dispose();
     headOfHouseholdTextCtrl.dispose();
     headOfHouseholdCCCDTextCtrl.dispose();

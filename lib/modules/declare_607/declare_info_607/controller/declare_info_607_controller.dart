@@ -613,6 +613,42 @@ class DeclareInfo607Controller extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
+  void onChangeProvinceReceivePaper(ProvinceModel value) {
+    if (tk1State.provinceReceivePaper.value != value) {
+      tk1State.districtReceivePaper.value = null;
+      tk1State.wardReceivePaper.value = null;
+    }
+
+    tk1State.provinceReceivePaper.value = value;
+  }
+
+  void onChangeDistrictReceivePaper(DistrictModel value) {
+    if (tk1State.districtReceivePaper.value != value) {
+      tk1State.wardReceivePaper.value = null;
+    }
+
+    tk1State.districtReceivePaper.value = value;
+  }
+
+  void onChangeWardReceivePaper(WardModel value) {
+    tk1State.wardReceivePaper.value = value;
+  }
+
+  void onTapClearProvinceReceivePaper() {
+    tk1State.provinceReceivePaper.value = null;
+    tk1State.districtReceivePaper.value = null;
+    tk1State.wardReceivePaper.value = null;
+  }
+
+  void onTapClearDistrictReceivePaper() {
+    tk1State.districtReceivePaper.value = null;
+    tk1State.wardReceivePaper.value = null;
+  }
+
+  void onTapClearWardReceivePaper() {
+    tk1State.wardReceivePaper.value = null;
+  }
+
   bool get isHouseholdInfoEmpty {
     return tk1State.headOfHouseholdTextCtrl.text.trim().isEmpty &&
         tk1State.headOfHouseholdCCCDTextCtrl.text.trim().isEmpty &&

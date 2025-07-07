@@ -103,13 +103,17 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                       style: AppTextStyle.font16Bo
                           .copyWith(color: AppColors.colorBlack),
                     ),
-                    UtilWidget.sizedBox16,
+                    sdsSBHeight12,
 
                     //Tỉnh nơi khám chữa bệnh
                     _buildSelectProvinceKCB(),
 
                     //Bệnh viện nơi khám chữa bệnh
                     _buildSelectHospitalKCB(),
+
+                    // Thông tin hồ sơ
+                    _buildProfileInfo(),
+                    sdsSBHeight12,
 
                     //Thông tin chủ hộ
                     SDSBuildText(
@@ -805,6 +809,239 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           },
         );
       },
+    );
+  }
+
+  /// Thông tin hồ sơ
+  Widget _buildProfileInfo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SDSBuildText(
+          LocaleKeys.declareInfo_profileInfo.tr,
+          style: AppTextStyle.font16Bo.copyWith(color: AppColors.colorBlack),
+        ),
+        sdsSBHeight12,
+        _buildContentChanges(),
+        sdsSBHeight12,
+        _buildAttachedProfile(),
+        sdsSBHeight12,
+        _buildSelectReceiveResult(),
+        sdsSBHeight12,
+        _buildSelectProvinceReceivePaper(),
+        sdsSBHeight12,
+        _buildSelectDistrictReceivePaper(),
+        sdsSBHeight12,
+        _buildSelectWardReceivePaper(),
+        sdsSBHeight12,
+        _buildInputAddressReceivePaper(),
+      ],
+    );
+  }
+
+  /// Nội dung thay đổi
+  Widget _buildContentChanges() {
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declareInfo_contentChanges.tr,
+      hintText: LocaleKeys.declareInfo_enterContentChanges.tr,
+      isRequired: false,
+      controller: controller.tk1State.contentChangesTextCtrl,
+      maxLengthInputForm: 1000,
+      inputFormatters: InputFormatterEnum.textNormal,
+    );
+  }
+
+  /// Hồ sơ kèm theo
+  Widget _buildAttachedProfile() {
+    return CardInputTextFormWithLabel(
+      labelText: LocaleKeys.declareInfo_attachedProfile.tr,
+      hintText: LocaleKeys.declareInfo_enterAttachedProfile.tr,
+      isRequired: false,
+      controller: controller.tk1State.attachedProfileTextCtrl,
+      maxLengthInputForm: 1000,
+      inputFormatters: InputFormatterEnum.textNormal,
+    );
+  }
+
+  /// Nhận kết quả hồ sơ
+  Widget _buildSelectReceiveResult() {
+    return CardDropdownWithLabel<ReceiveResultModel>(
+      key: ValueKey(controller.tk1State.receiveResult.value),
+      labelText: LocaleKeys.declareInfo_receiveProfileResult.tr,
+      items: AppData.instance.receiveResults.toList(),
+      display: (item) => item.text,
+      autovalidateMode: controller.autovalidateMode.value,
+      isRequired: true,
+      selectedItem: controller.tk1State.receiveResult.value,
+      onChanged: (value) {
+        if (value != null) {
+          controller.tk1State.receiveResult.value = value;
+        }
+      },
+    );
+  }
+
+  /// Tỉnh nhận hồ sơ giấy
+  Widget _buildSelectProvinceReceivePaper() {
+    return Obx(
+      () {
+        return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
+          label: LocaleKeys.declareInfo_provinceReceivePaper.tr,
+          isRequired: false,
+          funcSelect: (didChange) {
+            Get.bottomSheet(
+              BottomSheetSearch<ProvinceModel>(
+                maxLength: 20,
+                title: LocaleKeys.declareInfo_selectProvinceReceivePaper.tr,
+                listFilter: AppData.instance.provinces.toList(),
+                selectedItem: controller.tk1State.provinceReceivePaper.value,
+                display: (value) => value.name,
+                onAccept: (value) {
+                  if (value == null) return;
+                  controller.onChangeProvinceReceivePaper(value);
+                  didChange(value);
+                },
+              ),
+              isScrollControlled: true,
+            );
+          },
+          selectedItem: controller.tk1State.provinceReceivePaper.value,
+          display: (province) => province.name,
+          enableClearIcon: true,
+          onTapClear: controller.onTapClearProvinceReceivePaper,
+          // validator: (value) {
+          //   if (controller.tk1State.isHouseholdInfoRequired.value &&
+          //       controller.tk1State.provinceTT.value == null) {
+          //     return LocaleKeys.declareInfo_provinceTTCannotEmpty.tr;
+          //   }
+          //   return null;
+          // },
+        );
+      },
+    );
+  }
+
+  Widget _buildSelectDistrictReceivePaper() {
+    return Obx(
+      () {
+        return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
+          label: LocaleKeys.declareInfo_districtReceivePaper.tr,
+          // hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
+          isRequired: false,
+          funcSelect: (didChange) async {
+            final provinceReceivePaper =
+                controller.tk1State.provinceReceivePaper.value;
+            if (provinceReceivePaper == null) {
+              controller.showSnackBar('Chưa chọn tỉnh nhận hồ sơ giấy');
+              return;
+            }
+
+            final result = await Get.bottomSheet<DistrictModel>(
+              SelectDistrictBts(
+                provinceCode: provinceReceivePaper.id,
+                selectedDistrict:
+                    controller.tk1State.districtReceivePaper.value,
+              ),
+              isScrollControlled: true,
+            );
+
+            if (result != null) {
+              controller.onChangeDistrictReceivePaper(result);
+              didChange(result);
+            }
+          },
+          selectedItem: controller.tk1State.districtReceivePaper.value,
+          display: (district) => district.name,
+          enableClearIcon: true,
+          onTapClear: controller.onTapClearDistrictReceivePaper,
+          // validator: (value) {
+          //   if (controller.tk1State.isHouseholdInfoRequired.value &&
+          //       controller.tk1State.wardTT.value == null) {
+          //     return LocaleKeys.declareInfo_districtTTCannotEmpty.tr;
+          //   }
+          //   return null;
+          // },
+        );
+      },
+    );
+  }
+
+  Widget _buildSelectWardReceivePaper() {
+    return Obx(
+      () {
+        return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
+          label: LocaleKeys.declareInfo_wardReceivePaper.tr,
+          isRequired: false,
+          funcSelect: (didChange) async {
+            final provinceReceivePaper =
+                controller.tk1State.provinceReceivePaper.value;
+            if (provinceReceivePaper == null) {
+              controller.showSnackBar('Chưa chọn tỉnh nhận hồ sơ giấy');
+              return;
+            }
+
+            final districtReceivePaper =
+                controller.tk1State.districtReceivePaper.value;
+            if (districtReceivePaper == null) {
+              controller.showSnackBar('Chưa chọn huyện nhận hồ sơ giấy');
+              return;
+            }
+
+            final result = await Get.bottomSheet<WardModel>(
+              SelectWardBts(
+                provinceCode: provinceReceivePaper.id,
+                districtCode: districtReceivePaper.id,
+                selectedWard: controller.tk1State.wardReceivePaper.value,
+              ),
+              isScrollControlled: true,
+            );
+
+            if (result != null) {
+              controller.onChangeWardReceivePaper(result);
+              didChange(result);
+            }
+          },
+          selectedItem: controller.tk1State.wardReceivePaper.value,
+          display: (ward) => ward.name,
+          enableClearIcon: true,
+          onTapClear: controller.onTapClearWardReceivePaper,
+          // validator: (value) {
+          //   if (controller.tk1State.isHouseholdInfoRequired.value &&
+          //       controller.tk1State.wardTT.value == null) {
+          //     return LocaleKeys.declareInfo_wardTTCannotEmpty.tr;
+          //   }
+          //   return null;
+          // },
+        );
+      },
+    );
+  }
+
+  Widget _buildInputAddressReceivePaper() {
+    return Obx(
+      () => CardInputTextFormWithLabel(
+        labelText: LocaleKeys.declareInfo_addressReceivePaper.tr,
+        hintText: LocaleKeys.declareInfo_inputAddress.tr,
+        autovalidateMode: controller.tk1State.autoValidateMode.value,
+        isRequired: false,
+        controller: controller.tk1State.addressReceivePaperTextCtrl,
+        inputFormatters: InputFormatterEnum.textNormal,
+        // onChanged: controller.onChangeAddressTT,
+        maxLengthInputForm: 500,
+        // validator: (value) {
+        //   final trimmedValue = value?.trim();
+
+        //   if (trimmedValue == null || trimmedValue.isEmpty) {
+        //     return LocaleKeys.declareInfo_addressTTCannotEmpty.tr;
+        //   }
+
+        //   return null;
+        // },
+      ),
     );
   }
 
