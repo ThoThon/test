@@ -549,6 +549,9 @@ class LocaleKeys {
       'declareInfo_receiveResultElectronic';
   static const declareInfo_receiveResultPaper =
       'declareInfo_receiveResultPaper';
+  static const declareInfo_listOfTables = 'declareInfo_listOfTables';
+  static const declareInfo_addTable = 'declareInfo_addTable';
+  static const declareInfo_tableIsEmpty = 'declareInfo_tableIsEmpty';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1417,6 +1420,9 @@ class Locales {
     'declareInfo_addressReceivePaper': 'Địa chỉ nhận hồ sơ giấy',
     'declareInfo_receiveResultElectronic': 'Nhận kết quả bản điện tử',
     'declareInfo_receiveResultPaper': 'Nhận kết quả bản giấy',
+    'declareInfo_listOfTables': 'Danh sách bảng kê',
+    'declareInfo_addTable': 'Thêm bảng kê',
+    'declareInfo_tableIsEmpty': 'Chưa có bảng kê nào được khai báo',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

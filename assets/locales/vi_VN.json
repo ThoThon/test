@@ -475,7 +475,10 @@
     "selectWardReceivePaper": "Chọn xã nhận hồ sơ giấy",
     "addressReceivePaper": "Địa chỉ nhận hồ sơ giấy",
     "receiveResultElectronic": "Nhận kết quả bản điện tử",
-    "receiveResultPaper": "Nhận kết quả bản giấy"
+    "receiveResultPaper": "Nhận kết quả bản giấy",
+    "listOfTables":"Danh sách bảng kê",
+    "addTable":"Thêm bảng kê",
+    "tableIsEmpty":"Chưa có bảng kê nào được khai báo"
   },
   "familyMember": {
     "title": "Thêm thành viên",
