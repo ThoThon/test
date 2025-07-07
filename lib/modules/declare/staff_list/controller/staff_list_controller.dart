@@ -214,8 +214,19 @@ class StaffListController extends BaseGetxController {
   }
 
   Future<void> createStaff() async {
+    final procedureType = argument.procedureType;
+    final String path;
+    switch (procedureType) {
+      case ProcedureType.procedure600:
+        path = AppRoutes.declareInfo.path;
+        break;
+      case ProcedureType.procedure607:
+        path = AppRoutes.declareInfo607.path;
+        break;
+    }
+
     final result = await Get.toNamed(
-      AppRoutes.declareInfo.path,
+      path,
       arguments: DeclareInfoArgument(
         declarationPeriodId: declarationPeriodId,
         staffId: null,
@@ -228,8 +239,19 @@ class StaffListController extends BaseGetxController {
   }
 
   Future<void> updateStaff(DeclaredStaffModel staff) async {
+    final procedureType = argument.procedureType;
+    final String path;
+    switch (procedureType) {
+      case ProcedureType.procedure600:
+        path = AppRoutes.declareInfo.path;
+        break;
+      case ProcedureType.procedure607:
+        path = AppRoutes.declareInfo607.path;
+        break;
+    }
+
     final result = await Get.toNamed(
-      AppRoutes.declareInfo.path,
+      path,
       arguments: DeclareInfoArgument(
         declarationPeriodId: declarationPeriodId,
         staffId: staff.id,

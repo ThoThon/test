@@ -1,3 +1,4 @@
+/// Loại thủ tục
 enum ProcedureType {
   /// Thủ tục 600
   procedure600,
