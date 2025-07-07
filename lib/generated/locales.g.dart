@@ -62,6 +62,7 @@ class LocaleKeys {
   static const dialog_confirmSignatureMySign = 'dialog_confirmSignatureMySign';
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
   static const dialog_sendFileToBHXH = 'dialog_sendFileToBHXH';
+  static const dialog_max5File = 'dialog_max5File';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -703,6 +704,12 @@ class LocaleKeys {
   static const notification_hourBefore = 'notification_hourBefore';
   static const notification_minuteBefore = 'notification_minuteBefore';
   static const notification_secondBefore = 'notification_secondBefore';
+  static const notification_delete = 'notification_delete';
+  static const notification_deleteNotification =
+      'notification_deleteNotification';
+  static const notification_onOffNotification =
+      'notification_onOffNotification';
+  static const notification_selectedAll = 'notification_selectedAll';
   static const registerService_registerTitle = 'registerService_registerTitle';
   static const registerService_registerService =
       'registerService_registerService';
@@ -964,6 +971,7 @@ class Locales {
     'dialog_sendRequestSignature': 'Gửi yêu cầu ký thành công',
     'dialog_sendFileToBHXH':
         'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
+    'dialog_max5File': 'Chỉ cho phép chọn tối đa 5 file',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -1525,6 +1533,10 @@ class Locales {
     'notification_hourBefore': 'giờ trước',
     'notification_minuteBefore': 'phút trước',
     'notification_secondBefore': 'giây trước',
+    'notification_delete': 'Xóa',
+    'notification_deleteNotification': 'Xóa thông báo',
+    'notification_onOffNotification': 'Bật/Tắt nhận thông báo',
+    'notification_selectedAll': 'Chọn tất cả',
     'registerService_registerTitle': 'Thông tin giao dịch',
     'registerService_registerService': 'Đăng ký dịch vụ',
     'registerService_unitInfo': 'Thông tin đơn vị',
