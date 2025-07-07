@@ -477,7 +477,8 @@
     "selectWardReceivePaper": "Chọn xã nhận hồ sơ giấy",
     "addressReceivePaper": "Địa chỉ nhận hồ sơ giấy",
     "receiveResultElectronic": "Nhận kết quả bản điện tử",
-    "receiveResultPaper": "Nhận kết quả bản giấy"
+    "receiveResultPaper": "Nhận kết quả bản giấy",
+    "listTable":"Danh sách bảng kê"
   },
   "familyMember": {
     "title": "Thêm thành viên",
