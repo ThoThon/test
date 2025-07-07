@@ -884,6 +884,8 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     return Obx(
       () {
         return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
+          enable: controller.tk1State.receiveResult.value ==
+              ReceiveProfileResultEnum.paper,
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_provinceReceivePaper.tr,
           isRequired: false,
@@ -924,6 +926,8 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     return Obx(
       () {
         return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
+          enable: controller.tk1State.receiveResult.value ==
+              ReceiveProfileResultEnum.paper,
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_districtReceivePaper.tr,
           // hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
@@ -970,6 +974,8 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     return Obx(
       () {
         return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
+          enable: controller.tk1State.receiveResult.value ==
+              ReceiveProfileResultEnum.paper,
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_wardReceivePaper.tr,
           isRequired: false,
