@@ -1368,7 +1368,7 @@ class Locales {
     'declareInfo_deleteSelectedMember': 'Xóa thành viên đã chọn',
     'declareInfo_delete': 'Xóa',
     'declareInfo_inputCCCD': 'Nhập số CCCD',
-    'familyMember_title': 'Kê khai thông tin thành viên HGĐ',
+    'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
     'familyMember_bhxhCode': 'Mã số BHXH',
