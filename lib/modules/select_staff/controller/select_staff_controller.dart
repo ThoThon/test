@@ -13,6 +13,8 @@ class SelectStaffController
 
   final staffSelected = Rx<SelectStaffResponse?>(null);
 
+  final selectedID = Rx<String?>(null);
+
   @override
   void onInit() {
     super.onInit();
