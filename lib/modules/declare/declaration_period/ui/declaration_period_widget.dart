@@ -129,8 +129,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
           sdsSBHeight8,
           _buildPeriodNumber(period: period),
           sdsSBHeight12,
-          if (period.updateDate != null || period.createTime != null)
-            _buildDateAndButton(period),
+          _buildDateAndButton(period),
         ],
       ),
     );
@@ -205,10 +204,11 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   Widget _buildDateAndButton(DeclarationPeriod period) {
     return Row(
       children: [
-        SDSBuildText(
-          '${convertDateToStringSafe(period.updateDate ?? period.createTime, PATTERN_14)}',
-          style: AppTextStyle.font14Re.copyWith(color: Colors.grey),
-        ),
+        if (period.updateDate != null || period.createTime != null)
+          SDSBuildText(
+            '${convertDateToStringSafe(period.updateDate ?? period.createTime, PATTERN_14)}',
+            style: AppTextStyle.font14Re.copyWith(color: Colors.grey),
+          ),
         const Spacer(),
         if (period.status.canEdit)
           InkWell(
