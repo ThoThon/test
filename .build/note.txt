@@ -11,6 +11,7 @@
 - [Appmobile]_Chỉnh sửa popup khi chuyển ký gửi - BHW-2585
 - [Appmobile]_Lỗi hiển thị trường bắt buộc Địa chỉ thường trú - BHW-2608
 - [Appmobile]_Chỉnh sửa giao diện: Màn D01
+- [Appmobile]_Chỉnh sửa giao diện bổ sung: Trường Tiền lương/hệ số - BHW-2609
 
 4/7/2025
 - [Appmobile]_Sửa lại giao diện màn tra cứu C12 - BHW-2522
