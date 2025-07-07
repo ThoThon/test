@@ -7,9 +7,15 @@ extension D01TabWidget on DeclareInfoPage {
         Expanded(
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 UtilWidget.sizedBox16,
+                SDSBuildText(
+                  LocaleKeys.declareInfo_listTable.tr,
+                  style: AppTextStyle.font16Bo,
+                ),
+                sdsSBHeight12,
                 ...controller.d01State.forms.mapIndexed(
                   (index, form) {
                     return _buildD01Item(
