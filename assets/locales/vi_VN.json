@@ -462,7 +462,7 @@
     "inputCCCD": "Nhập số CCCD"
   },
   "familyMember": {
-    "title": "Kê khai thông tin thành viên HGĐ",
+    "title": "Thêm thành viên",
     "fullName": "Họ và tên",
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
     "bhxhCode": "Mã số BHXH",
