@@ -1,3 +1,5 @@
+import 'package:v_bhxh/modules/declare/declare_src.dart';
+
 class Procedure {
   final String name;
   final String parentName;
@@ -21,5 +23,10 @@ class Procedure {
       code: json['ma'] ?? '',
       note: json['ghiChu'] ?? '',
     );
+  }
+
+  /// Loại thủ tục của kỳ khai báo
+  ProcedureType get procedureType {
+    return ProcedureType.fromInt(type);
   }
 }
