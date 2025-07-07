@@ -763,7 +763,7 @@ class DeclareInfoController extends BaseGetxController {
   /// Nếu chọn loại khai báo và phương án trong các type sau
   /// "Từ tháng/năm" sẽ thành isRequired
   ///
-  /// REF: http://10.100.140.19:8080/projects/BHW/issues/BHW-2411
+  /// REF: https://jira-sds.softdreams.vn:8080/projects/BHW/issues/BHW-2411
   bool get isFromDateRequired {
     final declarationTypeId = d02State.declarationType.value?.value;
     // Tăng lao động
@@ -785,7 +785,7 @@ class DeclareInfoController extends BaseGetxController {
     }
     // Khác
     if (declarationTypeId == 5) {
-      return ['DC', 'CD', 'TD', 'DL'].contains(d02State.plan.value?.id);
+      return ['DC', 'CD', 'TL', 'DL'].contains(d02State.plan.value?.id);
     }
     return false;
   }

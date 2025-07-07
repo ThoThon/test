@@ -237,13 +237,16 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
 
   Widget _buildSelectedGender() {
     return CardDropdownWithLabel<Gender>(
+      key: ValueKey(controller.gender.value),
       labelText: LocaleKeys.declareInfo_gender.tr,
       items: Gender.values,
       display: (item) => item.title,
       isRequired: true,
       selectedItem: controller.gender.value,
       onChanged: (value) {
-        controller.gender.value = value;
+        if (value != null) {
+          controller.gender.value = value;
+        }
       },
     );
   }
