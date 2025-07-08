@@ -10,6 +10,9 @@ import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 
 class Tk1State607 {
+  /// id tk1ts dùng khi update
+  String? id;
+
   final formKey = GlobalKey<FormState>();
 
   final autoValidateMode = AutovalidateMode.disabled.obs;

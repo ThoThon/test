@@ -1,6 +1,7 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
+import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/district_model.dart';
 import 'package:v_bhxh/modules/login/model/province_model.dart';
@@ -222,47 +223,44 @@ class DeclareInfo607Controller extends BaseGetxController {
   }
 
   Future<void> _addD02() async {
-    // try {
-    //   showLoadingOverlay();
-    //   final request = AddD02Request.fromState(
-    //     kyKeKhaiId: argument.declarationPeriodId,
-    //     d02Tk1State: d02Tk1State,
-    //     d02State: d02State,
-    //     tk1State: tk1State,
-    //     d01State: d01State,
-    //   );
+    try {
+      showLoadingOverlay();
+      final request = AddTk1Request607.fromState(
+        kyKeKhaiId: argument.declarationPeriodId,
+        tk1State: tk1State,
+        d01State: d01State,
+      );
 
-    //   final response = await declareInfoRepository.addD02(request: request);
+      final response = await declareInfoRepository.addTk1(request: request);
 
-    //   if (response.isSuccess) {
-    //     showSnackBar(
-    //       LocaleKeys.declareInfo_saveDataSuccess.tr,
-    //       typeAction: AppConst.actionSuccess,
-    //     );
-    //     if (argument.isAddPeriodFromDeclarePeriod) {
-    //       Get.offNamed(
-    //         AppRoutes.staffList.path,
-    //         // TODO: correct value of procedureType
-    //         arguments: StaffListArgument(
-    //           declarationPeriodId: argument.declarationPeriodId,
-    //           procedureType: ProcedureType.procedure600,
-    //         ),
-    //       )?.then((value) {
-    //         declarationPeriodController?.getDeclarationPeriods();
-    //       });
-    //     } else if (argument.isAddStaffFromStaffList) {
-    //       Get.back(
-    //         result: argument.declarationPeriodId,
-    //       );
-    //     }
-    //   } else {
-    //     showSnackBar(response.errorMessage);
-    //   }
-    // } catch (e) {
-    //   logger.e(e);
-    // } finally {
-    //   hideLoadingOverlay();
-    // }
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        if (argument.isAddPeriodFromDeclarePeriod) {
+          Get.offNamed(
+            AppRoutes.staffList.path,
+            arguments: StaffListArgument(
+              declarationPeriodId: argument.declarationPeriodId,
+              procedureType: ProcedureType.procedure607,
+            ),
+          )?.then((value) {
+            declarationPeriodController?.getDeclarationPeriods();
+          });
+        } else if (argument.isAddStaffFromStaffList) {
+          Get.back(
+            result: argument.declarationPeriodId,
+          );
+        }
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 
   Future<void> _updateD02() async {

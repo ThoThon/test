@@ -1,7 +1,7 @@
 8/8/2025
 - [Appmobile]_Thủ tục 607 - Bổ sung giao diện Chọn nhân viên - BHW-2599
 - [Appmobile]_Thủ tục 607 - Xây dựng giao diện các trường màn D01 - BHW-2565
-
+[Appmobile]_Thủ tục 607 - Bổ sung giao diện "Lưu TK1, D01" - BHW-2596
 7/7/2025
 - Appmobile_Thủ tục 607: Thêm mới kỳ kê khai - BHW-2561
 - [Appmobile]_Sửa giao diện màn trang chủ: Tên đơn vị, MST căn trái - BHW-2595

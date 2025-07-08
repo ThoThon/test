@@ -42,7 +42,7 @@ class UpdateD02Request {
       tk1Ts: Tk1Request.fromState(tk1State: tk1State),
       familyMembers: FamilyMemberRequest.fromState(
         kyKeKhaiId: kyKeKhaiId,
-        tk1State: tk1State,
+        familyMembers: tk1State.familyMembers,
       ),
       d01Dts: D01Request.fromState(
         kyKeKhaiId: kyKeKhaiId,

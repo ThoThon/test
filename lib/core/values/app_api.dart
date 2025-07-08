@@ -91,6 +91,7 @@ class AppApi {
   static const String urlSaveXml607 = '/api/HoSoTk1/save-xml';
   static const String urlDeleteDeclarationPeriod607 =
       '/api/HoSoTk1/delete-tk1-d01';
+  static const String urlAddTk1 = '/api/HoSoTk1/add-tk1';
 
   // === Kết thúc các api liên quan đến thủ tục 607 ===
 }
