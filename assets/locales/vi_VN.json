@@ -513,6 +513,7 @@
     "nationalityCannotEmpty": "Quốc tịch không được bỏ trống",
     "provinceOfBirth": "Tỉnh khai sinh",
     "selectProvinceOfBirth": "Chọn tỉnh khai sinh",
+    "selectProvince": "Chọn Tỉnh/Thành phố",
     "provinceOfBirthCannotEmpty": "Tỉnh khai sinh không được bỏ trống",
     "districtOfBirth": "Huyện khai sinh",
     "selectDistrictOfBirth": "Chọn huyện khai sinh",
