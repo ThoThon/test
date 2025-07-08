@@ -9,6 +9,7 @@ extension RegisterInfoTab on RegisterCodePage {
           Expanded(
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildBhxhInfoCard(),
                   sdsSBHeight12,
@@ -17,7 +18,12 @@ extension RegisterInfoTab on RegisterCodePage {
                   _buildSelectUploadFile(),
                   _buidHideImage(),
                   sdsSBHeight12,
-                  _buildSingatureInfo(),
+                  SDSBuildText(
+                    LocaleKeys.registerCode_signature.tr,
+                    style: AppTextStyle.font16Bo,
+                  ),
+                  sdsSBHeight12,
+                  _buildInputUsernameMySign(),
                   _buildCardSignatureInfo(),
                 ],
               ),
@@ -325,42 +331,33 @@ extension RegisterInfoTab on RegisterCodePage {
     );
   }
 
-  Widget _buildSingatureInfo() {
-    return Column(
+  Widget _buildInputUsernameMySign() {
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SDSBuildText(
-          LocaleKeys.registerCode_signature.tr,
-          style: AppTextStyle.font16Bo,
+        Expanded(
+          child: CardInputTextFormWithLabel(
+            labelText: LocaleKeys.registerService_signature.tr,
+            isRequired: true,
+            controller: controller.usernameMySignCtrl,
+            inputFormatters: InputFormatterEnum.textNormal,
+            autovalidateMode: AutovalidateMode.always,
+            hintText: LocaleKeys.registerService_inputCCCDregisterMySign.tr,
+            onChanged: (value) {
+              controller.updateStateBtnSearchCert();
+            },
+            validator: (value) {
+              final trimmedValue = value?.trim();
+              if (trimmedValue.isNullOrEmpty) {
+                return LocaleKeys
+                    .registerService_inputCCCDregisterMySignCannotEmpty.tr;
+              }
+              return null;
+            },
+          ),
         ),
-        sdsSBHeight12,
-        // Ô input nhập username My Sign
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: CardInputTextForm(
-                controller: controller.usernameMySignCtrl,
-                hintText: LocaleKeys.registerService_inputMySignUsername.tr,
-                maxLengthInputForm: 50,
-                isShowCounterText: false,
-                onChanged: (value) {
-                  controller.updateStateBtnSearchCert();
-                },
-                validator: (value) {
-                  final trimmedValue = value?.trim();
-                  if (trimmedValue == null || trimmedValue.isEmpty) {
-                    return LocaleKeys
-                        .registerService_userNameMySignCannotEmpty.tr;
-                  }
-                  return null;
-                },
-              ),
-            ),
-            sdsSBWidth12,
-            _buildButtonGetListCert(),
-          ],
-        ),
+        sdsSBWidth12,
+        _buildButtonGetListCert(),
       ],
     );
   }
@@ -369,6 +366,7 @@ extension RegisterInfoTab on RegisterCodePage {
     final isEnableBtn = controller.isEnableBtnSearchCert.value;
     return SizedBox(
       width: 50,
+      height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
@@ -484,42 +482,20 @@ extension RegisterInfoTab on RegisterCodePage {
     return Obx(
       () {
         final cert = controller.certificate.value;
-        return Visibility(
-          visible: cert != null,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              sdsSBHeight12,
-              // Tên chủ thể CTS
-              _buildSingleItem(
-                title: LocaleKeys.registerService_subjectNameCert.tr,
-                contenTitle: cert?.name ?? '',
-              ),
-              sdsSBHeight12,
-
-              // Tên tổ chức trực thuộc CTS
-              _buildSingleItem(
-                  title: LocaleKeys.registerService_organizationNameOfCert.tr,
-                  // TODO: Phía BE chưa có thuộc tính này, tạm thời fix cứng
-                  contenTitle: cert == null ? '' : "Viettel - CA RS"),
-              sdsSBHeight12,
-
-              // Số CTS
-              _buildSingleItem(
-                title: LocaleKeys.registerService_certificateNumber.tr,
-                contenTitle: cert?.serialNumber ?? '',
-              ),
-              sdsSBHeight12,
-
-              // "Thời hạn sử dụng từ" và "Thời hạn sử dụng đến"
-              _buildDoubleItem(
-                titleLeft: LocaleKeys.registerService_expiryDateFrom.tr,
-                contenTitleLeft: cert?.validFrom ?? '',
-                titleRight: LocaleKeys.registerService_expiryDateTo.tr,
-                contenTitleRight: cert?.validTo ?? '',
-              ),
-            ],
-          ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            sdsSBHeight12,
+            _buildDropdownSerial(),
+            sdsSBHeight12,
+            // "Ngày bắt đầu" và "Ngày kết thúc"
+            _buildDoubleItem(
+              titleLeft: LocaleKeys.registerService_dayStart.tr,
+              contenTitleLeft: cert?.validFrom ?? '',
+              titleRight: LocaleKeys.registerService_dayEnd.tr,
+              contenTitleRight: cert?.validTo ?? '',
+            ),
+          ],
         );
       },
     );
@@ -544,22 +520,6 @@ extension RegisterInfoTab on RegisterCodePage {
           child: _buildCardItem(
             title: titleRight,
             contenTitle: contenTitleRight ?? '',
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSingleItem({
-    required String title,
-    String? contenTitle,
-  }) {
-    return Row(
-      children: [
-        Expanded(
-          child: _buildCardItem(
-            title: title,
-            contenTitle: contenTitle ?? '',
           ),
         ),
       ],
@@ -686,6 +646,19 @@ extension RegisterInfoTab on RegisterCodePage {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildDropdownSerial() {
+    return CardDropdownWithLabel<CertificateModel>(
+      isRequired: true,
+      labelText: LocaleKeys.registerService_serialNumber.tr,
+      items: controller.listCert,
+      display: (cert) => cert.serialNumber,
+      selectedItem: controller.certificate.value,
+      onChanged: (value) {
+        controller.certificate.value = value;
+      },
     );
   }
 }

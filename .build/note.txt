@@ -9,6 +9,7 @@
 - [Appmobile]_Lỗi đếm ngược tại popup chuyển ký MS- BHW-2616
 - [Appmobile] Hiển thị sai màu button "Hủy" - BHW-2633
 - [Appmobile]_Chỉnh sửa thông báo text đỏ trường Tiền lương và hệ số - BHW-2632
+- [Appmobile]_Chỉnh sửa giao diện bổ sung: Màn đăng ký cấp mã Trả về số serial - BHW-2613
 
 7/7/2025
 - Appmobile_Thủ tục 607: Thêm mới kỳ kê khai - BHW-2561
