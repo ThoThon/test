@@ -255,7 +255,7 @@ class BuildInputTextState extends State<BuildInputText> {
             color:
                 widget.inputTextFormModel.errorTextColor ?? AppColors.statusRed,
           ),
-          errorMaxLines: 2,
+          errorMaxLines: 3,
           prefixIcon: widget.inputTextFormModel.iconLeading != null
               ? Icon(
                   widget.inputTextFormModel.iconLeading,
