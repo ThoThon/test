@@ -8,6 +8,7 @@
 - [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất trong hộp combobox - BHW-2621
 - [Appmobile]_Lỗi đếm ngược tại popup chuyển ký MS- BHW-2616
 - [Appmobile] Hiển thị sai màu button "Hủy" - BHW-2633
+- [Appmobile]_Chỉnh sửa thông báo text đỏ trường Tiền lương và hệ số - BHW-2632
 
 7/7/2025
 - Appmobile_Thủ tục 607: Thêm mới kỳ kê khai - BHW-2561
