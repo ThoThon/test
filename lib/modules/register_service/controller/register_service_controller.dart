@@ -9,6 +9,7 @@ const _allowRetryCode = "58061";
 
 class RegisterServiceController extends BaseGetxController {
   final usernameMySignCtrl = TextEditingController();
+
   final listCert = <CertificateModel>[].obs;
 
   final certificate = Rxn<CertificateModel>();
@@ -36,20 +37,15 @@ class RegisterServiceController extends BaseGetxController {
           await _registerServiceRepository.getListCert(usernameMySignCtrl.text);
       if (response.isSuccess) {
         listCert.value = response.result;
+        //Nếu có chứng thư số thì lấy luôn thông tin chứng thư số đầu tiên
+        certificate.value = listCert.first;
+      } else {
+        showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
       }
     } catch (e) {
       logger.d(e);
     } finally {
       hideLoadingOverlay();
-    }
-  }
-
-  Future<void> getListCertificate() async {
-    await fetchListCert();
-    if (listCert.isNotEmpty) {
-      certificate.value = listCert.first;
-    } else {
-      showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
     }
   }
 
@@ -64,6 +60,7 @@ class RegisterServiceController extends BaseGetxController {
         final userId = response.result!.userId;
         if (userId != null && userId.isNotEmpty) {
           usernameMySignCtrl.text = userId;
+          await fetchListCert();
         }
         isUsernameMySignEmpty.value = usernameMySignCtrl.text.trim().isEmpty;
       }

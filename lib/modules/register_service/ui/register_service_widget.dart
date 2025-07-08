@@ -119,7 +119,7 @@ extension RegisterServiceWidget on RegisterServicePage {
                     registerInfo?.thoiHanTuNgay,
                     PATTERN_1,
                   ),
-              titleRight: LocaleKeys.registerService_dayStart.tr,
+              titleRight: LocaleKeys.registerService_dayEnd.tr,
               contenTitleRight: cert?.validTo ??
                   convertDateToStringSafe(
                     registerInfo?.thoiHanDenNgay,
@@ -267,7 +267,7 @@ extension RegisterServiceWidget on RegisterServicePage {
         ),
         onPressed: () {
           if (isUsernameMySignEmpty) return;
-          controller.getListCertificate();
+          controller.fetchListCert();
         },
         child: Center(
           child: SDSImageSvg(Assets.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG),
