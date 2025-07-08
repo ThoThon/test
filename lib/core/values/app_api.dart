@@ -93,6 +93,7 @@ class AppApi {
       '/api/HoSoTk1/delete-tk1-d01';
   static const String urlAddTk1 = '/api/HoSoTk1/add-tk1';
   static const String urlGetTk1Detail = '/api/HoSoTk1/get-detail';
+  static const String urlUpdateTk1 = '/api/HoSoTk1/update-tk1';
 
   // === Kết thúc các api liên quan đến thủ tục 607 ===
 }
