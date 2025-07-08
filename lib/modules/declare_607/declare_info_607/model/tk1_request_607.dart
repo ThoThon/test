@@ -16,6 +16,7 @@ class Tk1Request607 {
   final String? khaiSinhTinhId;
   final String? khaiSinhHuyenId;
   final String? khaiSinhXaId;
+  final String? diaChiKhaiSinh;
   final bool trungDiaChiKhaiSinh;
   final String? noiNhanTinhId;
   final String? noiNhanHuyenId;
@@ -26,7 +27,16 @@ class Tk1Request607 {
   final String? dienThoaiLienHe;
   final String? noiDungThayDoi;
   final String? hoSoKemTheo;
+
+  /// `DT` - Nhận kết quả bản điện tử
+  ///
+  /// `G` - Nhận kết quả bản giấy
   final String? dangKyNhanKetQua;
+  final String? nhanBanGiayTinhId;
+  final String? nhanBanGiayHuyenId;
+  final String? nhanBanGiayXaId;
+  final String? diaChiNhanBanGiay;
+
   final bool laChuHo;
   final String? hoTenChuHo;
   final String? chuHoSoCccd;
@@ -34,7 +44,7 @@ class Tk1Request607 {
   final String? chuHoThuongTruHuyenId;
   final String? chuHoThuongTruXaId;
   final String? diaChiThuongTruChuHo;
-  final String? diaChiKhaiSinh;
+  final bool xuatD01;
 
   Tk1Request607({
     this.id,
@@ -50,6 +60,7 @@ class Tk1Request607 {
     this.khaiSinhTinhId,
     this.khaiSinhHuyenId,
     this.khaiSinhXaId,
+    this.diaChiKhaiSinh,
     required this.trungDiaChiKhaiSinh,
     this.noiNhanTinhId,
     this.noiNhanHuyenId,
@@ -61,6 +72,10 @@ class Tk1Request607 {
     this.noiDungThayDoi,
     this.hoSoKemTheo,
     this.dangKyNhanKetQua,
+    this.nhanBanGiayTinhId,
+    this.nhanBanGiayHuyenId,
+    this.nhanBanGiayXaId,
+    this.diaChiNhanBanGiay,
     required this.laChuHo,
     this.hoTenChuHo,
     this.chuHoSoCccd,
@@ -68,7 +83,7 @@ class Tk1Request607 {
     this.chuHoThuongTruHuyenId,
     this.chuHoThuongTruXaId,
     this.diaChiThuongTruChuHo,
-    this.diaChiKhaiSinh,
+    required this.xuatD01,
   });
 
   Map<String, dynamic> toJson() {
@@ -86,6 +101,7 @@ class Tk1Request607 {
       'khaiSinhTinhId': khaiSinhTinhId,
       'khaiSinhHuyenId': khaiSinhHuyenId,
       'khaiSinhXaId': khaiSinhXaId,
+      'diaChiKhaiSinh': diaChiKhaiSinh,
       'trungDiaChiKhaiSinh': trungDiaChiKhaiSinh,
       'noiNhanTinhId': noiNhanTinhId,
       'noiNhanHuyenId': noiNhanHuyenId,
@@ -97,6 +113,10 @@ class Tk1Request607 {
       'noiDungThayDoi': noiDungThayDoi,
       'hoSoKemTheo': hoSoKemTheo,
       'dangKyNhanKetQua': dangKyNhanKetQua,
+      'nhanBanGiayTinhId': khaiSinhTinhId,
+      'nhanBanGiayHuyenId': khaiSinhHuyenId,
+      'nhanBanGiayXaId': khaiSinhXaId,
+      'diaChiNhanBanGiay': diaChiNhanBanGiay,
       'laChuHo': laChuHo,
       'hoTenChuHo': hoTenChuHo,
       'chuHoSoCccd': chuHoSoCccd,
@@ -104,7 +124,7 @@ class Tk1Request607 {
       'chuHoThuongTruHuyenId': chuHoThuongTruHuyenId,
       'chuHoThuongTruXaId': chuHoThuongTruXaId,
       'diaChiThuongTruChuHo': diaChiThuongTruChuHo,
-      'diaChiKhaiSinh': diaChiKhaiSinh,
+      'xuatTk01': xuatD01,
     };
   }
 
@@ -129,6 +149,7 @@ class Tk1Request607 {
       khaiSinhTinhId: tk1State.provinceOfBirth.value?.id,
       khaiSinhHuyenId: tk1State.districtOfBirth.value?.id,
       khaiSinhXaId: tk1State.wardOfBirth.value?.id,
+      diaChiKhaiSinh: tk1State.birthAddressTextCtrl.text.trim(),
       trungDiaChiKhaiSinh: tk1State.isDuplicateBirthAddress.value,
       noiNhanTinhId: tk1State.provinceReceive.value?.id,
       noiNhanHuyenId: tk1State.districtReceive.value?.id,
@@ -139,7 +160,11 @@ class Tk1Request607 {
       dienThoaiLienHe: tk1State.contactPhoneNumberTextCtrl.text.trim(),
       noiDungThayDoi: tk1State.contentChangesTextCtrl.text.trim(),
       hoSoKemTheo: tk1State.attachedProfileTextCtrl.text.trim(),
-      dangKyNhanKetQua: tk1State.receiveResult.value.title,
+      dangKyNhanKetQua: tk1State.receiveResult.value.code,
+      nhanBanGiayTinhId: tk1State.provinceReceivePaper.value?.id,
+      nhanBanGiayHuyenId: tk1State.districtReceivePaper.value?.id,
+      nhanBanGiayXaId: tk1State.wardReceivePaper.value?.id,
+      diaChiNhanBanGiay: tk1State.addressReceivePaperTextCtrl.text.trim(),
       laChuHo: tk1State.isParticipantHeadOfHousehold.value,
       hoTenChuHo: tk1State.headOfHouseholdTextCtrl.text.trim(),
       chuHoSoCccd: tk1State.headOfHouseholdCCCDTextCtrl.text.trim(),
@@ -147,7 +172,7 @@ class Tk1Request607 {
       chuHoThuongTruHuyenId: tk1State.districtTT.value?.id,
       chuHoThuongTruXaId: tk1State.wardTT.value?.id,
       diaChiThuongTruChuHo: tk1State.addressTTTextCtrl.text.trim(),
-      diaChiKhaiSinh: tk1State.birthAddressTextCtrl.text.trim(),
+      xuatD01: tk1State.isGenerateD01Data.value,
     );
   }
 }

@@ -5,10 +5,10 @@ import 'package:v_bhxh/generated/locales.g.dart';
 ///
 /// - Không dùng ReceiveResultModel (dangKyNhanSoThes category) từ BE vì đang sai chính tả và tester Lan Ngọc có mong muống dùng fix cứng như này.
 enum ReceiveProfileResultEnum {
-  /// Nhận kết quả bản điện tử
+  /// DT - Nhận kết quả bản điện tử
   electronic,
 
-  /// Nhận kết quả bản giấy
+  /// G - Nhận kết quả bản giấy
   paper;
 
   String get title {
@@ -20,10 +20,26 @@ enum ReceiveProfileResultEnum {
     }
   }
 
-  static ReceiveProfileResultEnum? fromString(String? value) {
-    if (value == null) return null;
-    return ReceiveProfileResultEnum.values.firstWhereOrNull(
-      (e) => e.title == value,
-    );
+  String get code {
+    switch (this) {
+      case ReceiveProfileResultEnum.electronic:
+        return 'DT';
+      case ReceiveProfileResultEnum.paper:
+        return 'G';
+    }
+  }
+
+  static ReceiveProfileResultEnum? fromCode(String? value) {
+    if (value == null) {
+      return null;
+    }
+    switch (value) {
+      case 'DT':
+        return ReceiveProfileResultEnum.electronic;
+      case 'G':
+        return ReceiveProfileResultEnum.paper;
+      default:
+        return null;
+    }
   }
 }
