@@ -330,7 +330,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.familyMember_selectProvinceOfBirth.tr,
+                title: LocaleKeys.familyMember_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.selectedProvince.value,
                 display: (value) => value.name,

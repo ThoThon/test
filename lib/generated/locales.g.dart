@@ -596,6 +596,7 @@ class LocaleKeys {
   static const familyMember_provinceOfBirth = 'familyMember_provinceOfBirth';
   static const familyMember_selectProvinceOfBirth =
       'familyMember_selectProvinceOfBirth';
+  static const familyMember_selectProvince = 'familyMember_selectProvince';
   static const familyMember_provinceOfBirthCannotEmpty =
       'familyMember_provinceOfBirthCannotEmpty';
   static const familyMember_districtOfBirth = 'familyMember_districtOfBirth';
@@ -1485,6 +1486,7 @@ class Locales {
     'familyMember_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
     'familyMember_provinceOfBirth': 'Tỉnh khai sinh',
     'familyMember_selectProvinceOfBirth': 'Chọn tỉnh khai sinh',
+    'familyMember_selectProvince': 'Chọn Tỉnh/Thành phố',
     'familyMember_provinceOfBirthCannotEmpty':
         'Tỉnh khai sinh không được bỏ trống',
     'familyMember_districtOfBirth': 'Huyện khai sinh',
