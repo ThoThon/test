@@ -28,10 +28,10 @@ class DeclareInfo607Controller extends BaseGetxController {
   @override
   void onReady() {
     super.onReady();
-    _getD02Detail();
+    _getTk1Detail();
   }
 
-  Future<void> _getD02Detail() async {
+  Future<void> _getTk1Detail() async {
     final staffId = argument.staffId;
 
     if (staffId == null) {
@@ -40,12 +40,11 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     try {
       showLoadingOverlay();
-      final response = await declareInfoRepository.getD02Detail(id: staffId);
+      final response = await declareInfoRepository.getTk1Detail(id: staffId);
       final infoDetail = response.result;
       if (response.isSuccess && infoDetail != null) {
-        // Update D02Tk1State
-        tk1State.mapFromD02Detail(infoDetail);
-        d01State.mapFromD02Detail(infoDetail);
+        tk1State.mapFromTk1Detail(infoDetail);
+        d01State.mapFromTk1Detail(infoDetail);
       } else {
         showSnackBar(response.errorMessage);
       }
