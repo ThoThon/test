@@ -534,10 +534,13 @@ class LocaleKeys {
   static const declareInfo_otherInfo = 'declareInfo_otherInfo';
   static const declareInfo_generateD01tsData = 'declareInfo_generateD01tsData';
   static const declareInfo_personalInfo = 'declareInfo_personalInfo';
-  static const declareInfo_salaryOrCoefficientCannotEmpty =
-      'declareInfo_salaryOrCoefficientCannotEmpty';
-  static const declareInfo_salaryOrCoefficientMustBeInteger =
-      'declareInfo_salaryOrCoefficientMustBeInteger';
+  static const declareInfo_salaryCannotEmpty = 'declareInfo_salaryCannotEmpty';
+  static const declareInfo_salaryMustBeInteger =
+      'declareInfo_salaryMustBeInteger';
+  static const declareInfo_coefficientCannotEmpty =
+      'declareInfo_coefficientCannotEmpty';
+  static const declareInfo_coefficientMustBeInteger =
+      'declareInfo_coefficientMustBeInteger';
   static const declareInfo_addressInfo = 'declareInfo_addressInfo';
   static const declareInfo_medicalFacilityInfo =
       'declareInfo_medicalFacilityInfo';
@@ -1443,10 +1446,10 @@ class Locales {
     'declareInfo_otherInfo': 'Thông tin khác',
     'declareInfo_generateD01tsData': 'Sinh dữ liệu D01-TS',
     'declareInfo_personalInfo': 'Thông tin cá nhân',
-    'declareInfo_salaryOrCoefficientCannotEmpty':
-        'Tiền lương/Hệ số không được bỏ trống',
-    'declareInfo_salaryOrCoefficientMustBeInteger':
-        'Tiền lương/Hệ số phải là số nguyên',
+    'declareInfo_salaryCannotEmpty': 'Tiền lương không được bỏ trống',
+    'declareInfo_salaryMustBeInteger': 'Tiền lương phải là số nguyên',
+    'declareInfo_coefficientCannotEmpty': 'Hệ số không được bỏ trống',
+    'declareInfo_coefficientMustBeInteger': 'Tiền lương phải là số nguyên',
     'declareInfo_addressInfo': 'Thông tin địa chỉ',
     'declareInfo_medicalFacilityInfo': 'Thông tin nơi khám chữa bệnh',
     'declareInfo_householdOwnerInfo': 'Thông tin chủ hộ',
