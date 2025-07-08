@@ -50,7 +50,7 @@ class StaffListController extends BaseGetxController {
   }
 
   void maximumUploadFile() {
-    showSnackBar('Chỉ cho phép chọn tối đa 5 file');
+    showSnackBar(LocaleKeys.dialog_max5File.tr);
   }
 
   Future<void> _getStaffList() async {
@@ -86,18 +86,22 @@ class StaffListController extends BaseGetxController {
 
   Future<void> upLoadFile(String imagePath) async {
     try {
-      showLoading();
-      final response = await _repository.uploadImage(
-        request: UploadImageRequest(
-          file: imagePath,
-          periodId: declarationPeriodId,
-        ),
-      );
-      if (response.isSuccess) {
-        // Vì hiện ảnh lấy từ BE về, nên khi vừa up ảnh xong phải gọi api để lấy link ảnh
-        _getStaffList();
+      if (listAttachImage.length > 4) {
+        maximumUploadFile();
       } else {
-        showSnackBar(response.errorMessage);
+        showLoading();
+        final response = await _repository.uploadImage(
+          request: UploadImageRequest(
+            file: imagePath,
+            periodId: declarationPeriodId,
+          ),
+        );
+        if (response.isSuccess) {
+          // Vì hiện ảnh lấy từ BE về, nên khi vừa up ảnh xong phải gọi api để lấy link ảnh
+          _getStaffList();
+        } else {
+          showSnackBar(response.errorMessage);
+        }
       }
     } catch (e) {
       logger.d(e);
@@ -214,8 +218,19 @@ class StaffListController extends BaseGetxController {
   }
 
   Future<void> createStaff() async {
+    final procedureType = argument.procedureType;
+    final String path;
+    switch (procedureType) {
+      case ProcedureType.procedure600:
+        path = AppRoutes.declareInfo.path;
+        break;
+      case ProcedureType.procedure607:
+        path = AppRoutes.declareInfo607.path;
+        break;
+    }
+
     final result = await Get.toNamed(
-      AppRoutes.declareInfo.path,
+      path,
       arguments: DeclareInfoArgument(
         declarationPeriodId: declarationPeriodId,
         staffId: null,
@@ -228,8 +243,19 @@ class StaffListController extends BaseGetxController {
   }
 
   Future<void> updateStaff(DeclaredStaffModel staff) async {
+    final procedureType = argument.procedureType;
+    final String path;
+    switch (procedureType) {
+      case ProcedureType.procedure600:
+        path = AppRoutes.declareInfo.path;
+        break;
+      case ProcedureType.procedure607:
+        path = AppRoutes.declareInfo607.path;
+        break;
+    }
+
     final result = await Get.toNamed(
-      AppRoutes.declareInfo.path,
+      path,
       arguments: DeclareInfoArgument(
         declarationPeriodId: declarationPeriodId,
         staffId: staff.id,

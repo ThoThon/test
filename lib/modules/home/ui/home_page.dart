@@ -22,22 +22,35 @@ class HomePage extends BaseGetWidget<HomeController> {
   }
 
   Widget _buildBody() {
-    return Padding(
-      padding: const EdgeInsets.all(AppDimens.defaultPadding),
-      child: ListView(
-        children: [
-          GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: Get.context?.isTablet ?? false ? 3 : 2,
-            mainAxisSpacing: AppDimens.padding24,
-            crossAxisSpacing: AppDimens.padding24,
-            physics: const NeverScrollableScrollPhysics(),
-            childAspectRatio: 1.55,
-            children:
-                HomeEnum.values.map((item) => _buildMenuItem(item)).toList(),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        sdsSBHeight16,
+        SDSBuildText(
+          LocaleKeys.home_home.tr,
+          style: AppTextStyle.font16Bo,
+        ).paddingOnly(left: AppDimens.defaultPadding),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(AppDimens.defaultPadding),
+            child: ListView(
+              children: [
+                GridView.count(
+                  shrinkWrap: true,
+                  crossAxisCount: Get.context?.isTablet ?? false ? 3 : 2,
+                  mainAxisSpacing: AppDimens.padding24,
+                  crossAxisSpacing: AppDimens.padding24,
+                  physics: const NeverScrollableScrollPhysics(),
+                  childAspectRatio: 1.55,
+                  children: HomeEnum.values
+                      .map((item) => _buildMenuItem(item))
+                      .toList(),
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -172,6 +185,25 @@ class HomePage extends BaseGetWidget<HomeController> {
 
   AppBar _buildAppBar() {
     return AppBar(
+      centerTitle: false,
+      leading: Builder(
+        builder: (context) {
+          return IconButton(
+            icon: const Icon(
+              Icons.menu,
+              size: 32,
+              color: AppColors.colorBlack,
+            ),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          );
+        },
+      ),
+      bottom: const PreferredSize(
+        preferredSize: Size.fromHeight(16),
+        child: SizedBox(height: 0),
+      ),
       scrolledUnderElevation: 0,
       titleSpacing: 0,
       iconTheme: const IconThemeData(
@@ -195,7 +227,7 @@ class HomePage extends BaseGetWidget<HomeController> {
           ),
           sdsSBHeight12,
         ],
-      ),
+      ).paddingOnly(top: AppDimens.defaultPadding),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: AppDimens.paddingMedium),

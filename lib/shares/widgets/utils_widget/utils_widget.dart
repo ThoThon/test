@@ -784,109 +784,129 @@ class UtilWidget {
     TextStyle? textStyleLabel,
     String? hintText,
     AutovalidateMode? autovalidateMode,
+    bool enable = true,
   }) {
-    return FormField(
-      autovalidateMode: autovalidateMode ?? AutovalidateMode.onUserInteraction,
-      validator: isRequired ? validator : null,
-      initialValue: selectedItem,
-      builder: (FormFieldState<T> state) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              onTap: () {
-                KeyBoard.hide();
-                funcSelect(state.didChange);
-              },
-              child: Container(
-                padding: const EdgeInsets.only(
-                  bottom: AppDimens.paddingVerySmall,
-                  left: AppDimens.defaultPadding,
-                  right: AppDimens.defaultPadding,
-                  top: AppDimens.paddingVerySmall,
-                ),
-                decoration: BoxDecoration(
-                  color: AppColors.colorWhite,
-                  borderRadius: BorderRadius.circular(AppDimens.radius10),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+    return Stack(
+      children: [
+        FormField(
+          autovalidateMode:
+              autovalidateMode ?? AutovalidateMode.onUserInteraction,
+          validator: isRequired ? validator : null,
+          initialValue: selectedItem,
+          builder: (FormFieldState<T> state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    KeyBoard.hide();
+                    funcSelect(state.didChange);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                      bottom: AppDimens.paddingVerySmall,
+                      left: AppDimens.defaultPadding,
+                      right: AppDimens.defaultPadding,
+                      top: AppDimens.paddingVerySmall,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.colorWhite,
+                      borderRadius: BorderRadius.circular(AppDimens.radius10),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SDSBuildText(
-                                label,
-                                style: textStyleLabel ??
-                                    AppTextStyle.font14Re.copyWith(
-                                      color: AppColors.dsGray1,
-                                    ),
-                              ),
-                              Visibility(
-                                visible: isRequired,
-                                child: SDSBuildText(
-                                  ' *',
-                                  style: AppTextStyle.font12Re.copyWith(
-                                    color: AppColors.statusRed,
+                              Row(
+                                children: [
+                                  SDSBuildText(
+                                    label,
+                                    style: textStyleLabel ??
+                                        AppTextStyle.font14Re.copyWith(
+                                          color: AppColors.dsGray1,
+                                        ),
                                   ),
-                                ),
+                                  Visibility(
+                                    visible: isRequired,
+                                    child: SDSBuildText(
+                                      ' *',
+                                      style: AppTextStyle.font12Re.copyWith(
+                                        color: AppColors.statusRed,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              sdsSBHeight8,
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: SDSBuildText(
+                                      selectedItem != null
+                                          ? display(selectedItem)
+                                          : hintText ??
+                                              LocaleKeys.app_select.tr,
+                                      style: AppTextStyle.font14Re.copyWith(
+                                        color: selectedItem != null
+                                            ? AppColors.colorBlack
+                                            : AppColors.textColorGrey,
+                                      ),
+                                    ),
+                                  ),
+                                  selectedItem != null && enableClearIcon
+                                      ? GestureDetector(
+                                          onTap: onTapClear,
+                                          child: const Icon(Icons.close),
+                                        )
+                                      : SDSImageSvg(
+                                          Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
+                                          height: AppDimens.sizeIconMedium,
+                                          width: AppDimens.sizeIconMedium,
+                                        ),
+                                ],
                               ),
                             ],
                           ),
-                          sdsSBHeight8,
-                          Row(
-                            children: [
-                              Expanded(
-                                child: SDSBuildText(
-                                  selectedItem != null
-                                      ? display(selectedItem)
-                                      : hintText ?? LocaleKeys.app_select.tr,
-                                  style: AppTextStyle.font14Re.copyWith(
-                                    color: selectedItem != null
-                                        ? AppColors.colorBlack
-                                        : AppColors.textColorGrey,
-                                  ),
-                                ),
-                              ),
-                              selectedItem != null && enableClearIcon
-                                  ? GestureDetector(
-                                      onTap: onTapClear,
-                                      child: const Icon(Icons.close),
-                                    )
-                                  : SDSImageSvg(
-                                      Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
-                                      height: AppDimens.sizeIconMedium,
-                                      width: AppDimens.sizeIconMedium,
-                                    ),
-                            ],
-                          ),
-                        ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                if (state.hasError)
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: AppDimens.paddingSmallest,
+                      left: AppDimens.paddingVerySmall,
+                    ),
+                    child: SDSBuildText(
+                      state.errorText!,
+                      maxLines: 2,
+                      style: AppTextStyle.font12Re.copyWith(
+                        color: AppColors.statusRed,
                       ),
                     ),
-                  ],
+                  ),
+              ],
+            );
+          },
+        ),
+        if (!enable)
+          Positioned.fill(
+            child: Container(
+              padding: const EdgeInsets.all(AppDimens.paddingSmall),
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: BorderRadius.circular(AppDimens.radius10),
+                border: Border.all(
+                  color: AppColors.dsGray4,
                 ),
               ),
             ),
-            if (state.hasError)
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: AppDimens.paddingSmallest,
-                  left: AppDimens.paddingVerySmall,
-                ),
-                child: SDSBuildText(
-                  state.errorText!,
-                  maxLines: 2,
-                  style: AppTextStyle.font12Re.copyWith(
-                    color: AppColors.statusRed,
-                  ),
-                ),
-              ),
-          ],
-        ).paddingOnly(bottom: AppDimens.paddingSmall);
-      },
-    );
+          ),
+      ],
+    ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
   static Widget baseBottomSheet({
@@ -1593,13 +1613,46 @@ class UtilWidget {
 
   static Widget buildButtonBackAppbar({
     Color? color,
+    VoidCallback? onTap,
   }) {
     return InkWell(
-      onTap: Get.back,
+      onTap: onTap ?? Get.back,
       child: SDSImageSvg(
         Assets.ASSETS_ICONS_IC_ARROW_LEFT_SVG,
         fit: BoxFit.none,
         color: color ?? AppColors.colorBlack,
+      ),
+    );
+  }
+
+  static Widget buildCircleCheckbox({
+    required bool isChecked,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 20,
+        height: 20,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: isChecked ? AppColors.primaryColor : Colors.grey,
+            width: 2,
+          ),
+        ),
+        child: isChecked
+            ? Center(
+                child: Container(
+                  width: 10,
+                  height: 10,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.primaryColor,
+                  ),
+                ),
+              )
+            : null,
       ),
     );
   }

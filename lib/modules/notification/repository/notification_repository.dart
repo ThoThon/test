@@ -38,4 +38,14 @@ class NotificationRepository extends BaseRepository {
     );
   }
 
+  // Xóa list thông báo
+  Future<BaseResponse> deleteListNotification(List<String> id) async {
+    final response = await baseCallApi(
+      AppApi.urlDeleteListNotification,
+      EnumRequestMethod.delete,
+      jsonMap: id,
+    );
+    logger.d(response);
+    return BaseResponse.fromJson(response);
+  }
 }

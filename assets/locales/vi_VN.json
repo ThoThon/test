@@ -55,7 +55,8 @@
     "cancelRequest": "Hủy yêu cầu",
     "confirmSignatureMySign": "Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian",
     "sendRequestSignature": "Gửi yêu cầu ký thành công",
-    "sendFileToBHXH": "Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!"
+    "sendFileToBHXH": "Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!",
+    "max5File": "Chỉ cho phép chọn tối đa 5 file"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -85,6 +86,7 @@
     "taxCode": "MST",
     "hello": "Xin chào,",
     "logout": "Đăng xuất",
+    "home": "Trang chủ",
     "accountInfo": "Thông tin tài khoản"
   },
   "unitInfo": {
@@ -199,6 +201,7 @@
     "emailIsNotValid": "Email không hợp lệ"
   },
   "history": {
+    "title": "Lịch sử kê khai",
     "procedure": "Thủ tục",
     "submissionTime": "Thời gian nộp",
     "historyDetail": "Chi tiết lịch sử",
@@ -206,7 +209,7 @@
     "status": "Trạng thái",
     "profileNumber": "Số hồ sơ:",
     "timeResgiter": "Thời gian:",
-    "progressHandle": "Tiến độ xử lý",
+    "progressHandle": "Tiến độ xử lý hồ sơ",
     "profileCheckResult": "Kết quả kiểm tra hồ sơ",
     "declarationForm": "Hồ sơ kê khai",
     "historyTransaction": "Lịch sử giao dịch",
@@ -228,6 +231,7 @@
     "procedure600d": "600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP",
     "procedure600o": "600o - Tạm dừng đóng vào quỹ hưu trí",
     "fileNumber": "Số hồ sơ",
+    "inputFileNumber": "Nhập số hồ sơ",
     "cannotLookupFileNumber": "Không tìm thấy số hồ sơ",
     "error": "Có lỗi xảy ra, vui lòng thử lại sau",
     "history": "Lịch sử",
@@ -294,14 +298,15 @@
     "inputPassword": "Nhập mật khẩu",
     "inputTaxCode": "Mã số thuế/ Mã ngân sách",
     "unitCode": "Mã đơn vị",
-    "inputAccount": "Tên đăng nhập",
+    "inputAccount": "Nhập tên đăng nhập",
     "registerForCode": "Đăng ký cấp mã",
     "switchTo": "Đã chuyển sang",
     "register": "Đăng ký"
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",
-    "declare": "Kê khai"
+    "declare": "Kê khai",
+    "title": "Thủ tục "
   },
   "pageBuilder": {
     "home": "Trang chủ",
@@ -420,7 +425,9 @@
     "contactPhoneNumber": "Số điện thoại liên hệ",
     "participantHeadOfHousehold": "Người tham gia là chủ hộ",
     "headOfHouseholdFullName": "Họ và tên chủ hộ",
+    "headOfHouseholdFullNameCannotEmpty": "Họ và tên chủ hộ không được để trống",
     "headOfHouseholdCCCD": "Số CCCD của chủ hộ",
+    "headOfHouseholdCCCDCannotEmpty": "Số CCCD của chủ hộ không được để trống",
     "provinceTT": "Tỉnh thường trú",
     "selectProvinceTT": "Chọn tỉnh thường trú",
     "districtTT": "Huyện thường trú",
@@ -471,10 +478,27 @@
     "addFamilyMember": "Thêm thành viên",
     "deleteSelectedMember": "Xóa thành viên đã chọn",
     "delete": "Xóa",
-    "inputCCCD": "Nhập số CCCD"
+    "inputCCCD": "Nhập số CCCD",
+    "profileInfo": "Thông tin hồ sơ",
+    "contentChanges": "Nội dung thay đổi",
+    "enterContentChanges": "Nhập nội dung thay đổi",
+    "attachedProfile": "Hồ sơ kèm theo",
+    "enterAttachedProfile": "Nhập hồ sơ kèm theo",
+    "receiveProfileResult": "Nhận kết quả hồ sơ",
+    "provinceReceivePaper": "Tỉnh nhận hồ sơ giấy",
+    "selectProvinceReceivePaper": "Chọn tỉnh nhận hồ sơ giấy",
+    "districtReceivePaper": "Huyện nhận hồ sơ giấy",
+    "selectDistrictReceivePaper": "Chọn huyện nhận hồ sơ giấy",
+    "wardReceivePaper": "Xã nhận hồ sơ giấy",
+    "selectWardReceivePaper": "Chọn xã nhận hồ sơ giấy",
+    "addressReceivePaper": "Địa chỉ nhận hồ sơ giấy",
+    "receiveResultElectronic": "Nhận kết quả bản điện tử",
+    "receiveResultPaper": "Nhận kết quả bản giấy",
+    "listTable": "Danh sách bảng kê",
+    "coefficient": "Hệ số"
   },
   "familyMember": {
-    "title": "Kê khai thông tin thành viên HGĐ",
+    "title": "Thêm thành viên",
     "fullName": "Họ và tên",
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
     "bhxhCode": "Mã số BHXH",
@@ -501,8 +525,8 @@
     "selectBirthType": "Loại ngày sinh",
     "selectBirthTypeHint": "Chọn loại ngày sinh",
     "birthTypeYear": "Năm",
-    "birthTypeMonthYear": "Tháng/năm",
-    "birthTypeFull": "Đầy đủ",
+    "birthTypeMonthYear": "Tháng/Năm",
+    "birthTypeFull": "Ngày/Tháng/Năm",
     "cccdNumber": "Số CCCD",
     "note": "Ghi chú",
     "isParticipant": "Là người tham gia",
@@ -629,9 +653,14 @@
     "dayBefore": "ngày trước",
     "hourBefore": "giờ trước",
     "minuteBefore": "phút trước",
-    "secondBefore": "giây trước"
+    "secondBefore": "giây trước",
+    "delete": "Xóa",
+    "deleteNotification": "Xóa thông báo",
+    "onOffNotification": "Bật/Tắt nhận thông báo",
+    "selectedAll": "Chọn tất cả"
   },
   "registerService": {
+    "registerTitle": "Thông tin giao dịch",
     "registerService": "Đăng ký dịch vụ",
     "unitInfo": "Thông tin đơn vị",
     "taxCode": "Mã số thuế",
@@ -646,6 +675,8 @@
     "certificateNumber": "Số CTS",
     "expiryDateFrom": "Thời hạn sử dụng từ",
     "expiryDateTo": "Thời hạn sử dụng đến",
+    "dayStart": "Ngày bắt đầu",
+    "dayEnd": "Ngày kết thúc",
     "phoneNumber": "Số điện thoại",
     "email": "Email",
     "register": "Đăng ký",
@@ -655,8 +686,13 @@
     "certificateNotFound": "Không tìm thấy chứng thư số",
     "usernameMySignNotFound": "Không tìm thấy tên đăng nhập MySign",
     "userNameMySignCannotEmpty": "Nhập tên đăng nhập My Sign để lấy thông tin CTS",
-    "cancelRegister": "Ngừng dịch vụ",
-    "changeInfo": "Thay đổi"
+    "cancelRegister": "Ngừng",
+    "changeInfo": "Thay đổi",
+    "updateInfo": "Cập nhật",
+    "inputCCCDregisterMySign": "Nhập CCCD đăng ký MySign",
+    "signature": "Chữ ký số",
+    "serialNumber": "Số serial",
+    "inputCCCDregisterMySignCannotEmpty": "Nhập CCCD đăng ký MySign để lấy thông tin CTS"
   },
   "registerCode": {
     "commonInfo": "Thông tin chung",

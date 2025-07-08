@@ -136,7 +136,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
                       style: AppTextStyle.font14Re.copyWith(
                         color: AppColors.dsGray3,
                       ),
-                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     )
                   : null,
               selectedItemBuilder: (context) => items.map(
@@ -148,6 +148,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
                       style: AppTextStyle.font14Re,
                       maxLines: 2,
                       textAlign: TextAlign.start,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   );
                 },
@@ -164,8 +165,8 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
                           style: selectedItem == e
                               ? AppTextStyle.font14Bo
                               : AppTextStyle.font14Re,
-                          maxLines: 2,
                           textAlign: TextAlign.start,
+                          overflow: TextOverflow.visible,
                         ),
                       ),
                     ),

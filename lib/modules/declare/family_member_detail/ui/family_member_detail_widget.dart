@@ -237,19 +237,16 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
 
   Widget _buildSelectedGender() {
     return CardDropdownWithLabel<Gender>(
+      key: ValueKey(controller.gender.value),
       labelText: LocaleKeys.declareInfo_gender.tr,
       items: Gender.values,
       display: (item) => item.title,
       isRequired: true,
       selectedItem: controller.gender.value,
       onChanged: (value) {
-        controller.gender.value = value;
-      },
-      validator: (value) {
-        if (value == null) {
-          return LocaleKeys.familyMember_selectGender.tr;
+        if (value != null) {
+          controller.gender.value = value;
         }
-        return null;
       },
     );
   }
@@ -504,19 +501,10 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.familyMember_cccdNumber.tr,
       controller: controller.cccdNumberTextCtrl,
-      isRequired: true,
+      isRequired: false,
       hintText: LocaleKeys.familyMember_inputNumberCCCD.tr,
       maxLengthInputForm: 20,
       inputFormatters: InputFormatterEnum.textNormal,
-      validator: (value) {
-        final trimmedValue = value?.trim();
-
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.familyMember_numberCCCDCannotEmpty.tr;
-        }
-
-        return null;
-      },
     );
   }
 
@@ -524,18 +512,9 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.familyMember_note.tr,
       controller: controller.noteTextCtrl,
-      isRequired: true,
+      isRequired: false,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
-      validator: (value) {
-        final trimmedValue = value?.trim();
-
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.familyMember_noteCannotEmpty.tr;
-        }
-
-        return null;
-      },
     );
   }
 

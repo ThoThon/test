@@ -1,5 +1,9 @@
+/// Loại thủ tục
 enum ProcedureType {
+  /// Thủ tục 600
   procedure600,
+
+  /// Thủ tục 607
   procedure607;
 
   static ProcedureType fromInt(int? value) {

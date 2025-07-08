@@ -9,7 +9,6 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../../base_app/base_app.src.dart';
-import '../../../nfc/models/nfc_request_model.dart';
 import '../../../select_staff/model/select_staff_response.dart';
 
 class DeclareInfoController extends BaseGetxController {
@@ -18,16 +17,12 @@ class DeclareInfoController extends BaseGetxController {
 
   late final declareInfoRepository = DeclareInfoRepository(this);
 
-  /// NOTE: Nhân viên được chọn - Mock tạm với String, sau tạo model riêng
-  final selectedStaff = Rxn<String>();
-
   final d02Tk1State = D02Tk1State();
   final d02State = D02State();
   final tk1State = Tk1State();
   final d01State = D01State();
 
   final autovalidateMode = Rx<AutovalidateMode?>(null);
-  SendNfcRequestModel sendNfcRequestModel = SendNfcRequestModel();
 
   final declarationPeriodController =
       Get.findOrNull<DeclarationPeriodController>();
@@ -256,12 +251,6 @@ class DeclareInfoController extends BaseGetxController {
       return DeclareInfoTab.d02;
     }
 
-    // REF: BHW-2240
-    if (isGenderRequired && d02Tk1State.gender.value == null) {
-      showSnackBar(LocaleKeys.declareInfo_genderCannotEmpty.tr);
-      return DeclareInfoTab.d02;
-    }
-
     if (d02State.isGenerateTk1Data.value &&
         tk1State.formKey.currentState?.validate() != true) {
       tk1State.autoValidateMode.value = AutovalidateMode.always;
@@ -278,10 +267,10 @@ class DeclareInfoController extends BaseGetxController {
       return;
     }
 
-    if (d02Tk1State.gender.value == null) {
-      showSnackBar("Giới tính không được để trống");
-      return;
-    }
+    // if (d02Tk1State.gender.value == null) {
+    //   showSnackBar("Giới tính không được để trống");
+    //   return;
+    // }
 
     if (d02State.isGenerateD01Data.value && d01State.forms.isEmpty) {
       showSnackBar("Tờ khai không có dữ liệu kê khai");
@@ -377,8 +366,10 @@ class DeclareInfoController extends BaseGetxController {
 
     if (value) {
       d02State.salaryAllowanceTextCtrl.clear();
+      d02State.salaryCoefficientTextCtrl.clear();
       d02State.otherAllowanceTextCtrl.clear();
     } else {
+      d02State.salaryCoefficientTextCtrl.clear();
       d02State.positionAllowanceTextCtrl.clear();
       d02State.pcTNNTextCtrl.clear();
       d02State.pcTNVuotKhungTextCtrl.clear();
@@ -389,6 +380,9 @@ class DeclareInfoController extends BaseGetxController {
     required bool value,
   }) {
     tk1State.isDuplicateBirthAddress.value = value;
+    if (!value) {
+      _clearBirthAddress();
+    }
 
     // Khi chọn checkbox thì:
     // Tỉnh nơi nhận trùng với Tỉnh khai sinh, Huyện nơi nhận trùng với Huyện khai sinh, Xã nơi nhận trùng với Xã khai sinh, Địa chỉ nơi nhận trùng với địa chỉ khai sinh.
@@ -404,6 +398,16 @@ class DeclareInfoController extends BaseGetxController {
       tk1State.districtReceive.value = tk1State.districtOfBirth.value;
       tk1State.wardReceive.value = tk1State.wardOfBirth.value;
       tk1State.addressReceiveTextCtrl.text = tk1State.birthAddressTextCtrl.text;
+    }
+  }
+
+  /// Xóa địa chỉ nơi nhận khi hủy checkbox
+  void _clearBirthAddress() {
+    if (!tk1State.isDuplicateBirthAddress.value) {
+      tk1State.provinceReceive.value = null;
+      tk1State.districtReceive.value = null;
+      tk1State.wardReceive.value = null;
+      tk1State.addressReceiveTextCtrl.clear();
     }
   }
 
@@ -713,15 +717,21 @@ class DeclareInfoController extends BaseGetxController {
     tk1State.provinceTT.value = null;
     tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
+
+    updateHouseholdInfoRequired();
   }
 
   void onTapClearDistrictTT() {
     tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
+
+    updateHouseholdInfoRequired();
   }
 
   void onTapClearWardTT() {
     tk1State.wardTT.value = null;
+
+    updateHouseholdInfoRequired();
   }
 
   // void goToScanCCCD() async {
@@ -768,7 +778,7 @@ class DeclareInfoController extends BaseGetxController {
   /// Nếu chọn loại khai báo và phương án trong các type sau
   /// "Từ tháng/năm" sẽ thành isRequired
   ///
-  /// REF: http://10.100.140.19:8080/projects/BHW/issues/BHW-2411
+  /// REF: https://jira-sds.softdreams.vn:8080/projects/BHW/issues/BHW-2411
   bool get isFromDateRequired {
     final declarationTypeId = d02State.declarationType.value?.value;
     // Tăng lao động
@@ -790,7 +800,7 @@ class DeclareInfoController extends BaseGetxController {
     }
     // Khác
     if (declarationTypeId == 5) {
-      return ['DC', 'CD', 'TD', 'DL'].contains(d02State.plan.value?.id);
+      return ['DC', 'CD', 'TL', 'DL'].contains(d02State.plan.value?.id);
     }
     return false;
   }

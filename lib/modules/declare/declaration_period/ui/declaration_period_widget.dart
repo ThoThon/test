@@ -50,7 +50,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
               children: [
                 SDSBuildText(
                   '${LocaleKeys.declarationPeriod_month.tr} ${convertDateToString(controller.selectedPeriodDate.value, PATTERN_12)}',
-                  style: AppTextStyle.font16Re,
+                  style: AppTextStyle.font16Bo,
                 ),
                 sdsSBWidth4,
                 SDSImageSvg(Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG)
@@ -129,8 +129,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
           sdsSBHeight8,
           _buildPeriodNumber(period: period),
           sdsSBHeight12,
-          if (period.updateDate != null || period.createTime != null)
-            _buildDateAndButton(period),
+          _buildDateAndButton(period),
         ],
       ),
     );
@@ -174,7 +173,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             sdsSBWidth8,
             SDSBuildText(
               period.status.title,
-              style: AppTextStyle.font12Re.copyWith(color: period.status.color),
+              style: AppTextStyle.font14Re.copyWith(color: period.status.color),
             ),
           ],
         ),
@@ -191,12 +190,12 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
         sdsSBWidth8,
         SDSBuildText(
           "${LocaleKeys.declarationPeriod_period.tr} ${period.period}",
-          style: AppTextStyle.font14Bo,
+          style: AppTextStyle.font16Bo,
         ),
         if (period.fileNumber != null)
           SDSBuildText(
             ' - Số ${period.fileNumber}',
-            style: AppTextStyle.font14Bo,
+            style: AppTextStyle.font16Bo,
           ),
       ],
     ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
@@ -205,10 +204,11 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   Widget _buildDateAndButton(DeclarationPeriod period) {
     return Row(
       children: [
-        SDSBuildText(
-          '${convertDateToStringSafe(period.updateDate ?? period.createTime, PATTERN_14)}',
-          style: AppTextStyle.font12Re.copyWith(color: Colors.grey),
-        ),
+        if (period.updateDate != null || period.createTime != null)
+          SDSBuildText(
+            '${convertDateToStringSafe(period.updateDate ?? period.createTime, PATTERN_14)}',
+            style: AppTextStyle.font14Re.copyWith(color: Colors.grey),
+          ),
         const Spacer(),
         if (period.status.canEdit)
           InkWell(

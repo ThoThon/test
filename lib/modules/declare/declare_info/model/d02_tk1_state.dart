@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
@@ -5,6 +6,7 @@ import 'package:v_bhxh/modules/declare/family_member_detail/model/birth_type_enu
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 
+import '../../../../base_app/model/app_data.dart';
 import 'model_src.dart';
 
 /// Các state dùng chung ở 2 form D02 vầ TK1
@@ -25,13 +27,18 @@ class D02Tk1State {
   final dateOfBirthTextCtrl = TextEditingController();
 
   /// Giới tính *
-  final gender = Rxn<Gender>();
+  final gender = Gender.female.obs;
 
   /// Dân tộc *
-  final selectedEthnic = Rxn<EthnicModel>();
+  /// Luôn khởi tạo Dân tộc là "Kinh"
+  final selectedEthnic = Rxn<EthnicModel>(
+    AppData.instance.ethnics.firstWhereOrNull((ethnics) => ethnics.value == 1),
+  );
 
   /// Quốc tịch *
-  final selectedNationality = Rxn<NationModel>();
+  /// Luôn khởi tạo Quốc tịch là "VIỆT NAM"
+  final selectedNationality = Rxn<NationModel>(AppData.instance.nations
+      .firstWhereOrNull((nations) => nations.value == "VN"));
 
   void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final d02Lt = detail.d02Lt;
@@ -57,7 +64,7 @@ class D02Tk1State {
     }
 
     if (d02Lt.gioiTinh != null) {
-      gender.value = d02Lt.gioiTinh;
+      gender.value = d02Lt.gioiTinh ?? Gender.female;
     }
 
     if (d02Lt.danToc != null) {
@@ -80,7 +87,7 @@ class D02Tk1State {
     dateOfBirthTextCtrl.text =
         convertDateToStringSafe(staff.ngaySinh, PATTERN_1) ?? '';
 
-    gender.value = staff.gioiTinh;
+    gender.value = staff.gioiTinh ?? Gender.female;
 
     selectedEthnic.value = staff.danToc;
 

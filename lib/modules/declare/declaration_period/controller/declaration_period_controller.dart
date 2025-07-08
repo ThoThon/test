@@ -101,8 +101,18 @@ class DeclarationPeriodController extends BaseGetxController {
       );
 
       if (response.isSuccess && response.result != null) {
+        final String path;
+        switch (argument.procedureType) {
+          case ProcedureType.procedure600:
+            path = AppRoutes.declareInfo.path;
+            break;
+          case ProcedureType.procedure607:
+            path = AppRoutes.declareInfo607.path;
+            break;
+        }
+
         Get.toNamed(
-          AppRoutes.declareInfo.path,
+          path,
           arguments: DeclareInfoArgument(
             declarationPeriodId: response.result!.id,
             action: D02ActionEnum.addPeriodFromDeclarePeriod,

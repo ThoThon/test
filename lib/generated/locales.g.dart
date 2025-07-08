@@ -67,6 +67,7 @@ class LocaleKeys {
   static const dialog_confirmSignatureMySign = 'dialog_confirmSignatureMySign';
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
   static const dialog_sendFileToBHXH = 'dialog_sendFileToBHXH';
+  static const dialog_max5File = 'dialog_max5File';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -92,6 +93,7 @@ class LocaleKeys {
   static const home_taxCode = 'home_taxCode';
   static const home_hello = 'home_hello';
   static const home_logout = 'home_logout';
+  static const home_home = 'home_home';
   static const home_accountInfo = 'home_accountInfo';
   static const unitInfo_transactionRegister = 'unitInfo_transactionRegister';
   static const unitInfo_generalInfo = 'unitInfo_generalInfo';
@@ -211,6 +213,7 @@ class LocaleKeys {
   static const unitInfo_emailContactIsNotEmpty =
       'unitInfo_emailContactIsNotEmpty';
   static const unitInfo_emailIsNotValid = 'unitInfo_emailIsNotValid';
+  static const history_title = 'history_title';
   static const history_procedure = 'history_procedure';
   static const history_submissionTime = 'history_submissionTime';
   static const history_historyDetail = 'history_historyDetail';
@@ -240,6 +243,7 @@ class LocaleKeys {
   static const history_procedure600d = 'history_procedure600d';
   static const history_procedure600o = 'history_procedure600o';
   static const history_fileNumber = 'history_fileNumber';
+  static const history_inputFileNumber = 'history_inputFileNumber';
   static const history_cannotLookupFileNumber =
       'history_cannotLookupFileNumber';
   static const history_error = 'history_error';
@@ -315,6 +319,7 @@ class LocaleKeys {
   static const login_register = 'login_register';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_declare = 'procedureList_declare';
+  static const procedureList_title = 'procedureList_title';
   static const pageBuilder_home = 'pageBuilder_home';
   static const pageBuilder_report = 'pageBuilder_report';
   static const pageBuilder_notification = 'pageBuilder_notification';
@@ -467,8 +472,12 @@ class LocaleKeys {
       'declareInfo_participantHeadOfHousehold';
   static const declareInfo_headOfHouseholdFullName =
       'declareInfo_headOfHouseholdFullName';
+  static const declareInfo_headOfHouseholdFullNameCannotEmpty =
+      'declareInfo_headOfHouseholdFullNameCannotEmpty';
   static const declareInfo_headOfHouseholdCCCD =
       'declareInfo_headOfHouseholdCCCD';
+  static const declareInfo_headOfHouseholdCCCDCannotEmpty =
+      'declareInfo_headOfHouseholdCCCDCannotEmpty';
   static const declareInfo_provinceTT = 'declareInfo_provinceTT';
   static const declareInfo_selectProvinceTT = 'declareInfo_selectProvinceTT';
   static const declareInfo_districtTT = 'declareInfo_districtTT';
@@ -539,6 +548,34 @@ class LocaleKeys {
       'declareInfo_deleteSelectedMember';
   static const declareInfo_delete = 'declareInfo_delete';
   static const declareInfo_inputCCCD = 'declareInfo_inputCCCD';
+  static const declareInfo_profileInfo = 'declareInfo_profileInfo';
+  static const declareInfo_contentChanges = 'declareInfo_contentChanges';
+  static const declareInfo_enterContentChanges =
+      'declareInfo_enterContentChanges';
+  static const declareInfo_attachedProfile = 'declareInfo_attachedProfile';
+  static const declareInfo_enterAttachedProfile =
+      'declareInfo_enterAttachedProfile';
+  static const declareInfo_receiveProfileResult =
+      'declareInfo_receiveProfileResult';
+  static const declareInfo_provinceReceivePaper =
+      'declareInfo_provinceReceivePaper';
+  static const declareInfo_selectProvinceReceivePaper =
+      'declareInfo_selectProvinceReceivePaper';
+  static const declareInfo_districtReceivePaper =
+      'declareInfo_districtReceivePaper';
+  static const declareInfo_selectDistrictReceivePaper =
+      'declareInfo_selectDistrictReceivePaper';
+  static const declareInfo_wardReceivePaper = 'declareInfo_wardReceivePaper';
+  static const declareInfo_selectWardReceivePaper =
+      'declareInfo_selectWardReceivePaper';
+  static const declareInfo_addressReceivePaper =
+      'declareInfo_addressReceivePaper';
+  static const declareInfo_receiveResultElectronic =
+      'declareInfo_receiveResultElectronic';
+  static const declareInfo_receiveResultPaper =
+      'declareInfo_receiveResultPaper';
+  static const declareInfo_listTable = 'declareInfo_listTable';
+  static const declareInfo_coefficient = 'declareInfo_coefficient';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -720,6 +757,13 @@ class LocaleKeys {
   static const notification_hourBefore = 'notification_hourBefore';
   static const notification_minuteBefore = 'notification_minuteBefore';
   static const notification_secondBefore = 'notification_secondBefore';
+  static const notification_delete = 'notification_delete';
+  static const notification_deleteNotification =
+      'notification_deleteNotification';
+  static const notification_onOffNotification =
+      'notification_onOffNotification';
+  static const notification_selectedAll = 'notification_selectedAll';
+  static const registerService_registerTitle = 'registerService_registerTitle';
   static const registerService_registerService =
       'registerService_registerService';
   static const registerService_unitInfo = 'registerService_unitInfo';
@@ -742,6 +786,8 @@ class LocaleKeys {
   static const registerService_expiryDateFrom =
       'registerService_expiryDateFrom';
   static const registerService_expiryDateTo = 'registerService_expiryDateTo';
+  static const registerService_dayStart = 'registerService_dayStart';
+  static const registerService_dayEnd = 'registerService_dayEnd';
   static const registerService_phoneNumber = 'registerService_phoneNumber';
   static const registerService_email = 'registerService_email';
   static const registerService_register = 'registerService_register';
@@ -759,6 +805,13 @@ class LocaleKeys {
   static const registerService_cancelRegister =
       'registerService_cancelRegister';
   static const registerService_changeInfo = 'registerService_changeInfo';
+  static const registerService_updateInfo = 'registerService_updateInfo';
+  static const registerService_inputCCCDregisterMySign =
+      'registerService_inputCCCDregisterMySign';
+  static const registerService_signature = 'registerService_signature';
+  static const registerService_serialNumber = 'registerService_serialNumber';
+  static const registerService_inputCCCDregisterMySignCannotEmpty =
+      'registerService_inputCCCDregisterMySignCannotEmpty';
   static const registerCode_commonInfo = 'registerCode_commonInfo';
   static const registerCode_registerInfo = 'registerCode_registerInfo';
   static const registerCode_unitInfo = 'registerCode_unitInfo';
@@ -977,6 +1030,7 @@ class Locales {
     'dialog_sendRequestSignature': 'Gửi yêu cầu ký thành công',
     'dialog_sendFileToBHXH':
         'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
+    'dialog_max5File': 'Chỉ cho phép chọn tối đa 5 file',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -1000,6 +1054,7 @@ class Locales {
     'home_taxCode': 'MST',
     'home_hello': 'Xin chào,',
     'home_logout': 'Đăng xuất',
+    'home_home': 'Trang chủ',
     'home_accountInfo': 'Thông tin tài khoản',
     'unitInfo_transactionRegister': 'Đăng ký giao dịch',
     'unitInfo_generalInfo': 'Thông tin chung',
@@ -1113,6 +1168,7 @@ class Locales {
     'unitInfo_hasError': 'Có lỗi xảy ra, vui lòng thử lại',
     'unitInfo_emailContactIsNotEmpty': 'Email liên hệ không được bỏ trống',
     'unitInfo_emailIsNotValid': 'Email không hợp lệ',
+    'history_title': 'Lịch sử kê khai',
     'history_procedure': 'Thủ tục',
     'history_submissionTime': 'Thời gian nộp',
     'history_historyDetail': 'Chi tiết lịch sử',
@@ -1120,7 +1176,7 @@ class Locales {
     'history_status': 'Trạng thái',
     'history_profileNumber': 'Số hồ sơ:',
     'history_timeResgiter': 'Thời gian:',
-    'history_progressHandle': 'Tiến độ xử lý',
+    'history_progressHandle': 'Tiến độ xử lý hồ sơ',
     'history_profileCheckResult': 'Kết quả kiểm tra hồ sơ',
     'history_declarationForm': 'Hồ sơ kê khai',
     'history_historyTransaction': 'Lịch sử giao dịch',
@@ -1144,6 +1200,7 @@ class Locales {
         '600d - Tạm dừng đóng vào quỹ hưu trí - tử tuất theo nghị định 68/NĐ-CP',
     'history_procedure600o': '600o - Tạm dừng đóng vào quỹ hưu trí',
     'history_fileNumber': 'Số hồ sơ',
+    'history_inputFileNumber': 'Nhập số hồ sơ',
     'history_cannotLookupFileNumber': 'Không tìm thấy số hồ sơ',
     'history_error': 'Có lỗi xảy ra, vui lòng thử lại sau',
     'history_history': 'Lịch sử',
@@ -1207,12 +1264,13 @@ class Locales {
     'login_inputPassword': 'Nhập mật khẩu',
     'login_inputTaxCode': 'Mã số thuế/ Mã ngân sách',
     'login_unitCode': 'Mã đơn vị',
-    'login_inputAccount': 'Tên đăng nhập',
+    'login_inputAccount': 'Nhập tên đăng nhập',
     'login_registerForCode': 'Đăng ký cấp mã',
     'login_switchTo': 'Đã chuyển sang',
     'login_register': 'Đăng ký',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_declare': 'Kê khai',
+    'procedureList_title': 'Thủ tục ',
     'pageBuilder_home': 'Trang chủ',
     'pageBuilder_report': 'Báo cáo',
     'pageBuilder_notification': 'Thông báo',
@@ -1334,7 +1392,11 @@ class Locales {
     'declareInfo_contactPhoneNumber': 'Số điện thoại liên hệ',
     'declareInfo_participantHeadOfHousehold': 'Người tham gia là chủ hộ',
     'declareInfo_headOfHouseholdFullName': 'Họ và tên chủ hộ',
+    'declareInfo_headOfHouseholdFullNameCannotEmpty':
+        'Họ và tên chủ hộ không được để trống',
     'declareInfo_headOfHouseholdCCCD': 'Số CCCD của chủ hộ',
+    'declareInfo_headOfHouseholdCCCDCannotEmpty':
+        'Số CCCD của chủ hộ không được để trống',
     'declareInfo_provinceTT': 'Tỉnh thường trú',
     'declareInfo_selectProvinceTT': 'Chọn tỉnh thường trú',
     'declareInfo_districtTT': 'Huyện thường trú',
@@ -1391,7 +1453,24 @@ class Locales {
     'declareInfo_deleteSelectedMember': 'Xóa thành viên đã chọn',
     'declareInfo_delete': 'Xóa',
     'declareInfo_inputCCCD': 'Nhập số CCCD',
-    'familyMember_title': 'Kê khai thông tin thành viên HGĐ',
+    'declareInfo_profileInfo': 'Thông tin hồ sơ',
+    'declareInfo_contentChanges': 'Nội dung thay đổi',
+    'declareInfo_enterContentChanges': 'Nhập nội dung thay đổi',
+    'declareInfo_attachedProfile': 'Hồ sơ kèm theo',
+    'declareInfo_enterAttachedProfile': 'Nhập hồ sơ kèm theo',
+    'declareInfo_receiveProfileResult': 'Nhận kết quả hồ sơ',
+    'declareInfo_provinceReceivePaper': 'Tỉnh nhận hồ sơ giấy',
+    'declareInfo_selectProvinceReceivePaper': 'Chọn tỉnh nhận hồ sơ giấy',
+    'declareInfo_districtReceivePaper': 'Huyện nhận hồ sơ giấy',
+    'declareInfo_selectDistrictReceivePaper': 'Chọn huyện nhận hồ sơ giấy',
+    'declareInfo_wardReceivePaper': 'Xã nhận hồ sơ giấy',
+    'declareInfo_selectWardReceivePaper': 'Chọn xã nhận hồ sơ giấy',
+    'declareInfo_addressReceivePaper': 'Địa chỉ nhận hồ sơ giấy',
+    'declareInfo_receiveResultElectronic': 'Nhận kết quả bản điện tử',
+    'declareInfo_receiveResultPaper': 'Nhận kết quả bản giấy',
+    'declareInfo_listTable': 'Danh sách bảng kê',
+    'declareInfo_coefficient': 'Hệ số',
+    'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
     'familyMember_bhxhCode': 'Mã số BHXH',
@@ -1421,8 +1500,8 @@ class Locales {
     'familyMember_selectBirthType': 'Loại ngày sinh',
     'familyMember_selectBirthTypeHint': 'Chọn loại ngày sinh',
     'familyMember_birthTypeYear': 'Năm',
-    'familyMember_birthTypeMonthYear': 'Tháng/năm',
-    'familyMember_birthTypeFull': 'Đầy đủ',
+    'familyMember_birthTypeMonthYear': 'Tháng/Năm',
+    'familyMember_birthTypeFull': 'Ngày/Tháng/Năm',
     'familyMember_cccdNumber': 'Số CCCD',
     'familyMember_note': 'Ghi chú',
     'familyMember_isParticipant': 'Là người tham gia',
@@ -1548,6 +1627,11 @@ class Locales {
     'notification_hourBefore': 'giờ trước',
     'notification_minuteBefore': 'phút trước',
     'notification_secondBefore': 'giây trước',
+    'notification_delete': 'Xóa',
+    'notification_deleteNotification': 'Xóa thông báo',
+    'notification_onOffNotification': 'Bật/Tắt nhận thông báo',
+    'notification_selectedAll': 'Chọn tất cả',
+    'registerService_registerTitle': 'Thông tin giao dịch',
     'registerService_registerService': 'Đăng ký dịch vụ',
     'registerService_unitInfo': 'Thông tin đơn vị',
     'registerService_taxCode': 'Mã số thuế',
@@ -1562,6 +1646,8 @@ class Locales {
     'registerService_certificateNumber': 'Số CTS',
     'registerService_expiryDateFrom': 'Thời hạn sử dụng từ',
     'registerService_expiryDateTo': 'Thời hạn sử dụng đến',
+    'registerService_dayStart': 'Ngày bắt đầu',
+    'registerService_dayEnd': 'Ngày kết thúc',
     'registerService_phoneNumber': 'Số điện thoại',
     'registerService_email': 'Email',
     'registerService_register': 'Đăng ký',
@@ -1573,8 +1659,14 @@ class Locales {
         'Không tìm thấy tên đăng nhập MySign',
     'registerService_userNameMySignCannotEmpty':
         'Nhập tên đăng nhập My Sign để lấy thông tin CTS',
-    'registerService_cancelRegister': 'Ngừng dịch vụ',
+    'registerService_cancelRegister': 'Ngừng',
     'registerService_changeInfo': 'Thay đổi',
+    'registerService_updateInfo': 'Cập nhật',
+    'registerService_inputCCCDregisterMySign': 'Nhập CCCD đăng ký MySign',
+    'registerService_signature': 'Chữ ký số',
+    'registerService_serialNumber': 'Số serial',
+    'registerService_inputCCCDregisterMySignCannotEmpty':
+        'Nhập CCCD đăng ký MySign để lấy thông tin CTS',
     'registerCode_commonInfo': 'Thông tin chung',
     'registerCode_registerInfo': 'Thông tin đăng ký',
     'registerCode_unitInfo': 'Thông tin đơn vị',

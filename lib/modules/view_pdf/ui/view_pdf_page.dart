@@ -73,9 +73,7 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
             title: 'Chia sẻ',
             textStyle:
                 AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-            onPressed: () {
-              // Get.back();
-            },
+            onPressed: () {},
           ),
         ),
       ],

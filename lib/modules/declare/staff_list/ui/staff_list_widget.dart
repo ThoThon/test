@@ -4,10 +4,11 @@ extension StaffListWidget on StaffListPage {
   Widget _buildBody() {
     return Column(
       children: [
+        sdsSBHeight16,
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-              vertical: AppDimens.defaultPadding,
+            padding: const EdgeInsets.only(
+              bottom: AppDimens.defaultPadding,
             ),
             child: Obx(
               () {
@@ -124,57 +125,29 @@ extension StaffListWidget on StaffListPage {
   }
 
   Widget _buildStaffItem(DeclaredStaffModel staff) {
-    return Slidable(
-      key: ValueKey(staff.id),
-      endActionPane: ActionPane(
-        // A motion is a widget used to control how the pane animates.
-        motion: const ScrollMotion(),
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.basicWhite,
+        borderRadius: BorderRadius.circular(AppDimens.radius16),
+      ),
+      child: Row(
         children: [
-          CustomSlidableAction(
-            onPressed: (ctx) {
-              controller.showDialogDeleteStaff(staff);
-            },
-            backgroundColor: AppColors.primaryColor,
-            foregroundColor: Colors.white,
+          SDSImageSvg(Assets.ASSETS_ICONS_IC_PERSONAL_SVG),
+          sdsSBWidth8,
+          Expanded(
             child: SDSBuildText(
-              LocaleKeys.app_delete.tr,
-              style: AppTextStyle.font20Bo.copyWith(
-                color: Colors.white,
-              ),
+              staff.bhxhNumber.isNotEmpty
+                  ? '${staff.name} - ${staff.bhxhNumber}'
+                  : staff.name,
+              maxLines: 3,
+              style: AppTextStyle.font16Bo,
             ),
           ),
+          _buildMenuPopupOnption(staff),
         ],
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.basicWhite,
-          borderRadius: BorderRadius.circular(AppDimens.radius16),
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                SDSImageSvg(Assets.ASSETS_ICONS_IC_PERSONAL_SVG),
-                sdsSBWidth8,
-                SDSBuildText(
-                  staff.name,
-                  style: AppTextStyle.font16Bo,
-                ),
-                if (staff.bhxhNumber.isNotEmpty)
-                  SDSBuildText(
-                    ' - ${staff.bhxhNumber}',
-                    style: AppTextStyle.font16Bo,
-                  ),
-                const Spacer(),
-                // SDSImageSvg(Assets.ASSETS_ICONS_IC_DELETE_SVG),
-                _buildMenuPopupOnption(staff),
-              ],
-            ),
-          ],
-        ).paddingSymmetric(
-          vertical: AppDimens.paddingSmall,
-          horizontal: AppDimens.defaultPadding,
-        ),
+      ).paddingSymmetric(
+        vertical: AppDimens.paddingSmall,
+        horizontal: AppDimens.defaultPadding,
       ),
     );
   }
