@@ -14,17 +14,25 @@ class UnitInfoPage extends BaseGetWidget {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: BaseAppBarTitle(
-          title: LocaleKeys.unitInfo_unitInfo.tr,
+    return Container(
+      color: AppColors.primaryColor,
+      child: Scaffold(
+        appBar: BaseAppBar(
+          backgroundColor: AppColors.primaryColor,
+          centerTitle: true,
+          leading:
+              UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
+          title: BaseAppBarTitle(
+            title: LocaleKeys.unitInfo_unitInfo.tr,
+            textColor: Colors.white,
+          ),
+        ),
+        body: BaseCardBody(
+          child: baseShowLoading(
+            () => _buildBody(),
+          ),
         ),
       ),
-      body: buildLoadingOverlay(() => baseShowLoading(
-            () {
-              return _buildBody();
-            },
-          )),
     );
   }
 }

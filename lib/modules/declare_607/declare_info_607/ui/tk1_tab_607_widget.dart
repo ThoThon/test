@@ -167,9 +167,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     );
   }
 
-  Widget _buildInfoPerson({
-    VoidCallback? onTapSelectStaff,
-  }) {
+  Widget _buildInfoPerson() {
     return Row(
       children: [
         Expanded(
@@ -178,24 +176,23 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             style: AppTextStyle.font16Bo.copyWith(color: AppColors.colorBlack),
           ),
         ),
-        if (onTapSelectStaff != null)
-          TextButton(
-            onPressed: onTapSelectStaff,
-            style: TextButton.styleFrom(
-              minimumSize: Size.zero,
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppDimens.paddingSmall,
-              ),
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        TextButton(
+          onPressed: controller.goToSelectStaffPage,
+          style: TextButton.styleFrom(
+            minimumSize: Size.zero,
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppDimens.paddingSmall,
             ),
-            child: SDSBuildText(
-              LocaleKeys.declareInfo_selectStaff.tr,
-              style: AppTextStyle.font14Re.copyWith(
-                color: AppColors.primaryColor,
-                fontStyle: FontStyle.italic,
-              ),
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
+          child: SDSBuildText(
+            LocaleKeys.declareInfo_selectStaff.tr,
+            style: AppTextStyle.font14Re.copyWith(
+              color: AppColors.primaryColor,
+              fontStyle: FontStyle.italic,
             ),
           ),
+        ),
       ],
     );
   }

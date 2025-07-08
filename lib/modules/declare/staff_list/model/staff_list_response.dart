@@ -26,7 +26,7 @@ class StaffListResponse {
 
   factory StaffListResponse.fromJsonTk1(Map<String, dynamic> json) {
     return StaffListResponse(
-      staffs: (json['d02Results'] as List<dynamic>?)
+      staffs: (json['tk1Results'] as List<dynamic>?)
               ?.map(
                   (e) => DeclaredStaffModel.fromJson(e as Map<String, dynamic>))
               .toList() ??

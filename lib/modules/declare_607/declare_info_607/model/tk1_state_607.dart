@@ -2,13 +2,16 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
-import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
-import 'package:v_bhxh/modules/declare_607/declare_info_607/model/receive_profile_result_enum.dart';
+import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/shares/date/date_utils.dart';
 
 class Tk1State607 {
+  /// id tk1ts dùng khi update
+  String? id;
+
   final formKey = GlobalKey<FormState>();
 
   final autoValidateMode = AutovalidateMode.disabled.obs;
@@ -127,10 +130,43 @@ class Tk1State607 {
   /// Sinh dữ liệu D01-TS
   final isGenerateD01Data = false.obs;
 
-  void mapFromD02Detail(DeclareInfoDetailResponse detail) {
-    // TODO: Map thêm thông tin cho các trường còn thiếu
+  void mapFromTk1Detail(DeclareInfoDetailResponse607 detail) {
     final tk1Ts = detail.tk1Ts;
     final members = detail.familyMembers;
+
+    id = tk1Ts.id;
+
+    if (tk1Ts.hoTen != null) {
+      fullNameTextCtrl.text = tk1Ts.hoTen!.trim();
+    }
+
+    if (tk1Ts.maSoBhxh != null) {
+      bhxhTextCtrl.text = tk1Ts.maSoBhxh!.trim();
+    }
+
+    if (tk1Ts.cmnd != null) {
+      cccdTextCtrl.text = tk1Ts.cmnd!.trim();
+    }
+
+    birthType.value = tk1Ts.chiCoNamSinh;
+
+    if (tk1Ts.ngaySinh != null) {
+      dateOfBirthTextCtrl.text =
+          convertDateToStringSafe(tk1Ts.ngaySinh, birthType.value.pattern) ??
+              '';
+    }
+
+    if (tk1Ts.gioiTinh != null) {
+      gender.value = tk1Ts.gioiTinh ?? Gender.defaultValue;
+    }
+
+    if (tk1Ts.danToc != null) {
+      selectedEthnic.value = tk1Ts.danToc;
+    }
+
+    if (tk1Ts.quocTich != null) {
+      selectedNationality.value = tk1Ts.quocTich;
+    }
 
     if (tk1Ts.khaiSinhTinh != null) {
       provinceOfBirth.value = tk1Ts.khaiSinhTinh;
@@ -142,6 +178,10 @@ class Tk1State607 {
 
     if (tk1Ts.khaiSinhXa != null) {
       wardOfBirth.value = tk1Ts.khaiSinhXa;
+    }
+
+    if (tk1Ts.diaChiKhaiSinh != null) {
+      birthAddressTextCtrl.text = tk1Ts.diaChiKhaiSinh!.trim();
     }
 
     isDuplicateBirthAddress.value = tk1Ts.trungDiaChiKhaiSinh;
@@ -174,6 +214,32 @@ class Tk1State607 {
       contactPhoneNumberTextCtrl.text = tk1Ts.dienThoaiLienHe!.trim();
     }
 
+    if (tk1Ts.noiDungThayDoi != null) {
+      contentChangesTextCtrl.text = tk1Ts.noiDungThayDoi!.trim();
+    }
+
+    if (tk1Ts.hoSoKemTheo != null) {
+      attachedProfileTextCtrl.text = tk1Ts.hoSoKemTheo!.trim();
+    }
+
+    receiveResult.value = tk1Ts.dangKyNhanKetQua;
+
+    if (tk1Ts.nhanBanGiayTinh != null) {
+      provinceReceivePaper.value = tk1Ts.nhanBanGiayTinh;
+    }
+
+    if (tk1Ts.nhanBanGiayHuyen != null) {
+      districtReceivePaper.value = tk1Ts.nhanBanGiayHuyen;
+    }
+
+    if (tk1Ts.nhanBanGiayXa != null) {
+      wardReceivePaper.value = tk1Ts.nhanBanGiayXa;
+    }
+
+    if (tk1Ts.diaChiNhanBanGiay != null) {
+      addressReceivePaperTextCtrl.text = tk1Ts.diaChiNhanBanGiay!.trim();
+    }
+
     isParticipantHeadOfHousehold.value = tk1Ts.laChuHo;
 
     if (tk1Ts.hoTenChuHo != null) {
@@ -200,14 +266,69 @@ class Tk1State607 {
       addressTTTextCtrl.text = tk1Ts.diaChiThuongTruChuHo!.trim();
     }
 
-    if (tk1Ts.diaChiKhaiSinh != null) {
-      birthAddressTextCtrl.text = tk1Ts.diaChiKhaiSinh!.trim();
-    }
+    isGenerateD01Data.value = tk1Ts.xuatD01;
 
     if (members.isNotEmpty) {
       familyMembers.value =
           members.map((e) => FamilyMember.fromResponse(e)).toList();
     }
+  }
+
+  void mapFromStaffDetail(StaffDetailResponse staff) {
+    // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
+    fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
+
+    bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
+
+    cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
+
+    dateOfBirthTextCtrl.text =
+        convertDateToStringSafe(staff.ngaySinh, PATTERN_1) ?? '';
+
+    gender.value = staff.gioiTinh ?? Gender.female;
+
+    selectedEthnic.value = staff.danToc;
+
+    selectedNationality.value = staff.quocTich;
+
+    provinceOfBirth.value = staff.khaiSinhTinh;
+
+    districtOfBirth.value = staff.khaiSinhHuyen;
+
+    wardOfBirth.value = staff.khaiSinhXa;
+
+    birthAddressTextCtrl.text = staff.diaChiKhaiSinh?.trim() ?? '';
+
+    provinceReceive.value = staff.noiNhanTinh;
+
+    districtReceive.value = staff.noiNhanHuyen;
+
+    wardReceive.value = staff.noiNhanXa;
+
+    addressReceiveTextCtrl.text = staff.diaChiNoiNhan?.trim() ?? '';
+
+    provinceKCB.value = staff.benhVienTinh;
+
+    hospitalKCB.value = staff.benhVien;
+
+    contactPhoneNumberTextCtrl.text = staff.dienThoaiLienHe?.trim() ?? '';
+
+    headOfHouseholdTextCtrl.text = staff.hoTenChuHo?.trim() ?? '';
+
+    headOfHouseholdCCCDTextCtrl.text = staff.chuHoSoCCCD?.trim() ?? '';
+
+    provinceTT.value = staff.chuHoThuongTruTinh;
+
+    districtTT.value = staff.chuHoThuongTruHuyen;
+
+    wardTT.value = staff.chuHoThuongTruXa;
+
+    addressTTTextCtrl.text = staff.diaChiThuongTruChuHo?.trim() ?? '';
+
+    final members = staff.danhSachThanhViens;
+
+    familyMembers.value =
+        members.map((e) => FamilyMember.fromStaff(e)).toList();
   }
 
   void dispose() {

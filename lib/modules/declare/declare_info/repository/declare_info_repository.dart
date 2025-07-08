@@ -2,6 +2,7 @@ import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
+import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 import '../../../src.dart';
@@ -192,6 +193,33 @@ class DeclareInfoRepository extends BaseRepository {
     return BaseResponse<StaffDetailResponse>.fromJson(
       response,
       fromJson: (json) => StaffDetailResponse.fromJson(json),
+    );
+  }
+
+  Future<BaseResponse> addTk1({
+    required AddTk1Request607 request,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlAddTk1,
+      EnumRequestMethod.post,
+      jsonMap: request.toJson(),
+    );
+    return BaseResponse.fromJson(response);
+  }
+
+  Future<BaseResponse<DeclareInfoDetailResponse607>> getTk1Detail({
+    required String id,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlGetTk1Detail,
+      EnumRequestMethod.get,
+      jsonMap: {
+        "key": id,
+      },
+    );
+    return BaseResponse<DeclareInfoDetailResponse607>.fromJson(
+      response,
+      fromJson: (json) => DeclareInfoDetailResponse607.fromJson(json),
     );
   }
 }

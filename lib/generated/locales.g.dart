@@ -41,6 +41,11 @@ class LocaleKeys {
   static const app_close = 'app_close';
   static const app_select = 'app_select';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
+  static const dialog_updateSuccessDialog = 'dialog_updateSuccessDialog';
+  static const dialog_updateFailure = 'dialog_updateFailure';
+  static const dialog_updateFailureDialog = 'dialog_updateFailureDialog';
+  static const dialog_cancelUpdate = 'dialog_cancelUpdate';
+  static const dialog_cancelUpdateDialog = 'dialog_cancelUpdateDialog';
   static const dialog_logout = 'dialog_logout';
   static const dialog_isLogout = 'dialog_isLogout';
   static const dialog_empty = 'dialog_empty';
@@ -95,18 +100,25 @@ class LocaleKeys {
   static const unitInfo_registerInfo = 'unitInfo_registerInfo';
   static const unitInfo_unitInfo = 'unitInfo_unitInfo';
   static const unitInfo_unitName = 'unitInfo_unitName';
+  static const unitInfo_unitNameCannotEmpty = 'unitInfo_unitNameCannotEmpty';
   static const unitInfo_unitCode = 'unitInfo_unitCode';
   static const unitInfo_phone = 'unitInfo_phone';
   static const unitInfo_addressInfo = 'unitInfo_addressInfo';
   static const unitInfo_addressRegister = 'unitInfo_addressRegister';
   static const unitInfo_addressRegisterDKKD = 'unitInfo_addressRegisterDKKD';
+  static const unitInfo_addressRegisterCannotEmpty =
+      'unitInfo_addressRegisterCannotEmpty';
   static const unitInfo_addressTransaction = 'unitInfo_addressTransaction';
+  static const unitInfo_addressTransactionCannotEmpty =
+      'unitInfo_addressTransactionCannotEmpty';
   static const unitInfo_businessIndustry = 'unitInfo_businessIndustry';
   static const unitInfo_representInfo = 'unitInfo_representInfo';
   static const unitInfo_transactionPersonInfo =
       'unitInfo_transactionPersonInfo';
   static const unitInfo_represent = 'unitInfo_represent';
+  static const unitInfo_representCannotEmpty = 'unitInfo_representCannotEmpty';
   static const unitInfo_position = 'unitInfo_position';
+  static const unitInfo_positionCannotEmpty = 'unitInfo_positionCannotEmpty';
   static const unitInfo_decisionInfo = 'unitInfo_decisionInfo';
   static const unitInfo_decisionNumber = 'unitInfo_decisionNumber';
   static const unitInfo_decisionAddress = 'unitInfo_decisionAddress';
@@ -139,7 +151,11 @@ class LocaleKeys {
   static const unitInfo_unitGroup = 'unitInfo_unitGroup';
   static const unitInfo_content = 'unitInfo_content';
   static const unitInfo_transactionPerson = 'unitInfo_transactionPerson';
+  static const unitInfo_transactionPersonCannotEmpty =
+      'unitInfo_transactionPersonCannotEmpty';
   static const unitInfo_phoneContact = 'unitInfo_phoneContact';
+  static const unitInfo_phoneContactCannotEmpty =
+      'unitInfo_phoneContactCannotEmpty';
   static const unitInfo_email = 'unitInfo_email';
   static const unitInfo_fileInclude = 'unitInfo_fileInclude';
   static const unitInfo_attached = 'unitInfo_attached';
@@ -162,8 +178,8 @@ class LocaleKeys {
   static const unitInfo_agree = 'unitInfo_agree';
   static const unitInfo_signUpForCode = 'unitInfo_signUpForCode';
   static const unitInfo_phoneNumberInValid = 'unitInfo_phoneNumberInValid';
-  static const unitInfo_phoenNumberIsNotEmpty =
-      'unitInfo_phoenNumberIsNotEmpty';
+  static const unitInfo_phoneNumberIsNotEmpty =
+      'unitInfo_phoneNumberIsNotEmpty';
   static const unitInfo_unitCodeInValid = 'unitInfo_unitCodeInValid';
   static const unitInfo_unitCodeIsNotEmpty = 'unitInfo_unitCodeIsNotEmpty';
   static const unitInfo_emailIsNotEmpty = 'unitInfo_emailIsNotEmpty';
@@ -173,10 +189,15 @@ class LocaleKeys {
   static const unitInfo_fileIncludeInValid = 'unitInfo_fileIncludeInValid';
   static const unitInfo_search = 'unitInfo_search';
   static const unitInfo_change = 'unitInfo_change';
+  static const unitInfo_fix = 'unitInfo_fix';
+  static const unitInfo_cancel = 'unitInfo_cancel';
+  static const unitInfo_continue = 'unitInfo_continue';
   static const unitInfo_socialAgencyName = 'unitInfo_socialAgencyName';
   static const unitInfo_socialAgencyCode = 'unitInfo_socialAgencyCode';
   static const unitInfo_region = 'unitInfo_region';
   static const unitInfo_basicSalary = 'unitInfo_basicSalary';
+  static const unitInfo_basicSalaryCannotEmpty =
+      'unitInfo_basicSalaryCannotEmpty';
   static const unitInfo_registerResult = 'unitInfo_registerResult';
   static const unitInfo_regionOne = 'unitInfo_regionOne';
   static const unitInfo_regionTwo = 'unitInfo_regionTwo';
@@ -513,10 +534,13 @@ class LocaleKeys {
   static const declareInfo_otherInfo = 'declareInfo_otherInfo';
   static const declareInfo_generateD01tsData = 'declareInfo_generateD01tsData';
   static const declareInfo_personalInfo = 'declareInfo_personalInfo';
-  static const declareInfo_salaryOrCoefficientCannotEmpty =
-      'declareInfo_salaryOrCoefficientCannotEmpty';
-  static const declareInfo_salaryOrCoefficientMustBeInteger =
-      'declareInfo_salaryOrCoefficientMustBeInteger';
+  static const declareInfo_salaryCannotEmpty = 'declareInfo_salaryCannotEmpty';
+  static const declareInfo_salaryMustBeInteger =
+      'declareInfo_salaryMustBeInteger';
+  static const declareInfo_coefficientCannotEmpty =
+      'declareInfo_coefficientCannotEmpty';
+  static const declareInfo_coefficientMustBeInteger =
+      'declareInfo_coefficientMustBeInteger';
   static const declareInfo_addressInfo = 'declareInfo_addressInfo';
   static const declareInfo_medicalFacilityInfo =
       'declareInfo_medicalFacilityInfo';
@@ -576,6 +600,7 @@ class LocaleKeys {
   static const familyMember_provinceOfBirth = 'familyMember_provinceOfBirth';
   static const familyMember_selectProvinceOfBirth =
       'familyMember_selectProvinceOfBirth';
+  static const familyMember_selectProvince = 'familyMember_selectProvince';
   static const familyMember_provinceOfBirthCannotEmpty =
       'familyMember_provinceOfBirthCannotEmpty';
   static const familyMember_districtOfBirth = 'familyMember_districtOfBirth';
@@ -978,7 +1003,13 @@ class Locales {
     'dialog_history': 'Lịch sử',
     'dialog_consignment': 'Ký gửi',
     'dialog_notification': 'Thông báo',
-    'dialog_updateSuccess': 'Thay đổi thông tin thành công',
+    'dialog_updateSuccess': 'Thay đổi thành công',
+    'dialog_updateSuccessDialog': 'Lưu thông tin thay đổi thành công',
+    'dialog_updateFailure': 'Thay đổi thất bại',
+    'dialog_updateFailureDialog': 'Lưu thông tin thay đổi thất bại',
+    'dialog_cancelUpdate': 'Hủy sửa đổi thông tin',
+    'dialog_cancelUpdateDialog':
+        'Mọi chỉnh sửa sẽ bị mất nếu bạn thoát.\nBạn có chắc chắn muốn hủy',
     'dialog_logout': 'Đăng xuất',
     'dialog_isLogout': 'Bạn có chắc chắn muốn đăng xuất?',
     'dialog_empty': 'Trống',
@@ -1035,17 +1066,23 @@ class Locales {
     'unitInfo_registerInfo': 'Thông tin đăng ký',
     'unitInfo_unitInfo': 'Thông tin đơn vị',
     'unitInfo_unitName': 'Tên đơn vị',
+    'unitInfo_unitNameCannotEmpty': 'Tên đơn vị không được bỏ trống',
     'unitInfo_unitCode': 'Mã đơn vị',
     'unitInfo_phone': 'Số điện thoại',
     'unitInfo_addressInfo': 'Thông tin địa chỉ',
-    'unitInfo_addressRegister': 'Địa chỉ đăng ký kinh doanh',
+    'unitInfo_addressRegister': 'Địa chỉ ĐKKD',
     'unitInfo_addressRegisterDKKD': 'Địa chỉ ĐKKD: ',
-    'unitInfo_addressTransaction': 'Địa chỉ giao dịch hồ sơ',
+    'unitInfo_addressRegisterCannotEmpty': 'Địa chỉ ĐKKD không được bỏ trống',
+    'unitInfo_addressTransaction': 'Địa chỉ giao dịch',
+    'unitInfo_addressTransactionCannotEmpty':
+        'Địa chỉ giao dịch không được bỏ trống',
     'unitInfo_businessIndustry': 'Ngành nghề sản xuất',
     'unitInfo_representInfo': 'Thông tin người đại diện',
     'unitInfo_transactionPersonInfo': 'Thông tin người giao dịch',
-    'unitInfo_represent': 'Người ký hồ sơ',
+    'unitInfo_represent': 'Người đại diện',
+    'unitInfo_representCannotEmpty': 'Người đại diện không được bỏ trống',
     'unitInfo_position': 'Chức vụ',
+    'unitInfo_positionCannotEmpty': 'Chức vụ không được bỏ trống',
     'unitInfo_decisionInfo': 'Thông tin quyết định',
     'unitInfo_decisionNumber': 'Số quyết định',
     'unitInfo_decisionAddress': 'Nơi cấp quyết định',
@@ -1077,7 +1114,11 @@ class Locales {
     'unitInfo_unitGroup': 'Khối đơn vị',
     'unitInfo_content': 'Nội dung',
     'unitInfo_transactionPerson': 'Người kê khai',
-    'unitInfo_phoneContact': 'Điện thoại liên hệ',
+    'unitInfo_transactionPersonCannotEmpty':
+        'Người kê khai không được bỏ trống',
+    'unitInfo_phoneContact': 'Điện thoại di động',
+    'unitInfo_phoneContactCannotEmpty':
+        'Điện thoại di động không được bỏ trống',
     'unitInfo_email': 'Email liên hệ',
     'unitInfo_fileInclude': 'Hồ sơ kèm theo',
     'unitInfo_attached': 'Đính kèm',
@@ -1100,7 +1141,7 @@ class Locales {
     'unitInfo_agree': 'Đồng ý',
     'unitInfo_signUpForCode': 'Đăng ký cấp mã',
     'unitInfo_phoneNumberInValid': 'Số điện thoại không hợp lệ',
-    'unitInfo_phoenNumberIsNotEmpty': 'Số điện thoại không được bỏ trống',
+    'unitInfo_phoneNumberIsNotEmpty': 'Số điện thoại không được bỏ trống',
     'unitInfo_unitCodeInValid': 'Mã đơn vị phải có 7 ký tự',
     'unitInfo_unitCodeIsNotEmpty': 'Mã đơn vị không được bỏ trống',
     'unitInfo_emailIsNotEmpty': 'Email không được bỏ trống',
@@ -1110,10 +1151,14 @@ class Locales {
     'unitInfo_fileIncludeInValid': 'File đính kèm không được bỏ trống',
     'unitInfo_search': 'Tìm kiếm',
     'unitInfo_change': 'Thay đổi',
-    'unitInfo_socialAgencyName': 'Cơ quan quản lý BHXH',
-    'unitInfo_socialAgencyCode': 'Mã CQQL BHXH',
+    'unitInfo_fix': 'Sửa thông tin',
+    'unitInfo_cancel': 'Hủy',
+    'unitInfo_continue': 'Tiếp tục sửa',
+    'unitInfo_socialAgencyName': 'Tên CQQL',
+    'unitInfo_socialAgencyCode': 'Mã CQQL',
     'unitInfo_region': 'Vùng',
     'unitInfo_basicSalary': 'Lương cơ sở',
+    'unitInfo_basicSalaryCannotEmpty': 'Lương cơ sở không được bỏ trống',
     'unitInfo_registerResult': 'Đăng ký nhận kết quả',
     'unitInfo_regionOne': 'Vùng I',
     'unitInfo_regionTwo': 'Vùng II',
@@ -1402,10 +1447,10 @@ class Locales {
     'declareInfo_otherInfo': 'Thông tin khác',
     'declareInfo_generateD01tsData': 'Sinh dữ liệu D01-TS',
     'declareInfo_personalInfo': 'Thông tin cá nhân',
-    'declareInfo_salaryOrCoefficientCannotEmpty':
-        'Tiền lương/Hệ số không được bỏ trống',
-    'declareInfo_salaryOrCoefficientMustBeInteger':
-        'Tiền lương/Hệ số phải là số nguyên',
+    'declareInfo_salaryCannotEmpty': 'Tiền lương không được bỏ trống',
+    'declareInfo_salaryMustBeInteger': 'Tiền lương phải là số nguyên',
+    'declareInfo_coefficientCannotEmpty': 'Hệ số không được bỏ trống',
+    'declareInfo_coefficientMustBeInteger': 'Tiền lương phải là số nguyên',
     'declareInfo_addressInfo': 'Thông tin địa chỉ',
     'declareInfo_medicalFacilityInfo': 'Thông tin nơi khám chữa bệnh',
     'declareInfo_householdOwnerInfo': 'Thông tin chủ hộ',
@@ -1446,6 +1491,7 @@ class Locales {
     'familyMember_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
     'familyMember_provinceOfBirth': 'Tỉnh khai sinh',
     'familyMember_selectProvinceOfBirth': 'Chọn tỉnh khai sinh',
+    'familyMember_selectProvince': 'Chọn Tỉnh/Thành phố',
     'familyMember_provinceOfBirthCannotEmpty':
         'Tỉnh khai sinh không được bỏ trống',
     'familyMember_districtOfBirth': 'Huyện khai sinh',

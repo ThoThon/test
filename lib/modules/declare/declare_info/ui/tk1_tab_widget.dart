@@ -322,7 +322,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceReceive.value,
                 display: (value) => value.name,
@@ -470,7 +470,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceKCB.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceKCB.value,
                 display: (value) => value.name,
@@ -542,6 +542,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       controller: controller.tk1State.contactPhoneNumberTextCtrl,
       textInputType: TextInputType.phone,
       maxLengthInputForm: 20,
+      inputFormatters: InputFormatterEnum.phoneNumber,
     );
   }
 
@@ -615,7 +616,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceTT.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceTT.value,
                 display: (value) => value.name,
@@ -847,6 +848,9 @@ extension Tk1TabWidget on DeclareInfoPage {
           IconButton(
             onPressed: () {
               ShowDialog.showDialogConfirm2(
+                backgroundColorBack: AppColors.basicWhite,
+                textStyleBack: AppTextStyle.font14Re
+                    .copyWith(color: AppColors.primaryColor),
                 title: LocaleKeys.declareInfo_deleteSelectedMember.tr,
                 confirmTitle: LocaleKeys.declareInfo_delete.tr,
                 onConfirm: () {
