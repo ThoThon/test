@@ -5,6 +5,7 @@ import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart
 import 'package:v_bhxh/modules/login/model/district_model.dart';
 import 'package:v_bhxh/modules/login/model/province_model.dart';
 import 'package:v_bhxh/modules/login/model/ward_model.dart';
+import 'package:v_bhxh/modules/select_staff/model/select_staff_response.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -44,6 +45,32 @@ class DeclareInfo607Controller extends BaseGetxController {
         // Update D02Tk1State
         tk1State.mapFromD02Detail(infoDetail);
         d01State.mapFromD02Detail(infoDetail);
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  void goToSelectStaffPage() async {
+    final result = await Get.toNamed(AppRoutes.selectStaff.path);
+    if (result is SelectStaffResponse) {
+      _getDetailStaff(staffId: result.id);
+    }
+  }
+
+  Future<void> _getDetailStaff({
+    required String staffId,
+  }) async {
+    try {
+      showLoadingOverlay();
+      final response = await declareInfoRepository.getDetailStaff(id: staffId);
+      final staff = response.result;
+      if (response.isSuccess && staff != null) {
+        tk1State.mapFromStaffDetail(staff);
       } else {
         showSnackBar(response.errorMessage);
       }

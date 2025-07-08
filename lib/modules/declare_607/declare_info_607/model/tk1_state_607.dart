@@ -7,6 +7,7 @@ import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/receive_profile_result_enum.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/shares/date/date_utils.dart';
 
 class Tk1State607 {
   final formKey = GlobalKey<FormState>();
@@ -208,6 +209,63 @@ class Tk1State607 {
       familyMembers.value =
           members.map((e) => FamilyMember.fromResponse(e)).toList();
     }
+  }
+
+  void mapFromStaffDetail(StaffDetailResponse staff) {
+    // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
+    fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
+
+    bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
+
+    cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
+
+    dateOfBirthTextCtrl.text =
+        convertDateToStringSafe(staff.ngaySinh, PATTERN_1) ?? '';
+
+    gender.value = staff.gioiTinh ?? Gender.female;
+
+    selectedEthnic.value = staff.danToc;
+
+    selectedNationality.value = staff.quocTich;
+
+    provinceOfBirth.value = staff.khaiSinhTinh;
+
+    districtOfBirth.value = staff.khaiSinhHuyen;
+
+    wardOfBirth.value = staff.khaiSinhXa;
+
+    birthAddressTextCtrl.text = staff.diaChiKhaiSinh?.trim() ?? '';
+
+    provinceReceive.value = staff.noiNhanTinh;
+
+    districtReceive.value = staff.noiNhanHuyen;
+
+    wardReceive.value = staff.noiNhanXa;
+
+    addressReceiveTextCtrl.text = staff.diaChiNoiNhan?.trim() ?? '';
+
+    provinceKCB.value = staff.benhVienTinh;
+
+    hospitalKCB.value = staff.benhVien;
+
+    contactPhoneNumberTextCtrl.text = staff.dienThoaiLienHe?.trim() ?? '';
+
+    headOfHouseholdTextCtrl.text = staff.hoTenChuHo?.trim() ?? '';
+
+    headOfHouseholdCCCDTextCtrl.text = staff.chuHoSoCCCD?.trim() ?? '';
+
+    provinceTT.value = staff.chuHoThuongTruTinh;
+
+    districtTT.value = staff.chuHoThuongTruHuyen;
+
+    wardTT.value = staff.chuHoThuongTruXa;
+
+    addressTTTextCtrl.text = staff.diaChiThuongTruChuHo?.trim() ?? '';
+
+    final members = staff.danhSachThanhViens;
+
+    familyMembers.value =
+        members.map((e) => FamilyMember.fromStaff(e)).toList();
   }
 
   void dispose() {
