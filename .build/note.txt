@@ -4,6 +4,7 @@
 [Appmobile]_Thủ tục 607 - Bổ sung giao diện "Lưu TK1, D01" - BHW-2596
 - [AppMobile][TK1-TS] Trường "Số điện thoại" cho phép nhập ký tự không hợp lệ - BHW-2625
 - [Appmobile][D02-LT]_Lỗi hiển thị message error trường "Ngày sinh", "Từ tháng/năm", "Đến tháng/năm" - BHW-2612
+- [Appmobile]_Thủ tục 607 - Bổ sung giao diện "Lưu TK1, D01" - BHW-2596
 - [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất trong hộp combobox - BHW-2621
 
 7/7/2025
