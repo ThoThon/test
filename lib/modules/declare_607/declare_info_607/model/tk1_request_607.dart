@@ -160,7 +160,7 @@ class Tk1Request607 {
       dienThoaiLienHe: tk1State.contactPhoneNumberTextCtrl.text.trim(),
       noiDungThayDoi: tk1State.contentChangesTextCtrl.text.trim(),
       hoSoKemTheo: tk1State.attachedProfileTextCtrl.text.trim(),
-      dangKyNhanKetQua: tk1State.receiveResult.value.title,
+      dangKyNhanKetQua: tk1State.receiveResult.value.code,
       nhanBanGiayTinhId: tk1State.provinceReceivePaper.value?.id,
       nhanBanGiayHuyenId: tk1State.districtReceivePaper.value?.id,
       nhanBanGiayXaId: tk1State.wardReceivePaper.value?.id,
