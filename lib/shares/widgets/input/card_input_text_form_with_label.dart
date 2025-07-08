@@ -18,6 +18,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final bool isReadOnly;
   final Widget? suffixIcon;
+  final Color? fillColor;
 
   const CardInputTextFormWithLabel({
     super.key,
@@ -37,6 +38,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
     this.autovalidateMode,
     this.isReadOnly = false,
     this.suffixIcon,
+    this.fillColor,
   });
 
   @override
@@ -46,11 +48,11 @@ class CardInputTextFormWithLabel extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.vertical(
               top: Radius.circular(AppDimens.radius10),
             ),
-            color: AppColors.basicWhite,
+            color: fillColor ?? AppColors.basicWhite,
           ),
           child: Padding(
             padding: const EdgeInsets.only(
@@ -82,9 +84,11 @@ class CardInputTextFormWithLabel extends StatelessWidget {
         ),
         BuildInputText(
           InputTextModel(
-            isValidate: isRequired,
             autovalidateMode: autovalidateMode,
+            isValidate: isRequired,
             controller: controller,
+            isReadOnly: isReadOnly,
+            fillColor: fillColor,
             hintText: hintText ?? 'Nhập ${labelText.toLowerCase()}',
             maxLengthInputForm: maxLengthInputForm,
             inputFormatters: inputFormatters ?? InputFormatterEnum.textNormal,
@@ -98,7 +102,6 @@ class CardInputTextFormWithLabel extends StatelessWidget {
             disabledBorder: _buildOutlineInputNoBorder(),
             focusedErrorBorder: _buildOutlineInputNoBorder(),
             onChanged: onChanged,
-            isReadOnly: isReadOnly,
             contentPadding: const EdgeInsets.only(
               bottom: AppDimens.paddingSmall,
               left: AppDimens.defaultPadding,

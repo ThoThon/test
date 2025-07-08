@@ -52,6 +52,35 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     );
     selectedMethod.value = getPaymenteMethod(accountInfo?.phuongThucDong);
     selectedReceive.value = getReceiveResult(accountInfo?.ptNhanKq);
+    originalInfo = _buildRequest();
+  }
+
+  bool get isInputUnchanged {
+    final currentRequest = _buildRequest();
+    return originalInfo != null &&
+        currentRequest.toJson().toString() == originalInfo!.toJson().toString();
+  }
+
+  void handleCancelEdit() {
+    if (isInputUnchanged) {
+      isEditAll.value = false;
+    } else {
+      ShowDialog.showDialogConfirm2(
+        title: LocaleKeys.dialog_cancelUpdate.tr,
+        content: LocaleKeys.dialog_cancelUpdateDialog.tr,
+        exitTitle: LocaleKeys.unitInfo_cancel.tr,
+        confirmTitle: LocaleKeys.unitInfo_continue.tr,
+        backgroundColorBack: Colors.white,
+        textStyleBack:
+            AppTextStyle.font14Bo.copyWith(color: AppColors.basicBlack),
+        textStyleConfirm: AppTextStyle.font14Bo,
+        onCancel: () {
+          fetchDataAccountInfo();
+          isEditAll.value = false;
+        },
+        onConfirm: () {},
+      );
+    }
   }
 
   Future<void> updateAccountInfo() async {
@@ -65,25 +94,35 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       showLoadingOverlay();
       final response = await unitInfoRepository.updateAccountInfo(request);
       if (response.isSuccess) {
-        ShowDialog.showDialogConfirm(
+        ShowDialog.showDialogConfirm2(
           title: LocaleKeys.dialog_updateSuccess.tr,
-          textBtnRight: LocaleKeys.unitInfo_home.tr,
-          activeIcon: true,
-          onPressed: () async {
+          iconType: DialogIconType.success,
+          showConfirmButton: false,
+          content: LocaleKeys.dialog_updateSuccessDialog.tr,
+          exitTitle: LocaleKeys.dialog_close.tr,
+          onCancel: () async {
             await _getAccountInfo();
             await _getToTalNotiUnread();
             Get.offAllNamed(
               AppRoutes.home.path,
             );
           },
-          funcBack: () async {
-            await _getAccountInfo();
-            await _getToTalNotiUnread();
-            Get.back();
-          },
         );
       } else {
-        showSnackBar(LocaleKeys.unitInfo_hasError.tr);
+        ShowDialog.showDialogConfirm2(
+          title: LocaleKeys.dialog_updateFailure.tr,
+          iconType: DialogIconType.failure,
+          showConfirmButton: false,
+          content: LocaleKeys.dialog_updateFailureDialog.tr,
+          exitTitle: LocaleKeys.dialog_close.tr,
+          onCancel: () async {
+            await _getAccountInfo();
+            await _getToTalNotiUnread();
+            Get.offAllNamed(
+              AppRoutes.home.path,
+            );
+          },
+        );
       }
     } catch (e) {
       logger.d(e);
