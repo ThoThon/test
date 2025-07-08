@@ -19,4 +19,11 @@ enum ReceiveProfileResultEnum {
         return LocaleKeys.declareInfo_receiveResultPaper.tr;
     }
   }
+
+  static ReceiveProfileResultEnum? fromString(String? value) {
+    if (value == null) return null;
+    return ReceiveProfileResultEnum.values.firstWhereOrNull(
+      (e) => e.title == value,
+    );
+  }
 }

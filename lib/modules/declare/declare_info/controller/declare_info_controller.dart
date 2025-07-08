@@ -305,7 +305,6 @@ class DeclareInfoController extends BaseGetxController {
         if (argument.isAddPeriodFromDeclarePeriod) {
           Get.offNamed(
             AppRoutes.staffList.path,
-            // TODO: correct value of procedureType
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure600,

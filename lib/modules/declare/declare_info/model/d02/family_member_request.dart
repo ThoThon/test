@@ -1,4 +1,3 @@
-import 'package:v_bhxh/modules/declare/declare_src.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
 
 class FamilyMemberRequest {
@@ -67,9 +66,9 @@ class FamilyMemberRequest {
 
   static List<FamilyMemberRequest> fromState({
     required String kyKeKhaiId,
-    required Tk1State tk1State,
+    required List<FamilyMember> familyMembers,
   }) {
-    return tk1State.familyMembers.map((FamilyMember member) {
+    return familyMembers.map((FamilyMember member) {
       return FamilyMemberRequest(
         // Update thì lấy id từ member, nếu khi tạo mới thì id sẽ là null
         id: member.isUpdate ? member.id : null,
