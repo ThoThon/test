@@ -370,8 +370,10 @@ class DeclareInfoController extends BaseGetxController {
 
     if (value) {
       d02State.salaryAllowanceTextCtrl.clear();
+      d02State.salaryCoefficientTextCtrl.clear();
       d02State.otherAllowanceTextCtrl.clear();
     } else {
+      d02State.salaryCoefficientTextCtrl.clear();
       d02State.positionAllowanceTextCtrl.clear();
       d02State.pcTNNTextCtrl.clear();
       d02State.pcTNVuotKhungTextCtrl.clear();

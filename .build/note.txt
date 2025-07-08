@@ -9,6 +9,10 @@
 - [Appmobile]_Thủ tục 607 - Xây dựng giao diện các trường màn TK1 - BHW-2562
 - [Appmobile]_Giao diện sau chỉnh sửa: Màn danh sách nhân viên kê khai: Chưa chặn tối đa 5 file ảnh
 - [Appmobile]_Chỉnh sửa popup khi chuyển ký gửi - BHW-2585
+- [Appmobile]_Lỗi hiển thị trường bắt buộc Địa chỉ thường trú - BHW-2608
+- [Appmobile]_Chỉnh sửa giao diện: Màn D01
+- [Appmobile]_Chỉnh sửa giao diện bổ sung: Trường Tiền lương/hệ số - BHW-2609
+- [Appmobile]_Chỉnh sửa bổ sung Trường hệ số - Màn D02 - BHW-2610
 - [Appmobile]_Chỉnh sửa giao diện màn D01 - BHW-2605
 
 4/7/2025

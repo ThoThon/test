@@ -5,16 +5,17 @@ extension D01TabWidget on DeclareInfoPage {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        sdsSBHeight12,
-        SDSBuildText(
-          LocaleKeys.declareInfo_listOfTables.tr,
-          style: AppTextStyle.font16Bo,
-        ),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
+                UtilWidget.sizedBox16,
+                SDSBuildText(
+                  LocaleKeys.declareInfo_listTable.tr,
+                  style: AppTextStyle.font16Bo,
+                ),
                 sdsSBHeight12,
                 ...controller.d01State.forms.mapIndexed(
                   (index, form) {

@@ -409,7 +409,9 @@
     "contactPhoneNumber": "Số điện thoại liên hệ",
     "participantHeadOfHousehold": "Người tham gia là chủ hộ",
     "headOfHouseholdFullName": "Họ và tên chủ hộ",
+    "headOfHouseholdFullNameCannotEmpty": "Họ và tên chủ hộ không được để trống",
     "headOfHouseholdCCCD": "Số CCCD của chủ hộ",
+    "headOfHouseholdCCCDCannotEmpty": "Số CCCD của chủ hộ không được để trống",
     "provinceTT": "Tỉnh thường trú",
     "selectProvinceTT": "Chọn tỉnh thường trú",
     "districtTT": "Huyện thường trú",
@@ -476,10 +478,9 @@
     "addressReceivePaper": "Địa chỉ nhận hồ sơ giấy",
     "receiveResultElectronic": "Nhận kết quả bản điện tử",
     "receiveResultPaper": "Nhận kết quả bản giấy",
-    "listOfTables": "Danh sách bảng kê",
-    "addTable": "Thêm bảng kê",
-    "tableIsEmpty": "Chưa có bảng kê nào được khai báo",
-    "addTableSuccess": "Thêm bảng kê thành công"
+    "coefficient": "Hệ số",
+    "listTable": "Danh sách bảng kê",
+    "addTable": "Thêm bảng kê"
   },
   "familyMember": {
     "title": "Thêm thành viên",
