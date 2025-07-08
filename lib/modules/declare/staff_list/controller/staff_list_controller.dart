@@ -184,6 +184,9 @@ class StaffListController extends BaseGetxController {
 
   void showDialogDeleteStaff(DeclaredStaffModel staff) {
     ShowDialog.showDialogConfirm2(
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       title: LocaleKeys.staffList_deleteStaffConfirmMessage.tr,
       confirmTitle: LocaleKeys.app_delete.tr,
       onConfirm: () {

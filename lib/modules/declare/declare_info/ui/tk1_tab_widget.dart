@@ -848,6 +848,9 @@ extension Tk1TabWidget on DeclareInfoPage {
           IconButton(
             onPressed: () {
               ShowDialog.showDialogConfirm2(
+                backgroundColorBack: AppColors.basicWhite,
+                textStyleBack: AppTextStyle.font14Re
+                    .copyWith(color: AppColors.primaryColor),
                 title: LocaleKeys.declareInfo_deleteSelectedMember.tr,
                 confirmTitle: LocaleKeys.declareInfo_delete.tr,
                 onConfirm: () {
