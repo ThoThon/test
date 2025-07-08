@@ -181,14 +181,7 @@ class RegisterCodeController extends BaseGetxController {
   Future<void> getListCertificate() async {
     await fetchListCert();
     if (listCert.isNotEmpty) {
-      final result = await Get.bottomSheet(
-        SelectCertificateBts(
-          listCert: listCert,
-        ),
-      );
-      if (result != null) {
-        certificate.value = result;
-      }
+      certificate.value = listCert.first;
     } else {
       showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
     }
