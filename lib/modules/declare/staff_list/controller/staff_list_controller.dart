@@ -86,22 +86,18 @@ class StaffListController extends BaseGetxController {
 
   Future<void> upLoadFile(String imagePath) async {
     try {
-      if (listAttachImage.length > 4) {
-        maximumUploadFile();
+      showLoading();
+      final response = await _repository.uploadImage(
+        request: UploadImageRequest(
+          file: imagePath,
+          periodId: declarationPeriodId,
+        ),
+      );
+      if (response.isSuccess) {
+        // Vì hiện ảnh lấy từ BE về, nên khi vừa up ảnh xong phải gọi api để lấy link ảnh
+        _getStaffList();
       } else {
-        showLoading();
-        final response = await _repository.uploadImage(
-          request: UploadImageRequest(
-            file: imagePath,
-            periodId: declarationPeriodId,
-          ),
-        );
-        if (response.isSuccess) {
-          // Vì hiện ảnh lấy từ BE về, nên khi vừa up ảnh xong phải gọi api để lấy link ảnh
-          _getStaffList();
-        } else {
-          showSnackBar(response.errorMessage);
-        }
+        showSnackBar(response.errorMessage);
       }
     } catch (e) {
       logger.d(e);

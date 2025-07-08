@@ -30,6 +30,8 @@ extension StaffListWidget on StaffListPage {
                     AppSelectImageWidget(
                       onPickImage: controller.pickImage,
                       onTakePhoto: controller.takePhoto,
+                      canUpFile: controller.listAttachImage.length < 5,
+                      maximumFile: controller.maximumUploadFile,
                     ),
                     _buildAttachImages(),
                   ],
