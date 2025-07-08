@@ -380,15 +380,15 @@ class DeclareInfoController extends BaseGetxController {
     required bool value,
   }) {
     tk1State.isDuplicateBirthAddress.value = value;
+    if (!value) {
+      _clearBirthAddress();
+    }
 
     // Khi chọn checkbox thì:
     // Tỉnh nơi nhận trùng với Tỉnh khai sinh, Huyện nơi nhận trùng với Huyện khai sinh, Xã nơi nhận trùng với Xã khai sinh, Địa chỉ nơi nhận trùng với địa chỉ khai sinh.
     // TH nếu đ/c khai sinh sửa lại thì đ/c nhận hồ sơ cũng thay đổi
     _syncBirthAddress();
     _syncHeadOfHouseholdInfo();
-    if (value == false) {
-      _clearBirthAddress();
-    }
   }
 
   /// Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh
@@ -407,7 +407,7 @@ class DeclareInfoController extends BaseGetxController {
       tk1State.provinceReceive.value = null;
       tk1State.districtReceive.value = null;
       tk1State.wardReceive.value = null;
-      tk1State.addressReceiveTextCtrl.text = '';
+      tk1State.addressReceiveTextCtrl.clear();
     }
   }
 
