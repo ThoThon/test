@@ -453,9 +453,11 @@ extension D02TabWidget on DeclareInfoPage {
         final isSalaryCoefficient =
             controller.d02State.isSalaryCoefficient.value;
         return CardInputTextFormWithLabel(
-          labelText: LocaleKeys.declareInfo_salaryCoefficient.tr,
+          labelText: isSalaryCoefficient
+              ? LocaleKeys.declareInfo_coefficient.tr
+              : LocaleKeys.declareInfo_salaryCoefficient.tr,
           inputFormatters: isSalaryCoefficient
-              ? InputFormatterEnum.salaryCurrency
+              ? InputFormatterEnum.coefficient
               : InputFormatterEnum.salaryNormal,
           controller: controller.d02State.salaryCoefficientTextCtrl,
           isRequired: true,

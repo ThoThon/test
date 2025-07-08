@@ -451,8 +451,12 @@ class LocaleKeys {
       'declareInfo_participantHeadOfHousehold';
   static const declareInfo_headOfHouseholdFullName =
       'declareInfo_headOfHouseholdFullName';
+  static const declareInfo_headOfHouseholdFullNameCannotEmpty =
+      'declareInfo_headOfHouseholdFullNameCannotEmpty';
   static const declareInfo_headOfHouseholdCCCD =
       'declareInfo_headOfHouseholdCCCD';
+  static const declareInfo_headOfHouseholdCCCDCannotEmpty =
+      'declareInfo_headOfHouseholdCCCDCannotEmpty';
   static const declareInfo_provinceTT = 'declareInfo_provinceTT';
   static const declareInfo_selectProvinceTT = 'declareInfo_selectProvinceTT';
   static const declareInfo_districtTT = 'declareInfo_districtTT';
@@ -549,6 +553,8 @@ class LocaleKeys {
       'declareInfo_receiveResultElectronic';
   static const declareInfo_receiveResultPaper =
       'declareInfo_receiveResultPaper';
+  static const declareInfo_listTable = 'declareInfo_listTable';
+  static const declareInfo_coefficient = 'declareInfo_coefficient';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1345,7 +1351,11 @@ class Locales {
     'declareInfo_contactPhoneNumber': 'Số điện thoại liên hệ',
     'declareInfo_participantHeadOfHousehold': 'Người tham gia là chủ hộ',
     'declareInfo_headOfHouseholdFullName': 'Họ và tên chủ hộ',
+    'declareInfo_headOfHouseholdFullNameCannotEmpty':
+        'Họ và tên chủ hộ không được để trống',
     'declareInfo_headOfHouseholdCCCD': 'Số CCCD của chủ hộ',
+    'declareInfo_headOfHouseholdCCCDCannotEmpty':
+        'Số CCCD của chủ hộ không được để trống',
     'declareInfo_provinceTT': 'Tỉnh thường trú',
     'declareInfo_selectProvinceTT': 'Chọn tỉnh thường trú',
     'declareInfo_districtTT': 'Huyện thường trú',
@@ -1417,6 +1427,8 @@ class Locales {
     'declareInfo_addressReceivePaper': 'Địa chỉ nhận hồ sơ giấy',
     'declareInfo_receiveResultElectronic': 'Nhận kết quả bản điện tử',
     'declareInfo_receiveResultPaper': 'Nhận kết quả bản giấy',
+    'declareInfo_listTable': 'Danh sách bảng kê',
+    'declareInfo_coefficient': 'Hệ số',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
