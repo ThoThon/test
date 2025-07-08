@@ -542,6 +542,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       controller: controller.tk1State.contactPhoneNumberTextCtrl,
       textInputType: TextInputType.phone,
       maxLengthInputForm: 20,
+      inputFormatters: InputFormatterEnum.phoneNumber,
     );
   }
 
