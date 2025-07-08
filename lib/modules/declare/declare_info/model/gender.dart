@@ -7,6 +7,8 @@ enum Gender {
   /// 1: Nam
   male;
 
+  static const defaultValue = Gender.female;
+
   int get rawValue {
     switch (this) {
       case Gender.female:
