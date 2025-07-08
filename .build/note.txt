@@ -7,6 +7,11 @@
 - [Appmobile]_Thủ tục 607 - Bổ sung giao diện "Lưu TK1, D01" - BHW-2596
 - [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất trong hộp combobox - BHW-2621
 - [Appmobile]_Lỗi đếm ngược tại popup chuyển ký MS- BHW-2616
+- [Appmobile]_Thủ tục 607 - Bổ sung api Lấy chi tiết hồ sơ TK1 theo id - BHW-2576
+- [Appmobile] Hiển thị sai màu button "Hủy" - BHW-2633
+- [Appmobile]_Chỉnh sửa thông báo text đỏ trường Tiền lương và hệ số - BHW-2632
+- [Appmobile]_Chỉnh sửa giao diện bổ sung: Màn đăng ký cấp mã Trả về số serial - BHW-2613
+- [AppMobile]Lỗi căn chỉnh button "xóa thông báo" - BHW-2634
 - [Appmobile]_Giao diện sau chỉnh sửa: Màn danh sách nhân viên kê khai: Chưa chặn tối đa 5 file ảnh - BHW-2607
 
 7/7/2025

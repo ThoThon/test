@@ -11,6 +11,8 @@ enum ReceiveProfileResultEnum {
   /// G - Nhận kết quả bản giấy
   paper;
 
+  static const defaultValue = ReceiveProfileResultEnum.electronic;
+
   String get title {
     switch (this) {
       case ReceiveProfileResultEnum.electronic:

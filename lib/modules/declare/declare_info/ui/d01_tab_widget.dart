@@ -3,6 +3,7 @@ part of 'declare_info_page.dart';
 extension D01TabWidget on DeclareInfoPage {
   Widget _buildD01TabBody() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: SingleChildScrollView(
