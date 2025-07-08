@@ -41,6 +41,11 @@ class LocaleKeys {
   static const app_close = 'app_close';
   static const app_select = 'app_select';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
+  static const dialog_updateSuccessDialog = 'dialog_updateSuccessDialog';
+  static const dialog_updateFailure = 'dialog_updateFailure';
+  static const dialog_updateFailureDialog = 'dialog_updateFailureDialog';
+  static const dialog_cancelUpdate = 'dialog_cancelUpdate';
+  static const dialog_cancelUpdateDialog = 'dialog_cancelUpdateDialog';
   static const dialog_logout = 'dialog_logout';
   static const dialog_isLogout = 'dialog_isLogout';
   static const dialog_empty = 'dialog_empty';
@@ -62,6 +67,7 @@ class LocaleKeys {
   static const dialog_confirmSignatureMySign = 'dialog_confirmSignatureMySign';
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
   static const dialog_sendFileToBHXH = 'dialog_sendFileToBHXH';
+  static const dialog_max5File = 'dialog_max5File';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -94,18 +100,25 @@ class LocaleKeys {
   static const unitInfo_registerInfo = 'unitInfo_registerInfo';
   static const unitInfo_unitInfo = 'unitInfo_unitInfo';
   static const unitInfo_unitName = 'unitInfo_unitName';
+  static const unitInfo_unitNameCannotEmpty = 'unitInfo_unitNameCannotEmpty';
   static const unitInfo_unitCode = 'unitInfo_unitCode';
   static const unitInfo_phone = 'unitInfo_phone';
   static const unitInfo_addressInfo = 'unitInfo_addressInfo';
   static const unitInfo_addressRegister = 'unitInfo_addressRegister';
   static const unitInfo_addressRegisterDKKD = 'unitInfo_addressRegisterDKKD';
+  static const unitInfo_addressRegisterCannotEmpty =
+      'unitInfo_addressRegisterCannotEmpty';
   static const unitInfo_addressTransaction = 'unitInfo_addressTransaction';
+  static const unitInfo_addressTransactionCannotEmpty =
+      'unitInfo_addressTransactionCannotEmpty';
   static const unitInfo_businessIndustry = 'unitInfo_businessIndustry';
   static const unitInfo_representInfo = 'unitInfo_representInfo';
   static const unitInfo_transactionPersonInfo =
       'unitInfo_transactionPersonInfo';
   static const unitInfo_represent = 'unitInfo_represent';
+  static const unitInfo_representCannotEmpty = 'unitInfo_representCannotEmpty';
   static const unitInfo_position = 'unitInfo_position';
+  static const unitInfo_positionCannotEmpty = 'unitInfo_positionCannotEmpty';
   static const unitInfo_decisionInfo = 'unitInfo_decisionInfo';
   static const unitInfo_decisionNumber = 'unitInfo_decisionNumber';
   static const unitInfo_decisionAddress = 'unitInfo_decisionAddress';
@@ -138,7 +151,11 @@ class LocaleKeys {
   static const unitInfo_unitGroup = 'unitInfo_unitGroup';
   static const unitInfo_content = 'unitInfo_content';
   static const unitInfo_transactionPerson = 'unitInfo_transactionPerson';
+  static const unitInfo_transactionPersonCannotEmpty =
+      'unitInfo_transactionPersonCannotEmpty';
   static const unitInfo_phoneContact = 'unitInfo_phoneContact';
+  static const unitInfo_phoneContactCannotEmpty =
+      'unitInfo_phoneContactCannotEmpty';
   static const unitInfo_email = 'unitInfo_email';
   static const unitInfo_fileInclude = 'unitInfo_fileInclude';
   static const unitInfo_attached = 'unitInfo_attached';
@@ -161,8 +178,8 @@ class LocaleKeys {
   static const unitInfo_agree = 'unitInfo_agree';
   static const unitInfo_signUpForCode = 'unitInfo_signUpForCode';
   static const unitInfo_phoneNumberInValid = 'unitInfo_phoneNumberInValid';
-  static const unitInfo_phoenNumberIsNotEmpty =
-      'unitInfo_phoenNumberIsNotEmpty';
+  static const unitInfo_phoneNumberIsNotEmpty =
+      'unitInfo_phoneNumberIsNotEmpty';
   static const unitInfo_unitCodeInValid = 'unitInfo_unitCodeInValid';
   static const unitInfo_unitCodeIsNotEmpty = 'unitInfo_unitCodeIsNotEmpty';
   static const unitInfo_emailIsNotEmpty = 'unitInfo_emailIsNotEmpty';
@@ -172,10 +189,15 @@ class LocaleKeys {
   static const unitInfo_fileIncludeInValid = 'unitInfo_fileIncludeInValid';
   static const unitInfo_search = 'unitInfo_search';
   static const unitInfo_change = 'unitInfo_change';
+  static const unitInfo_fix = 'unitInfo_fix';
+  static const unitInfo_cancel = 'unitInfo_cancel';
+  static const unitInfo_continue = 'unitInfo_continue';
   static const unitInfo_socialAgencyName = 'unitInfo_socialAgencyName';
   static const unitInfo_socialAgencyCode = 'unitInfo_socialAgencyCode';
   static const unitInfo_region = 'unitInfo_region';
   static const unitInfo_basicSalary = 'unitInfo_basicSalary';
+  static const unitInfo_basicSalaryCannotEmpty =
+      'unitInfo_basicSalaryCannotEmpty';
   static const unitInfo_registerResult = 'unitInfo_registerResult';
   static const unitInfo_regionOne = 'unitInfo_regionOne';
   static const unitInfo_regionTwo = 'unitInfo_regionTwo';
@@ -450,8 +472,12 @@ class LocaleKeys {
       'declareInfo_participantHeadOfHousehold';
   static const declareInfo_headOfHouseholdFullName =
       'declareInfo_headOfHouseholdFullName';
+  static const declareInfo_headOfHouseholdFullNameCannotEmpty =
+      'declareInfo_headOfHouseholdFullNameCannotEmpty';
   static const declareInfo_headOfHouseholdCCCD =
       'declareInfo_headOfHouseholdCCCD';
+  static const declareInfo_headOfHouseholdCCCDCannotEmpty =
+      'declareInfo_headOfHouseholdCCCDCannotEmpty';
   static const declareInfo_provinceTT = 'declareInfo_provinceTT';
   static const declareInfo_selectProvinceTT = 'declareInfo_selectProvinceTT';
   static const declareInfo_districtTT = 'declareInfo_districtTT';
@@ -508,10 +534,13 @@ class LocaleKeys {
   static const declareInfo_otherInfo = 'declareInfo_otherInfo';
   static const declareInfo_generateD01tsData = 'declareInfo_generateD01tsData';
   static const declareInfo_personalInfo = 'declareInfo_personalInfo';
-  static const declareInfo_salaryOrCoefficientCannotEmpty =
-      'declareInfo_salaryOrCoefficientCannotEmpty';
-  static const declareInfo_salaryOrCoefficientMustBeInteger =
-      'declareInfo_salaryOrCoefficientMustBeInteger';
+  static const declareInfo_salaryCannotEmpty = 'declareInfo_salaryCannotEmpty';
+  static const declareInfo_salaryMustBeInteger =
+      'declareInfo_salaryMustBeInteger';
+  static const declareInfo_coefficientCannotEmpty =
+      'declareInfo_coefficientCannotEmpty';
+  static const declareInfo_coefficientMustBeInteger =
+      'declareInfo_coefficientMustBeInteger';
   static const declareInfo_addressInfo = 'declareInfo_addressInfo';
   static const declareInfo_medicalFacilityInfo =
       'declareInfo_medicalFacilityInfo';
@@ -522,6 +551,34 @@ class LocaleKeys {
       'declareInfo_deleteSelectedMember';
   static const declareInfo_delete = 'declareInfo_delete';
   static const declareInfo_inputCCCD = 'declareInfo_inputCCCD';
+  static const declareInfo_profileInfo = 'declareInfo_profileInfo';
+  static const declareInfo_contentChanges = 'declareInfo_contentChanges';
+  static const declareInfo_enterContentChanges =
+      'declareInfo_enterContentChanges';
+  static const declareInfo_attachedProfile = 'declareInfo_attachedProfile';
+  static const declareInfo_enterAttachedProfile =
+      'declareInfo_enterAttachedProfile';
+  static const declareInfo_receiveProfileResult =
+      'declareInfo_receiveProfileResult';
+  static const declareInfo_provinceReceivePaper =
+      'declareInfo_provinceReceivePaper';
+  static const declareInfo_selectProvinceReceivePaper =
+      'declareInfo_selectProvinceReceivePaper';
+  static const declareInfo_districtReceivePaper =
+      'declareInfo_districtReceivePaper';
+  static const declareInfo_selectDistrictReceivePaper =
+      'declareInfo_selectDistrictReceivePaper';
+  static const declareInfo_wardReceivePaper = 'declareInfo_wardReceivePaper';
+  static const declareInfo_selectWardReceivePaper =
+      'declareInfo_selectWardReceivePaper';
+  static const declareInfo_addressReceivePaper =
+      'declareInfo_addressReceivePaper';
+  static const declareInfo_receiveResultElectronic =
+      'declareInfo_receiveResultElectronic';
+  static const declareInfo_receiveResultPaper =
+      'declareInfo_receiveResultPaper';
+  static const declareInfo_listTable = 'declareInfo_listTable';
+  static const declareInfo_coefficient = 'declareInfo_coefficient';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -542,6 +599,7 @@ class LocaleKeys {
   static const familyMember_provinceOfBirth = 'familyMember_provinceOfBirth';
   static const familyMember_selectProvinceOfBirth =
       'familyMember_selectProvinceOfBirth';
+  static const familyMember_selectProvince = 'familyMember_selectProvince';
   static const familyMember_provinceOfBirthCannotEmpty =
       'familyMember_provinceOfBirthCannotEmpty';
   static const familyMember_districtOfBirth = 'familyMember_districtOfBirth';
@@ -703,6 +761,13 @@ class LocaleKeys {
   static const notification_hourBefore = 'notification_hourBefore';
   static const notification_minuteBefore = 'notification_minuteBefore';
   static const notification_secondBefore = 'notification_secondBefore';
+  static const notification_delete = 'notification_delete';
+  static const notification_deleteNotification =
+      'notification_deleteNotification';
+  static const notification_onOffNotification =
+      'notification_onOffNotification';
+  static const notification_selectedAll = 'notification_selectedAll';
+  static const registerService_registerTitle = 'registerService_registerTitle';
   static const registerService_registerService =
       'registerService_registerService';
   static const registerService_unitInfo = 'registerService_unitInfo';
@@ -725,6 +790,8 @@ class LocaleKeys {
   static const registerService_expiryDateFrom =
       'registerService_expiryDateFrom';
   static const registerService_expiryDateTo = 'registerService_expiryDateTo';
+  static const registerService_dayStart = 'registerService_dayStart';
+  static const registerService_dayEnd = 'registerService_dayEnd';
   static const registerService_phoneNumber = 'registerService_phoneNumber';
   static const registerService_email = 'registerService_email';
   static const registerService_register = 'registerService_register';
@@ -742,6 +809,13 @@ class LocaleKeys {
   static const registerService_cancelRegister =
       'registerService_cancelRegister';
   static const registerService_changeInfo = 'registerService_changeInfo';
+  static const registerService_updateInfo = 'registerService_updateInfo';
+  static const registerService_inputCCCDregisterMySign =
+      'registerService_inputCCCDregisterMySign';
+  static const registerService_signature = 'registerService_signature';
+  static const registerService_serialNumber = 'registerService_serialNumber';
+  static const registerService_inputCCCDregisterMySignCannotEmpty =
+      'registerService_inputCCCDregisterMySignCannotEmpty';
   static const registerCode_commonInfo = 'registerCode_commonInfo';
   static const registerCode_registerInfo = 'registerCode_registerInfo';
   static const registerCode_unitInfo = 'registerCode_unitInfo';
@@ -928,7 +1002,13 @@ class Locales {
     'dialog_history': 'Lịch sử',
     'dialog_consignment': 'Ký gửi',
     'dialog_notification': 'Thông báo',
-    'dialog_updateSuccess': 'Thay đổi thông tin thành công',
+    'dialog_updateSuccess': 'Thay đổi thành công',
+    'dialog_updateSuccessDialog': 'Lưu thông tin thay đổi thành công',
+    'dialog_updateFailure': 'Thay đổi thất bại',
+    'dialog_updateFailureDialog': 'Lưu thông tin thay đổi thất bại',
+    'dialog_cancelUpdate': 'Hủy sửa đổi thông tin',
+    'dialog_cancelUpdateDialog':
+        'Mọi chỉnh sửa sẽ bị mất nếu bạn thoát.\nBạn có chắc chắn muốn hủy',
     'dialog_logout': 'Đăng xuất',
     'dialog_isLogout': 'Bạn có chắc chắn muốn đăng xuất?',
     'dialog_empty': 'Trống',
@@ -954,6 +1034,7 @@ class Locales {
     'dialog_sendRequestSignature': 'Gửi yêu cầu ký thành công',
     'dialog_sendFileToBHXH':
         'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
+    'dialog_max5File': 'Chỉ cho phép chọn tối đa 5 file',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -984,17 +1065,23 @@ class Locales {
     'unitInfo_registerInfo': 'Thông tin đăng ký',
     'unitInfo_unitInfo': 'Thông tin đơn vị',
     'unitInfo_unitName': 'Tên đơn vị',
+    'unitInfo_unitNameCannotEmpty': 'Tên đơn vị không được bỏ trống',
     'unitInfo_unitCode': 'Mã đơn vị',
     'unitInfo_phone': 'Số điện thoại',
     'unitInfo_addressInfo': 'Thông tin địa chỉ',
-    'unitInfo_addressRegister': 'Địa chỉ đăng ký kinh doanh',
+    'unitInfo_addressRegister': 'Địa chỉ ĐKKD',
     'unitInfo_addressRegisterDKKD': 'Địa chỉ ĐKKD: ',
-    'unitInfo_addressTransaction': 'Địa chỉ giao dịch hồ sơ',
+    'unitInfo_addressRegisterCannotEmpty': 'Địa chỉ ĐKKD không được bỏ trống',
+    'unitInfo_addressTransaction': 'Địa chỉ giao dịch',
+    'unitInfo_addressTransactionCannotEmpty':
+        'Địa chỉ giao dịch không được bỏ trống',
     'unitInfo_businessIndustry': 'Ngành nghề sản xuất',
     'unitInfo_representInfo': 'Thông tin người đại diện',
     'unitInfo_transactionPersonInfo': 'Thông tin người giao dịch',
-    'unitInfo_represent': 'Người ký hồ sơ',
+    'unitInfo_represent': 'Người đại diện',
+    'unitInfo_representCannotEmpty': 'Người đại diện không được bỏ trống',
     'unitInfo_position': 'Chức vụ',
+    'unitInfo_positionCannotEmpty': 'Chức vụ không được bỏ trống',
     'unitInfo_decisionInfo': 'Thông tin quyết định',
     'unitInfo_decisionNumber': 'Số quyết định',
     'unitInfo_decisionAddress': 'Nơi cấp quyết định',
@@ -1026,7 +1113,11 @@ class Locales {
     'unitInfo_unitGroup': 'Khối đơn vị',
     'unitInfo_content': 'Nội dung',
     'unitInfo_transactionPerson': 'Người kê khai',
-    'unitInfo_phoneContact': 'Điện thoại liên hệ',
+    'unitInfo_transactionPersonCannotEmpty':
+        'Người kê khai không được bỏ trống',
+    'unitInfo_phoneContact': 'Điện thoại di động',
+    'unitInfo_phoneContactCannotEmpty':
+        'Điện thoại di động không được bỏ trống',
     'unitInfo_email': 'Email liên hệ',
     'unitInfo_fileInclude': 'Hồ sơ kèm theo',
     'unitInfo_attached': 'Đính kèm',
@@ -1049,7 +1140,7 @@ class Locales {
     'unitInfo_agree': 'Đồng ý',
     'unitInfo_signUpForCode': 'Đăng ký cấp mã',
     'unitInfo_phoneNumberInValid': 'Số điện thoại không hợp lệ',
-    'unitInfo_phoenNumberIsNotEmpty': 'Số điện thoại không được bỏ trống',
+    'unitInfo_phoneNumberIsNotEmpty': 'Số điện thoại không được bỏ trống',
     'unitInfo_unitCodeInValid': 'Mã đơn vị phải có 7 ký tự',
     'unitInfo_unitCodeIsNotEmpty': 'Mã đơn vị không được bỏ trống',
     'unitInfo_emailIsNotEmpty': 'Email không được bỏ trống',
@@ -1059,10 +1150,14 @@ class Locales {
     'unitInfo_fileIncludeInValid': 'File đính kèm không được bỏ trống',
     'unitInfo_search': 'Tìm kiếm',
     'unitInfo_change': 'Thay đổi',
-    'unitInfo_socialAgencyName': 'Cơ quan quản lý BHXH',
-    'unitInfo_socialAgencyCode': 'Mã CQQL BHXH',
+    'unitInfo_fix': 'Sửa thông tin',
+    'unitInfo_cancel': 'Hủy',
+    'unitInfo_continue': 'Tiếp tục sửa',
+    'unitInfo_socialAgencyName': 'Tên CQQL',
+    'unitInfo_socialAgencyCode': 'Mã CQQL',
     'unitInfo_region': 'Vùng',
     'unitInfo_basicSalary': 'Lương cơ sở',
+    'unitInfo_basicSalaryCannotEmpty': 'Lương cơ sở không được bỏ trống',
     'unitInfo_registerResult': 'Đăng ký nhận kết quả',
     'unitInfo_regionOne': 'Vùng I',
     'unitInfo_regionTwo': 'Vùng II',
@@ -1301,7 +1396,11 @@ class Locales {
     'declareInfo_contactPhoneNumber': 'Số điện thoại liên hệ',
     'declareInfo_participantHeadOfHousehold': 'Người tham gia là chủ hộ',
     'declareInfo_headOfHouseholdFullName': 'Họ và tên chủ hộ',
+    'declareInfo_headOfHouseholdFullNameCannotEmpty':
+        'Họ và tên chủ hộ không được để trống',
     'declareInfo_headOfHouseholdCCCD': 'Số CCCD của chủ hộ',
+    'declareInfo_headOfHouseholdCCCDCannotEmpty':
+        'Số CCCD của chủ hộ không được để trống',
     'declareInfo_provinceTT': 'Tỉnh thường trú',
     'declareInfo_selectProvinceTT': 'Chọn tỉnh thường trú',
     'declareInfo_districtTT': 'Huyện thường trú',
@@ -1347,10 +1446,10 @@ class Locales {
     'declareInfo_otherInfo': 'Thông tin khác',
     'declareInfo_generateD01tsData': 'Sinh dữ liệu D01-TS',
     'declareInfo_personalInfo': 'Thông tin cá nhân',
-    'declareInfo_salaryOrCoefficientCannotEmpty':
-        'Tiền lương/Hệ số không được bỏ trống',
-    'declareInfo_salaryOrCoefficientMustBeInteger':
-        'Tiền lương/Hệ số phải là số nguyên',
+    'declareInfo_salaryCannotEmpty': 'Tiền lương không được bỏ trống',
+    'declareInfo_salaryMustBeInteger': 'Tiền lương phải là số nguyên',
+    'declareInfo_coefficientCannotEmpty': 'Hệ số không được bỏ trống',
+    'declareInfo_coefficientMustBeInteger': 'Tiền lương phải là số nguyên',
     'declareInfo_addressInfo': 'Thông tin địa chỉ',
     'declareInfo_medicalFacilityInfo': 'Thông tin nơi khám chữa bệnh',
     'declareInfo_householdOwnerInfo': 'Thông tin chủ hộ',
@@ -1358,6 +1457,23 @@ class Locales {
     'declareInfo_deleteSelectedMember': 'Xóa thành viên đã chọn',
     'declareInfo_delete': 'Xóa',
     'declareInfo_inputCCCD': 'Nhập số CCCD',
+    'declareInfo_profileInfo': 'Thông tin hồ sơ',
+    'declareInfo_contentChanges': 'Nội dung thay đổi',
+    'declareInfo_enterContentChanges': 'Nhập nội dung thay đổi',
+    'declareInfo_attachedProfile': 'Hồ sơ kèm theo',
+    'declareInfo_enterAttachedProfile': 'Nhập hồ sơ kèm theo',
+    'declareInfo_receiveProfileResult': 'Nhận kết quả hồ sơ',
+    'declareInfo_provinceReceivePaper': 'Tỉnh nhận hồ sơ giấy',
+    'declareInfo_selectProvinceReceivePaper': 'Chọn tỉnh nhận hồ sơ giấy',
+    'declareInfo_districtReceivePaper': 'Huyện nhận hồ sơ giấy',
+    'declareInfo_selectDistrictReceivePaper': 'Chọn huyện nhận hồ sơ giấy',
+    'declareInfo_wardReceivePaper': 'Xã nhận hồ sơ giấy',
+    'declareInfo_selectWardReceivePaper': 'Chọn xã nhận hồ sơ giấy',
+    'declareInfo_addressReceivePaper': 'Địa chỉ nhận hồ sơ giấy',
+    'declareInfo_receiveResultElectronic': 'Nhận kết quả bản điện tử',
+    'declareInfo_receiveResultPaper': 'Nhận kết quả bản giấy',
+    'declareInfo_listTable': 'Danh sách bảng kê',
+    'declareInfo_coefficient': 'Hệ số',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1373,6 +1489,7 @@ class Locales {
     'familyMember_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
     'familyMember_provinceOfBirth': 'Tỉnh khai sinh',
     'familyMember_selectProvinceOfBirth': 'Chọn tỉnh khai sinh',
+    'familyMember_selectProvince': 'Chọn Tỉnh/Thành phố',
     'familyMember_provinceOfBirthCannotEmpty':
         'Tỉnh khai sinh không được bỏ trống',
     'familyMember_districtOfBirth': 'Huyện khai sinh',
@@ -1515,6 +1632,11 @@ class Locales {
     'notification_hourBefore': 'giờ trước',
     'notification_minuteBefore': 'phút trước',
     'notification_secondBefore': 'giây trước',
+    'notification_delete': 'Xóa',
+    'notification_deleteNotification': 'Xóa thông báo',
+    'notification_onOffNotification': 'Bật/Tắt nhận thông báo',
+    'notification_selectedAll': 'Chọn tất cả',
+    'registerService_registerTitle': 'Thông tin giao dịch',
     'registerService_registerService': 'Đăng ký dịch vụ',
     'registerService_unitInfo': 'Thông tin đơn vị',
     'registerService_taxCode': 'Mã số thuế',
@@ -1529,6 +1651,8 @@ class Locales {
     'registerService_certificateNumber': 'Số CTS',
     'registerService_expiryDateFrom': 'Thời hạn sử dụng từ',
     'registerService_expiryDateTo': 'Thời hạn sử dụng đến',
+    'registerService_dayStart': 'Ngày bắt đầu',
+    'registerService_dayEnd': 'Ngày kết thúc',
     'registerService_phoneNumber': 'Số điện thoại',
     'registerService_email': 'Email',
     'registerService_register': 'Đăng ký',
@@ -1540,8 +1664,14 @@ class Locales {
         'Không tìm thấy tên đăng nhập MySign',
     'registerService_userNameMySignCannotEmpty':
         'Nhập tên đăng nhập My Sign để lấy thông tin CTS',
-    'registerService_cancelRegister': 'Ngừng dịch vụ',
+    'registerService_cancelRegister': 'Ngừng',
     'registerService_changeInfo': 'Thay đổi',
+    'registerService_updateInfo': 'Cập nhật',
+    'registerService_inputCCCDregisterMySign': 'Nhập CCCD đăng ký MySign',
+    'registerService_signature': 'Chữ ký số',
+    'registerService_serialNumber': 'Số serial',
+    'registerService_inputCCCDregisterMySignCannotEmpty':
+        'Nhập CCCD đăng ký MySign để lấy thông tin CTS',
     'registerCode_commonInfo': 'Thông tin chung',
     'registerCode_registerInfo': 'Thông tin đăng ký',
     'registerCode_unitInfo': 'Thông tin đơn vị',

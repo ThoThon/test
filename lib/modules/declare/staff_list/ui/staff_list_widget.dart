@@ -4,10 +4,11 @@ extension StaffListWidget on StaffListPage {
   Widget _buildBody() {
     return Column(
       children: [
+        sdsSBHeight16,
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-              vertical: AppDimens.defaultPadding,
+            padding: const EdgeInsets.only(
+              bottom: AppDimens.defaultPadding,
             ),
             child: Obx(
               () {

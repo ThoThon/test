@@ -82,12 +82,17 @@ class AppApi {
   static const String urlRegisterFirstForCode =
       '/api/RegisterService/first-register';
   static const String urlForgotPassword = '/api/Authen/forgot-password';
+  static const String urlDeleteListNotification =
+      '/api/Notification/delete-list';
+  static const String urlDeleteAllNotification = '/api/Notification/delete-all';
 
   // === Danh sách các api liên quan đến thủ tục 607 ===
   static const String urlGetStaffList607 = '/api/HoSoTk1/get-list';
   static const String urlSaveXml607 = '/api/HoSoTk1/save-xml';
   static const String urlDeleteDeclarationPeriod607 =
       '/api/HoSoTk1/delete-tk1-d01';
+  static const String urlAddTk1 = '/api/HoSoTk1/add-tk1';
+  static const String urlGetTk1Detail = '/api/HoSoTk1/get-detail';
 
   // === Kết thúc các api liên quan đến thủ tục 607 ===
 }

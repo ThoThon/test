@@ -94,13 +94,13 @@ extension HistoryDeclareTab on HistoryPage {
         SDSImageSvg(Assets.ASSETS_ICONS_IC_PROCEDURE_SVG),
         sdsSBWidth8,
         SDSBuildText(
-          "${LocaleKeys.history_procedure.tr} ${item.maThuTuc}",
+          "${LocaleKeys.history_procedure.tr} ${item.maThuTuc}${LocaleKeys.history_number.tr}",
           style: AppTextStyle.font14Bo,
         ),
         if (item.soHoSo?.isNotEmpty ?? false)
           Expanded(
             child: SDSBuildText(
-              "${LocaleKeys.history_number.tr}${item.soHoSo ?? ''}",
+              item.soHoSo ?? '',
               style: AppTextStyle.font14Bo,
               overflow: TextOverflow.ellipsis,
             ),

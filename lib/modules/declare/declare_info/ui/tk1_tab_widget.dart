@@ -322,7 +322,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceReceive.value,
                 display: (value) => value.name,
@@ -470,7 +470,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceKCB.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceKCB.value,
                 display: (value) => value.name,
@@ -542,6 +542,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       controller: controller.tk1State.contactPhoneNumberTextCtrl,
       textInputType: TextInputType.phone,
       maxLengthInputForm: 20,
+      inputFormatters: InputFormatterEnum.phoneNumber,
     );
   }
 
@@ -563,6 +564,17 @@ extension Tk1TabWidget on DeclareInfoPage {
         onChanged: controller.onChangeHeadOfHouseholdFullName,
         inputFormatters: InputFormatterEnum.textNormal,
         maxLengthInputForm: 100,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+
+          if (trimmedValue == null ||
+              trimmedValue.isEmpty &&
+                  controller.tk1State.isHouseholdInfoRequired.value) {
+            return LocaleKeys.declareInfo_headOfHouseholdFullNameCannotEmpty.tr;
+          }
+
+          return null;
+        },
       ),
     );
   }
@@ -577,6 +589,17 @@ extension Tk1TabWidget on DeclareInfoPage {
         inputFormatters: InputFormatterEnum.textNormal,
         onChanged: controller.onChangeHeadOfHouseholdCCCD,
         maxLengthInputForm: 20,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+
+          if (trimmedValue == null ||
+              trimmedValue.isEmpty &&
+                  controller.tk1State.isHouseholdInfoRequired.value) {
+            return LocaleKeys.declareInfo_headOfHouseholdCCCDCannotEmpty.tr;
+          }
+
+          return null;
+        },
       ),
     );
   }
@@ -593,7 +616,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceTT.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceTT.value,
                 display: (value) => value.name,
@@ -628,7 +651,6 @@ extension Tk1TabWidget on DeclareInfoPage {
         return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_districtTT.tr,
-          // hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
           isRequired: controller.tk1State.isHouseholdInfoRequired.value,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
@@ -657,7 +679,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           onTapClear: controller.onTapClearDistrictTT,
           validator: (value) {
             if (controller.tk1State.isHouseholdInfoRequired.value &&
-                controller.tk1State.wardTT.value == null) {
+                controller.tk1State.districtTT.value == null) {
               return LocaleKeys.declareInfo_districtTTCannotEmpty.tr;
             }
             return null;
@@ -734,7 +756,9 @@ extension Tk1TabWidget on DeclareInfoPage {
         validator: (value) {
           final trimmedValue = value?.trim();
 
-          if (trimmedValue == null || trimmedValue.isEmpty) {
+          if (trimmedValue == null ||
+              trimmedValue.isEmpty &&
+                  controller.tk1State.isHouseholdInfoRequired.value) {
             return LocaleKeys.declareInfo_addressTTCannotEmpty.tr;
           }
 
@@ -824,6 +848,9 @@ extension Tk1TabWidget on DeclareInfoPage {
           IconButton(
             onPressed: () {
               ShowDialog.showDialogConfirm2(
+                backgroundColorBack: AppColors.basicWhite,
+                textStyleBack: AppTextStyle.font14Re
+                    .copyWith(color: AppColors.primaryColor),
                 title: LocaleKeys.declareInfo_deleteSelectedMember.tr,
                 confirmTitle: LocaleKeys.declareInfo_delete.tr,
                 onConfirm: () {

@@ -453,20 +453,27 @@ extension D02TabWidget on DeclareInfoPage {
         final isSalaryCoefficient =
             controller.d02State.isSalaryCoefficient.value;
         return CardInputTextFormWithLabel(
-          labelText: LocaleKeys.declareInfo_salaryCoefficient.tr,
+          labelText: isSalaryCoefficient
+              ? LocaleKeys.declareInfo_coefficient.tr
+              : LocaleKeys.declareInfo_salaryCoefficient.tr,
           inputFormatters: isSalaryCoefficient
-              ? InputFormatterEnum.salaryCurrency
+              ? InputFormatterEnum.coefficient
               : InputFormatterEnum.salaryNormal,
           controller: controller.d02State.salaryCoefficientTextCtrl,
           isRequired: true,
           textInputType: const TextInputType.numberWithOptions(decimal: true),
           validator: (value) {
+            final isCoefficient = controller.d02State.isSalaryCoefficient.value;
             if (value == null || value.trim().isEmpty) {
-              return LocaleKeys.declareInfo_salaryOrCoefficientCannotEmpty.tr;
+              return isCoefficient
+                  ? LocaleKeys.declareInfo_coefficientCannotEmpty.tr
+                  : LocaleKeys.declareInfo_salaryCannotEmpty.tr;
             }
 
             if (!isSalaryCoefficient && value.contains(',')) {
-              return LocaleKeys.declareInfo_salaryOrCoefficientMustBeInteger.tr;
+              return isCoefficient
+                  ? LocaleKeys.declareInfo_coefficientMustBeInteger.tr
+                  : LocaleKeys.declareInfo_salaryMustBeInteger.tr;
             }
 
             return null;

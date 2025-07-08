@@ -167,6 +167,22 @@ class Assets {
   static String get ASSETS_ICONS_IC_NOT_ACTIVE_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_not_active.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NOTIFICATION_DECLARE_SVG.preview}
+  static String get ASSETS_ICONS_IC_NOTIFICATION_DECLARE_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_notification_declare.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NOTIFICATION_DELETE_SVG.preview}
+  static String get ASSETS_ICONS_IC_NOTIFICATION_DELETE_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_notification_delete.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NOTIFICATION_SETTING_SVG.preview}
+  static String get ASSETS_ICONS_IC_NOTIFICATION_SETTING_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_notification_setting.svg';
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NOTIFICATION_UNIT_INFO_SVG.preview}
+  static String get ASSETS_ICONS_IC_NOTIFICATION_UNIT_INFO_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_notification_unit_info.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_PERSON_SVG.preview}
   static String get ASSETS_ICONS_IC_PERSON_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_person.svg';
@@ -408,6 +424,18 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_NOT_ACTIVE_SVG.preview}
   Assets.ASSETS_ICONS_IC_NOT_ACTIVE_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NOTIFICATION_DECLARE_SVG.preview}
+  Assets.ASSETS_ICONS_IC_NOTIFICATION_DECLARE_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NOTIFICATION_DELETE_SVG.preview}
+  Assets.ASSETS_ICONS_IC_NOTIFICATION_DELETE_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NOTIFICATION_SETTING_SVG.preview}
+  Assets.ASSETS_ICONS_IC_NOTIFICATION_SETTING_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NOTIFICATION_UNIT_INFO_SVG.preview}
+  Assets.ASSETS_ICONS_IC_NOTIFICATION_UNIT_INFO_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_PERSON_SVG.preview}
   Assets.ASSETS_ICONS_IC_PERSON_SVG,

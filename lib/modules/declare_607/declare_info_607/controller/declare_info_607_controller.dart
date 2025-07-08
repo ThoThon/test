@@ -1,10 +1,12 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
+import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/district_model.dart';
 import 'package:v_bhxh/modules/login/model/province_model.dart';
 import 'package:v_bhxh/modules/login/model/ward_model.dart';
+import 'package:v_bhxh/modules/select_staff/model/select_staff_response.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -26,10 +28,10 @@ class DeclareInfo607Controller extends BaseGetxController {
   @override
   void onReady() {
     super.onReady();
-    _getD02Detail();
+    _getTk1Detail();
   }
 
-  Future<void> _getD02Detail() async {
+  Future<void> _getTk1Detail() async {
     final staffId = argument.staffId;
 
     if (staffId == null) {
@@ -38,13 +40,37 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     try {
       showLoadingOverlay();
-      final response = await declareInfoRepository.getD02Detail(id: staffId);
+      final response = await declareInfoRepository.getTk1Detail(id: staffId);
       final infoDetail = response.result;
       if (response.isSuccess && infoDetail != null) {
-        // Update D02Tk1State
-        tk1State.mapFromD02Detail(infoDetail);
-        d01State.mapFromD02Detail(infoDetail);
-        updateHouseholdInfoRequired();
+        tk1State.mapFromTk1Detail(infoDetail);
+        d01State.mapFromTk1Detail(infoDetail);
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  void goToSelectStaffPage() async {
+    final result = await Get.toNamed(AppRoutes.selectStaff.path);
+    if (result is SelectStaffResponse) {
+      _getDetailStaff(staffId: result.id);
+    }
+  }
+
+  Future<void> _getDetailStaff({
+    required String staffId,
+  }) async {
+    try {
+      showLoadingOverlay();
+      final response = await declareInfoRepository.getDetailStaff(id: staffId);
+      final staff = response.result;
+      if (response.isSuccess && staff != null) {
+        tk1State.mapFromStaffDetail(staff);
       } else {
         showSnackBar(response.errorMessage);
       }
@@ -196,47 +222,44 @@ class DeclareInfo607Controller extends BaseGetxController {
   }
 
   Future<void> _addD02() async {
-    // try {
-    //   showLoadingOverlay();
-    //   final request = AddD02Request.fromState(
-    //     kyKeKhaiId: argument.declarationPeriodId,
-    //     d02Tk1State: d02Tk1State,
-    //     d02State: d02State,
-    //     tk1State: tk1State,
-    //     d01State: d01State,
-    //   );
+    try {
+      showLoadingOverlay();
+      final request = AddTk1Request607.fromState(
+        kyKeKhaiId: argument.declarationPeriodId,
+        tk1State: tk1State,
+        d01State: d01State,
+      );
 
-    //   final response = await declareInfoRepository.addD02(request: request);
+      final response = await declareInfoRepository.addTk1(request: request);
 
-    //   if (response.isSuccess) {
-    //     showSnackBar(
-    //       LocaleKeys.declareInfo_saveDataSuccess.tr,
-    //       typeAction: AppConst.actionSuccess,
-    //     );
-    //     if (argument.isAddPeriodFromDeclarePeriod) {
-    //       Get.offNamed(
-    //         AppRoutes.staffList.path,
-    //         // TODO: correct value of procedureType
-    //         arguments: StaffListArgument(
-    //           declarationPeriodId: argument.declarationPeriodId,
-    //           procedureType: ProcedureType.procedure600,
-    //         ),
-    //       )?.then((value) {
-    //         declarationPeriodController?.getDeclarationPeriods();
-    //       });
-    //     } else if (argument.isAddStaffFromStaffList) {
-    //       Get.back(
-    //         result: argument.declarationPeriodId,
-    //       );
-    //     }
-    //   } else {
-    //     showSnackBar(response.errorMessage);
-    //   }
-    // } catch (e) {
-    //   logger.e(e);
-    // } finally {
-    //   hideLoadingOverlay();
-    // }
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        if (argument.isAddPeriodFromDeclarePeriod) {
+          Get.offNamed(
+            AppRoutes.staffList.path,
+            arguments: StaffListArgument(
+              declarationPeriodId: argument.declarationPeriodId,
+              procedureType: ProcedureType.procedure607,
+            ),
+          )?.then((value) {
+            declarationPeriodController?.getDeclarationPeriods();
+          });
+        } else if (argument.isAddStaffFromStaffList) {
+          Get.back(
+            result: argument.declarationPeriodId,
+          );
+        }
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 
   Future<void> _updateD02() async {
@@ -480,13 +503,11 @@ class DeclareInfo607Controller extends BaseGetxController {
   void onChangeHeadOfHouseholdFullName(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
     tk1State.headOfHouseholdTextCtrl.text = value;
-    updateHouseholdInfoRequired();
   }
 
   void onChangeHeadOfHouseholdCCCD(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
     tk1State.headOfHouseholdCCCDTextCtrl.text = value;
-    updateHouseholdInfoRequired();
   }
 
   void onChangeProvinceTT(ProvinceModel value) {
@@ -498,7 +519,6 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.provinceTT.value = value;
-    updateHouseholdInfoRequired();
   }
 
   void onChangeDistrictTT(DistrictModel value) {
@@ -509,7 +529,6 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.districtTT.value = value;
-    updateHouseholdInfoRequired();
   }
 
   void onChangeWardTT(WardModel value) {
@@ -518,12 +537,10 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.wardTT.value = value;
-    updateHouseholdInfoRequired();
   }
 
   void onChangeAddressTT(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
-    updateHouseholdInfoRequired();
   }
 
   Future<void> addFamilyMember() async {
@@ -586,56 +603,60 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
-  @override
-  void onClose() {
-    tk1State.dispose();
-    super.onClose();
-  }
-
   void onTapClearProvinceTT() {
     tk1State.provinceTT.value = null;
     tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
-
-    updateHouseholdInfoRequired();
   }
 
   void onTapClearDistrictTT() {
     tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
-
-    updateHouseholdInfoRequired();
   }
 
   void onTapClearWardTT() {
     tk1State.wardTT.value = null;
-
-    updateHouseholdInfoRequired();
   }
 
-  bool get isHouseholdInfoEmpty {
-    return tk1State.headOfHouseholdTextCtrl.text.trim().isEmpty &&
-        tk1State.headOfHouseholdCCCDTextCtrl.text.trim().isEmpty &&
-        tk1State.provinceTT.value == null &&
-        tk1State.districtTT.value == null &&
-        tk1State.wardTT.value == null &&
-        tk1State.addressTTTextCtrl.text.trim().isEmpty;
+  void onChangeProvinceReceivePaper(ProvinceModel value) {
+    if (tk1State.provinceReceivePaper.value != value) {
+      tk1State.districtReceivePaper.value = null;
+      tk1State.wardReceivePaper.value = null;
+    }
+
+    tk1State.provinceReceivePaper.value = value;
   }
 
-  void updateHouseholdInfoRequired() {
-    // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
-    if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
-      tk1State.isHouseholdInfoRequired.value = true;
-      return;
+  void onChangeDistrictReceivePaper(DistrictModel value) {
+    if (tk1State.districtReceivePaper.value != value) {
+      tk1State.wardReceivePaper.value = null;
     }
 
-    // Nếu 1 trong các thông tin của chủ hộ được điền thì sẽ phải điền tất cả
-    if (!isHouseholdInfoEmpty) {
-      tk1State.isHouseholdInfoRequired.value = true;
-      return;
-    }
+    tk1State.districtReceivePaper.value = value;
+  }
 
-    // Nếu không có điều kiện nào thỏa mãn
-    tk1State.isHouseholdInfoRequired.value = false;
+  void onChangeWardReceivePaper(WardModel value) {
+    tk1State.wardReceivePaper.value = value;
+  }
+
+  void onTapClearProvinceReceivePaper() {
+    tk1State.provinceReceivePaper.value = null;
+    tk1State.districtReceivePaper.value = null;
+    tk1State.wardReceivePaper.value = null;
+  }
+
+  void onTapClearDistrictReceivePaper() {
+    tk1State.districtReceivePaper.value = null;
+    tk1State.wardReceivePaper.value = null;
+  }
+
+  void onTapClearWardReceivePaper() {
+    tk1State.wardReceivePaper.value = null;
+  }
+
+  @override
+  void onClose() {
+    tk1State.dispose();
+    super.onClose();
   }
 }

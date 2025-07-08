@@ -3,13 +3,20 @@ part of 'declare_info_page.dart';
 extension D01TabWidget on DeclareInfoPage {
   Widget _buildD01TabBody() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 UtilWidget.sizedBox16,
+                SDSBuildText(
+                  LocaleKeys.declareInfo_listTable.tr,
+                  style: AppTextStyle.font16Bo,
+                ),
+                sdsSBHeight12,
                 ...controller.d01State.forms.mapIndexed(
                   (index, form) {
                     return _buildD01Item(

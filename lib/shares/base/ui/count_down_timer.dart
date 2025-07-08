@@ -5,7 +5,8 @@ import '../../../modules/src.dart';
 /// Tạo độ lệch thời gian để chắc chắn khi count down xong thì BE đã xử lý xong
 ///
 /// Ví dụ count down 30s thì mobile cần 30 * 1000ms + 50ms = 31.5s mới kết thúc
-const _timerInterval = Duration(seconds: 1, milliseconds: 50);
+// const _timerInterval = Duration(seconds: 1, milliseconds: 50);
+const _timerInterval = Duration(seconds: 1);
 
 class CountDownTimer extends StatefulWidget {
   const CountDownTimer({

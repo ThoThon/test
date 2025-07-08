@@ -50,7 +50,7 @@ class StaffListController extends BaseGetxController {
   }
 
   void maximumUploadFile() {
-    showSnackBar('Chỉ cho phép chọn tối đa 5 file');
+    showSnackBar(LocaleKeys.dialog_max5File.tr);
   }
 
   Future<void> _getStaffList() async {
@@ -86,18 +86,22 @@ class StaffListController extends BaseGetxController {
 
   Future<void> upLoadFile(String imagePath) async {
     try {
-      showLoading();
-      final response = await _repository.uploadImage(
-        request: UploadImageRequest(
-          file: imagePath,
-          periodId: declarationPeriodId,
-        ),
-      );
-      if (response.isSuccess) {
-        // Vì hiện ảnh lấy từ BE về, nên khi vừa up ảnh xong phải gọi api để lấy link ảnh
-        _getStaffList();
+      if (listAttachImage.length > 4) {
+        maximumUploadFile();
       } else {
-        showSnackBar(response.errorMessage);
+        showLoading();
+        final response = await _repository.uploadImage(
+          request: UploadImageRequest(
+            file: imagePath,
+            periodId: declarationPeriodId,
+          ),
+        );
+        if (response.isSuccess) {
+          // Vì hiện ảnh lấy từ BE về, nên khi vừa up ảnh xong phải gọi api để lấy link ảnh
+          _getStaffList();
+        } else {
+          showSnackBar(response.errorMessage);
+        }
       }
     } catch (e) {
       logger.d(e);
@@ -180,6 +184,9 @@ class StaffListController extends BaseGetxController {
 
   void showDialogDeleteStaff(DeclaredStaffModel staff) {
     ShowDialog.showDialogConfirm2(
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       title: LocaleKeys.staffList_deleteStaffConfirmMessage.tr,
       confirmTitle: LocaleKeys.app_delete.tr,
       onConfirm: () {

@@ -9,7 +9,7 @@ extension RegisterServiceWidget on RegisterServicePage {
             child: Column(
               children: [
                 _buildCardUnitInfo(),
-                sdsSBHeight20,
+                sdsSBHeight16,
                 _buildCardSignatureInfo(),
               ],
             ),
@@ -18,7 +18,12 @@ extension RegisterServiceWidget on RegisterServicePage {
         sdsSBHeight12,
         Obx(_buildBottomButtons),
       ],
-    ).paddingSymmetric(horizontal: AppDimens.paddingSmall);
+    ).paddingOnly(
+      right: AppDimens.defaultPadding,
+      left: AppDimens.defaultPadding,
+      top: AppDimens.defaultPadding,
+      bottom: AppDimens.padding32,
+    );
   }
 
   Widget _buildCardUnitInfo() {
@@ -85,6 +90,9 @@ extension RegisterServiceWidget on RegisterServicePage {
             // Ô input nhập username My Sign
             _buildInputUsernameMySign(),
             sdsSBHeight12,
+            // DropDown Số serial
+            _buildDropdownSerial(),
+            sdsSBHeight12,
             // Tên chủ thể CTS
             _buildSingleItem(
               title: LocaleKeys.registerService_subjectNameCert.tr,
@@ -103,22 +111,15 @@ extension RegisterServiceWidget on RegisterServicePage {
             ),
             sdsSBHeight12,
 
-            // Số CTS
-            _buildSingleItem(
-              title: LocaleKeys.registerService_certificateNumber.tr,
-              contenTitle: cert?.serialNumber ?? registerInfo?.soSerialCTS,
-            ),
-            sdsSBHeight12,
-
-            // "Thời hạn sử dụng từ" và "Thời hạn sử dụng đến"
+            // "Ngày bắt đầu" và "Ngày kết thúc"
             _buildDoubleItem(
-              titleLeft: LocaleKeys.registerService_expiryDateFrom.tr,
+              titleLeft: LocaleKeys.registerService_dayStart.tr,
               contenTitleLeft: cert?.validFrom ??
                   convertDateToStringSafe(
                     registerInfo?.thoiHanTuNgay,
                     PATTERN_1,
                   ),
-              titleRight: LocaleKeys.registerService_expiryDateTo.tr,
+              titleRight: LocaleKeys.registerService_dayStart.tr,
               contenTitleRight: cert?.validTo ??
                   convertDateToStringSafe(
                     registerInfo?.thoiHanDenNgay,
@@ -175,24 +176,24 @@ extension RegisterServiceWidget on RegisterServicePage {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: BuildInputText(
-            InputTextModel(
-              controller: controller.usernameMySignCtrl,
-              inputFormatters: InputFormatterEnum.textNormal,
-              autovalidateMode: AutovalidateMode.always,
-              hintText: LocaleKeys.registerService_inputMySignUsername.tr,
-              onChanged: (value) {
-                controller.isUsernameMySignEmpty.value = value.trim().isEmpty;
-              },
-              validator: (value) {
-                final trimmedValue = value?.trim();
-                if (trimmedValue.isNullOrEmpty) {
-                  return LocaleKeys
-                      .registerService_userNameMySignCannotEmpty.tr;
-                }
-                return null;
-              },
-            ),
+          child: CardInputTextFormWithLabel(
+            labelText: LocaleKeys.registerService_signature.tr,
+            isRequired: true,
+            controller: controller.usernameMySignCtrl,
+            inputFormatters: InputFormatterEnum.textNormal,
+            autovalidateMode: AutovalidateMode.always,
+            hintText: LocaleKeys.registerService_inputCCCDregisterMySign.tr,
+            onChanged: (value) {
+              controller.isUsernameMySignEmpty.value = value.trim().isEmpty;
+            },
+            validator: (value) {
+              final trimmedValue = value?.trim();
+              if (trimmedValue.isNullOrEmpty) {
+                return LocaleKeys
+                    .registerService_inputCCCDregisterMySignCannotEmpty.tr;
+              }
+              return null;
+            },
           ),
         ),
         sdsSBWidth8,
@@ -250,27 +251,28 @@ extension RegisterServiceWidget on RegisterServicePage {
   }
 
   Widget _buildButtonGetListCert() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppDimens.radius12),
-            ),
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.defaultPadding,
-            ),
+    final isUsernameMySignEmpty = controller.isUsernameMySignEmpty.value;
+    return SizedBox(
+      width: 50,
+      height: 50,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: isUsernameMySignEmpty
+              ? AppColors.primaryColorDisable
+              : AppColors.primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppDimens.radius12),
           ),
-          onPressed: controller.getListCertificate,
-          child: const Icon(
-            Icons.send,
-            color: AppColors.basicWhite,
-          ),
+          padding: EdgeInsets.zero,
         ),
-      ],
+        onPressed: () {
+          if (isUsernameMySignEmpty) return;
+          controller.getListCertificate();
+        },
+        child: Center(
+          child: SDSImageSvg(Assets.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG),
+        ),
+      ),
     );
   }
 
@@ -280,11 +282,16 @@ extension RegisterServiceWidget on RegisterServicePage {
         return UtilWidget.buildSolidButton(
           title: LocaleKeys.registerService_register.tr,
           borderRadius: AppDimens.radius30,
-          onPressed: controller.isDisableRegisterButton
-              ? null
-              : () {
-                  controller.registerNewService();
-                },
+          textStyle:
+              AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+          backgroundColor: controller.isDisableRegisterButton
+              ? AppColors.primaryColorDisable
+              : AppColors.primaryColor,
+          onPressed: () {
+            controller.isDisableRegisterButton
+                ? null
+                : controller.registerNewService();
+          },
         );
       },
     );
@@ -304,24 +311,56 @@ extension RegisterServiceWidget on RegisterServicePage {
       children: [
         Expanded(
           child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.registerService_changeInfo.tr,
+            side: BorderSide(
+              width: 1,
+              color: controller.isDiableChangeInfoButton
+                  ? AppColors.colorBorder
+                  : AppColors.colorBlack,
+            ),
+            backgroundColor: controller.isDiableChangeInfoButton
+                ? AppColors.basicWhite
+                : AppColors.basicWhite,
+            textStyle: AppTextStyle.font14Re.copyWith(
+              color: controller.isDiableChangeInfoButton
+                  ? AppColors.colorBorder
+                  : AppColors.colorBlack,
+            ),
+            title: LocaleKeys.registerService_updateInfo.tr,
             borderRadius: AppDimens.radius30,
-            onPressed: controller.certificate.value != null
-                ? controller.isDiableChangeInfoButton
-                    ? null
-                    : controller.changeInfo
-                : null,
+            onPressed: () {
+              if (controller.certificate.value != null) {
+                if (!controller.isDiableChangeInfoButton) {
+                  controller.changeInfo();
+                }
+              }
+            },
           ),
         ),
         sdsSBWidth8,
         Expanded(
           child: UtilWidget.buildSolidButtonBack(
+            backgroundColor: AppColors.primaryColor,
+            textStyle:
+                AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
             title: LocaleKeys.registerService_cancelRegister.tr,
             borderRadius: AppDimens.radius30,
             onPressed: controller.cancelRegister,
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildDropdownSerial() {
+    return CardDropdownWithLabel<CertificateModel>(
+      isRequired: true,
+      labelText: LocaleKeys.registerService_serialNumber.tr,
+      items: controller.listCert,
+      display: (cert) => cert.serialNumber,
+      selectedItem: controller.certificate.value,
+      onChanged: (value) {
+        controller.certificate.value = value;
+      },
     );
   }
 }
