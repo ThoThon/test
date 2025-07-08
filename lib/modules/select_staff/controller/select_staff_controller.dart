@@ -15,9 +15,14 @@ class SelectStaffController
 
   final selectedID = Rx<String?>(null);
 
+  final argument = Get.arguments;
+
   @override
   void onInit() {
     super.onInit();
+    if (argument != null) {
+      selectedID.value = argument;
+    }
     getStaffListSelect();
   }
 

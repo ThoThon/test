@@ -11,6 +11,8 @@ class D02State {
 
   final autoValidateMode = AutovalidateMode.disabled.obs;
 
+  final idStaffSelect = Rx<String?>(null);
+
   /// Loại khai báo/Loại hồ sơ
   final declarationType = Rxn<DeclarationTypeModel>();
 

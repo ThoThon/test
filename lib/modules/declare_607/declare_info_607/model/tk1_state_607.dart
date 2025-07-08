@@ -14,6 +14,8 @@ class Tk1State607 {
 
   final formKey = GlobalKey<FormState>();
 
+  final idStaffSelect = Rx<String?>(null);
+
   final autoValidateMode = AutovalidateMode.disabled.obs;
 
   /// Họ và tên *
