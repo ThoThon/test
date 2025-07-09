@@ -660,6 +660,19 @@ class DeclareInfo607Controller extends BaseGetxController {
     tk1State.wardReceivePaper.value = null;
   }
 
+  void onChangeReceiveResult(ReceiveProfileResultEnum value) {
+    tk1State.receiveResult.value = value;
+
+    // Khi chọn nhận kết quả giấy thì địa chỉ nhận kết quả sẽ là địa chỉ nhận hồ sơ
+    if (value == ReceiveProfileResultEnum.paper) {
+      tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
+      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+      tk1State.addressReceivePaperTextCtrl.text =
+          tk1State.addressReceiveTextCtrl.text;
+    }
+  }
+
   @override
   void onClose() {
     tk1State.dispose();

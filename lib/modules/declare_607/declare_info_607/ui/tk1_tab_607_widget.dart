@@ -867,7 +867,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       selectedItem: controller.tk1State.receiveResult.value,
       onChanged: (value) {
         if (value != null) {
-          controller.tk1State.receiveResult.value = value;
+          controller.onChangeReceiveResult(value);
         }
       },
     );
