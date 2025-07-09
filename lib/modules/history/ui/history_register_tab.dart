@@ -51,13 +51,13 @@ extension HistoryRegisterTab on HistoryPage {
               SDSImageSvg(Assets.ASSETS_ICONS_IC_PROCEDURE_SVG),
               sdsSBWidth8,
               SDSBuildText(
-                item.toKhai,
+                "${item.toKhai}${LocaleKeys.history_number.tr}",
                 style: AppTextStyle.font14Bo,
               ),
               if (item.soHoSo?.isNotEmpty ?? false)
                 Expanded(
                   child: SDSBuildText(
-                    "${LocaleKeys.history_number.tr}${item.soHoSo ?? ''}",
+                    item.soHoSo ?? '',
                     style: AppTextStyle.font14Bo,
                     overflow: TextOverflow.ellipsis,
                   ),
