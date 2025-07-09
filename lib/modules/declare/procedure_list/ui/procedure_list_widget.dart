@@ -16,7 +16,9 @@ extension ProcedureListPageWidget on ProcedureListPage {
               style: AppTextStyle.font16Bo,
             ),
           ),
-          Expanded(child: _buildProcedureList())
+          Expanded(
+            child: _buildProcedureList(),
+          ),
         ],
       ),
     );
