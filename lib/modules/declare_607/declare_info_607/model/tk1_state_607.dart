@@ -14,6 +14,8 @@ class Tk1State607 {
 
   final formKey = GlobalKey<FormState>();
 
+  String? selectedStaffId;
+
   final autoValidateMode = AutovalidateMode.disabled.obs;
 
   /// Họ và tên *
@@ -276,6 +278,8 @@ class Tk1State607 {
 
   void mapFromStaffDetail(StaffDetailResponse staff) {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
+    selectedStaffId = staff.id;
+
     fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
 
     bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
