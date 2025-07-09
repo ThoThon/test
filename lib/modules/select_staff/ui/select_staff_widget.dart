@@ -43,8 +43,6 @@ extension SelectStaffWidget on SelectStaffPage {
       () {
         return InkWell(
           onTap: () {
-            controller.selectedID.value = item.id;
-            controller.staffSelected.value = item;
             Get.back(result: item);
           },
           child: Row(

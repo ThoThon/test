@@ -11,7 +11,7 @@ class D02State {
 
   final autoValidateMode = AutovalidateMode.disabled.obs;
 
-  final idStaffSelect = Rx<String?>(null);
+  String? idStaffSelect;
 
   /// Loại khai báo/Loại hồ sơ
   final declarationType = Rxn<DeclarationTypeModel>();
@@ -135,6 +135,8 @@ class D02State {
   void mapFromStaffDetail(StaffDetailResponse staff) {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
     positionTextCtrl.text = staff.chucVu?.trim() ?? '';
+
+    idStaffSelect = staff.id ?? '';
 
     isSalaryCoefficient.value = staff.dongTheoHeSo;
 

@@ -146,10 +146,9 @@ class DeclareInfoController extends BaseGetxController {
     final result = await Get.toNamed(
       AppRoutes.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn
-      arguments: d02State.idStaffSelect.value,
+      arguments: d02State.idStaffSelect,
     );
     if (result is SelectStaffResponse) {
-      d02State.idStaffSelect.value = result.id;
       _getDetailStaff(staffId: result.id);
     }
   }

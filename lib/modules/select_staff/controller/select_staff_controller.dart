@@ -13,16 +13,11 @@ class SelectStaffController
 
   final staffSelected = Rx<SelectStaffResponse?>(null);
 
-  final selectedID = Rx<String?>(null);
-
-  final argument = Get.arguments;
+  final selectedID = Rxn<String?>(Get.safeArguments<String>());
 
   @override
   void onInit() {
     super.onInit();
-    if (argument != null) {
-      selectedID.value = argument;
-    }
     getStaffListSelect();
   }
 
