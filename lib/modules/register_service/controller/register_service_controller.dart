@@ -103,7 +103,7 @@ class RegisterServiceController extends BaseGetxController {
       ShowDialog.dismissDialog();
       if (e is DioException) {
         _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
         );
       }
     }
@@ -187,7 +187,7 @@ class RegisterServiceController extends BaseGetxController {
       ShowDialog.dismissDialog();
       if (e is DioException) {
         _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
         );
       }
     }
@@ -222,7 +222,7 @@ class RegisterServiceController extends BaseGetxController {
       ShowDialog.dismissDialog();
       if (e is DioException) {
         _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
         );
       }
     }
