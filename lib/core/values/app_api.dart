@@ -1,9 +1,7 @@
 /// class chứa các api để giao tiếp với BE
 class AppApi {
-  // Url test chưa ký được
-  static const String url = "https://testapi.easyhrm.vn/vbhxh-mobile-api";
   // Base URL test có thể ký
-  static const String urlSign = "https://vbhxh-mobile-api.easyhrm.vn";
+  static const String urlSign = "https://vbhxh1.easyhrm.vn/api-mobile";
 
   static const String version = "";
 
