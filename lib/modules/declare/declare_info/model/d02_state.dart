@@ -11,7 +11,7 @@ class D02State {
 
   final autoValidateMode = AutovalidateMode.disabled.obs;
 
-  String? idStaffSelect;
+  String? selectedStaffId;
 
   /// Loại khai báo/Loại hồ sơ
   final declarationType = Rxn<DeclarationTypeModel>();
@@ -136,7 +136,7 @@ class D02State {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
     positionTextCtrl.text = staff.chucVu?.trim() ?? '';
 
-    idStaffSelect = staff.id ?? '';
+    selectedStaffId = staff.id ?? '';
 
     isSalaryCoefficient.value = staff.dongTheoHeSo;
 
