@@ -17,9 +17,8 @@ extension ProcedureListPageWidget on ProcedureListPage {
             ),
           ),
           Expanded(
-              child: SafeArea(
             child: _buildProcedureList(),
-          )),
+          ),
         ],
       ),
     );

@@ -17,10 +17,8 @@ class ProcedureListPage extends BaseGetWidget<ProcedureListController> {
       child: Scaffold(
         appBar: BaseAppBar(
           title: BaseAppBarTitle(
-            title: LocaleKeys.procedureList_pageTitle.tr,
-            textColor:
-                AppColors.basicWhite
-          ),
+              title: LocaleKeys.procedureList_pageTitle.tr,
+              textColor: AppColors.basicWhite),
           centerTitle: true,
           leading: UtilWidget.buildButtonBackAppbar(
             color: AppColors.basicWhite,
@@ -28,7 +26,9 @@ class ProcedureListPage extends BaseGetWidget<ProcedureListController> {
           backgroundColor: AppColors.primaryColor,
         ),
         body: BaseCardBody(
-          child: _buildBody(),
+          child: SafeArea(
+            child: _buildBody(),
+          ),
         ),
       ),
     );
