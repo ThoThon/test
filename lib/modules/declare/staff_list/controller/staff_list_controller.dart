@@ -28,6 +28,10 @@ class StaffListController extends BaseGetxController {
   ProcedureType get procedureType => argument.procedureType;
 
   Future<void> pickImage() async {
+    if (listAttachImage.length > 4) {
+      maximumUploadFile();
+      return;
+    }
     final path = await ImageUtils.pickImage();
     if (path != null) {
       upLoadFile(path);
@@ -35,6 +39,10 @@ class StaffListController extends BaseGetxController {
   }
 
   Future<void> takePhoto() async {
+    if (listAttachImage.length > 4) {
+      maximumUploadFile();
+      return;
+    }
     final path = await ImageUtils.takePhoto();
     if (path != null) {
       upLoadFile(path);

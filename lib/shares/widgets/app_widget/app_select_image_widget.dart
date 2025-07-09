@@ -15,14 +15,10 @@ class AppSelectImageWidget extends StatelessWidget {
     super.key,
     this.onTakePhoto,
     this.onPickImage,
-    this.maximumFile,
-    this.canUpFile = true,
   });
 
   final VoidCallback? onTakePhoto;
   final VoidCallback? onPickImage;
-  final VoidCallback? maximumFile;
-  final bool canUpFile;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +29,7 @@ class AppSelectImageWidget extends StatelessWidget {
       borderType: BorderType.RRect,
       radius: const Radius.circular(16),
       child: InkWell(
-        onTap: () {
-          if (canUpFile == true) {
-            _showBottomSheetUploadOptions();
-          } else {
-            maximumFile?.call();
-          }
-        },
+        onTap: _showBottomSheetUploadOptions,
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
