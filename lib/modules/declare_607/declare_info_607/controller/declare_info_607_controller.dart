@@ -264,6 +264,13 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   Future<void> _updateTk1() async {
     try {
+      // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
+      // => Chặn việc cập nhật
+      if (tk1State.id == null) {
+        showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
+        return;
+      }
+
       showLoadingOverlay();
       final request = UpdateTk1Request.fromState(
         kyKeKhaiId: argument.declarationPeriodId,
@@ -574,7 +581,8 @@ class DeclareInfo607Controller extends BaseGetxController {
       // Xóa ở DB
       try {
         showLoadingOverlay();
-        final response = await declareInfoRepository.deleteMember(id: memberId);
+        final response =
+            await declareInfoRepository.deleteMember607(id: memberId);
         if (response.isSuccess) {
           tk1State.familyMembers.removeWhere(
             (element) => element.id == memberId,

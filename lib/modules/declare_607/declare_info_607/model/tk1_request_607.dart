@@ -124,7 +124,7 @@ class Tk1Request607 {
       'chuHoThuongTruHuyenId': chuHoThuongTruHuyenId,
       'chuHoThuongTruXaId': chuHoThuongTruXaId,
       'diaChiThuongTruChuHo': diaChiThuongTruChuHo,
-      'xuatTk01': xuatD01,
+      'xuatD01': xuatD01,
     };
   }
 
