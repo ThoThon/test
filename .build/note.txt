@@ -2,6 +2,7 @@
 - [Appmobile]_Thủ tục 607 - Bổ sung api Xóa toàn bộ Hồ sơ TK1, D01 của nhân sự tại danh sách nhân sự kê khai - BHW-2572
 - [Appmobile]_Thủ tục 607 - Bổ sung api Xóa thành viên phụ lục - BHW-2569
 - [AppMobile][TK1-TS] Trường "Số điện thoại" cho phép nhập ký tự không hợp lệ
+- [Appmobile]_Thủ tục 608 - Dựng giao diện luồng thủ tục 608, 610, 612, 613 - BHW-2622, BHW-2623, BHW-2626, BHW-2627
 
 8/7/2025
 - [Appmobile]_Thủ tục 607 - Bổ sung giao diện Chọn nhân viên - BHW-2599
