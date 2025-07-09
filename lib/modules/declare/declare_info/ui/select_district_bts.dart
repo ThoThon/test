@@ -113,7 +113,6 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
         final isSelected = controller.selectedDistrict.value == item;
         return InkWell(
           onTap: () {
-            controller.selectedDistrict.value = item;
             Get.back(result: item);
           },
           child: Row(

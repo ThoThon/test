@@ -115,7 +115,6 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
         final isSelected = controller.selectedHospital.value == item;
         return InkWell(
           onTap: () {
-            controller.selectedHospital.value = item;
             Get.back(result: item);
           },
           child: Row(

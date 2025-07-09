@@ -116,7 +116,6 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
         final isSelected = controller.selectedWard.value == item;
         return InkWell(
           onTap: () {
-            controller.selectedWard.value = item;
             Get.back(result: item);
           },
           child: Row(
