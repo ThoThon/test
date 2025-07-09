@@ -155,6 +155,7 @@ class StaffListController extends BaseGetxController {
           arguments: DeclarationListArgument(
             declarationPeriodId: declarationPeriodId,
             saveXmlResult: response.result!,
+            procedureType: procedureType,
           ),
         );
       } else {

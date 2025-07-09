@@ -94,6 +94,7 @@ class AppApi {
   static const String urlGetTk1Detail = '/api/HoSoTk1/get-detail';
   static const String urlUpdateTk1 = '/api/HoSoTk1/update-tk1';
   static const String urlDeleteMember607 = '/api/HoSoTk1/delete-thanhvien';
+  static const String urlGetPreviewPdf607 = '/api/HoSoTk1/preview-pdf';
 
   // === Kết thúc các api liên quan đến thủ tục 607 ===
 }
