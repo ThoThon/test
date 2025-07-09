@@ -56,7 +56,11 @@ class DeclareInfo607Controller extends BaseGetxController {
   }
 
   void goToSelectStaffPage() async {
-    final result = await Get.toNamed(AppRoutes.selectStaff.path);
+    final result = await Get.toNamed(
+      AppRoutes.selectStaff.path,
+      // Truyền id sang để biết nhân viên nào đang được chọn
+      arguments: tk1State.selectedStaffId,
+    );
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
     }
@@ -113,6 +117,10 @@ class DeclareInfo607Controller extends BaseGetxController {
     );
     if (result is DeclarationForm) {
       d01State.forms.add(result);
+      showSnackBarCustom(
+        LocaleKeys.declareInfo_addTableSuccess.tr,
+        align: const Alignment(0, 0.6),
+      );
     }
   }
 

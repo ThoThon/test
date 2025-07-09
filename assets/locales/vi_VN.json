@@ -496,8 +496,10 @@
     "addressReceivePaper": "Địa chỉ nhận hồ sơ giấy",
     "receiveResultElectronic": "Nhận kết quả bản điện tử",
     "receiveResultPaper": "Nhận kết quả bản giấy",
+    "coefficient": "Hệ số",
     "listTable": "Danh sách bảng kê",
-    "coefficient": "Hệ số"
+    "addTable": "Thêm bảng kê",
+    "addTableSuccess":"Thêm bảng kê thành công"
   },
   "familyMember": {
     "title": "Thêm thành viên",

@@ -1,11 +1,14 @@
 9/7/2025
+- [Appmobile]_Màn 607: Cập nhật chỉnh sửa Mã số BHXH tại Tk1 Không là trường bắt buộc - BHW-2636
 - [Appmobile]_Thủ tục 607 - Bổ sung api Xóa toàn bộ Hồ sơ TK1, D01 của nhân sự tại danh sách nhân sự kê khai - BHW-2572
 - [Appmobile]_Thủ tục 607 - Bổ sung api Xóa thành viên phụ lục - BHW-2569
 - [AppMobile][TK1-TS] Trường "Số điện thoại" cho phép nhập ký tự không hợp lệ
 - [Appmobile]_Thủ tục 608 - Dựng giao diện luồng thủ tục 608, 610, 612, 613 - BHW-2622, BHW-2623, BHW-2626, BHW-2627
 - [Appmobile]_Thủ tục 607: Màn TK1: Chỉnh sửa hiển thị các trường liên quan đến hồ sơ nhận bản nhận bản giấy - BHW-2642
+- [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất trong hộp combobox BHW-2639
+- [Appmobile]_Thủ tục 607 - Chỉnh sửa giao diện Màn Danh sách bảng kê D01 - BHW-2637
 
-8/7/2025
+8/07/2025
 - [Appmobile]_Thủ tục 607 - Bổ sung giao diện Chọn nhân viên - BHW-2599
 - [Appmobile]_Thủ tục 607 - Xây dựng giao diện các trường màn D01 - BHW-2565
 [Appmobile]_Thủ tục 607 - Bổ sung giao diện "Lưu TK1, D01" - BHW-2596
@@ -20,8 +23,10 @@
 - [Appmobile]_Chỉnh sửa giao diện bổ sung: Màn đăng ký cấp mã Trả về số serial - BHW-2613
 - [Appmobile]_Thủ tục 607 - Bổ sung api Cập nhật hồ sơ TK1, D01 - BHW-2577
 - [AppMobile]Lỗi căn chỉnh button "xóa thông báo" - BHW-2634
+- [Appmobile]_Chỉnh sửa giao diện: Yêu cầu cập nhật mới - Chỉnh sửa giao diện mà Chọn nhân viên - BHW-2600
+- [Appmobile]_Giao diện sau chỉnh sửa: Màn danh sách nhân viên kê khai: Chưa chặn tối đa 5 file ảnh - BHW-2607
 
-7/7/2025
+7/07/2025
 - Appmobile_Thủ tục 607: Thêm mới kỳ kê khai - BHW-2561
 - [Appmobile]_Sửa giao diện màn trang chủ: Tên đơn vị, MST căn trái - BHW-2595
 - [Appmobile]_Chỉnh sửa giao diện màn Tra cứu - BHW-2594
@@ -37,8 +42,9 @@
 - [Appmobile]_Chỉnh sửa giao diện: Màn D01
 - [Appmobile]_Chỉnh sửa giao diện bổ sung: Trường Tiền lương/hệ số - BHW-2609
 - [Appmobile]_Chỉnh sửa bổ sung Trường hệ số - Màn D02 - BHW-2610
+- [Appmobile]_Chỉnh sửa giao diện màn D01 - BHW-2605
 
-4/7/2025
+4/07/2025
 - [Appmobile]_Sửa lại giao diện màn tra cứu C12 - BHW-2522
 - [Appmobile]_Màn TK1 -Thành viên trong gia đình: Trường Số CCCD và Ghi chú không là trường bắt buộc - BHW-2575
 - [Appmobile]_Chỉnh sửa giao diện màn Danh sách thủ tục - BHW-2554
@@ -46,7 +52,7 @@
 - [Appmobile]_Chỉnh sửa Validate trường Mã số thuế màn Quên mật khẩu - BHW-2546
 - [Appmobile]_Chỉnh sửa giao diện màn thông báo - BHW-2587
 
-3/7/2025
+3/07/2025
 - [Appmobile]_Thủ tục 607 - Xóa đợt kê khai - BHW-2597
 - Chỉnh sửa giá trị mặc định ban đầu ở màn kê khai D02,Tk1
 - [Appmobile]_Lỗi UI/UX Khi nhập CCCD tiếng việt Luồng 600 - BHW-2580
