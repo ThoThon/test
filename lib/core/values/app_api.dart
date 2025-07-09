@@ -89,10 +89,12 @@ class AppApi {
   // === Danh sách các api liên quan đến thủ tục 607 ===
   static const String urlGetStaffList607 = '/api/HoSoTk1/get-list';
   static const String urlSaveXml607 = '/api/HoSoTk1/save-xml';
-  static const String urlDeleteDeclarationPeriod607 =
-      '/api/HoSoTk1/delete-tk1-d01';
+  static const String urlDeleteTk1D01 = '/api/HoSoTk1/delete-tk1-d01';
   static const String urlAddTk1 = '/api/HoSoTk1/add-tk1';
   static const String urlGetTk1Detail = '/api/HoSoTk1/get-detail';
+  static const String urlUpdateTk1 = '/api/HoSoTk1/update-tk1';
+  static const String urlDeleteMember607 = '/api/HoSoTk1/delete-thanhvien';
+  static const String urlGetPreviewPdf607 = '/api/HoSoTk1/preview-pdf';
 
   // === Kết thúc các api liên quan đến thủ tục 607 ===
 }

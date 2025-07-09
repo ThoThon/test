@@ -215,13 +215,13 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     if (argument.isUpdateStaff) {
-      await _updateD02();
+      await _updateTk1();
     } else {
-      await _addD02();
+      await _addTk1();
     }
   }
 
-  Future<void> _addD02() async {
+  Future<void> _addTk1() async {
     try {
       showLoadingOverlay();
       final request = AddTk1Request607.fromState(
@@ -262,35 +262,40 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
-  Future<void> _updateD02() async {
-    // try {
-    //   showLoadingOverlay();
-    //   final request = UpdateD02Request.fromState(
-    //     kyKeKhaiId: argument.declarationPeriodId,
-    //     d02Tk1State: d02Tk1State,
-    //     d02State: d02State,
-    //     tk1State: tk1State,
-    //     d01State: d01State,
-    //   );
+  Future<void> _updateTk1() async {
+    try {
+      // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
+      // => Chặn việc cập nhật
+      if (tk1State.id == null) {
+        showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
+        return;
+      }
 
-    //   final response = await declareInfoRepository.updateD02(request: request);
+      showLoadingOverlay();
+      final request = UpdateTk1Request.fromState(
+        kyKeKhaiId: argument.declarationPeriodId,
+        tk1State: tk1State,
+        d01State: d01State,
+      );
 
-    //   if (response.isSuccess) {
-    //     showSnackBar(
-    //       LocaleKeys.declareInfo_saveDataSuccess.tr,
-    //       typeAction: AppConst.actionSuccess,
-    //     );
-    //     Get.back(
-    //       result: argument.declarationPeriodId,
-    //     );
-    //   } else {
-    //     showSnackBar(response.errorMessage);
-    //   }
-    // } catch (e) {
-    //   logger.e(e);
-    // } finally {
-    //   hideLoadingOverlay();
-    // }
+      final response = await declareInfoRepository.updateTk1(request: request);
+
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        Get.back(
+          result: argument.declarationPeriodId,
+        );
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 
   void onChangeDuplicateBirthAddress({
@@ -576,7 +581,8 @@ class DeclareInfo607Controller extends BaseGetxController {
       // Xóa ở DB
       try {
         showLoadingOverlay();
-        final response = await declareInfoRepository.deleteMember(id: memberId);
+        final response =
+            await declareInfoRepository.deleteMember607(id: memberId);
         if (response.isSuccess) {
           tk1State.familyMembers.removeWhere(
             (element) => element.id == memberId,
@@ -652,6 +658,19 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void onTapClearWardReceivePaper() {
     tk1State.wardReceivePaper.value = null;
+  }
+
+  void onChangeReceiveResult(ReceiveProfileResultEnum value) {
+    tk1State.receiveResult.value = value;
+
+    // Khi chọn nhận kết quả giấy thì địa chỉ nhận kết quả sẽ là địa chỉ nhận hồ sơ
+    if (value == ReceiveProfileResultEnum.paper) {
+      tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
+      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+      tk1State.addressReceivePaperTextCtrl.text =
+          tk1State.addressReceiveTextCtrl.text;
+    }
   }
 
   @override

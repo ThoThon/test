@@ -19,6 +19,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
   final bool isReadOnly;
   final Widget? suffixIcon;
   final Color? fillColor;
+  final bool enable;
 
   const CardInputTextFormWithLabel({
     super.key,
@@ -39,79 +40,98 @@ class CardInputTextFormWithLabel extends StatelessWidget {
     this.isReadOnly = false,
     this.suffixIcon,
     this.fillColor,
+    this.enable = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Stack(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(AppDimens.radius10),
-            ),
-            color: fillColor ?? AppColors.basicWhite,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: AppDimens.defaultPadding,
-              right: AppDimens.defaultPadding,
-              top: AppDimens.paddingVerySmall,
-            ),
-            child: Row(
-              children: [
-                SDSBuildText(
-                  labelText,
-                  style: textStyle ??
-                      AppTextStyle.font14Re.copyWith(
-                        color: AppColors.dsGray1,
-                      ),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(AppDimens.radius10),
                 ),
-                Visibility(
-                  visible: isRequired,
-                  child: SDSBuildText(
-                    ' *',
-                    style: AppTextStyle.font12Re.copyWith(
-                      color: AppColors.statusRed,
+                color: fillColor ?? AppColors.basicWhite,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: AppDimens.defaultPadding,
+                  right: AppDimens.defaultPadding,
+                  top: AppDimens.paddingVerySmall,
+                ),
+                child: Row(
+                  children: [
+                    SDSBuildText(
+                      labelText,
+                      style: textStyle ??
+                          AppTextStyle.font14Re.copyWith(
+                            color: AppColors.dsGray1,
+                          ),
                     ),
-                  ),
+                    Visibility(
+                      visible: isRequired,
+                      child: SDSBuildText(
+                        ' *',
+                        style: AppTextStyle.font12Re.copyWith(
+                          color: AppColors.statusRed,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
+            ),
+            BuildInputText(
+              InputTextModel(
+                autovalidateMode: autovalidateMode,
+                isValidate: isRequired,
+                controller: controller,
+                isReadOnly: isReadOnly,
+                fillColor: fillColor,
+                hintText: hintText ?? 'Nhập ${labelText.toLowerCase()}',
+                maxLengthInputForm: maxLengthInputForm,
+                inputFormatters:
+                    inputFormatters ?? InputFormatterEnum.textNormal,
+                obscureText: obscureText,
+                suffixIcon: suffixIcon,
+                isShowCounterText: isShowCounterText,
+                border: _buildOutlineInputNoBorder(),
+                errorBorder: _buildOutlineInputNoBorder(),
+                focusedBorder: _buildOutlineInputNoBorder(),
+                enabledBorder: _buildOutlineInputNoBorder(),
+                disabledBorder: _buildOutlineInputNoBorder(),
+                focusedErrorBorder: _buildOutlineInputNoBorder(),
+                onChanged: onChanged,
+                contentPadding: const EdgeInsets.only(
+                  bottom: AppDimens.paddingSmall,
+                  left: AppDimens.defaultPadding,
+                  right: AppDimens.defaultPadding,
+                ),
+                isDense: true,
+                validator: validator,
+                textInputType: textInputType,
+              ),
+            ),
+          ],
+        ),
+        if (!enable)
+          Positioned.fill(
+            child: Container(
+              padding: const EdgeInsets.all(AppDimens.paddingSmall),
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: BorderRadius.circular(AppDimens.radius10),
+                border: Border.all(
+                  color: AppColors.dsGray4,
+                ),
+              ),
             ),
           ),
-        ),
-        BuildInputText(
-          InputTextModel(
-            autovalidateMode: autovalidateMode,
-            isValidate: isRequired,
-            controller: controller,
-            isReadOnly: isReadOnly,
-            fillColor: fillColor,
-            hintText: hintText ?? 'Nhập ${labelText.toLowerCase()}',
-            maxLengthInputForm: maxLengthInputForm,
-            inputFormatters: inputFormatters ?? InputFormatterEnum.textNormal,
-            obscureText: obscureText,
-            suffixIcon: suffixIcon,
-            isShowCounterText: isShowCounterText,
-            border: _buildOutlineInputNoBorder(),
-            errorBorder: _buildOutlineInputNoBorder(),
-            focusedBorder: _buildOutlineInputNoBorder(),
-            enabledBorder: _buildOutlineInputNoBorder(),
-            disabledBorder: _buildOutlineInputNoBorder(),
-            focusedErrorBorder: _buildOutlineInputNoBorder(),
-            onChanged: onChanged,
-            contentPadding: const EdgeInsets.only(
-              bottom: AppDimens.paddingSmall,
-              left: AppDimens.defaultPadding,
-              right: AppDimens.defaultPadding,
-            ),
-            isDense: true,
-            validator: validator,
-            textInputType: textInputType,
-          ),
-        ),
       ],
     );
   }

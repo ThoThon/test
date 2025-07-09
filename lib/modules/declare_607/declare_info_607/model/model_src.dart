@@ -4,3 +4,4 @@ export 'receive_profile_result_enum.dart';
 export 'tk1_request_607.dart';
 export 'add_tk1_request_607.dart';
 export 'declare_info_detail_response_607.dart';
+export 'update_tk1_request_607.dart';
