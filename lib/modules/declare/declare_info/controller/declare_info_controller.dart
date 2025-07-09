@@ -163,6 +163,10 @@ class DeclareInfoController extends BaseGetxController {
     );
     if (result is DeclarationForm) {
       d01State.forms.add(result);
+      showSnackBarCustom(
+        LocaleKeys.declareInfo_addTableSuccess.tr,
+        align: const Alignment(0, 0.6),
+      );
     }
   }
 
