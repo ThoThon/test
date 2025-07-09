@@ -581,7 +581,8 @@ class DeclareInfo607Controller extends BaseGetxController {
       // Xóa ở DB
       try {
         showLoadingOverlay();
-        final response = await declareInfoRepository.deleteMember(id: memberId);
+        final response =
+            await declareInfoRepository.deleteMember607(id: memberId);
         if (response.isSuccess) {
           tk1State.familyMembers.removeWhere(
             (element) => element.id == memberId,

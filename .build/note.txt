@@ -1,5 +1,6 @@
 9/8/2025
 - [Appmobile]_Thủ tục 607 - Bổ sung api Xóa toàn bộ Hồ sơ TK1, D01 của nhân sự tại danh sách nhân sự kê khai - BHW-2572
+- [Appmobile]_Thủ tục 607 - Bổ sung api Xóa thành viên phụ lục - BHW-2569
 
 8/8/2025
 - [Appmobile]_Thủ tục 607 - Bổ sung giao diện Chọn nhân viên - BHW-2599
