@@ -228,14 +228,11 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       maxLengthInputForm: 10,
       inputFormatters: InputFormatterEnum.digitsOnly,
       textInputType: TextInputType.number,
-      isRequired: true,
       validator: (value) {
         final trimmedValue = value?.trim();
 
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr;
-        }
-        if (trimmedValue.length < 10) {
+        } else if (trimmedValue.length < 10) {
           return LocaleKeys.declareInfo_bhxhCodeInValid.tr;
         }
 
