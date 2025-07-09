@@ -99,6 +99,9 @@ class DeclarationListController extends BaseGetxController {
       title: LocaleKeys.dialog_sendFileFail.tr,
       content: errorMessage,
       showConfirmButton: false,
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       iconType: DialogIconType.failure,
       exitTitle: LocaleKeys.dialog_close.tr,
     );
