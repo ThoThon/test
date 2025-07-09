@@ -1,4 +1,11 @@
-8/8/2025
+9/7/2025
+- [Appmobile]_Thủ tục 607 - Bổ sung api Xóa toàn bộ Hồ sơ TK1, D01 của nhân sự tại danh sách nhân sự kê khai - BHW-2572
+- [Appmobile]_Thủ tục 607 - Bổ sung api Xóa thành viên phụ lục - BHW-2569
+- [AppMobile][TK1-TS] Trường "Số điện thoại" cho phép nhập ký tự không hợp lệ
+- [Appmobile]_Thủ tục 608 - Dựng giao diện luồng thủ tục 608, 610, 612, 613 - BHW-2622, BHW-2623, BHW-2626, BHW-2627
+- [Appmobile]_Thủ tục 607: Màn TK1: Chỉnh sửa hiển thị các trường liên quan đến hồ sơ nhận bản nhận bản giấy - BHW-2642
+
+8/7/2025
 - [Appmobile]_Thủ tục 607 - Bổ sung giao diện Chọn nhân viên - BHW-2599
 - [Appmobile]_Thủ tục 607 - Xây dựng giao diện các trường màn D01 - BHW-2565
 [Appmobile]_Thủ tục 607 - Bổ sung giao diện "Lưu TK1, D01" - BHW-2596
@@ -42,7 +49,6 @@
 
 3/7/2025
 - [Appmobile]_Thủ tục 607 - Xóa đợt kê khai - BHW-2597
-- [Appmobile]_Thủ tục 607 - Bổ sung api Xóa toàn bộ Hồ sơ TK1, D01
 - Chỉnh sửa giá trị mặc định ban đầu ở màn kê khai D02,Tk1
 - [Appmobile]_Lỗi UI/UX Khi nhập CCCD tiếng việt Luồng 600 - BHW-2580
 - [Appmobile]_Thủ tục 600: Màn TK1: Lỗi hiển thị Là trường bắt buộc đối với thông tin chủ hộ - BHW-2578
