@@ -1021,6 +1021,8 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
   Widget _buildInputAddressReceivePaper() {
     return Obx(
       () => CardInputTextFormWithLabel(
+        enable: controller.tk1State.receiveResult.value ==
+            ReceiveProfileResultEnum.paper,
         labelText: LocaleKeys.declareInfo_addressReceivePaper.tr,
         hintText: LocaleKeys.declareInfo_inputAddress.tr,
         autovalidateMode: controller.tk1State.autoValidateMode.value,
