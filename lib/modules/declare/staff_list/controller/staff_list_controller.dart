@@ -8,6 +8,9 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../base_app/base_app.src.dart';
 
+// Chỉ cho phép up tối đa 5 file ảnh
+const maxImageAttachments = 5;
+
 class StaffListController extends BaseGetxController {
   final argument = Get.arguments as StaffListArgument;
 
@@ -28,7 +31,7 @@ class StaffListController extends BaseGetxController {
   ProcedureType get procedureType => argument.procedureType;
 
   Future<void> pickImage() async {
-    if (listAttachImage.length > 4) {
+    if (listAttachImage.length >= maxImageAttachments) {
       maximumUploadFile();
       return;
     }
@@ -39,7 +42,7 @@ class StaffListController extends BaseGetxController {
   }
 
   Future<void> takePhoto() async {
-    if (listAttachImage.length > 4) {
+    if (listAttachImage.length >= maxImageAttachments) {
       maximumUploadFile();
       return;
     }
