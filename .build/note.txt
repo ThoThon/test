@@ -7,6 +7,8 @@
 - [Appmobile]_Thủ tục 607: Màn TK1: Chỉnh sửa hiển thị các trường liên quan đến hồ sơ nhận bản nhận bản giấy - BHW-2642
 - [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất trong hộp combobox BHW-2639
 - [Appmobile]_Thủ tục 607 - Chỉnh sửa giao diện Màn Danh sách bảng kê D01 - BHW-2637
+- [Appmobile] Nút “Kê khai” của thủ tục 613 cuối danh sách bị sát màn hình - BHW-2645
+- [Appmobile]_Chỉnh sửa giao diện: Chỉnh màu nút button (Đỏ -> Trắng) tại popup - BHW-2644
 - [Appmobile]_Chỉnh sửa giao diện bổ sung: Bỏ bước Xác nhận tại Các màn chọn giá trị trong combobox - BHW-2602
 
 8/07/2025

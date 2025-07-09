@@ -323,6 +323,9 @@ class RegisterCodeController extends BaseGetxController {
       iconType: DialogIconType.success,
       exitTitle: LocaleKeys.dialog_close.tr,
       isDisableButtonConfirm: true,
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       onCancel: () {
         // Get back vì màn trước của nó đang là màn login
         Get.back();
@@ -339,6 +342,9 @@ class RegisterCodeController extends BaseGetxController {
       content: errorMessage,
       iconType: DialogIconType.failure,
       exitTitle: LocaleKeys.dialog_close.tr,
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       showConfirmButton: onRetry != null,
       confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
       onConfirm: onRetry,

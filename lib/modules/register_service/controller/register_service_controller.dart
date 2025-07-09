@@ -133,6 +133,9 @@ class RegisterServiceController extends BaseGetxController {
       iconType: DialogIconType.success,
       exitTitle: LocaleKeys.dialog_exit.tr,
       confirmTitle: LocaleKeys.dialog_history.tr,
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       onCancel: () {
         Get.until(ModalRoute.withName(AppRoutes.home.path));
       },
@@ -151,6 +154,9 @@ class RegisterServiceController extends BaseGetxController {
       content: errorMessage,
       iconType: DialogIconType.failure,
       exitTitle: LocaleKeys.dialog_close.tr,
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       showConfirmButton: onRetry != null,
       confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
       onConfirm: onRetry,
