@@ -91,7 +91,9 @@ extension RegisterServiceWidget on RegisterServicePage {
             _buildInputUsernameMySign(),
             sdsSBHeight12,
             // DropDown Số serial
-            _buildDropdownSerial(),
+            controller.certificate.value == null
+                ? _buildDropdownSerialRegister()
+                : _buildDropdownSerialCert(),
             sdsSBHeight12,
             // Tên chủ thể CTS
             _buildSingleItem(
@@ -351,7 +353,8 @@ extension RegisterServiceWidget on RegisterServicePage {
     );
   }
 
-  Widget _buildDropdownSerial() {
+  // Hiện serial từ chứng thư số
+  Widget _buildDropdownSerialCert() {
     return CardDropdownWithLabel<CertificateModel>(
       isRequired: true,
       labelText: LocaleKeys.registerService_serialNumber.tr,
@@ -360,6 +363,20 @@ extension RegisterServiceWidget on RegisterServicePage {
       selectedItem: controller.certificate.value,
       onChanged: (value) {
         controller.certificate.value = value;
+      },
+    );
+  }
+
+  // Hiện serial từ thông tin đã đăng ký trước đó
+  Widget _buildDropdownSerialRegister() {
+    return CardDropdownWithLabel<RegisterServiceInfoModel>(
+      isRequired: true,
+      labelText: LocaleKeys.registerService_serialNumber.tr,
+      items: controller.listRegisterInfo,
+      display: (cert) => cert.soSerialCTS,
+      selectedItem: controller.registerServiceInfo.value,
+      onChanged: (value) {
+        controller.registerServiceInfo.value = value;
       },
     );
   }

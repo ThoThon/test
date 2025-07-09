@@ -18,6 +18,8 @@ class RegisterServiceController extends BaseGetxController {
 
   final registerServiceInfo = Rxn<RegisterServiceInfoModel>();
 
+  final listRegisterInfo = <RegisterServiceInfoModel>[].obs;
+
   final isUsernameMySignEmpty = true.obs;
 
   // userID dùng để test
@@ -56,6 +58,8 @@ class RegisterServiceController extends BaseGetxController {
           await _registerServiceRepository.fetchRegisterServiceInfo();
       if (response.isSuccess && response.result != null) {
         registerServiceInfo.value = response.result;
+        // Thêm vào list để có thể view được trong dropdown
+        listRegisterInfo.add(response.result!);
         // Nếu đã đăng ký thì set giá trị cho usernameMySignCtrl
         final userId = response.result!.userId;
         if (userId != null && userId.isNotEmpty) {
