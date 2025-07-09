@@ -222,7 +222,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<EthnicModel>(
-                title: LocaleKeys.declareInfo_ethnic.tr,
+                title: LocaleKeys.declareInfo_selectEthnic.tr,
                 maxLength: 20,
                 listFilter: AppData.instance.ethnics.toList(),
                 selectedItem: controller.d02Tk1State.selectedEthnic.value,
