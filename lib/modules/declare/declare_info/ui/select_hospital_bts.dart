@@ -116,7 +116,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
         return InkWell(
           onTap: () {
             controller.selectedHospital.value = item;
-            Get.back(result: controller.selectedHospital.value);
+            Get.back(result: item);
           },
           child: Row(
             children: [
