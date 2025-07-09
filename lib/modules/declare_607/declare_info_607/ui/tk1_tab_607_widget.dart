@@ -232,10 +232,11 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
         final trimmedValue = value?.trim();
 
         if (trimmedValue == null || trimmedValue.isEmpty) {
-        } else if (trimmedValue.length < 10) {
+          return null;
+        }
+        if (trimmedValue.length < 10) {
           return LocaleKeys.declareInfo_bhxhCodeInValid.tr;
         }
-
         return null;
       },
     );
