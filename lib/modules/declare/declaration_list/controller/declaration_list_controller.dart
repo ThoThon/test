@@ -44,10 +44,9 @@ class DeclarationListController extends BaseGetxController {
       }
     } catch (e) {
       ShowDialog.dismissDialog();
-      if (e is DioException) {
+      if (e is DioException && e.type != DioExceptionType.cancel) {
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
-          onRetry: signDocument,
         );
       }
     }
@@ -93,7 +92,6 @@ class DeclarationListController extends BaseGetxController {
 
   void _showDialogVerifyFailed({
     required String errorMessage,
-    VoidCallback? onRetry,
   }) {
     ShowDialog.showDialogConfirm2(
       title: LocaleKeys.dialog_sendFileFail.tr,

@@ -298,7 +298,7 @@ class RegisterCodeController extends BaseGetxController {
       }
     } catch (e) {
       ShowDialog.dismissDialog();
-      if (e is DioException) {
+     if (e is DioException && e.type != DioExceptionType.cancel) {
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
@@ -315,7 +315,6 @@ class RegisterCodeController extends BaseGetxController {
       onFinish: () {
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
-          onRetry: registerCodeFirst,
         );
       },
     );
