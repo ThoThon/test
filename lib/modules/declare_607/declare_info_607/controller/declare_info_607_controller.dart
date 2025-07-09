@@ -264,6 +264,13 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   Future<void> _updateTk1() async {
     try {
+      // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
+      // => Chặn việc cập nhật
+      if (tk1State.id == null) {
+        showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
+        return;
+      }
+
       showLoadingOverlay();
       final request = UpdateTk1Request.fromState(
         kyKeKhaiId: argument.declarationPeriodId,
