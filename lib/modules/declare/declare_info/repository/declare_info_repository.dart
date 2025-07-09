@@ -222,4 +222,16 @@ class DeclareInfoRepository extends BaseRepository {
       fromJson: (json) => DeclareInfoDetailResponse607.fromJson(json),
     );
   }
+
+  Future<BaseResponse> updateTk1({
+    required UpdateTk1Request request,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlUpdateTk1,
+      EnumRequestMethod.post,
+      jsonMap: request.toJson(),
+    );
+
+    return BaseResponse.fromJson(response);
+  }
 }
