@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
@@ -88,22 +87,23 @@ class RegisterServiceController extends BaseGetxController {
 
         // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
-      } else {
+      }
+
+      // Nếu timeout thì sẽ chủ động hiện dialog khi onFinish
+      // Để tránh khoảng chênh lệch thời gian
+      else if (response.code != _allowRetryCode) {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        final canRetry = response.code == _allowRetryCode;
         _showDialogVerifyFailed(
           errorMessage: response.errorMessage,
-          onRetry: canRetry ? registerNewService : null,
         );
       }
     } catch (e) {
       ShowDialog.dismissDialog();
       if (e is DioException) {
         _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
-          onRetry: registerNewService,
+          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
       }
     }
@@ -116,13 +116,17 @@ class RegisterServiceController extends BaseGetxController {
   }
 
   void _showDialogCheckedSuccess() {
-    ShowDialog.showDialogWithWidget(
-      // isActiveBack: false,
-      title: LocaleKeys.dialog_successTransfer.tr,
-      content: LocaleKeys.dialog_fileSendToSignature.tr,
-      child: const CupertinoActivityIndicator(
-        radius: 20,
-      ).paddingOnly(top: AppDimens.defaultPadding),
+    ShowDialog.showDialogTimerCount(
+      timerCount: 125,
+      showCloseButton: true,
+      content: LocaleKeys.dialog_confirmSignatureMySign.tr,
+      title: LocaleKeys.dialog_sendRequestSignature.tr,
+      onFinish: () {
+        _showDialogVerifyFailed(
+          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+          // onRetry: registerCodeFirst,
+        );
+      },
     );
   }
 
@@ -167,22 +171,23 @@ class RegisterServiceController extends BaseGetxController {
 
         // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
-      } else {
+      }
+
+      // Nếu timeout thì sẽ chủ động hiện dialog khi onFinish
+      // Để tránh khoảng chênh lệch thời gian
+      else if (response.code != _allowRetryCode) {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        final canRetry = response.code == _allowRetryCode;
         _showDialogVerifyFailed(
           errorMessage: response.errorMessage,
-          onRetry: canRetry ? cancelRegister : null,
         );
       }
     } catch (e) {
       ShowDialog.dismissDialog();
       if (e is DioException) {
         _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
-          onRetry: cancelRegister,
+          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
       }
     }
@@ -201,22 +206,23 @@ class RegisterServiceController extends BaseGetxController {
 
         // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
-      } else {
+      }
+
+      // Nếu timeout thì sẽ chủ động hiện dialog khi onFinish
+      // Để tránh khoảng chênh lệch thời gian
+      else if (response.code != _allowRetryCode) {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        final canRetry = response.code == _allowRetryCode;
         _showDialogVerifyFailed(
           errorMessage: response.errorMessage,
-          onRetry: canRetry ? changeInfo : null,
         );
       }
     } catch (e) {
       ShowDialog.dismissDialog();
       if (e is DioException) {
         _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
-          onRetry: changeInfo,
+          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
       }
     }

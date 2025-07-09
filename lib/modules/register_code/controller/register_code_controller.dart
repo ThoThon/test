@@ -279,15 +279,21 @@ class RegisterCodeController extends BaseGetxController {
           await _registerCodeRepository.registerCodeFirst(_buildRequest());
 
       if (response.isSuccess) {
-        ShowDialog.dismissDialog();
-        _showDialogVerifySuccess();
-      } else {
+        // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        final canRetry = response.code == _allowRetryCode;
+        // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
+        _showDialogVerifySuccess();
+      }
+
+      // Nếu timeout thì sẽ chủ động hiện dialog khi onFinish
+      // Để tránh khoảng chênh lệch thời gian
+      else if (response.code != _allowRetryCode) {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
         _showDialogVerifyFailed(
           errorMessage: response.errorMessage,
-          onRetry: canRetry ? registerCodeFirst : null,
         );
       }
     } catch (e) {
@@ -295,7 +301,6 @@ class RegisterCodeController extends BaseGetxController {
       if (e is DioException) {
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
-          onRetry: registerCodeFirst,
         );
       }
     }

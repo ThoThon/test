@@ -30,14 +30,16 @@ class DeclarationListController extends BaseGetxController {
 
         // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
-      } else {
+      }
+
+      // Nếu timeout thì sẽ chủ động hiện dialog khi onFinish
+      // Để tránh khoảng chênh lệch thời gian
+      else if (response.code != _allowRetryCode) {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        final canRetry = response.code == _allowRetryCode;
         _showDialogVerifyFailed(
           errorMessage: response.errorMessage,
-          onRetry: canRetry ? signDocument : null,
         );
       }
     } catch (e) {
