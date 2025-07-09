@@ -278,7 +278,7 @@ class Tk1State607 {
 
   void mapFromStaffDetail(StaffDetailResponse staff) {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
-    selectedStaffId = staff.id ?? '';
+    selectedStaffId = staff.id;
 
     fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
 

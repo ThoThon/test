@@ -136,7 +136,7 @@ class D02State {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
     positionTextCtrl.text = staff.chucVu?.trim() ?? '';
 
-    selectedStaffId = staff.id ?? '';
+    selectedStaffId = staff.id;
 
     isSalaryCoefficient.value = staff.dongTheoHeSo;
 

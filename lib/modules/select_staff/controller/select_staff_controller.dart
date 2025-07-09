@@ -13,7 +13,7 @@ class SelectStaffController
 
   final staffSelected = Rx<SelectStaffResponse?>(null);
 
-  final selectedID = Rxn<String?>(Get.safeArguments<String>());
+  final selectedID = Rxn<String>(Get.safeArguments<String>());
 
   @override
   void onInit() {
