@@ -22,6 +22,7 @@
 - [Appmobile]_Thủ tục 607 - Bổ sung api Cập nhật hồ sơ TK1, D01 - BHW-2577
 - [AppMobile]Lỗi căn chỉnh button "xóa thông báo" - BHW-2634
 - [Appmobile]_Chỉnh sửa giao diện: Yêu cầu cập nhật mới - Chỉnh sửa giao diện mà Chọn nhân viên - BHW-2600
+- [Appmobile]_Giao diện sau chỉnh sửa: Màn danh sách nhân viên kê khai: Chưa chặn tối đa 5 file ảnh - BHW-2607
 
 7/7/2025
 - Appmobile_Thủ tục 607: Thêm mới kỳ kê khai - BHW-2561
