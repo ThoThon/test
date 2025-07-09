@@ -1343,6 +1343,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
               ShowDialog.showDialogConfirm2(
                 title: LocaleKeys.declareInfo_deleteSelectedMember.tr,
                 confirmTitle: LocaleKeys.declareInfo_delete.tr,
+                backgroundColorBack: AppColors.basicWhite,
+                textStyleBack: AppTextStyle.font14Re
+                    .copyWith(color: AppColors.primaryColor),
                 onConfirm: () {
                   controller.deleteFamilyMember(member);
                 },
