@@ -60,6 +60,9 @@ class DeclarationPeriodController extends BaseGetxController {
           '${LocaleKeys.declarationPeriod_delete.tr} "${LocaleKeys.declarationPeriod_period.tr} ${period.period}"?',
       content: LocaleKeys.declarationPeriod_contentDeletePeriod.tr,
       confirmTitle: LocaleKeys.declarationPeriod_delete.tr,
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       onConfirm: () {
         deleteDeclarationPeriod(period);
       },

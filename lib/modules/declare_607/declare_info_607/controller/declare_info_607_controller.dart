@@ -140,6 +140,9 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void showDialogDeleteForm(DeclarationForm form) {
     ShowDialog.showDialogConfirm2(
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       title: 'Xóa bảng kê?',
       confirmTitle: 'Xóa',
       onConfirm: () {
