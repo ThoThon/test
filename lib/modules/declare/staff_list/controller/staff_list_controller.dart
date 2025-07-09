@@ -200,9 +200,19 @@ class StaffListController extends BaseGetxController {
   }) async {
     try {
       showLoadingOverlay();
-      final response = await _repository.deleteD02Tk1D01(
-        id: staffId,
-      );
+      final BaseResponse response;
+      switch (procedureType) {
+        case ProcedureType.procedure600:
+          response = await _repository.deleteD02Tk1D01(
+            id: staffId,
+          );
+          break;
+        case ProcedureType.procedure607:
+          response = await _repository.deleteTk1D01(
+            id: staffId,
+          );
+          break;
+      }
 
       if (response.isSuccess) {
         showSnackBar(
