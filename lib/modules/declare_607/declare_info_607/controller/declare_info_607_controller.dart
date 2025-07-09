@@ -215,13 +215,13 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     if (argument.isUpdateStaff) {
-      await _updateD02();
+      await _updateTk1();
     } else {
-      await _addD02();
+      await _addTk1();
     }
   }
 
-  Future<void> _addD02() async {
+  Future<void> _addTk1() async {
     try {
       showLoadingOverlay();
       final request = AddTk1Request607.fromState(
@@ -262,35 +262,33 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
-  Future<void> _updateD02() async {
-    // try {
-    //   showLoadingOverlay();
-    //   final request = UpdateD02Request.fromState(
-    //     kyKeKhaiId: argument.declarationPeriodId,
-    //     d02Tk1State: d02Tk1State,
-    //     d02State: d02State,
-    //     tk1State: tk1State,
-    //     d01State: d01State,
-    //   );
+  Future<void> _updateTk1() async {
+    try {
+      showLoadingOverlay();
+      final request = UpdateTk1Request.fromState(
+        kyKeKhaiId: argument.declarationPeriodId,
+        tk1State: tk1State,
+        d01State: d01State,
+      );
 
-    //   final response = await declareInfoRepository.updateD02(request: request);
+      final response = await declareInfoRepository.updateTk1(request: request);
 
-    //   if (response.isSuccess) {
-    //     showSnackBar(
-    //       LocaleKeys.declareInfo_saveDataSuccess.tr,
-    //       typeAction: AppConst.actionSuccess,
-    //     );
-    //     Get.back(
-    //       result: argument.declarationPeriodId,
-    //     );
-    //   } else {
-    //     showSnackBar(response.errorMessage);
-    //   }
-    // } catch (e) {
-    //   logger.e(e);
-    // } finally {
-    //   hideLoadingOverlay();
-    // }
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        Get.back(
+          result: argument.declarationPeriodId,
+        );
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 
   void onChangeDuplicateBirthAddress({

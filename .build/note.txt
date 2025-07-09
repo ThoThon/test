@@ -11,6 +11,7 @@
 - [Appmobile] Hiển thị sai màu button "Hủy" - BHW-2633
 - [Appmobile]_Chỉnh sửa thông báo text đỏ trường Tiền lương và hệ số - BHW-2632
 - [Appmobile]_Chỉnh sửa giao diện bổ sung: Màn đăng ký cấp mã Trả về số serial - BHW-2613
+- [Appmobile]_Thủ tục 607 - Bổ sung api Cập nhật hồ sơ TK1, D01 - BHW-2577
 - [AppMobile]Lỗi căn chỉnh button "xóa thông báo" - BHW-2634
 
 7/7/2025
