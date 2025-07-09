@@ -113,13 +113,18 @@ class DeclarationListController extends BaseGetxController {
     try {
       showLoadingOverlay();
 
-      final response = await _repository.getPreviewPdf(
-        request: GetPreviewPdfRequest(
-          declarationPeriodId: argument.declarationPeriodId,
-          documentRecordId: documentRecordId,
-          previewDocumentType: previewDocumentType,
-        ),
+      final request = GetPreviewPdfRequest(
+        declarationPeriodId: argument.declarationPeriodId,
+        previewDocumentType: previewDocumentType,
+        documentRecordId: documentRecordId,
       );
+
+      final response = await switch (argument.procedureType) {
+        ProcedureType.procedure600 =>
+          _repository.getPreviewPdf(request: request),
+        ProcedureType.procedure607 =>
+          _repository.getPreviewPdf607(request: request),
+      };
 
       final url = response.result;
 

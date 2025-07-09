@@ -143,7 +143,11 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void goToSelectStaffPage() async {
-    final result = await Get.toNamed(AppRoutes.selectStaff.path);
+    final result = await Get.toNamed(
+      AppRoutes.selectStaff.path,
+      // Truyền id sang để biết nhân viên nào đang được chọn
+      arguments: d02State.selectedStaffId,
+    );
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
     }
@@ -159,6 +163,10 @@ class DeclareInfoController extends BaseGetxController {
     );
     if (result is DeclarationForm) {
       d01State.forms.add(result);
+      showSnackBarCustom(
+        LocaleKeys.declareInfo_addTableSuccess.tr,
+        align: const Alignment(0, 0.6),
+      );
     }
   }
 
@@ -329,6 +337,13 @@ class DeclareInfoController extends BaseGetxController {
 
   Future<void> _updateD02() async {
     try {
+      // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
+      // => Chặn việc cập nhật
+      if (d02State.id == null) {
+        showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
+        return;
+      }
+
       showLoadingOverlay();
       final request = UpdateD02Request.fromState(
         kyKeKhaiId: argument.declarationPeriodId,

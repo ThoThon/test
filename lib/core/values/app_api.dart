@@ -1,9 +1,7 @@
 /// class chứa các api để giao tiếp với BE
 class AppApi {
-  // Url test chưa ký được
-  static const String url = "https://testapi.easyhrm.vn/vbhxh-mobile-api";
   // Base URL test có thể ký
-  static const String urlSign = "https://vbhxh-mobile-api.easyhrm.vn";
+  static const String urlSign = "https://vbhxh1.easyhrm.vn/api-mobile";
 
   static const String version = "";
 
@@ -93,6 +91,8 @@ class AppApi {
   static const String urlAddTk1 = '/api/HoSoTk1/add-tk1';
   static const String urlGetTk1Detail = '/api/HoSoTk1/get-detail';
   static const String urlUpdateTk1 = '/api/HoSoTk1/update-tk1';
+  static const String urlDeleteMember607 = '/api/HoSoTk1/delete-thanhvien';
+  static const String urlGetPreviewPdf607 = '/api/HoSoTk1/preview-pdf';
 
   // === Kết thúc các api liên quan đến thủ tục 607 ===
 }

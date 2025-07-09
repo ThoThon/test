@@ -17,9 +17,11 @@ class SelectStaffPage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
+        centerTitle: true,
         title: BaseAppBarTitle(title: LocaleKeys.staffList_selectedStaff.tr),
+        leading: UtilWidget.buildButtonBackAppbar(),
       ),
-      body: SafeArea(child: _buildBody()),
+      body: _buildBody(),
     );
   }
 }

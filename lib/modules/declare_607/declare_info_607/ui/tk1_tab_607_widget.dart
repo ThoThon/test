@@ -228,17 +228,15 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       maxLengthInputForm: 10,
       inputFormatters: InputFormatterEnum.digitsOnly,
       textInputType: TextInputType.number,
-      isRequired: true,
       validator: (value) {
         final trimmedValue = value?.trim();
 
         if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr;
+          return null;
         }
         if (trimmedValue.length < 10) {
           return LocaleKeys.declareInfo_bhxhCodeInValid.tr;
         }
-
         return null;
       },
     );
@@ -867,7 +865,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       selectedItem: controller.tk1State.receiveResult.value,
       onChanged: (value) {
         if (value != null) {
-          controller.tk1State.receiveResult.value = value;
+          controller.onChangeReceiveResult(value);
         }
       },
     );
@@ -1021,6 +1019,8 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
   Widget _buildInputAddressReceivePaper() {
     return Obx(
       () => CardInputTextFormWithLabel(
+        enable: controller.tk1State.receiveResult.value ==
+            ReceiveProfileResultEnum.paper,
         labelText: LocaleKeys.declareInfo_addressReceivePaper.tr,
         hintText: LocaleKeys.declareInfo_inputAddress.tr,
         autovalidateMode: controller.tk1State.autoValidateMode.value,
@@ -1088,6 +1088,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       controller: controller.tk1State.contactPhoneNumberTextCtrl,
       textInputType: TextInputType.phone,
       maxLengthInputForm: 20,
+      inputFormatters: InputFormatterEnum.phoneNumber,
     );
   }
 
