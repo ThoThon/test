@@ -250,6 +250,7 @@ class StaffListController extends BaseGetxController {
         declarationPeriodId: declarationPeriodId,
         staffId: null,
         action: D02ActionEnum.addStaffFromStaffList,
+        procedureType: procedureType,
       ),
     );
     if (result != null) {
@@ -274,6 +275,7 @@ class StaffListController extends BaseGetxController {
         declarationPeriodId: declarationPeriodId,
         staffId: staff.id,
         action: D02ActionEnum.updateStaffFromStaffList,
+        procedureType: procedureType,
       ),
     );
     if (result != null) {

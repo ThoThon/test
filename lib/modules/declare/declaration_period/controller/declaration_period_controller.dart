@@ -119,6 +119,7 @@ class DeclarationPeriodController extends BaseGetxController {
           arguments: DeclareInfoArgument(
             declarationPeriodId: response.result!.id,
             action: D02ActionEnum.addPeriodFromDeclarePeriod,
+            procedureType: argument.procedureType,
           ),
         )?.whenComplete(() {
           // Refresh the list of declaration periods after creating a new one
