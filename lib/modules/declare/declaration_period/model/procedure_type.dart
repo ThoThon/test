@@ -43,17 +43,17 @@ enum ProcedureType {
   String get declareInfoTitle {
     switch (this) {
       case ProcedureType.procedure600:
-        return '${LocaleKeys.declareInfo_title.tr} ${LocaleKeys.declareInfo_title600.tr}';
+        return LocaleKeys.declareInfo_title600.tr;
       case ProcedureType.procedure607:
-        return '${LocaleKeys.declareInfo_title.tr} ${LocaleKeys.declareInfo_title607.tr}';
+        return LocaleKeys.declareInfo_title607.tr;
       case ProcedureType.procedure608:
-        return '${LocaleKeys.declareInfo_title.tr} ${LocaleKeys.declareInfo_title608.tr}';
+        return LocaleKeys.declareInfo_title608.tr;
       case ProcedureType.procedure610:
-        return '${LocaleKeys.declareInfo_title.tr} ${LocaleKeys.declareInfo_title610.tr}';
+        return LocaleKeys.declareInfo_title610.tr;
       case ProcedureType.procedure612:
-        return '${LocaleKeys.declareInfo_title.tr} ${LocaleKeys.declareInfo_title612.tr}';
+        return LocaleKeys.declareInfo_title612.tr;
       case ProcedureType.procedure613:
-        return '${LocaleKeys.declareInfo_title.tr} ${LocaleKeys.declareInfo_title613.tr}';
+        return LocaleKeys.declareInfo_title613.tr;
     }
   }
 }
