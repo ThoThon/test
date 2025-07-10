@@ -1096,6 +1096,7 @@ class UtilWidget {
           fontSize: AppDimens.sizeTextMediumTb,
         ),
         decoration: InputDecoration(
+            counterText: '',
             hoverColor: Colors.white,
             prefixIcon: prefixIcon,
             fillColor: fillColor,

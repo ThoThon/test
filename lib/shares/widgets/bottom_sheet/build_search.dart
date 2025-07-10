@@ -69,14 +69,6 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
               ],
             ),
           ),
-          UtilWidget.buildSolidButton(
-            title: LocaleKeys.certificate_confirm.tr,
-            onPressed: () {
-              widget.onAccept(itemSelect.value);
-              Get.back();
-            },
-          ),
-          sdsSBHeight28,
         ],
       ).paddingSymmetric(
         horizontal: AppDimens.paddingVerySmall,
@@ -118,26 +110,31 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
         function();
         isClear.value = textEditingController.text.isNotEmpty;
       },
-      prefixIcon: const Icon(
-        Icons.search,
-        color: AppColors.primaryColor,
-        size: AppDimens.sizeIconMedium,
+      prefixIcon: SizedBox(
+        height: AppDimens.sizeIconDefault,
+        width: AppDimens.sizeIconDefault,
+        child: Center(
+          child: SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_SEARCH_SVG,
+            color: AppColors.primaryColor,
+          ),
+        ),
       ),
-      suffixIcon: Obx(() => Visibility(
-          visible: isClear.value,
-          child: IconButton(
-            onPressed: () {
-              textEditingController.clear();
-              isClear.value = false;
-              function();
-            },
-            icon: const Icon(
-              Icons.clear,
-              color: AppColors.primaryColor,
-            ),
-          )
-          // .paddingOnly(bottom: AppDimens.paddingSmall),
-          )),
+      suffixIcon: Obx(
+        () => Visibility(
+            visible: isClear.value,
+            child: IconButton(
+              onPressed: () {
+                textEditingController.clear();
+                isClear.value = false;
+                function();
+              },
+              icon: const Icon(
+                Icons.clear,
+                color: AppColors.primaryColor,
+              ),
+            )),
+      ),
     ).paddingSymmetric(vertical: padding ?? AppDimens.paddingSmall);
   }
 
@@ -149,6 +146,8 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
         return InkWell(
           onTap: () {
             itemSelect.value = item;
+            Get.back();
+            widget.onAccept(itemSelect.value);
           },
           child: Row(
             children: [

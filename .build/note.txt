@@ -9,6 +9,7 @@
 - [Appmobile]_Thủ tục 607 - Chỉnh sửa giao diện Màn Danh sách bảng kê D01 - BHW-2637
 - [Appmobile] Nút “Kê khai” của thủ tục 613 cuối danh sách bị sát màn hình - BHW-2645
 - [Appmobile]_Chỉnh sửa giao diện: Chỉnh màu nút button (Đỏ -> Trắng) tại popup - BHW-2644
+- [Appmobile]_Chỉnh sửa giao diện bổ sung: Bỏ bước Xác nhận tại Các màn chọn giá trị trong combobox - BHW-2602
 
 8/07/2025
 - [Appmobile]_Thủ tục 607 - Bổ sung giao diện Chọn nhân viên - BHW-2599

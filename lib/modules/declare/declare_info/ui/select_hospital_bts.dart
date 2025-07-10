@@ -59,13 +59,6 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
               ],
             ),
           ),
-          UtilWidget.buildSolidButton(
-            title: LocaleKeys.certificate_confirm.tr,
-            onPressed: () {
-              Get.back(result: controller.selectedHospital.value);
-            },
-          ),
-          sdsSBHeight32,
         ],
       ).paddingAll(AppDimens.paddingVerySmall),
     );
@@ -89,10 +82,15 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
         controller.keyword.value = TiengViet.parse(value.trim()).toLowerCase();
         _isShowButtonClear.value = value.isNotEmpty;
       },
-      prefixIcon: const Icon(
-        Icons.search,
-        color: AppColors.primaryColor,
-        size: AppDimens.sizeIconMedium,
+      prefixIcon: SizedBox(
+        height: AppDimens.sizeIconDefault,
+        width: AppDimens.sizeIconDefault,
+        child: Center(
+          child: SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_SEARCH_SVG,
+            color: AppColors.primaryColor,
+          ),
+        ),
       ),
       suffixIcon: Obx(() => Visibility(
             visible: _isShowButtonClear.value,
@@ -117,7 +115,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
         final isSelected = controller.selectedHospital.value == item;
         return InkWell(
           onTap: () {
-            controller.selectedHospital.value = item;
+            Get.back(result: item);
           },
           child: Row(
             children: [
