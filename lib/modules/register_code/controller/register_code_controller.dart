@@ -8,9 +8,6 @@ import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../login/model/model_src.dart';
 import '../../src.dart';
 
-// Nếu mã lỗi là 58061 thì có thể retry ký số (from a Chương)
-const _allowRetryCode = "58061";
-
 class RegisterCodeController extends BaseGetxController {
   final currentTab = RegisterCodeTabEnum.common_info.obs;
 
@@ -282,13 +279,8 @@ class RegisterCodeController extends BaseGetxController {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
-      }
-
-      // Nếu timeout thì sẽ chủ động hiện dialog khi onFinish
-      // Để tránh khoảng chênh lệch thời gian
-      else if (response.code != _allowRetryCode) {
+      } else {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
@@ -298,7 +290,7 @@ class RegisterCodeController extends BaseGetxController {
       }
     } catch (e) {
       ShowDialog.dismissDialog();
-     if (e is DioException && e.type != DioExceptionType.cancel) {
+      if (e is DioException && e.type != DioExceptionType.cancel) {
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );

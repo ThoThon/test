@@ -8,9 +8,6 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog.src.dart';
 import '../../../../shares/package/export_package.dart';
 import '../../../src.dart';
 
-// Nếu mã lỗi là 58061 thì có thể retry ký số (from a Chương)
-const _allowRetryCode = "58061";
-
 class DeclarationListController extends BaseGetxController {
   final argument = Get.arguments as DeclarationListArgument;
 
@@ -28,13 +25,8 @@ class DeclarationListController extends BaseGetxController {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
-      }
-
-      // Nếu timeout thì sẽ chủ động hiện dialog khi onFinish
-      // Để tránh khoảng chênh lệch thời gian
-      else if (response.code != _allowRetryCode) {
+      } else {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 

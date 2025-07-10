@@ -3,9 +3,6 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
-// Nếu mã lỗi là 58061 thì có thể retry ký số (from a Chương)
-const _allowRetryCode = "58061";
-
 class RegisterServiceController extends BaseGetxController {
   final usernameMySignCtrl = TextEditingController();
   final listCert = <CertificateModel>[].obs;
@@ -85,13 +82,8 @@ class RegisterServiceController extends BaseGetxController {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
-      }
-
-      // Nếu timeout thì sẽ chủ động hiện dialog khi onFinish
-      // Để tránh khoảng chênh lệch thời gian
-      else if (response.code != _allowRetryCode) {
+      } else {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
@@ -122,6 +114,7 @@ class RegisterServiceController extends BaseGetxController {
       content: LocaleKeys.dialog_confirmSignatureMySign.tr,
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       onFinish: () {
+        cancelAllRequest();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
@@ -176,11 +169,7 @@ class RegisterServiceController extends BaseGetxController {
 
         // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
-      }
-
-      // Nếu timeout thì sẽ chủ động hiện dialog khi onFinish
-      // Để tránh khoảng chênh lệch thời gian
-      else if (response.code != _allowRetryCode) {
+      } else {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
@@ -190,7 +179,7 @@ class RegisterServiceController extends BaseGetxController {
       }
     } catch (e) {
       ShowDialog.dismissDialog();
-     if (e is DioException && e.type != DioExceptionType.cancel) {
+      if (e is DioException && e.type != DioExceptionType.cancel) {
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
         );
@@ -211,11 +200,7 @@ class RegisterServiceController extends BaseGetxController {
 
         // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
-      }
-
-      // Nếu timeout thì sẽ chủ động hiện dialog khi onFinish
-      // Để tránh khoảng chênh lệch thời gian
-      else if (response.code != _allowRetryCode) {
+      } else {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
