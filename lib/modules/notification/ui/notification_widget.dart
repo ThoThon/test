@@ -19,7 +19,7 @@ extension NotificationWidget on NotificationPage {
                 refreshController: controller.refreshController,
                 onRefresh: controller.onRefresh,
                 onLoadMore: controller.onLoadMore,
-                enablePullUp: false,
+                enablePullUp: true,
                 child: _buildListNotification(),
               );
             },
@@ -136,10 +136,7 @@ extension NotificationWidget on NotificationPage {
             ),
             sdsSBHeight16,
           ],
-        ).paddingOnly(
-          left: AppDimens.paddingVerySmall,
-          bottom: AppDimens.paddingMedium,
-        ),
+        ).paddingOnly(left: AppDimens.paddingVerySmall),
       ),
     );
   }
