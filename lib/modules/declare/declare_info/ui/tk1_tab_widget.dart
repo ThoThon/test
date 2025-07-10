@@ -294,6 +294,7 @@ extension Tk1TabWidget on DeclareInfoPage {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.declareInfo_birthAddress.tr,
       hintText: LocaleKeys.declareInfo_inputAddress.tr,
+      isRequired: false,
       controller: controller.tk1State.birthAddressTextCtrl,
       maxLengthInputForm: 300,
       inputFormatters: InputFormatterEnum.textNormal,
