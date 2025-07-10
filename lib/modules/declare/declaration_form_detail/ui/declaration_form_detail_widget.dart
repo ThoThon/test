@@ -4,38 +4,42 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
   Widget _buildBody() {
     return Form(
       key: controller.formKey,
-      child: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppDimens.defaultPadding,
+      child: KeyboardVisibilityBuilder(
+        builder: (context, isKeyboardVisible) {
+          return Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimens.defaultPadding,
+                  ),
+                  child: Column(
+                    children: [
+                      _buildInputFullName(),
+                      sdsSBHeight12,
+                      _buildInputBHXHNumber(),
+                      sdsSBHeight12,
+                      _buildInputDocumentType(),
+                      sdsSBHeight12,
+                      _buildInputDocumentNumber(),
+                      sdsSBHeight12,
+                      _buildSelectDateOfIssue(),
+                      sdsSBHeight12,
+                      _buildEffectiveDate(),
+                      sdsSBHeight12,
+                      _buildInputIssuingAgency(),
+                      sdsSBHeight12,
+                      _buildInputSummary(),
+                      sdsSBHeight12,
+                      _buildInputContent(),
+                    ],
+                  ),
+                ),
               ),
-              child: Column(
-                children: [
-                  _buildInputFullName(),
-                  sdsSBHeight12,
-                  _buildInputBHXHNumber(),
-                  sdsSBHeight12,
-                  _buildInputDocumentType(),
-                  sdsSBHeight12,
-                  _buildInputDocumentNumber(),
-                  sdsSBHeight12,
-                  _buildSelectDateOfIssue(),
-                  sdsSBHeight12,
-                  _buildEffectiveDate(),
-                  sdsSBHeight12,
-                  _buildInputIssuingAgency(),
-                  sdsSBHeight12,
-                  _buildInputSummary(),
-                  sdsSBHeight12,
-                  _buildInputContent(),
-                ],
-              ),
-            ),
-          ),
-          _buildBottomButtons(),
-        ],
+              if (!isKeyboardVisible) _buildBottomButtons(),
+            ],
+          );
+        },
       ),
     );
   }

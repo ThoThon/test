@@ -4,29 +4,35 @@ extension CommonInfoTab on RegisterCodePage {
   Widget _buildCommonInfoTab() {
     return Form(
       key: controller.formKeyCommonTab,
-      child: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  _buildUnitInfoCard(),
-                  sdsSBHeight12,
-                  _buildContactInfoCard(),
-                ],
+      child: KeyboardVisibilityBuilder(
+        builder: (context, isKeyboardVisible) {
+          return Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      _buildUnitInfoCard(),
+                      sdsSBHeight12,
+                      _buildContactInfoCard(),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-          sdsSBHeight12,
-          UtilWidget.buildSolidButton(
-              title: LocaleKeys.registerCode_continue.tr,
-              onPressed: () {
-                controller.onTabChanged(RegisterCodeTabEnum.register_info);
-              },
-              borderRadius: AppDimens.radius30,
-              textStyle:
-                  AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite)),
-        ],
+              sdsSBHeight12,
+              if (!isKeyboardVisible)
+                UtilWidget.buildSolidButton(
+                  title: LocaleKeys.registerCode_continue.tr,
+                  onPressed: () {
+                    controller.onTabChanged(RegisterCodeTabEnum.register_info);
+                  },
+                  borderRadius: AppDimens.radius30,
+                  textStyle: AppTextStyle.font14Re
+                      .copyWith(color: AppColors.basicWhite),
+                ),
+            ],
+          );
+        },
       ),
     );
   }

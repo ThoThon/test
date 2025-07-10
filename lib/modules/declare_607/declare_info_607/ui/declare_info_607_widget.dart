@@ -4,29 +4,34 @@ extension DeclareInfo607Widget on DeclareInfo607Page {
   Widget _buildBody() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
-      child: Column(
-        children: [
-          _buildTabs(),
-          Expanded(
-            child: Obx(
-              () {
-                return IndexedStack(
-                  index: controller.currentTab.value.index,
-                  children: [
-                    _buildTk1TabBody(),
-                    _buildD01TabBody(),
-                  ],
-                );
-              },
-            ),
-          ),
-          Obx(
-            () => _buildBottomButtons(),
-          ).paddingOnly(
-            top: AppDimens.defaultPadding,
-            bottom: AppDimens.paddingVerySmall,
-          ),
-        ],
+      child: KeyboardVisibilityBuilder(
+        builder: (context, isKeyboardVisible) {
+          return Column(
+            children: [
+              _buildTabs(),
+              Expanded(
+                child: Obx(
+                  () {
+                    return IndexedStack(
+                      index: controller.currentTab.value.index,
+                      children: [
+                        _buildTk1TabBody(),
+                        _buildD01TabBody(),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              if (!isKeyboardVisible)
+                Obx(
+                  () => _buildBottomButtons(),
+                ).paddingOnly(
+                  top: AppDimens.defaultPadding,
+                  bottom: AppDimens.paddingVerySmall,
+                ),
+            ],
+          );
+        },
       ),
     );
   }

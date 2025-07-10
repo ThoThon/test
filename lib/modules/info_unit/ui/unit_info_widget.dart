@@ -3,16 +3,20 @@ part of 'unit_info_page.dart';
 extension UnitInfoWidget on UnitInfoPage {
   Widget _buildBody() {
     return SDSSafearea(
-      child: Column(
-        children: [
-          _buildViewInfoItem(),
-          _buildButtonChange(),
-        ],
-      ).paddingOnly(
-          top: AppDimens.paddingMedium,
-          right: AppDimens.paddingSmallest,
-          left: AppDimens.paddingSmallest,
-          bottom: AppDimens.paddingSmallest),
+      child: KeyboardVisibilityBuilder(
+        builder: (context, isKeyboardVisible) {
+          return Column(
+            children: [
+              _buildViewInfoItem(),
+              if (!isKeyboardVisible) _buildButtonChange(),
+            ],
+          ).paddingOnly(
+              top: AppDimens.paddingMedium,
+              right: AppDimens.paddingSmallest,
+              left: AppDimens.paddingSmallest,
+              bottom: AppDimens.paddingSmallest);
+        },
+      ),
     );
   }
 

@@ -2,27 +2,31 @@ part of 'register_service_page.dart';
 
 extension RegisterServiceWidget on RegisterServicePage {
   Widget _buildBody() {
-    return Column(
-      children: [
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                _buildCardUnitInfo(),
-                sdsSBHeight16,
-                _buildCardSignatureInfo(),
-              ],
+    return KeyboardVisibilityBuilder(
+      builder: (context, isKeyboardVisible) {
+        return Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    _buildCardUnitInfo(),
+                    sdsSBHeight16,
+                    _buildCardSignatureInfo(),
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-        sdsSBHeight12,
-        Obx(_buildBottomButtons),
-      ],
-    ).paddingOnly(
-      right: AppDimens.defaultPadding,
-      left: AppDimens.defaultPadding,
-      top: AppDimens.defaultPadding,
-      bottom: AppDimens.padding32,
+            sdsSBHeight12,
+            if (!isKeyboardVisible) Obx(_buildBottomButtons),
+          ],
+        ).paddingOnly(
+          right: AppDimens.defaultPadding,
+          left: AppDimens.defaultPadding,
+          top: AppDimens.defaultPadding,
+          bottom: AppDimens.padding32,
+        );
+      },
     );
   }
 
