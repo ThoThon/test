@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   decimal: ^3.2.2
   dio: ^5.4.2+1
+  image_compress: 
+    git:
+      url: https://git-sds.softdreams.vn:7990/scm/mob/image_compress.git
   dio_log_sds:
     git:
       url: https://github.com/HVLoc/dio_log_sds.git
