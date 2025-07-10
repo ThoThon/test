@@ -602,20 +602,10 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.declareInfo_birthAddress.tr,
       hintText: LocaleKeys.declareInfo_inputAddress.tr,
-      isRequired: true,
       controller: controller.tk1State.birthAddressTextCtrl,
       maxLengthInputForm: 300,
       inputFormatters: InputFormatterEnum.textNormal,
       onChanged: controller.onChangeBirthAddress,
-      validator: (value) {
-        final trimmedValue = value?.trim();
-
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.declareInfo_birthAddressCannotEmpty.tr;
-        }
-
-        return null;
-      },
     );
   }
 
