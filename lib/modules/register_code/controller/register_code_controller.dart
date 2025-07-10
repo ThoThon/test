@@ -305,6 +305,7 @@ class RegisterCodeController extends BaseGetxController {
       content: LocaleKeys.dialog_confirmSignatureMySign.tr,
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       onFinish: () {
+        cancelAllRequest();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
