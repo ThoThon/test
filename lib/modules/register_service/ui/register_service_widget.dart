@@ -16,7 +16,7 @@ extension RegisterServiceWidget on RegisterServicePage {
           ),
         ),
         sdsSBHeight12,
-        Obx(_buildBottomButtons),
+        _buildBottomButtons(),
       ],
     ).paddingOnly(
       right: AppDimens.defaultPadding,
@@ -299,11 +299,22 @@ extension RegisterServiceWidget on RegisterServicePage {
 
   Widget _buildBottomButtons() {
     final isRegistered = controller.hasBeenRegister;
-    if (isRegistered) {
-      return _buildChangeInfoAndCancelRegisterButtons();
-    } else {
-      return _buildButtonRegister();
-    }
+    return KeyboardVisibilityBuilder(
+      builder: (p0, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return Obx(
+          () {
+            if (isRegistered) {
+              return _buildChangeInfoAndCancelRegisterButtons();
+            } else {
+              return _buildButtonRegister();
+            }
+          },
+        );
+      },
+    );
   }
 
   Widget _buildChangeInfoAndCancelRegisterButtons() {

@@ -18,14 +18,7 @@ extension CommonInfoTab on RegisterCodePage {
             ),
           ),
           sdsSBHeight12,
-          UtilWidget.buildSolidButton(
-              title: LocaleKeys.registerCode_continue.tr,
-              onPressed: () {
-                controller.onTabChanged(RegisterCodeTabEnum.register_info);
-              },
-              borderRadius: AppDimens.radius30,
-              textStyle:
-                  AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite)),
+          _buildBottomButtons(),
         ],
       ),
     );
@@ -467,6 +460,25 @@ extension CommonInfoTab on RegisterCodePage {
           child: _buildSelectDateRegister(),
         ),
       ],
+    );
+  }
+
+  Widget _buildBottomButtons() {
+    return KeyboardVisibilityBuilder(
+      builder: (p0, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return UtilWidget.buildSolidButton(
+          title: LocaleKeys.registerCode_continue.tr,
+          onPressed: () {
+            controller.onTabChanged(RegisterCodeTabEnum.register_info);
+          },
+          borderRadius: AppDimens.radius30,
+          textStyle:
+              AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+        );
+      },
     );
   }
 }
