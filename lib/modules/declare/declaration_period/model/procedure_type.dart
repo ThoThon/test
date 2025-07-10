@@ -18,15 +18,6 @@ enum ProcedureType {
   /// Thủ tục 613
   procedure613;
 
-  /// Là các thủ tục với nghiệp vụ Tk1
-  // bool get isProcedureTk1 {
-  //   return this == ProcedureType.procedure607 ||
-  //       this == ProcedureType.procedure608 ||
-  //       this == ProcedureType.procedure610 ||
-  //       this == ProcedureType.procedure612 ||
-  //       this == ProcedureType.procedure613;
-  // }
-
   static ProcedureType fromInt(int? value) {
     switch (value) {
       case 6001:
