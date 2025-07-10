@@ -602,20 +602,11 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.declareInfo_birthAddress.tr,
       hintText: LocaleKeys.declareInfo_inputAddress.tr,
-      isRequired: true,
+      isRequired: false,
       controller: controller.tk1State.birthAddressTextCtrl,
       maxLengthInputForm: 300,
       inputFormatters: InputFormatterEnum.textNormal,
       onChanged: controller.onChangeBirthAddress,
-      validator: (value) {
-        final trimmedValue = value?.trim();
-
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.declareInfo_birthAddressCannotEmpty.tr;
-        }
-
-        return null;
-      },
     );
   }
 
@@ -630,7 +621,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceReceive.value,
                 display: (value) => value.name,
@@ -778,7 +769,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceKCB.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceKCB.value,
                 display: (value) => value.name,
@@ -836,7 +827,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       hintText: LocaleKeys.declareInfo_enterContentChanges.tr,
       isRequired: false,
       controller: controller.tk1State.contentChangesTextCtrl,
-      maxLengthInputForm: 1000,
+      maxLengthInputForm: 500,
       inputFormatters: InputFormatterEnum.textNormal,
     );
   }
@@ -848,7 +839,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       hintText: LocaleKeys.declareInfo_enterAttachedProfile.tr,
       isRequired: false,
       controller: controller.tk1State.attachedProfileTextCtrl,
-      maxLengthInputForm: 1000,
+      maxLengthInputForm: 500,
       inputFormatters: InputFormatterEnum.textNormal,
     );
   }
@@ -885,7 +876,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceReceivePaper.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceReceivePaper.value,
                 display: (value) => value.name,
@@ -1140,7 +1131,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceTT.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceTT.value,
                 display: (value) => value.name,

@@ -71,7 +71,12 @@ class StaffListController extends BaseGetxController {
         ProcedureType.procedure600 => _repository.getStaffList(
             declarationPeriodId: declarationPeriodId,
           ),
-        ProcedureType.procedure607 => _repository607.getStaffList(
+        ProcedureType.procedure607 ||
+        ProcedureType.procedure608 ||
+        ProcedureType.procedure610 ||
+        ProcedureType.procedure612 ||
+        ProcedureType.procedure613 =>
+          _repository607.getStaffList(
             declarationPeriodId: declarationPeriodId,
           ),
       };
@@ -151,7 +156,12 @@ class StaffListController extends BaseGetxController {
         ProcedureType.procedure600 => _repository.saveXml(
             declarationPeriodId: declarationPeriodId,
           ),
-        ProcedureType.procedure607 => _repository607.saveXml(
+        ProcedureType.procedure607 ||
+        ProcedureType.procedure608 ||
+        ProcedureType.procedure610 ||
+        ProcedureType.procedure612 ||
+        ProcedureType.procedure613 =>
+          _repository607.saveXml(
             declarationPeriodId: declarationPeriodId,
           ),
       };
@@ -199,7 +209,12 @@ class StaffListController extends BaseGetxController {
       showLoadingOverlay();
       final response = await switch (procedureType) {
         ProcedureType.procedure600 => _repository.deleteD02Tk1D01(id: staffId),
-        ProcedureType.procedure607 => _repository.deleteTk1D01(id: staffId),
+        ProcedureType.procedure607 ||
+        ProcedureType.procedure608 ||
+        ProcedureType.procedure610 ||
+        ProcedureType.procedure612 ||
+        ProcedureType.procedure613 =>
+          _repository.deleteTk1D01(id: staffId),
       };
 
       if (response.isSuccess) {
@@ -221,7 +236,12 @@ class StaffListController extends BaseGetxController {
   Future<void> createStaff() async {
     final path = switch (procedureType) {
       ProcedureType.procedure600 => AppRoutes.declareInfo.path,
-      ProcedureType.procedure607 => AppRoutes.declareInfo607.path,
+      ProcedureType.procedure607 ||
+      ProcedureType.procedure608 ||
+      ProcedureType.procedure610 ||
+      ProcedureType.procedure612 ||
+      ProcedureType.procedure613 =>
+        AppRoutes.declareInfo607.path,
     };
 
     final result = await Get.toNamed(
@@ -240,7 +260,12 @@ class StaffListController extends BaseGetxController {
   Future<void> updateStaff(DeclaredStaffModel staff) async {
     final path = switch (procedureType) {
       ProcedureType.procedure600 => AppRoutes.declareInfo.path,
-      ProcedureType.procedure607 => AppRoutes.declareInfo607.path,
+      ProcedureType.procedure607 ||
+      ProcedureType.procedure608 ||
+      ProcedureType.procedure610 ||
+      ProcedureType.procedure612 ||
+      ProcedureType.procedure613 =>
+        AppRoutes.declareInfo607.path,
     };
 
     final result = await Get.toNamed(

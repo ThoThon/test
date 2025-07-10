@@ -104,15 +104,15 @@ class DeclarationPeriodController extends BaseGetxController {
       );
 
       if (response.isSuccess && response.result != null) {
-        final String path;
-        switch (argument.procedureType) {
-          case ProcedureType.procedure600:
-            path = AppRoutes.declareInfo.path;
-            break;
-          case ProcedureType.procedure607:
-            path = AppRoutes.declareInfo607.path;
-            break;
-        }
+        final String path = switch (argument.procedureType) {
+          ProcedureType.procedure600 => AppRoutes.declareInfo.path,
+          ProcedureType.procedure607 ||
+          ProcedureType.procedure608 ||
+          ProcedureType.procedure610 ||
+          ProcedureType.procedure612 ||
+          ProcedureType.procedure613 =>
+            AppRoutes.declareInfo607.path,
+        };
 
         Get.toNamed(
           path,

@@ -8,9 +8,6 @@ import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../login/model/model_src.dart';
 import '../../src.dart';
 
-// Nếu mã lỗi là 58061 thì có thể retry ký số (from a Chương)
-const _allowRetryCode = "58061";
-
 class RegisterCodeController extends BaseGetxController {
   final currentTab = RegisterCodeTabEnum.common_info.obs;
 
@@ -279,23 +276,23 @@ class RegisterCodeController extends BaseGetxController {
           await _registerCodeRepository.registerCodeFirst(_buildRequest());
 
       if (response.isSuccess) {
-        ShowDialog.dismissDialog();
-        _showDialogVerifySuccess();
-      } else {
+        // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        final canRetry = response.code == _allowRetryCode;
+        _showDialogVerifySuccess();
+      } else {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
         _showDialogVerifyFailed(
           errorMessage: response.errorMessage,
-          onRetry: canRetry ? registerCodeFirst : null,
         );
       }
     } catch (e) {
       ShowDialog.dismissDialog();
-      if (e is DioException) {
+      if (e is DioException && e.type != DioExceptionType.cancel) {
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
-          onRetry: registerCodeFirst,
         );
       }
     }
@@ -308,9 +305,9 @@ class RegisterCodeController extends BaseGetxController {
       content: LocaleKeys.dialog_confirmSignatureMySign.tr,
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       onFinish: () {
+        cancelAllRequest();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
-          onRetry: registerCodeFirst,
         );
       },
     );
