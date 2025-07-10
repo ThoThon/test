@@ -317,19 +317,15 @@ class DeclareInfo607Controller extends BaseGetxController {
     // Khi chọn checkbox thì:
     // Tỉnh nơi nhận trùng với Tỉnh khai sinh, Huyện nơi nhận trùng với Huyện khai sinh, Xã nơi nhận trùng với Xã khai sinh, Địa chỉ nơi nhận trùng với địa chỉ khai sinh.
     // TH nếu đ/c khai sinh sửa lại thì đ/c nhận hồ sơ cũng thay đổi
-    if (value) {
-      _syncBirthAddress();
-      _syncHeadOfHouseholdInfo();
-    } else {
-      _clearReceiveAddress();
-    }
+    _syncBirthAddress();
+    _syncHeadOfHouseholdInfo();
   }
 
   void _clearReceiveAddress() {
     tk1State.provinceReceive.value = null;
     tk1State.districtReceive.value = null;
     tk1State.wardReceive.value = null;
-    tk1State.addressReceiveTextCtrl.text = '';
+    tk1State.addressReceiveTextCtrl.clear();
   }
 
   /// Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh
@@ -339,6 +335,8 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.districtReceive.value = tk1State.districtOfBirth.value;
       tk1State.wardReceive.value = tk1State.wardOfBirth.value;
       tk1State.addressReceiveTextCtrl.text = tk1State.birthAddressTextCtrl.text;
+    } else {
+      _clearReceiveAddress();
     }
   }
 
