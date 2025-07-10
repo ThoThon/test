@@ -4,34 +4,27 @@ extension DeclareInfo607Widget on DeclareInfo607Page {
   Widget _buildBody() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppDimens.defaultPadding),
-      child: KeyboardVisibilityBuilder(
-        builder: (context, isKeyboardVisible) {
-          return Column(
-            children: [
-              _buildTabs(),
-              Expanded(
-                child: Obx(
-                  () {
-                    return IndexedStack(
-                      index: controller.currentTab.value.index,
-                      children: [
-                        _buildTk1TabBody(),
-                        _buildD01TabBody(),
-                      ],
-                    );
-                  },
-                ),
-              ),
-              if (!isKeyboardVisible)
-                Obx(
-                  () => _buildBottomButtons(),
-                ).paddingOnly(
-                  top: AppDimens.defaultPadding,
-                  bottom: AppDimens.paddingVerySmall,
-                ),
-            ],
-          );
-        },
+      child: Column(
+        children: [
+          _buildTabs(),
+          Expanded(
+            child: Obx(
+              () {
+                return IndexedStack(
+                  index: controller.currentTab.value.index,
+                  children: [
+                    _buildTk1TabBody(),
+                    _buildD01TabBody(),
+                  ],
+                );
+              },
+            ),
+          ),
+          _buildBottomButtons().paddingOnly(
+            top: AppDimens.defaultPadding,
+            bottom: AppDimens.paddingVerySmall,
+          ),
+        ],
       ),
     );
   }
@@ -113,22 +106,35 @@ extension DeclareInfo607Widget on DeclareInfo607Page {
   }
 
   Widget _buildBottomButtons() {
-    if (controller.isShowNextButton) {
-      return UtilWidget.buildSolidButton(
-        borderRadius: AppDimens.radius30,
-        title: LocaleKeys.declareInfo_next.tr,
-        textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-        onPressed: () {
-          controller.nextTab();
-        },
-      );
-    }
+    return KeyboardVisibilityBuilder(
+      builder: (context, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return Obx(
+          () {
+            if (controller.isShowNextButton) {
+              return UtilWidget.buildSolidButton(
+                borderRadius: AppDimens.radius30,
+                title: LocaleKeys.declareInfo_next.tr,
+                textStyle:
+                    AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+                onPressed: () {
+                  controller.nextTab();
+                },
+              );
+            }
 
-    return UtilWidget.buildSolidButton(
-      borderRadius: AppDimens.radius30,
-      title: LocaleKeys.app_save.tr,
-      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-      onPressed: controller.saveDraft,
+            return UtilWidget.buildSolidButton(
+              borderRadius: AppDimens.radius30,
+              title: LocaleKeys.app_save.tr,
+              textStyle:
+                  AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+              onPressed: controller.saveDraft,
+            );
+          },
+        );
+      },
     );
   }
 }

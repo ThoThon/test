@@ -252,22 +252,22 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
   Widget _buildBottomButtons() {
     return KeyboardVisibilityBuilder(
       builder: (p0, isKeyboardVisible) {
-        if (!isKeyboardVisible) {
-          return Row(
-            children: [
-              Expanded(
-                child: UtilWidget.buildSolidButton(
-                  title: LocaleKeys.app_save.tr,
-                  onPressed: controller.submit,
-                  textStyle: AppTextStyle.font14Re
-                      .copyWith(color: AppColors.basicWhite),
-                  borderRadius: AppDimens.radius30,
-                ),
-              ),
-            ],
-          ).paddingAll(AppDimens.defaultPadding);
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
         }
-        return const SizedBox.shrink();
+        return Row(
+          children: [
+            Expanded(
+              child: UtilWidget.buildSolidButton(
+                title: LocaleKeys.app_save.tr,
+                onPressed: controller.submit,
+                textStyle:
+                    AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+                borderRadius: AppDimens.radius30,
+              ),
+            ),
+          ],
+        ).paddingAll(AppDimens.defaultPadding);
       },
     );
   }

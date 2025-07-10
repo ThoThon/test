@@ -2,31 +2,27 @@ part of 'register_service_page.dart';
 
 extension RegisterServiceWidget on RegisterServicePage {
   Widget _buildBody() {
-    return KeyboardVisibilityBuilder(
-      builder: (context, isKeyboardVisible) {
-        return Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    _buildCardUnitInfo(),
-                    sdsSBHeight16,
-                    _buildCardSignatureInfo(),
-                  ],
-                ),
-              ),
+    return Column(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _buildCardUnitInfo(),
+                sdsSBHeight16,
+                _buildCardSignatureInfo(),
+              ],
             ),
-            sdsSBHeight12,
-            if (!isKeyboardVisible) Obx(_buildBottomButtons),
-          ],
-        ).paddingOnly(
-          right: AppDimens.defaultPadding,
-          left: AppDimens.defaultPadding,
-          top: AppDimens.defaultPadding,
-          bottom: AppDimens.padding32,
-        );
-      },
+          ),
+        ),
+        sdsSBHeight12,
+        _buildBottomButtons(),
+      ],
+    ).paddingOnly(
+      right: AppDimens.defaultPadding,
+      left: AppDimens.defaultPadding,
+      top: AppDimens.defaultPadding,
+      bottom: AppDimens.padding32,
     );
   }
 
@@ -303,11 +299,22 @@ extension RegisterServiceWidget on RegisterServicePage {
 
   Widget _buildBottomButtons() {
     final isRegistered = controller.hasBeenRegister;
-    if (isRegistered) {
-      return _buildChangeInfoAndCancelRegisterButtons();
-    } else {
-      return _buildButtonRegister();
-    }
+    return KeyboardVisibilityBuilder(
+      builder: (p0, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return Obx(
+          () {
+            if (isRegistered) {
+              return _buildChangeInfoAndCancelRegisterButtons();
+            } else {
+              return _buildButtonRegister();
+            }
+          },
+        );
+      },
+    );
   }
 
   Widget _buildChangeInfoAndCancelRegisterButtons() {

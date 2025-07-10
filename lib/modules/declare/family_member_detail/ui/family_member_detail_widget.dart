@@ -521,16 +521,16 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildBottomButtons() {
     return KeyboardVisibilityBuilder(
       builder: (p0, isKeyboardVisible) {
-        if (!isKeyboardVisible) {
-          return UtilWidget.buildSolidButton(
-            title: LocaleKeys.app_save.tr,
-            onPressed: controller.onSubmit,
-            textStyle:
-                AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-            borderRadius: AppDimens.radius30,
-          ).paddingOnly(bottom: AppDimens.paddingVerySmall);
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
         }
-        return const SizedBox.shrink();
+        return UtilWidget.buildSolidButton(
+          title: LocaleKeys.app_save.tr,
+          onPressed: controller.onSubmit,
+          textStyle:
+              AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+          borderRadius: AppDimens.radius30,
+        ).paddingOnly(bottom: AppDimens.paddingVerySmall);
       },
     );
   }

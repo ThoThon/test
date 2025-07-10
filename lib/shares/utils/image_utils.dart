@@ -24,9 +24,9 @@ class ImageUtils {
     try {
       XFile? pickedFile = await ImagePicker().pickImage(
         source: ImageSource.camera,
-        // maxHeight: 80,
-        // maxWidth: 80,
-        // imageQuality: 100,
+        maxHeight: 1080,
+        maxWidth: 1920,
+        imageQuality: 80,
       );
       if (pickedFile != null) {
         File file = File(pickedFile.path);
