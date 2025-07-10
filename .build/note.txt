@@ -8,6 +8,7 @@
 - [Appmobile][TS1-TS] Không lưu dữ liệu sau khi sửa - BHW-2646
 - [Appmobile]_Chỉnh sửa giao diện bổ sung: Khi hiển bàn phím thì nút Lưu/tiếp theo cần ẩn xuống dưới bàn phím
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613 - Bỏ tích "Trùng địa chỉ khai sinh" => Xóa trống địa chỉ nơi nhận được fill theo địa chỉ khai sinh - BHW-2656
+- [Appmobile]_Tên tiêu đề màn kê khai thông tin: Thủ tục 600, 607, 608, 610, 612, 613 - BHW-2650
 - [Appmobile]_Màn D02: Chọn một nhân viên đã kê khai => Không trả về Thông tin trường hệ số - BHW-2663
 
 9/07/2025
