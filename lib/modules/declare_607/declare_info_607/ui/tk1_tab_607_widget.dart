@@ -621,7 +621,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceReceive.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceReceive.value,
                 display: (value) => value.name,
@@ -769,7 +769,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceKCB.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceKCB.value,
                 display: (value) => value.name,
@@ -876,7 +876,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceReceivePaper.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceReceivePaper.value,
                 display: (value) => value.name,
@@ -1131,7 +1131,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
                 maxLength: 20,
-                title: LocaleKeys.declareInfo_selectProvinceTT.tr,
+                title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceTT.value,
                 display: (value) => value.name,
