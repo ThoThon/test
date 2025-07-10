@@ -119,7 +119,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
             children: [
               Expanded(
                 child: SDSBuildText(
-                  item.name,
+                  '${item.id} - ${item.name}',
                 ).paddingSymmetric(
                   vertical: AppDimens.paddingSmall,
                 ),

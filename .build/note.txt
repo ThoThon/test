@@ -10,6 +10,7 @@
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613 - Bỏ tích "Trùng địa chỉ khai sinh" => Xóa trống địa chỉ nơi nhận được fill theo địa chỉ khai sinh - BHW-2656
 - [Appmobile]_Tên tiêu đề màn kê khai thông tin: Thủ tục 600, 607, 608, 610, 612, 613 - BHW-2650
 - [Appmobile]_Chỉnh sửa giao diện: Popup Hủy thay đổi Màn thay đổi thông tin đơn vị - BHW-2657
+- [Appmobile]_Tại những trường Tỉnh, Huyện Xã: Yêu cầu hiển thị thêm Mã - BHW-2659
 
 9/07/2025
 - [Appmobile]_Màn 607: Cập nhật chỉnh sửa Mã số BHXH tại Tk1 Không là trường bắt buộc - BHW-2636
