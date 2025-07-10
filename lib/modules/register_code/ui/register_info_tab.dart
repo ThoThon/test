@@ -615,37 +615,44 @@ extension RegisterInfoTab on RegisterCodePage {
   }
 
   Widget _buildDoubleButton() {
-    return Row(
-      children: [
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.registerCode_back.tr,
-            borderRadius: AppDimens.radius30,
-            backgroundColor: AppColors.basicWhite,
-            side: const BorderSide(
-              width: 1,
-              color: AppColors.colorBlack,
+    return KeyboardVisibilityBuilder(
+      builder: (p0, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return Row(
+          children: [
+            Expanded(
+              child: UtilWidget.buildSolidButton(
+                title: LocaleKeys.registerCode_back.tr,
+                borderRadius: AppDimens.radius30,
+                backgroundColor: AppColors.basicWhite,
+                side: const BorderSide(
+                  width: 1,
+                  color: AppColors.colorBlack,
+                ),
+                textStyle:
+                    AppTextStyle.font14Re.copyWith(color: AppColors.colorBlack),
+                onPressed: () {
+                  controller.onTabChanged(RegisterCodeTabEnum.common_info);
+                },
+              ),
             ),
-            textStyle:
-                AppTextStyle.font14Re.copyWith(color: AppColors.colorBlack),
-            onPressed: () {
-              controller.onTabChanged(RegisterCodeTabEnum.common_info);
-            },
-          ),
-        ),
-        sdsSBWidth12,
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.registerCode_register.tr,
-            borderRadius: AppDimens.radius30,
-            textStyle:
-                AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-            onPressed: () {
-              controller.registerCodeFirst();
-            },
-          ),
-        ),
-      ],
+            sdsSBWidth12,
+            Expanded(
+              child: UtilWidget.buildSolidButton(
+                title: LocaleKeys.registerCode_register.tr,
+                borderRadius: AppDimens.radius30,
+                textStyle:
+                    AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+                onPressed: () {
+                  controller.registerCodeFirst();
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 

@@ -60,13 +60,6 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
               ],
             ),
           ),
-          UtilWidget.buildSolidButton(
-            title: LocaleKeys.certificate_confirm.tr,
-            onPressed: () {
-              Get.back(result: controller.selectedWard.value);
-            },
-          ),
-          sdsSBHeight32,
         ],
       ).paddingAll(AppDimens.paddingVerySmall),
     );
@@ -90,10 +83,15 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
         controller.keyword.value = TiengViet.parse(value.trim()).toLowerCase();
         _isShowButtonClear.value = value.isNotEmpty;
       },
-      prefixIcon: const Icon(
-        Icons.search,
-        color: AppColors.primaryColor,
-        size: AppDimens.sizeIconMedium,
+      prefixIcon: SizedBox(
+        height: AppDimens.sizeIconDefault,
+        width: AppDimens.sizeIconDefault,
+        child: Center(
+          child: SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_SEARCH_SVG,
+            color: AppColors.primaryColor,
+          ),
+        ),
       ),
       suffixIcon: Obx(() => Visibility(
             visible: _isShowButtonClear.value,
@@ -118,7 +116,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
         final isSelected = controller.selectedWard.value == item;
         return InkWell(
           onTap: () {
-            controller.selectedWard.value = item;
+            Get.back(result: item);
           },
           child: Row(
             children: [

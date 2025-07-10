@@ -7,7 +7,6 @@ extension SelectStaffWidget on SelectStaffPage {
         _buildSearchStaff(),
         sdsSBHeight12,
         _buildViewListStaffSelect(),
-        _buildButtonConfirm(),
       ],
     ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
   }
@@ -20,11 +19,10 @@ extension SelectStaffWidget on SelectStaffPage {
         iconNextTextInputAction: TextInputAction.done,
         hintTextColor: AppColors.thumbColorSwitch,
         maxLengthInputForm: 100,
+        isShowCounterText: false,
         hintTextSize: AppDimens.fontSmall(),
         iconAssets: Assets.ASSETS_ICONS_IC_SEARCH_SVG,
-        onChanged: (_) {
-          controller.functionSearch();
-        },
+        onChanged: (_) => controller.functionSearch(),
         border: _buildOutlineBorder(),
         focusedBorder: _buildOutlineBorder(),
         enabledBorder: _buildOutlineBorder(),
@@ -32,23 +30,20 @@ extension SelectStaffWidget on SelectStaffPage {
     );
   }
 
-  OutlineInputBorder _buildOutlineBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppDimens.radius30),
-      borderSide: const BorderSide(
-        width: 1,
-        color: AppColors.statusRed,
-      ),
-    );
-  }
+  OutlineInputBorder _buildOutlineBorder() => OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppDimens.radius30),
+        borderSide: const BorderSide(
+          width: 1,
+          color: AppColors.statusRed,
+        ),
+      );
 
   Widget _buildItemStaff(SelectStaffResponse item) {
     return Obx(
       () {
-        final isSelected = controller.staffSelected.value == item;
         return InkWell(
           onTap: () {
-            controller.staffSelected.value = item;
+            Get.back(result: item);
           },
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,37 +58,18 @@ extension SelectStaffWidget on SelectStaffPage {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: item.hoTen,
-                            style: AppTextStyle.font16Bo,
-                          ),
-                          if (item.soCCCD.isNotEmpty)
-                            TextSpan(
-                              text: ' (${item.maSoBHXH})',
-                              style: AppTextStyle.font14Re.copyWith(
-                                color: AppColors.colorBlack,
-                              ),
-                            ),
-                        ],
-                      ),
-                      maxLines: 2,
-                    ),
-                    Visibility(
-                      visible: item.chucVu.isNotEmpty,
-                      child: SDSBuildText(
+                    _buildStaffInfo(item),
+                    if (item.chucVu.isNotEmpty)
+                      SDSBuildText(
                         item.chucVu,
                         style: AppTextStyle.font12Re,
                       ),
-                    )
                   ],
                 ),
               ),
               Icon(
                 Icons.check_outlined,
-                color: isSelected
+                color: controller.selectedID.value == item.id
                     ? AppColors.primaryColor
                     : AppColors.colorTransparent,
               ),
@@ -101,6 +77,27 @@ extension SelectStaffWidget on SelectStaffPage {
           ).paddingSymmetric(vertical: AppDimens.paddingSmallest),
         );
       },
+    );
+  }
+
+  Widget _buildStaffInfo(SelectStaffResponse item) {
+    return RichText(
+      maxLines: 2,
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: item.hoTen,
+            style: AppTextStyle.font16Bo,
+          ),
+          if (item.soCCCD.isNotEmpty)
+            TextSpan(
+              text: ' (${item.maSoBHXH})',
+              style: AppTextStyle.font14Re.copyWith(
+                color: AppColors.colorBlack,
+              ),
+            ),
+        ],
+      ),
     );
   }
 
@@ -116,26 +113,15 @@ extension SelectStaffWidget on SelectStaffPage {
             child: controller.listStaffSelect.isEmpty
                 ? UtilWidget.buildEmptyList()
                 : ListView.separated(
-                    itemBuilder: (context, index) {
-                      final item = controller.listStaffSelect[index];
-                      return _buildItemStaff(item);
-                    },
+                    itemBuilder: (_, index) =>
+                        _buildItemStaff(controller.listStaffSelect[index]),
                     itemCount: controller.listStaffSelect.length,
-                    separatorBuilder: (context, index) =>
+                    separatorBuilder: (_, __) =>
                         UtilWidget.buildDividerDefault(),
                   ),
           ),
         ).paddingAll(AppDimens.paddingSmall),
       ),
-    );
-  }
-
-  Widget _buildButtonConfirm() {
-    return UtilWidget.buildSolidButton(
-      title: LocaleKeys.staffList_confirm.tr,
-      onPressed: () {
-        Get.back(result: controller.staffSelected.value);
-      },
     );
   }
 }
