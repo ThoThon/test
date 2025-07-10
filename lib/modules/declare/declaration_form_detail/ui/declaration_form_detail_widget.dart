@@ -4,42 +4,38 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
   Widget _buildBody() {
     return Form(
       key: controller.formKey,
-      child: KeyboardVisibilityBuilder(
-        builder: (context, isKeyboardVisible) {
-          return Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimens.defaultPadding,
-                  ),
-                  child: Column(
-                    children: [
-                      _buildInputFullName(),
-                      sdsSBHeight12,
-                      _buildInputBHXHNumber(),
-                      sdsSBHeight12,
-                      _buildInputDocumentType(),
-                      sdsSBHeight12,
-                      _buildInputDocumentNumber(),
-                      sdsSBHeight12,
-                      _buildSelectDateOfIssue(),
-                      sdsSBHeight12,
-                      _buildEffectiveDate(),
-                      sdsSBHeight12,
-                      _buildInputIssuingAgency(),
-                      sdsSBHeight12,
-                      _buildInputSummary(),
-                      sdsSBHeight12,
-                      _buildInputContent(),
-                    ],
-                  ),
-                ),
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.defaultPadding,
               ),
-              if (!isKeyboardVisible) _buildBottomButtons(),
-            ],
-          );
-        },
+              child: Column(
+                children: [
+                  _buildInputFullName(),
+                  sdsSBHeight12,
+                  _buildInputBHXHNumber(),
+                  sdsSBHeight12,
+                  _buildInputDocumentType(),
+                  sdsSBHeight12,
+                  _buildInputDocumentNumber(),
+                  sdsSBHeight12,
+                  _buildSelectDateOfIssue(),
+                  sdsSBHeight12,
+                  _buildEffectiveDate(),
+                  sdsSBHeight12,
+                  _buildInputIssuingAgency(),
+                  sdsSBHeight12,
+                  _buildInputSummary(),
+                  sdsSBHeight12,
+                  _buildInputContent(),
+                ],
+              ),
+            ),
+          ),
+          _buildBottomButtons(),
+        ],
       ),
     );
   }
@@ -254,18 +250,25 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
   }
 
   Widget _buildBottomButtons() {
-    return Row(
-      children: [
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.app_save.tr,
-            onPressed: controller.submit,
-            textStyle:
-                AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-            borderRadius: AppDimens.radius30,
-          ),
-        ),
-      ],
-    ).paddingAll(AppDimens.defaultPadding);
+    return KeyboardVisibilityBuilder(
+      builder: (p0, isKeyboardVisible) {
+        if (!isKeyboardVisible) {
+          return Row(
+            children: [
+              Expanded(
+                child: UtilWidget.buildSolidButton(
+                  title: LocaleKeys.app_save.tr,
+                  onPressed: controller.submit,
+                  textStyle: AppTextStyle.font14Re
+                      .copyWith(color: AppColors.basicWhite),
+                  borderRadius: AppDimens.radius30,
+                ),
+              ),
+            ],
+          ).paddingAll(AppDimens.defaultPadding);
+        }
+        return const SizedBox.shrink();
+      },
+    );
   }
 }

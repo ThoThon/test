@@ -2,84 +2,80 @@ part of 'family_member_detail_page.dart';
 
 extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildBody() {
-    return KeyboardVisibilityBuilder(
-      builder: (context, isKeyboardVisible) {
-        return Column(
-          children: [
-            Form(
-              key: controller.formKey,
-              child: Expanded(
-                child: SingleChildScrollView(
-                  child: Obx(
-                    () {
-                      return Column(
+    return Column(
+      children: [
+        Form(
+          key: controller.formKey,
+          child: Expanded(
+            child: SingleChildScrollView(
+              child: Obx(
+                () {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //Họ và tên
+                      _buildInputFullName(),
+                      sdsSBHeight12,
+
+                      //Mã số BHXH
+                      _buildInputBHXHNumber(),
+                      sdsSBHeight12,
+
+                      //Loại ngày sinh
+                      _buildBirthTypeDropdown(),
+                      sdsSBHeight12,
+
+                      //"Ngày sinh" và "Giới tính"
+                      Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          //Họ và tên
-                          _buildInputFullName(),
-                          sdsSBHeight12,
-
-                          //Mã số BHXH
-                          _buildInputBHXHNumber(),
-                          sdsSBHeight12,
-
-                          //Loại ngày sinh
-                          _buildBirthTypeDropdown(),
-                          sdsSBHeight12,
-
-                          //"Ngày sinh" và "Giới tính"
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(child: _buildSelectDateOfBirth()),
-                              sdsSBWidth12,
-                              Expanded(child: _buildSelectedGender()),
-                            ],
-                          ),
-                          sdsSBHeight12,
-
-                          //"Dân tộc" và "Quốc tịch"
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(child: _buildSelectEthnic()),
-                              sdsSBWidth12,
-                              Expanded(child: _buildSelectNationality()),
-                            ],
-                          ),
-
-                          //Tỉnh khai sinh
-                          _buildSelectProvince(),
-
-                          //Huyện khai sinh
-                          _buildSelectDistrict(),
-
-                          //Xã khai sinh
-                          _buildSelectWard(),
-
-                          //Mối quan hệ với chủ hộ
-                          _buildDropdownRelationship(),
-
-                          //Số CCCD
-                          _buildInputCCCDNumber(),
-                          sdsSBHeight12,
-
-                          //Ghi chú
-                          _buildInputNote(),
-                          _buildCheckboxParticipant().paddingSymmetric(
-                              vertical: AppDimens.paddingVerySmall),
+                          Expanded(child: _buildSelectDateOfBirth()),
+                          sdsSBWidth12,
+                          Expanded(child: _buildSelectedGender()),
                         ],
-                      );
-                    },
-                  ),
-                ),
+                      ),
+                      sdsSBHeight12,
+
+                      //"Dân tộc" và "Quốc tịch"
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: _buildSelectEthnic()),
+                          sdsSBWidth12,
+                          Expanded(child: _buildSelectNationality()),
+                        ],
+                      ),
+
+                      //Tỉnh khai sinh
+                      _buildSelectProvince(),
+
+                      //Huyện khai sinh
+                      _buildSelectDistrict(),
+
+                      //Xã khai sinh
+                      _buildSelectWard(),
+
+                      //Mối quan hệ với chủ hộ
+                      _buildDropdownRelationship(),
+
+                      //Số CCCD
+                      _buildInputCCCDNumber(),
+                      sdsSBHeight12,
+
+                      //Ghi chú
+                      _buildInputNote(),
+                      _buildCheckboxParticipant().paddingSymmetric(
+                          vertical: AppDimens.paddingVerySmall),
+                    ],
+                  );
+                },
               ),
             ),
-            if (!isKeyboardVisible) _buildBottomButtons(),
-          ],
-        ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
-      },
-    );
+          ),
+        ),
+        _buildBottomButtons(),
+      ],
+    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
   }
 
   Widget _buildCheckboxParticipant() {
@@ -523,11 +519,19 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildBottomButtons() {
-    return UtilWidget.buildSolidButton(
-      title: LocaleKeys.app_save.tr,
-      onPressed: controller.onSubmit,
-      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-      borderRadius: AppDimens.radius30,
-    ).paddingOnly(bottom: AppDimens.paddingVerySmall);
+    return KeyboardVisibilityBuilder(
+      builder: (p0, isKeyboardVisible) {
+        if (!isKeyboardVisible) {
+          return UtilWidget.buildSolidButton(
+            title: LocaleKeys.app_save.tr,
+            onPressed: controller.onSubmit,
+            textStyle:
+                AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+            borderRadius: AppDimens.radius30,
+          ).paddingOnly(bottom: AppDimens.paddingVerySmall);
+        }
+        return const SizedBox.shrink();
+      },
+    );
   }
 }
