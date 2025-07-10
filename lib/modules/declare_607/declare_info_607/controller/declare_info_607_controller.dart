@@ -321,6 +321,13 @@ class DeclareInfo607Controller extends BaseGetxController {
     _syncHeadOfHouseholdInfo();
   }
 
+  void _clearReceiveAddress() {
+    tk1State.provinceReceive.value = null;
+    tk1State.districtReceive.value = null;
+    tk1State.wardReceive.value = null;
+    tk1State.addressReceiveTextCtrl.clear();
+  }
+
   /// Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh
   void _syncBirthAddress() {
     if (tk1State.isDuplicateBirthAddress.value) {
@@ -328,6 +335,8 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.districtReceive.value = tk1State.districtOfBirth.value;
       tk1State.wardReceive.value = tk1State.wardOfBirth.value;
       tk1State.addressReceiveTextCtrl.text = tk1State.birthAddressTextCtrl.text;
+    } else {
+      _clearReceiveAddress();
     }
   }
 
