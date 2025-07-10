@@ -15,7 +15,8 @@ class ImageUtils {
         allowMultiple: false,
         type: FileType.image,
       );
-      return result?.files.firstOrNull?.path;
+      if (result == null) return null;
+      return result.files.firstOrNull?.path;
     } catch (_) {
       return null;
     }
@@ -25,9 +26,9 @@ class ImageUtils {
     try {
       XFile? pickedFile = await ImagePicker().pickImage(
         source: ImageSource.camera,
-        maxWidth: 1080,
-        maxHeight: 1920,
-        imageQuality: 80,
+        // maxWidth: 1080,
+        // maxHeight: 1920,
+        // imageQuality: 80,
       );
       if (pickedFile == null) return null;
       File file = File(pickedFile.path);
