@@ -57,13 +57,6 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
               ],
             ),
           ),
-          UtilWidget.buildSolidButton(
-            title: LocaleKeys.certificate_confirm.tr,
-            onPressed: () {
-              Get.back(result: controller.selectedDistrict.value);
-            },
-          ),
-          sdsSBHeight32,
         ],
       ).paddingAll(AppDimens.paddingVerySmall),
     );
@@ -87,10 +80,15 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
         controller.keyword.value = TiengViet.parse(value.trim()).toLowerCase();
         _isShowButtonClear.value = value.isNotEmpty;
       },
-      prefixIcon: const Icon(
-        Icons.search,
-        color: AppColors.primaryColor,
-        size: AppDimens.sizeIconMedium,
+      prefixIcon: SizedBox(
+        height: AppDimens.sizeIconDefault,
+        width: AppDimens.sizeIconDefault,
+        child: Center(
+          child: SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_SEARCH_SVG,
+            color: AppColors.primaryColor,
+          ),
+        ),
       ),
       suffixIcon: Obx(() => Visibility(
             visible: _isShowButtonClear.value,
@@ -115,7 +113,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
         final isSelected = controller.selectedDistrict.value == item;
         return InkWell(
           onTap: () {
-            controller.selectedDistrict.value = item;
+            Get.back(result: item);
           },
           child: Row(
             children: [

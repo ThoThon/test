@@ -1,4 +1,8 @@
-9/7/2025
+10/07/2025
+- [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
+- [Appmobile]_Thủ tục 600 - Màn TK1: Trường địa chỉ khai sinh là trường không bắt buộc - BHW-2653
+
+9/07/2025
 - [Appmobile]_Màn 607: Cập nhật chỉnh sửa Mã số BHXH tại Tk1 Không là trường bắt buộc - BHW-2636
 - [Appmobile]_Thủ tục 607 - Bổ sung api Xóa toàn bộ Hồ sơ TK1, D01 của nhân sự tại danh sách nhân sự kê khai - BHW-2572
 - [Appmobile]_Thủ tục 607 - Bổ sung api Xóa thành viên phụ lục - BHW-2569
@@ -9,6 +13,7 @@
 - [Appmobile]_Thủ tục 607 - Chỉnh sửa giao diện Màn Danh sách bảng kê D01 - BHW-2637
 - [Appmobile] Nút “Kê khai” của thủ tục 613 cuối danh sách bị sát màn hình - BHW-2645
 - [Appmobile]_Chỉnh sửa giao diện: Chỉnh màu nút button (Đỏ -> Trắng) tại popup - BHW-2644
+- [Appmobile]_Chỉnh sửa giao diện bổ sung: Bỏ bước Xác nhận tại Các màn chọn giá trị trong combobox - BHW-2602
 
 8/07/2025
 - [Appmobile]_Thủ tục 607 - Bổ sung giao diện Chọn nhân viên - BHW-2599

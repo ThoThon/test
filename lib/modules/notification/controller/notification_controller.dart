@@ -46,7 +46,7 @@ class NotificationController extends BaseRefreshGetxController {
   }) {
     return NotificationRequest(
       pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
-      pageSize: AppConst.defaultPageSize,
+      pageSize: AppConst.largePageSize,
     );
   }
 
