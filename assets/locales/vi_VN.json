@@ -344,6 +344,12 @@
   },
   "declareInfo": {
     "title": "Kê khai thông tin",
+    "title600": "600",
+    "title607": "607",
+    "title608": "608",
+    "title610": "610",
+    "title612": "612",
+    "title613": "613",
     "fullName": "Họ và tên",
     "fullNameHint": "Nhập họ và tên",
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
@@ -499,7 +505,7 @@
     "coefficient": "Hệ số",
     "listTable": "Danh sách bảng kê",
     "addTable": "Thêm bảng kê",
-    "addTableSuccess":"Thêm bảng kê thành công"
+    "addTableSuccess": "Thêm bảng kê thành công"
   },
   "familyMember": {
     "title": "Thêm thành viên",
