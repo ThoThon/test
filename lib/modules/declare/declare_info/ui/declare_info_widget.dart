@@ -21,9 +21,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
               },
             ),
           ),
-          Obx(
-            () => _buildBottomButtons(),
-          ).paddingOnly(
+          _buildBottomButtons().paddingOnly(
             top: AppDimens.defaultPadding,
             bottom: AppDimens.paddingVerySmall,
           ),
@@ -398,22 +396,35 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildBottomButtons() {
-    if (controller.isShowNextButton) {
-      return UtilWidget.buildSolidButton(
-        borderRadius: AppDimens.radius30,
-        title: LocaleKeys.declareInfo_next.tr,
-        textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-        onPressed: () {
-          controller.nextTab();
-        },
-      );
-    }
+    return KeyboardVisibilityBuilder(
+      builder: (context, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return Obx(
+          () {
+            if (controller.isShowNextButton) {
+              return UtilWidget.buildSolidButton(
+                borderRadius: AppDimens.radius30,
+                title: LocaleKeys.declareInfo_next.tr,
+                textStyle:
+                    AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+                onPressed: () {
+                  controller.nextTab();
+                },
+              );
+            }
 
-    return UtilWidget.buildSolidButton(
-      borderRadius: AppDimens.radius30,
-      title: LocaleKeys.app_save.tr,
-      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-      onPressed: controller.saveDraft,
+            return UtilWidget.buildSolidButton(
+              borderRadius: AppDimens.radius30,
+              title: LocaleKeys.app_save.tr,
+              textStyle:
+                  AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+              onPressed: controller.saveDraft,
+            );
+          },
+        );
+      },
     );
   }
 }
