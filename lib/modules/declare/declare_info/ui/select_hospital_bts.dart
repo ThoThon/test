@@ -121,7 +121,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
             children: [
               Expanded(
                 child: SDSBuildText(
-                  item.name,
+                  '${item.id} - ${item.name}',
                 ).paddingSymmetric(
                   vertical: AppDimens.paddingSmall,
                 ),
