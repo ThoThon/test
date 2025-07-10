@@ -1,5 +1,6 @@
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
+- [Appmobile]_Thủ tục 600 - Màn TK1: Trường địa chỉ khai sinh là trường không bắt buộc - BHW-2653
 
 9/07/2025
 - [Appmobile]_Màn 607: Cập nhật chỉnh sửa Mã số BHXH tại Tk1 Không là trường bắt buộc - BHW-2636
