@@ -5,6 +5,7 @@
 - [Appmobile][TK1-TS]Giảm độ dài tối đa cho trường “Nội dung thay đổi” và “Hồ sơ kèm theo” - BHW-2651
 - [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất trong hộp combobox - BHW-2649
 - [Appmobile]_Thủ tục 612 - Xóa Đính kèm file tại màn Danh sách nhân viên kê khai - BHW-2647
+- [Appmobile][TS1-TS] Không lưu dữ liệu sau khi sửa - BHW-2646
 
 9/07/2025
 - [Appmobile]_Màn 607: Cập nhật chỉnh sửa Mã số BHXH tại Tk1 Không là trường bắt buộc - BHW-2636
