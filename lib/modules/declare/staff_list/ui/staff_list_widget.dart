@@ -21,17 +21,7 @@ extension StaffListWidget on StaffListPage {
                     ),
                     sdsSBHeight8,
                     _buildListStaff(),
-                    sdsSBHeight12,
-                    SDSBuildText(
-                      LocaleKeys.staffList_attachFile.tr,
-                      style: AppTextStyle.font16Bo,
-                    ),
-                    sdsSBHeight8,
-                    AppSelectImageWidget(
-                      onPickImage: controller.pickImage,
-                      onTakePhoto: controller.takePhoto,
-                    ),
-                    _buildAttachImages(),
+                    _buildSelectImageSection(),
                   ],
                 );
               },
@@ -44,6 +34,30 @@ extension StaffListWidget on StaffListPage {
         sdsSBHeight32,
       ],
     ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
+  }
+
+  Widget _buildSelectImageSection() {
+    // Với thủ tục 612, không hiển thị phần đính kèm ảnh - BHW-2647
+    if (controller.procedureType == ProcedureType.procedure612) {
+      return const SizedBox.shrink();
+    }
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        sdsSBHeight12,
+        SDSBuildText(
+          LocaleKeys.staffList_attachFile.tr,
+          style: AppTextStyle.font16Bo,
+        ),
+        sdsSBHeight8,
+        AppSelectImageWidget(
+          onPickImage: controller.pickImage,
+          onTakePhoto: controller.takePhoto,
+        ),
+        _buildAttachImages(),
+      ],
+    );
   }
 
   Widget _buildAttachImages() {

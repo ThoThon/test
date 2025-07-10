@@ -116,7 +116,11 @@ class DeclarationListController extends BaseGetxController {
       final response = await switch (argument.procedureType) {
         ProcedureType.procedure600 =>
           _repository.getPreviewPdf(request: request),
-        ProcedureType.procedure607 =>
+        ProcedureType.procedure607 ||
+        ProcedureType.procedure608 ||
+        ProcedureType.procedure610 ||
+        ProcedureType.procedure612 ||
+        ProcedureType.procedure613 =>
           _repository.getPreviewPdf607(request: request),
       };
 
