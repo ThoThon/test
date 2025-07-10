@@ -4,39 +4,35 @@ extension RegisterInfoTab on RegisterCodePage {
   Widget _buildRegisterInfoTab() {
     return Form(
       key: controller.formKeyRegisterTab,
-      child: KeyboardVisibilityBuilder(
-        builder: (context, isKeyboardVisible) {
-          return Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildBhxhInfoCard(),
-                      sdsSBHeight12,
-                      _buildOtherInfoCard(),
-                      sdsSBHeight12,
-                      _buildSelectUploadFile(),
-                      _buidHideImage(),
-                      sdsSBHeight12,
-                      SDSBuildText(
-                        LocaleKeys.registerCode_signature.tr,
-                        style: AppTextStyle.font16Bo,
-                      ),
-                      sdsSBHeight12,
-                      _buildInputUsernameMySign(),
-                      _buildCardSignatureInfo(),
-                    ],
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildBhxhInfoCard(),
+                  sdsSBHeight12,
+                  _buildOtherInfoCard(),
+                  sdsSBHeight12,
+                  _buildSelectUploadFile(),
+                  _buidHideImage(),
+                  sdsSBHeight12,
+                  SDSBuildText(
+                    LocaleKeys.registerCode_signature.tr,
+                    style: AppTextStyle.font16Bo,
                   ),
-                ),
+                  sdsSBHeight12,
+                  _buildInputUsernameMySign(),
+                  _buildCardSignatureInfo(),
+                ],
               ),
-              sdsSBHeight12,
-              // Button "Quay lại" và "Đăng ký"
-              _buildDoubleButton(),
-            ],
-          );
-        },
+            ),
+          ),
+          sdsSBHeight12,
+          // Button "Quay lại" và "Đăng ký"
+          _buildDoubleButton(),
+        ],
       ),
     );
   }
