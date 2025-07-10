@@ -1,74 +1,80 @@
 part of 'family_member_detail_page.dart';
 
+final GlobalKey<FormRegistryWidgetState> _registeredKey = GlobalKey();
+
 extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildBody() {
     return Column(
       children: [
-        Form(
-          key: controller.formKey,
-          child: Expanded(
-            child: SingleChildScrollView(
-              child: Obx(
-                () {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //Họ và tên
-                      _buildInputFullName(),
-                      sdsSBHeight12,
+        FormRegistryWidget(
+          key: _registeredKey,
+          autoScrollToFirstInvalid: true,
+          child: Form(
+            key: controller.formKey,
+            child: Expanded(
+              child: SingleChildScrollView(
+                child: Obx(
+                  () {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //Họ và tên
+                        _buildInputFullName(),
+                        sdsSBHeight12,
 
-                      //Mã số BHXH
-                      _buildInputBHXHNumber(),
-                      sdsSBHeight12,
+                        //Mã số BHXH
+                        _buildInputBHXHNumber(),
+                        sdsSBHeight12,
 
-                      //Loại ngày sinh
-                      _buildBirthTypeDropdown(),
-                      sdsSBHeight12,
+                        //Loại ngày sinh
+                        _buildBirthTypeDropdown(),
+                        sdsSBHeight12,
 
-                      //"Ngày sinh" và "Giới tính"
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(child: _buildSelectDateOfBirth()),
-                          sdsSBWidth12,
-                          Expanded(child: _buildSelectedGender()),
-                        ],
-                      ),
-                      sdsSBHeight12,
+                        //"Ngày sinh" và "Giới tính"
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(child: _buildSelectDateOfBirth()),
+                            sdsSBWidth12,
+                            Expanded(child: _buildSelectedGender()),
+                          ],
+                        ),
+                        sdsSBHeight12,
 
-                      //"Dân tộc" và "Quốc tịch"
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(child: _buildSelectEthnic()),
-                          sdsSBWidth12,
-                          Expanded(child: _buildSelectNationality()),
-                        ],
-                      ),
+                        //"Dân tộc" và "Quốc tịch"
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(child: _buildSelectEthnic()),
+                            sdsSBWidth12,
+                            Expanded(child: _buildSelectNationality()),
+                          ],
+                        ),
 
-                      //Tỉnh khai sinh
-                      _buildSelectProvince(),
+                        //Tỉnh khai sinh
+                        _buildSelectProvince(),
 
-                      //Huyện khai sinh
-                      _buildSelectDistrict(),
+                        //Huyện khai sinh
+                        _buildSelectDistrict(),
 
-                      //Xã khai sinh
-                      _buildSelectWard(),
+                        //Xã khai sinh
+                        _buildSelectWard(),
 
-                      //Mối quan hệ với chủ hộ
-                      _buildDropdownRelationship(),
+                        //Mối quan hệ với chủ hộ
+                        _buildDropdownRelationship(),
 
-                      //Số CCCD
-                      _buildInputCCCDNumber(),
-                      sdsSBHeight12,
+                        //Số CCCD
+                        _buildInputCCCDNumber(),
+                        sdsSBHeight12,
 
-                      //Ghi chú
-                      _buildInputNote(),
-                      _buildCheckboxParticipant().paddingSymmetric(
-                          vertical: AppDimens.paddingVerySmall),
-                    ],
-                  );
-                },
+                        //Ghi chú
+                        _buildInputNote(),
+                        _buildCheckboxParticipant().paddingSymmetric(
+                            vertical: AppDimens.paddingVerySmall),
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
           ),
@@ -89,17 +95,27 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildInputFullName() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.familyMember_fullName.tr,
-      controller: controller.fullNameTextCtrl,
-      isRequired: true,
-      inputFormatters: InputFormatterEnum.textNormal,
-      maxLengthInputForm: 100,
+    return FormFieldRegistrant<String>(
+      registrarId: "No. 1",
       validator: (value) {
         if (value.isNullOrEmpty) {
           return LocaleKeys.familyMember_fullNameCannotEmpty.tr;
         }
         return null;
+      },
+      builder: (
+        GlobalKey<FormFieldState<String>> formFieldKey,
+        String? Function(String?) validator,
+      ) {
+        return CardInputTextFormWithLabel(
+          fieldKey: formFieldKey,
+          labelText: LocaleKeys.familyMember_fullName.tr,
+          controller: controller.fullNameTextCtrl,
+          isRequired: true,
+          inputFormatters: InputFormatterEnum.textNormal,
+          maxLengthInputForm: 100,
+          validator: validator,
+        );
       },
     );
   }
@@ -509,12 +525,35 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildInputNote() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.familyMember_note.tr,
-      controller: controller.noteTextCtrl,
-      isRequired: false,
-      inputFormatters: InputFormatterEnum.textNormal,
-      maxLengthInputForm: 500,
+    // return CardInputTextFormWithLabel(
+    //   labelText: LocaleKeys.familyMember_note.tr,
+    //   controller: controller.noteTextCtrl,
+    //   isRequired: false,
+    //   inputFormatters: InputFormatterEnum.textNormal,
+    //   maxLengthInputForm: 500,
+    // );
+    return FormFieldRegistrant<String>(
+      registrarId: "No. 2",
+      validator: (value) {
+        if (value.isNullOrEmpty) {
+          return LocaleKeys.familyMember_fullNameCannotEmpty.tr;
+        }
+        return null;
+      },
+      builder: (
+        GlobalKey<FormFieldState<String>> formFieldKey,
+        String? Function(String?) validator,
+      ) {
+        return CardInputTextFormWithLabel(
+          fieldKey: formFieldKey,
+          labelText: LocaleKeys.familyMember_note.tr,
+          controller: controller.noteTextCtrl,
+          isRequired: true,
+          inputFormatters: InputFormatterEnum.textNormal,
+          maxLengthInputForm: 500,
+          validator: validator,
+        );
+      },
     );
   }
 

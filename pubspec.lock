@@ -396,6 +396,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.2"
+  flutter_form_registry:
+    dependency: "direct main"
+    description:
+      name: flutter_form_registry
+      sha256: "569bc4b7486024b4c18b0543a4efc522ca2912d0fc63052111b0d2ce2d99b1c6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.0"
   flutter_keyboard_visibility:
     dependency: "direct main"
     description:
