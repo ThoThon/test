@@ -827,7 +827,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       hintText: LocaleKeys.declareInfo_enterContentChanges.tr,
       isRequired: false,
       controller: controller.tk1State.contentChangesTextCtrl,
-      maxLengthInputForm: 1000,
+      maxLengthInputForm: 500,
       inputFormatters: InputFormatterEnum.textNormal,
     );
   }
@@ -839,7 +839,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       hintText: LocaleKeys.declareInfo_enterAttachedProfile.tr,
       isRequired: false,
       controller: controller.tk1State.attachedProfileTextCtrl,
-      maxLengthInputForm: 1000,
+      maxLengthInputForm: 500,
       inputFormatters: InputFormatterEnum.textNormal,
     );
   }
