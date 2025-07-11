@@ -45,6 +45,7 @@ class DeclareInfo607Controller extends BaseGetxController {
       if (response.isSuccess && infoDetail != null) {
         tk1State.mapFromTk1Detail(infoDetail);
         d01State.mapFromTk1Detail(infoDetail);
+        updateHouseholdInfoRequired();
       } else {
         showSnackBar(response.errorMessage);
       }
@@ -522,17 +523,26 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.districtTT.value = tk1State.districtReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
       tk1State.addressTTTextCtrl.text = tk1State.addressReceiveTextCtrl.text;
+    } else {
+      tk1State.headOfHouseholdTextCtrl.clear();
+      tk1State.headOfHouseholdCCCDTextCtrl.clear();
+      tk1State.provinceTT.value = null;
+      tk1State.districtTT.value = null;
+      tk1State.wardTT.value = null;
+      tk1State.addressTTTextCtrl.clear();
     }
   }
 
   void onChangeHeadOfHouseholdFullName(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
     tk1State.headOfHouseholdTextCtrl.text = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeHeadOfHouseholdCCCD(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
     tk1State.headOfHouseholdCCCDTextCtrl.text = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeProvinceTT(ProvinceModel value) {
@@ -544,6 +554,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.provinceTT.value = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeDistrictTT(DistrictModel value) {
@@ -554,6 +565,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.districtTT.value = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeWardTT(WardModel value) {
@@ -562,10 +574,12 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.wardTT.value = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeAddressTT(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
+    updateHouseholdInfoRequired();
   }
 
   Future<void> addFamilyMember() async {
@@ -633,15 +647,18 @@ class DeclareInfo607Controller extends BaseGetxController {
     tk1State.provinceTT.value = null;
     tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
+    updateHouseholdInfoRequired();
   }
 
   void onTapClearDistrictTT() {
     tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
+    updateHouseholdInfoRequired();
   }
 
   void onTapClearWardTT() {
     tk1State.wardTT.value = null;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeProvinceReceivePaper(ProvinceModel value) {
@@ -696,6 +713,32 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.wardReceivePaper.value = null;
       tk1State.addressReceivePaperTextCtrl.text = '';
     }
+  }
+
+  bool get isHouseholdInfoEmpty {
+    return tk1State.headOfHouseholdTextCtrl.text.trim().isEmpty &&
+        tk1State.headOfHouseholdCCCDTextCtrl.text.trim().isEmpty &&
+        tk1State.provinceTT.value == null &&
+        tk1State.districtTT.value == null &&
+        tk1State.wardTT.value == null &&
+        tk1State.addressTTTextCtrl.text.trim().isEmpty;
+  }
+
+  void updateHouseholdInfoRequired() {
+    // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
+    if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
+      tk1State.isHouseholdInfoRequired.value = true;
+      return;
+    }
+
+    // Nếu 1 trong các thông tin của chủ hộ được điền thì sẽ phải điền tất cả
+    if (!isHouseholdInfoEmpty) {
+      tk1State.isHouseholdInfoRequired.value = true;
+      return;
+    }
+
+    // Nếu không có điều kiện nào thỏa mãn
+    tk1State.isHouseholdInfoRequired.value = false;
   }
 
   @override

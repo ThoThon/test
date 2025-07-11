@@ -310,6 +310,9 @@ class RegisterCodeController extends BaseGetxController {
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
       },
+      onCancel: () {
+        Get.until(ModalRoute.withName(AppRoutes.login.path));
+      },
     );
   }
 

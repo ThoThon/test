@@ -228,6 +228,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       maxLengthInputForm: 10,
       inputFormatters: InputFormatterEnum.digitsOnly,
       textInputType: TextInputType.number,
+      onChanged: (value) {
+        controller.updateHouseholdInfoRequired();
+      },
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -1096,11 +1099,22 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       () => CardInputTextFormWithLabel(
         labelText: LocaleKeys.declareInfo_headOfHouseholdFullName.tr,
         autovalidateMode: controller.tk1State.autoValidateMode.value,
-        isRequired: false,
+        isRequired: controller.tk1State.isHouseholdInfoRequired.value,
         controller: controller.tk1State.headOfHouseholdTextCtrl,
         onChanged: controller.onChangeHeadOfHouseholdFullName,
         inputFormatters: InputFormatterEnum.textNormal,
         maxLengthInputForm: 100,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+
+          if (trimmedValue == null ||
+              trimmedValue.isEmpty &&
+                  controller.tk1State.isHouseholdInfoRequired.value) {
+            return LocaleKeys.declareInfo_headOfHouseholdFullNameCannotEmpty.tr;
+          }
+
+          return null;
+        },
       ),
     );
   }
@@ -1110,11 +1124,22 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       () => CardInputTextFormWithLabel(
         labelText: LocaleKeys.declareInfo_headOfHouseholdCCCD.tr,
         autovalidateMode: controller.tk1State.autoValidateMode.value,
-        isRequired: false,
+        isRequired: controller.tk1State.isHouseholdInfoRequired.value,
         controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
         inputFormatters: InputFormatterEnum.textNormal,
         onChanged: controller.onChangeHeadOfHouseholdCCCD,
         maxLengthInputForm: 20,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+
+          if (trimmedValue == null ||
+              trimmedValue.isEmpty &&
+                  controller.tk1State.isHouseholdInfoRequired.value) {
+            return LocaleKeys.declareInfo_headOfHouseholdCCCDCannotEmpty.tr;
+          }
+
+          return null;
+        },
       ),
     );
   }
@@ -1125,8 +1150,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
         return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_provinceTT.tr,
-          // hintText: LocaleKeys.declareInfo_selectProvinceTT.tr,
-          isRequired: false,
+          isRequired: controller.tk1State.isHouseholdInfoRequired.value,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
@@ -1148,6 +1172,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           display: (province) => '${province.id} - ${province.name}',
           enableClearIcon: true,
           onTapClear: controller.onTapClearProvinceTT,
+          validator: (value) {
+            if (controller.tk1State.isHouseholdInfoRequired.value &&
+                controller.tk1State.provinceTT.value == null) {
+              return LocaleKeys.declareInfo_provinceTTCannotEmpty.tr;
+            }
+            return null;
+          },
         );
       },
     );
@@ -1159,8 +1190,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
         return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_districtTT.tr,
-          // hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
-          isRequired: false,
+          isRequired: controller.tk1State.isHouseholdInfoRequired.value,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
             if (provinceTT == null) {
@@ -1186,6 +1216,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           display: (district) => '${district.id} - ${district.name}',
           enableClearIcon: true,
           onTapClear: controller.onTapClearDistrictTT,
+          validator: (value) {
+            if (controller.tk1State.isHouseholdInfoRequired.value &&
+                controller.tk1State.districtTT.value == null) {
+              return LocaleKeys.declareInfo_districtTTCannotEmpty.tr;
+            }
+            return null;
+          },
         );
       },
     );
@@ -1197,8 +1234,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
         return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_wardTT.tr,
-          // hintText: LocaleKeys.declareInfo_selectWardTT.tr,
-          isRequired: false,
+          isRequired: controller.tk1State.isHouseholdInfoRequired.value,
           funcSelect: (didChange) async {
             final provinceTT = controller.tk1State.provinceTT.value;
             if (provinceTT == null) {
@@ -1232,6 +1268,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           display: (ward) => '${ward.id} - ${ward.name}',
           enableClearIcon: true,
           onTapClear: controller.onTapClearWardTT,
+          validator: (value) {
+            if (controller.tk1State.isHouseholdInfoRequired.value &&
+                controller.tk1State.wardTT.value == null) {
+              return LocaleKeys.declareInfo_wardTTCannotEmpty.tr;
+            }
+            return null;
+          },
         );
       },
     );
@@ -1243,11 +1286,22 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
         labelText: LocaleKeys.declareInfo_addressTT.tr,
         hintText: LocaleKeys.declareInfo_inputAddress.tr,
         autovalidateMode: controller.tk1State.autoValidateMode.value,
-        isRequired: false,
+        isRequired: controller.tk1State.isHouseholdInfoRequired.value,
         controller: controller.tk1State.addressTTTextCtrl,
         inputFormatters: InputFormatterEnum.textNormal,
         onChanged: controller.onChangeAddressTT,
         maxLengthInputForm: 300,
+        validator: (value) {
+          final trimmedValue = value?.trim();
+
+          if (trimmedValue == null ||
+              trimmedValue.isEmpty &&
+                  controller.tk1State.isHouseholdInfoRequired.value) {
+            return LocaleKeys.declareInfo_addressTTCannotEmpty.tr;
+          }
+
+          return null;
+        },
       ),
     );
   }
