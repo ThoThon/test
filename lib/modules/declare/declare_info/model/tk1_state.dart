@@ -70,8 +70,10 @@ class Tk1State {
   /// Danh sách thành viên trong gia đình
   final familyMembers = <FamilyMember>[].obs;
 
-  // Các trường của thông tin chủ hộ có bắt buộc hay không
-  final isHouseholdInfoRequired = false.obs;
+  /// Các trường của thông tin chủ hộ có bắt buộc hay không
+  ///
+  /// Mặc định sẽ là true vì khi tạo mới vì vừa vào thì mã số BHXH đang là rỗng
+  final isHouseholdInfoRequired = true.obs;
 
   void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final tk1Ts = detail.tk1Ts;
