@@ -122,7 +122,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
             children: [
               Expanded(
                 child: SDSBuildText(
-                  item.name,
+                  '${item.id} - ${item.name}',
                 ).paddingSymmetric(
                   vertical: AppDimens.paddingSmall,
                 ),
