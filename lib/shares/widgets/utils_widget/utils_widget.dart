@@ -773,6 +773,7 @@ class UtilWidget {
 
   // TODO: Dùng thay thế cho buildCardBottomSheetSelect
   static Widget buildCardBottomSheetSelect2<T>({
+    GlobalKey? fieldKey,
     required String label,
     bool isRequired = true,
     required Function(ValueChanged<T> didChange) funcSelect,
@@ -789,6 +790,7 @@ class UtilWidget {
     return Stack(
       children: [
         FormField(
+          key: fieldKey,
           autovalidateMode:
               autovalidateMode ?? AutovalidateMode.onUserInteraction,
           validator: isRequired ? validator : null,
