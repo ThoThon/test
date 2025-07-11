@@ -2,6 +2,7 @@
 - [Appmobile] Label “Đính kèm file” bị căn chỉnh sai - BHW-2672
 - [Appmobile] Label “Chọn thủ tục kê khai " không scroll theo màn hình - BHW-2674
 - [Appmobile] Trường "số điện thoại" hiển thị ký tự lạ khi paste đoạn text tiếng Anh - BHW-2661
+- [Appmobile] Button “Đăng ký” bị hotline che khuất - BHW-2673
 
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
