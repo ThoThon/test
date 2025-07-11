@@ -9,6 +9,7 @@
 - [Appmobile]_Vào module Đăng ký dịch vụ: Chỉnh tiêu đề trang thành Thông tin giao dịch - BHW-2677
 - [Appmobile]_Màn đăng ksy cấp mã: Chỉnh sửa màu nút icon Tìm kiếm ở trạng thái disable giống design - BHW-2678
 - [Appmobile] Hiển thị thừa dấu ngoặc ở tên nhân viên - BHW-2676
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Xử lý khi Bỏ chọn người tham gia là chủ hộ - BHW-2675
 
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655

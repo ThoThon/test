@@ -501,7 +501,22 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
+    if (!value) {
+      _clearParticipantHeadOfHousehold();
+    }
     _syncHeadOfHouseholdInfo();
+  }
+
+  // Bỏ tích "Người tham gia là chủ hộ" thì sẽ xóa thông tin
+  void _clearParticipantHeadOfHousehold() {
+    if (!tk1State.isParticipantHeadOfHousehold.value) {
+      tk1State.headOfHouseholdTextCtrl.clear();
+      tk1State.headOfHouseholdCCCDTextCtrl.clear();
+      tk1State.provinceTT.value = null;
+      tk1State.districtTT.value = null;
+      tk1State.wardTT.value = null;
+      tk1State.addressTTTextCtrl.clear();
+    }
   }
 
   void onChangeProvinceKCB(ProvinceModel value) {
