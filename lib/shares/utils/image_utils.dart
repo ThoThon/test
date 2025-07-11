@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter_exif_rotation/flutter_exif_rotation.dart';
 import 'package:image_compress/image_compress.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 class ImageUtils {
@@ -43,8 +44,9 @@ class ImageUtils {
         maxSizeInKB: 500,
       );
       if (compressedBytes == null) return null;
+      final dir = await getTemporaryDirectory();
       final compressedFile =
-          File('${DateTime.now().millisecondsSinceEpoch}.jpg');
+          File('${dir.path}/${DateTime.now().millisecondsSinceEpoch}.jpg');
       await compressedFile.writeAsBytes(compressedBytes);
 
       return compressedFile.path;
