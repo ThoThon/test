@@ -404,7 +404,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<EthnicModel>(
-                title: LocaleKeys.declareInfo_ethnic.tr,
+                title: LocaleKeys.declareInfo_selectEthnic.tr,
                 maxLength: 20,
                 listFilter: AppData.instance.ethnics.toList(),
                 selectedItem: controller.tk1State.selectedEthnic.value,

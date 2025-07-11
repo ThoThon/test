@@ -81,23 +81,33 @@ extension SelectStaffWidget on SelectStaffPage {
   }
 
   Widget _buildStaffInfo(SelectStaffResponse item) {
-    return RichText(
-      maxLines: 2,
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text: item.hoTen,
-            style: AppTextStyle.font16Bo,
+    // return RichText(
+    //   maxLines: 2,
+    //   text: TextSpan(
+    //     children: [
+    //       TextSpan(
+    //         text: item.hoTen,
+    //         style: AppTextStyle.font16Bo,
+    //       ),
+    //       if (item.maSoBHXH.isNotEmpty)
+    //         TextSpan(
+    //           text: ' (${item.maSoBHXH})',
+    //           style: AppTextStyle.font14Re.copyWith(
+    //             color: AppColors.colorBlack,
+    //           ),
+    //         ),
+    //     ],
+    //   ),
+    // );
+    return Row(
+      children: [
+        Expanded(
+          child: SDSBuildText(
+            '${item.hoTen}${item.maSoBHXH.isNotEmpty ? ' (${item.maSoBHXH})' : ''}',
+            maxLines: 4,
           ),
-          if (item.soCCCD.isNotEmpty)
-            TextSpan(
-              text: ' (${item.maSoBHXH})',
-              style: AppTextStyle.font14Re.copyWith(
-                color: AppColors.colorBlack,
-              ),
-            ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

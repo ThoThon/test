@@ -610,6 +610,13 @@ class DeclareInfoController extends BaseGetxController {
       tk1State.districtTT.value = tk1State.districtReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
       tk1State.addressTTTextCtrl.text = tk1State.addressReceiveTextCtrl.text;
+    } else {
+      tk1State.headOfHouseholdTextCtrl.clear();
+      tk1State.headOfHouseholdCCCDTextCtrl.clear();
+      tk1State.provinceTT.value = null;
+      tk1State.districtTT.value = null;
+      tk1State.wardTT.value = null;
+      tk1State.addressTTTextCtrl.clear();
     }
   }
 

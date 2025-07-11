@@ -523,6 +523,13 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.districtTT.value = tk1State.districtReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
       tk1State.addressTTTextCtrl.text = tk1State.addressReceiveTextCtrl.text;
+    } else {
+      tk1State.headOfHouseholdTextCtrl.clear();
+      tk1State.headOfHouseholdCCCDTextCtrl.clear();
+      tk1State.provinceTT.value = null;
+      tk1State.districtTT.value = null;
+      tk1State.wardTT.value = null;
+      tk1State.addressTTTextCtrl.clear();
     }
   }
 
@@ -700,6 +707,11 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
       tk1State.addressReceivePaperTextCtrl.text =
           tk1State.addressReceiveTextCtrl.text;
+    } else if (value == ReceiveProfileResultEnum.electronic) {
+      tk1State.provinceReceivePaper.value = null;
+      tk1State.districtReceivePaper.value = null;
+      tk1State.wardReceivePaper.value = null;
+      tk1State.addressReceivePaperTextCtrl.text = '';
     }
   }
 
