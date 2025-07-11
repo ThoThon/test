@@ -6,18 +6,22 @@ extension SelectStaffWidget on SelectStaffPage {
       children: [
         _buildSearchStaff(),
         sdsSBHeight12,
+        _StaffTitle(),
+        sdsSBHeight12,
         _buildViewListStaffSelect(),
       ],
-    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
+    ).paddingSymmetric(horizontal: AppDimens.paddingSmall);
   }
 
   Widget _buildSearchStaff() {
     return BuildInputText(
       InputTextModel(
         controller: controller.searchController,
-        hintText: LocaleKeys.staffList_fillFullName.tr,
+        hintText: LocaleKeys.staffList_search.tr,
         iconNextTextInputAction: TextInputAction.done,
         hintTextColor: AppColors.thumbColorSwitch,
+        prefixIconColor: AppColors.thumbColorSwitch,
+        fillColor: AppColors.colorTransparent,
         maxLengthInputForm: 100,
         isShowCounterText: false,
         hintTextSize: AppDimens.fontSmall(),
@@ -34,7 +38,7 @@ extension SelectStaffWidget on SelectStaffPage {
         borderRadius: BorderRadius.circular(AppDimens.radius30),
         borderSide: const BorderSide(
           width: 1,
-          color: AppColors.statusRed,
+          color: AppColors.thumbColorSwitch,
         ),
       );
 
@@ -49,9 +53,12 @@ extension SelectStaffWidget on SelectStaffPage {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SDSImageSvg(
-                Assets.ASSETS_ICONS_IC_PERSON_SVG,
+                Assets.ASSETS_ICONS_IC_PERSON_2_SVG,
                 height: AppDimens.sizeIcon32,
                 color: AppColors.primaryColor,
+              ).paddingSymmetric(
+                vertical: AppDimens.paddingSmall,
+                horizontal: AppDimens.defaultPadding,
               ),
               sdsSBWidth12,
               Expanded(
@@ -74,7 +81,10 @@ extension SelectStaffWidget on SelectStaffPage {
                     : AppColors.colorTransparent,
               ),
             ],
-          ).paddingSymmetric(vertical: AppDimens.paddingSmallest),
+          ).paddingSymmetric(
+            vertical: AppDimens.paddingSmallest,
+            horizontal: AppDimens.paddingSmallest,
+          ),
         );
       },
     );
@@ -114,6 +124,7 @@ extension SelectStaffWidget on SelectStaffPage {
   Widget _buildViewListStaffSelect() {
     return Expanded(
       child: UtilWidget.buildCardBase(
+        colorBorder: AppColors.dsGray3,
         baseShowLoading(
           () => UtilWidget.buildSmartRefresher(
             refreshController: controller.refreshController,
@@ -127,11 +138,24 @@ extension SelectStaffWidget on SelectStaffPage {
                         _buildItemStaff(controller.listStaffSelect[index]),
                     itemCount: controller.listStaffSelect.length,
                     separatorBuilder: (_, __) =>
-                        UtilWidget.buildDividerDefault(),
+                        UtilWidget.buildDividerStaffList(),
                   ),
           ),
-        ).paddingAll(AppDimens.paddingSmall),
+        ),
       ),
+    );
+  }
+
+  Widget _StaffTitle() {
+    return SizedBox(
+      width: double.infinity,
+      child: SDSBuildText(
+        LocaleKeys.staffList_listEmployee.tr,
+        style: AppTextStyle.font16Bo,
+        textAlign: TextAlign.start,
+      ),
+    ).paddingSymmetric(
+      horizontal: AppDimens.paddingSmallest,
     );
   }
 }

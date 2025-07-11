@@ -1067,6 +1067,12 @@ class UtilWidget {
     );
   }
 
+  static Widget buildDividerStaffList() {
+    return const Divider(
+      color: AppColors.dsGray3,
+    );
+  }
+
   static Widget buildTextInput({
     double? height,
     Color? textColor,
