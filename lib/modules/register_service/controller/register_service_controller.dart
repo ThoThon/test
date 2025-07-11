@@ -3,6 +3,8 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
+import '../../../shares/widgets/keyboard/keyboard.dart';
+
 class RegisterServiceController extends BaseGetxController {
   final usernameMySignCtrl = TextEditingController();
 
@@ -29,6 +31,7 @@ class RegisterServiceController extends BaseGetxController {
 
   Future<void> fetchListCert() async {
     try {
+      KeyBoard.hide();
       showLoadingOverlay();
       listCert.clear();
       final response =

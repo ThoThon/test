@@ -14,6 +14,7 @@
 - [Appmobile][TK1-TS]Các trường liên quan không reset khi thay đổi giá trị chính - BHW-2666
 - [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất trong hộp combobox - BHW-2667
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Xử lý khi Bỏ chọn người tham gia là chủ hộ - BHW-2675
+- [Appmobile]_Màn Đăng ký dịch vụ và Đăng ký cấp mã: Xử lý ẩn bàn phím sau khi nhấn icon Tìm kiếm - BHW-2680
 
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
