@@ -156,19 +156,26 @@ extension LoginWidget on LoginPage {
   }
 
   Widget _buildPhoneService() {
-    return RichText(
-      text: TextSpan(
-        style: AppTextStyle.font18Bo,
-        children: [
-          TextSpan(text: LocaleKeys.login_serviceCenter.tr),
-          TextSpan(
-            text: " ${LocaleKeys.login_phoneNumber.tr}",
-            style: AppTextStyle.font18Bo.copyWith(
-              color: AppColors.primaryColor,
-            ),
+    return KeyboardVisibilityBuilder(
+      builder: (p0, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return RichText(
+          text: TextSpan(
+            style: AppTextStyle.font18Bo,
+            children: [
+              TextSpan(text: LocaleKeys.login_serviceCenter.tr),
+              TextSpan(
+                text: " ${LocaleKeys.login_phoneNumber.tr}",
+                style: AppTextStyle.font18Bo.copyWith(
+                  color: AppColors.primaryColor,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
