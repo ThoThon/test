@@ -1,13 +1,11 @@
 part of 'family_member_detail_page.dart';
 
-final GlobalKey<FormRegistryWidgetState> _registeredKey = GlobalKey();
-
 extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   Widget _buildBody() {
     return Column(
       children: [
         AppFormRegistry(
-          key: _registeredKey,
+          key: controller.registeredKey,
           child: Form(
             key: controller.formKey,
             child: Expanded(
@@ -152,21 +150,25 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         return null;
       },
       builder: (fieldKey, validator) {
-        return CardDropdownWithLabel<BirthTypeEnum>(
-          fieldKey: fieldKey,
-          validator: validator,
-          isRequired: true,
-          labelText: LocaleKeys.familyMember_selectBirthType.tr,
-          hintText: LocaleKeys.familyMember_selectBirthTypeHint.tr,
-          items: BirthTypeEnum.values,
-          display: (item) => item.title,
-          selectedItem: controller.birthType.value,
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-            controller.dateOfBirthCtrl.clear();
-            controller.birthType.value = value;
+        return Obx(
+          () {
+            return CardDropdownWithLabel<BirthTypeEnum>(
+              fieldKey: fieldKey,
+              validator: validator,
+              isRequired: true,
+              labelText: LocaleKeys.familyMember_selectBirthType.tr,
+              hintText: LocaleKeys.familyMember_selectBirthTypeHint.tr,
+              items: BirthTypeEnum.values,
+              display: (item) => item.title,
+              selectedItem: controller.birthType.value,
+              onChanged: (value) {
+                if (value == null) {
+                  return;
+                }
+                controller.dateOfBirthCtrl.clear();
+                controller.birthType.value = value;
+              },
+            );
           },
         );
       },
@@ -221,50 +223,54 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         return null;
       },
       builder: (fieldKey, validator) {
-        return CardInputSelectDateWithLabel(
-          fieldKey: fieldKey,
-          validator: validator,
-          isRequired: true,
-          labelText: LocaleKeys.familyMember_dob.tr,
-          hintText: controller.birthType.value.pattern,
-          inputFormatters: controller.birthType.value.inputFormatter,
-          controller: controller.dateOfBirthCtrl,
-          onSelectDate: () async {
-            KeyBoard.hide();
-            final DateTime? selectedDate;
+        return Obx(
+          () {
+            return CardInputSelectDateWithLabel(
+              fieldKey: fieldKey,
+              validator: validator,
+              isRequired: true,
+              labelText: LocaleKeys.familyMember_dob.tr,
+              hintText: controller.birthType.value.pattern,
+              inputFormatters: controller.birthType.value.inputFormatter,
+              controller: controller.dateOfBirthCtrl,
+              onSelectDate: () async {
+                KeyBoard.hide();
+                final DateTime? selectedDate;
 
-            switch (controller.birthType.value) {
-              case BirthTypeEnum.year:
-                selectedDate = await UtilWidget.showPeriodDatePicker(
-                  dateTime: convertStringToDateSafe(
-                          controller.dateOfBirthCtrl.text, PATTERN_13) ??
-                      DateTime.now(),
-                  onlyYear: true,
-                );
-                break;
-              case BirthTypeEnum.monthYear:
-                selectedDate = await UtilWidget.showPeriodDatePicker(
-                  dateTime: convertStringToDateSafe(
-                          controller.dateOfBirthCtrl.text, PATTERN_12) ??
-                      DateTime.now(),
-                );
-                break;
-              case BirthTypeEnum.full:
-                selectedDate = await UtilWidget.showDateTimePicker(
-                  dateTimeInit: convertStringToDateSafe(
-                          controller.dateOfBirthCtrl.text, PATTERN_1) ??
-                      DateTime.now(),
-                );
-                break;
-            }
-            // Khởi tạo dateTime trong DatePicker từ giá trị nhập
-            if (selectedDate != null) {
-              controller.dateOfBirthCtrl.text = convertDateToStringSafe(
-                    selectedDate,
-                    controller.birthType.value.pattern,
-                  ) ??
-                  '';
-            }
+                switch (controller.birthType.value) {
+                  case BirthTypeEnum.year:
+                    selectedDate = await UtilWidget.showPeriodDatePicker(
+                      dateTime: convertStringToDateSafe(
+                              controller.dateOfBirthCtrl.text, PATTERN_13) ??
+                          DateTime.now(),
+                      onlyYear: true,
+                    );
+                    break;
+                  case BirthTypeEnum.monthYear:
+                    selectedDate = await UtilWidget.showPeriodDatePicker(
+                      dateTime: convertStringToDateSafe(
+                              controller.dateOfBirthCtrl.text, PATTERN_12) ??
+                          DateTime.now(),
+                    );
+                    break;
+                  case BirthTypeEnum.full:
+                    selectedDate = await UtilWidget.showDateTimePicker(
+                      dateTimeInit: convertStringToDateSafe(
+                              controller.dateOfBirthCtrl.text, PATTERN_1) ??
+                          DateTime.now(),
+                    );
+                    break;
+                }
+                // Khởi tạo dateTime trong DatePicker từ giá trị nhập
+                if (selectedDate != null) {
+                  controller.dateOfBirthCtrl.text = convertDateToStringSafe(
+                        selectedDate,
+                        controller.birthType.value.pattern,
+                      ) ??
+                      '';
+                }
+              },
+            );
           },
         );
       },
