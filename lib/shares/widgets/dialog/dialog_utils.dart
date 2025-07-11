@@ -375,6 +375,7 @@ class ShowDialog {
     required String title,
     required String content,
     VoidCallback? onFinish,
+    VoidCallback? onCancel,
     bool isActiveBack = true,
     int? timerCount,
     bool showCloseButton = false,
@@ -430,6 +431,7 @@ class ShowDialog {
                       .copyWith(color: AppColors.basicWhite),
                   onPressed: () {
                     dismissDialog();
+                    onCancel?.call();
                   },
                 ),
               ),
