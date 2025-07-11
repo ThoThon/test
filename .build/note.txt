@@ -8,6 +8,7 @@
 - [Appmobile]_Màn thêm thành viên: Trường loại ngày sinh - BHW-2679
 - [Appmobile]_Vào module Đăng ký dịch vụ: Chỉnh tiêu đề trang thành Thông tin giao dịch - BHW-2677
 - [Appmobile]_Màn đăng ksy cấp mã: Chỉnh sửa màu nút icon Tìm kiếm ở trạng thái disable giống design - BHW-2678
+- [Appmobile]Lỗi validate các trường trong mục "Thông tin chủ hộ" - BHW-2668
 
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655

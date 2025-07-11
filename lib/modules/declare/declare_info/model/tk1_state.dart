@@ -70,6 +70,7 @@ class Tk1State {
   /// Danh sách thành viên trong gia đình
   final familyMembers = <FamilyMember>[].obs;
 
+  // Các trường của thông tin chủ hộ có bắt buộc hay không
   final isHouseholdInfoRequired = false.obs;
 
   void mapFromD02Detail(DeclareInfoDetailResponse detail) {
