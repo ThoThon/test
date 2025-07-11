@@ -36,7 +36,7 @@ class RegisterServiceController extends BaseGetxController {
       if (response.isSuccess) {
         listCert.value = response.result;
         //Nếu có chứng thư số thì lấy luôn thông tin chứng thư số đầu tiên
-        certificate.value = listCert.first;
+        certificate.value = listCert.firstOrNull;
       } else {
         showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
       }
