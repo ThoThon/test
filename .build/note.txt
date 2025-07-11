@@ -8,6 +8,8 @@
 - [Appmobile]_Màn thêm thành viên: Trường loại ngày sinh - BHW-2679
 - [Appmobile]_Vào module Đăng ký dịch vụ: Chỉnh tiêu đề trang thành Thông tin giao dịch - BHW-2677
 - [Appmobile]_Màn đăng ksy cấp mã: Chỉnh sửa màu nút icon Tìm kiếm ở trạng thái disable giống design - BHW-2678
+- [Appmobile]Lỗi validate các trường trong mục "Thông tin chủ hộ" - BHW-2668
+- [Appmobile][TK1_TS] Không xóa được thành viên trong gia đình - BHW-2681
 - [Appmobile] Hiển thị thừa dấu ngoặc ở tên nhân viên - BHW-2676
 - [Appmobile] Danh sách biểu mẫu, che mất phần hiển thị phía trên - BHW-2662
 - [Appmobile]_Lỗi hiển thị Số CCCD khi nhập tiếng việt - BHW-2669

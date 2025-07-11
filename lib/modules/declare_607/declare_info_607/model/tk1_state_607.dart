@@ -132,6 +132,9 @@ class Tk1State607 {
   /// Sinh dữ liệu D01-TS
   final isGenerateD01Data = false.obs;
 
+  /// Các trường của thông tin chủ hộ có bắt buộc hay không
+  final isHouseholdInfoRequired = false.obs;
+
   void mapFromTk1Detail(DeclareInfoDetailResponse607 detail) {
     final tk1Ts = detail.tk1Ts;
     final members = detail.familyMembers;
