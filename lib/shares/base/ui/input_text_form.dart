@@ -198,6 +198,7 @@ class BuildInputTextState extends State<BuildInputText> {
   Widget build(BuildContext context) {
     return Obx(
       () => TextFormField(
+        key: widget.inputTextFormModel.fieldKey,
         maxLines: widget.inputTextFormModel.maxLines,
         inputFormatters: getFormatters(),
         validator: widget.inputTextFormModel.validator,
