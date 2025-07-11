@@ -12,6 +12,8 @@
 - [Appmobile] Danh sách biểu mẫu, che mất phần hiển thị phía trên - BHW-2662
 - [Appmobile]_Lỗi hiển thị Số CCCD khi nhập tiếng việt - BHW-2669
 - [Appmobile]_Điều hướng khi click "Đóng" Popup Chuyển ký - BHW-2648
+- [Appmobile][TK1-TS]Các trường liên quan không reset khi thay đổi giá trị chính - BHW-2666
+- [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất trong hộp combobox - BHW-2667
 
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
@@ -26,6 +28,7 @@
 - [Appmobile]_Tên tiêu đề màn kê khai thông tin: Thủ tục 600, 607, 608, 610, 612, 613 - BHW-2650
 - [Appmobile]_Chỉnh sửa giao diện: Popup Hủy thay đổi Màn thay đổi thông tin đơn vị - BHW-2657
 - [Appmobile]_Tại những trường Tỉnh, Huyện Xã: Yêu cầu hiển thị thêm Mã - BHW-2659
+- [Appmobile]_Màn D02: Chọn một nhân viên đã kê khai => Không trả về Thông tin trường hệ số - BHW-2663
 
 9/07/2025
 - [Appmobile]_Màn 607: Cập nhật chỉnh sửa Mã số BHXH tại Tk1 Không là trường bắt buộc - BHW-2636

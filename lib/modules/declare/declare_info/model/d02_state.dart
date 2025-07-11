@@ -140,10 +140,17 @@ class D02State {
 
     isSalaryCoefficient.value = staff.dongTheoHeSo;
 
-    salaryCoefficientTextCtrl.text =
-        staff.tienLuong != null && staff.tienLuong! > 0
-            ? CurrencyUtils.formatCurrencyForeign(staff.tienLuong!)
-            : '';
+    if (staff.dongTheoHeSo) {
+      salaryCoefficientTextCtrl.text =
+          staff.heSoLuongCoBan != null && staff.heSoLuongCoBan! > 0
+              ? CurrencyUtils.formatCurrencyForeign(staff.heSoLuongCoBan!)
+              : '';
+    } else {
+      salaryCoefficientTextCtrl.text =
+          staff.tienLuong != null && staff.tienLuong! > 0
+              ? CurrencyUtils.formatCurrencyForeign(staff.tienLuong!)
+              : '';
+    }
 
     positionAllowanceTextCtrl.text =
         staff.phuCapChucVu != null && staff.phuCapChucVu! > 0
