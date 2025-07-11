@@ -5,6 +5,7 @@
 - [Appmobile] Button “Đăng ký” bị hotline che khuất - BHW-2673
 - [Appmobile]_Chỉnh sửa giao diện: Popup chuyển ký - BHW-2628
 - Xử lý auto scroll tới các trường invalid màn "Thêm thành viên" gia đình
+- [Appmobile]_Vào module Đăng ký dịch vụ: Chỉnh tiêu đề trang thành Thông tin giao dịch - BHW-2677
 
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
