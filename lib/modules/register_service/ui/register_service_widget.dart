@@ -298,7 +298,6 @@ extension RegisterServiceWidget on RegisterServicePage {
   }
 
   Widget _buildBottomButtons() {
-    final isRegistered = controller.hasBeenRegister;
     return KeyboardVisibilityBuilder(
       builder: (p0, isKeyboardVisible) {
         if (isKeyboardVisible) {
@@ -306,7 +305,7 @@ extension RegisterServiceWidget on RegisterServicePage {
         }
         return Obx(
           () {
-            if (isRegistered) {
+            if (controller.hasBeenRegister) {
               return _buildChangeInfoAndCancelRegisterButtons();
             } else {
               return _buildButtonRegister();
