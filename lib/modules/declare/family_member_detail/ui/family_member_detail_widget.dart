@@ -587,7 +587,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       isRequired: false,
       hintText: LocaleKeys.familyMember_inputNumberCCCD.tr,
       maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormal,
+      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
     );
   }
 

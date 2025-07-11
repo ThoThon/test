@@ -10,6 +10,7 @@
 - [Appmobile]_Màn đăng ksy cấp mã: Chỉnh sửa màu nút icon Tìm kiếm ở trạng thái disable giống design - BHW-2678
 - [Appmobile] Hiển thị thừa dấu ngoặc ở tên nhân viên - BHW-2676
 - [Appmobile] Danh sách biểu mẫu, che mất phần hiển thị phía trên - BHW-2662
+- [Appmobile]_Lỗi hiển thị Số CCCD khi nhập tiếng việt - BHW-2669
 
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
