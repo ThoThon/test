@@ -501,22 +501,7 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
-    if (!value) {
-      _clearParticipantHeadOfHousehold();
-    }
     _syncHeadOfHouseholdInfo();
-  }
-
-  // Bỏ tích "Người tham gia là chủ hộ" thì sẽ xóa thông tin
-  void _clearParticipantHeadOfHousehold() {
-    if (!tk1State.isParticipantHeadOfHousehold.value) {
-      tk1State.headOfHouseholdTextCtrl.clear();
-      tk1State.headOfHouseholdCCCDTextCtrl.clear();
-      tk1State.provinceTT.value = null;
-      tk1State.districtTT.value = null;
-      tk1State.wardTT.value = null;
-      tk1State.addressTTTextCtrl.clear();
-    }
   }
 
   void onChangeProvinceKCB(ProvinceModel value) {
@@ -537,6 +522,13 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.districtTT.value = tk1State.districtReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
       tk1State.addressTTTextCtrl.text = tk1State.addressReceiveTextCtrl.text;
+    } else {
+      tk1State.headOfHouseholdTextCtrl.clear();
+      tk1State.headOfHouseholdCCCDTextCtrl.clear();
+      tk1State.provinceTT.value = null;
+      tk1State.districtTT.value = null;
+      tk1State.wardTT.value = null;
+      tk1State.addressTTTextCtrl.clear();
     }
   }
 
