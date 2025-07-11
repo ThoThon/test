@@ -56,6 +56,9 @@ class DeclarationListController extends BaseGetxController {
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
       },
+      onCancel: () {
+        Get.until(ModalRoute.withName(AppRoutes.declarationPeriod.path));
+      },
     );
   }
 
