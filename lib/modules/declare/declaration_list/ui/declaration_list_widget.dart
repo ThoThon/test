@@ -4,6 +4,7 @@ extension DeclarationListWidget on DeclarationListPage {
   Widget _buildBody() {
     return Column(
       children: [
+        sdsSBHeight16,
         Expanded(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(AppDimens.defaultPadding),
