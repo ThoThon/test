@@ -43,6 +43,7 @@ extension StaffListWidget on StaffListPage {
     }
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         sdsSBHeight12,
