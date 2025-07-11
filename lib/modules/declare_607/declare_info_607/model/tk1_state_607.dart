@@ -133,7 +133,9 @@ class Tk1State607 {
   final isGenerateD01Data = false.obs;
 
   /// Các trường của thông tin chủ hộ có bắt buộc hay không
-  final isHouseholdInfoRequired = false.obs;
+  ///
+  /// Mặc định sẽ là true vì khi tạo mới vì vừa vào thì mã số BHXH đang là rỗng
+  final isHouseholdInfoRequired = true.obs;
 
   void mapFromTk1Detail(DeclareInfoDetailResponse607 detail) {
     final tk1Ts = detail.tk1Ts;
