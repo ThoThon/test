@@ -643,6 +643,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  image_compress:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "34215f90c0e0f63d3c2cd470ae5825238d77f3e5"
+      url: "https://git-sds.softdreams.vn:7990/scm/mob/image_compress.git"
+    source: git
+    version: "0.0.1"
   image_cropper:
     dependency: "direct main"
     description:

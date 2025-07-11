@@ -66,14 +66,16 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       isEditAll.value = false;
     } else {
       ShowDialog.showDialogConfirm2(
+        borderColorButtonBack: const Color(0xFFBCC1CA),
+        iconType: DialogIconType.note,
         title: LocaleKeys.dialog_cancelUpdate.tr,
         content: LocaleKeys.dialog_cancelUpdateDialog.tr,
         exitTitle: LocaleKeys.unitInfo_cancel.tr,
         confirmTitle: LocaleKeys.unitInfo_continue.tr,
         backgroundColorBack: Colors.white,
         textStyleBack:
-            AppTextStyle.font14Bo.copyWith(color: AppColors.basicBlack),
-        textStyleConfirm: AppTextStyle.font14Bo,
+            AppTextStyle.font14Re.copyWith(color: AppColors.basicBlack),
+        textStyleConfirm: AppTextStyle.font14Re,
         onCancel: () {
           fetchDataAccountInfo();
           isEditAll.value = false;

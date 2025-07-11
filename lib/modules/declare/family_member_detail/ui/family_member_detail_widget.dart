@@ -393,7 +393,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     title: LocaleKeys.familyMember_selectProvince.tr,
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.selectedProvince.value,
-                    display: (value) => value.name,
+                    display: (value) => '${value.id} - ${value.name}',
                     onAccept: (value) {
                       if (value == null) return;
 
@@ -464,7 +464,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 }
               },
               selectedItem: controller.selectedDistrict.value,
-              display: (district) => district.name,
+              display: (district) => '${district.id} - ${district.name}',
               validator: validator,
             );
           },
@@ -520,7 +520,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 }
               },
               selectedItem: controller.selectedWard.value,
-              display: (ward) => ward.name,
+              display: (ward) => '${ward.id} - ${ward.name}',
             );
           },
         );

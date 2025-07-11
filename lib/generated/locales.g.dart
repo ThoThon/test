@@ -362,6 +362,12 @@ class LocaleKeys {
   static const declarationPeriodDetail_deleteImageSuccess =
       'declarationPeriodDetail_deleteImageSuccess';
   static const declareInfo_title = 'declareInfo_title';
+  static const declareInfo_title600 = 'declareInfo_title600';
+  static const declareInfo_title607 = 'declareInfo_title607';
+  static const declareInfo_title608 = 'declareInfo_title608';
+  static const declareInfo_title610 = 'declareInfo_title610';
+  static const declareInfo_title612 = 'declareInfo_title612';
+  static const declareInfo_title613 = 'declareInfo_title613';
   static const declareInfo_fullName = 'declareInfo_fullName';
   static const declareInfo_fullNameHint = 'declareInfo_fullNameHint';
   static const declareInfo_fullNameCannotEmpty =
@@ -1308,6 +1314,12 @@ class Locales {
     'declarationPeriodDetail_deposit': 'Ký gửi',
     'declarationPeriodDetail_deleteImageSuccess': 'Xóa ảnh thành công',
     'declareInfo_title': 'Kê khai thông tin',
+    'declareInfo_title600': 'Kê khai thông tin 600',
+    'declareInfo_title607': 'Kê khai thông tin 607',
+    'declareInfo_title608': 'Kê khai thông tin 608',
+    'declareInfo_title610': 'Kê khai thông tin 610',
+    'declareInfo_title612': 'Kê khai thông tin 612',
+    'declareInfo_title613': 'Kê khai thông tin 613',
     'declareInfo_fullName': 'Họ và tên',
     'declareInfo_fullNameHint': 'Nhập họ và tên',
     'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

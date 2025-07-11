@@ -107,7 +107,7 @@ extension RegisterInfoTab on RegisterCodePage {
             maxLength: 20,
             listFilter: AppData.instance.provinces.toList(),
             selectedItem: controller.provinceReceive.value,
-            display: (value) => value.name,
+            display: (value) => '${value.id} - ${value.name}',
             onAccept: (value) {
               if (value == null) return;
               controller.changeProvinceReceive(value);
@@ -118,7 +118,7 @@ extension RegisterInfoTab on RegisterCodePage {
         );
       },
       selectedItem: controller.provinceReceive.value,
-      display: (item) => item.name,
+      display: (item) => '${item.id} - ${item.name}',
       validator: (value) {
         if (controller.provinceReceive.value == null) {
           return LocaleKeys.registerCode_provinceReceiveCannotEmpty.tr;
@@ -154,7 +154,7 @@ extension RegisterInfoTab on RegisterCodePage {
         }
       },
       selectedItem: controller.districtReceive.value,
-      display: (item) => item.name,
+      display: (item) => '${item.id} - ${item.name}',
       validator: (value) {
         if (controller.districtReceive.value == null) {
           return LocaleKeys.registerCode_districtReceiveCannotEmpty.tr;
@@ -198,7 +198,7 @@ extension RegisterInfoTab on RegisterCodePage {
         }
       },
       selectedItem: controller.wardReceive.value,
-      display: (ward) => ward.name,
+      display: (ward) => '${ward.id} - ${ward.name}',
       validator: (value) {
         if (controller.wardReceive.value == null) {
           return LocaleKeys.registerCode_wardReceiveCannotEmpty.tr;

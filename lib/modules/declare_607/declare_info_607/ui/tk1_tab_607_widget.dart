@@ -487,7 +487,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceOfBirth.value,
-                display: (value) => value.name,
+                display: (value) => '${value.id} - ${value.name}',
                 onAccept: (value) {
                   if (value == null) return;
                   controller.changeProvinceOfBirth(value);
@@ -498,7 +498,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             );
           },
           selectedItem: controller.tk1State.provinceOfBirth.value,
-          display: (province) => province.name,
+          display: (province) => '${province.id} - ${province.name}',
           validator: (value) {
             if (controller.tk1State.provinceOfBirth.value == null) {
               return LocaleKeys.declareInfo_provinceOfBirthCannotEmpty.tr;
@@ -538,7 +538,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             }
           },
           selectedItem: controller.tk1State.districtOfBirth.value,
-          display: (district) => district.name,
+          display: (district) => '${district.id} - ${district.name}',
           validator: (value) {
             if (controller.tk1State.districtOfBirth.value == null) {
               return LocaleKeys.declareInfo_districtOfBirthCannotEmpty.tr;
@@ -586,7 +586,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             }
           },
           selectedItem: controller.tk1State.wardOfBirth.value,
-          display: (ward) => ward.name,
+          display: (ward) => '${ward.id} - ${ward.name}',
           validator: (value) {
             if (controller.tk1State.wardOfBirth.value == null) {
               return LocaleKeys.declareInfo_wardOfBirthCannotEmpty.tr;
@@ -624,7 +624,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceReceive.value,
-                display: (value) => value.name,
+                display: (value) => '${value.id} - ${value.name}',
                 onAccept: (value) {
                   if (value == null) return;
                   controller.onChangeProvinceReceive(value);
@@ -635,7 +635,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             );
           },
           selectedItem: controller.tk1State.provinceReceive.value,
-          display: (province) => province.name,
+          display: (province) => '${province.id} - ${province.name}',
           validator: (value) {
             if (controller.tk1State.provinceReceive.value == null) {
               return LocaleKeys.declareInfo_provinceReceiveCannotEmpty.tr;
@@ -676,7 +676,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             }
           },
           selectedItem: controller.tk1State.districtReceive.value,
-          display: (district) => district.name,
+          display: (district) => '${district.id} - ${district.name}',
           validator: (value) {
             if (controller.tk1State.districtReceive.value == null) {
               return LocaleKeys.declareInfo_districtReceiveCannotEmpty.tr;
@@ -725,7 +725,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             }
           },
           selectedItem: controller.tk1State.wardReceive.value,
-          display: (ward) => ward.name,
+          display: (ward) => '${ward.id} - ${ward.name}',
           validator: (value) {
             if (controller.tk1State.wardReceive.value == null) {
               return LocaleKeys.declareInfo_wardReceiveCannotEmpty.tr;
@@ -772,7 +772,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceKCB.value,
-                display: (value) => value.name,
+                display: (value) => '${value.id} - ${value.name}',
                 onAccept: (value) {
                   if (value == null) return;
                   controller.onChangeProvinceKCB(value);
@@ -783,7 +783,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             );
           },
           selectedItem: controller.tk1State.provinceKCB.value,
-          display: (province) => province.name,
+          display: (province) => '${province.id} - ${province.name}',
           validator: (value) {
             if (controller.tk1State.provinceKCB.value == null) {
               return LocaleKeys.declareInfo_provinceKCBCannotEmpty.tr;
@@ -1061,7 +1061,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             }
           },
           selectedItem: controller.tk1State.hospitalKCB.value,
-          display: (hospital) => hospital.name,
+          display: (hospital) => '${hospital.id} - ${hospital.name}',
           validator: (value) {
             if (controller.tk1State.hospitalKCB.value == null) {
               return LocaleKeys.declareInfo_hospitalKCBCannotEmpty.tr;
@@ -1134,7 +1134,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceTT.value,
-                display: (value) => value.name,
+                display: (value) => '${value.id} - ${value.name}',
                 onAccept: (value) {
                   if (value == null) return;
                   controller.onChangeProvinceTT(value);
@@ -1145,7 +1145,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             );
           },
           selectedItem: controller.tk1State.provinceTT.value,
-          display: (province) => province.name,
+          display: (province) => '${province.id} - ${province.name}',
           enableClearIcon: true,
           onTapClear: controller.onTapClearProvinceTT,
         );
@@ -1183,7 +1183,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             }
           },
           selectedItem: controller.tk1State.districtTT.value,
-          display: (district) => district.name,
+          display: (district) => '${district.id} - ${district.name}',
           enableClearIcon: true,
           onTapClear: controller.onTapClearDistrictTT,
         );
@@ -1229,7 +1229,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             }
           },
           selectedItem: controller.tk1State.wardTT.value,
-          display: (ward) => ward.name,
+          display: (ward) => '${ward.id} - ${ward.name}',
           enableClearIcon: true,
           onTapClear: controller.onTapClearWardTT,
         );

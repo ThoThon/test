@@ -1,3 +1,5 @@
+import 'package:v_bhxh/modules/declare/declaration_period/model/procedure_type.dart';
+
 enum D02ActionEnum {
   // Thêm mới nhân viên từ màn "Danh sách nhân viên"
   addStaffFromStaffList,
@@ -18,10 +20,13 @@ class DeclareInfoArgument {
 
   final D02ActionEnum action;
 
+  final ProcedureType procedureType;
+
   const DeclareInfoArgument({
     required this.declarationPeriodId,
     this.staffId,
     required this.action,
+    required this.procedureType,
   });
 
   bool get isUpdateStaff => action == D02ActionEnum.updateStaffFromStaffList;
