@@ -378,6 +378,7 @@ extension RegisterInfoTab on RegisterCodePage {
           padding: EdgeInsets.zero,
         ),
         onPressed: () {
+          KeyBoard.hide();
           if (isEnableBtn) controller.getListCertificate();
         },
         child: Center(

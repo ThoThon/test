@@ -161,7 +161,6 @@ class RegisterCodeController extends BaseGetxController {
 
   Future<void> fetchListCert() async {
     try {
-      KeyBoard.hide();
       showLoadingOverlay();
       listCert.clear();
       final response =

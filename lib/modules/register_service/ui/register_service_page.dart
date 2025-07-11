@@ -1,6 +1,8 @@
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:v_bhxh/modules/src.dart';
 
+import '../../../shares/widgets/keyboard/keyboard.dart';
+
 part 'register_service_widget.dart';
 
 class RegisterServicePage extends BaseGetWidget {

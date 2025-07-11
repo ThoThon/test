@@ -268,6 +268,7 @@ extension RegisterServiceWidget on RegisterServicePage {
           padding: EdgeInsets.zero,
         ),
         onPressed: () {
+          KeyBoard.hide();
           if (isUsernameMySignEmpty) return;
           controller.fetchListCert();
         },
