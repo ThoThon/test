@@ -1,3 +1,6 @@
+11/07/2025
+- [Appmobile] Label “Đính kèm file” bị căn chỉnh sai - BHW-2672
+
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
 - [Appmobile]_Thủ tục 600 - Màn TK1: Trường địa chỉ khai sinh là trường không bắt buộc - BHW-2653
