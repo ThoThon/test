@@ -27,7 +27,7 @@ class DeclareInfo607Page extends BaseGetWidget<DeclareInfo607Controller> {
       () => Scaffold(
         appBar: BaseAppBar(
           title: BaseAppBarTitle(
-            title: LocaleKeys.declareInfo_title.tr,
+            title: controller.argument.procedureType.declareInfoTitle,
           ),
           leading: UtilWidget.buildButtonBackAppbar(),
           centerTitle: true,

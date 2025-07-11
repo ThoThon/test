@@ -19,7 +19,7 @@ extension LoginWidget on LoginPage {
                           onDoubleTap: BaseUrlHelper.instance.switchEnv,
                           child: _buildLogo(),
                         ),
-                        const SizedBox(height: AppDimens.padding40),
+                        const SizedBox(height: AppDimens.padding24),
                         controller.isHaveUsername.value
                             ? _buildCompanyName()
                             : _buildInputAccount(),
@@ -57,7 +57,7 @@ extension LoginWidget on LoginPage {
         Assets.ASSETS_IMAGES_LOGO_VIETTEL_SVG,
         width: Get.width / 2,
       ),
-    ).paddingOnly(top: AppDimens.padding25);
+    ).paddingOnly(top: AppDimens.paddingSmall);
   }
 
   Widget _buildInputAccount() {
@@ -156,19 +156,26 @@ extension LoginWidget on LoginPage {
   }
 
   Widget _buildPhoneService() {
-    return RichText(
-      text: TextSpan(
-        style: AppTextStyle.font18Bo,
-        children: [
-          TextSpan(text: LocaleKeys.login_serviceCenter.tr),
-          TextSpan(
-            text: " ${LocaleKeys.login_phoneNumber.tr}",
-            style: AppTextStyle.font18Bo.copyWith(
-              color: AppColors.primaryColor,
-            ),
+    return KeyboardVisibilityBuilder(
+      builder: (p0, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return RichText(
+          text: TextSpan(
+            style: AppTextStyle.font18Bo,
+            children: [
+              TextSpan(text: LocaleKeys.login_serviceCenter.tr),
+              TextSpan(
+                text: " ${LocaleKeys.login_phoneNumber.tr}",
+                style: AppTextStyle.font18Bo.copyWith(
+                  color: AppColors.primaryColor,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 

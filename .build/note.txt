@@ -1,3 +1,9 @@
+11/07/2025
+- [Appmobile] Label “Đính kèm file” bị căn chỉnh sai - BHW-2672
+- [Appmobile] Label “Chọn thủ tục kê khai " không scroll theo màn hình - BHW-2674
+- [Appmobile] Trường "số điện thoại" hiển thị ký tự lạ khi paste đoạn text tiếng Anh - BHW-2661
+- [Appmobile] Button “Đăng ký” bị hotline che khuất - BHW-2673
+
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
 - [Appmobile]_Thủ tục 600 - Màn TK1: Trường địa chỉ khai sinh là trường không bắt buộc - BHW-2653
@@ -8,6 +14,9 @@
 - [Appmobile][TS1-TS] Không lưu dữ liệu sau khi sửa - BHW-2646
 - [Appmobile]_Chỉnh sửa giao diện bổ sung: Khi hiển bàn phím thì nút Lưu/tiếp theo cần ẩn xuống dưới bàn phím
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613 - Bỏ tích "Trùng địa chỉ khai sinh" => Xóa trống địa chỉ nơi nhận được fill theo địa chỉ khai sinh - BHW-2656
+- [Appmobile]_Tên tiêu đề màn kê khai thông tin: Thủ tục 600, 607, 608, 610, 612, 613 - BHW-2650
+- [Appmobile]_Chỉnh sửa giao diện: Popup Hủy thay đổi Màn thay đổi thông tin đơn vị - BHW-2657
+- [Appmobile]_Tại những trường Tỉnh, Huyện Xã: Yêu cầu hiển thị thêm Mã - BHW-2659
 
 9/07/2025
 - [Appmobile]_Màn 607: Cập nhật chỉnh sửa Mã số BHXH tại Tk1 Không là trường bắt buộc - BHW-2636

@@ -3,54 +3,39 @@ part of 'procedure_list_page.dart';
 extension ProcedureListPageWidget on ProcedureListPage {
   Widget _buildBody() {
     return baseShowLoading(
-      () => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              left: AppDimens.paddingMedium,
-              top: AppDimens.defaultPadding,
-            ),
-            child: SDSBuildText(
-              LocaleKeys.declarationPeriod_selectedProcedure.tr,
-              style: AppTextStyle.font16Bo,
-            ),
-          ),
-          Expanded(
-            child: _buildProcedureList(),
-          ),
-        ],
-      ),
-    );
-  }
+      () => Obx(
+        () {
+          final procedures = controller.procedures;
 
-  Widget _buildProcedureList() {
-    return Obx(
-      () {
-        if (controller.procedures.isEmpty) {
-          return Center(
-            child: SDSBuildText(
-              LocaleKeys.app_noData.tr,
-              style: AppTextStyle.font16Bo,
+          return ListView.separated(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppDimens.paddingMedium,
             ),
+            itemCount: procedures.isEmpty ? 1 : procedures.length + 1,
+            separatorBuilder: (_, __) => UtilWidget.sizedBox16,
+            itemBuilder: (context, index) {
+              if (index == 0) {
+                return SDSBuildText(
+                  LocaleKeys.declarationPeriod_selectedProcedure.tr,
+                  style: AppTextStyle.font16Bo,
+                );
+              }
+
+              if (procedures.isEmpty) {
+                return Center(
+                  child: SDSBuildText(
+                    LocaleKeys.app_noData.tr,
+                    style: AppTextStyle.font16Bo,
+                  ),
+                );
+              }
+
+              final procedure = procedures[index - 1];
+              return _buildProcedureItem(procedure: procedure);
+            },
           );
-        }
-
-        return ListView.separated(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppDimens.paddingMedium,
-            vertical: AppDimens.defaultPadding,
-          ),
-          itemCount: controller.procedures.length,
-          itemBuilder: (context, index) {
-            final procedure = controller.procedures[index];
-            return _buildProcedureItem(procedure: procedure);
-          },
-          separatorBuilder: (context, index) {
-            return UtilWidget.sizedBox16;
-          },
-        );
-      },
+        },
+      ).paddingOnly(top: AppDimens.defaultPadding),
     );
   }
 
@@ -60,12 +45,13 @@ extension ProcedureListPageWidget on ProcedureListPage {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: AppDimens.paddingSmall),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppDimens.radius16),
-          border: Border.all(
-            color: AppColors.primaryColor,
-            width: 1,
-          ),
-          color: AppColors.basicWhite),
+        borderRadius: BorderRadius.circular(AppDimens.radius16),
+        border: Border.all(
+          color: AppColors.primaryColor,
+          width: 1,
+        ),
+        color: AppColors.basicWhite,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,8 +92,9 @@ extension ProcedureListPageWidget on ProcedureListPage {
                   children: [
                     SDSBuildText(
                       LocaleKeys.procedureList_declare.tr,
-                      style: AppTextStyle.font14Re
-                          .copyWith(color: AppColors.primaryColor),
+                      style: AppTextStyle.font14Re.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
                     ),
                     sdsSBWidth4,
                     SDSImageSvg(

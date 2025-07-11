@@ -167,6 +167,10 @@ class Assets {
   static String get ASSETS_ICONS_IC_NOT_ACTIVE_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_not_active.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NOTE_SVG.preview}
+  static String get ASSETS_ICONS_IC_NOTE_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_note.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_NOTIFICATION_DECLARE_SVG.preview}
   static String get ASSETS_ICONS_IC_NOTIFICATION_DECLARE_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_notification_declare.svg';
@@ -424,6 +428,9 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_NOT_ACTIVE_SVG.preview}
   Assets.ASSETS_ICONS_IC_NOT_ACTIVE_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_NOTE_SVG.preview}
+  Assets.ASSETS_ICONS_IC_NOTE_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_NOTIFICATION_DECLARE_SVG.preview}
   Assets.ASSETS_ICONS_IC_NOTIFICATION_DECLARE_SVG,
