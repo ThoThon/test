@@ -1,5 +1,6 @@
 11/07/2025
 - [Appmobile] Label “Đính kèm file” bị căn chỉnh sai - BHW-2672
+- [Appmobile] Label “Chọn thủ tục kê khai " không scroll theo màn hình - BHW-2674
 
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
