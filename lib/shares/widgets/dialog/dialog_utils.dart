@@ -3,6 +3,7 @@ import 'package:v_bhxh/modules/src.dart';
 enum DialogIconType {
   success,
   failure,
+  note,
 }
 
 class ShowDialog {
@@ -251,6 +252,7 @@ class ShowDialog {
     TextStyle? textStyleBack,
     TextStyle? textStyleConfirm,
     Color? backgroundColorBack,
+    Color? borderColorButtonBack,
   }) async {
     _showDialog(
       Dialog(
@@ -270,20 +272,7 @@ class ShowDialog {
               textAlign: TextAlign.center,
             ),
             sdsSBHeight24,
-            if (iconType != null)
-              iconType == DialogIconType.success
-                  ? SDSImageSvg(
-                      Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
-                      color: AppColors.colorIconSuccess,
-                      width: 60,
-                      height: 60,
-                    )
-                  : SDSImageSvg(
-                      Assets.ASSETS_IMAGES_IMG_CHECK_FAILURE_SVG,
-                      color: AppColors.primaryColor,
-                      width: 60,
-                      height: 60,
-                    ),
+            if (iconType != null) _buildDialogIcon(iconType),
             content != null
                 ? Container(
                     padding: const EdgeInsets.symmetric(
@@ -305,6 +294,7 @@ class ShowDialog {
                     children: [
                       Expanded(
                         child: UtilWidget.buildSolidButtonBack(
+                          borderColor: borderColorButtonBack,
                           title: exitTitle ?? 'Hủy',
                           borderRadius: AppDimens.radius30,
                           backgroundColor:
@@ -353,6 +343,32 @@ class ShowDialog {
       ),
       isActiveBack,
     );
+  }
+
+  static Widget _buildDialogIcon(DialogIconType iconType) {
+    switch (iconType) {
+      case DialogIconType.success:
+        return SDSImageSvg(
+          Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
+          color: AppColors.colorIconSuccess,
+          width: 60,
+          height: 60,
+        );
+      case DialogIconType.failure:
+        return SDSImageSvg(
+          Assets.ASSETS_IMAGES_IMG_CHECK_FAILURE_SVG,
+          color: AppColors.primaryColor,
+          width: 60,
+          height: 60,
+        );
+      case DialogIconType.note:
+        return SDSImageSvg(
+          Assets.ASSETS_ICONS_IC_NOTE_SVG,
+          color: const Color(0xFFFE9705),
+          width: 60,
+          height: 60,
+        );
+    }
   }
 
   static Future<void> showDialogTimerCount({

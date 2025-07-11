@@ -87,6 +87,7 @@ class InputTextModel {
   final bool isDense;
 
   final AutovalidateMode? autovalidateMode;
+  final GlobalKey? fieldKey;
 
   InputTextModel({
     this.iconLeading,
@@ -135,5 +136,6 @@ class InputTextModel {
     this.floatingLabelBehavior,
     this.label,
     this.isDense = false,
+    this.fieldKey,
   });
 }

@@ -24,7 +24,7 @@ class RegisterServicePage extends BaseGetWidget {
                 UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
             title: BaseAppBarTitle(
               textColor: AppColors.basicWhite,
-              title: LocaleKeys.registerService_registerService.tr,
+              title: LocaleKeys.registerService_registerTitle.tr,
             ),
           ),
           body: BaseCardBody(

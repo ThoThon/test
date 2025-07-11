@@ -178,7 +178,7 @@ class RegisterCodeController extends BaseGetxController {
   Future<void> getListCertificate() async {
     await fetchListCert();
     if (listCert.isNotEmpty) {
-      certificate.value = listCert.first;
+      certificate.value = listCert.firstOrNull;
     } else {
       showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
     }
@@ -289,8 +289,8 @@ class RegisterCodeController extends BaseGetxController {
         );
       }
     } catch (e) {
-      ShowDialog.dismissDialog();
       if (e is DioException && e.type != DioExceptionType.cancel) {
+        ShowDialog.dismissDialog();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );

@@ -59,7 +59,7 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.phoneNumber:
         return [
-          FilteringTextInputFormatter.allow(RegExp(r"[0-9-]")),
+          FilteringTextInputFormatter.allow(RegExp(r"[0-9]")),
           LengthLimitingTextInputFormatter(20),
         ];
       case InputFormatterEnum.email:
@@ -198,6 +198,7 @@ class BuildInputTextState extends State<BuildInputText> {
   Widget build(BuildContext context) {
     return Obx(
       () => TextFormField(
+        key: widget.inputTextFormModel.fieldKey,
         maxLines: widget.inputTextFormModel.maxLines,
         inputFormatters: getFormatters(),
         validator: widget.inputTextFormModel.validator,

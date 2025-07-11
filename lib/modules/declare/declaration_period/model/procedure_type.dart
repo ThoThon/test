@@ -1,4 +1,3 @@
-import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 /// Loại thủ tục

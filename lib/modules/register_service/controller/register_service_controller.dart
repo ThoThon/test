@@ -5,6 +5,7 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 class RegisterServiceController extends BaseGetxController {
   final usernameMySignCtrl = TextEditingController();
+
   final listCert = <CertificateModel>[].obs;
 
   final certificate = Rxn<CertificateModel>();
@@ -12,6 +13,8 @@ class RegisterServiceController extends BaseGetxController {
   late final _registerServiceRepository = RegisterServiceRepository(this);
 
   final registerServiceInfo = Rxn<RegisterServiceInfoModel>();
+
+  final listRegisterInfo = <RegisterServiceInfoModel>[].obs;
 
   final isUsernameMySignEmpty = true.obs;
 
@@ -32,20 +35,15 @@ class RegisterServiceController extends BaseGetxController {
           await _registerServiceRepository.getListCert(usernameMySignCtrl.text);
       if (response.isSuccess) {
         listCert.value = response.result;
+        //Nếu có chứng thư số thì lấy luôn thông tin chứng thư số đầu tiên
+        certificate.value = listCert.firstOrNull;
+      } else {
+        showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
       }
     } catch (e) {
       logger.d(e);
     } finally {
       hideLoadingOverlay();
-    }
-  }
-
-  Future<void> getListCertificate() async {
-    await fetchListCert();
-    if (listCert.isNotEmpty) {
-      certificate.value = listCert.first;
-    } else {
-      showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
     }
   }
 
@@ -56,10 +54,13 @@ class RegisterServiceController extends BaseGetxController {
           await _registerServiceRepository.fetchRegisterServiceInfo();
       if (response.isSuccess && response.result != null) {
         registerServiceInfo.value = response.result;
+        // Thêm vào list để có thể view được trong dropdown
+        listRegisterInfo.add(response.result!);
         // Nếu đã đăng ký thì set giá trị cho usernameMySignCtrl
         final userId = response.result!.userId;
         if (userId != null && userId.isNotEmpty) {
           usernameMySignCtrl.text = userId;
+          await fetchListCert();
         }
         isUsernameMySignEmpty.value = usernameMySignCtrl.text.trim().isEmpty;
       }
@@ -92,8 +93,8 @@ class RegisterServiceController extends BaseGetxController {
         );
       }
     } catch (e) {
-      ShowDialog.dismissDialog();
       if (e is DioException && e.type != DioExceptionType.cancel) {
+        ShowDialog.dismissDialog();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
         );
@@ -178,8 +179,8 @@ class RegisterServiceController extends BaseGetxController {
         );
       }
     } catch (e) {
-      ShowDialog.dismissDialog();
       if (e is DioException && e.type != DioExceptionType.cancel) {
+        ShowDialog.dismissDialog();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
         );
@@ -209,8 +210,8 @@ class RegisterServiceController extends BaseGetxController {
         );
       }
     } catch (e) {
-      ShowDialog.dismissDialog();
       if (e is DioException && e.type != DioExceptionType.cancel) {
+        ShowDialog.dismissDialog();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
         );

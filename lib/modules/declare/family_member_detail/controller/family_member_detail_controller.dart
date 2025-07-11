@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
@@ -8,6 +9,8 @@ import '../model/model_src.dart';
 
 class FamilyMemberDetailController extends BaseGetxController {
   final argument = Get.arguments as FamilyMember?;
+
+  final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   final formKey = GlobalKey<FormState>();
 
@@ -82,34 +85,40 @@ class FamilyMemberDetailController extends BaseGetxController {
   }
 
   void onSubmit() {
-    if (formKey.currentState?.validate() ?? false) {
-      // Note: đã validate các trường required nên có thể force null
-      Get.back(
-        result: FamilyMember(
-          // Khi sửa thành viên ở local hoặc DB thì sẽ giữ id cũ
-          id: argument?.id ?? generateUuid(),
-          fullName: fullNameTextCtrl.text.trim(),
-          bhxhNumber: bhxhNumberTextCtrl.text.trim(),
-          cccdNumber: cccdNumberTextCtrl.text.trim(),
-          note: noteTextCtrl.text.trim(),
-          birthType: birthType.value,
-          dateOfBirth: convertStringToDateSafe(
-              dateOfBirthCtrl.text, birthType.value.pattern),
-          gender: gender.value,
-          ethnic: selectedEthnic.value!,
-          nation: selectedNationality.value!,
-          province: selectedProvince.value!,
-          district: selectedDistrict.value!,
-          ward: selectedWard.value!,
-          relationship: relationship.value!,
-          isParticipant: isParticipant.value,
-          giaDinhId: argument?.giaDinhId,
-          // Khi update thành viên ở DB thì sẽ truyền isUpdate = true
-          // Cần keep trạng thái isUpdate để tránh tạo mới
-          isUpdate: argument?.isUpdate ?? false,
-        ),
-      );
+    final isFormValid = formKey.currentState?.validate() ?? false;
+
+    if (!isFormValid) {
+      // Scroll to the first invalid field
+      registeredKey.currentState?.firstInvalid?.scrollToIntoView();
+      return;
     }
+
+    // Note: đã validate các trường required nên có thể force null
+    Get.back(
+      result: FamilyMember(
+        // Khi sửa thành viên ở local hoặc DB thì sẽ giữ id cũ
+        id: argument?.id ?? generateUuid(),
+        fullName: fullNameTextCtrl.text.trim(),
+        bhxhNumber: bhxhNumberTextCtrl.text.trim(),
+        cccdNumber: cccdNumberTextCtrl.text.trim(),
+        note: noteTextCtrl.text.trim(),
+        birthType: birthType.value,
+        dateOfBirth: convertStringToDateSafe(
+            dateOfBirthCtrl.text, birthType.value.pattern),
+        gender: gender.value,
+        ethnic: selectedEthnic.value!,
+        nation: selectedNationality.value!,
+        province: selectedProvince.value!,
+        district: selectedDistrict.value!,
+        ward: selectedWard.value!,
+        relationship: relationship.value!,
+        isParticipant: isParticipant.value,
+        giaDinhId: argument?.giaDinhId,
+        // Khi update thành viên ở DB thì sẽ truyền isUpdate = true
+        // Cần keep trạng thái isUpdate để tránh tạo mới
+        isUpdate: argument?.isUpdate ?? false,
+      ),
+    );
   }
 
   @override

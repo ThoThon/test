@@ -20,6 +20,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
   final Widget? suffixIcon;
   final Color? fillColor;
   final bool enable;
+  final GlobalKey? fieldKey;
 
   const CardInputTextFormWithLabel({
     super.key,
@@ -41,6 +42,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
     this.suffixIcon,
     this.fillColor,
     this.enable = true,
+    this.fieldKey,
   });
 
   @override
@@ -88,6 +90,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
             ),
             BuildInputText(
               InputTextModel(
+                fieldKey: fieldKey,
                 autovalidateMode: autovalidateMode,
                 isValidate: isRequired,
                 controller: controller,

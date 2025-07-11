@@ -1,3 +1,17 @@
+11/07/2025
+- [Appmobile] Label “Đính kèm file” bị căn chỉnh sai - BHW-2672
+- [Appmobile] Label “Chọn thủ tục kê khai " không scroll theo màn hình - BHW-2674
+- [Appmobile] Trường "số điện thoại" hiển thị ký tự lạ khi paste đoạn text tiếng Anh - BHW-2661
+- [Appmobile] Button “Đăng ký” bị hotline che khuất - BHW-2673
+- [Appmobile]_Chỉnh sửa giao diện: Popup chuyển ký - BHW-2628
+- Xử lý auto scroll tới các trường invalid màn "Thêm thành viên" gia đình
+- [Appmobile]_Màn thêm thành viên: Trường loại ngày sinh - BHW-2679
+- [Appmobile]_Vào module Đăng ký dịch vụ: Chỉnh tiêu đề trang thành Thông tin giao dịch - BHW-2677
+- [Appmobile]_Màn đăng ksy cấp mã: Chỉnh sửa màu nút icon Tìm kiếm ở trạng thái disable giống design - BHW-2678
+- [Appmobile] Hiển thị thừa dấu ngoặc ở tên nhân viên - BHW-2676
+- [Appmobile] Danh sách biểu mẫu, che mất phần hiển thị phía trên - BHW-2662
+- [Appmobile]_Lỗi hiển thị Số CCCD khi nhập tiếng việt - BHW-2669
+
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
 - [Appmobile]_Thủ tục 600 - Màn TK1: Trường địa chỉ khai sinh là trường không bắt buộc - BHW-2653
@@ -9,6 +23,8 @@
 - [Appmobile]_Chỉnh sửa giao diện bổ sung: Khi hiển bàn phím thì nút Lưu/tiếp theo cần ẩn xuống dưới bàn phím
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613 - Bỏ tích "Trùng địa chỉ khai sinh" => Xóa trống địa chỉ nơi nhận được fill theo địa chỉ khai sinh - BHW-2656
 - [Appmobile]_Tên tiêu đề màn kê khai thông tin: Thủ tục 600, 607, 608, 610, 612, 613 - BHW-2650
+- [Appmobile]_Chỉnh sửa giao diện: Popup Hủy thay đổi Màn thay đổi thông tin đơn vị - BHW-2657
+- [Appmobile]_Tại những trường Tỉnh, Huyện Xã: Yêu cầu hiển thị thêm Mã - BHW-2659
 - [Appmobile]_Màn D02: Chọn một nhân viên đã kê khai => Không trả về Thông tin trường hệ số - BHW-2663
 
 9/07/2025
@@ -41,6 +57,7 @@
 - [AppMobile]Lỗi căn chỉnh button "xóa thông báo" - BHW-2634
 - [Appmobile]_Chỉnh sửa giao diện: Yêu cầu cập nhật mới - Chỉnh sửa giao diện mà Chọn nhân viên - BHW-2600
 - [Appmobile]_Giao diện sau chỉnh sửa: Màn danh sách nhân viên kê khai: Chưa chặn tối đa 5 file ảnh - BHW-2607
+- [Appmobile]_Luôn trả về số serial Màn Đăng ký/Thay đổi/Ngừng dịch vụ - BHW-2635
 
 7/07/2025
 - Appmobile_Thủ tục 607: Thêm mới kỳ kê khai - BHW-2561
