@@ -697,6 +697,11 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
       tk1State.addressReceivePaperTextCtrl.text =
           tk1State.addressReceiveTextCtrl.text;
+    } else if (value == ReceiveProfileResultEnum.electronic) {
+      tk1State.provinceReceivePaper.value = null;
+      tk1State.districtReceivePaper.value = null;
+      tk1State.wardReceivePaper.value = null;
+      tk1State.addressReceivePaperTextCtrl.text = '';
     }
   }
 
