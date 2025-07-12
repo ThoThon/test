@@ -127,7 +127,7 @@ extension SelectStaffWidget on SelectStaffPage {
   Widget _buildViewListStaffSelect() {
     return Expanded(
       child: UtilWidget.buildCardBase(
-        colorBorder: AppColors.dsGray3,
+        colorBorder: AppColors.dsGray5,
         baseShowLoading(
           () => UtilWidget.buildSmartRefresher(
             refreshController: controller.refreshController,

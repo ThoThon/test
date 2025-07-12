@@ -1069,7 +1069,7 @@ class UtilWidget {
 
   static Widget buildDividerStaffList() {
     return const Divider(
-      color: AppColors.dsGray3,
+      color: AppColors.dsGray5,
     );
   }
 
