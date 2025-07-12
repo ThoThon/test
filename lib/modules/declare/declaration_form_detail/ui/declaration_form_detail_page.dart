@@ -1,3 +1,4 @@
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';

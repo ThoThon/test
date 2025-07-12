@@ -1,3 +1,4 @@
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/uuid_utils.dart';
@@ -6,6 +7,8 @@ class DeclarationFormDetailController extends BaseGetxController {
   final argument = Get.arguments as DeclarationFormDetailArgument?;
 
   final formKey = GlobalKey<FormState>();
+
+  final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   /// Họ và tên *
   final fullNameTextCtrl = TextEditingController();
@@ -62,27 +65,33 @@ class DeclarationFormDetailController extends BaseGetxController {
   }
 
   void submit() {
-    if (formKey.currentState?.validate() ?? false) {
-      Get.back(
-        result: DeclarationForm(
-          // Khi sửa bảng kê ở local hoặc DB thì sẽ giữ id cũ
-          id: argument?.form?.id ?? generateUuid(),
-          fullName: fullNameTextCtrl.text.trim(),
-          bhxhNumber: bhxhTextCtrl.text.trim(),
-          documentType: documentTypeTextCtrl.text.trim(),
-          documentNumber: documentNumberTextCtrl.text.trim(),
-          dateOfIssue: convertStringToDateSafe(dateOfIssueCtrl.text, PATTERN_1),
-          effectiveDate:
-              convertStringToDateSafe(effectiveDateCtrl.text, PATTERN_1),
-          issuingAgency: issuingAgencyTextCtrl.text.trim(),
-          summary: summaryTextCtrl.text.trim(),
-          contentToBeAssessed: contentToBeAssessedTextCtrl.text.trim(),
-          // Khi update bảng kê ở DB thì sẽ truyền isUpdate = true
-          // Cần keep trạng thái isUpdate để tránh tạo mới
-          isUpdate: argument?.form?.isUpdate ?? false,
-        ),
-      );
+    final isFormValid = formKey.currentState?.validate() ?? false;
+
+    if (!isFormValid) {
+      // Scroll to the first invalid field
+      registeredKey.currentState?.firstInvalid?.scrollToIntoView();
+      return;
     }
+
+    Get.back(
+      result: DeclarationForm(
+        // Khi sửa bảng kê ở local hoặc DB thì sẽ giữ id cũ
+        id: argument?.form?.id ?? generateUuid(),
+        fullName: fullNameTextCtrl.text.trim(),
+        bhxhNumber: bhxhTextCtrl.text.trim(),
+        documentType: documentTypeTextCtrl.text.trim(),
+        documentNumber: documentNumberTextCtrl.text.trim(),
+        dateOfIssue: convertStringToDateSafe(dateOfIssueCtrl.text, PATTERN_1),
+        effectiveDate:
+            convertStringToDateSafe(effectiveDateCtrl.text, PATTERN_1),
+        issuingAgency: issuingAgencyTextCtrl.text.trim(),
+        summary: summaryTextCtrl.text.trim(),
+        contentToBeAssessed: contentToBeAssessedTextCtrl.text.trim(),
+        // Khi update bảng kê ở DB thì sẽ truyền isUpdate = true
+        // Cần keep trạng thái isUpdate để tránh tạo mới
+        isUpdate: argument?.form?.isUpdate ?? false,
+      ),
+    );
   }
 
   @override
