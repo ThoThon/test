@@ -869,12 +869,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
   Widget _buildSelectProvinceReceivePaper() {
     return Obx(
       () {
+        final isRequired = controller.tk1State.receiveResult.value ==
+            ReceiveProfileResultEnum.paper;
         return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
-          enable: controller.tk1State.receiveResult.value ==
-              ReceiveProfileResultEnum.paper,
+          enable: isRequired,
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_provinceReceivePaper.tr,
-          isRequired: false,
+          isRequired: isRequired,
           funcSelect: (didChange) {
             Get.bottomSheet(
               BottomSheetSearch<ProvinceModel>(
@@ -896,13 +897,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           display: (province) => province.name,
           enableClearIcon: true,
           onTapClear: controller.onTapClearProvinceReceivePaper,
-          // validator: (value) {
-          //   if (controller.tk1State.isHouseholdInfoRequired.value &&
-          //       controller.tk1State.provinceTT.value == null) {
-          //     return LocaleKeys.declareInfo_provinceTTCannotEmpty.tr;
-          //   }
-          //   return null;
-          // },
+          validator: (value) {
+            if (isRequired &&
+                controller.tk1State.provinceReceivePaper.value == null) {
+              return LocaleKeys.declareInfo_provinceReceivePaperCannotEmpty.tr;
+            }
+            return null;
+          },
         );
       },
     );
@@ -911,13 +912,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
   Widget _buildSelectDistrictReceivePaper() {
     return Obx(
       () {
+        final isRequired = controller.tk1State.receiveResult.value ==
+            ReceiveProfileResultEnum.paper;
         return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
-          enable: controller.tk1State.receiveResult.value ==
-              ReceiveProfileResultEnum.paper,
+          enable: isRequired,
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_districtReceivePaper.tr,
-          // hintText: LocaleKeys.declareInfo_selectDistrictTT.tr,
-          isRequired: false,
+          isRequired: isRequired,
           funcSelect: (didChange) async {
             final provinceReceivePaper =
                 controller.tk1State.provinceReceivePaper.value;
@@ -944,13 +945,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           display: (district) => district.name,
           enableClearIcon: true,
           onTapClear: controller.onTapClearDistrictReceivePaper,
-          // validator: (value) {
-          //   if (controller.tk1State.isHouseholdInfoRequired.value &&
-          //       controller.tk1State.wardTT.value == null) {
-          //     return LocaleKeys.declareInfo_districtTTCannotEmpty.tr;
-          //   }
-          //   return null;
-          // },
+          validator: (value) {
+            if (isRequired &&
+                controller.tk1State.districtReceivePaper.value == null) {
+              return LocaleKeys.declareInfo_districtReceivePaperCannotEmpty.tr;
+            }
+            return null;
+          },
         );
       },
     );
@@ -959,12 +960,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
   Widget _buildSelectWardReceivePaper() {
     return Obx(
       () {
+        final isRequired = controller.tk1State.receiveResult.value ==
+            ReceiveProfileResultEnum.paper;
         return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
-          enable: controller.tk1State.receiveResult.value ==
-              ReceiveProfileResultEnum.paper,
+          enable: isRequired,
           autovalidateMode: controller.tk1State.autoValidateMode.value,
           label: LocaleKeys.declareInfo_wardReceivePaper.tr,
-          isRequired: false,
+          isRequired: isRequired,
           funcSelect: (didChange) async {
             final provinceReceivePaper =
                 controller.tk1State.provinceReceivePaper.value;
@@ -998,13 +1000,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           display: (ward) => ward.name,
           enableClearIcon: true,
           onTapClear: controller.onTapClearWardReceivePaper,
-          // validator: (value) {
-          //   if (controller.tk1State.isHouseholdInfoRequired.value &&
-          //       controller.tk1State.wardTT.value == null) {
-          //     return LocaleKeys.declareInfo_wardTTCannotEmpty.tr;
-          //   }
-          //   return null;
-          // },
+          validator: (value) {
+            if (isRequired &&
+                controller.tk1State.wardReceivePaper.value == null) {
+              return LocaleKeys.declareInfo_wardReceivePaperCannotEmpty.tr;
+            }
+            return null;
+          },
         );
       },
     );
@@ -1012,27 +1014,30 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
 
   Widget _buildInputAddressReceivePaper() {
     return Obx(
-      () => CardInputTextFormWithLabel(
-        enable: controller.tk1State.receiveResult.value ==
-            ReceiveProfileResultEnum.paper,
-        labelText: LocaleKeys.declareInfo_addressReceivePaper.tr,
-        hintText: LocaleKeys.declareInfo_inputAddress.tr,
-        autovalidateMode: controller.tk1State.autoValidateMode.value,
-        isRequired: false,
-        controller: controller.tk1State.addressReceivePaperTextCtrl,
-        inputFormatters: InputFormatterEnum.textNormal,
-        // onChanged: controller.onChangeAddressTT,
-        maxLengthInputForm: 500,
-        // validator: (value) {
-        //   final trimmedValue = value?.trim();
+      () {
+        final isRequired = controller.tk1State.receiveResult.value ==
+            ReceiveProfileResultEnum.paper;
+        return CardInputTextFormWithLabel(
+          enable: isRequired,
+          labelText: LocaleKeys.declareInfo_addressReceivePaper.tr,
+          hintText: LocaleKeys.declareInfo_inputAddress.tr,
+          autovalidateMode: controller.tk1State.autoValidateMode.value,
+          isRequired: isRequired,
+          controller: controller.tk1State.addressReceivePaperTextCtrl,
+          inputFormatters: InputFormatterEnum.textNormal,
+          // onChanged: controller.onChangeAddressTT,
+          maxLengthInputForm: 500,
+          validator: (value) {
+            final trimmedValue = value?.trim() ?? '';
 
-        //   if (trimmedValue == null || trimmedValue.isEmpty) {
-        //     return LocaleKeys.declareInfo_addressTTCannotEmpty.tr;
-        //   }
+            if (isRequired && trimmedValue.isEmpty) {
+              return LocaleKeys.declareInfo_addressReceivePaperCannotEmpty.tr;
+            }
 
-        //   return null;
-        // },
-      ),
+            return null;
+          },
+        );
+      },
     );
   }
 
