@@ -235,77 +235,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
-  Widget _buildSelectEthnic() {
-    return Obx(
-      () {
-        return UtilWidget.buildCardBottomSheetSelect2<EthnicModel>(
-          label: LocaleKeys.declareInfo_ethnic.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<EthnicModel>(
-                title: LocaleKeys.declareInfo_selectEthnic.tr,
-                maxLength: 20,
-                listFilter: AppData.instance.ethnics.toList(),
-                selectedItem: controller.d02Tk1State.selectedEthnic.value,
-                display: (value) => value.text,
-                onAccept: (value) {
-                  if (value == null) return;
-                  controller.d02Tk1State.selectedEthnic.value = value;
-                  didChange(value);
-                },
-              ),
-              isScrollControlled: true,
-            );
-          },
-          selectedItem: controller.d02Tk1State.selectedEthnic.value,
-          display: (ethnic) => ethnic.text,
-          validator: (value) {
-            if (controller.d02Tk1State.selectedEthnic.value == null) {
-              return LocaleKeys.declareInfo_ethnicCannotEmpty.tr;
-            }
-            return null;
-          },
-        );
-      },
-    );
-  }
-
-  Widget _buildSelectNationality() {
-    return Obx(
-      () {
-        return UtilWidget.buildCardBottomSheetSelect2<NationModel>(
-          label: LocaleKeys.declareInfo_nationality.tr,
-          // hintText: LocaleKeys.declareInfo_selectNationality.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<NationModel>(
-                title: LocaleKeys.declareInfo_selectNationality.tr,
-                maxLength: 20,
-                listFilter: AppData.instance.nations.toList(),
-                selectedItem: controller.d02Tk1State.selectedNationality.value,
-                display: (value) => value.text,
-                onAccept: (value) {
-                  if (value == null) return;
-                  controller.d02Tk1State.selectedNationality.value = value;
-                  didChange(value);
-                },
-              ),
-              isScrollControlled: true,
-            );
-          },
-          selectedItem: controller.d02Tk1State.selectedNationality.value,
-          display: (nation) => nation.text,
-          validator: (value) {
-            if (controller.d02Tk1State.selectedNationality.value == null) {
-              return LocaleKeys.declareInfo_nationalityCannotEmpty.tr;
-            }
-            return null;
-          },
-        );
-      },
-    );
-  }
-
   Widget _buildBirthTypeDropdown() {
     return CardDropdownWithLabel<BirthTypeEnum>(
       labelText: LocaleKeys.familyMember_selectBirthType.tr,
@@ -324,9 +253,11 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
-  Widget _buildSelectDateOfBirth() {
+  Widget _buildSelectDateOfBirth({
+    required String registrarId,
+  }) {
     return FormFieldRegistrant<String>(
-      registrarId: 'df4dddc2-010a-4272-bf6d-742f3c24fa43',
+      registrarId: registrarId,
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {

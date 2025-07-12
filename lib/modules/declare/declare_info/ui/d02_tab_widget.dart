@@ -49,7 +49,10 @@ extension D02TabWidget on DeclareInfoPage {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Expanded(child: _buildSelectDateOfBirth()),
+                            Expanded(
+                                child: _buildSelectDateOfBirth(
+                                    registrarId:
+                                        'df4dddc2-010a-4272-bf6d-742f3c24fa43')),
                             sdsSBWidth12,
                             Expanded(child: _buildSelectGender()),
                           ],
