@@ -1,6 +1,7 @@
 12/07/2025
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Validate các trường địa chỉ nhận hồ sơ giấy - BHW-2683
 - [Appmobile]_Chỉnh sửa giao diện bổ sung: Set focus chuột - BHW-2615
+- [Appmobile]_Lỗi focus chuột khi chọn một trường combobox - BHW-2692
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613 - Combobox các Trường địa chỉ nhận bản giấy: Bổ sung hiển thị thêm Mã Tỉnh, huyện, xã - BHW-2685
 
 11/07/2025
