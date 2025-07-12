@@ -259,12 +259,16 @@ class DeclareInfoController extends BaseGetxController {
   DeclareInfoTab? get _invalidTab {
     if (d02State.formKey.currentState?.validate() != true) {
       d02State.autoValidateMode.value = AutovalidateMode.always;
+      // Scroll to the first invalid field
+      d02State.registeredKey.currentState?.firstInvalid?.scrollToIntoView();
       return DeclareInfoTab.d02;
     }
 
     if (d02State.isGenerateTk1Data.value &&
         tk1State.formKey.currentState?.validate() != true) {
       tk1State.autoValidateMode.value = AutovalidateMode.always;
+      // Scroll to the first invalid field
+      tk1State.registeredKey.currentState?.firstInvalid?.scrollToIntoView();
       return DeclareInfoTab.tk1;
     }
 

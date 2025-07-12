@@ -1,3 +1,4 @@
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
@@ -101,8 +102,10 @@ class RegisterCodeController extends BaseGetxController {
   final listImage = <String>[].obs;
 
   final formKeyCommonTab = GlobalKey<FormState>();
+  final registeredCommonTabKey = GlobalKey<FormRegistryWidgetState>();
 
   final formKeyRegisterTab = GlobalKey<FormState>();
+  final registeredRegisterTabKey = GlobalKey<FormRegistryWidgetState>();
 
   final isEnableBtnSearchCert = false.obs;
 
@@ -241,10 +244,14 @@ class RegisterCodeController extends BaseGetxController {
 
   RegisterCodeTabEnum? get _invalidTab {
     if (formKeyCommonTab.currentState?.validate() != true) {
+      // Auto scroll to first invalid field
+      registeredCommonTabKey.currentState?.firstInvalid?.scrollToIntoView();
       return RegisterCodeTabEnum.common_info;
     }
 
     if (formKeyRegisterTab.currentState?.validate() != true) {
+      // Auto scroll to first invalid field
+      registeredRegisterTabKey.currentState?.firstInvalid?.scrollToIntoView();
       return RegisterCodeTabEnum.register_info;
     }
 
