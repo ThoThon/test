@@ -6,31 +6,34 @@ extension SelectStaffWidget on SelectStaffPage {
       children: [
         _buildSearchStaff(),
         sdsSBHeight12,
-        _StaffTitle(),
+        _staffTitle(),
         sdsSBHeight12,
         _buildViewListStaffSelect(),
       ],
-    ).paddingSymmetric(horizontal: AppDimens.paddingSmall);
+    ).paddingSymmetric(horizontal: AppDimens.paddingSmallest);
   }
 
   Widget _buildSearchStaff() {
-    return BuildInputText(
-      InputTextModel(
-        controller: controller.searchController,
-        hintText: LocaleKeys.staffList_search.tr,
-        iconNextTextInputAction: TextInputAction.done,
-        hintTextColor: AppColors.thumbColorSwitch,
-        prefixIconColor: AppColors.thumbColorSwitch,
-        fillColor: AppColors.colorTransparent,
-        maxLengthInputForm: 100,
-        isShowCounterText: false,
-        hintTextSize: AppDimens.fontSmall(),
-        iconAssets: Assets.ASSETS_ICONS_IC_SEARCH_SVG,
-        onChanged: (_) => controller.functionSearch(),
-        border: _buildOutlineBorder(),
-        focusedBorder: _buildOutlineBorder(),
-        enabledBorder: _buildOutlineBorder(),
-      ),
+    return SizedBox(
+      height: 40,
+      child: BuildInputText(
+        InputTextModel(
+          controller: controller.searchController,
+          hintText: LocaleKeys.staffList_search.tr,
+          iconNextTextInputAction: TextInputAction.done,
+          hintTextColor: AppColors.thumbColorSwitch,
+          prefixIconColor: AppColors.thumbColorSwitch,
+          fillColor: AppColors.colorTransparent,
+          maxLengthInputForm: 100,
+          isShowCounterText: false,
+          hintTextSize: AppDimens.fontSmall(),
+          iconAssets: Assets.ASSETS_ICONS_IC_SEARCH_SVG,
+          onChanged: (_) => controller.functionSearch(),
+          border: _buildOutlineBorder(),
+          focusedBorder: _buildOutlineBorder(),
+          enabledBorder: _buildOutlineBorder(),
+        ),
+      ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
     );
   }
 
@@ -146,7 +149,7 @@ extension SelectStaffWidget on SelectStaffPage {
     );
   }
 
-  Widget _StaffTitle() {
+  Widget _staffTitle() {
     return SizedBox(
       width: double.infinity,
       child: SDSBuildText(
@@ -155,7 +158,7 @@ extension SelectStaffWidget on SelectStaffPage {
         textAlign: TextAlign.start,
       ),
     ).paddingSymmetric(
-      horizontal: AppDimens.paddingSmallest,
+      horizontal: AppDimens.paddingSmall,
     );
   }
 }
