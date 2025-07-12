@@ -116,40 +116,39 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
-  Widget _buildInputFullName() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        CardInputTextFormWithLabel(
+  Widget _buildInputFullName({
+    required String registrarId,
+  }) {
+    return FormFieldRegistrant<String>(
+      registrarId: registrarId,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_fullNameCannotEmpty.tr;
+        }
+
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
           labelText: LocaleKeys.declareInfo_fullName.tr,
           controller: controller.d02Tk1State.fullNameTextCtrl,
           isRequired: true,
           maxLengthInputForm: 100,
           onChanged: controller.onChangeFullName,
-          validator: (value) {
-            final trimmedValue = value?.trim();
-
-            if (trimmedValue == null || trimmedValue.isEmpty) {
-              return LocaleKeys.declareInfo_fullNameCannotEmpty.tr;
-            }
-
-            return null;
-          },
-        )
-      ],
+        );
+      },
     );
   }
 
-  Widget _buildInputCCCD() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.declareInfo_cccdNumber.tr,
-      autovalidateMode: controller.autovalidateMode.value,
-      controller: controller.d02Tk1State.cccdTextCtrl,
-      hintText: LocaleKeys.declareInfo_inputCCCD.tr,
-      isRequired: true,
-      maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
-      onChanged: controller.onChangeCCCD,
+  Widget _buildInputCCCD({
+    required String registrarId,
+  }) {
+    return FormFieldRegistrant<String>(
+      registrarId: registrarId,
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -159,36 +158,60 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
         return null;
       },
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_cccdNumber.tr,
+          autovalidateMode: controller.autovalidateMode.value,
+          controller: controller.d02Tk1State.cccdTextCtrl,
+          hintText: LocaleKeys.declareInfo_inputCCCD.tr,
+          isRequired: true,
+          maxLengthInputForm: 20,
+          inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+          onChanged: controller.onChangeCCCD,
+        );
+      },
     );
   }
 
-  Widget _buildInputBHXHCode() {
-    return Obx(
-      () {
+  Widget _buildInputBHXHCode({
+    required String registrarId,
+  }) {
+    return FormFieldRegistrant<String>(
+      registrarId: registrarId,
+      validator: (value) {
         final isRequired = controller.isBhxhCodeRequired;
-        return CardInputTextFormWithLabel(
-          labelText: LocaleKeys.declareInfo_bhxhCode.tr,
-          controller: controller.d02Tk1State.bhxhTextCtrl,
-          maxLengthInputForm: 10,
-          inputFormatters: InputFormatterEnum.digitsOnly,
-          textInputType: TextInputType.number,
-          isRequired: isRequired,
-          onChanged: (value) {
-            controller.updateHouseholdInfoRequired();
-          },
-          validator: (value) {
-            final trimmedValue = value?.trim();
 
-            if (trimmedValue == null || trimmedValue.isEmpty) {
-              return isRequired
-                  ? LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr
-                  : null;
-            }
-            if (trimmedValue.length < 10) {
-              return LocaleKeys.declareInfo_bhxhCodeInValid.tr;
-            }
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.isEmpty) {
+          return isRequired
+              ? LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr
+              : null;
+        }
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.declareInfo_bhxhCodeInValid.tr;
+        }
 
-            return null;
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            final isRequired = controller.isBhxhCodeRequired;
+            return CardInputTextFormWithLabel(
+              fieldKey: fieldKey,
+              validator: validator,
+              labelText: LocaleKeys.declareInfo_bhxhCode.tr,
+              controller: controller.d02Tk1State.bhxhTextCtrl,
+              maxLengthInputForm: 10,
+              inputFormatters: InputFormatterEnum.digitsOnly,
+              textInputType: TextInputType.number,
+              isRequired: isRequired,
+              onChanged: (value) {
+                controller.updateHouseholdInfoRequired();
+              },
+            );
           },
         );
       },
@@ -302,53 +325,8 @@ extension DeclareInfoWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectDateOfBirth() {
-    return CardInputSelectDateWithLabel(
-      labelText: LocaleKeys.declareInfo_dob.tr,
-      isRequired: true,
-      borderRadius: AppDimens.radius10,
-      controller: controller.d02Tk1State.dateOfBirthTextCtrl,
-      hintText: controller.d02Tk1State.birthType.value.pattern,
-      inputFormatters: controller.d02Tk1State.birthType.value.inputFormatter,
-      onSelectDate: () async {
-        KeyBoard.hide();
-        final DateTime? selectedDate;
-
-        switch (controller.d02Tk1State.birthType.value) {
-          case BirthTypeEnum.year:
-            selectedDate = await UtilWidget.showPeriodDatePicker(
-              dateTime: convertStringToDateSafe(
-                      controller.d02Tk1State.dateOfBirthTextCtrl.text,
-                      PATTERN_13) ??
-                  DateTime.now(),
-              onlyYear: true,
-            );
-            break;
-          case BirthTypeEnum.monthYear:
-            selectedDate = await UtilWidget.showPeriodDatePicker(
-              dateTime: convertStringToDateSafe(
-                      controller.d02Tk1State.dateOfBirthTextCtrl.text,
-                      PATTERN_12) ??
-                  DateTime.now(),
-            );
-            break;
-          case BirthTypeEnum.full:
-            selectedDate = await UtilWidget.showDateTimePicker(
-              dateTimeInit: convertStringToDateSafe(
-                      controller.d02Tk1State.dateOfBirthTextCtrl.text,
-                      PATTERN_1) ??
-                  DateTime.now(),
-            );
-            break;
-        }
-        if (selectedDate != null) {
-          controller.d02Tk1State.dateOfBirthTextCtrl.text =
-              convertDateToStringSafe(
-                    selectedDate,
-                    controller.d02Tk1State.birthType.value.pattern,
-                  ) ??
-                  '';
-        }
-      },
+    return FormFieldRegistrant<String>(
+      registrarId: 'df4dddc2-010a-4272-bf6d-742f3c24fa43',
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
@@ -391,6 +369,59 @@ extension DeclareInfoWidget on DeclareInfoPage {
         }
 
         return null;
+      },
+      builder: (fieldKey, validator) {
+        return CardInputSelectDateWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_dob.tr,
+          isRequired: true,
+          borderRadius: AppDimens.radius10,
+          controller: controller.d02Tk1State.dateOfBirthTextCtrl,
+          hintText: controller.d02Tk1State.birthType.value.pattern,
+          inputFormatters:
+              controller.d02Tk1State.birthType.value.inputFormatter,
+          onSelectDate: () async {
+            KeyBoard.hide();
+            final DateTime? selectedDate;
+
+            switch (controller.d02Tk1State.birthType.value) {
+              case BirthTypeEnum.year:
+                selectedDate = await UtilWidget.showPeriodDatePicker(
+                  dateTime: convertStringToDateSafe(
+                          controller.d02Tk1State.dateOfBirthTextCtrl.text,
+                          PATTERN_13) ??
+                      DateTime.now(),
+                  onlyYear: true,
+                );
+                break;
+              case BirthTypeEnum.monthYear:
+                selectedDate = await UtilWidget.showPeriodDatePicker(
+                  dateTime: convertStringToDateSafe(
+                          controller.d02Tk1State.dateOfBirthTextCtrl.text,
+                          PATTERN_12) ??
+                      DateTime.now(),
+                );
+                break;
+              case BirthTypeEnum.full:
+                selectedDate = await UtilWidget.showDateTimePicker(
+                  dateTimeInit: convertStringToDateSafe(
+                          controller.d02Tk1State.dateOfBirthTextCtrl.text,
+                          PATTERN_1) ??
+                      DateTime.now(),
+                );
+                break;
+            }
+            if (selectedDate != null) {
+              controller.d02Tk1State.dateOfBirthTextCtrl.text =
+                  convertDateToStringSafe(
+                        selectedDate,
+                        controller.d02Tk1State.birthType.value.pattern,
+                      ) ??
+                      '';
+            }
+          },
+        );
       },
     );
   }

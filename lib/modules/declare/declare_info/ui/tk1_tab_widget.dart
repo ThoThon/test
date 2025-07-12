@@ -20,15 +20,21 @@ extension Tk1TabWidget on DeclareInfoPage {
                     sdsSBHeight8,
 
                     //Họ và tên
-                    _buildInputFullName(),
+                    _buildInputFullName(
+                      registrarId: '52ffe6f6-fb1e-436c-91ff-faeb0a3e5609',
+                    ),
                     sdsSBHeight12,
 
                     //Mã số BHXH
-                    _buildInputBHXHCode(),
+                    _buildInputBHXHCode(
+                      registrarId: '0d1d709e-cbeb-4804-b6a1-7949e2dd0947',
+                    ),
                     sdsSBHeight12,
 
                     //Số CCCD
-                    _buildInputCCCD(),
+                    _buildInputCCCD(
+                      registrarId: '64a6d6fd-3fce-4861-9282-42451a164f3a',
+                    ),
                     sdsSBHeight12,
 
                     //Loại ngày sinh
