@@ -1,6 +1,8 @@
 12/07/2025
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Validate các trường địa chỉ nhận hồ sơ giấy - BHW-2683
+- [Appmobile]_Chỉnh sửa giao diện bổ sung: Set focus chuột - BHW-2615
 - [Appmobile]_Lỗi focus chuột khi chọn một trường combobox - BHW-2692
+
 11/07/2025
 - [Appmobile] Label “Đính kèm file” bị căn chỉnh sai - BHW-2672
 - [Appmobile] Label “Chọn thủ tục kê khai " không scroll theo màn hình - BHW-2674

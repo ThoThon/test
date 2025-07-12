@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
@@ -7,6 +8,8 @@ import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class Tk1State {
   final formKey = GlobalKey<FormState>();
+
+  final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   final autoValidateMode = AutovalidateMode.disabled.obs;
 
