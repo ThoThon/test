@@ -1,3 +1,4 @@
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
@@ -16,6 +17,8 @@ class DeclareInfo607Controller extends BaseGetxController {
   final currentTab = DeclareInfo607Tab.tk1.obs;
 
   late final declareInfoRepository = DeclareInfoRepository(this);
+
+  final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   final tk1State = Tk1State607();
   final d01State = D01State();
@@ -208,6 +211,8 @@ class DeclareInfo607Controller extends BaseGetxController {
   DeclareInfo607Tab? get _invalidTab {
     if (tk1State.formKey.currentState?.validate() != true) {
       tk1State.autoValidateMode.value = AutovalidateMode.always;
+      // Scroll to the first invalid field
+      registeredKey.currentState?.firstInvalid?.scrollToIntoView();
       return DeclareInfo607Tab.tk1;
     }
 
