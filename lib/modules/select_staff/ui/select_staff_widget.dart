@@ -137,11 +137,19 @@ extension SelectStaffWidget on SelectStaffPage {
             child: controller.listStaffSelect.isEmpty
                 ? UtilWidget.buildEmptyList()
                 : ListView.separated(
-                    itemBuilder: (_, index) =>
-                        _buildItemStaff(controller.listStaffSelect[index]),
-                    itemCount: controller.listStaffSelect.length,
-                    separatorBuilder: (_, __) =>
-                        UtilWidget.buildDividerStaffList(),
+                    itemBuilder: (_, index) {
+                      if (index == controller.listStaffSelect.length) {
+                        return UtilWidget.buildDividerStaffList();
+                      }
+                      return _buildItemStaff(controller.listStaffSelect[index]);
+                    },
+                    itemCount: controller.listStaffSelect.length + 1,
+                    separatorBuilder: (_, index) {
+                      if (index == controller.listStaffSelect.length - 1) {
+                        return const SizedBox.shrink();
+                      }
+                      return UtilWidget.buildDividerStaffList();
+                    },
                   ),
           ),
         ),
