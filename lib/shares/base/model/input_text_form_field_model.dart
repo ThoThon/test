@@ -15,7 +15,7 @@ class InputTextModel {
 
   final double borderRadius;
 
-  final TextInputAction iconNextTextInputAction;
+  final TextInputAction? textInputAction;
 
   final ValueChanged<String>? submitFunc;
 
@@ -97,7 +97,7 @@ class InputTextModel {
     this.submitFunc,
     this.nextNode,
     this.obscureText = false,
-    this.iconNextTextInputAction = TextInputAction.next,
+    this.textInputAction,
     this.onNext,
     this.validator,
     this.inputFormatters = 0,

@@ -598,6 +598,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       isRequired: false,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
+      textInputAction: TextInputAction.done,
     );
   }
 

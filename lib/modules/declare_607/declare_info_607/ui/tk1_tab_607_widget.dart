@@ -1487,6 +1487,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             inputFormatters: InputFormatterEnum.textNormal,
             onChanged: controller.onChangeAddressTT,
             maxLengthInputForm: 300,
+            textInputAction: TextInputAction.done,
           ),
         );
       },

@@ -65,7 +65,7 @@ extension HistoryWidget on HistoryPage {
                       isShowCounterText: false,
                       controller: controller.searchController,
                       hintText: LocaleKeys.history_inputFileNumber.tr,
-                      iconNextTextInputAction: TextInputAction.done,
+                      textInputAction: TextInputAction.done,
                       hintTextColor: AppColors.thumbColorSwitch,
                       hintTextSize: AppDimens.fontSmall(),
                       isDense: true,

@@ -239,6 +239,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
       isRequired: true,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 1000,
+      textInputAction: TextInputAction.done,
       validator: (value) {
         if (value.isNullOrEmpty) {
           return LocaleKeys
