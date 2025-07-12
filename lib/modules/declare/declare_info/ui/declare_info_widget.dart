@@ -197,7 +197,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
   Widget _buildSelectGender() {
     return CardDropdownWithLabel<Gender>(
-      key: ValueKey(controller.d02Tk1State.gender.value),
       labelText: LocaleKeys.declareInfo_gender.tr,
       items: Gender.values,
       display: (item) => item.title,

@@ -381,7 +381,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
 
   Widget _buildSelectGender() {
     return CardDropdownWithLabel<Gender>(
-      key: ValueKey(controller.tk1State.gender.value),
       labelText: LocaleKeys.declareInfo_gender.tr,
       items: Gender.values,
       display: (item) => item.title,
