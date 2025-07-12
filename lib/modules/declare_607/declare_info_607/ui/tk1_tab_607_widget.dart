@@ -1068,7 +1068,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 }
               },
               selectedItem: controller.tk1State.districtReceivePaper.value,
-              display: (district) => district.name,
+              display: (district) => '${district.id} - ${district.name}',
               enableClearIcon: true,
               onTapClear: controller.onTapClearDistrictReceivePaper,
             );
@@ -1131,7 +1131,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 }
               },
               selectedItem: controller.tk1State.wardReceivePaper.value,
-              display: (ward) => ward.name,
+              display: (ward) => '${ward.id} - ${ward.name}',
               enableClearIcon: true,
               onTapClear: controller.onTapClearWardReceivePaper,
             );
