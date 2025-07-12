@@ -883,7 +883,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 title: LocaleKeys.declareInfo_selectProvince.tr,
                 listFilter: AppData.instance.provinces.toList(),
                 selectedItem: controller.tk1State.provinceReceivePaper.value,
-                display: (value) => value.name,
+                display: (value) => '${value.id} - ${value.name}',
                 onAccept: (value) {
                   if (value == null) return;
                   controller.onChangeProvinceReceivePaper(value);
@@ -894,7 +894,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             );
           },
           selectedItem: controller.tk1State.provinceReceivePaper.value,
-          display: (province) => province.name,
+          display: (province) => '${province.id} - ${province.name}',
           enableClearIcon: true,
           onTapClear: controller.onTapClearProvinceReceivePaper,
           validator: (value) {
