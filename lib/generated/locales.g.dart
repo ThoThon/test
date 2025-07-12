@@ -568,17 +568,25 @@ class LocaleKeys {
       'declareInfo_receiveProfileResult';
   static const declareInfo_provinceReceivePaper =
       'declareInfo_provinceReceivePaper';
+  static const declareInfo_provinceReceivePaperCannotEmpty =
+      'declareInfo_provinceReceivePaperCannotEmpty';
   static const declareInfo_selectProvinceReceivePaper =
       'declareInfo_selectProvinceReceivePaper';
   static const declareInfo_districtReceivePaper =
       'declareInfo_districtReceivePaper';
+  static const declareInfo_districtReceivePaperCannotEmpty =
+      'declareInfo_districtReceivePaperCannotEmpty';
   static const declareInfo_selectDistrictReceivePaper =
       'declareInfo_selectDistrictReceivePaper';
   static const declareInfo_wardReceivePaper = 'declareInfo_wardReceivePaper';
+  static const declareInfo_wardReceivePaperCannotEmpty =
+      'declareInfo_wardReceivePaperCannotEmpty';
   static const declareInfo_selectWardReceivePaper =
       'declareInfo_selectWardReceivePaper';
   static const declareInfo_addressReceivePaper =
       'declareInfo_addressReceivePaper';
+  static const declareInfo_addressReceivePaperCannotEmpty =
+      'declareInfo_addressReceivePaperCannotEmpty';
   static const declareInfo_receiveResultElectronic =
       'declareInfo_receiveResultElectronic';
   static const declareInfo_receiveResultPaper =
@@ -1478,12 +1486,20 @@ class Locales {
     'declareInfo_enterAttachedProfile': 'Nhập hồ sơ kèm theo',
     'declareInfo_receiveProfileResult': 'Nhận kết quả hồ sơ',
     'declareInfo_provinceReceivePaper': 'Tỉnh nhận hồ sơ giấy',
+    'declareInfo_provinceReceivePaperCannotEmpty':
+        'Tỉnh nhận hồ sơ giấy không được bỏ trống',
     'declareInfo_selectProvinceReceivePaper': 'Chọn tỉnh nhận hồ sơ giấy',
     'declareInfo_districtReceivePaper': 'Huyện nhận hồ sơ giấy',
+    'declareInfo_districtReceivePaperCannotEmpty':
+        'Huyện nhận hồ sơ giấy không được bỏ trống',
     'declareInfo_selectDistrictReceivePaper': 'Chọn huyện nhận hồ sơ giấy',
     'declareInfo_wardReceivePaper': 'Xã nhận hồ sơ giấy',
+    'declareInfo_wardReceivePaperCannotEmpty':
+        'Xã nhận hồ sơ giấy không được bỏ trống',
     'declareInfo_selectWardReceivePaper': 'Chọn xã nhận hồ sơ giấy',
     'declareInfo_addressReceivePaper': 'Địa chỉ nhận hồ sơ giấy',
+    'declareInfo_addressReceivePaperCannotEmpty':
+        'Địa chỉ nhận hồ sơ giấy không được bỏ trống',
     'declareInfo_receiveResultElectronic': 'Nhận kết quả bản điện tử',
     'declareInfo_receiveResultPaper': 'Nhận kết quả bản giấy',
     'declareInfo_coefficient': 'Hệ số',
