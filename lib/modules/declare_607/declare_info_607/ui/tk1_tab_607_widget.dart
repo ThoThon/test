@@ -1000,7 +1000,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                       listFilter: AppData.instance.provinces.toList(),
                       selectedItem:
                           controller.tk1State.provinceReceivePaper.value,
-                      display: (value) => value.name,
+                      display: (value) => '${value.id} - ${value.name}',
                       onAccept: (value) {
                         if (value == null) return;
                         controller.onChangeProvinceReceivePaper(value);
@@ -1011,7 +1011,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   );
                 },
                 selectedItem: controller.tk1State.provinceReceivePaper.value,
-                display: (province) => province.name,
+                display: (province) => '${province.id} - ${province.name}',
                 enableClearIcon: true,
                 onTapClear: controller.onTapClearProvinceReceivePaper,
               );
@@ -1067,7 +1067,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 }
               },
               selectedItem: controller.tk1State.districtReceivePaper.value,
-              display: (district) => district.name,
+              display: (district) => '${district.id} - ${district.name}',
               enableClearIcon: true,
               onTapClear: controller.onTapClearDistrictReceivePaper,
             );
@@ -1130,7 +1130,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 }
               },
               selectedItem: controller.tk1State.wardReceivePaper.value,
-              display: (ward) => ward.name,
+              display: (ward) => '${ward.id} - ${ward.name}',
               enableClearIcon: true,
               onTapClear: controller.onTapClearWardReceivePaper,
             );
