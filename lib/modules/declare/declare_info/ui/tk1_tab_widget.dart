@@ -956,6 +956,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             inputFormatters: InputFormatterEnum.textNormal,
             onChanged: controller.onChangeAddressTT,
             maxLengthInputForm: 300,
+            textInputAction: TextInputAction.done,
           ),
         );
       },

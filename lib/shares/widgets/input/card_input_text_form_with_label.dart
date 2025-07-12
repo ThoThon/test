@@ -21,6 +21,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
   final Color? fillColor;
   final bool enable;
   final GlobalKey? fieldKey;
+  final TextInputAction? textInputAction;
 
   const CardInputTextFormWithLabel({
     super.key,
@@ -43,6 +44,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
     this.fillColor,
     this.enable = true,
     this.fieldKey,
+    this.textInputAction,
   });
 
   @override
@@ -95,6 +97,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
                 isValidate: isRequired,
                 controller: controller,
                 isReadOnly: isReadOnly,
+                textInputAction: textInputAction,
                 fillColor: fillColor,
                 hintText: hintText ?? 'Nhập ${labelText.toLowerCase()}',
                 maxLengthInputForm: maxLengthInputForm,

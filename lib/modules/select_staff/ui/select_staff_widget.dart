@@ -16,7 +16,7 @@ extension SelectStaffWidget on SelectStaffPage {
       InputTextModel(
         controller: controller.searchController,
         hintText: LocaleKeys.staffList_fillFullName.tr,
-        iconNextTextInputAction: TextInputAction.done,
+        textInputAction: TextInputAction.done,
         hintTextColor: AppColors.thumbColorSwitch,
         maxLengthInputForm: 100,
         isShowCounterText: false,

@@ -629,6 +629,7 @@ extension D02TabWidget on DeclareInfoPage {
       controller: controller.d02State.noteTextCtrl,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
+      textInputAction: TextInputAction.done,
     );
   }
 }

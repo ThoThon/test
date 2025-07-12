@@ -210,7 +210,8 @@ class BuildInputTextState extends State<BuildInputText> {
           }
           widget.inputTextFormModel.onChanged?.call(v);
         },
-        textInputAction: widget.inputTextFormModel.iconNextTextInputAction,
+        textInputAction:
+            widget.inputTextFormModel.textInputAction ?? TextInputAction.next,
         style: FontStyleUtils.fontStyleSans(
           fontSize:
               widget.inputTextFormModel.hintTextSize ?? AppDimens.sizeTextSmall,
@@ -228,9 +229,8 @@ class BuildInputTextState extends State<BuildInputText> {
         onFieldSubmitted: (v) {
           if (widget.inputTextFormModel.submitFunc != null) {
             widget.inputTextFormModel.submitFunc!.call(v);
-          } else if (widget.inputTextFormModel.iconNextTextInputAction
-                  .toString() ==
-              TextInputAction.next.toString()) {
+          } else if (widget.inputTextFormModel.textInputAction ==
+              TextInputAction.next) {
             FocusScope.of(context)
                 .requestFocus(widget.inputTextFormModel.nextNode);
 
