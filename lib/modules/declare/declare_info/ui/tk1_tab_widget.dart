@@ -556,11 +556,10 @@ extension Tk1TabWidget on DeclareInfoPage {
         inputFormatters: InputFormatterEnum.textNormal,
         maxLengthInputForm: 100,
         validator: (value) {
-          final trimmedValue = value?.trim();
+          final trimmedValue = value?.trim() ?? '';
 
-          if (trimmedValue == null ||
-              trimmedValue.isEmpty &&
-                  controller.tk1State.isHouseholdInfoRequired.value) {
+          if (trimmedValue.isEmpty &&
+              controller.tk1State.isHouseholdInfoRequired.value) {
             return LocaleKeys.declareInfo_headOfHouseholdFullNameCannotEmpty.tr;
           }
 
@@ -581,11 +580,10 @@ extension Tk1TabWidget on DeclareInfoPage {
         onChanged: controller.onChangeHeadOfHouseholdCCCD,
         maxLengthInputForm: 20,
         validator: (value) {
-          final trimmedValue = value?.trim();
+          final trimmedValue = value?.trim() ?? '';
 
-          if (trimmedValue == null ||
-              trimmedValue.isEmpty &&
-                  controller.tk1State.isHouseholdInfoRequired.value) {
+          if (trimmedValue.isEmpty &&
+              controller.tk1State.isHouseholdInfoRequired.value) {
             return LocaleKeys.declareInfo_headOfHouseholdCCCDCannotEmpty.tr;
           }
 
@@ -745,11 +743,10 @@ extension Tk1TabWidget on DeclareInfoPage {
         onChanged: controller.onChangeAddressTT,
         maxLengthInputForm: 300,
         validator: (value) {
-          final trimmedValue = value?.trim();
+          final trimmedValue = value?.trim() ?? '';
 
-          if (trimmedValue == null ||
-              trimmedValue.isEmpty &&
-                  controller.tk1State.isHouseholdInfoRequired.value) {
+          if (trimmedValue.isEmpty &&
+              controller.tk1State.isHouseholdInfoRequired.value) {
             return LocaleKeys.declareInfo_addressTTCannotEmpty.tr;
           }
 
