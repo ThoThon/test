@@ -1,3 +1,7 @@
+12/07/2025
+- [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Validate các trường địa chỉ nhận hồ sơ giấy - BHW-2683
+- [Appmobile]_Chỉnh sửa giao diện: Yêu cầu cập nhật mới - Chỉnh sửa giao diện mà Chọn nhân viên - BHW-2600
+
 11/07/2025
 - [Appmobile] Label “Đính kèm file” bị căn chỉnh sai - BHW-2672
 - [Appmobile] Label “Chọn thủ tục kê khai " không scroll theo màn hình - BHW-2674
@@ -18,7 +22,7 @@
 - [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất trong hộp combobox - BHW-2667
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Xử lý khi Bỏ chọn người tham gia là chủ hộ - BHW-2675
 - [Appmobile]_Màn Đăng ký dịch vụ và Đăng ký cấp mã: Xử lý ẩn bàn phím sau khi nhấn icon Tìm kiếm - BHW-2680
-- [Appmobile]_Chỉnh sửa giao diện: Yêu cầu cập nhật mới - Chỉnh sửa giao diện mà Chọn nhân viên - BHW-2600
+- [Appmobile]_Lỗi đè giao diện - BHW-2643
 
 10/07/2025
 - [Appmobile]_Lỗi hiện danh sách màn thông báo - BHW-2655
