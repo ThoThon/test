@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
@@ -13,6 +14,8 @@ class Tk1State607 {
   String? id;
 
   final formKey = GlobalKey<FormState>();
+
+  final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   String? selectedStaffId;
 
