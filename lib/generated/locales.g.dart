@@ -1589,8 +1589,9 @@ class Locales {
     'staffList_fillFullName': 'Nhập họ tên',
     'staffList_confirm': 'Xác nhận',
     'staffList_selectedStaff': 'Chọn nhân viên',
-    'staffList_deleteStaffConfirmMessage': 'Bạn có đồng ý xóa nhân sự đã chọn?',
-    'staffList_deleteStaffSuccess': 'Xóa nhân sự thành công',
+    'staffList_deleteStaffConfirmMessage':
+        'Bạn có đồng ý xóa nhân viên đã chọn?',
+    'staffList_deleteStaffSuccess': 'Xóa nhân viên thành công',
     'staffList_uploadImage': 'Tải ảnh lên',
     'staffList_noEmployeeDeclaredMessage':
         'Chưa có nhân viên nào được khai báo',
