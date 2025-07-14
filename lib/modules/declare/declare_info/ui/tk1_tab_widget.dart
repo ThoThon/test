@@ -192,6 +192,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                   BottomSheetSearch<EthnicModel>(
                     title: LocaleKeys.declareInfo_selectEthnic.tr,
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputEthnic.tr,
                     listFilter: AppData.instance.ethnics.toList(),
                     selectedItem: controller.d02Tk1State.selectedEthnic.value,
                     display: (value) => value.text,
@@ -234,6 +235,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                   BottomSheetSearch<NationModel>(
                     title: LocaleKeys.declareInfo_selectNationality.tr,
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputNationality.tr,
                     listFilter: AppData.instance.nations.toList(),
                     selectedItem:
                         controller.d02Tk1State.selectedNationality.value,
@@ -286,6 +288,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                 Get.bottomSheet(
                   BottomSheetSearch<ProvinceModel>(
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.tk1State.provinceOfBirth.value,
@@ -445,6 +448,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                 Get.bottomSheet(
                   BottomSheetSearch<ProvinceModel>(
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.tk1State.provinceReceive.value,
@@ -623,6 +627,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                 Get.bottomSheet(
                   BottomSheetSearch<ProvinceModel>(
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.tk1State.provinceKCB.value,
@@ -799,6 +804,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                     title: LocaleKeys.declareInfo_selectProvince.tr,
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.tk1State.provinceTT.value,
+                    hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     display: (value) => '${value.id} - ${value.name}',
                     onAccept: (value) {
                       if (value == null) return;

@@ -397,6 +397,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 Get.bottomSheet(
                   BottomSheetSearch<ProvinceModel>(
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.familyMember_selectProvince.tr,
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.selectedProvince.value,
@@ -555,6 +556,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 Get.bottomSheet(
                   BottomSheetSearch<RelationshipModel>(
                     maxLength: 20,
+                    hintText: LocaleKeys
+                        .familyMember_inputRelationshipWithHeadOfHousehold.tr,
                     title: LocaleKeys
                         .familyMember_selectRelationshipWithHeadOfHousehold.tr,
                     listFilter: AppData.instance.relationships.toList(),
