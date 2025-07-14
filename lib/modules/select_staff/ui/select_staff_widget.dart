@@ -23,7 +23,6 @@ extension SelectStaffWidget on SelectStaffPage {
         InputTextModel(
           controller: controller.searchController,
           hintText: LocaleKeys.staffList_search.tr,
-          iconNextTextInputAction: TextInputAction.done,
           hintTextColor: AppColors.thumbColorSwitch,
           prefixIconColor: AppColors.thumbColorSwitch,
           fillColor: AppColors.colorTransparent,
