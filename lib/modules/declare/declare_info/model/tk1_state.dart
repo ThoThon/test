@@ -172,6 +172,8 @@ class Tk1State {
 
     birthAddressTextCtrl.text = staff.diaChiKhaiSinh?.trim() ?? '';
 
+    isDuplicateBirthAddress.value = staff.trungDiaChiKhaiSinh;
+
     provinceReceive.value = staff.noiNhanTinh;
 
     districtReceive.value = staff.noiNhanHuyen;
@@ -185,6 +187,8 @@ class Tk1State {
     hospitalKCB.value = staff.benhVien;
 
     contactPhoneNumberTextCtrl.text = staff.dienThoaiLienHe?.trim() ?? '';
+
+    isParticipantHeadOfHousehold.value = staff.laChuHo;
 
     headOfHouseholdTextCtrl.text = staff.hoTenChuHo?.trim() ?? '';
 
