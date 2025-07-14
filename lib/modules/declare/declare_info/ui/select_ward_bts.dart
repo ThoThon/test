@@ -76,7 +76,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
       hintText: LocaleKeys.declareInfo_inputWard.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
-      borderColor: AppColors.primaryColor,
+      borderColor: AppColors.thumbColorSwitch,
       autofocus: false,
       fillColor: AppColors.colorWhite,
       borderRadius: const BorderRadius.all(Radius.circular(25)),
@@ -90,7 +90,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
         child: Center(
           child: SDSImageSvg(
             Assets.ASSETS_ICONS_IC_SEARCH_SVG,
-            color: AppColors.primaryColor,
+            color: AppColors.thumbColorSwitch,
           ),
         ),
       ),
@@ -104,7 +104,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
               },
               icon: const Icon(
                 Icons.clear,
-                color: AppColors.primaryColor,
+                color: AppColors.thumbColorSwitch,
               ),
             ),
           )),
