@@ -9,6 +9,9 @@ extension SelectStaffWidget on SelectStaffPage {
         _staffTitle(),
         sdsSBHeight12,
         _buildViewListStaffSelect(),
+        // const SizedBox(
+        //   height: 20,
+        // )
       ],
     ).paddingSymmetric(horizontal: AppDimens.paddingSmallest);
   }
@@ -45,48 +48,92 @@ extension SelectStaffWidget on SelectStaffPage {
         ),
       );
 
-  Widget _buildItemStaff(SelectStaffResponse item) {
+  Widget _buildItemStaff(SelectStaffResponse item, int index) {
     return Obx(
       () {
-        return InkWell(
-          onTap: () {
-            Get.back(result: item);
-          },
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SDSImageSvg(
-                Assets.ASSETS_ICONS_IC_PERSON_2_SVG,
-                height: AppDimens.sizeIcon32,
-                color: AppColors.primaryColor,
-              ).paddingSymmetric(
-                vertical: AppDimens.paddingSmall,
-                horizontal: AppDimens.defaultPadding,
-              ),
-              sdsSBWidth12,
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildStaffInfo(item),
-                    if (item.chucVu.isNotEmpty)
-                      SDSBuildText(
-                        item.chucVu,
-                        style: AppTextStyle.font12Re,
-                      ),
-                  ],
+        final isFirst = index == 0;
+        final isLast = index == controller.listStaffSelect.length - 1;
+
+        BorderRadius borderRadius;
+        Border border;
+
+        if (isFirst && isLast) {
+          // Single item - all corners rounded, all borders
+          borderRadius = BorderRadius.circular(AppDimens.radius12);
+          border = Border.all(color: AppColors.dsGray5);
+        } else if (isFirst) {
+          // First item - top corners rounded, top, left, right borders
+          borderRadius = const BorderRadius.only(
+            topLeft: Radius.circular(AppDimens.radius12),
+            topRight: Radius.circular(AppDimens.radius12),
+          );
+          border = const Border(
+            top: BorderSide(color: AppColors.dsGray5),
+            left: BorderSide(color: AppColors.dsGray5),
+            right: BorderSide(color: AppColors.dsGray5),
+          );
+        } else if (isLast) {
+          // Last item - bottom corners rounded, all borders
+          borderRadius = const BorderRadius.only(
+            bottomLeft: Radius.circular(AppDimens.radius12),
+            bottomRight: Radius.circular(AppDimens.radius12),
+          );
+          border = Border.all(color: AppColors.dsGray5);
+        } else {
+          // Middle items - no rounded corners, left and right borders only
+          borderRadius = BorderRadius.zero;
+          border = const Border(
+            top: BorderSide(color: AppColors.dsGray5),
+            left: BorderSide(color: AppColors.dsGray5),
+            right: BorderSide(color: AppColors.dsGray5),
+          );
+        }
+
+        return Container(
+          decoration: BoxDecoration(
+            border: border,
+            borderRadius: borderRadius,
+          ),
+          child: InkWell(
+            onTap: () {
+              Get.back(result: item);
+            },
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SDSImageSvg(
+                  Assets.ASSETS_ICONS_IC_PERSON_2_SVG,
+                  height: AppDimens.sizeIcon32,
+                  color: AppColors.primaryColor,
+                ).paddingSymmetric(
+                  vertical: AppDimens.paddingSmall,
+                  horizontal: AppDimens.defaultPadding,
                 ),
-              ),
-              Icon(
-                Icons.check_outlined,
-                color: controller.selectedID.value == item.id
-                    ? AppColors.primaryColor
-                    : AppColors.colorTransparent,
-              ),
-            ],
-          ).paddingSymmetric(
-            vertical: AppDimens.paddingSmallest,
-            horizontal: AppDimens.paddingSmallest,
+                sdsSBWidth12,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildStaffInfo(item),
+                      if (item.chucVu.isNotEmpty)
+                        SDSBuildText(
+                          item.chucVu,
+                          style: AppTextStyle.font12Re,
+                        ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.check_outlined,
+                  color: controller.selectedID.value == item.id
+                      ? AppColors.primaryColor
+                      : AppColors.colorTransparent,
+                ),
+              ],
+            ).paddingSymmetric(
+              vertical: AppDimens.paddingSmallest,
+              horizontal: AppDimens.paddingSmallest,
+            ),
           ),
         );
       },
@@ -126,32 +173,21 @@ extension SelectStaffWidget on SelectStaffPage {
 
   Widget _buildViewListStaffSelect() {
     return Expanded(
-      child: UtilWidget.buildCardBase(
-        colorBorder: AppColors.dsGray5,
-        baseShowLoading(
-          () => UtilWidget.buildSmartRefresher(
-            refreshController: controller.refreshController,
-            onRefresh: controller.onRefresh,
-            onLoadMore: controller.onLoadMore,
-            enablePullUp: true,
-            child: controller.listStaffSelect.isEmpty
-                ? UtilWidget.buildEmptyList()
-                : ListView.separated(
-                    itemBuilder: (_, index) {
-                      if (index == controller.listStaffSelect.length) {
-                        return UtilWidget.buildDividerStaffList();
-                      }
-                      return _buildItemStaff(controller.listStaffSelect[index]);
-                    },
-                    itemCount: controller.listStaffSelect.length + 1,
-                    separatorBuilder: (_, index) {
-                      if (index == controller.listStaffSelect.length - 1) {
-                        return const SizedBox.shrink();
-                      }
-                      return UtilWidget.buildDividerStaffList();
-                    },
-                  ),
-          ),
+      child: baseShowLoading(
+        () => UtilWidget.buildSmartRefresher(
+          refreshController: controller.refreshController,
+          onRefresh: controller.onRefresh,
+          onLoadMore: controller.onLoadMore,
+          enablePullUp: true,
+          child: controller.listStaffSelect.isEmpty
+              ? UtilWidget.buildEmptyList()
+              : ListView.builder(
+                  itemBuilder: (_, index) {
+                    return _buildItemStaff(
+                        controller.listStaffSelect[index], index);
+                  },
+                  itemCount: controller.listStaffSelect.length,
+                ),
         ),
       ),
     );
