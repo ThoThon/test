@@ -14,6 +14,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
   final double? borderRadius;
   final AutovalidateMode? autovalidateMode;
   final GlobalKey? fieldKey;
+  final VoidCallback? onTap;
 
   const CardDropdownWithLabel({
     super.key,
@@ -29,6 +30,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
     this.borderRadius,
     this.autovalidateMode,
     this.fieldKey,
+    this.onTap,
   });
 
   @override
@@ -120,6 +122,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
           sdsSBHeight8,
           DropdownButtonHideUnderline(
             child: DropdownButton<T>(
+              onTap: onTap,
               isDense: isDense,
               isExpanded: true,
               padding: const EdgeInsets.only(

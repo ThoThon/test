@@ -1132,6 +1132,31 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.3"
+  sds_share_pdf:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "2aec929367b13b6a4b3a99dad6c02b4eb6242431"
+      url: "https://github.com/pvc97/sds_share_pdf.git"
+    source: git
+    version: "0.0.1"
+  share_plus:
+    dependency: "direct main"
+    description:
+      name: share_plus
+      sha256: b2961506569e28948d75ec346c28775bb111986bb69dc6a20754a457e3d97fa0
+      url: "https://pub.dev"
+    source: hosted
+    version: "11.0.0"
+  share_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: share_plus_platform_interface
+      sha256: "1032d392bc5d2095a77447a805aa3f804d2ae6a4d5eef5e6ebb3bd94c1bc19ef"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.0"
   shelf:
     dependency: transitive
     description:

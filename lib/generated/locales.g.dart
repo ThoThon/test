@@ -698,6 +698,7 @@ class LocaleKeys {
   static const staffList_continue = 'staffList_continue';
   static const staffList_attachFileErorr = 'staffList_attachFileErorr';
   static const staffList_fillFullName = 'staffList_fillFullName';
+  static const staffList_search = 'staffList_search';
   static const staffList_confirm = 'staffList_confirm';
   static const staffList_selectedStaff = 'staffList_selectedStaff';
   static const staffList_deleteStaffConfirmMessage =
@@ -954,6 +955,9 @@ class LocaleKeys {
   static const registerCode_contentDownloadAttachment =
       'registerCode_contentDownloadAttachment';
   static const registerCode_signature = 'registerCode_signature';
+  static const viewPdf_download = 'viewPdf_download';
+  static const viewPdf_share = 'viewPdf_share';
+  static const viewPdf_cannotDownloadFile = 'viewPdf_cannotDownloadFile';
 }
 
 class Locales {
@@ -1581,13 +1585,15 @@ class Locales {
     'staffList_addNewStaff': 'Thêm nhân viên',
     'staffList_attachFile': 'Đính kèm file',
     'staffList_addAttachedImage': 'Thêm hình ảnh đính kèm',
-    'staffList_continue': 'Tiếp tục',
+    'staffList_continue': 'Tiếp theo',
     'staffList_attachFileErorr': 'File không hợp lệ',
     'staffList_fillFullName': 'Nhập họ tên',
+    'staffList_search': 'Tìm kiếm',
     'staffList_confirm': 'Xác nhận',
     'staffList_selectedStaff': 'Chọn nhân viên',
-    'staffList_deleteStaffConfirmMessage': 'Bạn có đồng ý xóa nhân sự đã chọn?',
-    'staffList_deleteStaffSuccess': 'Xóa nhân sự thành công',
+    'staffList_deleteStaffConfirmMessage':
+        'Bạn có đồng ý xóa nhân viên đã chọn?',
+    'staffList_deleteStaffSuccess': 'Xóa nhân viên thành công',
     'staffList_uploadImage': 'Tải ảnh lên',
     'staffList_noEmployeeDeclaredMessage':
         'Chưa có nhân viên nào được khai báo',
@@ -1797,5 +1803,8 @@ class Locales {
     'registerCode_contentCannotEmpty': 'Nội dung không được để trống',
     'registerCode_contentDownloadAttachment': '[JPG, PNG,...]',
     'registerCode_signature': 'Chữ ký số',
+    'viewPdf_download': 'Tải xuống',
+    'viewPdf_share': 'Chia sẻ',
+    'viewPdf_cannotDownloadFile': 'Có lỗi xảy ra. Không thể tải xuống file.',
   };
 }

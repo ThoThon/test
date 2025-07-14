@@ -580,13 +580,14 @@
     "addNewStaff": "Thêm nhân viên",
     "attachFile": "Đính kèm file",
     "addAttachedImage": "Thêm hình ảnh đính kèm",
-    "continue": "Tiếp tục",
+    "continue": "Tiếp theo",
     "attachFileErorr": "File không hợp lệ",
     "fillFullName": "Nhập họ tên",
+    "search": "Tìm kiếm",
     "confirm": "Xác nhận",
     "selectedStaff": "Chọn nhân viên",
-    "deleteStaffConfirmMessage": "Bạn có đồng ý xóa nhân sự đã chọn?",
-    "deleteStaffSuccess": "Xóa nhân sự thành công",
+    "deleteStaffConfirmMessage": "Bạn có đồng ý xóa nhân viên đã chọn?",
+    "deleteStaffSuccess": "Xóa nhân viên thành công",
     "uploadImage": "Tải ảnh lên",
     "noEmployeeDeclaredMessage": "Chưa có nhân viên nào được khai báo",
     "edit": "Sửa",
@@ -788,5 +789,10 @@
     "contentCannotEmpty": "Nội dung không được để trống",
     "contentDownloadAttachment": "[JPG, PNG,...]",
     "signature": "Chữ ký số"
+  },
+  "viewPdf": {
+    "download": "Tải xuống",
+    "share": "Chia sẻ",
+    "cannotDownloadFile": "Có lỗi xảy ra. Không thể tải xuống file."
   }
 }

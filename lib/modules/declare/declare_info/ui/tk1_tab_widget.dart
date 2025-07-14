@@ -762,7 +762,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             autovalidateMode: controller.tk1State.autoValidateMode.value,
             isRequired: controller.tk1State.isHouseholdInfoRequired.value,
             controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
-            inputFormatters: InputFormatterEnum.textNormal,
+            inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
             onChanged: controller.onChangeHeadOfHouseholdCCCD,
             maxLengthInputForm: 20,
           ),
