@@ -9,9 +9,6 @@ extension SelectStaffWidget on SelectStaffPage {
         _staffTitle(),
         sdsSBHeight12,
         _buildViewListStaffSelect(),
-        // const SizedBox(
-        //   height: 20,
-        // )
       ],
     ).paddingSymmetric(horizontal: AppDimens.paddingSmallest);
   }
@@ -57,11 +54,11 @@ extension SelectStaffWidget on SelectStaffPage {
         Border border;
 
         if (isFirst && isLast) {
-          // Single item - all corners rounded, all borders
+          // Nếu 1 item => Full border
           borderRadius = BorderRadius.circular(AppDimens.radius12);
           border = Border.all(color: AppColors.dsGray5);
         } else if (isFirst) {
-          // First item - top corners rounded, top, left, right borders
+          // Item đầu tiên => Border bên trên và 2 bên
           borderRadius = const BorderRadius.only(
             topLeft: Radius.circular(AppDimens.radius12),
             topRight: Radius.circular(AppDimens.radius12),
@@ -72,14 +69,14 @@ extension SelectStaffWidget on SelectStaffPage {
             right: BorderSide(color: AppColors.dsGray5),
           );
         } else if (isLast) {
-          // Last item - bottom corners rounded, all borders
+          // Item cuối cung => Border xung quanh
           borderRadius = const BorderRadius.only(
             bottomLeft: Radius.circular(AppDimens.radius12),
             bottomRight: Radius.circular(AppDimens.radius12),
           );
           border = Border.all(color: AppColors.dsGray5);
         } else {
-          // Middle items - no rounded corners, left and right borders only
+          // Item ở giữa => Border 2 bên và bên trên (không có bên dưới để tránh 2 border stack lên nhau)
           borderRadius = BorderRadius.zero;
           border = const Border(
             top: BorderSide(color: AppColors.dsGray5),
