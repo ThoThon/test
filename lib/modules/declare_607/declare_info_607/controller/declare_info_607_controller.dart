@@ -438,10 +438,12 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
-  void syncDataAddressInfoAndProfileInfo() {
-    tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
-    tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
-    tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+  void _syncDataAddressInfoAndProfileInfo() {
+    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
+      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+    }
   }
 
   void onChangeProvinceReceive(ProvinceModel value) {
@@ -456,9 +458,7 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     tk1State.provinceReceive.value = value;
 
-    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
-      syncDataAddressInfoAndProfileInfo();
-    }
+    _syncDataAddressInfoAndProfileInfo();
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       if (tk1State.provinceTT.value != value) {
@@ -482,9 +482,7 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     tk1State.districtReceive.value = value;
 
-    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
-      syncDataAddressInfoAndProfileInfo();
-    }
+    _syncDataAddressInfoAndProfileInfo();
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       if (tk1State.districtTT.value != value) {
@@ -503,9 +501,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
     tk1State.wardReceive.value = value;
 
-    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
-      syncDataAddressInfoAndProfileInfo();
-    }
+    _syncDataAddressInfoAndProfileInfo();
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.wardTT.value = value;
