@@ -446,9 +446,28 @@ class DeclareInfo607Controller extends BaseGetxController {
       // Xóa huyện, xã nơi nhận hồ sơ khi thay đổi tỉnh nơi nhận hồ sơ
       tk1State.districtReceive.value = null;
       tk1State.wardReceive.value = null;
+      if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+        tk1State.provinceReceivePaper.value = value;
+        tk1State.districtReceivePaper.value = null;
+        tk1State.wardReceivePaper.value = null;
+      }
     }
 
     tk1State.provinceReceive.value = value;
+
+    if (tk1State.provinceReceivePaper.value != value &&
+        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.provinceReceivePaper.value = value;
+      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+    }
+
+    if (tk1State.provinceReceivePaper.value == value &&
+        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.provinceReceivePaper.value = value;
+      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+    }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       if (tk1State.provinceTT.value != value) {
@@ -468,8 +487,25 @@ class DeclareInfo607Controller extends BaseGetxController {
 
       // Xóa xã nơi nhận hồ sơ khi thay đổi huyện nơi nhận hồ sơ
       tk1State.wardReceive.value = null;
+      if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+        tk1State.districtReceivePaper.value = value;
+        tk1State.wardReceivePaper.value = null;
+      }
     }
+
     tk1State.districtReceive.value = value;
+
+    if (tk1State.districtReceivePaper.value != value &&
+        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.districtReceivePaper.value = value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+    }
+
+    if (tk1State.districtReceivePaper.value == value &&
+        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.districtReceivePaper.value = value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+    }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       if (tk1State.districtTT.value != value) {
@@ -485,8 +521,21 @@ class DeclareInfo607Controller extends BaseGetxController {
     if (tk1State.wardReceive.value != value) {
       // Khi user thay đổi xã nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
+      if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+        tk1State.wardReceivePaper.value = value;
+      }
     }
     tk1State.wardReceive.value = value;
+
+    if (tk1State.wardReceivePaper.value != value &&
+        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.wardReceivePaper.value = value;
+    }
+
+    if (tk1State.wardReceivePaper.value == value &&
+        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.wardReceivePaper.value = value;
+    }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.wardTT.value = value;
@@ -499,6 +548,10 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.addressTTTextCtrl.text = value;
+    }
+    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.addressReceivePaperTextCtrl.text =
+          tk1State.addressReceiveTextCtrl.text;
     }
   }
 
