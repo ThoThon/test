@@ -438,6 +438,14 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
+  void _syncDataAddressInfoAndProfileInfo() {
+    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
+      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+    }
+  }
+
   void onChangeProvinceReceive(ProvinceModel value) {
     if (tk1State.provinceReceive.value != value) {
       // Khi user thay đổi tỉnh nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
@@ -449,6 +457,8 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.provinceReceive.value = value;
+
+    _syncDataAddressInfoAndProfileInfo();
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       if (tk1State.provinceTT.value != value) {
@@ -469,7 +479,10 @@ class DeclareInfo607Controller extends BaseGetxController {
       // Xóa xã nơi nhận hồ sơ khi thay đổi huyện nơi nhận hồ sơ
       tk1State.wardReceive.value = null;
     }
+
     tk1State.districtReceive.value = value;
+
+    _syncDataAddressInfoAndProfileInfo();
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       if (tk1State.districtTT.value != value) {
@@ -488,6 +501,8 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
     tk1State.wardReceive.value = value;
 
+    _syncDataAddressInfoAndProfileInfo();
+
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.wardTT.value = value;
     }
@@ -499,6 +514,10 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.addressTTTextCtrl.text = value;
+    }
+    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.addressReceivePaperTextCtrl.text =
+          tk1State.addressReceiveTextCtrl.text;
     }
   }
 
