@@ -367,24 +367,23 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
 
             switch (controller.tk1State.birthType.value) {
               case BirthTypeEnum.year:
-                selectedDate = await UtilWidget.showPeriodDatePicker(
-                  dateTime: convertStringToDateSafe(
+                selectedDate = await ShowDialog.showCalendarPickYear(
+                  initialDate: convertStringToDateSafe(
                           controller.tk1State.dateOfBirthTextCtrl.text,
                           PATTERN_13) ??
                       DateTime.now(),
-                  onlyYear: true,
                 );
                 break;
               case BirthTypeEnum.monthYear:
-                selectedDate = await UtilWidget.showPeriodDatePicker(
-                  dateTime: convertStringToDateSafe(
+                selectedDate = await ShowDialog.showCalendarPickMonthYear(
+                  dateTimeInit: convertStringToDateSafe(
                           controller.tk1State.dateOfBirthTextCtrl.text,
                           PATTERN_12) ??
                       DateTime.now(),
                 );
                 break;
               case BirthTypeEnum.full:
-                selectedDate = await UtilWidget.showDateTimePicker(
+                selectedDate = await ShowDialog.showCalendarPickDayMonthYear(
                   dateTimeInit: convertStringToDateSafe(
                           controller.tk1State.dateOfBirthTextCtrl.text,
                           PATTERN_1) ??

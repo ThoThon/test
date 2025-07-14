@@ -45,8 +45,8 @@ class DeclarationPeriodController extends BaseGetxController {
   }
 
   void pickPeriodDate() async {
-    final date = await UtilWidget.showPeriodDatePicker(
-      dateTime: selectedPeriodDate.value,
+    final date = await ShowDialog.showCalendarPickMonthYear(
+      dateTimeInit: selectedPeriodDate.value,
     );
     if (date != null) {
       selectedPeriodDate.value = date;

@@ -276,7 +276,7 @@ extension CommonInfoTab on RegisterCodePage {
           isRequired: true,
           onSelectDate: () async {
             KeyBoard.hide();
-            final selectedDate = await UtilWidget.showDateTimePicker(
+            final selectedDate = await ShowDialog.showCalendarPickDayMonthYear(
               dateTimeInit: convertStringToDateSafe(
                     controller.setupDateCtrl.text,
                     PATTERN_1,
@@ -333,7 +333,7 @@ extension CommonInfoTab on RegisterCodePage {
           isRequired: true,
           onSelectDate: () async {
             KeyBoard.hide();
-            final selectedDate = await UtilWidget.showDateTimePicker(
+            final selectedDate = await ShowDialog.showCalendarPickDayMonthYear(
               dateTimeInit: convertStringToDateSafe(
                     controller.registerDateCtrl.text,
                     PATTERN_1,

@@ -1,3 +1,4 @@
+import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 enum DialogIconType {
@@ -615,6 +616,249 @@ class ShowDialog {
       ),
       barrierDismissible: true,
       isActiveBack,
+    );
+  }
+
+  static Future<DateTime?> showCalendarPickDayMonthYear({
+    DateTime? dateTimeInit,
+    DateTime? firstDate,
+    DateTime? lastDate,
+  }) async {
+    DateTime? selectedDate = dateTimeInit;
+
+    return await Get.dialog<DateTime?>(
+      AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        backgroundColor: AppColors.basicWhite,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+        titlePadding: const EdgeInsets.only(
+          top: AppDimens.defaultPadding,
+          right: AppDimens.paddingVerySmall,
+          left: AppDimens.paddingVerySmall,
+        ),
+        actionsPadding: const EdgeInsets.only(
+          right: AppDimens.defaultPadding,
+          left: AppDimens.paddingVerySmall,
+          bottom: AppDimens.paddingSmall,
+        ),
+        title: Center(
+          child: SDSBuildText(
+            'Chọn Ngày/Tháng/Năm',
+            style: AppTextStyle.font18Bo,
+          ),
+        ),
+        content: SizedBox(
+          height: 180,
+          width: 250,
+          child: DatePickerWidget(
+            looping: false,
+            firstDate: firstDate ?? DateTime(1901),
+            lastDate: lastDate ?? DateTime(2099),
+            initialDate: dateTimeInit ?? DateTime.now(),
+            dateFormat: PATTERN_1,
+            onChange: (DateTime newDate, _) {
+              selectedDate = newDate;
+            },
+            pickerTheme: DateTimePickerTheme(
+              itemTextStyle:
+                  AppTextStyle.font16Bo.copyWith(color: AppColors.dsGray1),
+              dividerColor: AppColors.dsGray7,
+              dividerSpacing: 0,
+              dividerHeight: 1,
+              itemHeight: 50,
+              diameterRatio: 100,
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: SDSBuildText(
+              'Hủy',
+              style: AppTextStyle.font14Bo
+                  .copyWith(color: AppColors.textColorGrey),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              Get.back(result: selectedDate);
+            },
+            child: SDSBuildText(
+              'Chọn',
+              style:
+                  AppTextStyle.font14Bo.copyWith(color: AppColors.primaryColor),
+            ),
+          ),
+        ],
+      ),
+      barrierDismissible: false,
+    );
+  }
+
+  static Future<DateTime?> showCalendarPickMonthYear({
+    DateTime? dateTimeInit,
+    DateTime? firstDate,
+    DateTime? lastDate,
+  }) async {
+    DateTime? selectedDate = dateTimeInit;
+
+    return await Get.dialog<DateTime?>(
+      AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        backgroundColor: AppColors.basicWhite,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: AppDimens.padding80),
+        titlePadding: const EdgeInsets.only(
+          top: AppDimens.defaultPadding,
+          right: AppDimens.paddingVerySmall,
+          left: AppDimens.paddingVerySmall,
+        ),
+        actionsPadding: const EdgeInsets.only(
+          right: AppDimens.defaultPadding,
+          left: AppDimens.paddingVerySmall,
+          bottom: AppDimens.paddingSmall,
+        ),
+        title: Center(
+          child: SDSBuildText(
+            'Chọn Tháng/Năm',
+            style: AppTextStyle.font18Bo,
+          ),
+        ),
+        content: SizedBox(
+          height: 180,
+          width: 50,
+          child: DatePickerWidget(
+            looping: false,
+            firstDate: firstDate ?? DateTime(1901),
+            lastDate: lastDate ?? DateTime(2099),
+            initialDate: dateTimeInit,
+            dateFormat: PATTERN_12,
+            onChange: (DateTime newDate, _) {
+              selectedDate = newDate;
+            },
+            pickerTheme: DateTimePickerTheme(
+              itemTextStyle:
+                  AppTextStyle.font16Bo.copyWith(color: AppColors.dsGray1),
+              dividerColor: AppColors.dsGray7,
+              dividerSpacing: 0,
+              dividerHeight: 1,
+              itemHeight: 50,
+              diameterRatio: 100,
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: SDSBuildText(
+              'Hủy',
+              style: AppTextStyle.font14Bo
+                  .copyWith(color: AppColors.textColorGrey),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              Get.back(result: selectedDate);
+            },
+            child: SDSBuildText(
+              'Chọn',
+              style:
+                  AppTextStyle.font14Bo.copyWith(color: AppColors.primaryColor),
+            ),
+          ),
+        ],
+      ),
+      barrierDismissible: false,
+    );
+  }
+
+  static Future<DateTime?> showCalendarPickYear({
+    DateTime? initialDate,
+    DateTime? firstDate,
+    DateTime? lastDate,
+  }) async {
+    DateTime? selectedDate = initialDate ?? DateTime.now();
+
+    return await Get.dialog<DateTime?>(
+      AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        backgroundColor: AppColors.basicWhite,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: AppDimens.padding80),
+        titlePadding: const EdgeInsets.only(
+          top: AppDimens.defaultPadding,
+          right: AppDimens.paddingVerySmall,
+          left: AppDimens.paddingVerySmall,
+        ),
+        actionsPadding: const EdgeInsets.only(
+          right: AppDimens.defaultPadding,
+          left: AppDimens.paddingVerySmall,
+          bottom: AppDimens.paddingSmall,
+        ),
+        title: Center(
+          child: SDSBuildText(
+            'Chọn Năm',
+            style: AppTextStyle.font18Bo,
+          ),
+        ),
+        content: SizedBox(
+          height: 180,
+          width: 100,
+          child: DatePickerWidget(
+            looping: false,
+            firstDate: firstDate ?? DateTime(1901),
+            lastDate: lastDate ?? DateTime(2099),
+            initialDate: selectedDate,
+            dateFormat: PATTERN_13,
+            onChange: (DateTime newDate, _) {
+              selectedDate = newDate;
+            },
+            pickerTheme: DateTimePickerTheme(
+              itemTextStyle:
+                  AppTextStyle.font16Bo.copyWith(color: AppColors.dsGray1),
+              dividerColor: AppColors.dsGray7,
+              dividerSpacing: 0,
+              dividerHeight: 1,
+              itemHeight: 50,
+              diameterRatio: 100,
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: SDSBuildText(
+              'Hủy',
+              style: AppTextStyle.font14Bo
+                  .copyWith(color: AppColors.textColorGrey),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              Get.back(result: selectedDate);
+            },
+            child: SDSBuildText(
+              'Chọn',
+              style:
+                  AppTextStyle.font14Bo.copyWith(color: AppColors.primaryColor),
+            ),
+          ),
+        ],
+      ),
+      barrierDismissible: false,
     );
   }
 

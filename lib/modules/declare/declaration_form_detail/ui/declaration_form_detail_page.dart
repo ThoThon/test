@@ -3,6 +3,8 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
+import '../../../../shares/widgets/dialog/dialog_utils.dart';
+
 part 'declaration_form_detail_widget.dart';
 
 class DeclarationFormDetailPage

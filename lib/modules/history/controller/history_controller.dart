@@ -1,6 +1,7 @@
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/history_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../base_app/base_app.src.dart';
@@ -65,8 +66,8 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
   Future<void> onRefresh() async {}
 
   void pickPeriodDate() async {
-    final date = await UtilWidget.showPeriodDatePicker(
-      dateTime: selectedPeriodDate.value,
+    final date = await ShowDialog.showCalendarPickMonthYear(
+      dateTimeInit: selectedPeriodDate.value,
     );
     if (date != null) {
       selectedPeriodDate.value = date;

@@ -234,8 +234,8 @@ extension D02TabWidget on DeclareInfoPage {
             isRequired: controller.isToDateRequired,
             onSelectDate: () async {
               KeyBoard.hide();
-              final selectedDate = await UtilWidget.showPeriodDatePicker(
-                dateTime: convertStringToDateSafe(
+              final selectedDate = await ShowDialog.showCalendarPickMonthYear(
+                dateTimeInit: convertStringToDateSafe(
                   controller.d02State.toDateTextCtrl.text,
                   PATTERN_12,
                 ),
@@ -304,8 +304,8 @@ extension D02TabWidget on DeclareInfoPage {
             inputFormatters: InputFormatterEnum.dateMonthYear,
             onSelectDate: () async {
               KeyBoard.hide();
-              final selectedDate = await UtilWidget.showPeriodDatePicker(
-                dateTime: convertStringToDateSafe(
+              final selectedDate = await ShowDialog.showCalendarPickMonthYear(
+                dateTimeInit: convertStringToDateSafe(
                   controller.d02State.fromDateTextCtrl.text,
                   PATTERN_12,
                 ),

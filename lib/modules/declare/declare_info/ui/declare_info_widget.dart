@@ -317,24 +317,23 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
             switch (controller.d02Tk1State.birthType.value) {
               case BirthTypeEnum.year:
-                selectedDate = await UtilWidget.showPeriodDatePicker(
-                  dateTime: convertStringToDateSafe(
+                selectedDate = await ShowDialog.showCalendarPickYear(
+                  initialDate: convertStringToDateSafe(
                           controller.d02Tk1State.dateOfBirthTextCtrl.text,
                           PATTERN_13) ??
                       DateTime.now(),
-                  onlyYear: true,
                 );
                 break;
               case BirthTypeEnum.monthYear:
-                selectedDate = await UtilWidget.showPeriodDatePicker(
-                  dateTime: convertStringToDateSafe(
+                selectedDate = await ShowDialog.showCalendarPickMonthYear(
+                  dateTimeInit: convertStringToDateSafe(
                           controller.d02Tk1State.dateOfBirthTextCtrl.text,
                           PATTERN_12) ??
                       DateTime.now(),
                 );
                 break;
               case BirthTypeEnum.full:
-                selectedDate = await UtilWidget.showDateTimePicker(
+                selectedDate = await ShowDialog.showCalendarPickDayMonthYear(
                   dateTimeInit: convertStringToDateSafe(
                           controller.d02Tk1State.dateOfBirthTextCtrl.text,
                           PATTERN_1) ??

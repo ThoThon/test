@@ -239,22 +239,22 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
 
                 switch (controller.birthType.value) {
                   case BirthTypeEnum.year:
-                    selectedDate = await UtilWidget.showPeriodDatePicker(
-                      dateTime: convertStringToDateSafe(
+                    selectedDate = await ShowDialog.showCalendarPickYear(
+                      initialDate: convertStringToDateSafe(
                               controller.dateOfBirthCtrl.text, PATTERN_13) ??
                           DateTime.now(),
-                      onlyYear: true,
                     );
                     break;
                   case BirthTypeEnum.monthYear:
-                    selectedDate = await UtilWidget.showPeriodDatePicker(
-                      dateTime: convertStringToDateSafe(
+                    selectedDate = await ShowDialog.showCalendarPickMonthYear(
+                      dateTimeInit: convertStringToDateSafe(
                               controller.dateOfBirthCtrl.text, PATTERN_12) ??
                           DateTime.now(),
                     );
                     break;
                   case BirthTypeEnum.full:
-                    selectedDate = await UtilWidget.showDateTimePicker(
+                    selectedDate =
+                        await ShowDialog.showCalendarPickDayMonthYear(
                       dateTimeInit: convertStringToDateSafe(
                               controller.dateOfBirthCtrl.text, PATTERN_1) ??
                           DateTime.now(),
