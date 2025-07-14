@@ -758,6 +758,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           () => CardInputTextFormWithLabel(
             fieldKey: fieldKey,
             validator: validator,
+            hintText: LocaleKeys.declareInfo_inputHeadOfHouseholdCCCD.tr,
             labelText: LocaleKeys.declareInfo_headOfHouseholdCCCD.tr,
             autovalidateMode: controller.tk1State.autoValidateMode.value,
             isRequired: controller.tk1State.isHouseholdInfoRequired.value,

@@ -133,6 +133,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         return CardInputTextFormWithLabel(
           fieldKey: fieldKey,
           validator: validator,
+          hintText: LocaleKeys.declareInfo_inputBhxhCode.tr,
           labelText: LocaleKeys.familyMember_bhxhCode.tr,
           controller: controller.bhxhNumberTextCtrl,
           maxLengthInputForm: 10,
@@ -585,7 +586,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       labelText: LocaleKeys.familyMember_cccdNumber.tr,
       controller: controller.cccdNumberTextCtrl,
       isRequired: false,
-      hintText: LocaleKeys.familyMember_inputNumberCCCD.tr,
+      hintText: LocaleKeys.declareInfo_inputCCCD.tr,
       maxLengthInputForm: 20,
       inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
     );

@@ -6,6 +6,7 @@
 - [AppMobile]_Bổ sung trả về giá trị Khi nhấn chọn "Chọn nhân viên" - BHW-2690
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Màn TK1-TS: Lỗi focus chuột khi chọn giá trị trường [Nhận kết quả hồ sơ] - BHW-2696
 - [Appmobile] Không fill dữ liệu khi tích chọn giá trị" Nhận kết quả hồ sơ giấy" trước - BHW-2687
+- [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất Placeholder - BHW-2684
 
 12/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Xử lý nút Tiếp trường nhập cuối cùng tờ khai Bảng kê D01 - BHW-2689

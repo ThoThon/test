@@ -509,7 +509,10 @@
     "coefficient": "Hệ số",
     "listTable": "Danh sách bảng kê",
     "addTable": "Thêm bảng kê",
-    "addTableSuccess": "Thêm bảng kê thành công"
+    "addTableSuccess": "Thêm bảng kê thành công",
+    "inputBhxhCode": "Nhập mã số BHXH",
+    "inputHeadOfHouseholdCCCD": "Nhập số CCCD của chủ hộ"
+    
   },
   "familyMember": {
     "title": "Thêm thành viên",
