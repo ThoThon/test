@@ -57,6 +57,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
               ],
             ),
           ),
+          sdsSBHeight20,
         ],
       ).paddingAll(AppDimens.paddingVerySmall),
     );
