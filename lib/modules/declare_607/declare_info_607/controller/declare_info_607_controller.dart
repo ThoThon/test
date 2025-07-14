@@ -438,6 +438,12 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
+  void syncData() {
+    tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
+    tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+    tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+  }
+
   void onChangeProvinceReceive(ProvinceModel value) {
     if (tk1State.provinceReceive.value != value) {
       // Khi user thay đổi tỉnh nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
@@ -451,9 +457,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     tk1State.provinceReceive.value = value;
 
     if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
-      tk1State.provinceReceivePaper.value = value;
-      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
-      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+      syncData();
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
@@ -479,8 +483,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     tk1State.districtReceive.value = value;
 
     if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
-      tk1State.districtReceivePaper.value = value;
-      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+      syncData();
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
@@ -501,7 +504,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     tk1State.wardReceive.value = value;
 
     if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
-      tk1State.wardReceivePaper.value = value;
+      syncData();
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
