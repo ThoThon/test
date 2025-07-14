@@ -60,6 +60,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
               ],
             ),
           ),
+          sdsSBHeight20,
         ],
       ).paddingAll(AppDimens.paddingVerySmall),
     );
