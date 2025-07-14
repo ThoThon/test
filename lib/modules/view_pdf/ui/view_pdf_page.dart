@@ -19,61 +19,63 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
         centerTitle: true,
         title: BaseAppBarTitle(title: controller.argument.title),
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            SfPdfViewerTheme(
-              data: const SfPdfViewerThemeData(
-                backgroundColor: Colors.transparent,
-              ),
-              child: Expanded(
-                child: RotatedBox(
-                  quarterTurns:
-                      controller.argument.isRotateHorizontal ?? false ? 1 : 0,
-                  child: SfPdfViewer.network(
-                    controller.argument.url,
-                    controller: controller.pdfViewerController,
-                    pageLayoutMode: PdfPageLayoutMode.continuous,
-                    canShowScrollHead: false,
-                    scrollDirection: PdfScrollDirection.vertical,
-                    onDocumentLoaded: controller.onDocumentLoaded,
-                    onPageChanged: controller.onPageChanged,
+      body: buildLoadingOverlay(() {
+        return SafeArea(
+          child: Column(
+            children: [
+              SfPdfViewerTheme(
+                data: const SfPdfViewerThemeData(
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Expanded(
+                  child: RotatedBox(
+                    quarterTurns:
+                        controller.argument.isRotateHorizontal ?? false ? 1 : 0,
+                    child: SfPdfViewer.network(
+                      controller.argument.url,
+                      controller: controller.pdfViewerController,
+                      pageLayoutMode: PdfPageLayoutMode.continuous,
+                      canShowScrollHead: false,
+                      scrollDirection: PdfScrollDirection.vertical,
+                      onDocumentLoaded: controller.onDocumentLoaded,
+                      onPageChanged: controller.onPageChanged,
+                    ),
                   ),
                 ),
               ),
-            ),
-            _buildBottomButtons(),
-          ],
-        ),
-      ),
+              _buildBottomButtons(),
+            ],
+          ),
+        );
+      }),
     );
   }
 
   Widget _buildBottomButtons() {
     return Row(
       children: [
-        Visibility(
-          visible: controller.argument.enableDownloadButton ?? true,
-          child: Expanded(
-            child: UtilWidget.buildSolidButton(
-              borderRadius: AppDimens.radius30,
-              side: const BorderSide(width: 1, color: AppColors.primaryColor),
-              backgroundColor: AppColors.basicWhite,
-              textStyle:
-                  AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
-              title: 'Tải về',
-              onPressed: () {},
-            ),
-          ),
-        ),
-        UtilWidget.sizedBoxWidth16,
+        // Visibility(
+        //   visible: controller.argument.enableDownloadButton ?? true,
+        //   child: Expanded(
+        //     child: UtilWidget.buildSolidButton(
+        //       borderRadius: AppDimens.radius30,
+        //       side: const BorderSide(width: 1, color: AppColors.primaryColor),
+        //       backgroundColor: AppColors.basicWhite,
+        //       textStyle:
+        //           AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+        //       title: LocaleKeys.viewPdf_download.tr,
+        //       onPressed: controller.sharePDF,
+        //     ),
+        //   ),
+        // ),
+        // UtilWidget.sizedBoxWidth16,
         Expanded(
           child: UtilWidget.buildSolidButton(
             borderRadius: AppDimens.radius30,
-            title: 'Chia sẻ',
+            title: LocaleKeys.viewPdf_share.tr,
             textStyle:
                 AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-            onPressed: () {},
+            onPressed: controller.sharePDF,
           ),
         ),
       ],
