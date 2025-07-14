@@ -958,6 +958,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       autovalidateMode: controller.autovalidateMode.value,
       isRequired: true,
       selectedItem: controller.tk1State.receiveResult.value,
+      onTap: () {
+        KeyBoard.hide();
+      },
       onChanged: (value) {
         if (value != null) {
           controller.onChangeReceiveResult(value);

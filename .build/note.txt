@@ -4,6 +4,7 @@
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Xử lý nhập Số CCCD của chủ hộ: Không cho phép nhập Tiếng việt có dấu - BHW-2697
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Màn danh sách nhân viên: Sửa text Button "Tiếp tục" - BHW-2694
 - [AppMobile]_Bổ sung trả về giá trị Khi nhấn chọn "Chọn nhân viên" - BHW-2690
+- [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Màn TK1-TS: Lỗi focus chuột khi chọn giá trị trường [Nhận kết quả hồ sơ] - BHW-2696
 - [Appmobile] Không fill dữ liệu khi tích chọn giá trị" Nhận kết quả hồ sơ giấy" trước - BHW-2687
 
 12/07/2025
@@ -12,6 +13,7 @@
 - [Appmobile]_Chỉnh sửa giao diện bổ sung: Set focus chuột - BHW-2615
 - [Appmobile]_Lỗi focus chuột khi chọn một trường combobox - BHW-2692
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613 - Combobox các Trường địa chỉ nhận bản giấy: Bổ sung hiển thị thêm Mã Tỉnh, huyện, xã - BHW-2685
+- [Appmobile]_Chỉnh sửa giao diện: Yêu cầu cập nhật mới - Chỉnh sửa giao diện mà Chọn nhân viên - BHW-2600
 
 11/07/2025
 - [Appmobile] Label “Đính kèm file” bị căn chỉnh sai - BHW-2672

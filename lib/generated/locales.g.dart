@@ -698,6 +698,7 @@ class LocaleKeys {
   static const staffList_continue = 'staffList_continue';
   static const staffList_attachFileErorr = 'staffList_attachFileErorr';
   static const staffList_fillFullName = 'staffList_fillFullName';
+  static const staffList_search = 'staffList_search';
   static const staffList_confirm = 'staffList_confirm';
   static const staffList_selectedStaff = 'staffList_selectedStaff';
   static const staffList_deleteStaffConfirmMessage =
@@ -1587,6 +1588,7 @@ class Locales {
     'staffList_continue': 'Tiếp theo',
     'staffList_attachFileErorr': 'File không hợp lệ',
     'staffList_fillFullName': 'Nhập họ tên',
+    'staffList_search': 'Tìm kiếm',
     'staffList_confirm': 'Xác nhận',
     'staffList_selectedStaff': 'Chọn nhân viên',
     'staffList_deleteStaffConfirmMessage':

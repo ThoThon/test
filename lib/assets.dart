@@ -191,6 +191,10 @@ class Assets {
   static String get ASSETS_ICONS_IC_PERSON_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_person.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_PERSON_2_SVG.preview}
+  static String get ASSETS_ICONS_IC_PERSON_2_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_person_2.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_PERSONAL_SVG.preview}
   static String get ASSETS_ICONS_IC_PERSONAL_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_personal.svg';
@@ -446,6 +450,9 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_PERSON_SVG.preview}
   Assets.ASSETS_ICONS_IC_PERSON_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_PERSON_2_SVG.preview}
+  Assets.ASSETS_ICONS_IC_PERSON_2_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_PERSONAL_SVG.preview}
   Assets.ASSETS_ICONS_IC_PERSONAL_SVG,
