@@ -14,26 +14,23 @@ extension SelectStaffWidget on SelectStaffPage {
   }
 
   Widget _buildSearchStaff() {
-    return SizedBox(
-      height: 40,
-      child: BuildInputText(
-        InputTextModel(
-          controller: controller.searchController,
-          hintText: LocaleKeys.staffList_search.tr,
-          hintTextColor: AppColors.thumbColorSwitch,
-          prefixIconColor: AppColors.thumbColorSwitch,
-          fillColor: AppColors.colorTransparent,
-          maxLengthInputForm: 100,
-          isShowCounterText: false,
-          hintTextSize: AppDimens.fontSmall(),
-          iconAssets: Assets.ASSETS_ICONS_IC_SEARCH_SVG,
-          onChanged: (_) => controller.functionSearch(),
-          border: _buildOutlineBorder(),
-          focusedBorder: _buildOutlineBorder(),
-          enabledBorder: _buildOutlineBorder(),
-        ),
-      ).paddingSymmetric(horizontal: AppDimens.paddingSmall),
-    );
+    return BuildInputText(
+      InputTextModel(
+        controller: controller.searchController,
+        hintText: LocaleKeys.staffList_search.tr,
+        hintTextColor: AppColors.thumbColorSwitch,
+        prefixIconColor: AppColors.thumbColorSwitch,
+        fillColor: AppColors.colorTransparent,
+        maxLengthInputForm: 100,
+        isShowCounterText: false,
+        hintTextSize: AppDimens.fontSmall(),
+        iconAssets: Assets.ASSETS_ICONS_IC_SEARCH_SVG,
+        onChanged: (_) => controller.functionSearch(),
+        border: _buildOutlineBorder(),
+        focusedBorder: _buildOutlineBorder(),
+        enabledBorder: _buildOutlineBorder(),
+      ),
+    ).paddingSymmetric(horizontal: AppDimens.paddingSmall);
   }
 
   OutlineInputBorder _buildOutlineBorder() => OutlineInputBorder(
