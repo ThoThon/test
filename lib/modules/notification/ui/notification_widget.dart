@@ -134,7 +134,7 @@ extension NotificationWidget on NotificationPage {
                 ],
               ),
             ),
-            sdsSBHeight16,
+            sdsSBHeight40,
           ],
         ).paddingOnly(left: AppDimens.paddingVerySmall),
       ),
