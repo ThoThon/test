@@ -1584,7 +1584,7 @@ class Locales {
     'staffList_addNewStaff': 'Thêm nhân viên',
     'staffList_attachFile': 'Đính kèm file',
     'staffList_addAttachedImage': 'Thêm hình ảnh đính kèm',
-    'staffList_continue': 'Tiếp tục',
+    'staffList_continue': 'Tiếp theo',
     'staffList_attachFileErorr': 'File không hợp lệ',
     'staffList_fillFullName': 'Nhập họ tên',
     'staffList_confirm': 'Xác nhận',
