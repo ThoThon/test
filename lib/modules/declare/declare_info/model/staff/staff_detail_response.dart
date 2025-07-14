@@ -1,4 +1,5 @@
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/model/birth_type_enum.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class StaffDetailResponse {
@@ -7,6 +8,7 @@ class StaffDetailResponse {
   final String? maSoBHXH;
   final String? soCCCD;
   final Gender? gioiTinh;
+  final BirthTypeEnum? chiCoNamSinh;
   final DateTime? ngaySinh;
   final EthnicModel? danToc;
   final NationModel? quocTich;
@@ -36,6 +38,8 @@ class StaffDetailResponse {
   final DistrictModel? chuHoThuongTruHuyen;
   final WardModel? chuHoThuongTruXa;
   final String? diaChiThuongTruChuHo;
+  final bool trungDiaChiKhaiSinh;
+  final bool laChuHo;
   final List<StaffFamilyResponse> danhSachThanhViens;
 
   const StaffDetailResponse({
@@ -44,6 +48,7 @@ class StaffDetailResponse {
     this.maSoBHXH,
     this.soCCCD,
     this.gioiTinh,
+    this.chiCoNamSinh,
     this.ngaySinh,
     this.danToc,
     this.quocTich,
@@ -73,6 +78,8 @@ class StaffDetailResponse {
     this.chuHoThuongTruHuyen,
     this.chuHoThuongTruXa,
     this.diaChiThuongTruChuHo,
+    required this.trungDiaChiKhaiSinh,
+    required this.laChuHo,
     required this.danhSachThanhViens,
   });
 
@@ -83,6 +90,7 @@ class StaffDetailResponse {
       maSoBHXH: json['maSoBHXH'],
       soCCCD: json['soCCCD'],
       gioiTinh: Gender.parse(json['gioiTinh']),
+      chiCoNamSinh: BirthTypeEnum.parse(json['chiCoNamSinh']),
       ngaySinh:
           json['ngaySinh'] != null ? DateTime.tryParse(json['ngaySinh']) : null,
       danToc:
@@ -137,6 +145,8 @@ class StaffDetailResponse {
           ? WardModel.fromJson(json['chuHoThuongTruXa'])
           : null,
       diaChiThuongTruChuHo: json['diaChiThuongTruChuHo'],
+      trungDiaChiKhaiSinh: json['trungDiaChiKhaiSinh'] ?? false,
+      laChuHo: json['laChuHo'] ?? false,
       danhSachThanhViens: (json['danhSachThanhViens'] as List?)
               ?.map((e) => StaffFamilyResponse.fromJson(e))
               .toList() ??

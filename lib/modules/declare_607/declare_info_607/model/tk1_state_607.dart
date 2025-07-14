@@ -294,8 +294,10 @@ class Tk1State607 {
 
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
 
+    birthType.value = staff.chiCoNamSinh ?? BirthTypeEnum.defaultValue;
+
     dateOfBirthTextCtrl.text =
-        convertDateToStringSafe(staff.ngaySinh, PATTERN_1) ?? '';
+        convertDateToStringSafe(staff.ngaySinh, birthType.value.pattern) ?? '';
 
     gender.value = staff.gioiTinh ?? Gender.female;
 
@@ -336,6 +338,10 @@ class Tk1State607 {
     wardTT.value = staff.chuHoThuongTruXa;
 
     addressTTTextCtrl.text = staff.diaChiThuongTruChuHo?.trim() ?? '';
+
+    isDuplicateBirthAddress.value = staff.trungDiaChiKhaiSinh;
+
+    isParticipantHeadOfHousehold.value = staff.laChuHo;
 
     final members = staff.danhSachThanhViens;
 
