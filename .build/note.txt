@@ -3,6 +3,7 @@
 - [Appmobile] Hiển thị sai text trong button xóa - BHW-2691
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Xử lý nhập Số CCCD của chủ hộ: Không cho phép nhập Tiếng việt có dấu - BHW-2697
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Màn danh sách nhân viên: Sửa text Button "Tiếp tục" - BHW-2694
+- [AppMobile]_Bổ sung trả về giá trị Khi nhấn chọn "Chọn nhân viên" - BHW-2690
 
 12/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Xử lý nút Tiếp trường nhập cuối cùng tờ khai Bảng kê D01 - BHW-2689
