@@ -788,5 +788,10 @@
     "contentCannotEmpty": "Nội dung không được để trống",
     "contentDownloadAttachment": "[JPG, PNG,...]",
     "signature": "Chữ ký số"
+  },
+  "viewPdf": {
+    "download": "Tải xuống",
+    "share": "Chia sẻ",
+    "cannotDownloadFile": "Có lỗi xảy ra. Không thể tải xuống file."
   }
 }
