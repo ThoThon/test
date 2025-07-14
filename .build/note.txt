@@ -1,3 +1,6 @@
+14/07/2025
+- [Appmobile]_Chỉnh sửa bổ sung: Thêm chức năng chia sẻ tại màn View file pdf - BHW-2604
+
 12/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Xử lý nút Tiếp trường nhập cuối cùng tờ khai Bảng kê D01 - BHW-2689
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Validate các trường địa chỉ nhận hồ sơ giấy - BHW-2683
