@@ -585,7 +585,7 @@
     "fillFullName": "Nhập họ tên",
     "confirm": "Xác nhận",
     "selectedStaff": "Chọn nhân viên",
-    "deleteStaffConfirmMessage": "Bạn có đồng ý xóa nhân sự đã chọn?",
+    "deleteStaffConfirmMessage": "Bạn có đồng ý xóa nhân viên đã chọn?",
     "deleteStaffSuccess": "Xóa nhân sự thành công",
     "uploadImage": "Tải ảnh lên",
     "noEmployeeDeclaredMessage": "Chưa có nhân viên nào được khai báo",
