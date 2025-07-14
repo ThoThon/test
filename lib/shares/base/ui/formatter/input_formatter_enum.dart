@@ -64,4 +64,7 @@ class InputFormatterEnum {
 
   /// 21 : Nhập hệ số
   static const int coefficient = 21;
+
+  /// 22 : Tỉ lệ đóng
+  static const int rate = 22;
 }

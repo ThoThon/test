@@ -595,6 +595,10 @@ class LocaleKeys {
   static const declareInfo_listTable = 'declareInfo_listTable';
   static const declareInfo_addTable = 'declareInfo_addTable';
   static const declareInfo_addTableSuccess = 'declareInfo_addTableSuccess';
+  static const declareInfo_socialInsuranceRate =
+      'declareInfo_socialInsuranceRate';
+  static const declareInfo_socialInsuranceRateCannotEmpty =
+      'declareInfo_socialInsuranceRateCannotEmpty';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1510,6 +1514,9 @@ class Locales {
     'declareInfo_listTable': 'Danh sách bảng kê',
     'declareInfo_addTable': 'Thêm bảng kê',
     'declareInfo_addTableSuccess': 'Thêm bảng kê thành công',
+    'declareInfo_socialInsuranceRate': 'Tỷ lệ đóng',
+    'declareInfo_socialInsuranceRateCannotEmpty':
+        'Tỷ lệ đóng không được bỏ trống',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

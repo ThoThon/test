@@ -22,6 +22,9 @@ class D02State {
   /// Phương án
   final plan = Rxn<AdjustmentPlanModel>();
 
+  /// Tỷ lệ đóng *
+  final socialInsuranceRateTextCtrl = TextEditingController();
+
   /// Sinh dữ liệu Tk1-TS
   final isGenerateTk1Data = false.obs;
 
@@ -133,6 +136,11 @@ class D02State {
     }
 
     isGenerateD01Data.value = d02Lt.xuatD01;
+
+    if (d02Lt.tyLeDong != null && d02Lt.tyLeDong! > 0) {
+      socialInsuranceRateTextCtrl.text =
+          CurrencyUtils.formatCurrencyForeign(d02Lt.tyLeDong!);
+    }
   }
 
   void mapFromStaffDetail(StaffDetailResponse staff) {

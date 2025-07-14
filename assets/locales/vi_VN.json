@@ -509,7 +509,9 @@
     "coefficient": "Hệ số",
     "listTable": "Danh sách bảng kê",
     "addTable": "Thêm bảng kê",
-    "addTableSuccess": "Thêm bảng kê thành công"
+    "addTableSuccess": "Thêm bảng kê thành công",
+    "socialInsuranceRate": "Tỷ lệ đóng",
+    "socialInsuranceRateCannotEmpty": "Tỷ lệ đóng không được bỏ trống"
   },
   "familyMember": {
     "title": "Thêm thành viên",
