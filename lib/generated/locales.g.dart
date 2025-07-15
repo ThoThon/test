@@ -601,6 +601,10 @@ class LocaleKeys {
   static const declareInfo_inputBhxhCode = 'declareInfo_inputBhxhCode';
   static const declareInfo_inputHeadOfHouseholdCCCD =
       'declareInfo_inputHeadOfHouseholdCCCD';
+  static const declareInfo_socialInsuranceRate =
+      'declareInfo_socialInsuranceRate';
+  static const declareInfo_socialInsuranceRateCannotEmpty =
+      'declareInfo_socialInsuranceRateCannotEmpty';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1523,6 +1527,9 @@ class Locales {
     'declareInfo_addTableSuccess': 'Thêm bảng kê thành công',
     'declareInfo_inputBhxhCode': 'Nhập mã số BHXH',
     'declareInfo_inputHeadOfHouseholdCCCD': 'Nhập số CCCD của chủ hộ',
+    'declareInfo_socialInsuranceRate': 'Tỷ lệ đóng',
+    'declareInfo_socialInsuranceRateCannotEmpty':
+        'Tỷ lệ đóng không được bỏ trống',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1603,7 +1610,7 @@ class Locales {
     'staffList_continue': 'Tiếp theo',
     'staffList_attachFileErorr': 'File không hợp lệ',
     'staffList_fillFullName': 'Nhập họ và tên',
-    'staffList_search': 'Tìm kiếm',
+    'staffList_search': 'Nhập tên nhân viên',
     'staffList_confirm': 'Xác nhận',
     'staffList_selectedStaff': 'Chọn nhân viên',
     'staffList_deleteStaffConfirmMessage':
