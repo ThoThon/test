@@ -9,6 +9,7 @@
 - [Appmobile][D01] Hiển thị icon trống khi không có dữ liệu bảng kê - BHW-2703
 - [Appmobile]_Thủ tục 600: Màn D02-LT: Lỗi chọn giá trị tại Từ Tháng/Năm , Đến Tháng/Năm - BHW-2710
 - [Appmobile]_Thủ tục 600: Màn D02-LT: Lỗi chọn giá trị tại trường Loại phương án - BHW-2704
+- [Appmobile]_Thủ tục 600 - Chọn nhân viên trong danh sách: Bổ sung trả về trường tỷ lệ đóng - BHW-2715
 
 14/07/2025
 - [Appmobile]_Chỉnh sửa bổ sung: Thêm chức năng chia sẻ tại màn View file pdf - BHW-2604

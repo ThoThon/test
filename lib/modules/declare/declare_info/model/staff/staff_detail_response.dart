@@ -40,6 +40,7 @@ class StaffDetailResponse {
   final String? diaChiThuongTruChuHo;
   final bool trungDiaChiKhaiSinh;
   final bool laChuHo;
+  final double? tyLeDong;
   final List<StaffFamilyResponse> danhSachThanhViens;
 
   const StaffDetailResponse({
@@ -80,6 +81,7 @@ class StaffDetailResponse {
     this.diaChiThuongTruChuHo,
     required this.trungDiaChiKhaiSinh,
     required this.laChuHo,
+    this.tyLeDong,
     required this.danhSachThanhViens,
   });
 
@@ -145,6 +147,7 @@ class StaffDetailResponse {
           ? WardModel.fromJson(json['chuHoThuongTruXa'])
           : null,
       diaChiThuongTruChuHo: json['diaChiThuongTruChuHo'],
+      tyLeDong: json['tyLeDong']?.toDouble(),
       trungDiaChiKhaiSinh: json['trungDiaChiKhaiSinh'] ?? false,
       laChuHo: json['laChuHo'] ?? false,
       danhSachThanhViens: (json['danhSachThanhViens'] as List?)
