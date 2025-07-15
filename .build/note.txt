@@ -9,6 +9,7 @@
 - [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất Placeholder - BHW-2684
 - [Appmobile][TK1-TS] Lỗi các thao tác màn hình che mất dữ liệu
 - [Appmobile] Chỉnh sửa lại giao diện của tìm kiếm - BHW-2658
+- [Appmobile]_Tờ khai D02, bổ sung trường tỷ lệ đóng - BHW-2583
 
 12/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Xử lý nút Tiếp trường nhập cuối cùng tờ khai Bảng kê D01 - BHW-2689

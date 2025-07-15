@@ -27,6 +27,7 @@ class D02Request {
   final String? phuCapBoSung;
   final String? ghiChu;
   final bool xuatD01;
+  final double? tyLeDong;
 
   const D02Request({
     this.id,
@@ -55,6 +56,7 @@ class D02Request {
     this.phuCapBoSung,
     this.ghiChu,
     required this.xuatD01,
+    this.tyLeDong,
   });
 
   Map<String, dynamic> toJson() {
@@ -85,6 +87,7 @@ class D02Request {
       'phuCapBoSung': phuCapBoSung,
       'ghiChu': ghiChu,
       'xuatD01': xuatD01,
+      'tyLeDong': tyLeDong,
     };
   }
 
@@ -133,6 +136,9 @@ class D02Request {
       ),
       ghiChu: d02State.noteTextCtrl.text.trim(),
       xuatD01: d02State.isGenerateD01Data.value,
+      tyLeDong: CurrencyUtils.formatNumberCurrency(
+        d02State.socialInsuranceRateTextCtrl.text,
+      ),
     );
   }
 }

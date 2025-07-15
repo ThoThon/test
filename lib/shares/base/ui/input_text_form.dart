@@ -138,6 +138,15 @@ class BuildInputTextState extends State<BuildInputText> {
             lastDecimal: 3,
           ),
         ];
+      case InputFormatterEnum.rate:
+        return [
+          NumericTextFormatter(
+            type: 1,
+            isDot: true,
+            maxLengthNum: 2,
+            lastDecimal: 1,
+          ),
+        ];
       default:
         return [
           LengthLimitingTextFieldFormatterFixed(
