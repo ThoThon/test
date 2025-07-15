@@ -240,14 +240,18 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
 
                 switch (controller.birthType.value) {
                   case BirthTypeEnum.year:
-                    selectedDate = await ShowDialog.showCalendarPickYear(
-                      initialDate: convertStringToDateSafe(
+                    selectedDate = await DatePickerUtils.showCalendarPicker(
+                      title: LocaleKeys.dialog_selectYear.tr,
+                      dateFormat: PATTERN_13,
+                      dateTimeInit: convertStringToDateSafe(
                               controller.dateOfBirthCtrl.text, PATTERN_13) ??
                           DateTime.now(),
                     );
                     break;
                   case BirthTypeEnum.monthYear:
-                    selectedDate = await ShowDialog.showCalendarPickMonthYear(
+                    selectedDate = await DatePickerUtils.showCalendarPicker(
+                      title: LocaleKeys.dialog_selectMonthYear.tr,
+                      dateFormat: PATTERN_12,
                       dateTimeInit: convertStringToDateSafe(
                               controller.dateOfBirthCtrl.text, PATTERN_12) ??
                           DateTime.now(),
@@ -255,7 +259,12 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     break;
                   case BirthTypeEnum.full:
                     selectedDate =
-                        await ShowDialog.showCalendarPickDayMonthYear(
+                        await DatePickerUtils.showCalendarPicker(
+                      title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppDimens.padding32,
+                      ),
+                      dateFormat: PATTERN_1,
                       dateTimeInit: convertStringToDateSafe(
                               controller.dateOfBirthCtrl.text, PATTERN_1) ??
                           DateTime.now(),

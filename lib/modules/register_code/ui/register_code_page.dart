@@ -7,7 +7,6 @@ import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
-import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 part 'common_info_tab.dart';

@@ -68,6 +68,10 @@ class LocaleKeys {
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
   static const dialog_sendFileToBHXH = 'dialog_sendFileToBHXH';
   static const dialog_max5File = 'dialog_max5File';
+  static const dialog_select = 'dialog_select';
+  static const dialog_selectDayMonthYear = 'dialog_selectDayMonthYear';
+  static const dialog_selectMonthYear = 'dialog_selectMonthYear';
+  static const dialog_selectYear = 'dialog_selectYear';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -1067,6 +1071,10 @@ class Locales {
     'dialog_sendFileToBHXH':
         'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
     'dialog_max5File': 'Chỉ cho phép chọn tối đa 5 file',
+    'dialog_select': 'Chọn',
+    'dialog_selectDayMonthYear': 'Chọn Ngày/Tháng/Năm',
+    'dialog_selectMonthYear': 'Chọn Tháng/Năm',
+    'dialog_selectYear': 'Chọn năm',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',

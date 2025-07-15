@@ -238,7 +238,9 @@ extension D02TabWidget on DeclareInfoPage {
             isRequired: controller.isToDateRequired,
             onSelectDate: () async {
               KeyBoard.hide();
-              final selectedDate = await ShowDialog.showCalendarPickMonthYear(
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                title: LocaleKeys.dialog_selectMonthYear.tr,
+                dateFormat: PATTERN_12,
                 dateTimeInit: convertStringToDateSafe(
                   controller.d02State.toDateTextCtrl.text,
                   PATTERN_12,
@@ -308,7 +310,9 @@ extension D02TabWidget on DeclareInfoPage {
             inputFormatters: InputFormatterEnum.dateMonthYear,
             onSelectDate: () async {
               KeyBoard.hide();
-              final selectedDate = await ShowDialog.showCalendarPickMonthYear(
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                title: LocaleKeys.dialog_selectMonthYear.tr,
+                dateFormat: PATTERN_12,
                 dateTimeInit: convertStringToDateSafe(
                   controller.d02State.fromDateTextCtrl.text,
                   PATTERN_12,

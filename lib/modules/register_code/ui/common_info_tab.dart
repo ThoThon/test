@@ -276,7 +276,12 @@ extension CommonInfoTab on RegisterCodePage {
           isRequired: true,
           onSelectDate: () async {
             KeyBoard.hide();
-            final selectedDate = await ShowDialog.showCalendarPickDayMonthYear(
+            final selectedDate = await DatePickerUtils.showCalendarPicker(
+              title: LocaleKeys.dialog_selectDayMonthYear.tr,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.padding32,
+              ),
+              dateFormat: PATTERN_1,
               dateTimeInit: convertStringToDateSafe(
                     controller.setupDateCtrl.text,
                     PATTERN_1,
@@ -333,7 +338,12 @@ extension CommonInfoTab on RegisterCodePage {
           isRequired: true,
           onSelectDate: () async {
             KeyBoard.hide();
-            final selectedDate = await ShowDialog.showCalendarPickDayMonthYear(
+            final selectedDate = await DatePickerUtils.showCalendarPicker(
+              title: LocaleKeys.dialog_selectDayMonthYear.tr,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.padding32,
+              ),
+              dateFormat: PATTERN_1,
               dateTimeInit: convertStringToDateSafe(
                     controller.registerDateCtrl.text,
                     PATTERN_1,

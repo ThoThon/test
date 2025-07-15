@@ -80,7 +80,12 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
           hintText: PATTERN_1,
           onSelectDate: () async {
             KeyBoard.hide();
-            final selectedDate = await ShowDialog.showCalendarPickDayMonthYear(
+            final selectedDate = await DatePickerUtils.showCalendarPicker(
+              title: LocaleKeys.dialog_selectDayMonthYear.tr,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.padding32,
+              ),
+              dateFormat: PATTERN_1,
               dateTimeInit: convertStringToDateSafe(
                       controller.effectiveDateCtrl.text, PATTERN_1) ??
                   DateTime.now(),
@@ -131,7 +136,12 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
           hintText: PATTERN_1,
           onSelectDate: () async {
             KeyBoard.hide();
-            final selectedDate = await ShowDialog.showCalendarPickDayMonthYear(
+            final selectedDate = await DatePickerUtils.showCalendarPicker(
+              title: LocaleKeys.dialog_selectDayMonthYear.tr,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.padding32,
+              ),
+              dateFormat: PATTERN_1,
               dateTimeInit: convertStringToDateSafe(
                       controller.dateOfIssueCtrl.text, PATTERN_1) ??
                   DateTime.now(),

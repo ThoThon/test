@@ -3,8 +3,6 @@ import 'package:v_bhxh/modules/lookup_c12/model/file_c12_model.dart';
 import 'package:v_bhxh/modules/lookup_c12/repository/lookup_c12_repository.dart';
 import 'package:v_bhxh/modules/src.dart';
 
-import '../../../shares/widgets/dialog/dialog_utils.dart';
-
 class LookupC12Controller extends BaseGetxController {
   final selectedYear = DateTime.now().obs;
 
@@ -19,8 +17,10 @@ class LookupC12Controller extends BaseGetxController {
   }
 
   void pickPeriodDate() async {
-    final date = await ShowDialog.showCalendarPickYear(
-      initialDate: selectedYear.value,
+    final date = await DatePickerUtils.showCalendarPicker(
+      title: LocaleKeys.dialog_selectYear.tr,
+      dateFormat: PATTERN_13,
+      dateTimeInit: selectedYear.value,
     );
     if (date != null) {
       selectedYear.value = date;
