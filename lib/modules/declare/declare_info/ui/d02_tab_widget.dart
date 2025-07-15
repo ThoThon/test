@@ -382,26 +382,31 @@ extension D02TabWidget on DeclareInfoPage {
             return null;
           },
           builder: (fieldKey, validator) {
-            return CardDropdownWithLabel<AdjustmentPlanModel>(
-              fieldKey: fieldKey,
-              validator: validator,
-              labelText: LocaleKeys.declareInfo_plan.tr,
-              hintText: LocaleKeys.declareInfo_selectPlan.tr,
-              autovalidateMode: AutovalidateMode.always,
-              isRequired: true,
-              items: plans.toList(),
-              display: (item) => '${item.id} - ${item.name}',
-              selectedItem: controller.d02State.plan.value,
-              onChanged: (value) {
-                if (value == null) {
-                  return;
-                }
-                controller.d02State.plan.value = value;
-                controller.updateHouseholdInfoRequired();
-                controller.d02State.isGenerateTk1Data.value = value
-                    .isGenerateTk1(controller.d02State.declarationType.value);
+            return Obx(
+              () {
+                return CardDropdownWithLabel<AdjustmentPlanModel>(
+                  fieldKey: fieldKey,
+                  validator: validator,
+                  labelText: LocaleKeys.declareInfo_plan.tr,
+                  hintText: LocaleKeys.declareInfo_selectPlan.tr,
+                  autovalidateMode: AutovalidateMode.always,
+                  isRequired: true,
+                  items: plans.toList(),
+                  display: (item) => '${item.id} - ${item.name}',
+                  selectedItem: controller.d02State.plan.value,
+                  onChanged: (value) {
+                    if (value == null) {
+                      return;
+                    }
+                    controller.d02State.plan.value = value;
+                    controller.updateHouseholdInfoRequired();
+                    controller.d02State.isGenerateTk1Data.value =
+                        value.isGenerateTk1(
+                            controller.d02State.declarationType.value);
+                  },
+                ).paddingOnly(bottom: AppDimens.paddingSmall);
               },
-            ).paddingOnly(bottom: AppDimens.paddingSmall);
+            );
           },
         );
       },
