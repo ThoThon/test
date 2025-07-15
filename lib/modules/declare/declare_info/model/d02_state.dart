@@ -190,6 +190,11 @@ class D02State {
         staff.phuCapBoSung != null && staff.phuCapBoSung! > 0
             ? CurrencyUtils.formatCurrencyForeign(staff.phuCapBoSung!)
             : '';
+
+    socialInsuranceRateTextCtrl.text =
+        staff.tyLeDong != null && staff.tyLeDong! > 0
+            ? CurrencyUtils.formatCurrencyForeign(staff.tyLeDong!)
+            : '';
   }
 
   void dispose() {
