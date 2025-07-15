@@ -972,6 +972,7 @@ class LocaleKeys {
   static const registerCode_contentDownloadAttachment =
       'registerCode_contentDownloadAttachment';
   static const registerCode_signature = 'registerCode_signature';
+  static const registerCode_next = 'registerCode_next';
   static const viewPdf_download = 'viewPdf_download';
   static const viewPdf_share = 'viewPdf_share';
   static const viewPdf_cannotDownloadFile = 'viewPdf_cannotDownloadFile';
@@ -1835,6 +1836,7 @@ class Locales {
     'registerCode_contentCannotEmpty': 'Nội dung không được để trống',
     'registerCode_contentDownloadAttachment': '[JPG, PNG,...]',
     'registerCode_signature': 'Chữ ký số',
+    'registerCode_next': 'Tiếp theo',
     'viewPdf_download': 'Tải xuống',
     'viewPdf_share': 'Chia sẻ',
     'viewPdf_cannotDownloadFile': 'Có lỗi xảy ra. Không thể tải xuống file.',

@@ -592,9 +592,9 @@ extension CommonInfoTab on RegisterCodePage {
           return const SizedBox.shrink();
         }
         return UtilWidget.buildSolidButton(
-          title: LocaleKeys.registerCode_continue.tr,
+          title: LocaleKeys.registerCode_next.tr,
           onPressed: () {
-            controller.onTabChanged(RegisterCodeTabEnum.register_info);
+            controller.goToRegisterTab();
           },
           borderRadius: AppDimens.radius30,
           textStyle:
