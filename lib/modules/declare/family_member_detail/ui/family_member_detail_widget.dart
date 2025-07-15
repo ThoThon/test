@@ -313,6 +313,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 Get.bottomSheet(
                   BottomSheetSearch<EthnicModel>(
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputEthnic.tr,
                     title: LocaleKeys.familyMember_selectEthnic.tr,
                     listFilter: AppData.instance.ethnics.toList(),
                     selectedItem: controller.selectedEthnic.value,
@@ -356,6 +357,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 Get.bottomSheet(
                   BottomSheetSearch<NationModel>(
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputEthnic.tr,
                     title: LocaleKeys.familyMember_selectNationality.tr,
                     listFilter: AppData.instance.nations.toList(),
                     selectedItem: controller.selectedNationality.value,

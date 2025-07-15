@@ -444,6 +444,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   BottomSheetSearch<EthnicModel>(
                     title: LocaleKeys.declareInfo_selectEthnic.tr,
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputEthnic.tr,
                     listFilter: AppData.instance.ethnics.toList(),
                     selectedItem: controller.tk1State.selectedEthnic.value,
                     display: (value) => value.text,
@@ -486,6 +487,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   BottomSheetSearch<NationModel>(
                     title: LocaleKeys.declareInfo_selectNationality.tr,
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputNationality.tr,
                     listFilter: AppData.instance.nations.toList(),
                     selectedItem: controller.tk1State.selectedNationality.value,
                     display: (value) => value.text,
