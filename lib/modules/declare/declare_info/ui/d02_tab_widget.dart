@@ -465,6 +465,7 @@ extension D02TabWidget on DeclareInfoPage {
               Get.bottomSheet(
                 BottomSheetSearch<PositionModel>(
                   maxLength: 500,
+                  hintText: LocaleKeys.declareInfo_inputPosition.tr,
                   title: LocaleKeys.declareInfo_selectPosition.tr,
                   listFilter: AppData.instance.positions.toList(),
                   selectedItem: AppData.instance.positions.firstWhereOrNull(

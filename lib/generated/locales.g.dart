@@ -399,10 +399,12 @@ class LocaleKeys {
   static const declareInfo_male = 'declareInfo_male';
   static const declareInfo_female = 'declareInfo_female';
   static const declareInfo_ethnic = 'declareInfo_ethnic';
+  static const declareInfo_inputEthnic = 'declareInfo_inputEthnic';
   static const declareInfo_selectEthnic = 'declareInfo_selectEthnic';
   static const declareInfo_ethnicCannotEmpty = 'declareInfo_ethnicCannotEmpty';
   static const declareInfo_nationality = 'declareInfo_nationality';
   static const declareInfo_selectNationality = 'declareInfo_selectNationality';
+  static const declareInfo_inputNationality = 'declareInfo_inputNationality';
   static const declareInfo_nationalityCannotEmpty =
       'declareInfo_nationalityCannotEmpty';
   static const declareInfo_fromMonthYear = 'declareInfo_fromMonthYear';
@@ -412,6 +414,7 @@ class LocaleKeys {
   static const declareInfo_toMonthYearCannotEmpty =
       'declareInfo_toMonthYearCannotEmpty';
   static const declareInfo_position = 'declareInfo_position';
+  static const declareInfo_inputPosition = 'declareInfo_inputPosition';
   static const declareInfo_positionCannotEmpty =
       'declareInfo_positionCannotEmpty';
   static const declareInfo_selectPosition = 'declareInfo_selectPosition';
@@ -599,6 +602,9 @@ class LocaleKeys {
       'declareInfo_socialInsuranceRate';
   static const declareInfo_socialInsuranceRateCannotEmpty =
       'declareInfo_socialInsuranceRateCannotEmpty';
+  static const declareInfo_inputBhxhCode = 'declareInfo_inputBhxhCode';
+  static const declareInfo_inputHeadOfHouseholdCCCD =
+      'declareInfo_inputHeadOfHouseholdCCCD';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -634,6 +640,8 @@ class LocaleKeys {
       'familyMember_wardOfBirthCannotEmpty';
   static const familyMember_relationshipWithHeadOfHousehold =
       'familyMember_relationshipWithHeadOfHousehold';
+  static const familyMember_inputRelationshipWithHeadOfHousehold =
+      'familyMember_inputRelationshipWithHeadOfHousehold';
   static const familyMember_selectRelationshipWithHeadOfHousehold =
       'familyMember_selectRelationshipWithHeadOfHousehold';
   static const familyMember_selectBirthType = 'familyMember_selectBirthType';
@@ -1363,16 +1371,19 @@ class Locales {
     'declareInfo_male': 'Nam',
     'declareInfo_female': 'Nữ',
     'declareInfo_ethnic': 'Dân tộc',
+    'declareInfo_inputEthnic': 'Nhập dân tộc',
     'declareInfo_selectEthnic': 'Chọn dân tộc',
     'declareInfo_ethnicCannotEmpty': 'Dân tộc không được bỏ trống',
     'declareInfo_nationality': 'Quốc tịch',
     'declareInfo_selectNationality': 'Chọn quốc tịch',
+    'declareInfo_inputNationality': 'Nhập quốc tịch',
     'declareInfo_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
     'declareInfo_fromMonthYear': 'Từ tháng/năm',
     'declareInfo_fromMonthYearCannotEmpty': 'Từ tháng/năm không được bỏ trống',
     'declareInfo_toMonthYear': 'Đến tháng/năm',
     'declareInfo_toMonthYearCannotEmpty': 'Đến tháng/năm không được bỏ trống',
     'declareInfo_position': 'Cấp bậc/chức vụ',
+    'declareInfo_inputPosition': 'Nhập cấp bậc/chức vụ',
     'declareInfo_positionCannotEmpty': 'Cấp bậc/chức vụ không được bỏ trống',
     'declareInfo_selectPosition': 'Chọn cấp bậc/Chức vụ',
     'declareInfo_workplace': 'Nơi làm việc',
@@ -1517,6 +1528,8 @@ class Locales {
     'declareInfo_socialInsuranceRate': 'Tỷ lệ đóng',
     'declareInfo_socialInsuranceRateCannotEmpty':
         'Tỷ lệ đóng không được bỏ trống',
+    'declareInfo_inputBhxhCode': 'Nhập mã số BHXH',
+    'declareInfo_inputHeadOfHouseholdCCCD': 'Nhập số CCCD của chủ hộ',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1543,6 +1556,8 @@ class Locales {
     'familyMember_selectWardOfBirth': 'Chọn xã khai sinh',
     'familyMember_wardOfBirthCannotEmpty': 'Xã khai sinh không được bỏ trống',
     'familyMember_relationshipWithHeadOfHousehold': 'Mối quan hệ với chủ hộ',
+    'familyMember_inputRelationshipWithHeadOfHousehold':
+        'Nhập mối quan hệ với chủ hộ',
     'familyMember_selectRelationshipWithHeadOfHousehold':
         'Chọn mối quan hệ với chủ hộ',
     'familyMember_selectBirthType': 'Loại ngày sinh',
@@ -1594,7 +1609,7 @@ class Locales {
     'staffList_addAttachedImage': 'Thêm hình ảnh đính kèm',
     'staffList_continue': 'Tiếp theo',
     'staffList_attachFileErorr': 'File không hợp lệ',
-    'staffList_fillFullName': 'Nhập họ tên',
+    'staffList_fillFullName': 'Nhập họ và tên',
     'staffList_search': 'Tìm kiếm',
     'staffList_confirm': 'Xác nhận',
     'staffList_selectedStaff': 'Chọn nhân viên',
