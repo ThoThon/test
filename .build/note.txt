@@ -1,6 +1,7 @@
 15/07/2025
 - [Appmobile][D01] Không hiển thị thông báo khi update thành công dữ liệu - BHW-2698
 - [Appmobile][TK1-TS]_Lỗi validate các trường Thông tin chủ hộ khi update - BHW-2699
+- [Appmobile]_Thủ tục 600: Màn D02-LT: Lỗi chọn giá trị tại trường Loại phương án - BHW-2704
 
 14/07/2025
 - [Appmobile]_Chỉnh sửa bổ sung: Thêm chức năng chia sẻ tại màn View file pdf - BHW-2604

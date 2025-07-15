@@ -339,22 +339,24 @@ extension D02TabWidget on DeclareInfoPage {
         return null;
       },
       builder: (fieldKey, validator) {
-        return CardDropdownWithLabel<DeclarationTypeModel>(
-          fieldKey: fieldKey,
-          validator: validator,
-          labelText: LocaleKeys.declareInfo_declarationType.tr,
-          hintText: LocaleKeys.declareInfo_selectDeclarationType.tr,
-          items: AppData.instance.declarationTypes.toList(),
-          display: (item) => item.text,
-          isRequired: true,
-          selectedItem: controller.d02State.declarationType.value,
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-            controller.d02State.plan.value = null;
-            controller.d02State.declarationType.value = value;
-          },
+        return Obx(
+          () => CardDropdownWithLabel<DeclarationTypeModel>(
+            fieldKey: fieldKey,
+            validator: validator,
+            labelText: LocaleKeys.declareInfo_declarationType.tr,
+            hintText: LocaleKeys.declareInfo_selectDeclarationType.tr,
+            items: AppData.instance.declarationTypes.toList(),
+            display: (item) => item.text,
+            isRequired: true,
+            selectedItem: controller.d02State.declarationType.value,
+            onChanged: (value) {
+              if (value == null) {
+                return;
+              }
+              controller.d02State.plan.value = null;
+              controller.d02State.declarationType.value = value;
+            },
+          ),
         );
       },
     );
