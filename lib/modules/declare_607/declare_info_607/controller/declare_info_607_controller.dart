@@ -25,7 +25,7 @@ class DeclareInfo607Controller extends BaseGetxController {
   final declarationPeriodController =
       Get.findOrNull<DeclarationPeriodController>();
 
-  final updateClearTTIcon = false.obs;
+  final enableClearTTIcon = false.obs;
 
   @override
   void onReady() {
@@ -771,7 +771,7 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void updateClearTTIconState() {
     final bhxhText = tk1State.bhxhTextCtrl.text.trim();
-    updateClearTTIcon.value = bhxhText.isNotEmpty;
+    enableClearTTIcon.value = bhxhText.isNotEmpty;
   }
 
   @override
