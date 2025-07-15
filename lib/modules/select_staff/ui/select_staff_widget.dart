@@ -17,7 +17,7 @@ extension SelectStaffWidget on SelectStaffPage {
     return BuildInputText(
       InputTextModel(
         controller: controller.searchController,
-        hintText: LocaleKeys.staffList_search.tr,
+        hintText: LocaleKeys.staffList_fillFullName.tr,
         hintTextColor: AppColors.thumbColorSwitch,
         prefixIconColor: AppColors.thumbColorSwitch,
         fillColor: AppColors.colorTransparent,

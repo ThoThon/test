@@ -248,6 +248,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           labelText: LocaleKeys.declareInfo_bhxhCode.tr,
           controller: controller.tk1State.bhxhTextCtrl,
           maxLengthInputForm: 10,
+          hintText: LocaleKeys.declareInfo_inputBhxhCode.tr,
           inputFormatters: InputFormatterEnum.digitsOnly,
           textInputType: TextInputType.number,
           onChanged: (value) {
@@ -541,6 +542,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.tk1State.provinceOfBirth.value,
                     display: (value) => '${value.id} - ${value.name}',
+                    hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     onAccept: (value) {
                       if (value == null) return;
                       controller.changeProvinceOfBirth(value);
@@ -702,6 +704,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.tk1State.provinceReceive.value,
                     display: (value) => '${value.id} - ${value.name}',
+                    hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     onAccept: (value) {
                       if (value == null) return;
                       controller.onChangeProvinceReceive(value);
@@ -881,6 +884,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.tk1State.provinceKCB.value,
                     display: (value) => '${value.id} - ${value.name}',
+                    hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     onAccept: (value) {
                       if (value == null) return;
                       controller.onChangeProvinceKCB(value);
@@ -1004,6 +1008,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                       selectedItem:
                           controller.tk1State.provinceReceivePaper.value,
                       display: (value) => '${value.id} - ${value.name}',
+                      hintText: LocaleKeys.declareInfo_inputProvince.tr,
                       onAccept: (value) {
                         if (value == null) return;
                         controller.onChangeProvinceReceivePaper(value);
@@ -1294,6 +1299,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           () => CardInputTextFormWithLabel(
             fieldKey: fieldKey,
             validator: validator,
+            hintText: LocaleKeys.declareInfo_inputHeadOfHouseholdCCCD.tr,
             labelText: LocaleKeys.declareInfo_headOfHouseholdCCCD.tr,
             autovalidateMode: controller.tk1State.autoValidateMode.value,
             isRequired: controller.tk1State.isHouseholdInfoRequired.value,
@@ -1334,6 +1340,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.tk1State.provinceTT.value,
                     display: (value) => '${value.id} - ${value.name}',
+                    hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     onAccept: (value) {
                       if (value == null) return;
                       controller.onChangeProvinceTT(value);

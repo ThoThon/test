@@ -57,6 +57,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
               ],
             ),
           ),
+          sdsSBHeight20,
         ],
       ).paddingAll(AppDimens.paddingVerySmall),
     );
@@ -71,7 +72,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
       hintText: LocaleKeys.declareInfo_inputDistrict.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
-      borderColor: AppColors.primaryColor,
+      borderColor: AppColors.thumbColorSwitch,
       maxLength: 20,
       autofocus: false,
       fillColor: AppColors.colorWhite,
@@ -86,7 +87,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
         child: Center(
           child: SDSImageSvg(
             Assets.ASSETS_ICONS_IC_SEARCH_SVG,
-            color: AppColors.primaryColor,
+            color: AppColors.thumbColorSwitch,
           ),
         ),
       ),
@@ -100,7 +101,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
               },
               icon: const Icon(
                 Icons.clear,
-                color: AppColors.primaryColor,
+                color: AppColors.thumbColorSwitch,
               ),
             ),
           )),

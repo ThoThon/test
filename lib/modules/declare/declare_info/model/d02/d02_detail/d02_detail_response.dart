@@ -31,6 +31,7 @@ class D02DetailResponse {
   final String? phuCapBoSung;
   final String? ghiChu;
   final bool xuatD01;
+  final double? tyLeDong;
 
   const D02DetailResponse({
     required this.id,
@@ -59,6 +60,7 @@ class D02DetailResponse {
     this.phuCapBoSung,
     this.ghiChu,
     required this.xuatD01,
+    this.tyLeDong,
   });
 
   factory D02DetailResponse.fromJson(Map<String, dynamic> json) {
@@ -103,6 +105,7 @@ class D02DetailResponse {
       phuCapBoSung: json['phuCapBoSung'],
       ghiChu: json['ghiChu'],
       xuatD01: json['xuatD01'] ?? false,
+      tyLeDong: json['tyLeDong']?.toDouble(),
     );
   }
 }
