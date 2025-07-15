@@ -121,6 +121,18 @@ class RegisterCodeController extends BaseGetxController {
     currentTab.value = tab;
   }
 
+  void goToRegisterTab() {
+    final invalidTab = _invalidTab;
+    if (invalidTab == null) {
+      // Nếu tất cả các tab đều hợp lệ thì chuyển đến tab cuối cùng (tab thông tin đăng ký)
+      currentTab.value = RegisterCodeTabEnum.register_info;
+    } else {
+      // Nếu có tab không hợp lệ thì chuyển đến tab đó
+      currentTab.value = invalidTab;
+      return;
+    }
+  }
+
   Future<void> getRegisterFirstCategories() async {
     try {
       showLoadingOverlay();
@@ -268,6 +280,7 @@ class RegisterCodeController extends BaseGetxController {
       currentTab.value = invalidTab;
       return;
     }
+    // goToRegisterTab();
     try {
       if (certificate.value == null) {
         showSnackBar(
