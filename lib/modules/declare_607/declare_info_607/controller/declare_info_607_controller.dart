@@ -25,7 +25,7 @@ class DeclareInfo607Controller extends BaseGetxController {
   final declarationPeriodController =
       Get.findOrNull<DeclarationPeriodController>();
 
-  RxBool enableClearIcon = false.obs;
+  final enableClearIcon = false.obs;
 
   @override
   void onReady() {
@@ -764,9 +764,9 @@ class DeclareInfo607Controller extends BaseGetxController {
     tk1State.isHouseholdInfoRequired.value = false;
   }
 
-  void updateClearIconState() {
+  void updateClearTTIconState() {
     final bhxhText = tk1State.bhxhTextCtrl.text.trim();
-    enableClearIcon.value = bhxhText.isNotEmpty && bhxhText.length >= 10;
+    enableClearIcon.value = bhxhText.isNotEmpty;
   }
 
   @override

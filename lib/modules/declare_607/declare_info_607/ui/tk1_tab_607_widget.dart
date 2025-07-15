@@ -253,7 +253,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           textInputType: TextInputType.number,
           onChanged: (value) {
             controller.updateHouseholdInfoRequired();
-            controller.updateClearIconState();
+            controller.updateClearTTIconState();
           },
         );
       },
