@@ -321,6 +321,7 @@ class LocaleKeys {
   static const login_registerForCode = 'login_registerForCode';
   static const login_switchTo = 'login_switchTo';
   static const login_register = 'login_register';
+  static const login_invalidPassword = 'login_invalidPassword';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_declare = 'procedureList_declare';
   static const procedureList_title = 'procedureList_title';
@@ -1312,6 +1313,7 @@ class Locales {
     'login_registerForCode': 'Đăng ký cấp mã',
     'login_switchTo': 'Đã chuyển sang',
     'login_register': 'Đăng ký',
+    'login_invalidPassword': 'Mật khẩu đăng nhập tài khoản không đúng',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_declare': 'Kê khai',
     'procedureList_title': 'Thủ tục ',

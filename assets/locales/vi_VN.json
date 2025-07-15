@@ -305,7 +305,8 @@
     "inputAccount": "Nhập tên đăng nhập",
     "registerForCode": "Đăng ký cấp mã",
     "switchTo": "Đã chuyển sang",
-    "register": "Đăng ký"
+    "register": "Đăng ký",
+    "invalidPassword": "Mật khẩu đăng nhập tài khoản không đúng"
   },
   "procedureList": {
     "pageTitle": "Danh sách thủ tục",
