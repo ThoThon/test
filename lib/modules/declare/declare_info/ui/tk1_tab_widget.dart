@@ -1005,6 +1005,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                 ),
               )
             : UtilWidget.sizedBox8,
+        _buildFamilyMemberError(),
         InkWell(
           onTap: controller.addFamilyMember,
           child: Row(
@@ -1030,6 +1031,47 @@ extension Tk1TabWidget on DeclareInfoPage {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildFamilyMemberError() {
+    return FormFieldRegistrant<String>(
+      registrarId: '2c183525-5aae-44ad-91f2-78d08e14caf1',
+      validator: (value) {
+        if (controller.tk1State.familyMembers.isEmpty &&
+            controller.d02Tk1State.bhxhTextCtrl.text.trim().isEmpty) {
+          return 'Vui lòng thêm thành viên gia đình';
+        }
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            return FormField<String>(
+              autovalidateMode: controller.tk1State.autoValidateMode.value,
+              key: fieldKey,
+              validator: validator,
+              builder: (FormFieldState<String> state) {
+                final hasError = state.hasError;
+
+                if (!hasError) {
+                  return const SizedBox.shrink();
+                }
+
+                return SDSBuildText(
+                  state.errorText ?? '',
+                  maxLines: 2,
+                  style: AppTextStyle.font12Re.copyWith(
+                    color: AppColors.statusRed,
+                  ),
+                ).paddingOnly(
+                  bottom: AppDimens.paddingSmall,
+                );
+              },
+            );
+          },
+        );
+      },
     );
   }
 
