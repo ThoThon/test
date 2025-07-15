@@ -1,4 +1,5 @@
 15/07/2025
+- [Appmobile][D01] Không hiển thị thông báo khi update thành công dữ liệu - BHW-2698
 - [Appmobile][TK1-TS]_Lỗi validate các trường Thông tin chủ hộ khi update - BHW-2699
 
 14/07/2025
@@ -13,6 +14,7 @@
 - [Appmobile][TK1-TS] Lỗi các thao tác màn hình che mất dữ liệu
 - [Appmobile] Chỉnh sửa lại giao diện của tìm kiếm - BHW-2658
 - [Appmobile]_Tờ khai D02, bổ sung trường tỷ lệ đóng - BHW-2583
+- [Appmobile]_Chỉnh sửa giao diện hộp Calendar - BHW-2631
 
 12/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Xử lý nút Tiếp trường nhập cuối cùng tờ khai Bảng kê D01 - BHW-2689

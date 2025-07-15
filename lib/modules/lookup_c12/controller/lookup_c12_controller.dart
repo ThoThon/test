@@ -17,11 +17,13 @@ class LookupC12Controller extends BaseGetxController {
   }
 
   void pickPeriodDate() async {
-    final date = await UtilWidget.showYearLookUp(
-      dateTime: selectedYear.value,
+    final date = await DatePickerUtils.showCalendarPicker(
+      title: LocaleKeys.dialog_selectYear.tr,
+      dateFormat: PATTERN_13,
+      dateTimeInit: selectedYear.value,
     );
     if (date != null) {
-      selectedYear.value = DateTime(date);
+      selectedYear.value = date;
       listFileC12.clear();
       getC12File();
     }
