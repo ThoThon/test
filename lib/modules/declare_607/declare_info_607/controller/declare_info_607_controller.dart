@@ -523,6 +523,11 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
+    if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
+      tk1State.isHouseholdInfoRequired.value = true;
+    } else {
+      tk1State.isHouseholdInfoRequired.value = false;
+    }
     _syncHeadOfHouseholdInfo();
   }
 

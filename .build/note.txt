@@ -1,3 +1,6 @@
+15/07/2025
+- [Appmobile][TK1-TS]_Lỗi validate các trường Thông tin chủ hộ khi update - BHW-2699
+
 14/07/2025
 - [Appmobile]_Chỉnh sửa bổ sung: Thêm chức năng chia sẻ tại màn View file pdf - BHW-2604
 - [Appmobile] Hiển thị sai text trong button xóa - BHW-2691
