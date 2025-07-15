@@ -242,9 +242,10 @@ extension D02TabWidget on DeclareInfoPage {
                 title: LocaleKeys.dialog_selectMonthYear.tr,
                 dateFormat: PATTERN_12,
                 dateTimeInit: convertStringToDateSafe(
-                  controller.d02State.toDateTextCtrl.text,
-                  PATTERN_12,
-                ),
+                      controller.d02State.toDateTextCtrl.text,
+                      PATTERN_12,
+                    ) ??
+                    DateTime.now(),
               );
               if (selectedDate != null) {
                 controller.d02State.toDateTextCtrl.text =
@@ -314,9 +315,10 @@ extension D02TabWidget on DeclareInfoPage {
                 title: LocaleKeys.dialog_selectMonthYear.tr,
                 dateFormat: PATTERN_12,
                 dateTimeInit: convertStringToDateSafe(
-                  controller.d02State.fromDateTextCtrl.text,
-                  PATTERN_12,
-                ),
+                      controller.d02State.fromDateTextCtrl.text,
+                      PATTERN_12,
+                    ) ??
+                    DateTime.now(),
               );
               if (selectedDate != null) {
                 controller.d02State.fromDateTextCtrl.text =
