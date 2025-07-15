@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/d01_detail_response.dart';
 
-class DeclarationForm {
+class DeclarationForm extends Equatable {
   /// ID bảng kê - Gen với uuid
   final String? id;
 
@@ -64,4 +65,19 @@ class DeclarationForm {
       isUpdate: true,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        fullName,
+        bhxhNumber,
+        documentType,
+        documentNumber,
+        dateOfIssue,
+        effectiveDate,
+        issuingAgency,
+        summary,
+        contentToBeAssessed,
+        isUpdate,
+      ];
 }

@@ -1,3 +1,6 @@
+15/07/2025
+- [Appmobile][D01] Không hiển thị thông báo khi update thành công dữ liệu - BHW-2698
+
 14/07/2025
 - [Appmobile]_Chỉnh sửa bổ sung: Thêm chức năng chia sẻ tại màn View file pdf - BHW-2604
 - [Appmobile] Hiển thị sai text trong button xóa - BHW-2691
