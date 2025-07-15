@@ -62,7 +62,7 @@ class NotificationPage extends BaseGetWidget {
             () => Padding(
               padding: const EdgeInsets.symmetric(
                   vertical: AppDimens.defaultPadding),
-              child: _buildBody(),
+              child: SafeArea(child: _buildBody()),
             ),
           ),
         ),
