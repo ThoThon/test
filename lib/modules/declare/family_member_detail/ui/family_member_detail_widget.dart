@@ -365,7 +365,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 Get.bottomSheet(
                   BottomSheetSearch<NationModel>(
                     maxLength: 20,
-                    hintText: LocaleKeys.declareInfo_inputEthnic.tr,
+                    hintText: LocaleKeys.declareInfo_inputNationality.tr,
                     title: LocaleKeys.familyMember_selectNationality.tr,
                     listFilter: AppData.instance.nations.toList(),
                     selectedItem: controller.selectedNationality.value,
