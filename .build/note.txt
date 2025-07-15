@@ -3,6 +3,7 @@
 - [Appmobile][TK1-TS]_Lỗi validate các trường Thông tin chủ hộ khi update - BHW-2699
 - [Appmobile]_Thủ tục 600: Màn D02-LT: Lỗi chọn giá trị tại trường Loại phương án - BHW-2704
 - [Appmobile]_Màn đăng nhập: Chỉnh sửa dialog thông báo - BHW-2702
+- [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Màn TK1: Chỉnh sửa UX/UI trường Địa chỉ chủ hộ - BHW-2700
 
 14/07/2025
 - [Appmobile]_Chỉnh sửa bổ sung: Thêm chức năng chia sẻ tại màn View file pdf - BHW-2604

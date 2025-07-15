@@ -25,6 +25,8 @@ class DeclareInfo607Controller extends BaseGetxController {
   final declarationPeriodController =
       Get.findOrNull<DeclarationPeriodController>();
 
+  final enableClearTTIcon = false.obs;
+
   @override
   void onReady() {
     super.onReady();
@@ -765,6 +767,11 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     // Nếu không có điều kiện nào thỏa mãn
     tk1State.isHouseholdInfoRequired.value = false;
+  }
+
+  void updateClearTTIconState() {
+    final bhxhText = tk1State.bhxhTextCtrl.text.trim();
+    enableClearTTIcon.value = bhxhText.isNotEmpty;
   }
 
   @override
