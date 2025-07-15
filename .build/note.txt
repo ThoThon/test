@@ -6,6 +6,7 @@
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Màn TK1: Chỉnh sửa UX/UI trường Địa chỉ chủ hộ - BHW-2700
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 611, 612. Hồ sơ TK1. Xử lý hiện thông báo Thêm thành viên phụ lục khi Mã số BHXH null - BHW-2706
 - [Appmobile]_Màn đăng ký cấp mã: Sai text button + Lỗi check validate trước khi chuyển trang - BHW-2705
+- [Appmobile][D01] Hiển thị icon trống khi không có dữ liệu bảng kê - BHW-2703
 
 14/07/2025
 - [Appmobile]_Chỉnh sửa bổ sung: Thêm chức năng chia sẻ tại màn View file pdf - BHW-2604
