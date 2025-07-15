@@ -5,30 +5,32 @@ extension D01TabWidget on DeclareInfoPage {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (controller.d01State.forms.isEmpty)
-          Expanded(
-            child: UtilWidget.buildEmptyList(),
-          )
-        else
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  UtilWidget.sizedBox16,
-                  SDSBuildText(
-                    LocaleKeys.declareInfo_listTable.tr,
-                    style: AppTextStyle.font16Bo,
-                  ),
-                  sdsSBHeight12,
-                  ...controller.d01State.forms.mapIndexed(
-                    (index, form) => _buildD01Item(form: form),
-                  ),
-                ],
-              ),
-            ),
+        Expanded(
+          child: Obx(
+            () {
+              if (controller.d01State.forms.isEmpty) {
+                return UtilWidget.buildEmptyList();
+              }
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    UtilWidget.sizedBox16,
+                    SDSBuildText(
+                      LocaleKeys.declareInfo_listTable.tr,
+                      style: AppTextStyle.font16Bo,
+                    ),
+                    sdsSBHeight12,
+                    ...controller.d01State.forms.mapIndexed(
+                      (index, form) => _buildD01Item(form: form),
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
+        ),
         UtilWidget.buildSolidButton(
           title: LocaleKeys.declareInfo_addTable.tr,
           onPressed: controller.createNewDeclarationForm,
