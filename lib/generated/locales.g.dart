@@ -1588,7 +1588,7 @@ class Locales {
     'staffList_continue': 'Tiếp theo',
     'staffList_attachFileErorr': 'File không hợp lệ',
     'staffList_fillFullName': 'Nhập họ tên',
-    'staffList_search': 'Tìm kiếm',
+    'staffList_search': 'Nhập tên nhân viên',
     'staffList_confirm': 'Xác nhận',
     'staffList_selectedStaff': 'Chọn nhân viên',
     'staffList_deleteStaffConfirmMessage':
