@@ -17,20 +17,20 @@ class UnitInfoPage extends BaseGetWidget {
   Widget buildWidgets(BuildContext context) {
     return Container(
       color: AppColors.primaryColor,
-      child: Scaffold(
-        appBar: BaseAppBar(
-          backgroundColor: AppColors.primaryColor,
-          centerTitle: true,
-          leading:
-              UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
-          title: BaseAppBarTitle(
-            title: LocaleKeys.unitInfo_unitInfo.tr,
-            textColor: Colors.white,
+      child: buildLoadingOverlay(
+        () => Scaffold(
+          appBar: BaseAppBar(
+            backgroundColor: AppColors.primaryColor,
+            centerTitle: true,
+            leading:
+                UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
+            title: BaseAppBarTitle(
+              title: LocaleKeys.unitInfo_unitInfo.tr,
+              textColor: Colors.white,
+            ),
           ),
-        ),
-        body: BaseCardBody(
-          child: baseShowLoading(
-            () => _buildBody(),
+          body: BaseCardBody(
+            child: _buildBody(),
           ),
         ),
       ),

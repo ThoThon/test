@@ -9,7 +9,6 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   void onInit() async {
     super.onInit();
     await _getAccountInfo();
-    accountInfo = AppData.instance.accountInfoModel.value;
     fetchDataAccountInfo();
     inputInfoIsEmpty();
   }
@@ -33,6 +32,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   void fetchDataAccountInfo() {
+    accountInfo = AppData.instance.accountInfoModel.value;
     taxCodeController.text = accountInfo?.taxCode ?? '';
     unitNameController.text = accountInfo?.tenToChuc ?? '';
     unitCodeController.text = accountInfo?.maDonVi ?? '';
@@ -56,9 +56,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   bool get isInputUnchanged {
-    final currentRequest = _buildRequest();
-    return originalInfo != null &&
-        currentRequest.toJson().toString() == originalInfo!.toJson().toString();
+    return originalInfo == _buildRequest();
   }
 
   void handleCancelEdit() {
@@ -105,6 +103,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
           onCancel: () async {
             await _getAccountInfo();
             await _getToTalNotiUnread();
+            fetchDataAccountInfo();
             isEditAll.value = false;
           },
         );
@@ -150,7 +149,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   Future<void> _getAccountInfo() async {
-    showLoading();
+    showLoadingOverlay();
     try {
       final res = await unitInfoRepository.getAccountInfo();
       if (res.code == AppConst.statusCodeSuccess && res.result != null) {
@@ -159,7 +158,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     } catch (e) {
       logger.d(e);
     } finally {
-      hideLoading();
+      hideLoadingOverlay();
     }
   }
 

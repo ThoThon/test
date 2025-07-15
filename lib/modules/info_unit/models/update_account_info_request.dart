@@ -1,4 +1,6 @@
-class UpdateAccountInfoRequest {
+import 'package:equatable/equatable.dart';
+
+class UpdateAccountInfoRequest extends Equatable {
   final String toChucId;
   final String tenToChuc;
   final String diaChiDangKy;
@@ -13,7 +15,7 @@ class UpdateAccountInfoRequest {
   final int phuongThucDong;
   final String ptNhanKq;
 
-  UpdateAccountInfoRequest({
+  const UpdateAccountInfoRequest({
     required this.toChucId,
     required this.tenToChuc,
     required this.diaChiDangKy,
@@ -46,4 +48,21 @@ class UpdateAccountInfoRequest {
       "pt_nhan_kq": ptNhanKq,
     };
   }
+
+  @override
+  List<Object?> get props => [
+        toChucId,
+        tenToChuc,
+        diaChiDangKy,
+        diaChi,
+        mailLienLac,
+        tenNguoiKy,
+        telReceiver,
+        jobTitle,
+        loaiDoiTuong,
+        tenNguoiKeKhai,
+        luongCoSo,
+        phuongThucDong,
+        ptNhanKq,
+      ];
 }
