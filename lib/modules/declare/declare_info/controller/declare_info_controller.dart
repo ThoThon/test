@@ -176,16 +176,14 @@ class DeclareInfoController extends BaseGetxController {
       arguments: DeclarationFormDetailArgument(form: form),
     );
     if (result is DeclarationForm) {
-      if (result != form) {
-        showSnackBar(
-          LocaleKeys.declareInfo_saveDataSuccess.tr,
-          typeAction: AppConst.actionSuccess,
-        );
-      }
       final index =
           d01State.forms.indexWhere((element) => element.id == form.id);
       if (index != -1) {
         d01State.forms[index] = result;
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
       }
     }
   }
