@@ -38,7 +38,7 @@ class DatePickerUtils {
           ),
         ),
         content: DatePickerWidget(
-          looping: false,
+          looping: true,
           firstDate: firstDate ?? DateTime(1901),
           lastDate: lastDate ?? DateTime(2099),
           initialDate: dateTimeInit,
