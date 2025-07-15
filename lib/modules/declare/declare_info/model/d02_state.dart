@@ -200,6 +200,7 @@ class D02State {
     salaryCoefficientTextCtrl.dispose();
     positionAllowanceTextCtrl.dispose();
     pcTNNTextCtrl.dispose();
+    socialInsuranceRateTextCtrl.dispose();
     pcTNVuotKhungTextCtrl.dispose();
     salaryAllowanceTextCtrl.dispose();
     otherAllowanceTextCtrl.dispose();
