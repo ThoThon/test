@@ -253,6 +253,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           textInputType: TextInputType.number,
           onChanged: (value) {
             controller.updateHouseholdInfoRequired();
+            controller.updateClearTTIconState();
           },
         );
       },
@@ -1360,7 +1361,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
               },
               selectedItem: controller.tk1State.provinceTT.value,
               display: (province) => '${province.id} - ${province.name}',
-              enableClearIcon: true,
+              enableClearIcon: controller.enableClearTTIcon.value,
               onTapClear: controller.onTapClearProvinceTT,
             );
           },
@@ -1411,7 +1412,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
               },
               selectedItem: controller.tk1State.districtTT.value,
               display: (district) => '${district.id} - ${district.name}',
-              enableClearIcon: true,
+              enableClearIcon: controller.enableClearTTIcon.value,
               onTapClear: controller.onTapClearDistrictTT,
             );
           },
@@ -1470,7 +1471,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
               },
               selectedItem: controller.tk1State.wardTT.value,
               display: (ward) => '${ward.id} - ${ward.name}',
-              enableClearIcon: true,
+              enableClearIcon: controller.enableClearTTIcon.value,
               onTapClear: controller.onTapClearWardTT,
             );
           },
