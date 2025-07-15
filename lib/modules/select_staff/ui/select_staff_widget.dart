@@ -86,6 +86,7 @@ extension SelectStaffWidget on SelectStaffPage {
           decoration: BoxDecoration(
             border: border,
             borderRadius: borderRadius,
+            color: AppColors.basicWhite,
           ),
           child: InkWell(
             onTap: () {
@@ -111,7 +112,7 @@ extension SelectStaffWidget on SelectStaffPage {
                       if (item.chucVu.isNotEmpty)
                         SDSBuildText(
                           item.chucVu,
-                          style: AppTextStyle.font12Re,
+                          style: AppTextStyle.font14Re,
                         ),
                     ],
                   ),
@@ -158,6 +159,7 @@ extension SelectStaffWidget on SelectStaffPage {
           child: SDSBuildText(
             '${item.hoTen}${item.maSoBHXH.isNotEmpty ? ' (${item.maSoBHXH})' : ''}',
             maxLines: 4,
+            style: AppTextStyle.font16Re,
           ),
         ),
       ],
