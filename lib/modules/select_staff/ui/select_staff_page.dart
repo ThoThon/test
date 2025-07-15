@@ -21,7 +21,7 @@ class SelectStaffPage extends BaseGetWidget {
         title: BaseAppBarTitle(title: LocaleKeys.staffList_selectedStaff.tr),
         leading: UtilWidget.buildButtonBackAppbar(),
       ),
-      body: _buildBody(),
+      body: SafeArea(child: _buildBody()),
     );
   }
 }
