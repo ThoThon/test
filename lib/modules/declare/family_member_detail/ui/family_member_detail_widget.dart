@@ -133,6 +133,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
         return CardInputTextFormWithLabel(
           fieldKey: fieldKey,
           validator: validator,
+          hintText: LocaleKeys.declareInfo_inputBhxhCode.tr,
           labelText: LocaleKeys.familyMember_bhxhCode.tr,
           controller: controller.bhxhNumberTextCtrl,
           maxLengthInputForm: 10,
@@ -396,6 +397,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 Get.bottomSheet(
                   BottomSheetSearch<ProvinceModel>(
                     maxLength: 20,
+                    hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.familyMember_selectProvince.tr,
                     listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.selectedProvince.value,
@@ -554,6 +556,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                 Get.bottomSheet(
                   BottomSheetSearch<RelationshipModel>(
                     maxLength: 20,
+                    hintText: LocaleKeys
+                        .familyMember_inputRelationshipWithHeadOfHousehold.tr,
                     title: LocaleKeys
                         .familyMember_selectRelationshipWithHeadOfHousehold.tr,
                     listFilter: AppData.instance.relationships.toList(),
@@ -585,7 +589,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       labelText: LocaleKeys.familyMember_cccdNumber.tr,
       controller: controller.cccdNumberTextCtrl,
       isRequired: false,
-      hintText: LocaleKeys.familyMember_inputNumberCCCD.tr,
+      hintText: LocaleKeys.declareInfo_inputCCCD.tr,
       maxLengthInputForm: 20,
       inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
     );

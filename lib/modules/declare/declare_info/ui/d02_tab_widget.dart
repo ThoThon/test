@@ -108,6 +108,10 @@ extension D02TabWidget on DeclareInfoPage {
                         // Phương án
                         _buildSelectPlan(),
 
+                        // Tỷ lệ đóng
+                        _buildInputRate(),
+                        sdsSBHeight12,
+
                         // Từ tháng/năm và Đến tháng/năm
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -396,6 +400,33 @@ extension D02TabWidget on DeclareInfoPage {
     );
   }
 
+  Widget _buildInputRate() {
+    return FormFieldRegistrant<String>(
+      registrarId: '96e113d1-843c-42c9-bae4-4d12e22bfc0b',
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_socialInsuranceRateCannotEmpty.tr;
+        }
+
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_socialInsuranceRate.tr,
+          controller: controller.d02State.socialInsuranceRateTextCtrl,
+          isRequired: true,
+          textInputType: TextInputType.number,
+          inputFormatters: InputFormatterEnum.rate,
+          maxLengthInputForm: 5,
+        );
+      },
+    );
+  }
+
   Widget _buildGenerateTk1DataCheckbox() {
     return UtilWidget.buildCheckboxWithLabel(
       label: LocaleKeys.declareInfo_generateTk1Data.tr,
@@ -434,6 +465,7 @@ extension D02TabWidget on DeclareInfoPage {
               Get.bottomSheet(
                 BottomSheetSearch<PositionModel>(
                   maxLength: 500,
+                  hintText: LocaleKeys.declareInfo_inputPosition.tr,
                   title: LocaleKeys.declareInfo_selectPosition.tr,
                   listFilter: AppData.instance.positions.toList(),
                   selectedItem: AppData.instance.positions.firstWhereOrNull(

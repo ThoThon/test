@@ -201,6 +201,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
             final isRequired = controller.isBhxhCodeRequired;
             return CardInputTextFormWithLabel(
               fieldKey: fieldKey,
+              hintText: LocaleKeys.declareInfo_inputBhxhCode.tr,
               validator: validator,
               labelText: LocaleKeys.declareInfo_bhxhCode.tr,
               controller: controller.d02Tk1State.bhxhTextCtrl,

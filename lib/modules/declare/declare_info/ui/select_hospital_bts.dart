@@ -59,6 +59,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
               ],
             ),
           ),
+          sdsSBHeight20,
         ],
       ).paddingAll(AppDimens.paddingVerySmall),
     );
@@ -74,7 +75,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
       hintText: LocaleKeys.declareInfo_inputHospitalName.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
-      borderColor: AppColors.primaryColor,
+      borderColor: AppColors.thumbColorSwitch,
       autofocus: false,
       fillColor: AppColors.colorWhite,
       borderRadius: const BorderRadius.all(Radius.circular(25)),
@@ -88,7 +89,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
         child: Center(
           child: SDSImageSvg(
             Assets.ASSETS_ICONS_IC_SEARCH_SVG,
-            color: AppColors.primaryColor,
+            color: AppColors.thumbColorSwitch,
           ),
         ),
       ),
@@ -102,7 +103,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
               },
               icon: const Icon(
                 Icons.clear,
-                color: AppColors.primaryColor,
+                color: AppColors.thumbColorSwitch,
               ),
             ),
           )),

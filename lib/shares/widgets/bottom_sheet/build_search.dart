@@ -50,7 +50,7 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
                   textEditingController: textEditingController,
                   function: onChanged,
                   isClear: true.obs,
-                  borderColor: AppColors.primaryColor,
+                  borderColor: AppColors.thumbColorSwitch,
                   autofocus: false,
                 ),
                 Expanded(
@@ -69,6 +69,7 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
               ],
             ),
           ),
+          sdsSBHeight20,
         ],
       ).paddingSymmetric(
         horizontal: AppDimens.paddingVerySmall,
@@ -116,7 +117,7 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
         child: Center(
           child: SDSImageSvg(
             Assets.ASSETS_ICONS_IC_SEARCH_SVG,
-            color: AppColors.primaryColor,
+            color: AppColors.thumbColorSwitch,
           ),
         ),
       ),
