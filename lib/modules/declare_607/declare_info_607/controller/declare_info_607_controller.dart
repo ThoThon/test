@@ -528,6 +528,7 @@ class DeclareInfo607Controller extends BaseGetxController {
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
     _syncHeadOfHouseholdInfo();
+    updateHouseholdInfoRequired();
   }
 
   void onChangeProvinceKCB(ProvinceModel value) {
@@ -556,7 +557,6 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.wardTT.value = null;
       tk1State.addressTTTextCtrl.clear();
     }
-    updateHouseholdInfoRequired();
   }
 
   void onChangeHeadOfHouseholdFullName(String value) {
