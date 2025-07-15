@@ -858,7 +858,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                     provinceCode: provinceTT.id,
                     selectedDistrict: controller.tk1State.districtTT.value,
                   ),
-                  isScrollControlled: controller.enableClearTTIcon.value,
+                  isScrollControlled: true,
                 );
 
                 if (result != null) {
@@ -868,7 +868,7 @@ extension Tk1TabWidget on DeclareInfoPage {
               },
               selectedItem: controller.tk1State.districtTT.value,
               display: (district) => '${district.id} - ${district.name}',
-              enableClearIcon: true,
+              enableClearIcon: controller.enableClearTTIcon.value,
               onTapClear: controller.onTapClearDistrictTT,
             );
           },
