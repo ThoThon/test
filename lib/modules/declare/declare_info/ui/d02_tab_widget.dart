@@ -425,7 +425,7 @@ extension D02TabWidget on DeclareInfoPage {
           labelText: LocaleKeys.declareInfo_socialInsuranceRate.tr,
           controller: controller.d02State.socialInsuranceRateTextCtrl,
           isRequired: true,
-          textInputType: TextInputType.number,
+          textInputType: const TextInputType.numberWithOptions(decimal: true),
           inputFormatters: InputFormatterEnum.rate,
           maxLengthInputForm: 5,
         );
