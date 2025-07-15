@@ -103,9 +103,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
           onCancel: () async {
             await _getAccountInfo();
             await _getToTalNotiUnread();
-            Get.offAllNamed(
-              AppRoutes.home.path,
-            );
+            isEditAll.value = false;
           },
         );
       } else {
