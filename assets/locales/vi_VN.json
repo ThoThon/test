@@ -801,7 +801,8 @@
     "fileIncludeCannotEmpty": "Hồ sơ kèm theo không được để trống",
     "contentCannotEmpty": "Nội dung không được để trống",
     "contentDownloadAttachment": "[JPG, PNG,...]",
-    "signature": "Chữ ký số"
+    "signature": "Chữ ký số",
+    "next": "Tiếp theo"
   },
   "viewPdf": {
     "download": "Tải xuống",
