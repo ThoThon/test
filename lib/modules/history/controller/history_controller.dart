@@ -65,8 +65,10 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
   Future<void> onRefresh() async {}
 
   void pickPeriodDate() async {
-    final date = await UtilWidget.showPeriodDatePicker(
-      dateTime: selectedPeriodDate.value,
+    final date = await DatePickerUtils.showCalendarPicker(
+      title: LocaleKeys.dialog_selectMonthYear.tr,
+      dateFormat: PATTERN_12,
+      dateTimeInit: selectedPeriodDate.value,
     );
     if (date != null) {
       selectedPeriodDate.value = date;
