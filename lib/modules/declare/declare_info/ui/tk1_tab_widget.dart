@@ -817,7 +817,7 @@ extension Tk1TabWidget on DeclareInfoPage {
               },
               selectedItem: controller.tk1State.provinceTT.value,
               display: (province) => '${province.id} - ${province.name}',
-              enableClearIcon: true,
+              enableClearIcon: controller.enableClearTTIcon.value,
               onTapClear: controller.onTapClearProvinceTT,
             );
           },
@@ -858,7 +858,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                     provinceCode: provinceTT.id,
                     selectedDistrict: controller.tk1State.districtTT.value,
                   ),
-                  isScrollControlled: true,
+                  isScrollControlled: controller.enableClearTTIcon.value,
                 );
 
                 if (result != null) {
@@ -928,7 +928,7 @@ extension Tk1TabWidget on DeclareInfoPage {
               },
               selectedItem: controller.tk1State.wardTT.value,
               display: (ward) => '${ward.id} - ${ward.name}',
-              enableClearIcon: true,
+              enableClearIcon: controller.enableClearTTIcon.value,
               onTapClear: controller.onTapClearWardTT,
             );
           },
