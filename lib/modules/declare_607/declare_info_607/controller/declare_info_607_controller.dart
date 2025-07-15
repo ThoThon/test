@@ -25,6 +25,8 @@ class DeclareInfo607Controller extends BaseGetxController {
   final declarationPeriodController =
       Get.findOrNull<DeclarationPeriodController>();
 
+  final enableClearTTIcon = false.obs;
+
   @override
   void onReady() {
     super.onReady();
@@ -135,6 +137,10 @@ class DeclareInfo607Controller extends BaseGetxController {
           d01State.forms.indexWhere((element) => element.id == form.id);
       if (index != -1) {
         d01State.forms[index] = result;
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
       }
     }
   }
@@ -524,6 +530,7 @@ class DeclareInfo607Controller extends BaseGetxController {
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
     _syncHeadOfHouseholdInfo();
+    updateHouseholdInfoRequired();
   }
 
   void onChangeProvinceKCB(ProvinceModel value) {
@@ -760,6 +767,11 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     // Nếu không có điều kiện nào thỏa mãn
     tk1State.isHouseholdInfoRequired.value = false;
+  }
+
+  void updateClearTTIconState() {
+    final bhxhText = tk1State.bhxhTextCtrl.text.trim();
+    enableClearTTIcon.value = bhxhText.isNotEmpty;
   }
 
   @override

@@ -8,3 +8,4 @@ export 'text/font_style.dart';
 export 'utils_widget/utils_widget.src.dart';
 export 'appbar/app_bar_src.dart';
 export 'app_widget/app_widget_src.dart';
+export 'date_picker/date_picker.src.dart';

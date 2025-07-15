@@ -1,3 +1,11 @@
+15/07/2025
+- [Appmobile][D01] Không hiển thị thông báo khi update thành công dữ liệu - BHW-2698
+- [Appmobile][TK1-TS]_Lỗi validate các trường Thông tin chủ hộ khi update - BHW-2699
+- [Appmobile]_Thủ tục 600: Màn D02-LT: Lỗi chọn giá trị tại trường Loại phương án - BHW-2704
+- [Appmobile]_Màn đăng nhập: Chỉnh sửa dialog thông báo - BHW-2702
+- [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Màn TK1: Chỉnh sửa UX/UI trường Địa chỉ chủ hộ - BHW-2700
+- [Appmobile]_Màn đăng ký cấp mã: Sai text button + Lỗi check validate trước khi chuyển trang - BHW-2705
+
 14/07/2025
 - [Appmobile]_Chỉnh sửa bổ sung: Thêm chức năng chia sẻ tại màn View file pdf - BHW-2604
 - [Appmobile] Hiển thị sai text trong button xóa - BHW-2691
@@ -9,6 +17,8 @@
 - [Appmobile][TK1-TS]_Lỗi hiển thị không đồng nhất Placeholder - BHW-2684
 - [Appmobile][TK1-TS] Lỗi các thao tác màn hình che mất dữ liệu
 - [Appmobile] Chỉnh sửa lại giao diện của tìm kiếm - BHW-2658
+- [Appmobile]_Tờ khai D02, bổ sung trường tỷ lệ đóng - BHW-2583
+- [Appmobile]_Chỉnh sửa giao diện hộp Calendar - BHW-2631
 
 12/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Xử lý nút Tiếp trường nhập cuối cùng tờ khai Bảng kê D01 - BHW-2689

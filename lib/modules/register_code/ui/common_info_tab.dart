@@ -276,7 +276,12 @@ extension CommonInfoTab on RegisterCodePage {
           isRequired: true,
           onSelectDate: () async {
             KeyBoard.hide();
-            final selectedDate = await UtilWidget.showDateTimePicker(
+            final selectedDate = await DatePickerUtils.showCalendarPicker(
+              title: LocaleKeys.dialog_selectDayMonthYear.tr,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.padding32,
+              ),
+              dateFormat: PATTERN_1,
               dateTimeInit: convertStringToDateSafe(
                     controller.setupDateCtrl.text,
                     PATTERN_1,
@@ -333,7 +338,12 @@ extension CommonInfoTab on RegisterCodePage {
           isRequired: true,
           onSelectDate: () async {
             KeyBoard.hide();
-            final selectedDate = await UtilWidget.showDateTimePicker(
+            final selectedDate = await DatePickerUtils.showCalendarPicker(
+              title: LocaleKeys.dialog_selectDayMonthYear.tr,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.padding32,
+              ),
+              dateFormat: PATTERN_1,
               dateTimeInit: convertStringToDateSafe(
                     controller.registerDateCtrl.text,
                     PATTERN_1,
@@ -582,9 +592,9 @@ extension CommonInfoTab on RegisterCodePage {
           return const SizedBox.shrink();
         }
         return UtilWidget.buildSolidButton(
-          title: LocaleKeys.registerCode_continue.tr,
+          title: LocaleKeys.registerCode_next.tr,
           onPressed: () {
-            controller.onTabChanged(RegisterCodeTabEnum.register_info);
+            controller.goToRegisterTab();
           },
           borderRadius: AppDimens.radius30,
           textStyle:

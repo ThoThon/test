@@ -6,30 +6,37 @@ extension D01Tab607Widget on DeclareInfo607Page {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                UtilWidget.sizedBox16,
-                SDSBuildText(
-                  LocaleKeys.declareInfo_listTable.tr,
-                  style: AppTextStyle.font16Bo,
+          child: Obx(
+            () {
+              if (controller.d01State.forms.isEmpty) {
+                return UtilWidget.buildEmptyList();
+              }
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    UtilWidget.sizedBox16,
+                    SDSBuildText(
+                      LocaleKeys.declareInfo_listTable.tr,
+                      style: AppTextStyle.font16Bo,
+                    ),
+                    sdsSBHeight12,
+                    ...addSeparator(
+                      children: controller.d01State.forms.map(
+                        (form) {
+                          return _buildD01Item(
+                            form: form,
+                          );
+                        },
+                      ),
+                      spacer: sdsSBHeight16,
+                    ),
+                    sdsSBHeight16,
+                  ],
                 ),
-                sdsSBHeight12,
-                ...addSeparator(
-                  children: controller.d01State.forms.map(
-                    (form) {
-                      return _buildD01Item(
-                        form: form,
-                      );
-                    },
-                  ),
-                  spacer: sdsSBHeight16,
-                ),
-                sdsSBHeight16,
-              ],
-            ),
+              );
+            },
           ),
         ),
         UtilWidget.buildSolidButton(

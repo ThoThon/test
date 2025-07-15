@@ -68,6 +68,10 @@ class LocaleKeys {
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
   static const dialog_sendFileToBHXH = 'dialog_sendFileToBHXH';
   static const dialog_max5File = 'dialog_max5File';
+  static const dialog_select = 'dialog_select';
+  static const dialog_selectDayMonthYear = 'dialog_selectDayMonthYear';
+  static const dialog_selectMonthYear = 'dialog_selectMonthYear';
+  static const dialog_selectYear = 'dialog_selectYear';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -317,6 +321,7 @@ class LocaleKeys {
   static const login_registerForCode = 'login_registerForCode';
   static const login_switchTo = 'login_switchTo';
   static const login_register = 'login_register';
+  static const login_invalidPassword = 'login_invalidPassword';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_declare = 'procedureList_declare';
   static const procedureList_title = 'procedureList_title';
@@ -601,6 +606,10 @@ class LocaleKeys {
   static const declareInfo_inputBhxhCode = 'declareInfo_inputBhxhCode';
   static const declareInfo_inputHeadOfHouseholdCCCD =
       'declareInfo_inputHeadOfHouseholdCCCD';
+  static const declareInfo_socialInsuranceRate =
+      'declareInfo_socialInsuranceRate';
+  static const declareInfo_socialInsuranceRateCannotEmpty =
+      'declareInfo_socialInsuranceRateCannotEmpty';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -963,6 +972,7 @@ class LocaleKeys {
   static const registerCode_contentDownloadAttachment =
       'registerCode_contentDownloadAttachment';
   static const registerCode_signature = 'registerCode_signature';
+  static const registerCode_next = 'registerCode_next';
   static const viewPdf_download = 'viewPdf_download';
   static const viewPdf_share = 'viewPdf_share';
   static const viewPdf_cannotDownloadFile = 'viewPdf_cannotDownloadFile';
@@ -1063,6 +1073,10 @@ class Locales {
     'dialog_sendFileToBHXH':
         'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
     'dialog_max5File': 'Chỉ cho phép chọn tối đa 5 file',
+    'dialog_select': 'Chọn',
+    'dialog_selectDayMonthYear': 'Chọn Ngày/Tháng/Năm',
+    'dialog_selectMonthYear': 'Chọn Tháng/Năm',
+    'dialog_selectYear': 'Chọn năm',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -1300,6 +1314,7 @@ class Locales {
     'login_registerForCode': 'Đăng ký cấp mã',
     'login_switchTo': 'Đã chuyển sang',
     'login_register': 'Đăng ký',
+    'login_invalidPassword': 'Mật khẩu đăng nhập tài khoản không đúng',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_declare': 'Kê khai',
     'procedureList_title': 'Thủ tục ',
@@ -1523,6 +1538,9 @@ class Locales {
     'declareInfo_addTableSuccess': 'Thêm bảng kê thành công',
     'declareInfo_inputBhxhCode': 'Nhập mã số BHXH',
     'declareInfo_inputHeadOfHouseholdCCCD': 'Nhập số CCCD của chủ hộ',
+    'declareInfo_socialInsuranceRate': 'Tỷ lệ đóng',
+    'declareInfo_socialInsuranceRateCannotEmpty':
+        'Tỷ lệ đóng không được bỏ trống',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1603,7 +1621,7 @@ class Locales {
     'staffList_continue': 'Tiếp theo',
     'staffList_attachFileErorr': 'File không hợp lệ',
     'staffList_fillFullName': 'Nhập họ và tên',
-    'staffList_search': 'Tìm kiếm',
+    'staffList_search': 'Nhập tên nhân viên',
     'staffList_confirm': 'Xác nhận',
     'staffList_selectedStaff': 'Chọn nhân viên',
     'staffList_deleteStaffConfirmMessage':
@@ -1818,6 +1836,7 @@ class Locales {
     'registerCode_contentCannotEmpty': 'Nội dung không được để trống',
     'registerCode_contentDownloadAttachment': '[JPG, PNG,...]',
     'registerCode_signature': 'Chữ ký số',
+    'registerCode_next': 'Tiếp theo',
     'viewPdf_download': 'Tải xuống',
     'viewPdf_share': 'Chia sẻ',
     'viewPdf_cannotDownloadFile': 'Có lỗi xảy ra. Không thể tải xuống file.',

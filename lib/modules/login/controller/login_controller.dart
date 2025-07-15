@@ -58,7 +58,11 @@ class LoginController extends BaseGetxController {
         Get.offAllNamed(AppRoutes.home.path);
         return;
       } else {
-        showSnackBar(LocaleKeys.login_usernameAndPasswordInValid.tr);
+        showSnackBar(
+          isHaveUsername.value
+              ? LocaleKeys.login_invalidPassword.tr
+              : LocaleKeys.login_usernameAndPasswordInValid.tr,
+        );
       }
     } catch (e) {
       logger.e(e);

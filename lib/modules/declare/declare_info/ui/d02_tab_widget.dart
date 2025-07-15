@@ -108,6 +108,10 @@ extension D02TabWidget on DeclareInfoPage {
                         // Phương án
                         _buildSelectPlan(),
 
+                        // Tỷ lệ đóng
+                        _buildInputRate(),
+                        sdsSBHeight12,
+
                         // Từ tháng/năm và Đến tháng/năm
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -234,8 +238,10 @@ extension D02TabWidget on DeclareInfoPage {
             isRequired: controller.isToDateRequired,
             onSelectDate: () async {
               KeyBoard.hide();
-              final selectedDate = await UtilWidget.showPeriodDatePicker(
-                dateTime: convertStringToDateSafe(
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                title: LocaleKeys.dialog_selectMonthYear.tr,
+                dateFormat: PATTERN_12,
+                dateTimeInit: convertStringToDateSafe(
                   controller.d02State.toDateTextCtrl.text,
                   PATTERN_12,
                 ),
@@ -304,8 +310,10 @@ extension D02TabWidget on DeclareInfoPage {
             inputFormatters: InputFormatterEnum.dateMonthYear,
             onSelectDate: () async {
               KeyBoard.hide();
-              final selectedDate = await UtilWidget.showPeriodDatePicker(
-                dateTime: convertStringToDateSafe(
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                title: LocaleKeys.dialog_selectMonthYear.tr,
+                dateFormat: PATTERN_12,
+                dateTimeInit: convertStringToDateSafe(
                   controller.d02State.fromDateTextCtrl.text,
                   PATTERN_12,
                 ),
@@ -331,22 +339,24 @@ extension D02TabWidget on DeclareInfoPage {
         return null;
       },
       builder: (fieldKey, validator) {
-        return CardDropdownWithLabel<DeclarationTypeModel>(
-          fieldKey: fieldKey,
-          validator: validator,
-          labelText: LocaleKeys.declareInfo_declarationType.tr,
-          hintText: LocaleKeys.declareInfo_selectDeclarationType.tr,
-          items: AppData.instance.declarationTypes.toList(),
-          display: (item) => item.text,
-          isRequired: true,
-          selectedItem: controller.d02State.declarationType.value,
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-            controller.d02State.plan.value = null;
-            controller.d02State.declarationType.value = value;
-          },
+        return Obx(
+          () => CardDropdownWithLabel<DeclarationTypeModel>(
+            fieldKey: fieldKey,
+            validator: validator,
+            labelText: LocaleKeys.declareInfo_declarationType.tr,
+            hintText: LocaleKeys.declareInfo_selectDeclarationType.tr,
+            items: AppData.instance.declarationTypes.toList(),
+            display: (item) => item.text,
+            isRequired: true,
+            selectedItem: controller.d02State.declarationType.value,
+            onChanged: (value) {
+              if (value == null) {
+                return;
+              }
+              controller.d02State.plan.value = null;
+              controller.d02State.declarationType.value = value;
+            },
+          ),
         );
       },
     );
@@ -391,6 +401,33 @@ extension D02TabWidget on DeclareInfoPage {
               },
             ).paddingOnly(bottom: AppDimens.paddingSmall);
           },
+        );
+      },
+    );
+  }
+
+  Widget _buildInputRate() {
+    return FormFieldRegistrant<String>(
+      registrarId: '96e113d1-843c-42c9-bae4-4d12e22bfc0b',
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_socialInsuranceRateCannotEmpty.tr;
+        }
+
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_socialInsuranceRate.tr,
+          controller: controller.d02State.socialInsuranceRateTextCtrl,
+          isRequired: true,
+          textInputType: const TextInputType.numberWithOptions(decimal: true),
+          inputFormatters: InputFormatterEnum.rate,
+          maxLengthInputForm: 5,
         );
       },
     );
