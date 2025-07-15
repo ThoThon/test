@@ -6,52 +6,29 @@ extension D01TabWidget on DeclareInfoPage {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                UtilWidget.sizedBox16,
-                SDSBuildText(
-                  LocaleKeys.declareInfo_listTable.tr,
-                  style: AppTextStyle.font16Bo,
+          child: Obx(
+            () {
+              if (controller.d01State.forms.isEmpty) {
+                return UtilWidget.buildEmptyList();
+              }
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    UtilWidget.sizedBox16,
+                    SDSBuildText(
+                      LocaleKeys.declareInfo_listTable.tr,
+                      style: AppTextStyle.font16Bo,
+                    ),
+                    sdsSBHeight12,
+                    ...controller.d01State.forms.mapIndexed(
+                      (index, form) => _buildD01Item(form: form),
+                    ),
+                  ],
                 ),
-                sdsSBHeight12,
-                ...controller.d01State.forms.mapIndexed(
-                  (index, form) {
-                    return _buildD01Item(
-                      form: form,
-                    );
-                  },
-                ),
-                // InkWell(
-                //   onTap: controller.createNewDeclarationForm,
-                //   child: Row(
-                //     children: [
-                //       Ink(
-                //         decoration: const ShapeDecoration(
-                //           color: AppColors.primaryColor,
-                //           shape: CircleBorder(),
-                //         ),
-                //         child: IconButton(
-                //           icon: const Icon(Icons.add),
-                //           color: Colors.white,
-                //           onPressed: controller.createNewDeclarationForm,
-                //         ),
-                //       ),
-                //       UtilWidget.sizedBoxWidth16,
-                //       SDSBuildText(
-                //         'Thêm mới bảng kê',
-                //         style: AppTextStyle.font16Re,
-                //       ),
-                //     ],
-                //   ).paddingSymmetric(
-                //     vertical: AppDimens.paddingVerySmall,
-                //     horizontal: AppDimens.defaultPadding,
-                //   ),
-                // ),
-              ],
-            ),
+              );
+            },
           ),
         ),
         UtilWidget.buildSolidButton(
