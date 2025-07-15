@@ -6,10 +6,11 @@ extension SelectStaffWidget on SelectStaffPage {
       children: [
         _buildSearchStaff(),
         sdsSBHeight12,
+        _staffTitle(),
+        sdsSBHeight12,
         _buildViewListStaffSelect(),
-        _buildButtonConfirm(),
       ],
-    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
+    ).paddingSymmetric(horizontal: AppDimens.paddingSmallest);
   }
 
   Widget _buildSearchStaff() {
@@ -17,125 +18,186 @@ extension SelectStaffWidget on SelectStaffPage {
       InputTextModel(
         controller: controller.searchController,
         hintText: LocaleKeys.staffList_fillFullName.tr,
-        iconNextTextInputAction: TextInputAction.done,
         hintTextColor: AppColors.thumbColorSwitch,
+        prefixIconColor: AppColors.thumbColorSwitch,
+        fillColor: AppColors.colorTransparent,
         maxLengthInputForm: 100,
+        isShowCounterText: false,
         hintTextSize: AppDimens.fontSmall(),
         iconAssets: Assets.ASSETS_ICONS_IC_SEARCH_SVG,
-        onChanged: (_) {
-          controller.functionSearch();
-        },
+        onChanged: (_) => controller.functionSearch(),
         border: _buildOutlineBorder(),
         focusedBorder: _buildOutlineBorder(),
         enabledBorder: _buildOutlineBorder(),
       ),
-    );
+    ).paddingSymmetric(horizontal: AppDimens.paddingSmall);
   }
 
-  OutlineInputBorder _buildOutlineBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppDimens.radius30),
-      borderSide: const BorderSide(
-        width: 1,
-        color: AppColors.statusRed,
-      ),
-    );
-  }
+  OutlineInputBorder _buildOutlineBorder() => OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppDimens.radius30),
+        borderSide: const BorderSide(
+          width: 1,
+          color: AppColors.thumbColorSwitch,
+        ),
+      );
 
-  Widget _buildItemStaff(SelectStaffResponse item) {
+  Widget _buildItemStaff(SelectStaffResponse item, int index) {
     return Obx(
       () {
-        final isSelected = controller.staffSelected.value == item;
-        return InkWell(
-          onTap: () {
-            controller.staffSelected.value = item;
-          },
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SDSImageSvg(
-                Assets.ASSETS_ICONS_IC_PERSON_SVG,
-                height: AppDimens.sizeIcon32,
-                color: AppColors.primaryColor,
-              ),
-              sdsSBWidth12,
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: item.hoTen,
-                            style: AppTextStyle.font16Bo,
-                          ),
-                          if (item.soCCCD.isNotEmpty)
-                            TextSpan(
-                              text: ' (${item.maSoBHXH})',
-                              style: AppTextStyle.font14Re.copyWith(
-                                color: AppColors.colorBlack,
-                              ),
-                            ),
-                        ],
-                      ),
-                      maxLines: 2,
-                    ),
-                    Visibility(
-                      visible: item.chucVu.isNotEmpty,
-                      child: SDSBuildText(
-                        item.chucVu,
-                        style: AppTextStyle.font12Re,
-                      ),
-                    )
-                  ],
+        final isFirst = index == 0;
+        final isLast = index == controller.listStaffSelect.length - 1;
+
+        BorderRadius borderRadius;
+        Border border;
+
+        if (isFirst && isLast) {
+          // Nếu 1 item => Full border
+          borderRadius = BorderRadius.circular(AppDimens.radius12);
+          border = Border.all(color: AppColors.dsGray5);
+        } else if (isFirst) {
+          // Item đầu tiên => Border bên trên và 2 bên
+          borderRadius = const BorderRadius.only(
+            topLeft: Radius.circular(AppDimens.radius12),
+            topRight: Radius.circular(AppDimens.radius12),
+          );
+          border = const Border(
+            top: BorderSide(color: AppColors.dsGray5),
+            left: BorderSide(color: AppColors.dsGray5),
+            right: BorderSide(color: AppColors.dsGray5),
+          );
+        } else if (isLast) {
+          // Item cuối cung => Border xung quanh
+          borderRadius = const BorderRadius.only(
+            bottomLeft: Radius.circular(AppDimens.radius12),
+            bottomRight: Radius.circular(AppDimens.radius12),
+          );
+          border = Border.all(color: AppColors.dsGray5);
+        } else {
+          // Item ở giữa => Border 2 bên và bên trên (không có bên dưới để tránh 2 border stack lên nhau)
+          borderRadius = BorderRadius.zero;
+          border = const Border(
+            top: BorderSide(color: AppColors.dsGray5),
+            left: BorderSide(color: AppColors.dsGray5),
+            right: BorderSide(color: AppColors.dsGray5),
+          );
+        }
+
+        return Container(
+          decoration: BoxDecoration(
+            border: border,
+            borderRadius: borderRadius,
+            color: AppColors.basicWhite,
+          ),
+          child: InkWell(
+            onTap: () {
+              Get.back(result: item);
+            },
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SDSImageSvg(
+                  Assets.ASSETS_ICONS_IC_PERSON_2_SVG,
+                  height: AppDimens.sizeIcon32,
+                  color: AppColors.primaryColor,
+                ).paddingSymmetric(
+                  vertical: AppDimens.paddingSmall,
+                  horizontal: AppDimens.defaultPadding,
                 ),
-              ),
-              Icon(
-                Icons.check_outlined,
-                color: isSelected
-                    ? AppColors.primaryColor
-                    : AppColors.colorTransparent,
-              ),
-            ],
-          ).paddingSymmetric(vertical: AppDimens.paddingSmallest),
+                sdsSBWidth12,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildStaffInfo(item),
+                      if (item.chucVu.isNotEmpty)
+                        SDSBuildText(
+                          item.chucVu,
+                          style: AppTextStyle.font14Re,
+                        ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.check_outlined,
+                  color: controller.selectedID.value == item.id
+                      ? AppColors.primaryColor
+                      : AppColors.colorTransparent,
+                ),
+              ],
+            ).paddingSymmetric(
+              vertical: AppDimens.paddingSmallest,
+              horizontal: AppDimens.paddingSmallest,
+            ),
+          ),
         );
       },
     );
   }
 
+  Widget _buildStaffInfo(SelectStaffResponse item) {
+    // return RichText(
+    //   maxLines: 2,
+    //   text: TextSpan(
+    //     children: [
+    //       TextSpan(
+    //         text: item.hoTen,
+    //         style: AppTextStyle.font16Bo,
+    //       ),
+    //       if (item.maSoBHXH.isNotEmpty)
+    //         TextSpan(
+    //           text: ' (${item.maSoBHXH})',
+    //           style: AppTextStyle.font14Re.copyWith(
+    //             color: AppColors.colorBlack,
+    //           ),
+    //         ),
+    //     ],
+    //   ),
+    // );
+    return Row(
+      children: [
+        Expanded(
+          child: SDSBuildText(
+            '${item.hoTen}${item.maSoBHXH.isNotEmpty ? ' (${item.maSoBHXH})' : ''}',
+            maxLines: 4,
+            style: AppTextStyle.font16Re,
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildViewListStaffSelect() {
     return Expanded(
-      child: UtilWidget.buildCardBase(
-        baseShowLoading(
-          () => UtilWidget.buildSmartRefresher(
-            refreshController: controller.refreshController,
-            onRefresh: controller.onRefresh,
-            onLoadMore: controller.onLoadMore,
-            enablePullUp: true,
-            child: controller.listStaffSelect.isEmpty
-                ? UtilWidget.buildEmptyList()
-                : ListView.separated(
-                    itemBuilder: (context, index) {
-                      final item = controller.listStaffSelect[index];
-                      return _buildItemStaff(item);
-                    },
-                    itemCount: controller.listStaffSelect.length,
-                    separatorBuilder: (context, index) =>
-                        UtilWidget.buildDividerDefault(),
-                  ),
-          ),
-        ).paddingAll(AppDimens.paddingSmall),
+      child: baseShowLoading(
+        () => UtilWidget.buildSmartRefresher(
+          refreshController: controller.refreshController,
+          onRefresh: controller.onRefresh,
+          onLoadMore: controller.onLoadMore,
+          enablePullUp: true,
+          child: controller.listStaffSelect.isEmpty
+              ? UtilWidget.buildEmptyList()
+              : ListView.builder(
+                  itemBuilder: (_, index) {
+                    return _buildItemStaff(
+                        controller.listStaffSelect[index], index);
+                  },
+                  itemCount: controller.listStaffSelect.length,
+                ),
+        ),
       ),
     );
   }
 
-  Widget _buildButtonConfirm() {
-    return UtilWidget.buildSolidButton(
-      title: LocaleKeys.staffList_confirm.tr,
-      onPressed: () {
-        Get.back(result: controller.staffSelected.value);
-      },
+  Widget _staffTitle() {
+    return SizedBox(
+      width: double.infinity,
+      child: SDSBuildText(
+        LocaleKeys.staffList_listEmployee.tr,
+        style: AppTextStyle.font16Bo,
+        textAlign: TextAlign.start,
+      ),
+    ).paddingSymmetric(
+      horizontal: AppDimens.paddingSmall,
     );
   }
 }

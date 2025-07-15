@@ -2,31 +2,40 @@ part of 'register_code_page.dart';
 
 extension RegisterInfoTab on RegisterCodePage {
   Widget _buildRegisterInfoTab() {
-    return Form(
-      key: controller.formKeyRegisterTab,
-      child: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  _buildBhxhInfoCard(),
-                  sdsSBHeight12,
-                  _buildOtherInfoCard(),
-                  sdsSBHeight12,
-                  _buildSelectUploadFile(),
-                  _buidHideImage(),
-                  sdsSBHeight12,
-                  _buildSingatureInfo(),
-                  _buildCardSignatureInfo(),
-                ],
+    return AppFormRegistry(
+      key: controller.registeredRegisterTabKey,
+      child: Form(
+        key: controller.formKeyRegisterTab,
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildBhxhInfoCard(),
+                    sdsSBHeight12,
+                    _buildOtherInfoCard(),
+                    sdsSBHeight12,
+                    _buildSelectUploadFile(),
+                    _buidHideImage(),
+                    sdsSBHeight12,
+                    SDSBuildText(
+                      LocaleKeys.registerCode_signature.tr,
+                      style: AppTextStyle.font16Bo,
+                    ),
+                    sdsSBHeight12,
+                    _buildInputUsernameMySign(),
+                    _buildCardSignatureInfo(),
+                  ],
+                ),
               ),
             ),
-          ),
-          sdsSBHeight12,
-          // Button "Quay lại" và "Đăng ký"
-          _buildDoubleButton(),
-        ],
+            sdsSBHeight12,
+            // Button "Quay lại" và "Đăng ký"
+            _buildDoubleButton(),
+          ],
+        ),
       ),
     );
   }
@@ -60,164 +69,219 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Cơ quan BHXH
   Widget _buildSelectBhxhAgency() {
-    return UtilWidget.buildCardBottomSheetSelect2(
-      label: LocaleKeys.registerCode_socialSecurityAgency.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<SocialAgencyModel>(
-            title: LocaleKeys.registerCode_selectSocialAgency.tr,
-            maxLength: 20,
-            listFilter: AppData.instance.socialAgency.toList(),
-            selectedItem: controller.socialAgency.value,
-            display: (value) => value.tenCoQuanBHXH,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.socialAgency.value = value;
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
-        );
-      },
-      selectedItem: controller.socialAgency.value,
-      display: (item) => item.tenCoQuanBHXH,
+    return FormFieldRegistrant<SocialAgencyModel>(
+      registrarId: 'd50c7b2a-28b6-4c25-a7bb-f3fb7ed88ee1',
       validator: (value) {
         if (controller.socialAgency.value == null) {
           return LocaleKeys.registerCode_socialAgencyCannotEmpty.tr;
         }
         return null;
       },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            return UtilWidget.buildCardBottomSheetSelect2(
+              fieldKey: fieldKey,
+              validator: validator,
+              label: LocaleKeys.registerCode_socialSecurityAgency.tr,
+              funcSelect: (didChange) {
+                Get.bottomSheet(
+                  BottomSheetSearch<SocialAgencyModel>(
+                    title: LocaleKeys.registerCode_selectSocialAgency.tr,
+                    maxLength: 20,
+                    listFilter: AppData.instance.socialAgency.toList(),
+                    selectedItem: controller.socialAgency.value,
+                    display: (value) => value.tenCoQuanBHXH,
+                    onAccept: (value) {
+                      if (value == null) return;
+                      controller.socialAgency.value = value;
+                      didChange(value);
+                    },
+                  ),
+                  isScrollControlled: true,
+                );
+              },
+              selectedItem: controller.socialAgency.value,
+              display: (item) => item.tenCoQuanBHXH,
+            );
+          },
+        );
+      },
     );
   }
 
   // Nơi nhận tỉnh
   Widget _buildSelectProvinceReceive() {
-    return UtilWidget.buildCardBottomSheetSelect2(
-      label: LocaleKeys.registerCode_provinceReceive.tr,
-      funcSelect: (didChange) {
-        Get.bottomSheet(
-          BottomSheetSearch<ProvinceModel>(
-            title: LocaleKeys.unitInfo_selectProvince.tr,
-            maxLength: 20,
-            listFilter: AppData.instance.provinces.toList(),
-            selectedItem: controller.provinceReceive.value,
-            display: (value) => value.name,
-            onAccept: (value) {
-              if (value == null) return;
-              controller.changeProvinceReceive(value);
-              didChange(value);
-            },
-          ),
-          isScrollControlled: true,
-        );
-      },
-      selectedItem: controller.provinceReceive.value,
-      display: (item) => item.name,
+    return FormFieldRegistrant<ProvinceModel>(
+      registrarId: 'ca230590-eb6d-4f96-b4c5-cc9c46dcd529',
       validator: (value) {
         if (controller.provinceReceive.value == null) {
           return LocaleKeys.registerCode_provinceReceiveCannotEmpty.tr;
         }
         return null;
       },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            return UtilWidget.buildCardBottomSheetSelect2(
+              fieldKey: fieldKey,
+              validator: validator,
+              label: LocaleKeys.registerCode_provinceReceive.tr,
+              funcSelect: (didChange) {
+                Get.bottomSheet(
+                  BottomSheetSearch<ProvinceModel>(
+                    title: LocaleKeys.unitInfo_selectProvince.tr,
+                    maxLength: 20,
+                    listFilter: AppData.instance.provinces.toList(),
+                    selectedItem: controller.provinceReceive.value,
+                    display: (value) => '${value.id} - ${value.name}',
+                    onAccept: (value) {
+                      if (value == null) return;
+                      controller.changeProvinceReceive(value);
+                      didChange(value);
+                    },
+                  ),
+                  isScrollControlled: true,
+                );
+              },
+              selectedItem: controller.provinceReceive.value,
+              display: (item) => '${item.id} - ${item.name}',
+            );
+          },
+        );
+      },
     );
   }
 
   // Nơi nhận huyện
   Widget _buildSelectDistrictReceive() {
-    return UtilWidget.buildCardBottomSheetSelect2(
-      label: LocaleKeys.registerCode_districtReceive.tr,
-      funcSelect: (didChange) async {
-        final province = controller.provinceReceive.value;
-        if (province == null) {
-          controller
-              .showSnackBar(LocaleKeys.registerCode_provinceReceiveIsEmpty.tr);
-          return;
-        }
-
-        final result = await Get.bottomSheet<DistrictModel>(
-          SelectDistrictBts(
-            provinceCode: province.id,
-            selectedDistrict: controller.districtReceive.value,
-          ),
-          isScrollControlled: true,
-        );
-
-        if (result != null) {
-          controller.changeDistrictReceive(result);
-          didChange(result);
-        }
-      },
-      selectedItem: controller.districtReceive.value,
-      display: (item) => item.name,
+    return FormFieldRegistrant<DistrictModel>(
+      registrarId: 'e11fcdc5-17d9-4652-9334-269d93950e06',
       validator: (value) {
         if (controller.districtReceive.value == null) {
           return LocaleKeys.registerCode_districtReceiveCannotEmpty.tr;
         }
         return null;
       },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            return UtilWidget.buildCardBottomSheetSelect2(
+              fieldKey: fieldKey,
+              validator: validator,
+              label: LocaleKeys.registerCode_districtReceive.tr,
+              funcSelect: (didChange) async {
+                final province = controller.provinceReceive.value;
+                if (province == null) {
+                  controller.showSnackBar(
+                      LocaleKeys.registerCode_provinceReceiveIsEmpty.tr);
+                  return;
+                }
+
+                final result = await Get.bottomSheet<DistrictModel>(
+                  SelectDistrictBts(
+                    provinceCode: province.id,
+                    selectedDistrict: controller.districtReceive.value,
+                  ),
+                  isScrollControlled: true,
+                );
+
+                if (result != null) {
+                  controller.changeDistrictReceive(result);
+                  didChange(result);
+                }
+              },
+              selectedItem: controller.districtReceive.value,
+              display: (item) => '${item.id} - ${item.name}',
+            );
+          },
+        );
+      },
     );
   }
 
   // Nơi nhận xã
   Widget _buildSelectWardReceive() {
-    return UtilWidget.buildCardBottomSheetSelect2(
-      label: LocaleKeys.registerCode_wardReceive.tr,
-      funcSelect: (didChange) async {
-        final province = controller.provinceReceive.value;
-        if (province == null) {
-          controller
-              .showSnackBar(LocaleKeys.registerCode_provinceReceiveIsEmpty.tr);
-          return;
-        }
-
-        final district = controller.districtReceive.value;
-        if (district == null) {
-          controller
-              .showSnackBar(LocaleKeys.registerCode_districtReceiveIsEmpty.tr);
-          return;
-        }
-
-        final result = await Get.bottomSheet<WardModel>(
-          SelectWardBts(
-            provinceCode: province.id,
-            districtCode: district.id,
-            selectedWard: controller.wardReceive.value,
-          ),
-          isScrollControlled: true,
-        );
-
-        if (result != null) {
-          controller.changeWardReceive(result);
-          didChange(result);
-        }
-      },
-      selectedItem: controller.wardReceive.value,
-      display: (ward) => ward.name,
+    return FormFieldRegistrant<WardModel>(
+      registrarId: '0ee163cd-5944-49b5-ad3c-f56e87e24e98',
       validator: (value) {
         if (controller.wardReceive.value == null) {
           return LocaleKeys.registerCode_wardReceiveCannotEmpty.tr;
         }
         return null;
       },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            return UtilWidget.buildCardBottomSheetSelect2(
+              fieldKey: fieldKey,
+              validator: validator,
+              label: LocaleKeys.registerCode_wardReceive.tr,
+              funcSelect: (didChange) async {
+                final province = controller.provinceReceive.value;
+                if (province == null) {
+                  controller.showSnackBar(
+                      LocaleKeys.registerCode_provinceReceiveIsEmpty.tr);
+                  return;
+                }
+
+                final district = controller.districtReceive.value;
+                if (district == null) {
+                  controller.showSnackBar(
+                      LocaleKeys.registerCode_districtReceiveIsEmpty.tr);
+                  return;
+                }
+
+                final result = await Get.bottomSheet<WardModel>(
+                  SelectWardBts(
+                    provinceCode: province.id,
+                    districtCode: district.id,
+                    selectedWard: controller.wardReceive.value,
+                  ),
+                  isScrollControlled: true,
+                );
+
+                if (result != null) {
+                  controller.changeWardReceive(result);
+                  didChange(result);
+                }
+              },
+              selectedItem: controller.wardReceive.value,
+              display: (ward) => '${ward.id} - ${ward.name}',
+            );
+          },
+        );
+      },
     );
   }
 
   // Đăng ký nhận kết quả
-  CardDropdownWithLabel _buildSelectRegisterResult() {
-    return CardDropdownWithLabel<RegisterReceiveResultModel>(
-      labelText: LocaleKeys.registerCode_registerResult.tr,
-      isRequired: true,
-      items: AppData.instance.resultReceivingOptions.toList(),
-      display: (result) => result.text,
-      selectedItem: controller.registerResult.value,
-      onChanged: (value) {
-        controller.registerResult.value = value;
-      },
+  Widget _buildSelectRegisterResult() {
+    return FormFieldRegistrant<RegisterReceiveResultModel>(
+      registrarId: 'ecd9b8e1-2a1a-46ab-b717-ff9197dc8271',
       validator: (value) {
         if (value == null) {
           return LocaleKeys.registerCode_registerResultCannotEmpty.tr;
         }
         return null;
+      },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            return CardDropdownWithLabel<RegisterReceiveResultModel>(
+              fieldKey: fieldKey,
+              validator: validator,
+              labelText: LocaleKeys.registerCode_registerResult.tr,
+              isRequired: true,
+              items: AppData.instance.resultReceivingOptions.toList(),
+              display: (result) => result.text,
+              selectedItem: controller.registerResult.value,
+              onChanged: (value) {
+                controller.registerResult.value = value;
+              },
+            );
+          },
+        );
       },
     );
   }
@@ -250,53 +314,71 @@ extension RegisterInfoTab on RegisterCodePage {
   }
 
   // Phương thức nhận kết quả
-  CardDropdownWithLabel _buildSelectMethodResult() {
-    return CardDropdownWithLabel<ReceiveMethodModel>(
-      labelText: LocaleKeys.registerCode_methodReceiveResult.tr,
-      isRequired: true,
-      items: AppData.instance.receiveMethod.toList(),
-      display: (result) => result.text,
-      selectedItem: controller.resultReceiveMethod.value,
-      onChanged: (value) {
-        controller.resultReceiveMethod.value = value;
-      },
+  Widget _buildSelectMethodResult() {
+    return FormFieldRegistrant<ReceiveMethodModel>(
+      registrarId: '543267ff-a0c3-4bcc-9129-c5da0ad19093',
       validator: (value) {
         if (value == null) {
           return LocaleKeys.registerCode_methodReceiveResultCannotEmpty.tr;
         }
         return null;
       },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            return CardDropdownWithLabel<ReceiveMethodModel>(
+              fieldKey: fieldKey,
+              validator: validator,
+              labelText: LocaleKeys.registerCode_methodReceiveResult.tr,
+              isRequired: true,
+              items: AppData.instance.receiveMethod.toList(),
+              display: (result) => result.text,
+              selectedItem: controller.resultReceiveMethod.value,
+              onChanged: (value) {
+                controller.resultReceiveMethod.value = value;
+              },
+            );
+          },
+        );
+      },
     );
   }
 
   // Phương thức đóng
-  CardDropdownWithLabel _buildSelectMethodClose() {
-    return CardDropdownWithLabel<PaymentMethodModel>(
-      labelText: LocaleKeys.registerCode_methodPayment.tr,
-      isRequired: true,
-      items: AppData.instance.paymentMethods.toList(),
-      display: (result) => result.text,
-      selectedItem: controller.paymentMethod.value,
-      onChanged: (value) {
-        controller.paymentMethod.value = value;
-      },
+  Widget _buildSelectMethodClose() {
+    return FormFieldRegistrant<PaymentMethodModel>(
+      registrarId: '76f6f431-65ba-4d58-9c97-c20f48ebd416',
       validator: (value) {
         if (value == null) {
           return LocaleKeys.registerCode_methodPaymentCannotEmpty.tr;
         }
         return null;
       },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            return CardDropdownWithLabel<PaymentMethodModel>(
+              fieldKey: fieldKey,
+              validator: validator,
+              labelText: LocaleKeys.registerCode_methodPayment.tr,
+              isRequired: true,
+              items: AppData.instance.paymentMethods.toList(),
+              display: (result) => result.text,
+              selectedItem: controller.paymentMethod.value,
+              onChanged: (value) {
+                controller.paymentMethod.value = value;
+              },
+            );
+          },
+        );
+      },
     );
   }
 
   // Hồ sơ kèm theo
-  CardInputTextFormWithLabel _buildInputUnitFileInclude() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.registerCode_fileInclude.tr,
-      controller: controller.fileIncludeCtrl,
-      inputFormatters: InputFormatterEnum.textNormal,
-      isRequired: true,
-      maxLengthInputForm: 500,
+  Widget _buildInputUnitFileInclude() {
+    return FormFieldRegistrant<String>(
+      registrarId: '7c772ddd-517a-4d1c-ae56-acb69cb621e4',
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
@@ -304,63 +386,79 @@ extension RegisterInfoTab on RegisterCodePage {
         }
         return null;
       },
-    );
-  }
-
-  // Nội dung
-  CardInputTextFormWithLabel _buildInputUnitContent() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.registerCode_content.tr,
-      controller: controller.contentCtrl,
-      inputFormatters: InputFormatterEnum.textNormal,
-      isRequired: true,
-      maxLengthInputForm: 500,
-      validator: (value) {
-        final trimmedValue = value?.trim();
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.registerCode_contentCannotEmpty.tr;
-        }
-        return null;
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.registerCode_fileInclude.tr,
+          controller: controller.fileIncludeCtrl,
+          inputFormatters: InputFormatterEnum.textNormal,
+          isRequired: true,
+          maxLengthInputForm: 500,
+        );
       },
     );
   }
 
-  Widget _buildSingatureInfo() {
-    return Column(
+  // Nội dung
+  Widget _buildInputUnitContent() {
+    return FormFieldRegistrant<String>(
+      registrarId: '99eda3cb-a50d-42c9-b9ee-217e135250bd',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.isEmpty) {
+          return LocaleKeys.registerCode_contentCannotEmpty.tr;
+        }
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.registerCode_content.tr,
+          controller: controller.contentCtrl,
+          inputFormatters: InputFormatterEnum.textNormal,
+          isRequired: true,
+          maxLengthInputForm: 500,
+        );
+      },
+    );
+  }
+
+  Widget _buildInputUsernameMySign() {
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SDSBuildText(
-          LocaleKeys.registerCode_signature.tr,
-          style: AppTextStyle.font16Bo,
-        ),
-        sdsSBHeight12,
-        // Ô input nhập username My Sign
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: CardInputTextForm(
+        Expanded(
+          child: FormFieldRegistrant<String>(
+            registrarId: 'c1c50cbe-2ca3-4193-8d33-48caf3376ca3',
+            validator: (value) {
+              final trimmedValue = value?.trim() ?? '';
+              if (trimmedValue.isEmpty) {
+                return LocaleKeys
+                    .registerService_inputCCCDregisterMySignCannotEmpty.tr;
+              }
+              return null;
+            },
+            builder: (fieldKey, validator) {
+              return CardInputTextFormWithLabel(
+                fieldKey: fieldKey,
+                validator: validator,
+                labelText: LocaleKeys.registerService_signature.tr,
+                isRequired: true,
                 controller: controller.usernameMySignCtrl,
-                hintText: LocaleKeys.registerService_inputMySignUsername.tr,
-                maxLengthInputForm: 50,
-                isShowCounterText: false,
+                inputFormatters: InputFormatterEnum.textNormal,
+                autovalidateMode: AutovalidateMode.always,
+                hintText: LocaleKeys.registerService_inputCCCDregisterMySign.tr,
                 onChanged: (value) {
                   controller.updateStateBtnSearchCert();
                 },
-                validator: (value) {
-                  final trimmedValue = value?.trim();
-                  if (trimmedValue == null || trimmedValue.isEmpty) {
-                    return LocaleKeys
-                        .registerService_userNameMySignCannotEmpty.tr;
-                  }
-                  return null;
-                },
-              ),
-            ),
-            sdsSBWidth12,
-            _buildButtonGetListCert(),
-          ],
+              );
+            },
+          ),
         ),
+        sdsSBWidth12,
+        _buildButtonGetListCert(),
       ],
     );
   }
@@ -369,19 +467,21 @@ extension RegisterInfoTab on RegisterCodePage {
     final isEnableBtn = controller.isEnableBtnSearchCert.value;
     return SizedBox(
       width: 50,
+      height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: isEnableBtn
+              ? AppColors.primaryColor
+              : AppColors.primaryColorDisable,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppDimens.radius12),
           ),
           padding: EdgeInsets.zero,
         ),
-        onPressed: isEnableBtn
-            ? () {
-                controller.getListCertificate();
-              }
-            : null,
+        onPressed: () {
+          KeyBoard.hide();
+          if (isEnableBtn) controller.getListCertificate();
+        },
         child: Center(
           child: SDSImageSvg(Assets.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG),
         ),
@@ -484,42 +584,20 @@ extension RegisterInfoTab on RegisterCodePage {
     return Obx(
       () {
         final cert = controller.certificate.value;
-        return Visibility(
-          visible: cert != null,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              sdsSBHeight12,
-              // Tên chủ thể CTS
-              _buildSingleItem(
-                title: LocaleKeys.registerService_subjectNameCert.tr,
-                contenTitle: cert?.name ?? '',
-              ),
-              sdsSBHeight12,
-
-              // Tên tổ chức trực thuộc CTS
-              _buildSingleItem(
-                  title: LocaleKeys.registerService_organizationNameOfCert.tr,
-                  // TODO: Phía BE chưa có thuộc tính này, tạm thời fix cứng
-                  contenTitle: cert == null ? '' : "Viettel - CA RS"),
-              sdsSBHeight12,
-
-              // Số CTS
-              _buildSingleItem(
-                title: LocaleKeys.registerService_certificateNumber.tr,
-                contenTitle: cert?.serialNumber ?? '',
-              ),
-              sdsSBHeight12,
-
-              // "Thời hạn sử dụng từ" và "Thời hạn sử dụng đến"
-              _buildDoubleItem(
-                titleLeft: LocaleKeys.registerService_expiryDateFrom.tr,
-                contenTitleLeft: cert?.validFrom ?? '',
-                titleRight: LocaleKeys.registerService_expiryDateTo.tr,
-                contenTitleRight: cert?.validTo ?? '',
-              ),
-            ],
-          ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            sdsSBHeight12,
+            _buildDropdownSerial(),
+            sdsSBHeight12,
+            // "Ngày bắt đầu" và "Ngày kết thúc"
+            _buildDoubleItem(
+              titleLeft: LocaleKeys.registerService_dayStart.tr,
+              contenTitleLeft: cert?.validFrom ?? '',
+              titleRight: LocaleKeys.registerService_dayEnd.tr,
+              contenTitleRight: cert?.validTo ?? '',
+            ),
+          ],
         );
       },
     );
@@ -544,22 +622,6 @@ extension RegisterInfoTab on RegisterCodePage {
           child: _buildCardItem(
             title: titleRight,
             contenTitle: contenTitleRight ?? '',
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSingleItem({
-    required String title,
-    String? contenTitle,
-  }) {
-    return Row(
-      children: [
-        Expanded(
-          child: _buildCardItem(
-            title: title,
-            contenTitle: contenTitle ?? '',
           ),
         ),
       ],
@@ -655,37 +717,57 @@ extension RegisterInfoTab on RegisterCodePage {
   }
 
   Widget _buildDoubleButton() {
-    return Row(
-      children: [
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.registerCode_back.tr,
-            borderRadius: AppDimens.radius30,
-            backgroundColor: AppColors.basicWhite,
-            side: const BorderSide(
-              width: 1,
-              color: AppColors.colorBlack,
+    return KeyboardVisibilityBuilder(
+      builder: (p0, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return Row(
+          children: [
+            Expanded(
+              child: UtilWidget.buildSolidButton(
+                title: LocaleKeys.registerCode_back.tr,
+                borderRadius: AppDimens.radius30,
+                backgroundColor: AppColors.basicWhite,
+                side: const BorderSide(
+                  width: 1,
+                  color: AppColors.colorBlack,
+                ),
+                textStyle:
+                    AppTextStyle.font14Re.copyWith(color: AppColors.colorBlack),
+                onPressed: () {
+                  controller.onTabChanged(RegisterCodeTabEnum.common_info);
+                },
+              ),
             ),
-            textStyle:
-                AppTextStyle.font14Re.copyWith(color: AppColors.colorBlack),
-            onPressed: () {
-              controller.onTabChanged(RegisterCodeTabEnum.common_info);
-            },
-          ),
-        ),
-        sdsSBWidth12,
-        Expanded(
-          child: UtilWidget.buildSolidButton(
-            title: LocaleKeys.registerCode_register.tr,
-            borderRadius: AppDimens.radius30,
-            textStyle:
-                AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-            onPressed: () {
-              controller.registerCodeFirst();
-            },
-          ),
-        ),
-      ],
+            sdsSBWidth12,
+            Expanded(
+              child: UtilWidget.buildSolidButton(
+                title: LocaleKeys.registerCode_register.tr,
+                borderRadius: AppDimens.radius30,
+                textStyle:
+                    AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+                onPressed: () {
+                  controller.registerCodeFirst();
+                },
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildDropdownSerial() {
+    return CardDropdownWithLabel<CertificateModel>(
+      isRequired: true,
+      labelText: LocaleKeys.registerService_serialNumber.tr,
+      items: controller.listCert,
+      display: (cert) => cert.serialNumber,
+      selectedItem: controller.certificate.value,
+      onChanged: (value) {
+        controller.certificate.value = value;
+      },
     );
   }
 }

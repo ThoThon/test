@@ -2,137 +2,153 @@ part of 'declare_info_page.dart';
 
 extension D02TabWidget on DeclareInfoPage {
   Widget _buildD02TabBody() {
-    return Column(
-      children: [
-        UtilWidget.sizedBox8,
-        Expanded(
-          child: Obx(
-            () {
-              return Form(
-                key: controller.d02State.formKey,
-                autovalidateMode: controller.d02State.autoValidateMode.value,
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Thông tin cá nhân
-                      _buildInfoPerson(
-                        onTapSelectStaff: controller.goToSelectStaffPage,
-                      ),
-                      sdsSBHeight8,
+    return AppFormRegistry(
+      key: controller.d02State.registeredKey,
+      child: Column(
+        children: [
+          UtilWidget.sizedBox8,
+          Expanded(
+            child: Obx(
+              () {
+                return Form(
+                  key: controller.d02State.formKey,
+                  autovalidateMode: controller.d02State.autoValidateMode.value,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Thông tin cá nhân
+                        _buildInfoPerson(
+                          onTapSelectStaff: controller.goToSelectStaffPage,
+                        ),
+                        sdsSBHeight8,
 
-                      // Họ và tên
-                      _buildInputFullName(),
-                      sdsSBHeight12,
+                        // Họ và tên
+                        _buildInputFullName(
+                          registrarId: '656f5251-54af-4d8a-b868-bcdd872c157b',
+                        ),
+                        sdsSBHeight12,
 
-                      // Mã số BHXH
-                      _buildInputBHXHCode(),
-                      sdsSBHeight12,
+                        // Mã số BHXH
+                        _buildInputBHXHCode(
+                          registrarId: '162ab5e7-e059-4b85-9171-2e659201e0b8',
+                        ),
+                        sdsSBHeight12,
 
-                      // Số CCCD
-                      _buildInputCCCD(),
-                      sdsSBHeight12,
+                        // Số CCCD
+                        _buildInputCCCD(
+                          registrarId: 'e374d484-1ccc-48c1-ad67-4594977a736a',
+                        ),
+                        sdsSBHeight12,
 
-                      // Loại ngày sinh
-                      _buildBirthTypeDropdown(),
-                      sdsSBHeight12,
+                        // Loại ngày sinh
+                        _buildBirthTypeDropdown(),
+                        sdsSBHeight12,
 
-                      // Ngày sinh và Giới tính
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(child: _buildSelectDateOfBirth()),
-                          sdsSBWidth12,
-                          Expanded(child: _buildSelectGender()),
-                        ],
-                      ),
-                      sdsSBHeight8,
+                        // Ngày sinh và Giới tính
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                                child: _buildSelectDateOfBirth(
+                                    registrarId:
+                                        'df4dddc2-010a-4272-bf6d-742f3c24fa43')),
+                            sdsSBWidth12,
+                            Expanded(child: _buildSelectGender()),
+                          ],
+                        ),
+                        sdsSBHeight8,
 
-                      // Sinh dữ liệu TK1-TS
-                      _buildGenerateTk1DataCheckbox(),
-                      sdsSBWidth12,
-                      SDSBuildText(
-                        LocaleKeys.declareInfo_salaryBhxhInfo.tr,
-                        style: AppTextStyle.font16Bo,
-                      ),
+                        // Sinh dữ liệu TK1-TS
+                        _buildGenerateTk1DataCheckbox(),
+                        sdsSBWidth12,
+                        SDSBuildText(
+                          LocaleKeys.declareInfo_salaryBhxhInfo.tr,
+                          style: AppTextStyle.font16Bo,
+                        ),
 
-                      // Đóng theo hệ số
-                      _buildSalaryCoefficientCheckbox(),
-                      sdsSBHeight4,
+                        // Đóng theo hệ số
+                        _buildSalaryCoefficientCheckbox(),
+                        sdsSBHeight4,
 
-                      // Tiền lương
-                      _buildInputSalaryCoefficient(),
-                      sdsSBHeight12,
+                        // Tiền lương
+                        _buildInputSalaryCoefficient(),
+                        sdsSBHeight12,
 
-                      // PC chức vụ
-                      _buildInputPositionAllowance(),
-                      sdsSBHeight12,
+                        // PC chức vụ
+                        _buildInputPositionAllowance(),
+                        sdsSBHeight12,
 
-                      // PC thâm niên nghề
-                      _buildInputPCTNN(),
-                      sdsSBHeight12,
+                        // PC thâm niên nghề
+                        _buildInputPCTNN(),
+                        sdsSBHeight12,
 
-                      // PC thâm niên vượt khung
-                      _buildInputPcTNVuotKhung(),
-                      sdsSBHeight12,
+                        // PC thâm niên vượt khung
+                        _buildInputPcTNVuotKhung(),
+                        sdsSBHeight12,
 
-                      // Phụ cấp lương
-                      _buildInputSalaryAllowance(),
-                      sdsSBHeight12,
+                        // Phụ cấp lương
+                        _buildInputSalaryAllowance(),
+                        sdsSBHeight12,
 
-                      // Các khoản bổ sung
-                      _buildInputOtherAllowance(),
-                      sdsSBHeight12,
+                        // Các khoản bổ sung
+                        _buildInputOtherAllowance(),
+                        sdsSBHeight12,
 
-                      // Thông tin khác
-                      SDSBuildText(
-                        LocaleKeys.declareInfo_otherInfo.tr,
-                        style: AppTextStyle.font16Bo,
-                      ),
-                      sdsSBHeight8,
-                      // Loại khai báo
-                      _buildSelectDeclareType(),
-                      sdsSBHeight12,
+                        // Thông tin khác
+                        SDSBuildText(
+                          LocaleKeys.declareInfo_otherInfo.tr,
+                          style: AppTextStyle.font16Bo,
+                        ),
+                        sdsSBHeight8,
+                        // Loại khai báo
+                        _buildSelectDeclareType(),
+                        sdsSBHeight12,
 
-                      // Phương án
-                      _buildSelectPlan(),
+                        // Phương án
+                        _buildSelectPlan(),
 
-                      // Từ tháng/năm và Đến tháng/năm
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(child: _buildSelectFromDate()),
-                          sdsSBWidth12,
-                          Expanded(child: _buildSelectToDate()),
-                        ],
-                      ),
-                      sdsSBHeight12,
+                        // Tỷ lệ đóng
+                        _buildInputRate(),
+                        sdsSBHeight12,
 
-                      // Cấp bậc/chức vụ
-                      _buildInputPosition(),
-                      sdsSBHeight12,
+                        // Từ tháng/năm và Đến tháng/năm
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(child: _buildSelectFromDate()),
+                            sdsSBWidth12,
+                            Expanded(child: _buildSelectToDate()),
+                          ],
+                        ),
+                        sdsSBHeight12,
 
-                      // Nơi làm việc
-                      _buildInputWorkplace(),
-                      sdsSBHeight12,
+                        // Cấp bậc/chức vụ
+                        _buildInputPosition(),
+                        sdsSBHeight12,
 
-                      // Ghi chú
-                      _buildInputNote(),
-                      UtilWidget.buildCheckboxWithLabel(
-                        label: LocaleKeys.declareInfo_generateD01tsData.tr,
-                        value: controller.d02State.isGenerateD01Data.value,
-                        onChanged: (value) {
-                          controller.d02State.isGenerateD01Data.value = value;
-                        },
-                      ),
-                    ],
+                        // Nơi làm việc
+                        _buildInputWorkplace(),
+                        sdsSBHeight12,
+
+                        // Ghi chú
+                        _buildInputNote(),
+                        UtilWidget.buildCheckboxWithLabel(
+                          label: LocaleKeys.declareInfo_generateD01tsData.tr,
+                          value: controller.d02State.isGenerateD01Data.value,
+                          onChanged: (value) {
+                            controller.d02State.isGenerateD01Data.value = value;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -170,151 +186,178 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectToDate() {
-    return Obx(
-      () => CardInputSelectDateWithLabel(
-        labelText: LocaleKeys.declareInfo_toMonthYear.tr,
-        inputFormatters: InputFormatterEnum.dateMonthYear,
-        controller: controller.d02State.toDateTextCtrl,
-        hintText: PATTERN_12,
-        isRequired: controller.isToDateRequired,
-        onSelectDate: () async {
-          KeyBoard.hide();
-          final selectedDate = await UtilWidget.showPeriodDatePicker(
-            dateTime: convertStringToDateSafe(
-              controller.d02State.toDateTextCtrl.text,
-              PATTERN_12,
-            ),
-          );
-          if (selectedDate != null) {
-            controller.d02State.toDateTextCtrl.text =
-                convertDateToString(selectedDate, PATTERN_12);
-          }
-        },
-        validator: (value) {
-          final trimmedValue = value?.trim();
+    return FormFieldRegistrant<String>(
+      registrarId: '3bf70d45-77a0-4cfe-a666-c0a8f7fdddaa',
+      validator: (value) {
+        final trimmedValue = value?.trim();
 
-          // Nếu bắt buộc và không nhập thì báo lỗi
-          if (controller.isToDateRequired &&
-              (trimmedValue == null || trimmedValue.isEmpty)) {
-            return LocaleKeys.declareInfo_toMonthYearCannotEmpty.tr;
-          }
-          if (trimmedValue == null || trimmedValue.isEmpty) {
-            return null;
-          }
-
-          // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
-          if (trimmedValue.length < 7) {
-            return LocaleKeys.declareInfo_toDateInvalid.tr;
-          }
-
-          final toDate = convertStringToDateStrict(trimmedValue, PATTERN_12);
-          if (toDate == null) {
-            return LocaleKeys.declareInfo_toDateInvalid.tr;
-          }
-
-          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-          if (toDate.year <= 1900 || toDate.year >= 2100) {
-            return LocaleKeys.declareInfo_toDateInvalid.tr;
-          }
-
-          final fromDate = convertStringToDateStrict(
-            controller.d02State.fromDateTextCtrl.text,
-            PATTERN_12,
-          );
-
-          if (fromDate != null && toDate.isBefore(fromDate)) {
-            return LocaleKeys.declareInfo_toDateCannotBeforFromDate.tr;
-          }
-
+        // Nếu bắt buộc và không nhập thì báo lỗi
+        if (controller.isToDateRequired &&
+            (trimmedValue == null || trimmedValue.isEmpty)) {
+          return LocaleKeys.declareInfo_toMonthYearCannotEmpty.tr;
+        }
+        if (trimmedValue == null || trimmedValue.isEmpty) {
           return null;
-        },
-      ),
+        }
+
+        // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
+        if (trimmedValue.length < 7) {
+          return LocaleKeys.declareInfo_toDateInvalid.tr;
+        }
+
+        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_12);
+        if (toDate == null) {
+          return LocaleKeys.declareInfo_toDateInvalid.tr;
+        }
+
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (toDate.year <= 1900 || toDate.year >= 2100) {
+          return LocaleKeys.declareInfo_toDateInvalid.tr;
+        }
+
+        final fromDate = convertStringToDateStrict(
+          controller.d02State.fromDateTextCtrl.text,
+          PATTERN_12,
+        );
+
+        if (fromDate != null && toDate.isBefore(fromDate)) {
+          return LocaleKeys.declareInfo_toDateCannotBeforFromDate.tr;
+        }
+
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () => CardInputSelectDateWithLabel(
+            fieldKey: fieldKey,
+            validator: validator,
+            labelText: LocaleKeys.declareInfo_toMonthYear.tr,
+            inputFormatters: InputFormatterEnum.dateMonthYear,
+            controller: controller.d02State.toDateTextCtrl,
+            hintText: PATTERN_12,
+            isRequired: controller.isToDateRequired,
+            onSelectDate: () async {
+              KeyBoard.hide();
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                title: LocaleKeys.dialog_selectMonthYear.tr,
+                dateFormat: PATTERN_12,
+                dateTimeInit: convertStringToDateSafe(
+                  controller.d02State.toDateTextCtrl.text,
+                  PATTERN_12,
+                ),
+              );
+              if (selectedDate != null) {
+                controller.d02State.toDateTextCtrl.text =
+                    convertDateToString(selectedDate, PATTERN_12);
+              }
+            },
+          ),
+        );
+      },
     );
   }
 
   Widget _buildSelectFromDate() {
-    return Obx(
-      () => CardInputSelectDateWithLabel(
-        labelText: LocaleKeys.declareInfo_fromMonthYear.tr,
-        controller: controller.d02State.fromDateTextCtrl,
-        hintText: PATTERN_12,
-        isRequired: controller.isFromDateRequired,
-        inputFormatters: InputFormatterEnum.dateMonthYear,
-        onSelectDate: () async {
-          KeyBoard.hide();
-          final selectedDate = await UtilWidget.showPeriodDatePicker(
-            dateTime: convertStringToDateSafe(
-              controller.d02State.fromDateTextCtrl.text,
-              PATTERN_12,
-            ),
-          );
-          if (selectedDate != null) {
-            controller.d02State.fromDateTextCtrl.text =
-                convertDateToStringSafe(selectedDate, PATTERN_12) ?? '';
-          }
-        },
-        validator: (value) {
-          final trimmedValue = value?.trim();
-          // Nếu bắt buộc và không nhập thì báo lỗi
-          if (controller.isFromDateRequired &&
-              (trimmedValue == null || trimmedValue.isEmpty)) {
-            return LocaleKeys.declareInfo_fromMonthYearCannotEmpty.tr;
-          }
+    return FormFieldRegistrant<String>(
+      registrarId: 'b6ffeeb4-dc24-419a-b114-083783c6aeef',
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        // Nếu bắt buộc và không nhập thì báo lỗi
+        if (controller.isFromDateRequired &&
+            (trimmedValue == null || trimmedValue.isEmpty)) {
+          return LocaleKeys.declareInfo_fromMonthYearCannotEmpty.tr;
+        }
 
-          if (trimmedValue == null || trimmedValue.isEmpty) {
-            // Không bắt buộc
-            return null;
-          }
-          // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
-          if (trimmedValue.length < 7) {
-            return LocaleKeys.declareInfo_fromDateInvalid.tr;
-          }
-
-          final fromDate = convertStringToDateStrict(trimmedValue, PATTERN_12);
-
-          if (fromDate == null) {
-            return LocaleKeys.declareInfo_fromDateInvalid.tr;
-          }
-
-          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-          if (fromDate.year <= 1900 || fromDate.year >= 2100) {
-            return LocaleKeys.declareInfo_fromDateInvalid.tr;
-          }
-          final toDate = convertStringToDateStrict(
-            controller.d02State.toDateTextCtrl.text,
-            PATTERN_12,
-          );
-
-          if (toDate != null && fromDate.isAfter(toDate)) {
-            return LocaleKeys.declareInfo_fromDateCannotAfterToDate.tr;
-          }
-
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          // Không bắt buộc
           return null;
-        },
-      ),
+        }
+        // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
+        if (trimmedValue.length < 7) {
+          return LocaleKeys.declareInfo_fromDateInvalid.tr;
+        }
+
+        final fromDate = convertStringToDateStrict(trimmedValue, PATTERN_12);
+
+        if (fromDate == null) {
+          return LocaleKeys.declareInfo_fromDateInvalid.tr;
+        }
+
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (fromDate.year <= 1900 || fromDate.year >= 2100) {
+          return LocaleKeys.declareInfo_fromDateInvalid.tr;
+        }
+        final toDate = convertStringToDateStrict(
+          controller.d02State.toDateTextCtrl.text,
+          PATTERN_12,
+        );
+
+        if (toDate != null && fromDate.isAfter(toDate)) {
+          return LocaleKeys.declareInfo_fromDateCannotAfterToDate.tr;
+        }
+
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () => CardInputSelectDateWithLabel(
+            fieldKey: fieldKey,
+            validator: validator,
+            labelText: LocaleKeys.declareInfo_fromMonthYear.tr,
+            controller: controller.d02State.fromDateTextCtrl,
+            hintText: PATTERN_12,
+            isRequired: controller.isFromDateRequired,
+            inputFormatters: InputFormatterEnum.dateMonthYear,
+            onSelectDate: () async {
+              KeyBoard.hide();
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                title: LocaleKeys.dialog_selectMonthYear.tr,
+                dateFormat: PATTERN_12,
+                dateTimeInit: convertStringToDateSafe(
+                  controller.d02State.fromDateTextCtrl.text,
+                  PATTERN_12,
+                ),
+              );
+              if (selectedDate != null) {
+                controller.d02State.fromDateTextCtrl.text =
+                    convertDateToStringSafe(selectedDate, PATTERN_12) ?? '';
+              }
+            },
+          ),
+        );
+      },
     );
   }
 
   Widget _buildSelectDeclareType() {
-    return CardDropdownWithLabel<DeclarationTypeModel>(
-      labelText: LocaleKeys.declareInfo_declarationType.tr,
-      hintText: LocaleKeys.declareInfo_selectDeclarationType.tr,
-      items: AppData.instance.declarationTypes.toList(),
-      display: (item) => item.text,
-      isRequired: true,
-      selectedItem: controller.d02State.declarationType.value,
-      onChanged: (value) {
-        if (value == null) {
-          return;
-        }
-        controller.d02State.plan.value = null;
-        controller.d02State.declarationType.value = value;
-      },
+    return FormFieldRegistrant<DeclarationTypeModel>(
+      registrarId: '33ca7b1b-4973-43c7-ad19-106a2a75b338',
       validator: (value) {
         if (value == null) {
           return LocaleKeys.declareInfo_declarationTypeCannotEmpty.tr;
         }
         return null;
+      },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () => CardDropdownWithLabel<DeclarationTypeModel>(
+            fieldKey: fieldKey,
+            validator: validator,
+            labelText: LocaleKeys.declareInfo_declarationType.tr,
+            hintText: LocaleKeys.declareInfo_selectDeclarationType.tr,
+            items: AppData.instance.declarationTypes.toList(),
+            display: (item) => item.text,
+            isRequired: true,
+            selectedItem: controller.d02State.declarationType.value,
+            onChanged: (value) {
+              if (value == null) {
+                return;
+              }
+              controller.d02State.plan.value = null;
+              controller.d02State.declarationType.value = value;
+            },
+          ),
+        );
       },
     );
   }
@@ -328,30 +371,64 @@ extension D02TabWidget on DeclareInfoPage {
           return UtilWidget.shrink;
         }
 
-        return CardDropdownWithLabel<AdjustmentPlanModel>(
-          labelText: LocaleKeys.declareInfo_plan.tr,
-          hintText: LocaleKeys.declareInfo_selectPlan.tr,
-          autovalidateMode: AutovalidateMode.always,
-          isRequired: true,
-          items: plans.toList(),
-          display: (item) => '${item.id} - ${item.name}',
-          selectedItem: controller.d02State.plan.value,
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-            controller.d02State.plan.value = value;
-            controller.updateHouseholdInfoRequired();
-            controller.d02State.isGenerateTk1Data.value =
-                value.isGenerateTk1(controller.d02State.declarationType.value);
-          },
+        return FormFieldRegistrant<AdjustmentPlanModel>(
+          registrarId: 'e7247821-4ddc-449a-b6be-6880ad56fa4c',
           validator: (value) {
             if (value == null) {
               return LocaleKeys.declareInfo_planCannotEmpty.tr;
             }
             return null;
           },
-        ).paddingOnly(bottom: AppDimens.paddingSmall);
+          builder: (fieldKey, validator) {
+            return CardDropdownWithLabel<AdjustmentPlanModel>(
+              fieldKey: fieldKey,
+              validator: validator,
+              labelText: LocaleKeys.declareInfo_plan.tr,
+              hintText: LocaleKeys.declareInfo_selectPlan.tr,
+              autovalidateMode: AutovalidateMode.always,
+              isRequired: true,
+              items: plans.toList(),
+              display: (item) => '${item.id} - ${item.name}',
+              selectedItem: controller.d02State.plan.value,
+              onChanged: (value) {
+                if (value == null) {
+                  return;
+                }
+                controller.d02State.plan.value = value;
+                controller.updateHouseholdInfoRequired();
+                controller.d02State.isGenerateTk1Data.value = value
+                    .isGenerateTk1(controller.d02State.declarationType.value);
+              },
+            ).paddingOnly(bottom: AppDimens.paddingSmall);
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildInputRate() {
+    return FormFieldRegistrant<String>(
+      registrarId: '96e113d1-843c-42c9-bae4-4d12e22bfc0b',
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_socialInsuranceRateCannotEmpty.tr;
+        }
+
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_socialInsuranceRate.tr,
+          controller: controller.d02State.socialInsuranceRateTextCtrl,
+          isRequired: true,
+          textInputType: const TextInputType.numberWithOptions(decimal: true),
+          inputFormatters: InputFormatterEnum.rate,
+          maxLengthInputForm: 5,
+        );
       },
     );
   }
@@ -368,12 +445,8 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildInputPosition() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.declareInfo_position.tr,
-      controller: controller.d02State.positionTextCtrl,
-      isRequired: true,
-      maxLengthInputForm: 500,
-      inputFormatters: InputFormatterEnum.textNormal,
+    return FormFieldRegistrant<String>(
+      registrarId: 'cec7caf9-e511-49ac-b1bc-306d43fa4de3',
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -383,46 +456,54 @@ extension D02TabWidget on DeclareInfoPage {
 
         return null;
       },
-      suffixIcon: IconButton(
-        onPressed: () {
-          KeyBoard.hide();
-          Get.bottomSheet(
-            BottomSheetSearch<PositionModel>(
-              maxLength: 500,
-              title: LocaleKeys.declareInfo_selectPosition.tr,
-              listFilter: AppData.instance.positions.toList(),
-              selectedItem: AppData.instance.positions.firstWhereOrNull(
-                (position) =>
-                    position.name ==
-                    controller.d02State.positionTextCtrl.text.trim(),
-              ),
-              display: (value) => value.name,
-              onAccept: (value) {
-                if (value == null) {
-                  return;
-                }
-                controller.d02State.positionTextCtrl.text = value.name;
-              },
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_position.tr,
+          controller: controller.d02State.positionTextCtrl,
+          isRequired: true,
+          maxLengthInputForm: 500,
+          inputFormatters: InputFormatterEnum.textNormal,
+          suffixIcon: IconButton(
+            onPressed: () {
+              KeyBoard.hide();
+              Get.bottomSheet(
+                BottomSheetSearch<PositionModel>(
+                  maxLength: 500,
+                  hintText: LocaleKeys.declareInfo_inputPosition.tr,
+                  title: LocaleKeys.declareInfo_selectPosition.tr,
+                  listFilter: AppData.instance.positions.toList(),
+                  selectedItem: AppData.instance.positions.firstWhereOrNull(
+                    (position) =>
+                        position.name ==
+                        controller.d02State.positionTextCtrl.text.trim(),
+                  ),
+                  display: (value) => value.name,
+                  onAccept: (value) {
+                    if (value == null) {
+                      return;
+                    }
+                    controller.d02State.positionTextCtrl.text = value.name;
+                  },
+                ),
+                isScrollControlled: true,
+              );
+            },
+            icon: SDSImageSvg(
+              Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
+              height: AppDimens.sizeIconMedium,
+              width: AppDimens.sizeIconMedium,
             ),
-            isScrollControlled: true,
-          );
-        },
-        icon: SDSImageSvg(
-          Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
-          height: AppDimens.sizeIconMedium,
-          width: AppDimens.sizeIconMedium,
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
   Widget _buildInputWorkplace() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.declareInfo_workplace.tr,
-      controller: controller.d02State.workplaceTextCtrl,
-      isRequired: true,
-      inputFormatters: InputFormatterEnum.textNormal,
-      maxLengthInputForm: 500,
+    return FormFieldRegistrant<String>(
+      registrarId: '843e5285-f6b6-45df-a505-35e9e392ea47',
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -431,6 +512,17 @@ extension D02TabWidget on DeclareInfoPage {
         }
 
         return null;
+      },
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_workplace.tr,
+          controller: controller.d02State.workplaceTextCtrl,
+          isRequired: true,
+          inputFormatters: InputFormatterEnum.textNormal,
+          maxLengthInputForm: 500,
+        );
       },
     );
   }
@@ -446,32 +538,47 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildInputSalaryCoefficient() {
-    return Obx(
-      () {
-        // isSalaryCoefficient: true => Đóng theo hệ số => cho phép nhập số thập phân
-        // ngược lại => chỉ cho phép nhập số nguyên
+    return FormFieldRegistrant<String>(
+      registrarId: 'ff767840-7713-4c4c-afae-e27447e8bc1b',
+      validator: (value) {
         final isSalaryCoefficient =
             controller.d02State.isSalaryCoefficient.value;
-        return CardInputTextFormWithLabel(
-          labelText: isSalaryCoefficient
-              ? LocaleKeys.declareInfo_coefficient.tr
-              : LocaleKeys.declareInfo_salaryCoefficient.tr,
-          inputFormatters: isSalaryCoefficient
-              ? InputFormatterEnum.coefficient
-              : InputFormatterEnum.salaryNormal,
-          controller: controller.d02State.salaryCoefficientTextCtrl,
-          isRequired: true,
-          textInputType: const TextInputType.numberWithOptions(decimal: true),
-          validator: (value) {
-            if (value == null || value.trim().isEmpty) {
-              return LocaleKeys.declareInfo_salaryOrCoefficientCannotEmpty.tr;
-            }
+        final isCoefficient = controller.d02State.isSalaryCoefficient.value;
+        if (value == null || value.trim().isEmpty) {
+          return isCoefficient
+              ? LocaleKeys.declareInfo_coefficientCannotEmpty.tr
+              : LocaleKeys.declareInfo_salaryCannotEmpty.tr;
+        }
 
-            if (!isSalaryCoefficient && value.contains(',')) {
-              return LocaleKeys.declareInfo_salaryOrCoefficientMustBeInteger.tr;
-            }
+        if (!isSalaryCoefficient && value.contains(',')) {
+          return isCoefficient
+              ? LocaleKeys.declareInfo_coefficientMustBeInteger.tr
+              : LocaleKeys.declareInfo_salaryMustBeInteger.tr;
+        }
 
-            return null;
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            // isSalaryCoefficient: true => Đóng theo hệ số => cho phép nhập số thập phân
+            // ngược lại => chỉ cho phép nhập số nguyên
+            final isSalaryCoefficient =
+                controller.d02State.isSalaryCoefficient.value;
+            return CardInputTextFormWithLabel(
+              fieldKey: fieldKey,
+              validator: validator,
+              labelText: isSalaryCoefficient
+                  ? LocaleKeys.declareInfo_coefficient.tr
+                  : LocaleKeys.declareInfo_salaryCoefficient.tr,
+              inputFormatters: isSalaryCoefficient
+                  ? InputFormatterEnum.coefficient
+                  : InputFormatterEnum.salaryNormal,
+              controller: controller.d02State.salaryCoefficientTextCtrl,
+              isRequired: true,
+              textInputType:
+                  const TextInputType.numberWithOptions(decimal: true),
+            );
           },
         );
       },
@@ -560,6 +667,7 @@ extension D02TabWidget on DeclareInfoPage {
       controller: controller.d02State.noteTextCtrl,
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
+      textInputAction: TextInputAction.done,
     );
   }
 }

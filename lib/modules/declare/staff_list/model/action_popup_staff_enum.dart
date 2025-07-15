@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
+
+import '../../../../assets.dart';
 
 enum ActionPopupStaffEnum {
   // Sửa
@@ -18,12 +19,12 @@ enum ActionPopupStaffEnum {
     }
   }
 
-  IconData get icon {
+  String get iconAsset {
     switch (this) {
       case ActionPopupStaffEnum.edit:
-        return Icons.autorenew;
+        return Assets.ASSETS_ICONS_IC_EDIT_SVG;
       case ActionPopupStaffEnum.delete:
-        return Icons.delete;
+        return Assets.ASSETS_ICONS_IC_DELETE_SVG;
     }
   }
 }

@@ -8,9 +8,6 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog.src.dart';
 import '../../../../shares/package/export_package.dart';
 import '../../../src.dart';
 
-// Nếu mã lỗi là 58061 thì có thể retry ký số (from a Chương)
-const _allowRetryCode = "58061";
-
 class DeclarationListController extends BaseGetxController {
   final argument = Get.arguments as DeclarationListArgument;
 
@@ -28,24 +25,20 @@ class DeclarationListController extends BaseGetxController {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        // Hiện dialog thông báo đã gửi hồ sơ lên hệ thống ký số
         _showDialogVerifySuccess();
       } else {
         // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        final canRetry = response.code == _allowRetryCode;
         _showDialogVerifyFailed(
           errorMessage: response.errorMessage,
-          onRetry: canRetry ? signDocument : null,
         );
       }
     } catch (e) {
-      ShowDialog.dismissDialog();
-      if (e is DioException) {
+      if (e is DioException && e.type != DioExceptionType.cancel) {
+        ShowDialog.dismissDialog();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
-          onRetry: signDocument,
         );
       }
     }
@@ -58,9 +51,13 @@ class DeclarationListController extends BaseGetxController {
       content: LocaleKeys.dialog_confirmSignatureMySign.tr,
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       onFinish: () {
+        cancelAllRequest();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
+      },
+      onCancel: () {
+        Get.until(ModalRoute.withName(AppRoutes.declarationPeriod.path));
       },
     );
   }
@@ -91,12 +88,14 @@ class DeclarationListController extends BaseGetxController {
 
   void _showDialogVerifyFailed({
     required String errorMessage,
-    VoidCallback? onRetry,
   }) {
     ShowDialog.showDialogConfirm2(
       title: LocaleKeys.dialog_sendFileFail.tr,
       content: errorMessage,
       showConfirmButton: false,
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       iconType: DialogIconType.failure,
       exitTitle: LocaleKeys.dialog_close.tr,
     );
@@ -111,13 +110,22 @@ class DeclarationListController extends BaseGetxController {
     try {
       showLoadingOverlay();
 
-      final response = await _repository.getPreviewPdf(
-        request: GetPreviewPdfRequest(
-          declarationPeriodId: argument.declarationPeriodId,
-          documentRecordId: documentRecordId,
-          previewDocumentType: previewDocumentType,
-        ),
+      final request = GetPreviewPdfRequest(
+        declarationPeriodId: argument.declarationPeriodId,
+        previewDocumentType: previewDocumentType,
+        documentRecordId: documentRecordId,
       );
+
+      final response = await switch (argument.procedureType) {
+        ProcedureType.procedure600 =>
+          _repository.getPreviewPdf(request: request),
+        ProcedureType.procedure607 ||
+        ProcedureType.procedure608 ||
+        ProcedureType.procedure610 ||
+        ProcedureType.procedure612 ||
+        ProcedureType.procedure613 =>
+          _repository.getPreviewPdf607(request: request),
+      };
 
       final url = response.result;
 

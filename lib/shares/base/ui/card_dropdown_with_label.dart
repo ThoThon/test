@@ -13,6 +13,8 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
   final ValueChanged<T?> onChanged;
   final double? borderRadius;
   final AutovalidateMode? autovalidateMode;
+  final GlobalKey? fieldKey;
+  final VoidCallback? onTap;
 
   const CardDropdownWithLabel({
     super.key,
@@ -27,11 +29,14 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
     required this.onChanged,
     this.borderRadius,
     this.autovalidateMode,
+    this.fieldKey,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return FormField<T>(
+      key: fieldKey,
       autovalidateMode: autovalidateMode ?? AutovalidateMode.onUserInteraction,
       validator: validator,
       initialValue: selectedItem,
@@ -117,6 +122,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
           sdsSBHeight8,
           DropdownButtonHideUnderline(
             child: DropdownButton<T>(
+              onTap: onTap,
               isDense: isDense,
               isExpanded: true,
               padding: const EdgeInsets.only(

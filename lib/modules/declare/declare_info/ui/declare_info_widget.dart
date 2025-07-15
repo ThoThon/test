@@ -21,9 +21,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
               },
             ),
           ),
-          Obx(
-            () => _buildBottomButtons(),
-          ).paddingOnly(
+          _buildBottomButtons().paddingOnly(
             top: AppDimens.defaultPadding,
             bottom: AppDimens.paddingVerySmall,
           ),
@@ -118,40 +116,39 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
-  Widget _buildInputFullName() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        CardInputTextFormWithLabel(
+  Widget _buildInputFullName({
+    required String registrarId,
+  }) {
+    return FormFieldRegistrant<String>(
+      registrarId: registrarId,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        if (trimmedValue == null || trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_fullNameCannotEmpty.tr;
+        }
+
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
           labelText: LocaleKeys.declareInfo_fullName.tr,
           controller: controller.d02Tk1State.fullNameTextCtrl,
           isRequired: true,
           maxLengthInputForm: 100,
           onChanged: controller.onChangeFullName,
-          validator: (value) {
-            final trimmedValue = value?.trim();
-
-            if (trimmedValue == null || trimmedValue.isEmpty) {
-              return LocaleKeys.declareInfo_fullNameCannotEmpty.tr;
-            }
-
-            return null;
-          },
-        )
-      ],
+        );
+      },
     );
   }
 
-  Widget _buildInputCCCD() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.declareInfo_cccdNumber.tr,
-      autovalidateMode: controller.autovalidateMode.value,
-      controller: controller.d02Tk1State.cccdTextCtrl,
-      hintText: LocaleKeys.declareInfo_inputCCCD.tr,
-      isRequired: true,
-      maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
-      onChanged: controller.onChangeCCCD,
+  Widget _buildInputCCCD({
+    required String registrarId,
+  }) {
+    return FormFieldRegistrant<String>(
+      registrarId: registrarId,
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -161,36 +158,61 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
         return null;
       },
+      builder: (fieldKey, validator) {
+        return CardInputTextFormWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_cccdNumber.tr,
+          autovalidateMode: controller.autovalidateMode.value,
+          controller: controller.d02Tk1State.cccdTextCtrl,
+          hintText: LocaleKeys.declareInfo_inputCCCD.tr,
+          isRequired: true,
+          maxLengthInputForm: 20,
+          inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+          onChanged: controller.onChangeCCCD,
+        );
+      },
     );
   }
 
-  Widget _buildInputBHXHCode() {
-    return Obx(
-      () {
+  Widget _buildInputBHXHCode({
+    required String registrarId,
+  }) {
+    return FormFieldRegistrant<String>(
+      registrarId: registrarId,
+      validator: (value) {
         final isRequired = controller.isBhxhCodeRequired;
-        return CardInputTextFormWithLabel(
-          labelText: LocaleKeys.declareInfo_bhxhCode.tr,
-          controller: controller.d02Tk1State.bhxhTextCtrl,
-          maxLengthInputForm: 10,
-          inputFormatters: InputFormatterEnum.digitsOnly,
-          textInputType: TextInputType.number,
-          isRequired: isRequired,
-          onChanged: (value) {
-            controller.updateHouseholdInfoRequired();
-          },
-          validator: (value) {
-            final trimmedValue = value?.trim();
 
-            if (trimmedValue == null || trimmedValue.isEmpty) {
-              return isRequired
-                  ? LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr
-                  : null;
-            }
-            if (trimmedValue.length < 10) {
-              return LocaleKeys.declareInfo_bhxhCodeInValid.tr;
-            }
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.isEmpty) {
+          return isRequired
+              ? LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr
+              : null;
+        }
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.declareInfo_bhxhCodeInValid.tr;
+        }
 
-            return null;
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            final isRequired = controller.isBhxhCodeRequired;
+            return CardInputTextFormWithLabel(
+              fieldKey: fieldKey,
+              hintText: LocaleKeys.declareInfo_inputBhxhCode.tr,
+              validator: validator,
+              labelText: LocaleKeys.declareInfo_bhxhCode.tr,
+              controller: controller.d02Tk1State.bhxhTextCtrl,
+              maxLengthInputForm: 10,
+              inputFormatters: InputFormatterEnum.digitsOnly,
+              textInputType: TextInputType.number,
+              isRequired: isRequired,
+              onChanged: (value) {
+                controller.updateHouseholdInfoRequired();
+              },
+            );
           },
         );
       },
@@ -199,7 +221,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
   Widget _buildSelectGender() {
     return CardDropdownWithLabel<Gender>(
-      key: ValueKey(controller.d02Tk1State.gender.value),
       labelText: LocaleKeys.declareInfo_gender.tr,
       items: Gender.values,
       display: (item) => item.title,
@@ -210,77 +231,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
         if (value != null) {
           controller.d02Tk1State.gender.value = value;
         }
-      },
-    );
-  }
-
-  Widget _buildSelectEthnic() {
-    return Obx(
-      () {
-        return UtilWidget.buildCardBottomSheetSelect2<EthnicModel>(
-          label: LocaleKeys.declareInfo_ethnic.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<EthnicModel>(
-                title: LocaleKeys.declareInfo_ethnic.tr,
-                maxLength: 20,
-                listFilter: AppData.instance.ethnics.toList(),
-                selectedItem: controller.d02Tk1State.selectedEthnic.value,
-                display: (value) => value.text,
-                onAccept: (value) {
-                  if (value == null) return;
-                  controller.d02Tk1State.selectedEthnic.value = value;
-                  didChange(value);
-                },
-              ),
-              isScrollControlled: true,
-            );
-          },
-          selectedItem: controller.d02Tk1State.selectedEthnic.value,
-          display: (ethnic) => ethnic.text,
-          validator: (value) {
-            if (controller.d02Tk1State.selectedEthnic.value == null) {
-              return LocaleKeys.declareInfo_ethnicCannotEmpty.tr;
-            }
-            return null;
-          },
-        );
-      },
-    );
-  }
-
-  Widget _buildSelectNationality() {
-    return Obx(
-      () {
-        return UtilWidget.buildCardBottomSheetSelect2<NationModel>(
-          label: LocaleKeys.declareInfo_nationality.tr,
-          // hintText: LocaleKeys.declareInfo_selectNationality.tr,
-          funcSelect: (didChange) {
-            Get.bottomSheet(
-              BottomSheetSearch<NationModel>(
-                title: LocaleKeys.declareInfo_selectNationality.tr,
-                maxLength: 20,
-                listFilter: AppData.instance.nations.toList(),
-                selectedItem: controller.d02Tk1State.selectedNationality.value,
-                display: (value) => value.text,
-                onAccept: (value) {
-                  if (value == null) return;
-                  controller.d02Tk1State.selectedNationality.value = value;
-                  didChange(value);
-                },
-              ),
-              isScrollControlled: true,
-            );
-          },
-          selectedItem: controller.d02Tk1State.selectedNationality.value,
-          display: (nation) => nation.text,
-          validator: (value) {
-            if (controller.d02Tk1State.selectedNationality.value == null) {
-              return LocaleKeys.declareInfo_nationalityCannotEmpty.tr;
-            }
-            return null;
-          },
-        );
       },
     );
   }
@@ -303,54 +253,11 @@ extension DeclareInfoWidget on DeclareInfoPage {
     );
   }
 
-  Widget _buildSelectDateOfBirth() {
-    return CardInputSelectDateWithLabel(
-      labelText: LocaleKeys.declareInfo_dob.tr,
-      isRequired: true,
-      borderRadius: AppDimens.radius10,
-      controller: controller.d02Tk1State.dateOfBirthTextCtrl,
-      hintText: controller.d02Tk1State.birthType.value.pattern,
-      inputFormatters: controller.d02Tk1State.birthType.value.inputFormatter,
-      onSelectDate: () async {
-        KeyBoard.hide();
-        final DateTime? selectedDate;
-
-        switch (controller.d02Tk1State.birthType.value) {
-          case BirthTypeEnum.year:
-            selectedDate = await UtilWidget.showPeriodDatePicker(
-              dateTime: convertStringToDateSafe(
-                      controller.d02Tk1State.dateOfBirthTextCtrl.text,
-                      PATTERN_13) ??
-                  DateTime.now(),
-              onlyYear: true,
-            );
-            break;
-          case BirthTypeEnum.monthYear:
-            selectedDate = await UtilWidget.showPeriodDatePicker(
-              dateTime: convertStringToDateSafe(
-                      controller.d02Tk1State.dateOfBirthTextCtrl.text,
-                      PATTERN_12) ??
-                  DateTime.now(),
-            );
-            break;
-          case BirthTypeEnum.full:
-            selectedDate = await UtilWidget.showDateTimePicker(
-              dateTimeInit: convertStringToDateSafe(
-                      controller.d02Tk1State.dateOfBirthTextCtrl.text,
-                      PATTERN_1) ??
-                  DateTime.now(),
-            );
-            break;
-        }
-        if (selectedDate != null) {
-          controller.d02Tk1State.dateOfBirthTextCtrl.text =
-              convertDateToStringSafe(
-                    selectedDate,
-                    controller.d02Tk1State.birthType.value.pattern,
-                  ) ??
-                  '';
-        }
-      },
+  Widget _buildSelectDateOfBirth({
+    required String registrarId,
+  }) {
+    return FormFieldRegistrant<String>(
+      registrarId: registrarId,
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
@@ -394,26 +301,100 @@ extension DeclareInfoWidget on DeclareInfoPage {
 
         return null;
       },
+      builder: (fieldKey, validator) {
+        return CardInputSelectDateWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_dob.tr,
+          isRequired: true,
+          borderRadius: AppDimens.radius10,
+          controller: controller.d02Tk1State.dateOfBirthTextCtrl,
+          hintText: controller.d02Tk1State.birthType.value.pattern,
+          inputFormatters:
+              controller.d02Tk1State.birthType.value.inputFormatter,
+          onSelectDate: () async {
+            KeyBoard.hide();
+            final DateTime? selectedDate;
+
+            switch (controller.d02Tk1State.birthType.value) {
+              case BirthTypeEnum.year:
+                selectedDate = await DatePickerUtils.showCalendarPicker(
+                  title: LocaleKeys.dialog_selectYear.tr,
+                  dateFormat: PATTERN_13,
+                  dateTimeInit: convertStringToDateSafe(
+                          controller.d02Tk1State.dateOfBirthTextCtrl.text,
+                          PATTERN_13) ??
+                      DateTime.now(),
+                );
+                break;
+              case BirthTypeEnum.monthYear:
+                selectedDate = await DatePickerUtils.showCalendarPicker(
+                  title: LocaleKeys.dialog_selectMonthYear.tr,
+                  dateFormat: PATTERN_12,
+                  dateTimeInit: convertStringToDateSafe(
+                          controller.d02Tk1State.dateOfBirthTextCtrl.text,
+                          PATTERN_12) ??
+                      DateTime.now(),
+                );
+                break;
+              case BirthTypeEnum.full:
+                selectedDate = await DatePickerUtils.showCalendarPicker(
+                  title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: AppDimens.padding32,
+                  ),
+                  dateFormat: PATTERN_1,
+                  dateTimeInit: convertStringToDateSafe(
+                          controller.d02Tk1State.dateOfBirthTextCtrl.text,
+                          PATTERN_1) ??
+                      DateTime.now(),
+                );
+                break;
+            }
+            if (selectedDate != null) {
+              controller.d02Tk1State.dateOfBirthTextCtrl.text =
+                  convertDateToStringSafe(
+                        selectedDate,
+                        controller.d02Tk1State.birthType.value.pattern,
+                      ) ??
+                      '';
+            }
+          },
+        );
+      },
     );
   }
 
   Widget _buildBottomButtons() {
-    if (controller.isShowNextButton) {
-      return UtilWidget.buildSolidButton(
-        borderRadius: AppDimens.radius30,
-        title: LocaleKeys.declareInfo_next.tr,
-        textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-        onPressed: () {
-          controller.nextTab();
-        },
-      );
-    }
+    return KeyboardVisibilityBuilder(
+      builder: (context, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return Obx(
+          () {
+            if (controller.isShowNextButton) {
+              return UtilWidget.buildSolidButton(
+                borderRadius: AppDimens.radius30,
+                title: LocaleKeys.declareInfo_next.tr,
+                textStyle:
+                    AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+                onPressed: () {
+                  controller.nextTab();
+                },
+              );
+            }
 
-    return UtilWidget.buildSolidButton(
-      borderRadius: AppDimens.radius30,
-      title: LocaleKeys.app_save.tr,
-      textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-      onPressed: controller.saveDraft,
+            return UtilWidget.buildSolidButton(
+              borderRadius: AppDimens.radius30,
+              title: LocaleKeys.app_save.tr,
+              textStyle:
+                  AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+              onPressed: controller.saveDraft,
+            );
+          },
+        );
+      },
     );
   }
 }

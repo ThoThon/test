@@ -99,6 +99,7 @@ class FamilyMember {
 
   factory FamilyMember.fromStaff(StaffFamilyResponse staff) {
     return FamilyMember(
+      id: staff.id,
       fullName: staff.hoTen ?? '',
       bhxhNumber: staff.maSoBhxh ?? '',
       cccdNumber: staff.cmnd ?? '',
@@ -115,6 +116,8 @@ class FamilyMember {
       // Mỗi thành viên của nhân viên có 1 id -> id này sẽ gán tương ứng vs giaDinhId cho từng thành viên đc thêm trong tk1
       giaDinhId: staff.id,
       note: '',
+      // Set là false thì đây là case chọn nhân viên, khi xóa sẽ chỉ xóa local chứ không xóa ở BE
+      isUpdate: false,
     );
   }
 }

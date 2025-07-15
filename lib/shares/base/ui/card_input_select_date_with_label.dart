@@ -13,6 +13,7 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
   final void Function(String)? onChanged;
   final int inputFormatters;
   final double? borderRadius;
+  final GlobalKey? fieldKey;
 
   const CardInputSelectDateWithLabel({
     super.key,
@@ -26,6 +27,7 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
     this.onChanged,
     required this.inputFormatters,
     this.borderRadius,
+    this.fieldKey,
   });
   @override
   Widget build(BuildContext context) {
@@ -69,6 +71,7 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
         ),
         BuildInputText(
           InputTextModel(
+            fieldKey: fieldKey,
             controller: controller,
             isValidate: isRequired,
             inputFormatters: inputFormatters,

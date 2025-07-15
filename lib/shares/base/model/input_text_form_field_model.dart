@@ -15,7 +15,7 @@ class InputTextModel {
 
   final double borderRadius;
 
-  final TextInputAction iconNextTextInputAction;
+  final TextInputAction? textInputAction;
 
   final ValueChanged<String>? submitFunc;
 
@@ -87,6 +87,7 @@ class InputTextModel {
   final bool isDense;
 
   final AutovalidateMode? autovalidateMode;
+  final GlobalKey? fieldKey;
 
   InputTextModel({
     this.iconLeading,
@@ -96,7 +97,7 @@ class InputTextModel {
     this.submitFunc,
     this.nextNode,
     this.obscureText = false,
-    this.iconNextTextInputAction = TextInputAction.next,
+    this.textInputAction,
     this.onNext,
     this.validator,
     this.inputFormatters = 0,
@@ -135,5 +136,6 @@ class InputTextModel {
     this.floatingLabelBehavior,
     this.label,
     this.isDense = false,
+    this.fieldKey,
   });
 }

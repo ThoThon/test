@@ -1,3 +1,4 @@
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/src.dart';
 
@@ -9,13 +10,20 @@ class D02State {
 
   final formKey = GlobalKey<FormState>();
 
+  final registeredKey = GlobalKey<FormRegistryWidgetState>();
+
   final autoValidateMode = AutovalidateMode.disabled.obs;
+
+  String? selectedStaffId;
 
   /// Loại khai báo/Loại hồ sơ
   final declarationType = Rxn<DeclarationTypeModel>();
 
   /// Phương án
   final plan = Rxn<AdjustmentPlanModel>();
+
+  /// Tỷ lệ đóng *
+  final socialInsuranceRateTextCtrl = TextEditingController();
 
   /// Sinh dữ liệu Tk1-TS
   final isGenerateTk1Data = false.obs;
@@ -128,18 +136,32 @@ class D02State {
     }
 
     isGenerateD01Data.value = d02Lt.xuatD01;
+
+    if (d02Lt.tyLeDong != null && d02Lt.tyLeDong! > 0) {
+      socialInsuranceRateTextCtrl.text =
+          CurrencyUtils.formatCurrencyForeign(d02Lt.tyLeDong!);
+    }
   }
 
   void mapFromStaffDetail(StaffDetailResponse staff) {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
     positionTextCtrl.text = staff.chucVu?.trim() ?? '';
 
+    selectedStaffId = staff.id;
+
     isSalaryCoefficient.value = staff.dongTheoHeSo;
 
-    salaryCoefficientTextCtrl.text =
-        staff.tienLuong != null && staff.tienLuong! > 0
-            ? CurrencyUtils.formatCurrencyForeign(staff.tienLuong!)
-            : '';
+    if (staff.dongTheoHeSo) {
+      salaryCoefficientTextCtrl.text =
+          staff.heSoLuongCoBan != null && staff.heSoLuongCoBan! > 0
+              ? CurrencyUtils.formatCurrencyForeign(staff.heSoLuongCoBan!)
+              : '';
+    } else {
+      salaryCoefficientTextCtrl.text =
+          staff.tienLuong != null && staff.tienLuong! > 0
+              ? CurrencyUtils.formatCurrencyForeign(staff.tienLuong!)
+              : '';
+    }
 
     positionAllowanceTextCtrl.text =
         staff.phuCapChucVu != null && staff.phuCapChucVu! > 0
@@ -178,6 +200,7 @@ class D02State {
     salaryCoefficientTextCtrl.dispose();
     positionAllowanceTextCtrl.dispose();
     pcTNNTextCtrl.dispose();
+    socialInsuranceRateTextCtrl.dispose();
     pcTNVuotKhungTextCtrl.dispose();
     salaryAllowanceTextCtrl.dispose();
     otherAllowanceTextCtrl.dispose();

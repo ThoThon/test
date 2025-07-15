@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
@@ -7,6 +8,8 @@ import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class Tk1State {
   final formKey = GlobalKey<FormState>();
+
+  final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   final autoValidateMode = AutovalidateMode.disabled.obs;
 
@@ -70,7 +73,10 @@ class Tk1State {
   /// Danh sách thành viên trong gia đình
   final familyMembers = <FamilyMember>[].obs;
 
-  final isHouseholdInfoRequired = false.obs;
+  /// Các trường của thông tin chủ hộ có bắt buộc hay không
+  ///
+  /// Mặc định sẽ là true vì khi tạo mới vì vừa vào thì mã số BHXH đang là rỗng
+  final isHouseholdInfoRequired = true.obs;
 
   void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final tk1Ts = detail.tk1Ts;
@@ -166,6 +172,8 @@ class Tk1State {
 
     birthAddressTextCtrl.text = staff.diaChiKhaiSinh?.trim() ?? '';
 
+    isDuplicateBirthAddress.value = staff.trungDiaChiKhaiSinh;
+
     provinceReceive.value = staff.noiNhanTinh;
 
     districtReceive.value = staff.noiNhanHuyen;
@@ -179,6 +187,8 @@ class Tk1State {
     hospitalKCB.value = staff.benhVien;
 
     contactPhoneNumberTextCtrl.text = staff.dienThoaiLienHe?.trim() ?? '';
+
+    isParticipantHeadOfHousehold.value = staff.laChuHo;
 
     headOfHouseholdTextCtrl.text = staff.hoTenChuHo?.trim() ?? '';
 

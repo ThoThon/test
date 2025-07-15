@@ -194,11 +194,16 @@ class BaseGetxController extends GetxController {
     );
   }
 
-  @override
-  void onClose() {
+  void cancelAllRequest() {
     for (var cancelToken in cancelTokens) {
       cancelRequest(cancelToken);
     }
+    cancelTokens.clear();
+  }
+
+  @override
+  void onClose() {
+    cancelAllRequest();
     super.onClose();
   }
 

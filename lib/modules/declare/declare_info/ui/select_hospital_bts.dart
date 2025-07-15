@@ -59,13 +59,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
               ],
             ),
           ),
-          UtilWidget.buildSolidButton(
-            title: LocaleKeys.certificate_confirm.tr,
-            onPressed: () {
-              Get.back(result: controller.selectedHospital.value);
-            },
-          ),
-          sdsSBHeight32,
+          sdsSBHeight20,
         ],
       ).paddingAll(AppDimens.paddingVerySmall),
     );
@@ -81,7 +75,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
       hintText: LocaleKeys.declareInfo_inputHospitalName.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
-      borderColor: AppColors.primaryColor,
+      borderColor: AppColors.thumbColorSwitch,
       autofocus: false,
       fillColor: AppColors.colorWhite,
       borderRadius: const BorderRadius.all(Radius.circular(25)),
@@ -89,10 +83,15 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
         controller.keyword.value = TiengViet.parse(value.trim()).toLowerCase();
         _isShowButtonClear.value = value.isNotEmpty;
       },
-      prefixIcon: const Icon(
-        Icons.search,
-        color: AppColors.primaryColor,
-        size: AppDimens.sizeIconMedium,
+      prefixIcon: SizedBox(
+        height: AppDimens.sizeIconDefault,
+        width: AppDimens.sizeIconDefault,
+        child: Center(
+          child: SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_SEARCH_SVG,
+            color: AppColors.thumbColorSwitch,
+          ),
+        ),
       ),
       suffixIcon: Obx(() => Visibility(
             visible: _isShowButtonClear.value,
@@ -104,7 +103,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
               },
               icon: const Icon(
                 Icons.clear,
-                color: AppColors.primaryColor,
+                color: AppColors.thumbColorSwitch,
               ),
             ),
           )),
@@ -117,13 +116,13 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
         final isSelected = controller.selectedHospital.value == item;
         return InkWell(
           onTap: () {
-            controller.selectedHospital.value = item;
+            Get.back(result: item);
           },
           child: Row(
             children: [
               Expanded(
                 child: SDSBuildText(
-                  item.name,
+                  '${item.id} - ${item.name}',
                 ).paddingSymmetric(
                   vertical: AppDimens.paddingSmall,
                 ),

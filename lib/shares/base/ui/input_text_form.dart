@@ -59,7 +59,7 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.phoneNumber:
         return [
-          FilteringTextInputFormatter.allow(RegExp(r"[0-9-]")),
+          FilteringTextInputFormatter.allow(RegExp(r"[0-9]")),
           LengthLimitingTextInputFormatter(20),
         ];
       case InputFormatterEnum.email:
@@ -138,6 +138,15 @@ class BuildInputTextState extends State<BuildInputText> {
             lastDecimal: 3,
           ),
         ];
+      case InputFormatterEnum.rate:
+        return [
+          NumericTextFormatter(
+            type: 1,
+            isDot: true,
+            maxLengthNum: 2,
+            lastDecimal: 1,
+          ),
+        ];
       default:
         return [
           LengthLimitingTextFieldFormatterFixed(
@@ -198,6 +207,7 @@ class BuildInputTextState extends State<BuildInputText> {
   Widget build(BuildContext context) {
     return Obx(
       () => TextFormField(
+        key: widget.inputTextFormModel.fieldKey,
         maxLines: widget.inputTextFormModel.maxLines,
         inputFormatters: getFormatters(),
         validator: widget.inputTextFormModel.validator,
@@ -209,7 +219,8 @@ class BuildInputTextState extends State<BuildInputText> {
           }
           widget.inputTextFormModel.onChanged?.call(v);
         },
-        textInputAction: widget.inputTextFormModel.iconNextTextInputAction,
+        textInputAction:
+            widget.inputTextFormModel.textInputAction ?? TextInputAction.next,
         style: FontStyleUtils.fontStyleSans(
           fontSize:
               widget.inputTextFormModel.hintTextSize ?? AppDimens.sizeTextSmall,
@@ -227,9 +238,8 @@ class BuildInputTextState extends State<BuildInputText> {
         onFieldSubmitted: (v) {
           if (widget.inputTextFormModel.submitFunc != null) {
             widget.inputTextFormModel.submitFunc!.call(v);
-          } else if (widget.inputTextFormModel.iconNextTextInputAction
-                  .toString() ==
-              TextInputAction.next.toString()) {
+          } else if (widget.inputTextFormModel.textInputAction ==
+              TextInputAction.next) {
             FocusScope.of(context)
                 .requestFocus(widget.inputTextFormModel.nextNode);
 
@@ -255,7 +265,7 @@ class BuildInputTextState extends State<BuildInputText> {
             color:
                 widget.inputTextFormModel.errorTextColor ?? AppColors.statusRed,
           ),
-          errorMaxLines: 2,
+          errorMaxLines: 5,
           prefixIcon: widget.inputTextFormModel.iconLeading != null
               ? Icon(
                   widget.inputTextFormModel.iconLeading,

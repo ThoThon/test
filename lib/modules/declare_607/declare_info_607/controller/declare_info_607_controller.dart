@@ -1,10 +1,12 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
+import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/district_model.dart';
 import 'package:v_bhxh/modules/login/model/province_model.dart';
 import 'package:v_bhxh/modules/login/model/ward_model.dart';
+import 'package:v_bhxh/modules/select_staff/model/select_staff_response.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -23,13 +25,15 @@ class DeclareInfo607Controller extends BaseGetxController {
   final declarationPeriodController =
       Get.findOrNull<DeclarationPeriodController>();
 
+  final enableClearTTIcon = false.obs;
+
   @override
   void onReady() {
     super.onReady();
-    _getD02Detail();
+    _getTk1Detail();
   }
 
-  Future<void> _getD02Detail() async {
+  Future<void> _getTk1Detail() async {
     final staffId = argument.staffId;
 
     if (staffId == null) {
@@ -38,12 +42,42 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     try {
       showLoadingOverlay();
-      final response = await declareInfoRepository.getD02Detail(id: staffId);
+      final response = await declareInfoRepository.getTk1Detail(id: staffId);
       final infoDetail = response.result;
       if (response.isSuccess && infoDetail != null) {
-        // Update D02Tk1State
-        tk1State.mapFromD02Detail(infoDetail);
-        d01State.mapFromD02Detail(infoDetail);
+        tk1State.mapFromTk1Detail(infoDetail);
+        d01State.mapFromTk1Detail(infoDetail);
+        updateHouseholdInfoRequired();
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  void goToSelectStaffPage() async {
+    final result = await Get.toNamed(
+      AppRoutes.selectStaff.path,
+      // Truyền id sang để biết nhân viên nào đang được chọn
+      arguments: tk1State.selectedStaffId,
+    );
+    if (result is SelectStaffResponse) {
+      _getDetailStaff(staffId: result.id);
+    }
+  }
+
+  Future<void> _getDetailStaff({
+    required String staffId,
+  }) async {
+    try {
+      showLoadingOverlay();
+      final response = await declareInfoRepository.getDetailStaff(id: staffId);
+      final staff = response.result;
+      if (response.isSuccess && staff != null) {
+        tk1State.mapFromStaffDetail(staff);
       } else {
         showSnackBar(response.errorMessage);
       }
@@ -86,6 +120,10 @@ class DeclareInfo607Controller extends BaseGetxController {
     );
     if (result is DeclarationForm) {
       d01State.forms.add(result);
+      showSnackBarCustom(
+        LocaleKeys.declareInfo_addTableSuccess.tr,
+        align: const Alignment(0, 0.6),
+      );
     }
   }
 
@@ -99,12 +137,19 @@ class DeclareInfo607Controller extends BaseGetxController {
           d01State.forms.indexWhere((element) => element.id == form.id);
       if (index != -1) {
         d01State.forms[index] = result;
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
       }
     }
   }
 
   void showDialogDeleteForm(DeclarationForm form) {
     ShowDialog.showDialogConfirm2(
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       title: 'Xóa bảng kê?',
       confirmTitle: 'Xóa',
       onConfirm: () {
@@ -169,6 +214,8 @@ class DeclareInfo607Controller extends BaseGetxController {
   DeclareInfo607Tab? get _invalidTab {
     if (tk1State.formKey.currentState?.validate() != true) {
       tk1State.autoValidateMode.value = AutovalidateMode.always;
+      // Scroll to the first invalid field
+      tk1State.registeredKey.currentState?.firstInvalid?.scrollToIntoView();
       return DeclareInfo607Tab.tk1;
     }
 
@@ -188,85 +235,87 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     if (argument.isUpdateStaff) {
-      await _updateD02();
+      await _updateTk1();
     } else {
-      await _addD02();
+      await _addTk1();
     }
   }
 
-  Future<void> _addD02() async {
-    // try {
-    //   showLoadingOverlay();
-    //   final request = AddD02Request.fromState(
-    //     kyKeKhaiId: argument.declarationPeriodId,
-    //     d02Tk1State: d02Tk1State,
-    //     d02State: d02State,
-    //     tk1State: tk1State,
-    //     d01State: d01State,
-    //   );
+  Future<void> _addTk1() async {
+    try {
+      showLoadingOverlay();
+      final request = AddTk1Request607.fromState(
+        kyKeKhaiId: argument.declarationPeriodId,
+        tk1State: tk1State,
+        d01State: d01State,
+      );
 
-    //   final response = await declareInfoRepository.addD02(request: request);
+      final response = await declareInfoRepository.addTk1(request: request);
 
-    //   if (response.isSuccess) {
-    //     showSnackBar(
-    //       LocaleKeys.declareInfo_saveDataSuccess.tr,
-    //       typeAction: AppConst.actionSuccess,
-    //     );
-    //     if (argument.isAddPeriodFromDeclarePeriod) {
-    //       Get.offNamed(
-    //         AppRoutes.staffList.path,
-    //         // TODO: correct value of procedureType
-    //         arguments: StaffListArgument(
-    //           declarationPeriodId: argument.declarationPeriodId,
-    //           procedureType: ProcedureType.procedure600,
-    //         ),
-    //       )?.then((value) {
-    //         declarationPeriodController?.getDeclarationPeriods();
-    //       });
-    //     } else if (argument.isAddStaffFromStaffList) {
-    //       Get.back(
-    //         result: argument.declarationPeriodId,
-    //       );
-    //     }
-    //   } else {
-    //     showSnackBar(response.errorMessage);
-    //   }
-    // } catch (e) {
-    //   logger.e(e);
-    // } finally {
-    //   hideLoadingOverlay();
-    // }
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        if (argument.isAddPeriodFromDeclarePeriod) {
+          Get.offNamed(
+            AppRoutes.staffList.path,
+            arguments: StaffListArgument(
+              declarationPeriodId: argument.declarationPeriodId,
+              procedureType: ProcedureType.procedure607,
+            ),
+          )?.then((value) {
+            declarationPeriodController?.getDeclarationPeriods();
+          });
+        } else if (argument.isAddStaffFromStaffList) {
+          Get.back(
+            result: argument.declarationPeriodId,
+          );
+        }
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 
-  Future<void> _updateD02() async {
-    // try {
-    //   showLoadingOverlay();
-    //   final request = UpdateD02Request.fromState(
-    //     kyKeKhaiId: argument.declarationPeriodId,
-    //     d02Tk1State: d02Tk1State,
-    //     d02State: d02State,
-    //     tk1State: tk1State,
-    //     d01State: d01State,
-    //   );
+  Future<void> _updateTk1() async {
+    try {
+      // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
+      // => Chặn việc cập nhật
+      if (tk1State.id == null) {
+        showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
+        return;
+      }
 
-    //   final response = await declareInfoRepository.updateD02(request: request);
+      showLoadingOverlay();
+      final request = UpdateTk1Request.fromState(
+        kyKeKhaiId: argument.declarationPeriodId,
+        tk1State: tk1State,
+        d01State: d01State,
+      );
 
-    //   if (response.isSuccess) {
-    //     showSnackBar(
-    //       LocaleKeys.declareInfo_saveDataSuccess.tr,
-    //       typeAction: AppConst.actionSuccess,
-    //     );
-    //     Get.back(
-    //       result: argument.declarationPeriodId,
-    //     );
-    //   } else {
-    //     showSnackBar(response.errorMessage);
-    //   }
-    // } catch (e) {
-    //   logger.e(e);
-    // } finally {
-    //   hideLoadingOverlay();
-    // }
+      final response = await declareInfoRepository.updateTk1(request: request);
+
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        Get.back(
+          result: argument.declarationPeriodId,
+        );
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
   }
 
   void onChangeDuplicateBirthAddress({
@@ -281,6 +330,13 @@ class DeclareInfo607Controller extends BaseGetxController {
     _syncHeadOfHouseholdInfo();
   }
 
+  void _clearReceiveAddress() {
+    tk1State.provinceReceive.value = null;
+    tk1State.districtReceive.value = null;
+    tk1State.wardReceive.value = null;
+    tk1State.addressReceiveTextCtrl.clear();
+  }
+
   /// Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh
   void _syncBirthAddress() {
     if (tk1State.isDuplicateBirthAddress.value) {
@@ -288,6 +344,8 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.districtReceive.value = tk1State.districtOfBirth.value;
       tk1State.wardReceive.value = tk1State.wardOfBirth.value;
       tk1State.addressReceiveTextCtrl.text = tk1State.birthAddressTextCtrl.text;
+    } else {
+      _clearReceiveAddress();
     }
   }
 
@@ -386,6 +444,14 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
+  void _syncDataAddressInfoAndProfileInfo() {
+    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
+      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+    }
+  }
+
   void onChangeProvinceReceive(ProvinceModel value) {
     if (tk1State.provinceReceive.value != value) {
       // Khi user thay đổi tỉnh nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
@@ -397,6 +463,8 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.provinceReceive.value = value;
+
+    _syncDataAddressInfoAndProfileInfo();
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       if (tk1State.provinceTT.value != value) {
@@ -417,7 +485,10 @@ class DeclareInfo607Controller extends BaseGetxController {
       // Xóa xã nơi nhận hồ sơ khi thay đổi huyện nơi nhận hồ sơ
       tk1State.wardReceive.value = null;
     }
+
     tk1State.districtReceive.value = value;
+
+    _syncDataAddressInfoAndProfileInfo();
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       if (tk1State.districtTT.value != value) {
@@ -436,6 +507,8 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
     tk1State.wardReceive.value = value;
 
+    _syncDataAddressInfoAndProfileInfo();
+
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.wardTT.value = value;
     }
@@ -448,11 +521,16 @@ class DeclareInfo607Controller extends BaseGetxController {
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.addressTTTextCtrl.text = value;
     }
+    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.addressReceivePaperTextCtrl.text =
+          tk1State.addressReceiveTextCtrl.text;
+    }
   }
 
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
     _syncHeadOfHouseholdInfo();
+    updateHouseholdInfoRequired();
   }
 
   void onChangeProvinceKCB(ProvinceModel value) {
@@ -473,17 +551,26 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.districtTT.value = tk1State.districtReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
       tk1State.addressTTTextCtrl.text = tk1State.addressReceiveTextCtrl.text;
+    } else {
+      tk1State.headOfHouseholdTextCtrl.clear();
+      tk1State.headOfHouseholdCCCDTextCtrl.clear();
+      tk1State.provinceTT.value = null;
+      tk1State.districtTT.value = null;
+      tk1State.wardTT.value = null;
+      tk1State.addressTTTextCtrl.clear();
     }
   }
 
   void onChangeHeadOfHouseholdFullName(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
     tk1State.headOfHouseholdTextCtrl.text = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeHeadOfHouseholdCCCD(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
     tk1State.headOfHouseholdCCCDTextCtrl.text = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeProvinceTT(ProvinceModel value) {
@@ -495,6 +582,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.provinceTT.value = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeDistrictTT(DistrictModel value) {
@@ -505,6 +593,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.districtTT.value = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeWardTT(WardModel value) {
@@ -513,10 +602,12 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
 
     tk1State.wardTT.value = value;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeAddressTT(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
+    updateHouseholdInfoRequired();
   }
 
   Future<void> addFamilyMember() async {
@@ -552,7 +643,8 @@ class DeclareInfo607Controller extends BaseGetxController {
       // Xóa ở DB
       try {
         showLoadingOverlay();
-        final response = await declareInfoRepository.deleteMember(id: memberId);
+        final response =
+            await declareInfoRepository.deleteMember607(id: memberId);
         if (response.isSuccess) {
           tk1State.familyMembers.removeWhere(
             (element) => element.id == memberId,
@@ -583,15 +675,18 @@ class DeclareInfo607Controller extends BaseGetxController {
     tk1State.provinceTT.value = null;
     tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
+    updateHouseholdInfoRequired();
   }
 
   void onTapClearDistrictTT() {
     tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
+    updateHouseholdInfoRequired();
   }
 
   void onTapClearWardTT() {
     tk1State.wardTT.value = null;
+    updateHouseholdInfoRequired();
   }
 
   void onChangeProvinceReceivePaper(ProvinceModel value) {
@@ -628,6 +723,55 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void onTapClearWardReceivePaper() {
     tk1State.wardReceivePaper.value = null;
+  }
+
+  void onChangeReceiveResult(ReceiveProfileResultEnum value) {
+    tk1State.receiveResult.value = value;
+
+    // Khi chọn nhận kết quả giấy thì địa chỉ nhận kết quả sẽ là địa chỉ nhận hồ sơ
+    if (value == ReceiveProfileResultEnum.paper) {
+      tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
+      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+      tk1State.addressReceivePaperTextCtrl.text =
+          tk1State.addressReceiveTextCtrl.text;
+    } else if (value == ReceiveProfileResultEnum.electronic) {
+      tk1State.provinceReceivePaper.value = null;
+      tk1State.districtReceivePaper.value = null;
+      tk1State.wardReceivePaper.value = null;
+      tk1State.addressReceivePaperTextCtrl.text = '';
+    }
+  }
+
+  bool get isHouseholdInfoEmpty {
+    return tk1State.headOfHouseholdTextCtrl.text.trim().isEmpty &&
+        tk1State.headOfHouseholdCCCDTextCtrl.text.trim().isEmpty &&
+        tk1State.provinceTT.value == null &&
+        tk1State.districtTT.value == null &&
+        tk1State.wardTT.value == null &&
+        tk1State.addressTTTextCtrl.text.trim().isEmpty;
+  }
+
+  void updateHouseholdInfoRequired() {
+    // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
+    if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
+      tk1State.isHouseholdInfoRequired.value = true;
+      return;
+    }
+
+    // Nếu 1 trong các thông tin của chủ hộ được điền thì sẽ phải điền tất cả
+    if (!isHouseholdInfoEmpty) {
+      tk1State.isHouseholdInfoRequired.value = true;
+      return;
+    }
+
+    // Nếu không có điều kiện nào thỏa mãn
+    tk1State.isHouseholdInfoRequired.value = false;
+  }
+
+  void updateClearTTIconState() {
+    final bhxhText = tk1State.bhxhTextCtrl.text.trim();
+    enableClearTTIcon.value = bhxhText.isNotEmpty;
   }
 
   @override

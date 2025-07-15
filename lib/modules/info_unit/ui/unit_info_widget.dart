@@ -450,52 +450,61 @@ extension UnitInfoWidget on UnitInfoPage {
   }
 
   Widget _buildButtonChange() {
-    return Obx(() => Padding(
-          padding: const EdgeInsets.only(
-            left: AppDimens.defaultPadding,
-            right: AppDimens.defaultPadding,
+    return KeyboardVisibilityBuilder(
+      builder: (p0, isKeyboardVisible) {
+        if (isKeyboardVisible) {
+          return const SizedBox.shrink();
+        }
+        return Obx(
+          () => Padding(
+            padding: const EdgeInsets.only(
+              left: AppDimens.defaultPadding,
+              right: AppDimens.defaultPadding,
+            ),
+            child: controller.isEditAll.value
+                ? Row(
+                    children: [
+                      Expanded(
+                        child: UtilWidget.buildSolidButton(
+                          backgroundColor: AppColors.basicWhite,
+                          textStyle: AppTextStyle.font16Bo
+                              .copyWith(color: AppColors.basicBlack),
+                          title: LocaleKeys.unitInfo_cancel.tr,
+                          onPressed: () {
+                            controller.handleCancelEdit();
+                          },
+                          borderRadius: AppDimens.radius30,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: UtilWidget.buildSolidButton(
+                          title: LocaleKeys.unitInfo_change.tr,
+                          onPressed: () async {
+                            if (controller.inputIsNotValid() ||
+                                controller.isInputUnchanged) {
+                              controller.inputInfoIsEmpty();
+                              return;
+                            }
+                            await controller.updateAccountInfo();
+                            // controller.isEditAll.value = false;
+                          },
+                          borderRadius: AppDimens.radius30,
+                        ),
+                      ),
+                    ],
+                  )
+                : UtilWidget.buildSolidButton(
+                    title: LocaleKeys.unitInfo_fix.tr,
+                    onPressed: () {
+                      controller.isEditAll.value = true;
+                    },
+                    borderRadius: AppDimens.radius30,
+                  ),
           ),
-          child: controller.isEditAll.value
-              ? Row(
-                  children: [
-                    Expanded(
-                      child: UtilWidget.buildSolidButton(
-                        backgroundColor: AppColors.basicWhite,
-                        textStyle: AppTextStyle.font16Bo
-                            .copyWith(color: AppColors.basicBlack),
-                        title: LocaleKeys.unitInfo_cancel.tr,
-                        onPressed: () {
-                          controller.handleCancelEdit();
-                        },
-                        borderRadius: AppDimens.radius30,
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: UtilWidget.buildSolidButton(
-                        title: LocaleKeys.unitInfo_change.tr,
-                        onPressed: () async {
-                          if (controller.inputIsNotValid() ||
-                              controller.isInputUnchanged) {
-                            controller.inputInfoIsEmpty();
-                            return;
-                          }
-                          await controller.updateAccountInfo();
-                          // controller.isEditAll.value = false;
-                        },
-                        borderRadius: AppDimens.radius30,
-                      ),
-                    ),
-                  ],
-                )
-              : UtilWidget.buildSolidButton(
-                  title: LocaleKeys.unitInfo_fix.tr,
-                  onPressed: () {
-                    controller.isEditAll.value = true;
-                  },
-                  borderRadius: AppDimens.radius30,
-                ),
-        ));
+        );
+      },
+    );
   }
 
   //Thông tin đơn vị không được sửa, chỉ view thôi

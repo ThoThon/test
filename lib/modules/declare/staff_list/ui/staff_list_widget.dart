@@ -21,17 +21,7 @@ extension StaffListWidget on StaffListPage {
                     ),
                     sdsSBHeight8,
                     _buildListStaff(),
-                    sdsSBHeight12,
-                    SDSBuildText(
-                      LocaleKeys.staffList_attachFile.tr,
-                      style: AppTextStyle.font16Bo,
-                    ),
-                    sdsSBHeight8,
-                    AppSelectImageWidget(
-                      onPickImage: controller.pickImage,
-                      onTakePhoto: controller.takePhoto,
-                    ),
-                    _buildAttachImages(),
+                    _buildSelectImageSection(),
                   ],
                 );
               },
@@ -44,6 +34,31 @@ extension StaffListWidget on StaffListPage {
         sdsSBHeight32,
       ],
     ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
+  }
+
+  Widget _buildSelectImageSection() {
+    // Với thủ tục 612, không hiển thị phần đính kèm ảnh - BHW-2647
+    if (controller.procedureType == ProcedureType.procedure612) {
+      return const SizedBox.shrink();
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        sdsSBHeight12,
+        SDSBuildText(
+          LocaleKeys.staffList_attachFile.tr,
+          style: AppTextStyle.font16Bo,
+        ),
+        sdsSBHeight8,
+        AppSelectImageWidget(
+          onPickImage: controller.pickImage,
+          onTakePhoto: controller.takePhoto,
+        ),
+        _buildAttachImages(),
+      ],
+    );
   }
 
   Widget _buildAttachImages() {
@@ -155,9 +170,12 @@ extension StaffListWidget on StaffListPage {
   Widget _buildMenuPopupOnption(DeclaredStaffModel staff) {
     return PopupMenuButton<ActionPopupStaffEnum>(
       surfaceTintColor: AppColors.basicWhite,
+      padding: EdgeInsets.zero,
+      menuPadding: EdgeInsets.zero,
       constraints: const BoxConstraints(),
       color: AppColors.basicWhite,
       icon: const Icon(Icons.more_horiz),
+      offset: const Offset(12, 40),
       onSelected: (action) {
         if (action == ActionPopupStaffEnum.edit) {
           // Gọi hàm sửa
@@ -171,15 +189,18 @@ extension StaffListWidget on StaffListPage {
         return ActionPopupStaffEnum.values.map(
           (action) {
             return PopupMenuItem<ActionPopupStaffEnum>(
+              padding: const EdgeInsets.only(left: AppDimens.padding24),
               value: action,
               child: Row(
                 children: [
-                  SDSBuildText(action.title),
-                  sdsSBWidth16,
-                  Icon(
-                    action.icon,
-                    color: AppColors.dsGray3,
+                  SDSImageSvg(
+                    action.iconAsset,
+                    color: AppColors.colorBlack,
+                    height: AppDimens.sizeIconDefault,
+                    width: AppDimens.sizeIconDefault,
                   ),
+                  sdsSBWidth16,
+                  SDSBuildText(action.title),
                 ],
               ),
             );

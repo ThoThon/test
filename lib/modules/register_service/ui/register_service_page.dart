@@ -1,4 +1,7 @@
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:v_bhxh/modules/src.dart';
+
+import '../../../shares/widgets/keyboard/keyboard.dart';
 
 part 'register_service_widget.dart';
 
@@ -23,7 +26,7 @@ class RegisterServicePage extends BaseGetWidget {
                 UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
             title: BaseAppBarTitle(
               textColor: AppColors.basicWhite,
-              title: LocaleKeys.registerService_registerService.tr,
+              title: LocaleKeys.registerService_registerTitle.tr,
             ),
           ),
           body: BaseCardBody(

@@ -84,8 +84,10 @@ class D02Tk1State {
 
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
 
+    birthType.value = staff.chiCoNamSinh ?? BirthTypeEnum.defaultValue;
+
     dateOfBirthTextCtrl.text =
-        convertDateToStringSafe(staff.ngaySinh, PATTERN_1) ?? '';
+        convertDateToStringSafe(staff.ngaySinh, birthType.value.pattern) ?? '';
 
     gender.value = staff.gioiTinh ?? Gender.female;
 

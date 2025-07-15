@@ -143,7 +143,11 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void goToSelectStaffPage() async {
-    final result = await Get.toNamed(AppRoutes.selectStaff.path);
+    final result = await Get.toNamed(
+      AppRoutes.selectStaff.path,
+      // Truyền id sang để biết nhân viên nào đang được chọn
+      arguments: d02State.selectedStaffId,
+    );
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
     }
@@ -159,6 +163,10 @@ class DeclareInfoController extends BaseGetxController {
     );
     if (result is DeclarationForm) {
       d01State.forms.add(result);
+      showSnackBarCustom(
+        LocaleKeys.declareInfo_addTableSuccess.tr,
+        align: const Alignment(0, 0.6),
+      );
     }
   }
 
@@ -172,6 +180,10 @@ class DeclareInfoController extends BaseGetxController {
           d01State.forms.indexWhere((element) => element.id == form.id);
       if (index != -1) {
         d01State.forms[index] = result;
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
       }
     }
   }
@@ -180,6 +192,9 @@ class DeclareInfoController extends BaseGetxController {
     ShowDialog.showDialogConfirm2(
       title: 'Xóa bảng kê?',
       confirmTitle: 'Xóa',
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       onConfirm: () {
         deleteDeclarationForm(form);
       },
@@ -248,12 +263,16 @@ class DeclareInfoController extends BaseGetxController {
   DeclareInfoTab? get _invalidTab {
     if (d02State.formKey.currentState?.validate() != true) {
       d02State.autoValidateMode.value = AutovalidateMode.always;
+      // Scroll to the first invalid field
+      d02State.registeredKey.currentState?.firstInvalid?.scrollToIntoView();
       return DeclareInfoTab.d02;
     }
 
     if (d02State.isGenerateTk1Data.value &&
         tk1State.formKey.currentState?.validate() != true) {
       tk1State.autoValidateMode.value = AutovalidateMode.always;
+      // Scroll to the first invalid field
+      tk1State.registeredKey.currentState?.firstInvalid?.scrollToIntoView();
       return DeclareInfoTab.tk1;
     }
 
@@ -305,7 +324,6 @@ class DeclareInfoController extends BaseGetxController {
         if (argument.isAddPeriodFromDeclarePeriod) {
           Get.offNamed(
             AppRoutes.staffList.path,
-            // TODO: correct value of procedureType
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure600,
@@ -330,6 +348,13 @@ class DeclareInfoController extends BaseGetxController {
 
   Future<void> _updateD02() async {
     try {
+      // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
+      // => Chặn việc cập nhật
+      if (d02State.id == null) {
+        showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
+        return;
+      }
+
       showLoadingOverlay();
       final request = UpdateD02Request.fromState(
         kyKeKhaiId: argument.declarationPeriodId,
@@ -593,6 +618,13 @@ class DeclareInfoController extends BaseGetxController {
       tk1State.districtTT.value = tk1State.districtReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
       tk1State.addressTTTextCtrl.text = tk1State.addressReceiveTextCtrl.text;
+    } else {
+      tk1State.headOfHouseholdTextCtrl.clear();
+      tk1State.headOfHouseholdCCCDTextCtrl.clear();
+      tk1State.provinceTT.value = null;
+      tk1State.districtTT.value = null;
+      tk1State.wardTT.value = null;
+      tk1State.addressTTTextCtrl.clear();
     }
   }
 

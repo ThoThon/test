@@ -68,6 +68,10 @@ class LocaleKeys {
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
   static const dialog_sendFileToBHXH = 'dialog_sendFileToBHXH';
   static const dialog_max5File = 'dialog_max5File';
+  static const dialog_select = 'dialog_select';
+  static const dialog_selectDayMonthYear = 'dialog_selectDayMonthYear';
+  static const dialog_selectMonthYear = 'dialog_selectMonthYear';
+  static const dialog_selectYear = 'dialog_selectYear';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -317,6 +321,7 @@ class LocaleKeys {
   static const login_registerForCode = 'login_registerForCode';
   static const login_switchTo = 'login_switchTo';
   static const login_register = 'login_register';
+  static const login_invalidPassword = 'login_invalidPassword';
   static const procedureList_pageTitle = 'procedureList_pageTitle';
   static const procedureList_declare = 'procedureList_declare';
   static const procedureList_title = 'procedureList_title';
@@ -362,6 +367,12 @@ class LocaleKeys {
   static const declarationPeriodDetail_deleteImageSuccess =
       'declarationPeriodDetail_deleteImageSuccess';
   static const declareInfo_title = 'declareInfo_title';
+  static const declareInfo_title600 = 'declareInfo_title600';
+  static const declareInfo_title607 = 'declareInfo_title607';
+  static const declareInfo_title608 = 'declareInfo_title608';
+  static const declareInfo_title610 = 'declareInfo_title610';
+  static const declareInfo_title612 = 'declareInfo_title612';
+  static const declareInfo_title613 = 'declareInfo_title613';
   static const declareInfo_fullName = 'declareInfo_fullName';
   static const declareInfo_fullNameHint = 'declareInfo_fullNameHint';
   static const declareInfo_fullNameCannotEmpty =
@@ -393,10 +404,12 @@ class LocaleKeys {
   static const declareInfo_male = 'declareInfo_male';
   static const declareInfo_female = 'declareInfo_female';
   static const declareInfo_ethnic = 'declareInfo_ethnic';
+  static const declareInfo_inputEthnic = 'declareInfo_inputEthnic';
   static const declareInfo_selectEthnic = 'declareInfo_selectEthnic';
   static const declareInfo_ethnicCannotEmpty = 'declareInfo_ethnicCannotEmpty';
   static const declareInfo_nationality = 'declareInfo_nationality';
   static const declareInfo_selectNationality = 'declareInfo_selectNationality';
+  static const declareInfo_inputNationality = 'declareInfo_inputNationality';
   static const declareInfo_nationalityCannotEmpty =
       'declareInfo_nationalityCannotEmpty';
   static const declareInfo_fromMonthYear = 'declareInfo_fromMonthYear';
@@ -406,6 +419,7 @@ class LocaleKeys {
   static const declareInfo_toMonthYearCannotEmpty =
       'declareInfo_toMonthYearCannotEmpty';
   static const declareInfo_position = 'declareInfo_position';
+  static const declareInfo_inputPosition = 'declareInfo_inputPosition';
   static const declareInfo_positionCannotEmpty =
       'declareInfo_positionCannotEmpty';
   static const declareInfo_selectPosition = 'declareInfo_selectPosition';
@@ -534,10 +548,13 @@ class LocaleKeys {
   static const declareInfo_otherInfo = 'declareInfo_otherInfo';
   static const declareInfo_generateD01tsData = 'declareInfo_generateD01tsData';
   static const declareInfo_personalInfo = 'declareInfo_personalInfo';
-  static const declareInfo_salaryOrCoefficientCannotEmpty =
-      'declareInfo_salaryOrCoefficientCannotEmpty';
-  static const declareInfo_salaryOrCoefficientMustBeInteger =
-      'declareInfo_salaryOrCoefficientMustBeInteger';
+  static const declareInfo_salaryCannotEmpty = 'declareInfo_salaryCannotEmpty';
+  static const declareInfo_salaryMustBeInteger =
+      'declareInfo_salaryMustBeInteger';
+  static const declareInfo_coefficientCannotEmpty =
+      'declareInfo_coefficientCannotEmpty';
+  static const declareInfo_coefficientMustBeInteger =
+      'declareInfo_coefficientMustBeInteger';
   static const declareInfo_addressInfo = 'declareInfo_addressInfo';
   static const declareInfo_medicalFacilityInfo =
       'declareInfo_medicalFacilityInfo';
@@ -559,23 +576,40 @@ class LocaleKeys {
       'declareInfo_receiveProfileResult';
   static const declareInfo_provinceReceivePaper =
       'declareInfo_provinceReceivePaper';
+  static const declareInfo_provinceReceivePaperCannotEmpty =
+      'declareInfo_provinceReceivePaperCannotEmpty';
   static const declareInfo_selectProvinceReceivePaper =
       'declareInfo_selectProvinceReceivePaper';
   static const declareInfo_districtReceivePaper =
       'declareInfo_districtReceivePaper';
+  static const declareInfo_districtReceivePaperCannotEmpty =
+      'declareInfo_districtReceivePaperCannotEmpty';
   static const declareInfo_selectDistrictReceivePaper =
       'declareInfo_selectDistrictReceivePaper';
   static const declareInfo_wardReceivePaper = 'declareInfo_wardReceivePaper';
+  static const declareInfo_wardReceivePaperCannotEmpty =
+      'declareInfo_wardReceivePaperCannotEmpty';
   static const declareInfo_selectWardReceivePaper =
       'declareInfo_selectWardReceivePaper';
   static const declareInfo_addressReceivePaper =
       'declareInfo_addressReceivePaper';
+  static const declareInfo_addressReceivePaperCannotEmpty =
+      'declareInfo_addressReceivePaperCannotEmpty';
   static const declareInfo_receiveResultElectronic =
       'declareInfo_receiveResultElectronic';
   static const declareInfo_receiveResultPaper =
       'declareInfo_receiveResultPaper';
-  static const declareInfo_listTable = 'declareInfo_listTable';
   static const declareInfo_coefficient = 'declareInfo_coefficient';
+  static const declareInfo_listTable = 'declareInfo_listTable';
+  static const declareInfo_addTable = 'declareInfo_addTable';
+  static const declareInfo_addTableSuccess = 'declareInfo_addTableSuccess';
+  static const declareInfo_inputBhxhCode = 'declareInfo_inputBhxhCode';
+  static const declareInfo_inputHeadOfHouseholdCCCD =
+      'declareInfo_inputHeadOfHouseholdCCCD';
+  static const declareInfo_socialInsuranceRate =
+      'declareInfo_socialInsuranceRate';
+  static const declareInfo_socialInsuranceRateCannotEmpty =
+      'declareInfo_socialInsuranceRateCannotEmpty';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -596,6 +630,7 @@ class LocaleKeys {
   static const familyMember_provinceOfBirth = 'familyMember_provinceOfBirth';
   static const familyMember_selectProvinceOfBirth =
       'familyMember_selectProvinceOfBirth';
+  static const familyMember_selectProvince = 'familyMember_selectProvince';
   static const familyMember_provinceOfBirthCannotEmpty =
       'familyMember_provinceOfBirthCannotEmpty';
   static const familyMember_districtOfBirth = 'familyMember_districtOfBirth';
@@ -610,6 +645,8 @@ class LocaleKeys {
       'familyMember_wardOfBirthCannotEmpty';
   static const familyMember_relationshipWithHeadOfHousehold =
       'familyMember_relationshipWithHeadOfHousehold';
+  static const familyMember_inputRelationshipWithHeadOfHousehold =
+      'familyMember_inputRelationshipWithHeadOfHousehold';
   static const familyMember_selectRelationshipWithHeadOfHousehold =
       'familyMember_selectRelationshipWithHeadOfHousehold';
   static const familyMember_selectBirthType = 'familyMember_selectBirthType';
@@ -678,6 +715,7 @@ class LocaleKeys {
   static const staffList_continue = 'staffList_continue';
   static const staffList_attachFileErorr = 'staffList_attachFileErorr';
   static const staffList_fillFullName = 'staffList_fillFullName';
+  static const staffList_search = 'staffList_search';
   static const staffList_confirm = 'staffList_confirm';
   static const staffList_selectedStaff = 'staffList_selectedStaff';
   static const staffList_deleteStaffConfirmMessage =
@@ -934,6 +972,10 @@ class LocaleKeys {
   static const registerCode_contentDownloadAttachment =
       'registerCode_contentDownloadAttachment';
   static const registerCode_signature = 'registerCode_signature';
+  static const registerCode_next = 'registerCode_next';
+  static const viewPdf_download = 'viewPdf_download';
+  static const viewPdf_share = 'viewPdf_share';
+  static const viewPdf_cannotDownloadFile = 'viewPdf_cannotDownloadFile';
 }
 
 class Locales {
@@ -1031,6 +1073,10 @@ class Locales {
     'dialog_sendFileToBHXH':
         'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
     'dialog_max5File': 'Chỉ cho phép chọn tối đa 5 file',
+    'dialog_select': 'Chọn',
+    'dialog_selectDayMonthYear': 'Chọn Ngày/Tháng/Năm',
+    'dialog_selectMonthYear': 'Chọn Tháng/Năm',
+    'dialog_selectYear': 'Chọn năm',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -1268,6 +1314,7 @@ class Locales {
     'login_registerForCode': 'Đăng ký cấp mã',
     'login_switchTo': 'Đã chuyển sang',
     'login_register': 'Đăng ký',
+    'login_invalidPassword': 'Mật khẩu đăng nhập tài khoản không đúng',
     'procedureList_pageTitle': 'Danh sách thủ tục',
     'procedureList_declare': 'Kê khai',
     'procedureList_title': 'Thủ tục ',
@@ -1302,6 +1349,12 @@ class Locales {
     'declarationPeriodDetail_deposit': 'Ký gửi',
     'declarationPeriodDetail_deleteImageSuccess': 'Xóa ảnh thành công',
     'declareInfo_title': 'Kê khai thông tin',
+    'declareInfo_title600': 'Thủ tục 600',
+    'declareInfo_title607': 'Thủ tục 607',
+    'declareInfo_title608': 'Thủ tục 608',
+    'declareInfo_title610': 'Thủ tục 610',
+    'declareInfo_title612': 'Thủ tục 612',
+    'declareInfo_title613': 'Thủ tục 613',
     'declareInfo_fullName': 'Họ và tên',
     'declareInfo_fullNameHint': 'Nhập họ và tên',
     'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1329,16 +1382,19 @@ class Locales {
     'declareInfo_male': 'Nam',
     'declareInfo_female': 'Nữ',
     'declareInfo_ethnic': 'Dân tộc',
+    'declareInfo_inputEthnic': 'Nhập dân tộc',
     'declareInfo_selectEthnic': 'Chọn dân tộc',
     'declareInfo_ethnicCannotEmpty': 'Dân tộc không được bỏ trống',
     'declareInfo_nationality': 'Quốc tịch',
     'declareInfo_selectNationality': 'Chọn quốc tịch',
+    'declareInfo_inputNationality': 'Nhập quốc tịch',
     'declareInfo_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
     'declareInfo_fromMonthYear': 'Từ tháng/năm',
     'declareInfo_fromMonthYearCannotEmpty': 'Từ tháng/năm không được bỏ trống',
     'declareInfo_toMonthYear': 'Đến tháng/năm',
     'declareInfo_toMonthYearCannotEmpty': 'Đến tháng/năm không được bỏ trống',
     'declareInfo_position': 'Cấp bậc/chức vụ',
+    'declareInfo_inputPosition': 'Nhập cấp bậc/chức vụ',
     'declareInfo_positionCannotEmpty': 'Cấp bậc/chức vụ không được bỏ trống',
     'declareInfo_selectPosition': 'Chọn cấp bậc/Chức vụ',
     'declareInfo_workplace': 'Nơi làm việc',
@@ -1442,10 +1498,10 @@ class Locales {
     'declareInfo_otherInfo': 'Thông tin khác',
     'declareInfo_generateD01tsData': 'Sinh dữ liệu D01-TS',
     'declareInfo_personalInfo': 'Thông tin cá nhân',
-    'declareInfo_salaryOrCoefficientCannotEmpty':
-        'Tiền lương/Hệ số không được bỏ trống',
-    'declareInfo_salaryOrCoefficientMustBeInteger':
-        'Tiền lương/Hệ số phải là số nguyên',
+    'declareInfo_salaryCannotEmpty': 'Tiền lương không được bỏ trống',
+    'declareInfo_salaryMustBeInteger': 'Tiền lương phải là số nguyên',
+    'declareInfo_coefficientCannotEmpty': 'Hệ số không được bỏ trống',
+    'declareInfo_coefficientMustBeInteger': 'Tiền lương phải là số nguyên',
     'declareInfo_addressInfo': 'Thông tin địa chỉ',
     'declareInfo_medicalFacilityInfo': 'Thông tin nơi khám chữa bệnh',
     'declareInfo_householdOwnerInfo': 'Thông tin chủ hộ',
@@ -1460,16 +1516,31 @@ class Locales {
     'declareInfo_enterAttachedProfile': 'Nhập hồ sơ kèm theo',
     'declareInfo_receiveProfileResult': 'Nhận kết quả hồ sơ',
     'declareInfo_provinceReceivePaper': 'Tỉnh nhận hồ sơ giấy',
+    'declareInfo_provinceReceivePaperCannotEmpty':
+        'Tỉnh nhận hồ sơ giấy không được bỏ trống',
     'declareInfo_selectProvinceReceivePaper': 'Chọn tỉnh nhận hồ sơ giấy',
     'declareInfo_districtReceivePaper': 'Huyện nhận hồ sơ giấy',
+    'declareInfo_districtReceivePaperCannotEmpty':
+        'Huyện nhận hồ sơ giấy không được bỏ trống',
     'declareInfo_selectDistrictReceivePaper': 'Chọn huyện nhận hồ sơ giấy',
     'declareInfo_wardReceivePaper': 'Xã nhận hồ sơ giấy',
+    'declareInfo_wardReceivePaperCannotEmpty':
+        'Xã nhận hồ sơ giấy không được bỏ trống',
     'declareInfo_selectWardReceivePaper': 'Chọn xã nhận hồ sơ giấy',
     'declareInfo_addressReceivePaper': 'Địa chỉ nhận hồ sơ giấy',
+    'declareInfo_addressReceivePaperCannotEmpty':
+        'Địa chỉ nhận hồ sơ giấy không được bỏ trống',
     'declareInfo_receiveResultElectronic': 'Nhận kết quả bản điện tử',
     'declareInfo_receiveResultPaper': 'Nhận kết quả bản giấy',
-    'declareInfo_listTable': 'Danh sách bảng kê',
     'declareInfo_coefficient': 'Hệ số',
+    'declareInfo_listTable': 'Danh sách bảng kê',
+    'declareInfo_addTable': 'Thêm bảng kê',
+    'declareInfo_addTableSuccess': 'Thêm bảng kê thành công',
+    'declareInfo_inputBhxhCode': 'Nhập mã số BHXH',
+    'declareInfo_inputHeadOfHouseholdCCCD': 'Nhập số CCCD của chủ hộ',
+    'declareInfo_socialInsuranceRate': 'Tỷ lệ đóng',
+    'declareInfo_socialInsuranceRateCannotEmpty':
+        'Tỷ lệ đóng không được bỏ trống',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1485,6 +1556,7 @@ class Locales {
     'familyMember_nationalityCannotEmpty': 'Quốc tịch không được bỏ trống',
     'familyMember_provinceOfBirth': 'Tỉnh khai sinh',
     'familyMember_selectProvinceOfBirth': 'Chọn tỉnh khai sinh',
+    'familyMember_selectProvince': 'Chọn Tỉnh/Thành phố',
     'familyMember_provinceOfBirthCannotEmpty':
         'Tỉnh khai sinh không được bỏ trống',
     'familyMember_districtOfBirth': 'Huyện khai sinh',
@@ -1495,6 +1567,8 @@ class Locales {
     'familyMember_selectWardOfBirth': 'Chọn xã khai sinh',
     'familyMember_wardOfBirthCannotEmpty': 'Xã khai sinh không được bỏ trống',
     'familyMember_relationshipWithHeadOfHousehold': 'Mối quan hệ với chủ hộ',
+    'familyMember_inputRelationshipWithHeadOfHousehold':
+        'Nhập mối quan hệ với chủ hộ',
     'familyMember_selectRelationshipWithHeadOfHousehold':
         'Chọn mối quan hệ với chủ hộ',
     'familyMember_selectBirthType': 'Loại ngày sinh',
@@ -1544,13 +1618,15 @@ class Locales {
     'staffList_addNewStaff': 'Thêm nhân viên',
     'staffList_attachFile': 'Đính kèm file',
     'staffList_addAttachedImage': 'Thêm hình ảnh đính kèm',
-    'staffList_continue': 'Tiếp tục',
+    'staffList_continue': 'Tiếp theo',
     'staffList_attachFileErorr': 'File không hợp lệ',
-    'staffList_fillFullName': 'Nhập họ tên',
+    'staffList_fillFullName': 'Nhập họ và tên',
+    'staffList_search': 'Nhập tên nhân viên',
     'staffList_confirm': 'Xác nhận',
     'staffList_selectedStaff': 'Chọn nhân viên',
-    'staffList_deleteStaffConfirmMessage': 'Bạn có đồng ý xóa nhân sự đã chọn?',
-    'staffList_deleteStaffSuccess': 'Xóa nhân sự thành công',
+    'staffList_deleteStaffConfirmMessage':
+        'Bạn có đồng ý xóa nhân viên đã chọn?',
+    'staffList_deleteStaffSuccess': 'Xóa nhân viên thành công',
     'staffList_uploadImage': 'Tải ảnh lên',
     'staffList_noEmployeeDeclaredMessage':
         'Chưa có nhân viên nào được khai báo',
@@ -1760,5 +1836,9 @@ class Locales {
     'registerCode_contentCannotEmpty': 'Nội dung không được để trống',
     'registerCode_contentDownloadAttachment': '[JPG, PNG,...]',
     'registerCode_signature': 'Chữ ký số',
+    'registerCode_next': 'Tiếp theo',
+    'viewPdf_download': 'Tải xuống',
+    'viewPdf_share': 'Chia sẻ',
+    'viewPdf_cannotDownloadFile': 'Có lỗi xảy ra. Không thể tải xuống file.',
   };
 }

@@ -57,13 +57,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
               ],
             ),
           ),
-          UtilWidget.buildSolidButton(
-            title: LocaleKeys.certificate_confirm.tr,
-            onPressed: () {
-              Get.back(result: controller.selectedDistrict.value);
-            },
-          ),
-          sdsSBHeight32,
+          sdsSBHeight20,
         ],
       ).paddingAll(AppDimens.paddingVerySmall),
     );
@@ -78,7 +72,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
       hintText: LocaleKeys.declareInfo_inputDistrict.tr,
       textColor: AppColors.colorBlack,
       hintColor: AppColors.dsGray2,
-      borderColor: AppColors.primaryColor,
+      borderColor: AppColors.thumbColorSwitch,
       maxLength: 20,
       autofocus: false,
       fillColor: AppColors.colorWhite,
@@ -87,10 +81,15 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
         controller.keyword.value = TiengViet.parse(value.trim()).toLowerCase();
         _isShowButtonClear.value = value.isNotEmpty;
       },
-      prefixIcon: const Icon(
-        Icons.search,
-        color: AppColors.primaryColor,
-        size: AppDimens.sizeIconMedium,
+      prefixIcon: SizedBox(
+        height: AppDimens.sizeIconDefault,
+        width: AppDimens.sizeIconDefault,
+        child: Center(
+          child: SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_SEARCH_SVG,
+            color: AppColors.thumbColorSwitch,
+          ),
+        ),
       ),
       suffixIcon: Obx(() => Visibility(
             visible: _isShowButtonClear.value,
@@ -102,7 +101,7 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
               },
               icon: const Icon(
                 Icons.clear,
-                color: AppColors.primaryColor,
+                color: AppColors.thumbColorSwitch,
               ),
             ),
           )),
@@ -115,13 +114,13 @@ class SelectDistrictBts extends BaseGetWidget<SelectDistrictController> {
         final isSelected = controller.selectedDistrict.value == item;
         return InkWell(
           onTap: () {
-            controller.selectedDistrict.value = item;
+            Get.back(result: item);
           },
           child: Row(
             children: [
               Expanded(
                 child: SDSBuildText(
-                  item.name,
+                  '${item.id} - ${item.name}',
                 ).paddingSymmetric(
                   vertical: AppDimens.paddingSmall,
                 ),

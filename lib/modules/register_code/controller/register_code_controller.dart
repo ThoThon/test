@@ -1,3 +1,4 @@
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
@@ -7,9 +8,6 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../login/model/model_src.dart';
 import '../../src.dart';
-
-// Nếu mã lỗi là 58061 thì có thể retry ký số (from a Chương)
-const _allowRetryCode = "58061";
 
 class RegisterCodeController extends BaseGetxController {
   final currentTab = RegisterCodeTabEnum.common_info.obs;
@@ -104,8 +102,10 @@ class RegisterCodeController extends BaseGetxController {
   final listImage = <String>[].obs;
 
   final formKeyCommonTab = GlobalKey<FormState>();
+  final registeredCommonTabKey = GlobalKey<FormRegistryWidgetState>();
 
   final formKeyRegisterTab = GlobalKey<FormState>();
+  final registeredRegisterTabKey = GlobalKey<FormRegistryWidgetState>();
 
   final isEnableBtnSearchCert = false.obs;
 
@@ -119,6 +119,18 @@ class RegisterCodeController extends BaseGetxController {
     KeyBoard.hide();
     if (currentTab.value == tab) return;
     currentTab.value = tab;
+  }
+
+  void goToRegisterTab() {
+    final invalidTab = _invalidTab;
+    if (invalidTab == null) {
+      // Nếu tất cả các tab đều hợp lệ thì chuyển đến tab cuối cùng (tab thông tin đăng ký)
+      currentTab.value = RegisterCodeTabEnum.register_info;
+    } else {
+      // Nếu có tab không hợp lệ thì chuyển đến tab đó
+      currentTab.value = invalidTab;
+      return;
+    }
   }
 
   Future<void> getRegisterFirstCategories() async {
@@ -181,14 +193,7 @@ class RegisterCodeController extends BaseGetxController {
   Future<void> getListCertificate() async {
     await fetchListCert();
     if (listCert.isNotEmpty) {
-      final result = await Get.bottomSheet(
-        SelectCertificateBts(
-          listCert: listCert,
-        ),
-      );
-      if (result != null) {
-        certificate.value = result;
-      }
+      certificate.value = listCert.firstOrNull;
     } else {
       showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
     }
@@ -251,10 +256,14 @@ class RegisterCodeController extends BaseGetxController {
 
   RegisterCodeTabEnum? get _invalidTab {
     if (formKeyCommonTab.currentState?.validate() != true) {
+      // Auto scroll to first invalid field
+      registeredCommonTabKey.currentState?.firstInvalid?.scrollToIntoView();
       return RegisterCodeTabEnum.common_info;
     }
 
     if (formKeyRegisterTab.currentState?.validate() != true) {
+      // Auto scroll to first invalid field
+      registeredRegisterTabKey.currentState?.firstInvalid?.scrollToIntoView();
       return RegisterCodeTabEnum.register_info;
     }
 
@@ -271,6 +280,7 @@ class RegisterCodeController extends BaseGetxController {
       currentTab.value = invalidTab;
       return;
     }
+    // goToRegisterTab();
     try {
       if (certificate.value == null) {
         showSnackBar(
@@ -286,23 +296,23 @@ class RegisterCodeController extends BaseGetxController {
           await _registerCodeRepository.registerCodeFirst(_buildRequest());
 
       if (response.isSuccess) {
-        ShowDialog.dismissDialog();
-        _showDialogVerifySuccess();
-      } else {
+        // Đóng dialog kiểm tra ký số
         ShowDialog.dismissDialog();
 
-        final canRetry = response.code == _allowRetryCode;
+        _showDialogVerifySuccess();
+      } else {
+        // Đóng dialog kiểm tra ký số
+        ShowDialog.dismissDialog();
+
         _showDialogVerifyFailed(
           errorMessage: response.errorMessage,
-          onRetry: canRetry ? registerCodeFirst : null,
         );
       }
     } catch (e) {
-      ShowDialog.dismissDialog();
-      if (e is DioException) {
+      if (e is DioException && e.type != DioExceptionType.cancel) {
+        ShowDialog.dismissDialog();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
-          onRetry: registerCodeFirst,
         );
       }
     }
@@ -315,10 +325,13 @@ class RegisterCodeController extends BaseGetxController {
       content: LocaleKeys.dialog_confirmSignatureMySign.tr,
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       onFinish: () {
+        cancelAllRequest();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
-          onRetry: registerCodeFirst,
         );
+      },
+      onCancel: () {
+        Get.until(ModalRoute.withName(AppRoutes.login.path));
       },
     );
   }
@@ -330,6 +343,9 @@ class RegisterCodeController extends BaseGetxController {
       iconType: DialogIconType.success,
       exitTitle: LocaleKeys.dialog_close.tr,
       isDisableButtonConfirm: true,
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       onCancel: () {
         // Get back vì màn trước của nó đang là màn login
         Get.back();
@@ -346,6 +362,9 @@ class RegisterCodeController extends BaseGetxController {
       content: errorMessage,
       iconType: DialogIconType.failure,
       exitTitle: LocaleKeys.dialog_close.tr,
+      backgroundColorBack: AppColors.basicWhite,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       showConfirmButton: onRetry != null,
       confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
       onConfirm: onRetry,
