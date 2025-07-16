@@ -24,18 +24,16 @@ class DatePickerUtils {
         titlePadding: const EdgeInsets.only(
           top: AppDimens.defaultPadding,
           right: AppDimens.paddingVerySmall,
-          left: AppDimens.paddingVerySmall,
+          left: AppDimens.defaultPadding,
         ),
         actionsPadding: const EdgeInsets.only(
           right: AppDimens.defaultPadding,
           left: AppDimens.paddingVerySmall,
           bottom: AppDimens.paddingSmall,
         ),
-        title: Center(
-          child: SDSBuildText(
-            title,
-            style: AppTextStyle.font18Bo,
-          ),
+        title: SDSBuildText(
+          title,
+          style: AppTextStyle.font14Bo,
         ),
         content: DatePickerWidget(
           looping: true,
@@ -52,8 +50,9 @@ class DatePickerUtils {
             dividerColor: AppColors.dsGray7,
             dividerSpacing: 0,
             dividerHeight: 1,
-            itemHeight: 50,
-            diameterRatio: 100,
+            itemHeight: 40,
+            pickerHeight: 200,
+            // diameterRatio: 1,
           ),
         ),
         actions: [
