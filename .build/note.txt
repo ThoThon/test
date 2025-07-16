@@ -4,6 +4,7 @@
 - Bổ sung icon help và tooltip
 - [Appmobile]_Màn đăng ký cấp mã: Chỉnh sửa toast thông báo khi nhập Số CCCD đăng ký MySign không đúng - BHW-2719
 - Sửa lại giao diện dialog đăng xuất
+- [Appmobile]_Chỉnh sửa focus hộp lịch khi có ngày nhập không hợp lệ - BHW-2722
 
 15/07/2025
 - [Appmobile][D01] Không hiển thị thông báo khi update thành công dữ liệu - BHW-2698
