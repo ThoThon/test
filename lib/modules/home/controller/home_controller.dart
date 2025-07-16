@@ -18,15 +18,16 @@ class HomeController extends BaseGetxController {
   }
 
   void showDialogLogout() {
-    ShowDialog.showDialogConfirm(
+    ShowDialog.showDialogConfirm2(
       title: LocaleKeys.dialog_isLogout.tr,
-      textBthLeft: LocaleKeys.dialog_cancel.tr,
-      textBtnRight: LocaleKeys.dialog_confirm.tr,
-      status: LocaleKeys.dialog_logout.tr,
-      onPressed: () {
+      onConfirm: () {
         _appController.logout();
       },
-      activeIcon: false,
+      backgroundColorBack: AppColors.basicWhite,
+      confirmTitle: LocaleKeys.dialog_confirm.tr,
+      exitTitle: LocaleKeys.dialog_cancel.tr,
+      textStyleBack:
+          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
     );
   }
 
