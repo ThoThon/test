@@ -195,7 +195,7 @@ class RegisterCodeController extends BaseGetxController {
     if (listCert.isNotEmpty) {
       certificate.value = listCert.firstOrNull;
     } else {
-      showSnackBar(LocaleKeys.registerService_usernameMySignNotFound.tr);
+      showSnackBar(LocaleKeys.registerService_cccdRegisterMySignNotFound.tr);
     }
   }
 

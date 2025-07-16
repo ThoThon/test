@@ -714,6 +714,7 @@
     "cannotSearchUsername": "Không tìm thấy tên đăng nhập",
     "certificateNotFound": "Không tìm thấy chứng thư số",
     "usernameMySignNotFound": "Không tìm thấy tên đăng nhập MySign",
+    "cccdRegisterMySignNotFound": "Không tìm thấy Số CCCD đăng ký MySign",
     "userNameMySignCannotEmpty": "Nhập tên đăng nhập My Sign để lấy thông tin CTS",
     "cancelRegister": "Ngừng",
     "changeInfo": "Thay đổi",
