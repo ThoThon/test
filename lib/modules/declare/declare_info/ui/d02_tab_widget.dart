@@ -133,13 +133,7 @@ extension D02TabWidget on DeclareInfoPage {
 
                         // Ghi chú
                         _buildInputNote(),
-                        UtilWidget.buildCheckboxWithLabel(
-                          label: LocaleKeys.declareInfo_generateD01tsData.tr,
-                          value: controller.d02State.isGenerateD01Data.value,
-                          onChanged: (value) {
-                            controller.d02State.isGenerateD01Data.value = value;
-                          },
-                        ),
+                        _buildGenerateD01DataCheckbox(),
                       ],
                     ),
                   ),
@@ -441,13 +435,27 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildGenerateTk1DataCheckbox() {
-    return UtilWidget.buildCheckboxWithLabel(
-      label: LocaleKeys.declareInfo_generateTk1Data.tr,
-      value: controller.d02State.isGenerateTk1Data.value,
-      onChanged: (value) {
-        controller.d02State.isGenerateTk1Data.value = value;
-        controller.updateHouseholdInfoRequired();
-      },
+    return Row(
+      children: [
+        UtilWidget.buildCheckboxWithLabel(
+          label: LocaleKeys.declareInfo_generateTk1Data.tr,
+          value: controller.d02State.isGenerateTk1Data.value,
+          onChanged: (value) {
+            controller.d02State.isGenerateTk1Data.value = value;
+            controller.updateHouseholdInfoRequired();
+          },
+        ),
+        sdsSBWidth8,
+        const Tooltip(
+          margin: EdgeInsets.only(right: AppDimens.padding32),
+          message: "Báo tăng lao động tham gia BHXH",
+          triggerMode: TooltipTriggerMode.tap,
+          child: Icon(
+            Icons.help_outline,
+            size: 16,
+          ),
+        ),
+      ],
     );
   }
 
@@ -675,6 +683,31 @@ extension D02TabWidget on DeclareInfoPage {
       inputFormatters: InputFormatterEnum.textNormal,
       maxLengthInputForm: 500,
       textInputAction: TextInputAction.done,
+    );
+  }
+
+  Widget _buildGenerateD01DataCheckbox() {
+    return Row(
+      children: [
+        UtilWidget.buildCheckboxWithLabel(
+          label: LocaleKeys.declareInfo_generateD01tsData.tr,
+          value: controller.d02State.isGenerateD01Data.value,
+          onChanged: (value) {
+            controller.d02State.isGenerateD01Data.value = value;
+          },
+        ),
+        sdsSBWidth8,
+        const Tooltip(
+          verticalOffset: -50,
+          margin: EdgeInsets.only(right: AppDimens.padding32),
+          message: "Kê khai hồ sơ chậm muộn",
+          triggerMode: TooltipTriggerMode.tap,
+          child: Icon(
+            Icons.help_outline,
+            size: 16,
+          ),
+        ),
+      ],
     );
   }
 }

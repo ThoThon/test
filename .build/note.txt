@@ -1,6 +1,7 @@
 16/07/2025
 - [Appmobile]_Màn Quên mật khẩu: Xử lý trường nhập Mã đơn vị - BHW-2718
 - [Appmobile]_Thủ tục 607,608, 610, 612, 613 - Chỉnh sửa UX/UI Các trường thông tin nhận bản giấy - BHW-2721
+- Bổ sung icon help và tooltip
 
 15/07/2025
 - [Appmobile][D01] Không hiển thị thông báo khi update thành công dữ liệu - BHW-2698
