@@ -148,13 +148,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
 
                       //Địa chỉ thường trú
                       _buildInputAddressTTTextCtrl(),
-                      UtilWidget.buildCheckboxWithLabel(
-                        label: LocaleKeys.declareInfo_generateD01tsData.tr,
-                        value: controller.tk1State.isGenerateD01Data.value,
-                        onChanged: (value) {
-                          controller.tk1State.isGenerateD01Data.value = value;
-                        },
-                      ),
+
+                      //Sinh dữ liệu D01-TS
+                      _buildGenerateD01DataCheckbox(),
                       sdsSBHeight12,
 
                       //Thêm thành viên
@@ -1512,6 +1508,31 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildGenerateD01DataCheckbox() {
+    return Row(
+      children: [
+        UtilWidget.buildCheckboxWithLabel(
+          label: LocaleKeys.declareInfo_generateD01tsData.tr,
+          value: controller.tk1State.isGenerateD01Data.value,
+          onChanged: (value) {
+            controller.tk1State.isGenerateD01Data.value = value;
+          },
+        ),
+        sdsSBWidth8,
+        const Tooltip(
+          verticalOffset: -50,
+          margin: EdgeInsets.only(right: AppDimens.padding32),
+          message: "Kê khai hồ sơ chậm muộn",
+          triggerMode: TooltipTriggerMode.tap,
+          child: Icon(
+            Icons.help_outline,
+            size: 16,
+          ),
+        ),
+      ],
     );
   }
 
