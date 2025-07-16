@@ -838,6 +838,8 @@ class LocaleKeys {
       'registerService_certificateNotFound';
   static const registerService_usernameMySignNotFound =
       'registerService_usernameMySignNotFound';
+  static const registerService_cccdRegisterMySignNotFound =
+      'registerService_cccdRegisterMySignNotFound';
   static const registerService_userNameMySignCannotEmpty =
       'registerService_userNameMySignCannotEmpty';
   static const registerService_cancelRegister =
@@ -1733,6 +1735,8 @@ class Locales {
     'registerService_certificateNotFound': 'Không tìm thấy chứng thư số',
     'registerService_usernameMySignNotFound':
         'Không tìm thấy tên đăng nhập MySign',
+    'registerService_cccdRegisterMySignNotFound':
+        'Không tìm thấy Số CCCD đăng ký MySign',
     'registerService_userNameMySignCannotEmpty':
         'Nhập tên đăng nhập My Sign để lấy thông tin CTS',
     'registerService_cancelRegister': 'Ngừng',
