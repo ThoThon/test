@@ -1027,8 +1027,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 },
                 selectedItem: controller.tk1State.provinceReceivePaper.value,
                 display: (province) => '${province.id} - ${province.name}',
-                enableClearIcon: true,
-                onTapClear: controller.onTapClearProvinceReceivePaper,
               );
             },
           );
@@ -1083,8 +1081,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
               },
               selectedItem: controller.tk1State.districtReceivePaper.value,
               display: (district) => '${district.id} - ${district.name}',
-              enableClearIcon: true,
-              onTapClear: controller.onTapClearDistrictReceivePaper,
             );
           },
         );
@@ -1146,8 +1142,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
               },
               selectedItem: controller.tk1State.wardReceivePaper.value,
               display: (ward) => '${ward.id} - ${ward.name}',
-              enableClearIcon: true,
-              onTapClear: controller.onTapClearWardReceivePaper,
             );
           },
         );
