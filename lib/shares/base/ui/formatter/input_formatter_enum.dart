@@ -68,6 +68,6 @@ class InputFormatterEnum {
   /// 22 : Tỉ lệ đóng
   static const int rate = 22;
 
-  /// 23 : Mã đơn vị nhập text thường, ký tự đặc biệt, trử khoảng trống
-  static const int unitCodeNormalWithoutSpace = 23;
+  /// 23 : Nhập text thường, ký tự đặc biệt, trử khoảng trống
+  static const int textNormalWithoutSpace = 23;
 }

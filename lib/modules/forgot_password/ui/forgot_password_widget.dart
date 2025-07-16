@@ -57,7 +57,7 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
       maxLengthInputForm: 7,
       isShowCounterText: false,
       borderRadius: AppDimens.radius6,
-      inputFormatters: InputFormatterEnum.unitCodeNormalWithoutSpace,
+      inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
       validator: (value) {
         final trimmedValue = value?.trim();
         if (trimmedValue == null || trimmedValue.isEmpty) {
