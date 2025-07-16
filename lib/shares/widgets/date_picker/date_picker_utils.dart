@@ -11,8 +11,13 @@ class DatePickerUtils {
     DateTime? lastDate,
     EdgeInsetsGeometry? contentPadding,
   }) {
-    DateTime? selectedDate = dateTimeInit;
-
+    final minDate = firstDate ?? DateTime(1901);
+    final maxDate = lastDate ?? DateTime(2099, 12, 31);
+    DateTime? selectedDate = dateTimeInit != null &&
+            dateTimeInit.isAfter(minDate) &&
+            dateTimeInit.isBefore(maxDate)
+        ? dateTimeInit
+        : DateTime.now();
     return Get.dialog<DateTime?>(
       AlertDialog(
         shape: RoundedRectangleBorder(
@@ -37,22 +42,21 @@ class DatePickerUtils {
         ),
         content: DatePickerWidget(
           looping: true,
-          firstDate: firstDate ?? DateTime(1901),
-          lastDate: lastDate ?? DateTime(2099),
-          initialDate: dateTimeInit,
+          firstDate: minDate,
+          lastDate: maxDate,
+          initialDate: selectedDate,
           dateFormat: dateFormat,
-          onChange: (DateTime newDate, _) {
+          onChange: (newDate, _) {
             selectedDate = newDate;
           },
           pickerTheme: DateTimePickerTheme(
             itemTextStyle:
-                AppTextStyle.font16Bo.copyWith(color: AppColors.dsGray1),
+                AppTextStyle.font20Bo.copyWith(color: AppColors.dsGray1),
             dividerColor: AppColors.dsGray7,
             dividerSpacing: 0,
             dividerHeight: 1,
             itemHeight: 40,
             pickerHeight: 200,
-            // diameterRatio: 1,
           ),
         ),
         actions: [
