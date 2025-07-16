@@ -69,5 +69,5 @@ class InputFormatterEnum {
   static const int rate = 22;
 
   /// 23 : Mã đơn vị nhập text thường, ký tự đặc biệt, trử khoảng trống
-  static const int unitCode = 23;
+  static const int unitCodeNormalWithoutSpace = 23;
 }

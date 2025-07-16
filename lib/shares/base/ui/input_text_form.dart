@@ -147,7 +147,7 @@ class BuildInputTextState extends State<BuildInputText> {
             lastDecimal: 1,
           ),
         ];
-      case InputFormatterEnum.unitCode:
+      case InputFormatterEnum.unitCodeNormalWithoutSpace:
         return [
           RegexpEmojiUtil.allowCommonCharacters,
           FilteringTextInputFormatter.deny(RegExp(r'( )')),
