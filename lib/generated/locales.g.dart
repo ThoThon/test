@@ -366,6 +366,7 @@ class LocaleKeys {
       'declarationPeriodDetail_deposit';
   static const declarationPeriodDetail_deleteImageSuccess =
       'declarationPeriodDetail_deleteImageSuccess';
+  static const declareInfo_declareInfo = 'declareInfo_declareInfo';
   static const declareInfo_title = 'declareInfo_title';
   static const declareInfo_title600 = 'declareInfo_title600';
   static const declareInfo_title607 = 'declareInfo_title607';
@@ -373,6 +374,7 @@ class LocaleKeys {
   static const declareInfo_title610 = 'declareInfo_title610';
   static const declareInfo_title612 = 'declareInfo_title612';
   static const declareInfo_title613 = 'declareInfo_title613';
+  static const declareInfo_title630a = 'declareInfo_title630a';
   static const declareInfo_fullName = 'declareInfo_fullName';
   static const declareInfo_fullNameHint = 'declareInfo_fullNameHint';
   static const declareInfo_fullNameCannotEmpty =
@@ -610,6 +612,109 @@ class LocaleKeys {
       'declareInfo_socialInsuranceRate';
   static const declareInfo_socialInsuranceRateCannotEmpty =
       'declareInfo_socialInsuranceRateCannotEmpty';
+  static const declareInfo_staffCode = 'declareInfo_staffCode';
+  static const declareInfo_staffCodeCannotEmpty =
+      'declareInfo_staffCodeCannotEmpty';
+  static const declareInfo_inputStaffCode = 'declareInfo_inputStaffCode';
+  static const declareInfo_declareMethod = 'declareInfo_declareMethod';
+  static const declareInfo_selectDeclareMethod =
+      'declareInfo_selectDeclareMethod';
+  static const declareInfo_declareMethodCannotEmpty =
+      'declareInfo_declareMethodCannotEmpty';
+  static const declareInfo_benefitGroupCode = 'declareInfo_benefitGroupCode';
+  static const declareInfo_selectBenefitGroupCode =
+      'declareInfo_selectBenefitGroupCode';
+  static const declareInfo_benefitGroupCodeCannotEmpty =
+      'declareInfo_benefitGroupCodeCannotEmpty';
+  static const declareInfo_fromDay = 'declareInfo_fromDay';
+  static const declareInfo_fromDayInvalid = 'declareInfo_fromDayInvalid';
+  static const declareInfo_fromDayEmpty = 'declareInfo_fromDayEmpty';
+  static const declareInfo_fromDayAfterToDay = 'declareInfo_fromDayAfterToDay';
+  static const declareInfo_toDay = 'declareInfo_toDay';
+  static const declareInfo_toDayEmpty = 'declareInfo_toDayEmpty';
+  static const declareInfo_toDayInvalid = 'declareInfo_toDayInvalid';
+  static const declareInfo_toDayBeforeFromDay =
+      'declareInfo_toDayBeforeFromDay';
+  static const declareInfo_fullNameEmpty = 'declareInfo_fullNameEmpty';
+  static const declareInfo_bhxhCodeInvalid = 'declareInfo_bhxhCodeInvalid';
+  static const declareInfo_inputBHXHCode = 'declareInfo_inputBHXHCode';
+  static const declareInfo_cccd = 'declareInfo_cccd';
+  static const declareInfo_cccdEmpty = 'declareInfo_cccdEmpty';
+  static const declareInfo_birthDayChild = 'declareInfo_birthDayChild';
+  static const declareInfo_birthDayChildEmpty =
+      'declareInfo_birthDayChildEmpty';
+  static const declareInfo_birthDayChildInvalid =
+      'declareInfo_birthDayChildInvalid';
+  static const declareInfo_numberChild = 'declareInfo_numberChild';
+  static const declareInfo_numberChildHint = 'declareInfo_numberChildHint';
+  static const declareInfo_numberChildEmpty = 'declareInfo_numberChildEmpty';
+  static const declareInfo_bhytCardCode = 'declareInfo_bhytCardCode';
+  static const declareInfo_bhytCardCodeHint = 'declareInfo_bhytCardCodeHint';
+  static const declareInfo_bhytCardCodeEmpty = 'declareInfo_bhytCardCodeEmpty';
+  static const declareInfo_countDay = 'declareInfo_countDay';
+  static const declareInfo_countDayHint = 'declareInfo_countDayHint';
+  static const declareInfo_countDayEmpty = 'declareInfo_countDayEmpty';
+  static const declareInfo_fromDateUnit = 'declareInfo_fromDateUnit';
+  static const declareInfo_fromDateUnitInvalid =
+      'declareInfo_fromDateUnitInvalid';
+  static const declareInfo_fromDateUnitEmpty = 'declareInfo_fromDateUnitEmpty';
+  static const declareInfo_weeklyDayOff = 'declareInfo_weeklyDayOff';
+  static const declareInfo_weeklyDayOffHint = 'declareInfo_weeklyDayOffHint';
+  static const declareInfo_hospitalLine = 'declareInfo_hospitalLine';
+  static const declareInfo_hospitalLineHint = 'declareInfo_hospitalLineHint';
+  static const declareInfo_selectDiseaseCode = 'declareInfo_selectDiseaseCode';
+  static const declareInfo_selectDiseaseCodeHint =
+      'declareInfo_selectDiseaseCodeHint';
+  static const declareInfo_diseaseName = 'declareInfo_diseaseName';
+  static const declareInfo_diseaseNameHint = 'declareInfo_diseaseNameHint';
+  static const declareInfo_diseaseNameEmpty = 'declareInfo_diseaseNameEmpty';
+  static const declareInfo_serialNumber = 'declareInfo_serialNumber';
+  static const declareInfo_serialNumberHint = 'declareInfo_serialNumberHint';
+  static const declareInfo_serialNumberEmpty = 'declareInfo_serialNumberEmpty';
+  static const declareInfo_workingCondition = 'declareInfo_workingCondition';
+  static const declareInfo_workingConditionHint =
+      'declareInfo_workingConditionHint';
+  static const declareInfo_maternityRest = 'declareInfo_maternityRest';
+  static const declareInfo_supplementalPeriod =
+      'declareInfo_supplementalPeriod';
+  static const declareInfo_supplementalPeriodHint =
+      'declareInfo_supplementalPeriodHint';
+  static const declareInfo_supplementalPeriodEmpty =
+      'declareInfo_supplementalPeriodEmpty';
+  static const declareInfo_fileCode = 'declareInfo_fileCode';
+  static const declareInfo_fileCodeHint = 'declareInfo_fileCodeHint';
+  static const declareInfo_fileCodeEmpty = 'declareInfo_fileCodeEmpty';
+  static const declareInfo_noteHint = 'declareInfo_noteHint';
+  static const declareInfo_noteEmpty = 'declareInfo_noteEmpty';
+  static const declareInfo_infoAccountTitle = 'declareInfo_infoAccountTitle';
+  static const declareInfo_receiveMethod = 'declareInfo_receiveMethod';
+  static const declareInfo_receiveMethodHint = 'declareInfo_receiveMethodHint';
+  static const declareInfo_receiveMethodEmpty =
+      'declareInfo_receiveMethodEmpty';
+  static const declareInfo_bankNumber = 'declareInfo_bankNumber';
+  static const declareInfo_bankNumberHint = 'declareInfo_bankNumberHint';
+  static const declareInfo_bankNumberEmpty = 'declareInfo_bankNumberEmpty';
+  static const declareInfo_accountHolderName = 'declareInfo_accountHolderName';
+  static const declareInfo_accountHolderNameHint =
+      'declareInfo_accountHolderNameHint';
+  static const declareInfo_accountHolderNameEmpty =
+      'declareInfo_accountHolderNameEmpty';
+  static const declareInfo_bank = 'declareInfo_bank';
+  static const declareInfo_bankHint = 'declareInfo_bankHint';
+  static const declareInfo_otherInfoTitle = 'declareInfo_otherInfoTitle';
+  static const declareInfo_resolvedPeriod = 'declareInfo_resolvedPeriod';
+  static const declareInfo_resolvedPeriodHint =
+      'declareInfo_resolvedPeriodHint';
+  static const declareInfo_resolvedPeriodEmpty =
+      'declareInfo_resolvedPeriodEmpty';
+  static const declareInfo_resolvedDate = 'declareInfo_resolvedDate';
+  static const declareInfo_resolvedDateInvalid =
+      'declareInfo_resolvedDateInvalid';
+  static const declareInfo_resolvedDateEmpty = 'declareInfo_resolvedDateEmpty';
+  static const declareInfo_adjustReason = 'declareInfo_adjustReason';
+  static const declareInfo_adjustReasonHint = 'declareInfo_adjustReasonHint';
+  static const declareInfo_adjustReasonEmpty = 'declareInfo_adjustReasonEmpty';
+  static const declareInfo_saveButton = 'declareInfo_saveButton';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1350,6 +1455,7 @@ class Locales {
     'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',
     'declarationPeriodDetail_deposit': 'Ký gửi',
     'declarationPeriodDetail_deleteImageSuccess': 'Xóa ảnh thành công',
+    'declareInfo_declareInfo': 'Thông tin kê khai',
     'declareInfo_title': 'Kê khai thông tin',
     'declareInfo_title600': 'Thủ tục 600',
     'declareInfo_title607': 'Thủ tục 607',
@@ -1357,6 +1463,7 @@ class Locales {
     'declareInfo_title610': 'Thủ tục 610',
     'declareInfo_title612': 'Thủ tục 612',
     'declareInfo_title613': 'Thủ tục 613',
+    'declareInfo_title630a': 'Thủ tục 630a',
     'declareInfo_fullName': 'Họ và tên',
     'declareInfo_fullNameHint': 'Nhập họ và tên',
     'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1543,6 +1650,92 @@ class Locales {
     'declareInfo_socialInsuranceRate': 'Tỷ lệ đóng',
     'declareInfo_socialInsuranceRateCannotEmpty':
         'Tỷ lệ đóng không được bỏ trống',
+    'declareInfo_staffCode': 'Mã nhân viên',
+    'declareInfo_staffCodeCannotEmpty': 'Mã nhân viên không được bỏ trống',
+    'declareInfo_inputStaffCode': 'Nhập mã nhân viên',
+    'declareInfo_declareMethod': 'Hình thức kê khai',
+    'declareInfo_selectDeclareMethod': 'Chọn hình thức kê khai',
+    'declareInfo_declareMethodCannotEmpty':
+        'Hình thức kê khai không được bỏ trống',
+    'declareInfo_benefitGroupCode': 'Mã nhóm hưởng',
+    'declareInfo_selectBenefitGroupCode': 'Chọn mã nhóm hưởng',
+    'declareInfo_benefitGroupCodeCannotEmpty':
+        'Mã nhóm hưởng không được bỏ trống',
+    'declareInfo_fromDay': 'Từ ngày',
+    'declareInfo_fromDayInvalid': 'Từ ngày không hợp lệ',
+    'declareInfo_fromDayEmpty': 'Từ ngày không được bỏ trống',
+    'declareInfo_fromDayAfterToDay': 'Từ ngày không được lớn hơn Đến ngày',
+    'declareInfo_toDay': 'Đến ngày',
+    'declareInfo_toDayEmpty': 'Đến ngày không được bỏ trống',
+    'declareInfo_toDayInvalid': 'Đến ngày không hợp lệ',
+    'declareInfo_toDayBeforeFromDay': 'Đến ngày không được nhỏ hơn Từ ngày',
+    'declareInfo_fullNameEmpty': 'Họ và tên không được bỏ trống',
+    'declareInfo_bhxhCodeInvalid': 'Mã số BHXH không hợp lệ',
+    'declareInfo_inputBHXHCode': 'Nhập mã số BHXH',
+    'declareInfo_cccd': 'Số CCCD',
+    'declareInfo_cccdEmpty': 'Số CCCD không được bỏ trống',
+    'declareInfo_birthDayChild': 'Ngày sinh con',
+    'declareInfo_birthDayChildEmpty': 'Ngày sinh con không được bỏ trống',
+    'declareInfo_birthDayChildInvalid': 'Ngày sinh con không hợp lệ',
+    'declareInfo_numberChild': 'Số con',
+    'declareInfo_numberChildHint': 'Nhập số con',
+    'declareInfo_numberChildEmpty': 'Số con không được bỏ trống',
+    'declareInfo_bhytCardCode': 'Mã thẻ BHYT',
+    'declareInfo_bhytCardCodeHint': 'Nhập mã thẻ BHYT của con',
+    'declareInfo_bhytCardCodeEmpty': 'Mã thẻ BHYT không được bỏ trống',
+    'declareInfo_countDay': 'Tổng số ngày',
+    'declareInfo_countDayHint': 'Nhập số ngày',
+    'declareInfo_countDayEmpty': 'Tổng số ngày không được bỏ trống',
+    'declareInfo_fromDateUnit': 'Từ ngày đơn vị',
+    'declareInfo_fromDateUnitInvalid': 'Từ ngày đơn vị không hợp lệ',
+    'declareInfo_fromDateUnitEmpty': 'Từ ngày đơn vị không được bỏ trống',
+    'declareInfo_weeklyDayOff': 'Nghỉ hàng tuần',
+    'declareInfo_weeklyDayOffHint': 'Chọn ngày nghỉ hàng tuần',
+    'declareInfo_hospitalLine': 'Tuyến bệnh viện',
+    'declareInfo_hospitalLineHint': 'Chọn tuyến bệnh viện',
+    'declareInfo_selectDiseaseCode': 'Chọn/Nhập mã bệnh',
+    'declareInfo_selectDiseaseCodeHint': 'Chọn hoặc nhập mã bệnh',
+    'declareInfo_diseaseName': 'Tên bệnh',
+    'declareInfo_diseaseNameHint': 'Nhập tên bệnh',
+    'declareInfo_diseaseNameEmpty': 'Tên bệnh không được bỏ trống',
+    'declareInfo_serialNumber': 'Số serial',
+    'declareInfo_serialNumberHint': 'Nhập số serial chứng từ',
+    'declareInfo_serialNumberEmpty': 'Số serial không được bỏ trống',
+    'declareInfo_workingCondition': 'Điều kiện làm việc',
+    'declareInfo_workingConditionHint': 'Chọn điều kiện làm việc',
+    'declareInfo_maternityRest': 'Nghỉ dưỡng thai',
+    'declareInfo_supplementalPeriod': 'Đợt bổ sung',
+    'declareInfo_supplementalPeriodHint': 'Nhập Đợt tháng/năm',
+    'declareInfo_supplementalPeriodEmpty': 'Đợt bổ sung không được bỏ trống',
+    'declareInfo_fileCode': 'Mã hồ sơ',
+    'declareInfo_fileCodeHint': 'Nhập mã hồ sơ',
+    'declareInfo_fileCodeEmpty': 'Mã hồ sơ không được bỏ trống',
+    'declareInfo_noteHint': 'Nhập ghi chú',
+    'declareInfo_noteEmpty': 'Ghi chú không được bỏ trống',
+    'declareInfo_infoAccountTitle': 'Thông tin tài khoản nhận trợ cấp',
+    'declareInfo_receiveMethod': 'Hình thức nhận',
+    'declareInfo_receiveMethodHint': 'Chọn hình thức nhận',
+    'declareInfo_receiveMethodEmpty': 'Hình thức nhận không được bỏ trống',
+    'declareInfo_bankNumber': 'Số tài khoản ngân hàng',
+    'declareInfo_bankNumberHint': 'Nhập số tài khoản ngân hàng',
+    'declareInfo_bankNumberEmpty': 'Số tài khoản ngân hàng không được bỏ trống',
+    'declareInfo_accountHolderName': 'Tên chủ tài khoản',
+    'declareInfo_accountHolderNameHint': 'Nhập tên chủ tài khoản',
+    'declareInfo_accountHolderNameEmpty':
+        'Tên chủ tài khoản không được bỏ trống',
+    'declareInfo_bank': 'Ngân hàng',
+    'declareInfo_bankHint': 'Chọn ngân hàng',
+    'declareInfo_otherInfoTitle': 'Thông tin khác',
+    'declareInfo_resolvedPeriod': 'Đợt đã giải quyết',
+    'declareInfo_resolvedPeriodHint': 'Đợt tháng/năm',
+    'declareInfo_resolvedPeriodEmpty': 'Đợt đã giải quyết không được bỏ trống',
+    'declareInfo_resolvedDate': 'Ngày đã giải quyết',
+    'declareInfo_resolvedDateInvalid': 'Ngày đã giải quyết không hợp lệ',
+    'declareInfo_resolvedDateEmpty': 'Ngày đã giải quyết không được bỏ trống',
+    'declareInfo_adjustReason': 'Lý do điều chỉnh',
+    'declareInfo_adjustReasonHint': 'Nhập lý do điều chỉnh',
+    'declareInfo_adjustReasonEmpty': 'Lý do điều chỉnh không được bỏ trống',
+    'declareInfo_saveButton': 'Lưu',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

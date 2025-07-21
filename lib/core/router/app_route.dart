@@ -51,7 +51,11 @@ enum AppRoutes {
   // Thay đổi đường dẫn
   changeBaseUrl,
 
-  declareInfo607;
+  // Thủ tục 607
+  declareInfo607,
+
+  // Thủ tục 630a
+  declareInfo630a;
 
   String get path {
     return '/vbhxh_$name';

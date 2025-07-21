@@ -98,9 +98,10 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
             ),
             showIconClear: true,
             hintText: hintText,
-            contentPadding: const EdgeInsets.symmetric(
-              vertical: AppDimens.paddingVerySmall,
-              horizontal: AppDimens.defaultPadding,
+            contentPadding: const EdgeInsets.only(
+              bottom: AppDimens.paddingSmall,
+              left: AppDimens.defaultPadding,
+              right: AppDimens.defaultPadding,
             ),
             isDense: true,
             textInputType: TextInputType.number,
