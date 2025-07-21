@@ -231,6 +231,8 @@ extension HistoryWidget on HistoryPage {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             final procedure = controller.listProcedureFilter[index];
+            final isFirstItem = index == 0;
+
             return Obx(
               () => _buildItemBottomSheetFilter(
                 onTap: () {
@@ -241,10 +243,12 @@ extension HistoryWidget on HistoryPage {
                   controller.listHistoryDeclare.clear();
                   controller.getHistoryDeclare();
                 },
-                text: index == 0
+                text: isFirstItem
                     ? procedure.ten.tr
                     : '${procedure.ma} - ${procedure.ten.tr}',
-                style: controller.selectProcedure.value == procedure
+                style: (controller.selectProcedure.value == procedure ||
+                        (controller.selectProcedure.value == null &&
+                            isFirstItem))
                     ? AppTextStyle.font14Bo
                         .copyWith(color: AppColors.primaryColor)
                     : AppTextStyle.font14Re,
