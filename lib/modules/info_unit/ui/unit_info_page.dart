@@ -22,8 +22,14 @@ class UnitInfoPage extends BaseGetWidget {
           appBar: BaseAppBar(
             backgroundColor: AppColors.primaryColor,
             centerTitle: true,
-            leading:
-                UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
+            leading: UtilWidget.buildButtonBackAppbar(
+                color: AppColors.basicWhite,
+                onTap: () {
+                  controller.fetchDataAccountInfo();
+                  Get.offAllNamed(
+                    AppRoutes.home.path,
+                  );
+                }),
             title: BaseAppBarTitle(
               title: LocaleKeys.unitInfo_unitInfo.tr,
               textColor: Colors.white,

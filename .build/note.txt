@@ -1,3 +1,6 @@
+21/07/2025
+- [Appmobile]_Lỗi cập nhật tên đơn vị tại màn trang chủ khi Thay đổi - BHW-2784
+
 16/07/2025
 - [Appmobile]_Màn Quên mật khẩu: Xử lý trường nhập Mã đơn vị - BHW-2718
 - [Appmobile]_Thủ tục 607,608, 610, 612, 613 - Chỉnh sửa UX/UI Các trường thông tin nhận bản giấy - BHW-2721
