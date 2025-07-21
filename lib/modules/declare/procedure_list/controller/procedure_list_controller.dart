@@ -23,15 +23,6 @@ class ProcedureListController extends BaseGetxController {
       final response = await _repository.getListProcedure();
       if (response.isSuccess) {
         procedures.value = response.result;
-        procedures.add(
-          const Procedure(
-            name: '',
-            parentName: 'parentName',
-            type: 6071,
-            code: "630a",
-            note: "Kê kahi hồ sơ giải quyết hưởng chế độ ốm đau",
-          ),
-        );
       } else {
         showSnackBar(
           response.errorMessage ?? LocaleKeys.app_someThingWentWrong.tr,

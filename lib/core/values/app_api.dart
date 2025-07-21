@@ -95,4 +95,12 @@ class AppApi {
   static const String urlGetPreviewPdf607 = '/api/HoSoTk1/preview-pdf';
 
   // === Kết thúc các api liên quan đến thủ tục 607 ===
+
+  // === Danh sách các api liên quan đến thủ tục 630a ===
+  static const String urlGetListStaff630a = '/api/HoSo630a/get-list';
+  static const String urlSaveXml630a = '/api/HoSo630a/save-xml';
+  static const String urlDelete630a = '/api/HoSo630a/delete-630a';
+  static const String urlGet630aDetail = '/api/HoSo630a/get-630a-detail';
+  static const String urlAdd630a = '/api/HoSo630a/add-ms';
+  // === Kết thúc các api liên quan đến thủ tục 630a ===
 }
