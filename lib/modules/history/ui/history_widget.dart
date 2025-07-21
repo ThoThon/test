@@ -241,7 +241,9 @@ extension HistoryWidget on HistoryPage {
                   controller.listHistoryDeclare.clear();
                   controller.getHistoryDeclare();
                 },
-                text: '${procedure.ma} - ${procedure.ten.tr}',
+                text: index == 0
+                    ? procedure.ten.tr
+                    : '${procedure.ma} - ${procedure.ten.tr}',
                 style: controller.selectProcedure.value == procedure
                     ? AppTextStyle.font14Bo
                         .copyWith(color: AppColors.primaryColor)

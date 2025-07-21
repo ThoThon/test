@@ -150,9 +150,12 @@ extension HistoryRegisterTab on HistoryPage {
   }) {
     return InkWell(
       onTap: onTap,
-      child: SDSBuildText(
-        text,
-        style: style,
+      child: Expanded(
+        child: SDSBuildText(
+          text,
+          style: style,
+          maxLines: 5,
+        ),
       ),
     ).paddingOnly(bottom: AppDimens.paddingVerySmall);
   }

@@ -53,6 +53,9 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
       currentTab.value =
           argument?.selectedTab ?? HistoryTabEnum.register_transaction;
     }
+    if (listProcedureFilter.isNotEmpty) {
+      selectProcedure.value = listProcedureFilter.first;
+    }
     getProcedureFilter();
     getHistoryDeclare();
     getHistoryRegister();
