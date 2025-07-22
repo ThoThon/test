@@ -1,5 +1,6 @@
 22/07/2025
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Lỗi Validate Các trường thông tin nhận bản giấy - BHW-2783
+- [Appmobile]_Lỗi validate các trường chủ hộ - BHW-2781
 
 21/07/2025
 - [Appmobile]_Màn lịch sử kê khai, chỉnh sửa hiển thị khi click vào Lọc kê khai hồ sơ - BHW-2771
