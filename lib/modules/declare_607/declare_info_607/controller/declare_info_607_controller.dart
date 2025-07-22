@@ -328,6 +328,13 @@ class DeclareInfo607Controller extends BaseGetxController {
     // TH nếu đ/c khai sinh sửa lại thì đ/c nhận hồ sơ cũng thay đổi
     _syncBirthAddress();
     _syncHeadOfHouseholdInfo();
+    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
+      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+      tk1State.addressReceivePaperTextCtrl.text =
+          tk1State.addressReceiveTextCtrl.text;
+    }
   }
 
   void _clearReceiveAddress() {
