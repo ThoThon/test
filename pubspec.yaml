@@ -90,6 +90,8 @@ dependencies:
   uuid: ^4.5.1
   share_plus: ^11.0.0
   flutter_holo_date_picker: ^2.0.0
+  device_info_plus: ^11.3.0
+  flutter_file_dialog: ^3.0.2
 
 dev_dependencies:
   flutter_lints: ^5.0.0
