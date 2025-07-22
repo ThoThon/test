@@ -58,14 +58,17 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
-  void goToSelectStaffPage() async {
+  Future<void> goToSelectStaffPage() async {
     final result = await Get.toNamed(
       AppRoutes.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: tk1State.selectedStaffId,
     );
     if (result is SelectStaffResponse) {
-      _getDetailStaff(staffId: result.id);
+      await _getDetailStaff(staffId: result.id);
+
+      // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
+      updateHouseholdInfoRequired();
     }
   }
 
@@ -763,6 +766,7 @@ class DeclareInfo607Controller extends BaseGetxController {
         tk1State.addressTTTextCtrl.text.trim().isEmpty;
   }
 
+  /// Cập nhật thông tin chủ hộ là required hay không
   void updateHouseholdInfoRequired() {
     // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
     if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
