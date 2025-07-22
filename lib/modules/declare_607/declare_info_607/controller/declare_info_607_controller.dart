@@ -332,10 +332,13 @@ class DeclareInfo607Controller extends BaseGetxController {
   }
 
   void _syncPaperReceiveLocation() {
-    tk1State.provinceReceive.value = null;
-    tk1State.districtReceive.value = null;
-    tk1State.wardReceive.value = null;
-    tk1State.addressReceiveTextCtrl.clear();
+    if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
+      tk1State.districtReceivePaper.value = tk1State.districtReceive.value;
+      tk1State.wardReceivePaper.value = tk1State.wardReceive.value;
+      tk1State.addressReceivePaperTextCtrl.text =
+          tk1State.addressReceiveTextCtrl.text;
+    }
   }
 
   void _clearReceiveAddress() {
