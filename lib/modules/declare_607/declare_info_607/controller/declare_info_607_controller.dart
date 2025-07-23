@@ -401,6 +401,10 @@ class DeclareInfo607Controller extends BaseGetxController {
 
       tk1State.provinceTT.value = value;
     }
+    if (tk1State.isDuplicateBirthAddress.value &&
+        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      _syncDataAddressInfoAndProfileInfo();
+    }
   }
 
   void changeDistrictOfBirth(DistrictModel value) {
@@ -429,6 +433,10 @@ class DeclareInfo607Controller extends BaseGetxController {
 
       tk1State.districtTT.value = value;
     }
+    if (tk1State.isDuplicateBirthAddress.value &&
+        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      _syncDataAddressInfoAndProfileInfo();
+    }
   }
 
   void changeWardOfBirth(WardModel value) {
@@ -442,6 +450,10 @@ class DeclareInfo607Controller extends BaseGetxController {
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.wardTT.value = value;
     }
+    if (tk1State.isDuplicateBirthAddress.value &&
+        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      _syncDataAddressInfoAndProfileInfo();
+    }
   }
 
   void onChangeBirthAddress(String value) {
@@ -452,6 +464,11 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.addressTTTextCtrl.text = value;
+    }
+    if (tk1State.isDuplicateBirthAddress.value &&
+        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+      tk1State.addressReceivePaperTextCtrl.text =
+          tk1State.addressReceiveTextCtrl.text;
     }
   }
 
