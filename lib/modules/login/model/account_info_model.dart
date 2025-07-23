@@ -25,32 +25,33 @@ class AccountInfoModel {
   final int phuongThucDong;
   final int maVung;
 
-  AccountInfoModel(
-      {required this.toChucId,
-      required this.tenToChuc,
-      required this.taxCode,
-      required this.maDonVi,
-      required this.maNganSach,
-      required this.diaChiDk,
-      required this.diaChi,
-      required this.maCoQuanQuanLy,
-      required this.tenCoQuanQuanLy,
-      required this.dienThoai,
-      required this.mailLienLac,
-      required this.tenNguoiKy,
-      required this.telReceiver,
-      required this.serviceName,
-      required this.serviceStartDate,
-      required this.serviceExpiredDate,
-      required this.bankAccount,
-      required this.jobTitle,
-      required this.loaiDoiTuong,
-      required this.ptNhanKq,
-      required this.packageInfo,
-      required this.tenNguoiKeKhai,
-      required this.luongCoSo,
-      required this.phuongThucDong,
-      required this.maVung});
+  AccountInfoModel({
+    required this.toChucId,
+    required this.tenToChuc,
+    required this.taxCode,
+    required this.maDonVi,
+    required this.maNganSach,
+    required this.diaChiDk,
+    required this.diaChi,
+    required this.maCoQuanQuanLy,
+    required this.tenCoQuanQuanLy,
+    required this.dienThoai,
+    required this.mailLienLac,
+    required this.tenNguoiKy,
+    required this.telReceiver,
+    required this.serviceName,
+    required this.serviceStartDate,
+    required this.serviceExpiredDate,
+    required this.bankAccount,
+    required this.jobTitle,
+    required this.loaiDoiTuong,
+    required this.ptNhanKq,
+    required this.packageInfo,
+    required this.tenNguoiKeKhai,
+    required this.luongCoSo,
+    required this.phuongThucDong,
+    required this.maVung,
+  });
 
   factory AccountInfoModel.fromJson(Map<String, dynamic> json) {
     return AccountInfoModel(
@@ -79,6 +80,38 @@ class AccountInfoModel {
       luongCoSo: json['luong_co_so'] ?? 0,
       phuongThucDong: json['phuong_thuc_dong'] ?? 1,
       maVung: json['ma_vung'] ?? 0,
+    );
+  }
+
+  AccountInfoModel copyWith({
+    String? tenToChuc,
+  }) {
+    return AccountInfoModel(
+      toChucId: toChucId,
+      tenToChuc: tenToChuc ?? this.tenToChuc,
+      taxCode: taxCode,
+      maDonVi: maDonVi,
+      maNganSach: maNganSach,
+      diaChiDk: diaChiDk,
+      diaChi: diaChi,
+      maCoQuanQuanLy: maCoQuanQuanLy,
+      tenCoQuanQuanLy: tenCoQuanQuanLy,
+      dienThoai: dienThoai,
+      mailLienLac: mailLienLac,
+      tenNguoiKy: tenNguoiKy,
+      telReceiver: telReceiver,
+      serviceName: serviceName,
+      serviceStartDate: serviceStartDate,
+      serviceExpiredDate: serviceExpiredDate,
+      bankAccount: bankAccount,
+      jobTitle: jobTitle,
+      loaiDoiTuong: loaiDoiTuong,
+      ptNhanKq: ptNhanKq,
+      packageInfo: packageInfo,
+      tenNguoiKeKhai: tenNguoiKeKhai,
+      luongCoSo: luongCoSo,
+      phuongThucDong: phuongThucDong,
+      maVung: maVung,
     );
   }
 }

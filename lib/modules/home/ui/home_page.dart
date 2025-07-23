@@ -167,15 +167,15 @@ class HomePage extends BaseGetWidget<HomeController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SDSBuildText(
-                controller.accountInfo?.tenToChuc.toUpperCase() ?? '',
-                style: AppTextStyle.font16Re,
-                maxLines: 3,
-              ),
-              SDSBuildText(
-                "${LocaleKeys.home_taxCode.tr}: ${controller.accountInfo?.taxCode ?? ''}",
-                style: AppTextStyle.font16Re,
-              ),
+              Obx(() => SDSBuildText(
+                    controller.accountInfo.value?.tenToChuc.toUpperCase() ?? '',
+                    style: AppTextStyle.font16Re,
+                    maxLines: 3,
+                  )),
+              Obx(() => SDSBuildText(
+                    "${LocaleKeys.home_taxCode.tr}: ${controller.accountInfo.value?.taxCode ?? ''}",
+                    style: AppTextStyle.font16Re,
+                  )),
             ],
           ),
         ),
@@ -211,23 +211,23 @@ class HomePage extends BaseGetWidget<HomeController> {
         size: AppDimens.sizeIcon,
       ),
       backgroundColor: AppColors.basicWhite,
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SDSBuildText(
-            '${controller.accountInfo?.tenToChuc}',
-            style: AppTextStyle.font16Bo.copyWith(
-              color: AppColors.colorBlack,
-            ),
-          ),
-          sdsSBHeight4,
-          SDSBuildText(
-            'MST: ${controller.accountInfo?.taxCode}',
-            style: AppTextStyle.font14Re,
-          ),
-          sdsSBHeight12,
-        ],
-      ).paddingOnly(top: AppDimens.defaultPadding),
+      title: Obx(() => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SDSBuildText(
+                '${controller.accountInfo.value?.tenToChuc}',
+                style: AppTextStyle.font16Bo.copyWith(
+                  color: AppColors.colorBlack,
+                ),
+              ),
+              sdsSBHeight4,
+              SDSBuildText(
+                'MST: ${controller.accountInfo.value?.taxCode}',
+                style: AppTextStyle.font14Re,
+              ),
+              sdsSBHeight12,
+            ],
+          ).paddingOnly(top: AppDimens.defaultPadding)),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: AppDimens.paddingMedium),

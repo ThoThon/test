@@ -5,16 +5,40 @@ import '../../src.dart';
 import '../../view_pdf/model/view_pdf_argument.dart';
 
 class HomeController extends BaseGetxController {
-  AccountInfoModel? accountInfo;
+  final Rx<AccountInfoModel?> accountInfo = Rx<AccountInfoModel?>(null);
 
   final _appController = Get.find<AppController>();
+
+  Worker? _accountInfoWorker;
 
   @override
   void onInit() async {
     super.onInit();
-    if (AppData.instance.accountInfoModel.value != null) {
-      accountInfo = AppData.instance.accountInfoModel.value;
-    }
+    _initializeAccountInfo();
+    _setupAccountInfoListener();
+  }
+
+  @override
+  void onClose() {
+    _accountInfoWorker?.dispose();
+    super.onClose();
+  }
+
+  void _initializeAccountInfo() {
+    accountInfo.value = AppData.instance.accountInfoModel.value;
+  }
+
+  void _setupAccountInfoListener() {
+    _accountInfoWorker = ever(
+      AppData.instance.accountInfoModel,
+      (AccountInfoModel? newAccountInfo) {
+        accountInfo.value = newAccountInfo;
+      },
+    );
+  }
+
+  Future<void> refreshAccountInfo() async {
+    accountInfo.value = AppData.instance.accountInfoModel.value;
   }
 
   void showDialogLogout() {
