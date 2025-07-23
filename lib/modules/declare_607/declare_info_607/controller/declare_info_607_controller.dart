@@ -390,6 +390,7 @@ class DeclareInfo607Controller extends BaseGetxController {
       }
 
       tk1State.provinceReceive.value = value;
+      _syncDataAddressInfoAndProfileInfo();
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
@@ -400,10 +401,6 @@ class DeclareInfo607Controller extends BaseGetxController {
       }
 
       tk1State.provinceTT.value = value;
-    }
-    if (tk1State.isDuplicateBirthAddress.value &&
-        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
-      _syncDataAddressInfoAndProfileInfo();
     }
   }
 
@@ -423,6 +420,7 @@ class DeclareInfo607Controller extends BaseGetxController {
       }
 
       tk1State.districtReceive.value = value;
+      _syncDataAddressInfoAndProfileInfo();
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
@@ -433,10 +431,6 @@ class DeclareInfo607Controller extends BaseGetxController {
 
       tk1State.districtTT.value = value;
     }
-    if (tk1State.isDuplicateBirthAddress.value &&
-        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
-      _syncDataAddressInfoAndProfileInfo();
-    }
   }
 
   void changeWardOfBirth(WardModel value) {
@@ -445,14 +439,11 @@ class DeclareInfo607Controller extends BaseGetxController {
     // Đồng bộ xã nơi nhận hồ sơ với xã khai sinh
     if (tk1State.isDuplicateBirthAddress.value) {
       tk1State.wardReceive.value = value;
+      _syncDataAddressInfoAndProfileInfo();
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.wardTT.value = value;
-    }
-    if (tk1State.isDuplicateBirthAddress.value &&
-        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
-      _syncDataAddressInfoAndProfileInfo();
     }
   }
 
