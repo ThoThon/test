@@ -10,7 +10,7 @@ class VietnameseWithoutDiacriticsFormatter extends TextInputFormatter {
     final newText = TiengViet.parse(newValue.text);
     return newValue.copyWith(
       text: newText,
-      selection: TextSelection.collapsed(offset: newText.length),
+      // selection: TextSelection.collapsed(offset: newText.length),
     );
   }
 }
