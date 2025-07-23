@@ -1,6 +1,5 @@
 import '../../../base_app/base_app.src.dart';
 import '../../../shares/widgets/dialog/dialog_utils.dart';
-import '../../login/model/model_src.dart';
 import '../../src.dart';
 import '../../view_pdf/model/view_pdf_argument.dart';
 
