@@ -577,13 +577,13 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void onChangeHeadOfHouseholdFullName(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
-    tk1State.headOfHouseholdTextCtrl.text = value;
+    // tk1State.headOfHouseholdTextCtrl.text = value;
     updateHouseholdInfoRequired();
   }
 
   void onChangeHeadOfHouseholdCCCD(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
-    tk1State.headOfHouseholdCCCDTextCtrl.text = value;
+    // tk1State.headOfHouseholdCCCDTextCtrl.text = value;
     updateHouseholdInfoRequired();
   }
 

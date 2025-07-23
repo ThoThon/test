@@ -30,35 +30,50 @@ class NumericTextFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    if (newValue.text.isEmpty) {
+    final oldText = oldValue.text; // Chuỗi trước khi người dùng thay đổi
+    final newText = newValue.text; // Chuỗi mới sau khi người dùng gõ hoặc xoá
+
+    // Nếu người dùng xoá hết, trả về chuỗi rỗng
+    if (newText.isEmpty) {
       return newValue.copyWith(text: '');
-    } else if (newValue.text.compareTo(oldValue.text) != 0) {
-      if (newValue.text.replaceAll(RegExp(r"[-0-9.,]"), '').isNotEmpty) {
-        return newValue = oldValue;
-      }
-      final newString = type == 0
-          ? CurrencyUtils.formatCurrency(
-              CurrencyUtils.formatNumberCurrency(
-                newValue.text,
-                isDot: isDot,
-              ),
-              isDot: isDot,
-            )
-          // formatCurrencyForeign hỗ trợ số thập phân
-          : CurrencyUtils.formatCurrencyForeign(
-              newValue.text,
-              isDot: isDot,
-              maxLengthNum: maxLengthNum,
-              lastDecimal: lastDecimal,
-              customMaxValue: customMaxValue,
-              isConvert: true,
-            );
-      return TextEditingValue(
-        text: newString,
-        selection: TextSelection.collapsed(offset: newString.length),
-      );
-    } else {
-      return newValue;
     }
+
+    // Nếu có ký tự không hợp lệ (không phải số, dấu âm, dấu chấm, dấu phẩy), không cho thay đổi
+    if (newText.replaceAll(RegExp(r'[-0-9.,]'), '').isNotEmpty) {
+      return oldValue;
+    }
+
+    // Ghi lại vị trí con trỏ cũ
+    final oldSelectionIndex = oldValue.selection.baseOffset;
+
+    // Format lại chuỗi số
+    final formatted = type == 0
+        ? CurrencyUtils.formatCurrency(
+            CurrencyUtils.formatNumberCurrency(newText, isDot: isDot),
+            isDot: isDot,
+          )
+        : CurrencyUtils.formatCurrencyForeign(
+            newText,
+            isDot: isDot,
+            maxLengthNum: maxLengthNum,
+            lastDecimal: lastDecimal,
+            customMaxValue: customMaxValue,
+            isConvert: true,
+          );
+
+    // Tính độ dài thay đổi giữa chuỗi mới sau khi format và chuỗi cũ
+    final diff = formatted.length - oldText.length;
+
+    // Cập nhật vị trí con trỏ dựa trên độ chênh lệch độ dài
+    int newOffset = oldSelectionIndex + diff;
+
+    // Đảm bảo vị trí con trỏ không vượt quá độ dài mới
+    newOffset = newOffset.clamp(0, formatted.length);
+
+    // Trả về TextEditingValue đã định dạng lại và có vị trí con trỏ hợp lý
+    return TextEditingValue(
+      text: formatted,
+      selection: TextSelection.collapsed(offset: newOffset),
+    );
   }
 }
