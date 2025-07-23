@@ -4,6 +4,7 @@
 - [Appmobile]_Thủ tục 612: Bỏ file đính kèm - BHW-2803
 - [Appmobile]_Lỗi cập nhật tên đơn vị tại màn trang chủ khi Thay đổi - BHW-2784
 - Sửa tiếp bug BHW-2801
+- [Appmobile]_Bổ sung chức năng Tải về các file pdf - BHW-2729
 
 22/07/2025
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Lỗi Validate Các trường thông tin nhận bản giấy - BHW-2783
