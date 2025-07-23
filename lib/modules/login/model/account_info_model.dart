@@ -82,36 +82,4 @@ class AccountInfoModel {
       maVung: json['ma_vung'] ?? 0,
     );
   }
-
-  AccountInfoModel copyWith({
-    String? tenToChuc,
-  }) {
-    return AccountInfoModel(
-      toChucId: toChucId,
-      tenToChuc: tenToChuc ?? this.tenToChuc,
-      taxCode: taxCode,
-      maDonVi: maDonVi,
-      maNganSach: maNganSach,
-      diaChiDk: diaChiDk,
-      diaChi: diaChi,
-      maCoQuanQuanLy: maCoQuanQuanLy,
-      tenCoQuanQuanLy: tenCoQuanQuanLy,
-      dienThoai: dienThoai,
-      mailLienLac: mailLienLac,
-      tenNguoiKy: tenNguoiKy,
-      telReceiver: telReceiver,
-      serviceName: serviceName,
-      serviceStartDate: serviceStartDate,
-      serviceExpiredDate: serviceExpiredDate,
-      bankAccount: bankAccount,
-      jobTitle: jobTitle,
-      loaiDoiTuong: loaiDoiTuong,
-      ptNhanKq: ptNhanKq,
-      packageInfo: packageInfo,
-      tenNguoiKeKhai: tenNguoiKeKhai,
-      luongCoSo: luongCoSo,
-      phuongThucDong: phuongThucDong,
-      maVung: maVung,
-    );
-  }
 }

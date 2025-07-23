@@ -94,9 +94,6 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       showLoadingOverlay();
       final response = await unitInfoRepository.updateAccountInfo(request);
       if (response.isSuccess) {
-        AppData.instance.accountInfoModel.value = AppData
-            .instance.accountInfoModel.value
-            ?.copyWith(tenToChuc: request.tenToChuc);
         ShowDialog.showDialogConfirm2(
           title: LocaleKeys.dialog_updateSuccess.tr,
           iconType: DialogIconType.success,
