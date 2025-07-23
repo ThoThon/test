@@ -1,5 +1,7 @@
 23/07/2025
 - [Appmobile]_Lỗi nhảy focus chuột khi chỉnh sửa giá trị tại một số ô Textbox - BHW-2801
+- [Appmobile]_Lỗi hiển thị các giá trị khi click lọc Tại màn Lịch sử - BHW-2805
+- [Appmobile]_Thủ tục 612: Bỏ file đính kèm - BHW-2803
 - [Appmobile]_Lỗi cập nhật tên đơn vị tại màn trang chủ khi Thay đổi - BHW-2784
 
 22/07/2025
