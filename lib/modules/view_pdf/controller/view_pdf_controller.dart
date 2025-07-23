@@ -109,17 +109,15 @@ class ViewPdfController extends BaseGetxController {
       final uri = Uri.parse(argument.url);
       final fileName =
           uri.path.split('/').lastOrNull ?? '${generateUuid()}.pdf';
-      final success = await PdfSaver.savePdfFile(bytes, fileName);
-      if (success) {
+      final fullPath = await PdfSaver.savePdfFile(bytes, fileName);
+      if (fullPath != null) {
         showSnackBar(
           LocaleKeys.viewPdf_saveSuccess.tr,
           typeAction: AppConst.actionSuccess,
         );
-      } else {
-        showSnackBar(LocaleKeys.viewPdf_saveFailed.tr);
       }
     } catch (e) {
-      logger.e(e);
+      showSnackBar(LocaleKeys.viewPdf_saveFailed.tr);
     } finally {
       hideLoadingOverlay();
     }
