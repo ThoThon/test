@@ -462,6 +462,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
+  /// Đồng bộ tỉnh/huyện/xã nơi nhận hồ sơ giấy với tỉnh/huyện/xã nơi nhận
   void _syncDataAddressInfoAndProfileInfo() {
     if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
       tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
