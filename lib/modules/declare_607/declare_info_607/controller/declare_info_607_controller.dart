@@ -265,7 +265,7 @@ class DeclareInfo607Controller extends BaseGetxController {
             AppRoutes.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
-              procedureType: ProcedureType.procedure607,
+              procedureType: argument.procedureType,
             ),
           )?.then((value) {
             declarationPeriodController?.getDeclarationPeriods();
