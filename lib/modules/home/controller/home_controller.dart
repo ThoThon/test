@@ -7,8 +7,6 @@ import '../../view_pdf/model/view_pdf_argument.dart';
 class HomeController extends BaseGetxController {
   final _appController = Get.find<AppController>();
 
-  Rx<AccountInfoModel?> get accountInfo => AppData.instance.accountInfoModel;
-
   void showDialogLogout() {
     ShowDialog.showDialogConfirm2(
       title: LocaleKeys.dialog_isLogout.tr,

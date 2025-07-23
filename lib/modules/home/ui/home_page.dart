@@ -169,12 +169,14 @@ class HomePage extends BaseGetWidget<HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SDSBuildText(
-                  controller.accountInfo.value?.tenToChuc.toUpperCase() ?? '',
+                  AppData.instance.accountInfoModel.value?.tenToChuc
+                          .toUpperCase() ??
+                      '',
                   style: AppTextStyle.font16Re,
                   maxLines: 3,
                 ),
                 SDSBuildText(
-                  "${LocaleKeys.home_taxCode.tr}: ${controller.accountInfo.value?.taxCode ?? ''}",
+                  "${LocaleKeys.home_taxCode.tr}: ${AppData.instance.accountInfoModel.value?.taxCode ?? ''}",
                   style: AppTextStyle.font16Re,
                 ),
               ],
@@ -217,14 +219,14 @@ class HomePage extends BaseGetWidget<HomeController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SDSBuildText(
-                '${controller.accountInfo.value?.tenToChuc}',
+                '${AppData.instance.accountInfoModel.value?.tenToChuc}',
                 style: AppTextStyle.font16Bo.copyWith(
                   color: AppColors.colorBlack,
                 ),
               ),
               sdsSBHeight4,
               SDSBuildText(
-                'MST: ${controller.accountInfo.value?.taxCode}',
+                'MST: ${AppData.instance.accountInfoModel.value?.taxCode}',
                 style: AppTextStyle.font14Re,
               ),
               sdsSBHeight12,
