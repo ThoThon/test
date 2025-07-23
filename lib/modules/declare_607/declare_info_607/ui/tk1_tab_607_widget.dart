@@ -238,6 +238,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
         return null;
       },
       builder: (fieldKey, validator) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          controller.updateClearTTIconState();
+        });
         return CardInputTextFormWithLabel(
           fieldKey: fieldKey,
           validator: validator,
