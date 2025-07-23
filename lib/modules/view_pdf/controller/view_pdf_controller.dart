@@ -1,16 +1,14 @@
 import 'dart:io';
 import 'dart:typed_data';
-
-import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sds_share_pdf/sds_share_pdf.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/generated/locales.g.dart';
+import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
 import 'package:v_bhxh/modules/view_pdf/repository/view_pdf_repository.dart';
-import 'package:v_bhxh/shares/function/logger.dart';
+import 'package:v_bhxh/shares/utils/pdf_file_saver.dart';
 import 'package:v_bhxh/shares/utils/uuid_utils.dart';
 
 class ViewPdfController extends BaseGetxController {
@@ -37,7 +35,7 @@ class ViewPdfController extends BaseGetxController {
     currentPage.value = details.newPageNumber;
   }
 
-  Future<Uint8List?> downloadPdf() async {
+  Future<Uint8List?> _downloadPdf() async {
     try {
       final bytes = await _viewPdfRepository.downloadPdf(argument.url);
       return bytes;
@@ -59,7 +57,7 @@ class ViewPdfController extends BaseGetxController {
   Future<String?> downloadAndSavePdf() async {
     try {
       showLoadingOverlay();
-      final bytes = await downloadPdf();
+      final bytes = await _downloadPdf();
       if (bytes == null) {
         return null;
       }
@@ -86,8 +84,42 @@ class ViewPdfController extends BaseGetxController {
     } else {
       final file = XFile(savedFilePath);
       await SharePlus.instance.share(
-        ShareParams(files: [file]),
+        ShareParams(
+          files: [file],
+          // Với ipad thì phải cung cấp sharePositionOrigin để fix lỗi `sharePositionOrigin: argument must be set`
+          sharePositionOrigin: Rect.fromLTWH(
+            0,
+            0,
+            Get.shortestSide,
+            Get.longestSide,
+          ),
+        ),
       );
+    }
+  }
+
+  Future<void> savePDF() async {
+    try {
+      showLoadingOverlay();
+      final bytes = await _downloadPdf();
+      if (bytes == null) {
+        showSnackBar(LocaleKeys.viewPdf_cannotDownloadFile.tr);
+        return;
+      }
+      final uri = Uri.parse(argument.url);
+      final fileName =
+          uri.path.split('/').lastOrNull ?? '${generateUuid()}.pdf';
+      final fullPath = await PdfSaver.savePdfFile(bytes, fileName);
+      if (fullPath != null) {
+        showSnackBar(
+          LocaleKeys.viewPdf_saveSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+      }
+    } catch (e) {
+      showSnackBar(LocaleKeys.viewPdf_saveFailed.tr);
+    } finally {
+      hideLoadingOverlay();
     }
   }
 

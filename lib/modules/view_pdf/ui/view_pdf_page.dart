@@ -54,21 +54,21 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
   Widget _buildBottomButtons() {
     return Row(
       children: [
-        // Visibility(
-        //   visible: controller.argument.enableDownloadButton ?? true,
-        //   child: Expanded(
-        //     child: UtilWidget.buildSolidButton(
-        //       borderRadius: AppDimens.radius30,
-        //       side: const BorderSide(width: 1, color: AppColors.primaryColor),
-        //       backgroundColor: AppColors.basicWhite,
-        //       textStyle:
-        //           AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
-        //       title: LocaleKeys.viewPdf_download.tr,
-        //       onPressed: controller.sharePDF,
-        //     ),
-        //   ),
-        // ),
-        // UtilWidget.sizedBoxWidth16,
+        Visibility(
+          visible: controller.argument.enableDownloadButton ?? true,
+          child: Expanded(
+            child: UtilWidget.buildSolidButton(
+              borderRadius: AppDimens.radius30,
+              side: const BorderSide(width: 1, color: AppColors.primaryColor),
+              backgroundColor: AppColors.basicWhite,
+              textStyle:
+                  AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+              title: LocaleKeys.viewPdf_download.tr,
+              onPressed: controller.savePDF,
+            ),
+          ),
+        ),
+        UtilWidget.sizedBoxWidth16,
         Expanded(
           child: UtilWidget.buildSolidButton(
             borderRadius: AppDimens.radius30,

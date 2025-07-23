@@ -49,9 +49,9 @@ android {
     }
     defaultConfig {
         applicationId "com.viettel.ttcntt.vbhxh"
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 35
-        versionCode 139
+        versionCode 140
         versionName "1.0.0"
     }
 
