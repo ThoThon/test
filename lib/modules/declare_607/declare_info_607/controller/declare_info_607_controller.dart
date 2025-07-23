@@ -451,15 +451,14 @@ class DeclareInfo607Controller extends BaseGetxController {
     // Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh
     if (tk1State.isDuplicateBirthAddress.value) {
       tk1State.addressReceiveTextCtrl.text = value;
+      if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+        tk1State.addressReceivePaperTextCtrl.text =
+            tk1State.addressReceiveTextCtrl.text;
+      }
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.addressTTTextCtrl.text = value;
-    }
-    if (tk1State.isDuplicateBirthAddress.value &&
-        tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
-      tk1State.addressReceivePaperTextCtrl.text =
-          tk1State.addressReceiveTextCtrl.text;
     }
   }
 
