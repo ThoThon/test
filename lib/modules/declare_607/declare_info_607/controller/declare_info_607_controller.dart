@@ -58,14 +58,17 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
-  void goToSelectStaffPage() async {
+  Future<void> goToSelectStaffPage() async {
     final result = await Get.toNamed(
       AppRoutes.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: tk1State.selectedStaffId,
     );
     if (result is SelectStaffResponse) {
-      _getDetailStaff(staffId: result.id);
+      await _getDetailStaff(staffId: result.id);
+
+      // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
+      updateHouseholdInfoRequired();
     }
   }
 
@@ -262,7 +265,7 @@ class DeclareInfo607Controller extends BaseGetxController {
             AppRoutes.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
-              procedureType: ProcedureType.procedure607,
+              procedureType: argument.procedureType,
             ),
           )?.then((value) {
             declarationPeriodController?.getDeclarationPeriods();
@@ -390,6 +393,7 @@ class DeclareInfo607Controller extends BaseGetxController {
       }
 
       tk1State.provinceReceive.value = value;
+      _syncDataAddressInfoAndProfileInfo();
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
@@ -419,6 +423,7 @@ class DeclareInfo607Controller extends BaseGetxController {
       }
 
       tk1State.districtReceive.value = value;
+      _syncDataAddressInfoAndProfileInfo();
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
@@ -437,6 +442,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     // Đồng bộ xã nơi nhận hồ sơ với xã khai sinh
     if (tk1State.isDuplicateBirthAddress.value) {
       tk1State.wardReceive.value = value;
+      _syncDataAddressInfoAndProfileInfo();
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
@@ -448,6 +454,10 @@ class DeclareInfo607Controller extends BaseGetxController {
     // Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh
     if (tk1State.isDuplicateBirthAddress.value) {
       tk1State.addressReceiveTextCtrl.text = value;
+      if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
+        tk1State.addressReceivePaperTextCtrl.text =
+            tk1State.addressReceiveTextCtrl.text;
+      }
     }
 
     if (tk1State.isParticipantHeadOfHousehold.value) {
@@ -455,6 +465,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     }
   }
 
+  /// Đồng bộ tỉnh/huyện/xã nơi nhận hồ sơ giấy với tỉnh/huyện/xã nơi nhận
   void _syncDataAddressInfoAndProfileInfo() {
     if (tk1State.receiveResult.value == ReceiveProfileResultEnum.paper) {
       tk1State.provinceReceivePaper.value = tk1State.provinceReceive.value;
@@ -574,13 +585,13 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void onChangeHeadOfHouseholdFullName(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
-    tk1State.headOfHouseholdTextCtrl.text = value;
+    // tk1State.headOfHouseholdTextCtrl.text = value;
     updateHouseholdInfoRequired();
   }
 
   void onChangeHeadOfHouseholdCCCD(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
-    tk1State.headOfHouseholdCCCDTextCtrl.text = value;
+    // tk1State.headOfHouseholdCCCDTextCtrl.text = value;
     updateHouseholdInfoRequired();
   }
 
@@ -763,6 +774,7 @@ class DeclareInfo607Controller extends BaseGetxController {
         tk1State.addressTTTextCtrl.text.trim().isEmpty;
   }
 
+  /// Cập nhật thông tin chủ hộ là required hay không
   void updateHouseholdInfoRequired() {
     // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
     if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
