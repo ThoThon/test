@@ -37,10 +37,6 @@ class HomeController extends BaseGetxController {
     );
   }
 
-  Future<void> refreshAccountInfo() async {
-    accountInfo.value = AppData.instance.accountInfoModel.value;
-  }
-
   void showDialogLogout() {
     ShowDialog.showDialogConfirm2(
       title: LocaleKeys.dialog_isLogout.tr,
