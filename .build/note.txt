@@ -6,6 +6,7 @@
 - Sửa tiếp bug BHW-2801
 - [Appmobile]_Bổ sung chức năng Tải về các file pdf - BHW-2729
 - Sửa lỗi hiển thị lưu file PDF lỗi nếu không chọn thư mục lưu
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613: Chỉnh sửa cho phép xóa tại trường Tỉnh, Huyện, Xã thường trú của chủ hộ - BHW-2808
 
 22/07/2025
 - [Appmobile]_Thủ tục 607, 608, 610, 612, 613: Lỗi Validate Các trường thông tin nhận bản giấy - BHW-2783
