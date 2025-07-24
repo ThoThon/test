@@ -51,7 +51,7 @@ android {
         applicationId "com.viettel.ttcntt.vbhxh"
         minSdkVersion 23
         targetSdkVersion 35
-        versionCode 140
+        versionCode 141
         versionName "1.0.0"
     }
 
