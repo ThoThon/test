@@ -199,9 +199,6 @@ extension DeclareInfoWidget on DeclareInfoPage {
         return Obx(
           () {
             final isRequired = controller.isBhxhCodeRequired;
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              controller.updateClearTTIconState();
-            });
             return CardInputTextFormWithLabel(
               fieldKey: fieldKey,
               hintText: LocaleKeys.declareInfo_inputBhxhCode.tr,
