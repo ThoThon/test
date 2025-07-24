@@ -1,3 +1,6 @@
+24/07/2025
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - BHW-2809
+
 23/07/2025
 - [Appmobile]_Lỗi nhảy focus chuột khi chỉnh sửa giá trị tại một số ô Textbox - BHW-2801
 - [Appmobile]_Lỗi hiển thị các giá trị khi click lọc Tại màn Lịch sử - BHW-2805

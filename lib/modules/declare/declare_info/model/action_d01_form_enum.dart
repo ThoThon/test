@@ -16,12 +16,12 @@ enum ActionD01FormEnum {
     }
   }
 
-  IconData get icon {
+  String get icon {
     switch (this) {
       case ActionD01FormEnum.edit:
-        return Icons.autorenew;
+        return Assets.ASSETS_ICONS_IC_EDIT_SVG;
       case ActionD01FormEnum.delete:
-        return Icons.delete;
+        return Assets.ASSETS_ICONS_IC_DELETE_SVG;
     }
   }
 }
