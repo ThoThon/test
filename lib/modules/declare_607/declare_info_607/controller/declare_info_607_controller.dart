@@ -48,6 +48,7 @@ class DeclareInfo607Controller extends BaseGetxController {
         tk1State.mapFromTk1Detail(infoDetail);
         d01State.mapFromTk1Detail(infoDetail);
         updateHouseholdInfoRequired();
+        updateClearTTIconState();
       } else {
         showSnackBar(response.errorMessage);
       }
