@@ -47,9 +47,24 @@ extension StaffListWidget on StaffListPage {
       mainAxisSize: MainAxisSize.min,
       children: [
         sdsSBHeight12,
-        SDSBuildText(
-          LocaleKeys.staffList_attachFile.tr,
-          style: AppTextStyle.font16Bo,
+        Row(
+          children: [
+            SDSBuildText(
+              LocaleKeys.staffList_attachFile.tr,
+              style: AppTextStyle.font16Bo,
+            ),
+            sdsSBWidth8,
+            const Tooltip(
+              verticalOffset: -50,
+              margin: EdgeInsets.only(right: AppDimens.padding32),
+              message: "Chỉ cho phép chọn tối đa 5 file",
+              triggerMode: TooltipTriggerMode.tap,
+              child: Icon(
+                Icons.help_outline,
+                size: 16,
+              ),
+            ),
+          ],
         ),
         sdsSBHeight8,
         AppSelectImageWidget(
