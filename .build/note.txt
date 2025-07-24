@@ -1,5 +1,6 @@
 24/07/2025
 - [Appmobile]_Màn danh sách nhân viên thủ tục 600, 607, 608, 610, 613, Bổ sung gợi ý - BHW-2814
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - BHW-2809
 
 23/07/2025
 - [Appmobile]_Lỗi nhảy focus chuột khi chỉnh sửa giá trị tại một số ô Textbox - BHW-2801
