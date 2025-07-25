@@ -155,6 +155,7 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
               Expanded(
                 child: SDSBuildText(
                   widget.display(item),
+                  maxLines: 3,
                 ).paddingSymmetric(
                   vertical: AppDimens.paddingSmall,
                 ),

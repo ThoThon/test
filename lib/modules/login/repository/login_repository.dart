@@ -56,4 +56,18 @@ class LoginRepository extends BaseRepository {
     );
     return BaseResponse<int>.fromJson(response);
   }
+
+  Future<BaseResponse<CategoriesProcedure630a>> get630aCategories() async {
+    final response = await baseCallApi(
+      AppApi.urlGet630aCategories,
+      urlOther:
+          'https://vbhxh1.easyhrm.vn/dev-api-mobile/api/HoSo630a/get-categories',
+      EnumRequestMethod.get,
+    );
+
+    return BaseResponse<CategoriesProcedure630a>.fromJson(
+      response,
+      fromJson: (json) => CategoriesProcedure630a.fromJson(json),
+    );
+  }
 }

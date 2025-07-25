@@ -126,5 +126,9 @@ class RouteAppPage {
       name: AppRoutes.declareInfo630a.path,
       page: () =>  DeclareInfo630aPage(),
     ),
+    GetPage(
+      name: AppRoutes.otherInfo.path,
+      page: () => OtherInfoPage(),
+    ),
   ];
 }

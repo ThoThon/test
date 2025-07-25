@@ -636,7 +636,6 @@ class LocaleKeys {
   static const declareInfo_toDayBeforeFromDay =
       'declareInfo_toDayBeforeFromDay';
   static const declareInfo_fullNameEmpty = 'declareInfo_fullNameEmpty';
-  static const declareInfo_bhxhCodeInvalid = 'declareInfo_bhxhCodeInvalid';
   static const declareInfo_inputBHXHCode = 'declareInfo_inputBHXHCode';
   static const declareInfo_cccd = 'declareInfo_cccd';
   static const declareInfo_cccdEmpty = 'declareInfo_cccdEmpty';
@@ -661,10 +660,17 @@ class LocaleKeys {
   static const declareInfo_weeklyDayOff = 'declareInfo_weeklyDayOff';
   static const declareInfo_weeklyDayOffHint = 'declareInfo_weeklyDayOffHint';
   static const declareInfo_hospitalLine = 'declareInfo_hospitalLine';
-  static const declareInfo_hospitalLineHint = 'declareInfo_hospitalLineHint';
+  static const declareInfo_hospitalLineCannotEmpty =
+      'declareInfo_hospitalLineCannotEmpty';
+  static const declareInfo_hospitalLineSelect =
+      'declareInfo_hospitalLineSelect';
+  static const declareInfo_inputHospitalLine = 'declareInfo_inputHospitalLine';
   static const declareInfo_selectDiseaseCode = 'declareInfo_selectDiseaseCode';
+  static const declareInfo_selectDiseaseCodeCannotEmpty =
+      'declareInfo_selectDiseaseCodeCannotEmpty';
   static const declareInfo_selectDiseaseCodeHint =
       'declareInfo_selectDiseaseCodeHint';
+  static const declareInfo_inputDiseaseCode = 'declareInfo_inputDiseaseCode';
   static const declareInfo_diseaseName = 'declareInfo_diseaseName';
   static const declareInfo_diseaseNameHint = 'declareInfo_diseaseNameHint';
   static const declareInfo_diseaseNameEmpty = 'declareInfo_diseaseNameEmpty';
@@ -1083,6 +1089,21 @@ class LocaleKeys {
   static const viewPdf_download = 'viewPdf_download';
   static const viewPdf_share = 'viewPdf_share';
   static const viewPdf_cannotDownloadFile = 'viewPdf_cannotDownloadFile';
+  static const otherInfo_title = 'otherInfo_title';
+  static const otherInfo_reviewPeriod = 'otherInfo_reviewPeriod';
+  static const otherInfo_phoneNumber = 'otherInfo_phoneNumber';
+  static const otherInfo_inputPhoneNumber = 'otherInfo_inputPhoneNumber';
+  static const otherInfo_accountNumber = 'otherInfo_accountNumber';
+  static const otherInfo_inputAccountNumber = 'otherInfo_inputAccountNumber';
+  static const otherInfo_bankName = 'otherInfo_bankName';
+  static const otherInfo_inputBankName = 'otherInfo_inputBankName';
+  static const otherInfo_branch = 'otherInfo_branch';
+  static const otherInfo_inputBranch = 'otherInfo_inputBranch';
+  static const otherInfo_unitHead = 'otherInfo_unitHead';
+  static const otherInfo_inputUnitHead = 'otherInfo_inputUnitHead';
+  static const otherInfo_reason = 'otherInfo_reason';
+  static const otherInfo_inputReason = 'otherInfo_inputReason';
+  static const otherInfo_next = 'otherInfo_next';
 }
 
 class Locales {
@@ -1670,7 +1691,6 @@ class Locales {
     'declareInfo_toDayInvalid': 'Đến ngày không hợp lệ',
     'declareInfo_toDayBeforeFromDay': 'Đến ngày không được nhỏ hơn Từ ngày',
     'declareInfo_fullNameEmpty': 'Họ và tên không được bỏ trống',
-    'declareInfo_bhxhCodeInvalid': 'Mã số BHXH không hợp lệ',
     'declareInfo_inputBHXHCode': 'Nhập mã số BHXH',
     'declareInfo_cccd': 'Số CCCD',
     'declareInfo_cccdEmpty': 'Số CCCD không được bỏ trống',
@@ -1692,9 +1712,15 @@ class Locales {
     'declareInfo_weeklyDayOff': 'Nghỉ hàng tuần',
     'declareInfo_weeklyDayOffHint': 'Chọn ngày nghỉ hàng tuần',
     'declareInfo_hospitalLine': 'Tuyến bệnh viện',
-    'declareInfo_hospitalLineHint': 'Chọn tuyến bệnh viện',
+    'declareInfo_hospitalLineCannotEmpty':
+        'Tuyến bệnh viện không được bỏ trống',
+    'declareInfo_hospitalLineSelect': 'Chọn tuyến bệnh viện',
+    'declareInfo_inputHospitalLine': 'Nhập tuyến bệnh viện',
     'declareInfo_selectDiseaseCode': 'Chọn/Nhập mã bệnh',
+    'declareInfo_selectDiseaseCodeCannotEmpty':
+        'Chọn/Nhập mã bệnh không được bỏ trống',
     'declareInfo_selectDiseaseCodeHint': 'Chọn hoặc nhập mã bệnh',
+    'declareInfo_inputDiseaseCode': 'Nhập mã bệnh',
     'declareInfo_diseaseName': 'Tên bệnh',
     'declareInfo_diseaseNameHint': 'Nhập tên bệnh',
     'declareInfo_diseaseNameEmpty': 'Tên bệnh không được bỏ trống',
@@ -2037,5 +2063,20 @@ class Locales {
     'viewPdf_download': 'Tải xuống',
     'viewPdf_share': 'Chia sẻ',
     'viewPdf_cannotDownloadFile': 'Có lỗi xảy ra. Không thể tải xuống file.',
+    'otherInfo_title': 'Thông tin khác',
+    'otherInfo_reviewPeriod': 'Đợt xét duyệt',
+    'otherInfo_phoneNumber': 'Số điện thoại',
+    'otherInfo_inputPhoneNumber': 'Nhập số điện thoại đơn vị',
+    'otherInfo_accountNumber': 'Số tài khoản',
+    'otherInfo_inputAccountNumber': 'Nhập số tài khoản của đơn vị',
+    'otherInfo_bankName': 'Mở tại ngân hàng',
+    'otherInfo_inputBankName': 'Nhập tên ngân hàng của đơn vị',
+    'otherInfo_branch': 'Chi nhánh',
+    'otherInfo_inputBranch': 'Nhập tên chi nhánh ngân hàng',
+    'otherInfo_unitHead': 'Thủ trưởng đơn vị',
+    'otherInfo_inputUnitHead': 'Nhập tên thủ trưởng đơn vị',
+    'otherInfo_reason': 'Lý do giải trình',
+    'otherInfo_inputReason': 'Nhập lý do giải trình',
+    'otherInfo_next': 'Tiếp theo',
   };
 }

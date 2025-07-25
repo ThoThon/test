@@ -7,6 +7,7 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../base_app/base_app.src.dart';
+import '../repository/staff_list_630a_repository.dart';
 
 // Chỉ cho phép up tối đa 5 file ảnh
 const maxImageAttachments = 5;
@@ -16,6 +17,7 @@ class StaffListController extends BaseGetxController {
 
   late final _repository = StaffListRepository(this);
   late final _repository607 = StaffList607Repository(this);
+  late final _repository630a = StaffList630aRepository(this);
 
   final declaredStaffs = const <DeclaredStaffModel>[].obs;
 
@@ -77,6 +79,9 @@ class StaffListController extends BaseGetxController {
         ProcedureType.procedure612 ||
         ProcedureType.procedure613 =>
           _repository607.getStaffList(
+            declarationPeriodId: declarationPeriodId,
+          ),
+        ProcedureType.procedure630a => _repository630a.getListStaff630a(
             declarationPeriodId: declarationPeriodId,
           ),
       };
@@ -144,6 +149,15 @@ class StaffListController extends BaseGetxController {
     }
   }
 
+  void onTapButtonContinue() {
+    // Thủ tục 630a phải đi qua màn "Thông tin khác" nữa
+    if (argument.procedureType == ProcedureType.procedure630a) {
+      Get.toNamed(AppRoutes.otherInfo.path, arguments: argument);
+    } else {
+      saveXml();
+    }
+  }
+
   Future<void> saveXml() async {
     if (declaredStaffs.isEmpty) {
       showSnackBar('Chưa có nhân viên nào được khai báo');
@@ -164,6 +178,7 @@ class StaffListController extends BaseGetxController {
           _repository607.saveXml(
             declarationPeriodId: declarationPeriodId,
           ),
+        _ => throw UnimplementedError('Not implemented yet'),
       };
 
       if (response.isSuccess && response.result != null) {
@@ -215,6 +230,7 @@ class StaffListController extends BaseGetxController {
         ProcedureType.procedure612 ||
         ProcedureType.procedure613 =>
           _repository.deleteTk1D01(id: staffId),
+        ProcedureType.procedure630a => _repository.delete630a(id: staffId),
       };
 
       if (response.isSuccess) {
@@ -242,6 +258,7 @@ class StaffListController extends BaseGetxController {
       ProcedureType.procedure612 ||
       ProcedureType.procedure613 =>
         AppRoutes.declareInfo607.path,
+      ProcedureType.procedure630a => AppRoutes.declareInfo630a.path,
     };
 
     final result = await Get.toNamed(
@@ -267,6 +284,7 @@ class StaffListController extends BaseGetxController {
       ProcedureType.procedure612 ||
       ProcedureType.procedure613 =>
         AppRoutes.declareInfo607.path,
+      ProcedureType.procedure630a => AppRoutes.declareInfo630a.path,
     };
 
     final result = await Get.toNamed(

@@ -1,10 +1,16 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:v_bhxh/modules/src.dart';
 
+import '../../../base_app/model/app_data.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
-import '../../login/model/district_model.dart';
+import '../../login/model/model_src.dart';
 
+part 'benefit_account_info_group_ext.dart';
 part 'declare_info_630a_widget.dart';
+part 'declare_info_group_ext.dart';
+part 'person_info_group_ext.dart';
 
 class DeclareInfo630aPage extends BaseGetWidget {
   DeclareInfo630aPage({super.key});
@@ -16,17 +22,18 @@ class DeclareInfo630aPage extends BaseGetWidget {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: BaseAppBarTitle(
-          // title: controller.argument.procedureType.declareInfoTitle,
-          title: LocaleKeys.declareInfo_title630a.tr,
+    return buildLoadingOverlay(
+      () => Scaffold(
+        appBar: BaseAppBar(
+          title: BaseAppBarTitle(
+            title: controller.argument.procedureType.declareInfoTitle,
+          ),
+          leading: UtilWidget.buildButtonBackAppbar(),
+          centerTitle: true,
         ),
-        leading: UtilWidget.buildButtonBackAppbar(),
-        centerTitle: true,
-      ),
-      body: SafeArea(
-        child: _buildBody(),
+        body: SafeArea(
+          child: _buildBody(),
+        ),
       ),
     );
   }

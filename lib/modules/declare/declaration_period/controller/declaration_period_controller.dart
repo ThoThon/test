@@ -114,6 +114,7 @@ class DeclarationPeriodController extends BaseGetxController {
           ProcedureType.procedure612 ||
           ProcedureType.procedure613 =>
             AppRoutes.declareInfo607.path,
+          ProcedureType.procedure630a => AppRoutes.declareInfo630a.path,
         };
 
         Get.toNamed(
@@ -139,6 +140,7 @@ class DeclarationPeriodController extends BaseGetxController {
     Get.toNamed(
       AppRoutes.staffList.path,
       arguments: StaffListArgument(
+        period: period.period.toString(),
         declarationPeriodId: period.id,
         procedureType: period.procedureType,
       ),

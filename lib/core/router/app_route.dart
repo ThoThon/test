@@ -55,7 +55,10 @@ enum AppRoutes {
   declareInfo607,
 
   // Thủ tục 630a
-  declareInfo630a;
+  declareInfo630a,
+
+  // Thông tin khác
+  otherInfo;
 
   String get path {
     return '/vbhxh_$name';

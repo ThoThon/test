@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:v_bhxh/shares/base/ui/formatter/custom_batch_month_year_formatter.dart';
 
 import '../../../modules/src.dart';
 
@@ -151,6 +152,10 @@ class BuildInputTextState extends State<BuildInputText> {
         return [
           RegexpEmojiUtil.allowCommonCharacters,
           FilteringTextInputFormatter.deny(RegExp(r'( )')),
+        ];
+      case InputFormatterEnum.periodMonthYear:
+        return [
+          CustomPeriodMonthYearFormatter(),
         ];
       default:
         return [
