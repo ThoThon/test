@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:v_bhxh/shares/base/ui/formatter/custom_batch_month_year_formatter.dart';
+import 'package:v_bhxh/shares/base/ui/formatter/custom_period_month_year_formatter.dart';
 
 import '../../../modules/src.dart';
 
