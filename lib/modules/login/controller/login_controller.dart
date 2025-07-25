@@ -22,10 +22,11 @@ class LoginController extends BaseGetxController {
   @override
   void onInit() {
     super.onInit();
-    if (hiveApp.get(HiveKeys.keyUsername) != null) {
-      usernameTextCtrl.text = hiveApp.get(HiveKeys.keyUsername);
+    final username = hiveApp.get<String>(HiveKeys.keyUsername);
+    if (username != null) {
+      usernameTextCtrl.text = username;
     }
-    isHaveUsername.value = hiveApp.get(HiveKeys.keyUsername) != null;
+    isHaveUsername.value = username != null;
   }
 
   Future<void> login() async {

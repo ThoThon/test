@@ -1,16 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:hive/hive.dart';
-import 'package:package_info_plus/package_info_plus.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
 
 import '../../../modules/src.dart';
 
-late Box hiveApp;
-
-late PackageInfo packageInfo;
+late AppHive hiveApp;
 
 class AppController extends BaseGetxController {
   @override
@@ -32,15 +28,12 @@ class AppController extends BaseGetxController {
   }
 
   Future<void> _initHive() async {
-    final appDocumentDirectory =
-        await path_provider.getApplicationDocumentsDirectory();
-    Hive.init(appDocumentDirectory.path);
-    hiveApp = await Hive.openBox('vBHXH');
-    packageInfo = await PackageInfo.fromPlatform();
+    hiveApp = AppHive();
+    await hiveApp.init();
   }
 
   Future<void> logout() async {
-    await hiveApp.deleteAll([
+    await hiveApp.deleteKeys([
       HiveKeys.keyJwtToken,
       HiveKeys.keyUsername,
     ]);

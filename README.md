@@ -15,3 +15,9 @@ Flutter project mẫu base chung cho các dự án mới của SDS
 
 - Dữ liệu ảnh sẽ để trong thư mục assets/image và gen code theo hướng dẫn trong file `README image.md` để cập nhật nhanh code khi thay đổi dữ liệu ảnh
 - Dữ liệu ngôn ngữ sẽ để trong thư mục assets/locales và gen code theo hướng dẫn trong file `README locales.md` để có thể sử dụng đa ngôn ngữ.
+
+- Generate JSON serialization, Envied, ...
+- NOTE: With Envied, have to use `fvm dart run build_runner clean` before use build_runner build
+fvm dart run build_runner build --delete-conflicting-outputs
+
+fvm dart run build_runner watch --delete-conflicting-outputs

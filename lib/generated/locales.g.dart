@@ -40,6 +40,8 @@ class LocaleKeys {
   static const app_cancel = 'app_cancel';
   static const app_close = 'app_close';
   static const app_select = 'app_select';
+  static const app_somethingWentWrong = 'app_somethingWentWrong';
+  static const app_cannotConnectToServer = 'app_cannotConnectToServer';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
   static const dialog_updateSuccessDialog = 'dialog_updateSuccessDialog';
   static const dialog_updateFailure = 'dialog_updateFailure';
@@ -1022,6 +1024,9 @@ class Locales {
     'app_cancel': 'Hủy bỏ',
     'app_close': 'Đóng',
     'app_select': '--Chọn--',
+    'app_somethingWentWrong': 'Đã có lỗi xảy ra, vui lòng thử lại sau.',
+    'app_cannotConnectToServer':
+        'Không thể kết nối đến máy chủ, vui lòng kiểm tra kết nối internet của bạn.',
     'dialog_close': 'Đóng',
     'dialog_errorConnectFailedStr':
         'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',
