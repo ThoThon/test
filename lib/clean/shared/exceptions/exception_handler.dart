@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/clean/shared/exceptions/base/app_exception.dart';
 import 'package:v_bhxh/clean/shared/exceptions/base/app_exception_wrapper.dart';
 import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
@@ -27,12 +30,21 @@ class ExceptionHandler {
             );
             break;
           case RemoteExceptionKind.serverDefined:
+            if (exception.httpErrorCode == HttpStatus.unauthorized) {
+              appNavigator.showSnackBar(
+                'Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại',
+              );
+              appNavigator.offAllNamed(AppRoutesCl.login.path);
+              return;
+            }
+
             if (appExceptionWrapper.overrideMessage != null) {
               appNavigator.showSnackBar(
                 appExceptionWrapper.overrideMessage!,
               );
               return;
             }
+
             appNavigator.showSnackBar(
               exception.serverError?.errorMessage ??
                   LocaleKeys.app_somethingWentWrong.tr,
