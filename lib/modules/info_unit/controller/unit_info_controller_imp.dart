@@ -100,6 +100,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
           showConfirmButton: false,
           content: LocaleKeys.dialog_updateSuccessDialog.tr,
           exitTitle: LocaleKeys.dialog_close.tr,
+          isActiveBack: false,
           onCancel: () async {
             await _getAccountInfo();
             await _getToTalNotiUnread();
@@ -114,6 +115,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
           showConfirmButton: false,
           content: LocaleKeys.dialog_updateFailureDialog.tr,
           exitTitle: LocaleKeys.dialog_close.tr,
+          isActiveBack: false,
           onCancel: () async {
             await _getAccountInfo();
             await _getToTalNotiUnread();

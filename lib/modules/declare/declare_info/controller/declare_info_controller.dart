@@ -53,6 +53,7 @@ class DeclareInfoController extends BaseGetxController {
         tk1State.mapFromD02Detail(infoDetail);
         d01State.mapFromD02Detail(infoDetail);
         updateHouseholdInfoRequired();
+        updateClearTTIconState();
       } else {
         showSnackBar(response.errorMessage);
       }
@@ -632,13 +633,11 @@ class DeclareInfoController extends BaseGetxController {
 
   void onChangeHeadOfHouseholdFullName(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
-    tk1State.headOfHouseholdTextCtrl.text = value;
     updateHouseholdInfoRequired();
   }
 
   void onChangeHeadOfHouseholdCCCD(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
-    tk1State.headOfHouseholdCCCDTextCtrl.text = value;
     updateHouseholdInfoRequired();
   }
 

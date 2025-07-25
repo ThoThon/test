@@ -153,6 +153,7 @@ extension HistoryRegisterTab on HistoryPage {
       child: SDSBuildText(
         text,
         style: style,
+        maxLines: 5,
       ),
     ).paddingOnly(bottom: AppDimens.paddingVerySmall);
   }

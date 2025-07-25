@@ -1089,6 +1089,8 @@ class LocaleKeys {
   static const viewPdf_download = 'viewPdf_download';
   static const viewPdf_share = 'viewPdf_share';
   static const viewPdf_cannotDownloadFile = 'viewPdf_cannotDownloadFile';
+  static const viewPdf_saveSuccess = 'viewPdf_saveSuccess';
+  static const viewPdf_saveFailed = 'viewPdf_saveFailed';
   static const otherInfo_title = 'otherInfo_title';
   static const otherInfo_reviewPeriod = 'otherInfo_reviewPeriod';
   static const otherInfo_phoneNumber = 'otherInfo_phoneNumber';
@@ -2063,6 +2065,8 @@ class Locales {
     'viewPdf_download': 'Tải xuống',
     'viewPdf_share': 'Chia sẻ',
     'viewPdf_cannotDownloadFile': 'Có lỗi xảy ra. Không thể tải xuống file.',
+    'viewPdf_saveSuccess': 'Lưu file thành công',
+    'viewPdf_saveFailed': 'Có lỗi xảy ra. Không thể lưu file.',
     'otherInfo_title': 'Thông tin khác',
     'otherInfo_reviewPeriod': 'Đợt xét duyệt',
     'otherInfo_phoneNumber': 'Số điện thoại',

@@ -13,4 +13,12 @@ extension GetInstanceExtension on GetInterface {
   T? safeArguments<T>() {
     return Get.arguments is T? ? Get.arguments as T? : null;
   }
+
+  bool get isPortrait => Get.width < Get.height;
+
+  bool get isLandspace => Get.width > Get.height;
+
+  double get longestSide => isPortrait ? Get.height : Get.width;
+
+  double get shortestSide => isPortrait ? Get.width : Get.height;
 }

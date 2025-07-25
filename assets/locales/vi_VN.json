@@ -896,7 +896,9 @@
   "viewPdf": {
     "download": "Tải xuống",
     "share": "Chia sẻ",
-    "cannotDownloadFile": "Có lỗi xảy ra. Không thể tải xuống file."
+    "cannotDownloadFile": "Có lỗi xảy ra. Không thể tải xuống file.",
+    "saveSuccess": "Lưu file thành công",
+    "saveFailed": "Có lỗi xảy ra. Không thể lưu file."
   },
   "otherInfo": {
     "title": "Thông tin khác",

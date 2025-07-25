@@ -88,9 +88,12 @@ extension D01TabWidget on DeclareInfoPage {
   Widget _buildMenuPopupOnption(DeclarationForm form) {
     return PopupMenuButton<ActionD01FormEnum>(
       surfaceTintColor: AppColors.basicWhite,
+      padding: EdgeInsets.zero,
+      menuPadding: EdgeInsets.zero,
       constraints: const BoxConstraints(),
       color: AppColors.basicWhite,
       icon: const Icon(Icons.more_horiz),
+      offset: const Offset(12, 40),
       onSelected: (action) {
         if (action == ActionD01FormEnum.edit) {
           // Gọi hàm sửa
@@ -104,15 +107,18 @@ extension D01TabWidget on DeclareInfoPage {
         return ActionD01FormEnum.values.map(
           (action) {
             return PopupMenuItem<ActionD01FormEnum>(
+              padding: const EdgeInsets.only(left: AppDimens.padding24),
               value: action,
               child: Row(
                 children: [
-                  SDSBuildText(action.title),
-                  sdsSBWidth16,
-                  Icon(
+                  SDSImageSvg(
                     action.icon,
-                    color: AppColors.dsGray3,
+                    color: AppColors.colorBlack,
+                    height: AppDimens.sizeIconDefault,
+                    width: AppDimens.sizeIconDefault,
                   ),
+                  sdsSBWidth16,
+                  SDSBuildText(action.title),
                 ],
               ),
             );
