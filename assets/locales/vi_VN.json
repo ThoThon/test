@@ -242,7 +242,9 @@
     "selectedTransaction": "Chọn loại giao dịch",
     "registerTransaction": "Đăng ký giao dịch",
     "registerChanged": "Đăng ký thay đổi",
-    "cancelTransaction": "Hủy giao dịch"
+    "cancelTransaction": "Hủy giao dịch",
+    "declaringForm": "Kê khai hồ sơ",
+    "transactionRegistered": "Đăng ký giao dịch"
   },
   "certificate": {
     "listCertificate": "Danh sách chứng thư số",
