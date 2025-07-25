@@ -1,3 +1,6 @@
+25/07/2025
+- [Appmobile]_Màn Lịch sử kê khai: Đổi vị trí tab hiển thị - BHW-2727
+
 24/07/2025
 - [Appmobile]_Màn danh sách nhân viên thủ tục 600, 607, 608, 610, 613, Bổ sung gợi ý - BHW-2814
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - BHW-2809

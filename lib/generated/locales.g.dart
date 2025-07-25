@@ -256,6 +256,8 @@ class LocaleKeys {
   static const history_registerTransaction = 'history_registerTransaction';
   static const history_registerChanged = 'history_registerChanged';
   static const history_cancelTransaction = 'history_cancelTransaction';
+  static const history_declaringForm = 'history_declaringForm';
+  static const history_transactionRegistered = 'history_transactionRegistered';
   static const certificate_listCertificate = 'certificate_listCertificate';
   static const certificate_selectCertificate = 'certificate_selectCertificate';
   static const certificate_confirm = 'certificate_confirm';
@@ -1258,6 +1260,8 @@ class Locales {
     'history_registerTransaction': 'Đăng ký giao dịch',
     'history_registerChanged': 'Đăng ký thay đổi',
     'history_cancelTransaction': 'Hủy giao dịch',
+    'history_declaringForm': 'Kê khai hồ sơ',
+    'history_transactionRegistered': 'Đăng ký giao dịch',
     'certificate_listCertificate': 'Danh sách chứng thư số',
     'certificate_selectCertificate': 'Chọn chứng thư số',
     'certificate_confirm': 'Xác nhận',
