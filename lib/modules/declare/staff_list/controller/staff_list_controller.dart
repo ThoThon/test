@@ -230,7 +230,7 @@ class StaffListController extends BaseGetxController {
         ProcedureType.procedure612 ||
         ProcedureType.procedure613 =>
           _repository.deleteTk1D01(id: staffId),
-        ProcedureType.procedure630a => _repository.delete630a(id: staffId),
+        ProcedureType.procedure630a => _repository630a.delete630a(id: staffId),
       };
 
       if (response.isSuccess) {

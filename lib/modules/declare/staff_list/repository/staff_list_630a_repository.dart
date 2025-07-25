@@ -41,4 +41,16 @@ class StaffList630aRepository extends BaseRepository {
       fromJson: (json) => SaveXmlResult.fromJson(json),
     );
   }
+
+  /// Xóa nhân viên (Xóa toàn bộ hồ sơ thủ tục 630a của nhân viên đó)
+  Future<BaseResponse> delete630a({
+    required String id,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlDelete630a,
+      EnumRequestMethod.delete,
+      queryParameters: {'id': id},
+    );
+    return BaseResponse.fromJson(response);
+  }
 }
