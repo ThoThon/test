@@ -1,4 +1,5 @@
 25/07/2025
+- Test build mac mini mới cty được cấp
 - [Appmobile]_Màn Lịch sử kê khai: Đổi vị trí tab hiển thị - BHW-2727
 
 24/07/2025
