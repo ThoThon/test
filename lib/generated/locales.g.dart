@@ -706,7 +706,9 @@ class LocaleKeys {
   static const declareInfo_accountHolderNameEmpty =
       'declareInfo_accountHolderNameEmpty';
   static const declareInfo_bank = 'declareInfo_bank';
+  static const declareInfo_bankCannotEmpty = 'declareInfo_bankCannotEmpty';
   static const declareInfo_bankHint = 'declareInfo_bankHint';
+  static const declareInfo_inputBankName = 'declareInfo_inputBankName';
   static const declareInfo_otherInfoTitle = 'declareInfo_otherInfoTitle';
   static const declareInfo_resolvedPeriod = 'declareInfo_resolvedPeriod';
   static const declareInfo_resolvedPeriodHint =
@@ -1752,7 +1754,9 @@ class Locales {
     'declareInfo_accountHolderNameEmpty':
         'Tên chủ tài khoản không được bỏ trống',
     'declareInfo_bank': 'Ngân hàng',
+    'declareInfo_bankCannotEmpty': 'Ngân hàng không được bỏ trống',
     'declareInfo_bankHint': 'Chọn ngân hàng',
+    'declareInfo_inputBankName': 'Nhập tên ngân hàng',
     'declareInfo_otherInfoTitle': 'Thông tin khác',
     'declareInfo_resolvedPeriod': 'Đợt đã giải quyết',
     'declareInfo_resolvedPeriodHint': 'Đợt tháng/năm',

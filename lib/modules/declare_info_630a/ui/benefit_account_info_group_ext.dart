@@ -185,7 +185,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
             registrarId: '4fd76b7c-3f06-4448-9dc3-481d1569495d',
             validator: (value) {
               if (controller.selectedBank.value == null) {
-                return 'Ngân hàng không được để trống';
+                return LocaleKeys.declareInfo_bankCannotEmpty.tr;
               }
               return null;
             },
@@ -202,9 +202,9 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                     funcSelect: (didChange) async {
                       Get.bottomSheet(
                         BottomSheetSearch<Bank630aModel>(
-                          title: "Chọn ngân hàng",
+                          title: LocaleKeys.declareInfo_bankHint.tr,
                           maxLength: 20,
-                          hintText: 'Nhập ngân hàng',
+                          hintText: LocaleKeys.declareInfo_inputBankName.tr,
                           listFilter: AppData.instance.bank.toList(),
                           selectedItem: controller.selectedBank.value,
                           display: (value) => '${value.code} - ${value.name}',
