@@ -1,3 +1,14 @@
+25/07/2025
+- [Appmobile]_630a_Dựng giao diện kê khai trường hợp Phát sinh mới - BHW-2774   
+- [Appmobile]_630a_Dựng giao diện kê khai trường hợp Điều chỉnh - BHW-2775
+- [Appmobile]_Thủ tục 630a_Bổ sung api lấy thông tin chung 630a theo kỳ kê khai - BHW-2795
+- [Appmobile]_Thủ tục 630a_Bổ sung api xóa toàn bộ hồ sơ 630a - BHW-2794
+- [Appmobile]_Thủ tục 630a_Bổ sung API lấy chi tiết hồ sơ theo id - BHW-2793
+- [Appmobile]_Thủ tục 630a_Bổ sung API Lấy danh sách lao động theo kỳ kê khai - BHW-2791
+- [Appmobile]_FE_630a_Bổ sung api Lấy các category liên quan cho combobox form 630a - BHW-2790
+- [Appmobile]_Thủ tục 630a_Bổ sung API lưu đợt và tạo file xml - BHW-2798
+- [Appmobile]_Thủ tục 630a_Bổ sung api preview cho 1 tờ khai cụ thể - BHW-2799
+
 24/07/2025
 - [Appmobile]_Màn danh sách nhân viên thủ tục 600, 607, 608, 610, 613, Bổ sung gợi ý - BHW-2814
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - BHW-2809
