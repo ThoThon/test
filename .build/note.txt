@@ -1,4 +1,5 @@
 25/07/2025
+- [Appmobile]_Màn Lịch sử kê khai: Đổi vị trí tab hiển thị - BHW-2727
 - [Appmobile]_630a_Dựng giao diện kê khai trường hợp Phát sinh mới - BHW-2774   
 - [Appmobile]_630a_Dựng giao diện kê khai trường hợp Điều chỉnh - BHW-2775
 - [Appmobile]_Thủ tục 630a_Bổ sung api lấy thông tin chung 630a theo kỳ kê khai - BHW-2795

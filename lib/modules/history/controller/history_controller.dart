@@ -16,7 +16,7 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
 
   late final _historyRepository = HistoryRepository(this);
 
-  final currentTab = HistoryTabEnum.register_transaction.obs;
+  final currentTab = HistoryTabEnum.file_declare.obs;
 
   int pageHistoryRegister = AppConst.defaultPageNumber;
 

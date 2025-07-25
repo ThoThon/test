@@ -129,23 +129,23 @@ extension HistoryWidget on HistoryPage {
             children: [
               Expanded(
                 child: _buildTabButton(
-                  title: 'Đăng ký giao dịch',
+                  title: HistoryTabEnum.file_declare.title,
+                  isSelected: controller.currentTab.value ==
+                      HistoryTabEnum.file_declare,
+                  onTap: () {
+                    controller.onTabChanged(HistoryTabEnum.file_declare);
+                  },
+                ),
+              ),
+              Expanded(
+                child: _buildTabButton(
+                  title: HistoryTabEnum.register_transaction.title,
                   // enabled: controller.enableTk1Tab,
                   isSelected: controller.currentTab.value ==
                       HistoryTabEnum.register_transaction,
                   onTap: () {
                     controller
                         .onTabChanged(HistoryTabEnum.register_transaction);
-                  },
-                ),
-              ),
-              Expanded(
-                child: _buildTabButton(
-                  title: 'Kê khai hồ sơ',
-                  isSelected: controller.currentTab.value ==
-                      HistoryTabEnum.file_declare,
-                  onTap: () {
-                    controller.onTabChanged(HistoryTabEnum.file_declare);
                   },
                 ),
               ),
