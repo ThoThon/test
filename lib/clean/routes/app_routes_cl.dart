@@ -1,4 +1,4 @@
-enum AppRoutes {
+enum AppRoutesCl {
   login,
   forgotLogin,
   procedureList,

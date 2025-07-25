@@ -43,7 +43,7 @@ class AppBinding extends BaseBindings {
 
   @override
   void bindingsController() {
-    Get.put(AppController(), permanent: true);
+    Get.put(AppControllerCl(), permanent: true);
   }
 
   @override

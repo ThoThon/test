@@ -19,7 +19,7 @@ typedef OnErrorCallback = FutureOr<AppException?> Function(AppException error);
 typedef OnFinallyCallback = FutureOr<void> Function();
 
 abstract class BaseGetClController extends GetxController {
-  late final AppController appController;
+  late final AppControllerCl appController;
   late final AppNavigator appNavigator;
   late final _exceptionHandler = Get.find<ExceptionHandler>();
 

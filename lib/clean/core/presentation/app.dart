@@ -6,11 +6,12 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/widget_src.dart';
 import 'package:v_bhxh/clean/routes/app_pages.dart';
-import 'package:v_bhxh/clean/routes/app_routes.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
+import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
-class App extends BaseGetPage<AppController> {
+class App extends BaseGetPage<AppControllerCl> {
   App({super.key});
 
   final botToastBuilder = BotToastInit();
@@ -20,33 +21,36 @@ class App extends BaseGetPage<AppController> {
 
   @override
   Widget buildPage(BuildContext context) {
-    return GetMaterialApp(
-      title: 'vBHXH',
-      locale: const Locale('vi', 'VN'),
-      translationsKeys: AppTranslation.translations,
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.login.path,
-      getPages: AppPages.pages,
-      localizationsDelegates: const [
-        GlobalCupertinoLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        DefaultCupertinoLocalizations.delegate
-      ],
-      supportedLocales: const [
-        Locale('vi', 'VN'),
-        // Locale('en', 'US'),
-      ],
-      theme: ThemeData(
-        scaffoldBackgroundColor: AppColors.backgroundColorLight,
-        appBarTheme: const AppBarTheme(
-          color: AppColors.backgroundColorLight,
+    return GestureDetector(
+      onTap: KeyBoard.hide,
+      child: GetMaterialApp(
+        title: 'vBHXH',
+        locale: const Locale('vi', 'VN'),
+        translationsKeys: AppTranslation.translations,
+        debugShowCheckedModeBanner: false,
+        initialRoute: AppRoutesCl.login.path,
+        getPages: AppPages.pages,
+        localizationsDelegates: const [
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          DefaultCupertinoLocalizations.delegate
+        ],
+        supportedLocales: const [
+          Locale('vi', 'VN'),
+          // Locale('en', 'US'),
+        ],
+        theme: ThemeData(
+          scaffoldBackgroundColor: AppColors.backgroundColorLight,
+          appBarTheme: const AppBarTheme(
+            color: AppColors.backgroundColorLight,
+          ),
         ),
+        builder: (context, child) {
+          return botToastBuilder(context, child);
+        },
+        navigatorObservers: [BotToastNavigatorObserver()],
       ),
-      builder: (context, child) {
-        return botToastBuilder(context, child);
-      },
-      navigatorObservers: [BotToastNavigatorObserver()],
     );
   }
 }

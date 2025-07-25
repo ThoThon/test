@@ -2,7 +2,7 @@ import 'package:dio_log_sds/dio_log_sds.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/features/login/presentation/binding/login_binding.dart';
 import 'package:v_bhxh/clean/features/login/presentation/login_page.dart';
-import 'package:v_bhxh/clean/routes/app_routes.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/change_base_url/ui/change_base_url_page.dart';
 import 'package:v_bhxh/modules/declare/declaration_form_detail/ui/declaration_form_detail_page.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/ui/declaration_list_page.dart';
@@ -29,100 +29,100 @@ import 'package:v_bhxh/modules/view_pdf/ui/view_pdf_page.dart';
 class AppPages {
   static final pages = [
     GetPage(
-      name: AppRoutes.login.path,
+      name: AppRoutesCl.login.path,
       page: LoginPage.new,
       binding: LoginBinding(),
     ),
     GetPage(
-      name: AppRoutes.routeDioLog.path,
+      name: AppRoutesCl.routeDioLog.path,
       page: () => const HttpLogListWidget(),
     ),
     GetPage(
-      name: AppRoutes.home.path,
+      name: AppRoutesCl.home.path,
       page: () => HomePage(),
     ),
     GetPage(
-      name: AppRoutes.infoUnit.path,
+      name: AppRoutesCl.infoUnit.path,
       page: () => UnitInfoPage(),
     ),
     GetPage(
-      name: AppRoutes.history.path,
+      name: AppRoutesCl.history.path,
       page: () => HistoryPage(),
     ),
     GetPage(
-      name: AppRoutes.historyDetailDeclare.path,
+      name: AppRoutesCl.historyDetailDeclare.path,
       page: () => HistoryDetailDeclarePage(),
     ),
     GetPage(
-      name: AppRoutes.historyDetailRegister.path,
+      name: AppRoutesCl.historyDetailRegister.path,
       page: () => HistoryDetailRegisterPage(),
     ),
     GetPage(
-      name: AppRoutes.procedureList.path,
+      name: AppRoutesCl.procedureList.path,
       page: () => ProcedureListPage(),
     ),
     GetPage(
-      name: AppRoutes.declarationPeriod.path,
+      name: AppRoutesCl.declarationPeriod.path,
       page: () => DeclarationPeriodPage(),
     ),
     GetPage(
-      name: AppRoutes.staffList.path,
+      name: AppRoutesCl.staffList.path,
       page: () => StaffListPage(),
     ),
     GetPage(
-      name: AppRoutes.declareInfo.path,
+      name: AppRoutesCl.declareInfo.path,
       page: () => DeclareInfoPage(),
     ),
     GetPage(
-      name: AppRoutes.familyMemberDetail.path,
+      name: AppRoutesCl.familyMemberDetail.path,
       page: () => FamilyMemberDetailPage(),
     ),
     GetPage(
-      name: AppRoutes.declarationFormDetail.path,
+      name: AppRoutesCl.declarationFormDetail.path,
       page: () => DeclarationFormDetailPage(),
     ),
     GetPage(
-      name: AppRoutes.declarationList.path,
+      name: AppRoutesCl.declarationList.path,
       page: () => DeclarationListPage(),
     ),
     GetPage(
-      name: AppRoutes.viewPdf.path,
+      name: AppRoutesCl.viewPdf.path,
       page: () => ViewPdfPage(),
     ),
     GetPage(
-      name: AppRoutes.forgotLogin.path,
+      name: AppRoutesCl.forgotLogin.path,
       page: () => ForgotPasswordPage(),
     ),
     GetPage(
-      name: AppRoutes.lookupC12.path,
+      name: AppRoutesCl.lookupC12.path,
       page: () => LookupC12Page(),
     ),
     GetPage(
-      name: AppRoutes.selectStaff.path,
+      name: AppRoutesCl.selectStaff.path,
       page: () => SelectStaffPage(),
     ),
     GetPage(
-      name: AppRoutes.notification.path,
+      name: AppRoutesCl.notification.path,
       page: () => NotificationPage(),
     ),
     GetPage(
-      name: AppRoutes.profile.path,
+      name: AppRoutesCl.profile.path,
       page: () => ProfilePage(),
     ),
     GetPage(
-      name: AppRoutes.registerService.path,
+      name: AppRoutesCl.registerService.path,
       page: () => RegisterServicePage(),
     ),
     GetPage(
-      name: AppRoutes.registerCode.path,
+      name: AppRoutesCl.registerCode.path,
       page: () => RegisterCodePage(),
     ),
     GetPage(
-      name: AppRoutes.changeBaseUrl.path,
+      name: AppRoutesCl.changeBaseUrl.path,
       page: () => const ChangeBaseUrlPage(),
     ),
     GetPage(
-      name: AppRoutes.declareInfo607.path,
+      name: AppRoutesCl.declareInfo607.path,
       page: () => DeclareInfo607Page(),
     ),
   ];

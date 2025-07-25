@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 
-class AppController extends BaseGetClController {
+class AppControllerCl extends BaseGetClController {
   @override
-  void onReady() {
-    super.onReady();
+  void onInit() {
+    super.onInit();
     _configSystemUI();
   }
 

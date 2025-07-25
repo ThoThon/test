@@ -1,12 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
+import 'package:v_bhxh/core/theme/colors.dart';
 
 mixin GetPageMixin<T extends BaseGetClController> on GetView<T> {
-  late final appController = Get.find<AppController>();
+  late final appController = Get.find<AppControllerCl>();
   late final appNavigator = Get.find<AppNavigator>();
 
   @override
@@ -65,7 +67,9 @@ mixin GetPageMixin<T extends BaseGetClController> on GetView<T> {
                           child: Container(
                             color: Colors.black12,
                             child: const Center(
-                              child: CircularProgressIndicator(),
+                              child: CupertinoActivityIndicator(
+                                color: AppColors.primaryColor,
+                              ),
                             ),
                           ),
                         ),
