@@ -143,4 +143,17 @@ class OtherInfoController extends BaseGetxController {
 
     reasonExplanationCtrl.text = detail.lyDoNopCham;
   }
+
+  @override
+  void onClose() {
+    reviewPeriodCtrl.dispose();
+    phoneNumberCtrl.dispose();
+    accountNumberCtrl.dispose();
+    bankNameCtrl.dispose();
+    branchBankCtrl.dispose();
+    unitHeadCtrl.dispose();
+    reasonExplanationCtrl.dispose();
+
+    super.onClose();
+  }
 }

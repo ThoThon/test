@@ -452,4 +452,32 @@ class DeclareInfo630aController extends BaseGetxController {
 
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
+
+  @override
+  void onClose() {
+    fullNameTextCtrl.dispose();
+    bhxhTextCtrl.dispose();
+    cccdTextCtrl.dispose();
+    staffCodeTextCtrl.dispose();
+    birthDayChildCtrl.dispose();
+    numberChildCtrl.dispose();
+    bhytCardCodeChildCtrl.dispose();
+    fromDateCtrl.dispose();
+    toDateCtrl.dispose();
+    countDayTextCtrl.dispose();
+    fromDateUnitTextCtrl.dispose();
+    dayOffCtrl.dispose();
+    diseaseNameTextCtrl.dispose();
+    serialNumberCtrl.dispose();
+    supplementalPeriodCtrl.dispose();
+    fileCodeTextCtrl.dispose();
+    noteTextCtrl.dispose();
+    bankNumberCtrl.dispose();
+    accountHolderNameCtrl.dispose();
+    resolvedPeriodCtrl.dispose();
+    resolvedDateCtrl.dispose();
+    adjustReasonCtrl.dispose();
+
+    super.onClose();
+  }
 }
