@@ -128,7 +128,6 @@ extension PersonInfoGroupWidgetExt on DeclareInfo630aPage {
       hintText: LocaleKeys.declareInfo_inputCCCD.tr,
       maxLengthInputForm: 20,
       inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
-      onChanged: (p0) {},
     );
   }
 
@@ -142,7 +141,6 @@ extension PersonInfoGroupWidgetExt on DeclareInfo630aPage {
       controller: controller.staffCodeTextCtrl,
       hintText: LocaleKeys.declareInfo_inputStaffCode.tr,
       maxLengthInputForm: 100,
-      onChanged: (p0) {},
     );
   }
 }

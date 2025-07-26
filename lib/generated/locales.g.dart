@@ -685,6 +685,8 @@ class LocaleKeys {
   static const declareInfo_maternityRest = 'declareInfo_maternityRest';
   static const declareInfo_supplementalPeriod =
       'declareInfo_supplementalPeriod';
+  static const declareInfo_supplementalPeriodInvalid =
+      'declareInfo_supplementalPeriodInvalid';
   static const declareInfo_supplementalPeriodHint =
       'declareInfo_supplementalPeriodHint';
   static const declareInfo_supplementalPeriodEmpty =
@@ -713,6 +715,10 @@ class LocaleKeys {
   static const declareInfo_inputBankName = 'declareInfo_inputBankName';
   static const declareInfo_otherInfoTitle = 'declareInfo_otherInfoTitle';
   static const declareInfo_resolvedPeriod = 'declareInfo_resolvedPeriod';
+  static const declareInfo_periodInvalid = 'declareInfo_periodInvalid';
+  static const declareInfo_monthYearInvalid = 'declareInfo_monthYearInvalid';
+  static const declareInfo_resolvedPeriodInvalid =
+      'declareInfo_resolvedPeriodInvalid';
   static const declareInfo_resolvedPeriodHint =
       'declareInfo_resolvedPeriodHint';
   static const declareInfo_resolvedPeriodEmpty =
@@ -1110,6 +1116,7 @@ class LocaleKeys {
   static const otherInfo_reason = 'otherInfo_reason';
   static const otherInfo_inputReason = 'otherInfo_inputReason';
   static const otherInfo_next = 'otherInfo_next';
+  static const otherInfo_titleTooltip = 'otherInfo_titleTooltip';
 }
 
 class Locales {
@@ -1739,6 +1746,7 @@ class Locales {
     'declareInfo_workingConditionHint': 'Chọn điều kiện làm việc',
     'declareInfo_maternityRest': 'Nghỉ dưỡng thai',
     'declareInfo_supplementalPeriod': 'Đợt bổ sung',
+    'declareInfo_supplementalPeriodInvalid': 'Đợt bổ sung không hợp lệ',
     'declareInfo_supplementalPeriodHint': 'Nhập Đợt tháng/năm',
     'declareInfo_supplementalPeriodEmpty': 'Đợt bổ sung không được bỏ trống',
     'declareInfo_fileCode': 'Mã hồ sơ',
@@ -1763,6 +1771,9 @@ class Locales {
     'declareInfo_inputBankName': 'Nhập tên ngân hàng',
     'declareInfo_otherInfoTitle': 'Thông tin khác',
     'declareInfo_resolvedPeriod': 'Đợt đã giải quyết',
+    'declareInfo_periodInvalid': 'Đợt không hợp lệ',
+    'declareInfo_monthYearInvalid': 'Tháng/Năm không hợp lệ',
+    'declareInfo_resolvedPeriodInvalid': 'Đợt đã giải quyết không hợp lệ',
     'declareInfo_resolvedPeriodHint': 'Đợt tháng/năm',
     'declareInfo_resolvedPeriodEmpty': 'Đợt đã giải quyết không được bỏ trống',
     'declareInfo_resolvedDate': 'Ngày đã giải quyết',
@@ -2090,5 +2101,6 @@ class Locales {
     'otherInfo_reason': 'Lý do giải trình',
     'otherInfo_inputReason': 'Nhập lý do giải trình',
     'otherInfo_next': 'Tiếp theo',
+    'otherInfo_titleTooltip': 'Trường hợp chọn nhận trợ cấp qua đơn vị',
   };
 }

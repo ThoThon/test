@@ -582,6 +582,7 @@
     "workingConditionHint": "Chọn điều kiện làm việc",
     "maternityRest": "Nghỉ dưỡng thai",
     "supplementalPeriod": "Đợt bổ sung",
+    "supplementalPeriodInvalid": "Đợt bổ sung không hợp lệ",
     "supplementalPeriodHint": "Nhập Đợt tháng/năm",
     "supplementalPeriodEmpty": "Đợt bổ sung không được bỏ trống",
     "fileCode": "Mã hồ sơ",
@@ -605,6 +606,9 @@
     "inputBankName":"Nhập tên ngân hàng",
     "otherInfoTitle": "Thông tin khác",
     "resolvedPeriod": "Đợt đã giải quyết",
+    "periodInvalid":"Đợt không hợp lệ",
+    "monthYearInvalid":"Tháng/Năm không hợp lệ",
+    "resolvedPeriodInvalid": "Đợt đã giải quyết không hợp lệ",
     "resolvedPeriodHint": "Đợt tháng/năm",
     "resolvedPeriodEmpty": "Đợt đã giải quyết không được bỏ trống",
     "resolvedDate": "Ngày đã giải quyết",
@@ -919,6 +923,7 @@
     "inputUnitHead": "Nhập tên thủ trưởng đơn vị",
     "reason": "Lý do giải trình",
     "inputReason": "Nhập lý do giải trình",
-    "next": "Tiếp theo"
+    "next": "Tiếp theo",
+    "titleTooltip":"Trường hợp chọn nhận trợ cấp qua đơn vị"
   }
 }

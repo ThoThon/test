@@ -248,18 +248,18 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
           return LocaleKeys.declareInfo_resolvedPeriodEmpty.tr;
         }
         if (trimmedValue.length < 10) {
-          return 'Đợt đã giải quyết không hợp lệ';
+          return LocaleKeys.declareInfo_resolvedPeriodInvalid.tr;
         }
         if (trimmedValue.substring(0, 2) == '00') {
-          return 'Đợt không hợp lệ';
+          return LocaleKeys.declareInfo_periodInvalid.tr;
         }
         final month = int.tryParse(trimmedValue.substring(3, 5));
         if (month == null || month < 1 || month > 12) {
-          return 'Tháng/Năm không hợp lệ';
+          return LocaleKeys.declareInfo_monthYearInvalid.tr;
         }
         final year = int.parse(trimmedValue.substring(6));
         if (year < 1900 || year > 2100) {
-          return 'Tháng/Năm không hợp lệ';
+          return LocaleKeys.declareInfo_monthYearInvalid.tr;
         }
         return null;
       },

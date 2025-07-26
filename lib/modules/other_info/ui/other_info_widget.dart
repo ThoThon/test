@@ -9,9 +9,30 @@ extension OtherInfoWidget on OtherInfoPage {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SDSBuildText(
-                  LocaleKeys.otherInfo_title.tr,
-                  style: AppTextStyle.font16Bo,
+                Row(
+                  children: [
+                    SDSBuildText(
+                      LocaleKeys.otherInfo_title.tr,
+                      style: AppTextStyle.font16Bo,
+                    ),
+                    sdsSBWidth8,
+                    Tooltip(
+                      verticalOffset: -45,
+                      decoration: BoxDecoration(
+                        color: AppColors.basicWhite,
+                        borderRadius: BorderRadius.circular(AppDimens.radius8),
+                      ),
+                      margin: const EdgeInsets.only(right: AppDimens.padding32),
+                      message: LocaleKeys.otherInfo_titleTooltip.tr,
+                      textStyle: AppTextStyle.font14Re
+                          .copyWith(color: AppColors.colorBlack),
+                      triggerMode: TooltipTriggerMode.tap,
+                      child: const Icon(
+                        Icons.help_outline,
+                        size: 16,
+                      ),
+                    ),
+                  ],
                 ),
                 sdsSBHeight12,
                 _buildReviewPeriodInput(),

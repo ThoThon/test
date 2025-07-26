@@ -645,7 +645,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           registrarId: '18c661be-0348-476e-8eaa-333a621c8e23',
           validator: (value) {
             if (controller.selectHospitalLine.value == null) {
-              return 'Tuyến bệnh viện không được để trống';
+              return LocaleKeys.declareInfo_hospitalLineCannotEmpty.tr;
             }
             return null;
           },
@@ -697,7 +697,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           registrarId: '03315ce3-0c9e-46fb-bbcc-fc3756a25f27',
           validator: (value) {
             if (controller.selectDiseaseCode.value == null) {
-              return 'Chọn/Nhập mã bệnh không được bỏ trống';
+              return LocaleKeys.declareInfo_selectDiseaseCodeCannotEmpty.tr;
             }
             return null;
           },
@@ -841,18 +841,18 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               return null;
             }
             if (trimmedValue.length < 10) {
-              return 'Đợt đã giải quyết không hợp lệ';
+              return LocaleKeys.declareInfo_supplementalPeriodInvalid.tr;
             }
             if (trimmedValue.substring(0, 2) == '00') {
-              return 'Đợt không hợp lệ';
+              return LocaleKeys.declareInfo_periodInvalid.tr;
             }
             final month = int.tryParse(trimmedValue.substring(3, 5));
             if (month == null || month < 1 || month > 12) {
-              return 'Tháng/Năm không hợp lệ';
+              return LocaleKeys.declareInfo_monthYearInvalid.tr;
             }
             final year = int.parse(trimmedValue.substring(6));
             if (year < 1900 || year > 2100) {
-              return 'Tháng/Năm không hợp lệ';
+              return LocaleKeys.declareInfo_monthYearInvalid.tr;
             }
 
             return null;
