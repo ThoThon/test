@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/get_account_info_use_case.dart';
@@ -7,6 +8,7 @@ import 'package:v_bhxh/clean/features/login/domain/usecase/get_d02_categories_us
 import 'package:v_bhxh/clean/features/login/domain/usecase/login_use_case.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/save_auth_info_use_case.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/core/values/hive_key.dart';
 
 class LoginControllerCl extends BaseGetClController {
   final LoginUseCase _loginUseCase;
@@ -15,7 +17,8 @@ class LoginControllerCl extends BaseGetClController {
   final GetD02CategoriesUseCase _getD02CategoriesUseCase;
 
   final formKey = GlobalKey<FormState>();
-  final usernameTextCtrl = TextEditingController();
+  final usernameTextCtrl = TextEditingController(
+      text: AppHive.instance.get<String>(HiveKeys.keyUsername) ?? '');
   final passwordTextCtrl = TextEditingController();
   final isHaveUsername = false.obs;
 
@@ -25,6 +28,12 @@ class LoginControllerCl extends BaseGetClController {
     this._getAccountInfoUseCase,
     this._getD02CategoriesUseCase,
   );
+
+  @override
+  void onInit() {
+    super.onInit();
+    isHaveUsername.value = usernameTextCtrl.text.trim().isNotEmpty;
+  }
 
   Future<void> login() async {
     await buildState(
