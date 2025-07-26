@@ -1,3 +1,6 @@
+26/07/2025
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Màn TK1: Lỗi focus khi nhấn vào [Thêm thành viên] - BHW-2838
+
 25/07/2025
 - [Appmobile]_Màn Lịch sử kê khai: Đổi vị trí tab hiển thị - BHW-2727
 - [Appmobile]_630a_Dựng giao diện kê khai trường hợp Phát sinh mới - BHW-2774   
