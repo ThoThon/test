@@ -18,14 +18,8 @@ extension OtherInfoWidget on OtherInfoPage {
                     sdsSBWidth8,
                     Tooltip(
                       verticalOffset: -45,
-                      decoration: BoxDecoration(
-                        color: AppColors.basicWhite,
-                        borderRadius: BorderRadius.circular(AppDimens.radius8),
-                      ),
                       margin: const EdgeInsets.only(right: AppDimens.padding32),
                       message: LocaleKeys.otherInfo_titleTooltip.tr,
-                      textStyle: AppTextStyle.font14Re
-                          .copyWith(color: AppColors.colorBlack),
                       triggerMode: TooltipTriggerMode.tap,
                       child: const Icon(
                         Icons.help_outline,

@@ -162,7 +162,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                   isRequired: controller.isATMpayment,
                   hintText: LocaleKeys.declareInfo_accountHolderNameHint.tr,
                   labelText: LocaleKeys.declareInfo_accountHolderName.tr,
-                  controller: controller.bankNumberCtrl,
+                  controller: controller.accountHolderNameCtrl,
                   maxLengthInputForm: 100,
                 ).paddingOnly(bottom: AppDimens.paddingSmall),
               );

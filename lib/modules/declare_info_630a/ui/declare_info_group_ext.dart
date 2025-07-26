@@ -587,7 +587,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                   ),
                 ),
                 padding: const EdgeInsets.symmetric(
-                  vertical: AppDimens.paddingSmall,
+                  vertical: AppDimens.paddingVerySmall,
                 ),
                 decoration: const BoxDecoration(border: Border()),
                 isDismissible: true,
@@ -621,45 +621,32 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         if (controller.isAdjustDeclareForm) {
           return const SizedBox.shrink();
         }
-        return FormFieldRegistrant<HospitalLine630aModel>(
-          registrarId: '18c661be-0348-476e-8eaa-333a621c8e23',
-          validator: (value) {
-            if (controller.selectHospitalLine.value == null) {
-              return LocaleKeys.declareInfo_hospitalLineCannotEmpty.tr;
-            }
-            return null;
-          },
-          builder: (fieldKey, validator) {
-            return Obx(
-              () =>
-                  UtilWidget.buildCardBottomSheetSelect2<HospitalLine630aModel>(
-                fieldKey: fieldKey,
-                validator: validator,
-                label: LocaleKeys.declareInfo_hospitalLine.tr,
-                hintText: LocaleKeys.declareInfo_hospitalLineSelect.tr,
-                funcSelect: (didChange) async {
-                  Get.bottomSheet(
-                    BottomSheetSearch<HospitalLine630aModel>(
-                      title: LocaleKeys.declareInfo_hospitalLineSelect.tr,
-                      maxLength: 20,
-                      hintText: LocaleKeys.declareInfo_inputHospitalLine.tr,
-                      listFilter: AppData.instance.hospitalLine.toList(),
-                      selectedItem: controller.selectHospitalLine.value,
-                      display: (value) => '${value.value} - ${value.text}',
-                      onAccept: (value) {
-                        if (value == null) return;
-                        controller.selectHospitalLine.value = value;
-                        didChange(value);
-                      },
-                    ),
-                    isScrollControlled: true,
-                  );
-                },
-                selectedItem: controller.selectHospitalLine.value,
-                display: (hospital) => '${hospital.value} - ${hospital.text}',
-              ),
-            );
-          },
+        return Obx(
+          () => UtilWidget.buildCardBottomSheetSelect2<HospitalLine630aModel>(
+            label: LocaleKeys.declareInfo_hospitalLine.tr,
+            hintText: LocaleKeys.declareInfo_hospitalLineSelect.tr,
+            isRequired: false,
+            funcSelect: (didChange) async {
+              Get.bottomSheet(
+                BottomSheetSearch<HospitalLine630aModel>(
+                  title: LocaleKeys.declareInfo_hospitalLineSelect.tr,
+                  maxLength: 20,
+                  hintText: LocaleKeys.declareInfo_inputHospitalLine.tr,
+                  listFilter: AppData.instance.hospitalLine.toList(),
+                  selectedItem: controller.selectHospitalLine.value,
+                  display: (value) => '${value.value} - ${value.text}',
+                  onAccept: (value) {
+                    if (value == null) return;
+                    controller.selectHospitalLine.value = value;
+                    didChange(value);
+                  },
+                ),
+                isScrollControlled: true,
+              );
+            },
+            selectedItem: controller.selectHospitalLine.value,
+            display: (hospital) => '${hospital.value} - ${hospital.text}',
+          ),
         );
       },
     );
@@ -672,44 +659,32 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         if (controller.isAdjustDeclareForm) {
           return const SizedBox.shrink();
         }
-        return FormFieldRegistrant<LongDiease630aModel>(
-          registrarId: '03315ce3-0c9e-46fb-bbcc-fc3756a25f27',
-          validator: (value) {
-            if (controller.selectDiseaseCode.value == null) {
-              return LocaleKeys.declareInfo_selectDiseaseCodeCannotEmpty.tr;
-            }
-            return null;
-          },
-          builder: (fieldKey, validator) {
-            return Obx(
-              () => UtilWidget.buildCardBottomSheetSelect2<LongDiease630aModel>(
-                fieldKey: fieldKey,
-                validator: validator,
-                label: LocaleKeys.declareInfo_selectDiseaseCode.tr,
-                hintText: LocaleKeys.declareInfo_selectDiseaseCodeHint.tr,
-                funcSelect: (didChange) async {
-                  Get.bottomSheet(
-                    BottomSheetSearch<LongDiease630aModel>(
-                      title: LocaleKeys.declareInfo_selectDiseaseCode.tr,
-                      maxLength: 20,
-                      hintText: LocaleKeys.declareInfo_inputDiseaseCode.tr,
-                      listFilter: AppData.instance.longDiease.toList(),
-                      selectedItem: controller.selectDiseaseCode.value,
-                      display: (value) => '${value.code} - ${value.name}',
-                      onAccept: (value) {
-                        if (value == null) return;
-                        controller.selectDiseaseCode.value = value;
-                        didChange(value);
-                      },
-                    ),
-                    isScrollControlled: true,
-                  );
-                },
-                selectedItem: controller.selectDiseaseCode.value,
-                display: (disease) => '${disease.code} - ${disease.name}',
-              ),
-            );
-          },
+        return Obx(
+          () => UtilWidget.buildCardBottomSheetSelect2<LongDiease630aModel>(
+            label: LocaleKeys.declareInfo_selectDiseaseCode.tr,
+            hintText: LocaleKeys.declareInfo_selectDiseaseCodeHint.tr,
+            isRequired: false,
+            funcSelect: (didChange) async {
+              Get.bottomSheet(
+                BottomSheetSearch<LongDiease630aModel>(
+                  title: LocaleKeys.declareInfo_selectDiseaseCode.tr,
+                  maxLength: 20,
+                  hintText: LocaleKeys.declareInfo_inputDiseaseCode.tr,
+                  listFilter: AppData.instance.longDiease.toList(),
+                  selectedItem: controller.selectDiseaseCode.value,
+                  display: (value) => '${value.code} - ${value.name}',
+                  onAccept: (value) {
+                    if (value == null) return;
+                    controller.selectDiseaseCode.value = value;
+                    didChange(value);
+                  },
+                ),
+                isScrollControlled: true,
+              );
+            },
+            selectedItem: controller.selectDiseaseCode.value,
+            display: (disease) => '${disease.code} - ${disease.name}',
+          ),
         );
       },
     );
