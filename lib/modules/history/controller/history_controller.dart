@@ -49,10 +49,9 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
         ghiChu: '',
       ),
     );
-    if (argument?.selectedTab == HistoryTabEnum.file_declare) {
-      currentTab.value =
-          argument?.selectedTab ?? HistoryTabEnum.register_transaction;
-    }
+
+    currentTab.value = argument?.selectedTab ?? HistoryTabEnum.file_declare;
+
     getProcedureFilter();
     getHistoryDeclare();
     getHistoryRegister();
