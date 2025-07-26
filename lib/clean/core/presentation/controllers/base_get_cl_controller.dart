@@ -21,7 +21,9 @@ typedef OnFinallyCallback = FutureOr<void> Function();
 abstract class BaseGetClController extends GetxController {
   late final AppControllerCl appController;
   late final AppNavigator appNavigator;
-  late final _exceptionHandler = Get.find<ExceptionHandler>();
+  late final _exceptionHandler = ExceptionHandler(
+    appNavigator: appNavigator,
+  );
 
   final isLoading = false.obs;
   final isLoadingOverlay = false.obs;
