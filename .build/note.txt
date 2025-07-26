@@ -1,4 +1,5 @@
 26/07/2025
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Màn TK1: Lỗi focus khi nhấn vào [Thêm thành viên] - BHW-2838
 - [Appmobile]_ Lỗi focus tab tại màn Lịch sử giao dịch - BHW-2834
 
 25/07/2025
