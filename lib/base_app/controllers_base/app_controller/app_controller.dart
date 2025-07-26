@@ -6,8 +6,6 @@ import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
 
 import '../../../modules/src.dart';
 
-late AppHive hiveApp;
-
 class AppController extends BaseGetxController {
   @override
   Future<void> onInit() async {
@@ -28,15 +26,6 @@ class AppController extends BaseGetxController {
   }
 
   Future<void> _initHive() async {
-    hiveApp = AppHive();
-    await hiveApp.init();
-  }
-
-  Future<void> logout() async {
-    await hiveApp.deleteKeys([
-      HiveKeys.keyJwtToken,
-      HiveKeys.keyUsername,
-    ]);
-    Get.offAllNamed(AppRoutes.login.path);
+    await AppHive.instance.init();
   }
 }

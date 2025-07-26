@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/base_app.src.dart';
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
 import 'package:v_bhxh/core/core.src.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/login/repository/login_repository.dart';
@@ -15,14 +16,13 @@ class LoginController extends BaseGetxController {
   final usernameTextCtrl = TextEditingController();
   final passwordTextCtrl = TextEditingController();
   final isHaveUsername = false.obs;
-  final appController = Get.find<AppController>();
 
   int page = AppConst.defaultPageNumber;
 
   @override
   void onInit() {
     super.onInit();
-    final username = hiveApp.get<String>(HiveKeys.keyUsername);
+    final username = AppHive.instance.get<String>(HiveKeys.keyUsername);
     if (username != null) {
       usernameTextCtrl.text = username;
     }
@@ -48,8 +48,8 @@ class LoginController extends BaseGetxController {
 
       if (response.isSuccess) {
         await Future.wait([
-          hiveApp.put(HiveKeys.keyUsername, username),
-          hiveApp.put(HiveKeys.keyJwtToken, response.result),
+          AppHive.instance.put(HiveKeys.keyUsername, username),
+          AppHive.instance.put(HiveKeys.keyJwtToken, response.result),
         ]);
         await (
           _getAccountInfo(),
@@ -89,7 +89,7 @@ class LoginController extends BaseGetxController {
       if (res.code == AppConst.statusCodeSuccess && res.result != null) {
         AppData.instance.accountInfoModel.value = res.result;
         //Lưu tên tổ chức lại để hiện ngoài màn login
-        hiveApp.put(HiveKeys.keyCompanyName, res.result?.tenToChuc);
+        AppHive.instance.put(HiveKeys.keyCompanyName, res.result?.tenToChuc);
       }
     } catch (e) {
       logger.d(e);

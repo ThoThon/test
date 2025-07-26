@@ -1,16 +1,20 @@
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
+
 import '../../../base_app/base_app.src.dart';
 import '../../../shares/widgets/dialog/dialog_utils.dart';
 import '../../src.dart';
 import '../../view_pdf/model/view_pdf_argument.dart';
 
 class HomeController extends BaseGetxController {
-  final _appController = Get.find<AppController>();
-
   void showDialogLogout() {
     ShowDialog.showDialogConfirm2(
       title: LocaleKeys.dialog_isLogout.tr,
-      onConfirm: () {
-        _appController.logout();
+      onConfirm: () async {
+        await AppHive.instance.deleteKeys([
+          HiveKeys.keyJwtToken,
+          HiveKeys.keyUsername,
+        ]);
+        Get.offAllNamed(AppRoutes.login.path);
       },
       backgroundColorBack: AppColors.basicWhite,
       confirmTitle: LocaleKeys.dialog_confirm.tr,

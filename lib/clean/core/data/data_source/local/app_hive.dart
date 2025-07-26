@@ -4,6 +4,9 @@ import 'package:path_provider/path_provider.dart';
 const _boxName = 'app_local_storage';
 
 class AppHive {
+  AppHive._();
+  static final AppHive instance = AppHive._();
+
   late final Box _box;
 
   Future<AppHive> init() async {

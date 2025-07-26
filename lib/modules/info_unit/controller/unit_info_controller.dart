@@ -62,8 +62,6 @@ abstract class UnitInfoController extends BaseGetxController {
   // Đăng ký nhận kết quả
   Rx<ReceiveResultEnum?> selectedReceive = Rx<ReceiveResultEnum?>(null);
 
-  final appController = Get.find<AppController>();
-
   AccountInfoModel? accountInfo;
 
   final isEditAll = false.obs;

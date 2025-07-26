@@ -136,7 +136,7 @@ extension LoginWidget on LoginPage {
         SDSBuildText(LocaleKeys.login_hello.tr),
         sdsSBHeight8,
         SDSBuildText(
-          "${hiveApp.get(HiveKeys.keyCompanyName) ?? ''}",
+          "${AppHive.instance.get(HiveKeys.keyCompanyName) ?? ''}",
           style: AppTextStyle.font16Bo,
         ),
       ],

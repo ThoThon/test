@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
-import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/app_controller_cl.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
 import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
@@ -26,7 +26,7 @@ class AppBinding extends BaseBindings {
       permanent: true,
     );
     await [
-      Get.putAsync(AppHive().init, permanent: true),
+      Get.putAsync(AppHive.instance.init, permanent: true),
       Get.putAsync(AppInfo().init, permanent: true)
     ].wait;
     Get.put(AppNavigator(), permanent: true);

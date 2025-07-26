@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:v_bhxh/base_app/controllers_base/app_controller/app_controller.dart';
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
 import 'package:v_bhxh/core/router/app_route.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/core/values/hive_key.dart';
@@ -14,11 +14,11 @@ class BaseUrlHelper {
   BaseUrlHelper._();
 
   String get currentUrl {
-    return hiveApp.get(HiveKeys.keyBaseUrl) ?? AppApi.urlSign;
+    return AppHive.instance.get(HiveKeys.keyBaseUrl) ?? AppApi.urlSign;
   }
 
   Future<void> setBaseUrl(String url) async {
-    return hiveApp.put(HiveKeys.keyBaseUrl, url);
+    return AppHive.instance.put(HiveKeys.keyBaseUrl, url);
   }
 
   Future<void> switchEnv() async {
