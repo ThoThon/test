@@ -14,7 +14,12 @@ class LoginBinding extends BaseBindings {
 
   @override
   void bindingsRepository() {
-    Get.lazyPut<LoginRepository>(() => LoginRepositoryImpl(Get.find()));
+    Get.lazyPut<LoginRepository>(
+      () => LoginRepositoryImpl(
+        Get.find(),
+        Get.find(),
+      ),
+    );
   }
 
   @override

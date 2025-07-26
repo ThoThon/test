@@ -6,6 +6,7 @@ import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
 import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
 import 'package:v_bhxh/clean/shared/utils/app_info.dart';
+import 'package:v_bhxh/shares/mapper/mapper_src.dart';
 
 import 'base_bindings.dart';
 
@@ -13,11 +14,16 @@ class AppBinding extends BaseBindings {
   Future<void> bind({
     required AppEnv env,
   }) async {
-    await bindingsCore(env);
+    await _bindingsCore(env);
+    _bindingMappers();
     dependencies();
   }
 
-  Future<void> bindingsCore(AppEnv env) async {
+  void _bindingMappers() {
+    Get.lazyPut(() => LoginRequestDataMapper(), fenix: true);
+  }
+
+  Future<void> _bindingsCore(AppEnv env) async {
     Get.put<EnvConfig>(
       switch (env) {
         AppEnv.dev => EnvConfigDev(),
