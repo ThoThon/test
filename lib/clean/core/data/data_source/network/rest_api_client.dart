@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:v_bhxh/clean/core/data/model/server_error.dart';
+import 'package:v_bhxh/clean/core/data/model/base/server_error.dart';
 import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 
 enum RestMethod { get, post, put, patch, delete }

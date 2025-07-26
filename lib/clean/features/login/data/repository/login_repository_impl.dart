@@ -1,7 +1,9 @@
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
 import 'package:v_bhxh/clean/core/data/model/account_info_data.dart';
-import 'package:v_bhxh/clean/core/data/model/base_response_cl.dart';
+import 'package:v_bhxh/clean/core/data/model/base/base_response_cl.dart';
+import 'package:v_bhxh/clean/core/data/model/d02_categories_data.dart';
 import 'package:v_bhxh/clean/core/domain/entity/account_info.dart';
+import 'package:v_bhxh/clean/core/domain/entity/d02_categories_cl.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/repository/login_repository.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
@@ -13,12 +15,14 @@ class LoginRepositoryImpl extends LoginRepository {
 
   final LoginRequestDataMapper _loginRequestDataMapper;
   final AccountInfoDataMapper _accountInfoDataMapper;
+  final D02CategoriesDataMapper _d02CategoriesDataMapper;
 
   LoginRepositoryImpl(
     this._nonAuthAppServerApiClient,
     this._authAppServerApiClient,
     this._loginRequestDataMapper,
     this._accountInfoDataMapper,
+    this._d02CategoriesDataMapper,
   );
 
   @override
@@ -27,8 +31,8 @@ class LoginRepositoryImpl extends LoginRepository {
   }) async {
     final response = await _nonAuthAppServerApiClient.request(
       method: RestMethod.post,
-      path: '/api/Authen/auth',
-      body: _loginRequestDataMapper.mapToData(request),
+      path: AppApi.urlLogin,
+      body: _loginRequestDataMapper.mapToData(request).toJson(),
       cancelToken: cancelToken,
     );
 
@@ -49,5 +53,21 @@ class LoginRepositoryImpl extends LoginRepository {
     );
 
     return _accountInfoDataMapper.mapToEntity(data.result);
+  }
+
+  @override
+  Future<D02CategoriesCl> getD02Categories() async {
+    final response = await _authAppServerApiClient.request(
+      method: RestMethod.get,
+      path: AppApi.urlGetD02Categories,
+      cancelToken: cancelToken,
+    );
+
+    final data = BaseResponseCl<D02CategoriesData>.fromJson(
+      response,
+      fromJson: (json) => D02CategoriesData.fromJson(json),
+    );
+
+    return _d02CategoriesDataMapper.mapToEntity(data.result);
   }
 }

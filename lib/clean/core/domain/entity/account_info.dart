@@ -1,4 +1,4 @@
-import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
+import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
 
 class AccountInfo implements Entity {
   final String toChucId;

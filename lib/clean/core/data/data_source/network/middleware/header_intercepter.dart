@@ -9,7 +9,7 @@ class HeaderInterceptor extends BaseInterceptor {
   final AppInfo _appInfo;
 
   var _headers = <String, dynamic>{
-    'Content-Type': 'application/json',
+    Headers.contentTypeHeader: Headers.jsonContentType,
   };
 
   set headers(Map<String, dynamic> headers) {

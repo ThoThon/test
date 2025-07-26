@@ -1,4 +1,4 @@
-import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
+import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
 
 class LoginRequest implements Entity {
   final String username;

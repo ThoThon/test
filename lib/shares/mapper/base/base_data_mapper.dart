@@ -7,6 +7,10 @@ abstract class BaseDataMapper<Data, Entity> {
   List<Entity> mapToListEntity(List<Data>? listData) {
     return listData?.map(mapToEntity).toList() ?? List.empty();
   }
+
+  Set<Entity> mapToSetEntity(Set<Data>? setData) {
+    return setData?.map(mapToEntity).toSet() ?? <Entity>{};
+  }
 }
 
 /// Map from entity to  data
