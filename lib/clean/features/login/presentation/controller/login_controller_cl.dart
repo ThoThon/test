@@ -6,7 +6,7 @@ import 'package:v_bhxh/clean/features/login/domain/usecase/login_use_case.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/save_auth_info_use_case.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 
-class LoginController extends BaseGetClController {
+class LoginControllerCl extends BaseGetClController {
   final LoginUseCase _loginUseCase;
   final SaveAuthInfoUseCase _saveAuthInfoUseCase;
 
@@ -15,7 +15,7 @@ class LoginController extends BaseGetClController {
   final passwordTextCtrl = TextEditingController();
   final isHaveUsername = false.obs;
 
-  LoginController(
+  LoginControllerCl(
     this._loginUseCase,
     this._saveAuthInfoUseCase,
   );
