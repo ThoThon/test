@@ -127,7 +127,6 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                   labelText: LocaleKeys.declareInfo_bankNumber.tr,
                   controller: controller.bankNumberCtrl,
                   maxLengthInputForm: 50,
-                  onChanged: (p0) {},
                 ).paddingOnly(bottom: AppDimens.paddingSmall),
               );
             },
@@ -165,7 +164,6 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                   labelText: LocaleKeys.declareInfo_accountHolderName.tr,
                   controller: controller.bankNumberCtrl,
                   maxLengthInputForm: 100,
-                  onChanged: (p0) {},
                 ).paddingOnly(bottom: AppDimens.paddingSmall),
               );
             },
@@ -264,16 +262,18 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
         return null;
       },
       builder: (fieldKey, validator) {
-        return CardInputTextFormWithLabel(
-          fieldKey: fieldKey,
-          validator: validator,
-          autovalidateMode: controller.autoValidateMode.value,
-          inputFormatters: InputFormatterEnum.periodMonthYear,
-          isRequired: controller.isAdjustDeclareForm,
-          hintText: LocaleKeys.declareInfo_resolvedPeriodHint.tr,
-          labelText: LocaleKeys.declareInfo_resolvedPeriod.tr,
-          controller: controller.resolvedPeriodCtrl,
-          textInputType: TextInputType.number,
+        return Obx(
+          () => CardInputTextFormWithLabel(
+            fieldKey: fieldKey,
+            validator: validator,
+            autovalidateMode: controller.autoValidateMode.value,
+            inputFormatters: InputFormatterEnum.periodMonthYear,
+            isRequired: controller.isAdjustDeclareForm,
+            hintText: LocaleKeys.declareInfo_resolvedPeriodHint.tr,
+            labelText: LocaleKeys.declareInfo_resolvedPeriod.tr,
+            controller: controller.resolvedPeriodCtrl,
+            textInputType: TextInputType.number,
+          ),
         );
       },
     );
@@ -289,9 +289,6 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
         // Nếu bắt buộc và không nhập thì báo lỗi
         if ((trimmedValue == null || trimmedValue.isEmpty)) {
           return LocaleKeys.declareInfo_resolvedDateEmpty.tr;
-        }
-        if (trimmedValue.isEmpty) {
-          return null;
         }
 
         // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
@@ -312,33 +309,35 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
         return null;
       },
       builder: (fieldKey, validator) {
-        return CardInputSelectDateWithLabel(
-          fieldKey: fieldKey,
-          validator: validator,
-          autovalidateMode: controller.autoValidateMode.value,
-          labelText: LocaleKeys.declareInfo_resolvedDate.tr,
-          inputFormatters: InputFormatterEnum.dateFullBirthDay,
-          controller: controller.resolvedDateCtrl,
-          hintText: PATTERN_1,
-          isRequired: controller.isAdjustDeclareForm,
-          onSelectDate: () async {
-            KeyBoard.hide();
-            final selectedDate = await DatePickerUtils.showCalendarPicker(
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
-              title: LocaleKeys.dialog_selectDayMonthYear.tr,
-              dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
-                    controller.resolvedDateCtrl.text,
-                    PATTERN_1,
-                  ) ??
-                  DateTime.now(),
-            );
-            if (selectedDate != null) {
-              controller.resolvedDateCtrl.text =
-                  convertDateToString(selectedDate, PATTERN_1);
-            }
-          },
+        return Obx(
+          () => CardInputSelectDateWithLabel(
+            fieldKey: fieldKey,
+            validator: validator,
+            autovalidateMode: controller.autoValidateMode.value,
+            labelText: LocaleKeys.declareInfo_resolvedDate.tr,
+            inputFormatters: InputFormatterEnum.dateFullBirthDay,
+            controller: controller.resolvedDateCtrl,
+            hintText: PATTERN_1,
+            isRequired: controller.isAdjustDeclareForm,
+            onSelectDate: () async {
+              KeyBoard.hide();
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+                title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                dateFormat: PATTERN_1,
+                dateTimeInit: convertStringToDateSafe(
+                      controller.resolvedDateCtrl.text,
+                      PATTERN_1,
+                    ) ??
+                    DateTime.now(),
+              );
+              if (selectedDate != null) {
+                controller.resolvedDateCtrl.text =
+                    convertDateToString(selectedDate, PATTERN_1);
+              }
+            },
+          ),
         );
       },
     );
@@ -358,16 +357,17 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
         return null;
       },
       builder: (fieldKey, validator) {
-        return CardInputTextFormWithLabel(
-          fieldKey: fieldKey,
-          validator: validator,
-          autovalidateMode: controller.autoValidateMode.value,
-          isRequired: controller.isAdjustDeclareForm,
-          hintText: LocaleKeys.declareInfo_adjustReasonHint.tr,
-          labelText: LocaleKeys.declareInfo_adjustReason.tr,
-          controller: controller.adjustReasonCtrl,
-          maxLengthInputForm: 2000,
-          onChanged: (p0) {},
+        return Obx(
+          () => CardInputTextFormWithLabel(
+            fieldKey: fieldKey,
+            validator: validator,
+            autovalidateMode: controller.autoValidateMode.value,
+            isRequired: controller.isAdjustDeclareForm,
+            hintText: LocaleKeys.declareInfo_adjustReasonHint.tr,
+            labelText: LocaleKeys.declareInfo_adjustReason.tr,
+            controller: controller.adjustReasonCtrl,
+            maxLengthInputForm: 2000,
+          ),
         );
       },
     );

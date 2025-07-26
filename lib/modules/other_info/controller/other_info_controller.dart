@@ -116,7 +116,7 @@ class OtherInfoController extends BaseGetxController {
     return OtherInfoModel(
       id: id,
       kyKeKhaiId: argument.declarationPeriodId,
-      dotXetDuyet: argument.period ?? '',
+      dotXetDuyet: reviewPeriodCtrl.text,
       soDienThoai: phoneNumberCtrl.text,
       soTaiKhoan: accountNumberCtrl.text,
       moTai: bankNameCtrl.text,

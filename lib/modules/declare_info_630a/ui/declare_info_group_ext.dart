@@ -167,17 +167,12 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
       registrarId: 'b6ffeeb4-dc24-419a-b114-083783c6aeef',
       validator: (value) {
         final trimmedValue = value?.trim();
-        // Nếu bắt buộc và không nhập thì báo lỗi
         if ((trimmedValue == null || trimmedValue.isEmpty)) {
           return LocaleKeys.declareInfo_fromDayEmpty.tr;
         }
 
-        if (trimmedValue.isEmpty) {
-          // Không bắt buộc
-          return null;
-        }
-        // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
-        if (trimmedValue.length < 7) {
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
           return LocaleKeys.declareInfo_fromDayInvalid.tr;
         }
 
@@ -241,16 +236,12 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
       validator: (value) {
         final trimmedValue = value?.trim();
 
-        // Nếu bắt buộc và không nhập thì báo lỗi
         if ((trimmedValue == null || trimmedValue.isEmpty)) {
           return LocaleKeys.declareInfo_toDayEmpty.tr;
         }
-        if (trimmedValue.isEmpty) {
-          return null;
-        }
 
-        // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
-        if (trimmedValue.length < 7) {
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
           return LocaleKeys.declareInfo_toDayInvalid.tr;
         }
 
@@ -317,16 +308,11 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
             validator: (value) {
               final trimmedValue = value?.trim();
 
-              // Nếu bắt buộc và không nhập thì báo lỗi
               if ((trimmedValue == null || trimmedValue.isEmpty)) {
                 return LocaleKeys.declareInfo_birthDayChildEmpty.tr;
               }
-              if (trimmedValue.isEmpty) {
-                return null;
-              }
-
-              // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
-              if (trimmedValue.length < 7) {
+              // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+              if (trimmedValue.length < 10) {
                 return LocaleKeys.declareInfo_birthDayChildInvalid.tr;
               }
 
@@ -404,7 +390,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                 controller: controller.numberChildCtrl,
                 isRequired: true,
                 maxLengthInputForm: 1,
-                onChanged: (p0) {},
               ).paddingOnly(bottom: AppDimens.paddingSmall);
             },
           );
@@ -440,7 +425,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                 controller: controller.bhytCardCodeChildCtrl,
                 isRequired: true,
                 maxLengthInputForm: 50,
-                onChanged: (p0) {},
               ).paddingOnly(bottom: AppDimens.paddingSmall);
             },
           );
@@ -473,7 +457,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           hintText: LocaleKeys.declareInfo_countDayHint.tr,
           inputFormatters: InputFormatterEnum.digitsOnly,
           textInputType: TextInputType.number,
-          onChanged: (value) {},
         );
       },
     );
@@ -489,9 +472,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         // Nếu bắt buộc và không nhập thì báo lỗi
         if ((trimmedValue == null || trimmedValue.isEmpty)) {
           return LocaleKeys.declareInfo_fromDateUnitEmpty.tr;
-        }
-        if (trimmedValue.isEmpty) {
-          return null;
         }
 
         // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
@@ -655,7 +635,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                   UtilWidget.buildCardBottomSheetSelect2<HospitalLine630aModel>(
                 fieldKey: fieldKey,
                 validator: validator,
-                // autovalidateMode: controller.tk1State.autoValidateMode.value,
                 label: LocaleKeys.declareInfo_hospitalLine.tr,
                 hintText: LocaleKeys.declareInfo_hospitalLineSelect.tr,
                 funcSelect: (didChange) async {
@@ -706,7 +685,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               () => UtilWidget.buildCardBottomSheetSelect2<LongDiease630aModel>(
                 fieldKey: fieldKey,
                 validator: validator,
-                // autovalidateMode: controller.tk1State.autoValidateMode.value,
                 label: LocaleKeys.declareInfo_selectDiseaseCode.tr,
                 hintText: LocaleKeys.declareInfo_selectDiseaseCodeHint.tr,
                 funcSelect: (didChange) async {
@@ -745,14 +723,10 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return const SizedBox.shrink();
         }
         return CardInputTextFormWithLabel(
-          validator: (p0) {
-            return null;
-          },
           hintText: LocaleKeys.declareInfo_diseaseNameHint.tr,
           labelText: LocaleKeys.declareInfo_diseaseName.tr,
           controller: controller.diseaseNameTextCtrl,
           maxLengthInputForm: 1000,
-          onChanged: (p0) {},
         ).paddingOnly(bottom: AppDimens.paddingSmall);
       },
     );
@@ -766,14 +740,10 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return const SizedBox.shrink();
         }
         return CardInputTextFormWithLabel(
-          validator: (p0) {
-            return null;
-          },
           hintText: LocaleKeys.declareInfo_serialNumberHint.tr,
           labelText: LocaleKeys.declareInfo_serialNumber.tr,
           controller: controller.serialNumberCtrl,
           maxLengthInputForm: 30,
-          onChanged: (p0) {},
         ).paddingOnly(bottom: AppDimens.paddingSmall);
       },
     );
@@ -876,9 +846,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
   // Mã hồ sơ
   Widget _buildInputFileCode() {
     return CardInputTextFormWithLabel(
-      validator: (p0) {
-        return null;
-      },
       hintText: LocaleKeys.declareInfo_fileCodeHint.tr,
       labelText: LocaleKeys.declareInfo_fileCode.tr,
       controller: controller.fileCodeTextCtrl,
@@ -889,9 +856,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
   // Ghi chú
   Widget _buildInputNote() {
     return CardInputTextFormWithLabel(
-      validator: (p0) {
-        return null;
-      },
       hintText: LocaleKeys.declareInfo_noteHint.tr,
       labelText: LocaleKeys.declareInfo_note.tr,
       controller: controller.noteTextCtrl,

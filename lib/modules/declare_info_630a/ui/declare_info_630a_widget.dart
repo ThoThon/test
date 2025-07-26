@@ -27,12 +27,12 @@ extension DeclareInfo630aWidget on DeclareInfo630aPage {
             ),
           ),
         ),
-        _buildButtonSave(),
+        _buildSaveButton(),
       ],
     ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
   }
 
-  Widget _buildButtonSave() {
+  Widget _buildSaveButton() {
     return KeyboardVisibilityBuilder(
       builder: (p0, isKeyboardVisible) {
         if (isKeyboardVisible) {

@@ -140,7 +140,6 @@ class DeclarationPeriodController extends BaseGetxController {
     Get.toNamed(
       AppRoutes.staffList.path,
       arguments: StaffListArgument(
-        period: period.period.toString(),
         declarationPeriodId: period.id,
         procedureType: period.procedureType,
       ),

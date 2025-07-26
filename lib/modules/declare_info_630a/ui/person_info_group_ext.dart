@@ -79,7 +79,6 @@ extension PersonInfoGroupWidgetExt on DeclareInfo630aPage {
           controller: controller.fullNameTextCtrl,
           isRequired: true,
           maxLengthInputForm: 100,
-          onChanged: (p0) {},
         );
       },
     );
@@ -111,7 +110,6 @@ extension PersonInfoGroupWidgetExt on DeclareInfo630aPage {
           hintText: LocaleKeys.declareInfo_inputBhxhCode.tr,
           inputFormatters: InputFormatterEnum.digitsOnly,
           textInputType: TextInputType.number,
-          onChanged: (value) {},
         );
       },
     );
@@ -120,9 +118,6 @@ extension PersonInfoGroupWidgetExt on DeclareInfo630aPage {
   // Số CCCD
   Widget _buildInputCCCD() {
     return CardInputTextFormWithLabel(
-      validator: (p0) {
-        return null;
-      },
       labelText: LocaleKeys.declareInfo_cccd.tr,
       controller: controller.cccdTextCtrl,
       hintText: LocaleKeys.declareInfo_inputCCCD.tr,
@@ -134,9 +129,6 @@ extension PersonInfoGroupWidgetExt on DeclareInfo630aPage {
   // Mã nhân viên
   Widget _buildStaffCode() {
     return CardInputTextFormWithLabel(
-      validator: (p0) {
-        return null;
-      },
       labelText: LocaleKeys.declareInfo_staffCode.tr,
       controller: controller.staffCodeTextCtrl,
       hintText: LocaleKeys.declareInfo_inputStaffCode.tr,

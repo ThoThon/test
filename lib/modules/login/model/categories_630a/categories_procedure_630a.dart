@@ -1,4 +1,4 @@
-import 'categories_630a.src.dart';
+import 'categories_630a_src.dart';
 
 class CategoriesProcedure630a {
   // Hình thức kê khai
