@@ -7,7 +7,7 @@ import 'package:v_bhxh/clean/shared/exceptions/base/app_exception_wrapper.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
 import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 import 'package:v_bhxh/clean/shared/exceptions/uncaught/app_uncaught_exception.dart';
-import 'package:v_bhxh/clean/shared/utils/logger.dart';
+import 'package:v_bhxh/shares/function/logger.dart';
 
 /// typedef action for [buildState] method
 typedef ActionCallback = FutureOr<void> Function();
