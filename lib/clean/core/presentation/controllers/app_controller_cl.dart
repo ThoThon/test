@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:v_bhxh/clean/core/domain/entity/account_info.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 
 class AppControllerCl extends BaseGetClController {
+  final accountInfo = Rxn<AccountInfo>();
+
   @override
   void onInit() {
     super.onInit();

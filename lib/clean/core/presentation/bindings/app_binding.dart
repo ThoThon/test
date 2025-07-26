@@ -21,6 +21,7 @@ class AppBinding extends BaseBindings {
 
   void _bindingMappers() {
     Get.lazyPut(() => LoginRequestDataMapper(), fenix: true);
+    Get.lazyPut(() => AccountInfoDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

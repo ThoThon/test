@@ -1,6 +1,6 @@
 import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
-class LoginRequest extends Entity {
+class LoginRequest implements Entity {
   final String username;
   final String password;
 
