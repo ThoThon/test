@@ -139,7 +139,7 @@ class OtherInfoController extends BaseGetxController {
 
     branchBankCtrl.text = detail.chiNhanh;
 
-    unitHeadCtrl.text = detail.chiNhanh;
+    unitHeadCtrl.text = detail.thuTruongDonVi;
 
     reasonExplanationCtrl.text = detail.lyDoNopCham;
   }
