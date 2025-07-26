@@ -25,6 +25,7 @@ abstract class BaseGetClController extends GetxController {
 
   final isLoading = false.obs;
   final isLoadingOverlay = false.obs;
+  final appExceptionWrapper = Rxn<AppExceptionWrapper>(null);
 
   /// [action] Nếu bên trong hàm action có gọi hàm bất đồng bộ thì
   /// `BẮT BUỘC` phải `await` để `buildState` có thể bắt được lỗi nếu xảy ra
@@ -67,14 +68,17 @@ abstract class BaseGetClController extends GetxController {
       }
 
       if (handleError) {
-        // Tự động xử lý exception đã biết
-        _exceptionHandler.handleException(
-          AppExceptionWrapper(
-            appException: unHandledException ?? appException,
-            stackTrace: stackTrace,
-            overrideMessage: overrideErrorMessage,
-          ),
+        final exceptionWrapper = AppExceptionWrapper(
+          appException: unHandledException ?? appException,
+          stackTrace: stackTrace,
+          overrideMessage: overrideErrorMessage,
         );
+
+        // Lưu lại exception để có thể dùng ở nới khác nếu cần
+        appExceptionWrapper.value = exceptionWrapper;
+
+        // Tự động xử lý exception đã biết
+        _exceptionHandler.handleException(exceptionWrapper);
       }
     } finally {
       if (hideLoadingOnFinally) {
