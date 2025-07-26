@@ -679,6 +679,7 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   Future<void> addFamilyMember() async {
+    KeyBoard.hide();
     final result = await Get.toNamed(AppRoutes.familyMemberDetail.path);
     if (result is FamilyMember) {
       tk1State.familyMembers.add(result);
