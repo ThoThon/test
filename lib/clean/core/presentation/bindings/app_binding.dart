@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
-import 'package:v_bhxh/clean/core/presentation/controllers/app_controller_cl.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
@@ -72,7 +72,7 @@ class AppBinding extends BaseBindings {
 
   @override
   void bindingsController() {
-    Get.put(AppControllerCl(), permanent: true);
+    Get.put(AppController(), permanent: true);
   }
 
   @override

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:v_bhxh/clean/core/presentation/controllers/app_controller_cl.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/shared/exceptions/base/app_exception.dart';
 import 'package:v_bhxh/clean/shared/exceptions/base/app_exception_wrapper.dart';
@@ -20,7 +20,7 @@ typedef OnFinallyCallback = FutureOr<void> Function();
 
 abstract class BaseGetClController extends GetxController {
   late final AppNavigator nav;
-  late final AppControllerCl appCtrl;
+  late final AppController appCtrl;
   late final _exceptionHandler = ExceptionHandler(nav: nav);
 
   final isLoading = false.obs;

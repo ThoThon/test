@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 
-class AppControllerCl extends BaseGetClController {
+class AppController extends BaseGetClController {
   final accountInfo = Rxn<AccountInfo>();
   final declarationTypes = <DeclarationType>{}.obs;
   final ethnics = <Ethnic>{}.obs;

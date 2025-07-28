@@ -3,6 +3,7 @@ import 'package:v_bhxh/modules/login/model/declaration_type_model.dart';
 
 import 'base/entity.dart';
 
+/// Phương án điều chỉnh
 class AdjustmentPlan extends Equatable implements Entity {
   final String id;
   final String name;

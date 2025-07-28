@@ -1,5 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 
 import '../../../modules/src.dart';
 import '../../../shares/package/export_package.dart';
@@ -8,6 +9,9 @@ import '../../model/base_model.src.dart';
 import '../../repository_base/repository_base.src.dart';
 
 class BaseGetxController extends GetxController {
+  // TODO: Xóa sau khi chuyển sang clean
+  late final appCtrl = Get.find<AppController>();
+
   /// Show loading button
   RxBool isShowLoading = false.obs;
   String errorContent = '';

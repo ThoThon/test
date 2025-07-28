@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:v_bhxh/clean/core/presentation/controllers/app_controller_cl.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
@@ -9,7 +9,7 @@ import 'package:v_bhxh/core/theme/colors.dart';
 
 mixin GetPageMixin<T extends BaseGetClController> on GetView<T> {
   late final nav = Get.find<AppNavigator>();
-  late final appCtrl = Get.find<AppControllerCl>();
+  late final appCtrl = Get.find<AppController>();
 
   @override
   T get controller => _controller;
