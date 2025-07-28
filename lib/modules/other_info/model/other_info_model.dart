@@ -8,7 +8,7 @@ class OtherInfoModel {
   final String chiNhanh;
   final String thuTruongDonVi;
   final String lyDoNopCham;
-  
+
   OtherInfoModel({
     this.id,
     required this.kyKeKhaiId,

@@ -368,7 +368,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 selectedDate = await DatePickerUtils.showCalendarPicker(
                   title: LocaleKeys.dialog_selectYear.tr,
                   dateFormat: PATTERN_13,
-                  dateTimeInit: convertStringToDateSafe(
+                  dateTimeInit: convertStringToDateStrict(
                           controller.tk1State.dateOfBirthTextCtrl.text,
                           PATTERN_13) ??
                       DateTime.now(),
@@ -378,7 +378,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 selectedDate = await DatePickerUtils.showCalendarPicker(
                   title: LocaleKeys.dialog_selectMonthYear.tr,
                   dateFormat: PATTERN_12,
-                  dateTimeInit: convertStringToDateSafe(
+                  dateTimeInit: convertStringToDateStrict(
                           controller.tk1State.dateOfBirthTextCtrl.text,
                           PATTERN_12) ??
                       DateTime.now(),
@@ -391,7 +391,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                     horizontal: AppDimens.padding32,
                   ),
                   dateFormat: PATTERN_1,
-                  dateTimeInit: convertStringToDateSafe(
+                  dateTimeInit: convertStringToDateStrict(
                           controller.tk1State.dateOfBirthTextCtrl.text,
                           PATTERN_1) ??
                       DateTime.now(),

@@ -113,7 +113,6 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
               if (trimmedValue == null || trimmedValue.isEmpty) {
                 return LocaleKeys.declareInfo_bankNumberEmpty.tr;
               }
-
               return null;
             },
             builder: (fieldKey, validator) {
@@ -124,6 +123,8 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                   autovalidateMode: controller.autoValidateMode.value,
                   isRequired: controller.isATMpayment,
                   hintText: LocaleKeys.declareInfo_bankNumberHint.tr,
+                  inputFormatters:
+                      InputFormatterEnum.textNormalWithoutDiacritics,
                   labelText: LocaleKeys.declareInfo_bankNumber.tr,
                   controller: controller.bankNumberCtrl,
                   maxLengthInputForm: 50,
@@ -329,7 +330,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                     const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
                 title: LocaleKeys.dialog_selectDayMonthYear.tr,
                 dateFormat: PATTERN_1,
-                dateTimeInit: convertStringToDateSafe(
+                dateTimeInit: convertStringToDateStrict(
                       controller.resolvedDateCtrl.text,
                       PATTERN_1,
                     ) ??

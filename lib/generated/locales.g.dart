@@ -730,6 +730,7 @@ class LocaleKeys {
   static const declareInfo_adjustReason = 'declareInfo_adjustReason';
   static const declareInfo_adjustReasonHint = 'declareInfo_adjustReasonHint';
   static const declareInfo_adjustReasonEmpty = 'declareInfo_adjustReasonEmpty';
+  static const declareInfo_attachPaper = 'declareInfo_attachPaper';
   static const declareInfo_saveButton = 'declareInfo_saveButton';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
@@ -1782,6 +1783,7 @@ class Locales {
     'declareInfo_adjustReason': 'Lý do điều chỉnh',
     'declareInfo_adjustReasonHint': 'Nhập lý do điều chỉnh',
     'declareInfo_adjustReasonEmpty': 'Lý do điều chỉnh không được bỏ trống',
+    'declareInfo_attachPaper': 'Gửi kèm hồ sơ giấy',
     'declareInfo_saveButton': 'Lưu',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
