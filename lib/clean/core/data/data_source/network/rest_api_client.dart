@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:v_bhxh/clean/core/data/model/base/server_error.dart';
+import 'package:v_bhxh/clean/shared/constants/const.dart';
 import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 
 enum RestMethod { get, post, put, patch, delete }
@@ -48,7 +49,7 @@ class RestApiClient {
   }
 
   void _checkServerError(dynamic data) {
-    if (data is Map<String, dynamic> && data['code'] == '01') {
+    if (data is Map<String, dynamic> && data['code'] == responseCodeFailure) {
       final serverError = ServerError.fromJson(data);
       throw RemoteException(
         kind: RemoteExceptionKind.serverDefined,
