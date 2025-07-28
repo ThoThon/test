@@ -8,7 +8,8 @@ class OtherInfoModel {
   final String chiNhanh;
   final String thuTruongDonVi;
   final String lyDoNopCham;
-  
+  final bool guiKemGiay;
+
   OtherInfoModel({
     this.id,
     required this.kyKeKhaiId,
@@ -19,6 +20,7 @@ class OtherInfoModel {
     required this.chiNhanh,
     required this.thuTruongDonVi,
     required this.lyDoNopCham,
+    required this.guiKemGiay,
   });
 
   factory OtherInfoModel.fromJson(Map<String, dynamic> json) {
@@ -32,6 +34,7 @@ class OtherInfoModel {
       chiNhanh: json['chiNhanh'] ?? '',
       thuTruongDonVi: json['thuTruongDonVi'] ?? '',
       lyDoNopCham: json['lyDoNopCham'] ?? '',
+      guiKemGiay: json['guiKemGiay'] ?? false,
     );
   }
 
@@ -46,6 +49,7 @@ class OtherInfoModel {
       'chiNhanh': chiNhanh,
       'thuTruongDonVi': thuTruongDonVi,
       'lyDoNopCham': lyDoNopCham,
+      'guiKemGiay': guiKemGiay,
     };
   }
 }

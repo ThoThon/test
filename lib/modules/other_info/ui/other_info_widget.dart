@@ -28,6 +28,13 @@ extension OtherInfoWidget on OtherInfoPage {
                     ),
                   ],
                 ),
+                UtilWidget.buildCheckboxWithLabel(
+                  label: LocaleKeys.declareInfo_attachPaper.tr,
+                  value: controller.isAttachPaper.value,
+                  onChanged: (value) {
+                    controller.isAttachPaper.value = value;
+                  },
+                ),
                 sdsSBHeight12,
                 _buildReviewPeriodInput(),
                 sdsSBHeight12,
