@@ -11,9 +11,17 @@ class LoginUseCase extends UseCase<LoginRequest, String> {
 
   @override
   Future<String> execute(LoginRequest input) async {
+    // if (input.username.isEmpty) {
+    //   throw LoginException(kind: LoginExceptionKind.invalidUsernameOrPassword);
+    // }
+
     final accessToken = await _loginRepository.login(
       request: input,
     );
+
+    // if (accessToken != null) {
+    //   throw LoginException(kind: LoginExceptionKind.invalidAccessToken);
+    // }
 
     return accessToken ?? '';
   }

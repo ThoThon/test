@@ -62,7 +62,8 @@ class ExceptionHandler {
         break;
       case AppExceptionType.custom:
       case AppExceptionType.uncaught:
-        nav.showSnackBar(LocaleKeys.app_somethingWentWrong.tr);
+        nav.showSnackBar(appExceptionWrapper.appException.errorMessage ??
+            LocaleKeys.app_somethingWentWrong.tr);
         break;
     }
   }
