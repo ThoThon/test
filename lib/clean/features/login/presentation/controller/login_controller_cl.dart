@@ -94,6 +94,10 @@ class LoginControllerCl extends BaseGetClController {
     appCtrl.totalUnread.value = totalUnread;
   }
 
+  void goToRegisterCodePage() {
+    nav.toNamed(AppRoutesCl.registerCode.path);
+  }
+
   @override
   void onClose() {
     usernameTextCtrl.dispose();

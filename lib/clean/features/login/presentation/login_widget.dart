@@ -105,7 +105,7 @@ extension LoginWidget on LoginPage {
       ),
       child: InkWell(
         onTap: () {
-          Get.toNamed(AppRoutesCl.forgotLogin.path);
+          nav.toNamed(AppRoutesCl.forgotLogin.path);
         },
         child: SDSBuildText(
           LocaleKeys.login_forgetPassword.tr,
@@ -189,7 +189,7 @@ extension LoginWidget on LoginPage {
       textStyle: AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       side: const BorderSide(width: 1, color: AppColors.primaryColor),
       onPressed: () {
-        // controller.goToRegisterCodePage();
+        controller.goToRegisterCodePage();
       },
     );
   }
