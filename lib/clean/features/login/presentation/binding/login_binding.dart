@@ -10,26 +10,14 @@ class LoginBinding extends BaseBindings {
   @override
   void bindingsController() {
     Get.lazyPut(
-      () => LoginControllerCl(
-        sl(),
-        sl(),
-        sl(),
-        sl(),
-        sl(),
-      ),
+      () => LoginControllerCl(sl(), sl(), sl(), sl(), sl(), sl(), sl()),
     );
   }
 
   @override
   void bindingsRepository() {
     Get.lazyPut<LoginRepository>(
-      () => LoginRepositoryImpl(
-        sl(),
-        sl(),
-        sl(),
-        sl(),
-        sl(),
-      ),
+      () => LoginRepositoryImpl(sl(), sl(), sl(), sl(), sl()),
     );
   }
 
@@ -40,5 +28,7 @@ class LoginBinding extends BaseBindings {
     Get.lazyPut(() => GetAccountInfoUseCase(sl()));
     Get.lazyPut(() => GetD02CategoriesUseCase(sl()));
     Get.lazyPut(() => GetUnreadNotificationCountUseCase(sl()));
+    Get.lazyPut(() => GetLastUsernameUseCase(sl()));
+    Get.lazyPut(() => SaveCompanyNameUseCase(sl()));
   }
 }

@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
-import 'package:v_bhxh/clean/features/login/domain/usecase/get_account_info_use_case.dart';
-import 'package:v_bhxh/clean/features/login/domain/usecase/get_d02_categories_use_case.dart';
-import 'package:v_bhxh/clean/features/login/domain/usecase/get_unread_notification_count_use_case.dart';
-import 'package:v_bhxh/clean/features/login/domain/usecase/login_use_case.dart';
-import 'package:v_bhxh/clean/features/login/domain/usecase/save_auth_info_use_case.dart';
+import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
-import 'package:v_bhxh/core/values/hive_key.dart';
 
 class LoginControllerCl extends BaseGetClController {
   final LoginUseCase _loginUseCase;
   final SaveAuthInfoUseCase _saveAuthInfoUseCase;
   final GetAccountInfoUseCase _getAccountInfoUseCase;
+  final GetLastUsernameUseCase _getLastUsernameUseCase;
+  final SaveCompanyNameUseCase _saveCompanyNameUseCase;
   final GetD02CategoriesUseCase _getD02CategoriesUseCase;
   final GetUnreadNotificationCountUseCase _getUnreadNotificationCountUseCase;
 
   final formKey = GlobalKey<FormState>();
-  final usernameTextCtrl = TextEditingController(
-      text: AppHive.instance.get<String>(HiveKeys.keyUsername) ?? '');
+  late final usernameTextCtrl =
+      TextEditingController(text: _getLastUsernameUseCase.execute() ?? '');
   final passwordTextCtrl = TextEditingController();
   final isHaveUsername = false.obs;
 
@@ -28,6 +24,8 @@ class LoginControllerCl extends BaseGetClController {
     this._loginUseCase,
     this._saveAuthInfoUseCase,
     this._getAccountInfoUseCase,
+    this._getLastUsernameUseCase,
+    this._saveCompanyNameUseCase,
     this._getD02CategoriesUseCase,
     this._getUnreadNotificationCountUseCase,
   );
@@ -74,6 +72,7 @@ class LoginControllerCl extends BaseGetClController {
   Future<void> _getAccountInfo() async {
     final accountInfo = await _getAccountInfoUseCase.execute();
     appCtrl.accountInfo.value = accountInfo;
+    await _saveCompanyNameUseCase.execute(accountInfo.tenToChuc);
   }
 
   Future<void> _getD02Categories() async {

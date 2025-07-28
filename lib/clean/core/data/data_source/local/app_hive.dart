@@ -5,6 +5,11 @@ const _boxName = 'app_local_storage';
 
 class AppHive {
   AppHive._();
+
+  // Tạm thời sử dụng singleton để tránh thay đổi quá nhiều code
+  // TODO: Bỏ singleton để chuyển về dependency injection bình thường
+  @Deprecated(
+      "Không dùng trực tiếp qua AppHive.instance, dùng thông qua sl() để inject vào các class cần thiết")
   static final AppHive instance = AppHive._();
 
   late final Box _box;
