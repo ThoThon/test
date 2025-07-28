@@ -213,7 +213,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                   const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
               title: LocaleKeys.dialog_selectDayMonthYear.tr,
               dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
+              dateTimeInit: convertStringToDateStrict(
                     controller.fromDateCtrl.text,
                     PATTERN_1,
                   ) ??
@@ -282,7 +282,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                   const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
               title: LocaleKeys.dialog_selectDayMonthYear.tr,
               dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
+              dateTimeInit: convertStringToDateStrict(
                     controller.toDateCtrl.text,
                     PATTERN_1,
                   ) ??
@@ -330,7 +330,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
             builder: (fieldKey, validator) {
               return CardInputSelectDateWithLabel(
                 fieldKey: fieldKey,
-                autovalidateMode: controller.autoValidateMode.value,
                 validator: validator,
                 labelText: LocaleKeys.declareInfo_birthDayChild.tr,
                 inputFormatters: InputFormatterEnum.dateFullBirthDay,
@@ -344,7 +343,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                         horizontal: AppDimens.padding32),
                     title: LocaleKeys.dialog_selectDayMonthYear.tr,
                     dateFormat: PATTERN_1,
-                    dateTimeInit: convertStringToDateSafe(
+                    dateTimeInit: convertStringToDateStrict(
                           controller.birthDayChildCtrl.text,
                           PATTERN_1,
                         ) ??
@@ -384,7 +383,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               return CardInputTextFormWithLabel(
                 fieldKey: fieldKey,
                 validator: validator,
-                autovalidateMode: controller.autoValidateMode.value,
                 hintText: LocaleKeys.declareInfo_numberChildHint.tr,
                 labelText: LocaleKeys.declareInfo_numberChild.tr,
                 controller: controller.numberChildCtrl,
@@ -421,7 +419,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               return CardInputTextFormWithLabel(
                 fieldKey: fieldKey,
                 validator: validator,
-                autovalidateMode: controller.autoValidateMode.value,
                 hintText: LocaleKeys.declareInfo_bhytCardCodeHint.tr,
                 labelText: LocaleKeys.declareInfo_bhytCardCode.tr,
                 controller: controller.bhytCardCodeChildCtrl,
@@ -509,7 +506,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                   const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
               title: LocaleKeys.dialog_selectDayMonthYear.tr,
               dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
+              dateTimeInit: convertStringToDateStrict(
                     controller.fromDateUnitTextCtrl.text,
                     PATTERN_1,
                   ) ??
