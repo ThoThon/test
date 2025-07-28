@@ -2,6 +2,7 @@
 - [Appmobile]_Thủ tục 630a_Lỗi fill tên chủ tài khoản theo số tài khoản - BHW-2839
 - [Appmobile]_Thủ tục 630a_Sửa lại màu toast gợi ý - BHW-2840
 - [Appmobile]_Thủ tục 630a_Bỏ validate trường thông tin trong form kê khai - BHW-2841
+- [Appmobile]_Thủ tục 630a: Chỉnh kiểu dữ liệu nhập tại Trường Số con - BHW-2842
 
 26/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Màn TK1: Lỗi focus khi nhấn vào [Thêm thành viên] - BHW-2838
