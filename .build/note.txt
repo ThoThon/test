@@ -5,6 +5,7 @@
 - [Appmobile]_Thủ tục 630a: Chỉnh kiểu dữ liệu nhập tại Trường Số con - BHW-2842
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị text label trường Mã thẻ BHYT của con - BHW-2846
 - [Appmobile]_Thủ tục 630a: Lỗi Validate trường Ngày đã giải quyết - BHW-2847
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613, 630a: Lỗi focus hộp lịch - BHW-2849
 
 26/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Màn TK1: Lỗi focus khi nhấn vào [Thêm thành viên] - BHW-2838

@@ -213,7 +213,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                   const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
               title: LocaleKeys.dialog_selectDayMonthYear.tr,
               dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
+              dateTimeInit: convertStringToDateStrict(
                     controller.fromDateCtrl.text,
                     PATTERN_1,
                   ) ??
@@ -282,7 +282,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                   const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
               title: LocaleKeys.dialog_selectDayMonthYear.tr,
               dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
+              dateTimeInit: convertStringToDateStrict(
                     controller.toDateCtrl.text,
                     PATTERN_1,
                   ) ??
@@ -344,7 +344,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                         horizontal: AppDimens.padding32),
                     title: LocaleKeys.dialog_selectDayMonthYear.tr,
                     dateFormat: PATTERN_1,
-                    dateTimeInit: convertStringToDateSafe(
+                    dateTimeInit: convertStringToDateStrict(
                           controller.birthDayChildCtrl.text,
                           PATTERN_1,
                         ) ??
@@ -509,7 +509,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                   const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
               title: LocaleKeys.dialog_selectDayMonthYear.tr,
               dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
+              dateTimeInit: convertStringToDateStrict(
                     controller.fromDateUnitTextCtrl.text,
                     PATTERN_1,
                   ) ??
