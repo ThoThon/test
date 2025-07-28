@@ -74,7 +74,16 @@ class LoginControllerCl extends BaseGetClController {
 
   Future<void> _getD02Categories() async {
     final d02Categories = await _getD02CategoriesUseCase.execute();
-    appCtrl.declarationTypes.assignAll(d02Categories.declarationTypes);
+    // setter .value. của RxSet là protected nên sẽ sử dụng assignAll
+    appCtrl
+      ..declarationTypes.assignAll(d02Categories.declarationTypes)
+      ..ethnics.assignAll(d02Categories.ethnics)
+      ..nations.assignAll(d02Categories.nations)
+      ..provinces.assignAll(d02Categories.provinces)
+      ..relationships.assignAll(d02Categories.relationships)
+      ..positions.assignAll(d02Categories.positions)
+      ..birthTypes.assignAll(d02Categories.birthTypes)
+      ..receiveResults.assignAll(d02Categories.receiveResults);
   }
 
   @override

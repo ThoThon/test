@@ -32,7 +32,18 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => PositionDataMapper(), fenix: true);
     Get.lazyPut(() => BirthTypeDataMapper(), fenix: true);
     Get.lazyPut(() => ReceiveResultDataMapper(), fenix: true);
-    Get.lazyPut(() => D02CategoriesDataMapper(sl()), fenix: true);
+    Get.lazyPut(
+        () => D02CategoriesDataMapper(
+              sl(),
+              sl(),
+              sl(),
+              sl(),
+              sl(),
+              sl(),
+              sl(),
+              sl(),
+            ),
+        fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

@@ -7,6 +7,13 @@ import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controlle
 class AppControllerCl extends BaseGetClController {
   final accountInfo = Rxn<AccountInfo>();
   final declarationTypes = <DeclarationType>{}.obs;
+  final ethnics = <Ethnic>{}.obs;
+  final nations = <Nation>{}.obs;
+  final provinces = <Province>{}.obs;
+  final relationships = <Relationship>{}.obs;
+  final positions = <Position>{}.obs;
+  final birthTypes = <BirthType>{}.obs;
+  final receiveResults = <ReceiveResult>{}.obs;
 
   @override
   void onInit() {
