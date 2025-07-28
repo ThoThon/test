@@ -1,4 +1,5 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
+import 'package:v_bhxh/modules/declare/declaration_list/model/history_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -137,7 +138,12 @@ class RegisterServiceController extends BaseGetxController {
         Get.until(ModalRoute.withName(AppRoutes.home.path));
       },
       onConfirm: () {
-        Get.toNamed(AppRoutes.history.path);
+        Get.toNamed(
+          AppRoutes.history.path,
+          arguments: HistoryArgument(
+            selectedTab: HistoryTabEnum.register_transaction,
+          ),
+        );
       },
     );
   }
