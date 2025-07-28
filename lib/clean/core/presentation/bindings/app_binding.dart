@@ -6,6 +6,7 @@ import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
 import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
 import 'package:v_bhxh/clean/shared/utils/app_info.dart';
+import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/shares/mapper/mapper_src.dart';
 
 import 'base_bindings.dart';
@@ -23,8 +24,8 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => LoginRequestDataMapper(), fenix: true);
     Get.lazyPut(() => AccountInfoDataMapper(), fenix: true);
     Get.lazyPut(() => AdjustmentPlanDataMapper(), fenix: true);
-    Get.lazyPut(() => DeclarationTypeDataMapper(Get.find()), fenix: true);
-    Get.lazyPut(() => D02CategoriesDataMapper(Get.find()), fenix: true);
+    Get.lazyPut(() => DeclarationTypeDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => D02CategoriesDataMapper(sl()), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {
@@ -40,15 +41,15 @@ class AppBinding extends BaseBindings {
       Get.putAsync(AppInfo().init, permanent: true)
     ].wait;
     Get.put(AppNavigator(), permanent: true);
-    Get.put(ExceptionHandler(appNavigator: Get.find()), permanent: true);
+    Get.put(ExceptionHandler(appNavigator: sl()), permanent: true);
 
-    Get.put(HeaderInterceptor(Get.find()), permanent: true);
-    Get.put(AccessTokenInterceptor(Get.find()), permanent: true);
+    Get.put(HeaderInterceptor(sl()), permanent: true);
+    Get.put(AccessTokenInterceptor(sl()), permanent: true);
     Get.put(
-      AuthAppServerApiClient(Get.find(), Get.find(), Get.find()),
+      AuthAppServerApiClient(sl(), sl(), sl()),
       permanent: true,
     );
-    Get.put(NonAuthAppServerApiClient(Get.find(), Get.find()), permanent: true);
+    Get.put(NonAuthAppServerApiClient(sl(), sl()), permanent: true);
   }
 
   @override

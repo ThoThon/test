@@ -7,16 +7,17 @@ import 'package:v_bhxh/clean/features/login/domain/usecase/get_d02_categories_us
 import 'package:v_bhxh/clean/features/login/domain/usecase/login_use_case.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/save_auth_info_use_case.dart';
 import 'package:v_bhxh/clean/features/login/presentation/controller/login_controller_cl.dart';
+import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 
 class LoginBinding extends BaseBindings {
   @override
   void bindingsController() {
     Get.lazyPut(
       () => LoginControllerCl(
-        Get.find(),
-        Get.find(),
-        Get.find(),
-        Get.find(),
+        sl(),
+        sl(),
+        sl(),
+        sl(),
       ),
     );
   }
@@ -25,20 +26,20 @@ class LoginBinding extends BaseBindings {
   void bindingsRepository() {
     Get.lazyPut<LoginRepository>(
       () => LoginRepositoryImpl(
-        Get.find(),
-        Get.find(),
-        Get.find(),
-        Get.find(),
-        Get.find(),
+        sl(),
+        sl(),
+        sl(),
+        sl(),
+        sl(),
       ),
     );
   }
 
   @override
   void bindingsUseCase() {
-    Get.lazyPut(() => LoginUseCase(Get.find()));
-    Get.lazyPut(() => SaveAuthInfoUseCase(Get.find()));
-    Get.lazyPut(() => GetAccountInfoUseCase(Get.find()));
-    Get.lazyPut(() => GetD02CategoriesUseCase(Get.find()));
+    Get.lazyPut(() => LoginUseCase(sl()));
+    Get.lazyPut(() => SaveAuthInfoUseCase(sl()));
+    Get.lazyPut(() => GetAccountInfoUseCase(sl()));
+    Get.lazyPut(() => GetD02CategoriesUseCase(sl()));
   }
 }
