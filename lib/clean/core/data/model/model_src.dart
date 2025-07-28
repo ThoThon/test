@@ -1,2 +1,12 @@
 export 'base/base_src.dart';
 export 'account_info_data.dart';
+export 'adjustment_plan_data.dart';
+export 'declaration_type_data.dart';
+export 'd02_categories_data.dart';
+export 'ethnic_data.dart';
+export 'nation_data.dart';
+export 'province_data.dart';
+export 'relationship_data.dart';
+export 'position_data.dart';
+export 'birth_type_data.dart';
+export 'receive_result_data.dart';

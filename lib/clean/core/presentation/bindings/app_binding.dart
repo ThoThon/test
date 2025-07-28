@@ -25,6 +25,13 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => AccountInfoDataMapper(), fenix: true);
     Get.lazyPut(() => AdjustmentPlanDataMapper(), fenix: true);
     Get.lazyPut(() => DeclarationTypeDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => EthnicDataMapper(), fenix: true);
+    Get.lazyPut(() => NationDataMapper(), fenix: true);
+    Get.lazyPut(() => ProvinceDataMapper(), fenix: true);
+    Get.lazyPut(() => RelationshipDataMapper(), fenix: true);
+    Get.lazyPut(() => PositionDataMapper(), fenix: true);
+    Get.lazyPut(() => BirthTypeDataMapper(), fenix: true);
+    Get.lazyPut(() => ReceiveResultDataMapper(), fenix: true);
     Get.lazyPut(() => D02CategoriesDataMapper(sl()), fenix: true);
   }
 
