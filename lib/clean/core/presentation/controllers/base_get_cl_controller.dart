@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/app_controller_cl.dart';
-import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
+import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/shared/exceptions/base/app_exception.dart';
 import 'package:v_bhxh/clean/shared/exceptions/base/app_exception_wrapper.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';

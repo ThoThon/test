@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/app_controller_cl.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
-import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
+import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/core/theme/colors.dart';
 
