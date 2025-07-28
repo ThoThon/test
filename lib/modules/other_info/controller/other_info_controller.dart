@@ -126,25 +126,28 @@ class OtherInfoController extends BaseGetxController {
       chiNhanh: branchBankCtrl.text,
       thuTruongDonVi: unitHeadCtrl.text,
       lyDoNopCham: reasonExplanationCtrl.text,
+      guiKemHoSoGiay: isAttachPaper.value,
     );
   }
 
   void mapOtherInfoDetail(OtherInfoModel detail) {
     id = detail.id;
 
-    reviewPeriodCtrl.text = detail.dotXetDuyet;
+    reviewPeriodCtrl.text = detail.dotXetDuyet.trim();
 
-    phoneNumberCtrl.text = detail.soDienThoai;
+    phoneNumberCtrl.text = detail.soDienThoai.trim();
 
-    accountNumberCtrl.text = detail.soTaiKhoan;
+    accountNumberCtrl.text = detail.soTaiKhoan.trim();
 
-    bankNameCtrl.text = detail.moTai;
+    bankNameCtrl.text = detail.moTai.trim();
 
-    branchBankCtrl.text = detail.chiNhanh;
+    branchBankCtrl.text = detail.chiNhanh.trim();
 
-    unitHeadCtrl.text = detail.thuTruongDonVi;
+    unitHeadCtrl.text = detail.thuTruongDonVi.trim();
 
-    reasonExplanationCtrl.text = detail.lyDoNopCham;
+    reasonExplanationCtrl.text = detail.lyDoNopCham.trim();
+
+    isAttachPaper.value = detail.guiKemHoSoGiay;
   }
 
   @override
