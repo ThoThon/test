@@ -62,19 +62,19 @@ class LoginControllerCl extends BaseGetClController {
           _getD02Categories(),
         ).wait;
 
-        appNavigator.offAllNamed(AppRoutesCl.home.path);
+        nav.offAllNamed(AppRoutesCl.home.path);
       },
     );
   }
 
   Future<void> _getAccountInfo() async {
     final accountInfo = await _getAccountInfoUseCase.execute();
-    appController.accountInfo.value = accountInfo;
+    appCtrl.accountInfo.value = accountInfo;
   }
 
   Future<void> _getD02Categories() async {
     final d02Categories = await _getD02CategoriesUseCase.execute();
-    appController.declarationTypes.assignAll(d02Categories.declarationTypes);
+    appCtrl.declarationTypes.assignAll(d02Categories.declarationTypes);
   }
 
   @override

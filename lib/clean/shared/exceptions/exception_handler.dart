@@ -10,10 +10,10 @@ import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/shares/function/logger.dart';
 
 class ExceptionHandler {
-  final AppNavigator appNavigator;
+  final AppNavigator nav;
 
   const ExceptionHandler({
-    required this.appNavigator,
+    required this.nav,
   });
 
   void handleException(
@@ -25,33 +25,33 @@ class ExceptionHandler {
         switch (exception.kind) {
           case RemoteExceptionKind.noInternet:
           case RemoteExceptionKind.timeout:
-            appNavigator.showSnackBar(
+            nav.showSnackBar(
               LocaleKeys.app_cannotConnectToServer.tr,
             );
             break;
           case RemoteExceptionKind.serverDefined:
             if (exception.httpErrorCode == HttpStatus.unauthorized) {
-              appNavigator.showSnackBar(
+              nav.showSnackBar(
                 'Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại',
               );
-              appNavigator.offAllNamed(AppRoutesCl.login.path);
+              nav.offAllNamed(AppRoutesCl.login.path);
               return;
             }
 
             if (appExceptionWrapper.overrideMessage != null) {
-              appNavigator.showSnackBar(
+              nav.showSnackBar(
                 appExceptionWrapper.overrideMessage!,
               );
               return;
             }
 
-            appNavigator.showSnackBar(
+            nav.showSnackBar(
               exception.serverError?.errorMessage ??
                   LocaleKeys.app_somethingWentWrong.tr,
             );
             break;
           case RemoteExceptionKind.network:
-            appNavigator.showSnackBar(LocaleKeys.app_cannotConnectToServer.tr);
+            nav.showSnackBar(LocaleKeys.app_cannotConnectToServer.tr);
             break;
           default:
             // Ko xử lý những exception ko cần thiết như cancellation,...
@@ -63,7 +63,7 @@ class ExceptionHandler {
         break;
       case AppExceptionType.custom:
       case AppExceptionType.uncaught:
-        appNavigator.showSnackBar(LocaleKeys.app_somethingWentWrong.tr);
+        nav.showSnackBar(LocaleKeys.app_somethingWentWrong.tr);
         break;
     }
   }
