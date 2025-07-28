@@ -665,7 +665,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
     );
   }
 
-  // Chọn/Nhập mã bệnh
+  // Chọn mã bệnh
   Widget _buildSelectDiseaseCode() {
     return Obx(
       () {

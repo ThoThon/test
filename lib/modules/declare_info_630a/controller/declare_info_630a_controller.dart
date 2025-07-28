@@ -112,7 +112,7 @@ class DeclareInfo630aController extends BaseGetxController {
 
   late final declareInfoRepository = DeclareInfoRepository(this);
 
-  final autoValidateMode = AutovalidateMode.disabled.obs;
+  final autoValidateMode = Rxn<AutovalidateMode>();
 
   final formKey = GlobalKey<FormState>();
 
