@@ -37,4 +37,8 @@ class AppController extends BaseGetClController {
       ),
     );
   }
+
+  void changeTheme() {}
+
+  void changeLanguage() {}
 }
