@@ -10,8 +10,6 @@ import '../../modules/declare/declaration_list/ui/declaration_list_page.dart';
 import '../../modules/declare/procedure_list/ui/procedure_list_page.dart';
 import '../../modules/declare/staff_list/ui/staff_list_page.dart';
 import '../../modules/home/src.dart';
-import '../../modules/splash/splash.src.dart';
-import '../../modules/splash/splash_page.dart';
 import '../../modules/src.dart';
 import '../../modules/view_pdf/ui/view_pdf_page.dart';
 import '../../shares/package/export_package.dart';
@@ -25,10 +23,6 @@ class RouteAppPage {
     GetPage(
       name: AppRoutes.routeDioLog.path,
       page: () => const HttpLogListWidget(),
-    ),
-    GetPage(
-      name: AppRoutes.splash.path,
-      page: () => SplashPage(),
     ),
     GetPage(
       name: AppRoutes.home.path,

@@ -12,7 +12,6 @@ enum AppRoutes {
   viewPdf,
 
   routeDioLog,
-  splash,
 
   ///Trang chủ
   home,
@@ -54,6 +53,6 @@ enum AppRoutes {
   declareInfo607;
 
   String get path {
-    return '/vbhxh_$name';
+    return '/$name';
   }
 }

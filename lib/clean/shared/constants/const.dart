@@ -1,3 +1,3 @@
-const connectTimeout = Duration(seconds: 30);
-const receiveTimeout = Duration(seconds: 30);
-const sendTimeout = Duration(seconds: 30);
+const connectTimeout = Duration(minutes: 1);
+const receiveTimeout = Duration(minutes: 1);
+const sendTimeout = Duration(minutes: 1);
