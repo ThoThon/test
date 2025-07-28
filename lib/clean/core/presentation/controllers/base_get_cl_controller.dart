@@ -50,7 +50,7 @@ abstract class BaseGetClController extends GetxController {
 
       await action();
     } catch (e, stackTrace) {
-      logger.e(e);
+      logger.e(e, stackTrace: stackTrace);
       final appException = e is AppException ? e : AppUncaughtException(e);
 
       if (appException.appExceptionType == AppExceptionType.remote) {
