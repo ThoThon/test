@@ -26,7 +26,7 @@ class LoginRepositoryImpl extends LoginRepository {
   );
 
   @override
-  Future<BaseResponseCl<String>> login({
+  Future<String?> login({
     required LoginRequest request,
   }) async {
     final response = await _nonAuthAppServerApiClient.request(
@@ -36,7 +36,9 @@ class LoginRepositoryImpl extends LoginRepository {
       cancelToken: cancelToken,
     );
 
-    return BaseResponseCl<String>.fromJson(response);
+    final data = BaseResponseCl<String>.fromJson(response);
+
+    return data.result;
   }
 
   @override

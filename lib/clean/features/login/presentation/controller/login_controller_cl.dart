@@ -36,8 +36,8 @@ class LoginControllerCl extends BaseGetClController {
     isHaveUsername.value = usernameTextCtrl.text.trim().isNotEmpty;
   }
 
-  Future<void> login() async {
-    await buildState(
+  Future<void> login() {
+    return buildState(
       showLoadingOverlay: true,
       action: () async {
         if (formKey.currentState?.validate() != true) {

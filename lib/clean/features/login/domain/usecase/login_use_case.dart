@@ -11,10 +11,10 @@ class LoginUseCase extends UseCase<LoginRequest, String> {
 
   @override
   Future<String> execute(LoginRequest input) async {
-    final response = await _loginRepository.login(
+    final accessToken = await _loginRepository.login(
       request: input,
     );
 
-    return response.result ?? '';
+    return accessToken ?? '';
   }
 }
