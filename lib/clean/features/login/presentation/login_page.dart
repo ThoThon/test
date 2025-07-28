@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:v_bhxh/assets.dart';
 import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/widget_src.dart';
+import 'package:v_bhxh/clean/features/login/domain/entity/login_validator.dart';
 import 'package:v_bhxh/clean/features/login/presentation/controller/login_controller_cl.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/core/const/app_text_style.dart';

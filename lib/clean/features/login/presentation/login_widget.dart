@@ -68,13 +68,7 @@ extension LoginWidget on LoginPage {
       maxLengthInputForm: 25,
       isShowCounterText: false,
       borderRadius: AppDimens.radius6,
-      validator: (value) {
-        final trimmedValue = value?.trim() ?? '';
-        if (trimmedValue.isEmpty) {
-          return LocaleKeys.login_userNameCannotEmpty.tr;
-        }
-        return null;
-      },
+      validator: LoginValidator.validateUsername,
     );
   }
 
@@ -87,13 +81,7 @@ extension LoginWidget on LoginPage {
       maxLengthInputForm: 50,
       obscureText: true,
       borderRadius: AppDimens.radius6,
-      validator: (value) {
-        final trimmedValue = value?.trim() ?? '';
-        if (trimmedValue.isEmpty) {
-          return LocaleKeys.login_passwordCannotEmpty.tr;
-        }
-        return null;
-      },
+      validator: LoginValidator.validatePassword,
     );
   }
 
