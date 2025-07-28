@@ -5,6 +5,9 @@ import '../../declare/staff_list/model/staff_list_argument.dart';
 import '../../src.dart';
 
 class OtherInfoController extends BaseGetxController {
+  //  Gửi kèm hồ sơ giấy
+  final isAttachPaper = false.obs;
+
   // Đợt xét duyệt
   final reviewPeriodCtrl = TextEditingController();
 

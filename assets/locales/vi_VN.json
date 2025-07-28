@@ -571,7 +571,7 @@
     "selectDiseaseCode": "Chọn/Nhập mã bệnh",
     "selectDiseaseCodeCannotEmpty": "Chọn/Nhập mã bệnh không được bỏ trống",
     "selectDiseaseCodeHint": "Chọn hoặc nhập mã bệnh",
-    "inputDiseaseCode":"Nhập mã bệnh",
+    "inputDiseaseCode": "Nhập mã bệnh",
     "diseaseName": "Tên bệnh",
     "diseaseNameHint": "Nhập tên bệnh",
     "diseaseNameEmpty": "Tên bệnh không được bỏ trống",
@@ -601,13 +601,13 @@
     "accountHolderNameHint": "Nhập tên chủ tài khoản",
     "accountHolderNameEmpty": "Tên chủ tài khoản không được bỏ trống",
     "bank": "Ngân hàng",
-    "bankCannotEmpty":"Ngân hàng không được bỏ trống",
+    "bankCannotEmpty": "Ngân hàng không được bỏ trống",
     "bankHint": "Chọn ngân hàng",
-    "inputBankName":"Nhập tên ngân hàng",
+    "inputBankName": "Nhập tên ngân hàng",
     "otherInfoTitle": "Thông tin khác",
     "resolvedPeriod": "Đợt đã giải quyết",
-    "periodInvalid":"Đợt không hợp lệ",
-    "monthYearInvalid":"Tháng/Năm không hợp lệ",
+    "periodInvalid": "Đợt không hợp lệ",
+    "monthYearInvalid": "Tháng/Năm không hợp lệ",
     "resolvedPeriodInvalid": "Đợt đã giải quyết không hợp lệ",
     "resolvedPeriodHint": "Đợt tháng/năm",
     "resolvedPeriodEmpty": "Đợt đã giải quyết không được bỏ trống",
@@ -617,6 +617,7 @@
     "adjustReason": "Lý do điều chỉnh",
     "adjustReasonHint": "Nhập lý do điều chỉnh",
     "adjustReasonEmpty": "Lý do điều chỉnh không được bỏ trống",
+    "attachPaper": "Gửi kèm hồ sơ giấy",
     "saveButton": "Lưu"
   },
   "familyMember": {
@@ -924,6 +925,6 @@
     "reason": "Lý do giải trình",
     "inputReason": "Nhập lý do giải trình",
     "next": "Tiếp theo",
-    "titleTooltip":"Trường hợp chọn nhận trợ cấp qua đơn vị"
+    "titleTooltip": "Trường hợp chọn nhận trợ cấp qua đơn vị"
   }
 }
