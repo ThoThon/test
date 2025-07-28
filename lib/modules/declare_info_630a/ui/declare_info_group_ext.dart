@@ -325,6 +325,10 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               if (toDate.year <= 1900 || toDate.year >= 2100) {
                 return LocaleKeys.declareInfo_birthDayChildInvalid.tr;
               }
+
+              if (toDate.isAfter(DateTime.now())) {
+                return LocaleKeys.declareInfo_dobCannotFuture.tr;
+              }
               return null;
             },
             builder: (fieldKey, validator) {

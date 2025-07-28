@@ -9,6 +9,7 @@
 - [Appmobile]_Thủ tục 630a: Chỉnh sửa trường Số tài khoản ngân hàng không cho phép nhập tiếng Việt - BHW-2856
 - [Appmobile]_Thủ tục 630a: Chỉnh sửa bắt Validate các trường liên quan đến Mã nhóm hưởng: "Con ốm" - BHW-2857
 - [Appmobile]_Thủ tục 630a: Sửa đổi giao diện màn danh Thông tin khác - BHW-2851
+- [Appmobile]_Thủ tục 630a: Lỗi validate trường ngày sinh con - BHW-2854
 
 26/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Màn TK1: Lỗi focus khi nhấn vào [Thêm thành viên] - BHW-2838
