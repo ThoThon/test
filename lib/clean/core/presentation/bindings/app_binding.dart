@@ -35,6 +35,7 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(
       () => D02CategoriesDataMapper(
           sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()),
+      fenix: true,
     );
   }
 
