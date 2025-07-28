@@ -330,7 +330,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
             builder: (fieldKey, validator) {
               return CardInputSelectDateWithLabel(
                 fieldKey: fieldKey,
-                autovalidateMode: controller.autoValidateMode.value,
                 validator: validator,
                 labelText: LocaleKeys.declareInfo_birthDayChild.tr,
                 inputFormatters: InputFormatterEnum.dateFullBirthDay,
@@ -384,7 +383,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               return CardInputTextFormWithLabel(
                 fieldKey: fieldKey,
                 validator: validator,
-                autovalidateMode: controller.autoValidateMode.value,
                 hintText: LocaleKeys.declareInfo_numberChildHint.tr,
                 labelText: LocaleKeys.declareInfo_numberChild.tr,
                 controller: controller.numberChildCtrl,
@@ -421,7 +419,6 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               return CardInputTextFormWithLabel(
                 fieldKey: fieldKey,
                 validator: validator,
-                autovalidateMode: controller.autoValidateMode.value,
                 hintText: LocaleKeys.declareInfo_bhytCardCodeHint.tr,
                 labelText: LocaleKeys.declareInfo_bhytCardCode.tr,
                 controller: controller.bhytCardCodeChildCtrl,
