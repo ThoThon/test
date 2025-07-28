@@ -10,7 +10,16 @@ class LoginBinding extends BaseBindings {
   @override
   void bindingsController() {
     Get.lazyPut(
-      () => LoginControllerCl(sl(), sl(), sl(), sl(), sl(), sl(), sl()),
+      () => LoginControllerCl(
+        // Get.arguments,
+        sl(),
+        sl(),
+        sl(),
+        sl(),
+        sl(),
+        sl(),
+        sl(),
+      ),
     );
   }
 

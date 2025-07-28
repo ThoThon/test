@@ -6,6 +6,8 @@ import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 
 class LoginControllerCl extends BaseGetClController {
+  // final LoginArgument argument;
+
   final LoginUseCase _loginUseCase;
   final SaveAuthInfoUseCase _saveAuthInfoUseCase;
   final GetAccountInfoUseCase _getAccountInfoUseCase;
@@ -21,6 +23,7 @@ class LoginControllerCl extends BaseGetClController {
   final isHaveUsername = false.obs;
 
   LoginControllerCl(
+    // this.argument,
     this._loginUseCase,
     this._saveAuthInfoUseCase,
     this._getAccountInfoUseCase,
