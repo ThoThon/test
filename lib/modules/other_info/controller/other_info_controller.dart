@@ -126,7 +126,6 @@ class OtherInfoController extends BaseGetxController {
       chiNhanh: branchBankCtrl.text,
       thuTruongDonVi: unitHeadCtrl.text,
       lyDoNopCham: reasonExplanationCtrl.text,
-      guiKemGiay: isAttachPaper.value,
     );
   }
 
