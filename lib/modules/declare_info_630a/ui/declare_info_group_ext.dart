@@ -388,6 +388,8 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                 hintText: LocaleKeys.declareInfo_numberChildHint.tr,
                 labelText: LocaleKeys.declareInfo_numberChild.tr,
                 controller: controller.numberChildCtrl,
+                inputFormatters: InputFormatterEnum.phoneNumber,
+                textInputType: TextInputType.number,
                 isRequired: true,
                 maxLengthInputForm: 1,
               ).paddingOnly(bottom: AppDimens.paddingSmall);
