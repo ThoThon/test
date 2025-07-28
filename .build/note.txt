@@ -11,7 +11,7 @@
 - [Appmobile]_Thủ tục 630a: Sửa đổi giao diện màn danh Thông tin khác - BHW-2851
 - [Appmobile]_Thủ tục 630a: Lỗi validate trường ngày sinh con - BHW-2854
 - [Appmobile]_Thủ tục 630a: Bổ sung hiển thị text thông báo khi nhập trường Đợt đã giải quyết không hợp lệ - BHW-2859
-
+- [Appmobile]_Thủ tục 630a - Màn Thông tin khác: update Trường Gửi kèm hồ sơ giấy theo giá trị api trả về - BHW-2858
 
 26/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Màn TK1: Lỗi focus khi nhấn vào [Thêm thành viên] - BHW-2838
