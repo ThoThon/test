@@ -329,7 +329,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                     const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
                 title: LocaleKeys.dialog_selectDayMonthYear.tr,
                 dateFormat: PATTERN_1,
-                dateTimeInit: convertStringToDateSafe(
+                dateTimeInit: convertStringToDateStrict(
                       controller.resolvedDateCtrl.text,
                       PATTERN_1,
                     ) ??
