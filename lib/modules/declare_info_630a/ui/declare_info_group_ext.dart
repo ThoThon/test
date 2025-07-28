@@ -332,33 +332,37 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               return null;
             },
             builder: (fieldKey, validator) {
-              return CardInputSelectDateWithLabel(
-                fieldKey: fieldKey,
-                validator: validator,
-                labelText: LocaleKeys.declareInfo_birthDayChild.tr,
-                inputFormatters: InputFormatterEnum.dateFullBirthDay,
-                controller: controller.birthDayChildCtrl,
-                hintText: PATTERN_1,
-                isRequired: true,
-                onSelectDate: () async {
-                  KeyBoard.hide();
-                  final selectedDate = await DatePickerUtils.showCalendarPicker(
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: AppDimens.padding32),
-                    title: LocaleKeys.dialog_selectDayMonthYear.tr,
-                    dateFormat: PATTERN_1,
-                    dateTimeInit: convertStringToDateStrict(
-                          controller.birthDayChildCtrl.text,
-                          PATTERN_1,
-                        ) ??
-                        DateTime.now(),
-                  );
-                  if (selectedDate != null) {
-                    controller.birthDayChildCtrl.text =
-                        convertDateToString(selectedDate, PATTERN_1);
-                  }
-                },
-              ).paddingOnly(bottom: AppDimens.paddingSmall);
+              return Obx(
+                () => CardInputSelectDateWithLabel(
+                  fieldKey: fieldKey,
+                  autovalidateMode: controller.autoValidateMode.value,
+                  validator: validator,
+                  labelText: LocaleKeys.declareInfo_birthDayChild.tr,
+                  inputFormatters: InputFormatterEnum.dateFullBirthDay,
+                  controller: controller.birthDayChildCtrl,
+                  hintText: PATTERN_1,
+                  isRequired: true,
+                  onSelectDate: () async {
+                    KeyBoard.hide();
+                    final selectedDate =
+                        await DatePickerUtils.showCalendarPicker(
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: AppDimens.padding32),
+                      title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                      dateFormat: PATTERN_1,
+                      dateTimeInit: convertStringToDateStrict(
+                            controller.birthDayChildCtrl.text,
+                            PATTERN_1,
+                          ) ??
+                          DateTime.now(),
+                    );
+                    if (selectedDate != null) {
+                      controller.birthDayChildCtrl.text =
+                          convertDateToString(selectedDate, PATTERN_1);
+                    }
+                  },
+                ).paddingOnly(bottom: AppDimens.paddingSmall),
+              );
             },
           );
         }
@@ -384,17 +388,20 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               return null;
             },
             builder: (fieldKey, validator) {
-              return CardInputTextFormWithLabel(
-                fieldKey: fieldKey,
-                validator: validator,
-                hintText: LocaleKeys.declareInfo_numberChildHint.tr,
-                labelText: LocaleKeys.declareInfo_numberChild.tr,
-                controller: controller.numberChildCtrl,
-                inputFormatters: InputFormatterEnum.phoneNumber,
-                textInputType: TextInputType.number,
-                isRequired: true,
-                maxLengthInputForm: 1,
-              ).paddingOnly(bottom: AppDimens.paddingSmall);
+              return Obx(
+                () => CardInputTextFormWithLabel(
+                  fieldKey: fieldKey,
+                  validator: validator,
+                  autovalidateMode: controller.autoValidateMode.value,
+                  hintText: LocaleKeys.declareInfo_numberChildHint.tr,
+                  labelText: LocaleKeys.declareInfo_numberChild.tr,
+                  controller: controller.numberChildCtrl,
+                  inputFormatters: InputFormatterEnum.phoneNumber,
+                  textInputType: TextInputType.number,
+                  isRequired: true,
+                  maxLengthInputForm: 1,
+                ).paddingOnly(bottom: AppDimens.paddingSmall),
+              );
             },
           );
         }
@@ -420,15 +427,18 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               return null;
             },
             builder: (fieldKey, validator) {
-              return CardInputTextFormWithLabel(
-                fieldKey: fieldKey,
-                validator: validator,
-                hintText: LocaleKeys.declareInfo_bhytCardCodeHint.tr,
-                labelText: LocaleKeys.declareInfo_bhytCardCode.tr,
-                controller: controller.bhytCardCodeChildCtrl,
-                isRequired: true,
-                maxLengthInputForm: 50,
-              ).paddingOnly(bottom: AppDimens.paddingSmall);
+              return Obx(
+                () => CardInputTextFormWithLabel(
+                  fieldKey: fieldKey,
+                  validator: validator,
+                  autovalidateMode: controller.autoValidateMode.value,
+                  hintText: LocaleKeys.declareInfo_bhytCardCodeHint.tr,
+                  labelText: LocaleKeys.declareInfo_bhytCardCode.tr,
+                  controller: controller.bhytCardCodeChildCtrl,
+                  isRequired: true,
+                  maxLengthInputForm: 50,
+                ).paddingOnly(bottom: AppDimens.paddingSmall),
+              );
             },
           );
         }
