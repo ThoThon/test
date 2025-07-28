@@ -291,13 +291,16 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
           return LocaleKeys.declareInfo_resolvedDateEmpty.tr;
         }
 
-        // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
-        if (trimmedValue.length < 7) {
+        // Kiểm tra độ dài chuỗi (/ddMM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
           return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
         }
 
         final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
         if (toDate == null) {
+          return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
+        }
+        if (toDate.isAfter(DateTime.now())) {
           return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
         }
 
