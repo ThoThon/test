@@ -5,6 +5,7 @@ import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controlle
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/get_account_info_use_case.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/get_d02_categories_use_case.dart';
+import 'package:v_bhxh/clean/features/login/domain/usecase/get_unread_notification_count_use_case.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/login_use_case.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/save_auth_info_use_case.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
@@ -15,6 +16,7 @@ class LoginControllerCl extends BaseGetClController {
   final SaveAuthInfoUseCase _saveAuthInfoUseCase;
   final GetAccountInfoUseCase _getAccountInfoUseCase;
   final GetD02CategoriesUseCase _getD02CategoriesUseCase;
+  final GetUnreadNotificationCountUseCase _getUnreadNotificationCountUseCase;
 
   final formKey = GlobalKey<FormState>();
   final usernameTextCtrl = TextEditingController(
@@ -27,6 +29,7 @@ class LoginControllerCl extends BaseGetClController {
     this._saveAuthInfoUseCase,
     this._getAccountInfoUseCase,
     this._getD02CategoriesUseCase,
+    this._getUnreadNotificationCountUseCase,
   );
 
   @override
@@ -60,6 +63,7 @@ class LoginControllerCl extends BaseGetClController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
+          _getToTalNotiUnread(),
         ).wait;
 
         nav.offAllNamed(AppRoutesCl.home.path);
@@ -84,6 +88,11 @@ class LoginControllerCl extends BaseGetClController {
       ..positions.assignAll(d02Categories.positions)
       ..birthTypes.assignAll(d02Categories.birthTypes)
       ..receiveResults.assignAll(d02Categories.receiveResults);
+  }
+
+  Future<void> _getToTalNotiUnread() async {
+    final totalUnread = await _getUnreadNotificationCountUseCase.execute();
+    appCtrl.totalUnread.value = totalUnread;
   }
 
   @override

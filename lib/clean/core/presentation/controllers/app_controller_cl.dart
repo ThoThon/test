@@ -15,6 +15,9 @@ class AppControllerCl extends BaseGetClController {
   final birthTypes = <BirthType>{}.obs;
   final receiveResults = <ReceiveResult>{}.obs;
 
+  /// Số lượng thông báo chưa đọc
+  final totalUnread = 0.obs;
+
   @override
   void onInit() {
     super.onInit();

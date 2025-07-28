@@ -70,4 +70,17 @@ class LoginRepositoryImpl extends LoginRepository {
 
     return _d02CategoriesDataMapper.mapToEntity(data.result);
   }
+
+  @override
+  Future<int> getUnreadNotificationCount() async {
+    final response = await _authAppServerApiClient.request(
+      method: RestMethod.get,
+      path: AppApi.urlGetNotificationUnread,
+      cancelToken: cancelToken,
+    );
+
+    final data = BaseResponseCl<int>.fromJson(response);
+
+    return data.result ?? 0;
+  }
 }

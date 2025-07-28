@@ -12,4 +12,6 @@ abstract class LoginRepository extends BaseRepositoryCl {
   Future<AccountInfo> getAccountInfo();
 
   Future<D02CategoriesCl> getD02Categories();
+
+  Future<int> getUnreadNotificationCount();
 }
