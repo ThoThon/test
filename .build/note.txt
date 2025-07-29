@@ -1,3 +1,6 @@
+29/07/2025
+- [Appmobile]_Thủ tục 630a: Những trường combobox không bắt buộc => Cho phép xóa giá trị đã chọn - BHW-2867
+
 28/07/2025
 - [Appmobile]_Thủ tục 630a_Lỗi fill tên chủ tài khoản theo số tài khoản - BHW-2839
 - [Appmobile]_Thủ tục 630a_Sửa lại màu toast gợi ý - BHW-2840

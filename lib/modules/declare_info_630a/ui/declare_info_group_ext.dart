@@ -59,8 +59,8 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         // Tuyến bệnh viện
         _buildHospitalLine(),
 
-        // Chọn mã bệnh
-        _buildSelectDiseaseCode(),
+        // Mã bệnh
+        _buildDiseaseCode(),
 
         // Tên bệnh
         _buildInputDisseaseName(),
@@ -638,6 +638,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           () => UtilWidget.buildCardBottomSheetSelect2<HospitalLine630aModel>(
             label: LocaleKeys.declareInfo_hospitalLine.tr,
             hintText: LocaleKeys.declareInfo_hospitalLineSelect.tr,
+            enableClearIcon: true,
             isRequired: false,
             funcSelect: (didChange) async {
               Get.bottomSheet(
@@ -657,6 +658,9 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                 isScrollControlled: true,
               );
             },
+            onTapClear: () {
+              controller.selectHospitalLine.value = null;
+            },
             selectedItem: controller.selectHospitalLine.value,
             display: (hospital) => '${hospital.value} - ${hospital.text}',
           ),
@@ -665,8 +669,8 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
     );
   }
 
-  // Chọn mã bệnh
-  Widget _buildSelectDiseaseCode() {
+  // Mã bệnh
+  Widget _buildDiseaseCode() {
     return Obx(
       () {
         if (controller.isAdjustDeclareForm) {
@@ -674,9 +678,10 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         }
         return Obx(
           () => UtilWidget.buildCardBottomSheetSelect2<LongDiease630aModel>(
-            label: LocaleKeys.declareInfo_selectDiseaseCode.tr,
+            label: LocaleKeys.declareInfo_diseaseCode.tr,
             hintText: LocaleKeys.declareInfo_selectDiseaseCode.tr,
             isRequired: false,
+            enableClearIcon: true,
             funcSelect: (didChange) async {
               Get.bottomSheet(
                 BottomSheetSearch<LongDiease630aModel>(
@@ -694,6 +699,9 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                 ),
                 isScrollControlled: true,
               );
+            },
+            onTapClear: () {
+              controller.selectDiseaseCode.value = null;
             },
             selectedItem: controller.selectDiseaseCode.value,
             display: (disease) => '${disease.code} - ${disease.name}',
@@ -744,19 +752,24 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         if (controller.isAdjustDeclareForm) {
           return const SizedBox.shrink();
         }
-        return CardDropdownWithLabel<WorkCondition630aModel>(
-          labelText: LocaleKeys.declareInfo_workingCondition.tr,
-          hintText: LocaleKeys.declareInfo_workingConditionHint.tr,
-          items: AppData.instance.workCondition.toList(),
-          display: (item) => item.text,
-          selectedItem: controller.workCondition.value,
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-            controller.workCondition.value = value;
-          },
-        ).paddingOnly(bottom: AppDimens.paddingSmall);
+        return Obx(
+          () => CardDropdownWithLabel<WorkCondition630aModel>(
+            labelText: LocaleKeys.declareInfo_workingCondition.tr,
+            hintText: LocaleKeys.declareInfo_workingConditionHint.tr,
+            items: AppData.instance.workCondition.toList(),
+            display: (item) => item.text,
+            onTapClear: () {
+              controller.workCondition.value = null;
+            },
+            selectedItem: controller.workCondition.value,
+            onChanged: (value) {
+              if (value == null) {
+                return;
+              }
+              controller.workCondition.value = value;
+            },
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
       },
     );
   }
