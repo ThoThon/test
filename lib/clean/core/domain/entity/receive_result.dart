@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/modules/login/model/receive_result_model.dart';
 
 /// Nhận kết quả hồ sơ - Dùng cho tờ khai TK1 của thủ tục 607
 class ReceiveResult extends Equatable {
@@ -12,4 +13,12 @@ class ReceiveResult extends Equatable {
 
   @override
   List<Object?> get props => [value, text];
+
+  // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
+  ReceiveResultModel toOldModel() {
+    return ReceiveResultModel(
+      value: value,
+      text: text,
+    );
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
+import 'package:v_bhxh/modules/login/model/account_info_model.dart';
 
 class AccountInfo implements Entity {
   final String toChucId;
@@ -54,4 +55,34 @@ class AccountInfo implements Entity {
     required this.phuongThucDong,
     required this.maVung,
   });
+
+  AccountInfoModel toOldModel() {
+    return AccountInfoModel(
+      toChucId: toChucId,
+      tenToChuc: tenToChuc,
+      taxCode: taxCode,
+      maDonVi: maDonVi,
+      maNganSach: maNganSach,
+      diaChiDk: diaChiDk,
+      diaChi: diaChi,
+      maCoQuanQuanLy: maCoQuanQuanLy,
+      tenCoQuanQuanLy: tenCoQuanQuanLy,
+      dienThoai: dienThoai,
+      mailLienLac: mailLienLac,
+      tenNguoiKy: tenNguoiKy,
+      telReceiver: telReceiver,
+      serviceName: serviceName,
+      serviceStartDate: serviceStartDate,
+      serviceExpiredDate: serviceExpiredDate,
+      bankAccount: bankAccount,
+      jobTitle: jobTitle,
+      loaiDoiTuong: loaiDoiTuong,
+      ptNhanKq: ptNhanKq,
+      packageInfo: packageInfo,
+      tenNguoiKeKhai: tenNguoiKeKhai,
+      luongCoSo: luongCoSo,
+      phuongThucDong: phuongThucDong,
+      maVung: maVung,
+    );
+  }
 }

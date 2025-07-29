@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
+import 'package:v_bhxh/modules/login/model/province_model.dart';
 
 /// Tỉnh
 class Province extends Equatable implements Entity {
@@ -20,4 +21,13 @@ class Province extends Equatable implements Entity {
 
   @override
   List<Object?> get props => [id, name, code];
+
+  // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
+  ProvinceModel toOldModel() {
+    return ProvinceModel(
+      id: id,
+      name: name,
+      code: code,
+    );
+  }
 }

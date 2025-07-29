@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/modules/login/model/adjustment_plan_model.dart';
 import 'package:v_bhxh/modules/login/model/declaration_type_model.dart';
 
 import 'base/entity.dart';
@@ -27,4 +28,12 @@ class AdjustmentPlan extends Equatable implements Entity {
 
   @override
   List<Object?> get props => [id, name];
+
+  // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
+  AdjustmentPlanModel toOldModel() {
+    return AdjustmentPlanModel(
+      id: id,
+      name: name,
+    );
+  }
 }

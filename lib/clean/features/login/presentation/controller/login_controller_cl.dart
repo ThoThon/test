@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
@@ -76,6 +77,9 @@ class LoginControllerCl extends BaseGetClController {
     final accountInfo = await _getAccountInfoUseCase.execute();
     appCtrl.accountInfo.value = accountInfo;
     await _saveCompanyNameUseCase.execute(accountInfo.tenToChuc);
+
+    // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
+    AppData.instance.accountInfoModel.value = accountInfo.toOldModel();
   }
 
   Future<void> _getD02Categories() async {
@@ -90,11 +94,29 @@ class LoginControllerCl extends BaseGetClController {
       ..positions.assignAll(d02Categories.positions)
       ..birthTypes.assignAll(d02Categories.birthTypes)
       ..receiveResults.assignAll(d02Categories.receiveResults);
+
+    // Gán các giá trị này cho AppData để đảm bảo tương thích ngược với code cũ
+    // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
+    AppData.instance
+      ..declarationTypes =
+          d02Categories.declarationTypes.map((e) => e.toOldModel()).toSet()
+      ..ethnics = d02Categories.ethnics.map((e) => e.toOldModel()).toSet()
+      ..nations = d02Categories.nations.map((e) => e.toOldModel()).toSet()
+      ..provinces = d02Categories.provinces.map((e) => e.toOldModel()).toSet()
+      ..relationships =
+          d02Categories.relationships.map((e) => e.toOldModel()).toSet()
+      ..positions = d02Categories.positions.map((e) => e.toOldModel()).toSet()
+      ..birthTypes = d02Categories.birthTypes.map((e) => e.toOldModel()).toSet()
+      ..receiveResults =
+          d02Categories.receiveResults.map((e) => e.toOldModel()).toSet();
   }
 
   Future<void> _getToTalNotiUnread() async {
     final totalUnread = await _getUnreadNotificationCountUseCase.execute();
     appCtrl.totalUnread.value = totalUnread;
+
+    // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
+    AppData.instance.totalUnread.value = totalUnread;
   }
 
   void goToRegisterCodePage() {
