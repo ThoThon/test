@@ -59,7 +59,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         // Tuyến bệnh viện
         _buildHospitalLine(),
 
-        // Chọn/Nhập mã bệnh
+        // Chọn mã bệnh
         _buildSelectDiseaseCode(),
 
         // Tên bệnh
@@ -675,7 +675,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         return Obx(
           () => UtilWidget.buildCardBottomSheetSelect2<LongDiease630aModel>(
             label: LocaleKeys.declareInfo_selectDiseaseCode.tr,
-            hintText: LocaleKeys.declareInfo_selectDiseaseCodeHint.tr,
+            hintText: LocaleKeys.declareInfo_selectDiseaseCode.tr,
             isRequired: false,
             funcSelect: (didChange) async {
               Get.bottomSheet(

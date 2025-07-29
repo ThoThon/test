@@ -568,6 +568,7 @@
     "hospitalLineCannotEmpty": "Tuyến bệnh viện không được bỏ trống",
     "hospitalLineSelect": "Chọn tuyến bệnh viện",
     "inputHospitalLine": "Nhập tuyến bệnh viện",
+    "diseaseCode": "Mã bệnh",
     "selectDiseaseCode": "Chọn mã bệnh",
     "selectDiseaseCodeCannotEmpty": "Chọn mã bệnh không được bỏ trống",
     "selectDiseaseCodeHint": "Chọn hoặc nhập mã bệnh",
