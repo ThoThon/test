@@ -1,4 +1,5 @@
 import 'package:v_bhxh/modules/change_base_url/ui/change_base_url_page.dart';
+import 'package:v_bhxh/modules/declare/procedure_list/presentation/procedure_list_page.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/ui/declare_info_607_page.dart';
 import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
@@ -7,7 +8,6 @@ import 'package:v_bhxh/modules/notification/ui/notification_page.dart';
 import 'package:v_bhxh/modules/select_staff/ui/select_staff_page.dart';
 
 import '../../modules/declare/declaration_list/ui/declaration_list_page.dart';
-import '../../modules/declare/procedure_list/ui/procedure_list_page.dart';
 import '../../modules/declare/staff_list/ui/staff_list_page.dart';
 import '../../modules/home/src.dart';
 import '../../modules/src.dart';

@@ -1,3 +1,4 @@
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 
 import '../../../assets.dart';
@@ -45,7 +46,7 @@ enum HomeEnum {
       case unit_info:
         return AppRoutes.infoUnit.path;
       case declare:
-        return AppRoutes.procedureList.path;
+        return AppRoutesCl.procedureList.path;
       case history:
         return AppRoutes.history.path;
       case lookup_c12:

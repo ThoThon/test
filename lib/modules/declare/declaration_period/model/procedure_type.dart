@@ -20,23 +20,27 @@ enum ProcedureType {
   /// Thủ tục 613
   procedure613;
 
-  static ProcedureType fromInt(int? value) {
-    switch (value) {
-      case 6001:
-        return ProcedureType.procedure600;
-      case 6071:
-        return ProcedureType.procedure607;
-      case 6081:
-        return ProcedureType.procedure608;
-      case 6101:
-        return ProcedureType.procedure610;
-      case 6121:
-        return ProcedureType.procedure612;
-      case 6131:
-        return ProcedureType.procedure613;
-      default:
-        return ProcedureType.procedure600;
-    }
+  static ProcedureType? fromInt(int? value) {
+    return switch (value) {
+      6001 => ProcedureType.procedure600,
+      6071 => ProcedureType.procedure607,
+      6081 => ProcedureType.procedure608,
+      6101 => ProcedureType.procedure610,
+      6121 => ProcedureType.procedure612,
+      6131 => ProcedureType.procedure613,
+      _ => null,
+    };
+  }
+
+  int get toInt {
+    return switch (this) {
+      ProcedureType.procedure600 => 6001,
+      ProcedureType.procedure607 => 6071,
+      ProcedureType.procedure608 => 6081,
+      ProcedureType.procedure610 => 6101,
+      ProcedureType.procedure612 => 6121,
+      ProcedureType.procedure613 => 6131,
+    };
   }
 
   String get declareInfoTitle {
