@@ -56,7 +56,8 @@ class DeclareInfo630aController extends BaseGetxController {
   final fromDateUnitTextCtrl = TextEditingController();
 
   /// Nghỉ hàng tuần
-  final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
+  final 
+  weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
 
   final dayOffCtrl = TextEditingController();
 
@@ -388,7 +389,7 @@ class DeclareInfo630aController extends BaseGetxController {
       (item) => item.value == detail.tuyenBenhVien,
     );
 
-    // Chọn/Nhập mã bệnh
+    // Mã bệnh
     selectDiseaseCode.value = AppData.instance.longDiease
         .firstWhereOrNull((item) => item.code == detail.maBenhDaiNgay);
 
