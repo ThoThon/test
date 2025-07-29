@@ -26,6 +26,16 @@ class DeclarationPeriodPage extends BaseGetWidget<DeclarationPeriodController> {
             leading: UtilWidget.buildButtonBackAppbar(
               color: AppColors.basicWhite,
             ),
+            actions: [
+              GestureDetector(
+                child: SDSImageSvg(Assets.ASSETS_ICONS_IC_FILTER_PERIOD_SVG),
+                onTap: () {
+                  // TODO
+                  controller.showSnackBar('hoàn thành bộ lọc cho đợt đi');
+                },
+              ),
+              sdsSBWidth16,
+            ],
           ),
           body: BaseCardBody(
             child: _buildBody(),

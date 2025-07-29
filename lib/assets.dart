@@ -143,6 +143,10 @@ class Assets {
   static String get ASSETS_ICONS_IC_FILTER_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_filter.svg';
 
+  /// {@macro assets_generator.ASSETS_ICONS_IC_FILTER_PERIOD_SVG.preview}
+  static String get ASSETS_ICONS_IC_FILTER_PERIOD_SVG =>
+      '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_filter_period.svg';
+
   /// {@macro assets_generator.ASSETS_ICONS_IC_GROUP_SVG.preview}
   static String get ASSETS_ICONS_IC_GROUP_SVG =>
       '${isFromModules ? "packages/$package/" : ""}assets/icons/ic_group.svg';
@@ -414,6 +418,9 @@ final List<String> assetsArray = <String>[
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_FILTER_SVG.preview}
   Assets.ASSETS_ICONS_IC_FILTER_SVG,
+
+  /// {@macro assets_generator.ASSETS_ICONS_IC_FILTER_PERIOD_SVG.preview}
+  Assets.ASSETS_ICONS_IC_FILTER_PERIOD_SVG,
 
   /// {@macro assets_generator.ASSETS_ICONS_IC_GROUP_SVG.preview}
   Assets.ASSETS_ICONS_IC_GROUP_SVG,
