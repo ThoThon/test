@@ -56,8 +56,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final fromDateUnitTextCtrl = TextEditingController();
 
   /// Nghỉ hàng tuần
-  final 
-  weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
+  final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
 
   final dayOffCtrl = TextEditingController();
 
@@ -240,7 +239,7 @@ class DeclareInfo630aController extends BaseGetxController {
   }
 
   String get weeklyDayOffString =>
-      weeklyDayOffs.map((dayOff) => dayOff.value).join('; ');
+      weeklyDayOffs.map((dayOff) => dayOff.value).join(';');
 
   DeclareInfo630aRequest _buildRequest() {
     return DeclareInfo630aRequest(
@@ -374,7 +373,7 @@ class DeclareInfo630aController extends BaseGetxController {
         convertDateToStringSafe(detail.tuNgayDonVi, PATTERN_1) ?? '';
 
     // Nghỉ hàng tuần
-    // Vì BE trả về kiểu "ngayNghiTuan": "t3; t4; t5" nên phải làm như này
+    // Vì BE trả về kiểu "ngayNghiTuan": "t3;t4;t5" nên phải làm như này
     final dayOff = detail.ngayNghiTuan;
     if (dayOff != null && dayOff.isNotEmpty) {
       weeklyDayOffs.value = dayOff
