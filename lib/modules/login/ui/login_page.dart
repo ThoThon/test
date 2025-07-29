@@ -1,5 +1,5 @@
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive_impl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper.dart';
 
 import '../../../modules/src.dart';

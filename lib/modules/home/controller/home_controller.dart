@@ -1,4 +1,4 @@
-import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive_impl.dart';
 
 import '../../../base_app/base_app.src.dart';
 import '../../../shares/widgets/dialog/dialog_utils.dart';
@@ -10,7 +10,7 @@ class HomeController extends BaseGetxController {
     ShowDialog.showDialogConfirm2(
       title: LocaleKeys.dialog_isLogout.tr,
       onConfirm: () async {
-        await AppHive.instance.deleteKeys([
+        await AppHiveImpl.instance.deleteKeys([
           HiveKeys.keyJwtToken,
           HiveKeys.keyUsername,
         ]);
