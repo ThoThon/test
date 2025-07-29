@@ -667,6 +667,7 @@ class LocaleKeys {
   static const declareInfo_hospitalLineSelect =
       'declareInfo_hospitalLineSelect';
   static const declareInfo_inputHospitalLine = 'declareInfo_inputHospitalLine';
+  static const declareInfo_diseaseCode = 'declareInfo_diseaseCode';
   static const declareInfo_selectDiseaseCode = 'declareInfo_selectDiseaseCode';
   static const declareInfo_selectDiseaseCodeCannotEmpty =
       'declareInfo_selectDiseaseCodeCannotEmpty';
@@ -1732,9 +1733,10 @@ class Locales {
         'Tuyến bệnh viện không được bỏ trống',
     'declareInfo_hospitalLineSelect': 'Chọn tuyến bệnh viện',
     'declareInfo_inputHospitalLine': 'Nhập tuyến bệnh viện',
-    'declareInfo_selectDiseaseCode': 'Chọn/Nhập mã bệnh',
+    'declareInfo_diseaseCode': 'Mã bệnh',
+    'declareInfo_selectDiseaseCode': 'Chọn mã bệnh',
     'declareInfo_selectDiseaseCodeCannotEmpty':
-        'Chọn/Nhập mã bệnh không được bỏ trống',
+        'Chọn mã bệnh không được bỏ trống',
     'declareInfo_selectDiseaseCodeHint': 'Chọn hoặc nhập mã bệnh',
     'declareInfo_inputDiseaseCode': 'Nhập mã bệnh',
     'declareInfo_diseaseName': 'Tên bệnh',
