@@ -1,7 +1,8 @@
+import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/model/procedure_type.dart';
 
 /// Thủ tục kê khai
-class Procedure {
+class Procedure implements Entity {
   final String name;
   final String parentName;
 
