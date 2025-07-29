@@ -1,4 +1,5 @@
 import 'package:v_bhxh/modules/declare/declaration_period/repository/declaration_period_repository.dart';
+import 'package:v_bhxh/modules/declare/procedure_list/domain/entity/procedure.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -26,7 +27,7 @@ class DeclarationPeriodController extends BaseGetxController {
       declarationPeriods.clear();
       final response = await _repository.getDeclarationPeriods(
         request: ListDeclarationPeriodRequest(
-          periodId: argument.type,
+          periodId: argument.type.toInt,
           month: selectedPeriodDate.value.month,
           year: selectedPeriodDate.value.year,
         ),
@@ -99,14 +100,14 @@ class DeclarationPeriodController extends BaseGetxController {
       showLoadingOverlay();
       final response = await _repository.createDeclarationPeriod(
         request: CreateDeclarationPeriodRequest(
-          maThuTuc: argument.type,
+          maThuTuc: argument.type.toInt,
           nam: selectedPeriodDate.value.year,
           thang: selectedPeriodDate.value.month,
         ),
       );
 
       if (response.isSuccess && response.result != null) {
-        final String path = switch (argument.procedureType) {
+        final String path = switch (argument.type) {
           ProcedureType.procedure600 => AppRoutes.declareInfo.path,
           ProcedureType.procedure607 ||
           ProcedureType.procedure608 ||
@@ -121,7 +122,7 @@ class DeclarationPeriodController extends BaseGetxController {
           arguments: DeclareInfoArgument(
             declarationPeriodId: response.result!.id,
             action: D02ActionEnum.addPeriodFromDeclarePeriod,
-            procedureType: argument.procedureType,
+            procedureType: argument.type,
           ),
         )?.whenComplete(() {
           // Refresh the list of declaration periods after creating a new one

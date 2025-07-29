@@ -9,7 +9,8 @@ import 'package:v_bhxh/modules/declare/declaration_list/ui/declaration_list_page
 import 'package:v_bhxh/modules/declare/declaration_period/ui/declaration_period_page.dart';
 import 'package:v_bhxh/modules/declare/declare_info/ui/declare_info_page.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/ui/family_member_detail_page.dart';
-import 'package:v_bhxh/modules/declare/procedure_list/ui/procedure_list_page.dart';
+import 'package:v_bhxh/modules/declare/procedure_list/presentation/binding/procedure_list_binding.dart';
+import 'package:v_bhxh/modules/declare/procedure_list/presentation/procedure_list_page.dart';
 import 'package:v_bhxh/modules/declare/staff_list/ui/staff_list_page.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/ui/declare_info_607_page.dart';
 import 'package:v_bhxh/modules/forgot_password/ui/forgot_password_page.dart';
@@ -60,6 +61,7 @@ class AppPages {
     GetPage(
       name: AppRoutesCl.procedureList.path,
       page: () => ProcedureListPage(),
+      binding: ProcedureListBinding(),
     ),
     GetPage(
       name: AppRoutesCl.declarationPeriod.path,

@@ -6,7 +6,6 @@ extension ProcedureListPageWidget on ProcedureListPage {
       () => Obx(
         () {
           final procedures = controller.procedures;
-
           return ListView.separated(
             padding: const EdgeInsets.symmetric(
               horizontal: AppDimens.paddingMedium,
@@ -83,8 +82,8 @@ extension ProcedureListPageWidget on ProcedureListPage {
               const Spacer(),
               InkWell(
                 onTap: () {
-                  Get.toNamed(
-                    AppRoutes.declarationPeriod.path,
+                  nav.toNamed(
+                    AppRoutesCl.declarationPeriod.path,
                     arguments: procedure,
                   );
                 },

@@ -9,6 +9,3 @@ export 'declare_info/model/model_src.dart';
 export 'declare_info/ui/ui_src.dart';
 export 'family_member_detail/controller/controller_src.dart';
 export 'family_member_detail/ui/family_member_detail_page.dart';
-export 'procedure_list/controller/controller_src.dart';
-export 'procedure_list/model/model_src.dart';
-export 'procedure_list/ui/ui_src.dart';
