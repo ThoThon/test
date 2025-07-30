@@ -228,7 +228,7 @@ extension StaffListWidget on StaffListPage {
   Widget _buildSubmitButton() {
     return AppSolidButton(
       title: LocaleKeys.staffList_continue.tr,
-      onPressed: controller.saveXml,
+      onPressed: controller.onTapButtonContinue,
     );
   }
 

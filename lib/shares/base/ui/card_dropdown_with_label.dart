@@ -15,6 +15,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final GlobalKey? fieldKey;
   final VoidCallback? onTap;
+  final VoidCallback? onTapClear;
 
   const CardDropdownWithLabel({
     super.key,
@@ -31,6 +32,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
     this.autovalidateMode,
     this.fieldKey,
     this.onTap,
+    this.onTapClear,
   });
 
   @override
@@ -131,11 +133,16 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
               value: selectedItem,
               onChanged: onChanged,
               dropdownColor: AppColors.colorWhite,
-              icon: SDSImageSvg(
-                Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
-                height: AppDimens.sizeIconMedium,
-                width: AppDimens.sizeIconMedium,
-              ),
+              icon: selectedItem == null
+                  ? SDSImageSvg(
+                      Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
+                      height: AppDimens.sizeIconMedium,
+                      width: AppDimens.sizeIconMedium,
+                    )
+                  : GestureDetector(
+                      onTap: onTapClear,
+                      child: const Icon(Icons.clear),
+                    ),
               hint: hintText != null
                   ? SDSBuildText(
                       hintText,

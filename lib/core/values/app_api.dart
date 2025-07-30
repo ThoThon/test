@@ -1,7 +1,7 @@
 /// class chứa các api để giao tiếp với BE
 class AppApi {
   // Base URL test có thể ký
-  static const String urlSign = "https://vbhxh1.easyhrm.vn/api-mobile";
+  static const String urlSign = "https://vbhxh1.easyhrm.vn/dev-api-mobile";
 
   static const String version = "";
 
@@ -95,4 +95,19 @@ class AppApi {
   static const String urlGetPreviewPdf607 = '/api/HoSoTk1/preview-pdf';
 
   // === Kết thúc các api liên quan đến thủ tục 607 ===
+
+  // === Danh sách các api liên quan đến thủ tục 630a ===
+  static const String urlGetListStaff630a = '/api/HoSo630a/get-list';
+  static const String urlSaveXml630a = '/api/HoSo630a/save-xml';
+  static const String urlDelete630a = '/api/HoSo630a/delete-630a';
+  static const String urlGet630aDetail = '/api/HoSo630a/get-630a-detail';
+  static const String urlAdd630a = '/api/HoSo630a/add-630a';
+  static const String urlUpdate630a = '/api/HoSo630a/update-630a';
+  static const String urlGet630aCategories = '/api/HoSo630a/get-categories';
+  static const String urlGetDetail630a = '/api/HoSo630a/get-630a-detail';
+  static const String urlGetPreviewPdf630a = '/api/HoSo630a/preview-pdf';
+  static const String urlAddMs = '/api/HoSo630a/add-ms';
+  static const String urlUpdateMs = '/api/HoSo630a/update-ms';
+  static const String urlGetDetailMs = '/api/HoSo630a/get-ms-detail';
+  // === Kết thúc các api liên quan đến thủ tục 630a ===
 }

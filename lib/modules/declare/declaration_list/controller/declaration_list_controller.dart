@@ -125,6 +125,8 @@ class DeclarationListController extends BaseGetxController {
         ProcedureType.procedure612 ||
         ProcedureType.procedure613 =>
           _repository.getPreviewPdf607(request: request),
+        ProcedureType.procedure630a =>
+          _repository.getPreviewPdf630a(request: request),
       };
 
       final url = response.result;

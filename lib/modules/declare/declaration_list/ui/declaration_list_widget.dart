@@ -3,8 +3,8 @@ part of 'declaration_list_page.dart';
 extension DeclarationListWidget on DeclarationListPage {
   Widget _buildBody() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        sdsSBHeight16,
         Expanded(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(AppDimens.defaultPadding),
@@ -16,6 +16,17 @@ extension DeclarationListWidget on DeclarationListPage {
                   style: AppTextStyle.font16Bo,
                 ),
                 sdsSBHeight12,
+                if (controller.argument.saveXmlResult.hasOdM01hsb)
+                  _buildDeclarationItem(
+                    title:
+                        'Danh sách đề nghị giải quyết hưởng chế độ ốm đau (Mẫu 01D-HSB)',
+                    onTap: () {
+                      controller.getPreviewPdf(
+                        previewDocumentType: PreviewDocumentTypeEnum.hsb,
+                        title: 'Tờ khai tham gia',
+                      );
+                    },
+                  ).paddingOnly(bottom: AppDimens.paddingSmall),
                 if (controller.argument.saveXmlResult.hasD02)
                   _buildDeclarationItem(
                     title: 'Danh sách lao động tham gia BHXH - (Mẫu D02-LT)',
