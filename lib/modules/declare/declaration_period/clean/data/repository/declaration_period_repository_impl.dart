@@ -52,4 +52,29 @@ class DeclarationPeriodRepositoryImpl extends DeclarationPeriodRepository {
 
     return BaseResponseCl<bool>.fromJson(response).result ?? false;
   }
+
+  @override
+  Future<DeclarationPeriod> createDeclarationPeriod({
+    required int procedureId,
+    required int month,
+    required int year,
+  }) async {
+    final response = await _authAppServerApiClient.request(
+      method: RestMethod.post,
+      path: AppApi.urlAddDeclarationPeriod,
+      body: {
+        'maThuTuc': procedureId,
+        'thang': month,
+        'nam': year,
+      },
+      cancelToken: cancelToken,
+    );
+
+    final data = BaseResponseCl<DeclarationPeriodData>.fromJson(
+      response,
+      fromJson: (json) => DeclarationPeriodData.fromJson(json),
+    ).result;
+
+    return _declarationPeriodDataMapper.mapToEntity(data);
+  }
 }

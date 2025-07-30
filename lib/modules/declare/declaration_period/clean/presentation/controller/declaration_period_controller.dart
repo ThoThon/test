@@ -1,28 +1,33 @@
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/core/const/app_text_style.dart';
 import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/usecase/use_case_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/model/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/declare_info_argument.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/domain/entity/entity_src.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 import 'package:v_bhxh/shares/widgets/date_picker/date_picker_utils.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
-class DeclarationPeriodController extends BaseGetClController {
+class DeclarationPeriodControllerCl extends BaseGetClController {
   final Procedure argument;
 
   final GetDeclarationPeriodsUseCase _getDeclarationPeriodsUseCase;
   final DeleteDeclarationPeriodUseCase _deleteDeclarationPeriodUseCase;
+  final CreateDeclarationPeriodUseCase _createDeclarationPeriodUseCase;
 
   final declarationPeriods = <DeclarationPeriod>[].obs;
   final selectedPeriodDate = DateTime.now().obs;
 
-  DeclarationPeriodController(
+  DeclarationPeriodControllerCl(
     this._getDeclarationPeriodsUseCase,
-    this._deleteDeclarationPeriodUseCase, {
+    this._deleteDeclarationPeriodUseCase,
+    this._createDeclarationPeriodUseCase, {
     required this.argument,
   });
 
@@ -92,45 +97,40 @@ class DeclarationPeriodController extends BaseGetClController {
     );
   }
 
-  Future<void> createDeclarationPeriod() async {
-    // try {
-    //   showLoadingOverlay();
-    //   final response = await _repository.createDeclarationPeriod(
-    //     request: CreateDeclarationPeriodRequest(
-    //       maThuTuc: argument.type.toInt,
-    //       nam: selectedPeriodDate.value.year,
-    //       thang: selectedPeriodDate.value.month,
-    //     ),
-    //   );
+  Future<void> createDeclarationPeriod() {
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        final period = await _createDeclarationPeriodUseCase.execute(
+          CreateDeclarationPeriodUseCaseInput(
+            year: selectedPeriodDate.value.year,
+            month: selectedPeriodDate.value.month,
+            procedureId: argument.type.toInt,
+          ),
+        );
 
-    //   if (response.isSuccess && response.result != null) {
-    //     final String path = switch (argument.type) {
-    //       ProcedureType.procedure600 => AppRoutes.declareInfo.path,
-    //       ProcedureType.procedure607 ||
-    //       ProcedureType.procedure608 ||
-    //       ProcedureType.procedure610 ||
-    //       ProcedureType.procedure612 ||
-    //       ProcedureType.procedure613 =>
-    //         AppRoutes.declareInfo607.path,
-    //     };
+        final String path = switch (argument.type) {
+          ProcedureType.procedure600 => AppRoutesCl.declareInfo.path,
+          ProcedureType.procedure607 ||
+          ProcedureType.procedure608 ||
+          ProcedureType.procedure610 ||
+          ProcedureType.procedure612 ||
+          ProcedureType.procedure613 =>
+            AppRoutesCl.declareInfo607.path,
+        };
 
-    //     Get.toNamed(
-    //       path,
-    //       arguments: DeclareInfoArgument(
-    //         declarationPeriodId: response.result!.id,
-    //         action: D02ActionEnum.addPeriodFromDeclarePeriod,
-    //         procedureType: argument.type,
-    //       ),
-    //     )?.whenComplete(() {
-    //       // Refresh the list of declaration periods after creating a new one
-    //       getDeclarationPeriods();
-    //     });
-    //   }
-    // } catch (e) {
-    //   logger.e(e);
-    // } finally {
-    //   hideLoadingOverlay();
-    // }
+        final declareInfoArgument = DeclareInfoArgument(
+          declarationPeriodId: period.id,
+          action: D02ActionEnum.addPeriodFromDeclarePeriod,
+          procedureType: argument.type,
+        );
+
+        nav.toNamed(path, arguments: declareInfoArgument)?.whenComplete(() {
+          // Refresh the list of declaration periods after creating a new one
+          getDeclarationPeriods();
+        });
+      },
+    );
   }
 
   Future<void> editDeclarationPeriod(DeclarationPeriod period) async {

@@ -8,9 +8,11 @@ abstract class DeclarationPeriodRepository extends BaseRepositoryCl {
     required int year,
   });
 
-  // Future<DeclarationPeriod> createDeclarationPeriod({
-  //   required CreateDeclarationPeriodRequest request,
-  // });
+  Future<DeclarationPeriod> createDeclarationPeriod({
+    required int procedureId,
+    required int month,
+    required int year,
+  });
 
   /// Xóa kỳ kê khai
   Future<bool> deleteDeclarationPeriod({

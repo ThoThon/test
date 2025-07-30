@@ -10,7 +10,8 @@ class DeclarationPeriodBinding extends BaseBindings {
   @override
   void bindingsController() {
     Get.lazyPut(
-      () => DeclarationPeriodController(
+      () => DeclarationPeriodControllerCl(
+        sl(),
         sl(),
         sl(),
         argument: Get.arguments,
@@ -32,6 +33,9 @@ class DeclarationPeriodBinding extends BaseBindings {
     );
     Get.lazyPut(
       () => DeleteDeclarationPeriodUseCase(sl()),
+    );
+    Get.lazyPut(
+      () => CreateDeclarationPeriodUseCase(sl()),
     );
   }
 }
