@@ -12,7 +12,7 @@ import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 part 'd01_tab_607_widget.dart';
 part 'declare_info_607_widget.dart';
-part 'tk1_tab_607_widget.dart';
+part '../model/tk1_tab_607_widget.dart';
 
 class DeclareInfo607Page extends BaseGetWidget<DeclareInfo607Controller> {
   DeclareInfo607Page({super.key});
