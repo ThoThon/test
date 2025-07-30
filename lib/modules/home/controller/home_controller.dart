@@ -1,3 +1,5 @@
+import 'package:v_bhxh/modules/home/repository/home_repository.dart';
+
 import '../../../base_app/base_app.src.dart';
 import '../../../shares/widgets/dialog/dialog_utils.dart';
 import '../../src.dart';
@@ -5,6 +7,10 @@ import '../../view_pdf/model/view_pdf_argument.dart';
 
 class HomeController extends BaseGetxController {
   final _appController = Get.find<AppController>();
+  late final _repository = HomeRepository(this);
+
+  /// Biến loading riêng cho thao tác `readAllNotification`
+  final isReadingAllNoti   = false.obs;
 
   void showDialogLogout() {
     ShowDialog.showDialogConfirm2(
@@ -30,5 +36,27 @@ class HomeController extends BaseGetxController {
         enableDownloadButton: false,
       ),
     );
+  }
+
+  Future<void> readAllNotification() async {
+    try {
+      isReadingAllNoti.value = true;
+      final res = await _repository.readAllNotification();
+      if (res.isSuccess) {
+        AppData.instance.totalUnread.value = 0;
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      isReadingAllNoti.value = false;
+    }
+  }
+
+  void goToNotificationPage() {
+    if (!isReadingAllNoti.value) {
+      Get.toNamed(AppRoutes.notification.path)?.whenComplete(
+        () => readAllNotification(),
+      );
+    }
   }
 }
