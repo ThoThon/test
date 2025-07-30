@@ -101,6 +101,7 @@ extension OtherInfoWidget on OtherInfoPage {
       labelText: LocaleKeys.otherInfo_accountNumber.tr,
       maxLengthInputForm: 100,
       hintText: LocaleKeys.otherInfo_inputAccountNumber.tr,
+      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
       controller: controller.accountNumberCtrl,
     );
   }
