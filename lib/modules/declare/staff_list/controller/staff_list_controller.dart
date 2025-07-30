@@ -156,7 +156,12 @@ class StaffListController extends BaseGetxController {
   void onTapButtonContinue() {
     // Thủ tục 630a phải đi qua màn "Thông tin khác" nữa
     if (argument.procedureType == ProcedureType.procedure630a) {
-      Get.toNamed(AppRoutes.otherInfo.path, arguments: argument);
+      if (declaredStaffs.isEmpty) {
+        showSnackBar('Chưa có nhân viên nào được khai báo');
+        return;
+      } else {
+        Get.toNamed(AppRoutes.otherInfo.path, arguments: argument);
+      }
     } else {
       saveXml();
     }
