@@ -2,6 +2,7 @@
 - [Appmobile]_Chức năng [Đính kèm file]: Lỗi hiển thị up ảnh chụp - BHW-2868
 - [Appmobile]_Sửa lại giao diện thông báo chưa đọc - BHW-2879
 - [Appmobile]_Thủ tục 630a: Chỉnh sửa trường Số tài khoản [Màn Thông tin khác] ngân hàng không cho phép nhập tiếng Việt - BHW-2877
+- [Appmobile]_Thủ tục 630a. Bổ sung hiển thị toast thông báo khi không có nhân viên được kê khai - BHW-2880
 
 29/07/2025
 - [Appmobile]_Thủ tục 630a: Những trường combobox không bắt buộc => Cho phép xóa giá trị đã chọn - BHW-2867

@@ -61,6 +61,7 @@ class OtherInfoController extends BaseGetxController {
 
   void onTapContinueButton() async {
     if (id == null) {
+      showSnackBar('Hãy thêm nhân viên vào danh sách kê khai');
       await addOtherInfo();
     } else {
       await updateOtherInfo();
