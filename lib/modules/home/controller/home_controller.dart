@@ -1,3 +1,5 @@
+import 'package:v_bhxh/modules/home/repository/home_repository.dart';
+
 import '../../../base_app/base_app.src.dart';
 import '../../../shares/widgets/dialog/dialog_utils.dart';
 import '../../src.dart';
@@ -5,6 +7,7 @@ import '../../view_pdf/model/view_pdf_argument.dart';
 
 class HomeController extends BaseGetxController {
   final _appController = Get.find<AppController>();
+  late final _repository = HomeRepository(this);
 
   void showDialogLogout() {
     ShowDialog.showDialogConfirm2(
@@ -30,5 +33,21 @@ class HomeController extends BaseGetxController {
         enableDownloadButton: false,
       ),
     );
+  }
+
+  Future<void> readAllNotification() async {
+    try {
+      if (AppData.instance.totalUnread.value > 0) {
+        showLoading();
+        final res = await _repository.readAllNotification();
+        if (res.isSuccess) {
+          AppData.instance.totalUnread.value = 0;
+        }
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      hideLoading();
+    }
   }
 }

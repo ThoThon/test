@@ -16,15 +16,6 @@ class NotificationRepository extends BaseRepository {
     return BaseResponse.fromJson(response);
   }
 
-  // Đọc tất cả các thông báo
-  Future<BaseResponse> readAllNotification() async {
-    final response = await baseCallApi(
-      AppApi.urlReadAllNotification,
-      EnumRequestMethod.post,
-    );
-    return BaseResponse.fromJson(response);
-  }
-
   Future<BaseResponse<NotificationResponse>> fetchNotification(
       NotificationRequest request) async {
     final response = await baseCallApi(

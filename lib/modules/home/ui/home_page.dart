@@ -237,7 +237,9 @@ class HomePage extends BaseGetWidget<HomeController> {
           padding: const EdgeInsets.only(right: AppDimens.paddingMedium),
           child: InkWell(
             onTap: () {
-              Get.toNamed(AppRoutes.notification.path);
+              Get.toNamed(AppRoutes.notification.path)?.whenComplete(
+                () => controller.readAllNotification(),
+              );
             },
             child: Obx(
               () {
