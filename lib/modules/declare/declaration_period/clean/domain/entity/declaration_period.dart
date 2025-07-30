@@ -1,5 +1,6 @@
 import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/declaration_status.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/procedure_type.dart';
 
 class DeclarationPeriod implements Entity {
   final String id;
@@ -22,6 +23,9 @@ class DeclarationPeriod implements Entity {
   /// Số hồ sơ
   final String? fileNumber;
 
+  /// Loại thủ tục của kỳ khai báo
+  final ProcedureType procedureType;
+
   DeclarationPeriod({
     required this.id,
     required this.companyId,
@@ -31,6 +35,7 @@ class DeclarationPeriod implements Entity {
     required this.month,
     required this.period,
     required this.selected,
+    required this.procedureType,
     this.createTime,
     this.updateDate,
     this.fileNumber,

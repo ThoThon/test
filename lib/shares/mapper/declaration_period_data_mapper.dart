@@ -18,6 +18,8 @@ class DeclarationPeriodDataMapper
       createTime: DateTime.tryParse(data?.createTime ?? ''),
       updateDate: DateTime.tryParse(data?.updateDate ?? ''),
       fileNumber: data?.fileNumber,
+      procedureType: ProcedureType.fromInt(data?.procedureId) ??
+          ProcedureType.procedure600,
     );
   }
 }

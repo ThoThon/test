@@ -7,9 +7,9 @@ import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/usecase/use_case_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/model/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/declare_info_argument.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/domain/entity/entity_src.dart';
+import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 import 'package:v_bhxh/shares/widgets/date_picker/date_picker_utils.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -134,15 +134,15 @@ class DeclarationPeriodControllerCl extends BaseGetClController {
   }
 
   Future<void> editDeclarationPeriod(DeclarationPeriod period) async {
-    // Get.toNamed(
-    //   AppRoutes.staffList.path,
-    //   arguments: StaffListArgument(
-    //     declarationPeriodId: period.id,
-    //     procedureType: period.procedureType,
-    //   ),
-    // )?.whenComplete(() {
-    //   // Refresh the list of declaration periods after editing
-    //   getDeclarationPeriods();
-    // });
+    final staffListArgument = StaffListArgument(
+      declarationPeriodId: period.id,
+      procedureType: period.procedureType,
+    );
+    nav
+        .toNamed(AppRoutesCl.staffList.path, arguments: staffListArgument)
+        ?.whenComplete(() {
+      // Refresh the list of declaration periods after editing
+      getDeclarationPeriods();
+    });
   }
 }

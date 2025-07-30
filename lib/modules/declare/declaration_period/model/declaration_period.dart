@@ -1,3 +1,5 @@
+import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/procedure_type.dart';
+
 import 'model_src.dart';
 
 class DeclarationPeriod {

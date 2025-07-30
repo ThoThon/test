@@ -1,3 +1,4 @@
+import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/repository/declaration_period_repository.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/domain/entity/procedure.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';

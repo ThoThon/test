@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/declare/declaration_period/model/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/save_xml_result.dart';
 
 class DeclarationListArgument {
