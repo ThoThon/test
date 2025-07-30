@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/core/const/app_text_style.dart';
 import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
@@ -11,14 +12,17 @@ import 'package:v_bhxh/shares/widgets/date_picker/date_picker_utils.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 class DeclarationPeriodController extends BaseGetClController {
-  final GetDeclarationPeriodsUseCase _getDeclarationPeriodsUseCase;
   final Procedure argument;
+
+  final GetDeclarationPeriodsUseCase _getDeclarationPeriodsUseCase;
+  final DeleteDeclarationPeriodUseCase _deleteDeclarationPeriodUseCase;
 
   final declarationPeriods = <DeclarationPeriod>[].obs;
   final selectedPeriodDate = DateTime.now().obs;
 
   DeclarationPeriodController(
-    this._getDeclarationPeriodsUseCase, {
+    this._getDeclarationPeriodsUseCase,
+    this._deleteDeclarationPeriodUseCase, {
     required this.argument,
   });
 
@@ -71,27 +75,21 @@ class DeclarationPeriodController extends BaseGetClController {
     );
   }
 
-  Future<void> deleteDeclarationPeriod(DeclarationPeriod period) async {
-    // try {
-    //   showLoadingOverlay();
-    //   final response = await _repository.deleteDeclarationPeriod(
-    //     id: period.id,
-    //   );
-
-    //   if (response.isSuccess) {
-    //     showSnackBar(
-    //       LocaleKeys.declarationPeriod_contentDeletePeriodSuccess.tr,
-    //       typeAction: AppConst.actionSuccess,
-    //     );
-    //     getDeclarationPeriods();
-    //   } else {
-    //     showSnackBar(response.errorMessage);
-    //   }
-    // } catch (e) {
-    //   logger.e(e);
-    // } finally {
-    //   hideLoadingOverlay();
-    // }
+  Future<void> deleteDeclarationPeriod(DeclarationPeriod period) {
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        final success =
+            await _deleteDeclarationPeriodUseCase.execute(period.id);
+        if (success) {
+          nav.showSnackBar(
+            LocaleKeys.declarationPeriod_contentDeletePeriodSuccess.tr,
+            type: SnackBarType.success,
+          );
+          getDeclarationPeriods();
+        }
+      },
+    );
   }
 
   Future<void> createDeclarationPeriod() async {

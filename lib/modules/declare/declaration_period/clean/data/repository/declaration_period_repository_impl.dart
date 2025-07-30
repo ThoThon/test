@@ -39,4 +39,17 @@ class DeclarationPeriodRepositoryImpl extends DeclarationPeriodRepository {
 
     return _declarationPeriodDataMapper.mapToListEntity(data);
   }
+
+  @override
+  Future<bool> deleteDeclarationPeriod({
+    required String id,
+  }) async {
+    final response = await _authAppServerApiClient.request(
+      method: RestMethod.delete,
+      path: '${AppApi.urlDeleteDeclarationPeriod}/$id',
+      cancelToken: cancelToken,
+    );
+
+    return BaseResponseCl<bool>.fromJson(response).result ?? false;
+  }
 }

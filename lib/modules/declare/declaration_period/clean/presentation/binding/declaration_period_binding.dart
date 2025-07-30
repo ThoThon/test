@@ -12,6 +12,7 @@ class DeclarationPeriodBinding extends BaseBindings {
     Get.lazyPut(
       () => DeclarationPeriodController(
         sl(),
+        sl(),
         argument: Get.arguments,
       ),
     );
@@ -28,6 +29,9 @@ class DeclarationPeriodBinding extends BaseBindings {
   void bindingsUseCase() {
     Get.lazyPut(
       () => GetDeclarationPeriodsUseCase(sl()),
+    );
+    Get.lazyPut(
+      () => DeleteDeclarationPeriodUseCase(sl()),
     );
   }
 }

@@ -12,8 +12,8 @@ abstract class DeclarationPeriodRepository extends BaseRepositoryCl {
   //   required CreateDeclarationPeriodRequest request,
   // });
 
-  // /// Xóa kỳ kê khai
-  // Future<bool> deleteDeclarationPeriod({
-  //   required String id,
-  // });
+  /// Xóa kỳ kê khai
+  Future<bool> deleteDeclarationPeriod({
+    required String id,
+  });
 }
