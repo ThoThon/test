@@ -32,7 +32,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             if (controller.isLoading.value) {
               return;
             }
-            // controller.pickPeriodDate();
+            controller.pickPeriodDate();
           },
           child: Container(
             padding: const EdgeInsets.symmetric(
@@ -114,7 +114,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
                   padding: const EdgeInsets.only(right: AppDimens.paddingSmall),
                   child: InkWell(
                     onTap: () {
-                      // controller.showDialogDeletePeriod(period);
+                      controller.showDialogDeletePeriod(period);
                     },
                     child: const Icon(Icons.delete_outline),
                   ),
@@ -140,7 +140,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
       borderRadius: AppDimens.radius30,
       textStyle: AppTextStyle.font16Re.copyWith(color: AppColors.basicWhite),
       title: LocaleKeys.declarationPeriod_createNewPeriod.tr,
-      // onPressed: controller.createDeclarationPeriod,
+      onPressed: controller.createDeclarationPeriod,
     );
   }
 
@@ -213,7 +213,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
         if (period.status.canEdit)
           InkWell(
             onTap: () {
-              // controller.editDeclarationPeriod(period);
+              controller.editDeclarationPeriod(period);
             },
             child: Row(
               children: [
