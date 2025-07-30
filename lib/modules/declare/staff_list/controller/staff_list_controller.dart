@@ -33,24 +33,32 @@ class StaffListController extends BaseGetxController {
   ProcedureType get procedureType => argument.procedureType;
 
   Future<void> pickImage() async {
-    if (listAttachImage.length >= maxImageAttachments) {
-      maximumUploadFile();
-      return;
-    }
-    final path = await ImageUtils.pickImage();
-    if (path != null) {
-      upLoadFile(path);
+    try {
+      if (listAttachImage.length >= maxImageAttachments) {
+        showSnackBar(LocaleKeys.dialog_max5File.tr);
+        return;
+      }
+      final path = await ImageUtils.pickImage();
+      if (path != null) {
+        await upLoadFile(path);
+      }
+    } catch (e) {
+      showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
     }
   }
 
   Future<void> takePhoto() async {
-    if (listAttachImage.length >= maxImageAttachments) {
-      maximumUploadFile();
-      return;
-    }
-    final path = await ImageUtils.takePhoto();
-    if (path != null) {
-      upLoadFile(path);
+    try {
+      if (listAttachImage.length >= maxImageAttachments) {
+        showSnackBar(LocaleKeys.dialog_max5File.tr);
+        return;
+      }
+      final path = await ImageUtils.takePhoto();
+      if (path != null) {
+        await upLoadFile(path);
+      }
+    } catch (e) {
+      showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
     }
   }
 
@@ -60,10 +68,6 @@ class StaffListController extends BaseGetxController {
 
   void removeImage(int index) {
     listAttachImage.removeAt(index);
-  }
-
-  void maximumUploadFile() {
-    showSnackBar(LocaleKeys.dialog_max5File.tr);
   }
 
   Future<void> _getStaffList() async {
