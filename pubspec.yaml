@@ -40,9 +40,12 @@ dependencies:
   cupertino_icons: ^1.0.8
   decimal: ^3.2.2
   dio: ^5.4.2+1
-  image_compress: 
+  # Nhánh fix/compressedBytes_failed sẽ luôn trả về ảnh dù nó có nhỏ hơn kích thước tối đa hay không,
+  # thay vì trả về null nếu không nén được ảnh nhỏ hơn kích thước tối đa như nhánh main
+  image_compress:
     git:
-      url: https://git-sds.softdreams.vn:7990/scm/mob/image_compress.git
+      url: https://github.com/HVLoc/image_compress.git
+      ref: fix/compressedBytes_failed
   dio_log_sds:
     git:
       url: https://github.com/HVLoc/dio_log_sds.git
