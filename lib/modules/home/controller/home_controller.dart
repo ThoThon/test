@@ -9,6 +9,9 @@ class HomeController extends BaseGetxController {
   final _appController = Get.find<AppController>();
   late final _repository = HomeRepository(this);
 
+  /// Biến loading riêng cho thao tác `readAllNotification`
+  final isReadingAllNoti   = false.obs;
+
   void showDialogLogout() {
     ShowDialog.showDialogConfirm2(
       title: LocaleKeys.dialog_isLogout.tr,
@@ -37,17 +40,23 @@ class HomeController extends BaseGetxController {
 
   Future<void> readAllNotification() async {
     try {
-      if (AppData.instance.totalUnread.value > 0) {
-        showLoading();
-        final res = await _repository.readAllNotification();
-        if (res.isSuccess) {
-          AppData.instance.totalUnread.value = 0;
-        }
+      isReadingAllNoti.value = true;
+      final res = await _repository.readAllNotification();
+      if (res.isSuccess) {
+        AppData.instance.totalUnread.value = 0;
       }
     } catch (e) {
       logger.d(e);
     } finally {
-      hideLoading();
+      isReadingAllNoti.value = false;
+    }
+  }
+
+  void goToNotificationPage() {
+    if (!isReadingAllNoti.value) {
+      Get.toNamed(AppRoutes.notification.path)?.whenComplete(
+        () => readAllNotification(),
+      );
     }
   }
 }

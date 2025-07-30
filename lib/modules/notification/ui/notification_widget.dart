@@ -143,13 +143,13 @@ extension NotificationWidget on NotificationPage {
 
   Widget _buildCardItem(int index) {
     final item = controller.listNotification[index];
-    final isUnreadNoti = item.status == 1;
+    final isReadNoti = item.status == 2;
     return Obx(
       () {
         final enableCheckobx = controller.isShowCheckbox.value;
         return Container(
           decoration: BoxDecoration(
-            color: isUnreadNoti ? AppColors.dsGray4 : AppColors.basicWhite,
+            color: isReadNoti ? AppColors.basicWhite : AppColors.dsGray4,
             border: Border.all(width: 1, color: AppColors.dsGray6),
             borderRadius: enableCheckobx
                 ? const BorderRadius.horizontal(
