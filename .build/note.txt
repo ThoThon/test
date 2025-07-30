@@ -1,5 +1,6 @@
 30/07/2025
 - [Appmobile]_Chức năng [Đính kèm file]: Lỗi hiển thị up ảnh chụp - BHW-2868
+- [Appmobile]_Sửa lại giao diện thông báo chưa đọc - BHW-2879
 
 26/07/2025
 - [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613 - Màn TK1: Lỗi focus khi nhấn vào [Thêm thành viên] - BHW-2838
