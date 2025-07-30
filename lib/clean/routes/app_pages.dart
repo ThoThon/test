@@ -6,7 +6,8 @@ import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/change_base_url/ui/change_base_url_page.dart';
 import 'package:v_bhxh/modules/declare/declaration_form_detail/ui/declaration_form_detail_page.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/ui/declaration_list_page.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/ui/declaration_period_page.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/clean/presentation/binding/declaration_period_binding.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/clean/presentation/declaration_period_page.dart';
 import 'package:v_bhxh/modules/declare/declare_info/ui/declare_info_page.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/ui/family_member_detail_page.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/presentation/binding/procedure_list_binding.dart';
@@ -66,6 +67,7 @@ class AppPages {
     GetPage(
       name: AppRoutesCl.declarationPeriod.path,
       page: () => DeclarationPeriodPage(),
+      binding: DeclarationPeriodBinding(),
     ),
     GetPage(
       name: AppRoutesCl.staffList.path,
