@@ -671,11 +671,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: "34215f90c0e0f63d3c2cd470ae5825238d77f3e5"
-      url: "https://git-sds.softdreams.vn:7990/scm/mob/image_compress.git"
+      ref: "fix/compressedBytes_failed"
+      resolved-ref: c676949858388d4dc6d04997cd2d92e59653fb1b
+      url: "https://github.com/HVLoc/image_compress.git"
     source: git
-    version: "0.0.1"
+    version: "1.0.0"
   image_cropper:
     dependency: "direct main"
     description:
