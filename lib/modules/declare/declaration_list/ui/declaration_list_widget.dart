@@ -2,68 +2,72 @@ part of 'declaration_list_page.dart';
 
 extension DeclarationListWidget on DeclarationListPage {
   Widget _buildBody() {
+    final saveResult = controller.argument.saveXmlResult;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(AppDimens.defaultPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SDSBuildText(
-                  'Danh sách biểu mẫu',
-                  style: AppTextStyle.font16Bo,
-                ),
-                sdsSBHeight12,
-                if (controller.argument.saveXmlResult.hasOdM01hsb)
-                  _buildDeclarationItem(
-                    title:
-                        'Danh sách đề nghị giải quyết hưởng chế độ ốm đau (Mẫu 01D-HSB)',
-                    onTap: () {
-                      controller.getPreviewPdf(
-                        previewDocumentType: PreviewDocumentTypeEnum.hsb,
-                        title: 'Tờ khai tham gia',
-                      );
-                    },
-                  ).paddingOnly(bottom: AppDimens.paddingSmall),
-                if (controller.argument.saveXmlResult.hasD02)
-                  _buildDeclarationItem(
-                    title: 'Danh sách lao động tham gia BHXH - (Mẫu D02-LT)',
-                    onTap: () {
-                      controller.getPreviewPdf(
-                        previewDocumentType: PreviewDocumentTypeEnum.d02,
-                        title: 'Danh sách lao động',
-                        isRotateHorizontal: true,
-                      );
-                    },
-                  ).paddingOnly(bottom: AppDimens.paddingSmall),
-                _buildTk1Preview(),
-                if (controller.argument.saveXmlResult.hasD01)
-                  _buildDeclarationItem(
-                    title: 'Bảng kê thông tin (Mẫu D01-TS)',
-                    onTap: () {
-                      controller.getPreviewPdf(
-                        previewDocumentType: PreviewDocumentTypeEnum.d01,
-                        title: 'Tờ khai tham gia',
-                      );
-                    },
-                  ).paddingOnly(bottom: AppDimens.paddingSmall),
-                if (controller.argument.saveXmlResult.attachPreviewPath != null)
-                  _buildDeclarationItem(
-                    title: 'File đính kèm',
-                    onTap: () {
-                      Get.toNamed(
-                        AppRoutes.viewPdf.path,
-                        arguments: ViewPdfArgument(
-                          url: controller
-                              .argument.saveXmlResult.attachPreviewPath!,
-                          title: 'File đính kèm',
-                        ),
-                      );
-                    },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppDimens.defaultPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SDSBuildText(
+                    'Danh sách biểu mẫu',
+                    style: AppTextStyle.font16Bo,
                   ),
-              ],
+                  sdsSBHeight12,
+                  if (saveResult.hasOdM01hsb)
+                    _buildDeclarationItem(
+                      title:
+                          'Danh sách đề nghị giải quyết hưởng chế độ ốm đau (Mẫu 01D-HSB)',
+                      onTap: () {
+                        controller.getPreviewPdf(
+                          previewDocumentType: PreviewDocumentTypeEnum.hsb,
+                          title: 'Tờ khai tham gia',
+                        );
+                      },
+                    ).paddingOnly(bottom: AppDimens.paddingSmall),
+                  if (saveResult.hasD02)
+                    _buildDeclarationItem(
+                      title: 'Danh sách lao động tham gia BHXH - (Mẫu D02-LT)',
+                      onTap: () {
+                        controller.getPreviewPdf(
+                          previewDocumentType: PreviewDocumentTypeEnum.d02,
+                          title: 'Danh sách lao động',
+                          isRotateHorizontal: true,
+                        );
+                      },
+                    ).paddingOnly(bottom: AppDimens.paddingSmall),
+                  _buildTk1Preview(),
+                  if (saveResult.hasD01)
+                    _buildDeclarationItem(
+                      title: 'Bảng kê thông tin (Mẫu D01-TS)',
+                      onTap: () {
+                        controller.getPreviewPdf(
+                          previewDocumentType: PreviewDocumentTypeEnum.d01,
+                          title: 'Tờ khai tham gia',
+                        );
+                      },
+                    ).paddingOnly(bottom: AppDimens.paddingSmall),
+                  if (saveResult.attachPreviewPath != null)
+                    _buildDeclarationItem(
+                      title: 'File đính kèm',
+                      onTap: () {
+                        Get.toNamed(
+                          AppRoutes.viewPdf.path,
+                          arguments: ViewPdfArgument(
+                            url: saveResult.attachPreviewPath!,
+                            title: 'File đính kèm',
+                          ),
+                        );
+                      },
+                    ),
+                ],
+              ),
             ),
           ),
         ),
@@ -75,12 +79,13 @@ extension DeclarationListWidget on DeclarationListPage {
           title: 'Ký gửi',
           onPressed: controller.signDocument,
         ).paddingOnly(
+          top: AppDimens.defaultPadding,
           bottom: AppDimens.padding32,
           right: AppDimens.defaultPadding,
           left: AppDimens.defaultPadding,
         ),
       ],
-    );
+    ).paddingOnly(top: AppDimens.defaultPadding);
   }
 
   Widget _buildTk1Preview() {
