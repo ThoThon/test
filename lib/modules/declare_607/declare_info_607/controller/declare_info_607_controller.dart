@@ -1,4 +1,5 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/clean/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
@@ -8,6 +9,7 @@ import 'package:v_bhxh/modules/login/model/province_model.dart';
 import 'package:v_bhxh/modules/login/model/ward_model.dart';
 import 'package:v_bhxh/modules/select_staff/model/select_staff_response.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
@@ -21,9 +23,6 @@ class DeclareInfo607Controller extends BaseGetxController {
   final d01State = D01State();
 
   final autovalidateMode = Rx<AutovalidateMode?>(null);
-
-  final declarationPeriodController =
-      Get.findOrNull<DeclarationPeriodController>();
 
   final enableClearTTIcon = false.obs;
 
@@ -262,6 +261,8 @@ class DeclareInfo607Controller extends BaseGetxController {
           typeAction: AppConst.actionSuccess,
         );
         if (argument.isAddPeriodFromDeclarePeriod) {
+          // Đóng màn kê khai này và mở màn danh sách nhân viên
+          // .then để bắt sự kiện đóng màn danh sách nhân viên này để refresh màn đợt kê khai
           Get.offNamed(
             AppRoutes.staffList.path,
             arguments: StaffListArgument(
@@ -269,7 +270,7 @@ class DeclareInfo607Controller extends BaseGetxController {
               procedureType: argument.procedureType,
             ),
           )?.then((value) {
-            declarationPeriodController?.getDeclarationPeriods();
+            eventBus.fire(const RefreshDeclarationPeriodEvent());
           });
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
