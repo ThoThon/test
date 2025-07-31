@@ -31,7 +31,7 @@ class DeclarationPeriodController extends BaseGetxController {
           periodId: argument.type,
           month: selectedPeriodDate.value.month,
           year: selectedPeriodDate.value.year,
-          status: selectFilter.value,
+          filterStatus: selectFilter.value,
         ),
       );
 

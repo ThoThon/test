@@ -90,7 +90,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
     required DeclarationPeriod period,
     required int index,
   }) {
-    final canEditAndDelete = period.isEnableEditAndDelete;
+    final canEditAndDelete = !period.disableDeleteAndEdit;
 
     return Container(
       padding: const EdgeInsets.only(
@@ -192,7 +192,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
           vertical: AppDimens.paddingSmallest,
         ),
         decoration: BoxDecoration(
-          color: period.periodStatusFilter.cardColor,
+          color: period.periodStatus.cardColor,
           borderRadius: BorderRadius.circular(AppDimens.radius16),
         ),
         child: Row(
@@ -202,15 +202,15 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
               width: 8,
               height: 8,
               decoration: BoxDecoration(
-                color: period.periodStatusFilter.color,
+                color: period.periodStatus.color,
                 shape: BoxShape.circle,
               ),
             ),
             sdsSBWidth8,
             SDSBuildText(
-              period.periodStatusFilter.title,
+              period.periodStatus.title,
               style: AppTextStyle.font14Re
-                  .copyWith(color: period.periodStatusFilter.color),
+                  .copyWith(color: period.periodStatus.color),
             ),
           ],
         ),
