@@ -603,19 +603,26 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                   vertical: AppDimens.paddingVerySmall,
                 ),
                 decoration: const BoxDecoration(border: Border()),
-                isDismissible: true,
+                isDismissible: false,
                 onConfirm: (values) {
                   controller.weeklyDayOffs.value = values;
+                  KeyBoard.hide();
                 },
-                cancelText: SDSBuildText(
-                  LocaleKeys.dialog_cancel.tr,
-                  style: AppTextStyle.font14Bo
-                      .copyWith(color: AppColors.textColorGrey),
-                ),
                 confirmText: SDSBuildText(
                   LocaleKeys.dialog_select.tr,
                   style: AppTextStyle.font14Bo
                       .copyWith(color: AppColors.primaryColor),
+                ),
+                cancelText: GestureDetector(
+                  onTap: () {
+                    Get.back();
+                    KeyBoard.hide();
+                  },
+                  child: SDSBuildText(
+                    LocaleKeys.dialog_cancel.tr,
+                    style: AppTextStyle.font14Bo
+                        .copyWith(color: AppColors.textColorGrey),
+                  ),
                 ),
                 initialValue: controller.weeklyDayOffs,
                 chipDisplay: MultiSelectChipDisplay.none(),
