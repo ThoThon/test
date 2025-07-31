@@ -341,7 +341,9 @@
     "contentDeletePeriod": "Xóa đợt kê khai cũng sẽ xóa toàn bộ dữ liệu của đợt kê khai",
     "contentDeletePeriodSuccess": "Xóa đợt kê khai thành công",
     "delete": "Xóa",
-    "declaredStaffsIsEmpty": "Chưa có nhân viên nào được khai báo"
+    "declaredStaffsIsEmpty": "Chưa có nhân viên nào được khai báo",
+    "selectDeclarationPeriod": "Chọn trạng thái hồ sơ",
+    "all": "Tất cả"
   },
   "declarationPeriodDetail": {
     "addNewStaff": "Thêm mới nhân viên",
