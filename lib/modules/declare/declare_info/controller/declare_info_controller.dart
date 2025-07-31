@@ -1,5 +1,5 @@
-import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/procedure_type.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/clean/presentation/events/declaration_period_event.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';

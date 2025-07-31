@@ -1,6 +1,6 @@
 import 'package:path/path.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/repository/staff_list_607_repository.dart';
 import 'package:v_bhxh/modules/declare/staff_list/repository/staff_list_repository.dart';

@@ -1,5 +1,5 @@
 import 'package:v_bhxh/clean/core/domain/usecase/base_use_case.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/repository/declaration_period_repository.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/repository/declaration_period_repository.dart';
 
 class DeleteDeclarationPeriodUseCase extends UseCase<String, bool> {
   final DeclarationPeriodRepository _declarationPeriodRepository;

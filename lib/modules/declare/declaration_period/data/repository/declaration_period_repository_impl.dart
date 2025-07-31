@@ -1,9 +1,9 @@
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
 import 'package:v_bhxh/clean/core/data/model/model_src.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/clean/data/model/model_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/entity_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/repository/declaration_period_repository.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/data/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/repository/declaration_period_repository.dart';
 import 'package:v_bhxh/shares/mapper/mapper_src.dart';
 
 class DeclarationPeriodRepositoryImpl extends DeclarationPeriodRepository {

@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/data/model/procedure_data.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/domain/entity/procedure.dart';
 import 'package:v_bhxh/shares/mapper/base/base_data_mapper.dart';

@@ -1,6 +1,6 @@
 import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/declaration_status.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/clean/domain/entity/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/declaration_status.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 
 class DeclarationPeriod implements Entity {
   final String id;
