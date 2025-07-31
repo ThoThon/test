@@ -19,7 +19,7 @@ import 'package:v_bhxh/shares/widgets/utils_widget/utils_widget.dart';
 
 part 'declaration_period_widget.dart';
 
-class DeclarationPeriodPage extends BaseGetPage<DeclarationPeriodControllerCl> {
+class DeclarationPeriodPage extends BaseGetPage<DeclarationPeriodController> {
   DeclarationPeriodPage({super.key});
 
   @override

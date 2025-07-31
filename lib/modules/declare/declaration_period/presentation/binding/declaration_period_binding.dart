@@ -10,7 +10,7 @@ class DeclarationPeriodBinding extends BaseBindings {
   @override
   void bindingsController() {
     Get.lazyPut(
-      () => DeclarationPeriodControllerCl(
+      () => DeclarationPeriodController(
         sl(),
         sl(),
         sl(),

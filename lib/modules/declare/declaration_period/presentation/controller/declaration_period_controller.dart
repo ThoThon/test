@@ -18,7 +18,7 @@ import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/date_picker/date_picker_utils.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
-class DeclarationPeriodControllerCl extends BaseGetClController {
+class DeclarationPeriodController extends BaseGetClController {
   final Procedure argument;
 
   final GetDeclarationPeriodsUseCase _getDeclarationPeriodsUseCase;
@@ -31,7 +31,7 @@ class DeclarationPeriodControllerCl extends BaseGetClController {
   final declarationPeriods = <DeclarationPeriod>[].obs;
   final selectedPeriodDate = DateTime.now().obs;
 
-  DeclarationPeriodControllerCl(
+  DeclarationPeriodController(
     this._getDeclarationPeriodsUseCase,
     this._deleteDeclarationPeriodUseCase,
     this._createDeclarationPeriodUseCase, {
