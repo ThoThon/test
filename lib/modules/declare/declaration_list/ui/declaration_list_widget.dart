@@ -43,7 +43,7 @@ extension DeclarationListWidget on DeclarationListPage {
                     title: 'File đính kèm',
                     onTap: () {
                       Get.toNamed(
-                        AppRoutes.viewPdf.path,
+                        AppRoutesCl.viewPdf.path,
                         arguments: ViewPdfArgument(
                           url: controller
                               .argument.saveXmlResult.attachPreviewPath!,

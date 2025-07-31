@@ -1,6 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 
 import '../../../modules/src.dart';
 import '../../../shares/package/export_package.dart';
@@ -82,7 +83,7 @@ class BaseGetxController extends GetxController {
                     errorContent,
                     isActiveBack: false,
                     function: () {
-                      Get.offAllNamed(AppRoutes.login.path);
+                      Get.offAllNamed(AppRoutesCl.login.path);
                     },
                   );
                   return;

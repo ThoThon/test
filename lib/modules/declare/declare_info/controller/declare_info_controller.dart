@@ -1,3 +1,4 @@
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
@@ -147,7 +148,7 @@ class DeclareInfoController extends BaseGetxController {
 
   void goToSelectStaffPage() async {
     final result = await Get.toNamed(
-      AppRoutes.selectStaff.path,
+      AppRoutesCl.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: d02State.selectedStaffId,
     );
@@ -158,7 +159,7 @@ class DeclareInfoController extends BaseGetxController {
 
   Future<void> createNewDeclarationForm() async {
     final result = await Get.toNamed(
-      AppRoutes.declarationFormDetail.path,
+      AppRoutesCl.declarationFormDetail.path,
       arguments: DeclarationFormDetailArgument(
         bhxhCode: d02Tk1State.bhxhTextCtrl.text,
         fullName: d02Tk1State.fullNameTextCtrl.text,
@@ -175,7 +176,7 @@ class DeclareInfoController extends BaseGetxController {
 
   Future<void> editDeclarationForm(DeclarationForm form) async {
     final result = await Get.toNamed(
-      AppRoutes.declarationFormDetail.path,
+      AppRoutesCl.declarationFormDetail.path,
       arguments: DeclarationFormDetailArgument(form: form),
     );
     if (result is DeclarationForm) {
@@ -328,7 +329,7 @@ class DeclareInfoController extends BaseGetxController {
           // Đóng màn kê khai này và mở màn danh sách nhân viên
           // .then để bắt sự kiện đóng màn danh sách nhân viên này để refresh màn đợt kê khai
           Get.offNamed(
-            AppRoutes.staffList.path,
+            AppRoutesCl.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure600,
@@ -682,7 +683,7 @@ class DeclareInfoController extends BaseGetxController {
 
   Future<void> addFamilyMember() async {
     KeyBoard.hide();
-    final result = await Get.toNamed(AppRoutes.familyMemberDetail.path);
+    final result = await Get.toNamed(AppRoutesCl.familyMemberDetail.path);
     if (result is FamilyMember) {
       tk1State.familyMembers.add(result);
     }
@@ -690,7 +691,7 @@ class DeclareInfoController extends BaseGetxController {
 
   Future<void> editFamilyMember(FamilyMember member) async {
     final result = await Get.toNamed(
-      AppRoutes.familyMemberDetail.path,
+      AppRoutesCl.familyMemberDetail.path,
       arguments: member,
     );
     if (result is FamilyMember) {
@@ -776,7 +777,7 @@ class DeclareInfoController extends BaseGetxController {
   //   final cccd = d02Tk1State.cccdTextCtrl.text.trim();
   //   if (!_isValidCCCD(cccd)) return;
   //   final result = await Get.toNamed(
-  //     AppRoutes.nfc.path,
+  //     AppRoutesCl.nfc.path,
   //     arguments: cccd,
   //   );
   //   if (result != null) {

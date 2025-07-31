@@ -1,4 +1,5 @@
 import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/home/controller/home_controller.dart';
 
 import '../../../modules/src.dart';
@@ -120,7 +121,7 @@ class HomePage extends BaseGetWidget<HomeController> {
               icon: Icons.account_circle_outlined,
               text: LocaleKeys.home_accountInfo.tr,
               onTap: () {
-                Get.toNamed(AppRoutes.profile.path);
+                Get.toNamed(AppRoutesCl.profile.path);
               },
             ),
             // _buildItemDrawer(
@@ -237,7 +238,7 @@ class HomePage extends BaseGetWidget<HomeController> {
           padding: const EdgeInsets.only(right: AppDimens.paddingMedium),
           child: InkWell(
             onTap: () {
-              Get.toNamed(AppRoutes.notification.path);
+              Get.toNamed(AppRoutesCl.notification.path);
             },
             child: Obx(
               () {

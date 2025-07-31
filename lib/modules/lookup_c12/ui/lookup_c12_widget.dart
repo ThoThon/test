@@ -66,7 +66,7 @@ extension LookupC12Widget on LookupC12Page {
                   onTap: () {
                     if (file != null) {
                       Get.toNamed(
-                        AppRoutes.viewPdf.path,
+                        AppRoutesCl.viewPdf.path,
                         arguments: ViewPdfArgument(
                           url: file.c12FilePath,
                           title: "${LocaleKeys.lookupC12_month.tr} $month ",

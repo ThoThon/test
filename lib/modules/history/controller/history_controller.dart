@@ -1,4 +1,5 @@
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/history_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -79,7 +80,7 @@ class HistoryController extends BasePageSearchController<HistoryResponse> {
   }
 
   void backToHome() {
-    Get.until(ModalRoute.withName(AppRoutes.home.path));
+    Get.until(ModalRoute.withName(AppRoutesCl.home.path));
   }
 
   @override

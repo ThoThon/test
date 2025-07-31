@@ -122,7 +122,7 @@ extension HistoryDeclareTab on HistoryPage {
         InkWell(
           onTap: () {
             Get.toNamed(
-              AppRoutes.historyDetailDeclare.path,
+              AppRoutesCl.historyDetailDeclare.path,
               arguments: item,
             )?.then(
               (value) async {
