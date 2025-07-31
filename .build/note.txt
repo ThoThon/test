@@ -5,6 +5,7 @@
 - [Appmobile]_Lỗi giao diện màn Danh sách biểu mẫu hồ sơ - BHW-2872
 - [Appmobile]_Thủ tục 630a. Bổ sung hiển thị toast thông báo khi không có nhân viên được kê khai - BHW-2880
 - [Appmobile]_Màn đăng nhập: Reset lại khi nhấn vào nút Tài khoản khác - BHW-2888
+- [Appmobile]_Chỉnh sửa icon "X" sang icon drop - BHW-2886
 
 29/07/2025
 - [Appmobile]_Thủ tục 630a: Những trường combobox không bắt buộc => Cho phép xóa giá trị đã chọn - BHW-2867
