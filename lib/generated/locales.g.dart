@@ -358,6 +358,8 @@ class LocaleKeys {
   static const declarationPeriod_contentDeletePeriodSuccess =
       'declarationPeriod_contentDeletePeriodSuccess';
   static const declarationPeriod_delete = 'declarationPeriod_delete';
+  static const declarationPeriod_declaredStaffsIsEmpty =
+      'declarationPeriod_declaredStaffsIsEmpty';
   static const declarationPeriod_selectDeclarationPeriod =
       'declarationPeriod_selectDeclarationPeriod';
   static const declarationPeriod_all = 'declarationPeriod_all';
@@ -1491,6 +1493,8 @@ class Locales {
     'declarationPeriod_contentDeletePeriodSuccess':
         'Xóa đợt kê khai thành công',
     'declarationPeriod_delete': 'Xóa',
+    'declarationPeriod_declaredStaffsIsEmpty':
+        'Chưa có nhân viên nào được khai báo',
     'declarationPeriod_selectDeclarationPeriod': 'Chọn trạng thái hồ sơ',
     'declarationPeriod_all': 'Tất cả',
     'declarationPeriodDetail_addNewStaff': 'Thêm mới nhân viên',
