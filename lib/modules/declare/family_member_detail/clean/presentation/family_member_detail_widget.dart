@@ -258,8 +258,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     );
                     break;
                   case BirthTypeEnum.full:
-                    selectedDate =
-                        await DatePickerUtils.showCalendarPicker(
+                    selectedDate = await DatePickerUtils.showCalendarPicker(
                       title: LocaleKeys.dialog_selectDayMonthYear.tr,
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: AppDimens.padding32,
@@ -303,7 +302,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildSelectEthnic() {
-    return FormFieldRegistrant<EthnicModel>(
+    return FormFieldRegistrant<Ethnic>(
       registrarId: '44e104fa-056f-4351-ba57-f69e178cd99f',
       validator: (value) {
         if (controller.selectedEthnic.value == null) {
@@ -314,16 +313,16 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<EthnicModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Ethnic>(
               fieldKey: fieldKey,
               label: LocaleKeys.familyMember_ethnic.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<EthnicModel>(
+                  BottomSheetSearch<Ethnic>(
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputEthnic.tr,
                     title: LocaleKeys.familyMember_selectEthnic.tr,
-                    listFilter: AppData.instance.ethnics.toList(),
+                    listFilter: appCtrl.ethnics.toList(),
                     selectedItem: controller.selectedEthnic.value,
                     display: (value) => value.text,
                     onAccept: (value) {
@@ -346,7 +345,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildSelectNationality() {
-    return FormFieldRegistrant<NationModel>(
+    return FormFieldRegistrant<Nation>(
       registrarId: 'a6e75779-175a-424e-b400-01d9edbfb7e3',
       validator: (value) {
         if (controller.selectedNationality.value == null) {
@@ -357,17 +356,17 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<NationModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Nation>(
               fieldKey: fieldKey,
               validator: validator,
               label: LocaleKeys.familyMember_nationality.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<NationModel>(
+                  BottomSheetSearch<Nation>(
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputNationality.tr,
                     title: LocaleKeys.familyMember_selectNationality.tr,
-                    listFilter: AppData.instance.nations.toList(),
+                    listFilter: appCtrl.nations.toList(),
                     selectedItem: controller.selectedNationality.value,
                     display: (value) => value.text,
                     onAccept: (value) {
@@ -389,7 +388,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildSelectProvince() {
-    return FormFieldRegistrant<ProvinceModel>(
+    return FormFieldRegistrant<Province>(
       registrarId: 'd29e0b33-59e1-43b7-a5fa-aa60ad6a9ff3',
       validator: (value) {
         if (controller.selectedProvince.value == null) {
@@ -400,16 +399,16 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Province>(
               fieldKey: fieldKey,
               label: LocaleKeys.familyMember_provinceOfBirth.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<ProvinceModel>(
+                  BottomSheetSearch<Province>(
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.familyMember_selectProvince.tr,
-                    listFilter: AppData.instance.provinces.toList(),
+                    listFilter: appCtrl.provinces.toList(),
                     selectedItem: controller.selectedProvince.value,
                     display: (value) => '${value.id} - ${value.name}',
                     onAccept: (value) {
@@ -440,7 +439,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildSelectDistrict() {
-    return FormFieldRegistrant<DistrictModel>(
+    return FormFieldRegistrant<District>(
       registrarId: '2e677fd1-32c6-4df2-a1eb-64f7c0ecfc45',
       validator: (value) {
         if (controller.selectedDistrict.value == null) {
@@ -451,18 +450,18 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<District>(
               fieldKey: fieldKey,
               label: LocaleKeys.familyMember_districtOfBirth.tr,
               funcSelect: (didChange) async {
                 final districtOfBirth = controller.selectedProvince.value;
                 if (districtOfBirth == null) {
-                  controller.showSnackBar(
+                  nav.showSnackBar(
                       LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
                   return;
                 }
 
-                final result = await Get.bottomSheet<DistrictModel>(
+                final result = await Get.bottomSheet<District>(
                   SelectDistrictBts(
                     provinceCode: districtOfBirth.id,
                     selectedDistrict: controller.selectedDistrict.value,
@@ -492,7 +491,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildSelectWard() {
-    return FormFieldRegistrant<WardModel>(
+    return FormFieldRegistrant<Ward>(
       registrarId: '80050d00-d572-4886-b798-ee65a619c944',
       validator: (value) {
         if (controller.selectedWard.value == null) {
@@ -503,26 +502,26 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Ward>(
               fieldKey: fieldKey,
               validator: validator,
               label: LocaleKeys.familyMember_wardOfBirth.tr,
               funcSelect: (didChange) async {
                 final provinceOfBirth = controller.selectedProvince.value;
                 if (provinceOfBirth == null) {
-                  controller.showSnackBar(
+                  nav.showSnackBar(
                       LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
                   return;
                 }
 
                 final districtOfBirth = controller.selectedDistrict.value;
                 if (districtOfBirth == null) {
-                  controller.showSnackBar(
+                  nav.showSnackBar(
                       LocaleKeys.declareInfo_districtOfBirthNotSelected.tr);
                   return;
                 }
 
-                final result = await Get.bottomSheet<WardModel>(
+                final result = await Get.bottomSheet<Ward>(
                   SelectWardBts(
                     provinceCode: provinceOfBirth.id,
                     districtCode: districtOfBirth.id,
@@ -547,7 +546,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildDropdownRelationship() {
-    return FormFieldRegistrant<RelationshipModel>(
+    return FormFieldRegistrant<Relationship>(
       registrarId: '4e816bd3-cd11-434b-a7d0-02924e6b4074',
       validator: (value) {
         if (controller.relationship.value == null) {
@@ -558,19 +557,19 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<RelationshipModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Relationship>(
               fieldKey: fieldKey,
               validator: validator,
               label: LocaleKeys.familyMember_relationshipWithHeadOfHousehold.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<RelationshipModel>(
+                  BottomSheetSearch<Relationship>(
                     maxLength: 20,
                     hintText: LocaleKeys
                         .familyMember_inputRelationshipWithHeadOfHousehold.tr,
                     title: LocaleKeys
                         .familyMember_selectRelationshipWithHeadOfHousehold.tr,
-                    listFilter: AppData.instance.relationships.toList(),
+                    listFilter: appCtrl.relationships.toList(),
                     selectedItem: controller.relationship.value,
                     display: (value) => value.text,
                     onAccept: (value) {

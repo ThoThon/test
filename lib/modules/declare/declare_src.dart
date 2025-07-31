@@ -5,4 +5,4 @@ export 'declare_info/controller/controller_src.dart';
 export 'declare_info/model/model_src.dart';
 export 'declare_info/ui/ui_src.dart';
 export 'family_member_detail/controller/controller_src.dart';
-export 'family_member_detail/ui/family_member_detail_page.dart';
+export 'family_member_detail/clean/presentation/family_member_detail_page.dart';
