@@ -340,7 +340,9 @@
     "statusSuccess": "Thành công",
     "contentDeletePeriod": "Xóa đợt kê khai cũng sẽ xóa toàn bộ dữ liệu của đợt kê khai",
     "contentDeletePeriodSuccess": "Xóa đợt kê khai thành công",
-    "delete": "Xóa"
+    "delete": "Xóa",
+    "selectDeclarationPeriod": "Chọn trạng thái hồ sơ",
+    "all": "Tất cả"
   },
   "declarationPeriodDetail": {
     "addNewStaff": "Thêm mới nhân viên",

@@ -9,11 +9,11 @@ class DeclarationPeriod {
   /// Mã thủ tục
   final int procedureId;
 
+  /// Trạng thái đợt
+  final PeriodStatus periodStatus;
+
   /// Trạng thái hồ sơ
-  ///
-  /// - Web dùng `trangThai`
-  /// - App dùng `trangThaiHoSo`
-  final DeclarationStatus status;
+  final FileStatus fileStatus;
   final int year;
   final int month;
   final int period;
@@ -28,7 +28,8 @@ class DeclarationPeriod {
     required this.id,
     required this.companyId,
     required this.procedureId,
-    required this.status,
+    required this.periodStatus,
+    required this.fileStatus,
     required this.year,
     required this.month,
     required this.period,
@@ -43,7 +44,8 @@ class DeclarationPeriod {
       id: json['id'] ?? '',
       companyId: json['congTyId'] ?? '',
       procedureId: json['maThuTuc'] ?? 0,
-      status: DeclarationStatus.fromInt(json['trangThaiHoSo']),
+      periodStatus: PeriodStatus.fromInt(json['trangThai'] ?? ''),
+      fileStatus: FileStatus.fromInt(json['trangThaiHoSo'] ?? ''),
       year: json['nam'] ?? 0,
       month: json['thang'] ?? 0,
       period: json['dot'] ?? 0,

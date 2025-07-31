@@ -30,8 +30,9 @@ class DeclarationPeriodPage extends BaseGetWidget<DeclarationPeriodController> {
               GestureDetector(
                 child: SDSImageSvg(Assets.ASSETS_ICONS_IC_FILTER_PERIOD_SVG),
                 onTap: () {
-                  // TODO
-                  controller.showSnackBar('hoàn thành bộ lọc cho đợt đi');
+                  Get.bottomSheet(
+                    _buildFilterPeriod(),
+                  );
                 },
               ),
               sdsSBWidth16,
