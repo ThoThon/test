@@ -90,8 +90,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
     required DeclarationPeriod period,
     required int index,
   }) {
-    final canEditAndDelete =
-        period.periodStatus.isCanEditAndDelete(period.fileStatus);
+    final canEditAndDelete = period.isCanEditAndDelete();
 
     return Container(
       padding: const EdgeInsets.only(

@@ -40,20 +40,6 @@ enum PeriodStatus {
     }
   }
 
-  bool isCanEditAndDelete(FileStatus fileStatus) {
-    // Nếu 'trangThai' trả về 0,1 luôn cho phép xóa, chỉnh sửa
-    if (this != PeriodStatus.sent) {
-      return true;
-    } else {
-      // Nếu 'trangThaiHoSo' trả về 1 trong 3,4,5,6 thì không cho phép chỉnh sửa nữa
-      if (fileStatus.index >= 3 && fileStatus.index <= 6) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-  }
-
   static PeriodStatus fromInt(int? value) {
     switch (value) {
       case 0:

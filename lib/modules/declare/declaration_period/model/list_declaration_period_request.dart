@@ -1,14 +1,16 @@
+import 'package:v_bhxh/modules/src.dart';
+
 class ListDeclarationPeriodRequest {
   final int periodId;
   final int month;
   final int year;
-  final int? status;
+  final PeriodStatus status;
 
   const ListDeclarationPeriodRequest({
     required this.periodId,
     required this.month,
     required this.year,
-    this.status,
+    required this.status,
   });
 
   Map<String, dynamic> toJson() {
@@ -16,7 +18,7 @@ class ListDeclarationPeriodRequest {
       'maThuTuc': periodId,
       'thang': month,
       'nam': year,
-      'trangThai': status,
+      'trangThai': status.statusNumber,
     };
   }
 }
