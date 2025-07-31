@@ -39,6 +39,7 @@ class AppBinding extends BaseBindings {
       fenix: true,
     );
     Get.lazyPut(() => ProcedureDataMapper(), fenix: true);
+    Get.lazyPut(() => DeclarationPeriodDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

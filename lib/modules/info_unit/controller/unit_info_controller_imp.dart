@@ -1,4 +1,5 @@
 import 'package:v_bhxh/base_app/model/base_model.src.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/info_unit/models/update_account_info_request.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/string_utils.dart';
@@ -120,7 +121,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
             await _getAccountInfo();
             await _getToTalNotiUnread();
             Get.offAllNamed(
-              AppRoutes.home.path,
+              AppRoutesCl.home.path,
             );
           },
         );

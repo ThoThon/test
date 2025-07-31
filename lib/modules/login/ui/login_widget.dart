@@ -103,7 +103,7 @@ extension LoginWidget on LoginPage {
       ),
       child: InkWell(
         onTap: () {
-          Get.toNamed(AppRoutes.forgotLogin.path);
+          Get.toNamed(AppRoutesCl.forgotLogin.path);
         },
         child: SDSBuildText(
           LocaleKeys.login_forgetPassword.tr,

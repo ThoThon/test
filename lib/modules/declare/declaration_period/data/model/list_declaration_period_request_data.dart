@@ -1,9 +1,9 @@
-class ListDeclarationPeriodRequest {
+class ListDeclarationPeriodRequestData {
   final int periodId;
   final int month;
   final int year;
 
-  const ListDeclarationPeriodRequest({
+  const ListDeclarationPeriodRequestData({
     required this.periodId,
     required this.month,
     required this.year,

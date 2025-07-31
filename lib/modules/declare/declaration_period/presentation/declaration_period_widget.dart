@@ -29,7 +29,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
       () {
         return InkWell(
           onTap: () {
-            if (controller.isShowLoading.value) {
+            if (controller.isLoading.value) {
               return;
             }
             controller.pickPeriodDate();

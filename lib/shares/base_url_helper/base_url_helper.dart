@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/data/data_source/local/app_hive_impl.dart';
-import 'package:v_bhxh/core/router/app_route.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/core/values/hive_key.dart';
 
@@ -24,7 +24,7 @@ class BaseUrlHelper {
   Future<void> switchEnv() async {
     final cbData = await Clipboard.getData(Clipboard.kTextPlain);
     if (cbData?.text == kTriggerChangeBaseUrl) {
-      Get.toNamed(AppRoutes.changeBaseUrl.path);
+      Get.toNamed(AppRoutesCl.changeBaseUrl.path);
     }
   }
 }

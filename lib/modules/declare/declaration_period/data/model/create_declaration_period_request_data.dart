@@ -1,9 +1,9 @@
-class CreateDeclarationPeriodRequest {
+class CreateDeclarationPeriodRequestData {
   final int maThuTuc;
   final int nam;
   final int thang;
 
-  const CreateDeclarationPeriodRequest({
+  const CreateDeclarationPeriodRequestData({
     required this.maThuTuc,
     required this.nam,
     required this.thang,

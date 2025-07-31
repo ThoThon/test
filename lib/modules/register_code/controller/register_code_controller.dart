@@ -2,6 +2,7 @@ import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
@@ -331,7 +332,7 @@ class RegisterCodeController extends BaseGetxController {
         );
       },
       onCancel: () {
-        Get.until(ModalRoute.withName(AppRoutes.login.path));
+        Get.until(ModalRoute.withName(AppRoutesCl.login.path));
       },
     );
   }

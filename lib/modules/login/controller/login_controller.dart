@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/clean/core/data/data_source/local/app_hive_impl.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/core/core.src.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/login/repository/login_repository.dart';
@@ -56,7 +57,7 @@ class LoginController extends BaseGetxController {
           _getD02Categories(),
           _getToTalNotiUnread(),
         ).wait;
-        Get.offAllNamed(AppRoutes.home.path);
+        Get.offAllNamed(AppRoutesCl.home.path);
         return;
       } else {
         showSnackBar(
@@ -125,6 +126,6 @@ class LoginController extends BaseGetxController {
   }
 
   void goToRegisterCodePage() {
-    Get.toNamed(AppRoutes.registerCode.path);
+    Get.toNamed(AppRoutesCl.registerCode.path);
   }
 }

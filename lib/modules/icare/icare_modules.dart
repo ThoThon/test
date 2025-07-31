@@ -18,7 +18,7 @@ class IcareModules {
   //   Assets.isFromModules = true;
   //   Get.put(BaseGetxController(), permanent: true);
 
-  //   var result = await Get.toNamed(AppRoutes.declarationTaxCode.path);
+  //   var result = await Get.toNamed(AppRoutesCl.declarationTaxCode.path);
   //   Get.delete<BaseGetxController>();
   //   return result;
   // }
