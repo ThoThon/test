@@ -1,8 +1,8 @@
 import '../../../src.dart';
 
-/// Trạng thái đợt
-enum PeriodStatus {
-  /// Tất cả trạng thái
+/// Bộ lọc trạng thái đợt
+enum PeriodStatusFilter {
+  /// Tất cả
   all,
 
   /// 0: Chưa kê khai
@@ -16,65 +16,65 @@ enum PeriodStatus {
 
   String get title {
     switch (this) {
-      case PeriodStatus.all:
+      case PeriodStatusFilter.all:
         return LocaleKeys.declarationPeriod_all.tr;
-      case PeriodStatus.notYet:
+      case PeriodStatusFilter.notYet:
         return LocaleKeys.declarationPeriod_statusNotYet.tr;
-      case PeriodStatus.draft:
+      case PeriodStatusFilter.draft:
         return LocaleKeys.declarationPeriod_statusDraft.tr;
-      case PeriodStatus.sent:
+      case PeriodStatusFilter.sent:
         return LocaleKeys.declarationPeriod_statusSent.tr;
     }
   }
 
   int? get statusNumber {
     switch (this) {
-      case PeriodStatus.all:
+      case PeriodStatusFilter.all:
         return null;
-      case PeriodStatus.notYet:
+      case PeriodStatusFilter.notYet:
         return 0;
-      case PeriodStatus.draft:
+      case PeriodStatusFilter.draft:
         return 1;
-      case PeriodStatus.sent:
+      case PeriodStatusFilter.sent:
         return 2;
     }
   }
 
-  static PeriodStatus fromInt(int? value) {
+  static PeriodStatusFilter fromInt(int? value) {
     switch (value) {
       case 0:
-        return PeriodStatus.notYet;
+        return PeriodStatusFilter.notYet;
       case 1:
-        return PeriodStatus.draft;
+        return PeriodStatusFilter.draft;
       case 2:
-        return PeriodStatus.sent;
+        return PeriodStatusFilter.sent;
       default:
-        return PeriodStatus.notYet;
+        return PeriodStatusFilter.notYet;
     }
   }
 
   Color get color {
     switch (this) {
-      case PeriodStatus.all:
+      case PeriodStatusFilter.all:
         return Colors.transparent;
-      case PeriodStatus.notYet:
+      case PeriodStatusFilter.notYet:
         return Colors.black;
-      case PeriodStatus.draft:
+      case PeriodStatusFilter.draft:
         return const Color(0xFFFE9705);
-      case PeriodStatus.sent:
+      case PeriodStatusFilter.sent:
         return const Color(0xFF409C37);
     }
   }
 
   Color get cardColor {
     switch (this) {
-      case PeriodStatus.all:
+      case PeriodStatusFilter.all:
         return Colors.transparent;
-      case PeriodStatus.notYet:
+      case PeriodStatusFilter.notYet:
         return const Color(0xFFEDEDED);
-      case PeriodStatus.draft:
+      case PeriodStatusFilter.draft:
         return const Color(0xFFFFF1DF);
-      case PeriodStatus.sent:
+      case PeriodStatusFilter.sent:
         return const Color(0xFFE9FFE6);
     }
   }

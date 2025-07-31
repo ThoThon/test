@@ -4,7 +4,7 @@ class ListDeclarationPeriodRequest {
   final int periodId;
   final int month;
   final int year;
-  final PeriodStatus status;
+  final PeriodStatusFilter status;
 
   const ListDeclarationPeriodRequest({
     required this.periodId,

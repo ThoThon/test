@@ -90,7 +90,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
     required DeclarationPeriod period,
     required int index,
   }) {
-    final canEditAndDelete = period.isCanEditAndDelete();
+    final canEditAndDelete = period.isEnableEditAndDelete;
 
     return Container(
       padding: const EdgeInsets.only(
@@ -192,7 +192,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
           vertical: AppDimens.paddingSmallest,
         ),
         decoration: BoxDecoration(
-          color: period.periodStatus.cardColor,
+          color: period.periodStatusFilter.cardColor,
           borderRadius: BorderRadius.circular(AppDimens.radius16),
         ),
         child: Row(
@@ -202,15 +202,15 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
               width: 8,
               height: 8,
               decoration: BoxDecoration(
-                color: period.periodStatus.color,
+                color: period.periodStatusFilter.color,
                 shape: BoxShape.circle,
               ),
             ),
             sdsSBWidth8,
             SDSBuildText(
-              period.periodStatus.title,
+              period.periodStatusFilter.title,
               style: AppTextStyle.font14Re
-                  .copyWith(color: period.periodStatus.color),
+                  .copyWith(color: period.periodStatusFilter.color),
             ),
           ],
         ),
@@ -244,10 +244,10 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
       textColor: AppColors.colorBlack,
       child: ListView.separated(
         shrinkWrap: true,
-        itemCount: PeriodStatus.values.length,
+        itemCount: PeriodStatusFilter.values.length,
         separatorBuilder: (context, index) => UtilWidget.buildDividerDefault(),
         itemBuilder: (context, index) {
-          final status = PeriodStatus.values[index];
+          final status = PeriodStatusFilter.values[index];
           final isSelected = status == controller.selectFilter.value;
           return _buildItemBottomSheetFilter(
             onTap: () {

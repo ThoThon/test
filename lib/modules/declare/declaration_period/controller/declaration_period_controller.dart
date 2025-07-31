@@ -14,7 +14,7 @@ class DeclarationPeriodController extends BaseGetxController {
 
   final declarationPeriods = <DeclarationPeriod>[].obs;
 
-  final selectFilter = PeriodStatus.all.obs;
+  final selectFilter = PeriodStatusFilter.all.obs;
 
   @override
   void onReady() {

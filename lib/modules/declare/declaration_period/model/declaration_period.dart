@@ -10,7 +10,7 @@ class DeclarationPeriod {
   final int procedureId;
 
   /// Trạng thái đợt
-  final PeriodStatus periodStatus;
+  final PeriodStatusFilter periodStatusFilter;
 
   /// Trạng thái hồ sơ
   final FileStatus fileStatus;
@@ -28,7 +28,7 @@ class DeclarationPeriod {
     required this.id,
     required this.companyId,
     required this.procedureId,
-    required this.periodStatus,
+    required this.periodStatusFilter,
     required this.fileStatus,
     required this.year,
     required this.month,
@@ -44,7 +44,7 @@ class DeclarationPeriod {
       id: json['id'] ?? '',
       companyId: json['congTyId'] ?? '',
       procedureId: json['maThuTuc'] ?? 0,
-      periodStatus: PeriodStatus.fromInt(json['trangThai'] ?? ''),
+      periodStatusFilter: PeriodStatusFilter.fromInt(json['trangThai'] ?? ''),
       fileStatus: FileStatus.fromInt(json['trangThaiHoSo'] ?? ''),
       year: json['nam'] ?? 0,
       month: json['thang'] ?? 0,
@@ -61,17 +61,11 @@ class DeclarationPeriod {
     return ProcedureType.fromInt(procedureId);
   }
 
-  bool isCanEditAndDelete() {
-    // Nếu 'trangThai' trả về 0,1 luôn cho phép xóa, chỉnh sửa
-    if (periodStatus != PeriodStatus.sent) {
-      return true;
-    } else {
-      // Nếu 'trangThaiHoSo' trả về 1 trong 3,4,5,6 thì không cho phép chỉnh sửa nữa
-      if (fileStatus.index >= 3 && fileStatus.index <= 6) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-  }
+  // Nếu 'trangThaiHoSo' trả về 1 trong các giá trị trên
+  // Disable 'Chỉnh sửa' và 'Xóa'
+  bool get isEnableEditAndDelete =>
+      fileStatus != FileStatus.sent &&
+      fileStatus != FileStatus.pending &&
+      fileStatus != FileStatus.failed &&
+      fileStatus != FileStatus.success;
 }
