@@ -905,7 +905,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "591ab2716dc2ddd036e6c1805689b8396ff22669"
+      resolved-ref: c7498de0b67796d26e721dee5003078e1fef4a03
       url: "https://github.com/hiep12312391283/multi_select_flutter.git"
     source: git
     version: "4.1.3"
