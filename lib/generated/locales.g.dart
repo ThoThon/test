@@ -358,6 +358,8 @@ class LocaleKeys {
   static const declarationPeriod_contentDeletePeriodSuccess =
       'declarationPeriod_contentDeletePeriodSuccess';
   static const declarationPeriod_delete = 'declarationPeriod_delete';
+  static const declarationPeriod_declaredStaffsIsEmpty =
+      'declarationPeriod_declaredStaffsIsEmpty';
   static const declarationPeriodDetail_addNewStaff =
       'declarationPeriodDetail_addNewStaff';
   static const declarationPeriodDetail_attachFile =
@@ -1488,6 +1490,8 @@ class Locales {
     'declarationPeriod_contentDeletePeriodSuccess':
         'Xóa đợt kê khai thành công',
     'declarationPeriod_delete': 'Xóa',
+    'declarationPeriod_declaredStaffsIsEmpty':
+        'Chưa có nhân viên nào được khai báo',
     'declarationPeriodDetail_addNewStaff': 'Thêm mới nhân viên',
     'declarationPeriodDetail_attachFile': 'Đính kèm file',
     'declarationPeriodDetail_addAttachedImage': 'Thêm hình ảnh đính kèm',

@@ -157,11 +157,10 @@ class StaffListController extends BaseGetxController {
     // Thủ tục 630a phải đi qua màn "Thông tin khác" nữa
     if (argument.procedureType == ProcedureType.procedure630a) {
       if (declaredStaffs.isEmpty) {
-        showSnackBar('Chưa có nhân viên nào được khai báo');
+        showSnackBar(LocaleKeys.declarationPeriod_declaredStaffsIsEmpty.tr);
         return;
-      } else {
-        Get.toNamed(AppRoutes.otherInfo.path, arguments: argument);
       }
+      Get.toNamed(AppRoutes.otherInfo.path, arguments: argument);
     } else {
       saveXml();
     }
