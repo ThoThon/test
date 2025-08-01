@@ -2,7 +2,7 @@ import '../../../src.dart';
 
 /// Bộ lọc trạng thái đợt
 // Xử lý những gì liên quan đến bộ lọc
-enum PeriodStatusFilter {
+enum DeclarationPeriodFilter {
   /// Tất cả
   all,
 
@@ -17,26 +17,26 @@ enum PeriodStatusFilter {
 
   String get title {
     switch (this) {
-      case PeriodStatusFilter.all:
+      case DeclarationPeriodFilter.all:
         return LocaleKeys.declarationPeriod_all.tr;
-      case PeriodStatusFilter.notYet:
+      case DeclarationPeriodFilter.notYet:
         return LocaleKeys.declarationPeriod_statusNotYet.tr;
-      case PeriodStatusFilter.draft:
+      case DeclarationPeriodFilter.draft:
         return LocaleKeys.declarationPeriod_statusDraft.tr;
-      case PeriodStatusFilter.sent:
+      case DeclarationPeriodFilter.sent:
         return LocaleKeys.declarationPeriod_statusSent.tr;
     }
   }
 
   int? get statusNumber {
     switch (this) {
-      case PeriodStatusFilter.all:
+      case DeclarationPeriodFilter.all:
         return null;
-      case PeriodStatusFilter.notYet:
+      case DeclarationPeriodFilter.notYet:
         return 0;
-      case PeriodStatusFilter.draft:
+      case DeclarationPeriodFilter.draft:
         return 1;
-      case PeriodStatusFilter.sent:
+      case DeclarationPeriodFilter.sent:
         return 2;
     }
   }
