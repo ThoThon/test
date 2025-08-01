@@ -1,3 +1,6 @@
+01/08/2025
+- [Appmobile]_Thủ tục 630a: Gửi request đúng giá trị nhập cho trường Tổng số ngày - BHW-2898
+
 30/07/2025
 - [Appmobile]_Chức năng [Đính kèm file]: Lỗi hiển thị up ảnh chụp - BHW-2868
 - [Appmobile]_Sửa lại giao diện thông báo chưa đọc - BHW-2879

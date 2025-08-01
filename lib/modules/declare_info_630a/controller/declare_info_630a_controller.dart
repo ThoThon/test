@@ -256,7 +256,7 @@ class DeclareInfo630aController extends BaseGetxController {
       theBhytCuaCon: bhytCardCodeChildCtrl.text,
       tuNgay: convertStringToDate(fromDateCtrl.text, PATTERN_1),
       denNgay: convertStringToDate(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(numberChildCtrl.text.trim()) ?? 0,
+      tongSoNgay: int.tryParse(countDayTextCtrl.text.trim()) ?? 0,
       tuNgayDonVi: convertStringToDate(fromDateUnitTextCtrl.text, PATTERN_1),
       ngayNghiTuan: weeklyDayOffString,
       tuyenBenhVien: selectHospitalLine.value?.value,
