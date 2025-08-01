@@ -768,6 +768,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
             onTapClear: () {
               controller.workCondition.value = null;
             },
+            enableClearIcon: true,
             selectedItem: controller.workCondition.value,
             onChanged: (value) {
               if (value == null) {
