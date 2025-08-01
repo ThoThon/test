@@ -651,7 +651,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               Get.bottomSheet(
                 BottomSheetSearch<HospitalLine630aModel>(
                   title: LocaleKeys.declareInfo_hospitalLineSelect.tr,
-                  maxLength: 20,
+                  maxLength: 50,
                   hintText: LocaleKeys.declareInfo_inputHospitalLine.tr,
                   listFilter: AppData.instance.hospitalLine.toList(),
                   selectedItem: controller.selectHospitalLine.value,
@@ -693,7 +693,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               Get.bottomSheet(
                 BottomSheetSearch<LongDiease630aModel>(
                   title: LocaleKeys.declareInfo_selectDiseaseCode.tr,
-                  maxLength: 20,
+                  maxLength: 50,
                   hintText: LocaleKeys.declareInfo_inputDiseaseCode.tr,
                   listFilter: AppData.instance.longDiease.toList(),
                   selectedItem: controller.selectDiseaseCode.value,
