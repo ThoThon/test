@@ -192,7 +192,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
           vertical: AppDimens.paddingSmallest,
         ),
         decoration: BoxDecoration(
-          color: period.periodStatus.cardColor,
+          color: period.fileStatus.cardColor,
           borderRadius: BorderRadius.circular(AppDimens.radius16),
         ),
         child: Row(
@@ -202,15 +202,15 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
               width: 8,
               height: 8,
               decoration: BoxDecoration(
-                color: period.periodStatus.color,
+                color: period.fileStatus.color,
                 shape: BoxShape.circle,
               ),
             ),
             sdsSBWidth8,
             SDSBuildText(
-              period.periodStatus.title,
+              period.fileStatus.title,
               style: AppTextStyle.font14Re
-                  .copyWith(color: period.periodStatus.color),
+                  .copyWith(color: period.fileStatus.color),
             ),
           ],
         ),
@@ -244,10 +244,10 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
       textColor: AppColors.colorBlack,
       child: ListView.separated(
         shrinkWrap: true,
-        itemCount: PeriodStatusFilter.values.length,
+        itemCount: DeclarationPeriodFilter.values.length,
         separatorBuilder: (context, index) => UtilWidget.buildDividerDefault(),
         itemBuilder: (context, index) {
-          final status = PeriodStatusFilter.values[index];
+          final status = DeclarationPeriodFilter.values[index];
           final isSelected = status == controller.selectFilter.value;
           return _buildItemBottomSheetFilter(
             onTap: () {
