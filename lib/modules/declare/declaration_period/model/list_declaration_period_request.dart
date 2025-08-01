@@ -4,13 +4,13 @@ class ListDeclarationPeriodRequest {
   final int periodId;
   final int month;
   final int year;
-  final PeriodStatusFilter filterStatus;
+  final DeclarationPeriodFilter filter;
 
   const ListDeclarationPeriodRequest({
     required this.periodId,
     required this.month,
     required this.year,
-    required this.filterStatus,
+    required this.filter,
   });
 
   Map<String, dynamic> toJson() {
@@ -18,7 +18,7 @@ class ListDeclarationPeriodRequest {
       'maThuTuc': periodId,
       'thang': month,
       'nam': year,
-      'trangThai': filterStatus.statusNumber,
+      'trangThai': filter.statusNumber,
     };
   }
 }

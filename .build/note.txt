@@ -1,5 +1,6 @@
 01/08/2025
 - [Appmobile]_Thủ tục 630a: Gửi request đúng giá trị nhập cho trường Tổng số ngày - BHW-2898
+- [Appmobile]_Chỉnh sửa lấy ra hiển thị trạng thái tại màn Đợt kê khai - BHW-2873
 - [Appmobile]_Thủ tục 630a: Chỉnh sửa maxlength ô tìm kiếm trường Tuyến bệnh viện và Mã bệnh - BHW-2897
 
 30/07/2025
