@@ -12,6 +12,9 @@ class BaseRepository {
   /// [dioOptions]: option của Dio() sử dụng khi gọi api có option riêng
   ///
   /// [functionError]: chạy function riêng khi request xảy ra Exception (mặc định sử dụng [showDialogError])
+  ///
+  /// [enableChunkedTransfer]: `true`: sử dụng Transfer-Encoding là 'chunked' để BE tự tính content-length, nhằm tránh lỗi sai content-length,
+  /// với api upload file phải set là `false` để tránh lỗi "Connection closed before full header was received"
   Future<dynamic> baseCallApi(
     String action,
     String requestMethod, {
@@ -25,6 +28,7 @@ class BaseRepository {
     Function(Object error)? functionError,
     Duration? timeOut,
     bool getHeader = false,
+    bool enableChunkedTransfer = true,
   }) {
     return BaseApi().callApi(
       action,
@@ -40,6 +44,7 @@ class BaseRepository {
       isToken: isToken,
       timeOut: timeOut,
       getHeader: getHeader,
+      enableChunkedTransfer: enableChunkedTransfer,
     );
   }
 }
