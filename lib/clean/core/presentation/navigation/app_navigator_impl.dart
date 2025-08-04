@@ -107,13 +107,37 @@ class AppNavigatorImpl extends AppNavigator {
   }
 
   @override
+  Future<T?> bottomSheet<T>(
+    Widget bottomsheet, {
+    bool isScrollControlled = false,
+  }) {
+    return Get.bottomSheet(
+      bottomsheet,
+      isScrollControlled: isScrollControlled,
+    );
+  }
+
+  @override
   Future<T?> showDialog<T>(
     BaseGetBtsDialog dialog, {
     RouteSettings? settings,
+    bool barrierDismissible = true,
   }) {
     return Get.dialog(
       dialog,
       routeSettings: settings,
+      barrierDismissible: barrierDismissible,
+    );
+  }
+
+  @override
+  Future<T?> dialog<T>(
+    Widget widget, {
+    bool barrierDismissible = true,
+  }) {
+    return Get.dialog(
+      widget,
+      barrierDismissible: barrierDismissible,
     );
   }
 

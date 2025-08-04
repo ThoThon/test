@@ -16,6 +16,7 @@ class SelectWardControllerCl extends BaseGetClController {
     selectedWard.value = argument.selectedWard;
   }
 
+  final isShowButtonClear = false.obs;
   final searchTextCtrl = TextEditingController();
   final keyword = ''.obs;
   final selectedWard = Rxn<Ward>();
@@ -46,6 +47,17 @@ class SelectWardControllerCl extends BaseGetClController {
     // } finally {
     //   hideLoading();
     // }
+    return buildState(
+      showLoading: true,
+      action: () async {
+        wards.value = await _getWardsUseCase.execute(
+          GetWardsUseCaseInput(
+            provinceCode: argument.provinceCode,
+            districtCode: argument.districtCode,
+          ),
+        );
+      },
+    );
   }
 
   @override

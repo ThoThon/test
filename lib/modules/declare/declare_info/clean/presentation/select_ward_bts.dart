@@ -1,31 +1,19 @@
 import 'package:tiengviet/tiengviet.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
+import 'package:v_bhxh/clean/core/presentation/bindings/base_bindings_factory.dart';
+import 'package:v_bhxh/clean/core/presentation/widgets/base_get_bts_dialog.dart';
+import 'package:v_bhxh/modules/declare/declare_info/clean/presentation/binding/select_ward_binding.dart';
+import 'package:v_bhxh/modules/declare/declare_info/clean/presentation/controller/select_ward_controller.dart';
 import 'package:v_bhxh/modules/src.dart';
 
-class SelectWardBts extends BaseGetWidget<SelectWardController> {
-  SelectWardBts({
-    super.key,
-    required this.provinceCode,
-    required this.districtCode,
-    this.selectedWard,
-  });
+class SelectWardBtsCl extends BaseGetBtsDialog<SelectWardControllerCl> {
+  SelectWardBtsCl({super.key});
 
   @override
-  SelectWardController get controller => _controller;
-
-  late final _controller = Get.put(SelectWardController(
-    provinceCode: provinceCode,
-    districtCode: districtCode,
-    ward: selectedWard,
-  ));
-
-  final String provinceCode;
-  final String districtCode;
-  final WardModel? selectedWard;
-  final _isShowButtonClear = false.obs;
+  BaseBindingsFactory get bindingFactory => SelectWardBinding();
 
   @override
-  Widget buildWidgets(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     return UtilWidget.baseBottomSheet(
       title: LocaleKeys.declareInfo_selectWard.tr,
       body: Column(
@@ -82,7 +70,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
       borderRadius: const BorderRadius.all(Radius.circular(25)),
       onChanged: (value) {
         controller.keyword.value = TiengViet.parse(value.trim()).toLowerCase();
-        _isShowButtonClear.value = value.isNotEmpty;
+        controller.isShowButtonClear.value = value.isNotEmpty;
       },
       prefixIcon: SizedBox(
         height: AppDimens.sizeIconDefault,
@@ -95,12 +83,12 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
         ),
       ),
       suffixIcon: Obx(() => Visibility(
-            visible: _isShowButtonClear.value,
+            visible: controller.isShowButtonClear.value,
             child: IconButton(
               onPressed: () {
                 controller.searchTextCtrl.clear();
                 controller.keyword.value = '';
-                _isShowButtonClear.value = false;
+                controller.isShowButtonClear.value = false;
               },
               icon: const Icon(
                 Icons.clear,
@@ -111,7 +99,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
     ).paddingSymmetric(vertical: AppDimens.paddingSmall);
   }
 
-  Widget _buildItem(WardModel item) {
+  Widget _buildItem(Ward item) {
     return Obx(
       () {
         final isSelected = controller.selectedWard.value == item;

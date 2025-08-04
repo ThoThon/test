@@ -317,7 +317,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
               fieldKey: fieldKey,
               label: LocaleKeys.familyMember_ethnic.tr,
               funcSelect: (didChange) {
-                Get.bottomSheet(
+                nav.bottomSheet(
                   BottomSheetSearch<Ethnic>(
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputEthnic.tr,
@@ -361,7 +361,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
               validator: validator,
               label: LocaleKeys.familyMember_nationality.tr,
               funcSelect: (didChange) {
-                Get.bottomSheet(
+                nav.bottomSheet(
                   BottomSheetSearch<Nation>(
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputNationality.tr,
@@ -403,7 +403,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
               fieldKey: fieldKey,
               label: LocaleKeys.familyMember_provinceOfBirth.tr,
               funcSelect: (didChange) {
-                Get.bottomSheet(
+                nav.bottomSheet(
                   BottomSheetSearch<Province>(
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputProvince.tr,
@@ -523,20 +523,22 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                   return;
                 }
 
-                // final result = await Get.bottomSheet<Ward>(
-                //   SelectWardBts(
-                //     provinceCode: provinceOfBirth.id,
-                //     districtCode: districtOfBirth.id,
-                //     selectedWard: controller.selectedWard.value,
-                //   ),
-                //   isScrollControlled: true,
-                // );
+                final result = await nav.showBottomSheet<Ward>(
+                  SelectWardBtsCl(),
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: provinceOfBirth.id,
+                      districtCode: districtOfBirth.id,
+                      selectedWard: controller.selectedWard.value,
+                    ),
+                  ),
+                );
 
-                // if (result != null) {
-                //   controller.selectedWard.value = result;
+                if (result != null) {
+                  controller.selectedWard.value = result;
 
-                //   didChange(result);
-                // }
+                  didChange(result);
+                }
               },
               selectedItem: controller.selectedWard.value,
               display: (ward) => '${ward.id} - ${ward.name}',
@@ -564,7 +566,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
               validator: validator,
               label: LocaleKeys.familyMember_relationshipWithHeadOfHousehold.tr,
               funcSelect: (didChange) {
-                Get.bottomSheet(
+                nav.bottomSheet(
                   BottomSheetSearch<Relationship>(
                     maxLength: 20,
                     hintText: LocaleKeys
