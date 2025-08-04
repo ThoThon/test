@@ -55,6 +55,7 @@ class LoginController extends BaseGetxController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
+          _get630aCategories(),
           _getToTalNotiUnread(),
         ).wait;
         Get.offAllNamed(AppRoutesCl.home.path);
@@ -112,6 +113,26 @@ class LoginController extends BaseGetxController {
           ..positions = d02Categories.positions
           ..birthTypes = d02Categories.birthTypes
           ..receiveResults = d02Categories.receiveResults;
+      }
+    } catch (e) {
+      logger.d(e);
+    }
+  }
+
+  Future<void> _get630aCategories() async {
+    try {
+      final response = await _loginRepository.get630aCategories();
+      final categories630a = response.result;
+      if (response.code == AppConst.statusCodeSuccess &&
+          categories630a != null) {
+        AppData.instance
+          ..declareForm = categories630a.declareForm
+          ..benefitGroup = categories630a.benefitGroup
+          ..workCondition = categories630a.workCondition
+          ..receiveForm = categories630a.receiveForm
+          ..hospitalLine = categories630a.hospitalLine
+          ..longDiease = categories630a.longDiease
+          ..bank = categories630a.bank;
       }
     } catch (e) {
       logger.d(e);

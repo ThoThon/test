@@ -15,6 +15,7 @@ import 'package:v_bhxh/modules/declare/procedure_list/presentation/binding/proce
 import 'package:v_bhxh/modules/declare/procedure_list/presentation/procedure_list_page.dart';
 import 'package:v_bhxh/modules/declare/staff_list/ui/staff_list_page.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/ui/declare_info_607_page.dart';
+import 'package:v_bhxh/modules/declare_info_630a/ui/declare_info_630a_page.dart';
 import 'package:v_bhxh/modules/forgot_password/ui/forgot_password_page.dart';
 import 'package:v_bhxh/modules/history/ui/history_page.dart';
 import 'package:v_bhxh/modules/history_detail_declare/ui/history_detail_declare_page.dart';
@@ -23,6 +24,7 @@ import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/info_unit/ui/unit_info_page.dart';
 import 'package:v_bhxh/modules/lookup_c12/ui/lookup_c12_page.dart';
 import 'package:v_bhxh/modules/notification/ui/notification_page.dart';
+import 'package:v_bhxh/modules/other_info/ui/other_info_page.dart';
 import 'package:v_bhxh/modules/profile/ui/profile_page.dart';
 import 'package:v_bhxh/modules/register_code/ui/register_code_page.dart';
 import 'package:v_bhxh/modules/register_service/ui/register_service_page.dart';
@@ -130,6 +132,14 @@ class AppPages {
     GetPage(
       name: AppRoutesCl.declareInfo607.path,
       page: () => DeclareInfo607Page(),
+    ),
+    GetPage(
+      name: AppRoutesCl.declareInfo630a.path,
+      page: () => DeclareInfo630aPage(),
+    ),
+    GetPage(
+      name: AppRoutesCl.otherInfo.path,
+      page: () => OtherInfoPage(),
     ),
   ];
 }

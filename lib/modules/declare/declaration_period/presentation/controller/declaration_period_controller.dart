@@ -9,6 +9,7 @@ import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/usecase/use_case_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/model/declaration_period_filter.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/declare_info_argument.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/domain/entity/entity_src.dart';
@@ -30,6 +31,7 @@ class DeclarationPeriodController extends BaseGetClController {
 
   final declarationPeriods = <DeclarationPeriod>[].obs;
   final selectedPeriodDate = DateTime.now().obs;
+  final selectFilter = DeclarationPeriodFilter.all.obs;
 
   DeclarationPeriodController(
     this._getDeclarationPeriodsUseCase,
@@ -139,6 +141,7 @@ class DeclarationPeriodController extends BaseGetClController {
           ProcedureType.procedure612 ||
           ProcedureType.procedure613 =>
             AppRoutesCl.declareInfo607.path,
+          ProcedureType.procedure630a => AppRoutesCl.declareInfo630a.path,
         };
 
         final declareInfoArgument = DeclareInfoArgument(

@@ -90,6 +90,8 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
     required DeclarationPeriod period,
     required int index,
   }) {
+    final canEditAndDelete = !period.disableDeleteAndEdit;
+
     return Container(
       padding: const EdgeInsets.only(
         top: AppDimens.defaultPadding,
@@ -109,27 +111,61 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
                 period: period,
               ),
               const Spacer(),
-              if (period.status.canEdit)
-                Padding(
-                  padding: const EdgeInsets.only(right: AppDimens.paddingSmall),
-                  child: InkWell(
-                    onTap: () {
-                      controller.showDialogDeletePeriod(period);
-                    },
-                    child: const Icon(Icons.delete_outline),
-                  ),
-                )
+              if (canEditAndDelete) _buildDeleteIcon(period),
             ],
           ),
           sdsSBHeight12,
-          const Divider(
-            height: 1,
-            color: AppColors.dividerColor,
-          ),
+          const Divider(height: 1, color: AppColors.dividerColor),
           sdsSBHeight8,
           _buildPeriodNumber(period: period),
           sdsSBHeight12,
-          _buildDateAndButton(period),
+          _buildDateAndButton(period, canEditAndDelete),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDeleteIcon(DeclarationPeriod period) {
+    return Padding(
+      padding: const EdgeInsets.only(right: AppDimens.paddingSmall),
+      child: InkWell(
+        onTap: () => controller.showDialogDeletePeriod(period),
+        child: const Icon(Icons.delete_outline),
+      ),
+    );
+  }
+
+  Widget _buildDateAndButton(DeclarationPeriod period, bool canEditAndDelete) {
+    final date = convertDateToStringSafe(
+        period.updateDate ?? period.createTime, PATTERN_14);
+
+    return Row(
+      children: [
+        if (period.updateDate != null || period.createTime != null)
+          SDSBuildText(
+            date ?? '',
+            style: AppTextStyle.font14Re.copyWith(color: Colors.grey),
+          ),
+        const Spacer(),
+        if (canEditAndDelete) _buildEditButton(period),
+      ],
+    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
+  }
+
+  Widget _buildEditButton(DeclarationPeriod period) {
+    return InkWell(
+      onTap: () => controller.editDeclarationPeriod(period),
+      child: Row(
+        children: [
+          SDSBuildText(
+            LocaleKeys.app_edit2.tr,
+            style: AppTextStyle.font14Re.copyWith(color: Colors.grey),
+          ),
+          sdsSBWidth4,
+          SDSImageSvg(
+            Assets.ASSETS_ICONS_IC_ARROW_RIGHT_SVG,
+            color: Colors.grey,
+          ),
         ],
       ),
     );
@@ -156,7 +192,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
           vertical: AppDimens.paddingSmallest,
         ),
         decoration: BoxDecoration(
-          color: period.status.cardColor,
+          color: period.fileStatus.cardColor,
           borderRadius: BorderRadius.circular(AppDimens.radius16),
         ),
         child: Row(
@@ -166,14 +202,15 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
               width: 8,
               height: 8,
               decoration: BoxDecoration(
-                color: period.status.color,
+                color: period.fileStatus.color,
                 shape: BoxShape.circle,
               ),
             ),
             sdsSBWidth8,
             SDSBuildText(
-              period.status.title,
-              style: AppTextStyle.font14Re.copyWith(color: period.status.color),
+              period.fileStatus.title,
+              style: AppTextStyle.font14Re
+                  .copyWith(color: period.fileStatus.color),
             ),
           ],
         ),
@@ -201,35 +238,45 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
     ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
   }
 
-  Widget _buildDateAndButton(DeclarationPeriod period) {
-    return Row(
-      children: [
-        if (period.updateDate != null || period.createTime != null)
-          SDSBuildText(
-            '${convertDateToStringSafe(period.updateDate ?? period.createTime, PATTERN_14)}',
-            style: AppTextStyle.font14Re.copyWith(color: Colors.grey),
-          ),
-        const Spacer(),
-        if (period.status.canEdit)
-          InkWell(
+  Widget _buildFilterPeriod() {
+    return UtilWidget.buildBottomSheetFigma(
+      title: LocaleKeys.declarationPeriod_selectDeclarationPeriod.tr,
+      textColor: AppColors.colorBlack,
+      child: ListView.separated(
+        shrinkWrap: true,
+        itemCount: DeclarationPeriodFilter.values.length,
+        separatorBuilder: (context, index) => UtilWidget.buildDividerDefault(),
+        itemBuilder: (context, index) {
+          final status = DeclarationPeriodFilter.values[index];
+          final isSelected = status == controller.selectFilter.value;
+          return _buildItemBottomSheetFilter(
             onTap: () {
-              controller.editDeclarationPeriod(period);
+              controller.selectFilter.value = status;
+              Get.back();
+              controller.getDeclarationPeriods();
             },
-            child: Row(
-              children: [
-                SDSBuildText(
-                  LocaleKeys.app_edit2.tr,
-                  style: AppTextStyle.font14Re.copyWith(color: Colors.grey),
-                ),
-                sdsSBWidth4,
-                SDSImageSvg(
-                  Assets.ASSETS_ICONS_IC_ARROW_RIGHT_SVG,
-                  color: Colors.grey,
-                ),
-              ],
-            ),
-          )
-      ],
-    ).paddingSymmetric(horizontal: AppDimens.defaultPadding);
+            text: status.title,
+            style: isSelected
+                ? AppTextStyle.font14Bo.copyWith(color: AppColors.primaryColor)
+                : AppTextStyle.font14Re,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildItemBottomSheetFilter({
+    required Function()? onTap,
+    required String text,
+    TextStyle? style,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: SDSBuildText(
+        text,
+        style: style,
+        maxLines: 5,
+      ),
+    ).paddingSymmetric(vertical: AppDimens.paddingVerySmall);
   }
 }

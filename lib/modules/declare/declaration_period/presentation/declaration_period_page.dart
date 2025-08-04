@@ -37,6 +37,17 @@ class DeclarationPeriodPage extends BaseGetPage<DeclarationPeriodController> {
           leading: UtilWidget.buildButtonBackAppbar(
             color: AppColors.basicWhite,
           ),
+          actions: [
+            GestureDetector(
+              child: SDSImageSvg(Assets.ASSETS_ICONS_IC_FILTER_PERIOD_SVG),
+              onTap: () {
+                Get.bottomSheet(
+                  _buildFilterPeriod(),
+                );
+              },
+            ),
+            sdsSBWidth16,
+          ],
         ),
         body: BaseCardBody(
           child: _buildBody(),

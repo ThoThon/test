@@ -18,7 +18,7 @@ class NotificationController extends BaseRefreshGetxController {
   @override
   void onInit() {
     super.onInit();
-    readAllNotification();
+    // readAllNotification();
     fetchListNotification();
   }
 
@@ -78,28 +78,6 @@ class NotificationController extends BaseRefreshGetxController {
       return '${difference.inDays} ${LocaleKeys.notification_dayBefore.tr}';
     } else {
       return convertDateToString(createDate, PATTERN_1);
-    }
-  }
-
-  Future<void> readAllNotification() async {
-    try {
-      if (AppData.instance.totalUnread.value > 0) {
-        showLoading();
-        final res = await _notificationRepository.readAllNotification();
-        if (res.isSuccess) {
-          for (var item in listNotification) {
-            if (item.status == 1) {
-              item.status = 2;
-            }
-          }
-          listNotification.refresh();
-          AppData.instance.totalUnread.value = 0;
-        }
-      }
-    } catch (e) {
-      logger.d(e);
-    } finally {
-      hideLoading();
     }
   }
 

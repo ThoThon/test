@@ -1,0 +1,1 @@
+export 'other_info_repository.dart';
