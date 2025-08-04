@@ -1,4 +1,4 @@
-import '../../../src.dart';
+import '../../../../src.dart';
 
 /// Trạng thái hồ sơ
 enum DeclarationPeriodStatus {

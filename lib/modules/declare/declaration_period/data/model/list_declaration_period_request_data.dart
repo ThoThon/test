@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/declare/declaration_period/model/declaration_period_filter.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/declaration_period_filter.dart';
 
 class ListDeclarationPeriodRequestData {
   final int periodId;

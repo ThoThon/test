@@ -1,6 +1,5 @@
 import 'package:v_bhxh/modules/declare/declaration_period/data/model/declaration_period_data.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/model/declaration_period_status.dart';
 import 'package:v_bhxh/shares/mapper/base/base_data_mapper.dart';
 
 class DeclarationPeriodDataMapper

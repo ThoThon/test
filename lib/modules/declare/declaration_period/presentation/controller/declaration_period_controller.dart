@@ -9,7 +9,6 @@ import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/usecase/use_case_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/model/declaration_period_filter.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/declare_info_argument.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/domain/entity/entity_src.dart';
