@@ -9,7 +9,8 @@ import 'package:v_bhxh/modules/declare/declaration_list/ui/declaration_list_page
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/binding/declaration_period_binding.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/declaration_period_page.dart';
 import 'package:v_bhxh/modules/declare/declare_info/ui/declare_info_page.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/ui/family_member_detail_page.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/presentation/binding/family_member_detail_binding.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/presentation/family_member_detail_page.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/presentation/binding/procedure_list_binding.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/presentation/procedure_list_page.dart';
 import 'package:v_bhxh/modules/declare/staff_list/ui/staff_list_page.dart';
@@ -80,6 +81,7 @@ class AppPages {
     GetPage(
       name: AppRoutesCl.familyMemberDetail.path,
       page: () => FamilyMemberDetailPage(),
+      binding: FamilyMemberDetailBinding(),
     ),
     GetPage(
       name: AppRoutesCl.declarationFormDetail.path,

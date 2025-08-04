@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/model/birth_type_enum.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 

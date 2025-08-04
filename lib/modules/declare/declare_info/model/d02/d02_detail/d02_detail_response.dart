@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/model/birth_type_enum.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class D02DetailResponse {
