@@ -1,6 +1,6 @@
 import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/model/birth_type_enum.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
 
 class FamilyMemberEntity implements Entity {
   /// ID thành viên gia đình - Gen với uuid

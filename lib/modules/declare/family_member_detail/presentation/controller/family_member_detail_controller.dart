@@ -1,14 +1,20 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
-import 'package:v_bhxh/modules/src.dart';
-import 'package:v_bhxh/shares/utils/utils_src.dart';
+import 'package:get/get.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
+import 'package:v_bhxh/shares/date/date_utils.dart';
+import 'package:v_bhxh/shares/utils/uuid_utils.dart';
 
-import '../../../../base_app/base_app.src.dart';
-import '../model/model_src.dart';
+class FamilyMemberDetailControllerCl extends BaseGetClController {
+  final FamilyMemberEntity? argument;
 
-class FamilyMemberDetailController extends BaseGetxController {
-  final argument = Get.arguments as FamilyMember?;
+  FamilyMemberDetailControllerCl({
+    this.argument,
+  });
 
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
@@ -36,26 +42,26 @@ class FamilyMemberDetailController extends BaseGetxController {
 
   /// Dân tộc *
   /// Luôn khởi tạo Dân tộc là "Kinh"
-  final selectedEthnic = Rxn<EthnicModel>(
-    AppData.instance.ethnics.firstWhereOrNull((ethnics) => ethnics.value == 1),
+  late final selectedEthnic = Rxn<Ethnic>(
+    appCtrl.ethnics.firstWhereOrNull((ethnics) => ethnics.value == 1),
   );
 
   /// Quốc tịch *
   /// Luôn khởi tạo Quốc tịch là "VIỆT NAM"
-  final selectedNationality = Rxn<NationModel>(AppData.instance.nations
-      .firstWhereOrNull((nations) => nations.value == "VN"));
+  late final selectedNationality = Rxn<Nation>(
+      appCtrl.nations.firstWhereOrNull((nations) => nations.value == "VN"));
 
   /// Tỉnh khai sinh *
-  final selectedProvince = Rxn<ProvinceModel>();
+  final selectedProvince = Rxn<Province>();
 
   /// Huyện khai sinh *
-  final selectedDistrict = Rxn<DistrictModel>();
+  final selectedDistrict = Rxn<District>();
 
   /// Xã khai sinh *
-  final selectedWard = Rxn<WardModel>();
+  final selectedWard = Rxn<Ward>();
 
   /// Mối quan hệ với chủ hộ
-  final relationship = Rxn<RelationshipModel>();
+  final relationship = Rxn<Relationship>();
 
   /// Là người tham gia
   final isParticipant = false.obs;
@@ -94,8 +100,8 @@ class FamilyMemberDetailController extends BaseGetxController {
     }
 
     // Note: đã validate các trường required nên có thể force null
-    Get.back(
-      result: FamilyMember(
+    nav.back(
+      result: FamilyMemberEntity(
         // Khi sửa thành viên ở local hoặc DB thì sẽ giữ id cũ
         id: argument?.id ?? generateUuid(),
         fullName: fullNameTextCtrl.text.trim(),
@@ -103,8 +109,8 @@ class FamilyMemberDetailController extends BaseGetxController {
         cccdNumber: cccdNumberTextCtrl.text.trim(),
         note: noteTextCtrl.text.trim(),
         birthType: birthType.value,
-        dateOfBirth: convertStringToDateSafe(
-            dateOfBirthCtrl.text, birthType.value.pattern),
+        dateOfBirth:
+            convertStringToDate(dateOfBirthCtrl.text, birthType.value.pattern),
         gender: gender.value,
         ethnic: selectedEthnic.value!,
         nation: selectedNationality.value!,

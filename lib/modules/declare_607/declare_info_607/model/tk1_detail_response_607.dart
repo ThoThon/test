@@ -1,6 +1,6 @@
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/hospital.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/receive_profile_result_enum.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 

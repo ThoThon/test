@@ -1,7 +1,5 @@
 // Key is provinceCode
-import 'package:v_bhxh/clean/core/data/data_source/network/auth_app_server_api_client.dart';
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
-import 'package:v_bhxh/clean/core/data/model/base/base_response_list_cl.dart';
 import 'package:v_bhxh/clean/core/data/model/model_src.dart';
 import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
