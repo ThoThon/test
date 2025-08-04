@@ -66,6 +66,7 @@ class BaseApi {
     bool isHaveVersion = true,
     bool getHeader = false,
     Duration? timeOut,
+    bool enableChunkedTransfer = true,
   }) async {
     dio.options = dioOptions ?? buildDefaultOptions(timeOut: timeOut);
     dynamic response;
@@ -74,9 +75,13 @@ class BaseApi {
         ? (headersUrlOther ?? getBaseHeader())
         : {
             "Content-Type": "application/json",
-            // Set Transfer-Encoding là 'chunked' để BE tự tính content-length, nhằm tránh lỗi sai content-length
-            'Transfer-Encoding': 'chunked',
           };
+    if (enableChunkedTransfer) {
+      // Set Transfer-Encoding là 'chunked' để BE tự tính content-length, nhằm tránh lỗi sai content-length
+      // Nhưng sẽ không thêm vào khi gọi api upload file vì sẽ bị lỗi "Connection closed before full header was received"
+      headers['Transfer-Encoding'] = 'chunked';
+    }
+
     Options options = isDownload
         ? Options(
             headers: headers,
@@ -151,8 +156,6 @@ class BaseApi {
       // 'Authorization': hiveApp.get(AppKey.keyToken) ?? "",
       // 'Authorization': "Bearer 123456aA@",
       'Authorization': "",
-      // Set Transfer-Encoding là 'chunked' để BE tự tính content-length, nhằm tránh lỗi sai content-length
-      'Transfer-Encoding': 'chunked',
     };
   }
 }
