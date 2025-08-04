@@ -102,6 +102,7 @@ class AppNavigatorImpl extends AppNavigator {
     return Get.bottomSheet(
       bottomSheet,
       settings: settings,
+      isScrollControlled: true,
     );
   }
 

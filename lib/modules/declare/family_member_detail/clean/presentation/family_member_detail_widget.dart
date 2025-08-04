@@ -461,12 +461,14 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<District>(
-                  SelectDistrictBts(
-                    provinceCode: districtOfBirth.id,
-                    selectedDistrict: controller.selectedDistrict.value,
+                final result = await nav.showBottomSheet<District>(
+                  SelectDistrictBtsCl(),
+                  settings: RouteSettings(
+                    arguments: SelectDistrictArgument(
+                      provinceCode: districtOfBirth.id,
+                      selectedDistrict: controller.selectedDistrict.value,
+                    ),
                   ),
-                  isScrollControlled: true,
                 );
 
                 if (result != null) {
@@ -521,20 +523,20 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: provinceOfBirth.id,
-                    districtCode: districtOfBirth.id,
-                    selectedWard: controller.selectedWard.value,
-                  ),
-                  isScrollControlled: true,
-                );
+                // final result = await Get.bottomSheet<Ward>(
+                //   SelectWardBts(
+                //     provinceCode: provinceOfBirth.id,
+                //     districtCode: districtOfBirth.id,
+                //     selectedWard: controller.selectedWard.value,
+                //   ),
+                //   isScrollControlled: true,
+                // );
 
-                if (result != null) {
-                  controller.selectedWard.value = result;
+                // if (result != null) {
+                //   controller.selectedWard.value = result;
 
-                  didChange(result);
-                }
+                //   didChange(result);
+                // }
               },
               selectedItem: controller.selectedWard.value,
               display: (ward) => '${ward.id} - ${ward.name}',
