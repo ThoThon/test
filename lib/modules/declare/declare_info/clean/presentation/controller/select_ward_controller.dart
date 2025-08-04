@@ -29,24 +29,6 @@ class SelectWardControllerCl extends BaseGetClController {
   }
 
   Future<void> _getWards() async {
-    // try {
-    //   showLoading();
-    //   final response = await _repository.getWards(
-    //     provinceCode: provinceCode,
-    //     districtCode: districtCode,
-    //   );
-    //   if (response.isSuccess) {
-    //     wards.value = response.result;
-    //   } else {
-    //     showSnackBar(
-    //       response.errorMessage ?? LocaleKeys.app_someThingWentWrong.tr,
-    //     );
-    //   }
-    // } catch (e) {
-    //   logger.e(e);
-    // } finally {
-    //   hideLoading();
-    // }
     return buildState(
       showLoading: true,
       action: () async {

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
 
-class Ward extends Equatable {
+class Ward extends Equatable implements Entity {
   final String id;
   final String provinceId;
   final String districtId;
