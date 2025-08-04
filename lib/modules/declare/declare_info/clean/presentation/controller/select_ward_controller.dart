@@ -1,26 +1,25 @@
-import 'package:v_bhxh/base_app/controllers_base/base_controller.src.dart';
-import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/modules/declare/declare_info/clean/domain/entity/entity_src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/clean/domain/usecase/get_wards_use_case.dart';
 import 'package:v_bhxh/modules/src.dart';
 
-class SelectWardController extends BaseGetxController {
-  final String provinceCode;
-  final String districtCode;
+class SelectWardControllerCl extends BaseGetClController {
+  final SelectWardArgument argument;
 
-  SelectWardController({
-    required this.provinceCode,
-    required this.districtCode,
-    WardModel? ward,
+  final GetWardsUseCase _getWardsUseCase;
+
+  SelectWardControllerCl(
+    this._getWardsUseCase, {
+    required this.argument,
   }) {
-    selectedWard.value = ward;
+    selectedWard.value = argument.selectedWard;
   }
-
-  late final _repository = DeclareInfoRepository(this);
 
   final searchTextCtrl = TextEditingController();
   final keyword = ''.obs;
-  final selectedWard = Rxn<WardModel>();
-  final wards = <WardModel>[].obs;
+  final selectedWard = Rxn<Ward>();
+  final wards = <Ward>[].obs;
 
   @override
   void onReady() {
@@ -29,24 +28,24 @@ class SelectWardController extends BaseGetxController {
   }
 
   Future<void> _getWards() async {
-    try {
-      showLoading();
-      final response = await _repository.getWards(
-        provinceCode: provinceCode,
-        districtCode: districtCode,
-      );
-      if (response.isSuccess) {
-        wards.value = response.result;
-      } else {
-        showSnackBar(
-          response.errorMessage ?? LocaleKeys.app_someThingWentWrong.tr,
-        );
-      }
-    } catch (e) {
-      logger.e(e);
-    } finally {
-      hideLoading();
-    }
+    // try {
+    //   showLoading();
+    //   final response = await _repository.getWards(
+    //     provinceCode: provinceCode,
+    //     districtCode: districtCode,
+    //   );
+    //   if (response.isSuccess) {
+    //     wards.value = response.result;
+    //   } else {
+    //     showSnackBar(
+    //       response.errorMessage ?? LocaleKeys.app_someThingWentWrong.tr,
+    //     );
+    //   }
+    // } catch (e) {
+    //   logger.e(e);
+    // } finally {
+    //   hideLoading();
+    // }
   }
 
   @override
