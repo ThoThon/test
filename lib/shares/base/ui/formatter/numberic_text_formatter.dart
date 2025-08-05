@@ -44,7 +44,9 @@ class NumericTextFormatter extends TextInputFormatter {
     }
 
     // Ghi lại vị trí con trỏ cũ
-    final oldSelectionIndex = oldValue.selection.baseOffset;
+    // Trước đây dùng oldValue.selection.baseOffset nhưng xảy ra tình trạng baseOffset khác nhau giữa android và iOS
+    // Thử chuyển sang extentOffset và test thì OK
+    final oldSelectionIndex = oldValue.selection.extentOffset;
 
     // Format lại chuỗi số
     final formatted = type == 0
