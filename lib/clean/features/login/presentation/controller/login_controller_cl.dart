@@ -124,6 +124,12 @@ class LoginControllerCl extends BaseGetClController {
   }
 
   @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+  }
+
+  @override
   void onClose() {
     usernameTextCtrl.dispose();
     passwordTextCtrl.dispose();
