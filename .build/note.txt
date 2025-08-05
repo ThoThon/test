@@ -1,6 +1,8 @@
+05/08/2025
+- [Appmobile]_Lỗi focus chuột - BHW-2922
+
 04/08/2025
 - [Appmobile]_Bỏ chunked ở upload file image - BHW-2901
-
 
 01/08/2025
 - [Appmobile]_Thủ tục 630a: Gửi request đúng giá trị nhập cho trường Tổng số ngày - BHW-2898
