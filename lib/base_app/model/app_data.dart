@@ -19,6 +19,13 @@ class AppData {
   var resultReceivingOptions = <RegisterReceiveResultModel>{};
   var birthTypes = <BirthTypeModel>{};
   var receiveResults = <ReceiveResultModel>{};
+  var declareForm = <DeclareForm630aModel>{};
+  var benefitGroup = <BenefitGroup630aModel>{};
+  var workCondition = <WorkCondition630aModel>{};
+  var receiveForm = <ReceiveForm630aModel>{};
+  var bank = <Bank630aModel>{};
+  var hospitalLine = <HospitalLine630aModel>{};
+  var longDiease = <LongDiease630aModel>{};
 
   final Rx<AccountInfoModel?> accountInfoModel = Rx<AccountInfoModel?>(null);
   final totalUnread = 0.obs;

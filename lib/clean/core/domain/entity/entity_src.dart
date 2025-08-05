@@ -10,3 +10,5 @@ export 'relationship.dart';
 export 'position.dart';
 export 'birth_type.dart';
 export 'receive_result.dart';
+export 'district.dart';
+export 'ward.dart';

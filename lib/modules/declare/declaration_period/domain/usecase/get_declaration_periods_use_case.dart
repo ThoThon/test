@@ -17,6 +17,7 @@ class GetDeclarationPeriodsUseCase extends UseCase<
       year: input.year,
       month: input.month,
       periodId: input.periodId,
+      status: input.status,
     );
   }
 }
@@ -25,10 +26,12 @@ class GetDeclarationPeriodsUseCaseInput {
   final int year;
   final int month;
   final int periodId;
+  final int? status;
 
   GetDeclarationPeriodsUseCaseInput({
     required this.year,
     required this.month,
     required this.periodId,
+    this.status,
   });
 }

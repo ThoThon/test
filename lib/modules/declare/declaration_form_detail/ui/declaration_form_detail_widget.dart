@@ -86,7 +86,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
                 horizontal: AppDimens.padding32,
               ),
               dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
+              dateTimeInit: convertStringToDateStrict(
                       controller.effectiveDateCtrl.text, PATTERN_1) ??
                   DateTime.now(),
             );
@@ -142,7 +142,7 @@ extension DeclarationFormDetailWidget on DeclarationFormDetailPage {
                 horizontal: AppDimens.padding32,
               ),
               dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
+              dateTimeInit: convertStringToDateStrict(
                       controller.dateOfIssueCtrl.text, PATTERN_1) ??
                   DateTime.now(),
             );

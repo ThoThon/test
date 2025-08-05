@@ -282,7 +282,7 @@ extension CommonInfoTab on RegisterCodePage {
                 horizontal: AppDimens.padding32,
               ),
               dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
+              dateTimeInit: convertStringToDateStrict(
                     controller.setupDateCtrl.text,
                     PATTERN_1,
                   ) ??
@@ -344,7 +344,7 @@ extension CommonInfoTab on RegisterCodePage {
                 horizontal: AppDimens.padding32,
               ),
               dateFormat: PATTERN_1,
-              dateTimeInit: convertStringToDateSafe(
+              dateTimeInit: convertStringToDateStrict(
                     controller.registerDateCtrl.text,
                     PATTERN_1,
                   ) ??

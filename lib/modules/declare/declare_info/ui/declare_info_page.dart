@@ -2,13 +2,13 @@ import 'package:collection/collection.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:v_bhxh/base_app/model/base_model.src.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/family_member.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
-import '../../family_member_detail/model/birth_type_enum.dart';
+import '../../family_member_detail/domain/entity/birth_type_enum.dart';
 
 part 'd01_tab_widget.dart';
 part 'd02_tab_widget.dart';

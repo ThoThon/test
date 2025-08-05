@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/family_member.dart';
 
 class FamilyMemberRequest {
   final String? id;

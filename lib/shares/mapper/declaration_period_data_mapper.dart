@@ -10,7 +10,7 @@ class DeclarationPeriodDataMapper
       id: data?.id ?? '',
       companyId: data?.companyId ?? '',
       procedureId: data?.procedureId ?? 0,
-      status: DeclarationStatus.fromInt(data?.status),
+      fileStatus: DeclarationPeriodStatus.fromInt(data?.status),
       year: data?.year ?? 0,
       month: data?.month ?? 0,
       period: data?.period ?? 0,

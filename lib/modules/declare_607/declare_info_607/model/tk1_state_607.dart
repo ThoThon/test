@@ -4,7 +4,7 @@ import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';

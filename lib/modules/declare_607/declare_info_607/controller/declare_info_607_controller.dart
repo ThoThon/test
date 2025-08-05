@@ -2,7 +2,7 @@ import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/family_member.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/district_model.dart';

@@ -6,7 +6,11 @@ enum PreviewDocumentTypeEnum {
   d02,
 
   /// 2
-  tk1;
+  tk1,
+
+  /// 01D-HSB
+  /// 3
+  hsb;
 
   int get value {
     switch (this) {
@@ -16,6 +20,8 @@ enum PreviewDocumentTypeEnum {
         return 1;
       case PreviewDocumentTypeEnum.tk1:
         return 2;
+      case PreviewDocumentTypeEnum.hsb:
+        return 3;
     }
   }
 }

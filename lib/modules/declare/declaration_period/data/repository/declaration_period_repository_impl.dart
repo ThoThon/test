@@ -20,6 +20,7 @@ class DeclarationPeriodRepositoryImpl extends DeclarationPeriodRepository {
     required int periodId,
     required int month,
     required int year,
+    int? status,
   }) async {
     final response = await _authAppServerApiClient.request(
       method: RestMethod.get,
@@ -28,6 +29,7 @@ class DeclarationPeriodRepositoryImpl extends DeclarationPeriodRepository {
         'maThuTuc': periodId,
         'thang': month,
         'nam': year,
+        'trangThai': status,
       },
       cancelToken: cancelToken,
     );

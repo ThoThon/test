@@ -102,6 +102,18 @@ class AppNavigatorImpl extends AppNavigator {
     return Get.bottomSheet(
       bottomSheet,
       settings: settings,
+      isScrollControlled: true,
+    );
+  }
+
+  @override
+  Future<T?> bottomSheet<T>(
+    Widget bottomsheet, {
+    bool isScrollControlled = false,
+  }) {
+    return Get.bottomSheet(
+      bottomsheet,
+      isScrollControlled: isScrollControlled,
     );
   }
 
@@ -109,10 +121,23 @@ class AppNavigatorImpl extends AppNavigator {
   Future<T?> showDialog<T>(
     BaseGetBtsDialog dialog, {
     RouteSettings? settings,
+    bool barrierDismissible = true,
   }) {
     return Get.dialog(
       dialog,
       routeSettings: settings,
+      barrierDismissible: barrierDismissible,
+    );
+  }
+
+  @override
+  Future<T?> dialog<T>(
+    Widget widget, {
+    bool barrierDismissible = true,
+  }) {
+    return Get.dialog(
+      widget,
+      barrierDismissible: barrierDismissible,
     );
   }
 

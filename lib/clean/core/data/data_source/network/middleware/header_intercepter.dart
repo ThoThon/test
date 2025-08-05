@@ -10,6 +10,8 @@ class HeaderInterceptor extends BaseInterceptor {
 
   var _headers = <String, dynamic>{
     Headers.contentTypeHeader: Headers.jsonContentType,
+    // Set Transfer-Encoding là 'chunked' để BE tự tính content-length, nhằm tránh lỗi sai content-length
+    'Transfer-Encoding': 'chunked',
   };
 
   set headers(Map<String, dynamic> headers) {
