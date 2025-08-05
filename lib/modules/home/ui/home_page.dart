@@ -92,19 +92,30 @@ class HomePage extends BaseGetWidget<HomeController> {
     IconData? icon,
     required String text,
   }) {
-    return Row(
-      children: [
-        Icon(icon),
-        sdsSBWidth8,
-        InkWell(
-          onTap: onTap,
-          child: SDSBuildText(
-            text,
-            style: AppTextStyle.font16Re,
-          ),
-        )
-      ],
-    ).paddingOnly(bottom: AppDimens.paddingMedium);
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          vertical: AppDimens.paddingVerySmall,
+        ),
+        width: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(icon),
+            sdsSBWidth8,
+            Expanded(
+              child: SDSBuildText(
+                text,
+                style: AppTextStyle.font16Re,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _buildDrawer() {
@@ -124,10 +135,6 @@ class HomePage extends BaseGetWidget<HomeController> {
                 Get.toNamed(AppRoutesCl.profile.path);
               },
             ),
-            // _buildItemDrawer(
-            //   icon: Icons.lock_outline,
-            //   text: LocaleKeys.home_changePassword.tr,
-            // ),
             _buildItemDrawer(
               icon: Icons.book_outlined,
               text: LocaleKeys.home_guide.tr,
@@ -234,54 +241,49 @@ class HomePage extends BaseGetWidget<HomeController> {
             ],
           ).paddingOnly(top: AppDimens.defaultPadding)),
       actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: AppDimens.paddingMedium),
-          child: InkWell(
-            onTap: () {
-              Get.toNamed(AppRoutesCl.notification.path);
-            },
-            child: Obx(
-              () {
-                final unreadCount = AppData.instance.totalUnread.value;
-
-                return Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    SDSImageSvg(
-                      Assets.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG,
-                      color: AppColors.colorBlack,
-                    ),
-                    if (unreadCount > 0)
-                      Positioned(
-                        right: -10,
-                        top: -10,
-                        child: Container(
-                          padding: const EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                            color: AppColors.primaryColor,
-                            border: Border.all(
-                                width: 2, color: AppColors.colorWhite),
-                            borderRadius: BorderRadius.circular(10),
+        IconButton(
+          onPressed: controller.goToNotificationPage,
+          icon: Obx(
+            () {
+              final unreadCount = AppData.instance.totalUnread.value;
+              return Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  SDSImageSvg(
+                    Assets.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG,
+                    color: AppColors.colorBlack,
+                  ),
+                  if (unreadCount > 0)
+                    Positioned(
+                      right: -10,
+                      top: -10,
+                      child: Container(
+                        padding: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          border:
+                              Border.all(width: 2, color: AppColors.colorWhite),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        constraints:
+                            const BoxConstraints(minWidth: 20, minHeight: 16),
+                        child: SDSBuildText(
+                          unreadCount > 99 ? '99+' : '$unreadCount',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
                           ),
-                          constraints:
-                              const BoxConstraints(minWidth: 20, minHeight: 16),
-                          child: SDSBuildText(
-                            unreadCount > 99 ? '99+' : '$unreadCount',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                  ],
-                );
-              },
-            ),
+                    ),
+                ],
+              );
+            },
           ),
         ),
+        sdsSBWidth8,
       ],
     );
   }

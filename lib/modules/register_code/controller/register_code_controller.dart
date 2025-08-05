@@ -201,16 +201,24 @@ class RegisterCodeController extends BaseGetxController {
   }
 
   Future<void> pickImage() async {
-    final path = await ImageUtils.pickImage();
-    if (path != null) {
-      listImage.add(path);
+    try {
+      final path = await ImageUtils.pickImage();
+      if (path != null) {
+        listImage.add(path);
+      }
+    } catch (e) {
+      showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
     }
   }
 
   Future<void> takePhoto() async {
-    final path = await ImageUtils.takePhoto();
-    if (path != null) {
-      listImage.add(path);
+    try {
+      final path = await ImageUtils.takePhoto();
+      if (path != null) {
+        listImage.add(path);
+      }
+    } catch (e) {
+      showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
     }
   }
 

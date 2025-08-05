@@ -1,6 +1,6 @@
 import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/declaration_status.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/declaration_period_status.dart';
 
 class DeclarationPeriod implements Entity {
   final String id;
@@ -12,7 +12,7 @@ class DeclarationPeriod implements Entity {
   final int procedureId;
 
   /// Trạng thái hồ sơ
-  final DeclarationStatus status;
+  final DeclarationPeriodStatus fileStatus;
   final int year;
   final int month;
   final int period;
@@ -30,7 +30,7 @@ class DeclarationPeriod implements Entity {
     required this.id,
     required this.companyId,
     required this.procedureId,
-    required this.status,
+    required this.fileStatus,
     required this.year,
     required this.month,
     required this.period,
@@ -40,4 +40,7 @@ class DeclarationPeriod implements Entity {
     this.updateDate,
     this.fileNumber,
   });
+
+  // Disable 'Chỉnh sửa' và 'Xóa'
+  bool get disableDeleteAndEdit => fileStatus == DeclarationPeriodStatus.sent;
 }

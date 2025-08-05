@@ -120,6 +120,7 @@ extension LoginWidget on LoginPage {
         onTap: () {
           controller.isHaveUsername.value = false;
           controller.usernameTextCtrl.clear();
+          controller.passwordTextCtrl.clear();
         },
         child: SDSBuildText(
           LocaleKeys.login_changeAccount.tr,

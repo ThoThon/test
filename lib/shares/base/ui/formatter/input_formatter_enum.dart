@@ -70,4 +70,7 @@ class InputFormatterEnum {
 
   /// 23 : Nhập text thường, ký tự đặc biệt, trử khoảng trống
   static const int textNormalWithoutSpace = 23;
+
+  /// 24 : Nhập số, theo dạng "xx mm/yyyy"
+  static const int periodMonthYear = 24;
 }

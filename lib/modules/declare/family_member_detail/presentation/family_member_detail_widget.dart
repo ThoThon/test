@@ -243,7 +243,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     selectedDate = await DatePickerUtils.showCalendarPicker(
                       title: LocaleKeys.dialog_selectYear.tr,
                       dateFormat: PATTERN_13,
-                      dateTimeInit: convertStringToDateSafe(
+                      dateTimeInit: convertStringToDateStrict(
                               controller.dateOfBirthCtrl.text, PATTERN_13) ??
                           DateTime.now(),
                     );
@@ -252,7 +252,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     selectedDate = await DatePickerUtils.showCalendarPicker(
                       title: LocaleKeys.dialog_selectMonthYear.tr,
                       dateFormat: PATTERN_12,
-                      dateTimeInit: convertStringToDateSafe(
+                      dateTimeInit: convertStringToDateStrict(
                               controller.dateOfBirthCtrl.text, PATTERN_12) ??
                           DateTime.now(),
                     );
@@ -264,7 +264,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                         horizontal: AppDimens.padding32,
                       ),
                       dateFormat: PATTERN_1,
-                      dateTimeInit: convertStringToDateSafe(
+                      dateTimeInit: convertStringToDateStrict(
                               controller.dateOfBirthCtrl.text, PATTERN_1) ??
                           DateTime.now(),
                     );

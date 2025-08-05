@@ -30,6 +30,7 @@ class DeclarationPeriodController extends BaseGetClController {
 
   final declarationPeriods = <DeclarationPeriod>[].obs;
   final selectedPeriodDate = DateTime.now().obs;
+  final selectFilter = DeclarationPeriodFilter.all.obs;
 
   DeclarationPeriodController(
     this._getDeclarationPeriodsUseCase,
@@ -69,6 +70,7 @@ class DeclarationPeriodController extends BaseGetClController {
             year: selectedPeriodDate.value.year,
             month: selectedPeriodDate.value.month,
             periodId: argument.type.toInt,
+            status: selectFilter.value.statusNumber,
           ),
         );
       },
@@ -139,6 +141,7 @@ class DeclarationPeriodController extends BaseGetClController {
           ProcedureType.procedure612 ||
           ProcedureType.procedure613 =>
             AppRoutesCl.declareInfo607.path,
+          ProcedureType.procedure630a => AppRoutesCl.declareInfo630a.path,
         };
 
         final declareInfoArgument = DeclareInfoArgument(
