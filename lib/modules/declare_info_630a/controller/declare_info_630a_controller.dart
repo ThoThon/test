@@ -4,8 +4,10 @@ import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../declare/declare_info/repository/declare_info_repository.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
@@ -185,6 +187,8 @@ class DeclareInfo630aController extends BaseGetxController {
           typeAction: AppConst.actionSuccess,
         );
         if (argument.isAddPeriodFromDeclarePeriod) {
+          // Đóng màn kê khai này và mở màn danh sách nhân viên
+          // .then để bắt sự kiện đóng màn danh sách nhân viên này để refresh màn đợt kê khai
           Get.offNamed(
             AppRoutesCl.staffList.path,
             arguments: StaffListArgument(
@@ -192,8 +196,7 @@ class DeclareInfo630aController extends BaseGetxController {
               procedureType: ProcedureType.procedure630a,
             ),
           )?.then((value) {
-            // TODO: Use event bus
-            // declarationPeriodController?.getDeclarationPeriods();
+            eventBus.fire(const RefreshDeclarationPeriodEvent());
           });
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(

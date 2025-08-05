@@ -6,6 +6,7 @@ abstract class DeclarationPeriodRepository extends BaseRepositoryCl {
     required int periodId,
     required int month,
     required int year,
+    int? status,
   });
 
   Future<DeclarationPeriod> createDeclarationPeriod({

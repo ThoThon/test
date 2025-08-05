@@ -70,6 +70,7 @@ class DeclarationPeriodController extends BaseGetClController {
             year: selectedPeriodDate.value.year,
             month: selectedPeriodDate.value.month,
             periodId: argument.type.toInt,
+            status: selectFilter.value.statusNumber,
           ),
         );
       },
