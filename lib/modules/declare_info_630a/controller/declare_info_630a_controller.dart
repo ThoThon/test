@@ -58,8 +58,6 @@ class DeclareInfo630aController extends BaseGetxController {
   /// Nghỉ hàng tuần
   final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
 
-  final dayOffCtrl = TextEditingController();
-
   /// Tuyến bệnh viện
   final selectHospitalLine = Rxn<HospitalLine630aModel>();
 
@@ -466,7 +464,6 @@ class DeclareInfo630aController extends BaseGetxController {
     toDateCtrl.dispose();
     countDayTextCtrl.dispose();
     fromDateUnitTextCtrl.dispose();
-    dayOffCtrl.dispose();
     diseaseNameTextCtrl.dispose();
     serialNumberCtrl.dispose();
     supplementalPeriodCtrl.dispose();

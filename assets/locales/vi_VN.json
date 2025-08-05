@@ -622,7 +622,8 @@
     "adjustReasonHint": "Nhập lý do điều chỉnh",
     "adjustReasonEmpty": "Lý do điều chỉnh không được bỏ trống",
     "attachPaper": "Gửi kèm hồ sơ giấy",
-    "saveButton": "Lưu"
+    "saveButton": "Lưu",
+    "procedure630b":"Thủ tục 630b"
   },
   "familyMember": {
     "title": "Thêm thành viên",
