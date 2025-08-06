@@ -60,7 +60,6 @@ class LoginRepository extends BaseRepository {
   Future<BaseResponse<CategoriesProcedure630a>> get630aCategories() async {
     final response = await baseCallApi(
       AppApi.urlGet630aCategories,
-      urlOther: AppApi.urlGet630aCategories,
       EnumRequestMethod.get,
     );
 
