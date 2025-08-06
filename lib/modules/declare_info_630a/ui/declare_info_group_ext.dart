@@ -115,12 +115,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
             items: AppData.instance.declareForm.toList(),
             display: (item) => item.text,
             selectedItem: controller.declareForm.value,
-            onChanged: (value) {
-              if (value == null) {
-                return;
-              }
-              controller.declareForm.value = value;
-            },
+            onChanged: controller.onChangeDeclareMethod,
             validator: validator,
           ),
         );

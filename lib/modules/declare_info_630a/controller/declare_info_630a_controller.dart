@@ -303,18 +303,12 @@ class DeclareInfo630aController extends BaseGetxController {
 
   /// Trả về "true" khi "Mã nhóm hưởng" là "Con ốm"
   bool get isSickChild {
-    if (benefitGroup.value?.value == "O2") {
-      return true;
-    }
-    return false;
+    return benefitGroup.value?.value == "O2";
   }
 
   /// Trả về "true" khi "Hình thức kê khai" là "Điều chỉnh"
   bool get isAdjustDeclareForm {
-    if (declareForm.value?.value == '2') {
-      return true;
-    }
-    return false;
+    return declareForm.value?.value == '2';
   }
 
   /// Trả về "true" khi "Hình thức nhận" là "Chi trả qua ATM"
@@ -464,6 +458,26 @@ class DeclareInfo630aController extends BaseGetxController {
     }
 
     receiveForm.value = method;
+  }
+
+  void onChangeDeclareMethod(DeclareForm630aModel? method) {
+    if (method == null) {
+      return;
+    }
+    declareForm.value = method;
+
+    // Nếu chọn hình thức kê khai khác "Phát sinh" (1) thì reset các trường liên quan
+    // REF: BHW-2949
+    if (method.value != declareMethodArisingValue) {
+      selectHospitalLine.value = null;
+      selectDiseaseCode.value = null;
+      diseaseNameTextCtrl.clear();
+      serialNumberCtrl.clear();
+      workCondition.value = null;
+      isMaternityRest.value = false;
+      supplementalPeriodCtrl.clear();
+      fileCodeTextCtrl.clear();
+    }
   }
 
   @override
