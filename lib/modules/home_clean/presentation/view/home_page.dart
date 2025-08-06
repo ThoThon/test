@@ -1,0 +1,22 @@
+import 'package:v_bhxh/clean/core/presentation/widgets/widget_src.dart';
+import 'package:v_bhxh/modules/home_clean/presentation/controller/home_controller_cl.dart';
+
+import '../../../../base_app/base_app.src.dart';
+import '../../../../clean/routes/app_routes_cl.dart';
+import '../../../src.dart';
+import '../model/home_menu_item_src.dart';
+
+part 'home_widget.dart';
+
+class HomePageCL extends BaseGetPage<HomeControllerCl> {
+  HomePageCL({super.key});
+
+  @override
+  Widget buildPage(BuildContext context) {
+    return Scaffold(
+      appBar: _buildAppBar(),
+      drawer: _buildDrawer(),
+      body: _buildBody(),
+    );
+  }
+}

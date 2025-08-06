@@ -1,17 +1,20 @@
-import 'package:v_bhxh/clean/core/data/data_source/local/app_hive_impl.dart';
-import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
-import 'package:v_bhxh/modules/home/repository/home_repository.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/modules/home_clean/domain/usecase/read_all_notification_use_case.dart';
+import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
 
-import '../../../base_app/base_app.src.dart';
-import '../../../shares/widgets/dialog/dialog_utils.dart';
-import '../../src.dart';
-import '../../view_pdf/model/view_pdf_argument.dart';
+import '../../../../base_app/model/app_data.dart';
+import '../../../../clean/core/data/data_source/local/app_hive_impl.dart';
+import '../../../../clean/routes/app_routes_cl.dart';
+import '../../../../shares/widgets/dialog/dialog_utils.dart';
+import '../../../src.dart';
 
-class HomeController extends BaseGetxController {
-  late final _repository = HomeRepository(this);
-
+class HomeControllerCl extends BaseGetClController {
   /// Biến loading riêng cho thao tác `readAllNotification`
   final isReadingAllNoti = false.obs;
+
+  final ReadAllNotificationUseCase _readAllNotificationUseCase;
+
+  HomeControllerCl(this._readAllNotificationUseCase);
 
   void showDialogLogout() {
     ShowDialog.showDialogConfirm2(
@@ -44,17 +47,14 @@ class HomeController extends BaseGetxController {
   }
 
   Future<void> readAllNotification() async {
-    try {
-      isReadingAllNoti.value = true;
-      final res = await _repository.readAllNotification();
-      if (res.isSuccess) {
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        isReadingAllNoti.value = true;
+        await _readAllNotificationUseCase.execute();
         AppData.instance.totalUnread.value = 0;
-      }
-    } catch (e) {
-      logger.d(e);
-    } finally {
-      isReadingAllNoti.value = false;
-    }
+      },
+    );
   }
 
   void goToNotificationPage() {

@@ -1,4 +1,4 @@
-import '../../src.dart';
+import 'dart:ui';
 
 class HomeMenuItem {
   final String assetImage;

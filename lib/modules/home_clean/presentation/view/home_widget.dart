@@ -1,27 +1,6 @@
-import 'package:v_bhxh/base_app/model/app_data.dart';
-import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
-import 'package:v_bhxh/modules/home/controller/home_controller.dart';
+part of 'home_page.dart';
 
-import '../../../modules/src.dart';
-import '../src.dart';
-
-class HomePage extends BaseGetWidget<HomeController> {
-  HomePage({super.key});
-
-  @override
-  HomeController get controller => _controller;
-
-  late final _controller = Get.put(HomeController());
-
-  @override
-  Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      drawer: _buildDrawer(),
-      appBar: _buildAppBar(),
-      body: _buildBody(),
-    );
-  }
-
+extension HomeWidget on HomePageCL{
   Widget _buildBody() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
