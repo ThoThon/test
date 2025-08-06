@@ -1,3 +1,6 @@
+06/08/2025
+- [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chị các giá trị [Hình thức nhận] - BHW-2950
+
 05/08/2025
 - [Appmobile]_Lỗi focus chuột - BHW-2922
 
