@@ -1,27 +1,6 @@
-import 'package:v_bhxh/base_app/model/app_data.dart';
-import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
-import 'package:v_bhxh/modules/home/controller/home_controller.dart';
+part of 'home_page.dart';
 
-import '../../../modules/src.dart';
-import '../src.dart';
-
-class HomePage extends BaseGetWidget<HomeController> {
-  HomePage({super.key});
-
-  @override
-  HomeController get controller => _controller;
-
-  late final _controller = Get.put(HomeController());
-
-  @override
-  Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      drawer: _buildDrawer(),
-      appBar: _buildAppBar(),
-      body: _buildBody(),
-    );
-  }
-
+extension HomeWidget on HomePageCL {
   Widget _buildBody() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,9 +22,54 @@ class HomePage extends BaseGetWidget<HomeController> {
                   crossAxisSpacing: AppDimens.padding24,
                   physics: const NeverScrollableScrollPhysics(),
                   childAspectRatio: 1.55,
-                  children: HomeEnum.values
-                      .map((item) => _buildMenuItem(item))
-                      .toList(),
+                  children: [
+                    _buildMenuItem(
+                      HomeMenuItem(
+                        assetImage: Assets.ASSETS_ICONS_HOME_UNIT_INFO_SVG,
+                        title: LocaleKeys.home_unitInfo,
+                        onPressd: () {
+                          nav.toNamed(AppRoutesCl.infoUnit.path);
+                        },
+                      ),
+                    ),
+                    _buildMenuItem(
+                      HomeMenuItem(
+                        assetImage: Assets.ASSETS_ICONS_HOME_DECLARATION_SVG,
+                        title: LocaleKeys.home_procedureList,
+                        onPressd: () {
+                          nav.toNamed(AppRoutesCl.procedureList.path);
+                        },
+                      ),
+                    ),
+                    _buildMenuItem(
+                      HomeMenuItem(
+                        assetImage: Assets.ASSETS_ICONS_HOME_HISTORY_SVG,
+                        title: LocaleKeys.home_history,
+                        onPressd: () {
+                          nav.toNamed(AppRoutesCl.history.path);
+                        },
+                      ),
+                    ),
+                    _buildMenuItem(
+                      HomeMenuItem(
+                        assetImage: Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG,
+                        title: LocaleKeys.home_lookupC12,
+                        onPressd: () {
+                          nav.toNamed(AppRoutesCl.lookupC12.path);
+                        },
+                      ),
+                    ),
+                    _buildMenuItem(
+                      HomeMenuItem(
+                        assetImage:
+                            Assets.ASSETS_ICONS_HOME_IC_REGISTER_SERVICE_SVG,
+                        title: LocaleKeys.home_registerService,
+                        onPressd: () {
+                          nav.toNamed(AppRoutesCl.registerService.path);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -55,11 +79,9 @@ class HomePage extends BaseGetWidget<HomeController> {
     );
   }
 
-  Widget _buildMenuItem(HomeEnum item) {
+  Widget _buildMenuItem(HomeMenuItem item) {
     return InkWell(
-      onTap: () {
-        Get.toNamed(item.path);
-      },
+      onTap: item.onPressd,
       child: UtilWidget.buildCardBase(
         Stack(
           children: [
@@ -67,7 +89,7 @@ class HomePage extends BaseGetWidget<HomeController> {
               top: AppDimens.paddingSmall,
               left: AppDimens.paddingSmall,
               child: SDSBuildText(
-                item.string.tr,
+                item.title.tr,
                 style: AppTextStyle.font14Re,
               ),
             ),
@@ -75,7 +97,7 @@ class HomePage extends BaseGetWidget<HomeController> {
               bottom: AppDimens.paddingSmallest,
               right: AppDimens.paddingSmallest,
               child: SDSImageSvg(
-                item.image,
+                item.assetImage,
                 height: 56,
                 width: 56,
               ),
@@ -132,7 +154,7 @@ class HomePage extends BaseGetWidget<HomeController> {
               icon: Icons.account_circle_outlined,
               text: LocaleKeys.home_accountInfo.tr,
               onTap: () {
-                Get.toNamed(AppRoutesCl.profile.path);
+                nav.toNamed(AppRoutesCl.profile.path);
               },
             ),
             _buildItemDrawer(
