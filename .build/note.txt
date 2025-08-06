@@ -2,7 +2,7 @@
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chị các giá trị [Hình thức nhận] - BHW-2950
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị giữa Hình thức kê khai: Phát sinh/Điều chỉnh - BHW-2949
 - [Appmobile]_Thủ tục 630a: Thiếu trường checkbox [Nghỉ dưỡng thai] - BHW-2947
-
+- [Appmobile]_Thủ tục 630a: Lỗi focus khi chọn giá trị cho trường Hình thức nhận: Chi trả qua ATM - BHW-2948
 05/08/2025
 - [Appmobile]_Lỗi focus chuột - BHW-2922
 
