@@ -146,5 +146,6 @@ void main() {
 
     // Assert
     verify(() => navigator.showSnackBar(any())).called(1);
+    verifyNever(() => navigator.offAllNamed(AppRoutesCl.home.path));
   });
 }
