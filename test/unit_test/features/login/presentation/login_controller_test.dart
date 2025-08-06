@@ -117,6 +117,7 @@ void main() {
     );
     when(() => navigator.offAllNamed(AppRoutesCl.home.path))
         .thenAnswer((_) async {});
+    // Khi có lỗi error handler sẽ hiển thị snackbar, nên cần giả lập việc này
     when(() => navigator.showSnackBar(any())).thenAnswer((_) {});
 
     // Act
