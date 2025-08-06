@@ -66,7 +66,7 @@ abstract class AppNavigator {
     bool barrierDismissible = true,
   });
 
-  Future<void> showSnackBar<T>(
+  void showSnackBar<T>(
     String message, {
     Duration duration = const Duration(seconds: 2),
     SnackBarType type = SnackBarType.failure,

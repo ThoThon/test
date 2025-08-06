@@ -85,4 +85,34 @@ class AccountInfo implements Entity {
       maVung: maVung,
     );
   }
+
+  factory AccountInfo.empty() {
+    return const AccountInfo(
+      toChucId: '',
+      tenToChuc: '',
+      taxCode: '',
+      maDonVi: '',
+      maNganSach: '',
+      diaChiDk: '',
+      diaChi: '',
+      maCoQuanQuanLy: '',
+      tenCoQuanQuanLy: '',
+      dienThoai: '',
+      mailLienLac: '',
+      tenNguoiKy: '',
+      telReceiver: '',
+      serviceName: '',
+      serviceStartDate: '',
+      serviceExpiredDate: '',
+      bankAccount: '',
+      jobTitle: '',
+      loaiDoiTuong: '',
+      ptNhanKq: '',
+      packageInfo: '',
+      tenNguoiKeKhai: '',
+      luongCoSo: 0,
+      phuongThucDong: 0,
+      maVung: 0,
+    );
+  }
 }

@@ -20,4 +20,17 @@ class D02CategoriesCl implements Entity {
     required this.birthTypes,
     required this.receiveResults,
   });
+
+  factory D02CategoriesCl.empty() {
+    return const D02CategoriesCl(
+      declarationTypes: {},
+      ethnics: {},
+      nations: {},
+      provinces: {},
+      relationships: {},
+      positions: {},
+      birthTypes: {},
+      receiveResults: {},
+    );
+  }
 }
