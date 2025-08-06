@@ -5,10 +5,6 @@ import 'package:v_bhxh/core/values/app_api.dart';
 
 import '../model/model_src.dart';
 
-// TODO: URL dùng để thay thế tạm thời
-const urlGet630aCategories =
-    'https://vbhxh1.easyhrm.vn/dev-api-mobile/api/HoSo630a/get-categories';
-
 class LoginRepository extends BaseRepository {
   LoginRepository(super.controller);
 
@@ -64,7 +60,7 @@ class LoginRepository extends BaseRepository {
   Future<BaseResponse<CategoriesProcedure630a>> get630aCategories() async {
     final response = await baseCallApi(
       AppApi.urlGet630aCategories,
-      urlOther: urlGet630aCategories,
+      urlOther: AppApi.urlGet630aCategories,
       EnumRequestMethod.get,
     );
 
