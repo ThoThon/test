@@ -30,6 +30,11 @@ class MockGetD02CategoriesUseCase extends Mock
 class MockGetUnreadNotificationCountUseCase extends Mock
     implements GetUnreadNotificationCountUseCase {}
 
+class FakeLoginRequest extends Fake implements LoginRequest {}
+
+class FakeSaveAuthInfoUseCaseInput extends Fake
+    implements SaveAuthInfoUseCaseInput {}
+
 void main() {
   late LoginControllerCl controller;
   final loginUseCase = MockLoginUseCase();
@@ -43,11 +48,8 @@ void main() {
   final navigator = MockAppNavigator();
 
   setUpAll(() {
-    registerFallbackValue(LoginRequest(username: '', password: ''));
-    registerFallbackValue(SaveAuthInfoUseCaseInput(
-      username: '',
-      accessToken: '',
-    ));
+    registerFallbackValue(FakeLoginRequest());
+    registerFallbackValue(FakeSaveAuthInfoUseCaseInput());
   });
 
   setUp(
