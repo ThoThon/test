@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get/get.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
 import 'package:v_bhxh/clean/features/login/presentation/controller/login_controller_cl.dart';
@@ -38,34 +37,26 @@ void main() {
 
   setUp(
     () {
-      controller = Get.put(
-        LoginControllerCl(
-          loginUseCase,
-          saveAuthInfoUseCase,
-          getAccountInfoUseCase,
-          getLastUsernameUseCase,
-          saveCompanyNameUseCase,
-          getD02CategoriesUseCase,
-          getUnreadNotificationCountUseCase,
-        ),
+      controller = LoginControllerCl(
+        loginUseCase,
+        saveAuthInfoUseCase,
+        getAccountInfoUseCase,
+        getLastUsernameUseCase,
+        saveCompanyNameUseCase,
+        getD02CategoriesUseCase,
+        getUnreadNotificationCountUseCase,
       );
+      controller.onOpen();
     },
   );
 
   tearDown(
     () {
-      Get.delete<LoginControllerCl>();
+      controller.onClose();
     },
   );
 
-  test('isHaveUsername', () {
-    // Arrange
-    // controller.usernameTextCtrl.text = 'testUser';
-
-    // Act
-    // controller.onInit();
-
-    // Assert
+  test('isHaveUsername is false by default', () {
     expect(controller.isHaveUsername.value, isFalse);
   });
 }
