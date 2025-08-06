@@ -54,6 +54,9 @@ class HomeControllerCl extends BaseGetClController {
         await _readAllNotificationUseCase.execute();
         AppData.instance.totalUnread.value = 0;
       },
+      onFinally: () {
+        isReadingAllNoti.value = false;
+      },
     );
   }
 

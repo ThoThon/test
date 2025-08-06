@@ -8,15 +8,16 @@ class HomeRepositoryImpl extends HomeRepository {
   final AuthAppServerApiClient _authAppServerApiClient;
 
   HomeRepositoryImpl(this._authAppServerApiClient);
+
   @override
-  Future<String> realAllNotification() async {
+  Future<bool> realAllNotification() async {
     final response = await _authAppServerApiClient.request(
       method: RestMethod.post,
       path: AppApi.urlReadAllNotification,
       cancelToken: cancelToken,
     );
 
-    final data = BaseResponseCl<String>.fromJson(response);
-    return data.result ?? '';
+    final data = BaseResponseCl<bool>.fromJson(response);
+    return data.result ?? false;
   }
 }
