@@ -308,7 +308,7 @@ class DeclareInfo630aController extends BaseGetxController {
 
   /// Trả về "true" khi "Hình thức kê khai" là "Điều chỉnh"
   bool get isAdjustDeclareForm {
-    return declareForm.value?.value == '2';
+    return declareForm.value?.value == declareMethodAdjustValue;
   }
 
   /// Trả về "true" khi "Hình thức nhận" là "Chi trả qua ATM"
