@@ -8,6 +8,7 @@ import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
 import 'package:v_bhxh/clean/features/login/presentation/controller/login_controller_cl.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 
 class MockAppNavigator extends Mock implements AppNavigator {}
 
@@ -61,6 +62,8 @@ void main() {
         getUnreadNotificationCountUseCase,
       );
       controller.nav = navigator;
+      // Login controller có lưu dữ liệu vào AppController, nên cần khởi tạo AppController thật ở đây
+      // Nếu controller nào có cần đọc dữ liệu từ AppController thì cũng cần khởi tạo AppController thật
       controller.appCtrl = AppController();
       controller.onOpen();
     },
@@ -76,7 +79,7 @@ void main() {
     expect(controller.isHaveUsername.value, isFalse);
   });
 
-  group('Test login function', () {
+  group('test login function', () {
     test('login success', () async {
       // Arrange
       when(() => getLastUsernameUseCase.execute()).thenReturn('testUser');
@@ -104,10 +107,11 @@ void main() {
     });
   });
 
-  test('login failed', () async {
+  test('login fails with invalid username or password', () async {
     // Arrange
+    // Giả lập việc loginUseCase lỗi do với username hoặc password không hợp lệ
     when(() => loginUseCase.execute(any())).thenThrow(
-      Exception('Login failed'),
+      const RemoteException(kind: RemoteExceptionKind.serverDefined),
     );
     when(() => navigator.offAllNamed(AppRoutesCl.home.path))
         .thenAnswer((_) async {});
@@ -122,5 +126,22 @@ void main() {
     verify(() => navigator.showSnackBar(any())).called(1);
     // Không chuyển hướng đến màn home
     verifyNever(() => navigator.offAllNamed(AppRoutesCl.home.path));
+  });
+
+  test('login fails if getAccountInfo fails', () async {
+    // Arrange
+    when(() => loginUseCase.execute(any()))
+        .thenAnswer((_) async => 'access_token');
+    when(() => saveAuthInfoUseCase.execute(any())).thenAnswer((_) async {});
+    when(() => getAccountInfoUseCase.execute()).thenThrow(
+      const RemoteException(kind: RemoteExceptionKind.serverDefined),
+    );
+    when(() => navigator.showSnackBar(any())).thenAnswer((_) {});
+
+    // Act
+    await controller.login();
+
+    // Assert
+    verify(() => navigator.showSnackBar(any())).called(1);
   });
 }
