@@ -10,6 +10,7 @@ extension DeclareInfo630aWidget on DeclareInfo630aPage {
             child: Form(
               key: controller.formKey,
               child: SingleChildScrollView(
+                controller: controller.scrollController,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
