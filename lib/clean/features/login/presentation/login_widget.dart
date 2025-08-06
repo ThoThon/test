@@ -140,7 +140,11 @@ extension LoginWidget on LoginPage {
       title: LocaleKeys.login_login.tr,
       height: AppDimens.btnLargeFigma,
       onPressed: () {
-        controller.login();
+        // Không thể mock được form key khi unit test do khi triến khai test không có widget tree được gắn với form key này
+        // => Tách riêng logic validate form key ra khỏi controller
+        if (controller.formKey.currentState?.validate() != true) {
+          controller.login();
+        }
       },
     );
   }

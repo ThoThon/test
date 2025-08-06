@@ -142,11 +142,11 @@ class AppNavigatorImpl extends AppNavigator {
   }
 
   @override
-  Future<void> showSnackBar<T>(
+  void showSnackBar<T>(
     String message, {
     Duration duration = const Duration(seconds: 2),
     SnackBarType type = SnackBarType.failure,
-  }) async {
+  }) {
     BotToast.showCustomText(
       duration: message.length > 100 ? 5.seconds : duration,
       align: Alignment.topCenter,
