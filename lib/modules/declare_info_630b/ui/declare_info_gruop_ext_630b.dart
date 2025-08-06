@@ -828,7 +828,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
         final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
         if (toDate == null) {
-          return '';
+          return 'Ngày con chết không hợp lệ';
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
@@ -891,13 +891,13 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return 'Ngày nhận con không hợp lệ';
         }
 
-        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-        if (toDate == null) {
-          return '';
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
+          return 'Ngày nhận con không hợp lệ';
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (toDate.year <= 1900 || toDate.year >= 2100) {
+        if (date.year <= 1900 || date.year >= 2100) {
           return 'Ngày nhận con không hợp lệ';
         }
 
@@ -953,13 +953,13 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return 'Ngày đi làm thực tế không hợp lệ';
         }
 
-        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-        if (toDate == null) {
-          return '';
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
+          return 'Ngày đi làm thực tế không hợp lệ';
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (toDate.year <= 1900 || toDate.year >= 2100) {
+        if (date.year <= 1900 || date.year >= 2100) {
           return 'Ngày đi làm thực tế không hợp lệ';
         }
 
