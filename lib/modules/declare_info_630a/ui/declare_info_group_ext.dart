@@ -781,19 +781,17 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
   Widget _buildMaternityRestCheckbox() {
     return Obx(
       () {
-        if (controller.isSickChild || controller.isAdjustDeclareForm) {
+        // Ẩn checkbox khi là "Hình thức kê khai" là "Điều chỉnh"
+        // REF: BHW-2947
+        if (controller.isAdjustDeclareForm) {
           return const SizedBox.shrink();
         }
-        return Row(
-          children: [
-            UtilWidget.buildCheckboxWithLabel(
-              label: LocaleKeys.declareInfo_maternityRest.tr,
-              value: controller.isMaternityRest.value,
-              onChanged: (value) {
-                controller.isMaternityRest.value = value;
-              },
-            ),
-          ],
+        return UtilWidget.buildCheckboxWithLabel(
+          label: LocaleKeys.declareInfo_maternityRest.tr,
+          value: controller.isMaternityRest.value,
+          onChanged: (value) {
+            controller.isMaternityRest.value = value;
+          },
         ).paddingOnly(bottom: AppDimens.paddingSmall);
       },
     );

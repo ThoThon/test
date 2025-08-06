@@ -3,6 +3,9 @@ import 'package:equatable/equatable.dart';
 /// Hình thức kê khai phát sinh
 const declareMethodArisingValue = '1';
 
+/// Hình thức kê khai điều chỉnh
+const declareMethodAdjustValue = '2';
+
 /// Hình thức kê khai
 class DeclareForm630aModel extends Equatable {
   final String value;
