@@ -1,5 +1,12 @@
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
+import '../../modules/login/model/categories_630b/child_birth_condition_model.dart';
+import '../../modules/login/model/categories_630b/contraception_model.dart';
+import '../../modules/login/model/categories_630b/maternity_leave_model.dart';
+import '../../modules/login/model/categories_630b/parental_leave_model.dart';
+import '../../modules/login/model/categories_630b/pregnancy_check_condition_model.dart';
+import '../../modules/login/model/categories_630b/surgery_pregnancy_32w_model.dart';
+import '../../modules/login/model/categories_630b/surrogacy_model.dart';
 import '../../modules/src.dart';
 
 class AppData {
@@ -26,6 +33,13 @@ class AppData {
   var bank = <Bank630aModel>{};
   var hospitalLine = <HospitalLine630aModel>{};
   var longDiease = <LongDiease630aModel>{};
+  var pregnancyCondition = <PregnancyCheckConditionModel>{};
+  var childBirthCondition = <ChildBirthConditionModel>{};
+  var maternityLeave = <MaternityLeaveModel>{};
+  var parentalLeave = <ParentalLeaveModel>{};
+  var surrogacy = <SurrogacyModel>{};
+  var surgeryPregnancy32w = <SurgeryPregnancy32wModel>{};
+  var contraception = <ContraceptionModel>{};
 
   final Rx<AccountInfoModel?> accountInfoModel = Rx<AccountInfoModel?>(null);
   final totalUnread = 0.obs;

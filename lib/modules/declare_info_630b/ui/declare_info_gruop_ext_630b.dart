@@ -173,13 +173,13 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel(
+        return CardDropdownWithLabel<DeclareForm630aModel>(
           fieldKey: formFieldKey,
           labelText: LocaleKeys.declareInfo_declareMethod.tr,
           isRequired: true,
           hintText: LocaleKeys.declareInfo_selectDeclareMethod.tr,
           items: AppData.instance.declareForm.toList(),
-          display: (item) => 'item',
+          display: (item) => item.text,
           // selectedItem: controller.declareForm.value,
           onChanged: (value) {
             if (value == null) {
@@ -585,7 +585,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Điều kiện khám thai
   Widget _buildIsPregnancyConditionDropdown() {
-    return FormFieldRegistrant<BenefitGroup630aModel>(
+    return FormFieldRegistrant<PregnancyCheckConditionModel>(
       registrarId: '',
       validator: (value) {
         if (value == null) {
@@ -594,12 +594,12 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<BenefitGroup630aModel>(
+        return CardDropdownWithLabel<PregnancyCheckConditionModel>(
           validator: validator,
           fieldKey: formFieldKey,
           labelText: 'Điều kiện khám thai',
           hintText: 'Chọn điều kiện khám thai',
-          items: AppData.instance.benefitGroup.toList(),
+          items: AppData.instance.pregnancyCondition.toList(),
           display: (item) => '${item.value} - ${item.text}',
           onChanged: (value) {
             if (value == null) {
@@ -623,7 +623,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Biện pháp tránh thai
   Widget _buildContraceptionMethodDropdown() {
-    return FormFieldRegistrant<BenefitGroup630aModel>(
+    return FormFieldRegistrant<ContraceptionModel>(
       registrarId: '',
       validator: (value) {
         if (value == null) {
@@ -632,12 +632,12 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<BenefitGroup630aModel>(
+        return CardDropdownWithLabel<ContraceptionModel>(
           validator: validator,
           fieldKey: formFieldKey,
           labelText: 'Biện pháp tránh thai',
           hintText: 'Chọn biện pháp',
-          items: AppData.instance.benefitGroup.toList(),
+          items: AppData.instance.contraception.toList(),
           display: (item) => '${item.value} - ${item.text}',
           onChanged: (value) {
             if (value == null) {
@@ -651,7 +651,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Điềun kiện sinh con
   Widget _buildIsChildbirthConditionDropdown() {
-    return FormFieldRegistrant<BenefitGroup630aModel>(
+    return FormFieldRegistrant<ChildBirthConditionModel>(
       registrarId: '',
       validator: (value) {
         if (value == null) {
@@ -660,12 +660,12 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<BenefitGroup630aModel>(
+        return CardDropdownWithLabel<ChildBirthConditionModel>(
           validator: validator,
           fieldKey: formFieldKey,
           labelText: 'Điều kiện sinh con',
           hintText: 'Chọn điều kiện sinh con',
-          items: AppData.instance.benefitGroup.toList(),
+          items: AppData.instance.childBirthCondition.toList(),
           display: (item) => '${item.value} - ${item.text}',
           onChanged: (value) {
             if (value == null) {
@@ -1032,7 +1032,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Phẫu thuật hoặc thai dưới 32 tuần
   Widget _buildSurgeryOrUnder32WeekDropdown() {
-    return FormFieldRegistrant<BenefitGroup630aModel>(
+    return FormFieldRegistrant<SurgeryPregnancy32wModel>(
       registrarId: '',
       validator: (value) {
         if (value == null) {
@@ -1041,12 +1041,12 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<BenefitGroup630aModel>(
+        return CardDropdownWithLabel<SurgeryPregnancy32wModel>(
           validator: validator,
           fieldKey: formFieldKey,
           labelText: 'Phẫu thuật hoặc thai dưới 32 tuần',
           hintText: 'Chọn',
-          items: AppData.instance.benefitGroup.toList(),
+          items: AppData.instance.surgeryPregnancy32w.toList(),
           display: (item) => '${item.value} - ${item.text}',
           onChanged: (value) {
             if (value == null) {
@@ -1205,7 +1205,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Nghỉ dưỡng thai
   Widget _buildMaternityRestDropdown() {
-    return FormFieldRegistrant<BenefitGroup630aModel>(
+    return FormFieldRegistrant<MaternityLeaveModel>(
       registrarId: '',
       validator: (value) {
         if (value == null) {
@@ -1214,12 +1214,12 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<BenefitGroup630aModel>(
+        return CardDropdownWithLabel<MaternityLeaveModel>(
           validator: validator,
           fieldKey: formFieldKey,
           labelText: 'Nghỉ dưỡng thai',
           hintText: 'Chọn nghỉ dưỡng thai',
-          items: AppData.instance.benefitGroup.toList(),
+          items: AppData.instance.maternityLeave.toList(),
           display: (item) => '${item.value} - ${item.text}',
           onChanged: (value) {
             if (value == null) {
@@ -1233,7 +1233,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Nghỉ chăm con
   Widget _buildChildCareDropdown() {
-    return FormFieldRegistrant<BenefitGroup630aModel>(
+    return FormFieldRegistrant<ParentalLeaveModel>(
       registrarId: '',
       validator: (value) {
         if (value == null) {
@@ -1242,12 +1242,12 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<BenefitGroup630aModel>(
+        return CardDropdownWithLabel<ParentalLeaveModel>(
           validator: validator,
           fieldKey: formFieldKey,
           labelText: 'Nghỉ chăm con',
           hintText: 'Chọn nghỉ chăm con',
-          items: AppData.instance.benefitGroup.toList(),
+          items: AppData.instance.parentalLeave.toList(),
           display: (item) => '${item.value} - ${item.text}',
           onChanged: (value) {
             if (value == null) {
@@ -1261,7 +1261,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mang thai hộ
   Widget _buildSurrogacyDropdown() {
-    return FormFieldRegistrant<BenefitGroup630aModel>(
+    return FormFieldRegistrant<SurrogacyModel>(
       registrarId: '',
       validator: (value) {
         if (value == null) {
@@ -1270,12 +1270,12 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<BenefitGroup630aModel>(
+        return CardDropdownWithLabel<SurrogacyModel>(
           validator: validator,
           fieldKey: formFieldKey,
           labelText: 'Mang thai hộ',
           hintText: 'Chọn mang thai hộ',
-          items: AppData.instance.benefitGroup.toList(),
+          items: AppData.instance.surrogacy.toList(),
           display: (item) => '${item.value} - ${item.text}',
           onChanged: (value) {
             if (value == null) {

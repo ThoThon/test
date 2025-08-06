@@ -2,6 +2,7 @@ import 'package:v_bhxh/base_app/model/base_response.dart';
 import 'package:v_bhxh/base_app/repository_base/base_repository.dart';
 import 'package:v_bhxh/core/enum/enum_request_method.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
+import 'package:v_bhxh/modules/login/model/categories_630b/categories_procedure_630b.dart';
 
 import '../model/model_src.dart';
 
@@ -71,6 +72,17 @@ class LoginRepository extends BaseRepository {
     return BaseResponse<CategoriesProcedure630a>.fromJson(
       response,
       fromJson: (json) => CategoriesProcedure630a.fromJson(json),
+    );
+  }
+
+  Future<BaseResponse<CategoriesProcedure630b>> get630bCategories() async {
+    final response = await baseCallApi(
+      AppApi.urlGet630bCategories,
+      EnumRequestMethod.get,
+    );
+    return BaseResponse<CategoriesProcedure630b>.fromJson(
+      response,
+      fromJson: (json) => CategoriesProcedure630b.fromJson(json),
     );
   }
 }

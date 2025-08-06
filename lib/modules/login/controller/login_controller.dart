@@ -53,6 +53,7 @@ class LoginController extends BaseGetxController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
+          _get630bCategories(),
           _get630aCategories(),
           _getToTalNotiUnread(),
         ).wait;
@@ -130,6 +131,29 @@ class LoginController extends BaseGetxController {
           ..hospitalLine = categories630a.hospitalLine
           ..longDiease = categories630a.longDiease
           ..bank = categories630a.bank;
+      }
+    } catch (e) {
+      logger.d(e);
+    }
+  }
+
+  Future<void> _get630bCategories() async {
+    try {
+      final response = await _loginRepository.get630bCategories();
+      final categories630b = response.result;
+      if (response.isSuccess && categories630b != null) {
+        AppData.instance
+          ..declareForm = categories630b.declareForm
+          ..benefitGroup = categories630b.benefitGroup
+          ..pregnancyCondition = categories630b.pregnancyCondition
+          ..childBirthCondition = categories630b.childBirthCondition
+          ..maternityLeave = categories630b.maternityLeave
+          ..parentalLeave = categories630b.parentalLeave
+          ..surrogacy = categories630b.surrogacy
+          ..surgeryPregnancy32w = categories630b.surgeryPregnancy32w
+          ..contraception = categories630b.contraception
+          ..receiveForm = categories630b.receiveForm
+          ..bank = categories630b.bank;
       }
     } catch (e) {
       logger.d(e);

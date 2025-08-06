@@ -110,4 +110,8 @@ class AppApi {
   static const String urlUpdateMs = '/api/HoSo630a/update-ms';
   static const String urlGetDetailMs = '/api/HoSo630a/get-ms-detail';
   // === Kết thúc các api liên quan đến thủ tục 630a ===
+
+  // === Danh sách các api liên quan đến thủ tục 630b ===
+  static const String urlGet630bCategories = '/api/HoSo630b/get-categories';
+  // === Kết thúc các api liên quan đến thủ tục 630b ===
 }

@@ -70,7 +70,7 @@ class CardInputTextFormWithLabel extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Expanded(
+                    Flexible(
                       child: SDSBuildText(
                         labelText,
                         overflow: TextOverflow.ellipsis,
