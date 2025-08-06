@@ -1,6 +1,6 @@
 part of 'home_page.dart';
 
-extension HomeWidget on HomePageCL{
+extension HomeWidget on HomePageCL {
   Widget _buildBody() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +28,7 @@ extension HomeWidget on HomePageCL{
                         assetImage: Assets.ASSETS_ICONS_HOME_UNIT_INFO_SVG,
                         title: LocaleKeys.home_unitInfo,
                         onPressd: () {
-                          Get.toNamed(AppRoutesCl.infoUnit.path);
+                          nav.toNamed(AppRoutesCl.infoUnit.path);
                         },
                       ),
                     ),
@@ -37,7 +37,7 @@ extension HomeWidget on HomePageCL{
                         assetImage: Assets.ASSETS_ICONS_HOME_DECLARATION_SVG,
                         title: LocaleKeys.home_procedureList,
                         onPressd: () {
-                          Get.toNamed(AppRoutesCl.procedureList.path);
+                          nav.toNamed(AppRoutesCl.procedureList.path);
                         },
                       ),
                     ),
@@ -46,7 +46,7 @@ extension HomeWidget on HomePageCL{
                         assetImage: Assets.ASSETS_ICONS_HOME_HISTORY_SVG,
                         title: LocaleKeys.home_history,
                         onPressd: () {
-                          Get.toNamed(AppRoutesCl.history.path);
+                          nav.toNamed(AppRoutesCl.history.path);
                         },
                       ),
                     ),
@@ -55,7 +55,7 @@ extension HomeWidget on HomePageCL{
                         assetImage: Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG,
                         title: LocaleKeys.home_lookupC12,
                         onPressd: () {
-                          Get.toNamed(AppRoutesCl.lookupC12.path);
+                          nav.toNamed(AppRoutesCl.lookupC12.path);
                         },
                       ),
                     ),
@@ -65,7 +65,7 @@ extension HomeWidget on HomePageCL{
                             Assets.ASSETS_ICONS_HOME_IC_REGISTER_SERVICE_SVG,
                         title: LocaleKeys.home_registerService,
                         onPressd: () {
-                          Get.toNamed(AppRoutesCl.registerService.path);
+                          nav.toNamed(AppRoutesCl.registerService.path);
                         },
                       ),
                     ),
@@ -154,7 +154,7 @@ extension HomeWidget on HomePageCL{
               icon: Icons.account_circle_outlined,
               text: LocaleKeys.home_accountInfo.tr,
               onTap: () {
-                Get.toNamed(AppRoutesCl.profile.path);
+                nav.toNamed(AppRoutesCl.profile.path);
               },
             ),
             _buildItemDrawer(

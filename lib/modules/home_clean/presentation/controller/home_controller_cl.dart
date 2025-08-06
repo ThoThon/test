@@ -24,7 +24,7 @@ class HomeControllerCl extends BaseGetClController {
           HiveKeys.keyJwtToken,
           HiveKeys.keyUsername,
         ]);
-        Get.offAllNamed(AppRoutesCl.login.path);
+        nav.offAllNamed(AppRoutesCl.login.path);
       },
       backgroundColorBack: AppColors.basicWhite,
       confirmTitle: LocaleKeys.dialog_confirm.tr,
@@ -35,7 +35,7 @@ class HomeControllerCl extends BaseGetClController {
   }
 
   void goToGuideViewPdf() {
-    Get.toNamed(
+    nav.toNamed(
       AppRoutesCl.viewPdf.path,
       arguments: ViewPdfArgument(
         url: 'https://vbhxh-mobile-api.easyhrm.vn/user_guide.pdf',
@@ -48,7 +48,6 @@ class HomeControllerCl extends BaseGetClController {
 
   Future<void> readAllNotification() async {
     return buildState(
-      showLoadingOverlay: true,
       action: () async {
         isReadingAllNoti.value = true;
         await _readAllNotificationUseCase.execute();
@@ -62,7 +61,7 @@ class HomeControllerCl extends BaseGetClController {
 
   void goToNotificationPage() {
     if (!isReadingAllNoti.value) {
-      Get.toNamed(AppRoutesCl.notification.path)?.whenComplete(
+      nav.toNamed(AppRoutesCl.notification.path)?.whenComplete(
         () => readAllNotification(),
       );
     }
