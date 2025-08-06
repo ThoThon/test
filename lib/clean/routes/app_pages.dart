@@ -8,12 +8,16 @@ import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/change_base_url/ui/change_base_url_page.dart';
 import 'package:v_bhxh/modules/declare/declaration_form_detail/ui/declaration_form_detail_page.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/ui/declaration_list_page.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/ui/declaration_period_page.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/presentation/binding/declaration_period_binding.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/presentation/declaration_period_page.dart';
 import 'package:v_bhxh/modules/declare/declare_info/ui/declare_info_page.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/ui/family_member_detail_page.dart';
-import 'package:v_bhxh/modules/declare/procedure_list/ui/procedure_list_page.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/presentation/binding/family_member_detail_binding.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/presentation/family_member_detail_page.dart';
+import 'package:v_bhxh/modules/declare/procedure_list/presentation/binding/procedure_list_binding.dart';
+import 'package:v_bhxh/modules/declare/procedure_list/presentation/procedure_list_page.dart';
 import 'package:v_bhxh/modules/declare/staff_list/ui/staff_list_page.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/ui/declare_info_607_page.dart';
+import 'package:v_bhxh/modules/declare_info_630a/ui/declare_info_630a_page.dart';
 import 'package:v_bhxh/modules/history/ui/history_page.dart';
 import 'package:v_bhxh/modules/history_detail_declare/ui/history_detail_declare_page.dart';
 import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';
@@ -21,6 +25,7 @@ import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/info_unit/ui/unit_info_page.dart';
 import 'package:v_bhxh/modules/lookup_c12/ui/lookup_c12_page.dart';
 import 'package:v_bhxh/modules/notification/ui/notification_page.dart';
+import 'package:v_bhxh/modules/other_info/ui/other_info_page.dart';
 import 'package:v_bhxh/modules/profile/ui/profile_page.dart';
 import 'package:v_bhxh/modules/register_code/ui/register_code_page.dart';
 import 'package:v_bhxh/modules/register_service/ui/register_service_page.dart';
@@ -61,10 +66,12 @@ class AppPages {
     GetPage(
       name: AppRoutesCl.procedureList.path,
       page: () => ProcedureListPage(),
+      binding: ProcedureListBinding(),
     ),
     GetPage(
       name: AppRoutesCl.declarationPeriod.path,
       page: () => DeclarationPeriodPage(),
+      binding: DeclarationPeriodBinding(),
     ),
     GetPage(
       name: AppRoutesCl.staffList.path,
@@ -77,6 +84,7 @@ class AppPages {
     GetPage(
       name: AppRoutesCl.familyMemberDetail.path,
       page: () => FamilyMemberDetailPage(),
+      binding: FamilyMemberDetailBinding(),
     ),
     GetPage(
       name: AppRoutesCl.declarationFormDetail.path,
@@ -126,6 +134,14 @@ class AppPages {
     GetPage(
       name: AppRoutesCl.declareInfo607.path,
       page: () => DeclareInfo607Page(),
+    ),
+    GetPage(
+      name: AppRoutesCl.declareInfo630a.path,
+      page: () => DeclareInfo630aPage(),
+    ),
+    GetPage(
+      name: AppRoutesCl.otherInfo.path,
+      page: () => OtherInfoPage(),
     ),
   ];
 }

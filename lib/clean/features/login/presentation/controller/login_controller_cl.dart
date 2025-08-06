@@ -44,10 +44,6 @@ class LoginControllerCl extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
-        if (formKey.currentState?.validate() != true) {
-          return;
-        }
-
         final loginRequest = LoginRequest(
           username: usernameTextCtrl.text.trim(),
           password: passwordTextCtrl.text.trim(),

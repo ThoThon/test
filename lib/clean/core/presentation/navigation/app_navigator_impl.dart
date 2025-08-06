@@ -102,6 +102,18 @@ class AppNavigatorImpl extends AppNavigator {
     return Get.bottomSheet(
       bottomSheet,
       settings: settings,
+      isScrollControlled: true,
+    );
+  }
+
+  @override
+  Future<T?> bottomSheet<T>(
+    Widget bottomsheet, {
+    bool isScrollControlled = false,
+  }) {
+    return Get.bottomSheet(
+      bottomsheet,
+      isScrollControlled: isScrollControlled,
     );
   }
 
@@ -109,19 +121,32 @@ class AppNavigatorImpl extends AppNavigator {
   Future<T?> showDialog<T>(
     BaseGetBtsDialog dialog, {
     RouteSettings? settings,
+    bool barrierDismissible = true,
   }) {
     return Get.dialog(
       dialog,
       routeSettings: settings,
+      barrierDismissible: barrierDismissible,
     );
   }
 
   @override
-  Future<void> showSnackBar<T>(
+  Future<T?> dialog<T>(
+    Widget widget, {
+    bool barrierDismissible = true,
+  }) {
+    return Get.dialog(
+      widget,
+      barrierDismissible: barrierDismissible,
+    );
+  }
+
+  @override
+  void showSnackBar<T>(
     String message, {
     Duration duration = const Duration(seconds: 2),
     SnackBarType type = SnackBarType.failure,
-  }) async {
+  }) {
     BotToast.showCustomText(
       duration: message.length > 100 ? 5.seconds : duration,
       align: Alignment.topCenter,

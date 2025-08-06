@@ -66,13 +66,22 @@ class BaseApi {
     bool isHaveVersion = true,
     bool getHeader = false,
     Duration? timeOut,
+    bool enableChunkedTransfer = true,
   }) async {
     dio.options = dioOptions ?? buildDefaultOptions(timeOut: timeOut);
     dynamic response;
     String url = urlOther ?? BaseUrlHelper.instance.currentUrl + action;
     Map<String, String> headers = isToken
         ? (headersUrlOther ?? getBaseHeader())
-        : {"Content-Type": "application/json"};
+        : {
+            "Content-Type": "application/json",
+          };
+    if (enableChunkedTransfer) {
+      // Set Transfer-Encoding là 'chunked' để BE tự tính content-length, nhằm tránh lỗi sai content-length
+      // Nhưng sẽ không thêm vào khi gọi api upload file vì sẽ bị lỗi "Connection closed before full header was received"
+      headers['Transfer-Encoding'] = 'chunked';
+    }
+
     Options options = isDownload
         ? Options(
             headers: headers,

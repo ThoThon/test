@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
 import 'package:v_bhxh/modules/login/model/birth_type_model.dart';
 
 /// Chỉ có năm sinh - Dùng cho tờ khai TK1 của thủ tục 607
-class BirthType extends Equatable {
+class BirthType extends Equatable implements Entity {
   final String value;
   final String text;
 

@@ -10,3 +10,7 @@ export 'position_data_mapper.dart';
 export 'birth_type_data_mapper.dart';
 export 'receive_result_data_mapper.dart';
 export 'd02_categories_data_mapper.dart';
+export 'procedure_data_mapper.dart';
+export 'declaration_period_data_mapper.dart';
+export 'district_data_mapper.dart';
+export 'ward_data_mapper.dart';

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/clean/core/data/data_source/local/app_hive_impl.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/core/core.src.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/login/repository/login_repository.dart';
@@ -54,9 +55,10 @@ class LoginController extends BaseGetxController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
+          _get630aCategories(),
           _getToTalNotiUnread(),
         ).wait;
-        Get.offAllNamed(AppRoutes.home.path);
+        Get.offAllNamed(AppRoutesCl.home.path);
         return;
       } else {
         showSnackBar(
@@ -117,6 +119,26 @@ class LoginController extends BaseGetxController {
     }
   }
 
+  Future<void> _get630aCategories() async {
+    try {
+      final response = await _loginRepository.get630aCategories();
+      final categories630a = response.result;
+      if (response.code == AppConst.statusCodeSuccess &&
+          categories630a != null) {
+        AppData.instance
+          ..declareForm = categories630a.declareForm
+          ..benefitGroup = categories630a.benefitGroup
+          ..workCondition = categories630a.workCondition
+          ..receiveForm = categories630a.receiveForm
+          ..hospitalLine = categories630a.hospitalLine
+          ..longDiease = categories630a.longDiease
+          ..bank = categories630a.bank;
+      }
+    } catch (e) {
+      logger.d(e);
+    }
+  }
+
   @override
   void onClose() {
     usernameTextCtrl.dispose();
@@ -125,6 +147,6 @@ class LoginController extends BaseGetxController {
   }
 
   void goToRegisterCodePage() {
-    Get.toNamed(AppRoutes.registerCode.path);
+    Get.toNamed(AppRoutesCl.registerCode.path);
   }
 }

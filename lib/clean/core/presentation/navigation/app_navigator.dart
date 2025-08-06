@@ -41,17 +41,32 @@ abstract class AppNavigator {
     Map<String, String>? parameters,
   });
 
+  /// Show bottom sheet phức tạp cho [BaseGetBtsDialog] có controller
   Future<T?> showBottomSheet<T>(
     BaseGetBtsDialog bottomSheet, {
     RouteSettings? settings,
   });
 
+  /// Show bottom sheet đơn giản
+  Future<T?> bottomSheet<T>(
+    Widget bottomsheet, {
+    bool isScrollControlled = false,
+  });
+
+  /// Show dialog phức tạp cho [BaseGetBtsDialog] có controller
   Future<T?> showDialog<T>(
     BaseGetBtsDialog dialog, {
     RouteSettings? settings,
+    bool barrierDismissible = true,
   });
 
-  Future<void> showSnackBar<T>(
+  /// Show dialog đơn giản
+  Future<T?> dialog<T>(
+    Widget widget, {
+    bool barrierDismissible = true,
+  });
+
+  void showSnackBar<T>(
     String message, {
     Duration duration = const Duration(seconds: 2),
     SnackBarType type = SnackBarType.failure,

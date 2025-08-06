@@ -59,6 +59,8 @@ class StaffListRepository extends BaseRepository {
       AppApi.urlUpLoadImage,
       EnumRequestMethod.post,
       jsonMap: formData,
+      // Không sử dụng chunked transfer khi upload file
+      enableChunkedTransfer: false,
     );
     return BaseResponse<String>.fromJson(
       response,

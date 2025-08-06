@@ -6,6 +6,7 @@ import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controlle
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/core/theme/colors.dart';
+import 'package:v_bhxh/shares/widgets/utils_widget/utils_widget.dart';
 
 mixin GetPageMixin<T extends BaseGetClController> on GetView<T> {
   late final nav = Get.find<AppNavigator>();
@@ -85,4 +86,12 @@ mixin GetPageMixin<T extends BaseGetClController> on GetView<T> {
   }
 
   Widget buildPage(BuildContext context);
+
+  Widget baseShowLoading(WidgetCallback child, {Color? colorIcon}) {
+    return Obx(
+      () => controller.isLoading.value
+          ? Center(child: UtilWidget.buildLoading(colorIcon: colorIcon))
+          : child(),
+    );
+  }
 }

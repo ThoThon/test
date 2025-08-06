@@ -1,7 +1,7 @@
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 
 import '../../../assets.dart';
-import '../../../core/core.src.dart';
 
 enum HomeEnum {
   unit_info,
@@ -43,15 +43,15 @@ enum HomeEnum {
   String get path {
     switch (this) {
       case unit_info:
-        return AppRoutes.infoUnit.path;
+        return AppRoutesCl.infoUnit.path;
       case declare:
-        return AppRoutes.procedureList.path;
+        return AppRoutesCl.procedureList.path;
       case history:
-        return AppRoutes.history.path;
+        return AppRoutesCl.history.path;
       case lookup_c12:
-        return AppRoutes.lookupC12.path;
+        return AppRoutesCl.lookupC12.path;
       case register_service:
-        return AppRoutes.registerService.path;
+        return AppRoutesCl.registerService.path;
     }
   }
 }

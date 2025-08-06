@@ -103,7 +103,7 @@ extension LoginWidget on LoginPage {
       ),
       child: InkWell(
         onTap: () {
-          Get.toNamed(AppRoutes.forgotLogin.path);
+          Get.toNamed(AppRoutesCl.forgotLogin.path);
         },
         child: SDSBuildText(
           LocaleKeys.login_forgetPassword.tr,
@@ -120,6 +120,7 @@ extension LoginWidget on LoginPage {
         onTap: () {
           controller.isHaveUsername.value = false;
           controller.usernameTextCtrl.clear();
+          controller.passwordTextCtrl.clear();
         },
         child: SDSBuildText(
           LocaleKeys.login_changeAccount.tr,

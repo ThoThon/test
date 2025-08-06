@@ -235,7 +235,7 @@ extension D02TabWidget on DeclareInfoPage {
               final selectedDate = await DatePickerUtils.showCalendarPicker(
                 title: LocaleKeys.dialog_selectMonthYear.tr,
                 dateFormat: PATTERN_12,
-                dateTimeInit: convertStringToDateSafe(
+                dateTimeInit: convertStringToDateStrict(
                       controller.d02State.toDateTextCtrl.text,
                       PATTERN_12,
                     ) ??
@@ -308,7 +308,7 @@ extension D02TabWidget on DeclareInfoPage {
               final selectedDate = await DatePickerUtils.showCalendarPicker(
                 title: LocaleKeys.dialog_selectMonthYear.tr,
                 dateFormat: PATTERN_12,
-                dateTimeInit: convertStringToDateSafe(
+                dateTimeInit: convertStringToDateStrict(
                       controller.d02State.fromDateTextCtrl.text,
                       PATTERN_12,
                     ) ??
