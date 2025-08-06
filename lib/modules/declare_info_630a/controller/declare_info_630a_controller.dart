@@ -319,10 +319,7 @@ class DeclareInfo630aController extends BaseGetxController {
 
   /// Trả về "true" khi "Hình thức nhận" là "Chi trả qua ATM"
   bool get isATMpayment {
-    if (receiveForm.value?.value == 'ATM') {
-      return true;
-    }
-    return false;
+    return receiveForm.value?.value == ATMPaymentValue;
   }
 
   void mapFrom630aDetail(DeclareInfo630aResponse detail) {
@@ -451,6 +448,22 @@ class DeclareInfo630aController extends BaseGetxController {
     bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
 
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
+  }
+
+  void onChangeReceiveMethod(ReceiveForm630aModel? method) {
+    if (method == null) {
+      return;
+    }
+
+    // Nếu khác ATM thì reset các trường liên quan ATM
+    // REF: BHW-2950
+    if (method.value != ATMPaymentValue) {
+      bankNumberCtrl.clear();
+      accountHolderNameCtrl.clear();
+      selectedBank.value = null;
+    }
+
+    receiveForm.value = method;
   }
 
   @override
