@@ -7,6 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:v_bhxh/firebase_options.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
+import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import 'core/core.src.dart';
@@ -16,6 +17,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await RemoteConfigStorage.instance.initialize();
   runApp(const Application());
 }
 
