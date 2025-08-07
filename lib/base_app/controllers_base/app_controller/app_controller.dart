@@ -12,10 +12,11 @@ late Box hiveApp;
 
 late PackageInfo packageInfo;
 
-class AppController extends BaseGetxController {
+class AppController extends BaseGetxController with WidgetsBindingObserver {
   @override
   Future<void> onInit() async {
     super.onInit();
+    WidgetsBinding.instance.addObserver(this);
     _initHive().then((value) async {
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
@@ -45,5 +46,23 @@ class AppController extends BaseGetxController {
       HiveKeys.keyUsername,
     ]);
     Get.offAllNamed(AppRoutes.login.path);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        await RemoteConfigStorage.instance.fetchAndActivateConfigs();
+        break;
+      default:
+        break;
+    }
+  }
+
+  @override
+  void onClose() {
+    WidgetsBinding.instance.removeObserver(this);
+    RemoteConfigStorage.instance.dispose();
+    super.onClose();
   }
 }
