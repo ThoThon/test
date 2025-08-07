@@ -494,6 +494,13 @@ class DeclareInfo630aController extends BaseGetxController {
       supplementalPeriodCtrl.clear();
       fileCodeTextCtrl.clear();
     }
+
+    // REF: BHW-2957
+    if (method.value != declareMethodAdjustValue) {
+      resolvedPeriodCtrl.clear();
+      resolvedDateCtrl.clear();
+      adjustReasonCtrl.clear();
+    }
   }
 
   void onChangeBenefitGroup(BenefitGroup630aModel? group) {
