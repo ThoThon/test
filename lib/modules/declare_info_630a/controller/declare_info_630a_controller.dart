@@ -504,7 +504,7 @@ class DeclareInfo630aController extends BaseGetxController {
     benefitGroup.value = group;
 
     // Nếu chọn nhóm hưởng khác "Con ốm" thì reset các trường liên quan
-    // REF: BHW-2951
+    // REF: BHW-2958
     if (group.value != benefitGroupSickChildValue) {
       birthDayChildCtrl.clear();
       numberChildCtrl.clear();
