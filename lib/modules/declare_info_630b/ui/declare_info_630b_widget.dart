@@ -35,7 +35,7 @@ extension DeclareInfo630bWidget on DeclareInfo630bPage {
           title: LocaleKeys.declareInfo_saveButton.tr,
           backgroundColor: AppColors.primaryColor,
           borderRadius: AppDimens.radius30,
-          onPressed: () {},
+          onPressed: controller.add630b,
         ).paddingOnly(top: AppDimens.paddingSmall);
       },
     );

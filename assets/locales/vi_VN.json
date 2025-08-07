@@ -362,6 +362,7 @@
     "title612": "Thủ tục 612",
     "title613": "Thủ tục 613",
     "title630a": "Thủ tục 630a",
+    "title630b": "Thủ tục 630b",
     "fullName": "Họ và tên",
     "fullNameHint": "Nhập họ và tên",
     "fullNameCannotEmpty": "Họ và tên không được bỏ trống",
@@ -622,8 +623,7 @@
     "adjustReasonHint": "Nhập lý do điều chỉnh",
     "adjustReasonEmpty": "Lý do điều chỉnh không được bỏ trống",
     "attachPaper": "Gửi kèm hồ sơ giấy",
-    "saveButton": "Lưu",
-    "procedure630b":"Thủ tục 630b"
+    "saveButton": "Lưu"
   },
   "familyMember": {
     "title": "Thêm thành viên",

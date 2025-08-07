@@ -27,7 +27,7 @@ class DeclareInfo630bPage extends BaseGetWidget {
         centerTitle: true,
         leading: UtilWidget.buildButtonBackAppbar(),
         title: BaseAppBarTitle(
-          title: LocaleKeys.declareInfo_procedure630b.tr,
+          title: LocaleKeys.declareInfo_title630b.tr,
         ),
       ),
       body: SafeArea(

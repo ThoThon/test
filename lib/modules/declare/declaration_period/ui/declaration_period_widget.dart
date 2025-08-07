@@ -176,8 +176,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
       borderRadius: AppDimens.radius30,
       textStyle: AppTextStyle.font16Re.copyWith(color: AppColors.basicWhite),
       title: LocaleKeys.declarationPeriod_createNewPeriod.tr,
-      // onPressed: controller.createDeclarationPeriod,
-      onPressed: () => Get.toNamed(AppRoutes.declareInfo630b.path),
+      onPressed: controller.createDeclarationPeriod,
     );
   }
 

@@ -164,6 +164,6 @@ abstract class DeclareInfo630bController extends BaseGetxController {
 
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
-  String get weeklyDayOffString =>
-      weeklyDayOffs.map((dayOff) => dayOff.value).join(';');
+  final DeclareInfoArgument argument = Get.arguments;
+
 }
