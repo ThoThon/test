@@ -1,5 +1,5 @@
-import 'package:v_bhxh/clean/features/forgot_password/data/model/forgot_password_request_data.dart';
-import 'package:v_bhxh/clean/features/forgot_password/domain/entity/forgot_password_request.dart';
+import 'package:v_bhxh/modules/forgot_password/data/model/forgot_password_request_data.dart';
+import 'package:v_bhxh/modules/forgot_password/domain/entity/forgot_password_request.dart';
 import 'package:v_bhxh/shares/mapper/base/base_data_mapper.dart';
 
 class ForgotPasswordRequestDataMapper

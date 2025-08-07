@@ -1,7 +1,5 @@
 import 'package:dio_log_sds/dio_log_sds.dart';
 import 'package:get/get.dart';
-import 'package:v_bhxh/clean/features/forgot_password/presentation/binding/forgot_password_binding.dart';
-import 'package:v_bhxh/clean/features/forgot_password/presentation/forgot_password_page.dart';
 import 'package:v_bhxh/clean/features/login/presentation/binding/login_binding.dart';
 import 'package:v_bhxh/clean/features/login/presentation/login_page.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
@@ -18,6 +16,8 @@ import 'package:v_bhxh/modules/declare/procedure_list/presentation/procedure_lis
 import 'package:v_bhxh/modules/declare/staff_list/ui/staff_list_page.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/ui/declare_info_607_page.dart';
 import 'package:v_bhxh/modules/declare_info_630a/ui/declare_info_630a_page.dart';
+import 'package:v_bhxh/modules/forgot_password/presentation/binding/forgot_password_binding.dart';
+import 'package:v_bhxh/modules/forgot_password/presentation/forgot_password_page.dart';
 import 'package:v_bhxh/modules/history/ui/history_page.dart';
 import 'package:v_bhxh/modules/history_detail_declare/ui/history_detail_declare_page.dart';
 import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';

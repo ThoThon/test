@@ -1,7 +1,7 @@
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
 import 'package:v_bhxh/clean/core/data/model/base/base_response_cl.dart';
-import 'package:v_bhxh/clean/features/forgot_password/domain/entity/forgot_password_request.dart';
-import 'package:v_bhxh/clean/features/forgot_password/domain/repository/forgot_password_repository.dart';
+import 'package:v_bhxh/modules/forgot_password/domain/entity/forgot_password_request.dart';
+import 'package:v_bhxh/modules/forgot_password/domain/repository/forgot_password_repository.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/shares/mapper/forgot_password_request_data_mapper.dart';
 
