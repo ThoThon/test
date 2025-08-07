@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+const benefitGroupSickChildValue = 'O2';
+
 /// Mã nhóm hưởng
 class BenefitGroup630aModel extends Equatable {
   final String value;

@@ -496,6 +496,22 @@ class DeclareInfo630aController extends BaseGetxController {
     }
   }
 
+  void onChangeBenefitGroup(BenefitGroup630aModel? group) {
+    if (group == null) {
+      return;
+    }
+
+    benefitGroup.value = group;
+
+    // Nếu chọn nhóm hưởng khác "Con ốm" thì reset các trường liên quan
+    // REF: BHW-2951
+    if (group.value != benefitGroupSickChildValue) {
+      birthDayChildCtrl.clear();
+      numberChildCtrl.clear();
+      bhytCardCodeChildCtrl.clear();
+    }
+  }
+
   @override
   void onClose() {
     fullNameTextCtrl.dispose();
