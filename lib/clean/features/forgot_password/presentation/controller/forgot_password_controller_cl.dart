@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/clean/features/forgot_password/domain/entity/forgot_password_request.dart';
 import 'package:v_bhxh/clean/features/forgot_password/domain/usecase/forgot_password_use_case.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
@@ -22,7 +23,7 @@ class ForgotPasswordControllerCl extends BaseGetClController {
       showLoadingOverlay: true,
       action: () async {
         await _forgotPasswordUseCase.execute(
-          ForgotPasswordParams(
+          ForgotPasswordRequest(
             unitCode: unitCodeController.text.trim(),
             taxCode: taxCodeController.text.trim(),
           ),

@@ -19,7 +19,7 @@ class ForgotPasswordBinding extends BaseBindings {
   @override
   void bindingsRepository() {
     Get.lazyPut<ForgotPasswordRepository>(
-      () => ForgotPasswordRepositoryImpl(sl()),
+      () => ForgotPasswordRepositoryImpl(sl(), sl()),
     );
   }
 

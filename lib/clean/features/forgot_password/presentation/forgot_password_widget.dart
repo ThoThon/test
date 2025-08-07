@@ -60,13 +60,7 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
       isShowCounterText: false,
       borderRadius: AppDimens.radius6,
       inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
-      validator: (value) {
-        final trimmedValue = value?.trim();
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.login_unitCodeCannotEmpty.tr;
-        }
-        return null;
-      },
+      validator: ForgotPasswordValidator.validateUnitCode,
     );
   }
 
@@ -78,13 +72,7 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
       isShowCounterText: false,
       borderRadius: AppDimens.radius6,
       inputFormatters: InputFormatterEnum.taxCodeNormal,
-      validator: (value) {
-        final trimmedValue = value?.trim();
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.login_taxCodeCannotEmpty.tr;
-        }
-        return null;
-      },
+      validator: ForgotPasswordValidator.validateTaxCode,
     );
   }
 
@@ -92,7 +80,7 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
     return Center(
       child: InkWell(
         onTap: () {
-          Get.back();
+          nav.back();
         },
         child: SDSBuildText(
           LocaleKeys.login_backToLogin.tr,
