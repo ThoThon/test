@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
+import 'package:upgrader/upgrader.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/home/controller/home_controller.dart';
 
@@ -14,10 +18,23 @@ class HomePage extends BaseGetWidget<HomeController> {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      drawer: _buildDrawer(),
-      appBar: _buildAppBar(),
-      body: _buildBody(),
+    return UpgradeAlert(
+      upgrader: Upgrader(
+        durationUntilAlertAgain: const Duration(days: 1),
+        // Ngôn ngữ của dialog sẽ theo ngôn ngữ của app thay vì của hệ thống
+        messages: UpgraderMessages(code: 'vi'),
+        // Force update bằng minAppVersion
+        minAppVersion:
+            kDebugMode ? null : RemoteConfigStorage.instance.minAppVersion,
+      ),
+      dialogStyle: Platform.isIOS
+          ? UpgradeDialogStyle.cupertino
+          : UpgradeDialogStyle.material,
+      child: Scaffold(
+        drawer: _buildDrawer(),
+        appBar: _buildAppBar(),
+        body: _buildBody(),
+      ),
     );
   }
 

@@ -1,6 +1,7 @@
 07/08/2025
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị [Mã nhóm hưởng] - BHW-2958
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị giữa Hình thức kê khai: Phát sinh/Điều chỉnh - BHW-2957
+- [Appmobile]_Bố sung Force update cho app up store - BHW-2959
 - [Appmobile]_Dựng form 630b: Dựng giao diện với Hình thức kê khai "Điều chỉnh" - BHW-2925
 - [Appmobile]_Dựng form 630b: Dựng giao diện với Hình thức kê khai "Phát sinh" - BHW-2924
 - [Appmobile]_Thủ tục 630b_Bổ sung hiển thị Thủ tục 630b tại Màn danh sách thủ tục - BHW-2928
