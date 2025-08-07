@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:v_bhxh/core/values/remote_config_const.dart';
@@ -27,6 +28,13 @@ class RemoteConfigStorage {
 
   String get minAppVersionIOS =>
       _remoteConfig.getString(RemoteConfigConst.minAppVersionIOS);
+
+  String get minAppVersion {
+    if (Platform.isIOS) {
+      return minAppVersionIOS;
+    }
+    return minAppVersionAndroid;
+  }
 
   Future<void> initialize() async {
     try {
