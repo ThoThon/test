@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 
-/// Mã nhóm hưởng
-class BenefitGroup630aModel extends Equatable {
+/// Mã nhóm hưởng 630b
+class BenefitGroup630bModel extends Equatable {
   final String value;
   final String text;
 
-  const BenefitGroup630aModel({
+  const BenefitGroup630bModel({
     required this.value,
     required this.text,
   });
 
-  factory BenefitGroup630aModel.fromJson(Map<String, dynamic> json) {
-    return BenefitGroup630aModel(
+  factory BenefitGroup630bModel.fromJson(Map<String, dynamic> json) {
+    return BenefitGroup630bModel(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

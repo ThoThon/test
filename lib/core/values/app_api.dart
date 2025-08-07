@@ -93,8 +93,18 @@ class AppApi {
   static const String urlUpdateTk1 = '/api/HoSoTk1/update-tk1';
   static const String urlDeleteMember607 = '/api/HoSoTk1/delete-thanhvien';
   static const String urlGetPreviewPdf607 = '/api/HoSoTk1/preview-pdf';
-
   // === Kết thúc các api liên quan đến thủ tục 607 ===
+
+
+
+  // === Danh sách các api dùng chung của thủ tục 630 ===
+  static const String urlAddMs = '/api/HoSo630/add-ms';
+  static const String urlUpdateMs = '/api/HoSo630/update-ms';
+  static const String urlGetDetailMs = '/api/HoSo630/get-ms-detail';
+  static const String urlGet630Categories = '/api/HoSo630/get-categories';
+  // === Kết thúc các api dùng chung của thủ tục 630 ===
+
+
 
   // === Danh sách các api liên quan đến thủ tục 630a ===
   static const String urlGetListStaff630a = '/api/HoSo630a/get-list';
@@ -103,15 +113,12 @@ class AppApi {
   static const String urlGet630aDetail = '/api/HoSo630a/get-630a-detail';
   static const String urlAdd630a = '/api/HoSo630a/add-630a';
   static const String urlUpdate630a = '/api/HoSo630a/update-630a';
-  static const String urlGet630aCategories = '/api/HoSo630a/get-categories';
   static const String urlGetDetail630a = '/api/HoSo630a/get-630a-detail';
   static const String urlGetPreviewPdf630a = '/api/HoSo630a/preview-pdf';
-  static const String urlAddMs = '/api/HoSo630a/add-ms';
-  static const String urlUpdateMs = '/api/HoSo630a/update-ms';
-  static const String urlGetDetailMs = '/api/HoSo630a/get-ms-detail';
+
   // === Kết thúc các api liên quan đến thủ tục 630a ===
 
   // === Danh sách các api liên quan đến thủ tục 630b ===
-  static const String urlGet630bCategories = '/api/HoSo630b/get-categories';
+
   // === Kết thúc các api liên quan đến thủ tục 630b ===
 }

@@ -1,21 +1,32 @@
-import 'package:v_bhxh/modules/login/model/categories_630b/child_birth_condition_model.dart';
-import 'package:v_bhxh/modules/login/model/categories_630b/maternity_leave_model.dart';
-import 'package:v_bhxh/modules/login/model/categories_630b/parental_leave_model.dart';
-import 'package:v_bhxh/modules/login/model/categories_630b/pregnancy_check_condition_model.dart';
-
 import '../model_src.dart';
-import 'contraception_model.dart';
-import 'surgery_pregnancy_32w_model.dart';
-import 'surrogacy_model.dart';
 
-// TODO: Tạm thời dùng chung model của 630a
-// Khi BE gộp chung 2 api vào thì sẽ sửa lại
-class CategoriesProcedure630b {
+class CategoriesProcedure630 {
   // Hình thức kê khai
-  final Set<DeclareForm630aModel> declareForm;
+  final Set<DeclareForm630Model> declareForm;
 
-  // Mã nhóm hưởng
-  final Set<BenefitGroup630aModel> benefitGroup;
+  // Mã nhóm hưởng 630a
+  final Set<BenefitGroup630aModel> benefitGroup630a;
+
+  // Tuyến bệnh viện
+  final Set<HospitalLineModel> hospitalLine;
+
+  // Bệnh dài ngày
+  final Set<LongDieaseModel> longDiease;
+
+  // Điều kiện làm việc
+  final Set<WorkConditionModel> workCondition;
+
+  // Hình thức nhận
+  final Set<ReceiveFormModel> receiveForm;
+
+  // Ngân hàng
+  final Set<BankModel> bank;
+
+  // Mã nhóm hưởng 630b
+  final Set<BenefitGroup630bModel> benefitGroup630b;
+
+  // Mã nhóm hưởng cấp 2
+  final Set<BenefitGroupLv2Model> benefitGroupLv2;
 
   // Điều kiện khám thai
   final Set<PregnancyCheckConditionModel> pregnancyCondition;
@@ -38,15 +49,16 @@ class CategoriesProcedure630b {
   // Biện pháp tránh thai
   final Set<ContraceptionModel> contraception;
 
-  // Hình thức nhận
-  final Set<ReceiveForm630aModel> receiveForm;
-
-  // Ngân hàng
-  final Set<Bank630aModel> bank;
-
-  CategoriesProcedure630b({
+  const CategoriesProcedure630({
     required this.declareForm,
-    required this.benefitGroup,
+    required this.benefitGroup630a,
+    required this.hospitalLine,
+    required this.longDiease,
+    required this.workCondition,
+    required this.receiveForm,
+    required this.bank,
+    required this.benefitGroup630b,
+    required this.benefitGroupLv2,
     required this.pregnancyCondition,
     required this.childBirthCondition,
     required this.maternityLeave,
@@ -54,20 +66,46 @@ class CategoriesProcedure630b {
     required this.surrogacy,
     required this.surgeryPregnancy32w,
     required this.contraception,
-    required this.receiveForm,
-    required this.bank,
   });
 
-  factory CategoriesProcedure630b.fromJson(Map<String, dynamic> json) {
-    return CategoriesProcedure630b(
+  factory CategoriesProcedure630.fromJson(Map<String, dynamic> json) {
+    return CategoriesProcedure630(
       declareForm: (json['phatSinhDieuChinhs'] as List?)
-              ?.map((e) => DeclareForm630aModel.fromJson(e))
+              ?.map((e) => DeclareForm630Model.fromJson(e))
               .toSet() ??
-          <DeclareForm630aModel>{},
-      benefitGroup: (json['maNhomHuongs'] as List?)
+          <DeclareForm630Model>{},
+      benefitGroup630a: (json['maNhomHuong630as'] as List?)
               ?.map((e) => BenefitGroup630aModel.fromJson(e))
               .toSet() ??
           <BenefitGroup630aModel>{},
+      hospitalLine: (json['tuyenBenhViens'] as List?)
+              ?.map((e) => HospitalLineModel.fromJson(e))
+              .toSet() ??
+          <HospitalLineModel>{},
+      longDiease: (json['benhDaiNgays'] as List?)
+              ?.map((e) => LongDieaseModel.fromJson(e))
+              .toSet() ??
+          <LongDieaseModel>{},
+      workCondition: (json['dieuKienLamViecs'] as List?)
+              ?.map((e) => WorkConditionModel.fromJson(e))
+              .toSet() ??
+          <WorkConditionModel>{},
+      receiveForm: (json['hinhThucNhans'] as List?)
+              ?.map((e) => ReceiveFormModel.fromJson(e))
+              .toSet() ??
+          <ReceiveFormModel>{},
+      bank: (json['nganHangs'] as List?)
+              ?.map((e) => BankModel.fromJson(e))
+              .toSet() ??
+          <BankModel>{},
+      benefitGroup630b: (json['maNhomHuong630bs'] as List?)
+              ?.map((e) => BenefitGroup630bModel.fromJson(e))
+              .toSet() ??
+          <BenefitGroup630bModel>{},
+      benefitGroupLv2: (json['maNhomHuong2s'] as List?)
+              ?.map((e) => BenefitGroupLv2Model.fromJson(e))
+              .toSet() ??
+          <BenefitGroupLv2Model>{},
       pregnancyCondition: (json['dieuKienKhamThais'] as List?)
               ?.map((e) => PregnancyCheckConditionModel.fromJson(e))
               .toSet() ??
@@ -96,14 +134,6 @@ class CategoriesProcedure630b {
               ?.map((e) => ContraceptionModel.fromJson(e))
               .toSet() ??
           <ContraceptionModel>{},
-      receiveForm: (json['hinhThucNhans'] as List?)
-              ?.map((e) => ReceiveForm630aModel.fromJson(e))
-              .toSet() ??
-          <ReceiveForm630aModel>{},
-      bank: (json['nganHangs'] as List?)
-              ?.map((e) => Bank630aModel.fromJson(e))
-              .toSet() ??
-          <Bank630aModel>{},
     );
   }
 }

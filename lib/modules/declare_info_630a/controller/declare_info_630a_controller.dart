@@ -29,7 +29,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final staffCodeTextCtrl = TextEditingController();
 
   /// Hình thức kê khai *
-  final declareForm = Rxn<DeclareForm630aModel>();
+  final declareForm = Rxn<DeclareForm630Model>();
 
   /// Mã nhóm hưởng *
   final benefitGroup = Rxn<BenefitGroup630aModel>();
@@ -59,10 +59,10 @@ class DeclareInfo630aController extends BaseGetxController {
   final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
 
   /// Tuyến bệnh viện
-  final selectHospitalLine = Rxn<HospitalLine630aModel>();
+  final selectHospitalLine = Rxn<HospitalLineModel>();
 
   /// Chọn/Nhập mã bệnh
-  final selectDiseaseCode = Rxn<LongDiease630aModel>();
+  final selectDiseaseCode = Rxn<LongDieaseModel>();
 
   /// Tên bệnh
   final diseaseNameTextCtrl = TextEditingController();
@@ -71,7 +71,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final serialNumberCtrl = TextEditingController();
 
   /// Điều kiện làm việc
-  final workCondition = Rxn<WorkCondition630aModel>();
+  final workCondition = Rxn<WorkConditionModel>();
 
   /// Nghỉ dưỡng thai
   final isMaternityRest = false.obs;
@@ -86,7 +86,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final noteTextCtrl = TextEditingController();
 
   /// Hình thức nhận *
-  final receiveForm = Rxn<ReceiveForm630aModel>();
+  final receiveForm = Rxn<ReceiveFormModel>();
 
   /// Số tài khoản ngân hàng
   final bankNumberCtrl = TextEditingController();
@@ -95,7 +95,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final accountHolderNameCtrl = TextEditingController();
 
   /// Ngân hàng
-  final selectedBank = Rxn<Bank630aModel>();
+  final selectedBank = Rxn<BankModel>();
 
   /// Đợt đã giải quyết
   final resolvedPeriodCtrl = TextEditingController();
@@ -336,7 +336,7 @@ class DeclareInfo630aController extends BaseGetxController {
     );
 
     // Mã nhóm hưởng
-    benefitGroup.value = AppData.instance.benefitGroup.firstWhereOrNull(
+    benefitGroup.value = AppData.instance.benefitGroup630a.firstWhereOrNull(
       (item) => item.value == detail.maNhomHuong,
     );
 
@@ -444,7 +444,7 @@ class DeclareInfo630aController extends BaseGetxController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeReceiveMethod(ReceiveForm630aModel? method) {
+  void onChangeReceiveMethod(ReceiveFormModel? method) {
     if (method == null) {
       return;
     }
@@ -474,7 +474,7 @@ class DeclareInfo630aController extends BaseGetxController {
     receiveForm.value = method;
   }
 
-  void onChangeDeclareMethod(DeclareForm630aModel? method) {
+  void onChangeDeclareMethod(DeclareForm630Model? method) {
     if (method == null) {
       return;
     }

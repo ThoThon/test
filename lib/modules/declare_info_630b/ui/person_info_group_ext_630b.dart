@@ -61,7 +61,7 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
   // Họ và tên
   Widget _buildInputFullName() {
     return FormFieldRegistrant<String>(
-      registrarId: "d43cf980-6fc0-4519-8e13-2fe5d0981059",
+      registrarId: "",
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -76,7 +76,7 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
           fieldKey: fieldKey,
           validator: validator,
           labelText: LocaleKeys.declareInfo_fullName.tr,
-          controller: TextEditingController(),
+          controller: controller.fullNameTextCtrl,
           isRequired: true,
           maxLengthInputForm: 100,
         );
@@ -87,7 +87,7 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
   // Mã số BHXH
   Widget _buildInputBHXHCode() {
     return FormFieldRegistrant<String>(
-      registrarId: "1c684595-7ce5-434b-b8c3-6642c4ab6101",
+      registrarId: "",
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -105,7 +105,7 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
           validator: validator,
           isRequired: true,
           labelText: LocaleKeys.declareInfo_bhxhCode.tr,
-          controller: TextEditingController(),
+          controller: controller.bhxhTextCtrl,
           maxLengthInputForm: 10,
           hintText: LocaleKeys.declareInfo_inputBhxhCode.tr,
           inputFormatters: InputFormatterEnum.digitsOnly,
@@ -119,7 +119,7 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
   Widget _buildInputCCCD() {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.declareInfo_cccd.tr,
-      controller: TextEditingController(),
+      controller: controller.cccdTextCtrl,
       hintText: LocaleKeys.declareInfo_inputCCCD.tr,
       maxLengthInputForm: 20,
       inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
@@ -130,7 +130,7 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
   Widget _buildStaffCode() {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.declareInfo_staffCode.tr,
-      controller: TextEditingController(),
+      controller: controller.staffCodeTextCtrl,
       hintText: LocaleKeys.declareInfo_inputStaffCode.tr,
       maxLengthInputForm: 100,
     );

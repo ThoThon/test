@@ -1,4 +1,5 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
+import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 import '../../../base_app/base_app.src.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';
@@ -24,13 +25,13 @@ abstract class DeclareInfo630bController extends BaseGetxController {
   final staffCodeTextCtrl = TextEditingController();
 
   /// Hình thức kê khai *
-  // final declareForm = Rxn<DeclareForm630bModel>();
+  final declareForm = Rxn<DeclareForm630Model>();
 
   /// Mã nhóm hưởng *
-  // final benefitGroup = Rxn<BenefitGroup630bModel>();
+  final benefitGroup = Rxn<BenefitGroup630bModel>();
 
   /// Mã nhóm hưởng cấp 2
-  // final subBenefitGroup = Rxn<SubBenefitGroup630bModel>();
+  final benefitGroupLv2 = Rxn<BenefitGroupLv2Model>();
 
   /// Từ ngày *
   final fromDateCtrl = TextEditingController();
@@ -51,16 +52,16 @@ abstract class DeclareInfo630bController extends BaseGetxController {
   final serialNumberCtrl = TextEditingController();
 
   /// Điều kiện khám thai
-  final isPregnancyCondition = false.obs;
+  final pregnancyCondition = Rxn<PregnancyCheckConditionModel>();
 
   /// Tuổi thai
   final pregnancyWeekCtrl = TextEditingController();
 
   /// Biện pháp tránh thai
-  final contraceptionMethodCtrl = TextEditingController();
+  final contraception = Rxn<ContraceptionModel>();
 
   /// Điều kiện sinh con
-  final isChildbirthCondition = false.obs;
+  final childbirthCondition = Rxn<ChildBirthConditionModel>();
 
   /// Ngày sinh con
   final birthDayChildCtrl = TextEditingController();
@@ -96,7 +97,7 @@ abstract class DeclareInfo630bController extends BaseGetxController {
   final cccdMotherCtrl = TextEditingController();
 
   /// Phẫu thuật hoặc thai < 32 tuần
-  final isSurgeryOrUnder32Week = false.obs;
+  final surgeryOrUnder32Week = Rxn<SurgeryPregnancy32wModel>();
 
   /// Ngày mẹ chết
   final motherDeathDateCtrl = TextEditingController();
@@ -111,13 +112,13 @@ abstract class DeclareInfo630bController extends BaseGetxController {
   final guardianBhxhCtrl = TextEditingController();
 
   /// Nghỉ dưỡng thai
-  final isMaternityRest = false.obs;
+  final maternityRest = Rxn<MaternityLeaveModel>();
 
   /// Nghỉ chăm con
-  final isChildCare = false.obs;
+  final parentalLeave = Rxn<ParentalLeaveModel>();
 
   /// Mang thai hộ
-  final isSurrogacy = false.obs;
+  final surrogacy = Rxn<SurrogacyModel>();
 
   /// Đợt bổ sung
   final supplementalPeriodCtrl = TextEditingController();
@@ -129,7 +130,7 @@ abstract class DeclareInfo630bController extends BaseGetxController {
   final noteTextCtrl = TextEditingController();
 
   /// Hình thức nhận *
-  // final receiveForm = Rxn<ReceiveForm630bModel>();
+  final receiveForm = Rxn<ReceiveFormModel>();
 
   /// Số tài khoản ngân hàng
   final bankNumberCtrl = TextEditingController();
@@ -138,7 +139,16 @@ abstract class DeclareInfo630bController extends BaseGetxController {
   final accountHolderNameCtrl = TextEditingController();
 
   /// Ngân hàng
-  // final selectedBank = Rxn<Bank630bModel>();
+  final selectedBank = Rxn<BankModel>();
+
+  /// Đợt đã giải quyết
+  final resolvedPeriodCtrl = TextEditingController();
+
+  /// Ngày đã giải quyết
+  final resolvedDateCtrl = TextEditingController();
+
+  /// Lý do điều chỉnh
+  final adjustReasonCtrl = TextEditingController();
 
   /// ========== Khai báo thêm ==========
   late final repository = DeclareInfo630bRepository(this);
@@ -153,4 +163,7 @@ abstract class DeclareInfo630bController extends BaseGetxController {
       Get.findOrNull<DeclarationPeriodController>();
 
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
+
+  String get weeklyDayOffString =>
+      weeklyDayOffs.map((dayOff) => dayOff.value).join(';');
 }

@@ -53,7 +53,6 @@ class LoginController extends BaseGetxController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
-          _get630bCategories(),
           _get630aCategories(),
           _getToTalNotiUnread(),
         ).wait;
@@ -120,40 +119,25 @@ class LoginController extends BaseGetxController {
   Future<void> _get630aCategories() async {
     try {
       final response = await _loginRepository.get630aCategories();
-      final categories630a = response.result;
+      final categories630 = response.result;
       if (response.code == AppConst.statusCodeSuccess &&
-          categories630a != null) {
+          categories630 != null) {
         AppData.instance
-          ..declareForm = categories630a.declareForm
-          ..benefitGroup = categories630a.benefitGroup
-          ..workCondition = categories630a.workCondition
-          ..receiveForm = categories630a.receiveForm
-          ..hospitalLine = categories630a.hospitalLine
-          ..longDiease = categories630a.longDiease
-          ..bank = categories630a.bank;
-      }
-    } catch (e) {
-      logger.d(e);
-    }
-  }
-
-  Future<void> _get630bCategories() async {
-    try {
-      final response = await _loginRepository.get630bCategories();
-      final categories630b = response.result;
-      if (response.isSuccess && categories630b != null) {
-        AppData.instance
-          ..declareForm = categories630b.declareForm
-          ..benefitGroup = categories630b.benefitGroup
-          ..pregnancyCondition = categories630b.pregnancyCondition
-          ..childBirthCondition = categories630b.childBirthCondition
-          ..maternityLeave = categories630b.maternityLeave
-          ..parentalLeave = categories630b.parentalLeave
-          ..surrogacy = categories630b.surrogacy
-          ..surgeryPregnancy32w = categories630b.surgeryPregnancy32w
-          ..contraception = categories630b.contraception
-          ..receiveForm = categories630b.receiveForm
-          ..bank = categories630b.bank;
+          ..declareForm = categories630.declareForm
+          ..benefitGroup630a = categories630.benefitGroup630a
+          ..hospitalLine = categories630.hospitalLine
+          ..longDiease = categories630.longDiease
+          ..receiveForm = categories630.receiveForm
+          ..bank = categories630.bank
+          ..benefitGroup630b = categories630.benefitGroup630b
+          ..benefitGroupLv2 = categories630.benefitGroupLv2
+          ..pregnancyCondition = categories630.pregnancyCondition
+          ..childBirthCondition = categories630.childBirthCondition
+          ..maternityLeave = categories630.maternityLeave
+          ..parentalLeave = categories630.parentalLeave
+          ..surrogacy = categories630.surrogacy
+          ..surgeryPregnancy32w = categories630.surgeryPregnancy32w
+          ..contraception = categories630.contraception;
       }
     } catch (e) {
       logger.d(e);

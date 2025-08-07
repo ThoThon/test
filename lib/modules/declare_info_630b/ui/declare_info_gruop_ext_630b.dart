@@ -47,109 +47,118 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         _buildWeeklyDayOffDropdown(),
         sdsSBHeight12,
 
-        // Số serial
-        _buildInputSerialNumber(),
+        // Ẩn khi "Hình thức kê khai" là "Điều chỉnh"
+        Obx(
+          () {
+            if (controller.isAdjustDeclareForm) {
+              return const SizedBox.shrink();
+            }
+            return Column(
+              children: [
+                // Số serial
+                _buildInputSerialNumber(),
 
-        // Điều kiện khám thai
-        _buildIsPregnancyConditionDropdown(),
-        sdsSBHeight12,
+                // Điều kiện khám thai
+                _buildIsPregnancyConditionDropdown(),
+                sdsSBHeight12,
 
-        // Tuổi thai
-        _buildInputPregnancyWeek(),
+                // Tuổi thai
+                _buildInputPregnancyWeek(),
 
-        // Biện pháp tránh thai
-        _buildContraceptionMethodDropdown(),
-        sdsSBHeight12,
+                // Biện pháp tránh thai
+                _buildContraceptionMethodDropdown(),
+                sdsSBHeight12,
 
-        // Điều kiện sinh con
-        _buildIsChildbirthConditionDropdown(),
-        sdsSBHeight12,
+                // Điều kiện sinh con
+                _buildIsChildbirthConditionDropdown(),
+                sdsSBHeight12,
 
-        // "Ngày sinh con" và "Số con"
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(child: _buildBirthDayChild()),
-            sdsSBWidth12,
-            Expanded(child: _buildNumberChild()),
-          ],
+                // "Ngày sinh con" và "Số con"
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: _buildBirthDayChild()),
+                    sdsSBWidth12,
+                    Expanded(child: _buildNumberChild()),
+                  ],
+                ),
+
+                // Mã số BHXH của con
+                _buildBhxhCodeChild(),
+
+                // Mã thẻ BHYT của con
+                _buildBhytCardCodeChild(),
+
+                // "Số con chết" và "Ngày con chết"
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: _buildNumberChildDeath()),
+                    sdsSBWidth12,
+                    Expanded(child: _buildChildDeathDate()),
+                  ],
+                ),
+
+                // "Ngày nhận con" và "Ngày đi làm thực tế"
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: _buildAdoptionDatee()),
+                    sdsSBWidth12,
+                    Expanded(child: _buildReturnWorkDate()),
+                  ],
+                ),
+
+                // Mã số BHXH của mẹ
+                _buildBhxhCodeMother(),
+
+                // Mã thẻ BHYT của mẹ
+                _buildBhytCardMother(),
+
+                // Số CMND của mẹ
+                _buildCccdMother(),
+                // Phẫu thuật hoặc thai dưới 32 tuần
+                _buildSurgeryOrUnder32WeekDropdown(),
+                sdsSBHeight12,
+                // "Ngày mẹ chết" và "Ngày kết luận"
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: _buildMotherDeathDate()),
+                    sdsSBWidth12,
+                    Expanded(child: _buildConclusionDate()),
+                  ],
+                ),
+
+                // Phí giám định y khoa
+                _buildMedicalFee(),
+
+                // Số BHXH của người nuôi dưỡng(TH mẹ chết)
+                _buildGuardianBhxh(),
+
+                // Nghỉ dưỡng thai
+                _buildMaternityRestDropdown(),
+                sdsSBHeight12,
+
+                // Nghỉ chăm con
+                _buildChildCareDropdown(),
+                sdsSBHeight12,
+
+                // Mang thai hộ
+                _buildSurrogacyDropdown(),
+                sdsSBHeight12,
+
+                // Đợt bổ sung
+                _buildInputSupplementalPeriod(),
+              ],
+            );
+          },
         ),
-
-        // Mã số BHXH của con
-        _buildBhxhCodeChild(),
-
-        // Mã thẻ BHYT của con
-        _buildBhytCardCodeChild(),
-
-        // "Số con chết" và "Ngày con chết"
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(child: _buildNumberChildDeath()),
-            sdsSBWidth12,
-            Expanded(child: _buildChildDeathDate()),
-          ],
-        ),
-
-        // "Ngày nhận con" và "Ngày đi làm thực tế"
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(child: _buildAdoptionDatee()),
-            sdsSBWidth12,
-            Expanded(child: _buildReturnWorkDate()),
-          ],
-        ),
-
-        // Mã số BHXH của mẹ
-        _buildBhxhCodeMother(),
-
-        // Mã thẻ BHYT của mẹ
-        _buildBhytCardMother(),
-
-        // Số CMND của mẹ
-        _buildCccdMother(),
-        // Phẫu thuật hoặc thai dưới 32 tuần
-        _buildSurgeryOrUnder32WeekDropdown(),
-        sdsSBHeight12,
-        // "Ngày mẹ chết" và "Ngày kết luận"
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(child: _buildMotherDeathDate()),
-            sdsSBWidth12,
-            Expanded(child: _buildConclusionDate()),
-          ],
-        ),
-
-        // Phí giám định y khoa
-        _buildMedicalFee(),
-
-        // Số BHXH của người nuôi dưỡng(TH mẹ chết)
-        _buildGuardianBhxh(),
-
-        // Nghỉ dưỡng thai
-        _buildMaternityRestDropdown(),
-        sdsSBHeight12,
-
-        // Nghỉ chăm con
-        _buildChildCareDropdown(),
-        sdsSBHeight12,
-
-        // Mang thai hộ
-        _buildSurrogacyDropdown(),
-        sdsSBHeight12,
-
-        // Đợt bổ sung
-        _buildInputSupplementalPeriod(),
-
         // Mã hồ sơ
         _buildFileCodeText(),
 
         // Ghi chú
         _buildnoteText(),
-
-        sdsSBHeight12,
       ],
     );
   }
@@ -173,19 +182,20 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<DeclareForm630aModel>(
-          fieldKey: formFieldKey,
-          labelText: LocaleKeys.declareInfo_declareMethod.tr,
-          isRequired: true,
-          hintText: LocaleKeys.declareInfo_selectDeclareMethod.tr,
-          items: AppData.instance.declareForm.toList(),
-          display: (item) => item.text,
-          // selectedItem: controller.declareForm.value,
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-          },
+        return Obx(
+          () => CardDropdownWithLabel<DeclareForm630Model>(
+            fieldKey: formFieldKey,
+            labelText: LocaleKeys.declareInfo_declareMethod.tr,
+            isRequired: true,
+            hintText: LocaleKeys.declareInfo_selectDeclareMethod.tr,
+            items: AppData.instance.declareForm.toList(),
+            display: (item) => item.text,
+            selectedItem: controller.declareForm.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.declareForm.value = value;
+            },
+          ),
         );
       },
     );
@@ -193,7 +203,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã nhóm hưởng
   Widget _buildBenefitGroupCodeDropdown() {
-    return FormFieldRegistrant<BenefitGroup630aModel>(
+    return FormFieldRegistrant<BenefitGroup630bModel>(
       registrarId: '',
       validator: (value) {
         if (value == null) {
@@ -202,19 +212,21 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<BenefitGroup630aModel>(
-          validator: validator,
-          fieldKey: formFieldKey,
-          labelText: LocaleKeys.declareInfo_benefitGroupCode.tr,
-          isRequired: true,
-          hintText: LocaleKeys.declareInfo_selectBenefitGroupCode.tr,
-          items: AppData.instance.benefitGroup.toList(),
-          display: (item) => '${item.value} - ${item.text}',
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-          },
+        return Obx(
+          () => CardDropdownWithLabel<BenefitGroup630bModel>(
+            validator: validator,
+            fieldKey: formFieldKey,
+            labelText: LocaleKeys.declareInfo_benefitGroupCode.tr,
+            isRequired: true,
+            hintText: LocaleKeys.declareInfo_selectBenefitGroupCode.tr,
+            items: AppData.instance.benefitGroup630b.toList(),
+            display: (item) => '${item.value} - ${item.text}',
+            selectedItem: controller.benefitGroup.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.benefitGroup.value = value;
+            },
+          ),
         );
       },
     );
@@ -222,7 +234,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã nhóm hưởng cấp 2
   Widget _buildBenefitGroupCodeLv2Dropdown() {
-    return FormFieldRegistrant<BenefitGroup630aModel>(
+    return FormFieldRegistrant<BenefitGroupLv2Model>(
       registrarId: '',
       validator: (value) {
         if (value == null) {
@@ -231,19 +243,21 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<BenefitGroup630aModel>(
-          validator: validator,
-          fieldKey: formFieldKey,
-          labelText: 'Mã nhóm hưởng cấp 2',
-          isRequired: true,
-          hintText: 'Chọn mã nhóm hưởng cấp 2',
-          items: AppData.instance.benefitGroup.toList(),
-          display: (item) => '${item.value} - ${item.text}',
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-          },
+        return Obx(
+          () => CardDropdownWithLabel<BenefitGroupLv2Model>(
+            validator: validator,
+            fieldKey: formFieldKey,
+            labelText: 'Mã nhóm hưởng cấp 2',
+            isRequired: true,
+            hintText: 'Chọn mã nhóm hưởng cấp 2',
+            items: AppData.instance.benefitGroupLv2.toList(),
+            display: (item) => '${item.maNhomHuongC2} - ${item.tenNhomHuongC2}',
+            selectedItem: controller.benefitGroupLv2.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.benefitGroupLv2.value = value;
+            },
+          ),
         );
       },
     );
@@ -477,99 +491,31 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Nghỉ hàng tuần
   Widget _buildWeeklyDayOffDropdown() {
-    return Container(
-      padding: const EdgeInsets.only(
-        right: AppDimens.defaultPadding,
-        left: AppDimens.defaultPadding,
-        top: AppDimens.paddingVerySmall,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.colorWhite,
-        borderRadius: BorderRadius.circular(AppDimens.radius10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              SDSBuildText(
-                'Ngày nghỉ tuần',
-                style: AppTextStyle.font14Re.copyWith(
-                  color: AppColors.dsGray1,
+    return Obx(
+      () {
+        final selectedText = controller.weeklyDayOffs.isEmpty
+            ? 'Chọn ngày nghỉ'
+            : controller.weeklyDayOffString;
+        return UtilWidget.buildWeeklyDayOffDropdown<WeeklyDayOffEnum>(
+          initialValue: controller.weeklyDayOffs,
+          items: WeeklyDayOffEnum.values
+              .map(
+                (item) => MultiSelectItem<WeeklyDayOffEnum>(
+                  item,
+                  item.title,
                 ),
-              ),
-            ],
-          ),
-          Obx(
-            () {
-              final selectedText =
-                  controller.weeklyDayOffs.isEmpty ? 'Chọn ngày nghỉ' : '';
-              // : controller.weeklyDayOffString;
-
-              return MultiSelectDialogField<WeeklyDayOffEnum>(
-                items: WeeklyDayOffEnum.values
-                    .map(
-                      (item) => MultiSelectItem<WeeklyDayOffEnum>(
-                        item,
-                        item.title,
-                      ),
-                    )
-                    .toList(),
-                title: SDSBuildText(
-                  "Chọn ngày nghỉ trong tuần",
-                  style: AppTextStyle.font18Re,
-                ),
-                listType: MultiSelectListType.LIST,
-                backgroundColor: AppColors.basicWhite,
-                buttonIcon: SDSImageSvg(
-                  Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
-                  height: AppDimens.sizeIconMedium,
-                  width: AppDimens.sizeIconMedium,
-                ),
-                buttonText: Expanded(
-                  child: SDSBuildText(
-                    maxLines: 3,
-                    selectedText,
-                    style: AppTextStyle.font14Re.copyWith(
-                      color: controller.weeklyDayOffs.isEmpty
-                          ? AppColors.dsGray3
-                          : AppColors.colorBlack,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                padding: const EdgeInsets.symmetric(
-                  vertical: AppDimens.paddingVerySmall,
-                ),
-                decoration: const BoxDecoration(border: Border()),
-                isDismissible: false,
-                onConfirm: (values) {
-                  controller.weeklyDayOffs.value = values;
-                  KeyBoard.hide();
-                },
-                confirmText: SDSBuildText(
-                  LocaleKeys.dialog_select.tr,
-                  style: AppTextStyle.font14Bo
-                      .copyWith(color: AppColors.primaryColor),
-                ),
-                cancelText: GestureDetector(
-                  onTap: () {
-                    Get.back();
-                    KeyBoard.hide();
-                  },
-                  child: SDSBuildText(
-                    LocaleKeys.dialog_cancel.tr,
-                    style: AppTextStyle.font14Bo
-                        .copyWith(color: AppColors.textColorGrey),
-                  ),
-                ),
-                initialValue: controller.weeklyDayOffs,
-                chipDisplay: MultiSelectChipDisplay.none(),
-              );
-            },
-          ),
-        ],
-      ),
+              )
+              .toList(),
+          onConfirm: (values) {
+            controller.weeklyDayOffs.value = values;
+            KeyBoard.hide();
+          },
+          title: selectedText,
+          color: controller.weeklyDayOffs.isEmpty
+              ? AppColors.dsGray3
+              : AppColors.colorBlack,
+        );
+      },
     );
   }
 
@@ -594,18 +540,20 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<PregnancyCheckConditionModel>(
-          validator: validator,
-          fieldKey: formFieldKey,
-          labelText: 'Điều kiện khám thai',
-          hintText: 'Chọn điều kiện khám thai',
-          items: AppData.instance.pregnancyCondition.toList(),
-          display: (item) => '${item.value} - ${item.text}',
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-          },
+        return Obx(
+          () => CardDropdownWithLabel<PregnancyCheckConditionModel>(
+            validator: validator,
+            fieldKey: formFieldKey,
+            labelText: 'Điều kiện khám thai',
+            hintText: 'Chọn điều kiện khám thai',
+            items: AppData.instance.pregnancyCondition.toList(),
+            display: (item) => '${item.value} - ${item.text}',
+            selectedItem: controller.pregnancyCondition.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.pregnancyCondition.value = value;
+            },
+          ),
         );
       },
     );
@@ -632,18 +580,20 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<ContraceptionModel>(
-          validator: validator,
-          fieldKey: formFieldKey,
-          labelText: 'Biện pháp tránh thai',
-          hintText: 'Chọn biện pháp',
-          items: AppData.instance.contraception.toList(),
-          display: (item) => '${item.value} - ${item.text}',
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-          },
+        return Obx(
+          () => CardDropdownWithLabel<ContraceptionModel>(
+            validator: validator,
+            fieldKey: formFieldKey,
+            labelText: 'Biện pháp tránh thai',
+            hintText: 'Chọn biện pháp',
+            items: AppData.instance.contraception.toList(),
+            display: (item) => '${item.value} - ${item.text}',
+            selectedItem: controller.contraception.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.contraception.value = value;
+            },
+          ),
         );
       },
     );
@@ -660,18 +610,20 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<ChildBirthConditionModel>(
-          validator: validator,
-          fieldKey: formFieldKey,
-          labelText: 'Điều kiện sinh con',
-          hintText: 'Chọn điều kiện sinh con',
-          items: AppData.instance.childBirthCondition.toList(),
-          display: (item) => '${item.value} - ${item.text}',
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-          },
+        return Obx(
+          () => CardDropdownWithLabel<ChildBirthConditionModel>(
+            validator: validator,
+            fieldKey: formFieldKey,
+            labelText: 'Điều kiện sinh con',
+            hintText: 'Chọn điều kiện sinh con',
+            items: AppData.instance.childBirthCondition.toList(),
+            display: (item) => '${item.value} - ${item.text}',
+            selectedItem: controller.childbirthCondition.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.childbirthCondition.value = value;
+            },
+          ),
         );
       },
     );
@@ -1041,18 +993,20 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<SurgeryPregnancy32wModel>(
-          validator: validator,
-          fieldKey: formFieldKey,
-          labelText: 'Phẫu thuật hoặc thai dưới 32 tuần',
-          hintText: 'Chọn',
-          items: AppData.instance.surgeryPregnancy32w.toList(),
-          display: (item) => '${item.value} - ${item.text}',
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-          },
+        return Obx(
+          () => CardDropdownWithLabel<SurgeryPregnancy32wModel>(
+            validator: validator,
+            fieldKey: formFieldKey,
+            labelText: 'Phẫu thuật hoặc thai dưới 32 tuần',
+            hintText: 'Chọn',
+            items: AppData.instance.surgeryPregnancy32w.toList(),
+            display: (item) => '${item.value} - ${item.text}',
+            selectedItem: controller.surgeryOrUnder32Week.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.surgeryOrUnder32Week.value = value;
+            },
+          ),
         );
       },
     );
@@ -1187,7 +1141,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return CardInputTextFormWithLabel(
       hintText: 'Nhập phí giám định y khoa',
       labelText: 'Phí giám định y khoa',
-      controller: controller.cccdMotherCtrl,
+      controller: controller.medicalFeeCtrl,
       inputFormatters: InputFormatterEnum.phoneNumber,
       maxLengthInputForm: 18,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
@@ -1198,7 +1152,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return CardInputTextFormWithLabel(
       hintText: 'Nhập số BHXH',
       labelText: 'Số BHXH của người nuôi dưỡng(TH mẹ chết)',
-      controller: controller.cccdMotherCtrl,
+      controller: controller.guardianBhxhCtrl,
       maxLengthInputForm: 30,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
@@ -1214,18 +1168,20 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<MaternityLeaveModel>(
-          validator: validator,
-          fieldKey: formFieldKey,
-          labelText: 'Nghỉ dưỡng thai',
-          hintText: 'Chọn nghỉ dưỡng thai',
-          items: AppData.instance.maternityLeave.toList(),
-          display: (item) => '${item.value} - ${item.text}',
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-          },
+        return Obx(
+          () => CardDropdownWithLabel<MaternityLeaveModel>(
+            validator: validator,
+            fieldKey: formFieldKey,
+            labelText: 'Nghỉ dưỡng thai',
+            hintText: 'Chọn nghỉ dưỡng thai',
+            items: AppData.instance.maternityLeave.toList(),
+            display: (item) => '${item.value} - ${item.text}',
+            selectedItem: controller.maternityRest.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.maternityRest.value = value;
+            },
+          ),
         );
       },
     );
@@ -1242,18 +1198,20 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<ParentalLeaveModel>(
-          validator: validator,
-          fieldKey: formFieldKey,
-          labelText: 'Nghỉ chăm con',
-          hintText: 'Chọn nghỉ chăm con',
-          items: AppData.instance.parentalLeave.toList(),
-          display: (item) => '${item.value} - ${item.text}',
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-          },
+        return Obx(
+          () => CardDropdownWithLabel<ParentalLeaveModel>(
+            validator: validator,
+            fieldKey: formFieldKey,
+            labelText: 'Nghỉ chăm con',
+            hintText: 'Chọn nghỉ chăm con',
+            items: AppData.instance.parentalLeave.toList(),
+            display: (item) => '${item.value} - ${item.text}',
+            selectedItem: controller.parentalLeave.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.parentalLeave.value = value;
+            },
+          ),
         );
       },
     );
@@ -1270,18 +1228,20 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<SurrogacyModel>(
-          validator: validator,
-          fieldKey: formFieldKey,
-          labelText: 'Mang thai hộ',
-          hintText: 'Chọn mang thai hộ',
-          items: AppData.instance.surrogacy.toList(),
-          display: (item) => '${item.value} - ${item.text}',
-          onChanged: (value) {
-            if (value == null) {
-              return;
-            }
-          },
+        return Obx(
+          () => CardDropdownWithLabel<SurrogacyModel>(
+            validator: validator,
+            fieldKey: formFieldKey,
+            labelText: 'Mang thai hộ',
+            hintText: 'Chọn mang thai hộ',
+            items: AppData.instance.surrogacy.toList(),
+            display: (item) => '${item.value} - ${item.text}',
+            selectedItem: controller.surrogacy.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.surrogacy.value = value;
+            },
+          ),
         );
       },
     );

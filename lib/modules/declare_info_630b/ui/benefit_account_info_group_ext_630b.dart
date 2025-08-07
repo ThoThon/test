@@ -28,27 +28,34 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
   }
 
   Widget _buildOtherInfoGroup() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Thông tin khác
-        _buildTitleInfoOther(),
-        sdsSBHeight12,
+    return Obx(
+      () {
+        if (controller.isAdjustDeclareForm) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Thông tin khác
+              _buildTitleInfoOther(),
+              sdsSBHeight12,
 
-        // "Đợt đã giải quyết" và "Ngày đã giải quyết"
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(child: _buildInputResolvedPeriod()),
-            sdsSBWidth12,
-            Expanded(child: _buildResolvedDate()),
-          ],
-        ),
-        sdsSBHeight12,
+              // "Đợt đã giải quyết" và "Ngày đã giải quyết"
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(child: _buildInputResolvedPeriod()),
+                  sdsSBWidth12,
+                  Expanded(child: _buildResolvedDate()),
+                ],
+              ),
+              sdsSBHeight12,
 
-        // Lý do điều chỉnh
-        _buildInputAdjustReason(),
-      ],
+              // Lý do điều chỉnh
+              _buildInputAdjustReason(),
+            ],
+          );
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 
@@ -61,7 +68,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
 
   // Hình thức nhận
   Widget _buildReceiveMethodDropDown() {
-    return FormFieldRegistrant(
+    return FormFieldRegistrant<ReceiveFormModel>(
       registrarId: '',
       validator: (value) {
         if (value == null) {
@@ -71,18 +78,20 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel(
+          () => CardDropdownWithLabel<ReceiveFormModel>(
             fieldKey: formFieldKey,
             autovalidateMode: controller.autoValidateMode.value,
             labelText: LocaleKeys.declareInfo_receiveMethod.tr,
             hintText: LocaleKeys.declareInfo_receiveMethodHint.tr,
             items: AppData.instance.receiveForm.toList(),
             isRequired: true,
-            display: (item) => 'item.text',
+            display: (item) => item.text,
+            selectedItem: controller.receiveForm.value,
             onChanged: (value) {
               if (value == null) {
                 return;
               }
+              controller.receiveForm.value = value;
             },
           ).paddingOnly(bottom: AppDimens.paddingSmall),
         );
@@ -92,97 +101,122 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
 
   // Số tài khoản ngân hàng
   Widget _buildInputBankNumber() {
-    return FormFieldRegistrant<String>(
-      registrarId: "1068d470-d07d-4e70-b247-4fc9928748dd",
-      validator: (value) {
-        final trimmedValue = value?.trim();
+    return Obx(
+      () {
+        if (controller.isATMpayment) {
+          return FormFieldRegistrant<String>(
+            registrarId: "1068d470-d07d-4e70-b247-4fc9928748dd",
+            validator: (value) {
+              final trimmedValue = value?.trim();
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.declareInfo_bankNumberEmpty.tr;
+              if (trimmedValue == null || trimmedValue.isEmpty) {
+                return LocaleKeys.declareInfo_bankNumberEmpty.tr;
+              }
+              return null;
+            },
+            builder: (fieldKey, validator) {
+              return Obx(
+                () => CardInputTextFormWithLabel(
+                  fieldKey: fieldKey,
+                  validator: validator,
+                  autovalidateMode: controller.autoValidateMode.value,
+                  hintText: LocaleKeys.declareInfo_bankNumberHint.tr,
+                  inputFormatters:
+                      InputFormatterEnum.textNormalWithoutDiacritics,
+                  labelText: LocaleKeys.declareInfo_bankNumber.tr,
+                  controller: controller.bankNumberCtrl,
+                  maxLengthInputForm: 50,
+                ).paddingOnly(bottom: AppDimens.paddingSmall),
+              );
+            },
+          );
         }
-        return null;
-      },
-      builder: (fieldKey, validator) {
-        return Obx(
-          () => CardInputTextFormWithLabel(
-            fieldKey: fieldKey,
-            validator: validator,
-            autovalidateMode: controller.autoValidateMode.value,
-            hintText: LocaleKeys.declareInfo_bankNumberHint.tr,
-            inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
-            labelText: LocaleKeys.declareInfo_bankNumber.tr,
-            controller: controller.bankNumberCtrl,
-            maxLengthInputForm: 50,
-          ).paddingOnly(bottom: AppDimens.paddingSmall),
-        );
+        return const SizedBox.shrink();
       },
     );
   }
 
   // Tên chủ tài khoản
   Widget _buildInputAccountHolderName() {
-    return FormFieldRegistrant<String>(
-      registrarId: "",
-      validator: (value) {
-        final trimmedValue = value?.trim();
+    return Obx(
+      () {
+        if (controller.isATMpayment) {
+          return FormFieldRegistrant<String>(
+            registrarId: "",
+            validator: (value) {
+              final trimmedValue = value?.trim();
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.declareInfo_accountHolderNameEmpty.tr;
+              if (trimmedValue == null || trimmedValue.isEmpty) {
+                return LocaleKeys.declareInfo_accountHolderNameEmpty.tr;
+              }
+
+              return null;
+            },
+            builder: (fieldKey, validator) {
+              return Obx(
+                () => CardInputTextFormWithLabel(
+                  fieldKey: fieldKey,
+                  validator: validator,
+                  autovalidateMode: controller.autoValidateMode.value,
+                  hintText: LocaleKeys.declareInfo_accountHolderNameHint.tr,
+                  labelText: LocaleKeys.declareInfo_accountHolderName.tr,
+                  controller: controller.accountHolderNameCtrl,
+                  maxLengthInputForm: 100,
+                ).paddingOnly(bottom: AppDimens.paddingSmall),
+              );
+            },
+          );
         }
-
-        return null;
-      },
-      builder: (fieldKey, validator) {
-        return Obx(
-          () => CardInputTextFormWithLabel(
-            fieldKey: fieldKey,
-            validator: validator,
-            autovalidateMode: controller.autoValidateMode.value,
-            hintText: LocaleKeys.declareInfo_accountHolderNameHint.tr,
-            labelText: LocaleKeys.declareInfo_accountHolderName.tr,
-            controller: controller.accountHolderNameCtrl,
-            maxLengthInputForm: 100,
-          ).paddingOnly(bottom: AppDimens.paddingSmall),
-        );
+        return const SizedBox.shrink();
       },
     );
   }
 
   // Ngân hàng
   Widget _buildSelectBank() {
-    return FormFieldRegistrant(
-      registrarId: '',
-      validator: (value) {
-        return null;
-      },
-      builder: (fieldKey, validator) {
-        return Obx(
-          () {
-            return UtilWidget.buildCardBottomSheetSelect2(
-              fieldKey: fieldKey,
-              autovalidateMode: controller.autoValidateMode.value,
-              label: LocaleKeys.declareInfo_bank.tr,
-              hintText: LocaleKeys.declareInfo_bankHint.tr,
-              funcSelect: (didChange) async {
-                Get.bottomSheet(
-                  BottomSheetSearch(
-                    title: LocaleKeys.declareInfo_bankHint.tr,
-                    maxLength: 20,
-                    hintText: LocaleKeys.declareInfo_inputBankName.tr,
-                    listFilter: AppData.instance.bank.toList(),
-                    display: (value) => '${value.code} - ${value.name}',
-                    onAccept: (value) {
-                      if (value == null) return;
+    return Obx(
+      () {
+        if (controller.isATMpayment) {
+          return FormFieldRegistrant(
+            registrarId: '',
+            validator: (value) {
+              return null;
+            },
+            builder: (fieldKey, validator) {
+              return Obx(
+                () {
+                  return UtilWidget.buildCardBottomSheetSelect2<BankModel>(
+                    fieldKey: fieldKey,
+                    autovalidateMode: controller.autoValidateMode.value,
+                    label: LocaleKeys.declareInfo_bank.tr,
+                    hintText: LocaleKeys.declareInfo_bankHint.tr,
+                    funcSelect: (didChange) async {
+                      Get.bottomSheet(
+                        BottomSheetSearch(
+                          title: LocaleKeys.declareInfo_bankHint.tr,
+                          maxLength: 20,
+                          hintText: LocaleKeys.declareInfo_inputBankName.tr,
+                          listFilter: AppData.instance.bank.toList(),
+                          selectedItem: controller.selectedBank.value,
+                          display: (value) => '${value.code} - ${value.name}',
+                          onAccept: (value) {
+                            if (value == null) return;
+                            controller.selectedBank.value = value;
+                            didChange(value);
+                          },
+                        ),
+                        isScrollControlled: true,
+                      );
                     },
-                  ),
-                  isScrollControlled: true,
-                );
-              },
-              display: (bank) => 'bank.name',
-              selectedItem: null,
-            );
-          },
-        );
+                    display: (bank) => bank.name,
+                    selectedItem: controller.selectedBank.value,
+                  );
+                },
+              );
+            },
+          );
+        }
+        return const SizedBox.shrink();
       },
     );
   }
@@ -197,7 +231,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
   // Đợt đã giải quyết
   Widget _buildInputResolvedPeriod() {
     return FormFieldRegistrant<String>(
-      registrarId: "bfe0fb31-7fa7-4b73-908d-9853227bad8e",
+      registrarId: "",
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -240,7 +274,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
   // Ngày đã giải quyết
   Widget _buildResolvedDate() {
     return FormFieldRegistrant<String>(
-      registrarId: '9cb9ed8e-138d-4b5b-b536-e2756ac95979',
+      registrarId: '',
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -287,7 +321,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
                 title: LocaleKeys.dialog_selectDayMonthYear.tr,
                 dateFormat: PATTERN_1,
                 dateTimeInit: convertStringToDateStrict(
-                      'controller.resolvedDateCtrl.text',
+                      controller.resolvedDateCtrl.text,
                       PATTERN_1,
                     ) ??
                     DateTime.now(),
@@ -304,7 +338,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
   // Lý do điều chỉnh
   Widget _buildInputAdjustReason() {
     return FormFieldRegistrant<String>(
-      registrarId: "eba63cdb-a1b3-439f-bb28-ee0aa64b33d6",
+      registrarId: "",
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -324,7 +358,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
             hintText: LocaleKeys.declareInfo_adjustReasonHint.tr,
             labelText: LocaleKeys.declareInfo_adjustReason.tr,
             maxLengthInputForm: 2000,
-            controller: TextEditingController(),
+            controller: controller.adjustReasonCtrl,
           ),
         );
       },

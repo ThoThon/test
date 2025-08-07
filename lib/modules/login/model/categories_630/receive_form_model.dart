@@ -1,17 +1,19 @@
 import 'package:equatable/equatable.dart';
 
-/// Điều kiện làm việc
-class WorkCondition630aModel extends Equatable {
+const ATMPaymentValue = 'ATM';
+
+/// Hình thức nhận
+class ReceiveFormModel extends Equatable {
   final String value;
   final String text;
 
-  const WorkCondition630aModel({
+  const ReceiveFormModel({
     required this.value,
     required this.text,
   });
 
-  factory WorkCondition630aModel.fromJson(Map<String, dynamic> json) {
-    return WorkCondition630aModel(
+  factory ReceiveFormModel.fromJson(Map<String, dynamic> json) {
+    return ReceiveFormModel(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );
