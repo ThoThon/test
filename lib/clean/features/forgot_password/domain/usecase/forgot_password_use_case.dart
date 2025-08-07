@@ -1,17 +1,25 @@
+import 'dart:async';
+
+import 'package:v_bhxh/clean/core/domain/usecase/base_use_case.dart';
 import 'package:v_bhxh/clean/features/forgot_password/domain/repository/forgot_password_repository.dart';
 
-class ForgotPasswordUseCase {
+class ForgotPasswordParams {
+  final String unitCode;
+  final String taxCode;
+
+  ForgotPasswordParams({required this.unitCode, required this.taxCode});
+}
+
+class ForgotPasswordUseCase extends UseCase<ForgotPasswordParams, bool> {
   final ForgotPasswordRepository _repository;
 
   ForgotPasswordUseCase(this._repository);
 
-  Future<String?> execute({
-    required String unitCode,
-    required String taxCode,
-  }) async {
+  @override
+  Future<bool> execute(ForgotPasswordParams input) async {
     return await _repository.forgotPassword(
-      unitCode: unitCode,
-      taxCode: taxCode,
+      unitCode: input.unitCode,
+      taxCode: input.taxCode,
     );
   }
 }

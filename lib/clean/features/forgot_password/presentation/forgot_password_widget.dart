@@ -26,7 +26,9 @@ extension ForgotPasswordWidget on ForgotPasswordPage {
                         .copyWith(color: AppColors.basicWhite),
                     borderRadius: AppDimens.radius30,
                     onPressed: () {
-                      controller.forgotPassword();
+                      if (controller.formKey.currentState?.validate() == true) {
+                        controller.forgotPassword();
+                      }
                     },
                   ),
                   sdsSBHeight8,

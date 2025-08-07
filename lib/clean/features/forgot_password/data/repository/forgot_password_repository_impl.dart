@@ -11,7 +11,7 @@ class ForgotPasswordRepositoryImpl extends ForgotPasswordRepository {
   );
 
   @override
-  Future<String?> forgotPassword({
+  Future<bool> forgotPassword({
     required String unitCode,
     required String taxCode,
   }) async {
@@ -27,6 +27,6 @@ class ForgotPasswordRepositoryImpl extends ForgotPasswordRepository {
 
     final data = BaseResponseCl<String>.fromJson(response);
 
-    return data.result;
+    return data.isSuccess;
   }
 }

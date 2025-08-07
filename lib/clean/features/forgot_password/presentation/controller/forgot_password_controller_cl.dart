@@ -21,21 +21,16 @@ class ForgotPasswordControllerCl extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
-        if (formKey.currentState?.validate() != true) {
-          return;
-        }
-
-        final result = await _forgotPasswordUseCase.execute(
-          unitCode: unitCodeController.text.trim(),
-          taxCode: taxCodeController.text.trim(),
+        await _forgotPasswordUseCase.execute(
+          ForgotPasswordParams(
+            unitCode: unitCodeController.text.trim(),
+            taxCode: taxCodeController.text.trim(),
+          ),
         );
 
-        if (result != null) {
-          _showDialogConfirmSuccess(result);
-        } else {
-          _showDialogFail(
-              'Đã có lỗi xảy ra trong quá trình gửi yêu cầu. Vui lòng thử lại sau.');
-        }
+        _showDialogConfirmSuccess(
+          LocaleKeys.certificate_verifySuccessfully.tr,
+        );
       },
     );
   }
@@ -50,15 +45,15 @@ class ForgotPasswordControllerCl extends BaseGetClController {
     );
   }
 
-  void _showDialogFail(String errorMessage) {
-    ShowDialog.showDialogConfirmNew(
-      title: LocaleKeys.dialog_fail.tr,
-      content: errorMessage,
-      iconType: DialogIconType.failure,
-      confirmTitle: LocaleKeys.dialog_history.tr,
-      showConfirmButton: false,
-    );
-  }
+  // void _showDialogFail(String errorMessage) {
+  //   ShowDialog.showDialogConfirmNew(
+  //     title: LocaleKeys.dialog_fail.tr,
+  //     content: errorMessage,
+  //     iconType: DialogIconType.failure,
+  //     confirmTitle: LocaleKeys.dialog_history.tr,
+  //     showConfirmButton: false,
+  //   );
+  // }
 
   void goToLoginPage() {
     nav.offAllNamed(AppRoutesCl.login.path);
