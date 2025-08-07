@@ -1,3 +1,7 @@
+07/08/2025
+- [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị [Mã nhóm hưởng] - BHW-2958
+
+
 06/08/2025
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chị các giá trị [Hình thức nhận] - BHW-2950
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị giữa Hình thức kê khai: Phát sinh/Điều chỉnh - BHW-2949
