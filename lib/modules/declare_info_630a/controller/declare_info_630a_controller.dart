@@ -492,6 +492,29 @@ class DeclareInfo630aController extends BaseGetxController {
       supplementalPeriodCtrl.clear();
       fileCodeTextCtrl.clear();
     }
+
+    // REF: BHW-2957
+    if (method.value != declareMethodAdjustValue) {
+      resolvedPeriodCtrl.clear();
+      resolvedDateCtrl.clear();
+      adjustReasonCtrl.clear();
+    }
+  }
+
+  void onChangeBenefitGroup(BenefitGroup630aModel? group) {
+    if (group == null) {
+      return;
+    }
+
+    benefitGroup.value = group;
+
+    // Nếu chọn nhóm hưởng khác "Con ốm" thì reset các trường liên quan
+    // REF: BHW-2958
+    if (group.value != benefitGroupSickChildValue) {
+      birthDayChildCtrl.clear();
+      numberChildCtrl.clear();
+      bhytCardCodeChildCtrl.clear();
+    }
   }
 
   @override

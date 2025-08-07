@@ -144,12 +144,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
             items: AppData.instance.benefitGroup630a.toList(),
             display: (item) => '${item.value} - ${item.text}',
             selectedItem: controller.benefitGroup.value,
-            onChanged: (value) {
-              if (value == null) {
-                return;
-              }
-              controller.benefitGroup.value = value;
-            },
+            onChanged: controller.onChangeBenefitGroup,
           ),
         );
       },
