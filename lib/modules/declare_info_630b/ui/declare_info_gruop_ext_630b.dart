@@ -185,6 +185,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return Obx(
           () => CardDropdownWithLabel<DeclareForm630Model>(
             fieldKey: formFieldKey,
+            validator: validator,
             labelText: LocaleKeys.declareInfo_declareMethod.tr,
             isRequired: true,
             hintText: LocaleKeys.declareInfo_selectDeclareMethod.tr,
@@ -531,9 +532,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return Obx(
       () => CardDropdownWithLabel<PregnancyCheckConditionModel>(
         validator: (value) {
-          if (value == null) {
-            return '';
-          }
           return null;
         },
         labelText: 'Điều kiện khám thai',
@@ -564,9 +562,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return Obx(
       () => CardDropdownWithLabel<ContraceptionModel>(
         validator: (value) {
-          if (value == null) {
-            return '';
-          }
           return null;
         },
         labelText: 'Biện pháp tránh thai',
@@ -587,9 +582,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return Obx(
       () => CardDropdownWithLabel<ChildBirthConditionModel>(
         validator: (value) {
-          if (value == null) {
-            return '';
-          }
           return null;
         },
         labelText: 'Điều kiện sinh con',
@@ -722,6 +714,9 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       inputFormatters: InputFormatterEnum.phoneNumber,
       isRequired: false,
       maxLengthInputForm: 1,
+      validator: (value) {
+        return null;
+      },
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
@@ -734,7 +729,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           final trimmedValue = value?.trim();
 
           if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return '';
+            return 'Ngày con chết không được bỏ trống';
           }
           // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
           if (trimmedValue.length < 10) {
@@ -1003,57 +998,65 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Ngày kết luận
   Widget _buildConclusionDate() {
-    return Obx(
-      () => CardInputSelectDateWithLabel(
-        autovalidateMode: controller.autoValidateMode.value,
-        labelText: 'Ngày kết luận',
-        inputFormatters: InputFormatterEnum.dateFullBirthDay,
-        controller: controller.conclusionDateCtrl,
-        hintText: PATTERN_1,
-        isRequired: controller.isRequiredConclusionDate,
-        onSelectDate: () async {
-          KeyBoard.hide();
-          final selectedDate = await DatePickerUtils.showCalendarPicker(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
-            title: LocaleKeys.dialog_selectDayMonthYear.tr,
-            dateFormat: PATTERN_1,
-            dateTimeInit: convertStringToDateStrict(
-                  controller.conclusionDateCtrl.text,
-                  PATTERN_1,
-                ) ??
-                DateTime.now(),
-          );
-          if (selectedDate != null) {
-            controller.conclusionDateCtrl.text =
-                convertDateToString(selectedDate, PATTERN_1);
-          }
-        },
-        validator: (value) {
-          final trimmedValue = value?.trim();
+    return FormFieldRegistrant<String>(
+      registrarId: '4e7c8f89-41ef-4a09-86c5-e8228c7fa943',
+      validator: (value) {
+        final trimmedValue = value?.trim();
 
-          if ((trimmedValue == null ||
-              trimmedValue.isEmpty && controller.isRequiredConclusionDate)) {
-            return 'Ngày kết luận không được bỏ trống';
-          }
-          // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
-          if (trimmedValue.length < 10) {
-            return 'Ngày kết luận không hợp lệ';
-          }
+        bool isEmpty = trimmedValue == null || trimmedValue.isEmpty;
+        if (controller.isRequiredConclusionDate && isEmpty) {
+          return LocaleKeys.declareInfo_conclusionDateEmpty.tr;
+        }
+        if (isEmpty) return null;
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
+        }
 
-          final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-          if (toDate == null) {
-            return '';
-          }
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
+          return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
+        }
 
-          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-          if (toDate.year <= 1900 || toDate.year >= 2100) {
-            return 'Ngày kết luận không hợp lệ';
-          }
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (date.year <= 1900 || date.year >= 2100) {
+          return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
+        }
 
-          return null;
-        },
-      ).paddingOnly(bottom: AppDimens.paddingSmall),
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputSelectDateWithLabel(
+            fieldKey: formFieldKey,
+            autovalidateMode: controller.autoValidateMode.value,
+            labelText: LocaleKeys.declareInfo_conclusionDate.tr,
+            inputFormatters: InputFormatterEnum.dateFullBirthDay,
+            controller: controller.conclusionDateCtrl,
+            hintText: PATTERN_1,
+            isRequired: controller.isRequiredConclusionDate,
+            onSelectDate: () async {
+              KeyBoard.hide();
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+                title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                dateFormat: PATTERN_1,
+                dateTimeInit: convertStringToDateStrict(
+                      controller.conclusionDateCtrl.text,
+                      PATTERN_1,
+                    ) ??
+                    DateTime.now(),
+              );
+              if (selectedDate != null) {
+                controller.conclusionDateCtrl.text =
+                    convertDateToString(selectedDate, PATTERN_1);
+              }
+            },
+            validator: validator,
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
     );
   }
 

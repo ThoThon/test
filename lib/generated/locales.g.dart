@@ -739,6 +739,11 @@ class LocaleKeys {
   static const declareInfo_adjustReasonEmpty = 'declareInfo_adjustReasonEmpty';
   static const declareInfo_attachPaper = 'declareInfo_attachPaper';
   static const declareInfo_saveButton = 'declareInfo_saveButton';
+  static const declareInfo_conclusionDate = 'declareInfo_conclusionDate';
+  static const declareInfo_conclusionDateEmpty =
+      'declareInfo_conclusionDateEmpty';
+  static const declareInfo_conclusionDateInvalid =
+      'declareInfo_conclusionDateInvalid';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1798,6 +1803,9 @@ class Locales {
     'declareInfo_adjustReasonEmpty': 'Lý do điều chỉnh không được bỏ trống',
     'declareInfo_attachPaper': 'Gửi kèm hồ sơ giấy',
     'declareInfo_saveButton': 'Lưu',
+    'declareInfo_conclusionDate': 'Ngày kết luận',
+    'declareInfo_conclusionDateEmpty': 'Ngày kết luận không được bỏ trống',
+    'declareInfo_conclusionDateInvalid': 'Ngày kết luận không hợp lệ',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

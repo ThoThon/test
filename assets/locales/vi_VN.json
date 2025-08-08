@@ -623,7 +623,10 @@
     "adjustReasonHint": "Nhập lý do điều chỉnh",
     "adjustReasonEmpty": "Lý do điều chỉnh không được bỏ trống",
     "attachPaper": "Gửi kèm hồ sơ giấy",
-    "saveButton": "Lưu"
+    "saveButton": "Lưu",
+    "conclusionDate": "Ngày kết luận",
+    "conclusionDateEmpty": "Ngày kết luận không được bỏ trống",
+    "conclusionDateInvalid": "Ngày kết luận không hợp lệ"
   },
   "familyMember": {
     "title": "Thêm thành viên",
