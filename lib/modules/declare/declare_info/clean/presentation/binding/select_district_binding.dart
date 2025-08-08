@@ -11,7 +11,7 @@ class SelectDistrictBinding extends BaseBindingsFactory {
   void bindingsFactoryController() {
     Get.lazyPutFactory(
       () => SelectDistrictControllerCl(
-        slF(),
+        slf(),
         argument: Get.arguments,
       ),
     );
@@ -27,7 +27,7 @@ class SelectDistrictBinding extends BaseBindingsFactory {
   @override
   void bindingsFactoryUseCase() {
     Get.lazyPutFactory(
-      () => GetDistrictsUseCase(slF()),
+      () => GetDistrictsUseCase(slf()),
     );
   }
 }

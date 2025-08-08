@@ -11,7 +11,7 @@ class SelectWardBinding extends BaseBindingsFactory {
   void bindingsFactoryController() {
     Get.lazyPutFactory(
       () => SelectWardControllerCl(
-        slF(),
+        slf(),
         argument: Get.arguments,
       ),
     );
@@ -27,7 +27,7 @@ class SelectWardBinding extends BaseBindingsFactory {
   @override
   void bindingsFactoryUseCase() {
     Get.lazyPutFactory(
-      () => GetWardsUseCase(slF()),
+      () => GetWardsUseCase(slf()),
     );
   }
 }
