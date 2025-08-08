@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 /// Bệnh dài ngày
-class LongDieaseModel extends Equatable {
+class LongDiease630aModel extends Equatable {
   /// Key
   final String id;
 
@@ -11,13 +11,13 @@ class LongDieaseModel extends Equatable {
   /// Mã bệnh
   final String code;
 
-  const LongDieaseModel({
+  const LongDiease630aModel({
     required this.id,
     required this.name,
     required this.code,
   });
-  factory LongDieaseModel.fromJson(Map<String, dynamic> json) {
-    return LongDieaseModel(
+  factory LongDiease630aModel.fromJson(Map<String, dynamic> json) {
+    return LongDiease630aModel(
       id: json["key"] ?? "",
       name: json["tenBenh"] ?? "",
       code: json["maBenh"] ?? "",

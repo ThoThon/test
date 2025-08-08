@@ -118,7 +118,6 @@ class DeclarationPeriodController extends BaseGetxController {
           ProcedureType.procedure613 =>
             AppRoutes.declareInfo607.path,
           ProcedureType.procedure630a => AppRoutes.declareInfo630a.path,
-          ProcedureType.procedure630b => AppRoutes.declareInfo630b.path,
         };
 
         Get.toNamed(
