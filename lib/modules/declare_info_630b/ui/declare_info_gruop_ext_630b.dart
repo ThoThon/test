@@ -1152,7 +1152,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Đợt bổ sung
   Widget _buildInputSupplementalPeriod() {
     return FormFieldRegistrant<String>(
-      registrarId: "",
+      registrarId: "18d6ea86-bfbb-4b85-a1fe-fcf82222aed4",
       validator: (value) {
         final trimmedValue = value?.trim();
         // Địng dạng "xx mm/yyyy"
