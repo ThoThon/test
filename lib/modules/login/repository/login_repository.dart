@@ -57,15 +57,15 @@ class LoginRepository extends BaseRepository {
     return BaseResponse<int>.fromJson(response);
   }
 
-  Future<BaseResponse<CategoriesProcedure630a>> get630aCategories() async {
+  Future<BaseResponse<CategoriesProcedure630>> get630aCategories() async {
     final response = await baseCallApi(
-      AppApi.urlGet630aCategories,
+      AppApi.urlGet630Categories,
       EnumRequestMethod.get,
     );
 
-    return BaseResponse<CategoriesProcedure630a>.fromJson(
+    return BaseResponse<CategoriesProcedure630>.fromJson(
       response,
-      fromJson: (json) => CategoriesProcedure630a.fromJson(json),
+      fromJson: (json) => CategoriesProcedure630.fromJson(json),
     );
   }
 }
