@@ -173,7 +173,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Hình thức kê khai
   Widget _buildDeclareMethodDropdown() {
-    return FormFieldRegistrant(
+    return FormFieldRegistrant<DeclareForm630Model>(
       registrarId: 'c030669e-725e-4598-b1e8-14083c9b32de',
       validator: (value) {
         if (value == null) {
