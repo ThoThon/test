@@ -556,6 +556,7 @@
     "numberChild": "Số con",
     "numberChildHint": "Nhập số con",
     "numberChildEmpty": "Số con không được bỏ trống",
+    "numberChildInvalid":"Số con không hợp lệ",
     "bhytCardCode": "Mã thẻ BHYT của con",
     "bhytCardCodeHint": "Nhập mã thẻ BHYT của con",
     "bhytCardCodeEmpty": "Mã thẻ BHYT của con không được bỏ trống",
