@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:get/get.dart';
-import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';

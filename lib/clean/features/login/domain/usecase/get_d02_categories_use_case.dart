@@ -1,4 +1,4 @@
-import 'package:v_bhxh/clean/core/domain/entity/d02_categories_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/d02_categories_cl.dart';
 import 'package:v_bhxh/clean/core/domain/usecase/base_use_case.dart';
 import 'package:v_bhxh/clean/features/login/domain/repository/login_repository.dart';
 

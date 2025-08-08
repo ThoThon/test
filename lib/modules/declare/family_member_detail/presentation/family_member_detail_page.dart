@@ -1,6 +1,6 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/base_get_page.dart';
 import 'package:v_bhxh/modules/declare/declare_info/clean/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/clean/presentation/presentation_src.dart';

@@ -1,4 +1,5 @@
-import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 
 class SelectDistrictArgument implements Entity {
   final String provinceCode;

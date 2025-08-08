@@ -61,7 +61,7 @@ mixin GetPageMixin<T extends BaseGetClController> on GetView<T> {
                             color: Colors.transparent,
                           ),
                         ),
-                        // Cái overlay này sẽ không chặn sự kiện tap, tức là chỉ hiển thị thôi,
+                        // Cái overlay này sẽ không chặn sự kiện tap, tức là chỉ hiển thị,
                         // user vẫn bấm được vào cá widget bên dưới nó bình thường, cái Container bên trên mới là cái chặn sự kiện tap
                         IgnorePointer(
                           ignoring: true,

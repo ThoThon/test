@@ -1,4 +1,5 @@
-import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
 

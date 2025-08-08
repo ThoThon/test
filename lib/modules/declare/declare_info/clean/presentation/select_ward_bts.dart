@@ -1,5 +1,5 @@
 import 'package:tiengviet/tiengviet.dart';
-import 'package:v_bhxh/clean/core/domain/entity/entity_src.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/core/presentation/bindings/base_bindings_factory.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/base_get_bts_dialog.dart';
 import 'package:v_bhxh/modules/declare/declare_info/clean/presentation/binding/select_ward_binding.dart';

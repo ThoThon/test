@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:v_bhxh/clean/core/domain/entity/account_info.dart';
-import 'package:v_bhxh/clean/core/domain/entity/d02_categories_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/account_info.dart';
+import 'package:v_bhxh/clean/shared/entity/d02_categories_cl.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';

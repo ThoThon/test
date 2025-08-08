@@ -1,8 +1,10 @@
 import 'package:v_bhxh/env/env_dev.dart';
 import 'package:v_bhxh/env/env_prod.dart';
+import 'package:v_bhxh/env/env_uat.dart';
 
 enum AppEnv {
   dev,
+  uat,
   prod;
 }
 
@@ -21,6 +23,14 @@ class EnvConfigDev extends EnvConfig {
       : super(
           baseUrl: EnvDev.baseUrl,
           env: AppEnv.dev,
+        );
+}
+
+class EnvConfigUat extends EnvConfig {
+  EnvConfigUat()
+      : super(
+          baseUrl: EnvUat.baseUrl,
+          env: AppEnv.uat,
         );
 }
 

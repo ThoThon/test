@@ -6,9 +6,8 @@ import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
-import 'package:v_bhxh/clean/shared/utils/app_info.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
-import 'package:v_bhxh/shares/mapper/mapper_src.dart';
+import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 
 import 'base_bindings.dart';
 
@@ -48,6 +47,7 @@ class AppBinding extends BaseBindings {
     Get.put<EnvConfig>(
       switch (env) {
         AppEnv.dev => EnvConfigDev(),
+        AppEnv.uat => EnvConfigUat(),
         AppEnv.prod => EnvConfigProd(),
       },
       permanent: true,

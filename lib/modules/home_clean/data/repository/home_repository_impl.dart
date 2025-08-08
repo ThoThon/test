@@ -1,4 +1,4 @@
-import 'package:v_bhxh/clean/core/data/model/base/base_response_cl.dart';
+import 'package:v_bhxh/clean/core/data/model/base_response_cl.dart';
 import 'package:v_bhxh/modules/home_clean/domain/repository/home_repository.dart';
 import 'package:v_bhxh/modules/src.dart';
 
