@@ -5,7 +5,7 @@ import '../../../base_app/base_app.src.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';
 import '../../src.dart';
 
-abstract class DeclareInfo630bController extends BaseGetxController {
+class DeclareInfo630bController extends BaseGetxController {
   /// id 630b dùng khi update
   String? id;
 
@@ -165,5 +165,4 @@ abstract class DeclareInfo630bController extends BaseGetxController {
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   final DeclareInfoArgument argument = Get.arguments;
-
 }

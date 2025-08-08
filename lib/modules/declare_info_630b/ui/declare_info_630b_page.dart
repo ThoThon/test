@@ -16,9 +16,9 @@ class DeclareInfo630bPage extends BaseGetWidget {
   DeclareInfo630bPage({super.key});
 
   @override
-  DeclareInfo630bControllerImp get controller => _controller;
+  DeclareInfo630bController get controller => _controller;
 
-  late final _controller = Get.put(DeclareInfo630bControllerImp());
+  late final _controller = Get.put(DeclareInfo630bController());
 
   @override
   Widget buildWidgets(BuildContext context) {

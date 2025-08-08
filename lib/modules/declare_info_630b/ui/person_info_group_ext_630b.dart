@@ -61,7 +61,7 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
   // Họ và tên
   Widget _buildInputFullName() {
     return FormFieldRegistrant<String>(
-      registrarId: "",
+      registrarId: "3dda4da1-e850-495c-8b81-8528161fde19",
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -87,7 +87,7 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
   // Mã số BHXH
   Widget _buildInputBHXHCode() {
     return FormFieldRegistrant<String>(
-      registrarId: "",
+      registrarId: "534c14fb-b120-4e7c-a85d-d304b1c223f7",
       validator: (value) {
         final trimmedValue = value?.trim();
 

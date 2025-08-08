@@ -69,7 +69,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
   // Hình thức nhận
   Widget _buildReceiveMethodDropDown() {
     return FormFieldRegistrant<ReceiveFormModel>(
-      registrarId: '',
+      registrarId: '7ab4d569-2ae6-4e79-ab4a-9cb7287595b2',
       validator: (value) {
         if (value == null) {
           return LocaleKeys.declareInfo_receiveMethodEmpty.tr;
@@ -142,7 +142,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
       () {
         if (controller.isATMpayment) {
           return FormFieldRegistrant<String>(
-            registrarId: "",
+            registrarId: "d7e1b39e-ca34-4447-bc50-e1d5b1f784e3",
             validator: (value) {
               final trimmedValue = value?.trim();
 
@@ -178,7 +178,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
       () {
         if (controller.isATMpayment) {
           return FormFieldRegistrant(
-            registrarId: '',
+            registrarId: '1838b9f6-8e6c-40ff-8aa1-1884312fb5b3',
             validator: (value) {
               return null;
             },
@@ -231,7 +231,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
   // Đợt đã giải quyết
   Widget _buildInputResolvedPeriod() {
     return FormFieldRegistrant<String>(
-      registrarId: "",
+      registrarId: "5a068727-dc58-4dc7-a096-00cef42126d6",
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -273,95 +273,81 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
 
   // Ngày đã giải quyết
   Widget _buildResolvedDate() {
-    return FormFieldRegistrant<String>(
-      registrarId: '',
-      validator: (value) {
-        final trimmedValue = value?.trim();
+    return Obx(
+      () => CardInputSelectDateWithLabel(
+        autovalidateMode: controller.autoValidateMode.value,
+        labelText: LocaleKeys.declareInfo_resolvedDate.tr,
+        inputFormatters: InputFormatterEnum.dateFullBirthDay,
+        controller: TextEditingController(),
+        hintText: PATTERN_1,
+        onSelectDate: () async {
+          KeyBoard.hide();
+          final selectedDate = await DatePickerUtils.showCalendarPicker(
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+            title: LocaleKeys.dialog_selectDayMonthYear.tr,
+            dateFormat: PATTERN_1,
+            dateTimeInit: convertStringToDateStrict(
+                  controller.resolvedDateCtrl.text,
+                  PATTERN_1,
+                ) ??
+                DateTime.now(),
+          );
+          if (selectedDate != null) {}
+        },
+        isRequired: false,
+        validator: (value) {
+          final trimmedValue = value?.trim();
 
-        // Nếu bắt buộc và không nhập thì báo lỗi
-        if ((trimmedValue == null || trimmedValue.isEmpty)) {
-          return LocaleKeys.declareInfo_resolvedDateEmpty.tr;
-        }
+          // Nếu bắt buộc và không nhập thì báo lỗi
+          if ((trimmedValue == null || trimmedValue.isEmpty)) {
+            return LocaleKeys.declareInfo_resolvedDateEmpty.tr;
+          }
 
-        // Kiểm tra độ dài chuỗi (/ddMM/yyyy = 10 ký tự)
-        if (trimmedValue.length < 10) {
-          return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
-        }
+          // Kiểm tra độ dài chuỗi (/ddMM/yyyy = 10 ký tự)
+          if (trimmedValue.length < 10) {
+            return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
+          }
 
-        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-        if (toDate == null) {
-          return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
-        }
-        if (toDate.isAfter(DateTime.now())) {
-          return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
-        }
+          final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
+          if (toDate == null) {
+            return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
+          }
+          if (toDate.isAfter(DateTime.now())) {
+            return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
+          }
 
-        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (toDate.year <= 1900 || toDate.year >= 2100) {
-          return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
-        }
+          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+          if (toDate.year <= 1900 || toDate.year >= 2100) {
+            return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
+          }
 
-        return null;
-      },
-      builder: (fieldKey, validator) {
-        return Obx(
-          () => CardInputSelectDateWithLabel(
-            fieldKey: fieldKey,
-            validator: validator,
-            autovalidateMode: controller.autoValidateMode.value,
-            labelText: LocaleKeys.declareInfo_resolvedDate.tr,
-            inputFormatters: InputFormatterEnum.dateFullBirthDay,
-            controller: TextEditingController(),
-            hintText: PATTERN_1,
-            onSelectDate: () async {
-              KeyBoard.hide();
-              final selectedDate = await DatePickerUtils.showCalendarPicker(
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
-                title: LocaleKeys.dialog_selectDayMonthYear.tr,
-                dateFormat: PATTERN_1,
-                dateTimeInit: convertStringToDateStrict(
-                      controller.resolvedDateCtrl.text,
-                      PATTERN_1,
-                    ) ??
-                    DateTime.now(),
-              );
-              if (selectedDate != null) {}
-            },
-            isRequired: false,
-          ),
-        );
-      },
+          return null;
+        },
+      ),
     );
   }
 
   // Lý do điều chỉnh
   Widget _buildInputAdjustReason() {
-    return FormFieldRegistrant<String>(
-      registrarId: "",
-      validator: (value) {
-        final trimmedValue = value?.trim();
+    return Obx(
+      () => CardInputTextFormWithLabel(
+        autovalidateMode: controller.autoValidateMode.value,
+        isRequired: false,
+        hintText: LocaleKeys.declareInfo_adjustReasonHint.tr,
+        labelText: LocaleKeys.declareInfo_adjustReason.tr,
+        maxLengthInputForm: 2000,
+        controller: controller.adjustReasonCtrl,
+        validator: (value) {
+          final trimmedValue = value?.trim();
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
-          return LocaleKeys.declareInfo_adjustReasonEmpty.tr;
-        }
+          if (trimmedValue == null || trimmedValue.isEmpty) {
+            return LocaleKeys.declareInfo_adjustReasonEmpty.tr;
+          }
 
-        return null;
-      },
-      builder: (fieldKey, validator) {
-        return Obx(
-          () => CardInputTextFormWithLabel(
-            fieldKey: fieldKey,
-            validator: validator,
-            autovalidateMode: controller.autoValidateMode.value,
-            isRequired: false,
-            hintText: LocaleKeys.declareInfo_adjustReasonHint.tr,
-            labelText: LocaleKeys.declareInfo_adjustReason.tr,
-            maxLengthInputForm: 2000,
-            controller: controller.adjustReasonCtrl,
-          ),
-        );
-      },
+          return null;
+        },
+      ),
     );
   }
 }

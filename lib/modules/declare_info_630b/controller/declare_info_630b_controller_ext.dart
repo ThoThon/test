@@ -4,7 +4,7 @@ import '../../declare/staff_list/model/staff_list_argument.dart';
 import '../../login/model/categories_630/categories_630_src.dart';
 import '../../src.dart';
 
-class DeclareInfo630bControllerImp extends DeclareInfo630bController {
+extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   Future<void> add630b() async {
     try {
       showLoadingOverlay();
