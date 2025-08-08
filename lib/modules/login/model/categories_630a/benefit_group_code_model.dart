@@ -1,17 +1,19 @@
 import 'package:equatable/equatable.dart';
 
-/// Điều kiện sinh con
-class ChildBirthConditionModel extends Equatable {
+const benefitGroupSickChildValue = 'O2';
+
+/// Mã nhóm hưởng
+class BenefitGroup630aModel extends Equatable {
   final String value;
   final String text;
 
-  const ChildBirthConditionModel({
+  const BenefitGroup630aModel({
     required this.value,
     required this.text,
   });
 
-  factory ChildBirthConditionModel.fromJson(Map<String, dynamic> json) {
-    return ChildBirthConditionModel(
+  factory BenefitGroup630aModel.fromJson(Map<String, dynamic> json) {
+    return BenefitGroup630aModel(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

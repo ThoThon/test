@@ -28,7 +28,7 @@ class DeclareInfo630aResponse {
   final String hinhThucNhan;
   final String soTaiKhoan;
   final String tenChuTaiKhoan;
-  final BankModel? nganHang;
+  final Bank630aModel? nganHang;
   final String ghiChu;
   final String dotDaGiaiQuyet;
   final DateTime? tuNgayDuyetTruoc;
@@ -102,7 +102,7 @@ class DeclareInfo630aResponse {
       soTaiKhoan: json['soTaiKhoan'] ?? '',
       tenChuTaiKhoan: json['tenChuTaiKhoan'] ?? '',
       nganHang: json['nganHang'] != null
-          ? BankModel.fromJson(json['nganHang'])
+          ? Bank630aModel.fromJson(json['nganHang'])
           : null,
       ghiChu: json['ghiChu'] ?? '',
       dotDaGiaiQuyet: json['dotDaGiaiQuyet'] ?? '',

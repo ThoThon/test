@@ -70,15 +70,12 @@ class CardInputTextFormWithLabel extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Flexible(
-                      child: SDSBuildText(
-                        labelText,
-                        overflow: TextOverflow.ellipsis,
-                        style: textStyle ??
-                            AppTextStyle.font14Re.copyWith(
-                              color: AppColors.dsGray1,
-                            ),
-                      ),
+                    SDSBuildText(
+                      labelText,
+                      style: textStyle ??
+                          AppTextStyle.font14Re.copyWith(
+                            color: AppColors.dsGray1,
+                          ),
                     ),
                     Visibility(
                       visible: isRequired,

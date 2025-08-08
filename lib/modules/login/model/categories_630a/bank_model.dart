@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 /// Ngân hàng
-class BankModel extends Equatable {
+class Bank630aModel extends Equatable {
   final int id;
 
   /// Mã tỉnh
@@ -13,15 +13,15 @@ class BankModel extends Equatable {
   /// Tên ngân hàng
   final String name;
 
-  const BankModel({
+  const Bank630aModel({
     required this.id,
     required this.provinceCoe,
     required this.code,
     required this.name,
   });
 
-  factory BankModel.fromJson(Map<String, dynamic> json) {
-    return BankModel(
+  factory Bank630aModel.fromJson(Map<String, dynamic> json) {
+    return Bank630aModel(
       id: json["id"] ?? "",
       provinceCoe: json["maTinh"] ?? "",
       code: json["maNganHang"] ?? "",

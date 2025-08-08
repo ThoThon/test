@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 
-/// Nghỉ chăm con
-class ParentalLeaveModel extends Equatable {
+/// Điều kiện làm việc
+class WorkCondition630aModel extends Equatable {
   final String value;
   final String text;
 
-  const ParentalLeaveModel({
+  const WorkCondition630aModel({
     required this.value,
     required this.text,
   });
 
-  factory ParentalLeaveModel.fromJson(Map<String, dynamic> json) {
-    return ParentalLeaveModel(
+  factory WorkCondition630aModel.fromJson(Map<String, dynamic> json) {
+    return WorkCondition630aModel(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

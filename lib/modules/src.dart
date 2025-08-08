@@ -21,4 +21,3 @@ export 'register_service/register_service_src.dart';
 export 'forgot_password/forgot_password.src.dart';
 export 'declare_info_630a/declare_info_630a_src.dart';
 export 'other_info/other_info_src.dart';
-export 'declare_info_630b/declare_info_630b_src.dart';
