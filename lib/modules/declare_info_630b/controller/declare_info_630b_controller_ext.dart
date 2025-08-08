@@ -6,6 +6,20 @@ import '../../login/model/categories_630/categories_630_src.dart';
 import '../../src.dart';
 
 extension DeclareInfo630bControllerExt on DeclareInfo630bController {
+  Future<void> saveDraft() async {
+    if (formKey.currentState?.validate() != true) {
+      autoValidateMode.value = AutovalidateMode.always;
+      // Scroll to the first invalid field
+      registeredKey.currentState?.firstInvalid?.scrollToIntoView();
+    } else {
+      if (argument.isUpdateStaff) {
+        // await _update630a();
+      } else {
+        await add630b();
+      }
+    }
+  }
+
   Future<void> add630b() async {
     try {
       showLoadingOverlay();

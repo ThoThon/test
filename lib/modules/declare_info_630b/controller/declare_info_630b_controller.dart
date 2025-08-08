@@ -167,4 +167,42 @@ class DeclareInfo630bController extends BaseGetxController {
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   final DeclareInfoArgument argument = Get.arguments;
+
+  @override
+  void onClose() {
+    fullNameTextCtrl.dispose();
+    bhxhTextCtrl.dispose();
+    cccdTextCtrl.dispose();
+    staffCodeTextCtrl.dispose();
+    fromDateCtrl.dispose();
+    toDateCtrl.dispose();
+    countDayTextCtrl.dispose();
+    fromDateUnitTextCtrl.dispose();
+    serialNumberCtrl.dispose();
+    pregnancyWeekCtrl.dispose();
+    birthDayChildCtrl.dispose();
+    numberChildCtrl.dispose();
+    bhxhCodeChildCtrl.dispose();
+    bhytCardCodeChildCtrl.dispose();
+    numberChildDeathCtrl.dispose();
+    childDeathDateCtrl.dispose();
+    adoptionDateCtrl.dispose();
+    returnWorkDateCtrl.dispose();
+    bhxhCodeMotherCtrl.dispose();
+    bhytCardMotherCtrl.dispose();
+    cccdMotherCtrl.dispose();
+    motherDeathDateCtrl.dispose();
+    conclusionDateCtrl.dispose();
+    medicalFeeCtrl.dispose();
+    guardianBhxhCtrl.dispose();
+    supplementalPeriodCtrl.dispose();
+    fileCodeTextCtrl.dispose();
+    noteTextCtrl.dispose();
+    bankNumberCtrl.dispose();
+    accountHolderNameCtrl.dispose();
+    resolvedPeriodCtrl.dispose();
+    resolvedDateCtrl.dispose();
+    adjustReasonCtrl.dispose();
+    super.onClose();
+  }
 }
