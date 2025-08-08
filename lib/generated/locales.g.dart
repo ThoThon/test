@@ -654,6 +654,8 @@ class LocaleKeys {
   static const declareInfo_numberChild = 'declareInfo_numberChild';
   static const declareInfo_numberChildHint = 'declareInfo_numberChildHint';
   static const declareInfo_numberChildEmpty = 'declareInfo_numberChildEmpty';
+  static const declareInfo_numberChildInvalid =
+      'declareInfo_numberChildInvalid';
   static const declareInfo_bhytCardCode = 'declareInfo_bhytCardCode';
   static const declareInfo_bhytCardCodeHint = 'declareInfo_bhytCardCodeHint';
   static const declareInfo_bhytCardCodeEmpty = 'declareInfo_bhytCardCodeEmpty';
@@ -1726,6 +1728,7 @@ class Locales {
     'declareInfo_numberChild': 'Số con',
     'declareInfo_numberChildHint': 'Nhập số con',
     'declareInfo_numberChildEmpty': 'Số con không được bỏ trống',
+    'declareInfo_numberChildInvalid': 'Số con không hợp lệ',
     'declareInfo_bhytCardCode': 'Mã thẻ BHYT của con',
     'declareInfo_bhytCardCodeHint': 'Nhập mã thẻ BHYT của con',
     'declareInfo_bhytCardCodeEmpty': 'Mã thẻ BHYT của con không được bỏ trống',
