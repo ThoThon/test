@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:v_bhxh/clean/shared/entity/account_info.dart';
 import 'package:v_bhxh/clean/shared/entity/d02_categories_cl.dart';
-import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
@@ -64,9 +63,6 @@ void main() {
         getUnreadNotificationCountUseCase,
       );
       controller.nav = navigator;
-      // Login controller có lưu dữ liệu vào AppController, nên cần khởi tạo AppController thật ở đây
-      // Nếu controller nào có cần đọc dữ liệu từ AppController thì cũng cần khởi tạo AppController thật
-      controller.appCtrl = AppController();
       controller.onOpen();
     },
   );

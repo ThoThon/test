@@ -1,23 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 
 class AppController extends BaseGetClController {
-  final accountInfo = Rxn<AccountInfo>();
-  final declarationTypes = <DeclarationType>{}.obs;
-  final ethnics = <Ethnic>{}.obs;
-  final nations = <Nation>{}.obs;
-  final provinces = <Province>{}.obs;
-  final relationships = <Relationship>{}.obs;
-  final positions = <Position>{}.obs;
-  final birthTypes = <BirthType>{}.obs;
-  final receiveResults = <ReceiveResult>{}.obs;
-
-  /// Số lượng thông báo chưa đọc
-  final totalUnread = 0.obs;
-
   @override
   void onInit() {
     super.onInit();

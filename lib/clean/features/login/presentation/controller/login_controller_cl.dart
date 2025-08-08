@@ -71,7 +71,7 @@ class LoginControllerCl extends BaseGetClController {
 
   Future<void> _getAccountInfo() async {
     final accountInfo = await _getAccountInfoUseCase.execute();
-    appCtrl.accountInfo.value = accountInfo;
+    AppData.instance.accountInfoCl.value = accountInfo;
     await _saveCompanyNameUseCase.execute(accountInfo.tenToChuc);
 
     // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
@@ -81,15 +81,15 @@ class LoginControllerCl extends BaseGetClController {
   Future<void> _getD02Categories() async {
     final d02Categories = await _getD02CategoriesUseCase.execute();
     // setter .value. của RxSet là protected nên sẽ sử dụng assignAll
-    appCtrl
-      ..declarationTypes.assignAll(d02Categories.declarationTypes)
-      ..ethnics.assignAll(d02Categories.ethnics)
-      ..nations.assignAll(d02Categories.nations)
-      ..provinces.assignAll(d02Categories.provinces)
-      ..relationships.assignAll(d02Categories.relationships)
-      ..positions.assignAll(d02Categories.positions)
-      ..birthTypes.assignAll(d02Categories.birthTypes)
-      ..receiveResults.assignAll(d02Categories.receiveResults);
+    AppData.instance
+      ..declarationTypesCl.assignAll(d02Categories.declarationTypes)
+      ..ethnicsCl.assignAll(d02Categories.ethnics)
+      ..nationsCl.assignAll(d02Categories.nations)
+      ..provincesCl.assignAll(d02Categories.provinces)
+      ..relationshipsCl.assignAll(d02Categories.relationships)
+      ..positionsCl.assignAll(d02Categories.positions)
+      ..birthTypesCl.assignAll(d02Categories.birthTypes)
+      ..receiveResultsCl.assignAll(d02Categories.receiveResults);
 
     // Gán các giá trị này cho AppData để đảm bảo tương thích ngược với code cũ
     // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
@@ -109,9 +109,6 @@ class LoginControllerCl extends BaseGetClController {
 
   Future<void> _getToTalNotiUnread() async {
     final totalUnread = await _getUnreadNotificationCountUseCase.execute();
-    appCtrl.totalUnread.value = totalUnread;
-
-    // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
     AppData.instance.totalUnread.value = totalUnread;
   }
 

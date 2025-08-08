@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
+import '../../clean/shared/entity/entity_src.dart';
 import '../../modules/src.dart';
 
 class AppData {
@@ -28,5 +29,17 @@ class AppData {
   var longDiease = <LongDiease630aModel>{};
 
   final Rx<AccountInfoModel?> accountInfoModel = Rx<AccountInfoModel?>(null);
+
+  /// Số lượng thông báo chưa đọc
   final totalUnread = 0.obs;
+
+  final accountInfoCl = Rxn<AccountInfo>();
+  final declarationTypesCl = <DeclarationType>{}.obs;
+  final ethnicsCl = <Ethnic>{}.obs;
+  final nationsCl = <Nation>{}.obs;
+  final provincesCl = <Province>{}.obs;
+  final relationshipsCl = <Relationship>{}.obs;
+  final positionsCl = <Position>{}.obs;
+  final birthTypesCl = <BirthType>{}.obs;
+  final receiveResultsCl = <ReceiveResult>{}.obs;
 }
