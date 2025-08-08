@@ -5,8 +5,8 @@ import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_response.dart
 import '../../../src.dart';
 import '../model/save_xml_result.dart';
 
-class StaffList630Repository extends BaseRepository {
-  StaffList630Repository(super.controller);
+class StaffList630aRepository extends BaseRepository {
+  StaffList630aRepository(super.controller);
 
   Future<BaseResponse<StaffListResponse>> getListStaff630a({
     required String declarationPeriodId,
@@ -24,7 +24,7 @@ class StaffList630Repository extends BaseRepository {
     );
   }
 
-  Future<BaseResponse<SaveXmlResult>> saveXml630a({
+  Future<BaseResponse<SaveXmlResult>> saveXml({
     required String declarationPeriodId,
   }) async {
     final response = await baseCallApi(
@@ -52,21 +52,5 @@ class StaffList630Repository extends BaseRepository {
       queryParameters: {'id': id},
     );
     return BaseResponse.fromJson(response);
-  }
-
-  Future<BaseResponse<StaffListResponse>> getListStaff630b({
-    required String declarationPeriodId,
-  }) async {
-    final response = await baseCallApi(
-      AppApi.urlGetListStaff630b,
-      EnumRequestMethod.get,
-      jsonMap: {
-        "kyKeKhaiId": declarationPeriodId,
-      },
-    );
-    return BaseResponse<StaffListResponse>.fromJson(
-      response,
-      fromJson: (json) => StaffListResponse.fromJson630b(json),
-    );
   }
 }

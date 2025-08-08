@@ -129,7 +129,6 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
               onTap: onTap,
               isDense: isDense,
               isExpanded: true,
-              itemHeight: null,
               padding: const EdgeInsets.only(
                 bottom: AppDimens.paddingVerySmall,
               ),
@@ -179,20 +178,17 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
                   .map(
                     (e) => DropdownMenuItem<T>(
                       value: e,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SDSBuildText(
-                            display(e),
-                            style: selectedItem == e
-                                ? AppTextStyle.font14Bo
-                                : AppTextStyle.font14Re,
-                            textAlign: TextAlign.start,
-                            maxLines: 3,
-                          ),
-                        
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: AppDimens.paddingVerySmall),
+                        child: SDSBuildText(
+                          display(e),
+                          style: selectedItem == e
+                              ? AppTextStyle.font14Bo
+                              : AppTextStyle.font14Re,
+                          textAlign: TextAlign.start,
+                          overflow: TextOverflow.visible,
+                        ),
                       ),
                     ),
                   )

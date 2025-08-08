@@ -97,7 +97,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
 
   // Hình thức kê khai
   Widget _buildDeclareMethodDropdown() {
-    return FormFieldRegistrant<DeclareForm630Model>(
+    return FormFieldRegistrant<DeclareForm630aModel>(
       registrarId: '1b6c5f61-7b44-418c-94c0-fde7a6e4b892',
       validator: (value) {
         if (value == null) {
@@ -107,7 +107,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<DeclareForm630Model>(
+          () => CardDropdownWithLabel<DeclareForm630aModel>(
             fieldKey: formFieldKey,
             labelText: LocaleKeys.declareInfo_declareMethod.tr,
             isRequired: true,
@@ -141,7 +141,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
             labelText: LocaleKeys.declareInfo_benefitGroupCode.tr,
             isRequired: true,
             hintText: LocaleKeys.declareInfo_selectBenefitGroupCode.tr,
-            items: AppData.instance.benefitGroup630a.toList(),
+            items: AppData.instance.benefitGroup.toList(),
             display: (item) => '${item.value} - ${item.text}',
             selectedItem: controller.benefitGroup.value,
             onChanged: controller.onChangeBenefitGroup,
@@ -528,31 +528,99 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
 
   // Nghỉ hàng tuần
   Widget _buildWeeklyDayOffDropdown() {
-    return Obx(
-      () {
-        final selectedText = controller.weeklyDayOffs.isEmpty
-            ? 'Chọn ngày nghỉ'
-            : controller.weeklyDayOffString;
-        return UtilWidget.buildWeeklyDayOffDropdown<WeeklyDayOffEnum>(
-          initialValue: controller.weeklyDayOffs,
-          items: WeeklyDayOffEnum.values
-              .map(
-                (item) => MultiSelectItem<WeeklyDayOffEnum>(
-                  item,
-                  item.title,
+    return Container(
+      padding: const EdgeInsets.only(
+        right: AppDimens.defaultPadding,
+        left: AppDimens.defaultPadding,
+        top: AppDimens.paddingVerySmall,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.colorWhite,
+        borderRadius: BorderRadius.circular(AppDimens.radius10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              SDSBuildText(
+                'Ngày nghỉ tuần',
+                style: AppTextStyle.font14Re.copyWith(
+                  color: AppColors.dsGray1,
                 ),
-              )
-              .toList(),
-          onConfirm: (values) {
-            controller.weeklyDayOffs.value = values;
-            KeyBoard.hide();
-          },
-          title: selectedText,
-          color: controller.weeklyDayOffs.isEmpty
-              ? AppColors.dsGray3
-              : AppColors.colorBlack,
-        );
-      },
+              ),
+            ],
+          ),
+          Obx(
+            () {
+              final selectedText = controller.weeklyDayOffs.isEmpty
+                  ? 'Chọn ngày nghỉ'
+                  : controller.weeklyDayOffString;
+
+              return MultiSelectDialogField<WeeklyDayOffEnum>(
+                items: WeeklyDayOffEnum.values
+                    .map(
+                      (item) => MultiSelectItem<WeeklyDayOffEnum>(
+                        item,
+                        item.title,
+                      ),
+                    )
+                    .toList(),
+                title: SDSBuildText(
+                  "Chọn ngày nghỉ trong tuần",
+                  style: AppTextStyle.font18Re,
+                ),
+                listType: MultiSelectListType.LIST,
+                backgroundColor: AppColors.basicWhite,
+                buttonIcon: SDSImageSvg(
+                  Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
+                  height: AppDimens.sizeIconMedium,
+                  width: AppDimens.sizeIconMedium,
+                ),
+                buttonText: Expanded(
+                  child: SDSBuildText(
+                    maxLines: 3,
+                    selectedText,
+                    style: AppTextStyle.font14Re.copyWith(
+                      color: controller.weeklyDayOffs.isEmpty
+                          ? AppColors.dsGray3
+                          : AppColors.colorBlack,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  vertical: AppDimens.paddingVerySmall,
+                ),
+                decoration: const BoxDecoration(border: Border()),
+                isDismissible: false,
+                onConfirm: (values) {
+                  controller.weeklyDayOffs.value = values;
+                  KeyBoard.hide();
+                },
+                confirmText: SDSBuildText(
+                  LocaleKeys.dialog_select.tr,
+                  style: AppTextStyle.font14Bo
+                      .copyWith(color: AppColors.primaryColor),
+                ),
+                cancelText: GestureDetector(
+                  onTap: () {
+                    Get.back();
+                    KeyBoard.hide();
+                  },
+                  child: SDSBuildText(
+                    LocaleKeys.dialog_cancel.tr,
+                    style: AppTextStyle.font14Bo
+                        .copyWith(color: AppColors.textColorGrey),
+                  ),
+                ),
+                initialValue: controller.weeklyDayOffs,
+                chipDisplay: MultiSelectChipDisplay.none(),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -564,14 +632,14 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return const SizedBox.shrink();
         }
         return Obx(
-          () => UtilWidget.buildCardBottomSheetSelect2<HospitalLineModel>(
+          () => UtilWidget.buildCardBottomSheetSelect2<HospitalLine630aModel>(
             label: LocaleKeys.declareInfo_hospitalLine.tr,
             hintText: LocaleKeys.declareInfo_hospitalLineSelect.tr,
             enableClearIcon: true,
             isRequired: false,
             funcSelect: (didChange) async {
               Get.bottomSheet(
-                BottomSheetSearch<HospitalLineModel>(
+                BottomSheetSearch<HospitalLine630aModel>(
                   title: LocaleKeys.declareInfo_hospitalLineSelect.tr,
                   maxLength: 50,
                   hintText: LocaleKeys.declareInfo_inputHospitalLine.tr,
@@ -606,14 +674,14 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return const SizedBox.shrink();
         }
         return Obx(
-          () => UtilWidget.buildCardBottomSheetSelect2<LongDieaseModel>(
+          () => UtilWidget.buildCardBottomSheetSelect2<LongDiease630aModel>(
             label: LocaleKeys.declareInfo_diseaseCode.tr,
             hintText: LocaleKeys.declareInfo_selectDiseaseCode.tr,
             isRequired: false,
             enableClearIcon: true,
             funcSelect: (didChange) async {
               Get.bottomSheet(
-                BottomSheetSearch<LongDieaseModel>(
+                BottomSheetSearch<LongDiease630aModel>(
                   title: LocaleKeys.declareInfo_selectDiseaseCode.tr,
                   maxLength: 50,
                   hintText: LocaleKeys.declareInfo_inputDiseaseCode.tr,
@@ -682,7 +750,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return const SizedBox.shrink();
         }
         return Obx(
-          () => CardDropdownWithLabel<WorkConditionModel>(
+          () => CardDropdownWithLabel<WorkCondition630aModel>(
             labelText: LocaleKeys.declareInfo_workingCondition.tr,
             hintText: LocaleKeys.declareInfo_workingConditionHint.tr,
             items: AppData.instance.workCondition.toList(),

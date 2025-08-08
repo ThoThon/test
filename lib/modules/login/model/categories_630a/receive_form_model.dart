@@ -1,17 +1,19 @@
 import 'package:equatable/equatable.dart';
 
-/// Mã nhóm hưởng 630b
-class BenefitGroup630bModel extends Equatable {
+const ATMPaymentValue = 'ATM';
+
+/// Hình thức nhận
+class ReceiveForm630aModel extends Equatable {
   final String value;
   final String text;
 
-  const BenefitGroup630bModel({
+  const ReceiveForm630aModel({
     required this.value,
     required this.text,
   });
 
-  factory BenefitGroup630bModel.fromJson(Map<String, dynamic> json) {
-    return BenefitGroup630bModel(
+  factory ReceiveForm630aModel.fromJson(Map<String, dynamic> json) {
+    return ReceiveForm630aModel(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );
