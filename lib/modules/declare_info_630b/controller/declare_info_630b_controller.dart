@@ -33,6 +33,8 @@ class DeclareInfo630bController extends BaseGetxController {
   /// Mã nhóm hưởng cấp 2
   final benefitGroupLv2 = Rxn<BenefitGroupLv2Model>();
 
+  final filteredBenefitGroupLv2 = <BenefitGroupLv2Model>[].obs;
+
   /// Từ ngày *
   final fromDateCtrl = TextEditingController();
 

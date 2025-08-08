@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/declare_info_630b/model/declare_info_630b_request.dart';
 
+import '../../../base_app/model/app_data.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
 import '../../login/model/categories_630/categories_630_src.dart';
 import '../../src.dart';
@@ -106,4 +107,17 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   // REF: BHW-2969
   bool get isRequiredConclusionDate =>
       benefitGroupLv2.value?.maNhomHuongC2 == 'T44';
+
+  void onChangeBenefitGroup(BenefitGroup630bModel? method) {
+    if (method == null) {
+      return;
+    }
+    benefitGroup.value = method;
+    benefitGroupLv2.value = null;
+    filteredBenefitGroupLv2.assignAll(
+      AppData.instance.benefitGroupLv2
+          .where((item) => item.maNhomHuong == benefitGroup.value?.value)
+          .toList(),
+    );
+  }
 }

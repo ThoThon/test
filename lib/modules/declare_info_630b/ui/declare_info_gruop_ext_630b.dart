@@ -222,10 +222,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
             items: AppData.instance.benefitGroup630b.toList(),
             display: (item) => '${item.value} - ${item.text}',
             selectedItem: controller.benefitGroup.value,
-            onChanged: (value) {
-              if (value == null) return;
-              controller.benefitGroup.value = value;
-            },
+            onChanged: controller.onChangeBenefitGroup,
           ),
         );
       },
@@ -250,7 +247,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
             labelText: 'Mã nhóm hưởng cấp 2',
             isRequired: true,
             hintText: 'Chọn mã nhóm hưởng cấp 2',
-            items: AppData.instance.benefitGroupLv2.toList(),
+            items: controller.filteredBenefitGroupLv2,
             display: (item) => '${item.maNhomHuongC2} - ${item.tenNhomHuongC2}',
             selectedItem: controller.benefitGroupLv2.value,
             onChanged: (value) {
