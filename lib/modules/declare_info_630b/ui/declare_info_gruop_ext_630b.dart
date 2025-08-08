@@ -1013,7 +1013,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         inputFormatters: InputFormatterEnum.dateFullBirthDay,
         controller: controller.conclusionDateCtrl,
         hintText: PATTERN_1,
-        isRequired: false,
+        isRequired: controller.isRequiredConclusionDate,
         onSelectDate: () async {
           KeyBoard.hide();
           final selectedDate = await DatePickerUtils.showCalendarPicker(
@@ -1035,8 +1035,9 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         validator: (value) {
           final trimmedValue = value?.trim();
 
-          if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return '';
+          if ((trimmedValue == null ||
+              trimmedValue.isEmpty && controller.isRequiredConclusionDate)) {
+            return 'Ngày kết luận không được bỏ trống';
           }
           // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
           if (trimmedValue.length < 10) {

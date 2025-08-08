@@ -102,4 +102,8 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   bool get isATMpayment {
     return receiveForm.value?.value == ATMPaymentValue;
   }
+
+  // REF: BHW-2969
+  bool get isRequiredConclusionDate =>
+      benefitGroupLv2.value?.maNhomHuongC2 == 'T44';
 }
