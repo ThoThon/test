@@ -7,13 +7,13 @@ import '../../src.dart';
 class OtherInfoRepository extends BaseRepository {
   OtherInfoRepository(super.controller);
 
-  Future<BaseResponse> addOtherInfo(OtherInfoModel request) async {
+  Future<AddOtherInfoResponse> addOtherInfo(OtherInfoModel request) async {
     final response = await baseCallApi(
       AppApi.urlAddMs,
       EnumRequestMethod.post,
       jsonMap: request.toJson(),
     );
-    return BaseResponse.fromJson(response);
+    return AddOtherInfoResponse.fromJson(response);
   }
 
   Future<BaseResponse> updateOtherInfo(OtherInfoModel request) async {
