@@ -11,6 +11,7 @@ class Nation extends Equatable implements Entity {
     required this.text,
   });
 
+  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
   factory Nation.fromJson(Map<String, dynamic> json) {
     return Nation(
       value: json['value'] ?? '',

@@ -2,7 +2,7 @@ import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/modules/info_unit/models/update_account_info_request.dart';
 import 'package:v_bhxh/modules/src.dart';
 
-import '../../../clean/shared/entity/account_info_model.dart';
+import '../../../clean/shared/entity/account_info.dart';
 
 class UnitInfoRepository extends BaseRepository {
   UnitInfoRepository(super.controller);

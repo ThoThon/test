@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
-import 'package:v_bhxh/clean/shared/entity/declaration_type_model.dart';
+import 'package:v_bhxh/clean/shared/entity/declaration_type.dart';
 
 class AdjustmentPlan extends Equatable implements Entity {
   final String id;
@@ -11,6 +11,7 @@ class AdjustmentPlan extends Equatable implements Entity {
     required this.name,
   });
 
+  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
   factory AdjustmentPlan.fromJson(Map<String, dynamic> json) {
     return AdjustmentPlan(
       id: json['maPhuongAn'] ?? '',

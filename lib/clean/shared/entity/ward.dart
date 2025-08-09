@@ -14,6 +14,7 @@ class Ward extends Equatable implements Entity {
     required this.name,
   });
 
+  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
   factory Ward.fromJson(Map<String, dynamic> json) {
     return Ward(
       id: json['maXa'] ?? '',

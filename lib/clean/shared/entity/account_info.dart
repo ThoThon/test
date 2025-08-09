@@ -55,6 +55,7 @@ class AccountInfo implements Entity {
     required this.maVung,
   });
 
+  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
   factory AccountInfo.fromJson(Map<String, dynamic> json) {
     return AccountInfo(
       toChucId: json['to_chuc_id'] ?? '',

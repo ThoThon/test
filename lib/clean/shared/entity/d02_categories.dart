@@ -23,6 +23,7 @@ class D02Categories implements Entity {
     required this.receiveResults,
   });
 
+  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
   factory D02Categories.fromJson(Map<String, dynamic> json) {
     return D02Categories(
       declarationTypes: (json['loaiKeKhai'] as List?)

@@ -10,6 +10,7 @@ class Relationship extends Equatable implements Entity {
     required this.text,
   });
 
+  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
   factory Relationship.fromJson(Map<String, dynamic> json) {
     return Relationship(
       value: json['value'] ?? '',

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
-import 'adjustment_plan_model.dart';
+import 'adjustment_plan.dart';
 
 /// Loại kê khai
 class DeclarationType extends Equatable implements Entity {
@@ -15,6 +15,7 @@ class DeclarationType extends Equatable implements Entity {
     required this.plans,
   });
 
+  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
   factory DeclarationType.fromJson(Map<String, dynamic> json) {
     return DeclarationType(
       value: json['value'] ?? '',
