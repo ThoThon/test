@@ -13,14 +13,14 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       registeredKey.currentState?.firstInvalid?.scrollToIntoView();
     } else {
       if (argument.isUpdateStaff) {
-        // await _update630a();
+        await _update630b();
       } else {
-        await add630b();
+        await _add630b();
       }
     }
   }
 
-  Future<void> add630b() async {
+  Future<void> _add630b() async {
     try {
       showLoadingOverlay();
       final response = await repository.addProcedure630b(_buildRequest());
@@ -34,7 +34,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
             AppRoutes.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
-              procedureType: ProcedureType.procedure630a,
+              procedureType: ProcedureType.procedure630b,
             ),
           )?.then((value) {
             declarationPeriodController?.getDeclarationPeriods();
@@ -102,6 +102,11 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       soTaiKhoan: bankNumberCtrl.text,
       tenChuTaiKhoan: accountHolderNameCtrl.text,
       maNganHang: selectedBank.value?.code,
+      dotDaGiaiQuyet: resolvedPeriodCtrl.text,
+      tuNgayDuyetTruoc:
+          convertStringToDateSafe(resolvedDateCtrl.text, PATTERN_1),
+      lyDoDieuChinh: adjustReasonCtrl.text,
+      tuoiThai: int.tryParse(pregnancyWeekCtrl.text),
     );
   }
 
@@ -129,7 +134,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       final response = await repository.getDetail630b(id: staffId);
       final infoDetail = response.result;
       if (response.isSuccess && infoDetail != null) {
-        // mapFrom630bDetail(infoDetail);
+        mapFrom630bDetail(infoDetail);
       } else {
         showSnackBar(response.errorMessage);
       }
@@ -140,7 +145,38 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
   }
 
-  void mmapFrom630bDetail(DeclareInfo630bResponse detail) {
+  Future<void> _update630b() async {
+    try {
+      // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
+      // => Chặn việc cập nhật
+      if (id == null) {
+        showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
+        return;
+      }
+
+      showLoadingOverlay();
+
+      final response = await repository.update630b(_buildRequest());
+
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        Get.back(
+          result: argument.declarationPeriodId,
+        );
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  void mapFrom630bDetail(DeclareInfo630bResponse detail) {
     id = detail.id;
 
     // Họ và tên
@@ -207,10 +243,17 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     pregnancyCondition.value = AppData.instance.pregnancyCondition
         .firstWhereOrNull((item) => item.value == detail.dieuKienKhamThai);
     // Tuổi thai
+    if (detail.tuoiThai != null) {
+      pregnancyWeekCtrl.text = detail.tuoiThai.toString();
+    }
 
     // Biện pháp tránh thai
     contraception.value = AppData.instance.contraception
-        .firstWhereOrNull((item) => item.value == detail.bienPhapKhhgd);
+        .firstWhereOrNull((item) => item.value == detail.bienPhapKHHGD);
+
+    // Điều kiện sinh con
+    childbirthCondition.value = AppData.instance.childBirthCondition
+        .firstWhereOrNull((item) => item.value == detail.dieuKienSinhCon);
 
     // Ngày sinh con
     birthDayChildCtrl.text =
@@ -220,9 +263,10 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     numberChildCtrl.text = detail.soCon.toString();
 
     // Mã số BHXH của con
-    if (detail.maSoBhxhcuaCon != null) {
-      bhxhCodeChildCtrl.text = detail.maSoBhxhcuaCon!.trim();
+    if (detail.maSoBHXHCuaCon != null) {
+      bhxhCodeChildCtrl.text = detail.maSoBHXHCuaCon!.trim();
     }
+
     // Mã thẻ BHYT của con
     if (detail.theBhytCuaCon != null) {
       bhytCardCodeChildCtrl.text = detail.theBhytCuaCon!.trim();
@@ -246,35 +290,40 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
         convertDateToStringSafe(detail.ngayDiLamThucTe, PATTERN_1) ?? '';
 
     // Mã số BHXH của mẹ
-    if (detail.maSoBhxhcuaMe != null) {
-      bhxhCodeMotherCtrl.text = detail.maSoBhxhcuaMe!.trim();
+    if (detail.maSoBHXHCuaMe != null) {
+      bhxhCodeMotherCtrl.text = detail.maSoBHXHCuaMe!.trim();
     }
 
     // Mã số BHYT của mẹ
-    if (detail.theBhytCuaMe != null) {
-      bhytCardMotherCtrl.text = detail.theBhytCuaMe!.trim();
+    if (detail.theBHYTCuaMe != null) {
+      bhytCardMotherCtrl.text = detail.theBHYTCuaMe!.trim();
     }
 
     // Số CMND của mẹ
-    if (detail.soCmndCuaMe != null) {
-      cccdMotherCtrl.text = detail.soCmndCuaMe!.trim();
+    if (detail.soCMNDCuaMe != null) {
+      cccdMotherCtrl.text = detail.soCMNDCuaMe!.trim();
     }
 
     // Phẫu thuật hoặc thai dưới 32 tuần
     surgeryOrUnder32Week.value = AppData.instance.surgeryPregnancy32w
         .firstWhereOrNull((item) => item.value == detail.phauThuatThai32);
+
     // Ngày mẹ chết
     motherDeathDateCtrl.text =
         convertDateToStringSafe(detail.ngayMeChet, PATTERN_1) ?? '';
+
     // Ngày kết luận
     conclusionDateCtrl.text =
         convertDateToStringSafe(detail.ngayKetLuan, PATTERN_1) ?? '';
+
     // Phí giám định y khoa
     medicalFeeCtrl.text = detail.phiGiamDinhYKhoa.toString();
+
     // Số BHXH của người nuôi dưỡng (TH mẹ chết)
-    if (detail.soBhxhnnd != null) {
-      guardianBhxhCtrl.text = detail.soBhxhnnd!.trim();
+    if (detail.soBHXHNND != null) {
+      guardianBhxhCtrl.text = detail.soBHXHNND!.trim();
     }
+
     // Nghỉ dưỡng thai
     maternityRest.value = AppData.instance.maternityLeave
         .firstWhereOrNull((item) => item.value == detail.nghiDuongThai);
@@ -282,38 +331,52 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     // Nghỉ chăm con
     parentalLeave.value = AppData.instance.parentalLeave
         .firstWhereOrNull((item) => item.value == detail.chaNghiChamCon);
+
     // Mang thai hộ
     surrogacy.value = AppData.instance.surrogacy.firstWhereOrNull(
       (item) => item.value == detail.mangThaiHo,
     );
-    // Đợt bổ sung+
+
+    // Đợt bổ sung
     if (detail.dotBoSung != null) {
       supplementalPeriodCtrl.text = detail.dotBoSung!.trim();
     }
+
     // Mã hồ sơ
     if (detail.maHoSo != null) {
       fileCodeTextCtrl.text = detail.maHoSo!.trim();
     }
+
     // Ghi chú
     if (detail.ghiChu != null) {
       noteTextCtrl.text = detail.ghiChu!.trim();
     }
+
     // Hình thức nhận
-    receiveForm.value ==
-        AppData.instance.receiveForm.firstWhereOrNull(
-          (item) => item.value == detail.hinhThucNhan,
-        );
+    receiveForm.value = AppData.instance.receiveForm
+        .firstWhereOrNull((item) => item.value == detail.hinhThucNhan);
+
     // Số tài khoản ngân hàng
     selectedBank.value = AppData.instance.bank
         .firstWhereOrNull((item) => item == detail.nganHang);
+
     // Tên chủ tài khoản
     if (detail.tenChuTaiKhoan != null) {
       accountHolderNameCtrl.text = detail.tenChuTaiKhoan!.trim();
     }
+
     // Đợt đã giải quyết
+    if (detail.dotDaGiaiQuyet != null) {
+      resolvedPeriodCtrl.text = detail.dotDaGiaiQuyet!.trim();
+    }
 
     // Ngày đã giải quyết
+    resolvedDateCtrl.text =
+        convertDateToStringSafe(detail.tuNgayDuyetTruoc, PATTERN_1) ?? '';
 
     // Lý do điều chỉnh
+    if (detail.lyDoDieuChinh != null) {
+      adjustReasonCtrl.text = detail.lyDoDieuChinh!.trim();
+    }
   }
 }

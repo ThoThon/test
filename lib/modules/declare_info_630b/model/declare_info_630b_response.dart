@@ -23,20 +23,20 @@ class DeclareInfo630bResponse {
   final String? dieuKienSinhCon;
   final String? nghiDuongThai;
   final String? chaNghiChamCon;
-  final String? bienPhapKhhgd;
+  final String? bienPhapKHHGD;
   final DateTime? ngayNhanCon;
   final DateTime? ngayDiLamThucTe;
   final DateTime? ngayConChet;
   final DateTime? ngayMeChet;
   final String? mangThaiHo;
   final DateTime? ngayKetLuan;
-  final String? maSoBhxhcuaCon;
+  final String? maSoBHXHCuaCon;
   final String? theBhytCuaCon;
-  final String? maSoBhxhcuaMe;
-  final String? theBhytCuaMe;
-  final String? soCmndCuaMe;
+  final String? maSoBHXHCuaMe;
+  final String? theBHYTCuaMe;
+  final String? soCMNDCuaMe;
   final int? phiGiamDinhYKhoa;
-  final String? soBhxhnnd;
+  final String? soBHXHNND;
   final String? phauThuatThai32;
   final String? dotBoSung;
   final String? maHoSo;
@@ -45,6 +45,10 @@ class DeclareInfo630bResponse {
   final String? soTaiKhoan;
   final String? tenChuTaiKhoan;
   final BankModel? nganHang;
+  final String? dotDaGiaiQuyet;
+  final String? lyDoDieuChinh;
+  final DateTime? tuNgayDuyetTruoc;
+  final int? tuoiThai;
 
   DeclareInfo630bResponse({
     required this.id,
@@ -69,20 +73,20 @@ class DeclareInfo630bResponse {
     this.dieuKienSinhCon,
     this.nghiDuongThai,
     this.chaNghiChamCon,
-    this.bienPhapKhhgd,
+    this.bienPhapKHHGD,
     this.ngayNhanCon,
     this.ngayDiLamThucTe,
     this.ngayConChet,
     this.ngayMeChet,
     this.mangThaiHo,
     this.ngayKetLuan,
-    this.maSoBhxhcuaCon,
+    this.maSoBHXHCuaCon,
     this.theBhytCuaCon,
-    this.maSoBhxhcuaMe,
-    this.theBhytCuaMe,
-    this.soCmndCuaMe,
+    this.maSoBHXHCuaMe,
+    this.theBHYTCuaMe,
+    this.soCMNDCuaMe,
     this.phiGiamDinhYKhoa,
-    this.soBhxhnnd,
+    this.soBHXHNND,
     this.phauThuatThai32,
     this.dotBoSung,
     this.maHoSo,
@@ -91,6 +95,10 @@ class DeclareInfo630bResponse {
     this.soTaiKhoan,
     this.tenChuTaiKhoan,
     this.nganHang,
+    this.dotDaGiaiQuyet,
+    this.lyDoDieuChinh,
+    this.tuNgayDuyetTruoc,
+    this.tuoiThai,
   });
 
   factory DeclareInfo630bResponse.fromJson(Map<String, dynamic> json) {
@@ -118,20 +126,20 @@ class DeclareInfo630bResponse {
       dieuKienSinhCon: json['dieuKienSinhCon'] ?? '',
       nghiDuongThai: json['nghiDuongThai'] ?? '',
       chaNghiChamCon: json['chaNghiChamCon'] ?? '',
-      bienPhapKhhgd: json['bienPhapKhhgd'] ?? '',
+      bienPhapKHHGD: json['bienPhapKHHGD'] ?? '',
       ngayNhanCon: DateTime.tryParse(json['ngayNhanCon'] ?? ''),
       ngayDiLamThucTe: DateTime.tryParse(json['ngayDiLamThucTe'] ?? ''),
       ngayConChet: DateTime.tryParse(json['ngayConChet'] ?? ''),
       ngayMeChet: DateTime.tryParse(json['ngayMeChet'] ?? ''),
       mangThaiHo: json['mangThaiHo'] ?? '',
       ngayKetLuan: DateTime.tryParse(json['ngayKetLuan'] ?? ''),
-      maSoBhxhcuaCon: json['maSoBhxhcuaCon'] ?? '',
+      maSoBHXHCuaCon: json['maSoBHXHCuaCon'] ?? '',
       theBhytCuaCon: json['theBhytCuaCon'] ?? '',
-      maSoBhxhcuaMe: json['maSoBhxhcuaMe'] ?? '',
-      theBhytCuaMe: json['theBhytCuaMe'] ?? '',
-      soCmndCuaMe: json['soCmndCuaMe'] ?? '',
+      maSoBHXHCuaMe: json['maSoBHXHCuaMe'] ?? '',
+      theBHYTCuaMe: json['theBHYTCuaMe'] ?? '',
+      soCMNDCuaMe: json['soCMNDCuaMe'] ?? '',
       phiGiamDinhYKhoa: json['phiGiamDinhYKhoa'] ?? 0,
-      soBhxhnnd: json['soBhxhnnd'] ?? '',
+      soBHXHNND: json['soBHXHNND'] ?? '',
       phauThuatThai32: json['phauThuatThai32'] ?? '',
       dotBoSung: json['dotBoSung'] ?? '',
       maHoSo: json['maHoSo'] ?? '',
@@ -142,6 +150,11 @@ class DeclareInfo630bResponse {
       nganHang: json['nganHang'] != null
           ? BankModel.fromJson(json['nganHang'])
           : null,
+      dotDaGiaiQuyet: json['dotDaGiaiQuyet'] ?? '',
+      lyDoDieuChinh: json['lyDoDieuChinh'] ?? '',
+      tuoiThai: json['tuoiThai'],
+      tuNgayDuyetTruoc:
+          DateTime.tryParse(json['tuNgayDuyetTruoc'] ?? '') ?? DateTime.now(),
     );
   }
 }

@@ -11,6 +11,7 @@ class DeclareInfo630bRepository extends BaseRepository {
       EnumRequestMethod.post,
       jsonMap: request.toJson(),
     );
+    logger.d(request.toJson());
     return BaseResponse.fromJson(response);
   }
 
@@ -24,10 +25,18 @@ class DeclareInfo630bRepository extends BaseRepository {
         "key": id,
       },
     );
-    logger.e(response);
     return BaseResponse<DeclareInfo630bResponse>.fromJson(
       response,
       fromJson: (json) => DeclareInfo630bResponse.fromJson(json),
     );
+  }
+
+  Future<BaseResponse> update630b(DeclareInfo630bRequest request) async {
+    final response = await baseCallApi(
+      AppApi.urlUpdate630b,
+      EnumRequestMethod.post,
+      jsonMap: request.toJson(),
+    );
+    return BaseResponse.fromJson(response);
   }
 }
