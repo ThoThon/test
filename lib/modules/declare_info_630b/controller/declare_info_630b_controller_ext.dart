@@ -1,4 +1,3 @@
-
 import 'package:collection/collection.dart';
 
 import '../../../base_app/model/app_data.dart';
@@ -134,12 +133,11 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
     benefitGroup.value = method;
     benefitGroupLv2.value = null;
-    filteredBenefitGroupLv2.assignAll(
-      AppData.instance.benefitGroupLv2
-          .where((item) => item.maNhomHuong == benefitGroup.value?.value)
-          .toList(),
-    );
+    // if (benefitGroup.value?.benefitGroupLv2 != null) {
+    //   filteredBenefitGroupLv2.assignAll(benefitGroup.value!.benefitGroupLv2);
+    // }
   }
+
   Future<void> get630bDetail() async {
     final staffId = argument.staffId;
     if (staffId == null) {
@@ -218,14 +216,14 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     );
 
     // Mã nhóm hưởng
-    benefitGroup.value = AppData.instance.benefitGroup630b.firstWhereOrNull(
-      (item) => item.value == detail.maNhomHuong,
-    );
+    if (detail.maNhomHuong != null) {
+      benefitGroup.value = detail.maNhomHuong;
+    }
 
     // Mã nhóm hưởng cấp 2
-    benefitGroupLv2.value = AppData.instance.benefitGroupLv2.firstWhereOrNull(
-      (item) => item.maNhomHuongC2 == detail.maNhomHuong2,
-    );
+    if (detail.maNhomHuong2 != null) {
+      benefitGroupLv2.value = detail.maNhomHuong2;
+    }
 
     // Từ ngày
     fromDateCtrl.text = convertDateToStringSafe(detail.tuNgay, PATTERN_1) ?? '';

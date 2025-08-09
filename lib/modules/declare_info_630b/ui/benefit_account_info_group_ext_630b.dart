@@ -80,6 +80,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
         return Obx(
           () => CardDropdownWithLabel<ReceiveFormModel>(
             fieldKey: formFieldKey,
+            validator: validator,
             autovalidateMode: controller.autoValidateMode.value,
             labelText: LocaleKeys.declareInfo_receiveMethod.tr,
             hintText: LocaleKeys.declareInfo_receiveMethodHint.tr,

@@ -634,6 +634,12 @@ class LocaleKeys {
       'declareInfo_selectBenefitGroupCode';
   static const declareInfo_benefitGroupCodeCannotEmpty =
       'declareInfo_benefitGroupCodeCannotEmpty';
+  static const declareInfo_benefitGroupCodeLv2 =
+      'declareInfo_benefitGroupCodeLv2';
+  static const declareInfo_selectBenefitGroupCodeLv2 =
+      'declareInfo_selectBenefitGroupCodeLv2';
+  static const declareInfo_benefitGroupCodeLv2CannotEmpty =
+      'declareInfo_benefitGroupCodeLv2CannotEmpty';
   static const declareInfo_fromDay = 'declareInfo_fromDay';
   static const declareInfo_fromDayInvalid = 'declareInfo_fromDayInvalid';
   static const declareInfo_fromDayEmpty = 'declareInfo_fromDayEmpty';
@@ -1715,6 +1721,10 @@ class Locales {
     'declareInfo_selectBenefitGroupCode': 'Chọn mã nhóm hưởng',
     'declareInfo_benefitGroupCodeCannotEmpty':
         'Mã nhóm hưởng không được bỏ trống',
+    'declareInfo_benefitGroupCodeLv2': 'Mã nhóm hưởng cấp 2',
+    'declareInfo_selectBenefitGroupCodeLv2': 'Chọn mã nhóm hưởng cấp 2',
+    'declareInfo_benefitGroupCodeLv2CannotEmpty':
+        'Mã nhóm hưởng cấp 2 không được bỏ trống',
     'declareInfo_fromDay': 'Từ ngày',
     'declareInfo_fromDayInvalid': 'Từ ngày không hợp lệ',
     'declareInfo_fromDayEmpty': 'Từ ngày không được bỏ trống',

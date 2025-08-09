@@ -19,7 +19,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
         // Mã nhóm hưởng cấp 2
         _buildBenefitGroupCodeLv2Dropdown(),
-        sdsSBHeight12,
 
         // "Từ ngày" và "Đến ngày"
         Row(
@@ -232,30 +231,41 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã nhóm hưởng cấp 2
   Widget _buildBenefitGroupCodeLv2Dropdown() {
-    return FormFieldRegistrant<BenefitGroupLv2Model>(
-      registrarId: '862496a1-7059-4921-a936-21623836ba38',
-      validator: (value) {
-        if (value == null) {
-          return LocaleKeys.declareInfo_benefitGroupCodeCannotEmpty.tr;
+    return Obx(
+      () {
+        final plans = controller.benefitGroup.value?.benefitGroupLv2;
+
+        if (plans == null || plans.isEmpty) {
+          return UtilWidget.shrink;
         }
-        return null;
-      },
-      builder: (formFieldKey, validator) {
-        return Obx(
-          () => CardDropdownWithLabel<BenefitGroupLv2Model>(
-            validator: validator,
-            fieldKey: formFieldKey,
-            labelText: 'Mã nhóm hưởng cấp 2',
-            isRequired: true,
-            hintText: 'Chọn mã nhóm hưởng cấp 2',
-            items: controller.filteredBenefitGroupLv2,
-            display: (item) => '${item.maNhomHuongC2} - ${item.tenNhomHuongC2}',
-            selectedItem: controller.benefitGroupLv2.value,
-            onChanged: (value) {
-              if (value == null) return;
-              controller.benefitGroupLv2.value = value;
-            },
-          ),
+        return FormFieldRegistrant<BenefitGroupLv2Model>(
+          registrarId: '862496a1-7059-4921-a936-21623836ba38',
+          validator: (value) {
+            if (value == null) {
+              return LocaleKeys.declareInfo_benefitGroupCodeLv2CannotEmpty.tr;
+            }
+            return null;
+          },
+          builder: (formFieldKey, validator) {
+            return Obx(
+              () => CardDropdownWithLabel<BenefitGroupLv2Model>(
+                autovalidateMode: controller.autoValidateMode.value,
+                validator: validator,
+                fieldKey: formFieldKey,
+                labelText: LocaleKeys.declareInfo_benefitGroupCodeLv2.tr,
+                isRequired: true,
+                hintText: LocaleKeys.declareInfo_selectBenefitGroupCodeLv2.tr,
+                items: plans.toList(),
+                display: (item) =>
+                    '${item.maNhomHuongC2} - ${item.tenNhomHuongC2}',
+                selectedItem: controller.benefitGroupLv2.value,
+                onChanged: (value) {
+                  if (value == null) return;
+                  controller.benefitGroupLv2.value = value;
+                },
+              ),
+            ).paddingOnly(bottom: AppDimens.paddingSmall);
+          },
         );
       },
     );
@@ -629,7 +639,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           final trimmedValue = value?.trim();
 
           if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return LocaleKeys.declareInfo_birthDayChildEmpty.tr;
+            return null;
           }
           // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
           if (trimmedValue.length < 10) {
@@ -660,12 +670,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return Obx(
       () => CardInputTextFormWithLabel(
         validator: (value) {
-          final trimmedValue = value?.trim();
-
-          if (trimmedValue == null || trimmedValue.isEmpty) {
-            return LocaleKeys.declareInfo_numberChildEmpty.tr;
-          }
-
           return null;
         },
         autovalidateMode: controller.autoValidateMode.value,
@@ -729,7 +733,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           final trimmedValue = value?.trim();
 
           if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return 'Ngày con chết không được bỏ trống';
+            return null;
           }
           // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
           if (trimmedValue.length < 10) {
@@ -787,7 +791,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           final trimmedValue = value?.trim();
 
           if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return '';
+            return null;
           }
           // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
           if (trimmedValue.length < 10) {
@@ -865,7 +869,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           final trimmedValue = value?.trim();
 
           if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return '';
+            return null;
           }
           // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
           if (trimmedValue.length < 10) {
@@ -932,9 +936,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           controller.surgeryOrUnder32Week.value = value;
         },
         validator: (value) {
-          if (value == null) {
-            return '';
-          }
           return null;
         },
       ),
@@ -973,7 +974,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           final trimmedValue = value?.trim();
 
           if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return '';
+            return null;
           }
           // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
           if (trimmedValue.length < 10) {
@@ -1096,7 +1097,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         },
         validator: (value) {
           if (value == null) {
-            return '';
+            return null;
           }
           return null;
         },
@@ -1119,7 +1120,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         },
         validator: (value) {
           if (value == null) {
-            return '';
+            return null;
           }
           return null;
         },
@@ -1142,7 +1143,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         },
         validator: (value) {
           if (value == null) {
-            return '';
+            return null;
           }
           return null;
         },
