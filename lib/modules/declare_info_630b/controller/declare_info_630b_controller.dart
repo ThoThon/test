@@ -203,4 +203,10 @@ class DeclareInfo630bController extends BaseGetxController {
     adjustReasonCtrl.dispose();
     super.onClose();
   }
+
+  @override
+  void onInit() {
+    super.onInit();
+    get630bDetail();
+  }
 }

@@ -1,5 +1,6 @@
-import 'package:v_bhxh/modules/declare_info_630b/model/declare_info_630b_request.dart';
+import 'package:collection/collection.dart';
 
+import '../../../base_app/model/app_data.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
 import '../../login/model/categories_630/categories_630_src.dart';
 import '../../src.dart';
@@ -117,5 +118,202 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     return receiveForm.value?.value == ATMPaymentValue;
   }
 
-  
+  Future<void> get630bDetail() async {
+    final staffId = argument.staffId;
+    if (staffId == null) {
+      return;
+    }
+    try {
+      showLoadingOverlay();
+
+      final response = await repository.getDetail630b(id: staffId);
+      final infoDetail = response.result;
+      if (response.isSuccess && infoDetail != null) {
+        // mapFrom630bDetail(infoDetail);
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  void mmapFrom630bDetail(DeclareInfo630bResponse detail) {
+    id = detail.id;
+
+    // Họ và tên
+    fullNameTextCtrl.text = detail.hoTen.trim();
+
+    // Mã số BHXH
+    bhxhTextCtrl.text = detail.maSoBhxh.trim();
+
+    // Số CCCD
+    if (detail.soCmnd != null) {
+      cccdTextCtrl.text = detail.soCmnd!.trim();
+    }
+
+    // Mã nhân viên
+    if (detail.maNhanVien != null) {
+      staffCodeTextCtrl.text = detail.maNhanVien!.trim();
+    }
+
+    // Hình thức kê khai
+    declareForm.value = AppData.instance.declareForm.firstWhereOrNull(
+      (item) => item.value == detail.phatSinhDieuChinh,
+    );
+
+    // Mã nhóm hưởng
+    benefitGroup.value = AppData.instance.benefitGroup630b.firstWhereOrNull(
+      (item) => item.value == detail.maNhomHuong,
+    );
+
+    // Mã nhóm hưởng cấp 2
+    benefitGroupLv2.value = AppData.instance.benefitGroupLv2.firstWhereOrNull(
+      (item) => item.maNhomHuongC2 == detail.maNhomHuong2,
+    );
+
+    // Từ ngày
+    fromDateCtrl.text = convertDateToStringSafe(detail.tuNgay, PATTERN_1) ?? '';
+
+    // Đến ngày
+    toDateCtrl.text = convertDateToStringSafe(detail.denNgay, PATTERN_1) ?? '';
+
+    // Tổng số ngày
+    countDayTextCtrl.text = detail.tongSoNgay.toString();
+
+    // Từ ngày đơn vị
+    fromDateUnitTextCtrl.text =
+        convertDateToStringSafe(detail.tuNgayDonVi, PATTERN_1) ?? '';
+
+    // Ngày nghỉ tuần
+    // Vì BE trả về kiểu "ngayNghiTuan": "t3;t4;t5" nên phải làm như này
+    final dayOff = detail.ngayNghiTuan;
+    if (dayOff != null && dayOff.isNotEmpty) {
+      weeklyDayOffs.value = dayOff
+          .split(';')
+          .map((item) => WeeklyDayOffEnum.parse(item.trim()))
+          .whereType<WeeklyDayOffEnum>()
+          .toList();
+    }
+
+    // Số serial
+    if (detail.soSeriCT != null) {
+      serialNumberCtrl.text = detail.soSeriCT!.trim();
+    }
+
+    // Điều kiện khám thai
+    pregnancyCondition.value = AppData.instance.pregnancyCondition
+        .firstWhereOrNull((item) => item.value == detail.dieuKienKhamThai);
+    // Tuổi thai
+
+    // Biện pháp tránh thai
+    contraception.value = AppData.instance.contraception
+        .firstWhereOrNull((item) => item.value == detail.bienPhapKhhgd);
+
+    // Ngày sinh con
+    birthDayChildCtrl.text =
+        convertDateToStringSafe(detail.ngaySinhCon, PATTERN_1) ?? '';
+
+    // Số con
+    numberChildCtrl.text = detail.soCon.toString();
+
+    // Mã số BHXH của con
+    if (detail.maSoBhxhcuaCon != null) {
+      bhxhCodeChildCtrl.text = detail.maSoBhxhcuaCon!.trim();
+    }
+    // Mã thẻ BHYT của con
+    if (detail.theBhytCuaCon != null) {
+      bhytCardCodeChildCtrl.text = detail.theBhytCuaCon!.trim();
+    }
+
+    // Số con chết
+    if (detail.soCCHoacThaiCL != null) {
+      numberChildDeathCtrl.text = detail.soCCHoacThaiCL.toString();
+    }
+
+    // Ngày con chết
+    childDeathDateCtrl.text =
+        convertDateToStringSafe(detail.ngayConChet, PATTERN_1) ?? '';
+
+    // Ngày nhận con
+    adoptionDateCtrl.text =
+        convertDateToStringSafe(detail.ngayNhanCon, PATTERN_1) ?? '';
+
+    // Ngày đi làm thực tế
+    returnWorkDateCtrl.text =
+        convertDateToStringSafe(detail.ngayDiLamThucTe, PATTERN_1) ?? '';
+
+    // Mã số BHXH của mẹ
+    if (detail.maSoBhxhcuaMe != null) {
+      bhxhCodeMotherCtrl.text = detail.maSoBhxhcuaMe!.trim();
+    }
+
+    // Mã số BHYT của mẹ
+    if (detail.theBhytCuaMe != null) {
+      bhytCardMotherCtrl.text = detail.theBhytCuaMe!.trim();
+    }
+
+    // Số CMND của mẹ
+    if (detail.soCmndCuaMe != null) {
+      cccdMotherCtrl.text = detail.soCmndCuaMe!.trim();
+    }
+
+    // Phẫu thuật hoặc thai dưới 32 tuần
+    surgeryOrUnder32Week.value = AppData.instance.surgeryPregnancy32w
+        .firstWhereOrNull((item) => item.value == detail.phauThuatThai32);
+    // Ngày mẹ chết
+    motherDeathDateCtrl.text =
+        convertDateToStringSafe(detail.ngayMeChet, PATTERN_1) ?? '';
+    // Ngày kết luận
+    conclusionDateCtrl.text =
+        convertDateToStringSafe(detail.ngayKetLuan, PATTERN_1) ?? '';
+    // Phí giám định y khoa
+    medicalFeeCtrl.text = detail.phiGiamDinhYKhoa.toString();
+    // Số BHXH của người nuôi dưỡng (TH mẹ chết)
+    if (detail.soBhxhnnd != null) {
+      guardianBhxhCtrl.text = detail.soBhxhnnd!.trim();
+    }
+    // Nghỉ dưỡng thai
+    maternityRest.value = AppData.instance.maternityLeave
+        .firstWhereOrNull((item) => item.value == detail.nghiDuongThai);
+
+    // Nghỉ chăm con
+    parentalLeave.value = AppData.instance.parentalLeave
+        .firstWhereOrNull((item) => item.value == detail.chaNghiChamCon);
+    // Mang thai hộ
+    surrogacy.value = AppData.instance.surrogacy.firstWhereOrNull(
+      (item) => item.value == detail.mangThaiHo,
+    );
+    // Đợt bổ sung+
+    if (detail.dotBoSung != null) {
+      supplementalPeriodCtrl.text = detail.dotBoSung!.trim();
+    }
+    // Mã hồ sơ
+    if (detail.maHoSo != null) {
+      fileCodeTextCtrl.text = detail.maHoSo!.trim();
+    }
+    // Ghi chú
+    if (detail.ghiChu != null) {
+      noteTextCtrl.text = detail.ghiChu!.trim();
+    }
+    // Hình thức nhận
+    receiveForm.value ==
+        AppData.instance.receiveForm.firstWhereOrNull(
+          (item) => item.value == detail.hinhThucNhan,
+        );
+    // Số tài khoản ngân hàng
+    selectedBank.value = AppData.instance.bank
+        .firstWhereOrNull((item) => item == detail.nganHang);
+    // Tên chủ tài khoản
+    if (detail.tenChuTaiKhoan != null) {
+      accountHolderNameCtrl.text = detail.tenChuTaiKhoan!.trim();
+    }
+    // Đợt đã giải quyết
+
+    // Ngày đã giải quyết
+
+    // Lý do điều chỉnh
+  }
 }

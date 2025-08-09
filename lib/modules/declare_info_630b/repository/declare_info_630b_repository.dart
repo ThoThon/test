@@ -2,8 +2,6 @@ import 'package:v_bhxh/base_app/model/base_model.src.dart';
 import 'package:v_bhxh/base_app/repository_base/repository_base.src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
-import '../model/declare_info_630b_request.dart';
-
 class DeclareInfo630bRepository extends BaseRepository {
   DeclareInfo630bRepository(super.controller);
 
@@ -14,5 +12,22 @@ class DeclareInfo630bRepository extends BaseRepository {
       jsonMap: request.toJson(),
     );
     return BaseResponse.fromJson(response);
+  }
+
+  Future<BaseResponse<DeclareInfo630bResponse>> getDetail630b({
+    required String id,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlGetDetail630b,
+      EnumRequestMethod.get,
+      jsonMap: {
+        "key": id,
+      },
+    );
+    logger.e(response);
+    return BaseResponse<DeclareInfo630bResponse>.fromJson(
+      response,
+      fromJson: (json) => DeclareInfo630bResponse.fromJson(json),
+    );
   }
 }
