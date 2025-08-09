@@ -1,4 +1,6 @@
-class AccountInfoModel {
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
+
+class AccountInfo implements Entity {
   final String toChucId;
   final String tenToChuc;
   final String taxCode;
@@ -25,7 +27,7 @@ class AccountInfoModel {
   final int phuongThucDong;
   final int maVung;
 
-  AccountInfoModel({
+  AccountInfo({
     required this.toChucId,
     required this.tenToChuc,
     required this.taxCode,
@@ -53,8 +55,8 @@ class AccountInfoModel {
     required this.maVung,
   });
 
-  factory AccountInfoModel.fromJson(Map<String, dynamic> json) {
-    return AccountInfoModel(
+  factory AccountInfo.fromJson(Map<String, dynamic> json) {
+    return AccountInfo(
       toChucId: json['to_chuc_id'] ?? '',
       tenToChuc: json['ten_to_chuc'] ?? '',
       taxCode: json['tax_code'] ?? '',
@@ -80,6 +82,36 @@ class AccountInfoModel {
       luongCoSo: json['luong_co_so'] ?? 0,
       phuongThucDong: json['phuong_thuc_dong'] ?? 1,
       maVung: json['ma_vung'] ?? 0,
+    );
+  }
+
+  factory AccountInfo.empty() {
+    return AccountInfo(
+      toChucId: '',
+      tenToChuc: '',
+      taxCode: '',
+      maDonVi: '',
+      maNganSach: '',
+      diaChiDk: '',
+      diaChi: '',
+      maCoQuanQuanLy: '',
+      tenCoQuanQuanLy: '',
+      dienThoai: '',
+      mailLienLac: '',
+      tenNguoiKy: '',
+      telReceiver: '',
+      serviceName: '',
+      serviceStartDate: '',
+      serviceExpiredDate: '',
+      bankAccount: '',
+      jobTitle: '',
+      loaiDoiTuong: '',
+      ptNhanKq: '',
+      packageInfo: '',
+      tenNguoiKeKhai: '',
+      luongCoSo: 0,
+      phuongThucDong: 1,
+      maVung: 0,
     );
   }
 }

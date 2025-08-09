@@ -1,18 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
-class DistrictModel extends Equatable {
+class District extends Equatable implements Entity {
   final String id;
   final String provinceId;
   final String name;
 
-  const DistrictModel({
+  const District({
     required this.id,
     required this.provinceId,
     required this.name,
   });
 
-  factory DistrictModel.fromJson(Map<String, dynamic> json) {
-    return DistrictModel(
+  factory District.fromJson(Map<String, dynamic> json) {
+    return District(
       id: json['maHuyen'] ?? '',
       provinceId: json['maTinh'] ?? '',
       name: json['tenHuyen'] ?? '',

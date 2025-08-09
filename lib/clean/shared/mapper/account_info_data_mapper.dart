@@ -1,5 +1,5 @@
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/shared/model/account_info_data.dart';
-import 'package:v_bhxh/clean/shared/entity/account_info.dart';
 import 'package:v_bhxh/clean/shared/mapper/base/base_data_mapper.dart';
 
 class AccountInfoDataMapper

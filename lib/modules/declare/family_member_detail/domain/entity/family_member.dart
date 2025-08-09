@@ -1,10 +1,11 @@
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/member_detail_response.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 import 'birth_type_enum.dart';
 
-class FamilyMember {
+class FamilyMember implements Entity {
   /// ID thành viên gia đình - Gen với uuid
   final String? id;
 
@@ -30,22 +31,22 @@ class FamilyMember {
   final Gender gender;
 
   /// Dân tộc *
-  final EthnicModel? ethnic;
+  final Ethnic? ethnic;
 
   /// Quốc tịch *
-  final NationModel? nation;
+  final Nation? nation;
 
   /// Tỉnh khai sinh *
-  final ProvinceModel? province;
+  final Province? province;
 
   /// Huyện khai sinh *
-  final DistrictModel? district;
+  final District? district;
 
   /// Xã khai sinh *
-  final WardModel? ward;
+  final Ward? ward;
 
   /// Mối quan hệ với chủ hộ *
-  final RelationshipModel? relationship;
+  final Relationship? relationship;
 
   /// Là người tham gia
   final bool isParticipant;

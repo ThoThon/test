@@ -1,5 +1,5 @@
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/shared/model/adjustment_plan_data.dart';
-import 'package:v_bhxh/clean/shared/entity/adjustment_plan.dart';
 
 import 'base/base_data_mapper.dart';
 

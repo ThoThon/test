@@ -199,14 +199,13 @@ extension HomeWidget on HomePageCL {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SDSBuildText(
-                  AppData.instance.accountInfoModel.value?.tenToChuc
-                          .toUpperCase() ??
+                  AppData.instance.accountInfo.value?.tenToChuc.toUpperCase() ??
                       '',
                   style: AppTextStyle.font16Re,
                   maxLines: 3,
                 ),
                 SDSBuildText(
-                  "${LocaleKeys.home_taxCode.tr}: ${AppData.instance.accountInfoModel.value?.taxCode ?? ''}",
+                  "${LocaleKeys.home_taxCode.tr}: ${AppData.instance.accountInfo.value?.taxCode ?? ''}",
                   style: AppTextStyle.font16Re,
                 ),
               ],
@@ -249,14 +248,14 @@ extension HomeWidget on HomePageCL {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SDSBuildText(
-                '${AppData.instance.accountInfoModel.value?.tenToChuc}',
+                '${AppData.instance.accountInfo.value?.tenToChuc}',
                 style: AppTextStyle.font16Bo.copyWith(
                   color: AppColors.colorBlack,
                 ),
               ),
               sdsSBHeight4,
               SDSBuildText(
-                'MST: ${AppData.instance.accountInfoModel.value?.taxCode}',
+                'MST: ${AppData.instance.accountInfo.value?.taxCode}',
                 style: AppTextStyle.font14Re,
               ),
               sdsSBHeight12,

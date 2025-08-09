@@ -1,28 +1,29 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 import 'adjustment_plan_model.dart';
 
 /// Loại kê khai
-class DeclarationTypeModel extends Equatable {
+class DeclarationType extends Equatable implements Entity {
   final int value;
   final String text;
-  final Set<AdjustmentPlanModel> plans;
+  final Set<AdjustmentPlan> plans;
 
-  const DeclarationTypeModel({
+  const DeclarationType({
     required this.value,
     required this.text,
     required this.plans,
   });
 
-  factory DeclarationTypeModel.fromJson(Map<String, dynamic> json) {
-    return DeclarationTypeModel(
+  factory DeclarationType.fromJson(Map<String, dynamic> json) {
+    return DeclarationType(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
       plans: json['phuongAns'] != null
           ? (json['phuongAns'] as List)
-              .map((e) => AdjustmentPlanModel.fromJson(e))
+              .map((e) => AdjustmentPlan.fromJson(e))
               .toSet()
-          : <AdjustmentPlanModel>{},
+          : <AdjustmentPlan>{},
     );
   }
 

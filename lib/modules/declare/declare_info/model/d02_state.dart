@@ -1,8 +1,7 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/src.dart';
-
-import '../../../login/model/model_src.dart';
 
 class D02State {
   /// id d02Lt dùng khi update
@@ -17,10 +16,10 @@ class D02State {
   String? selectedStaffId;
 
   /// Loại khai báo/Loại hồ sơ
-  final declarationType = Rxn<DeclarationTypeModel>();
+  final declarationType = Rxn<DeclarationType>();
 
   /// Phương án
-  final plan = Rxn<AdjustmentPlanModel>();
+  final plan = Rxn<AdjustmentPlan>();
 
   /// Tỷ lệ đóng *
   final socialInsuranceRateTextCtrl = TextEditingController();

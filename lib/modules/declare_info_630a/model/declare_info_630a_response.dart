@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/modules/login/model/categories_630a/categories_630a_src.dart';
 
 class DeclareInfo630aResponse {
   final String id;

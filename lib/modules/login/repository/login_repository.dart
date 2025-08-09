@@ -1,9 +1,9 @@
 import 'package:v_bhxh/base_app/model/base_response.dart';
 import 'package:v_bhxh/base_app/repository_base/base_repository.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/core/enum/enum_request_method.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
-
-import '../model/model_src.dart';
+import 'package:v_bhxh/modules/login/model/categories_630a/categories_630a_src.dart';
 
 // TODO: URL dùng để thay thế tạm thời
 const urlGet630aCategories =
@@ -30,14 +30,14 @@ class LoginRepository extends BaseRepository {
     return BaseResponse<String>.fromJson(response);
   }
 
-  Future<BaseResponse<AccountInfoModel>> getAccountInfo() async {
+  Future<BaseResponse<AccountInfo>> getAccountInfo() async {
     final response = await baseCallApi(
       AppApi.urlGetAccountInfo,
       EnumRequestMethod.get,
     );
-    return BaseResponse<AccountInfoModel>.fromJson(
+    return BaseResponse<AccountInfo>.fromJson(
       response,
-      fromJson: (json) => AccountInfoModel.fromJson(json),
+      fromJson: (json) => AccountInfo.fromJson(json),
     );
   }
 

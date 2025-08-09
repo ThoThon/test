@@ -1,8 +1,9 @@
-import '../../login/model/model_src.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
+
 import '../../src.dart';
 
 class RegisterCodeCategories {
-  final Set<ProvinceModel> provinces;
+  final Set<Province> provinces;
   final Set<SocialAgencyModel> agencies;
   final Set<ReceiveMethodModel> receiveMethods;
   final Set<PaymentMethodModel> paymentMethods;
@@ -20,10 +21,9 @@ class RegisterCodeCategories {
 
   factory RegisterCodeCategories.fromJson(Map<String, dynamic> json) {
     return RegisterCodeCategories(
-      provinces: (json['tinhs'] as List?)
-              ?.map((e) => ProvinceModel.fromJson(e))
-              .toSet() ??
-          <ProvinceModel>{},
+      provinces:
+          (json['tinhs'] as List?)?.map((e) => Province.fromJson(e)).toSet() ??
+              <Province>{},
       agencies: (json['dmCQQLs'] as List?)
               ?.map((e) => SocialAgencyModel.fromJson(e))
               .toSet() ??

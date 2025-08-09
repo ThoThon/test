@@ -1,17 +1,18 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Quốc gia
-class NationModel extends Equatable {
+class Nation extends Equatable implements Entity {
   final String value;
   final String text;
 
-  const NationModel({
+  const Nation({
     required this.value,
     required this.text,
   });
 
-  factory NationModel.fromJson(Map<String, dynamic> json) {
-    return NationModel(
+  factory Nation.fromJson(Map<String, dynamic> json) {
+    return Nation(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

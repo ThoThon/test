@@ -1,6 +1,6 @@
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class StaffDetailResponse {
   final String? id;
@@ -10,8 +10,8 @@ class StaffDetailResponse {
   final Gender? gioiTinh;
   final BirthTypeEnum? chiCoNamSinh;
   final DateTime? ngaySinh;
-  final EthnicModel? danToc;
-  final NationModel? quocTich;
+  final Ethnic? danToc;
+  final Nation? quocTich;
   final String? chucVu;
   final bool dongTheoHeSo;
   final double? heSoLuongCoBan;
@@ -21,22 +21,22 @@ class StaffDetailResponse {
   final double? phuCapThamNienNghe;
   final double? phuCapLuong;
   final double? phuCapBoSung;
-  final ProvinceModel? benhVienTinh;
+  final Province? benhVienTinh;
   final Hospital? benhVien;
-  final ProvinceModel? khaiSinhTinh;
-  final DistrictModel? khaiSinhHuyen;
-  final WardModel? khaiSinhXa;
+  final Province? khaiSinhTinh;
+  final District? khaiSinhHuyen;
+  final Ward? khaiSinhXa;
   final String? diaChiKhaiSinh;
-  final ProvinceModel? noiNhanTinh;
-  final DistrictModel? noiNhanHuyen;
-  final WardModel? noiNhanXa;
+  final Province? noiNhanTinh;
+  final District? noiNhanHuyen;
+  final Ward? noiNhanXa;
   final String? diaChiNoiNhan;
   final String? dienThoaiLienHe;
   final String? hoTenChuHo;
   final String? chuHoSoCCCD;
-  final ProvinceModel? chuHoThuongTruTinh;
-  final DistrictModel? chuHoThuongTruHuyen;
-  final WardModel? chuHoThuongTruXa;
+  final Province? chuHoThuongTruTinh;
+  final District? chuHoThuongTruHuyen;
+  final Ward? chuHoThuongTruXa;
   final String? diaChiThuongTruChuHo;
   final bool trungDiaChiKhaiSinh;
   final bool laChuHo;
@@ -95,11 +95,9 @@ class StaffDetailResponse {
       chiCoNamSinh: BirthTypeEnum.parse(json['chiCoNamSinh']),
       ngaySinh:
           json['ngaySinh'] != null ? DateTime.tryParse(json['ngaySinh']) : null,
-      danToc:
-          json['danToc'] != null ? EthnicModel.fromJson(json['danToc']) : null,
-      quocTich: json['quocTich'] != null
-          ? NationModel.fromJson(json['quocTich'])
-          : null,
+      danToc: json['danToc'] != null ? Ethnic.fromJson(json['danToc']) : null,
+      quocTich:
+          json['quocTich'] != null ? Nation.fromJson(json['quocTich']) : null,
       chucVu: json['chucVu'],
       dongTheoHeSo: json['dongTheoHeSo'] ?? false,
       heSoLuongCoBan: json['heSoLuongCoBan']?.toDouble(),
@@ -110,41 +108,39 @@ class StaffDetailResponse {
       phuCapLuong: json['phuCapLuong']?.toDouble(),
       phuCapBoSung: json['phuCapBoSung']?.toDouble(),
       benhVienTinh: json['benhVienTinh'] != null
-          ? ProvinceModel.fromJson(json['benhVienTinh'])
+          ? Province.fromJson(json['benhVienTinh'])
           : null,
       benhVien:
           json['benhVien'] != null ? Hospital.fromJson(json['benhVien']) : null,
       khaiSinhTinh: json['khaiSinhTinh'] != null
-          ? ProvinceModel.fromJson(json['khaiSinhTinh'])
+          ? Province.fromJson(json['khaiSinhTinh'])
           : null,
       khaiSinhHuyen: json['khaiSinhHuyen'] != null
-          ? DistrictModel.fromJson(json['khaiSinhHuyen'])
+          ? District.fromJson(json['khaiSinhHuyen'])
           : null,
-      khaiSinhXa: json['khaiSinhXa'] != null
-          ? WardModel.fromJson(json['khaiSinhXa'])
-          : null,
+      khaiSinhXa:
+          json['khaiSinhXa'] != null ? Ward.fromJson(json['khaiSinhXa']) : null,
       diaChiKhaiSinh: json['diaChiKhaiSinh'],
       noiNhanTinh: json['noiNhanTinh'] != null
-          ? ProvinceModel.fromJson(json['noiNhanTinh'])
+          ? Province.fromJson(json['noiNhanTinh'])
           : null,
       noiNhanHuyen: json['noiNhanHuyen'] != null
-          ? DistrictModel.fromJson(json['noiNhanHuyen'])
+          ? District.fromJson(json['noiNhanHuyen'])
           : null,
-      noiNhanXa: json['noiNhanXa'] != null
-          ? WardModel.fromJson(json['noiNhanXa'])
-          : null,
+      noiNhanXa:
+          json['noiNhanXa'] != null ? Ward.fromJson(json['noiNhanXa']) : null,
       diaChiNoiNhan: json['diaChiNoiNhan'],
       dienThoaiLienHe: json['dienThoaiLienHe'],
       hoTenChuHo: json['hoTenChuHo'],
       chuHoSoCCCD: json['chuHoSoCCCD'],
       chuHoThuongTruTinh: json['chuHoThuongTruTinh'] != null
-          ? ProvinceModel.fromJson(json['chuHoThuongTruTinh'])
+          ? Province.fromJson(json['chuHoThuongTruTinh'])
           : null,
       chuHoThuongTruHuyen: json['chuHoThuongTruHuyen'] != null
-          ? DistrictModel.fromJson(json['chuHoThuongTruHuyen'])
+          ? District.fromJson(json['chuHoThuongTruHuyen'])
           : null,
       chuHoThuongTruXa: json['chuHoThuongTruXa'] != null
-          ? WardModel.fromJson(json['chuHoThuongTruXa'])
+          ? Ward.fromJson(json['chuHoThuongTruXa'])
           : null,
       diaChiThuongTruChuHo: json['diaChiThuongTruChuHo'],
       tyLeDong: json['tyLeDong']?.toDouble(),
