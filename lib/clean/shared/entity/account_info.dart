@@ -1,5 +1,4 @@
 import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
-import 'package:v_bhxh/modules/login/model/account_info_model.dart';
 
 class AccountInfo implements Entity {
   final String toChucId;
@@ -28,7 +27,7 @@ class AccountInfo implements Entity {
   final int phuongThucDong;
   final int maVung;
 
-  const AccountInfo({
+  AccountInfo({
     required this.toChucId,
     required this.tenToChuc,
     required this.taxCode,
@@ -56,38 +55,39 @@ class AccountInfo implements Entity {
     required this.maVung,
   });
 
-  AccountInfoModel toOldModel() {
-    return AccountInfoModel(
-      toChucId: toChucId,
-      tenToChuc: tenToChuc,
-      taxCode: taxCode,
-      maDonVi: maDonVi,
-      maNganSach: maNganSach,
-      diaChiDk: diaChiDk,
-      diaChi: diaChi,
-      maCoQuanQuanLy: maCoQuanQuanLy,
-      tenCoQuanQuanLy: tenCoQuanQuanLy,
-      dienThoai: dienThoai,
-      mailLienLac: mailLienLac,
-      tenNguoiKy: tenNguoiKy,
-      telReceiver: telReceiver,
-      serviceName: serviceName,
-      serviceStartDate: serviceStartDate,
-      serviceExpiredDate: serviceExpiredDate,
-      bankAccount: bankAccount,
-      jobTitle: jobTitle,
-      loaiDoiTuong: loaiDoiTuong,
-      ptNhanKq: ptNhanKq,
-      packageInfo: packageInfo,
-      tenNguoiKeKhai: tenNguoiKeKhai,
-      luongCoSo: luongCoSo,
-      phuongThucDong: phuongThucDong,
-      maVung: maVung,
+  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
+  factory AccountInfo.fromJson(Map<String, dynamic> json) {
+    return AccountInfo(
+      toChucId: json['to_chuc_id'] ?? '',
+      tenToChuc: json['ten_to_chuc'] ?? '',
+      taxCode: json['tax_code'] ?? '',
+      maDonVi: json['ma_don_vi'] ?? '',
+      maNganSach: json['ma_ngan_sach'] ?? '',
+      diaChiDk: json['dia_chi_dk'] ?? '',
+      diaChi: json['dia_chi'] ?? '',
+      maCoQuanQuanLy: json['ma_co_quan_quan_ly'] ?? '',
+      tenCoQuanQuanLy: json['ten_co_quan_quan_ly'] ?? '',
+      dienThoai: json['dien_thoai'] ?? '',
+      mailLienLac: json['mail_lien_lac'] ?? '',
+      tenNguoiKy: json['ten_nguoi_ky'] ?? '',
+      telReceiver: json['tel_receiver'] ?? '',
+      serviceName: json['service_name'] ?? '',
+      serviceStartDate: json['service_start_date'] ?? '',
+      serviceExpiredDate: json['service_expired_date'] ?? '',
+      bankAccount: json['bank_account'] ?? '',
+      jobTitle: json['job_title'] ?? '',
+      loaiDoiTuong: json['loai_doi_tuong'] ?? '',
+      ptNhanKq: json['pt_nhan_kq'] ?? '',
+      packageInfo: json['packageInfo'] ?? '',
+      tenNguoiKeKhai: json['ten_nguoi_ke_khai'] ?? '',
+      luongCoSo: json['luong_co_so'] ?? 0,
+      phuongThucDong: json['phuong_thuc_dong'] ?? 1,
+      maVung: json['ma_vung'] ?? 0,
     );
   }
 
   factory AccountInfo.empty() {
-    return const AccountInfo(
+    return AccountInfo(
       toChucId: '',
       tenToChuc: '',
       taxCode: '',
@@ -111,7 +111,7 @@ class AccountInfo implements Entity {
       packageInfo: '',
       tenNguoiKeKhai: '',
       luongCoSo: 0,
-      phuongThucDong: 0,
+      phuongThucDong: 1,
       maVung: 0,
     );
   }

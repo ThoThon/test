@@ -1,21 +1,21 @@
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class StaffFamilyResponse {
   final String? id;
   final String? hoTen;
   final DateTime? ngaySinh;
-  final RelationshipModel moiQuanHe;
+  final Relationship moiQuanHe;
   final String? maSoBhxh;
   final Gender gioiTinh;
-  final ProvinceModel? tinhKhaiSinh;
-  final DistrictModel? huyenKhaiSinh;
-  final WardModel? xaKhaiSinh;
+  final Province? tinhKhaiSinh;
+  final District? huyenKhaiSinh;
+  final Ward? xaKhaiSinh;
   final String? cmnd;
   final BirthTypeEnum chiCoNamSinh;
-  final NationModel? quocTichs;
-  final EthnicModel? danTocs;
+  final Nation? quocTichs;
+  final Ethnic? danTocs;
 
   const StaffFamilyResponse({
     this.id,
@@ -39,27 +39,24 @@ class StaffFamilyResponse {
       hoTen: json['hoTen'],
       ngaySinh:
           json['ngaySinh'] != null ? DateTime.tryParse(json['ngaySinh']) : null,
-      moiQuanHe: RelationshipModel.fromJson(json['moiQuanHe']),
+      moiQuanHe: Relationship.fromJson(json['moiQuanHe']),
       maSoBhxh: json['maSoBhxh'],
       gioiTinh: Gender.parse(json['gioiTinh']) ?? Gender.male,
       tinhKhaiSinh: json['tinhKhaiSinh'] != null
-          ? ProvinceModel.fromJson(json['tinhKhaiSinh'])
+          ? Province.fromJson(json['tinhKhaiSinh'])
           : null,
       huyenKhaiSinh: json['huyenKhaiSinh'] != null
-          ? DistrictModel.fromJson(json['huyenKhaiSinh'])
+          ? District.fromJson(json['huyenKhaiSinh'])
           : null,
-      xaKhaiSinh: json['xaKhaiSinh'] != null
-          ? WardModel.fromJson(json['xaKhaiSinh'])
-          : null,
+      xaKhaiSinh:
+          json['xaKhaiSinh'] != null ? Ward.fromJson(json['xaKhaiSinh']) : null,
       cmnd: json['cmnd'],
       chiCoNamSinh: BirthTypeEnum.parse(json['chiCoNamSinh']) ??
           BirthTypeEnum.defaultValue,
-      quocTichs: json['quocTichs'] != null
-          ? NationModel.fromJson(json['quocTichs'])
-          : null,
-      danTocs: json['danTocs'] != null
-          ? EthnicModel.fromJson(json['danTocs'])
-          : null,
+      quocTichs:
+          json['quocTichs'] != null ? Nation.fromJson(json['quocTichs']) : null,
+      danTocs:
+          json['danTocs'] != null ? Ethnic.fromJson(json['danTocs']) : null,
     );
   }
 }

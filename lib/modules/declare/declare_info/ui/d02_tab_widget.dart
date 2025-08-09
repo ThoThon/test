@@ -326,7 +326,7 @@ extension D02TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectDeclareType() {
-    return FormFieldRegistrant<DeclarationTypeModel>(
+    return FormFieldRegistrant<DeclarationType>(
       registrarId: '33ca7b1b-4973-43c7-ad19-106a2a75b338',
       validator: (value) {
         if (value == null) {
@@ -336,7 +336,7 @@ extension D02TabWidget on DeclareInfoPage {
       },
       builder: (fieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<DeclarationTypeModel>(
+          () => CardDropdownWithLabel<DeclarationType>(
             fieldKey: fieldKey,
             validator: validator,
             labelText: LocaleKeys.declareInfo_declarationType.tr,
@@ -367,7 +367,7 @@ extension D02TabWidget on DeclareInfoPage {
           return UtilWidget.shrink;
         }
 
-        return FormFieldRegistrant<AdjustmentPlanModel>(
+        return FormFieldRegistrant<AdjustmentPlan>(
           registrarId: 'e7247821-4ddc-449a-b6be-6880ad56fa4c',
           validator: (value) {
             if (value == null) {
@@ -378,7 +378,7 @@ extension D02TabWidget on DeclareInfoPage {
           builder: (fieldKey, validator) {
             return Obx(
               () {
-                return CardDropdownWithLabel<AdjustmentPlanModel>(
+                return CardDropdownWithLabel<AdjustmentPlan>(
                   fieldKey: fieldKey,
                   validator: validator,
                   labelText: LocaleKeys.declareInfo_plan.tr,
@@ -484,7 +484,7 @@ extension D02TabWidget on DeclareInfoPage {
             onPressed: () {
               KeyBoard.hide();
               Get.bottomSheet(
-                BottomSheetSearch<PositionModel>(
+                BottomSheetSearch<Position>(
                   maxLength: 500,
                   hintText: LocaleKeys.declareInfo_inputPosition.tr,
                   title: LocaleKeys.declareInfo_selectPosition.tr,

@@ -1,5 +1,5 @@
-import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/clean/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/clean/domain/usecase/get_wards_use_case.dart';
 import 'package:v_bhxh/modules/src.dart';

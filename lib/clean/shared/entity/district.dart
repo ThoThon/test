@@ -12,6 +12,15 @@ class District extends Equatable implements Entity {
     required this.name,
   });
 
+  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
+  factory District.fromJson(Map<String, dynamic> json) {
+    return District(
+      id: json['maHuyen'] ?? '',
+      provinceId: json['maTinh'] ?? '',
+      name: json['tenHuyen'] ?? '',
+    );
+  }
+
   @override
   List<Object?> get props => [id, provinceId, name];
 }

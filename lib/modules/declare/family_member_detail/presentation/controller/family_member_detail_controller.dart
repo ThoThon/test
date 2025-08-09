@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
-import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/gender.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 import 'package:v_bhxh/shares/utils/uuid_utils.dart';
 
 class FamilyMemberDetailControllerCl extends BaseGetClController {
-  final FamilyMemberEntity? argument;
+  final FamilyMember? argument;
 
   FamilyMemberDetailControllerCl({
     this.argument,
@@ -44,13 +44,12 @@ class FamilyMemberDetailControllerCl extends BaseGetClController {
   /// Dân tộc *
   /// Luôn khởi tạo Dân tộc là "Kinh"
   late final selectedEthnic = Rxn<Ethnic>(
-    AppData.instance.ethnicsCl
-        .firstWhereOrNull((ethnics) => ethnics.value == 1),
+    AppData.instance.ethnics.firstWhereOrNull((ethnics) => ethnics.value == 1),
   );
 
   /// Quốc tịch *
   /// Luôn khởi tạo Quốc tịch là "VIỆT NAM"
-  late final selectedNationality = Rxn<Nation>(AppData.instance.nationsCl
+  late final selectedNationality = Rxn<Nation>(AppData.instance.nations
       .firstWhereOrNull((nations) => nations.value == "VN"));
 
   /// Tỉnh khai sinh *
@@ -103,7 +102,7 @@ class FamilyMemberDetailControllerCl extends BaseGetClController {
 
     // Note: đã validate các trường required nên có thể force null
     nav.back(
-      result: FamilyMemberEntity(
+      result: FamilyMember(
         // Khi sửa thành viên ở local hoặc DB thì sẽ giữ id cũ
         id: argument?.id ?? generateUuid(),
         fullName: fullNameTextCtrl.text.trim(),

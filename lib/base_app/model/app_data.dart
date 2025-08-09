@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/modules/login/model/categories_630a/categories_630a_src.dart';
 
 import '../../clean/shared/entity/entity_src.dart';
 import '../../modules/src.dart';
@@ -7,19 +7,19 @@ class AppData {
   AppData._();
   static final AppData instance = AppData._();
 
-  var declarationTypes = <DeclarationTypeModel>{};
-  var ethnics = <EthnicModel>{};
-  var nations = <NationModel>{};
-  var provinces = <ProvinceModel>{};
-  var relationships = <RelationshipModel>{};
-  var positions = <PositionModel>{};
+  var declarationTypes = <DeclarationType>{};
+  var ethnics = <Ethnic>{};
+  var nations = <Nation>{};
+  var provinces = <Province>{};
+  var relationships = <Relationship>{};
+  var positions = <Position>{};
   var socialAgency = <SocialAgencyModel>{};
   var receiveMethod = <ReceiveMethodModel>{};
   var paymentMethods = <PaymentMethodModel>{};
   var objectType = <ObjectTypeModel>{};
   var resultReceivingOptions = <RegisterReceiveResultModel>{};
-  var birthTypes = <BirthTypeModel>{};
-  var receiveResults = <ReceiveResultModel>{};
+  var birthTypes = <BirthType>{};
+  var receiveResults = <ReceiveResult>{};
   var declareForm = <DeclareForm630aModel>{};
   var benefitGroup = <BenefitGroup630aModel>{};
   var workCondition = <WorkCondition630aModel>{};
@@ -27,19 +27,8 @@ class AppData {
   var bank = <Bank630aModel>{};
   var hospitalLine = <HospitalLine630aModel>{};
   var longDiease = <LongDiease630aModel>{};
-
-  final Rx<AccountInfoModel?> accountInfoModel = Rx<AccountInfoModel?>(null);
+  final accountInfo = Rxn<AccountInfo>();
 
   /// Số lượng thông báo chưa đọc
   final totalUnread = 0.obs;
-
-  final accountInfoCl = Rxn<AccountInfo>();
-  final declarationTypesCl = <DeclarationType>{}.obs;
-  final ethnicsCl = <Ethnic>{}.obs;
-  final nationsCl = <Nation>{}.obs;
-  final provincesCl = <Province>{}.obs;
-  final relationshipsCl = <Relationship>{}.obs;
-  final positionsCl = <Position>{}.obs;
-  final birthTypesCl = <BirthType>{}.obs;
-  final receiveResultsCl = <ReceiveResult>{}.obs;
 }

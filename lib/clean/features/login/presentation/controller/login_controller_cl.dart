@@ -71,40 +71,22 @@ class LoginControllerCl extends BaseGetClController {
 
   Future<void> _getAccountInfo() async {
     final accountInfo = await _getAccountInfoUseCase.execute();
-    AppData.instance.accountInfoCl.value = accountInfo;
+    AppData.instance.accountInfo.value = accountInfo;
     await _saveCompanyNameUseCase.execute(accountInfo.tenToChuc);
-
-    // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
-    AppData.instance.accountInfoModel.value = accountInfo.toOldModel();
   }
 
   Future<void> _getD02Categories() async {
     final d02Categories = await _getD02CategoriesUseCase.execute();
     // setter .value. của RxSet là protected nên sẽ sử dụng assignAll
     AppData.instance
-      ..declarationTypesCl.assignAll(d02Categories.declarationTypes)
-      ..ethnicsCl.assignAll(d02Categories.ethnics)
-      ..nationsCl.assignAll(d02Categories.nations)
-      ..provincesCl.assignAll(d02Categories.provinces)
-      ..relationshipsCl.assignAll(d02Categories.relationships)
-      ..positionsCl.assignAll(d02Categories.positions)
-      ..birthTypesCl.assignAll(d02Categories.birthTypes)
-      ..receiveResultsCl.assignAll(d02Categories.receiveResults);
-
-    // Gán các giá trị này cho AppData để đảm bảo tương thích ngược với code cũ
-    // TODO: Xóa sau khi xóa bỏ hoàn toàn AppData
-    AppData.instance
-      ..declarationTypes =
-          d02Categories.declarationTypes.map((e) => e.toOldModel()).toSet()
-      ..ethnics = d02Categories.ethnics.map((e) => e.toOldModel()).toSet()
-      ..nations = d02Categories.nations.map((e) => e.toOldModel()).toSet()
-      ..provinces = d02Categories.provinces.map((e) => e.toOldModel()).toSet()
-      ..relationships =
-          d02Categories.relationships.map((e) => e.toOldModel()).toSet()
-      ..positions = d02Categories.positions.map((e) => e.toOldModel()).toSet()
-      ..birthTypes = d02Categories.birthTypes.map((e) => e.toOldModel()).toSet()
-      ..receiveResults =
-          d02Categories.receiveResults.map((e) => e.toOldModel()).toSet();
+      ..declarationTypes.assignAll(d02Categories.declarationTypes)
+      ..ethnics.assignAll(d02Categories.ethnics)
+      ..nations.assignAll(d02Categories.nations)
+      ..provinces.assignAll(d02Categories.provinces)
+      ..relationships.assignAll(d02Categories.relationships)
+      ..positions.assignAll(d02Categories.positions)
+      ..birthTypes.assignAll(d02Categories.birthTypes)
+      ..receiveResults.assignAll(d02Categories.receiveResults);
   }
 
   Future<void> _getToTalNotiUnread() async {

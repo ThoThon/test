@@ -1,9 +1,9 @@
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/shared/model/d02_categories_data.dart';
-import 'package:v_bhxh/clean/shared/entity/d02_categories_cl.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 
 class D02CategoriesDataMapper
-    extends BaseDataMapper<D02CategoriesData, D02CategoriesCl> {
+    extends BaseDataMapper<D02CategoriesData, D02Categories> {
   final DeclarationTypeDataMapper _declarationTypeDataMapper;
   final EthnicDataMapper _ethnicDataMapper;
   final NationDataMapper _nationDataMapper;
@@ -25,8 +25,8 @@ class D02CategoriesDataMapper
   );
 
   @override
-  D02CategoriesCl mapToEntity(D02CategoriesData? data) {
-    return D02CategoriesCl(
+  D02Categories mapToEntity(D02CategoriesData? data) {
+    return D02Categories(
       declarationTypes:
           _declarationTypeDataMapper.mapToSetEntity(data?.declarationTypes),
       ethnics: _ethnicDataMapper.mapToSetEntity(data?.ethnics),

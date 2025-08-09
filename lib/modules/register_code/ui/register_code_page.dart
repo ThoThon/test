@@ -4,7 +4,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';

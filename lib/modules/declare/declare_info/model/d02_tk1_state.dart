@@ -1,9 +1,9 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 
 import '../../../../base_app/model/app_data.dart';
@@ -31,13 +31,13 @@ class D02Tk1State {
 
   /// Dân tộc *
   /// Luôn khởi tạo Dân tộc là "Kinh"
-  final selectedEthnic = Rxn<EthnicModel>(
+  final selectedEthnic = Rxn<Ethnic>(
     AppData.instance.ethnics.firstWhereOrNull((ethnics) => ethnics.value == 1),
   );
 
   /// Quốc tịch *
   /// Luôn khởi tạo Quốc tịch là "VIỆT NAM"
-  final selectedNationality = Rxn<NationModel>(AppData.instance.nations
+  final selectedNationality = Rxn<Nation>(AppData.instance.nations
       .firstWhereOrNull((nations) => nations.value == "VN"));
 
   void mapFromD02Detail(DeclareInfoDetailResponse detail) {

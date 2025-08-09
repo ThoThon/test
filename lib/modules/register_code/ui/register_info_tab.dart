@@ -112,7 +112,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Nơi nhận tỉnh
   Widget _buildSelectProvinceReceive() {
-    return FormFieldRegistrant<ProvinceModel>(
+    return FormFieldRegistrant<Province>(
       registrarId: 'ca230590-eb6d-4f96-b4c5-cc9c46dcd529',
       validator: (value) {
         if (controller.provinceReceive.value == null) {
@@ -129,7 +129,7 @@ extension RegisterInfoTab on RegisterCodePage {
               label: LocaleKeys.registerCode_provinceReceive.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<ProvinceModel>(
+                  BottomSheetSearch<Province>(
                     title: LocaleKeys.unitInfo_selectProvince.tr,
                     maxLength: 20,
                     listFilter: AppData.instance.provinces.toList(),
@@ -155,7 +155,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Nơi nhận huyện
   Widget _buildSelectDistrictReceive() {
-    return FormFieldRegistrant<DistrictModel>(
+    return FormFieldRegistrant<District>(
       registrarId: 'e11fcdc5-17d9-4652-9334-269d93950e06',
       validator: (value) {
         if (controller.districtReceive.value == null) {
@@ -178,7 +178,7 @@ extension RegisterInfoTab on RegisterCodePage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<DistrictModel>(
+                final result = await Get.bottomSheet<District>(
                   SelectDistrictBts(
                     provinceCode: province.id,
                     selectedDistrict: controller.districtReceive.value,
@@ -202,7 +202,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Nơi nhận xã
   Widget _buildSelectWardReceive() {
-    return FormFieldRegistrant<WardModel>(
+    return FormFieldRegistrant<Ward>(
       registrarId: '0ee163cd-5944-49b5-ad3c-f56e87e24e98',
       validator: (value) {
         if (controller.wardReceive.value == null) {
@@ -232,7 +232,7 @@ extension RegisterInfoTab on RegisterCodePage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<WardModel>(
+                final result = await Get.bottomSheet<Ward>(
                   SelectWardBts(
                     provinceCode: province.id,
                     districtCode: district.id,

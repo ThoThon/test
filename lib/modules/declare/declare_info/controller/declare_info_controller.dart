@@ -1,4 +1,5 @@
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
@@ -6,7 +7,6 @@ import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -454,7 +454,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void changeProvinceOfBirth(ProvinceModel value) {
+  void changeProvinceOfBirth(Province value) {
     if (tk1State.provinceOfBirth.value != value) {
       // Xóa huyện, xã, địa chỉ khai sinh khi thay đổi tỉnh khai sinh
       tk1State.districtOfBirth.value = null;
@@ -485,7 +485,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void changeDistrictOfBirth(DistrictModel value) {
+  void changeDistrictOfBirth(District value) {
     if (tk1State.districtOfBirth.value != value) {
       // Xóa xã khai sinh khi thay đổi huyện khai sinh
       tk1State.wardOfBirth.value = null;
@@ -513,7 +513,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void changeWardOfBirth(WardModel value) {
+  void changeWardOfBirth(Ward value) {
     tk1State.wardOfBirth.value = value;
 
     // Đồng bộ xã nơi nhận hồ sơ với xã khai sinh
@@ -537,7 +537,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onChangeProvinceReceive(ProvinceModel value) {
+  void onChangeProvinceReceive(Province value) {
     if (tk1State.provinceReceive.value != value) {
       // Khi user thay đổi tỉnh nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -560,7 +560,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onChangeDistrictReceive(DistrictModel value) {
+  void onChangeDistrictReceive(District value) {
     if (tk1State.districtReceive.value != value) {
       // Khi user thay đổi huyện nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -580,7 +580,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onChangeWardReceive(WardModel value) {
+  void onChangeWardReceive(Ward value) {
     if (tk1State.wardReceive.value != value) {
       // Khi user thay đổi xã nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -606,7 +606,7 @@ class DeclareInfoController extends BaseGetxController {
     _syncHeadOfHouseholdInfo();
   }
 
-  void onChangeProvinceKCB(ProvinceModel value) {
+  void onChangeProvinceKCB(Province value) {
     if (tk1State.provinceKCB.value != value) {
       // Xóa bệnh viện nơi KCB khi thay đổi tỉnh nơi KCB
       tk1State.hospitalKCB.value = null;
@@ -644,7 +644,7 @@ class DeclareInfoController extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
-  void onChangeProvinceTT(ProvinceModel value) {
+  void onChangeProvinceTT(Province value) {
     if (tk1State.provinceTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
       // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
@@ -656,7 +656,7 @@ class DeclareInfoController extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
-  void onChangeDistrictTT(DistrictModel value) {
+  void onChangeDistrictTT(District value) {
     if (tk1State.districtTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
       // Xóa xã thường trú khi thay đổi huyện thường trú
@@ -667,7 +667,7 @@ class DeclareInfoController extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
-  void onChangeWardTT(WardModel value) {
+  void onChangeWardTT(Ward value) {
     if (tk1State.wardTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
     }

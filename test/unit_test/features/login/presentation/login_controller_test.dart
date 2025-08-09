@@ -1,12 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:v_bhxh/clean/shared/entity/account_info.dart';
-import 'package:v_bhxh/clean/shared/entity/d02_categories_cl.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
 import 'package:v_bhxh/clean/features/login/presentation/controller/login_controller_cl.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 
 class MockAppNavigator extends Mock implements AppNavigator {}
@@ -90,7 +89,7 @@ void main() {
         return AccountInfo.empty();
       });
       when(() => getD02CategoriesUseCase.execute()).thenAnswer((_) async {
-        return D02CategoriesCl.empty();
+        return D02Categories.empty();
       });
       when(() => getUnreadNotificationCountUseCase.execute())
           .thenAnswer((_) async => 0);

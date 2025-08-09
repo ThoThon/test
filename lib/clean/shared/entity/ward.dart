@@ -14,6 +14,16 @@ class Ward extends Equatable implements Entity {
     required this.name,
   });
 
+  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
+  factory Ward.fromJson(Map<String, dynamic> json) {
+    return Ward(
+      id: json['maXa'] ?? '',
+      provinceId: json['maTinh'] ?? '',
+      districtId: json['maHuyen'] ?? '',
+      name: json['tenXa'] ?? '',
+    );
+  }
+
   @override
   List<Object?> get props => [id, provinceId, districtId, name];
 }

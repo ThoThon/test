@@ -5,7 +5,7 @@ import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/modules/login/model/categories_630a/categories_630a_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 

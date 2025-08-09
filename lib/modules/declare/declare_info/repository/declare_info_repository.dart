@@ -1,28 +1,28 @@
 import 'package:v_bhxh/base_app/base_app.src.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 import '../../../src.dart';
 
 // Key is provinceCode
-final cachedDistricts = <String, List<DistrictModel>>{};
+final cachedDistricts = <String, List<District>>{};
 // Key is provinceCode
 final cachedHospitals = <String, List<Hospital>>{};
 // Key is (provinceCode, districtCode)
-final cachedWards = <(String, String), List<WardModel>>{};
+final cachedWards = <(String, String), List<Ward>>{};
 
 class DeclareInfoRepository extends BaseRepository {
   DeclareInfoRepository(super.controller);
 
-  Future<BaseResponseList<DistrictModel>> getDistricts({
+  Future<BaseResponseList<District>> getDistricts({
     required String provinceCode,
   }) async {
     if (cachedDistricts.containsKey(provinceCode)) {
       final districts = cachedDistricts[provinceCode];
-      return BaseResponseList<DistrictModel>(
+      return BaseResponseList<District>(
         code: AppConst.statusCodeSuccess,
         result: districts!,
         totalNumber: districts.length,
@@ -36,9 +36,9 @@ class DeclareInfoRepository extends BaseRepository {
         "provinceCode": provinceCode,
       },
     );
-    final result = BaseResponseList<DistrictModel>.fromJson(
+    final result = BaseResponseList<District>.fromJson(
       response,
-      (json) => DistrictModel.fromJson(json),
+      (json) => District.fromJson(json),
     );
 
     if (result.isSuccess) {
@@ -48,14 +48,14 @@ class DeclareInfoRepository extends BaseRepository {
     return result;
   }
 
-  Future<BaseResponseList<WardModel>> getWards({
+  Future<BaseResponseList<Ward>> getWards({
     required String provinceCode,
     required String districtCode,
   }) async {
     final key = (provinceCode, districtCode);
     if (cachedWards.containsKey(key)) {
       final wards = cachedWards[key];
-      return BaseResponseList<WardModel>(
+      return BaseResponseList<Ward>(
         code: AppConst.statusCodeSuccess,
         result: wards!,
         totalNumber: wards.length,
@@ -70,9 +70,9 @@ class DeclareInfoRepository extends BaseRepository {
         "districtCode": districtCode,
       },
     );
-    final result = BaseResponseList<WardModel>.fromJson(
+    final result = BaseResponseList<Ward>.fromJson(
       response,
-      (json) => WardModel.fromJson(json),
+      (json) => Ward.fromJson(json),
     );
 
     if (result.isSuccess) {
