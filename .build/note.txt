@@ -1,3 +1,6 @@
+09/08/2025
+- [Appmobile]_Bổ sung popup thông báo hiển thị khi api trả về statuscode 429
+
 08/08/2025
 - [Appmobile]_Chỉnh sửa call api /api/HoSo630a/update-ms - BHW-2972
 - [Appmobile]_Thủ tục 630a: Bắt valiadte trường số con - BHW-2983
