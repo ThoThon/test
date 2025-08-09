@@ -22,19 +22,19 @@ class DeclareInfo630bPage extends BaseGetWidget {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        centerTitle: true,
-        leading: UtilWidget.buildButtonBackAppbar(),
-        title: BaseAppBarTitle(
-          title: LocaleKeys.declareInfo_title630b.tr,
+    return buildLoadingOverlay(
+      () => Scaffold(
+        appBar: BaseAppBar(
+          centerTitle: true,
+          leading: UtilWidget.buildButtonBackAppbar(),
+          title: BaseAppBarTitle(
+            title: LocaleKeys.declareInfo_title630b.tr,
+          ),
         ),
-      ),
-      body: SafeArea(
-        child: _buildBody(),
+        body: SafeArea(
+          child: _buildBody(),
+        ),
       ),
     );
   }
-
-  
 }
