@@ -795,7 +795,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           final trimmedValue = value?.trim();
 
           if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return '';
+            return null;
           }
           // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
           if (trimmedValue.length < 10) {
@@ -818,7 +818,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         inputFormatters: InputFormatterEnum.dateFullBirthDay,
         controller: controller.adoptionDateCtrl,
         hintText: PATTERN_1,
-        isRequired: false,
+        isRequired: controller.isRequiredAdoptionDate,
         onSelectDate: () async {
           KeyBoard.hide();
           final selectedDate = await DatePickerUtils.showCalendarPicker(
