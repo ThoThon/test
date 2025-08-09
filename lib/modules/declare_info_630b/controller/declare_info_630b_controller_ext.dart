@@ -133,9 +133,6 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
     benefitGroup.value = method;
     benefitGroupLv2.value = null;
-    // if (benefitGroup.value?.benefitGroupLv2 != null) {
-    //   filteredBenefitGroupLv2.assignAll(benefitGroup.value!.benefitGroupLv2);
-    // }
   }
 
   Future<void> get630bDetail() async {
