@@ -40,6 +40,7 @@ class LocaleKeys {
   static const app_cancel = 'app_cancel';
   static const app_close = 'app_close';
   static const app_select = 'app_select';
+  static const dialog_error429 = 'dialog_error429';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
   static const dialog_updateSuccessDialog = 'dialog_updateSuccessDialog';
   static const dialog_updateFailure = 'dialog_updateFailure';
@@ -1181,6 +1182,8 @@ class Locales {
         'Không tìm thấy đường dẫn này, xin vui lòng liên hệ Admin',
     'dialog_error401':
         'Phiên đăng nhập đã hết hạn. Quý khách vui lòng đăng nhập lại',
+    'dialog_error429':
+        'Hiện tại có quá nhiều lượt truy cập. Vui lòng thử lại sau vài phút.',
     'dialog_success': 'Thành công',
     'dialog_fail': 'Thất bại',
     'dialog_checkEmail': 'Vui lòng kiểm tra lại email đã đăng ký',

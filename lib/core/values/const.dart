@@ -10,6 +10,7 @@ class AppConst {
   static const int error404 = 404;
   static const int error401 = 401;
   static const int error400 = 400;
+  static const int error429 = 429;
   static const int error502 = 502;
   static const int error503 = 503;
 
