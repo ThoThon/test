@@ -55,6 +55,9 @@ extension RegisterInfoTab on RegisterCodePage {
         // Nơi nhận tỉnh
         _buildSelectProvinceReceive(),
 
+        // Nơi nhận huyện
+        _buildSelectDistrictReceive(),
+
         // Nơi nhận xã
         _buildSelectWardReceive(),
 
@@ -150,6 +153,53 @@ extension RegisterInfoTab on RegisterCodePage {
     );
   }
 
+  // Nơi nhận huyện
+  Widget _buildSelectDistrictReceive() {
+    return FormFieldRegistrant<DistrictModel>(
+      registrarId: 'e11fcdc5-17d9-4652-9334-269d93950e06',
+      validator: (value) {
+        if (controller.districtReceive.value == null) {
+          return LocaleKeys.registerCode_districtReceiveCannotEmpty.tr;
+        }
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            return UtilWidget.buildCardBottomSheetSelect2(
+              fieldKey: fieldKey,
+              validator: validator,
+              label: LocaleKeys.registerCode_districtReceive.tr,
+              funcSelect: (didChange) async {
+                final province = controller.provinceReceive.value;
+                if (province == null) {
+                  controller.showSnackBar(
+                      LocaleKeys.registerCode_provinceReceiveIsEmpty.tr);
+                  return;
+                }
+
+                final result = await Get.bottomSheet<DistrictModel>(
+                  SelectDistrictBts(
+                    provinceCode: province.id,
+                    selectedDistrict: controller.districtReceive.value,
+                  ),
+                  isScrollControlled: true,
+                );
+
+                if (result != null) {
+                  controller.changeDistrictReceive(result);
+                  didChange(result);
+                }
+              },
+              selectedItem: controller.districtReceive.value,
+              display: (item) => '${item.id} - ${item.name}',
+            );
+          },
+        );
+      },
+    );
+  }
+
   // Nơi nhận xã
   Widget _buildSelectWardReceive() {
     return FormFieldRegistrant<WardModel>(
@@ -175,9 +225,17 @@ extension RegisterInfoTab on RegisterCodePage {
                   return;
                 }
 
+                final district = controller.districtReceive.value;
+                if (district == null) {
+                  controller.showSnackBar(
+                      LocaleKeys.registerCode_districtReceiveIsEmpty.tr);
+                  return;
+                }
+
                 final result = await Get.bottomSheet<WardModel>(
                   SelectWardBts(
                     provinceCode: province.id,
+                    districtCode: district.id,
                     selectedWard: controller.wardReceive.value,
                   ),
                   isScrollControlled: true,

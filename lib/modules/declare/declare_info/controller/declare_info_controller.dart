@@ -423,6 +423,7 @@ class DeclareInfoController extends BaseGetxController {
   void _syncBirthAddress() {
     if (tk1State.isDuplicateBirthAddress.value) {
       tk1State.provinceReceive.value = tk1State.provinceOfBirth.value;
+      tk1State.districtReceive.value = tk1State.districtOfBirth.value;
       tk1State.wardReceive.value = tk1State.wardOfBirth.value;
       tk1State.addressReceiveTextCtrl.text = tk1State.birthAddressTextCtrl.text;
     }
@@ -432,6 +433,7 @@ class DeclareInfoController extends BaseGetxController {
   void _clearBirthAddress() {
     if (!tk1State.isDuplicateBirthAddress.value) {
       tk1State.provinceReceive.value = null;
+      tk1State.districtReceive.value = null;
       tk1State.wardReceive.value = null;
       tk1State.addressReceiveTextCtrl.clear();
     }
@@ -452,6 +454,7 @@ class DeclareInfoController extends BaseGetxController {
   void changeProvinceOfBirth(ProvinceModel value) {
     if (tk1State.provinceOfBirth.value != value) {
       // Xóa huyện, xã, địa chỉ khai sinh khi thay đổi tỉnh khai sinh
+      tk1State.districtOfBirth.value = null;
       tk1State.wardOfBirth.value = null;
     }
 
@@ -461,6 +464,7 @@ class DeclareInfoController extends BaseGetxController {
     if (tk1State.isDuplicateBirthAddress.value) {
       if (tk1State.provinceReceive.value != value) {
         // Xóa huyện, xã nơi nhận hồ sơ khi thay đổi tỉnh nơi nhận hồ sơ
+        tk1State.districtReceive.value = null;
         tk1State.wardReceive.value = null;
       }
 
@@ -470,10 +474,39 @@ class DeclareInfoController extends BaseGetxController {
     if (tk1State.isParticipantHeadOfHousehold.value) {
       if (tk1State.provinceTT.value != value) {
         // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
+        tk1State.districtTT.value = null;
         tk1State.wardTT.value = null;
       }
 
       tk1State.provinceTT.value = value;
+    }
+  }
+
+  void changeDistrictOfBirth(DistrictModel value) {
+    if (tk1State.districtOfBirth.value != value) {
+      // Xóa xã khai sinh khi thay đổi huyện khai sinh
+      tk1State.wardOfBirth.value = null;
+    }
+
+    tk1State.districtOfBirth.value = value;
+
+    // Đồng bộ huyện nơi nhận hồ sơ với huyện khai sinh
+    if (tk1State.isDuplicateBirthAddress.value) {
+      if (tk1State.districtReceive.value != value) {
+        // Xóa xã nơi nhận hồ sơ khi thay đổi huyện nơi nhận hồ sơ
+        tk1State.wardReceive.value = null;
+      }
+
+      tk1State.districtReceive.value = value;
+    }
+
+    if (tk1State.isParticipantHeadOfHousehold.value) {
+      if (tk1State.districtTT.value != value) {
+        // Xóa xã thường trú khi thay đổi huyện thường trú
+        tk1State.wardTT.value = null;
+      }
+
+      tk1State.districtTT.value = value;
     }
   }
 
@@ -507,6 +540,7 @@ class DeclareInfoController extends BaseGetxController {
       tk1State.isDuplicateBirthAddress.value = false;
 
       // Xóa huyện, xã nơi nhận hồ sơ khi thay đổi tỉnh nơi nhận hồ sơ
+      tk1State.districtReceive.value = null;
       tk1State.wardReceive.value = null;
     }
 
@@ -515,10 +549,31 @@ class DeclareInfoController extends BaseGetxController {
     if (tk1State.isParticipantHeadOfHousehold.value) {
       if (tk1State.provinceTT.value != value) {
         // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
+        tk1State.districtTT.value = null;
         tk1State.wardTT.value = null;
       }
 
       tk1State.provinceTT.value = value;
+    }
+  }
+
+  void onChangeDistrictReceive(DistrictModel value) {
+    if (tk1State.districtReceive.value != value) {
+      // Khi user thay đổi huyện nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
+      tk1State.isDuplicateBirthAddress.value = false;
+
+      // Xóa xã nơi nhận hồ sơ khi thay đổi huyện nơi nhận hồ sơ
+      tk1State.wardReceive.value = null;
+    }
+    tk1State.districtReceive.value = value;
+
+    if (tk1State.isParticipantHeadOfHousehold.value) {
+      if (tk1State.districtTT.value != value) {
+        // Xóa xã thường trú khi thay đổi huyện thường trú
+        tk1State.wardTT.value = null;
+      }
+
+      tk1State.districtTT.value = value;
     }
   }
 
@@ -563,12 +618,14 @@ class DeclareInfoController extends BaseGetxController {
       tk1State.headOfHouseholdTextCtrl.text = d02Tk1State.fullNameTextCtrl.text;
       tk1State.headOfHouseholdCCCDTextCtrl.text = d02Tk1State.cccdTextCtrl.text;
       tk1State.provinceTT.value = tk1State.provinceReceive.value;
+      tk1State.districtTT.value = tk1State.districtReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
       tk1State.addressTTTextCtrl.text = tk1State.addressReceiveTextCtrl.text;
     } else {
       tk1State.headOfHouseholdTextCtrl.clear();
       tk1State.headOfHouseholdCCCDTextCtrl.clear();
       tk1State.provinceTT.value = null;
+      tk1State.districtTT.value = null;
       tk1State.wardTT.value = null;
       tk1State.addressTTTextCtrl.clear();
     }
@@ -588,10 +645,22 @@ class DeclareInfoController extends BaseGetxController {
     if (tk1State.provinceTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
       // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
+      tk1State.districtTT.value = null;
       tk1State.wardTT.value = null;
     }
 
     tk1State.provinceTT.value = value;
+    updateHouseholdInfoRequired();
+  }
+
+  void onChangeDistrictTT(DistrictModel value) {
+    if (tk1State.districtTT.value != value) {
+      tk1State.isParticipantHeadOfHousehold.value = false;
+      // Xóa xã thường trú khi thay đổi huyện thường trú
+      tk1State.wardTT.value = null;
+    }
+
+    tk1State.districtTT.value = value;
     updateHouseholdInfoRequired();
   }
 
@@ -680,12 +749,14 @@ class DeclareInfoController extends BaseGetxController {
 
   void onTapClearProvinceTT() {
     tk1State.provinceTT.value = null;
+    tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
 
     updateHouseholdInfoRequired();
   }
 
   void onTapClearDistrictTT() {
+    tk1State.districtTT.value = null;
     tk1State.wardTT.value = null;
 
     updateHouseholdInfoRequired();
@@ -804,6 +875,7 @@ class DeclareInfoController extends BaseGetxController {
     return tk1State.headOfHouseholdTextCtrl.text.trim().isEmpty &&
         tk1State.headOfHouseholdCCCDTextCtrl.text.trim().isEmpty &&
         tk1State.provinceTT.value == null &&
+        tk1State.districtTT.value == null &&
         tk1State.wardTT.value == null &&
         tk1State.addressTTTextCtrl.text.trim().isEmpty;
   }

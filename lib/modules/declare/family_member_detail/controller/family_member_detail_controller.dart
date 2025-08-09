@@ -48,6 +48,9 @@ class FamilyMemberDetailController extends BaseGetxController {
   /// Tỉnh khai sinh *
   final selectedProvince = Rxn<ProvinceModel>();
 
+  /// Huyện khai sinh *
+  final selectedDistrict = Rxn<DistrictModel>();
+
   /// Xã khai sinh *
   final selectedWard = Rxn<WardModel>();
 
@@ -72,6 +75,7 @@ class FamilyMemberDetailController extends BaseGetxController {
       selectedEthnic.value = member.ethnic;
       selectedNationality.value = member.nation;
       selectedProvince.value = member.province;
+      selectedDistrict.value = member.district;
       selectedWard.value = member.ward;
       relationship.value = member.relationship;
       cccdNumberTextCtrl.text = member.cccdNumber;
@@ -105,6 +109,7 @@ class FamilyMemberDetailController extends BaseGetxController {
         ethnic: selectedEthnic.value!,
         nation: selectedNationality.value!,
         province: selectedProvince.value!,
+        district: selectedDistrict.value!,
         ward: selectedWard.value!,
         relationship: relationship.value!,
         isParticipant: isParticipant.value,

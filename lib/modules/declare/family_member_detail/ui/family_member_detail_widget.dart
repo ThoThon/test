@@ -51,6 +51,9 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                         //Tỉnh khai sinh
                         _buildSelectProvince(),
 
+                        //Huyện khai sinh
+                        _buildSelectDistrict(),
+
                         //Xã khai sinh
                         _buildSelectWard(),
 
@@ -255,7 +258,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     );
                     break;
                   case BirthTypeEnum.full:
-                    selectedDate = await DatePickerUtils.showCalendarPicker(
+                    selectedDate =
+                        await DatePickerUtils.showCalendarPicker(
                       title: LocaleKeys.dialog_selectDayMonthYear.tr,
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: AppDimens.padding32,
@@ -412,7 +416,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                       if (value == null) return;
 
                       if (controller.selectedProvince.value != value) {
-                        // Reset ward when province changes
+                        // Reset district and ward when province changes
+                        controller.selectedDistrict.value = null;
                         controller.selectedWard.value = null;
                       }
 
@@ -426,6 +431,58 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
               },
               selectedItem: controller.selectedProvince.value,
               display: (province) => province.name,
+              validator: validator,
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildSelectDistrict() {
+    return FormFieldRegistrant<DistrictModel>(
+      registrarId: '2e677fd1-32c6-4df2-a1eb-64f7c0ecfc45',
+      validator: (value) {
+        if (controller.selectedDistrict.value == null) {
+          return LocaleKeys.familyMember_districtOfBirthCannotEmpty.tr;
+        }
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return Obx(
+          () {
+            return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
+              fieldKey: fieldKey,
+              label: LocaleKeys.familyMember_districtOfBirth.tr,
+              funcSelect: (didChange) async {
+                final districtOfBirth = controller.selectedProvince.value;
+                if (districtOfBirth == null) {
+                  controller.showSnackBar(
+                      LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
+                  return;
+                }
+
+                final result = await Get.bottomSheet<DistrictModel>(
+                  SelectDistrictBts(
+                    provinceCode: districtOfBirth.id,
+                    selectedDistrict: controller.selectedDistrict.value,
+                  ),
+                  isScrollControlled: true,
+                );
+
+                if (result != null) {
+                  if (controller.selectedDistrict.value != result) {
+                    // Reset ward when district changes
+                    controller.selectedWard.value = null;
+                  }
+
+                  controller.selectedDistrict.value = result;
+
+                  didChange(result);
+                }
+              },
+              selectedItem: controller.selectedDistrict.value,
+              display: (district) => '${district.id} - ${district.name}',
               validator: validator,
             );
           },
@@ -458,9 +515,17 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                   return;
                 }
 
+                final districtOfBirth = controller.selectedDistrict.value;
+                if (districtOfBirth == null) {
+                  controller.showSnackBar(
+                      LocaleKeys.declareInfo_districtOfBirthNotSelected.tr);
+                  return;
+                }
+
                 final result = await Get.bottomSheet<WardModel>(
                   SelectWardBts(
                     provinceCode: provinceOfBirth.id,
+                    districtCode: districtOfBirth.id,
                     selectedWard: controller.selectedWard.value,
                   ),
                   isScrollControlled: true,

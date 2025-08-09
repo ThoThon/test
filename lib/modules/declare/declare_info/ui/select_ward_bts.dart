@@ -6,6 +6,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
   SelectWardBts({
     super.key,
     required this.provinceCode,
+    required this.districtCode,
     this.selectedWard,
   });
 
@@ -14,10 +15,12 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
 
   late final _controller = Get.put(SelectWardController(
     provinceCode: provinceCode,
+    districtCode: districtCode,
     ward: selectedWard,
   ));
 
   final String provinceCode;
+  final String districtCode;
   final WardModel? selectedWard;
   final _isShowButtonClear = false.obs;
 
