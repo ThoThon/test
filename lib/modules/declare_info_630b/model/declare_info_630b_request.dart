@@ -43,6 +43,10 @@ class DeclareInfo630bRequest {
   final String? soTaiKhoan;
   final String? tenChuTaiKhoan;
   final String? maNganHang;
+  final String? dotDaGiaiQuyet;
+  final String? lyDoDieuChinh;
+  final DateTime? tuNgayDuyetTruoc;
+  final int? tuoiThai;
 
   DeclareInfo630bRequest({
     this.id,
@@ -89,6 +93,10 @@ class DeclareInfo630bRequest {
     this.soTaiKhoan,
     this.tenChuTaiKhoan,
     this.maNganHang,
+    this.dotDaGiaiQuyet,
+    this.lyDoDieuChinh,
+    this.tuNgayDuyetTruoc,
+    this.tuoiThai,
   });
 
   Map<String, dynamic> toJson() {
@@ -137,6 +145,10 @@ class DeclareInfo630bRequest {
       'soTaiKhoan': soTaiKhoan,
       'tenChuTaiKhoan': tenChuTaiKhoan,
       'maNganHang': maNganHang,
+      'tuNgayDuyetTruoc': tuNgayDuyetTruoc?.toIso8601String(),
+      'dotDaGiaiQuyet': dotDaGiaiQuyet,
+      'lyDoDieuChinh': lyDoDieuChinh,
+      'tuoiThai': tuoiThai,
     };
   }
 }
