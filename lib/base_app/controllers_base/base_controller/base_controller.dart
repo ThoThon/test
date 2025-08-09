@@ -85,6 +85,9 @@ class BaseGetxController extends GetxController {
                 case AppConst.error404:
                   errorContent = LocaleKeys.dialog_error404.tr;
                   break;
+                case AppConst.error429:
+                  errorContent = LocaleKeys.dialog_error429.tr;
+                  break;
                 case AppConst.error500:
                   errorContent = LocaleKeys.dialog_errorInternalServer.tr;
                   break;
