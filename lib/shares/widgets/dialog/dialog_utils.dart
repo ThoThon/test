@@ -147,17 +147,15 @@ class ShowDialog {
     return iconData;
   }
 
-  static void showErrorMessage(String error, {bool isExpiredToken = false}) {
-    if (_numberOfDialogs < 1) {
-      if (isExpiredToken) {
-        // showDialogNotificationError(error,
-        //     nameAction: LocaleKeys.dialog_confirm, function: () {
-        //       Get.offAllNamed(AppRoutes.routeLogin);
-        //     });
-      } else {
-        showDialogNotificationError(error, isActiveBack: false);
-      }
+  static void showErrorMessage(String error) {
+    // Không check bằng _numberOfDialogs để ngăn ngừa việc mở nhiều dialog cùng lúc
+    // vì có bug là nếu 1 dialog đang mở mà bị chuyển màn hình (user không chủ động bấm đóng dialog),
+    // thì _numberOfDialogs không bị giảm, dẫn đến việc không thể mở dialog mới
+    if (Get.isDialogOpen ?? false) {
+      return;
     }
+
+    showDialogNotificationError(error, isActiveBack: false);
   }
 
   static Future<void> showDialogConfirm2({
