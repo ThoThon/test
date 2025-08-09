@@ -11,8 +11,8 @@ import '../../../src.dart';
 final cachedDistricts = <String, List<DistrictModel>>{};
 // Key is provinceCode
 final cachedHospitals = <String, List<Hospital>>{};
-// Key is (provinceCode, districtCode)
-final cachedWards = <(String, String), List<WardModel>>{};
+// Key is provinceCode
+final cachedWards = <String, List<WardModel>>{};
 
 class DeclareInfoRepository extends BaseRepository {
   DeclareInfoRepository(super.controller);
@@ -50,9 +50,8 @@ class DeclareInfoRepository extends BaseRepository {
 
   Future<BaseResponseList<WardModel>> getWards({
     required String provinceCode,
-    required String districtCode,
   }) async {
-    final key = (provinceCode, districtCode);
+    final key = provinceCode;
     if (cachedWards.containsKey(key)) {
       final wards = cachedWards[key];
       return BaseResponseList<WardModel>(
@@ -67,7 +66,6 @@ class DeclareInfoRepository extends BaseRepository {
       EnumRequestMethod.get,
       jsonMap: {
         "provinceCode": provinceCode,
-        "districtCode": districtCode,
       },
     );
     final result = BaseResponseList<WardModel>.fromJson(
