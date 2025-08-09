@@ -1,5 +1,6 @@
 09/08/2025
 - [Appmobile]_Bổ sung popup thông báo hiển thị khi api trả về statuscode 429
+- [Appmobile]_Thủ tục 600,607, 608, 610, 612, 613 - Tờ khai TK1 + Màn Đăng ký cấp mã - Cập nhật danh mục hành chính 2 cấp
 
 08/08/2025
 - [Appmobile]_Chỉnh sửa call api /api/HoSo630a/update-ms - BHW-2972
