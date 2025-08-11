@@ -788,7 +788,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
 
-        bool isEmpty = trimmedValue.isEmpty;
+        final isEmpty = trimmedValue.isEmpty;
 
         if (isEmpty && controller.isRequiredAdoptionDate) {
           return LocaleKeys.declareInfo_adoptionDateCannotEmpty.tr;
