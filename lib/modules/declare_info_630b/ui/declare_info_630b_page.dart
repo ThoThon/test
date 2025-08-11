@@ -9,7 +9,7 @@ import '../../login/model/model_src.dart';
 
 part 'benefit_account_info_group_ext_630b.dart';
 part 'declare_info_630b_widget.dart';
-part 'declare_info_gruop_ext_630b.dart';
+part 'declare_info_group_ext_630b.dart';
 part 'person_info_group_ext_630b.dart';
 
 class DeclareInfo630bPage extends BaseGetWidget {
