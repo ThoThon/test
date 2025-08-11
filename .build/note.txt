@@ -1,3 +1,6 @@
+11/08/2025
+- Sửa lỗi không thể cập nhật thông tin đơn vị khi trường lương cơ sở rỗng
+
 09/08/2025
 - [Appmobile]_Bổ sung popup thông báo hiển thị khi api trả về statuscode 429 - BHW-2985
 
