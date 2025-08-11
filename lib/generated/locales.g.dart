@@ -634,6 +634,12 @@ class LocaleKeys {
       'declareInfo_selectBenefitGroupCode';
   static const declareInfo_benefitGroupCodeCannotEmpty =
       'declareInfo_benefitGroupCodeCannotEmpty';
+  static const declareInfo_benefitGroupCodeLv2 =
+      'declareInfo_benefitGroupCodeLv2';
+  static const declareInfo_selectBenefitGroupCodeLv2 =
+      'declareInfo_selectBenefitGroupCodeLv2';
+  static const declareInfo_benefitGroupCodeLv2CannotEmpty =
+      'declareInfo_benefitGroupCodeLv2CannotEmpty';
   static const declareInfo_fromDay = 'declareInfo_fromDay';
   static const declareInfo_fromDayInvalid = 'declareInfo_fromDayInvalid';
   static const declareInfo_fromDayEmpty = 'declareInfo_fromDayEmpty';
@@ -739,6 +745,11 @@ class LocaleKeys {
   static const declareInfo_adjustReasonEmpty = 'declareInfo_adjustReasonEmpty';
   static const declareInfo_attachPaper = 'declareInfo_attachPaper';
   static const declareInfo_saveButton = 'declareInfo_saveButton';
+  static const declareInfo_conclusionDate = 'declareInfo_conclusionDate';
+  static const declareInfo_conclusionDateEmpty =
+      'declareInfo_conclusionDateEmpty';
+  static const declareInfo_conclusionDateInvalid =
+      'declareInfo_conclusionDateInvalid';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1710,6 +1721,10 @@ class Locales {
     'declareInfo_selectBenefitGroupCode': 'Chọn mã nhóm hưởng',
     'declareInfo_benefitGroupCodeCannotEmpty':
         'Mã nhóm hưởng không được bỏ trống',
+    'declareInfo_benefitGroupCodeLv2': 'Mã nhóm hưởng cấp 2',
+    'declareInfo_selectBenefitGroupCodeLv2': 'Chọn mã nhóm hưởng cấp 2',
+    'declareInfo_benefitGroupCodeLv2CannotEmpty':
+        'Mã nhóm hưởng cấp 2 không được bỏ trống',
     'declareInfo_fromDay': 'Từ ngày',
     'declareInfo_fromDayInvalid': 'Từ ngày không hợp lệ',
     'declareInfo_fromDayEmpty': 'Từ ngày không được bỏ trống',
@@ -1798,6 +1813,9 @@ class Locales {
     'declareInfo_adjustReasonEmpty': 'Lý do điều chỉnh không được bỏ trống',
     'declareInfo_attachPaper': 'Gửi kèm hồ sơ giấy',
     'declareInfo_saveButton': 'Lưu',
+    'declareInfo_conclusionDate': 'Ngày kết luận',
+    'declareInfo_conclusionDateEmpty': 'Ngày kết luận không được bỏ trống',
+    'declareInfo_conclusionDateInvalid': 'Ngày kết luận không hợp lệ',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

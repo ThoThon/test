@@ -51,12 +51,15 @@ class CardInputSelectDateWithLabel extends StatelessWidget {
             ),
             child: Row(
               children: [
-                SDSBuildText(
-                  labelText,
-                  style: textStyle ??
-                      AppTextStyle.font14Re.copyWith(
-                        color: AppColors.dsGray1,
-                      ),
+                Flexible(
+                  child: SDSBuildText(
+                    labelText,
+                    style: textStyle ??
+                        AppTextStyle.font14Re.copyWith(
+                          color: AppColors.dsGray1,
+                        ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 Visibility(
                   visible: isRequired,

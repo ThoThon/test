@@ -19,7 +19,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
         // Mã nhóm hưởng cấp 2
         _buildBenefitGroupCodeLv2Dropdown(),
-        sdsSBHeight12,
 
         // "Từ ngày" và "Đến ngày"
         Row(
@@ -185,6 +184,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         return Obx(
           () => CardDropdownWithLabel<DeclareForm630Model>(
             fieldKey: formFieldKey,
+            validator: validator,
             labelText: LocaleKeys.declareInfo_declareMethod.tr,
             isRequired: true,
             hintText: LocaleKeys.declareInfo_selectDeclareMethod.tr,
@@ -222,10 +222,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
             items: AppData.instance.benefitGroup630b.toList(),
             display: (item) => '${item.value} - ${item.text}',
             selectedItem: controller.benefitGroup.value,
-            onChanged: (value) {
-              if (value == null) return;
-              controller.benefitGroup.value = value;
-            },
+            onChanged: controller.onChangeBenefitGroup,
           ),
         );
       },
@@ -234,30 +231,41 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã nhóm hưởng cấp 2
   Widget _buildBenefitGroupCodeLv2Dropdown() {
-    return FormFieldRegistrant<BenefitGroupLv2Model>(
-      registrarId: '862496a1-7059-4921-a936-21623836ba38',
-      validator: (value) {
-        if (value == null) {
-          return LocaleKeys.declareInfo_benefitGroupCodeCannotEmpty.tr;
+    return Obx(
+      () {
+        final plans = controller.benefitGroup.value?.benefitGroupLv2;
+
+        if (plans == null || plans.isEmpty) {
+          return UtilWidget.shrink;
         }
-        return null;
-      },
-      builder: (formFieldKey, validator) {
-        return Obx(
-          () => CardDropdownWithLabel<BenefitGroupLv2Model>(
-            validator: validator,
-            fieldKey: formFieldKey,
-            labelText: 'Mã nhóm hưởng cấp 2',
-            isRequired: true,
-            hintText: 'Chọn mã nhóm hưởng cấp 2',
-            items: AppData.instance.benefitGroupLv2.toList(),
-            display: (item) => '${item.maNhomHuongC2} - ${item.tenNhomHuongC2}',
-            selectedItem: controller.benefitGroupLv2.value,
-            onChanged: (value) {
-              if (value == null) return;
-              controller.benefitGroupLv2.value = value;
-            },
-          ),
+        return FormFieldRegistrant<BenefitGroupLv2Model>(
+          registrarId: '862496a1-7059-4921-a936-21623836ba38',
+          validator: (value) {
+            if (value == null) {
+              return LocaleKeys.declareInfo_benefitGroupCodeLv2CannotEmpty.tr;
+            }
+            return null;
+          },
+          builder: (formFieldKey, validator) {
+            return Obx(
+              () => CardDropdownWithLabel<BenefitGroupLv2Model>(
+                autovalidateMode: controller.autoValidateMode.value,
+                validator: validator,
+                fieldKey: formFieldKey,
+                labelText: LocaleKeys.declareInfo_benefitGroupCodeLv2.tr,
+                isRequired: true,
+                hintText: LocaleKeys.declareInfo_selectBenefitGroupCodeLv2.tr,
+                items: plans.toList(),
+                display: (item) =>
+                    '${item.maNhomHuongC2} - ${item.tenNhomHuongC2}',
+                selectedItem: controller.benefitGroupLv2.value,
+                onChanged: (value) {
+                  if (value == null) return;
+                  controller.benefitGroupLv2.value = value;
+                },
+              ),
+            ).paddingOnly(bottom: AppDimens.paddingSmall);
+          },
         );
       },
     );
@@ -533,12 +541,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildIsPregnancyConditionDropdown() {
     return Obx(
       () => CardDropdownWithLabel<PregnancyCheckConditionModel>(
-        validator: (value) {
-          if (value == null) {
-            return '';
-          }
-          return null;
-        },
         labelText: 'Điều kiện khám thai',
         hintText: 'Chọn điều kiện khám thai',
         items: AppData.instance.pregnancyCondition.toList(),
@@ -566,12 +568,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildContraceptionMethodDropdown() {
     return Obx(
       () => CardDropdownWithLabel<ContraceptionModel>(
-        validator: (value) {
-          if (value == null) {
-            return '';
-          }
-          return null;
-        },
         labelText: 'Biện pháp tránh thai',
         hintText: 'Chọn biện pháp',
         items: AppData.instance.contraception.toList(),
@@ -589,12 +585,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildIsChildbirthConditionDropdown() {
     return Obx(
       () => CardDropdownWithLabel<ChildBirthConditionModel>(
-        validator: (value) {
-          if (value == null) {
-            return '';
-          }
-          return null;
-        },
         labelText: 'Điều kiện sinh con',
         hintText: 'Chọn điều kiện sinh con',
         items: AppData.instance.childBirthCondition.toList(),
@@ -610,59 +600,66 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Ngày sinh con
   Widget _buildBirthDayChild() {
-    return Obx(
-      () => CardInputSelectDateWithLabel(
-        autovalidateMode: controller.autoValidateMode.value,
-        labelText: LocaleKeys.declareInfo_birthDayChild.tr,
-        inputFormatters: InputFormatterEnum.dateFullBirthDay,
-        controller: controller.birthDayChildCtrl,
-        hintText: PATTERN_1,
-        isRequired: false,
-        onSelectDate: () async {
-          KeyBoard.hide();
-          final selectedDate = await DatePickerUtils.showCalendarPicker(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
-            title: LocaleKeys.dialog_selectDayMonthYear.tr,
-            dateFormat: PATTERN_1,
-            dateTimeInit: convertStringToDateStrict(
-                  controller.birthDayChildCtrl.text,
-                  PATTERN_1,
-                ) ??
-                DateTime.now(),
-          );
-          if (selectedDate != null) {
-            controller.birthDayChildCtrl.text =
-                convertDateToString(selectedDate, PATTERN_1);
-          }
-        },
-        validator: (value) {
-          final trimmedValue = value?.trim();
+    return FormFieldRegistrant<String>(
+      registrarId: '6bedb77d-836e-4409-9da9-062e3ae2aab7',
+      validator: (value) {
+        final trimmedValue = value?.trim();
 
-          if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return LocaleKeys.declareInfo_birthDayChildEmpty.tr;
-          }
-          // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
-          if (trimmedValue.length < 10) {
-            return LocaleKeys.declareInfo_birthDayChildInvalid.tr;
-          }
-
-          final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-          if (toDate == null) {
-            return LocaleKeys.declareInfo_birthDayChildInvalid.tr;
-          }
-
-          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-          if (toDate.year <= 1900 || toDate.year >= 2100) {
-            return LocaleKeys.declareInfo_birthDayChildInvalid.tr;
-          }
-
-          if (toDate.isAfter(DateTime.now())) {
-            return LocaleKeys.declareInfo_dobCannotFuture.tr;
-          }
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
           return null;
-        },
-      ).paddingOnly(bottom: AppDimens.paddingSmall),
+        }
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.declareInfo_birthDayChildInvalid.tr;
+        }
+
+        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (toDate == null) {
+          return LocaleKeys.declareInfo_birthDayChildInvalid.tr;
+        }
+
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (toDate.year <= 1900 || toDate.year >= 2100) {
+          return LocaleKeys.declareInfo_birthDayChildInvalid.tr;
+        }
+
+        if (toDate.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_dobCannotFuture.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputSelectDateWithLabel(
+            fieldKey: formFieldKey,
+            autovalidateMode: controller.autoValidateMode.value,
+            labelText: LocaleKeys.declareInfo_birthDayChild.tr,
+            inputFormatters: InputFormatterEnum.dateFullBirthDay,
+            controller: controller.birthDayChildCtrl,
+            hintText: PATTERN_1,
+            isRequired: false,
+            validator: validator,
+            onSelectDate: () async {
+              KeyBoard.hide();
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+                title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                dateFormat: PATTERN_1,
+                dateTimeInit: convertStringToDateStrict(
+                      controller.birthDayChildCtrl.text,
+                      PATTERN_1,
+                    ) ??
+                    DateTime.now(),
+              );
+              if (selectedDate != null) {
+                controller.birthDayChildCtrl.text =
+                    convertDateToString(selectedDate, PATTERN_1);
+              }
+            },
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
     );
   }
 
@@ -670,15 +667,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildNumberChild() {
     return Obx(
       () => CardInputTextFormWithLabel(
-        validator: (value) {
-          final trimmedValue = value?.trim();
-
-          if (trimmedValue == null || trimmedValue.isEmpty) {
-            return LocaleKeys.declareInfo_numberChildEmpty.tr;
-          }
-
-          return null;
-        },
         autovalidateMode: controller.autoValidateMode.value,
         hintText: LocaleKeys.declareInfo_numberChildHint.tr,
         labelText: LocaleKeys.declareInfo_numberChild.tr,
@@ -730,169 +718,190 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Ngày con chết
   Widget _buildChildDeathDate() {
-    return Obx(
-      () => CardInputSelectDateWithLabel(
-        autovalidateMode: controller.autoValidateMode.value,
-        validator: (value) {
-          final trimmedValue = value?.trim();
+    return FormFieldRegistrant<String>(
+      registrarId: '0ce7c7b9-142d-4669-8ddc-f2f033e2bd12',
+      validator: (value) {
+        final trimmedValue = value?.trim();
 
-          if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return '';
-          }
-          // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
-          if (trimmedValue.length < 10) {
-            return 'Ngày con chết không hợp lệ';
-          }
-
-          final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-          if (toDate == null) {
-            return 'Ngày con chết không hợp lệ';
-          }
-
-          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-          if (toDate.year <= 1900 || toDate.year >= 2100) {
-            return 'Ngày con chết không hợp lệ';
-          }
-
-          if (toDate.isAfter(DateTime.now())) {
-            return 'Ngày con chết không được lớn hơn ngày hôm nay';
-          }
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
           return null;
-        },
-        labelText: 'Ngày con chết',
-        inputFormatters: InputFormatterEnum.dateFullBirthDay,
-        controller: controller.childDeathDateCtrl,
-        hintText: PATTERN_1,
-        isRequired: false,
-        onSelectDate: () async {
-          KeyBoard.hide();
-          final selectedDate = await DatePickerUtils.showCalendarPicker(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
-            title: LocaleKeys.dialog_selectDayMonthYear.tr,
-            dateFormat: PATTERN_1,
-            dateTimeInit: convertStringToDateStrict(
-                  controller.childDeathDateCtrl.text,
-                  PATTERN_1,
-                ) ??
-                DateTime.now(),
-          );
-          if (selectedDate != null) {
-            controller.childDeathDateCtrl.text =
-                convertDateToString(selectedDate, PATTERN_1);
-          }
-        },
-      ).paddingOnly(bottom: AppDimens.paddingSmall),
+        }
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return 'Ngày con chết không hợp lệ';
+        }
+
+        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (toDate == null) {
+          return 'Ngày con chết không hợp lệ';
+        }
+
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (toDate.year <= 1900 || toDate.year >= 2100) {
+          return 'Ngày con chết không hợp lệ';
+        }
+
+        if (toDate.isAfter(DateTime.now())) {
+          return 'Ngày con chết không được lớn hơn ngày hôm nay';
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputSelectDateWithLabel(
+            fieldKey: formFieldKey,
+            autovalidateMode: controller.autoValidateMode.value,
+            validator: validator,
+            labelText: 'Ngày con chết',
+            inputFormatters: InputFormatterEnum.dateFullBirthDay,
+            controller: controller.childDeathDateCtrl,
+            hintText: PATTERN_1,
+            isRequired: false,
+            onSelectDate: () async {
+              KeyBoard.hide();
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+                title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                dateFormat: PATTERN_1,
+                dateTimeInit: convertStringToDateStrict(
+                      controller.childDeathDateCtrl.text,
+                      PATTERN_1,
+                    ) ??
+                    DateTime.now(),
+              );
+              if (selectedDate != null) {
+                controller.childDeathDateCtrl.text =
+                    convertDateToString(selectedDate, PATTERN_1);
+              }
+            },
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
     );
   }
 
   // Ngày nhận con
   Widget _buildAdoptionDatee() {
-    return Obx(
-      () => CardInputSelectDateWithLabel(
-        autovalidateMode: controller.autoValidateMode.value,
-        validator: (value) {
-          final trimmedValue = value?.trim();
+    return FormFieldRegistrant<String>(
+      registrarId: '4ceeb6a5-b997-4379-9c13-6e5418cd86c9',
+      validator: (value) {
+        final trimmedValue = value?.trim();
 
-          if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return null;
-          }
-          // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
-          if (trimmedValue.length < 10) {
-            return 'Ngày nhận con không hợp lệ';
-          }
-
-          final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
-          if (date == null) {
-            return 'Ngày nhận con không hợp lệ';
-          }
-
-          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-          if (date.year <= 1900 || date.year >= 2100) {
-            return 'Ngày nhận con không hợp lệ';
-          }
-
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
           return null;
-        },
-        labelText: 'Ngày nhận con',
-        inputFormatters: InputFormatterEnum.dateFullBirthDay,
-        controller: controller.adoptionDateCtrl,
-        hintText: PATTERN_1,
-        isRequired: controller.isRequiredAdoptionDate,
-        onSelectDate: () async {
-          KeyBoard.hide();
-          final selectedDate = await DatePickerUtils.showCalendarPicker(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
-            title: LocaleKeys.dialog_selectDayMonthYear.tr,
-            dateFormat: PATTERN_1,
-            dateTimeInit: convertStringToDateStrict(
-                  controller.adoptionDateCtrl.text,
-                  PATTERN_1,
-                ) ??
-                DateTime.now(),
-          );
-          if (selectedDate != null) {
-            controller.adoptionDateCtrl.text =
-                convertDateToString(selectedDate, PATTERN_1);
-          }
-        },
-      ).paddingOnly(bottom: AppDimens.paddingSmall),
+        }
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return 'Ngày nhận con không hợp lệ';
+        }
+
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
+          return 'Ngày nhận con không hợp lệ';
+        }
+
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (date.year <= 1900 || date.year >= 2100) {
+          return 'Ngày nhận con không hợp lệ';
+        }
+
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputSelectDateWithLabel(
+            fieldKey: formFieldKey,
+            autovalidateMode: controller.autoValidateMode.value,
+            validator: validator,
+            labelText: 'Ngày nhận con',
+            inputFormatters: InputFormatterEnum.dateFullBirthDay,
+            controller: controller.adoptionDateCtrl,
+            hintText: PATTERN_1,
+            isRequired: false,
+            onSelectDate: () async {
+              KeyBoard.hide();
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+                title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                dateFormat: PATTERN_1,
+                dateTimeInit: convertStringToDateStrict(
+                      controller.adoptionDateCtrl.text,
+                      PATTERN_1,
+                    ) ??
+                    DateTime.now(),
+              );
+              if (selectedDate != null) {
+                controller.adoptionDateCtrl.text =
+                    convertDateToString(selectedDate, PATTERN_1);
+              }
+            },
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
     );
   }
 
   // Ngày đi làm thực tế
   Widget _buildReturnWorkDate() {
-    return Obx(
-      () => CardInputSelectDateWithLabel(
-        autovalidateMode: controller.autoValidateMode.value,
-        labelText: 'Ngày đi làm thực tế',
-        inputFormatters: InputFormatterEnum.dateFullBirthDay,
-        controller: controller.returnWorkDateCtrl,
-        hintText: PATTERN_1,
-        isRequired: false,
-        onSelectDate: () async {
-          KeyBoard.hide();
-          final selectedDate = await DatePickerUtils.showCalendarPicker(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
-            title: LocaleKeys.dialog_selectDayMonthYear.tr,
-            dateFormat: PATTERN_1,
-            dateTimeInit: convertStringToDateStrict(
-                  controller.returnWorkDateCtrl.text,
-                  PATTERN_1,
-                ) ??
-                DateTime.now(),
-          );
-          if (selectedDate != null) {
-            controller.returnWorkDateCtrl.text =
-                convertDateToString(selectedDate, PATTERN_1);
-          }
-        },
-        validator: (value) {
-          final trimmedValue = value?.trim();
+    return FormFieldRegistrant<String>(
+      registrarId: '7af22d9d-68e7-4bb5-bdb0-0156e43ac865',
+      validator: (value) {
+        final trimmedValue = value?.trim();
 
-          if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return '';
-          }
-          // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
-          if (trimmedValue.length < 10) {
-            return 'Ngày đi làm thực tế không hợp lệ';
-          }
-
-          final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
-          if (date == null) {
-            return 'Ngày đi làm thực tế không hợp lệ';
-          }
-
-          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-          if (date.year <= 1900 || date.year >= 2100) {
-            return 'Ngày đi làm thực tế không hợp lệ';
-          }
-
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
           return null;
-        },
-      ).paddingOnly(bottom: AppDimens.paddingSmall),
+        }
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return 'Ngày đi làm thực tế không hợp lệ';
+        }
+
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
+          return 'Ngày đi làm thực tế không hợp lệ';
+        }
+
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (date.year <= 1900 || date.year >= 2100) {
+          return 'Ngày đi làm thực tế không hợp lệ';
+        }
+
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputSelectDateWithLabel(
+            fieldKey: formFieldKey,
+            autovalidateMode: controller.autoValidateMode.value,
+            labelText: 'Ngày đi làm thực tế',
+            inputFormatters: InputFormatterEnum.dateFullBirthDay,
+            controller: controller.returnWorkDateCtrl,
+            hintText: PATTERN_1,
+            isRequired: false,
+            onSelectDate: () async {
+              KeyBoard.hide();
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+                title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                dateFormat: PATTERN_1,
+                dateTimeInit: convertStringToDateStrict(
+                      controller.returnWorkDateCtrl.text,
+                      PATTERN_1,
+                    ) ??
+                    DateTime.now(),
+              );
+              if (selectedDate != null) {
+                controller.returnWorkDateCtrl.text =
+                    convertDateToString(selectedDate, PATTERN_1);
+              }
+            },
+            validator: validator,
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
     );
   }
 
@@ -939,123 +948,133 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           if (value == null) return;
           controller.surgeryOrUnder32Week.value = value;
         },
-        validator: (value) {
-          if (value == null) {
-            return '';
-          }
-          return null;
-        },
       ),
     );
   }
 
   // Ngày mẹ chết
   Widget _buildMotherDeathDate() {
-    return Obx(
-      () => CardInputSelectDateWithLabel(
-        autovalidateMode: controller.autoValidateMode.value,
-        labelText: 'Ngày mẹ chết',
-        inputFormatters: InputFormatterEnum.dateFullBirthDay,
-        controller: controller.motherDeathDateCtrl,
-        hintText: PATTERN_1,
-        isRequired: false,
-        onSelectDate: () async {
-          KeyBoard.hide();
-          final selectedDate = await DatePickerUtils.showCalendarPicker(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
-            title: LocaleKeys.dialog_selectDayMonthYear.tr,
-            dateFormat: PATTERN_1,
-            dateTimeInit: convertStringToDateStrict(
-                  controller.motherDeathDateCtrl.text,
-                  PATTERN_1,
-                ) ??
-                DateTime.now(),
-          );
-          if (selectedDate != null) {
-            controller.motherDeathDateCtrl.text =
-                convertDateToString(selectedDate, PATTERN_1);
-          }
-        },
-        validator: (value) {
-          final trimmedValue = value?.trim();
+    return FormFieldRegistrant<String>(
+      registrarId: '1ab4af68-af0c-4167-a670-6182a2cdecb7',
+      validator: (value) {
+        final trimmedValue = value?.trim();
 
-          if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return '';
-          }
-          // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
-          if (trimmedValue.length < 10) {
-            return 'Ngày mẹ chết không hợp lệ';
-          }
-
-          final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-          if (toDate == null) {
-            return '';
-          }
-
-          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-          if (toDate.year <= 1900 || toDate.year >= 2100) {
-            return 'Ngày mẹ chết không hợp lệ';
-          }
-
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
           return null;
-        },
-      ).paddingOnly(bottom: AppDimens.paddingSmall),
+        }
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return 'Ngày mẹ chết không hợp lệ';
+        }
+
+        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (toDate == null) {
+          return '';
+        }
+
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (toDate.year <= 1900 || toDate.year >= 2100) {
+          return 'Ngày mẹ chết không hợp lệ';
+        }
+
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputSelectDateWithLabel(
+            fieldKey: formFieldKey,
+            autovalidateMode: controller.autoValidateMode.value,
+            labelText: 'Ngày mẹ chết',
+            inputFormatters: InputFormatterEnum.dateFullBirthDay,
+            controller: controller.motherDeathDateCtrl,
+            hintText: PATTERN_1,
+            isRequired: false,
+            onSelectDate: () async {
+              KeyBoard.hide();
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+                title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                dateFormat: PATTERN_1,
+                dateTimeInit: convertStringToDateStrict(
+                      controller.motherDeathDateCtrl.text,
+                      PATTERN_1,
+                    ) ??
+                    DateTime.now(),
+              );
+              if (selectedDate != null) {
+                controller.motherDeathDateCtrl.text =
+                    convertDateToString(selectedDate, PATTERN_1);
+              }
+            },
+            validator: validator,
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
     );
   }
 
   // Ngày kết luận
   Widget _buildConclusionDate() {
-    return Obx(
-      () => CardInputSelectDateWithLabel(
-        autovalidateMode: controller.autoValidateMode.value,
-        labelText: 'Ngày kết luận',
-        inputFormatters: InputFormatterEnum.dateFullBirthDay,
-        controller: controller.conclusionDateCtrl,
-        hintText: PATTERN_1,
-        isRequired: false,
-        onSelectDate: () async {
-          KeyBoard.hide();
-          final selectedDate = await DatePickerUtils.showCalendarPicker(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
-            title: LocaleKeys.dialog_selectDayMonthYear.tr,
-            dateFormat: PATTERN_1,
-            dateTimeInit: convertStringToDateStrict(
-                  controller.conclusionDateCtrl.text,
-                  PATTERN_1,
-                ) ??
-                DateTime.now(),
-          );
-          if (selectedDate != null) {
-            controller.conclusionDateCtrl.text =
-                convertDateToString(selectedDate, PATTERN_1);
-          }
-        },
-        validator: (value) {
-          final trimmedValue = value?.trim();
+    return FormFieldRegistrant<String>(
+      registrarId: '4e7c8f89-41ef-4a09-86c5-e8228c7fa943',
+      validator: (value) {
+        final trimmedValue = value?.trim();
 
-          if ((trimmedValue == null || trimmedValue.isEmpty)) {
-            return '';
-          }
-          // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
-          if (trimmedValue.length < 10) {
-            return 'Ngày kết luận không hợp lệ';
-          }
+        bool isEmpty = trimmedValue == null || trimmedValue.isEmpty;
+        if (controller.isRequiredConclusionDate && isEmpty) {
+          return LocaleKeys.declareInfo_conclusionDateEmpty.tr;
+        }
+        if (isEmpty) return null;
+        // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
+        if (trimmedValue.length < 10) {
+          return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
+        }
 
-          final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-          if (toDate == null) {
-            return '';
-          }
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
+          return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
+        }
 
-          // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-          if (toDate.year <= 1900 || toDate.year >= 2100) {
-            return 'Ngày kết luận không hợp lệ';
-          }
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (date.year <= 1900 || date.year >= 2100) {
+          return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
+        }
 
-          return null;
-        },
-      ).paddingOnly(bottom: AppDimens.paddingSmall),
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputSelectDateWithLabel(
+            fieldKey: formFieldKey,
+            autovalidateMode: controller.autoValidateMode.value,
+            labelText: LocaleKeys.declareInfo_conclusionDate.tr,
+            inputFormatters: InputFormatterEnum.dateFullBirthDay,
+            controller: controller.conclusionDateCtrl,
+            hintText: PATTERN_1,
+            isRequired: controller.isRequiredConclusionDate,
+            onSelectDate: () async {
+              KeyBoard.hide();
+              final selectedDate = await DatePickerUtils.showCalendarPicker(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+                title: LocaleKeys.dialog_selectDayMonthYear.tr,
+                dateFormat: PATTERN_1,
+                dateTimeInit: convertStringToDateStrict(
+                      controller.conclusionDateCtrl.text,
+                      PATTERN_1,
+                    ) ??
+                    DateTime.now(),
+              );
+              if (selectedDate != null) {
+                controller.conclusionDateCtrl.text =
+                    convertDateToString(selectedDate, PATTERN_1);
+              }
+            },
+            validator: validator,
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
     );
   }
 
@@ -1093,12 +1112,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           if (value == null) return;
           controller.maternityRest.value = value;
         },
-        validator: (value) {
-          if (value == null) {
-            return '';
-          }
-          return null;
-        },
       ),
     );
   }
@@ -1116,12 +1129,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           if (value == null) return;
           controller.parentalLeave.value = value;
         },
-        validator: (value) {
-          if (value == null) {
-            return '';
-          }
-          return null;
-        },
       ),
     );
   }
@@ -1138,12 +1145,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         onChanged: (value) {
           if (value == null) return;
           controller.surrogacy.value = value;
-        },
-        validator: (value) {
-          if (value == null) {
-            return '';
-          }
-          return null;
         },
       ),
     );

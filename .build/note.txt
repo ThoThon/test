@@ -1,6 +1,10 @@
+11/08/2025
+- [Appmobile]_Thủ tục 630b_Ghép api khi nhấn "Chọn nhân sự" Tại form kê khai - BHW-2979
+
 09/08/2025
 - [Appmobile]_Thủ tục 630b_Bổ sung api Xóa toàn bộ hồ sơ 630b - BHW-2978
 - [Appmobile]_Thủ tục 630b_Bổ sung call api Cập nhật hồ sơ 630b - BHW-2976
+- [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường ngày kết luận - BHW-2969
 - [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường ngày nhận con - BHW-2968
 
 07/08/2025

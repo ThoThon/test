@@ -3,6 +3,7 @@ import 'package:collection/collection.dart';
 import '../../../base_app/model/app_data.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
 import '../../login/model/categories_630/categories_630_src.dart';
+import '../../select_staff/model/model_src.dart';
 import '../../src.dart';
 
 extension DeclareInfo630bControllerExt on DeclareInfo630bController {
@@ -123,6 +124,18 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     return receiveForm.value?.value == ATMPaymentValue;
   }
 
+  // REF: BHW-2969
+  bool get isRequiredConclusionDate =>
+      benefitGroupLv2.value?.maNhomHuongC2 == 'T44';
+
+  void onChangeBenefitGroup(BenefitGroup630bModel? method) {
+    if (method == null) {
+      return;
+    }
+    benefitGroup.value = method;
+    benefitGroupLv2.value = null;
+  }
+
   Future<void> get630bDetail() async {
     final staffId = argument.staffId;
     if (staffId == null) {
@@ -176,17 +189,46 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
   }
 
-  // REF: BHW-2968
-  // bool get isRequiredAdoptionDate =>
-  //     benefitGroupLv2.value?.maNhomHuongC2 == 'T44';
+  void goToSelectStaffPage() async {
+    final result = await Get.toNamed(
+      AppRoutes.selectStaff.path,
+      // Truyền id sang để biết nhân viên nào đang được chọn
+      arguments: selectedStaffId,
+    );
+    if (result is SelectStaffResponse) {
+      _getDetailStaff(staffId: result.id);
+    }
+  }
 
-  // void onChangeBenefitGroup(BenefitGroup630bModel? method) {
-  //   if (method == null) {
-  //     return;
-  //   }
-  //   benefitGroup.value = method;
-  //   benefitGroupLv2.value = null;
-  // }
+  Future<void> _getDetailStaff({
+    required String staffId,
+  }) async {
+    try {
+      showLoadingOverlay();
+      final response = await declareInfoRepository.getDetailStaff(id: staffId);
+      final staff = response.result;
+      if (response.isSuccess && staff != null) {
+        mapFromStaffDetail(staff);
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  void mapFromStaffDetail(StaffDetailResponse staff) {
+    // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
+    selectedStaffId = staff.id;
+
+    fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
+
+    bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
+
+    cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
+  }
 
 // REF: BHW-2968
   bool get isRequiredAdoptionDate {
@@ -232,14 +274,14 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     );
 
     // Mã nhóm hưởng
-    benefitGroup.value = AppData.instance.benefitGroup630b.firstWhereOrNull(
-      (item) => item.value == detail.maNhomHuong,
-    );
+    if (detail.maNhomHuong != null) {
+      benefitGroup.value = detail.maNhomHuong;
+    }
 
     // Mã nhóm hưởng cấp 2
-    benefitGroupLv2.value = AppData.instance.benefitGroupLv2.firstWhereOrNull(
-      (item) => item.maNhomHuongC2 == detail.maNhomHuong2,
-    );
+    if (detail.maNhomHuong2 != null) {
+      benefitGroupLv2.value = detail.maNhomHuong2;
+    }
 
     // Từ ngày
     fromDateCtrl.text = convertDateToStringSafe(detail.tuNgay, PATTERN_1) ?? '';
