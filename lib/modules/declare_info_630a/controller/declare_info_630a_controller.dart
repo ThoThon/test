@@ -127,6 +127,8 @@ class DeclareInfo630aController extends BaseGetxController {
 
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
+  final scrollController = ScrollController();
+
   @override
   void onReady() {
     super.onReady();
@@ -309,26 +311,17 @@ class DeclareInfo630aController extends BaseGetxController {
 
   /// Trả về "true" khi "Mã nhóm hưởng" là "Con ốm"
   bool get isSickChild {
-    if (benefitGroup.value?.value == "O2") {
-      return true;
-    }
-    return false;
+    return benefitGroup.value?.value == "O2";
   }
 
   /// Trả về "true" khi "Hình thức kê khai" là "Điều chỉnh"
   bool get isAdjustDeclareForm {
-    if (declareForm.value?.value == '2') {
-      return true;
-    }
-    return false;
+    return declareForm.value?.value == declareMethodAdjustValue;
   }
 
   /// Trả về "true" khi "Hình thức nhận" là "Chi trả qua ATM"
   bool get isATMpayment {
-    if (receiveForm.value?.value == 'ATM') {
-      return true;
-    }
-    return false;
+    return receiveForm.value?.value == ATMPaymentValue;
   }
 
   void mapFrom630aDetail(DeclareInfo630aResponse detail) {
@@ -360,7 +353,9 @@ class DeclareInfo630aController extends BaseGetxController {
         convertDateToStringSafe(detail.ngaySinhCon, PATTERN_1) ?? '';
 
     // Số con
-    numberChildCtrl.text = detail.soCon.toString();
+    if (detail.soCon != null) {
+      numberChildCtrl.text = detail.soCon.toString();
+    }
 
     // Mã thẻ BHYT của con
     bhytCardCodeChildCtrl.text = detail.theBhytCuaCon;
@@ -459,6 +454,79 @@ class DeclareInfo630aController extends BaseGetxController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
+  void onChangeReceiveMethod(ReceiveForm630aModel? method) {
+    if (method == null) {
+      return;
+    }
+
+    // Nếu khác ATM thì reset các trường liên quan ATM
+    // REF: BHW-2950
+    if (method.value != ATMPaymentValue) {
+      bankNumberCtrl.clear();
+      accountHolderNameCtrl.clear();
+      selectedBank.value = null;
+    }
+
+    // Scroll đến cuối màn hình khi chọn "Chi trả qua ATM"
+    // REF: BHW-2948
+    if (receiveForm.value != method && method.value == ATMPaymentValue) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (scrollController.hasClients) {
+          scrollController.animateTo(
+            scrollController.position.maxScrollExtent,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.ease,
+          );
+        }
+      });
+    }
+
+    receiveForm.value = method;
+  }
+
+  void onChangeDeclareMethod(DeclareForm630aModel? method) {
+    if (method == null) {
+      return;
+    }
+    declareForm.value = method;
+
+    // Nếu chọn hình thức kê khai khác "Phát sinh" (1) thì reset các trường liên quan
+    // REF: BHW-2949
+    if (method.value != declareMethodArisingValue) {
+      selectHospitalLine.value = null;
+      selectDiseaseCode.value = null;
+      diseaseNameTextCtrl.clear();
+      serialNumberCtrl.clear();
+      workCondition.value = null;
+      isMaternityRest.value = false;
+      supplementalPeriodCtrl.clear();
+      fileCodeTextCtrl.clear();
+    }
+
+    // REF: BHW-2957
+    if (method.value != declareMethodAdjustValue) {
+      resolvedPeriodCtrl.clear();
+      resolvedDateCtrl.clear();
+      adjustReasonCtrl.clear();
+    }
+  }
+
+  void onChangeBenefitGroup(BenefitGroup630aModel? group) {
+    if (group == null) {
+      return;
+    }
+
+    benefitGroup.value = group;
+
+    // Nếu chọn nhóm hưởng khác "Con ốm" thì reset các trường liên quan
+    // REF: BHW-2958
+    if (group.value != benefitGroupSickChildValue) {
+      birthDayChildCtrl.clear();
+      numberChildCtrl.clear();
+      bhytCardCodeChildCtrl.clear();
+    }
+  }
+
   @override
   void onClose() {
     fullNameTextCtrl.dispose();
@@ -483,6 +551,7 @@ class DeclareInfo630aController extends BaseGetxController {
     resolvedPeriodCtrl.dispose();
     resolvedDateCtrl.dispose();
     adjustReasonCtrl.dispose();
+    scrollController.dispose();
 
     super.onClose();
   }

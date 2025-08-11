@@ -18,7 +18,7 @@ class DeclareInfo630aResponse {
   final String tuyenBenhVien;
   final DateTime? ngaySinhCon;
   final String theBhytCuaCon;
-  final int soCon;
+  final int? soCon;
   final String maBenhDaiNgay;
   final String tenBenh;
   final String dieuKienLamViec;
@@ -91,7 +91,7 @@ class DeclareInfo630aResponse {
           ? DateTime.tryParse(json['ngaySinhCon'])
           : null,
       theBhytCuaCon: json['theBhytCuaCon'] ?? '',
-      soCon: json['soCon'] ?? 0,
+      soCon: json['soCon'],
       maBenhDaiNgay: json['maBenhDaiNgay'] ?? '',
       tenBenh: json['tenBenh'] ?? '',
       dieuKienLamViec: json['dieuKienLamViec'] ?? '',

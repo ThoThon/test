@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 
-class AppController extends BaseGetClController {
+class AppController extends BaseGetClController with WidgetsBindingObserver {
+  late final _remoteConfigStorage = Get.find<RemoteConfigStorage>();
+
   @override
   void onInit() {
     super.onInit();
+    WidgetsBinding.instance.addObserver(this);
     _configSystemUI();
   }
 
@@ -23,7 +28,24 @@ class AppController extends BaseGetClController {
     );
   }
 
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        await _remoteConfigStorage.fetchAndActivateConfigs();
+        break;
+      default:
+        break;
+    }
+  }
+
   void changeTheme() {}
 
   void changeLanguage() {}
+
+  @override
+  void onClose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.onClose();
+  }
 }

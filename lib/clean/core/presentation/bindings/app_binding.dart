@@ -8,6 +8,7 @@ import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
+import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 
 import 'base_bindings.dart';
 
@@ -54,6 +55,10 @@ class AppBinding extends BaseBindings {
     );
     await [
       Get.putAsync<AppHive>(AppHiveImpl.instance.init, permanent: true),
+      Get.putAsync<RemoteConfigStorage>(
+        RemoteConfigStorage().initialize,
+        permanent: true,
+      ),
       Get.putAsync(AppInfo().init, permanent: true)
     ].wait;
     Get.put<AppNavigator>(AppNavigatorImpl(), permanent: true);
