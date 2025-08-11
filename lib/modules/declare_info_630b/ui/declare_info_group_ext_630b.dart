@@ -665,17 +665,32 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Số con
   Widget _buildNumberChild() {
-    return Obx(
-      () => CardInputTextFormWithLabel(
-        autovalidateMode: controller.autoValidateMode.value,
-        hintText: LocaleKeys.declareInfo_numberChildHint.tr,
-        labelText: LocaleKeys.declareInfo_numberChild.tr,
-        controller: controller.numberChildCtrl,
-        inputFormatters: InputFormatterEnum.phoneNumber,
-        textInputType: TextInputType.number,
-        isRequired: false,
-        maxLengthInputForm: 1,
-      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    return FormFieldRegistrant<String>(
+      registrarId: '2af4c72a-2e4c-4286-bbb5-cc908d811bba',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        final isEmpty = trimmedValue.isEmpty;
+        if (isEmpty && controller.isRequiredNumberChild) {
+          return LocaleKeys.declareInfo_numberChildEmpty.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputTextFormWithLabel(
+            fieldKey: formFieldKey,
+            autovalidateMode: controller.autoValidateMode.value,
+            hintText: LocaleKeys.declareInfo_numberChildHint.tr,
+            labelText: LocaleKeys.declareInfo_numberChild.tr,
+            controller: controller.numberChildCtrl,
+            inputFormatters: InputFormatterEnum.phoneNumber,
+            textInputType: TextInputType.number,
+            isRequired: controller.isRequiredNumberChild,
+            maxLengthInputForm: 1,
+            validator: validator,
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
     );
   }
 
