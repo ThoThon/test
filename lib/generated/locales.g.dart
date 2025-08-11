@@ -750,6 +750,11 @@ class LocaleKeys {
       'declareInfo_conclusionDateEmpty';
   static const declareInfo_conclusionDateInvalid =
       'declareInfo_conclusionDateInvalid';
+  static const declareInfo_adoptionDate = 'declareInfo_adoptionDate';
+  static const declareInfo_adoptionDateCannotEmpty =
+      'declareInfo_adoptionDateCannotEmpty';
+  static const declareInfo_adoptionDateInvalid =
+      'declareInfo_adoptionDateInvalid';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1816,6 +1821,9 @@ class Locales {
     'declareInfo_conclusionDate': 'Ngày kết luận',
     'declareInfo_conclusionDateEmpty': 'Ngày kết luận không được bỏ trống',
     'declareInfo_conclusionDateInvalid': 'Ngày kết luận không hợp lệ',
+    'declareInfo_adoptionDate': 'Ngày nhận con',
+    'declareInfo_adoptionDateCannotEmpty': 'Ngày nhận con không được bỏ trống',
+    'declareInfo_adoptionDateInvalid': 'Ngày nhận con không hợp lệ',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

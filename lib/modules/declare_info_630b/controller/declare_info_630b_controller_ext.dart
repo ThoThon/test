@@ -233,7 +233,6 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
 // REF: BHW-2968
   bool get isRequiredAdoptionDate {
     final maNhomHuongLv2 = benefitGroupLv2.value?.maNhomHuongC2;
-
     return [
       'T81',
       'T82',
