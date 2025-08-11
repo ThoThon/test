@@ -136,6 +136,21 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     benefitGroupLv2.value = null;
   }
 
+  // REF: 2967
+  bool get isRequiredChildDeathDate {
+    return [
+      'T61',
+      'T62',
+      'T63',
+      'T104',
+      'T105',
+      'T106',
+      'T114',
+      'T115',
+      'T116',
+    ].contains(benefitGroupLv2.value?.maNhomHuongC2);
+  }
+
   Future<void> get630bDetail() async {
     final staffId = argument.staffId;
     if (staffId == null) {
