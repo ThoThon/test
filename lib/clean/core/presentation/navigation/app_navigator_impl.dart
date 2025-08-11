@@ -7,6 +7,7 @@ import 'package:v_bhxh/clean/core/presentation/widgets/widget_src.dart';
 import 'package:v_bhxh/core/const/app_text_style.dart';
 import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/core/values/dimens.dart';
+import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/shares/base/ui/text_widget.dart';
 
 import 'app_navigator.dart';
@@ -133,7 +134,7 @@ class AppNavigatorImpl extends AppNavigator {
   @override
   Future<T?> dialog<T>(
     Widget widget, {
-    bool barrierDismissible = true,
+    bool barrierDismissible = false,
   }) {
     return Get.dialog(
       widget,
@@ -205,6 +206,76 @@ class AppNavigatorImpl extends AppNavigator {
           ),
         );
       },
+    );
+  }
+
+  Future<void> _showDialog(
+    Widget widget, {
+    bool barrierDismissible = false,
+  }) {
+    return Get.dialog(
+      PopScope(
+        canPop: barrierDismissible,
+        child: widget,
+      ),
+      barrierDismissible: barrierDismissible,
+    );
+  }
+
+  @override
+  Future<void> showNotificationDialog({
+    required String message,
+    bool barrierDismissible = false,
+  }) {
+    return _showDialog(
+      Dialog(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.only(top: 16, bottom: 8),
+              child: const Icon(
+                Icons.notifications_none,
+                size: AppDimens.size45,
+                color: Colors.blueAccent,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: SDSBuildText(
+                message,
+                style: AppTextStyle.font14Re.copyWith(
+                  color: AppColors.primaryNavy,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 4,
+              ),
+            ),
+            const Divider(height: 1),
+            TextButton(
+              onPressed: () {
+                if (Get.isDialogOpen == true) {
+                  Get.back();
+                }
+              },
+              style: ButtonStyle(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
+              ),
+              child: SDSBuildText(
+                LocaleKeys.dialog_close.tr,
+                style: AppTextStyle.font14Re.copyWith(
+                  color: AppColors.primaryNavy,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      barrierDismissible: barrierDismissible,
     );
   }
 }

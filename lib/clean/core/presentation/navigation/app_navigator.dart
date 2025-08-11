@@ -66,6 +66,11 @@ abstract class AppNavigator {
     bool barrierDismissible = true,
   });
 
+  Future<void> showNotificationDialog({
+    required String message,
+    bool barrierDismissible = false,
+  });
+
   void showSnackBar<T>(
     String message, {
     Duration duration = const Duration(seconds: 2),
