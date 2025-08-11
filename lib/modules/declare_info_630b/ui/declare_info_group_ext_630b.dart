@@ -721,9 +721,10 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return FormFieldRegistrant<String>(
       registrarId: '0ce7c7b9-142d-4669-8ddc-f2f033e2bd12',
       validator: (value) {
-        final trimmedValue = value?.trim();
-        bool isEmpty = trimmedValue == null || trimmedValue.isEmpty;
-        if (controller.isRequiredChildDeathDate && isEmpty) {
+        final trimmedValue = value?.trim() ?? '';
+        final isEmpty = trimmedValue.isEmpty;
+
+        if (isEmpty && controller.isRequiredChildDeathDate) {
           return LocaleKeys.declareInfo_childDeathDateCannotEmpty.tr;
         }
         if (isEmpty) return null;
