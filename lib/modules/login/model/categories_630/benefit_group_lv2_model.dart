@@ -29,7 +29,7 @@ class BenefitGroupLv2Model extends Equatable {
 }
 
 // REF: BHW-2964
-const Set<String> conditionRequiredNumberChild = {
+const Set<String> requiredBirthAndCountChild = {
   // T4
   'T41', 'T42', 'T43', 'T44',
 
