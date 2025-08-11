@@ -539,18 +539,32 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Điều kiện khám thai
   Widget _buildIsPregnancyConditionDropdown() {
-    return Obx(
-      () => CardDropdownWithLabel<PregnancyCheckConditionModel>(
-        labelText: 'Điều kiện khám thai',
-        hintText: 'Chọn điều kiện khám thai',
-        items: AppData.instance.pregnancyCondition.toList(),
-        display: (item) => '${item.value} - ${item.text}',
-        selectedItem: controller.pregnancyCondition.value,
-        onChanged: (value) {
-          if (value == null) return;
-          controller.pregnancyCondition.value = value;
-        },
-      ),
+    return FormFieldRegistrant<PregnancyCheckConditionModel>(
+      registrarId: '0fe0020c-fbb7-40a0-9222-a71f8fde457c',
+      validator: (value) {
+        if (value == null) {
+          return LocaleKeys.declareInfo_pregnancyConditionCannotEmpty.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardDropdownWithLabel<PregnancyCheckConditionModel>(
+            fieldKey: formFieldKey,
+            validator: validator,
+            isRequired: controller.isRequiredPregnancyCondition,
+            labelText: LocaleKeys.declareInfo_pregnancyCondition.tr,
+            hintText: LocaleKeys.declareInfo_pregnancyConditionSelected.tr,
+            items: AppData.instance.pregnancyCondition.toList(),
+            display: (item) => '${item.value} - ${item.text}',
+            selectedItem: controller.pregnancyCondition.value,
+            onChanged: (value) {
+              if (value == null) return;
+              controller.pregnancyCondition.value = value;
+            },
+          ),
+        );
+      },
     );
   }
 
@@ -721,16 +735,33 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Số con chết
   Widget _buildNumberChildDeath() {
-    return CardInputTextFormWithLabel(
-      autovalidateMode: controller.autoValidateMode.value,
-      hintText: 'Nhập số con chết',
-      labelText: 'Số con chết',
-      controller: controller.numberChildDeathCtrl,
-      textInputType: TextInputType.number,
-      inputFormatters: InputFormatterEnum.phoneNumber,
-      isRequired: false,
-      maxLengthInputForm: 1,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: 'b2b84e28-70a9-43a9-bf7d-2dbf1adce5b2',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        final isEmpty = trimmedValue.isEmpty;
+        if (isEmpty && controller.isRequiredChildDeathDate) {
+          return LocaleKeys.declareInfo_countChildDeathCannotEmpty.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputTextFormWithLabel(
+            fieldKey: formFieldKey,
+            validator: validator,
+            autovalidateMode: controller.autoValidateMode.value,
+            hintText: LocaleKeys.declareInfo_countChildDeathInput.tr,
+            labelText: LocaleKeys.declareInfo_countChildDeath.tr,
+            controller: controller.numberChildDeathCtrl,
+            textInputType: TextInputType.number,
+            inputFormatters: InputFormatterEnum.phoneNumber,
+            isRequired: controller.isRequiredChildDeathDate,
+            maxLengthInputForm: 1,
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
+    );
   }
 
   // Ngày con chết

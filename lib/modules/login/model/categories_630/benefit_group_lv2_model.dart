@@ -71,7 +71,7 @@ const Set<String> conditionRequiredAdoptionDate = {
 };
 
 // REF: 2967
-const Set<String> conditionRequiredChildDeathDate = {
+const Set<String> requiredDateAndCountChildDeath = {
   'T61',
   'T62',
   'T63',
