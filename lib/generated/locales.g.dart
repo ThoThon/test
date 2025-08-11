@@ -760,6 +760,10 @@ class LocaleKeys {
       'declareInfo_childDeathDateCannotEmpty';
   static const declareInfo_childDeathDateInvalid =
       'declareInfo_childDeathDateInvalid';
+  static const declareInfo_pregnancyWeek = 'declareInfo_pregnancyWeek';
+  static const declareInfo_pregnancyWeekCannotEmpty =
+      'declareInfo_pregnancyWeekCannotEmpty';
+  static const declareInfo_pregnancyWeekHint = 'declareInfo_pregnancyWeekHint';
   static const declareInfo_countChildDeath = 'declareInfo_countChildDeath';
   static const declareInfo_countChildDeathCannotEmpty =
       'declareInfo_countChildDeathCannotEmpty';
@@ -1845,6 +1849,9 @@ class Locales {
     'declareInfo_childDeathDateCannotEmpty':
         'Ngày con chết không được để trống',
     'declareInfo_childDeathDateInvalid': 'Ngày con chết không hợp lệ',
+    'declareInfo_pregnancyWeek': 'Tuổi thai',
+    'declareInfo_pregnancyWeekCannotEmpty': 'Tuổi thai không được bỏ trống',
+    'declareInfo_pregnancyWeekHint': 'Nhập số tuần tuổi thai',
     'declareInfo_countChildDeath': 'Số con chết',
     'declareInfo_countChildDeathCannotEmpty': 'Số con chết không được bỏ trống',
     'declareInfo_countChildDeathInput': 'Nhập số con chết',

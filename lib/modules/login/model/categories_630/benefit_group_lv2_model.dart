@@ -28,7 +28,7 @@ class BenefitGroupLv2Model extends Equatable {
       ];
 }
 
-// REF: BHW-2964
+// REF: BHW-2964 và BHW-2963
 const Set<String> requiredBirthAndCountChild = {
   // T4
   'T41', 'T42', 'T43', 'T44',
@@ -81,4 +81,12 @@ const Set<String> requiredDateAndCountChildDeath = {
   'T114',
   'T115',
   'T116',
+};
+
+// REF: 2962
+const Set<String> requiredPregnancyWeek = {
+  'T21',
+  'T22',
+  'T23',
+  'T24',
 };

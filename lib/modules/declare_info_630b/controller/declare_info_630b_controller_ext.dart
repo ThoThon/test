@@ -137,6 +137,10 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   bool get isRequiredAdoptionDate => conditionRequiredAdoptionDate
       .contains(benefitGroupLv2.value?.maNhomHuongC2);
 
+  // REF: BHW-2962
+  bool get isRequiredPregnancyWeek =>
+      requiredPregnancyWeek.contains(benefitGroupLv2.value?.maNhomHuongC2);
+
   // REF: BHW-2964 và BHW-2963
   // Dùng cho "Số con" và "Ngày sinh con"
   bool get isRequiredBirthAndConutChild =>
