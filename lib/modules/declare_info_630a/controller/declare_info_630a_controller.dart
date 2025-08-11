@@ -494,7 +494,6 @@ class DeclareInfo630aController extends BaseGetxController {
       workCondition.value = null;
       isMaternityRest.value = false;
       supplementalPeriodCtrl.clear();
-      fileCodeTextCtrl.clear();
     }
 
     // REF: BHW-2957
