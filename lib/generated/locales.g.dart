@@ -750,6 +750,11 @@ class LocaleKeys {
       'declareInfo_conclusionDateCannotEmpty';
   static const declareInfo_conclusionDateInvalid =
       'declareInfo_conclusionDateInvalid';
+  static const declareInfo_adoptionDate = 'declareInfo_adoptionDate';
+  static const declareInfo_adoptionDateCannotEmpty =
+      'declareInfo_adoptionDateCannotEmpty';
+  static const declareInfo_adoptionDateInvalid =
+      'declareInfo_adoptionDateInvalid';
   static const declareInfo_childDeathDate = 'declareInfo_childDeathDate';
   static const declareInfo_childDeathDateCannotEmpty =
       'declareInfo_childDeathDateCannotEmpty';
@@ -1822,6 +1827,9 @@ class Locales {
     'declareInfo_conclusionDateCannotEmpty':
         'Ngày kết luận không được bỏ trống',
     'declareInfo_conclusionDateInvalid': 'Ngày kết luận không hợp lệ',
+    'declareInfo_adoptionDate': 'Ngày nhận con',
+    'declareInfo_adoptionDateCannotEmpty': 'Ngày nhận con không được bỏ trống',
+    'declareInfo_adoptionDateInvalid': 'Ngày nhận con không hợp lệ',
     'declareInfo_childDeathDate': 'Ngày con chết',
     'declareInfo_childDeathDateCannotEmpty':
         'Ngày con chết không được để trống',

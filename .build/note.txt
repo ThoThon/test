@@ -6,6 +6,7 @@
 - [Appmobile]_Thủ tục 630b_Bổ sung api Xóa toàn bộ hồ sơ 630b - BHW-2978
 - [Appmobile]_Thủ tục 630b_Bổ sung call api Cập nhật hồ sơ 630b - BHW-2976
 - [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường ngày kết luận - BHW-2969
+- [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường ngày nhận con - BHW-2968
 
 07/08/2025
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị [Mã nhóm hưởng] - BHW-2958
