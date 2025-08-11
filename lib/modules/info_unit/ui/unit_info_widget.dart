@@ -451,7 +451,7 @@ extension UnitInfoWidget on UnitInfoPage {
           ),
           maxLines: maxLines ?? 3,
         ),
-        if (right.isNotEmpty)
+        if (right.trim().isNotEmpty)
           SDSBuildText(
             right,
             style: style ?? AppTextStyle.font14Re,
