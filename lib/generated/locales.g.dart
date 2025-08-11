@@ -120,6 +120,9 @@ class LocaleKeys {
   static const unitInfo_representInfo = 'unitInfo_representInfo';
   static const unitInfo_transactionPersonInfo =
       'unitInfo_transactionPersonInfo';
+  static const unitInfo_transactionWayIsEmpty =
+      'unitInfo_transactionWayIsEmpty';
+  static const unitInfo_receiveMethodIsEmpty = 'unitInfo_receiveMethodIsEmpty';
   static const unitInfo_represent = 'unitInfo_represent';
   static const unitInfo_representCannotEmpty = 'unitInfo_representCannotEmpty';
   static const unitInfo_position = 'unitInfo_position';
@@ -1273,6 +1276,8 @@ class Locales {
     'unitInfo_businessIndustry': 'Ngành nghề sản xuất',
     'unitInfo_representInfo': 'Thông tin người đại diện',
     'unitInfo_transactionPersonInfo': 'Thông tin người giao dịch',
+    'unitInfo_transactionWayIsEmpty': 'Phương thức đóng không được để trống',
+    'unitInfo_receiveMethodIsEmpty': 'Phương thức đóng không được để trống',
     'unitInfo_represent': 'Người đại diện',
     'unitInfo_representCannotEmpty': 'Người đại diện không được bỏ trống',
     'unitInfo_position': 'Chức vụ',

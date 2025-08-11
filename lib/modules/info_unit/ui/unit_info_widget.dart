@@ -304,7 +304,7 @@ extension UnitInfoWidget on UnitInfoPage {
         autovalidateMode: AutovalidateMode.always,
         validator: (value) {
           if (value == null) {
-            return "Không được để trống";
+            return LocaleKeys.unitInfo_receiveMethodIsEmpty.tr;
           }
           return null;
         },
@@ -337,11 +337,12 @@ extension UnitInfoWidget on UnitInfoPage {
         autovalidateMode: AutovalidateMode.always,
         validator: (value) {
           if (value == null) {
-            return "Không được để trống";
+            return LocaleKeys.unitInfo_transactionWayIsEmpty.tr;
           }
           return null;
         },
       ),
+      sdsSBHeight28,
     ];
   }
 
