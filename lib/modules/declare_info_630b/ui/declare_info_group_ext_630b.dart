@@ -542,7 +542,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return FormFieldRegistrant<PregnancyCheckConditionModel>(
       registrarId: '0fe0020c-fbb7-40a0-9222-a71f8fde457c',
       validator: (value) {
-        if (value == null) {
+        if (value == null && controller.isRequiredPregnancyCondition) {
           return LocaleKeys.declareInfo_pregnancyConditionCannotEmpty.tr;
         }
         return null;
