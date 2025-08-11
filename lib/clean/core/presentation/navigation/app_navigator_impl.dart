@@ -234,6 +234,7 @@ class AppNavigatorImpl extends AppNavigator {
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
