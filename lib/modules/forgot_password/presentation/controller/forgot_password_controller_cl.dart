@@ -22,7 +22,7 @@ class ForgotPasswordControllerCl extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
-        await _forgotPasswordUseCase.execute(
+        final result = await _forgotPasswordUseCase.execute(
           ForgotPasswordRequest(
             unitCode: unitCodeController.text.trim(),
             taxCode: taxCodeController.text.trim(),
@@ -30,7 +30,7 @@ class ForgotPasswordControllerCl extends BaseGetClController {
         );
 
         _showDialogConfirmSuccess(
-          LocaleKeys.certificate_verifySuccessfully.tr,
+          result ?? LocaleKeys.app_somethingWentWrong.tr,
         );
       },
     );
