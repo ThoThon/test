@@ -102,7 +102,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(child: _buildAdoptionDatee()),
+                    Expanded(child: _buildAdoptionDate()),
                     sdsSBWidth12,
                     Expanded(child: _buildReturnWorkDate()),
                   ],
@@ -736,28 +736,30 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return FormFieldRegistrant<String>(
       registrarId: '0ce7c7b9-142d-4669-8ddc-f2f033e2bd12',
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
+        final isEmpty = trimmedValue.isEmpty;
 
-        if ((trimmedValue == null || trimmedValue.isEmpty)) {
-          return null;
+        if (isEmpty && controller.isRequiredChildDeathDate) {
+          return LocaleKeys.declareInfo_childDeathDateCannotEmpty.tr;
         }
+        if (isEmpty) return null;
         // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
         if (trimmedValue.length < 10) {
-          return 'Ngày con chết không hợp lệ';
+          return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
         }
 
         final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
         if (toDate == null) {
-          return 'Ngày con chết không hợp lệ';
+          return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
         if (toDate.year <= 1900 || toDate.year >= 2100) {
-          return 'Ngày con chết không hợp lệ';
+          return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
         }
 
         if (toDate.isAfter(DateTime.now())) {
-          return 'Ngày con chết không được lớn hơn ngày hôm nay';
+          return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
         }
         return null;
       },
@@ -767,11 +769,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
             fieldKey: formFieldKey,
             autovalidateMode: controller.autoValidateMode.value,
             validator: validator,
-            labelText: 'Ngày con chết',
+            labelText: LocaleKeys.declareInfo_childDeathDate.tr,
             inputFormatters: InputFormatterEnum.dateFullBirthDay,
             controller: controller.childDeathDateCtrl,
             hintText: PATTERN_1,
-            isRequired: false,
+            isRequired: controller.isRequiredChildDeathDate,
             onSelectDate: () async {
               KeyBoard.hide();
               final selectedDate = await DatePickerUtils.showCalendarPicker(
@@ -797,28 +799,32 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   }
 
   // Ngày nhận con
-  Widget _buildAdoptionDatee() {
+  Widget _buildAdoptionDate() {
     return FormFieldRegistrant<String>(
       registrarId: '4ceeb6a5-b997-4379-9c13-6e5418cd86c9',
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if ((trimmedValue == null || trimmedValue.isEmpty)) {
-          return null;
+        final isEmpty = trimmedValue.isEmpty;
+
+        if (isEmpty && controller.isRequiredAdoptionDate) {
+          return LocaleKeys.declareInfo_adoptionDateCannotEmpty.tr;
         }
+        if (isEmpty) return null;
+
         // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
         if (trimmedValue.length < 10) {
-          return 'Ngày nhận con không hợp lệ';
+          return LocaleKeys.declareInfo_adoptionDateInvalid.tr;
         }
 
         final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
         if (date == null) {
-          return 'Ngày nhận con không hợp lệ';
+          return LocaleKeys.declareInfo_adoptionDateInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
         if (date.year <= 1900 || date.year >= 2100) {
-          return 'Ngày nhận con không hợp lệ';
+          return LocaleKeys.declareInfo_adoptionDateInvalid.tr;
         }
 
         return null;
@@ -829,11 +835,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
             fieldKey: formFieldKey,
             autovalidateMode: controller.autoValidateMode.value,
             validator: validator,
-            labelText: 'Ngày nhận con',
+            labelText: LocaleKeys.declareInfo_adoptionDate.tr,
             inputFormatters: InputFormatterEnum.dateFullBirthDay,
             controller: controller.adoptionDateCtrl,
             hintText: PATTERN_1,
-            isRequired: false,
+            isRequired: controller.isRequiredAdoptionDate,
             onSelectDate: () async {
               KeyBoard.hide();
               final selectedDate = await DatePickerUtils.showCalendarPicker(
@@ -1038,7 +1044,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
         bool isEmpty = trimmedValue == null || trimmedValue.isEmpty;
         if (controller.isRequiredConclusionDate && isEmpty) {
-          return LocaleKeys.declareInfo_conclusionDateEmpty.tr;
+          return LocaleKeys.declareInfo_conclusionDateCannotEmpty.tr;
         }
         if (isEmpty) return null;
         // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
