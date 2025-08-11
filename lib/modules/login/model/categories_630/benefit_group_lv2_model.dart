@@ -54,3 +54,31 @@ const Set<String> conditionRequiredNumberChild = {
   // T13
   'T131',
 };
+
+// REF: BHW-2968
+const Set<String> conditionRequiredAdoptionDate = {
+  'T81',
+  'T82',
+  'T83',
+  'T111',
+  'T112',
+  'T113',
+  'T114',
+  'T115',
+  'T116',
+  'T117',
+  'T118',
+};
+
+// REF: 2967
+const Set<String> conditionRequiredChildDeathDate = {
+  'T61',
+  'T62',
+  'T63',
+  'T104',
+  'T105',
+  'T106',
+  'T114',
+  'T115',
+  'T116',
+};

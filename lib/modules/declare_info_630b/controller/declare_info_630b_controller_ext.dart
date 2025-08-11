@@ -128,21 +128,17 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   bool get isRequiredConclusionDate =>
       benefitGroupLv2.value?.maNhomHuongC2 == 'T44';
 
-       // REF: 2967
-  bool get isRequiredChildDeathDate {
-    return [
-      'T61',
-      'T62',
-      'T63',
-      'T104',
-      'T105',
-      'T106',
-      'T114',
-      'T115',
-      'T116',
-    ].contains(benefitGroupLv2.value?.maNhomHuongC2);
-  }
+  // REF: 2967
+  bool get isRequiredChildDeathDate => conditionRequiredChildDeathDate
+      .contains(benefitGroupLv2.value?.maNhomHuongC2);
 
+  // REF: BHW-2968
+  bool get isRequiredAdoptionDate => conditionRequiredAdoptionDate
+      .contains(benefitGroupLv2.value?.maNhomHuongC2);
+
+  // REF: BHW-2964
+  bool get isRequiredNumberChild => conditionRequiredNumberChild
+      .contains(benefitGroupLv2.value?.maNhomHuongC2);
 
   void onChangeBenefitGroup(BenefitGroup630bModel? method) {
     if (method == null) {
@@ -245,30 +241,6 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
 
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
-
-// REF: BHW-2968
-  bool get isRequiredAdoptionDate {
-    final maNhomHuongLv2 = benefitGroupLv2.value?.maNhomHuongC2;
-    return [
-      'T81',
-      'T82',
-      'T83',
-      'T111',
-      'T112',
-      'T113',
-      'T114',
-      'T115',
-      'T116',
-      'T117',
-      'T118',
-    ].contains(maNhomHuongLv2);
-  }
-
-
-  // REF: BHW-2964
-  bool get isRequiredNumberChild => conditionRequiredNumberChild
-      .contains(benefitGroupLv2.value?.maNhomHuongC2);
-
 
   void mapFrom630bDetail(DeclareInfo630bResponse detail) {
     id = detail.id;
