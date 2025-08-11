@@ -6,6 +6,7 @@ import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
+import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
@@ -42,6 +43,7 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => DeclarationPeriodDataMapper(), fenix: true);
     Get.lazyPut(() => DistrictDataMapper(), fenix: true);
     Get.lazyPut(() => WardDataMapper(), fenix: true);
+    Get.lazyPut(() => ForgotPasswordRequestDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

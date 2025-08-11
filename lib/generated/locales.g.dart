@@ -309,6 +309,7 @@ class LocaleKeys {
   static const login_password = 'login_password';
   static const login_passwordCannotEmpty = 'login_passwordCannotEmpty';
   static const login_forgetPassword = 'login_forgetPassword';
+  static const login_forgetPasswordSuccess = 'login_forgetPasswordSuccess';
   static const login_resetPassword = 'login_resetPassword';
   static const login_changeAccount = 'login_changeAccount';
   static const login_hello = 'login_hello';
@@ -1457,6 +1458,7 @@ class Locales {
     'login_password': 'Mật khẩu',
     'login_passwordCannotEmpty': 'Mật khẩu không được bỏ trống',
     'login_forgetPassword': 'Quên mật khẩu?',
+    'login_forgetPasswordSuccess': 'Quên mật khẩu thành công',
     'login_resetPassword': 'Lấy lại mật khẩu',
     'login_changeAccount': 'Tài khoản khác',
     'login_hello': 'Xin chào,',
