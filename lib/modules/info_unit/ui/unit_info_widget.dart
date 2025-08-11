@@ -301,6 +301,13 @@ extension UnitInfoWidget on UnitInfoPage {
         onChanged: (value) {
           controller.selectedMethod.value = value;
         },
+        autovalidateMode: AutovalidateMode.always,
+        validator: (value) {
+          if (value == null) {
+            return "Không được để trống";
+          }
+          return null;
+        },
       ),
       sdsSBHeight12,
       _buildInputItemEdit(
@@ -326,6 +333,13 @@ extension UnitInfoWidget on UnitInfoPage {
         selectedItem: controller.selectedReceive.value,
         onChanged: (value) {
           controller.selectedReceive.value = value;
+        },
+        autovalidateMode: AutovalidateMode.always,
+        validator: (value) {
+          if (value == null) {
+            return "Không được để trống";
+          }
+          return null;
         },
       ),
     ];
@@ -420,7 +434,7 @@ extension UnitInfoWidget on UnitInfoPage {
         bottom: AppDimens.paddingSmallest, top: AppDimens.paddingSmallest);
   }
 
-  //Thông tin địa chỉ
+  //Cho riêng thông tin địa chỉ
   Widget _buildText2({
     int? maxLines,
     TextStyle? style,
@@ -437,11 +451,12 @@ extension UnitInfoWidget on UnitInfoPage {
           ),
           maxLines: maxLines ?? 3,
         ),
-        SDSBuildText(
-          right,
-          style: style ?? AppTextStyle.font14Re,
-          maxLines: maxLines ?? 3,
-        ),
+        if (right.isNotEmpty)
+          SDSBuildText(
+            right,
+            style: style ?? AppTextStyle.font14Re,
+            maxLines: maxLines ?? 3,
+          ),
       ],
     ).paddingOnly(
       bottom: AppDimens.paddingSmallest,

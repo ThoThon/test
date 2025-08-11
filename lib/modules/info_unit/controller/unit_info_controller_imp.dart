@@ -145,8 +145,8 @@ class UnitInfoControllerImpICare extends UnitInfoController {
       loaiDoiTuong: accountInfo?.loaiDoiTuong ?? "",
       tenNguoiKeKhai: personTransactionController.text,
       luongCoSo: int.parse(basicSalaryController.text.replaceAll('.', '')),
-      phuongThucDong: selectedMethod.value!.month,
-      ptNhanKq: selectedReceive.value!.receive.tr,
+      phuongThucDong: selectedMethod.value?.month,
+      ptNhanKq: selectedReceive.value?.receive.tr,
     );
   }
 

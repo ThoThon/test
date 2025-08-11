@@ -1,3 +1,6 @@
+11/08/2025
+- [Appmobile]_Màn thông tin đơn vị: Bổ sung validate trường Đăng ký nhận kết quả - BHW-2981
+
 09/08/2025
 - [Appmobile]_Bổ sung popup thông báo hiển thị khi api trả về statuscode 429 - BHW-2985
 
