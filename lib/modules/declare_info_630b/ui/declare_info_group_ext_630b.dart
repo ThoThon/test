@@ -786,10 +786,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return FormFieldRegistrant<String>(
       registrarId: '4ceeb6a5-b997-4379-9c13-6e5418cd86c9',
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        bool isEmpty = trimmedValue == null || trimmedValue.isEmpty;
-        if (controller.isRequiredAdoptionDate && isEmpty) {
+        bool isEmpty = trimmedValue.isEmpty;
+
+        if (isEmpty && controller.isRequiredAdoptionDate) {
           return LocaleKeys.declareInfo_adoptionDateCannotEmpty.tr;
         }
         if (isEmpty) return null;
