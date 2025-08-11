@@ -293,6 +293,7 @@
     "password": "Mật khẩu",
     "passwordCannotEmpty": "Mật khẩu không được bỏ trống",
     "forgetPassword": "Quên mật khẩu?",
+    "forgetPasswordSuccess": "Quên mật khẩu thành công",
     "resetPassword": "Lấy lại mật khẩu",
     "changeAccount": "Tài khoản khác",
     "hello": "Xin chào,",

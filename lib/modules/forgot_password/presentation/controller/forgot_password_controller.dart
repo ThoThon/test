@@ -7,14 +7,14 @@ import 'package:v_bhxh/modules/forgot_password/domain/entity/forgot_password_req
 import 'package:v_bhxh/modules/forgot_password/domain/usecase/forgot_password_use_case.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
-class ForgotPasswordControllerCl extends BaseGetClController {
+class ForgotPasswordController extends BaseGetClController {
   final ForgotPasswordUseCase _forgotPasswordUseCase;
 
   final formKey = GlobalKey<FormState>();
   final taxCodeController = TextEditingController();
   final unitCodeController = TextEditingController();
 
-  ForgotPasswordControllerCl(
+  ForgotPasswordController(
     this._forgotPasswordUseCase,
   );
 
@@ -30,7 +30,7 @@ class ForgotPasswordControllerCl extends BaseGetClController {
         );
 
         _showDialogConfirmSuccess(
-          result ?? LocaleKeys.app_somethingWentWrong.tr,
+          result ?? LocaleKeys.login_forgetPasswordSuccess.tr,
         );
       },
     );
