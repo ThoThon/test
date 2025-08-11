@@ -556,12 +556,30 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Tuổi thai
   Widget _buildInputPregnancyWeek() {
-    return CardInputTextFormWithLabel(
-      hintText: 'Nhập số tuần tuổi thai',
-      labelText: 'Tuổi thai',
-      controller: controller.pregnancyWeekCtrl,
-      maxLengthInputForm: 2,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: 'd8a874cb-7cbd-43ac-b8d3-2bbabf481a23',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        final isEmpty = trimmedValue.isEmpty;
+        if (isEmpty && controller.isRequiredPregnancyWeek) {
+          return LocaleKeys.declareInfo_pregnancyWeekCannotEmpty.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputTextFormWithLabel(
+            fieldKey: formFieldKey,
+            validator: validator,
+            isRequired: controller.isRequiredPregnancyWeek,
+            hintText: LocaleKeys.declareInfo_pregnancyWeekHint.tr,
+            labelText: LocaleKeys.declareInfo_pregnancyWeek.tr,
+            controller: controller.pregnancyWeekCtrl,
+            maxLengthInputForm: 2,
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
+    );
   }
 
   // Biện pháp tránh thai
