@@ -123,6 +123,18 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     return receiveForm.value?.value == ATMPaymentValue;
   }
 
+  // REF: BHW-2969
+  bool get isRequiredConclusionDate =>
+      benefitGroupLv2.value?.maNhomHuongC2 == 'T44';
+
+  void onChangeBenefitGroup(BenefitGroup630bModel? method) {
+    if (method == null) {
+      return;
+    }
+    benefitGroup.value = method;
+    benefitGroupLv2.value = null;
+  }
+
   Future<void> get630bDetail() async {
     final staffId = argument.staffId;
     if (staffId == null) {
@@ -201,14 +213,14 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     );
 
     // Mã nhóm hưởng
-    benefitGroup.value = AppData.instance.benefitGroup630b.firstWhereOrNull(
-      (item) => item.value == detail.maNhomHuong,
-    );
+    if (detail.maNhomHuong != null) {
+      benefitGroup.value = detail.maNhomHuong;
+    }
 
     // Mã nhóm hưởng cấp 2
-    benefitGroupLv2.value = AppData.instance.benefitGroupLv2.firstWhereOrNull(
-      (item) => item.maNhomHuongC2 == detail.maNhomHuong2,
-    );
+    if (detail.maNhomHuong2 != null) {
+      benefitGroupLv2.value = detail.maNhomHuong2;
+    }
 
     // Từ ngày
     fromDateCtrl.text = convertDateToStringSafe(detail.tuNgay, PATTERN_1) ?? '';

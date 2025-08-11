@@ -36,7 +36,6 @@ class AppData {
   var surgeryPregnancy32w = <SurgeryPregnancy32wModel>{};
   var contraception = <ContraceptionModel>{};
   var benefitGroup630b = <BenefitGroup630bModel>{};
-  var benefitGroupLv2 = <BenefitGroupLv2Model>{};
 
   final Rx<AccountInfoModel?> accountInfoModel = Rx<AccountInfoModel?>(null);
   final totalUnread = 0.obs;

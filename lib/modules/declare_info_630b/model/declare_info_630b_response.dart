@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class DeclareInfo630bResponse {
@@ -8,8 +10,8 @@ class DeclareInfo630bResponse {
   final String? soCmnd;
   final String? maNhanVien;
   final String phatSinhDieuChinh;
-  final String maNhomHuong;
-  final String maNhomHuong2;
+  final BenefitGroup630bModel? maNhomHuong;
+  final BenefitGroupLv2Model? maNhomHuong2;
   final DateTime tuNgay;
   final DateTime denNgay;
   final int tongSoNgay;
@@ -102,6 +104,13 @@ class DeclareInfo630bResponse {
   });
 
   factory DeclareInfo630bResponse.fromJson(Map<String, dynamic> json) {
+    final String? maNhomHuong = json['maNhomHuong'];
+    final benefitGroup = AppData.instance.benefitGroup630b
+        .firstWhereOrNull((item) => item.value == maNhomHuong);
+    final String? maNhomHuong2 = json['maNhomHuong2'];
+    final benefitGroupLv2 = benefitGroup?.benefitGroupLv2.firstWhereOrNull(
+      (itemLv2) => itemLv2.maNhomHuongC2 == maNhomHuong2,
+    );
     return DeclareInfo630bResponse(
       id: json['id'] ?? '',
       kyKeKhaiId: json['kyKeKhaiId'] ?? '',
@@ -110,8 +119,8 @@ class DeclareInfo630bResponse {
       soCmnd: json['soCmnd'] ?? '',
       maNhanVien: json['maNhanVien'] ?? '',
       phatSinhDieuChinh: json['phatSinh_DieuChinh'] ?? '',
-      maNhomHuong: json['maNhomHuong'] ?? '',
-      maNhomHuong2: json['maNhomHuong2'] ?? '',
+      maNhomHuong: benefitGroup,
+      maNhomHuong2: benefitGroupLv2,
       tuNgay: DateTime.tryParse(json['tuNgay'] ?? '') ?? DateTime.now(),
       denNgay: DateTime.tryParse(json['denNgay'] ?? '') ?? DateTime.now(),
       tongSoNgay: json['tongSoNgay'] ?? 0,
