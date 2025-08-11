@@ -136,6 +136,10 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     benefitGroupLv2.value = null;
   }
 
+  // REF: BHW-2964
+  bool get isRequiredNumberChild => conditionRequiredNumberChild
+      .contains(benefitGroupLv2.value?.maNhomHuongC2);
+
   Future<void> get630bDetail() async {
     final staffId = argument.staffId;
     if (staffId == null) {
