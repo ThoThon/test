@@ -322,7 +322,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputEthnic.tr,
                     title: LocaleKeys.familyMember_selectEthnic.tr,
-                    listFilter: appCtrl.ethnics.toList(),
+                    listFilter: AppData.instance.ethnics.toList(),
                     selectedItem: controller.selectedEthnic.value,
                     display: (value) => value.text,
                     onAccept: (value) {
@@ -366,7 +366,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputNationality.tr,
                     title: LocaleKeys.familyMember_selectNationality.tr,
-                    listFilter: appCtrl.nations.toList(),
+                    listFilter: AppData.instance.nations.toList(),
                     selectedItem: controller.selectedNationality.value,
                     display: (value) => value.text,
                     onAccept: (value) {
@@ -408,7 +408,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.familyMember_selectProvince.tr,
-                    listFilter: appCtrl.provinces.toList(),
+                    listFilter: AppData.instance.provinces.toList(),
                     selectedItem: controller.selectedProvince.value,
                     display: (value) => '${value.id} - ${value.name}',
                     onAccept: (value) {
@@ -573,7 +573,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                         .familyMember_inputRelationshipWithHeadOfHousehold.tr,
                     title: LocaleKeys
                         .familyMember_selectRelationshipWithHeadOfHousehold.tr,
-                    listFilter: appCtrl.relationships.toList(),
+                    listFilter: AppData.instance.relationships.toList(),
                     selectedItem: controller.relationship.value,
                     display: (value) => value.text,
                     onAccept: (value) {

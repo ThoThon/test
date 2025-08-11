@@ -172,7 +172,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectEthnic() {
-    return FormFieldRegistrant<EthnicModel>(
+    return FormFieldRegistrant<Ethnic>(
       registrarId: 'a7e14df2-572a-4cf6-bc07-dc9a23ca307e',
       validator: (value) {
         if (controller.d02Tk1State.selectedEthnic.value == null) {
@@ -183,13 +183,13 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<EthnicModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Ethnic>(
               fieldKey: fieldKey,
               validator: validator,
               label: LocaleKeys.declareInfo_ethnic.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<EthnicModel>(
+                  BottomSheetSearch<Ethnic>(
                     title: LocaleKeys.declareInfo_selectEthnic.tr,
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputEthnic.tr,
@@ -215,7 +215,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectNationality() {
-    return FormFieldRegistrant<NationModel>(
+    return FormFieldRegistrant<Nation>(
       registrarId: 'deb786de-fc3b-49fa-b75e-6558db23474f',
       validator: (value) {
         if (controller.d02Tk1State.selectedNationality.value == null) {
@@ -226,13 +226,13 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<NationModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Nation>(
               fieldKey: fieldKey,
               validator: validator,
               label: LocaleKeys.declareInfo_nationality.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<NationModel>(
+                  BottomSheetSearch<Nation>(
                     title: LocaleKeys.declareInfo_selectNationality.tr,
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputNationality.tr,
@@ -269,7 +269,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvince() {
-    return FormFieldRegistrant<ProvinceModel>(
+    return FormFieldRegistrant<Province>(
       registrarId: '8798e7db-5e6c-4e10-b251-1866c4c2ef9a',
       validator: (value) {
         if (controller.tk1State.provinceOfBirth.value == null) {
@@ -280,13 +280,13 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Province>(
               fieldKey: fieldKey,
               validator: validator,
               label: LocaleKeys.declareInfo_provinceOfBirth.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<ProvinceModel>(
+                  BottomSheetSearch<Province>(
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
@@ -312,7 +312,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectDistrict() {
-    return FormFieldRegistrant<DistrictModel>(
+    return FormFieldRegistrant<District>(
       registrarId: '82c2daab-5dbe-47b9-adda-1f04a086a4ed',
       validator: (value) {
         if (controller.tk1State.districtOfBirth.value == null) {
@@ -323,7 +323,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<District>(
               fieldKey: fieldKey,
               validator: validator,
               label: LocaleKeys.declareInfo_districtOfBirth.tr,
@@ -336,7 +336,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<DistrictModel>(
+                final result = await Get.bottomSheet<District>(
                   SelectDistrictBts(
                     provinceCode: districtOfBirth.id,
                     selectedDistrict: controller.tk1State.districtOfBirth.value,
@@ -359,7 +359,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectWard() {
-    return FormFieldRegistrant<WardModel>(
+    return FormFieldRegistrant<Ward>(
       registrarId: 'b4150241-a388-41bd-af26-a6a4271ad90a',
       validator: (value) {
         if (controller.tk1State.wardOfBirth.value == null) {
@@ -370,7 +370,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Ward>(
               fieldKey: fieldKey,
               validator: validator,
               label: LocaleKeys.declareInfo_wardOfBirth.tr,
@@ -391,7 +391,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<WardModel>(
+                final result = await Get.bottomSheet<Ward>(
                   SelectWardBts(
                     provinceCode: provinceOfBirth.id,
                     districtCode: districtOfBirth.id,
@@ -427,7 +427,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvinceReceive() {
-    return FormFieldRegistrant<ProvinceModel>(
+    return FormFieldRegistrant<Province>(
       registrarId: 'bd81e980-bb2e-404e-bc49-d270d09bcfd6',
       validator: (value) {
         if (controller.tk1State.provinceReceive.value == null) {
@@ -438,7 +438,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Province>(
               fieldKey: fieldKey,
               validator: validator,
               autovalidateMode: controller.tk1State.autoValidateMode.value,
@@ -446,7 +446,7 @@ extension Tk1TabWidget on DeclareInfoPage {
               // hintText: LocaleKeys.declareInfo_selectProvinceReceive.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<ProvinceModel>(
+                  BottomSheetSearch<Province>(
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
@@ -472,7 +472,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectDistrictReceive() {
-    return FormFieldRegistrant<DistrictModel>(
+    return FormFieldRegistrant<District>(
       registrarId: '4e29893f-f636-4137-9767-11e4e5b2dba0',
       validator: (value) {
         if (controller.tk1State.districtReceive.value == null) {
@@ -483,7 +483,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<District>(
               fieldKey: fieldKey,
               validator: validator,
               autovalidateMode: controller.tk1State.autoValidateMode.value,
@@ -498,7 +498,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<DistrictModel>(
+                final result = await Get.bottomSheet<District>(
                   SelectDistrictBts(
                     provinceCode: provinceReceive.id,
                     selectedDistrict: controller.tk1State.districtReceive.value,
@@ -521,7 +521,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectWardReceive() {
-    return FormFieldRegistrant<WardModel>(
+    return FormFieldRegistrant<Ward>(
       registrarId: '8e1c9c60-f3e6-472d-80bb-17cde5ac2093',
       validator: (value) {
         if (controller.tk1State.wardReceive.value == null) {
@@ -532,7 +532,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Ward>(
               fieldKey: fieldKey,
               validator: validator,
               autovalidateMode: controller.tk1State.autoValidateMode.value,
@@ -555,7 +555,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<WardModel>(
+                final result = await Get.bottomSheet<Ward>(
                   SelectWardBts(
                     provinceCode: provinceReceive.id,
                     districtCode: districtReceive.id,
@@ -608,7 +608,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvinceKCB() {
-    return FormFieldRegistrant<ProvinceModel>(
+    return FormFieldRegistrant<Province>(
       registrarId: '5a875c27-24a8-405e-89c8-155d916bb0ca',
       validator: (value) {
         if (controller.tk1State.provinceKCB.value == null) {
@@ -619,13 +619,13 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Province>(
               fieldKey: fieldKey,
               validator: validator,
               label: LocaleKeys.declareInfo_provinceKCB.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<ProvinceModel>(
+                  BottomSheetSearch<Province>(
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
@@ -778,7 +778,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectProvinceTT() {
-    return FormFieldRegistrant<ProvinceModel>(
+    return FormFieldRegistrant<Province>(
       registrarId: 'a3146c83-edd7-466c-a3cf-c71e9bc0133f',
       validator: (value) {
         if (controller.tk1State.isHouseholdInfoRequired.value &&
@@ -790,7 +790,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Province>(
               fieldKey: fieldKey,
               validator: validator,
               autovalidateMode: controller.tk1State.autoValidateMode.value,
@@ -799,7 +799,7 @@ extension Tk1TabWidget on DeclareInfoPage {
               isRequired: controller.tk1State.isHouseholdInfoRequired.value,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<ProvinceModel>(
+                  BottomSheetSearch<Province>(
                     maxLength: 20,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
                     listFilter: AppData.instance.provinces.toList(),
@@ -827,7 +827,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectDistrictTT() {
-    return FormFieldRegistrant<DistrictModel>(
+    return FormFieldRegistrant<District>(
       registrarId: '7b1c7f5f-b4c7-4f1f-bb8b-acde5bf029ef',
       validator: (value) {
         if (controller.tk1State.isHouseholdInfoRequired.value &&
@@ -839,7 +839,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<DistrictModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<District>(
               fieldKey: fieldKey,
               validator: validator,
               autovalidateMode: controller.tk1State.autoValidateMode.value,
@@ -853,7 +853,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<DistrictModel>(
+                final result = await Get.bottomSheet<District>(
                   SelectDistrictBts(
                     provinceCode: provinceTT.id,
                     selectedDistrict: controller.tk1State.districtTT.value,
@@ -878,7 +878,7 @@ extension Tk1TabWidget on DeclareInfoPage {
   }
 
   Widget _buildSelectWardTT() {
-    return FormFieldRegistrant<WardModel>(
+    return FormFieldRegistrant<Ward>(
       registrarId: '4fe74ca4-8f53-46ca-acf2-f978568d1519',
       validator: (value) {
         if (controller.tk1State.isHouseholdInfoRequired.value &&
@@ -890,7 +890,7 @@ extension Tk1TabWidget on DeclareInfoPage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<WardModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<Ward>(
               fieldKey: fieldKey,
               validator: validator,
               autovalidateMode: controller.tk1State.autoValidateMode.value,
@@ -912,7 +912,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<WardModel>(
+                final result = await Get.bottomSheet<Ward>(
                   SelectWardBts(
                     provinceCode: provinceTT.id,
                     districtCode: districtTT.id,

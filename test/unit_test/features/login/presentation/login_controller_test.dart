@@ -1,13 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:v_bhxh/clean/core/domain/entity/account_info.dart';
-import 'package:v_bhxh/clean/core/domain/entity/d02_categories_cl.dart';
-import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
 import 'package:v_bhxh/clean/features/login/presentation/controller/login_controller_cl.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 
 class MockAppNavigator extends Mock implements AppNavigator {}
@@ -64,9 +62,6 @@ void main() {
         getUnreadNotificationCountUseCase,
       );
       controller.nav = navigator;
-      // Login controller có lưu dữ liệu vào AppController, nên cần khởi tạo AppController thật ở đây
-      // Nếu controller nào có cần đọc dữ liệu từ AppController thì cũng cần khởi tạo AppController thật
-      controller.appCtrl = AppController();
       controller.onOpen();
     },
   );
@@ -94,7 +89,7 @@ void main() {
         return AccountInfo.empty();
       });
       when(() => getD02CategoriesUseCase.execute()).thenAnswer((_) async {
-        return D02CategoriesCl.empty();
+        return D02Categories.empty();
       });
       when(() => getUnreadNotificationCountUseCase.execute())
           .thenAnswer((_) async => 0);

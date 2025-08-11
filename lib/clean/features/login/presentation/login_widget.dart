@@ -142,7 +142,7 @@ extension LoginWidget on LoginPage {
       onPressed: () {
         // Không thể mock được form key khi unit test do khi triến khai test không có widget tree được gắn với form key này
         // => Tách riêng logic validate form key ra khỏi controller
-        if (controller.formKey.currentState?.validate() != true) {
+        if (controller.formKey.currentState?.validate() ?? false) {
           controller.login();
         }
       },

@@ -35,8 +35,9 @@ extension HistoryDeclareExtController on HistoryController {
     bool isLoadMore = false,
   }) {
     return HistoryDeclareRequest(
-      companyId: AppData.instance.accountInfoModel.value?.toChucId ?? '',
-      pageIndex: isLoadMore ? pageHistoryDeclare + 1 : AppConst.defaultPageNumber,
+      companyId: AppData.instance.accountInfo.value?.toChucId ?? '',
+      pageIndex:
+          isLoadMore ? pageHistoryDeclare + 1 : AppConst.defaultPageNumber,
       pageSize: Get.context?.isTablet ?? false
           ? AppConst.largePageSize
           : AppConst.defaultPageSize,

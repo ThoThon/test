@@ -1,4 +1,4 @@
-import 'package:v_bhxh/clean/core/domain/entity/base/entity.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/declaration_period_status.dart';
 

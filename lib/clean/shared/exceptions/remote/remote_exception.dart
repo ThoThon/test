@@ -1,4 +1,4 @@
-import 'package:v_bhxh/clean/core/data/model/model_src.dart';
+import 'package:v_bhxh/clean/shared/model/model_src.dart';
 import 'package:v_bhxh/clean/shared/exceptions/base/app_exception.dart';
 
 class RemoteException extends AppException {

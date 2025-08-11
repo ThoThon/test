@@ -21,7 +21,8 @@ import 'package:v_bhxh/modules/forgot_password/presentation/forgot_password_page
 import 'package:v_bhxh/modules/history/ui/history_page.dart';
 import 'package:v_bhxh/modules/history_detail_declare/ui/history_detail_declare_page.dart';
 import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';
-import 'package:v_bhxh/modules/home/ui/home_page.dart';
+import 'package:v_bhxh/modules/home_clean/presentation/binding/home_binding.dart';
+import 'package:v_bhxh/modules/home_clean/presentation/view/home_page.dart';
 import 'package:v_bhxh/modules/info_unit/ui/unit_info_page.dart';
 import 'package:v_bhxh/modules/lookup_c12/ui/lookup_c12_page.dart';
 import 'package:v_bhxh/modules/notification/ui/notification_page.dart';
@@ -45,7 +46,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.home.path,
-      page: () => HomePage(),
+      page: HomePageCL.new,
+      binding: HomeBinding(),
     ),
     GetPage(
       name: AppRoutesCl.infoUnit.path,

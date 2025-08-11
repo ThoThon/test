@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 
 class Tk1State607 {
@@ -41,23 +41,23 @@ class Tk1State607 {
 
   /// Dân tộc *
   /// Luôn khởi tạo Dân tộc là "Kinh"
-  final selectedEthnic = Rxn<EthnicModel>(
+  final selectedEthnic = Rxn<Ethnic>(
     AppData.instance.ethnics.firstWhereOrNull((ethnics) => ethnics.value == 1),
   );
 
   /// Quốc tịch *
   /// Luôn khởi tạo Quốc tịch là "VIỆT NAM"
-  final selectedNationality = Rxn<NationModel>(AppData.instance.nations
+  final selectedNationality = Rxn<Nation>(AppData.instance.nations
       .firstWhereOrNull((nations) => nations.value == "VN"));
 
   /// Tỉnh khai sinh *
-  final provinceOfBirth = Rxn<ProvinceModel>();
+  final provinceOfBirth = Rxn<Province>();
 
   /// Huyện khai sinh *
-  final districtOfBirth = Rxn<DistrictModel>();
+  final districtOfBirth = Rxn<District>();
 
   /// Xã khai sinh *
-  final wardOfBirth = Rxn<WardModel>();
+  final wardOfBirth = Rxn<Ward>();
 
   /// Địa chỉ khai sinh *
   final birthAddressTextCtrl = TextEditingController();
@@ -66,19 +66,19 @@ class Tk1State607 {
   final isDuplicateBirthAddress = false.obs;
 
   /// Tỉnh nơi nhận *
-  final provinceReceive = Rxn<ProvinceModel>();
+  final provinceReceive = Rxn<Province>();
 
   /// Huyện nơi nhận *
-  final districtReceive = Rxn<DistrictModel>();
+  final districtReceive = Rxn<District>();
 
   /// Xã nơi nhận *
-  final wardReceive = Rxn<WardModel>();
+  final wardReceive = Rxn<Ward>();
 
   /// Địa chỉ nơi nhận *
   final addressReceiveTextCtrl = TextEditingController();
 
   /// Tỉnh nơi KCB *
-  final provinceKCB = Rxn<ProvinceModel>();
+  final provinceKCB = Rxn<Province>();
 
   /// Bệnh viện nơi KCB *
   final hospitalKCB = Rxn<Hospital>();
@@ -94,13 +94,13 @@ class Tk1State607 {
       Rx<ReceiveProfileResultEnum>(ReceiveProfileResultEnum.electronic);
 
   /// Tỉnh nhận hồ sơ giấy
-  final provinceReceivePaper = Rxn<ProvinceModel>();
+  final provinceReceivePaper = Rxn<Province>();
 
   /// Huyện nhận hồ sơ giấy
-  final districtReceivePaper = Rxn<DistrictModel>();
+  final districtReceivePaper = Rxn<District>();
 
   /// Xã nhận hồ sơ giấy
-  final wardReceivePaper = Rxn<WardModel>();
+  final wardReceivePaper = Rxn<Ward>();
 
   /// Địa chỉ thường trú
   final addressReceivePaperTextCtrl = TextEditingController();
@@ -118,13 +118,13 @@ class Tk1State607 {
   final headOfHouseholdCCCDTextCtrl = TextEditingController();
 
   /// Tỉnh thường trú
-  final provinceTT = Rxn<ProvinceModel>();
+  final provinceTT = Rxn<Province>();
 
   /// Huyện thường trú
-  final districtTT = Rxn<DistrictModel>();
+  final districtTT = Rxn<District>();
 
   /// Xã thường trú
-  final wardTT = Rxn<WardModel>();
+  final wardTT = Rxn<Ward>();
 
   /// Địa chỉ thường trú
   final addressTTTextCtrl = TextEditingController();

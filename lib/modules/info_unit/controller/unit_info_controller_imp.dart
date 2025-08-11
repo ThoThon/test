@@ -33,7 +33,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   void fetchDataAccountInfo() {
-    accountInfo = AppData.instance.accountInfoModel.value;
+    accountInfo = AppData.instance.accountInfo.value;
     taxCodeController.text = accountInfo?.taxCode ?? '';
     unitNameController.text = accountInfo?.tenToChuc ?? '';
     unitCodeController.text = accountInfo?.maDonVi ?? '';
@@ -156,7 +156,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     try {
       final res = await unitInfoRepository.getAccountInfo();
       if (res.code == AppConst.statusCodeSuccess && res.result != null) {
-        AppData.instance.accountInfoModel.value = res.result;
+        AppData.instance.accountInfo.value = res.result;
       }
     } catch (e) {
       logger.d(e);

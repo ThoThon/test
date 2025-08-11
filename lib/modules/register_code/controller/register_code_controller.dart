@@ -3,11 +3,11 @@ import 'package:path/path.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/shares/package/export_package.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../shares/widgets/keyboard/keyboard.dart';
-import '../../login/model/model_src.dart';
 import '../../src.dart';
 
 class RegisterCodeController extends BaseGetxController {
@@ -66,13 +66,13 @@ class RegisterCodeController extends BaseGetxController {
   final socialAgency = Rxn<SocialAgencyModel>();
 
   // Nơi nhận tỉnh
-  final provinceReceive = Rxn<ProvinceModel>();
+  final provinceReceive = Rxn<Province>();
 
   // Nơi nhận huyện
-  final districtReceive = Rxn<DistrictModel>();
+  final districtReceive = Rxn<District>();
 
   // Nơi nhận xã
-  final wardReceive = Rxn<WardModel>();
+  final wardReceive = Rxn<Ward>();
 
   // Đăng ký nhận kết quả
   final registerResult = Rxn<RegisterReceiveResultModel>();
@@ -156,7 +156,7 @@ class RegisterCodeController extends BaseGetxController {
     }
   }
 
-  void changeProvinceReceive(ProvinceModel value) {
+  void changeProvinceReceive(Province value) {
     if (provinceReceive.value != value) {
       districtReceive.value = null;
       wardReceive.value = null;
@@ -164,14 +164,14 @@ class RegisterCodeController extends BaseGetxController {
     provinceReceive.value = value;
   }
 
-  void changeDistrictReceive(DistrictModel value) {
+  void changeDistrictReceive(District value) {
     if (districtReceive.value != value) {
       wardReceive.value = null;
     }
     districtReceive.value = value;
   }
 
-  void changeWardReceive(WardModel value) {
+  void changeWardReceive(Ward value) {
     wardReceive.value = value;
   }
 

@@ -1,24 +1,24 @@
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/hospital.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 class Tk1DetailResponse {
-  final ProvinceModel? khaiSinhTinh;
-  final DistrictModel? khaiSinhHuyen;
-  final WardModel? khaiSinhXa;
+  final Province? khaiSinhTinh;
+  final District? khaiSinhHuyen;
+  final Ward? khaiSinhXa;
   final bool trungDiaChiKhaiSinh;
-  final ProvinceModel? noiNhanTinh;
-  final DistrictModel? noiNhanHuyen;
-  final WardModel? noiNhanXa;
+  final Province? noiNhanTinh;
+  final District? noiNhanHuyen;
+  final Ward? noiNhanXa;
   final String? noiNhanDiaChiChiTiet;
-  final ProvinceModel? benhVienTinh;
+  final Province? benhVienTinh;
   final Hospital? benhVien;
   final String? dienThoaiLienHe;
   final bool laChuHo;
   final String? hoTenChuHo;
   final String? chuHoSoCccd;
-  final ProvinceModel? chuHoThuongTruTinh;
-  final DistrictModel? chuHoThuongTruHuyen;
-  final WardModel? chuHoThuongTruXa;
+  final Province? chuHoThuongTruTinh;
+  final District? chuHoThuongTruHuyen;
+  final Ward? chuHoThuongTruXa;
   final String? diaChiThuongTruChuHo;
   final String? diaChiKhaiSinh;
 
@@ -47,27 +47,25 @@ class Tk1DetailResponse {
   factory Tk1DetailResponse.fromJson(Map<String, dynamic> json) {
     return Tk1DetailResponse(
       khaiSinhTinh: json['khaiSinhTinh'] != null
-          ? ProvinceModel.fromJson(json['khaiSinhTinh'])
+          ? Province.fromJson(json['khaiSinhTinh'])
           : null,
       khaiSinhHuyen: json['khaiSinhHuyen'] != null
-          ? DistrictModel.fromJson(json['khaiSinhHuyen'])
+          ? District.fromJson(json['khaiSinhHuyen'])
           : null,
-      khaiSinhXa: json['khaiSinhXa'] != null
-          ? WardModel.fromJson(json['khaiSinhXa'])
-          : null,
+      khaiSinhXa:
+          json['khaiSinhXa'] != null ? Ward.fromJson(json['khaiSinhXa']) : null,
       trungDiaChiKhaiSinh: json['trungDiaChiKhaiSinh'] ?? false,
       noiNhanTinh: json['noiNhanTinh'] != null
-          ? ProvinceModel.fromJson(json['noiNhanTinh'])
+          ? Province.fromJson(json['noiNhanTinh'])
           : null,
       noiNhanHuyen: json['noiNhanHuyen'] != null
-          ? DistrictModel.fromJson(json['noiNhanHuyen'])
+          ? District.fromJson(json['noiNhanHuyen'])
           : null,
-      noiNhanXa: json['noiNhanXa'] != null
-          ? WardModel.fromJson(json['noiNhanXa'])
-          : null,
+      noiNhanXa:
+          json['noiNhanXa'] != null ? Ward.fromJson(json['noiNhanXa']) : null,
       noiNhanDiaChiChiTiet: json['noiNhanDiaChiChiTiet'],
       benhVienTinh: json['benhVienTinh'] != null
-          ? ProvinceModel.fromJson(json['benhVienTinh'])
+          ? Province.fromJson(json['benhVienTinh'])
           : null,
       benhVien:
           json['benhVien'] != null ? Hospital.fromJson(json['benhVien']) : null,
@@ -76,13 +74,13 @@ class Tk1DetailResponse {
       hoTenChuHo: json['hoTenChuHo'],
       chuHoSoCccd: json['chuHoSoCCCD'],
       chuHoThuongTruTinh: json['chuHoThuongTruTinh'] != null
-          ? ProvinceModel.fromJson(json['chuHoThuongTruTinh'])
+          ? Province.fromJson(json['chuHoThuongTruTinh'])
           : null,
       chuHoThuongTruHuyen: json['chuHoThuongTruHuyen'] != null
-          ? DistrictModel.fromJson(json['chuHoThuongTruHuyen'])
+          ? District.fromJson(json['chuHoThuongTruHuyen'])
           : null,
       chuHoThuongTruXa: json['chuHoThuongTruXa'] != null
-          ? WardModel.fromJson(json['chuHoThuongTruXa'])
+          ? Ward.fromJson(json['chuHoThuongTruXa'])
           : null,
       diaChiThuongTruChuHo: json['diaChiThuongTruChuHo'],
       diaChiKhaiSinh: json['diaChiKhaiSinh'],
