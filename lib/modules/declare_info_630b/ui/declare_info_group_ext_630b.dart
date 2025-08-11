@@ -603,11 +603,13 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return FormFieldRegistrant<String>(
       registrarId: '6bedb77d-836e-4409-9da9-062e3ae2aab7',
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
+        final isEmpty = trimmedValue.isEmpty;
 
-        if ((trimmedValue == null || trimmedValue.isEmpty)) {
-          return null;
+        if (isEmpty && controller.isRequiredBirthAndConutChild) {
+          return LocaleKeys.declareInfo_birthDayChildEmpty.tr;
         }
+        if (isEmpty) return null;
         // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
         if (trimmedValue.length < 10) {
           return LocaleKeys.declareInfo_birthDayChildInvalid.tr;
@@ -637,7 +639,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
             inputFormatters: InputFormatterEnum.dateFullBirthDay,
             controller: controller.birthDayChildCtrl,
             hintText: PATTERN_1,
-            isRequired: false,
+            isRequired: controller.isRequiredBirthAndConutChild,
             validator: validator,
             onSelectDate: () async {
               KeyBoard.hide();
@@ -670,7 +672,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
         final isEmpty = trimmedValue.isEmpty;
-        if (isEmpty && controller.isRequiredNumberChild) {
+        if (isEmpty && controller.isRequiredBirthAndConutChild) {
           return LocaleKeys.declareInfo_numberChildEmpty.tr;
         }
         return null;
@@ -685,7 +687,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
             controller: controller.numberChildCtrl,
             inputFormatters: InputFormatterEnum.phoneNumber,
             textInputType: TextInputType.number,
-            isRequired: controller.isRequiredNumberChild,
+            isRequired: controller.isRequiredBirthAndConutChild,
             maxLengthInputForm: 1,
             validator: validator,
           ).paddingOnly(bottom: AppDimens.paddingSmall),
