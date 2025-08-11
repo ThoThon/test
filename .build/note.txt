@@ -1,3 +1,21 @@
+09/08/2025
+- [Appmobile]_Bổ sung popup thông báo hiển thị khi api trả về statuscode 429 - BHW-2985
+
+08/08/2025
+- [Appmobile]_Chỉnh sửa call api /api/HoSo630a/update-ms - BHW-2972
+- [Appmobile]_Thủ tục 630a: Bắt valiadte trường số con - BHW-2983
+- [Appmobile]_Thủ tục 630a_Lỗi giá trị ban đầu trường Số con - BHW-2984
+
+07/08/2025
+- [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị [Mã nhóm hưởng] - BHW-2958
+- [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị giữa Hình thức kê khai: Phát sinh/Điều chỉnh - BHW-2957
+- [Appmobile]_Bố sung Force update cho app up store - BHW-2959
+
+06/08/2025
+- [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chị các giá trị [Hình thức nhận] - BHW-2950
+- [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị giữa Hình thức kê khai: Phát sinh/Điều chỉnh - BHW-2949
+- [Appmobile]_Thủ tục 630a: Thiếu trường checkbox [Nghỉ dưỡng thai] - BHW-2947
+- [Appmobile]_Thủ tục 630a: Lỗi focus khi chọn giá trị cho trường Hình thức nhận: Chi trả qua ATM - BHW-2948
 05/08/2025
 - [Appmobile]_Lỗi focus chuột - BHW-2922
 

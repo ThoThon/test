@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+const ATMPaymentValue = 'ATM';
+
 /// Hình thức nhận
 class ReceiveForm630aModel extends Equatable {
   final String value;
