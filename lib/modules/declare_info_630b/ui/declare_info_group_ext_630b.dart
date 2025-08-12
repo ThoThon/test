@@ -987,6 +987,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       labelText: 'Mã số BHXH của mẹ',
       controller: controller.bhxhCodeMotherCtrl,
       maxLengthInputForm: 10,
+      textInputType: TextInputType.number,
+      inputFormatters: InputFormatterEnum.digitsOnly,
       validator: (value) {
         final trimmedValue = value?.trim();
         if ((trimmedValue == null || trimmedValue.isEmpty)) {
