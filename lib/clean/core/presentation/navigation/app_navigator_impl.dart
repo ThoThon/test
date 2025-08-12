@@ -257,19 +257,22 @@ class AppNavigatorImpl extends AppNavigator {
               ),
             ),
             const Divider(height: 1),
-            TextButton(
-              onPressed: () {
-                if (Get.isDialogOpen == true) {
-                  Get.back();
-                }
-              },
-              style: ButtonStyle(
-                overlayColor: WidgetStateProperty.all(Colors.transparent),
-              ),
-              child: SDSBuildText(
-                LocaleKeys.dialog_close.tr,
-                style: AppTextStyle.font14Re.copyWith(
-                  color: AppColors.primaryNavy,
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () {
+                  if (Get.isDialogOpen == true) {
+                    Get.back();
+                  }
+                },
+                style: ButtonStyle(
+                  overlayColor: WidgetStateProperty.all(Colors.transparent),
+                ),
+                child: SDSBuildText(
+                  LocaleKeys.dialog_close.tr,
+                  style: AppTextStyle.font14Re.copyWith(
+                    color: AppColors.primaryNavy,
+                  ),
                 ),
               ),
             ),
