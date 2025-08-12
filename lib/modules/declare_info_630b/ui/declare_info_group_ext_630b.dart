@@ -987,6 +987,16 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       labelText: 'Mã số BHXH của mẹ',
       controller: controller.bhxhCodeMotherCtrl,
       maxLengthInputForm: 10,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+          return null;
+        }
+        if (trimmedValue.length < 10) {
+          return 'Mã số BHXH phải đủ 10 số';
+        }
+        return null;
+      },
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
