@@ -53,7 +53,7 @@ class LoginController extends BaseGetxController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
-          _get630aCategories(),
+          _get630Categories(),
           _getToTalNotiUnread(),
         ).wait;
         Get.offAllNamed(AppRoutes.home.path);
@@ -116,7 +116,7 @@ class LoginController extends BaseGetxController {
     }
   }
 
-  Future<void> _get630aCategories() async {
+  Future<void> _get630Categories() async {
     try {
       final response = await _loginRepository.get630aCategories();
       final categories630 = response.result;
@@ -130,7 +130,6 @@ class LoginController extends BaseGetxController {
           ..receiveForm = categories630.receiveForm
           ..bank = categories630.bank
           ..benefitGroup630b = categories630.benefitGroup630b
-          ..benefitGroupLv2 = categories630.benefitGroupLv2
           ..pregnancyCondition = categories630.pregnancyCondition
           ..childBirthCondition = categories630.childBirthCondition
           ..maternityLeave = categories630.maternityLeave

@@ -9,7 +9,7 @@ import '../../login/model/model_src.dart';
 
 part 'benefit_account_info_group_ext_630b.dart';
 part 'declare_info_630b_widget.dart';
-part 'declare_info_gruop_ext_630b.dart';
+part 'declare_info_group_ext_630b.dart';
 part 'person_info_group_ext_630b.dart';
 
 class DeclareInfo630bPage extends BaseGetWidget {
@@ -22,19 +22,19 @@ class DeclareInfo630bPage extends BaseGetWidget {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        centerTitle: true,
-        leading: UtilWidget.buildButtonBackAppbar(),
-        title: BaseAppBarTitle(
-          title: LocaleKeys.declareInfo_title630b.tr,
+    return buildLoadingOverlay(
+      () => Scaffold(
+        appBar: BaseAppBar(
+          centerTitle: true,
+          leading: UtilWidget.buildButtonBackAppbar(),
+          title: BaseAppBarTitle(
+            title: LocaleKeys.declareInfo_title630b.tr,
+          ),
         ),
-      ),
-      body: SafeArea(
-        child: _buildBody(),
+        body: SafeArea(
+          child: _buildBody(),
+        ),
       ),
     );
   }
-
-  
 }

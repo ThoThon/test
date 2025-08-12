@@ -6,6 +6,7 @@ extension DeclareInfo630bWidget on DeclareInfo630bPage {
       children: [
         Expanded(
           child: AppFormRegistry(
+            key: controller.registeredKey,
             child: Form(
               key: controller.formKey,
               child: SingleChildScrollView(
@@ -35,7 +36,7 @@ extension DeclareInfo630bWidget on DeclareInfo630bPage {
           title: LocaleKeys.declareInfo_saveButton.tr,
           backgroundColor: AppColors.primaryColor,
           borderRadius: AppDimens.radius30,
-          onPressed: controller.add630b,
+          onPressed: controller.saveDraft,
         ).paddingOnly(top: AppDimens.paddingSmall);
       },
     );

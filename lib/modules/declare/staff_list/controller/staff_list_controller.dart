@@ -242,7 +242,8 @@ class StaffListController extends BaseGetxController {
         ProcedureType.procedure613 =>
           _repository.deleteTk1D01(id: staffId),
         ProcedureType.procedure630a => _repository630.delete630a(id: staffId),
-        _ => throw UnimplementedError('Not implemented yet'),
+        ProcedureType.procedure630b => _repository630.delete630b(id: staffId),
+        
       };
 
       if (response.isSuccess) {

@@ -38,7 +38,7 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
           ),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: controller.goToSelectStaffPage,
           style: TextButton.styleFrom(
             minimumSize: Size.zero,
             padding: const EdgeInsets.symmetric(

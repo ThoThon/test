@@ -116,5 +116,8 @@ class AppApi {
   // === Danh sách các api liên quan đến thủ tục 630b ===
   static const String urlGetListStaff630b = '/api/HoSo630b/get-list';
   static const String urlAdd630b = '/api/HoSo630b/add-630b';
+  static const String urlDelete630b = '/api/HoSo630b/delete-630b';
+  static const String urlGetDetail630b = '/api/HoSo630b/get-630b-detail';
+  static const String urlUpdate630b = '/api/HoSo630b/update-630b';
   // === Kết thúc các api liên quan đến thủ tục 630b ===
 }
