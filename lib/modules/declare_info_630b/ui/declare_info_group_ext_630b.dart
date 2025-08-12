@@ -591,6 +591,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
             labelText: LocaleKeys.declareInfo_pregnancyWeek.tr,
             controller: controller.pregnancyWeekCtrl,
             maxLengthInputForm: 2,
+            textInputType: TextInputType.number,
+            inputFormatters: InputFormatterEnum.digitsOnly,
           ).paddingOnly(bottom: AppDimens.paddingSmall),
         );
       },
