@@ -764,6 +764,17 @@ class LocaleKeys {
   static const declareInfo_pregnancyWeekCannotEmpty =
       'declareInfo_pregnancyWeekCannotEmpty';
   static const declareInfo_pregnancyWeekHint = 'declareInfo_pregnancyWeekHint';
+  static const declareInfo_countChildDeath = 'declareInfo_countChildDeath';
+  static const declareInfo_countChildDeathCannotEmpty =
+      'declareInfo_countChildDeathCannotEmpty';
+  static const declareInfo_countChildDeathInput =
+      'declareInfo_countChildDeathInput';
+  static const declareInfo_pregnancyCondition =
+      'declareInfo_pregnancyCondition';
+  static const declareInfo_pregnancyConditionCannotEmpty =
+      'declareInfo_pregnancyConditionCannotEmpty';
+  static const declareInfo_pregnancyConditionSelected =
+      'declareInfo_pregnancyConditionSelected';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1841,6 +1852,13 @@ class Locales {
     'declareInfo_pregnancyWeek': 'Tuổi thai',
     'declareInfo_pregnancyWeekCannotEmpty': 'Tuổi thai không được bỏ trống',
     'declareInfo_pregnancyWeekHint': 'Nhập số tuần tuổi thai',
+    'declareInfo_countChildDeath': 'Số con chết',
+    'declareInfo_countChildDeathCannotEmpty': 'Số con chết không được bỏ trống',
+    'declareInfo_countChildDeathInput': 'Nhập số con chết',
+    'declareInfo_pregnancyCondition': 'Điều kiện khám thai',
+    'declareInfo_pregnancyConditionCannotEmpty':
+        'Điều kiện khám thai không được bỏ trống',
+    'declareInfo_pregnancyConditionSelected': 'Chọn điều kiện khám thai',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

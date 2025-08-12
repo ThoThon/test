@@ -638,7 +638,13 @@
     "childDeathDateInvalid": "Ngày con chết không hợp lệ",
     "pregnancyWeek": "Tuổi thai",
     "pregnancyWeekCannotEmpty": "Tuổi thai không được bỏ trống",
-    "pregnancyWeekHint": "Nhập số tuần tuổi thai"
+    "pregnancyWeekHint": "Nhập số tuần tuổi thai",
+    "countChildDeath": "Số con chết",
+    "countChildDeathCannotEmpty": "Số con chết không được bỏ trống",
+    "countChildDeathInput": "Nhập số con chết",
+    "pregnancyCondition": "Điều kiện khám thai",
+    "pregnancyConditionCannotEmpty": "Điều kiện khám thai không được bỏ trống",
+    "pregnancyConditionSelected": "Chọn điều kiện khám thai"
   },
   "familyMember": {
     "title": "Thêm thành viên",

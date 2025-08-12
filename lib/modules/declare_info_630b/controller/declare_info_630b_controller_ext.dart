@@ -128,8 +128,9 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   bool get isRequiredConclusionDate =>
       benefitGroupLv2.value?.maNhomHuongC2 == 'T44';
 
-  // REF: BHW-2967
-  bool get isRequiredChildDeathDate => conditionRequiredChildDeathDate
+  // REF: BHW-2967 và BHW-2965
+  // "Ngày con chết" và "Số con chết"
+  bool get isRequiredChildDeathDate => requiredDateAndCountChildDeath
       .contains(benefitGroupLv2.value?.maNhomHuongC2);
 
   // REF: BHW-2968
@@ -144,6 +145,10 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   // Dùng cho "Số con" và "Ngày sinh con"
   bool get isRequiredBirthAndConutChild =>
       requiredBirthAndCountChild.contains(benefitGroupLv2.value?.maNhomHuongC2);
+
+  // REF: BHW-2996
+  bool get isRequiredPregnancyCondition =>
+      benefitGroupLv2.value?.maNhomHuongC2 == 'T11';
 
   void onChangeBenefitGroup(BenefitGroup630bModel? method) {
     if (method == null) {
