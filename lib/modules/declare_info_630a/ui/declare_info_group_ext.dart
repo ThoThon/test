@@ -374,6 +374,9 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               if (trimmedValue == null || trimmedValue.isEmpty) {
                 return LocaleKeys.declareInfo_numberChildEmpty.tr;
               }
+              if (trimmedValue == '0') {
+                return LocaleKeys.declareInfo_numberChildInvalid.tr;
+              }
 
               return null;
             },

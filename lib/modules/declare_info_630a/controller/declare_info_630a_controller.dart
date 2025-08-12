@@ -345,7 +345,9 @@ class DeclareInfo630aController extends BaseGetxController {
         convertDateToStringSafe(detail.ngaySinhCon, PATTERN_1) ?? '';
 
     // Số con
-    numberChildCtrl.text = detail.soCon.toString();
+    if (detail.soCon != null) {
+      numberChildCtrl.text = detail.soCon.toString();
+    }
 
     // Mã thẻ BHYT của con
     bhytCardCodeChildCtrl.text = detail.theBhytCuaCon;
@@ -490,7 +492,6 @@ class DeclareInfo630aController extends BaseGetxController {
       workCondition.value = null;
       isMaternityRest.value = false;
       supplementalPeriodCtrl.clear();
-      fileCodeTextCtrl.clear();
     }
 
     // REF: BHW-2957

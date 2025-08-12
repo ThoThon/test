@@ -40,6 +40,7 @@ class LocaleKeys {
   static const app_cancel = 'app_cancel';
   static const app_close = 'app_close';
   static const app_select = 'app_select';
+  static const dialog_error429 = 'dialog_error429';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
   static const dialog_updateSuccessDialog = 'dialog_updateSuccessDialog';
   static const dialog_updateFailure = 'dialog_updateFailure';
@@ -661,6 +662,8 @@ class LocaleKeys {
   static const declareInfo_numberChild = 'declareInfo_numberChild';
   static const declareInfo_numberChildHint = 'declareInfo_numberChildHint';
   static const declareInfo_numberChildEmpty = 'declareInfo_numberChildEmpty';
+  static const declareInfo_numberChildInvalid =
+      'declareInfo_numberChildInvalid';
   static const declareInfo_bhytCardCode = 'declareInfo_bhytCardCode';
   static const declareInfo_bhytCardCodeHint = 'declareInfo_bhytCardCodeHint';
   static const declareInfo_bhytCardCodeEmpty = 'declareInfo_bhytCardCodeEmpty';
@@ -1216,6 +1219,8 @@ class Locales {
         'Không tìm thấy đường dẫn này, xin vui lòng liên hệ Admin',
     'dialog_error401':
         'Phiên đăng nhập đã hết hạn. Quý khách vui lòng đăng nhập lại',
+    'dialog_error429':
+        'Hiện tại có quá nhiều lượt truy cập. Vui lòng thử lại sau vài phút.',
     'dialog_success': 'Thành công',
     'dialog_fail': 'Thất bại',
     'dialog_checkEmail': 'Vui lòng kiểm tra lại email đã đăng ký',
@@ -1768,6 +1773,7 @@ class Locales {
     'declareInfo_numberChild': 'Số con',
     'declareInfo_numberChildHint': 'Nhập số con',
     'declareInfo_numberChildEmpty': 'Số con không được bỏ trống',
+    'declareInfo_numberChildInvalid': 'Số con không hợp lệ',
     'declareInfo_bhytCardCode': 'Mã thẻ BHYT của con',
     'declareInfo_bhytCardCodeHint': 'Nhập mã thẻ BHYT của con',
     'declareInfo_bhytCardCodeEmpty': 'Mã thẻ BHYT của con không được bỏ trống',

@@ -47,62 +47,66 @@ class BaseGetxController extends GetxController {
   }
 
   void _setOnErrorListener() {
-    BaseApi().setOnErrorListener((error) async {
-      errorContent = LocaleKeys.dialog_errorConnectFailedStr.tr;
+    BaseApi().setOnErrorListener(
+      (error) async {
+        errorContent = LocaleKeys.dialog_errorConnectFailedStr.tr;
 
-      if (error is DioException) {
-        //Nếu server có trả về message thì hiển thị
-        if (error.response?.data != null &&
-            error.response!.data is Map &&
-            error.response!.data["Message"] != null) {
-          errorContent = error.response!.data['Message'];
-        } else {
-          switch (error.type) {
-            case DioExceptionType.connectionTimeout:
-            case DioExceptionType.sendTimeout:
-            case DioExceptionType.receiveTimeout:
-              errorContent = LocaleKeys.dialog_errorConnectTimeOut.tr;
-              break;
-            case DioExceptionType.cancel:
-              // không hiện thông báo khi huỷ request
-              errorContent = '';
-              break;
-            case DioExceptionType.badResponse:
-              switch (error.response!.statusCode) {
-                case AppConst.error400:
-                  errorContent = LocaleKeys.dialog_error400.tr;
-                  break;
-                case AppConst.error401:
-                  errorContent = LocaleKeys.dialog_error401.tr;
-                  ShowDialog.showDialogNotificationError(
-                    errorContent,
-                    isActiveBack: false,
-                    function: () {
-                      Get.offAllNamed(AppRoutes.login.path);
-                    },
-                  );
-                  return;
-                case AppConst.error404:
-                  errorContent = LocaleKeys.dialog_error404.tr;
-                  break;
-                case AppConst.error500:
-                  errorContent = LocaleKeys.dialog_errorInternalServer.tr;
-                  break;
-                case AppConst.error502:
-                  errorContent = LocaleKeys.dialog_error502.tr;
-                  break;
-                case AppConst.error503:
-                  errorContent = LocaleKeys.dialog_error503.tr;
-                  break;
-                default:
-                  errorContent = LocaleKeys.dialog_errorInternalServer.tr;
-              }
-              break;
-            default:
-              errorContent = LocaleKeys.dialog_errorConnectFailedStr.tr;
-          }
-          // await FirebaseCloud.addLogError(error, errorContent);
-          /*  // check lỗi khi tải pdf
+        if (error is DioException) {
+          //Nếu server có trả về message thì hiển thị
+          if (error.response?.data != null &&
+              error.response!.data is Map &&
+              error.response!.data["Message"] != null) {
+            errorContent = error.response!.data['Message'];
+          } else {
+            switch (error.type) {
+              case DioExceptionType.connectionTimeout:
+              case DioExceptionType.sendTimeout:
+              case DioExceptionType.receiveTimeout:
+                errorContent = LocaleKeys.dialog_errorConnectTimeOut.tr;
+                break;
+              case DioExceptionType.cancel:
+                // không hiện thông báo khi huỷ request
+                errorContent = '';
+                break;
+              case DioExceptionType.badResponse:
+                switch (error.response!.statusCode) {
+                  case AppConst.error400:
+                    errorContent = LocaleKeys.dialog_error400.tr;
+                    break;
+                  case AppConst.error401:
+                    errorContent = LocaleKeys.dialog_error401.tr;
+                    ShowDialog.showDialogNotificationError(
+                      errorContent,
+                      isActiveBack: false,
+                      function: () {
+                        Get.offAllNamed(AppRoutes.login.path);
+                      },
+                    );
+                    return;
+                  case AppConst.error404:
+                    errorContent = LocaleKeys.dialog_error404.tr;
+                    break;
+                  case AppConst.error429:
+                    errorContent = LocaleKeys.dialog_error429.tr;
+                    break;
+                  case AppConst.error500:
+                    errorContent = LocaleKeys.dialog_errorInternalServer.tr;
+                    break;
+                  case AppConst.error502:
+                    errorContent = LocaleKeys.dialog_error502.tr;
+                    break;
+                  case AppConst.error503:
+                    errorContent = LocaleKeys.dialog_error503.tr;
+                    break;
+                  default:
+                    errorContent = LocaleKeys.dialog_errorInternalServer.tr;
+                }
+                break;
+              default:
+                errorContent = LocaleKeys.dialog_errorConnectFailedStr.tr;
+            }
+            // await FirebaseCloud.addLogError(error, errorContent);
+            /*  // check lỗi khi tải pdf
          if (error.response?.data != null &&
               error.response?.data is List<int>) {
             var result = utf8.decode(error.response?.data);
@@ -111,15 +115,16 @@ class BaseGetxController extends GetxController {
               errorContent = err['Message'];
             }
           }*/
+          }
         }
-      }
 
-      isShowLoading.value = false;
-      isLoadingOverlay.value = false;
-      if (errorContent.isNotEmpty) {
-        ShowDialog.showErrorMessage(errorContent);
-      }
-    });
+        isShowLoading.value = false;
+        isLoadingOverlay.value = false;
+        if (errorContent.isNotEmpty) {
+          ShowDialog.showErrorMessage(errorContent);
+        }
+      },
+    );
   }
 
   Future<void> showSnackBar<T>(

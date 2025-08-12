@@ -12,6 +12,14 @@
 - [Appmobile]_Thủ tục 630b_Bổ sung call api Cập nhật hồ sơ 630b - BHW-2976
 - [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường ngày kết luận - BHW-2969
 - [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường ngày nhận con - BHW-2968
+- Sửa lỗi không thể cập nhật thông tin đơn vị khi trường lương cơ sở rỗng
+- Loại bỏ việc reset mã hồ sơ khi thay đổi hình thức kê khai - BHW-2949
+- [Appmobile]_Bổ sung popup thông báo hiển thị khi api trả về statuscode 429 - BHW-2985
+
+08/08/2025
+- [Appmobile]_Chỉnh sửa call api /api/HoSo630a/update-ms - BHW-2972
+- [Appmobile]_Thủ tục 630a: Bắt valiadte trường số con - BHW-2983
+- [Appmobile]_Thủ tục 630a_Lỗi giá trị ban đầu trường Số con - BHW-2984
 
 07/08/2025
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị [Mã nhóm hưởng] - BHW-2958

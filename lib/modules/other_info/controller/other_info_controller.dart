@@ -72,6 +72,7 @@ class OtherInfoController extends BaseGetxController {
       showLoadingOverlay();
       final response = await _repository.addOtherInfo(_buildRequest);
       if (response.isSuccess) {
+        id = response.result;
         await saveXml();
       }
     } catch (e) {
