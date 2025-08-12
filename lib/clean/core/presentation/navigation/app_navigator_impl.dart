@@ -2,6 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:v_bhxh/assets.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/snack_bar_type.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/widget_src.dart';
 import 'package:v_bhxh/core/const/app_text_style.dart';
@@ -9,7 +10,11 @@ import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/core/values/dimens.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/shares/base/ui/text_widget.dart';
+import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
+import 'package:v_bhxh/shares/widgets/sized_box/sized_box.dart';
+import 'package:v_bhxh/shares/widgets/utils_widget/utils_widget.dart';
 
+import '../../../../shares/widgets/image_app/sds_image_svg.dart';
 import 'app_navigator.dart';
 
 class AppNavigatorImpl extends AppNavigator {
@@ -230,32 +235,40 @@ class AppNavigatorImpl extends AppNavigator {
     return _showDialog(
       Dialog(
         elevation: 0,
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.symmetric(
+          vertical: AppDimens.defaultPadding,
+          horizontal: AppDimens.padding24,
+        ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Container(
-              padding: const EdgeInsets.only(top: 16, bottom: 8),
-              child: const Icon(
-                Icons.notifications_none,
-                size: AppDimens.size45,
-                color: Colors.blueAccent,
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              child: SDSBuildText(
-                message,
-                style: AppTextStyle.font14Re.copyWith(
-                  color: AppColors.primaryNavy,
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.notifications_none,
+                  size: AppDimens.size45,
+                  color: Colors.blueAccent,
                 ),
-                textAlign: TextAlign.center,
-                maxLines: 4,
-              ),
-            ),
+                sdsSBHeight16,
+                Container(
+                  constraints: const BoxConstraints(maxHeight: 200),
+                  child: SingleChildScrollView(
+                    child: Text(
+                      message,
+                      style: AppTextStyle.font14Re,
+                      textAlign: TextAlign.center,
+                      maxLines: 10,
+                    ),
+                  ),
+                ),
+              ],
+            ).paddingAll(AppDimens.defaultPadding),
             const Divider(height: 1),
             SizedBox(
               width: double.infinity,
@@ -278,6 +291,139 @@ class AppNavigatorImpl extends AppNavigator {
             ),
           ],
         ),
+      ),
+      barrierDismissible: barrierDismissible,
+    );
+  }
+
+  Widget _buildDialogIcon(DialogIconType iconType) {
+    switch (iconType) {
+      case DialogIconType.success:
+        return SDSImageSvg(
+          Assets.ASSETS_IMAGES_IMG_CHECK_SUCCESS_SVG,
+          color: AppColors.colorIconSuccess,
+          width: 60,
+          height: 60,
+        );
+      case DialogIconType.failure:
+        return SDSImageSvg(
+          Assets.ASSETS_IMAGES_IMG_CHECK_FAILURE_SVG,
+          color: AppColors.primaryColor,
+          width: 60,
+          height: 60,
+        );
+      case DialogIconType.note:
+        return SDSImageSvg(
+          Assets.ASSETS_ICONS_IC_NOTE_SVG,
+          color: const Color(0xFFFE9705),
+          width: 60,
+          height: 60,
+        );
+    }
+  }
+
+  @override
+  Future<void> showInfoDialog({
+    required String title,
+    required String subtitle,
+    required DialogIconType iconType,
+    bool swapTitleAndIcon = false,
+    String? confirmTitle,
+    String? cancelTitle,
+    VoidCallback? onConfirm,
+    VoidCallback? onCancel,
+    bool showConfirmButton = true,
+    bool showCancelButton = true,
+    bool barrierDismissible = false,
+  }) {
+    assert(
+      showConfirmButton || showCancelButton,
+      'At least one of showConfirmButton or showCancelButton must be true',
+    );
+    final titleAndIconSection = [
+      SDSBuildText(
+        title,
+        maxLines: 3,
+        style: AppTextStyle.font18Bo,
+        textAlign: TextAlign.center,
+      ),
+      sdsSBHeight16,
+      _buildDialogIcon(iconType),
+    ];
+    return _showDialog(
+      Dialog(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.symmetric(
+          vertical: AppDimens.defaultPadding,
+          horizontal: AppDimens.padding24,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: swapTitleAndIcon
+                  ? titleAndIconSection.reversed.toList()
+                  : titleAndIconSection,
+            ),
+            Container(
+              padding: const EdgeInsets.only(
+                top: AppDimens.defaultPadding,
+                bottom: AppDimens.padding24,
+              ),
+              constraints: const BoxConstraints(maxHeight: 200),
+              child: SingleChildScrollView(
+                child: Text(
+                  subtitle,
+                  style: AppTextStyle.font14Re,
+                  textAlign: TextAlign.center,
+                  maxLines: 20,
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                if (showCancelButton)
+                  Expanded(
+                    child: UtilWidget.buildSolidButtonBack(
+                      title: cancelTitle ?? LocaleKeys.dialog_cancel.tr,
+                      borderRadius: AppDimens.radius30,
+                      backgroundColor: AppColors.basicWhite,
+                      textStyle: AppTextStyle.font14Re
+                          .copyWith(color: AppColors.primaryColor),
+                      onPressed: () {
+                        if (Get.isDialogOpen == true) {
+                          Get.back();
+                        }
+                        onCancel?.call();
+                      },
+                    ),
+                  ),
+                if (showCancelButton && showConfirmButton)
+                  UtilWidget.sizedBoxWidth20,
+                if (showConfirmButton)
+                  Expanded(
+                    child: UtilWidget.buildSolidButton(
+                      borderRadius: AppDimens.radius30,
+                      textStyle: AppTextStyle.font14Re
+                          .copyWith(color: AppColors.basicWhite),
+                      title: confirmTitle ?? LocaleKeys.dialog_confirm.tr,
+                      onPressed: () {
+                        if (Get.isDialogOpen == true) {
+                          Get.back();
+                        }
+                        onConfirm?.call();
+                      },
+                    ),
+                  )
+              ],
+            )
+          ],
+        ).paddingAll(AppDimens.padding24),
       ),
       barrierDismissible: barrierDismissible,
     );

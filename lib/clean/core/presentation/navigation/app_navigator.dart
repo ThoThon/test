@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/snack_bar_type.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/base_get_bts_dialog.dart';
+import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 abstract class AppNavigator {
   Future<T?>? toNamed<T>(
@@ -68,6 +69,20 @@ abstract class AppNavigator {
 
   Future<void> showNotificationDialog({
     required String message,
+    bool barrierDismissible = false,
+  });
+
+  Future<void> showInfoDialog({
+    required String title,
+    required String subtitle,
+    required DialogIconType iconType,
+    bool swapTitleAndIcon = false,
+    String? confirmTitle,
+    String? cancelTitle,
+    VoidCallback? onConfirm,
+    VoidCallback? onCancel,
+    bool showConfirmButton = true,
+    bool showCancelButton = true,
     bool barrierDismissible = false,
   });
 
