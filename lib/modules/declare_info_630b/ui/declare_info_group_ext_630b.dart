@@ -740,6 +740,16 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       maxLengthInputForm: 10,
       inputFormatters: InputFormatterEnum.phoneNumber,
       textInputType: TextInputType.number,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+          return null;
+        }
+        if (trimmedValue.length < 10) {
+          return 'Mã số BHXH phải đủ 10 số';
+        }
+        return null;
+      },
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
