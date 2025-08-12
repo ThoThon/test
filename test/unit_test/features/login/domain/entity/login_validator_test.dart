@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:v_bhxh/clean/features/login/domain/entity/login_validator.dart';
+import 'package:v_bhxh/clean/features/login/presentation/validator/login_validator.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 
 void main() {
