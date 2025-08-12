@@ -1,4 +1,5 @@
 12/08/2025
+[Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con - BHW-3002
 - [Appmobile]_Thủ tục 630b_Dựng form màn [Thông tin khác] - BHW-2929
 
 11/08/2025
