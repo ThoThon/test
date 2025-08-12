@@ -3,16 +3,7 @@ import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/shared/mapper/base/base_data_mapper.dart';
 
 class LoginRequestDataMapper
-    extends BaseDataMapper<LoginRequestData, LoginRequest>
-    with DataMapperMixin {
-  @override
-  LoginRequest mapToEntity(LoginRequestData? data) {
-    return LoginRequest(
-      username: data?.username ?? '',
-      password: data?.password ?? '',
-    );
-  }
-
+    extends BaseEntityMapper<LoginRequest, LoginRequestData> {
   @override
   LoginRequestData mapToData(LoginRequest entity) {
     return LoginRequestData(
