@@ -37,7 +37,7 @@ class OtherInfoRepository extends BaseRepository {
     );
   }
 
-  Future<BaseResponse<SaveXmlResult>> saveXml({
+  Future<BaseResponse<SaveXmlResult>> saveXml630a({
     required String declarationPeriodId,
   }) async {
     final response = await baseCallApi(
@@ -49,6 +49,25 @@ class OtherInfoRepository extends BaseRepository {
       // Có thể việc gen pdf ở BE tốn thời gian, nên cần tăng thời gian timeout
       timeOut: const Duration(minutes: 2),
     );
+    return BaseResponse<SaveXmlResult>.fromJson(
+      response,
+      fromJson: (json) => SaveXmlResult.fromJson(json),
+    );
+  }
+
+  Future<BaseResponse<SaveXmlResult>> saveXml630b({
+    required String declarationPeriodId,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlSaveXml630b,
+      EnumRequestMethod.post,
+      queryParameters: {
+        "kyKeKhaiId": declarationPeriodId,
+      },
+      // Có thể việc gen pdf ở BE tốn thời gian, nên cần tăng thời gian timeout
+      timeOut: const Duration(minutes: 2),
+    );
+    logger.d(response);
     return BaseResponse<SaveXmlResult>.fromJson(
       response,
       fromJson: (json) => SaveXmlResult.fromJson(json),

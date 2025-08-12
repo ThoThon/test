@@ -20,13 +20,25 @@ extension DeclarationListWidget on DeclarationListPage {
                     style: AppTextStyle.font16Bo,
                   ),
                   sdsSBHeight12,
+                  if (saveResult.hasTsM01hsb)
+                    _buildDeclarationItem(
+                      title:
+                          'Danh sách đề nghị giải quyết hưởng chế độ thai sản (Mẫu 01D-HSB)',
+                      onTap: () {
+                        controller.getPreviewPdf(
+                          previewDocumentType:
+                              PreviewDocumentTypeEnum.maternityHsb,
+                          title: 'Tờ khai tham gia',
+                        );
+                      },
+                    ).paddingOnly(bottom: AppDimens.paddingSmall),
                   if (saveResult.hasOdM01hsb)
                     _buildDeclarationItem(
                       title:
                           'Danh sách đề nghị giải quyết hưởng chế độ ốm đau (Mẫu 01D-HSB)',
                       onTap: () {
                         controller.getPreviewPdf(
-                          previewDocumentType: PreviewDocumentTypeEnum.hsb,
+                          previewDocumentType: PreviewDocumentTypeEnum.sickHsb,
                           title: 'Tờ khai tham gia',
                         );
                       },
