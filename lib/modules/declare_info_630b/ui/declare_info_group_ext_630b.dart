@@ -738,7 +738,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       labelText: 'Mã số BHXH của con',
       controller: controller.bhxhCodeChildCtrl,
       maxLengthInputForm: 10,
-      inputFormatters: InputFormatterEnum.phoneNumber,
+      inputFormatters: InputFormatterEnum.digitsOnly,
       textInputType: TextInputType.number,
       validator: (value) {
         final trimmedValue = value?.trim();
