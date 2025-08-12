@@ -552,6 +552,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           () => CardDropdownWithLabel<PregnancyCheckConditionModel>(
             fieldKey: formFieldKey,
             validator: validator,
+            autovalidateMode: controller.autoValidateMode.value,
             isRequired: controller.isRequiredPregnancyCondition,
             labelText: LocaleKeys.declareInfo_pregnancyCondition.tr,
             hintText: LocaleKeys.declareInfo_pregnancyConditionSelected.tr,
