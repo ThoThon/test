@@ -1,0 +1,1 @@
+export 'declare_info_630b_repository.dart';

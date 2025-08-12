@@ -1,6 +1,6 @@
-part of 'declare_info_630a_page.dart';
+part of 'declare_info_630b_page.dart';
 
-extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
+extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
   Widget _buildBenefitAccountInfoGroup() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +69,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
   // Hình thức nhận
   Widget _buildReceiveMethodDropDown() {
     return FormFieldRegistrant<ReceiveFormModel>(
-      registrarId: '3ab86dc5-6f4b-4350-bdd4-28aa600ac4ad',
+      registrarId: '7ab4d569-2ae6-4e79-ab4a-9cb7287595b2',
       validator: (value) {
         if (value == null) {
           return LocaleKeys.declareInfo_receiveMethodEmpty.tr;
@@ -88,7 +88,12 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
             isRequired: true,
             display: (item) => item.text,
             selectedItem: controller.receiveForm.value,
-            onChanged: controller.onChangeReceiveMethod,
+            onChanged: (value) {
+              if (value == null) {
+                return;
+              }
+              controller.receiveForm.value = value;
+            },
           ).paddingOnly(bottom: AppDimens.paddingSmall),
         );
       },
@@ -101,7 +106,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
       () {
         if (controller.isATMpayment) {
           return FormFieldRegistrant<String>(
-            registrarId: "1068d470-d07d-4e70-b247-4fc9928748dd",
+            registrarId: "86e77e01-cad0-451d-b0b4-a63fdca1db89",
             validator: (value) {
               final trimmedValue = value?.trim();
 
@@ -116,7 +121,6 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                   fieldKey: fieldKey,
                   validator: validator,
                   autovalidateMode: controller.autoValidateMode.value,
-                  isRequired: controller.isATMpayment,
                   hintText: LocaleKeys.declareInfo_bankNumberHint.tr,
                   inputFormatters:
                       InputFormatterEnum.textNormalWithoutDiacritics,
@@ -139,7 +143,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
       () {
         if (controller.isATMpayment) {
           return FormFieldRegistrant<String>(
-            registrarId: "8f85d1ae-f6f6-4656-83b8-c681fe4ce88f",
+            registrarId: "d7e1b39e-ca34-4447-bc50-e1d5b1f784e3",
             validator: (value) {
               final trimmedValue = value?.trim();
 
@@ -155,7 +159,6 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                   fieldKey: fieldKey,
                   validator: validator,
                   autovalidateMode: controller.autoValidateMode.value,
-                  isRequired: controller.isATMpayment,
                   hintText: LocaleKeys.declareInfo_accountHolderNameHint.tr,
                   labelText: LocaleKeys.declareInfo_accountHolderName.tr,
                   controller: controller.accountHolderNameCtrl,
@@ -176,7 +179,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
       () {
         if (controller.isATMpayment) {
           return FormFieldRegistrant<BankModel>(
-            registrarId: '4fd76b7c-3f06-4448-9dc3-481d1569495d',
+            registrarId: '1838b9f6-8e6c-40ff-8aa1-1884312fb5b3',
             validator: (value) {
               if (controller.selectedBank.value == null) {
                 return LocaleKeys.declareInfo_bankCannotEmpty.tr;
@@ -188,14 +191,12 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                 () {
                   return UtilWidget.buildCardBottomSheetSelect2<BankModel>(
                     fieldKey: fieldKey,
-                    isRequired: controller.isATMpayment,
-                    validator: validator,
                     autovalidateMode: controller.autoValidateMode.value,
                     label: LocaleKeys.declareInfo_bank.tr,
                     hintText: LocaleKeys.declareInfo_bankHint.tr,
                     funcSelect: (didChange) async {
                       Get.bottomSheet(
-                        BottomSheetSearch<BankModel>(
+                        BottomSheetSearch(
                           title: LocaleKeys.declareInfo_bankHint.tr,
                           maxLength: 20,
                           hintText: LocaleKeys.declareInfo_inputBankName.tr,
@@ -211,8 +212,8 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                         isScrollControlled: true,
                       );
                     },
-                    selectedItem: controller.selectedBank.value,
                     display: (bank) => bank.name,
+                    selectedItem: controller.selectedBank.value,
                   );
                 },
               );
@@ -234,7 +235,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
   // Đợt đã giải quyết
   Widget _buildInputResolvedPeriod() {
     return FormFieldRegistrant<String>(
-      registrarId: "bfe0fb31-7fa7-4b73-908d-9853227bad8e",
+      registrarId: "5a068727-dc58-4dc7-a096-00cef42126d6",
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -278,7 +279,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
   // Ngày đã giải quyết
   Widget _buildResolvedDate() {
     return FormFieldRegistrant<String>(
-      registrarId: '9cb9ed8e-138d-4b5b-b536-e2756ac95979',
+      registrarId: '3fe3e16f-70a2-4f68-969c-bc08f9e22be3',
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -307,17 +308,15 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
 
         return null;
       },
-      builder: (fieldKey, validator) {
+      builder: (formFieldKey, validator) {
         return Obx(
           () => CardInputSelectDateWithLabel(
-            fieldKey: fieldKey,
-            validator: validator,
+            fieldKey: formFieldKey,
             autovalidateMode: controller.autoValidateMode.value,
             labelText: LocaleKeys.declareInfo_resolvedDate.tr,
             inputFormatters: InputFormatterEnum.dateFullBirthDay,
             controller: controller.resolvedDateCtrl,
             hintText: PATTERN_1,
-            isRequired: controller.isAdjustDeclareForm,
             onSelectDate: () async {
               KeyBoard.hide();
               final selectedDate = await DatePickerUtils.showCalendarPicker(
@@ -336,6 +335,8 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                     convertDateToString(selectedDate, PATTERN_1);
               }
             },
+            isRequired: controller.isAdjustDeclareForm,
+            validator: validator,
           ),
         );
       },
@@ -345,7 +346,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
   // Lý do điều chỉnh
   Widget _buildInputAdjustReason() {
     return FormFieldRegistrant<String>(
-      registrarId: "eba63cdb-a1b3-439f-bb28-ee0aa64b33d6",
+      registrarId: 'a99250f5-e7cc-4c8b-8b58-58ebb67ae81f',
       validator: (value) {
         final trimmedValue = value?.trim();
 
@@ -355,17 +356,17 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
 
         return null;
       },
-      builder: (fieldKey, validator) {
+      builder: (formFieldKey, validator) {
         return Obx(
           () => CardInputTextFormWithLabel(
-            fieldKey: fieldKey,
             validator: validator,
+            fieldKey: formFieldKey,
             autovalidateMode: controller.autoValidateMode.value,
             isRequired: controller.isAdjustDeclareForm,
             hintText: LocaleKeys.declareInfo_adjustReasonHint.tr,
             labelText: LocaleKeys.declareInfo_adjustReason.tr,
-            controller: controller.adjustReasonCtrl,
             maxLengthInputForm: 2000,
+            controller: controller.adjustReasonCtrl,
           ),
         );
       },

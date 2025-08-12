@@ -1,5 +1,6 @@
 import 'package:v_bhxh/modules/change_base_url/ui/change_base_url_page.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/ui/declare_info_607_page.dart';
+import 'package:v_bhxh/modules/declare_info_630b/ui/declare_info_630b_page.dart';
 import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';
 import 'package:v_bhxh/modules/home/ui/home_page.dart';
 import 'package:v_bhxh/modules/lookup_c12/ui/ui_src.dart';
@@ -124,11 +125,15 @@ class RouteAppPage {
     ),
     GetPage(
       name: AppRoutes.declareInfo630a.path,
-      page: () =>  DeclareInfo630aPage(),
+      page: () => DeclareInfo630aPage(),
     ),
     GetPage(
       name: AppRoutes.otherInfo.path,
       page: () => OtherInfoPage(),
+    ),
+    GetPage(
+      name: AppRoutes.declareInfo630b.path,
+      page: () =>  DeclareInfo630bPage(),
     ),
   ];
 }

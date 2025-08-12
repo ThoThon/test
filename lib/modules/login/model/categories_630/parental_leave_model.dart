@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 
-/// Tuyến bệnh viện
-class HospitalLine630aModel extends Equatable {
+/// Nghỉ chăm con
+class ParentalLeaveModel extends Equatable {
   final String value;
   final String text;
 
-  const HospitalLine630aModel({
+  const ParentalLeaveModel({
     required this.value,
     required this.text,
   });
 
-  factory HospitalLine630aModel.fromJson(Map<String, dynamic> json) {
-    return HospitalLine630aModel(
+  factory ParentalLeaveModel.fromJson(Map<String, dynamic> json) {
+    return ParentalLeaveModel(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

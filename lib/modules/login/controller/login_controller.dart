@@ -53,7 +53,7 @@ class LoginController extends BaseGetxController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
-          _get630aCategories(),
+          _get630Categories(),
           _getToTalNotiUnread(),
         ).wait;
         Get.offAllNamed(AppRoutes.home.path);
@@ -116,20 +116,27 @@ class LoginController extends BaseGetxController {
     }
   }
 
-  Future<void> _get630aCategories() async {
+  Future<void> _get630Categories() async {
     try {
       final response = await _loginRepository.get630aCategories();
-      final categories630a = response.result;
+      final categories630 = response.result;
       if (response.code == AppConst.statusCodeSuccess &&
-          categories630a != null) {
+          categories630 != null) {
         AppData.instance
-          ..declareForm = categories630a.declareForm
-          ..benefitGroup = categories630a.benefitGroup
-          ..workCondition = categories630a.workCondition
-          ..receiveForm = categories630a.receiveForm
-          ..hospitalLine = categories630a.hospitalLine
-          ..longDiease = categories630a.longDiease
-          ..bank = categories630a.bank;
+          ..declareForm = categories630.declareForm
+          ..benefitGroup630a = categories630.benefitGroup630a
+          ..hospitalLine = categories630.hospitalLine
+          ..longDiease = categories630.longDiease
+          ..receiveForm = categories630.receiveForm
+          ..bank = categories630.bank
+          ..benefitGroup630b = categories630.benefitGroup630b
+          ..pregnancyCondition = categories630.pregnancyCondition
+          ..childBirthCondition = categories630.childBirthCondition
+          ..maternityLeave = categories630.maternityLeave
+          ..parentalLeave = categories630.parentalLeave
+          ..surrogacy = categories630.surrogacy
+          ..surgeryPregnancy32w = categories630.surgeryPregnancy32w
+          ..contraception = categories630.contraception;
       }
     } catch (e) {
       logger.d(e);
