@@ -86,6 +86,16 @@ abstract class AppNavigator {
     bool barrierDismissible = false,
   });
 
+  Future<void> showConfirmDialog({
+    required String title,
+    String? subtitle,
+    String? confirmTitle,
+    String? cancelTitle,
+    VoidCallback? onConfirm,
+    VoidCallback? onCancel,
+    bool barrierDismissible = false,
+  });
+
   void showSnackBar<T>(
     String message, {
     Duration duration = const Duration(seconds: 2),

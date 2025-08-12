@@ -428,4 +428,91 @@ class AppNavigatorImpl extends AppNavigator {
       barrierDismissible: barrierDismissible,
     );
   }
+
+  @override
+  Future<void> showConfirmDialog({
+    required String title,
+    String? subtitle,
+    String? confirmTitle,
+    String? cancelTitle,
+    VoidCallback? onConfirm,
+    VoidCallback? onCancel,
+    bool barrierDismissible = false,
+  }) {
+    return _showDialog(
+      Dialog(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.symmetric(
+          vertical: AppDimens.defaultPadding,
+          horizontal: AppDimens.padding24,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SDSBuildText(
+              title,
+              maxLines: 3,
+              style: AppTextStyle.font18Bo,
+              textAlign: TextAlign.center,
+            ),
+            sdsSBHeight24,
+            if (subtitle != null)
+              Container(
+                padding: const EdgeInsets.only(
+                  bottom: AppDimens.padding24,
+                ),
+                constraints: const BoxConstraints(maxHeight: 200),
+                child: SingleChildScrollView(
+                  child: Text(
+                    subtitle,
+                    style: AppTextStyle.font14Re,
+                    textAlign: TextAlign.center,
+                    maxLines: 20,
+                  ),
+                ),
+              ),
+            Row(
+              children: [
+                Expanded(
+                  child: UtilWidget.buildSolidButtonBack(
+                    title: cancelTitle ?? LocaleKeys.dialog_cancel.tr,
+                    borderRadius: AppDimens.radius30,
+                    backgroundColor: AppColors.basicWhite,
+                    textStyle: AppTextStyle.font14Re
+                        .copyWith(color: AppColors.primaryColor),
+                    onPressed: () {
+                      if (Get.isDialogOpen == true) {
+                        Get.back();
+                      }
+                      onCancel?.call();
+                    },
+                  ),
+                ),
+                UtilWidget.sizedBoxWidth20,
+                Expanded(
+                  child: UtilWidget.buildSolidButton(
+                    borderRadius: AppDimens.radius30,
+                    textStyle: AppTextStyle.font14Re
+                        .copyWith(color: AppColors.basicWhite),
+                    title: confirmTitle ?? LocaleKeys.dialog_confirm.tr,
+                    onPressed: () {
+                      if (Get.isDialogOpen == true) {
+                        Get.back();
+                      }
+                      onConfirm?.call();
+                    },
+                  ),
+                )
+              ],
+            )
+          ],
+        ).paddingAll(AppDimens.padding24),
+      ),
+      barrierDismissible: barrierDismissible,
+    );
+  }
 }
