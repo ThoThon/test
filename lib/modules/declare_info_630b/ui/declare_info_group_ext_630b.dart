@@ -760,7 +760,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       labelText: 'Mã thẻ BHYT của con',
       controller: controller.bhytCardCodeChildCtrl,
       inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
-      maxLengthInputForm: 15,
+      maxLengthInputForm: 50,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
@@ -1018,7 +1018,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       hintText: 'Nhập mã số BHXH của mẹ',
       labelText: 'Mã thẻ BHYT của mẹ',
       controller: controller.bhytCardMotherCtrl,
-      maxLengthInputForm: 15,
+      maxLengthInputForm: 50,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 

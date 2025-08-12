@@ -2,6 +2,7 @@
 - [Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con - BHW-3002
 - [Appmobile]_Thủ tục 630b_Trường [Mã số BHXH của mẹ] bắt validate kiểu ký tự nhập và maxlength - BHW-3006
 - [Appmobile]_Thủ tục 630b_Trường Mã số BHXH cần nhập đủ 10 số - BHW-3005
+- [Appmobile]_Thủ tục 630b_Lỗi Maxlength - BHW-3008
 
 11/08/2025
 - [Appmobile]_Thủ tục 630b_Ghép api khi nhấn "Chọn nhân sự" Tại form kê khai - BHW-2979
