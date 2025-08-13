@@ -9,6 +9,7 @@ import 'package:v_bhxh/core/const/app_text_style.dart';
 import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/core/values/dimens.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
+import 'package:v_bhxh/shares/base/ui/count_down_timer.dart';
 import 'package:v_bhxh/shares/base/ui/text_widget.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/sized_box/sized_box.dart';
@@ -274,9 +275,7 @@ class AppNavigatorImpl extends AppNavigator {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
-                  if (Get.isDialogOpen == true) {
-                    Get.back();
-                  }
+                  _dismissDialog();
                 },
                 style: ButtonStyle(
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
@@ -396,9 +395,7 @@ class AppNavigatorImpl extends AppNavigator {
                       textStyle: AppTextStyle.font14Re
                           .copyWith(color: AppColors.primaryColor),
                       onPressed: () {
-                        if (Get.isDialogOpen == true) {
-                          Get.back();
-                        }
+                        _dismissDialog();
                         onCancel?.call();
                       },
                     ),
@@ -413,9 +410,7 @@ class AppNavigatorImpl extends AppNavigator {
                           .copyWith(color: AppColors.basicWhite),
                       title: confirmTitle ?? LocaleKeys.dialog_confirm.tr,
                       onPressed: () {
-                        if (Get.isDialogOpen == true) {
-                          Get.back();
-                        }
+                        _dismissDialog();
                         onConfirm?.call();
                       },
                     ),
@@ -485,9 +480,7 @@ class AppNavigatorImpl extends AppNavigator {
                     textStyle: AppTextStyle.font14Re
                         .copyWith(color: AppColors.primaryColor),
                     onPressed: () {
-                      if (Get.isDialogOpen == true) {
-                        Get.back();
-                      }
+                      _dismissDialog();
                       onCancel?.call();
                     },
                   ),
@@ -500,9 +493,7 @@ class AppNavigatorImpl extends AppNavigator {
                         .copyWith(color: AppColors.basicWhite),
                     title: confirmTitle ?? LocaleKeys.dialog_confirm.tr,
                     onPressed: () {
-                      if (Get.isDialogOpen == true) {
-                        Get.back();
-                      }
+                      _dismissDialog();
                       onConfirm?.call();
                     },
                   ),
@@ -514,5 +505,96 @@ class AppNavigatorImpl extends AppNavigator {
       ),
       barrierDismissible: barrierDismissible,
     );
+  }
+
+  @override
+  Future<void> showTimerDialog({
+    required String title,
+    required String subtitle,
+    int initialSeconds = 120,
+    VoidCallback? onFinish,
+    VoidCallback? onCancel,
+    bool barrierDismissible = false,
+  }) {
+    return _showDialog(
+      Dialog(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.all(AppDimens.defaultPadding),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.radius8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SDSBuildText(
+              title,
+              maxLines: 3,
+              style: AppTextStyle.font18Bo,
+              textAlign: TextAlign.center,
+            ),
+            sdsSBHeight16,
+            CountDownTimer(
+              start: initialSeconds,
+              onFinish: () {
+                _dismissDialog();
+                onFinish?.call();
+              },
+            ),
+            Container(
+              padding: const EdgeInsets.only(
+                top: AppDimens.defaultPadding,
+              ),
+              constraints: const BoxConstraints(maxHeight: 200),
+              child: SingleChildScrollView(
+                child: Text(
+                  subtitle,
+                  style: AppTextStyle.font16Semi,
+                  textAlign: TextAlign.center,
+                  maxLines: 10,
+                ),
+              ),
+            ),
+            sdsSBHeight16,
+            SizedBox(
+              width: double.infinity,
+              child: UtilWidget.buildSolidButton(
+                title: LocaleKeys.app_close.tr,
+                backgroundColor: AppColors.primaryColor,
+                borderRadius: AppDimens.radius30,
+                textStyle:
+                    AppTextStyle.font14Bo.copyWith(color: AppColors.basicWhite),
+                onPressed: () {
+                  _dismissDialog();
+                  onCancel?.call();
+                },
+              ),
+            ),
+          ],
+        ).paddingAll(AppDimens.padding24),
+      ),
+      barrierDismissible: barrierDismissible,
+    );
+  }
+
+  @override
+  Future<void> showErrorDialog({
+    required String errorMessage,
+    bool barrierDismissible = false,
+  }) async {
+    // Chỉ hiển thị 1 dialog lỗi trong một thời điểm
+    if (Get.isDialogOpen == true) {
+      return;
+    }
+    showNotificationDialog(
+      message: errorMessage,
+      barrierDismissible: barrierDismissible,
+    );
+  }
+
+  void _dismissDialog() {
+    if (Get.isDialogOpen == true) {
+      Get.back();
+    }
   }
 }

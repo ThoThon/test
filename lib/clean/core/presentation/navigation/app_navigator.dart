@@ -96,6 +96,20 @@ abstract class AppNavigator {
     bool barrierDismissible = false,
   });
 
+  Future<void> showTimerDialog({
+    required String title,
+    required String subtitle,
+    int initialSeconds = 120,
+    VoidCallback? onFinish,
+    VoidCallback? onCancel,
+    bool barrierDismissible = false,
+  });
+
+  Future<void> showErrorDialog({
+    required String errorMessage,
+    bool barrierDismissible = false,
+  });
+
   void showSnackBar<T>(
     String message, {
     Duration duration = const Duration(seconds: 2),
