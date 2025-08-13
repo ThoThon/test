@@ -231,6 +231,7 @@ class AppNavigatorImpl extends AppNavigator {
   @override
   Future<void> showNotificationDialog({
     required String message,
+    VoidCallback? onClose,
     bool barrierDismissible = false,
   }) {
     return _showDialog(
@@ -276,6 +277,7 @@ class AppNavigatorImpl extends AppNavigator {
               child: TextButton(
                 onPressed: () {
                   _dismissDialog();
+                  onClose?.call();
                 },
                 style: ButtonStyle(
                   overlayColor: WidgetStateProperty.all(Colors.transparent),

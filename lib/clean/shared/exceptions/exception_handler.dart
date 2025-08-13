@@ -24,17 +24,53 @@ class ExceptionHandler {
         switch (exception.kind) {
           case RemoteExceptionKind.noInternet:
           case RemoteExceptionKind.timeout:
-            nav.showSnackBar(
-              LocaleKeys.app_cannotConnectToServer.tr,
+            nav.showErrorDialog(
+              errorMessage: LocaleKeys.app_cannotConnectToServer.tr,
             );
             break;
           case RemoteExceptionKind.serverDefined:
-            if (exception.httpErrorCode == HttpStatus.unauthorized) {
-              nav.showSnackBar(
-                'Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại',
-              );
-              nav.offAllNamed(AppRoutesCl.login.path);
-              return;
+            // Xử lý các status code từ phổ biến
+            switch (exception.httpErrorCode) {
+              case HttpStatus.unauthorized:
+                nav.showNotificationDialog(
+                  message: LocaleKeys.dialog_error401.tr,
+                  onClose: () {
+                    nav.offAllNamed(AppRoutesCl.login.path);
+                  },
+                );
+                return;
+              case HttpStatus.badRequest:
+                nav.showErrorDialog(
+                  errorMessage: LocaleKeys.dialog_error400.tr,
+                );
+                return;
+              case HttpStatus.notFound:
+                nav.showErrorDialog(
+                  errorMessage: LocaleKeys.dialog_error404.tr,
+                );
+                return;
+              case HttpStatus.tooManyRequests:
+                nav.showErrorDialog(
+                  errorMessage: LocaleKeys.dialog_error429.tr,
+                );
+                return;
+              case HttpStatus.internalServerError:
+                nav.showErrorDialog(
+                  errorMessage: LocaleKeys.dialog_errorInternalServer.tr,
+                );
+                return;
+              case HttpStatus.badGateway:
+                nav.showErrorDialog(
+                  errorMessage: LocaleKeys.dialog_error502.tr,
+                );
+                return;
+              case HttpStatus.serviceUnavailable:
+                nav.showErrorDialog(
+                  errorMessage: LocaleKeys.dialog_error503.tr,
+                );
+                return;
+              default:
+                break;
             }
 
             if (appExceptionWrapper.overrideMessage != null) {
@@ -50,7 +86,9 @@ class ExceptionHandler {
             );
             break;
           case RemoteExceptionKind.network:
-            nav.showSnackBar(LocaleKeys.app_cannotConnectToServer.tr);
+            nav.showErrorDialog(
+              errorMessage: LocaleKeys.app_cannotConnectToServer.tr,
+            );
             break;
           default:
             // Ko xử lý những exception ko cần thiết như cancellation,...

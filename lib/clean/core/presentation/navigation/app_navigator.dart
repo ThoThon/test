@@ -69,6 +69,7 @@ abstract class AppNavigator {
 
   Future<void> showNotificationDialog({
     required String message,
+    VoidCallback? onClose,
     bool barrierDismissible = false,
   });
 
