@@ -502,7 +502,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return Obx(
       () {
         final selectedText = controller.weeklyDayOffs.isEmpty
-            ? 'Chọn ngày nghỉ'
+            ? LocaleKeys.declareInfo_pickDayOff.tr
             : controller.weeklyDayOffString;
         return UtilWidget.buildWeeklyDayOffDropdown<WeeklyDayOffEnum>(
           initialValue: controller.weeklyDayOffs,
@@ -603,8 +603,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildContraceptionMethodDropdown() {
     return Obx(
       () => CardDropdownWithLabel<ContraceptionModel>(
-        labelText: 'Biện pháp tránh thai',
-        hintText: 'Chọn biện pháp',
+        labelText: LocaleKeys.declareInfo_contraception.tr,
+        hintText: LocaleKeys.declareInfo_contraceptionHint.tr,
         items: AppData.instance.contraception.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.contraception.value,
@@ -620,8 +620,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildIsChildbirthConditionDropdown() {
     return Obx(
       () => CardDropdownWithLabel<ChildBirthConditionModel>(
-        labelText: 'Điều kiện sinh con',
-        hintText: 'Chọn điều kiện sinh con',
+        labelText: LocaleKeys.declareInfo_childBirth.tr,
+        hintText: LocaleKeys.declareInfo_childbirthHint.tr,
         items: AppData.instance.childBirthCondition.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.childbirthCondition.value,
@@ -734,8 +734,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Mã số BHXH của con
   Widget _buildBhxhCodeChild() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập mã số BHXH của con',
-      labelText: 'Mã số BHXH của con',
+      hintText: LocaleKeys.declareInfo_bhxhCodeChildHint.tr,
+      labelText: LocaleKeys.declareInfo_bhxhCodeChild.tr,
       controller: controller.bhxhCodeChildCtrl,
       maxLengthInputForm: 10,
       inputFormatters: InputFormatterEnum.digitsOnly,
@@ -746,7 +746,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return null;
         }
         if (trimmedValue.length < 10) {
-          return 'Mã số BHXH phải đủ 10 số';
+          return LocaleKeys.declarationFormDetail_bhxhCodeInValid.tr;
         }
         return null;
       },
@@ -756,8 +756,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Mã thẻ BHYT của con
   Widget _buildBhytCardCodeChild() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập mã thẻ BHYT của con',
-      labelText: 'Mã thẻ BHYT của con',
+      hintText: LocaleKeys.declareInfo_bhytCardCodeChildHint.tr,
+      labelText: LocaleKeys.declareInfo_bhytCardCodeChild.tr,
       controller: controller.bhytCardCodeChildCtrl,
       inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
       maxLengthInputForm: 50,
@@ -940,17 +940,17 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
         // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
         if (trimmedValue.length < 10) {
-          return 'Ngày đi làm thực tế không hợp lệ';
+          return LocaleKeys.declareInfo_workDateInvalid.tr;
         }
 
         final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
         if (date == null) {
-          return 'Ngày đi làm thực tế không hợp lệ';
+          return LocaleKeys.declareInfo_workDateInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
         if (date.year <= 1900 || date.year >= 2100) {
-          return 'Ngày đi làm thực tế không hợp lệ';
+          return LocaleKeys.declareInfo_workDateInvalid.tr;
         }
 
         return null;
@@ -960,7 +960,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           () => CardInputSelectDateWithLabel(
             fieldKey: formFieldKey,
             autovalidateMode: controller.autoValidateMode.value,
-            labelText: 'Ngày đi làm thực tế',
+            labelText: LocaleKeys.declareInfo_workDate.tr,
             inputFormatters: InputFormatterEnum.dateFullBirthDay,
             controller: controller.returnWorkDateCtrl,
             hintText: PATTERN_1,
@@ -993,8 +993,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Mã số BHXH của mẹ
   Widget _buildBhxhCodeMother() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập mã số BHXH của mẹ',
-      labelText: 'Mã số BHXH của mẹ',
+      hintText: LocaleKeys.declareInfo_bhxhCodeMotherHint.tr,
+      labelText: LocaleKeys.declareInfo_bhxhCodeMother.tr,
       controller: controller.bhxhCodeMotherCtrl,
       maxLengthInputForm: 10,
       textInputType: TextInputType.number,
@@ -1005,7 +1005,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return null;
         }
         if (trimmedValue.length < 10) {
-          return 'Mã số BHXH phải đủ 10 số';
+          return LocaleKeys.declarationFormDetail_bhxhCodeInValid.tr;
         }
         return null;
       },
@@ -1015,8 +1015,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Mã thẻ BHYT của mẹ
   Widget _buildBhytCardMother() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập mã số BHXH của mẹ',
-      labelText: 'Mã thẻ BHYT của mẹ',
+      hintText: LocaleKeys.declareInfo_bhytCardMotherHint.tr,
+      labelText: LocaleKeys.declareInfo_bhytCardMother.tr,
       controller: controller.bhytCardMotherCtrl,
       maxLengthInputForm: 50,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
@@ -1025,8 +1025,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Số CMND của mẹ
   Widget _buildCccdMother() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập số CMND của mẹ',
-      labelText: 'Số CMND của mẹ',
+      hintText: LocaleKeys.declareInfo_cccdMotherHint.tr,
+      labelText: LocaleKeys.declareInfo_cccdMother.tr,
       controller: controller.cccdMotherCtrl,
       maxLengthInputForm: 20,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
@@ -1036,8 +1036,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildSurgeryOrUnder32WeekDropdown() {
     return Obx(
       () => CardDropdownWithLabel<SurgeryPregnancy32wModel>(
-        labelText: 'Phẫu thuật hoặc thai dưới 32 tuần',
-        hintText: 'Chọn',
+        labelText: LocaleKeys.declareInfo_surgeryOrUnder32Week.tr,
+        hintText: LocaleKeys.declareInfo_surgeryOrUnder32WeekHint.tr,
         items: AppData.instance.surgeryPregnancy32w.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.surgeryOrUnder32Week.value,
@@ -1190,8 +1190,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Số BHXH của người nuôi dưỡng(TH mẹ chết)
   Widget _buildGuardianBhxh() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập số BHXH',
-      labelText: 'Số BHXH của người nuôi dưỡng(TH mẹ chết)',
+      hintText: LocaleKeys.declareInfo_inputGuardianBhxhHint.tr,
+      labelText: LocaleKeys.declareInfo_inputGuardianBhxh.tr,
       controller: controller.guardianBhxhCtrl,
       maxLengthInputForm: 30,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
@@ -1201,8 +1201,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildMaternityRestDropdown() {
     return Obx(
       () => CardDropdownWithLabel<MaternityLeaveModel>(
-        labelText: 'Nghỉ dưỡng thai',
-        hintText: 'Chọn nghỉ dưỡng thai',
+        labelText: LocaleKeys.declareInfo_maternityLeave.tr,
+        hintText: LocaleKeys.declareInfo_maternityLeaveHint.tr,
         items: AppData.instance.maternityLeave.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.maternityRest.value,
@@ -1218,8 +1218,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildChildCareDropdown() {
     return Obx(
       () => CardDropdownWithLabel<ParentalLeaveModel>(
-        labelText: 'Nghỉ chăm con',
-        hintText: 'Chọn nghỉ chăm con',
+        labelText: LocaleKeys.declareInfo_parentalLeave.tr,
+        hintText: LocaleKeys.declareInfo_parentalLeaveHint.tr,
         items: AppData.instance.parentalLeave.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.parentalLeave.value,
@@ -1235,8 +1235,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildSurrogacyDropdown() {
     return Obx(
       () => CardDropdownWithLabel<SurrogacyModel>(
-        labelText: 'Mang thai hộ',
-        hintText: 'Chọn mang thai hộ',
+        labelText: LocaleKeys.declareInfo_surrogacy.tr,
+        hintText: LocaleKeys.declareInfo_surrogacyHint.tr,
         items: AppData.instance.surrogacy.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.surrogacy.value,
@@ -1292,8 +1292,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Mã hồ sơ
   Widget _buildFileCodeText() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập mã hồ sơ',
-      labelText: 'Mã hồ sơ',
+      hintText: LocaleKeys.declareInfo_fileCodeHint.tr,
+      labelText: LocaleKeys.declareInfo_fileCode.tr,
       controller: controller.fileCodeTextCtrl,
       maxLengthInputForm: 255,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
