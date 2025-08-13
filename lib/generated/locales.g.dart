@@ -816,6 +816,7 @@ class LocaleKeys {
   static const declareInfo_parentalLeaveHint = 'declareInfo_parentalLeaveHint';
   static const declareInfo_surrogacy = 'declareInfo_surrogacy';
   static const declareInfo_surrogacyHint = 'declareInfo_surrogacyHint';
+  static const declareInfo_pickDayOff = 'declareInfo_pickDayOff';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1934,6 +1935,7 @@ class Locales {
     'declareInfo_parentalLeaveHint': 'Chọn nghỉ chăm con',
     'declareInfo_surrogacy': 'Mang thai hộ',
     'declareInfo_surrogacyHint': 'Chọn mang thai hộ',
+    'declareInfo_pickDayOff': 'Chọn ngày nghỉ',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

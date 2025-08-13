@@ -676,7 +676,8 @@
     "parentalLeave": "Nghỉ chăm con",
     "parentalLeaveHint": "Chọn nghỉ chăm con",
     "surrogacy": "Mang thai hộ",
-    "surrogacyHint": "Chọn mang thai hộ"
+    "surrogacyHint": "Chọn mang thai hộ",
+    "pickDayOff": "Chọn ngày nghỉ"
   },
   "familyMember": {
     "title": "Thêm thành viên",

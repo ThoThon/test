@@ -502,7 +502,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return Obx(
       () {
         final selectedText = controller.weeklyDayOffs.isEmpty
-            ? 'Chọn ngày nghỉ'
+            ? LocaleKeys.declareInfo_pickDayOff.tr
             : controller.weeklyDayOffString;
         return UtilWidget.buildWeeklyDayOffDropdown<WeeklyDayOffEnum>(
           initialValue: controller.weeklyDayOffs,
@@ -746,7 +746,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return null;
         }
         if (trimmedValue.length < 10) {
-          return 'Mã số BHXH phải đủ 10 số';
+          return LocaleKeys.declarationFormDetail_bhxhCodeInValid.tr;
         }
         return null;
       },
@@ -1005,7 +1005,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return null;
         }
         if (trimmedValue.length < 10) {
-          return 'Mã số BHXH phải đủ 10 số';
+          return LocaleKeys.declarationFormDetail_bhxhCodeInValid.tr;
         }
         return null;
       },
