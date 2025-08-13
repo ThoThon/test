@@ -1214,7 +1214,7 @@ class Locales {
     'app_select': '--Chọn--',
     'app_somethingWentWrong': 'Đã có lỗi xảy ra, vui lòng thử lại sau.',
     'app_cannotConnectToServer':
-        'Không thể kết nối đến máy chủ, vui lòng kiểm tra kết nối internet của bạn.',
+        'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',
     'dialog_close': 'Đóng',
     'dialog_errorConnectFailedStr':
         'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',
@@ -1229,7 +1229,7 @@ class Locales {
     'dialog_error404':
         'Không tìm thấy đường dẫn này, xin vui lòng liên hệ Admin',
     'dialog_error401':
-        'Phiên đăng nhập đã hết hạn. Quý khách vui lòng đăng nhập lại',
+        'Phiên đăng nhập đã hết hạn\nQuý khách vui lòng đăng nhập lại',
     'dialog_error429':
         'Hiện tại có quá nhiều lượt truy cập. Vui lòng thử lại sau vài phút.',
     'dialog_success': 'Thành công',

@@ -12,7 +12,7 @@
     "close": "Đóng",
     "select": "--Chọn--",
     "somethingWentWrong": "Đã có lỗi xảy ra, vui lòng thử lại sau.",
-    "cannotConnectToServer": "Không thể kết nối đến máy chủ, vui lòng kiểm tra kết nối internet của bạn."
+    "cannotConnectToServer": "Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng."
   },
   "dialog": {
     "close": "Đóng",
@@ -23,7 +23,7 @@
     "error503": "Server đang bảo trì. Quý khách vui lòng quay lại sau một vài phút.",
     "error400": "Dữ liệu gửi đi không hợp lệ!",
     "error404": "Không tìm thấy đường dẫn này, xin vui lòng liên hệ Admin",
-    "error401": "Phiên đăng nhập đã hết hạn. Quý khách vui lòng đăng nhập lại",
+    "error401": "Phiên đăng nhập đã hết hạn\nQuý khách vui lòng đăng nhập lại",
     "error429": "Hiện tại có quá nhiều lượt truy cập. Vui lòng thử lại sau vài phút.",
     "success": "Thành công",
     "fail": "Thất bại",
