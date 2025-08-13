@@ -1,10 +1,12 @@
+13/08/2025
+- [Appmobile]_Thủ tục 630b_Trường [Phí giám định y khoa] dữ liệu nhập vào yêu cầu là số - BHW-3016
+- [Appmobile]_Thủ tục 630b_Lỗi [Ngày kết luận] Hiển thị báo không hợp lệ khi nhập ngày trong tương lai - BHW-3013
+
 12/08/2025
 - [Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con - BHW-3002
 - [Appmobile]_Thủ tục 630b_Trường [Mã số BHXH của mẹ] bắt validate kiểu ký tự nhập và maxlength - BHW-3006
 - [Appmobile]_Thủ tục 630b_Trường Mã số BHXH cần nhập đủ 10 số - BHW-3005
 - [Appmobile]_Thủ tục 630b_Lỗi Maxlength - BHW-3008
-- [Appmobile]_Thủ tục 630b_Trường [Phí giám định y khoa] dữ liệu nhập vào yêu cầu là số - BHW-3016
-- [Appmobile]_Thủ tục 630b_Lỗi [Ngày kết luận] Hiển thị báo không hợp lệ khi nhập ngày trong tương lai - BHW-3013
 
 11/08/2025
 - [Appmobile]_Thủ tục 630b_Ghép api khi nhấn "Chọn nhân sự" Tại form kê khai - BHW-2979
