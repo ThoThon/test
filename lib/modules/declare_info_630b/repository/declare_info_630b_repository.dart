@@ -11,7 +11,6 @@ class DeclareInfo630bRepository extends BaseRepository {
       EnumRequestMethod.post,
       jsonMap: request.toJson(),
     );
-    logger.d(request.toJson());
     return BaseResponse.fromJson(response);
   }
 

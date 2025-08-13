@@ -437,13 +437,18 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
         .firstWhereOrNull((item) => item.value == detail.hinhThucNhan);
 
     // Số tài khoản ngân hàng
-    selectedBank.value = AppData.instance.bank
-        .firstWhereOrNull((item) => item == detail.nganHang);
+    if (detail.soTaiKhoan != null) {
+      bankNumberCtrl.text = detail.soTaiKhoan!.trim();
+    }
 
     // Tên chủ tài khoản
     if (detail.tenChuTaiKhoan != null) {
       accountHolderNameCtrl.text = detail.tenChuTaiKhoan!.trim();
     }
+
+    // Ngân hàng
+    selectedBank.value = AppData.instance.bank
+        .firstWhereOrNull((item) => item == detail.nganHang);
 
     // Đợt đã giải quyết
     if (detail.dotDaGiaiQuyet != null) {

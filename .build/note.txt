@@ -1,6 +1,7 @@
 13/08/2025
 - [Appmobile]_Thủ tục 630b_Trường [Phí giám định y khoa] dữ liệu nhập vào yêu cầu là số - BHW-3016
 - [Appmobile]_Thủ tục 630b_Lỗi [Ngày kết luận] Hiển thị báo không hợp lệ khi nhập ngày trong tương lai - BHW-3013
+- [Appmobile]_Thủ tục 630b_Không hiển thị trả về [Số tài khoản ngân hàng]theo api get-630b-detail - BHW-3020
 - [Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con
 
 12/08/2025
