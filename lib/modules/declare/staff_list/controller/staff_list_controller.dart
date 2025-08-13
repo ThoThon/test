@@ -158,7 +158,8 @@ class StaffListController extends BaseGetxController {
 
   void onTapButtonContinue() {
     // Thủ tục 630a phải đi qua màn "Thông tin khác" nữa
-    if (argument.procedureType == ProcedureType.procedure630a) {
+    if (argument.procedureType == ProcedureType.procedure630a ||
+        argument.procedureType == ProcedureType.procedure630b) {
       if (declaredStaffs.isEmpty) {
         showSnackBar(LocaleKeys.declarationPeriod_declaredStaffsIsEmpty.tr);
         return;
@@ -243,7 +244,6 @@ class StaffListController extends BaseGetxController {
           _repository.deleteTk1D01(id: staffId),
         ProcedureType.procedure630a => _repository630.delete630a(id: staffId),
         ProcedureType.procedure630b => _repository630.delete630b(id: staffId),
-        
       };
 
       if (response.isSuccess) {

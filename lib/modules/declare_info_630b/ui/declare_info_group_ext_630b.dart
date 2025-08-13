@@ -233,15 +233,15 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildBenefitGroupCodeLv2Dropdown() {
     return Obx(
       () {
-        final plans = controller.benefitGroup.value?.benefitGroupLv2;
+        final listBenefitLv2 = controller.benefitGroup.value?.benefitGroupLv2;
 
-        if (plans == null || plans.isEmpty) {
+        if (listBenefitLv2 == null || listBenefitLv2.isEmpty) {
           return UtilWidget.shrink;
         }
         return FormFieldRegistrant<BenefitGroupLv2Model>(
           registrarId: '862496a1-7059-4921-a936-21623836ba38',
           validator: (value) {
-            if (value == null) {
+            if (controller.benefitGroupLv2.value == null) {
               return LocaleKeys.declareInfo_benefitGroupCodeLv2CannotEmpty.tr;
             }
             return null;
@@ -255,7 +255,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
                 labelText: LocaleKeys.declareInfo_benefitGroupCodeLv2.tr,
                 isRequired: true,
                 hintText: LocaleKeys.declareInfo_selectBenefitGroupCodeLv2.tr,
-                items: plans.toList(),
+                items: listBenefitLv2.toList(),
                 display: (item) =>
                     '${item.maNhomHuongC2} - ${item.tenNhomHuongC2}',
                 selectedItem: controller.benefitGroupLv2.value,
@@ -1134,7 +1134,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (date.year <= 1900 || date.year >= 2100) {
+        if (date.year <= 1900 || date.isAfter(DateTime.now())) {
           return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
         }
 
@@ -1178,10 +1178,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Phí giám định y khoa
   Widget _buildMedicalFee() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập phí giám định y khoa',
-      labelText: 'Phí giám định y khoa',
+      hintText: LocaleKeys.declareInfo_medicalFeeInput.tr,
+      labelText: LocaleKeys.declareInfo_medicalFee.tr,
       controller: controller.medicalFeeCtrl,
       inputFormatters: InputFormatterEnum.phoneNumber,
+      textInputType: TextInputType.number,
       maxLengthInputForm: 18,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }

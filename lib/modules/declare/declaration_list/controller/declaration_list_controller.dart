@@ -127,9 +127,9 @@ class DeclarationListController extends BaseGetxController {
           _repository.getPreviewPdf607(request: request),
         ProcedureType.procedure630a =>
           _repository.getPreviewPdf630a(request: request),
-        _ => throw UnimplementedError('Not implemented yet'),
+        ProcedureType.procedure630b =>
+          _repository.getPreviewPdf630b(request: request),
       };
-
       final url = response.result;
 
       if (response.isSuccess && url != null) {

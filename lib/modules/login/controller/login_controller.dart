@@ -127,6 +127,7 @@ class LoginController extends BaseGetxController {
           ..benefitGroup630a = categories630.benefitGroup630a
           ..hospitalLine = categories630.hospitalLine
           ..longDiease = categories630.longDiease
+          ..workCondition = categories630.workCondition
           ..receiveForm = categories630.receiveForm
           ..bank = categories630.bank
           ..benefitGroup630b = categories630.benefitGroup630b
