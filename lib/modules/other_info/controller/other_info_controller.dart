@@ -1,5 +1,6 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
 
 import '../../declare/declaration_list/model/declaration_list_argument.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
@@ -43,6 +44,9 @@ class OtherInfoController extends BaseGetxController {
     super.onReady();
     getOtherInfoDetail();
   }
+
+  ProcedureType get procedureType => argument.procedureType;
+  String get declarationPeriodId => argument.declarationPeriodId;
 
   Future<void> getOtherInfoDetail() async {
     try {
@@ -99,9 +103,15 @@ class OtherInfoController extends BaseGetxController {
 
   Future<void> saveXml() async {
     try {
-      final response = await _repository.saveXml(
-        declarationPeriodId: argument.declarationPeriodId,
-      );
+      final response = await switch (procedureType) {
+        ProcedureType.procedure630a => _repository.saveXml630a(
+            declarationPeriodId: declarationPeriodId,
+          ),
+        ProcedureType.procedure630b => _repository.saveXml630b(
+            declarationPeriodId: declarationPeriodId,
+          ),
+        _ => throw UnimplementedError('Not implemented yet'),
+      };
       if (response.isSuccess) {
         Get.toNamed(
           AppRoutesCl.declarationList.path,

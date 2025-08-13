@@ -142,6 +142,7 @@ class DeclarationPeriodController extends BaseGetClController {
           ProcedureType.procedure613 =>
             AppRoutesCl.declareInfo607.path,
           ProcedureType.procedure630a => AppRoutesCl.declareInfo630a.path,
+          ProcedureType.procedure630b => AppRoutesCl.declareInfo630b.path,
         };
 
         final declareInfoArgument = DeclareInfoArgument(

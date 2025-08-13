@@ -370,7 +370,7 @@ extension D02TabWidget on DeclareInfoPage {
         return FormFieldRegistrant<AdjustmentPlan>(
           registrarId: 'e7247821-4ddc-449a-b6be-6880ad56fa4c',
           validator: (value) {
-            if (value == null) {
+            if (controller.d02State.plan.value == null) {
               return LocaleKeys.declareInfo_planCannotEmpty.tr;
             }
             return null;
@@ -383,7 +383,7 @@ extension D02TabWidget on DeclareInfoPage {
                   validator: validator,
                   labelText: LocaleKeys.declareInfo_plan.tr,
                   hintText: LocaleKeys.declareInfo_selectPlan.tr,
-                  autovalidateMode: AutovalidateMode.always,
+                  autovalidateMode: controller.d02State.autoValidateMode.value,
                   isRequired: true,
                   items: plans.toList(),
                   display: (item) => '${item.id} - ${item.name}',

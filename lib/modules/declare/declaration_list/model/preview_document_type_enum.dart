@@ -8,9 +8,13 @@ enum PreviewDocumentTypeEnum {
   /// 2
   tk1,
 
-  /// 01D-HSB
   /// 3
-  hsb;
+  /// Ốm đau
+  sickHsb,
+
+  /// 4
+  /// Thai sản
+  maternityHsb;
 
   int get value {
     switch (this) {
@@ -20,8 +24,10 @@ enum PreviewDocumentTypeEnum {
         return 1;
       case PreviewDocumentTypeEnum.tk1:
         return 2;
-      case PreviewDocumentTypeEnum.hsb:
+      case PreviewDocumentTypeEnum.sickHsb:
         return 3;
+      case PreviewDocumentTypeEnum.maternityHsb:
+        return 4;
     }
   }
 }

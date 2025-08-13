@@ -1,4 +1,36 @@
+13/08/2025
+- [Appmobile]_Thủ tục 630b_Trường [Phí giám định y khoa] dữ liệu nhập vào yêu cầu là số - BHW-3016
+- [Appmobile]_Thủ tục 630b_Lỗi [Ngày kết luận] Hiển thị báo không hợp lệ khi nhập ngày trong tương lai - BHW-3013
+- [Appmobile]_Thủ tục 630b_Không hiển thị trả về [Số tài khoản ngân hàng]theo api get-630b-detail - BHW-3020
+- [Appmobile]_Thủ tục 630b_Sai maxlength - BHW-3018
+- [Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con
+- [Appmobile]_Thủ tục 630b_Lỗi [Ngày mẹ chết] hiển thị báo không hợp lệ khi nhập ngày trong tương lai - BHW-3012
+
+12/08/2025
+[Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con - BHW-3002
+- [Appmobile]_thủ tục 630b_Lỗi hiển thị text báo "Mã nhóm hưởng cấp 2 không được bỏ trống' - BHW-2999
+- [Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con - BHW-3002
+- [Appmobile]_Thủ tục 630b_Trường [Mã số BHXH của mẹ] bắt validate kiểu ký tự nhập và maxlength - BHW-3006
+- [Appmobile]_Thủ tục 630b_Trường Mã số BHXH cần nhập đủ 10 số - BHW-3005
+- [Appmobile]_Thủ tục 630b_Lỗi Maxlength - BHW-3008
+- [Appmobile]_Thủ tục 630b_Dựng form màn [Thông tin khác] - BHW-2929
+
+11/08/2025
+- [Appmobile]_Thủ tục 630b_Ghép api khi nhấn "Chọn nhân sự" Tại form kê khai - BHW-2979
+- [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường ngày con chết - BHW-2967
+- [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường số con - BHW-2964
+- [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường Ngày sinh con - BHW-2963
+- [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường Tuổi thai - BHW-2962
+- [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc trường Điều kiện khám thai - BHW-2996
+- [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường số con chết - BHW-2965
+
 09/08/2025
+- [Appmobile]_Thủ tục 630b_Bổ sung api Xóa toàn bộ hồ sơ 630b - BHW-2978
+- [Appmobile]_Thủ tục 630b_Bổ sung call api Cập nhật hồ sơ 630b - BHW-2976
+- [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường ngày kết luận - BHW-2969
+- [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường ngày nhận con - BHW-2968
+- Sửa lỗi không thể cập nhật thông tin đơn vị khi trường lương cơ sở rỗng
+- Loại bỏ việc reset mã hồ sơ khi thay đổi hình thức kê khai - BHW-2949
 - [Appmobile]_Bổ sung popup thông báo hiển thị khi api trả về statuscode 429 - BHW-2985
 
 08/08/2025
@@ -10,6 +42,11 @@
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị [Mã nhóm hưởng] - BHW-2958
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chọn các giá trị giữa Hình thức kê khai: Phát sinh/Điều chỉnh - BHW-2957
 - [Appmobile]_Bố sung Force update cho app up store - BHW-2959
+- [Appmobile]_Dựng form 630b: Dựng giao diện với Hình thức kê khai "Điều chỉnh" - BHW-2925
+- [Appmobile]_Dựng form 630b: Dựng giao diện với Hình thức kê khai "Phát sinh" - BHW-2924
+- [Appmobile]_Thủ tục 630b_Bổ sung hiển thị Thủ tục 630b tại Màn danh sách thủ tục - BHW-2928
+- [Appmobile]_Thủ tục 630a_Chỉnh sửa call api /api/HoSo630/get-categories - BHW-2955
+- [Appmobile]_Thủ tục 630b_Call api Categories cho các trường combobox tại thủ tục 630b - BHW-2943
 
 06/08/2025
 - [Appmobile]_Thủ tục 630a: Lỗi hiển thị dữ liệu khi chị các giá trị [Hình thức nhận] - BHW-2950

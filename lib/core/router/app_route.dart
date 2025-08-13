@@ -50,7 +50,16 @@
 //   // Thay đổi đường dẫn
 //   changeBaseUrl,
 
-//   declareInfo607;
+//   declareInfo607,
+
+//   // Thủ tục 630a
+//   declareInfo630a,
+
+//   // Thông tin khác
+//   otherInfo,
+
+//   // Thủ tục 630b
+//   declareInfo630b;
 
 //   String get path {
 //     return '/$name';

@@ -37,4 +37,18 @@ class StaffListResponse {
           [],
     );
   }
+
+  factory StaffListResponse.fromJson630b(Map<String, dynamic> json) {
+    return StaffListResponse(
+      staffs: (json['results'] as List<dynamic>?)
+              ?.map(
+                  (e) => DeclaredStaffModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      image: (json['attachImages'] as List<dynamic>?)
+              ?.map((e) => AttachImageModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+  }
 }
