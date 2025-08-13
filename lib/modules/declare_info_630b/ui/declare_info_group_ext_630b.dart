@@ -1178,10 +1178,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Phí giám định y khoa
   Widget _buildMedicalFee() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập phí giám định y khoa',
-      labelText: 'Phí giám định y khoa',
+      hintText: LocaleKeys.declareInfo_medicalFeeInput.tr,
+      labelText: LocaleKeys.declareInfo_medicalFee.tr,
       controller: controller.medicalFeeCtrl,
       inputFormatters: InputFormatterEnum.phoneNumber,
+      textInputType: TextInputType.number,
       maxLengthInputForm: 18,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
