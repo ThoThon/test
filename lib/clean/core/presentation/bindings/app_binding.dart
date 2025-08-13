@@ -67,9 +67,14 @@ class AppBinding extends BaseBindings {
     Get.put(ExceptionHandler(nav: sl()), permanent: true);
 
     Get.put(HeaderInterceptor(sl()), permanent: true);
+    Get.put(HeaderUploadInterceptor(sl()), permanent: true);
     Get.put(AccessTokenInterceptor(sl()), permanent: true);
     Get.put(
       AuthAppServerApiClient(sl(), sl(), sl()),
+      permanent: true,
+    );
+    Get.put(
+      AuthAppUploadApiClient(sl(), sl(), sl()),
       permanent: true,
     );
     Get.put(NonAuthAppServerApiClient(sl(), sl()), permanent: true);

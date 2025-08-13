@@ -3,15 +3,15 @@ import 'package:dio/dio.dart';
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
 import 'package:v_bhxh/clean/shared/utils/app_info.dart';
 
-class HeaderInterceptor extends BaseInterceptor {
-  HeaderInterceptor(this._appInfo);
+class HeaderUploadInterceptor extends BaseInterceptor {
+  HeaderUploadInterceptor(this._appInfo);
 
   final AppInfo _appInfo;
 
+  /// Headers không có Transfer-Encoding: chunked
+  /// Vì nếu có Transfer-Encoding: chunked sẽ lỗi khi upload file
   final _headers = <String, dynamic>{
     Headers.contentTypeHeader: Headers.jsonContentType,
-    // Set Transfer-Encoding là 'chunked' để BE tự tính content-length, nhằm tránh lỗi sai content-length
-    'Transfer-Encoding': 'chunked',
   };
 
   @override
