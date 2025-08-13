@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
-import 'package:v_bhxh/core/const/app_text_style.dart';
-import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/usecase/use_case_src.dart';
@@ -16,7 +14,6 @@ import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart
 import 'package:v_bhxh/shares/date/date_utils.dart';
 import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/date_picker/date_picker_utils.dart';
-import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 class DeclarationPeriodController extends BaseGetClController {
   final Procedure argument;
@@ -90,14 +87,11 @@ class DeclarationPeriodController extends BaseGetClController {
   }
 
   void showDialogDeletePeriod(DeclarationPeriod period) {
-    ShowDialog.showDialogConfirm2(
+    nav.showConfirmDialog(
       title:
           '${LocaleKeys.declarationPeriod_delete.tr} "${LocaleKeys.declarationPeriod_period.tr} ${period.period}"?',
-      content: LocaleKeys.declarationPeriod_contentDeletePeriod.tr,
+      subtitle: LocaleKeys.declarationPeriod_contentDeletePeriod.tr,
       confirmTitle: LocaleKeys.declarationPeriod_delete.tr,
-      backgroundColorBack: AppColors.basicWhite,
-      textStyleBack:
-          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       onConfirm: () {
         deleteDeclarationPeriod(period);
       },

@@ -5,7 +5,6 @@ import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
 import '../../../../base_app/model/app_data.dart';
 import '../../../../clean/core/data/data_source/local/app_hive_impl.dart';
 import '../../../../clean/routes/app_routes_cl.dart';
-import '../../../../shares/widgets/dialog/dialog_utils.dart';
 import '../../../src.dart';
 
 class HomeControllerCl extends BaseGetClController {
@@ -17,7 +16,7 @@ class HomeControllerCl extends BaseGetClController {
   HomeControllerCl(this._readAllNotificationUseCase);
 
   void showDialogLogout() {
-    ShowDialog.showDialogConfirm2(
+    nav.showConfirmDialog(
       title: LocaleKeys.dialog_isLogout.tr,
       onConfirm: () async {
         await AppHiveImpl.instance.deleteKeys([
@@ -26,11 +25,8 @@ class HomeControllerCl extends BaseGetClController {
         ]);
         nav.offAllNamed(AppRoutesCl.login.path);
       },
-      backgroundColorBack: AppColors.basicWhite,
+      cancelTitle: LocaleKeys.dialog_cancel.tr,
       confirmTitle: LocaleKeys.dialog_confirm.tr,
-      exitTitle: LocaleKeys.dialog_cancel.tr,
-      textStyleBack:
-          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
     );
   }
 
@@ -62,8 +58,8 @@ class HomeControllerCl extends BaseGetClController {
   void goToNotificationPage() {
     if (!isReadingAllNoti.value) {
       nav.toNamed(AppRoutesCl.notification.path)?.whenComplete(
-        () => readAllNotification(),
-      );
+            () => readAllNotification(),
+          );
     }
   }
 }

@@ -37,12 +37,13 @@ class ForgotPasswordController extends BaseGetClController {
   }
 
   void _showDialogConfirmSuccess(String content) {
-    ShowDialog.showDialogConfirmNew(
+    nav.showInfoDialog(
       title: LocaleKeys.dialog_success.tr,
-      content: content,
+      subtitle: content,
       iconType: DialogIconType.success,
-      confirmTitle: LocaleKeys.dialog_history.tr,
-      showConfirmButton: false,
+      swapTitleAndIcon: true,
+      confirmTitle: LocaleKeys.dialog_close.tr,
+      showCancelButton: false,
     );
   }
 
