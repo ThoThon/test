@@ -1302,10 +1302,10 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   Widget _buildnoteText() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập ghi chú',
-      labelText: 'Ghi chú',
+      hintText: LocaleKeys.declareInfo_noteHint.tr,
+      labelText: LocaleKeys.declareInfo_note.tr,
       controller: controller.noteTextCtrl,
-      maxLengthInputForm: 50,
+      maxLengthInputForm: 1000,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 }
