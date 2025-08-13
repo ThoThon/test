@@ -646,7 +646,9 @@
     "countChildDeathInput": "Nhập số con chết",
     "pregnancyCondition": "Điều kiện khám thai",
     "pregnancyConditionCannotEmpty": "Điều kiện khám thai không được bỏ trống",
-    "pregnancyConditionSelected": "Chọn điều kiện khám thai"
+    "pregnancyConditionSelected": "Chọn điều kiện khám thai",
+    "medicalFee": "Phí giám định y khoa",
+    "medicalFeeInput": "Nhập phí giám định y khoa"
   },
   "familyMember": {
     "title": "Thêm thành viên",
