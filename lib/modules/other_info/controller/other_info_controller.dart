@@ -43,6 +43,9 @@ class OtherInfoController extends BaseGetxController {
     getOtherInfoDetail();
   }
 
+  ProcedureType get procedureType => argument.procedureType;
+  String get declarationPeriodId => argument.declarationPeriodId;
+
   Future<void> getOtherInfoDetail() async {
     try {
       showLoading();
@@ -98,9 +101,15 @@ class OtherInfoController extends BaseGetxController {
 
   Future<void> saveXml() async {
     try {
-      final response = await _repository.saveXml(
-        declarationPeriodId: argument.declarationPeriodId,
-      );
+      final response = await switch (procedureType) {
+        ProcedureType.procedure630a => _repository.saveXml630a(
+            declarationPeriodId: declarationPeriodId,
+          ),
+        ProcedureType.procedure630b => _repository.saveXml630b(
+            declarationPeriodId: declarationPeriodId,
+          ),
+        _ => throw UnimplementedError('Not implemented yet'),
+      };
       if (response.isSuccess) {
         Get.toNamed(
           AppRoutes.declarationList.path,
