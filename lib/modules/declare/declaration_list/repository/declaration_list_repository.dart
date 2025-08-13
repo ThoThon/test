@@ -10,7 +10,7 @@ class DeclarationListRepository extends BaseRepository {
 
   final _cachedPdfUrls = <GetPreviewPdfRequest, String?>{};
 
-  Future<BaseResponse<String>> signDocument({
+  Future<BaseResponse> signDocument({
     required String declarationPeriodId,
   }) async {
     final response = await baseCallApi(
@@ -25,7 +25,7 @@ class DeclarationListRepository extends BaseRepository {
         throw err;
       },
     );
-    return BaseResponse<String>.fromJson(response);
+    return BaseResponse.fromJson(response);
   }
 
   Future<BaseResponse<String>> getPreviewPdf({
