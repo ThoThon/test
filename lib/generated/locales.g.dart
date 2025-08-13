@@ -1319,7 +1319,8 @@ class Locales {
     'unitInfo_representInfo': 'Thông tin người đại diện',
     'unitInfo_transactionPersonInfo': 'Thông tin người giao dịch',
     'unitInfo_transactionWayIsEmpty': 'Phương thức đóng không được để trống',
-    'unitInfo_receiveMethodIsEmpty': 'Phương thức đóng không được để trống',
+    'unitInfo_receiveMethodIsEmpty':
+        'Phương thức nhận kết quả không được để trống',
     'unitInfo_represent': 'Người đại diện',
     'unitInfo_representCannotEmpty': 'Người đại diện không được bỏ trống',
     'unitInfo_position': 'Chức vụ',
