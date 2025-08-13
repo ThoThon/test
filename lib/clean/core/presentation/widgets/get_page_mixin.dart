@@ -66,7 +66,7 @@ mixin GetPageMixin<T extends BaseGetClController> on GetView<T> {
                         IgnorePointer(
                           ignoring: true,
                           child: Container(
-                            color: Colors.black12,
+                            color: Colors.black38,
                             child: const Center(
                               child: CupertinoActivityIndicator(
                                 color: AppColors.primaryColor,
