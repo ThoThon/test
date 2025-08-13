@@ -738,8 +738,18 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       labelText: 'Mã số BHXH của con',
       controller: controller.bhxhCodeChildCtrl,
       maxLengthInputForm: 10,
-      inputFormatters: InputFormatterEnum.phoneNumber,
+      inputFormatters: InputFormatterEnum.digitsOnly,
       textInputType: TextInputType.number,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+          return null;
+        }
+        if (trimmedValue.length < 10) {
+          return 'Mã số BHXH phải đủ 10 số';
+        }
+        return null;
+      },
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
@@ -750,7 +760,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       labelText: 'Mã thẻ BHYT của con',
       controller: controller.bhytCardCodeChildCtrl,
       inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
-      maxLengthInputForm: 15,
+      maxLengthInputForm: 50,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
@@ -987,6 +997,18 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       labelText: 'Mã số BHXH của mẹ',
       controller: controller.bhxhCodeMotherCtrl,
       maxLengthInputForm: 10,
+      textInputType: TextInputType.number,
+      inputFormatters: InputFormatterEnum.digitsOnly,
+      validator: (value) {
+        final trimmedValue = value?.trim();
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+          return null;
+        }
+        if (trimmedValue.length < 10) {
+          return 'Mã số BHXH phải đủ 10 số';
+        }
+        return null;
+      },
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
@@ -996,7 +1018,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       hintText: 'Nhập mã số BHXH của mẹ',
       labelText: 'Mã thẻ BHYT của mẹ',
       controller: controller.bhytCardMotherCtrl,
-      maxLengthInputForm: 15,
+      maxLengthInputForm: 50,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
@@ -1112,7 +1134,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (date.year <= 1900 || date.year >= 2100) {
+        if (date.year <= 1900 || date.isAfter(DateTime.now())) {
           return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
         }
 
@@ -1156,10 +1178,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Phí giám định y khoa
   Widget _buildMedicalFee() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập phí giám định y khoa',
-      labelText: 'Phí giám định y khoa',
+      hintText: LocaleKeys.declareInfo_medicalFeeInput.tr,
+      labelText: LocaleKeys.declareInfo_medicalFee.tr,
       controller: controller.medicalFeeCtrl,
       inputFormatters: InputFormatterEnum.phoneNumber,
+      textInputType: TextInputType.number,
       maxLengthInputForm: 18,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
