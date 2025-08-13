@@ -1061,17 +1061,17 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
         // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
         if (trimmedValue.length < 10) {
-          return 'Ngày mẹ chết không hợp lệ';
+          return LocaleKeys.declareInfo_motherDeathDateInvalid.tr;
         }
 
-        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-        if (toDate == null) {
-          return '';
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
+          return LocaleKeys.declareInfo_motherDeathDateInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (toDate.year <= 1900 || toDate.year >= 2100) {
-          return 'Ngày mẹ chết không hợp lệ';
+        if (date.year <= 1900 || date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_motherDeathDateInvalid.tr;
         }
 
         return null;
@@ -1081,7 +1081,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           () => CardInputSelectDateWithLabel(
             fieldKey: formFieldKey,
             autovalidateMode: controller.autoValidateMode.value,
-            labelText: 'Ngày mẹ chết',
+            labelText: LocaleKeys.declareInfo_motherDeathDate.tr,
             inputFormatters: InputFormatterEnum.dateFullBirthDay,
             controller: controller.motherDeathDateCtrl,
             hintText: PATTERN_1,

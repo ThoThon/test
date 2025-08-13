@@ -648,7 +648,9 @@
     "pregnancyConditionCannotEmpty": "Điều kiện khám thai không được bỏ trống",
     "pregnancyConditionSelected": "Chọn điều kiện khám thai",
     "medicalFee": "Phí giám định y khoa",
-    "medicalFeeInput": "Nhập phí giám định y khoa"
+    "medicalFeeInput": "Nhập phí giám định y khoa",
+    "motherDeathDate": "Ngày mẹ chết",
+    "motherDeathDateInvalid": "Ngày mẹ chết không hợp lệ"
   },
   "familyMember": {
     "title": "Thêm thành viên",

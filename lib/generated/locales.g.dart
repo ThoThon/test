@@ -780,6 +780,9 @@ class LocaleKeys {
       'declareInfo_pregnancyConditionSelected';
   static const declareInfo_medicalFee = 'declareInfo_medicalFee';
   static const declareInfo_medicalFeeInput = 'declareInfo_medicalFeeInput';
+  static const declareInfo_motherDeathDate = 'declareInfo_motherDeathDate';
+  static const declareInfo_motherDeathDateInvalid =
+      'declareInfo_motherDeathDateInvalid';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1869,6 +1872,8 @@ class Locales {
     'declareInfo_pregnancyConditionSelected': 'Chọn điều kiện khám thai',
     'declareInfo_medicalFee': 'Phí giám định y khoa',
     'declareInfo_medicalFeeInput': 'Nhập phí giám định y khoa',
+    'declareInfo_motherDeathDate': 'Ngày mẹ chết',
+    'declareInfo_motherDeathDateInvalid': 'Ngày mẹ chết không hợp lệ',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
