@@ -1,5 +1,4 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/presentation/controller/declaration_period_controller.dart';
 import 'package:v_bhxh/modules/login/model/categories_630/categories_630_src.dart';
 
 import '../../../base_app/base_app.src.dart';
@@ -159,9 +158,6 @@ class DeclareInfo630bController extends BaseGetxController {
   final autoValidateMode = Rxn<AutovalidateMode>();
 
   final formKey = GlobalKey<FormState>();
-
-  final declarationPeriodController =
-      Get.findOrNull<DeclarationPeriodController>();
 
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 

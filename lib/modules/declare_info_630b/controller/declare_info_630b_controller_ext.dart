@@ -1,6 +1,8 @@
 import 'package:collection/collection.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
+import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../../base_app/model/app_data.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
@@ -40,7 +42,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
               procedureType: ProcedureType.procedure630b,
             ),
           )?.then((value) {
-            declarationPeriodController?.getDeclarationPeriods();
+            eventBus.fire(const RefreshDeclarationPeriodEvent());
           });
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
