@@ -336,7 +336,9 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
         convertDateToStringSafe(detail.ngaySinhCon, PATTERN_1) ?? '';
 
     // Số con
-    numberChildCtrl.text = detail.soCon.toString();
+    if (detail.soCon != 0) {
+      numberChildCtrl.text = detail.soCon.toString();
+    }
 
     // Mã số BHXH của con
     if (detail.maSoBHXHCuaCon != null) {
@@ -349,7 +351,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Số con chết
-    if (detail.soCCHoacThaiCL != null) {
+    if (detail.soCCHoacThaiCL != 0) {
       numberChildDeathCtrl.text = detail.soCCHoacThaiCL.toString();
     }
 
@@ -393,7 +395,9 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
         convertDateToStringSafe(detail.ngayKetLuan, PATTERN_1) ?? '';
 
     // Phí giám định y khoa
-    medicalFeeCtrl.text = detail.phiGiamDinhYKhoa.toString();
+    if (detail.phiGiamDinhYKhoa != 0) {
+      medicalFeeCtrl.text = detail.phiGiamDinhYKhoa.toString();
+    }
 
     // Số BHXH của người nuôi dưỡng (TH mẹ chết)
     if (detail.soBHXHNND != null) {
