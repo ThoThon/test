@@ -3,7 +3,7 @@ import 'package:v_bhxh/base_app/repository_base/base_repository.dart';
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/core/enum/enum_request_method.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
-import 'package:v_bhxh/modules/login/model/categories_630a/categories_630a_src.dart';
+import 'package:v_bhxh/modules/login/model/categories_630/categories_630_src.dart';
 
 class LoginRepository extends BaseRepository {
   LoginRepository(super.controller);
@@ -57,15 +57,15 @@ class LoginRepository extends BaseRepository {
     return BaseResponse<int>.fromJson(response);
   }
 
-  Future<BaseResponse<CategoriesProcedure630a>> get630aCategories() async {
+  Future<BaseResponse<CategoriesProcedure630>> get630aCategories() async {
     final response = await baseCallApi(
-      AppApi.urlGet630aCategories,
+      AppApi.urlGet630Categories,
       EnumRequestMethod.get,
     );
 
-    return BaseResponse<CategoriesProcedure630a>.fromJson(
+    return BaseResponse<CategoriesProcedure630>.fromJson(
       response,
-      fromJson: (json) => CategoriesProcedure630a.fromJson(json),
+      fromJson: (json) => CategoriesProcedure630.fromJson(json),
     );
   }
 }

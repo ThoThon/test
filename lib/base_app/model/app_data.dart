@@ -1,5 +1,4 @@
-import 'package:v_bhxh/modules/login/model/categories_630a/categories_630a_src.dart';
-
+import 'package:v_bhxh/modules/login/model/categories_630/categories_630_src.dart';
 import '../../clean/shared/entity/entity_src.dart';
 import '../../modules/src.dart';
 
@@ -20,14 +19,24 @@ class AppData {
   var resultReceivingOptions = <RegisterReceiveResultModel>{};
   var birthTypes = <BirthType>{};
   var receiveResults = <ReceiveResult>{};
-  var declareForm = <DeclareForm630aModel>{};
-  var benefitGroup = <BenefitGroup630aModel>{};
-  var workCondition = <WorkCondition630aModel>{};
-  var receiveForm = <ReceiveForm630aModel>{};
-  var bank = <Bank630aModel>{};
-  var hospitalLine = <HospitalLine630aModel>{};
-  var longDiease = <LongDiease630aModel>{};
   final accountInfo = Rxn<AccountInfo>();
+
+  // Thủ tục 630
+  var declareForm = <DeclareForm630Model>{};
+  var benefitGroup630a = <BenefitGroup630aModel>{};
+  var workCondition = <WorkConditionModel>{};
+  var receiveForm = <ReceiveFormModel>{};
+  var bank = <BankModel>{};
+  var hospitalLine = <HospitalLineModel>{};
+  var longDiease = <LongDieaseModel>{};
+  var pregnancyCondition = <PregnancyCheckConditionModel>{};
+  var childBirthCondition = <ChildBirthConditionModel>{};
+  var maternityLeave = <MaternityLeaveModel>{};
+  var parentalLeave = <ParentalLeaveModel>{};
+  var surrogacy = <SurrogacyModel>{};
+  var surgeryPregnancy32w = <SurgeryPregnancy32wModel>{};
+  var contraception = <ContraceptionModel>{};
+  var benefitGroup630b = <BenefitGroup630bModel>{};
 
   /// Số lượng thông báo chưa đọc
   final totalUnread = 0.obs;

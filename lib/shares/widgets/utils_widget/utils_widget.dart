@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
@@ -1656,6 +1657,89 @@ class UtilWidget {
                 ),
               )
             : null,
+      ),
+    );
+  }
+
+  static Widget buildWeeklyDayOffDropdown<T>({
+    required List<T> initialValue,
+    required List<MultiSelectItem<T>> items,
+    required void Function(List<T>) onConfirm,
+    required String title,
+    Color? color,
+  }) {
+    return Container(
+      padding: const EdgeInsets.only(
+        right: AppDimens.defaultPadding,
+        left: AppDimens.defaultPadding,
+        top: AppDimens.paddingVerySmall,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.colorWhite,
+        borderRadius: BorderRadius.circular(AppDimens.radius10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              SDSBuildText(
+                'Ngày nghỉ tuần',
+                style: AppTextStyle.font14Re.copyWith(
+                  color: AppColors.dsGray1,
+                ),
+              ),
+            ],
+          ),
+          MultiSelectDialogField<T>(
+            items: items,
+            title: SDSBuildText(
+              "Chọn ngày nghỉ trong tuần",
+              style: AppTextStyle.font18Re,
+            ),
+            listType: MultiSelectListType.LIST,
+            backgroundColor: AppColors.basicWhite,
+            buttonIcon: SDSImageSvg(
+              Assets.ASSETS_ICONS_IC_ARROW_DOWN_SVG,
+              height: AppDimens.sizeIconMedium,
+              width: AppDimens.sizeIconMedium,
+            ),
+            buttonText: Expanded(
+              child: SDSBuildText(
+                maxLines: 3,
+                title,
+                style: AppTextStyle.font14Re.copyWith(
+                  color: color,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: AppDimens.paddingVerySmall,
+            ),
+            decoration: const BoxDecoration(border: Border()),
+            isDismissible: false,
+            onConfirm: onConfirm,
+            confirmText: SDSBuildText(
+              LocaleKeys.dialog_select.tr,
+              style:
+                  AppTextStyle.font14Bo.copyWith(color: AppColors.primaryColor),
+            ),
+            cancelText: GestureDetector(
+              onTap: () {
+                Get.back();
+                KeyBoard.hide();
+              },
+              child: SDSBuildText(
+                LocaleKeys.dialog_cancel.tr,
+                style: AppTextStyle.font14Bo
+                    .copyWith(color: AppColors.textColorGrey),
+              ),
+            ),
+            initialValue: initialValue,
+            chipDisplay: MultiSelectChipDisplay.none(),
+          ),
+        ],
       ),
     );
   }

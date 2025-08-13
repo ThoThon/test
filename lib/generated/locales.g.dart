@@ -386,6 +386,7 @@ class LocaleKeys {
   static const declareInfo_title612 = 'declareInfo_title612';
   static const declareInfo_title613 = 'declareInfo_title613';
   static const declareInfo_title630a = 'declareInfo_title630a';
+  static const declareInfo_title630b = 'declareInfo_title630b';
   static const declareInfo_fullName = 'declareInfo_fullName';
   static const declareInfo_fullNameHint = 'declareInfo_fullNameHint';
   static const declareInfo_fullNameCannotEmpty =
@@ -637,6 +638,12 @@ class LocaleKeys {
       'declareInfo_selectBenefitGroupCode';
   static const declareInfo_benefitGroupCodeCannotEmpty =
       'declareInfo_benefitGroupCodeCannotEmpty';
+  static const declareInfo_benefitGroupCodeLv2 =
+      'declareInfo_benefitGroupCodeLv2';
+  static const declareInfo_selectBenefitGroupCodeLv2 =
+      'declareInfo_selectBenefitGroupCodeLv2';
+  static const declareInfo_benefitGroupCodeLv2CannotEmpty =
+      'declareInfo_benefitGroupCodeLv2CannotEmpty';
   static const declareInfo_fromDay = 'declareInfo_fromDay';
   static const declareInfo_fromDayInvalid = 'declareInfo_fromDayInvalid';
   static const declareInfo_fromDayEmpty = 'declareInfo_fromDayEmpty';
@@ -744,6 +751,41 @@ class LocaleKeys {
   static const declareInfo_adjustReasonEmpty = 'declareInfo_adjustReasonEmpty';
   static const declareInfo_attachPaper = 'declareInfo_attachPaper';
   static const declareInfo_saveButton = 'declareInfo_saveButton';
+  static const declareInfo_conclusionDate = 'declareInfo_conclusionDate';
+  static const declareInfo_conclusionDateCannotEmpty =
+      'declareInfo_conclusionDateCannotEmpty';
+  static const declareInfo_conclusionDateInvalid =
+      'declareInfo_conclusionDateInvalid';
+  static const declareInfo_adoptionDate = 'declareInfo_adoptionDate';
+  static const declareInfo_adoptionDateCannotEmpty =
+      'declareInfo_adoptionDateCannotEmpty';
+  static const declareInfo_adoptionDateInvalid =
+      'declareInfo_adoptionDateInvalid';
+  static const declareInfo_childDeathDate = 'declareInfo_childDeathDate';
+  static const declareInfo_childDeathDateCannotEmpty =
+      'declareInfo_childDeathDateCannotEmpty';
+  static const declareInfo_childDeathDateInvalid =
+      'declareInfo_childDeathDateInvalid';
+  static const declareInfo_pregnancyWeek = 'declareInfo_pregnancyWeek';
+  static const declareInfo_pregnancyWeekCannotEmpty =
+      'declareInfo_pregnancyWeekCannotEmpty';
+  static const declareInfo_pregnancyWeekHint = 'declareInfo_pregnancyWeekHint';
+  static const declareInfo_countChildDeath = 'declareInfo_countChildDeath';
+  static const declareInfo_countChildDeathCannotEmpty =
+      'declareInfo_countChildDeathCannotEmpty';
+  static const declareInfo_countChildDeathInput =
+      'declareInfo_countChildDeathInput';
+  static const declareInfo_pregnancyCondition =
+      'declareInfo_pregnancyCondition';
+  static const declareInfo_pregnancyConditionCannotEmpty =
+      'declareInfo_pregnancyConditionCannotEmpty';
+  static const declareInfo_pregnancyConditionSelected =
+      'declareInfo_pregnancyConditionSelected';
+  static const declareInfo_medicalFee = 'declareInfo_medicalFee';
+  static const declareInfo_medicalFeeInput = 'declareInfo_medicalFeeInput';
+  static const declareInfo_motherDeathDate = 'declareInfo_motherDeathDate';
+  static const declareInfo_motherDeathDateInvalid =
+      'declareInfo_motherDeathDateInvalid';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1523,6 +1565,7 @@ class Locales {
     'declareInfo_title612': 'Thủ tục 612',
     'declareInfo_title613': 'Thủ tục 613',
     'declareInfo_title630a': 'Thủ tục 630a',
+    'declareInfo_title630b': 'Thủ tục 630b',
     'declareInfo_fullName': 'Họ và tên',
     'declareInfo_fullNameHint': 'Nhập họ và tên',
     'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1720,6 +1763,10 @@ class Locales {
     'declareInfo_selectBenefitGroupCode': 'Chọn mã nhóm hưởng',
     'declareInfo_benefitGroupCodeCannotEmpty':
         'Mã nhóm hưởng không được bỏ trống',
+    'declareInfo_benefitGroupCodeLv2': 'Mã nhóm hưởng cấp 2',
+    'declareInfo_selectBenefitGroupCodeLv2': 'Chọn mã nhóm hưởng cấp 2',
+    'declareInfo_benefitGroupCodeLv2CannotEmpty':
+        'Mã nhóm hưởng cấp 2 không được bỏ trống',
     'declareInfo_fromDay': 'Từ ngày',
     'declareInfo_fromDayInvalid': 'Từ ngày không hợp lệ',
     'declareInfo_fromDayEmpty': 'Từ ngày không được bỏ trống',
@@ -1809,6 +1856,31 @@ class Locales {
     'declareInfo_adjustReasonEmpty': 'Lý do điều chỉnh không được bỏ trống',
     'declareInfo_attachPaper': 'Gửi kèm hồ sơ giấy',
     'declareInfo_saveButton': 'Lưu',
+    'declareInfo_conclusionDate': 'Ngày kết luận',
+    'declareInfo_conclusionDateCannotEmpty':
+        'Ngày kết luận không được bỏ trống',
+    'declareInfo_conclusionDateInvalid': 'Ngày kết luận không hợp lệ',
+    'declareInfo_adoptionDate': 'Ngày nhận con',
+    'declareInfo_adoptionDateCannotEmpty': 'Ngày nhận con không được bỏ trống',
+    'declareInfo_adoptionDateInvalid': 'Ngày nhận con không hợp lệ',
+    'declareInfo_childDeathDate': 'Ngày con chết',
+    'declareInfo_childDeathDateCannotEmpty':
+        'Ngày con chết không được để trống',
+    'declareInfo_childDeathDateInvalid': 'Ngày con chết không hợp lệ',
+    'declareInfo_pregnancyWeek': 'Tuổi thai',
+    'declareInfo_pregnancyWeekCannotEmpty': 'Tuổi thai không được bỏ trống',
+    'declareInfo_pregnancyWeekHint': 'Nhập số tuần tuổi thai',
+    'declareInfo_countChildDeath': 'Số con chết',
+    'declareInfo_countChildDeathCannotEmpty': 'Số con chết không được bỏ trống',
+    'declareInfo_countChildDeathInput': 'Nhập số con chết',
+    'declareInfo_pregnancyCondition': 'Điều kiện khám thai',
+    'declareInfo_pregnancyConditionCannotEmpty':
+        'Điều kiện khám thai không được bỏ trống',
+    'declareInfo_pregnancyConditionSelected': 'Chọn điều kiện khám thai',
+    'declareInfo_medicalFee': 'Phí giám định y khoa',
+    'declareInfo_medicalFeeInput': 'Nhập phí giám định y khoa',
+    'declareInfo_motherDeathDate': 'Ngày mẹ chết',
+    'declareInfo_motherDeathDateInvalid': 'Ngày mẹ chết không hợp lệ',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
