@@ -233,15 +233,15 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildBenefitGroupCodeLv2Dropdown() {
     return Obx(
       () {
-        final plans = controller.benefitGroup.value?.benefitGroupLv2;
+        final listBenefitLv2 = controller.benefitGroup.value?.benefitGroupLv2;
 
-        if (plans == null || plans.isEmpty) {
+        if (listBenefitLv2 == null || listBenefitLv2.isEmpty) {
           return UtilWidget.shrink;
         }
         return FormFieldRegistrant<BenefitGroupLv2Model>(
           registrarId: '862496a1-7059-4921-a936-21623836ba38',
           validator: (value) {
-            if (value == null) {
+            if (controller.benefitGroupLv2.value == null) {
               return LocaleKeys.declareInfo_benefitGroupCodeLv2CannotEmpty.tr;
             }
             return null;
@@ -255,7 +255,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
                 labelText: LocaleKeys.declareInfo_benefitGroupCodeLv2.tr,
                 isRequired: true,
                 hintText: LocaleKeys.declareInfo_selectBenefitGroupCodeLv2.tr,
-                items: plans.toList(),
+                items: listBenefitLv2.toList(),
                 display: (item) =>
                     '${item.maNhomHuongC2} - ${item.tenNhomHuongC2}',
                 selectedItem: controller.benefitGroupLv2.value,
