@@ -10,7 +10,7 @@ class DeclarationListRepository extends BaseRepository {
 
   final _cachedPdfUrls = <GetPreviewPdfRequest, String?>{};
 
-  Future<BaseResponse> signDocument({
+  Future<BaseResponse<String>> signDocument({
     required String declarationPeriodId,
   }) async {
     final response = await baseCallApi(
@@ -25,10 +25,10 @@ class DeclarationListRepository extends BaseRepository {
         throw err;
       },
     );
-    return BaseResponse.fromJson(response);
+    return BaseResponse<String>.fromJson(response);
   }
 
-  Future<BaseResponse> getPreviewPdf({
+  Future<BaseResponse<String>> getPreviewPdf({
     required GetPreviewPdfRequest request,
   }) async {
     final cachedUrl = _cachedPdfUrls[request];
@@ -47,7 +47,7 @@ class DeclarationListRepository extends BaseRepository {
       timeOut: const Duration(minutes: 2),
     );
 
-    final result = BaseResponse.fromJson(response);
+    final result = BaseResponse<String>.fromJson(response);
 
     // Lưu URL vào cache
     if (result.isSuccess && result.result is String) {
@@ -57,7 +57,7 @@ class DeclarationListRepository extends BaseRepository {
     return result;
   }
 
-  Future<BaseResponse> getPreviewPdf607({
+  Future<BaseResponse<String>> getPreviewPdf607({
     required GetPreviewPdfRequest request,
   }) async {
     final cachedUrl = _cachedPdfUrls[request];
@@ -76,7 +76,7 @@ class DeclarationListRepository extends BaseRepository {
       timeOut: const Duration(minutes: 2),
     );
 
-    final result = BaseResponse.fromJson(response);
+    final result = BaseResponse<String>.fromJson(response);
 
     // Lưu URL vào cache
     if (result.isSuccess && result.result is String) {
@@ -86,8 +86,7 @@ class DeclarationListRepository extends BaseRepository {
     return result;
   }
 
-
-  Future<BaseResponse> getPreviewPdf630a({
+  Future<BaseResponse<String>> getPreviewPdf630a({
     required GetPreviewPdfRequest request,
   }) async {
     final cachedUrl = _cachedPdfUrls[request];
@@ -106,7 +105,7 @@ class DeclarationListRepository extends BaseRepository {
       timeOut: const Duration(minutes: 2),
     );
 
-    final result = BaseResponse.fromJson(response);
+    final result = BaseResponse<String>.fromJson(response);
 
     // Lưu URL vào cache
     if (result.isSuccess && result.result is String) {
@@ -116,7 +115,7 @@ class DeclarationListRepository extends BaseRepository {
     return result;
   }
 
-  Future<BaseResponse> getPreviewPdf630b({
+  Future<BaseResponse<String>> getPreviewPdf630b({
     required GetPreviewPdfRequest request,
   }) async {
     final cachedUrl = _cachedPdfUrls[request];
@@ -135,7 +134,7 @@ class DeclarationListRepository extends BaseRepository {
       timeOut: const Duration(minutes: 2),
     );
 
-    final result = BaseResponse.fromJson(response);
+    final result = BaseResponse<String>.fromJson(response);
 
     // Lưu URL vào cache
     if (result.isSuccess && result.result is String) {
