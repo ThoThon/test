@@ -1134,7 +1134,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (date.year <= 1900 || date.year >= 2100) {
+        if (date.year <= 1900 || date.isAfter(DateTime.now())) {
           return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
         }
 
