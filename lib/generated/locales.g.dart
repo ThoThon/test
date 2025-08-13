@@ -1921,8 +1921,8 @@ class Locales {
     'declareInfo_bhxhCodeMother': 'Mã số BHXH của mẹ',
     'declareInfo_bhytCardMotherHint': 'Nhập mã số BHYT của mẹ',
     'declareInfo_bhytCardMother': 'Mã số BHYT của mẹ',
-    'declareInfo_cccdMotherHint': 'Nhập mã số BHYT của mẹ',
-    'declareInfo_cccdMother': 'Mã số BHYT của mẹ',
+    'declareInfo_cccdMotherHint': 'Nhập mã số BHXH của mẹ',
+    'declareInfo_cccdMother': 'Mã số BHXH của mẹ',
     'declareInfo_surgeryOrUnder32Week': 'Phẫu thuật hoặc thai dưới 32 tuần',
     'declareInfo_surgeryOrUnder32WeekHint': 'Chọn',
     'declareInfo_inputGuardianBhxh':
