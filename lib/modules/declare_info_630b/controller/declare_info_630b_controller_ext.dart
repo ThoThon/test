@@ -336,7 +336,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
         convertDateToStringSafe(detail.ngaySinhCon, PATTERN_1) ?? '';
 
     // Số con
-    if (detail.soCon! > 0 && detail.soCon != null) {
+    if (detail.soCon != null && detail.soCon! > 0) {
       numberChildCtrl.text = detail.soCon.toString();
     }
 
@@ -351,7 +351,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Số con chết
-    if (detail.soCCHoacThaiCL! > 0 && detail.soCCHoacThaiCL != null) {
+    if (detail.soCCHoacThaiCL != null && detail.soCCHoacThaiCL! > 0) {
       numberChildDeathCtrl.text = detail.soCCHoacThaiCL.toString();
     }
 
@@ -395,7 +395,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
         convertDateToStringSafe(detail.ngayKetLuan, PATTERN_1) ?? '';
 
     // Phí giám định y khoa
-    if (detail.phiGiamDinhYKhoa! > 0 && detail.phiGiamDinhYKhoa != null) {
+    if (detail.phiGiamDinhYKhoa != null && detail.phiGiamDinhYKhoa! > 0) {
       medicalFeeCtrl.text = detail.phiGiamDinhYKhoa.toString();
     }
 
