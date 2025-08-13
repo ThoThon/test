@@ -1,3 +1,6 @@
+13/08/2025
+- [Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con
+
 12/08/2025
 - [Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con - BHW-3002
 - [Appmobile]_Thủ tục 630b_Trường [Mã số BHXH của mẹ] bắt validate kiểu ký tự nhập và maxlength - BHW-3006
