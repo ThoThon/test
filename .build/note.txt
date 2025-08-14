@@ -9,6 +9,7 @@
 - [Appmobile]_Thủ tục 630b_Lỗi hiển thị text thông báo trường Tuổi thai - BHW-3000
 - [Appmobile]_Thủ tục 630b_ [Mã thẻ BHYT của mẹ] hiển thị text thông báo đỏ không hợp lệ khi nhập ký tự tiếng Việt - BHW-3007
 - [Appmobile]_Thủ tục 630a, thủ tục 630b - Chỉnh sửa các trường nhập [Mã số], [Số CCCD] - BHW-3036
+- [Appmobile]_Thủ tục 630b - Lỗi hiển thị thiếu * tại trường [Số tài khoản ngân hàng] và [Tên chủ tài khoản] - BHW-3037
 
 13/08/2025
 - [Appmobile]_Thủ tục 630b_Trường [Phí giám định y khoa] dữ liệu nhập vào yêu cầu là số - BHW-3016
