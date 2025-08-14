@@ -417,7 +417,8 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                 return LocaleKeys.declareInfo_bhytCardCodeEmpty.tr;
               }
               if (trimmedValue.containsVietnamese) {
-                return 'Mã thẻ BHYT của con không đúng định dạng';
+                return LocaleKeys
+                    .declareInfo_bhytCardCodeChildIncorrectFormat.tr;
               }
 
               return null;
