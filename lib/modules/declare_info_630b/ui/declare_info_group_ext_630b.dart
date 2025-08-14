@@ -713,6 +713,9 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         if (isEmpty && controller.isRequiredBirthAndConutChild) {
           return LocaleKeys.declareInfo_numberChildEmpty.tr;
         }
+        if (trimmedValue == '0') {
+          return LocaleKeys.declareInfo_numberChildInvalid.tr;
+        }
         return null;
       },
       builder: (formFieldKey, validator) {
