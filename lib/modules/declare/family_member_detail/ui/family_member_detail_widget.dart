@@ -258,8 +258,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     );
                     break;
                   case BirthTypeEnum.full:
-                    selectedDate =
-                        await DatePickerUtils.showCalendarPicker(
+                    selectedDate = await DatePickerUtils.showCalendarPicker(
                       title: LocaleKeys.dialog_selectDayMonthYear.tr,
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: AppDimens.padding32,
@@ -595,13 +594,25 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildInputCCCDNumber() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.familyMember_cccdNumber.tr,
-      controller: controller.cccdNumberTextCtrl,
-      isRequired: false,
-      hintText: LocaleKeys.declareInfo_inputCCCD.tr,
-      maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+    return FormFieldRegistrant<String>(
+      registrarId: '2bdc7f55-a00c-44fa-b4eb-f481fabac82d',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.familyMember_cccdNumberIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        validator: validator,
+        labelText: LocaleKeys.familyMember_cccdNumber.tr,
+        controller: controller.cccdNumberTextCtrl,
+        isRequired: false,
+        hintText: LocaleKeys.declareInfo_inputCCCD.tr,
+        maxLengthInputForm: 20,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+      ),
     );
   }
 

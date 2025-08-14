@@ -756,6 +756,10 @@ extension Tk1TabWidget on DeclareInfoPage {
           return LocaleKeys.declareInfo_headOfHouseholdCCCDCannotEmpty.tr;
         }
 
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_headOfHouseholdCCCDIncorrectFormat.tr;
+        }
+
         return null;
       },
       builder: (fieldKey, validator) {
@@ -768,7 +772,7 @@ extension Tk1TabWidget on DeclareInfoPage {
             autovalidateMode: controller.tk1State.autoValidateMode.value,
             isRequired: controller.tk1State.isHouseholdInfoRequired.value,
             controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
-            inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+            inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
             onChanged: controller.onChangeHeadOfHouseholdCCCD,
             maxLengthInputForm: 20,
           ),

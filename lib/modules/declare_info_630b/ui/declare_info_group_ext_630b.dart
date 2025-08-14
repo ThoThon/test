@@ -761,13 +761,25 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã thẻ BHYT của con
   Widget _buildBhytCardCodeChild() {
-    return CardInputTextFormWithLabel(
-      hintText: LocaleKeys.declareInfo_bhytCardCodeChildHint.tr,
-      labelText: LocaleKeys.declareInfo_bhytCardCodeChild.tr,
-      controller: controller.bhytCardCodeChildCtrl,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
-      maxLengthInputForm: 50,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: 'ffdca741-030b-45b4-beac-9bbc93277080',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_bhytCardCodeIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        validator: validator,
+        hintText: LocaleKeys.declareInfo_bhytCardCodeChildHint.tr,
+        labelText: LocaleKeys.declareInfo_bhytCardCodeChild.tr,
+        controller: controller.bhytCardCodeChildCtrl,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        maxLengthInputForm: 50,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Số con chết
@@ -1034,7 +1046,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       registrarId: '1c613fab-4442-420b-8259-f309741330b0',
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.declareInfo_cmndMotherIncorrectFormat.tr;
         }
         return null;

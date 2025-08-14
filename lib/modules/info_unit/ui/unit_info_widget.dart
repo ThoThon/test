@@ -253,16 +253,16 @@ extension UnitInfoWidget on UnitInfoPage {
       ),
       _buildInputItemEdit(
         controller: controller.emailContactController,
-        label: LocaleKeys.unitInfo_email.tr,
+        label: LocaleKeys.unitInfo_emailContact.tr,
         maxLengthInputForm: 250,
-        inputFormatters: InputFormatterEnum.email,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
         validator: (value) {
-          final trimmedValue = value?.trim();
-          if (trimmedValue == null || trimmedValue.isEmpty) {
+          final trimmedValue = value?.trim() ?? '';
+          if (trimmedValue.isEmpty) {
             return LocaleKeys.unitInfo_emailContactIsNotEmpty.tr;
           }
           if (!trimmedValue.isEmailValid) {
-            return LocaleKeys.unitInfo_emailIsNotValid.tr;
+            return LocaleKeys.unitInfo_emailContactIncorrectFormat.tr;
           }
           return null;
         },
@@ -282,7 +282,7 @@ extension UnitInfoWidget on UnitInfoPage {
         right: controller.phoneContactController.text,
       ),
       _buildText(
-        left: LocaleKeys.unitInfo_email.tr,
+        left: LocaleKeys.unitInfo_emailContact.tr,
         right: controller.emailContactController.text,
       ),
     ];

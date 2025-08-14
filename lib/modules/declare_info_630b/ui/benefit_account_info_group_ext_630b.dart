@@ -103,10 +103,13 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
           return FormFieldRegistrant<String>(
             registrarId: "86e77e01-cad0-451d-b0b4-a63fdca1db89",
             validator: (value) {
-              final trimmedValue = value?.trim();
+              final trimmedValue = value?.trim() ?? '';
 
-              if (trimmedValue == null || trimmedValue.isEmpty) {
+              if (trimmedValue.isEmpty) {
                 return LocaleKeys.declareInfo_bankNumberEmpty.tr;
+              }
+              if (trimmedValue.containsVietnamese) {
+                return LocaleKeys.declareInfo_bankNumberInCorrectFormat.tr;
               }
               return null;
             },
@@ -117,8 +120,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
                   validator: validator,
                   autovalidateMode: controller.autoValidateMode.value,
                   hintText: LocaleKeys.declareInfo_bankNumberHint.tr,
-                  inputFormatters:
-                      InputFormatterEnum.textNormalWithoutDiacritics,
+                  inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
                   labelText: LocaleKeys.declareInfo_bankNumber.tr,
                   controller: controller.bankNumberCtrl,
                   maxLengthInputForm: 50,

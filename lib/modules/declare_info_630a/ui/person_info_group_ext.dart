@@ -117,12 +117,24 @@ extension PersonInfoGroupWidgetExt on DeclareInfo630aPage {
 
   // Số CCCD
   Widget _buildInputCCCD() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.declareInfo_cccd.tr,
-      controller: controller.cccdTextCtrl,
-      hintText: LocaleKeys.declareInfo_inputCCCD.tr,
-      maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+    return FormFieldRegistrant<String>(
+      registrarId: '216b7600-bc35-4cf5-b1dc-49b5c810d37a',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_cccdNumberIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        labelText: LocaleKeys.declareInfo_cccd.tr,
+        controller: controller.cccdTextCtrl,
+        hintText: LocaleKeys.declareInfo_inputCCCD.tr,
+        maxLengthInputForm: 20,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        validator: validator,
+      ),
     );
   }
 
