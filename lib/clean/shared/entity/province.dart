@@ -18,7 +18,7 @@ class Province extends Equatable implements Entity {
     required this.code,
   });
 
-  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
+  @Deprecated('Sử dụng ProvinceData để parse Json')
   factory Province.fromJson(Map<String, dynamic> json) {
     return Province(
       id: json['maTinh'] ?? '',

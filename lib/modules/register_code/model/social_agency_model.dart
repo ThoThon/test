@@ -13,6 +13,7 @@ class SocialAgencyModel extends Equatable {
     required this.tenTinhThanhPho,
   });
 
+  @Deprecated('Sử dụng SocialAgencyData để parse Json')
   factory SocialAgencyModel.fromJson(Map<String, dynamic> json) {
     return SocialAgencyModel(
       maCoQuanBHXH: json['maCoQuanBHXH'] ?? '',

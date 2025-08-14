@@ -10,7 +10,7 @@ class Position extends Equatable implements Entity {
     required this.name,
   });
 
-  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
+  @Deprecated('Sử dụng PositionData để parse Json')
   factory Position.fromJson(Map<String, dynamic> json) {
     return Position(
       id: json['id'] ?? 0,

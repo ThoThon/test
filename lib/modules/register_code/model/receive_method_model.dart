@@ -9,6 +9,7 @@ class ReceiveMethodModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng ReceiveMethodData để parse Json')
   factory ReceiveMethodModel.fromJson(Map<String, dynamic> json) {
     return ReceiveMethodModel(
       value: json['value'] ?? '',

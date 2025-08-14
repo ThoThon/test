@@ -11,7 +11,7 @@ class ReceiveResult extends Equatable implements Entity {
     required this.text,
   });
 
-  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
+  @Deprecated('Sử dụng ReceiveResultData để parse Json')
   factory ReceiveResult.fromJson(Map<String, dynamic> json) {
     return ReceiveResult(
       value: json['value'] ?? '',

@@ -11,7 +11,7 @@ class BirthType extends Equatable implements Entity {
     required this.text,
   });
 
-  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
+  @Deprecated('Sử dụng BirthTypeData để parse Json')
   factory BirthType.fromJson(Map<String, dynamic> json) {
     return BirthType(
       value: json['value'] ?? '',

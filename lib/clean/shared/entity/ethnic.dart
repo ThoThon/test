@@ -11,7 +11,7 @@ class Ethnic extends Equatable implements Entity {
     required this.text,
   });
 
-  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
+  @Deprecated('Sử dụng EthnicData để parse Json')
   factory Ethnic.fromJson(Map<String, dynamic> json) {
     return Ethnic(
       value: int.tryParse(json['value'].toString()) ?? 0,

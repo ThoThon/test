@@ -9,6 +9,7 @@ class PaymentMethodModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng PaymentMethodData để parse Json')
   factory PaymentMethodModel.fromJson(Map<String, dynamic> json) {
     return PaymentMethodModel(
       value: json['value'] ?? '',

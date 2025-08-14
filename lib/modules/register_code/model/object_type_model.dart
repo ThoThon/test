@@ -7,6 +7,7 @@ class ObjectTypeModel {
     required this.text,
   });
 
+  @Deprecated('Sử dụng ObjectTypeData để parse Json')
   factory ObjectTypeModel.fromJson(Map<String, dynamic> json) {
     return ObjectTypeModel(
       value: json['value'] ?? '',

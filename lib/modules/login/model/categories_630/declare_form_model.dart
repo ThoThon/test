@@ -16,6 +16,7 @@ class DeclareForm630Model extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng DeclareForm630Data để parse Json')
   factory DeclareForm630Model.fromJson(Map<String, dynamic> json) {
     return DeclareForm630Model(
       value: json['value'] ?? '',

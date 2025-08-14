@@ -15,7 +15,7 @@ class DeclarationType extends Equatable implements Entity {
     required this.plans,
   });
 
-  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
+  @Deprecated('Sử dụng DeclarationTypeData để parse Json')
   factory DeclarationType.fromJson(Map<String, dynamic> json) {
     return DeclarationType(
       value: json['value'] ?? '',

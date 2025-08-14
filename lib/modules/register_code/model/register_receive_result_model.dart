@@ -9,6 +9,7 @@ class RegisterReceiveResultModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng RegisterReceiveResultData để parse Json')
   factory RegisterReceiveResultModel.fromJson(Map<String, dynamic> json) {
     return RegisterReceiveResultModel(
       value: json['value'] ?? '',
