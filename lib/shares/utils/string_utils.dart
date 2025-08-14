@@ -7,7 +7,7 @@ extension StringExt on String {
   }
 
   /// Kiểm tra xem chuỗi có chứa ký tự tiếng Việt hay không
-  bool get hasVietnameseChars {
+  bool get containsVietnamese {
     return TiengViet.parse(this) != this;
   }
 }
