@@ -101,8 +101,16 @@ extension OtherInfoWidget on OtherInfoPage {
       labelText: LocaleKeys.otherInfo_accountNumber.tr,
       maxLengthInputForm: 100,
       hintText: LocaleKeys.otherInfo_inputAccountNumber.tr,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+      inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
       controller: controller.accountNumberCtrl,
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? ' ';
+
+        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+          return LocaleKeys.otherInfo_accountNumberIncorrectFormat.tr;
+        }
+        return null;
+      },
     );
   }
 

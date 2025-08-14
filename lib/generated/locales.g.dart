@@ -161,7 +161,9 @@ class LocaleKeys {
   static const unitInfo_phoneContact = 'unitInfo_phoneContact';
   static const unitInfo_phoneContactCannotEmpty =
       'unitInfo_phoneContactCannotEmpty';
-  static const unitInfo_email = 'unitInfo_email';
+  static const unitInfo_emailContact = 'unitInfo_emailContact';
+  static const unitInfo_emailContactIncorrectFormat =
+      'unitInfo_emailContactIncorrectFormat';
   static const unitInfo_fileInclude = 'unitInfo_fileInclude';
   static const unitInfo_attached = 'unitInfo_attached';
   static const unitInfo_serviceInfo = 'unitInfo_serviceInfo';
@@ -405,7 +407,9 @@ class LocaleKeys {
   static const declareInfo_cccdNumber = 'declareInfo_cccdNumber';
   static const declareInfo_cccdNumberIsNotEmpty =
       'declareInfo_cccdNumberIsNotEmpty';
-  static const declareInfo_cccdNumberIsValid = 'declareInfo_cccdNumberIsValid';
+  static const declareInfo_cccdNumberInValid = 'declareInfo_cccdNumberInValid';
+  static const declareInfo_cccdNumberIncorrectFormat =
+      'declareInfo_cccdNumberIncorrectFormat';
   static const declareInfo_dob = 'declareInfo_dob';
   static const declareInfo_dobCannotEmpty = 'declareInfo_dobCannotEmpty';
   static const declareInfo_dobInvalid = 'declareInfo_dobInvalid';
@@ -718,6 +722,8 @@ class LocaleKeys {
   static const declareInfo_receiveMethodEmpty =
       'declareInfo_receiveMethodEmpty';
   static const declareInfo_bankNumber = 'declareInfo_bankNumber';
+  static const declareInfo_bankNumberInCorrectFormat =
+      'declareInfo_bankNumberInCorrectFormat';
   static const declareInfo_bankNumberHint = 'declareInfo_bankNumberHint';
   static const declareInfo_bankNumberEmpty = 'declareInfo_bankNumberEmpty';
   static const declareInfo_accountHolderName = 'declareInfo_accountHolderName';
@@ -830,6 +836,8 @@ class LocaleKeys {
       'familyMember_birthTypeMonthYear';
   static const familyMember_birthTypeFull = 'familyMember_birthTypeFull';
   static const familyMember_cccdNumber = 'familyMember_cccdNumber';
+  static const familyMember_cccdNumberIncorrectFormat =
+      'familyMember_cccdNumberIncorrectFormat';
   static const familyMember_note = 'familyMember_note';
   static const familyMember_isParticipant = 'familyMember_isParticipant';
   static const familyMember_selectGender = 'familyMember_selectGender';
@@ -1044,6 +1052,8 @@ class LocaleKeys {
   static const registerCode_contactInfo = 'registerCode_contactInfo';
   static const registerCode_phoneUnit = 'registerCode_phoneUnit';
   static const registerCode_emailUnit = 'registerCode_emailUnit';
+  static const registerCode_emailUnitIncorrectFormat =
+      'registerCode_emailUnitIncorrectFormat';
   static const registerCode_personTransactionSocial =
       'registerCode_personTransactionSocial';
   static const registerCode_phoneContact = 'registerCode_phoneContact';
@@ -1158,6 +1168,8 @@ class LocaleKeys {
   static const otherInfo_phoneNumber = 'otherInfo_phoneNumber';
   static const otherInfo_inputPhoneNumber = 'otherInfo_inputPhoneNumber';
   static const otherInfo_accountNumber = 'otherInfo_accountNumber';
+  static const otherInfo_accountNumberIncorrectFormat =
+      'otherInfo_accountNumberIncorrectFormat';
   static const otherInfo_inputAccountNumber = 'otherInfo_inputAccountNumber';
   static const otherInfo_bankName = 'otherInfo_bankName';
   static const otherInfo_inputBankName = 'otherInfo_inputBankName';
@@ -1355,7 +1367,9 @@ class Locales {
     'unitInfo_phoneContact': 'Điện thoại di động',
     'unitInfo_phoneContactCannotEmpty':
         'Điện thoại di động không được bỏ trống',
-    'unitInfo_email': 'Email liên hệ',
+    'unitInfo_emailContact': 'Email liên hệ',
+    'unitInfo_emailContactIncorrectFormat':
+        'Email liên hệ không đúng định dạng',
     'unitInfo_fileInclude': 'Hồ sơ kèm theo',
     'unitInfo_attached': 'Đính kèm',
     'unitInfo_serviceInfo': 'Thông tin dịch vụ',
@@ -1576,7 +1590,8 @@ class Locales {
     'declareInfo_generateTk1Data': 'Sinh dữ liệu TK1-TS',
     'declareInfo_cccdNumber': 'Số CCCD',
     'declareInfo_cccdNumberIsNotEmpty': 'Số CCCD không được bỏ trống',
-    'declareInfo_cccdNumberIsValid': 'Số CCCD phải có đủ 12 số',
+    'declareInfo_cccdNumberInValid': 'Số CCCD không hợp lệ',
+    'declareInfo_cccdNumberIncorrectFormat': 'Số CCCD không đúng định dạng',
     'declareInfo_dob': 'Ngày sinh',
     'declareInfo_dobCannotEmpty': 'Ngày sinh không được bỏ trống',
     'declareInfo_dobInvalid': 'Ngày sinh không hợp lệ',
@@ -1824,6 +1839,8 @@ class Locales {
     'declareInfo_receiveMethodHint': 'Chọn hình thức nhận',
     'declareInfo_receiveMethodEmpty': 'Hình thức nhận không được bỏ trống',
     'declareInfo_bankNumber': 'Số tài khoản ngân hàng',
+    'declareInfo_bankNumberInCorrectFormat':
+        'Số tài khoản ngân hàng không đúng định dạng',
     'declareInfo_bankNumberHint': 'Nhập số tài khoản ngân hàng',
     'declareInfo_bankNumberEmpty': 'Số tài khoản ngân hàng không được bỏ trống',
     'declareInfo_accountHolderName': 'Tên chủ tài khoản',
@@ -1910,6 +1927,7 @@ class Locales {
     'familyMember_birthTypeMonthYear': 'Tháng/Năm',
     'familyMember_birthTypeFull': 'Ngày/Tháng/Năm',
     'familyMember_cccdNumber': 'Số CCCD',
+    'familyMember_cccdNumberIncorrectFormat': 'Số CCCD không đúng định dạng',
     'familyMember_note': 'Ghi chú',
     'familyMember_isParticipant': 'Là người tham gia',
     'familyMember_selectGender': 'Vui lòng chọn giới tính',
@@ -2096,6 +2114,8 @@ class Locales {
     'registerCode_contactInfo': 'Thông tin liên hệ',
     'registerCode_phoneUnit': 'Điện thoại đơn vị',
     'registerCode_emailUnit': 'Email đơn vị',
+    'registerCode_emailUnitIncorrectFormat':
+        'Email đơn vị không đúng định dạng',
     'registerCode_personTransactionSocial': 'Người giao dịch BHXH',
     'registerCode_phoneContact': 'Điện thoại liên hệ',
     'registerCode_socialSecurityAgency': 'Cơ quan BHXH',
@@ -2182,6 +2202,8 @@ class Locales {
     'otherInfo_phoneNumber': 'Số điện thoại',
     'otherInfo_inputPhoneNumber': 'Nhập số điện thoại đơn vị',
     'otherInfo_accountNumber': 'Số tài khoản',
+    'otherInfo_accountNumberIncorrectFormat':
+        'Số tài khoản không đúng định dạng',
     'otherInfo_inputAccountNumber': 'Nhập số tài khoản của đơn vị',
     'otherInfo_bankName': 'Mở tại ngân hàng',
     'otherInfo_inputBankName': 'Nhập tên ngân hàng của đơn vị',

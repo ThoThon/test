@@ -258,8 +258,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                     );
                     break;
                   case BirthTypeEnum.full:
-                    selectedDate =
-                        await DatePickerUtils.showCalendarPicker(
+                    selectedDate = await DatePickerUtils.showCalendarPicker(
                       title: LocaleKeys.dialog_selectDayMonthYear.tr,
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: AppDimens.padding32,
@@ -601,7 +600,14 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       isRequired: false,
       hintText: LocaleKeys.declareInfo_inputCCCD.tr,
       maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+      inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+          return LocaleKeys.familyMember_cccdNumberIncorrectFormat.tr;
+        }
+        return null;
+      },
     );
   }
 

@@ -122,7 +122,14 @@ extension PersonInfoGroupWidgetExt on DeclareInfo630aPage {
       controller: controller.cccdTextCtrl,
       hintText: LocaleKeys.declareInfo_inputCCCD.tr,
       maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+      inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+          return LocaleKeys.declareInfo_cccdNumberIncorrectFormat.tr;
+        }
+        return null;
+      },
     );
   }
 

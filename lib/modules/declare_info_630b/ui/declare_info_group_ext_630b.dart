@@ -759,8 +759,15 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       hintText: 'Nhập mã thẻ BHYT của con',
       labelText: 'Mã thẻ BHYT của con',
       controller: controller.bhytCardCodeChildCtrl,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+      inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
       maxLengthInputForm: 50,
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+          return 'Mã thẻ BHYT của con không đúng định dạng';
+        }
+        return null;
+      },
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 

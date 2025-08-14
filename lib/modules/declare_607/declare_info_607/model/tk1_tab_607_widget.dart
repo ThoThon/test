@@ -260,10 +260,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     return FormFieldRegistrant<String>(
       registrarId: "65ae4c88-428a-4851-9a0f-b8791754ebd8",
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_cccdNumberIsNotEmpty.tr;
+        }
+        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+          return LocaleKeys.declareInfo_cccdNumberIncorrectFormat.tr;
         }
 
         return null;
@@ -278,7 +281,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           hintText: LocaleKeys.declareInfo_inputCCCD.tr,
           isRequired: true,
           maxLengthInputForm: 20,
-          inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+          inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
           onChanged: controller.onChangeCCCD,
         );
       },
@@ -1292,6 +1295,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             controller.tk1State.isHouseholdInfoRequired.value) {
           return LocaleKeys.declareInfo_headOfHouseholdCCCDCannotEmpty.tr;
         }
+        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+          return 'Số CCCD của chủ hộ không đúng định dạng';
+        }
 
         return null;
       },
@@ -1305,7 +1311,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             autovalidateMode: controller.tk1State.autoValidateMode.value,
             isRequired: controller.tk1State.isHouseholdInfoRequired.value,
             controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
-            inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+            inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
             onChanged: controller.onChangeHeadOfHouseholdCCCD,
             maxLengthInputForm: 20,
           ),

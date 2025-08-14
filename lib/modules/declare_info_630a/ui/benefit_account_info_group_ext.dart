@@ -103,10 +103,13 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
           return FormFieldRegistrant<String>(
             registrarId: "1068d470-d07d-4e70-b247-4fc9928748dd",
             validator: (value) {
-              final trimmedValue = value?.trim();
+              final trimmedValue = value?.trim() ?? '';
 
-              if (trimmedValue == null || trimmedValue.isEmpty) {
+              if (trimmedValue.isEmpty) {
                 return LocaleKeys.declareInfo_bankNumberEmpty.tr;
+              }
+              if (TiengViet.parse(trimmedValue) != trimmedValue) {
+                return LocaleKeys.declareInfo_bankNumberInCorrectFormat.tr;
               }
               return null;
             },
@@ -118,8 +121,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                   autovalidateMode: controller.autoValidateMode.value,
                   isRequired: controller.isATMpayment,
                   hintText: LocaleKeys.declareInfo_bankNumberHint.tr,
-                  inputFormatters:
-                      InputFormatterEnum.textNormalWithoutDiacritics,
+                  inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
                   labelText: LocaleKeys.declareInfo_bankNumber.tr,
                   controller: controller.bankNumberCtrl,
                   maxLengthInputForm: 50,
