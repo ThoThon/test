@@ -761,20 +761,25 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã thẻ BHYT của con
   Widget _buildBhytCardCodeChild() {
-    return CardInputTextFormWithLabel(
-      hintText: LocaleKeys.declareInfo_bhytCardCodeChildHint.tr,
-      labelText: LocaleKeys.declareInfo_bhytCardCodeChild.tr,
-      controller: controller.bhytCardCodeChildCtrl,
-      inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
-      maxLengthInputForm: 50,
+    return FormFieldRegistrant<String>(
+      registrarId: 'ffdca741-030b-45b4-beac-9bbc93277080',
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
         if (TiengViet.parse(trimmedValue) != trimmedValue) {
-          return 'Mã thẻ BHYT của con không đúng định dạng';
+          return LocaleKeys.declareInfo_bhytCardCodeIncorrectFormat.tr;
         }
         return null;
       },
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        validator: validator,
+        hintText: LocaleKeys.declareInfo_bhytCardCodeChildHint.tr,
+        labelText: LocaleKeys.declareInfo_bhytCardCodeChild.tr,
+        controller: controller.bhytCardCodeChildCtrl,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        maxLengthInputForm: 50,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Số con chết

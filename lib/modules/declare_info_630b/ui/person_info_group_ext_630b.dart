@@ -117,12 +117,8 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
 
   // Số CCCD
   Widget _buildInputCCCD() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.declareInfo_cccd.tr,
-      controller: controller.cccdTextCtrl,
-      hintText: LocaleKeys.declareInfo_inputCCCD.tr,
-      maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+    return FormFieldRegistrant<String>(
+      registrarId: 'f0bbcb9d-0035-4a0c-bb15-980848d14df8',
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
         if (TiengViet.parse(trimmedValue) != trimmedValue) {
@@ -130,6 +126,15 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
         }
         return null;
       },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        labelText: LocaleKeys.declareInfo_cccd.tr,
+        controller: controller.cccdTextCtrl,
+        hintText: LocaleKeys.declareInfo_inputCCCD.tr,
+        maxLengthInputForm: 20,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        validator: validator,
+      ),
     );
   }
 
