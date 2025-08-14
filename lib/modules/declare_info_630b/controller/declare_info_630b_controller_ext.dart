@@ -252,6 +252,22 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
+  void onChangeReceiveMethod(ReceiveFormModel? method) {
+    if (method == null) {
+      return;
+    }
+
+    // Nếu khác ATM thì reset các trường liên quan ATM
+    // REF: BHW-3022
+    if (method.value != ATMPaymentValue) {
+      bankNumberCtrl.clear();
+      accountHolderNameCtrl.clear();
+      selectedBank.value = null;
+    }
+
+    receiveForm.value = method;
+  }
+
   void mapFrom630bDetail(DeclareInfo630bResponse detail) {
     id = detail.id;
 
