@@ -598,7 +598,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
       registrarId: '2bdc7f55-a00c-44fa-b4eb-f481fabac82d',
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.familyMember_cccdNumberIncorrectFormat.tr;
         }
         return null;

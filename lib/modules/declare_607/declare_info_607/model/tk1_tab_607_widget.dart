@@ -265,7 +265,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
         if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_cccdNumberIsNotEmpty.tr;
         }
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.declareInfo_cccdNumberIncorrectFormat.tr;
         }
 
@@ -1295,7 +1295,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             controller.tk1State.isHouseholdInfoRequired.value) {
           return LocaleKeys.declareInfo_headOfHouseholdCCCDCannotEmpty.tr;
         }
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.declareInfo_headOfHouseholdCCCDIncorrectFormat.tr;
         }
 

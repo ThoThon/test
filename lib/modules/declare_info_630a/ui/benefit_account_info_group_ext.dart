@@ -108,7 +108,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
               if (trimmedValue.isEmpty) {
                 return LocaleKeys.declareInfo_bankNumberEmpty.tr;
               }
-              if (TiengViet.parse(trimmedValue) != trimmedValue) {
+              if (trimmedValue.containsVietnamese) {
                 return LocaleKeys.declareInfo_bankNumberInCorrectFormat.tr;
               }
               return null;

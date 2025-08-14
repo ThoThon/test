@@ -765,7 +765,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       registrarId: 'ffdca741-030b-45b4-beac-9bbc93277080',
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.declareInfo_bhytCardCodeIncorrectFormat.tr;
         }
         return null;
@@ -1046,7 +1046,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       registrarId: '1c613fab-4442-420b-8259-f309741330b0',
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.declareInfo_cmndMotherIncorrectFormat.tr;
         }
         return null;

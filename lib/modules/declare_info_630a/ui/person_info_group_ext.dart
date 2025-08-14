@@ -121,7 +121,7 @@ extension PersonInfoGroupWidgetExt on DeclareInfo630aPage {
       registrarId: '216b7600-bc35-4cf5-b1dc-49b5c810d37a',
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.declareInfo_cccdNumberIncorrectFormat.tr;
         }
         return null;

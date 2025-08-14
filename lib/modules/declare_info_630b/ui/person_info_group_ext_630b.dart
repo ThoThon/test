@@ -121,7 +121,7 @@ extension PersonInfoGroupExt630b on DeclareInfo630bPage {
       registrarId: 'f0bbcb9d-0035-4a0c-bb15-980848d14df8',
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.declareInfo_cccdNumberIncorrectFormat.tr;
         }
         return null;

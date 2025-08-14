@@ -756,7 +756,7 @@ extension Tk1TabWidget on DeclareInfoPage {
           return LocaleKeys.declareInfo_headOfHouseholdCCCDCannotEmpty.tr;
         }
 
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.declareInfo_headOfHouseholdCCCDIncorrectFormat.tr;
         }
 

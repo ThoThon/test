@@ -106,7 +106,7 @@ extension OtherInfoWidget on OtherInfoPage {
       validator: (value) {
         final trimmedValue = value?.trim() ?? ' ';
 
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.otherInfo_accountNumberIncorrectFormat.tr;
         }
         return null;

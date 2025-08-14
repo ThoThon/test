@@ -155,7 +155,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
         if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_cccdNumberIsNotEmpty.tr;
         }
-        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+        if (trimmedValue.containsVietnamese) {
           return LocaleKeys.declareInfo_cccdNumberIncorrectFormat.tr;
         }
         return null;
