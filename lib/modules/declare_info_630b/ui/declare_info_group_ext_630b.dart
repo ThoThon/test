@@ -579,7 +579,12 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         if (isEmpty && controller.isRequiredPregnancyWeek) {
           return LocaleKeys.declareInfo_pregnancyWeekCannotEmpty.tr;
         }
-        if (int.parse(trimmedValue) > 45) {
+
+        final week = int.tryParse(trimmedValue);
+        if (week == null) return null;
+
+        // REF: BHW-3030
+        if (week > 45) {
           return LocaleKeys.declareInfo_pregnancyWeekLimit.tr;
         }
         return null;
@@ -589,6 +594,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           () => CardInputTextFormWithLabel(
             fieldKey: formFieldKey,
             validator: validator,
+            autovalidateMode: controller.autoValidateMode.value,
             isRequired: controller.isRequiredPregnancyWeek,
             hintText: LocaleKeys.declareInfo_pregnancyWeekHint.tr,
             labelText: LocaleKeys.declareInfo_pregnancyWeek.tr,
@@ -739,13 +745,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã số BHXH của con
   Widget _buildBhxhCodeChild() {
-    return CardInputTextFormWithLabel(
-      hintText: LocaleKeys.declareInfo_bhxhCodeChildHint.tr,
-      labelText: LocaleKeys.declareInfo_bhxhCodeChild.tr,
-      controller: controller.bhxhCodeChildCtrl,
-      maxLengthInputForm: 10,
-      inputFormatters: InputFormatterEnum.digitsOnly,
-      textInputType: TextInputType.number,
+    return FormFieldRegistrant<String>(
+      registrarId: '4091a25d-f05e-484f-b409-3abdc1f28d60',
       validator: (value) {
         final trimmedValue = value?.trim();
         if ((trimmedValue == null || trimmedValue.isEmpty)) {
@@ -756,7 +757,17 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
         return null;
       },
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        hintText: LocaleKeys.declareInfo_bhxhCodeChildHint.tr,
+        labelText: LocaleKeys.declareInfo_bhxhCodeChild.tr,
+        controller: controller.bhxhCodeChildCtrl,
+        maxLengthInputForm: 10,
+        inputFormatters: InputFormatterEnum.digitsOnly,
+        textInputType: TextInputType.number,
+        validator: validator,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Mã thẻ BHYT của con
