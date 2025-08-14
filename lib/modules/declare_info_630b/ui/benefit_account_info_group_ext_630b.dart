@@ -118,6 +118,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
                 () => CardInputTextFormWithLabel(
                   fieldKey: fieldKey,
                   validator: validator,
+                  isRequired: controller.isATMpayment,
                   autovalidateMode: controller.autoValidateMode.value,
                   hintText: LocaleKeys.declareInfo_bankNumberHint.tr,
                   inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
@@ -155,6 +156,7 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
                 () => CardInputTextFormWithLabel(
                   fieldKey: fieldKey,
                   validator: validator,
+                  isRequired: controller.isATMpayment,
                   autovalidateMode: controller.autoValidateMode.value,
                   hintText: LocaleKeys.declareInfo_accountHolderNameHint.tr,
                   labelText: LocaleKeys.declareInfo_accountHolderName.tr,
@@ -188,7 +190,9 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
                 () {
                   return UtilWidget.buildCardBottomSheetSelect2<BankModel>(
                     fieldKey: fieldKey,
+                    validator: validator,
                     autovalidateMode: controller.autoValidateMode.value,
+                    isRequired: controller.isATMpayment,
                     label: LocaleKeys.declareInfo_bank.tr,
                     hintText: LocaleKeys.declareInfo_bankHint.tr,
                     funcSelect: (didChange) async {
