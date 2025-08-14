@@ -1296,7 +1296,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           return LocaleKeys.declareInfo_headOfHouseholdCCCDCannotEmpty.tr;
         }
         if (TiengViet.parse(trimmedValue) != trimmedValue) {
-          return 'Số CCCD của chủ hộ không đúng định dạng';
+          return LocaleKeys.declareInfo_headOfHouseholdCCCDIncorrectFormat.tr;
         }
 
         return null;

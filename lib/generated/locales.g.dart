@@ -505,6 +505,8 @@ class LocaleKeys {
       'declareInfo_headOfHouseholdFullNameCannotEmpty';
   static const declareInfo_headOfHouseholdCCCD =
       'declareInfo_headOfHouseholdCCCD';
+  static const declareInfo_headOfHouseholdCCCDIncorrectFormat =
+      'declareInfo_headOfHouseholdCCCDIncorrectFormat';
   static const declareInfo_headOfHouseholdCCCDCannotEmpty =
       'declareInfo_headOfHouseholdCCCDCannotEmpty';
   static const declareInfo_provinceTT = 'declareInfo_provinceTT';
@@ -1704,6 +1706,8 @@ class Locales {
     'declareInfo_headOfHouseholdFullNameCannotEmpty':
         'Họ và tên chủ hộ không được để trống',
     'declareInfo_headOfHouseholdCCCD': 'Số CCCD của chủ hộ',
+    'declareInfo_headOfHouseholdCCCDIncorrectFormat':
+        'Số CCCD của chủ hộ không đúng định dạng',
     'declareInfo_headOfHouseholdCCCDCannotEmpty':
         'Số CCCD của chủ hộ không được để trống',
     'declareInfo_provinceTT': 'Tỉnh thường trú',

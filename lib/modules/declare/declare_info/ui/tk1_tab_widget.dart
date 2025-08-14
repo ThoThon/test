@@ -757,7 +757,7 @@ extension Tk1TabWidget on DeclareInfoPage {
         }
 
         if (TiengViet.parse(trimmedValue) != trimmedValue) {
-          return 'Số CCCD của chủ hộ không đúng định dạng';
+          return LocaleKeys.declareInfo_headOfHouseholdCCCDIncorrectFormat.tr;
         }
 
         return null;

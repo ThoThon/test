@@ -452,6 +452,7 @@
     "headOfHouseholdFullName": "Họ và tên chủ hộ",
     "headOfHouseholdFullNameCannotEmpty": "Họ và tên chủ hộ không được để trống",
     "headOfHouseholdCCCD": "Số CCCD của chủ hộ",
+    "headOfHouseholdCCCDIncorrectFormat": "Số CCCD của chủ hộ không đúng định dạng",
     "headOfHouseholdCCCDCannotEmpty": "Số CCCD của chủ hộ không được để trống",
     "provinceTT": "Tỉnh thường trú",
     "selectProvinceTT": "Chọn tỉnh thường trú",
