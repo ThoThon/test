@@ -8,7 +8,7 @@
 - [Appmobile]_Thủ tục 630b_Sai maxlength - BHW-3018
 - [Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con
 - [Appmobile]_Thủ tục 630b_Lỗi [Ngày mẹ chết] hiển thị báo không hợp lệ khi nhập ngày trong tương lai - BHW-3012
-- [Appmobile]_Thủ tục 630b_Trường [Số BHXH của người nuôi dưỡng (TH mẹ chết) Chỉnh text - BHW-3025
+- [Appmobile]_Thủ tục 630b_Trường [Số BHXH của người nuôi dưỡng (TH mẹ chết)] Chỉnh text - BHW-3025
 
 
 12/08/2025
