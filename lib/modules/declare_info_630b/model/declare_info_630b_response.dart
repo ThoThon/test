@@ -162,8 +162,7 @@ class DeclareInfo630bResponse {
       dotDaGiaiQuyet: json['dotDaGiaiQuyet'] ?? '',
       lyDoDieuChinh: json['lyDoDieuChinh'] ?? '',
       tuoiThai: json['tuoiThai'],
-      tuNgayDuyetTruoc:
-          DateTime.tryParse(json['tuNgayDuyetTruoc'] ?? '') ?? DateTime.now(),
+      tuNgayDuyetTruoc: DateTime.tryParse(json['tuNgayDuyetTruoc'] ?? ''),
     );
   }
 }
