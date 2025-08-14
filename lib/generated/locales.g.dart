@@ -772,6 +772,8 @@ class LocaleKeys {
   static const declareInfo_childDeathDateInvalid =
       'declareInfo_childDeathDateInvalid';
   static const declareInfo_pregnancyWeek = 'declareInfo_pregnancyWeek';
+  static const declareInfo_pregnancyWeekLimit =
+      'declareInfo_pregnancyWeekLimit';
   static const declareInfo_pregnancyWeekCannotEmpty =
       'declareInfo_pregnancyWeekCannotEmpty';
   static const declareInfo_pregnancyWeekHint = 'declareInfo_pregnancyWeekHint';
@@ -808,8 +810,10 @@ class LocaleKeys {
   static const declareInfo_bhytCardMotherHint =
       'declareInfo_bhytCardMotherHint';
   static const declareInfo_bhytCardMother = 'declareInfo_bhytCardMother';
-  static const declareInfo_cccdMotherHint = 'declareInfo_cccdMotherHint';
-  static const declareInfo_cccdMother = 'declareInfo_cccdMother';
+  static const declareInfo_cmndMotherInput = 'declareInfo_cmndMotherInput';
+  static const declareInfo_cmndMother = 'declareInfo_cmndMother';
+  static const declareInfo_cmndMotherIncorrectFormat =
+      'declareInfo_cmndMotherIncorrectFormat';
   static const declareInfo_surgeryOrUnder32Week =
       'declareInfo_surgeryOrUnder32Week';
   static const declareInfo_surgeryOrUnder32WeekHint =
@@ -1916,6 +1920,7 @@ class Locales {
         'Ngày con chết không được để trống',
     'declareInfo_childDeathDateInvalid': 'Ngày con chết không hợp lệ',
     'declareInfo_pregnancyWeek': 'Tuổi thai',
+    'declareInfo_pregnancyWeekLimit': 'Tuổi thai không được lớn hơn 45',
     'declareInfo_pregnancyWeekCannotEmpty': 'Tuổi thai không được bỏ trống',
     'declareInfo_pregnancyWeekHint': 'Nhập số tuần tuổi thai',
     'declareInfo_countChildDeath': 'Số con chết',
@@ -1943,8 +1948,10 @@ class Locales {
     'declareInfo_bhxhCodeMother': 'Mã số BHXH của mẹ',
     'declareInfo_bhytCardMotherHint': 'Nhập mã số BHYT của mẹ',
     'declareInfo_bhytCardMother': 'Mã số BHYT của mẹ',
-    'declareInfo_cccdMotherHint': 'Nhập mã số BHXH của mẹ',
-    'declareInfo_cccdMother': 'Mã số BHXH của mẹ',
+    'declareInfo_cmndMotherInput': 'Nhập số CMND của mẹ',
+    'declareInfo_cmndMother': 'Số CMND của mẹ',
+    'declareInfo_cmndMotherIncorrectFormat':
+        'Số CMND của mẹ không đúng định dạng',
     'declareInfo_surgeryOrUnder32Week': 'Phẫu thuật hoặc thai dưới 32 tuần',
     'declareInfo_surgeryOrUnder32WeekHint': 'Chọn',
     'declareInfo_inputGuardianBhxh':

@@ -579,6 +579,9 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         if (isEmpty && controller.isRequiredPregnancyWeek) {
           return LocaleKeys.declareInfo_pregnancyWeekCannotEmpty.tr;
         }
+        if (int.parse(trimmedValue) > 45) {
+          return LocaleKeys.declareInfo_pregnancyWeekLimit.tr;
+        }
         return null;
       },
       builder: (formFieldKey, validator) {
@@ -709,6 +712,9 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         final isEmpty = trimmedValue.isEmpty;
         if (isEmpty && controller.isRequiredBirthAndConutChild) {
           return LocaleKeys.declareInfo_numberChildEmpty.tr;
+        }
+        if (trimmedValue == '0') {
+          return LocaleKeys.declareInfo_numberChildInvalid.tr;
         }
         return null;
       },
@@ -1031,12 +1037,25 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Số CMND của mẹ
   Widget _buildCccdMother() {
-    return CardInputTextFormWithLabel(
-      hintText: LocaleKeys.declareInfo_cccdMotherHint.tr,
-      labelText: LocaleKeys.declareInfo_cccdMother.tr,
-      controller: controller.cccdMotherCtrl,
-      maxLengthInputForm: 20,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: '1c613fab-4442-420b-8259-f309741330b0',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (TiengViet.parse(trimmedValue) != trimmedValue) {
+          return LocaleKeys.declareInfo_cmndMotherIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        validator: validator,
+        hintText: LocaleKeys.declareInfo_cmndMotherInput.tr,
+        labelText: LocaleKeys.declareInfo_cmndMother.tr,
+        controller: controller.cccdMotherCtrl,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        maxLengthInputForm: 20,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Phẫu thuật hoặc thai dưới 32 tuần
@@ -1190,7 +1209,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       controller: controller.medicalFeeCtrl,
       inputFormatters: InputFormatterEnum.phoneNumber,
       textInputType: TextInputType.number,
-      maxLengthInputForm: 18,
+      maxLengthInputForm: 15,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
