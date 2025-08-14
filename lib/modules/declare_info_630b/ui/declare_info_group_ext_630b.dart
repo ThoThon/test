@@ -539,7 +539,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return FormFieldRegistrant<PregnancyCheckConditionModel>(
       registrarId: '0fe0020c-fbb7-40a0-9222-a71f8fde457c',
       validator: (value) {
-        if (value == null && controller.isRequiredPregnancyCondition) {
+        if (controller.pregnancyCondition.value == null &&
+            controller.isRequiredPregnancyCondition) {
           return LocaleKeys.declareInfo_pregnancyConditionCannotEmpty.tr;
         }
         return null;
@@ -549,6 +550,10 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           () => CardDropdownWithLabel<PregnancyCheckConditionModel>(
             fieldKey: formFieldKey,
             validator: validator,
+            onTapClear: () {
+              controller.pregnancyCondition.value = null;
+            },
+            enableClearIcon: true,
             autovalidateMode: controller.autoValidateMode.value,
             isRequired: controller.isRequiredPregnancyCondition,
             labelText: LocaleKeys.declareInfo_pregnancyCondition.tr,
@@ -610,6 +615,10 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return Obx(
       () => CardDropdownWithLabel<ContraceptionModel>(
         labelText: LocaleKeys.declareInfo_contraception.tr,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.contraception.value = null;
+        },
         hintText: LocaleKeys.declareInfo_contraceptionHint.tr,
         items: AppData.instance.contraception.toList(),
         display: (item) => '${item.value} - ${item.text}',
@@ -622,7 +631,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     );
   }
 
-  // Điềun kiện sinh con
+  // Điều kiện sinh con
   Widget _buildIsChildbirthConditionDropdown() {
     return Obx(
       () => CardDropdownWithLabel<ChildBirthConditionModel>(
@@ -631,6 +640,10 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         items: AppData.instance.childBirthCondition.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.childbirthCondition.value,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.childbirthCondition.value = null;
+        },
         onChanged: (value) {
           if (value == null) return;
           controller.childbirthCondition.value = value;
@@ -1093,6 +1106,10 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         items: AppData.instance.surgeryPregnancy32w.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.surgeryOrUnder32Week.value,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.surgeryOrUnder32Week.value = null;
+        },
         onChanged: (value) {
           if (value == null) return;
           controller.surgeryOrUnder32Week.value = value;
@@ -1277,6 +1294,10 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         items: AppData.instance.maternityLeave.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.maternityRest.value,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.maternityRest.value = null;
+        },
         onChanged: (value) {
           if (value == null) return;
           controller.maternityRest.value = value;
@@ -1294,6 +1315,10 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         items: AppData.instance.parentalLeave.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.parentalLeave.value,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.parentalLeave.value = null;
+        },
         onChanged: (value) {
           if (value == null) return;
           controller.parentalLeave.value = value;
@@ -1311,6 +1336,10 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         items: AppData.instance.surrogacy.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.surrogacy.value,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.surrogacy.value = null;
+        },
         onChanged: (value) {
           if (value == null) return;
           controller.surrogacy.value = value;
