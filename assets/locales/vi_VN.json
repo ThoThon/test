@@ -639,6 +639,7 @@
     "childDeathDateCannotEmpty": "Ngày con chết không được để trống",
     "childDeathDateInvalid": "Ngày con chết không hợp lệ",
     "pregnancyWeek": "Tuổi thai",
+    "pregnancyWeekLimit": "Tuổi thai không được lớn hơn 45",
     "pregnancyWeekCannotEmpty": "Tuổi thai không được bỏ trống",
     "pregnancyWeekHint": "Nhập số tuần tuổi thai",
     "countChildDeath": "Số con chết",
