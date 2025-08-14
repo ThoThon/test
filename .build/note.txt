@@ -2,6 +2,7 @@
 - [Appmobile]_Thủ tục 630b_Bắt valiadte trường [Tuổi thai] - BHW-3030
 - [Appmobile]_Thủ tục 630b_Trường [Phí giám định y khoa] chỉnh sửa nhập max ký tự - BHW-3024
 - [Appmobile]_Thủ tục 630b: Trường [Số con ] - Bắt Validate không cho phép nhập số con = 0 - BHW-3033
+- [Appmobile]_Thủ tục 630a, 630b. Cập nhật chỉnh sửa hiển thị một số trường Ngày/Tháng/Năm - BHW-3032
 
 13/08/2025
 - [Appmobile]_Thủ tục 630b_Trường [Phí giám định y khoa] dữ liệu nhập vào yêu cầu là số - BHW-3016
@@ -11,7 +12,6 @@
 - [Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con
 - [Appmobile]_Thủ tục 630b_Lỗi [Ngày mẹ chết] hiển thị báo không hợp lệ khi nhập ngày trong tương lai - BHW-3012
 - [Appmobile]_Thủ tục 630b_Trường [Số BHXH của người nuôi dưỡng (TH mẹ chết)] Chỉnh text - BHW-3025
-
 
 12/08/2025
 [Appmobile]_Thủ tục 630b_Lỗi hiển thị giá trị trường ngày sinh con - BHW-3002

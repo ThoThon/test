@@ -293,17 +293,18 @@ extension BenefitAccountInfoGroupExt630b on DeclareInfo630bPage {
           return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
         }
 
-        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-        if (toDate == null) {
-          return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
-        }
-        if (toDate.isAfter(DateTime.now())) {
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
           return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (toDate.year <= 1900 || toDate.year >= 2100) {
+        if (date.year <= 1900) {
           return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
+        }
+
+        if (date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_resolvedDateLimit.tr;
         }
 
         return null;

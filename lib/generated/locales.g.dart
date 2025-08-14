@@ -740,6 +740,7 @@ class LocaleKeys {
   static const declareInfo_resolvedPeriodEmpty =
       'declareInfo_resolvedPeriodEmpty';
   static const declareInfo_resolvedDate = 'declareInfo_resolvedDate';
+  static const declareInfo_resolvedDateLimit = 'declareInfo_resolvedDateLimit';
   static const declareInfo_resolvedDateInvalid =
       'declareInfo_resolvedDateInvalid';
   static const declareInfo_resolvedDateEmpty = 'declareInfo_resolvedDateEmpty';
@@ -749,6 +750,8 @@ class LocaleKeys {
   static const declareInfo_attachPaper = 'declareInfo_attachPaper';
   static const declareInfo_saveButton = 'declareInfo_saveButton';
   static const declareInfo_conclusionDate = 'declareInfo_conclusionDate';
+  static const declareInfo_conclusionDateLimit =
+      'declareInfo_conclusionDateLimit';
   static const declareInfo_conclusionDateCannotEmpty =
       'declareInfo_conclusionDateCannotEmpty';
   static const declareInfo_conclusionDateInvalid =
@@ -761,6 +764,8 @@ class LocaleKeys {
   static const declareInfo_childDeathDate = 'declareInfo_childDeathDate';
   static const declareInfo_childDeathDateCannotEmpty =
       'declareInfo_childDeathDateCannotEmpty';
+  static const declareInfo_childDeathDateLimit =
+      'declareInfo_childDeathDateLimit';
   static const declareInfo_childDeathDateInvalid =
       'declareInfo_childDeathDateInvalid';
   static const declareInfo_pregnancyWeek = 'declareInfo_pregnancyWeek';
@@ -783,6 +788,8 @@ class LocaleKeys {
   static const declareInfo_medicalFee = 'declareInfo_medicalFee';
   static const declareInfo_medicalFeeInput = 'declareInfo_medicalFeeInput';
   static const declareInfo_motherDeathDate = 'declareInfo_motherDeathDate';
+  static const declareInfo_motherDeathDateLimit =
+      'declareInfo_motherDeathDateLimit';
   static const declareInfo_motherDeathDateInvalid =
       'declareInfo_motherDeathDateInvalid';
   static const declareInfo_workDateInvalid = 'declareInfo_workDateInvalid';
@@ -1878,6 +1885,8 @@ class Locales {
     'declareInfo_resolvedPeriodHint': 'Đợt tháng/năm',
     'declareInfo_resolvedPeriodEmpty': 'Đợt đã giải quyết không được bỏ trống',
     'declareInfo_resolvedDate': 'Ngày đã giải quyết',
+    'declareInfo_resolvedDateLimit':
+        'Ngày đã giải quyết không được lớn hơn ngày hiện tại',
     'declareInfo_resolvedDateInvalid': 'Ngày đã giải quyết không hợp lệ',
     'declareInfo_resolvedDateEmpty': 'Ngày đã giải quyết không được bỏ trống',
     'declareInfo_adjustReason': 'Lý do điều chỉnh',
@@ -1886,6 +1895,8 @@ class Locales {
     'declareInfo_attachPaper': 'Gửi kèm hồ sơ giấy',
     'declareInfo_saveButton': 'Lưu',
     'declareInfo_conclusionDate': 'Ngày kết luận',
+    'declareInfo_conclusionDateLimit':
+        'Ngày kết luận không được lớn hơn ngày hiện tại',
     'declareInfo_conclusionDateCannotEmpty':
         'Ngày kết luận không được bỏ trống',
     'declareInfo_conclusionDateInvalid': 'Ngày kết luận không hợp lệ',
@@ -1895,6 +1906,8 @@ class Locales {
     'declareInfo_childDeathDate': 'Ngày con chết',
     'declareInfo_childDeathDateCannotEmpty':
         'Ngày con chết không được để trống',
+    'declareInfo_childDeathDateLimit':
+        'Ngày con chết không được lớn hơn ngày hiện tại',
     'declareInfo_childDeathDateInvalid': 'Ngày con chết không hợp lệ',
     'declareInfo_pregnancyWeek': 'Tuổi thai',
     'declareInfo_pregnancyWeekLimit': 'Tuổi thai không được lớn hơn 45',
@@ -1910,6 +1923,8 @@ class Locales {
     'declareInfo_medicalFee': 'Phí giám định y khoa',
     'declareInfo_medicalFeeInput': 'Nhập phí giám định y khoa',
     'declareInfo_motherDeathDate': 'Ngày mẹ chết',
+    'declareInfo_motherDeathDateLimit':
+        'Ngày mẹ chết không được lớn hơn ngày hiện tại',
     'declareInfo_motherDeathDateInvalid': 'Ngày mẹ chết không hợp lệ',
     'declareInfo_workDateInvalid': 'Ngày đi làm thực tế không hợp lệ',
     'declareInfo_workDate': 'Ngày đi làm thực tế',
