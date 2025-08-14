@@ -789,6 +789,40 @@ class LocaleKeys {
   static const declareInfo_motherDeathDate = 'declareInfo_motherDeathDate';
   static const declareInfo_motherDeathDateInvalid =
       'declareInfo_motherDeathDateInvalid';
+  static const declareInfo_workDateInvalid = 'declareInfo_workDateInvalid';
+  static const declareInfo_workDate = 'declareInfo_workDate';
+  static const declareInfo_contraception = 'declareInfo_contraception';
+  static const declareInfo_contraceptionHint = 'declareInfo_contraceptionHint';
+  static const declareInfo_childBirth = 'declareInfo_childBirth';
+  static const declareInfo_childbirthHint = 'declareInfo_childbirthHint';
+  static const declareInfo_bhxhCodeChildHint = 'declareInfo_bhxhCodeChildHint';
+  static const declareInfo_bhxhCodeChild = 'declareInfo_bhxhCodeChild';
+  static const declareInfo_bhytCardCodeChildHint =
+      'declareInfo_bhytCardCodeChildHint';
+  static const declareInfo_bhytCardCodeChild = 'declareInfo_bhytCardCodeChild';
+  static const declareInfo_bhxhCodeMotherHint =
+      'declareInfo_bhxhCodeMotherHint';
+  static const declareInfo_bhxhCodeMother = 'declareInfo_bhxhCodeMother';
+  static const declareInfo_bhytCardMotherHint =
+      'declareInfo_bhytCardMotherHint';
+  static const declareInfo_bhytCardMother = 'declareInfo_bhytCardMother';
+  static const declareInfo_cccdMotherHint = 'declareInfo_cccdMotherHint';
+  static const declareInfo_cccdMother = 'declareInfo_cccdMother';
+  static const declareInfo_surgeryOrUnder32Week =
+      'declareInfo_surgeryOrUnder32Week';
+  static const declareInfo_surgeryOrUnder32WeekHint =
+      'declareInfo_surgeryOrUnder32WeekHint';
+  static const declareInfo_inputGuardianBhxh = 'declareInfo_inputGuardianBhxh';
+  static const declareInfo_inputGuardianBhxhHint =
+      'declareInfo_inputGuardianBhxhHint';
+  static const declareInfo_maternityLeave = 'declareInfo_maternityLeave';
+  static const declareInfo_maternityLeaveHint =
+      'declareInfo_maternityLeaveHint';
+  static const declareInfo_parentalLeave = 'declareInfo_parentalLeave';
+  static const declareInfo_parentalLeaveHint = 'declareInfo_parentalLeaveHint';
+  static const declareInfo_surrogacy = 'declareInfo_surrogacy';
+  static const declareInfo_surrogacyHint = 'declareInfo_surrogacyHint';
+  static const declareInfo_pickDayOff = 'declareInfo_pickDayOff';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1891,6 +1925,34 @@ class Locales {
     'declareInfo_medicalFeeInput': 'Nhập phí giám định y khoa',
     'declareInfo_motherDeathDate': 'Ngày mẹ chết',
     'declareInfo_motherDeathDateInvalid': 'Ngày mẹ chết không hợp lệ',
+    'declareInfo_workDateInvalid': 'Ngày đi làm thực tế không hợp lệ',
+    'declareInfo_workDate': 'Ngày đi làm thực tế',
+    'declareInfo_contraception': 'Biện pháp tránh thai',
+    'declareInfo_contraceptionHint': 'Chọn biện pháp',
+    'declareInfo_childBirth': 'Điều kiện sinh con',
+    'declareInfo_childbirthHint': 'Chọn điều kiện sinh con',
+    'declareInfo_bhxhCodeChildHint': 'Nhập mã số BHXH của con',
+    'declareInfo_bhxhCodeChild': 'Mã số BHXH của con',
+    'declareInfo_bhytCardCodeChildHint': 'Nhập mã thẻ BHYT của con',
+    'declareInfo_bhytCardCodeChild': 'Mã thẻ BHYT của con',
+    'declareInfo_bhxhCodeMotherHint': 'Nhập mã số BHXH của mẹ',
+    'declareInfo_bhxhCodeMother': 'Mã số BHXH của mẹ',
+    'declareInfo_bhytCardMotherHint': 'Nhập mã số BHYT của mẹ',
+    'declareInfo_bhytCardMother': 'Mã số BHYT của mẹ',
+    'declareInfo_cccdMotherHint': 'Nhập mã số BHXH của mẹ',
+    'declareInfo_cccdMother': 'Mã số BHXH của mẹ',
+    'declareInfo_surgeryOrUnder32Week': 'Phẫu thuật hoặc thai dưới 32 tuần',
+    'declareInfo_surgeryOrUnder32WeekHint': 'Chọn',
+    'declareInfo_inputGuardianBhxh':
+        'Số BHXH của người nuôi dưỡng (TH mẹ chết)',
+    'declareInfo_inputGuardianBhxhHint': 'Nhập số BHXH',
+    'declareInfo_maternityLeave': 'Nghỉ dưỡng thai',
+    'declareInfo_maternityLeaveHint': 'Chọn nghỉ dưỡng thai',
+    'declareInfo_parentalLeave': 'Nghỉ chăm con',
+    'declareInfo_parentalLeaveHint': 'Chọn nghỉ chăm con',
+    'declareInfo_surrogacy': 'Mang thai hộ',
+    'declareInfo_surrogacyHint': 'Chọn mang thai hộ',
+    'declareInfo_pickDayOff': 'Chọn ngày nghỉ',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
