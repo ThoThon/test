@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:dio_log_sds/interceptor/dio_log_interceptor.dart';
 import 'package:v_bhxh/clean/shared/constants/const.dart';
+import 'package:v_bhxh/shares/log/dio_log.dart';
 
 class DioBuilder {
   const DioBuilder._();
@@ -18,6 +20,10 @@ class DioBuilder {
     );
 
     dio.interceptors.addAll(interceptors);
+
+    if (Diolog().showDebug) {
+      dio.interceptors.add(SDSDioLogInterceptor());
+    }
 
     return dio;
   }
