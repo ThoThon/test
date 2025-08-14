@@ -777,6 +777,9 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         if (isEmpty && controller.isRequiredChildDeathDate) {
           return LocaleKeys.declareInfo_countChildDeathCannotEmpty.tr;
         }
+        if (trimmedValue == '0') {
+          return LocaleKeys.declareInfo_numberChildInvalid.tr;
+        }
         return null;
       },
       builder: (formFieldKey, validator) {
