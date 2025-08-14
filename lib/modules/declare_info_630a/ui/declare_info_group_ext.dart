@@ -416,6 +416,10 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
               if (trimmedValue == null || trimmedValue.isEmpty) {
                 return LocaleKeys.declareInfo_bhytCardCodeEmpty.tr;
               }
+              if (trimmedValue.containsVietnamese) {
+                return LocaleKeys
+                    .declareInfo_bhytCardCodeChildIncorrectFormat.tr;
+              }
 
               return null;
             },
@@ -428,6 +432,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
                   hintText: LocaleKeys.declareInfo_bhytCardCodeChildHint.tr,
                   labelText: LocaleKeys.declareInfo_bhytCardCodeChild.tr,
                   controller: controller.bhytCardCodeChildCtrl,
+                  inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
                   isRequired: true,
                   maxLengthInputForm: 50,
                 ).paddingOnly(bottom: AppDimens.paddingSmall),
