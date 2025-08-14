@@ -579,6 +579,9 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         if (isEmpty && controller.isRequiredPregnancyWeek) {
           return LocaleKeys.declareInfo_pregnancyWeekCannotEmpty.tr;
         }
+        if (int.parse(trimmedValue) > 45) {
+          return LocaleKeys.declareInfo_pregnancyWeekLimit.tr;
+        }
         return null;
       },
       builder: (formFieldKey, validator) {
