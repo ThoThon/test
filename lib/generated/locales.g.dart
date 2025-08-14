@@ -657,7 +657,6 @@ class LocaleKeys {
   static const declareInfo_toDayBeforeFromDay =
       'declareInfo_toDayBeforeFromDay';
   static const declareInfo_fullNameEmpty = 'declareInfo_fullNameEmpty';
-  static const declareInfo_inputBHXHCode = 'declareInfo_inputBHXHCode';
   static const declareInfo_cccd = 'declareInfo_cccd';
   static const declareInfo_cccdEmpty = 'declareInfo_cccdEmpty';
   static const declareInfo_birthDayChild = 'declareInfo_birthDayChild';
@@ -670,10 +669,11 @@ class LocaleKeys {
   static const declareInfo_numberChildEmpty = 'declareInfo_numberChildEmpty';
   static const declareInfo_numberChildInvalid =
       'declareInfo_numberChildInvalid';
-  static const declareInfo_bhytCardCode = 'declareInfo_bhytCardCode';
-  static const declareInfo_bhytCardCodeIncorrectFormat =
-      'declareInfo_bhytCardCodeIncorrectFormat';
-  static const declareInfo_bhytCardCodeHint = 'declareInfo_bhytCardCodeHint';
+  static const declareInfo_bhytCardCodeChild = 'declareInfo_bhytCardCodeChild';
+  static const declareInfo_bhytCardCodeChildIncorrectFormat =
+      'declareInfo_bhytCardCodeChildIncorrectFormat';
+  static const declareInfo_bhytCardCodeChildHint =
+      'declareInfo_bhytCardCodeChildHint';
   static const declareInfo_bhytCardCodeEmpty = 'declareInfo_bhytCardCodeEmpty';
   static const declareInfo_countDay = 'declareInfo_countDay';
   static const declareInfo_countDayHint = 'declareInfo_countDayHint';
@@ -810,15 +810,14 @@ class LocaleKeys {
   static const declareInfo_childbirthHint = 'declareInfo_childbirthHint';
   static const declareInfo_bhxhCodeChildHint = 'declareInfo_bhxhCodeChildHint';
   static const declareInfo_bhxhCodeChild = 'declareInfo_bhxhCodeChild';
-  static const declareInfo_bhytCardCodeChildHint =
-      'declareInfo_bhytCardCodeChildHint';
-  static const declareInfo_bhytCardCodeChild = 'declareInfo_bhytCardCodeChild';
   static const declareInfo_bhxhCodeMotherHint =
       'declareInfo_bhxhCodeMotherHint';
   static const declareInfo_bhxhCodeMother = 'declareInfo_bhxhCodeMother';
   static const declareInfo_bhytCardMotherHint =
       'declareInfo_bhytCardMotherHint';
   static const declareInfo_bhytCardMother = 'declareInfo_bhytCardMother';
+  static const declareInfo_bhytCardMotherIncorrectFormat =
+      'declareInfo_bhytCardMotherIncorrectFormat';
   static const declareInfo_cmndMotherInput = 'declareInfo_cmndMotherInput';
   static const declareInfo_cmndMother = 'declareInfo_cmndMother';
   static const declareInfo_cmndMotherIncorrectFormat =
@@ -828,6 +827,8 @@ class LocaleKeys {
   static const declareInfo_surgeryOrUnder32WeekHint =
       'declareInfo_surgeryOrUnder32WeekHint';
   static const declareInfo_inputGuardianBhxh = 'declareInfo_inputGuardianBhxh';
+  static const declareInfo_inputGuardianBhxhIncorrectFormat =
+      'declareInfo_inputGuardianBhxhIncorrectFormat';
   static const declareInfo_inputGuardianBhxhHint =
       'declareInfo_inputGuardianBhxhHint';
   static const declareInfo_maternityLeave = 'declareInfo_maternityLeave';
@@ -1835,7 +1836,6 @@ class Locales {
     'declareInfo_toDayInvalid': 'Đến ngày không hợp lệ',
     'declareInfo_toDayBeforeFromDay': 'Đến ngày không được nhỏ hơn Từ ngày',
     'declareInfo_fullNameEmpty': 'Họ và tên không được bỏ trống',
-    'declareInfo_inputBHXHCode': 'Nhập mã số BHXH',
     'declareInfo_cccd': 'Số CCCD',
     'declareInfo_cccdEmpty': 'Số CCCD không được bỏ trống',
     'declareInfo_birthDayChild': 'Ngày sinh con',
@@ -1845,10 +1845,10 @@ class Locales {
     'declareInfo_numberChildHint': 'Nhập số con',
     'declareInfo_numberChildEmpty': 'Số con không được bỏ trống',
     'declareInfo_numberChildInvalid': 'Số con không hợp lệ',
-    'declareInfo_bhytCardCode': 'Mã thẻ BHYT của con',
-    'declareInfo_bhytCardCodeIncorrectFormat':
+    'declareInfo_bhytCardCodeChild': 'Mã thẻ BHYT của con',
+    'declareInfo_bhytCardCodeChildIncorrectFormat':
         'Mã thẻ BHYT của con không đúng định dạng',
-    'declareInfo_bhytCardCodeHint': 'Nhập mã thẻ BHYT của con',
+    'declareInfo_bhytCardCodeChildHint': 'Nhập mã thẻ BHYT của con',
     'declareInfo_bhytCardCodeEmpty': 'Mã thẻ BHYT của con không được bỏ trống',
     'declareInfo_countDay': 'Tổng số ngày',
     'declareInfo_countDayHint': 'Nhập số ngày',
@@ -1961,12 +1961,12 @@ class Locales {
     'declareInfo_childbirthHint': 'Chọn điều kiện sinh con',
     'declareInfo_bhxhCodeChildHint': 'Nhập mã số BHXH của con',
     'declareInfo_bhxhCodeChild': 'Mã số BHXH của con',
-    'declareInfo_bhytCardCodeChildHint': 'Nhập mã thẻ BHYT của con',
-    'declareInfo_bhytCardCodeChild': 'Mã thẻ BHYT của con',
     'declareInfo_bhxhCodeMotherHint': 'Nhập mã số BHXH của mẹ',
     'declareInfo_bhxhCodeMother': 'Mã số BHXH của mẹ',
-    'declareInfo_bhytCardMotherHint': 'Nhập mã số BHYT của mẹ',
-    'declareInfo_bhytCardMother': 'Mã số BHYT của mẹ',
+    'declareInfo_bhytCardMotherHint': 'Nhập mã thẻ BHYT của mẹ',
+    'declareInfo_bhytCardMother': 'Mã thẻ BHYT của mẹ',
+    'declareInfo_bhytCardMotherIncorrectFormat':
+        'Mã thẻ BHYT của mẹ không đúng định dạng',
     'declareInfo_cmndMotherInput': 'Nhập số CMND của mẹ',
     'declareInfo_cmndMother': 'Số CMND của mẹ',
     'declareInfo_cmndMotherIncorrectFormat':
@@ -1975,6 +1975,8 @@ class Locales {
     'declareInfo_surgeryOrUnder32WeekHint': 'Chọn',
     'declareInfo_inputGuardianBhxh':
         'Số BHXH của người nuôi dưỡng (TH mẹ chết)',
+    'declareInfo_inputGuardianBhxhIncorrectFormat':
+        'Số BHXH của người nuôi dưỡng không đúng định dạng',
     'declareInfo_inputGuardianBhxhHint': 'Nhập số BHXH',
     'declareInfo_maternityLeave': 'Nghỉ dưỡng thai',
     'declareInfo_maternityLeaveHint': 'Chọn nghỉ dưỡng thai',

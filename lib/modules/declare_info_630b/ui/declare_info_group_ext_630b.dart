@@ -777,7 +777,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
         if (trimmedValue.containsVietnamese) {
-          return LocaleKeys.declareInfo_bhytCardCodeIncorrectFormat.tr;
+          return LocaleKeys.declareInfo_bhytCardCodeChildIncorrectFormat.tr;
         }
         return null;
       },
@@ -1043,12 +1043,25 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã thẻ BHYT của mẹ
   Widget _buildBhytCardMother() {
-    return CardInputTextFormWithLabel(
-      hintText: LocaleKeys.declareInfo_bhytCardMotherHint.tr,
-      labelText: LocaleKeys.declareInfo_bhytCardMother.tr,
-      controller: controller.bhytCardMotherCtrl,
-      maxLengthInputForm: 50,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: '15da0b2f-b02f-40d7-a65c-ecc7289dd02d',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_bhytCardMotherIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        hintText: LocaleKeys.declareInfo_bhytCardMotherHint.tr,
+        labelText: LocaleKeys.declareInfo_bhytCardMother.tr,
+        controller: controller.bhytCardMotherCtrl,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        maxLengthInputForm: 50,
+        validator: validator,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Số CMND của mẹ
@@ -1237,12 +1250,25 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Số BHXH của người nuôi dưỡng(TH mẹ chết)
   Widget _buildGuardianBhxh() {
-    return CardInputTextFormWithLabel(
-      hintText: LocaleKeys.declareInfo_inputGuardianBhxhHint.tr,
-      labelText: LocaleKeys.declareInfo_inputGuardianBhxh.tr,
-      controller: controller.guardianBhxhCtrl,
-      maxLengthInputForm: 30,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: 'bc501fee-e687-4369-818b-6c3602c55bc2',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_inputGuardianBhxhIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        hintText: LocaleKeys.declareInfo_inputGuardianBhxhHint.tr,
+        labelText: LocaleKeys.declareInfo_inputGuardianBhxh.tr,
+        controller: controller.guardianBhxhCtrl,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        maxLengthInputForm: 30,
+        validator: validator,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Nghỉ dưỡng thai
