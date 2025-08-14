@@ -9,6 +9,8 @@ import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
 import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
+import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
+import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
 import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 
 import 'base_bindings.dart';
@@ -65,7 +67,10 @@ class AppBinding extends BaseBindings {
     ].wait;
     Get.put<AppNavigator>(AppNavigatorImpl(), permanent: true);
     Get.put(ExceptionHandler(nav: sl()), permanent: true);
-
+    Get.put<BaseUrlHelperCl>(
+      BaseUrlHelperClImpl(sl(), sl(), sl()),
+      permanent: true,
+    );
     Get.put(HeaderInterceptor(sl()), permanent: true);
     Get.put(HeaderUploadInterceptor(sl()), permanent: true);
     Get.put(AccessTokenInterceptor(sl()), permanent: true);
