@@ -818,18 +818,18 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
         }
 
-        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-        if (toDate == null) {
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
           return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (toDate.year <= 1900 || toDate.year >= 2100) {
+        if (date.year <= 1900) {
           return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
         }
 
-        if (toDate.isAfter(DateTime.now())) {
-          return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
+        if (date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_childDeathDateLimit.tr;
         }
         return null;
       },
@@ -1089,8 +1089,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (date.year <= 1900 || date.isAfter(DateTime.now())) {
+        if (date.year <= 1900) {
           return LocaleKeys.declareInfo_motherDeathDateInvalid.tr;
+        }
+        if (date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_motherDeathDateLimit.tr;
         }
 
         return null;
@@ -1153,8 +1156,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (date.year <= 1900 || date.isAfter(DateTime.now())) {
+        if (date.year <= 1900) {
           return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
+        }
+        if (date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_conclusionDateLimit.tr;
         }
 
         return null;
