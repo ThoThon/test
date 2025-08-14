@@ -10,6 +10,7 @@ class WorkConditionModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng WorkConditionData để parse Json')
   factory WorkConditionModel.fromJson(Map<String, dynamic> json) {
     return WorkConditionModel(
       value: json['value'] ?? '',

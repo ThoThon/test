@@ -10,6 +10,7 @@ class SurrogacyModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng SurrogacyData để parse Json')
   factory SurrogacyModel.fromJson(Map<String, dynamic> json) {
     return SurrogacyModel(
       value: json['value'] ?? '',

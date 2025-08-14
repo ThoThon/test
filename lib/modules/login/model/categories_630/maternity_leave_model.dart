@@ -10,6 +10,7 @@ class MaternityLeaveModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng MaternityLeaveData để parse Json')
   factory MaternityLeaveModel.fromJson(Map<String, dynamic> json) {
     return MaternityLeaveModel(
       value: json['value'] ?? '',

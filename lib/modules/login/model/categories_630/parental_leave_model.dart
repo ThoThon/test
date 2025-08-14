@@ -10,6 +10,7 @@ class ParentalLeaveModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng ParentalLeaveData để parse Json')
   factory ParentalLeaveModel.fromJson(Map<String, dynamic> json) {
     return ParentalLeaveModel(
       value: json['value'] ?? '',

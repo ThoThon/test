@@ -10,6 +10,7 @@ class SurgeryPregnancy32wModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng SurgeryPregnancy32wData để parse Json')
   factory SurgeryPregnancy32wModel.fromJson(Map<String, dynamic> json) {
     return SurgeryPregnancy32wModel(
       value: json['value'] ?? '',

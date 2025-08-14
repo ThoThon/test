@@ -12,6 +12,7 @@ class ReceiveFormModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng ReceiveFormData để parse Json')
   factory ReceiveFormModel.fromJson(Map<String, dynamic> json) {
     return ReceiveFormModel(
       value: json['value'] ?? '',

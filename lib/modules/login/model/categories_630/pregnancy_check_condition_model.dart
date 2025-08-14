@@ -10,6 +10,7 @@ class PregnancyCheckConditionModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng PregnancyCheckConditionData để parse Json')
   factory PregnancyCheckConditionModel.fromJson(Map<String, dynamic> json) {
     return PregnancyCheckConditionModel(
       value: json['value'] ?? '',

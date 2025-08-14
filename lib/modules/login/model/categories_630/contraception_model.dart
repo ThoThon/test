@@ -10,6 +10,7 @@ class ContraceptionModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng ContraceptionData để parse Json')
   factory ContraceptionModel.fromJson(Map<String, dynamic> json) {
     return ContraceptionModel(
       value: json['value'] ?? '',

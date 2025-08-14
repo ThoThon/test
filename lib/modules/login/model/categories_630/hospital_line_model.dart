@@ -10,6 +10,7 @@ class HospitalLineModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng HospitalLineData để parse Json')
   factory HospitalLineModel.fromJson(Map<String, dynamic> json) {
     return HospitalLineModel(
       value: json['value'] ?? '',

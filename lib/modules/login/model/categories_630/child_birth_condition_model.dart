@@ -10,6 +10,7 @@ class ChildBirthConditionModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng ChildBirthConditionData để parse Json')
   factory ChildBirthConditionModel.fromJson(Map<String, dynamic> json) {
     return ChildBirthConditionModel(
       value: json['value'] ?? '',

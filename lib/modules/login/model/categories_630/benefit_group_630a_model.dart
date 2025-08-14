@@ -12,6 +12,7 @@ class BenefitGroup630aModel extends Equatable {
     required this.text,
   });
 
+  @Deprecated('Sử dụng BenefitGroup630aData để parse Json')
   factory BenefitGroup630aModel.fromJson(Map<String, dynamic> json) {
     return BenefitGroup630aModel(
       value: json['value'] ?? '',

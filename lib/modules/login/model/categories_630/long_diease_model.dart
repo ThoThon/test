@@ -16,6 +16,8 @@ class LongDieaseModel extends Equatable {
     required this.name,
     required this.code,
   });
+
+  @Deprecated('Sử dụng LongDieaseData để parse Json')
   factory LongDieaseModel.fromJson(Map<String, dynamic> json) {
     return LongDieaseModel(
       id: json["key"] ?? "",
