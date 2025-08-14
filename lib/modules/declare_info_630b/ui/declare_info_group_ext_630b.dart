@@ -1186,7 +1186,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       controller: controller.medicalFeeCtrl,
       inputFormatters: InputFormatterEnum.phoneNumber,
       textInputType: TextInputType.number,
-      maxLengthInputForm: 18,
+      maxLengthInputForm: 15,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
