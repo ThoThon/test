@@ -268,6 +268,50 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     receiveForm.value = method;
   }
 
+  void onChangeDeclareMethod(DeclareForm630Model? method) {
+    if (method == null) {
+      return;
+    }
+    declareForm.value = method;
+
+    // Nếu chọn hình thức kê khai khác "Phát sinh" (1) thì reset các trường liên quan
+    // REF: BHW-3039
+    if (method.value != declareMethodArisingValue) {
+      serialNumberCtrl.clear();
+      pregnancyCondition.value = null;
+      pregnancyWeekCtrl.clear();
+      contraception.value = null;
+      childbirthCondition.value = null;
+      birthDayChildCtrl.clear();
+      numberChildCtrl.clear();
+      bhxhCodeChildCtrl.clear();
+      bhytCardCodeChildCtrl.clear();
+      cccdMotherCtrl.clear();
+      surgeryOrUnder32Week.value = null;
+      motherDeathDateCtrl.clear();
+      conclusionDateCtrl.clear();
+      medicalFeeCtrl.clear();
+      guardianBhxhCtrl.clear();
+      maternityRest.value = null;
+      parentalLeave.value = null;
+      surrogacy.value = null;
+      supplementalPeriodCtrl.clear();
+      numberChildDeathCtrl.clear();
+      childDeathDateCtrl.clear();
+      adoptionDateCtrl.clear();
+      returnWorkDateCtrl.clear();
+      bhxhCodeMotherCtrl.clear();
+      bhytCardMotherCtrl.clear();
+    }
+
+    // REF: BHW-3039
+    if (method.value != declareMethodAdjustValue) {
+      resolvedPeriodCtrl.clear();
+      resolvedDateCtrl.clear();
+      adjustReasonCtrl.clear();
+    }
+  }
+
   void mapFrom630bDetail(DeclareInfo630bResponse detail) {
     id = detail.id;
 
