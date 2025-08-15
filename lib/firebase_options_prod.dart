@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
+/// import 'firebase_options_prod.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
@@ -26,7 +26,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -50,20 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAcqiSjGVXx312Vym5HJmvlo5_X1u0VUv8',
-    appId: '1:457157614636:android:0976dbb7853c1458318589',
-    messagingSenderId: '457157614636',
-    projectId: 'vbhxh-viettel',
-    storageBucket: 'vbhxh-viettel.firebasestorage.app',
+    apiKey: 'AIzaSyDjGxljpsC9eVL2XASJrMSdKb9dhvCuh1Q',
+    appId: '1:944038103145:android:d4b9b96b1d0e35bb1d7af8',
+    messagingSenderId: '944038103145',
+    projectId: 'vbhxh-prod',
+    storageBucket: 'vbhxh-prod.firebasestorage.app',
   );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAIZL6hy_p6UJf13VoJZT08ExRa7Rl9ygI',
-    appId: '1:457157614636:ios:bf268f5845dea3c3318589',
-    messagingSenderId: '457157614636',
-    projectId: 'vbhxh-viettel',
-    storageBucket: 'vbhxh-viettel.firebasestorage.app',
-    iosBundleId: 'com.viettel.vbhxh',
-  );
-
 }

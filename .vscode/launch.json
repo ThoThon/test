@@ -48,7 +48,7 @@
             "flutterMode": "debug",
             "args": [
                 "--flavor",
-                "dev",
+                "uat",
                 "--target",
                 "lib/main_uat.dart"
             ]
@@ -61,7 +61,7 @@
             "flutterMode": "release",
             "args": [
                 "--flavor",
-                "dev",
+                "uat",
                 "--target",
                 "lib/main_uat.dart"
             ]
@@ -74,7 +74,7 @@
             "flutterMode": "profile",
             "args": [
                 "--flavor",
-                "dev",
+                "uat",
                 "--target",
                 "lib/main_uat.dart"
             ]
