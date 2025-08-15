@@ -3,7 +3,7 @@
 # Feel free to reuse and adapt this script for your own projects
 
 if [[ $# -eq 0 ]]; then
-  echo "Error: No environment specified. Use 'dev', 'prod'."
+  echo "Error: No environment specified. Use 'dev', 'uat' or 'prod'."
   exit 1
 fi
 
