@@ -112,6 +112,8 @@
     "businessIndustry": "Ngành nghề sản xuất",
     "representInfo": "Thông tin người đại diện",
     "transactionPersonInfo": "Thông tin người giao dịch",
+    "transactionWayIsEmpty": "Phương thức đóng không được để trống",
+    "receiveMethodIsEmpty": "Phương thức nhận kết quả không được để trống",
     "represent": "Người đại diện",
     "representCannotEmpty": "Người đại diện không được bỏ trống",
     "position": "Chức vụ",

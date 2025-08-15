@@ -41,6 +41,7 @@
 - [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường Tuổi thai - BHW-2962
 - [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc trường Điều kiện khám thai - BHW-2996
 - [Appmobile]_Thủ tục 630b_Điều kiện bắt buộc kê khai trường số con chết - BHW-2965
+- [Appmobile]_Màn thông tin đơn vị: Bổ sung validate trường Đăng ký nhận kết quả - BHW-2981
 
 09/08/2025
 - [Appmobile]_Thủ tục 630b_Bổ sung api Xóa toàn bộ hồ sơ 630b - BHW-2978
