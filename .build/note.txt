@@ -1,3 +1,6 @@
+15/08/2025
+- [Appmobile]_Thủ tục 630b_Lỗi maxlength trường [Số BHXH của người nuôi dưỡng] - BHW-3050
+
 14/08/2025
 - [Appmobile]_Lỗi unikey - BHW-3001
 - [Appmobile]_Thủ tục 630b_Bắt valiadte trường [Tuổi thai] - BHW-3030

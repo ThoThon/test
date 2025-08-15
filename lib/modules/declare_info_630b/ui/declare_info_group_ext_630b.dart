@@ -1279,7 +1279,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         labelText: LocaleKeys.declareInfo_inputGuardianBhxh.tr,
         controller: controller.guardianBhxhCtrl,
         inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
-        maxLengthInputForm: 30,
+        maxLengthInputForm: 50,
         validator: validator,
       ).paddingOnly(bottom: AppDimens.paddingSmall),
     );
