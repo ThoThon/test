@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
+/// import 'firebase_options_uat.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAcqiSjGVXx312Vym5HJmvlo5_X1u0VUv8',
-    appId: '1:457157614636:android:0976dbb7853c1458318589',
-    messagingSenderId: '457157614636',
-    projectId: 'vbhxh-viettel',
-    storageBucket: 'vbhxh-viettel.firebasestorage.app',
+    apiKey: 'AIzaSyAOl9QQ7JB1nwJLQG1DN-18tLxvGPlAZsM',
+    appId: '1:910531596124:android:01bf37928cfa1f5c5a7b99',
+    messagingSenderId: '910531596124',
+    projectId: 'vbhxh-uat',
+    storageBucket: 'vbhxh-uat.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAIZL6hy_p6UJf13VoJZT08ExRa7Rl9ygI',
-    appId: '1:457157614636:ios:bf268f5845dea3c3318589',
-    messagingSenderId: '457157614636',
-    projectId: 'vbhxh-viettel',
-    storageBucket: 'vbhxh-viettel.firebasestorage.app',
-    iosBundleId: 'com.viettel.vbhxh',
+    apiKey: 'AIzaSyByZTEXKGqRvAU4sp-3xEeMlKmU-ENOKDU',
+    appId: '1:910531596124:ios:6afe8c11b4c83b6c5a7b99',
+    messagingSenderId: '910531596124',
+    projectId: 'vbhxh-uat',
+    storageBucket: 'vbhxh-uat.firebasestorage.app',
+    iosBundleId: 'com.viettel.ttcntt.vbhxh.uat',
   );
 
 }

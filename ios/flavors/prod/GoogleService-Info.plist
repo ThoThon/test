@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyALiSKpkz_KwrwADON7-RWqwWvgycyZZTc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>944038103145</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.viettel.ttcntt.vbhxh</string>
+	<key>PROJECT_ID</key>
+	<string>vbhxh-prod</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vbhxh-prod.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:944038103145:ios:7a7137dc768557161d7af8</string>
+</dict>
+</plist>

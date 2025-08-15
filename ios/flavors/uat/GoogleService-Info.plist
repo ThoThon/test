@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyAIZL6hy_p6UJf13VoJZT08ExRa7Rl9ygI</string>
+	<string>AIzaSyByZTEXKGqRvAU4sp-3xEeMlKmU-ENOKDU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>457157614636</string>
+	<string>910531596124</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.viettel.vbhxh</string>
+	<string>com.viettel.ttcntt.vbhxh.uat</string>
 	<key>PROJECT_ID</key>
-	<string>vbhxh-viettel</string>
+	<string>vbhxh-uat</string>
 	<key>STORAGE_BUCKET</key>
-	<string>vbhxh-viettel.firebasestorage.app</string>
+	<string>vbhxh-uat.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:457157614636:ios:bf268f5845dea3c3318589</string>
+	<string>1:910531596124:ios:6afe8c11b4c83b6c5a7b99</string>
 </dict>
 </plist>
