@@ -73,7 +73,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
       ngayNghiTuan: weeklyDayOffString,
       soSeriCT: serialNumberCtrl.text,
-      ngaySinhCon: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
+      ngaySinhCon: convertStringToDateSafe(birthDayChildCtrl.text, PATTERN_1),
       soCon: int.tryParse(numberChildCtrl.text.trim()),
       soCCHoacThaiCL: int.tryParse(numberChildDeathCtrl.text.trim()),
       dieuKienKhamThai: pregnancyCondition.value?.value ?? '',
