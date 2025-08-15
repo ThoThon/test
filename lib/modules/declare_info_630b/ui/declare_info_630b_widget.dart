@@ -10,6 +10,7 @@ extension DeclareInfo630bWidget on DeclareInfo630bPage {
             child: Form(
               key: controller.formKey,
               child: SingleChildScrollView(
+                controller: controller.scrollController,
                 child: Column(
                   children: [
                     _buildGroupPersonInfo(),

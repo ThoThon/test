@@ -265,6 +265,20 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       selectedBank.value = null;
     }
 
+    // Scroll đến cuối màn hình khi chọn "Chi trả qua ATM"
+    // REF: BHW-3051
+    if (receiveForm.value != method && method.value == ATMPaymentValue) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (scrollController.hasClients) {
+          scrollController.animateTo(
+            scrollController.position.maxScrollExtent,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.ease,
+          );
+        }
+      });
+    }
+
     receiveForm.value = method;
   }
 
