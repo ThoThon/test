@@ -1,6 +1,7 @@
 15/08/2025
 - [Appmobile]_Thủ tục 630b_Lỗi maxlength trường [Số BHXH của người nuôi dưỡng] - BHW-3050
 - Bản mới do Hiệp test Mac mới hẹ hẹ hẹ
+- [Appmobile]_Thủ tục 630b_Lỗi trường [Ngày sinh con] đang được tự động lưu theo Trường [Từ ngày] - BHW-3055
 
 14/08/2025
 - [Appmobile]_Lỗi unikey - BHW-3001
