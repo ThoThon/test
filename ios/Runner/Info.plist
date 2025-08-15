@@ -10,7 +10,7 @@
 		<string>en-US</string>
 	</array>
 	<key>CFBundleDisplayName</key>
-	<string>vBHXH</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -59,30 +59,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<!-- Start NFC Configuration Section -->
-	<!-- <key>NFCReaderUsageDescription</key>
-	<string>Quét thẻ NFC</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>nfc</string>
-	</array>
-	<key>com.apple.developer.nfc.readersession.felica.systemcodes</key>
-	<array>
-		<string>12FC</string>
-		<string>6A82</string>
-	</array>
-	<key>com.apple.developer.nfc.readersession.formats</key>
-	<array>
-		<string>TAG</string>
-		<string>PACE</string>
-	</array>
-	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
-	<array>
-		<string>A0000002471001</string>
-		<string>A0000002472001</string>
-		<string>A000000151000000</string>
-		<string>D2760000850101</string>
-	</array> -->
-	<!-- End NFC Configuration Section -->
 </dict>
 </plist>
