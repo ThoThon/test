@@ -28,7 +28,7 @@ case $1 in
     ;;
   prod)
     flutterfire config \
-      --project=vindio-prod \
+      --project=vbhxh-prod \
       --out=lib/firebase_options_prod.dart \
       --ios-bundle-id=com.viettel.ttcntt.vbhxh \
       --ios-out=ios/flavors/prod/GoogleService-Info.plist \
