@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
-sh .build/ios.sh
-sh .build/android.sh
+sh .build/dev/ios.sh
+sh .build/dev/android.sh
 echo '-------------------'
 echo 'Build All done'
 echo '-------------------'
