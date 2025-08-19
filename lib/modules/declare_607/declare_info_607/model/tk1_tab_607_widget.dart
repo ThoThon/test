@@ -746,7 +746,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
   }
 
   Widget _buildSelectProvinceKCB() {
-    return FormFieldRegistrant<ProvinceOldModel>(
+    return FormFieldRegistrant<ProvinceModel>(
       registrarId: '40420b9a-4cc6-429c-b28d-6de0a6f48f5a',
       validator: (value) {
         if (controller.tk1State.provinceKCB.value == null) {
@@ -757,14 +757,14 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return UtilWidget.buildCardBottomSheetSelect2<ProvinceOldModel>(
+            return UtilWidget.buildCardBottomSheetSelect2<ProvinceModel>(
               fieldKey: fieldKey,
               validator: validator,
               label: LocaleKeys.declareInfo_provinceKCB.tr,
               // hintText: LocaleKeys.declareInfo_selectProvinceKCB.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<ProvinceOldModel>(
+                  BottomSheetSearch<ProvinceModel>(
                     maxLength: 20,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
                     listFilter: AppData.instance.provinceOld.toList(),

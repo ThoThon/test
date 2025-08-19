@@ -4,7 +4,6 @@ import 'package:v_bhxh/modules/declare/family_member_detail/model/family_member.
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
 import 'package:v_bhxh/modules/login/model/province_model.dart';
-import 'package:v_bhxh/modules/login/model/province_old_model.dart';
 import 'package:v_bhxh/modules/login/model/ward_model.dart';
 import 'package:v_bhxh/modules/select_staff/model/select_staff_response.dart';
 import 'package:v_bhxh/modules/src.dart';
@@ -495,7 +494,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
-  void onChangeProvinceKCB(ProvinceOldModel value) {
+  void onChangeProvinceKCB(ProvinceModel value) {
     if (tk1State.provinceKCB.value != value) {
       // Xóa bệnh viện nơi KCB khi thay đổi tỉnh nơi KCB
       tk1State.hospitalKCB.value = null;

@@ -10,7 +10,7 @@ class Tk1DetailResponse {
   final DistrictModel? noiNhanHuyen;
   final WardModel? noiNhanXa;
   final String? noiNhanDiaChiChiTiet;
-  final ProvinceOldModel? benhVienTinh;
+  final ProvinceModel? benhVienTinh;
   final Hospital? benhVien;
   final String? dienThoaiLienHe;
   final bool laChuHo;
@@ -67,7 +67,7 @@ class Tk1DetailResponse {
           : null,
       noiNhanDiaChiChiTiet: json['noiNhanDiaChiChiTiet'],
       benhVienTinh: json['benhVienTinh'] != null
-          ? ProvinceOldModel.fromJson(json['benhVienTinh'])
+          ? ProvinceModel.fromJson(json['benhVienTinh'])
           : null,
       benhVien:
           json['benhVien'] != null ? Hospital.fromJson(json['benhVien']) : null,

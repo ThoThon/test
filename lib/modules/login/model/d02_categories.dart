@@ -9,7 +9,7 @@ class D02Categories {
   final Set<PositionModel> positions;
   final Set<BirthTypeModel> birthTypes;
   final Set<ReceiveResultModel> receiveResults;
-  final Set<ProvinceOldModel> provinceOld;
+  final Set<ProvinceModel> provinceOld;
 
   const D02Categories({
     required this.declarationTypes,
@@ -58,9 +58,9 @@ class D02Categories {
               .toSet() ??
           <ReceiveResultModel>{},
       provinceOld: (json['tinhOlds'] as List?)
-              ?.map((e) => ProvinceOldModel.fromJson(e))
+              ?.map((e) => ProvinceModel.fromJson(e))
               .toSet() ??
-          <ProvinceOldModel>{},
+          <ProvinceModel>{},
     );
   }
 }
