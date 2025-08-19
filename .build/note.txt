@@ -54,6 +54,7 @@
 - Sửa lỗi không thể cập nhật thông tin đơn vị khi trường lương cơ sở rỗng
 - Loại bỏ việc reset mã hồ sơ khi thay đổi hình thức kê khai - BHW-2949
 - [Appmobile]_Bổ sung popup thông báo hiển thị khi api trả về statuscode 429 - BHW-2985
+- [Appmobile]_Thủ tục 600,607, 608, 610, 612, 613 - Tờ khai TK1 + Màn Đăng ký cấp mã - Cập nhật danh mục hành chính 2 cấp
 
 08/08/2025
 - [Appmobile]_Chỉnh sửa call api /api/HoSo630a/update-ms - BHW-2972

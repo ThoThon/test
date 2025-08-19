@@ -147,12 +147,12 @@ class Tk1Request607 {
       danTocId: tk1State.selectedEthnic.value?.value,
       quocTichId: tk1State.selectedNationality.value?.value,
       khaiSinhTinhId: tk1State.provinceOfBirth.value?.id,
-      khaiSinhHuyenId: tk1State.districtOfBirth.value?.id,
+      khaiSinhHuyenId: null, // Do do đã bỏ huyện
       khaiSinhXaId: tk1State.wardOfBirth.value?.id,
       diaChiKhaiSinh: tk1State.birthAddressTextCtrl.text.trim(),
       trungDiaChiKhaiSinh: tk1State.isDuplicateBirthAddress.value,
       noiNhanTinhId: tk1State.provinceReceive.value?.id,
-      noiNhanHuyenId: tk1State.districtReceive.value?.id,
+      noiNhanHuyenId: null, // Do do đã bỏ huyện
       noiNhanXaId: tk1State.wardReceive.value?.id,
       noiNhanDiaChiChiTiet: tk1State.addressReceiveTextCtrl.text.trim(),
       benhVienTinhId: tk1State.provinceKCB.value?.id,
@@ -162,14 +162,14 @@ class Tk1Request607 {
       hoSoKemTheo: tk1State.attachedProfileTextCtrl.text.trim(),
       dangKyNhanKetQua: tk1State.receiveResult.value.code,
       nhanBanGiayTinhId: tk1State.provinceReceivePaper.value?.id,
-      nhanBanGiayHuyenId: tk1State.districtReceivePaper.value?.id,
+      nhanBanGiayHuyenId: null, // Do do đã bỏ huyện
       nhanBanGiayXaId: tk1State.wardReceivePaper.value?.id,
       diaChiNhanBanGiay: tk1State.addressReceivePaperTextCtrl.text.trim(),
       laChuHo: tk1State.isParticipantHeadOfHousehold.value,
       hoTenChuHo: tk1State.headOfHouseholdTextCtrl.text.trim(),
       chuHoSoCccd: tk1State.headOfHouseholdCCCDTextCtrl.text.trim(),
       chuHoThuongTruTinhId: tk1State.provinceTT.value?.id,
-      chuHoThuongTruHuyenId: tk1State.districtTT.value?.id,
+      chuHoThuongTruHuyenId: null, // Do do đã bỏ huyện
       chuHoThuongTruXaId: tk1State.wardTT.value?.id,
       diaChiThuongTruChuHo: tk1State.addressTTTextCtrl.text.trim(),
       xuatD01: tk1State.isGenerateD01Data.value,

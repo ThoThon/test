@@ -53,9 +53,6 @@ class Tk1State607 {
   /// Tỉnh khai sinh *
   final provinceOfBirth = Rxn<ProvinceModel>();
 
-  /// Huyện khai sinh *
-  final districtOfBirth = Rxn<DistrictModel>();
-
   /// Xã khai sinh *
   final wardOfBirth = Rxn<WardModel>();
 
@@ -67,9 +64,6 @@ class Tk1State607 {
 
   /// Tỉnh nơi nhận *
   final provinceReceive = Rxn<ProvinceModel>();
-
-  /// Huyện nơi nhận *
-  final districtReceive = Rxn<DistrictModel>();
 
   /// Xã nơi nhận *
   final wardReceive = Rxn<WardModel>();
@@ -96,9 +90,6 @@ class Tk1State607 {
   /// Tỉnh nhận hồ sơ giấy
   final provinceReceivePaper = Rxn<ProvinceModel>();
 
-  /// Huyện nhận hồ sơ giấy
-  final districtReceivePaper = Rxn<DistrictModel>();
-
   /// Xã nhận hồ sơ giấy
   final wardReceivePaper = Rxn<WardModel>();
 
@@ -119,9 +110,6 @@ class Tk1State607 {
 
   /// Tỉnh thường trú
   final provinceTT = Rxn<ProvinceModel>();
-
-  /// Huyện thường trú
-  final districtTT = Rxn<DistrictModel>();
 
   /// Xã thường trú
   final wardTT = Rxn<WardModel>();
@@ -182,10 +170,6 @@ class Tk1State607 {
       provinceOfBirth.value = tk1Ts.khaiSinhTinh;
     }
 
-    if (tk1Ts.khaiSinhHuyen != null) {
-      districtOfBirth.value = tk1Ts.khaiSinhHuyen;
-    }
-
     if (tk1Ts.khaiSinhXa != null) {
       wardOfBirth.value = tk1Ts.khaiSinhXa;
     }
@@ -198,10 +182,6 @@ class Tk1State607 {
 
     if (tk1Ts.noiNhanTinh != null) {
       provinceReceive.value = tk1Ts.noiNhanTinh;
-    }
-
-    if (tk1Ts.noiNhanHuyen != null) {
-      districtReceive.value = tk1Ts.noiNhanHuyen;
     }
 
     if (tk1Ts.noiNhanXa != null) {
@@ -238,10 +218,6 @@ class Tk1State607 {
       provinceReceivePaper.value = tk1Ts.nhanBanGiayTinh;
     }
 
-    if (tk1Ts.nhanBanGiayHuyen != null) {
-      districtReceivePaper.value = tk1Ts.nhanBanGiayHuyen;
-    }
-
     if (tk1Ts.nhanBanGiayXa != null) {
       wardReceivePaper.value = tk1Ts.nhanBanGiayXa;
     }
@@ -262,10 +238,6 @@ class Tk1State607 {
 
     if (tk1Ts.chuHoThuongTruTinh != null) {
       provinceTT.value = tk1Ts.chuHoThuongTruTinh;
-    }
-
-    if (tk1Ts.chuHoThuongTruHuyen != null) {
-      districtTT.value = tk1Ts.chuHoThuongTruHuyen;
     }
 
     if (tk1Ts.chuHoThuongTruXa != null) {
@@ -307,15 +279,11 @@ class Tk1State607 {
 
     provinceOfBirth.value = staff.khaiSinhTinh;
 
-    districtOfBirth.value = staff.khaiSinhHuyen;
-
     wardOfBirth.value = staff.khaiSinhXa;
 
     birthAddressTextCtrl.text = staff.diaChiKhaiSinh?.trim() ?? '';
 
     provinceReceive.value = staff.noiNhanTinh;
-
-    districtReceive.value = staff.noiNhanHuyen;
 
     wardReceive.value = staff.noiNhanXa;
 
@@ -332,8 +300,6 @@ class Tk1State607 {
     headOfHouseholdCCCDTextCtrl.text = staff.chuHoSoCCCD?.trim() ?? '';
 
     provinceTT.value = staff.chuHoThuongTruTinh;
-
-    districtTT.value = staff.chuHoThuongTruHuyen;
 
     wardTT.value = staff.chuHoThuongTruXa;
 
