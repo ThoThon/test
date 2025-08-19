@@ -3,7 +3,7 @@
 # Feel free to reuse and adapt this script for your own projects
 
 if [[ $# -eq 0 ]]; then
-  echo "Error: No environment specified. Use 'dev', 'uat' or 'prod'."
+  echo "Error: No environment specified. Use 'dev', 'uat', 'prod_sds' or 'prod'."
   exit 1
 fi
 
@@ -26,6 +26,15 @@ case $1 in
       --android-package-name=com.viettel.ttcntt.vbhxh.uat \
       --android-out=android/app/src/uat/google-services.json
     ;;
+  prod_sds)
+    flutterfire config \
+      --project=vbhxh-prod-sds \
+      --out=lib/firebase_options_prod_sds.dart \
+      --ios-bundle-id=com.viettel.ttcntt.vbhxh.prod \
+      --ios-out=ios/flavors/prod_sds/GoogleService-Info.plist \
+      --android-package-name=com.viettel.ttcntt.vbhxh.prod \
+      --android-out=android/app/src/prod_sds/google-services.json
+    ;;
   prod)
     flutterfire config \
       --project=vbhxh-prod \
@@ -36,7 +45,7 @@ case $1 in
       --android-out=android/app/src/prod/google-services.json
     ;;
   *)
-    echo "Error: Invalid environment specified. Use 'dev', 'uat' or 'prod'."
+    echo "Error: Invalid environment specified. Use 'dev', 'uat', 'prod_sds' or 'prod'."
     exit 1
     ;;
 esac

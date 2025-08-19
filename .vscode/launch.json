@@ -80,6 +80,45 @@
             ]
         },
         {
+            "name": "Run Prod SDS (Debug)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod_sds.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "prod_sds",
+                "--target",
+                "lib/main_prod_sds.dart"
+            ]
+        },
+        {
+            "name": "Run Prod SDS (Release)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod_sds.dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "prod_sds",
+                "--target",
+                "lib/main_prod_sds.dart"
+            ]
+        },
+        {
+            "name": "Run Prod SDS (Profile)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod_sds.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "prod_sds",
+                "--target",
+                "lib/main_prod_sds.dart"
+            ]
+        },
+        {
             "name": "Run Prod (Debug)",
             "request": "launch",
             "type": "dart",
