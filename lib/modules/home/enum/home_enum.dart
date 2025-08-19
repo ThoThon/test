@@ -45,7 +45,8 @@ enum HomeEnum {
       case unit_info:
         return AppRoutes.infoUnit.path;
       case declare:
-        return AppRoutes.procedureList.path;
+        // return AppRoutes.procedureList.path;
+        return AppRoutes.declareInfo630c.path;
       case history:
         return AppRoutes.history.path;
       case lookup_c12:
