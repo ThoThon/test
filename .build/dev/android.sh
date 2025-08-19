@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-
 # Đường dẫn đến tệp tin txt chứa nội dung ghi chú
 note_file=".build/note.txt"
 
