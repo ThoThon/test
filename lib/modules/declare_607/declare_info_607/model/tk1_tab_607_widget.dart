@@ -767,7 +767,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   BottomSheetSearch<ProvinceModel>(
                     maxLength: 20,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
-                    listFilter: AppData.instance.provinceOld.toList(),
+                    listFilter: AppData.instance.oldProvinces.toList(),
                     selectedItem: controller.tk1State.provinceKCB.value,
                     display: (value) => '${value.id} - ${value.name}',
                     hintText: LocaleKeys.declareInfo_inputProvince.tr,
