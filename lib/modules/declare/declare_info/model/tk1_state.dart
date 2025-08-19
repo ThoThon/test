@@ -35,7 +35,7 @@ class Tk1State {
   final addressReceiveTextCtrl = TextEditingController();
 
   /// Tỉnh nơi KCB *
-  final provinceKCB = Rxn<ProvinceModel>();
+  final provinceKCB = Rxn<ProvinceOldModel>();
 
   /// Bệnh viện nơi KCB *
   final hospitalKCB = Rxn<Hospital>();

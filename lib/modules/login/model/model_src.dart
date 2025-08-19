@@ -9,6 +9,7 @@ export 'ethnic_model.dart';
 export 'nation_model.dart';
 export 'position_model.dart';
 export 'province_model.dart';
+export 'province_old_model.dart';
 export 'receive_result_model.dart';
 export 'relationship_model.dart';
 export 'ward_model.dart';

@@ -21,7 +21,7 @@ class StaffDetailResponse {
   final double? phuCapThamNienNghe;
   final double? phuCapLuong;
   final double? phuCapBoSung;
-  final ProvinceModel? benhVienTinh;
+  final ProvinceOldModel? benhVienTinh;
   final Hospital? benhVien;
   final ProvinceModel? khaiSinhTinh;
   final DistrictModel? khaiSinhHuyen;
@@ -110,7 +110,7 @@ class StaffDetailResponse {
       phuCapLuong: json['phuCapLuong']?.toDouble(),
       phuCapBoSung: json['phuCapBoSung']?.toDouble(),
       benhVienTinh: json['benhVienTinh'] != null
-          ? ProvinceModel.fromJson(json['benhVienTinh'])
+          ? ProvinceOldModel.fromJson(json['benhVienTinh'])
           : null,
       benhVien:
           json['benhVien'] != null ? Hospital.fromJson(json['benhVien']) : null,

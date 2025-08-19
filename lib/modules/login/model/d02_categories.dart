@@ -9,6 +9,7 @@ class D02Categories {
   final Set<PositionModel> positions;
   final Set<BirthTypeModel> birthTypes;
   final Set<ReceiveResultModel> receiveResults;
+  final Set<ProvinceOldModel> provinceOld;
 
   const D02Categories({
     required this.declarationTypes,
@@ -19,6 +20,7 @@ class D02Categories {
     required this.positions,
     required this.birthTypes,
     required this.receiveResults,
+    required this.provinceOld,
   });
 
   factory D02Categories.fromJson(Map<String, dynamic> json) {
@@ -55,6 +57,10 @@ class D02Categories {
               ?.map((e) => ReceiveResultModel.fromJson(e))
               .toSet() ??
           <ReceiveResultModel>{},
+      provinceOld: (json['tinhOlds'] as List?)
+              ?.map((e) => ProvinceOldModel.fromJson(e))
+              .toSet() ??
+          <ProvinceOldModel>{},
     );
   }
 }

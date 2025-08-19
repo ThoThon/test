@@ -3,6 +3,8 @@
 - Bản mới do Hiệp test Mac mới hẹ hẹ hẹ
 - [Appmobile]_Thủ tục 630b_Lỗi trường [Ngày sinh con] đang được tự động lưu theo Trường [Từ ngày] - BHW-3055
 - [Appmobile]_Thủ tục 630b - Chỉnh sửa hiển thị "..." tại các trường giá trị dài khi chọn từ combobox - BHW-3062
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613: Bổ sung api cho trường Tỉnh nơi KCB, Bệnh viện nơi KCB - BHW-3079
+
 
 14/08/2025
 - [Appmobile]_Lỗi unikey - BHW-3001

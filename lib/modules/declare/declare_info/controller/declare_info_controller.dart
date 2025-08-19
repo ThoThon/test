@@ -548,7 +548,7 @@ class DeclareInfoController extends BaseGetxController {
     _syncHeadOfHouseholdInfo();
   }
 
-  void onChangeProvinceKCB(ProvinceModel value) {
+  void onChangeProvinceKCB(ProvinceOldModel value) {
     if (tk1State.provinceKCB.value != value) {
       // Xóa bệnh viện nơi KCB khi thay đổi tỉnh nơi KCB
       tk1State.hospitalKCB.value = null;

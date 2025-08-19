@@ -24,7 +24,7 @@ class Tk1DetailResponse607 {
   final DistrictModel? noiNhanHuyen;
   final WardModel? noiNhanXa;
   final String? noiNhanDiaChiChiTiet;
-  final ProvinceModel? benhVienTinh;
+  final ProvinceOldModel? benhVienTinh;
   final Hospital? benhVien;
   final String? dienThoaiLienHe;
   final String? noiDungThayDoi;
@@ -127,7 +127,7 @@ class Tk1DetailResponse607 {
           : null,
       noiNhanDiaChiChiTiet: json['noiNhanDiaChiChiTiet'],
       benhVienTinh: json['benhVienTinh'] != null
-          ? ProvinceModel.fromJson(json['benhVienTinh'])
+          ? ProvinceOldModel.fromJson(json['benhVienTinh'])
           : null,
       benhVien:
           json['benhVien'] != null ? Hospital.fromJson(json['benhVien']) : null,
