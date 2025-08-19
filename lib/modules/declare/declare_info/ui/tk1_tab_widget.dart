@@ -506,7 +506,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                     maxLength: 20,
                     hintText: LocaleKeys.declareInfo_inputProvince.tr,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
-                    listFilter: AppData.instance.provinces.toList(),
+                    listFilter: AppData.instance.oldProvinces.toList(),
                     selectedItem: controller.tk1State.provinceKCB.value,
                     display: (value) => '${value.id} - ${value.name}',
                     onAccept: (value) {
