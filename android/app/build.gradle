@@ -32,10 +32,10 @@ android {
     }
 
     signingConfigs {
-        // Không cần cấu hình signingConfigs cho dev, uat, prod_sds flavors để sử dụng debug keystore mặc định
+        // Không cần cấu hình signingConfigs cho dev, uat, prodsds flavors để sử dụng debug keystore mặc định
         // dev {}
         // uat {}
-        // prod_sds {}
+        // prodsds {}
 
         prod {
             def keystoreProperties = new Properties()
@@ -69,12 +69,12 @@ android {
             // signingConfig signingConfigs.uat
         }
 
-        prod_sds {
+        prodsds {
             dimension "default"
             applicationIdSuffix ".prod"
             manifestPlaceholders = [appName: "vBHXH [PROD]"]
             // Không cần set signingConfig để sử dụng debug keystore mặc định
-            // signingConfig signingConfigs.prod_sds
+            // signingConfig signingConfigs.prodsds
         }
 
         prod {

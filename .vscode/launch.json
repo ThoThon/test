@@ -87,7 +87,7 @@
             "flutterMode": "debug",
             "args": [
                 "--flavor",
-                "prod_sds",
+                "prodsds",
                 "--target",
                 "lib/main_prod_sds.dart"
             ]
@@ -100,7 +100,7 @@
             "flutterMode": "release",
             "args": [
                 "--flavor",
-                "prod_sds",
+                "prodsds",
                 "--target",
                 "lib/main_prod_sds.dart"
             ]
@@ -113,7 +113,7 @@
             "flutterMode": "profile",
             "args": [
                 "--flavor",
-                "prod_sds",
+                "prodsds",
                 "--target",
                 "lib/main_prod_sds.dart"
             ]
