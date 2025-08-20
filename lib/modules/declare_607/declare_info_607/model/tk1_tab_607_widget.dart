@@ -1040,7 +1040,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 }
               },
               selectedItem: controller.tk1State.hospitalKCB.value,
-              display: (hospital) => '${hospital.id} - ${hospital.name}',
+              display: (hospital) => '${hospital.code} - ${hospital.name}',
             );
           },
         );
