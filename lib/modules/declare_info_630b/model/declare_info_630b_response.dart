@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/modules/login/model/categories_630/categories_630_src.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 
 class DeclareInfo630bResponse {
   final String id;

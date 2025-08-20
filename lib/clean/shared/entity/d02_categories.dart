@@ -25,45 +25,6 @@ class D02Categories implements Entity {
     required this.oldProvinces,
   });
 
-  // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
-  factory D02Categories.fromJson(Map<String, dynamic> json) {
-    return D02Categories(
-      declarationTypes: (json['loaiKeKhai'] as List?)
-              ?.map((e) => DeclarationType.fromJson(e))
-              .toSet() ??
-          <DeclarationType>{},
-      ethnics:
-          (json['danTocs'] as List?)?.map((e) => Ethnic.fromJson(e)).toSet() ??
-              <Ethnic>{},
-      nations:
-          (json['quocGias'] as List?)?.map((e) => Nation.fromJson(e)).toSet() ??
-              <Nation>{},
-      provinces:
-          (json['tinhs'] as List?)?.map((e) => Province.fromJson(e)).toSet() ??
-              <Province>{},
-      relationships: (json['moiQuanHes'] as List?)
-              ?.map((e) => Relationship.fromJson(e))
-              .toSet() ??
-          <Relationship>{},
-      positions: (json['dmChucVu'] as List?)
-              ?.map((e) => Position.fromJson(e))
-              .toSet() ??
-          <Position>{},
-      birthTypes: (json['chiCoNamSinhs'] as List?)
-              ?.map((e) => BirthType.fromJson(e))
-              .toSet() ??
-          <BirthType>{},
-      receiveResults: (json['dangKyNhanSoThes'] as List?)
-              ?.map((e) => ReceiveResult.fromJson(e))
-              .toSet() ??
-          <ReceiveResult>{},
-      oldProvinces: (json['tinhOlds'] as List?)
-              ?.map((e) => Province.fromJson(e))
-              .toSet() ??
-          <Province>{},
-    );
-  }
-
   factory D02Categories.empty() {
     return const D02Categories(
       declarationTypes: {},

@@ -1,5 +1,5 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
-import 'package:v_bhxh/modules/login/model/categories_630/categories_630_src.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 
 import '../../../base_app/base_app.src.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';

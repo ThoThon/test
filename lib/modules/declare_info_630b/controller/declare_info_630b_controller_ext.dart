@@ -6,7 +6,7 @@ import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../../base_app/model/app_data.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
-import '../../login/model/categories_630/categories_630_src.dart';
+import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
 import '../../select_staff/model/model_src.dart';
 import '../../src.dart';
 

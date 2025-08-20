@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:v_bhxh/modules/login/model/categories_630/categories_630_src.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 
 /// Mã nhóm hưởng 630b
 class BenefitGroup630bModel extends Equatable {
