@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1048213822229",
+    "project_id": "vbhxh-prod-sds",
+    "storage_bucket": "vbhxh-prod-sds.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048213822229:android:e23e7b76ae892dd47d671c",
+        "android_client_info": {
+          "package_name": "com.viettel.ttcntt.vbhxh.prod"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZx4m25g33IQY9krsqBgVMtnlBsDerpuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048213822229:android:2ee88eb22c967d8a7d671c",
+        "android_client_info": {
+          "package_name": "com.viettel.ttcntt.vbhxh.sds"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZx4m25g33IQY9krsqBgVMtnlBsDerpuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
