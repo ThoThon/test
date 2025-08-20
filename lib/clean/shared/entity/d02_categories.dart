@@ -57,9 +57,10 @@ class D02Categories implements Entity {
               ?.map((e) => ReceiveResult.fromJson(e))
               .toSet() ??
           <ReceiveResult>{},
-      oldProvinces:
-          (json['tinhCu'] as List?)?.map((e) => Province.fromJson(e)).toSet() ??
-              <Province>{},
+      oldProvinces: (json['tinhOlds'] as List?)
+              ?.map((e) => Province.fromJson(e))
+              .toSet() ??
+          <Province>{},
     );
   }
 

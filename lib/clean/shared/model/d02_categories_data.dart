@@ -9,6 +9,7 @@ class D02CategoriesData {
   final Set<PositionData>? positions;
   final Set<BirthTypeData>? birthTypes;
   final Set<ReceiveResultData>? receiveResults;
+  final Set<ProvinceData>? oldProvinces;
 
   const D02CategoriesData({
     this.declarationTypes,
@@ -19,6 +20,7 @@ class D02CategoriesData {
     this.positions,
     this.birthTypes,
     this.receiveResults,
+    this.oldProvinces,
   });
 
   factory D02CategoriesData.fromJson(Map<String, dynamic> json) {
@@ -46,6 +48,9 @@ class D02CategoriesData {
           .toSet(),
       receiveResults: (json['dangKyNhanSoThes'] as List<dynamic>?)
           ?.map((e) => ReceiveResultData.fromJson(e))
+          .toSet(),
+      oldProvinces: (json['tinhOlds'] as List<dynamic>?)
+          ?.map((e) => ProvinceData.fromJson(e))
           .toSet(),
     );
   }

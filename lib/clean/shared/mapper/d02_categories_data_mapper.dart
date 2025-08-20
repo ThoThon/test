@@ -38,6 +38,7 @@ class D02CategoriesDataMapper
       birthTypes: _birthTypeDataMapper.mapToSetEntity(data?.birthTypes),
       receiveResults:
           _receiveResultDataMapper.mapToSetEntity(data?.receiveResults),
+      oldProvinces: _provinceDataMapper.mapToSetEntity(data?.oldProvinces),
     );
   }
 }
