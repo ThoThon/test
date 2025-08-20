@@ -61,6 +61,7 @@ class LoginControllerCl extends BaseGetClController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
+          // TODO: get630Categories
           _getToTalNotiUnread(),
         ).wait;
 
