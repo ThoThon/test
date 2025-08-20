@@ -565,7 +565,7 @@ extension Tk1TabWidget on DeclareInfoPage {
                 }
               },
               selectedItem: controller.tk1State.hospitalKCB.value,
-              display: (hospital) => '${hospital.id} - ${hospital.name}',
+              display: (hospital) => '${hospital.code} - ${hospital.name}',
             );
           },
         );
