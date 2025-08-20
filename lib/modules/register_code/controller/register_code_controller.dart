@@ -68,9 +68,6 @@ class RegisterCodeController extends BaseGetxController {
   // Nơi nhận tỉnh
   final provinceReceive = Rxn<Province>();
 
-  // Nơi nhận huyện
-  final districtReceive = Rxn<District>();
-
   // Nơi nhận xã
   final wardReceive = Rxn<Ward>();
 
@@ -158,17 +155,9 @@ class RegisterCodeController extends BaseGetxController {
 
   void changeProvinceReceive(Province value) {
     if (provinceReceive.value != value) {
-      districtReceive.value = null;
       wardReceive.value = null;
     }
     provinceReceive.value = value;
-  }
-
-  void changeDistrictReceive(District value) {
-    if (districtReceive.value != value) {
-      wardReceive.value = null;
-    }
-    districtReceive.value = value;
   }
 
   void changeWardReceive(Ward value) {
@@ -236,7 +225,7 @@ class RegisterCodeController extends BaseGetxController {
       coQuanBHXHTinh: '01',
       credentialID: certificate.value?.cerdentialID ?? '',
       diaChi: addressUnitCtrl.text,
-      diaChiHuyen: districtReceive.value?.id ?? '',
+      diaChiHuyen: '', // Do do đã bỏ huyện
       diaChiTinh: provinceReceive.value?.id ?? '',
       diaChiXa: wardReceive.value?.id ?? '',
       diaChiDangKyKinhDoanh: addressRegisterBusinessCtrl.text,

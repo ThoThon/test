@@ -11,6 +11,7 @@ class D02Categories implements Entity {
   final Set<Position> positions;
   final Set<BirthType> birthTypes;
   final Set<ReceiveResult> receiveResults;
+  final Set<Province> oldProvinces;
 
   const D02Categories({
     required this.declarationTypes,
@@ -21,6 +22,7 @@ class D02Categories implements Entity {
     required this.positions,
     required this.birthTypes,
     required this.receiveResults,
+    required this.oldProvinces,
   });
 
   // TODO: Xóa sau khi chuyển đổi xong sang clean architecture
@@ -55,6 +57,9 @@ class D02Categories implements Entity {
               ?.map((e) => ReceiveResult.fromJson(e))
               .toSet() ??
           <ReceiveResult>{},
+      oldProvinces:
+          (json['tinhCu'] as List?)?.map((e) => Province.fromJson(e)).toSet() ??
+              <Province>{},
     );
   }
 
@@ -68,6 +73,7 @@ class D02Categories implements Entity {
       positions: {},
       birthTypes: {},
       receiveResults: {},
+      oldProvinces: {},
     );
   }
 }

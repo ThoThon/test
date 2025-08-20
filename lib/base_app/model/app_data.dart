@@ -19,6 +19,7 @@ class AppData {
   var resultReceivingOptions = <RegisterReceiveResultModel>{};
   var birthTypes = <BirthType>{};
   var receiveResults = <ReceiveResult>{};
+  var oldProvinces = <Province>{};
   final accountInfo = Rxn<AccountInfo>();
 
   // Thủ tục 630

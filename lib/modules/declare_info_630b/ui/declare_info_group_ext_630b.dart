@@ -191,10 +191,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
             items: AppData.instance.declareForm.toList(),
             display: (item) => item.text,
             selectedItem: controller.declareForm.value,
-            onChanged: (value) {
-              if (value == null) return;
-              controller.declareForm.value = value;
-            },
+            onChanged: controller.onChangeDeclareMethod,
           ),
         );
       },
@@ -502,7 +499,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return Obx(
       () {
         final selectedText = controller.weeklyDayOffs.isEmpty
-            ? 'Chọn ngày nghỉ'
+            ? LocaleKeys.declareInfo_pickDayOff.tr
             : controller.weeklyDayOffString;
         return UtilWidget.buildWeeklyDayOffDropdown<WeeklyDayOffEnum>(
           initialValue: controller.weeklyDayOffs,
@@ -542,7 +539,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return FormFieldRegistrant<PregnancyCheckConditionModel>(
       registrarId: '0fe0020c-fbb7-40a0-9222-a71f8fde457c',
       validator: (value) {
-        if (value == null && controller.isRequiredPregnancyCondition) {
+        if (controller.pregnancyCondition.value == null &&
+            controller.isRequiredPregnancyCondition) {
           return LocaleKeys.declareInfo_pregnancyConditionCannotEmpty.tr;
         }
         return null;
@@ -552,6 +550,10 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           () => CardDropdownWithLabel<PregnancyCheckConditionModel>(
             fieldKey: formFieldKey,
             validator: validator,
+            onTapClear: () {
+              controller.pregnancyCondition.value = null;
+            },
+            enableClearIcon: true,
             autovalidateMode: controller.autoValidateMode.value,
             isRequired: controller.isRequiredPregnancyCondition,
             labelText: LocaleKeys.declareInfo_pregnancyCondition.tr,
@@ -579,6 +581,14 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         if (isEmpty && controller.isRequiredPregnancyWeek) {
           return LocaleKeys.declareInfo_pregnancyWeekCannotEmpty.tr;
         }
+
+        final week = int.tryParse(trimmedValue);
+        if (week == null) return null;
+
+        // REF: BHW-3030
+        if (week > 45) {
+          return LocaleKeys.declareInfo_pregnancyWeekLimit.tr;
+        }
         return null;
       },
       builder: (formFieldKey, validator) {
@@ -586,6 +596,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           () => CardInputTextFormWithLabel(
             fieldKey: formFieldKey,
             validator: validator,
+            autovalidateMode: controller.autoValidateMode.value,
             isRequired: controller.isRequiredPregnancyWeek,
             hintText: LocaleKeys.declareInfo_pregnancyWeekHint.tr,
             labelText: LocaleKeys.declareInfo_pregnancyWeek.tr,
@@ -603,8 +614,12 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildContraceptionMethodDropdown() {
     return Obx(
       () => CardDropdownWithLabel<ContraceptionModel>(
-        labelText: 'Biện pháp tránh thai',
-        hintText: 'Chọn biện pháp',
+        labelText: LocaleKeys.declareInfo_contraception.tr,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.contraception.value = null;
+        },
+        hintText: LocaleKeys.declareInfo_contraceptionHint.tr,
         items: AppData.instance.contraception.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.contraception.value,
@@ -616,15 +631,19 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     );
   }
 
-  // Điềun kiện sinh con
+  // Điều kiện sinh con
   Widget _buildIsChildbirthConditionDropdown() {
     return Obx(
       () => CardDropdownWithLabel<ChildBirthConditionModel>(
-        labelText: 'Điều kiện sinh con',
-        hintText: 'Chọn điều kiện sinh con',
+        labelText: LocaleKeys.declareInfo_childBirth.tr,
+        hintText: LocaleKeys.declareInfo_childbirthHint.tr,
         items: AppData.instance.childBirthCondition.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.childbirthCondition.value,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.childbirthCondition.value = null;
+        },
         onChanged: (value) {
           if (value == null) return;
           controller.childbirthCondition.value = value;
@@ -710,6 +729,9 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         if (isEmpty && controller.isRequiredBirthAndConutChild) {
           return LocaleKeys.declareInfo_numberChildEmpty.tr;
         }
+        if (trimmedValue == '0') {
+          return LocaleKeys.declareInfo_numberChildInvalid.tr;
+        }
         return null;
       },
       builder: (formFieldKey, validator) {
@@ -733,35 +755,52 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã số BHXH của con
   Widget _buildBhxhCodeChild() {
-    return CardInputTextFormWithLabel(
-      hintText: 'Nhập mã số BHXH của con',
-      labelText: 'Mã số BHXH của con',
-      controller: controller.bhxhCodeChildCtrl,
-      maxLengthInputForm: 10,
-      inputFormatters: InputFormatterEnum.digitsOnly,
-      textInputType: TextInputType.number,
+    return FormFieldRegistrant<String>(
+      registrarId: '4091a25d-f05e-484f-b409-3abdc1f28d60',
       validator: (value) {
         final trimmedValue = value?.trim();
         if ((trimmedValue == null || trimmedValue.isEmpty)) {
           return null;
         }
         if (trimmedValue.length < 10) {
-          return 'Mã số BHXH phải đủ 10 số';
+          return LocaleKeys.declarationFormDetail_bhxhCodeInValid.tr;
         }
         return null;
       },
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        hintText: LocaleKeys.declareInfo_bhxhCodeChildHint.tr,
+        labelText: LocaleKeys.declareInfo_bhxhCodeChild.tr,
+        controller: controller.bhxhCodeChildCtrl,
+        maxLengthInputForm: 10,
+        inputFormatters: InputFormatterEnum.digitsOnly,
+        textInputType: TextInputType.number,
+        validator: validator,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Mã thẻ BHYT của con
   Widget _buildBhytCardCodeChild() {
-    return CardInputTextFormWithLabel(
-      hintText: 'Nhập mã thẻ BHYT của con',
-      labelText: 'Mã thẻ BHYT của con',
-      controller: controller.bhytCardCodeChildCtrl,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
-      maxLengthInputForm: 50,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: 'ffdca741-030b-45b4-beac-9bbc93277080',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_bhytCardCodeChildIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        validator: validator,
+        hintText: LocaleKeys.declareInfo_bhytCardCodeChildHint.tr,
+        labelText: LocaleKeys.declareInfo_bhytCardCodeChild.tr,
+        controller: controller.bhytCardCodeChildCtrl,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        maxLengthInputForm: 50,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Số con chết
@@ -812,18 +851,18 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
         }
 
-        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-        if (toDate == null) {
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
           return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (toDate.year <= 1900 || toDate.year >= 2100) {
+        if (date.year <= 1900) {
           return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
         }
 
-        if (toDate.isAfter(DateTime.now())) {
-          return LocaleKeys.declareInfo_childDeathDateInvalid.tr;
+        if (date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_childDeathDateLimit.tr;
         }
         return null;
       },
@@ -940,17 +979,17 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
         // Kiểm tra độ dài chuỗi (dd/MM/yyyy = 10 ký tự)
         if (trimmedValue.length < 10) {
-          return 'Ngày đi làm thực tế không hợp lệ';
+          return LocaleKeys.declareInfo_workDateInvalid.tr;
         }
 
         final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
         if (date == null) {
-          return 'Ngày đi làm thực tế không hợp lệ';
+          return LocaleKeys.declareInfo_workDateInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
         if (date.year <= 1900 || date.year >= 2100) {
-          return 'Ngày đi làm thực tế không hợp lệ';
+          return LocaleKeys.declareInfo_workDateInvalid.tr;
         }
 
         return null;
@@ -960,7 +999,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           () => CardInputSelectDateWithLabel(
             fieldKey: formFieldKey,
             autovalidateMode: controller.autoValidateMode.value,
-            labelText: 'Ngày đi làm thực tế',
+            labelText: LocaleKeys.declareInfo_workDate.tr,
             inputFormatters: InputFormatterEnum.dateFullBirthDay,
             controller: controller.returnWorkDateCtrl,
             hintText: PATTERN_1,
@@ -993,8 +1032,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Mã số BHXH của mẹ
   Widget _buildBhxhCodeMother() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập mã số BHXH của mẹ',
-      labelText: 'Mã số BHXH của mẹ',
+      hintText: LocaleKeys.declareInfo_bhxhCodeMotherHint.tr,
+      labelText: LocaleKeys.declareInfo_bhxhCodeMother.tr,
       controller: controller.bhxhCodeMotherCtrl,
       maxLengthInputForm: 10,
       textInputType: TextInputType.number,
@@ -1005,7 +1044,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return null;
         }
         if (trimmedValue.length < 10) {
-          return 'Mã số BHXH phải đủ 10 số';
+          return LocaleKeys.declarationFormDetail_bhxhCodeInValid.tr;
         }
         return null;
       },
@@ -1014,33 +1053,63 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã thẻ BHYT của mẹ
   Widget _buildBhytCardMother() {
-    return CardInputTextFormWithLabel(
-      hintText: 'Nhập mã số BHXH của mẹ',
-      labelText: 'Mã thẻ BHYT của mẹ',
-      controller: controller.bhytCardMotherCtrl,
-      maxLengthInputForm: 50,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: '15da0b2f-b02f-40d7-a65c-ecc7289dd02d',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_bhytCardMotherIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        hintText: LocaleKeys.declareInfo_bhytCardMotherHint.tr,
+        labelText: LocaleKeys.declareInfo_bhytCardMother.tr,
+        controller: controller.bhytCardMotherCtrl,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        maxLengthInputForm: 50,
+        validator: validator,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Số CMND của mẹ
   Widget _buildCccdMother() {
-    return CardInputTextFormWithLabel(
-      hintText: 'Nhập số CMND của mẹ',
-      labelText: 'Số CMND của mẹ',
-      controller: controller.cccdMotherCtrl,
-      maxLengthInputForm: 20,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: '1c613fab-4442-420b-8259-f309741330b0',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_cmndMotherIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        validator: validator,
+        hintText: LocaleKeys.declareInfo_cmndMotherInput.tr,
+        labelText: LocaleKeys.declareInfo_cmndMother.tr,
+        controller: controller.cccdMotherCtrl,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        maxLengthInputForm: 20,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Phẫu thuật hoặc thai dưới 32 tuần
   Widget _buildSurgeryOrUnder32WeekDropdown() {
     return Obx(
       () => CardDropdownWithLabel<SurgeryPregnancy32wModel>(
-        labelText: 'Phẫu thuật hoặc thai dưới 32 tuần',
-        hintText: 'Chọn',
+        labelText: LocaleKeys.declareInfo_surgeryOrUnder32Week.tr,
+        hintText: LocaleKeys.declareInfo_surgeryOrUnder32WeekHint.tr,
         items: AppData.instance.surgeryPregnancy32w.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.surgeryOrUnder32Week.value,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.surgeryOrUnder32Week.value = null;
+        },
         onChanged: (value) {
           if (value == null) return;
           controller.surgeryOrUnder32Week.value = value;
@@ -1070,8 +1139,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (date.year <= 1900 || date.isAfter(DateTime.now())) {
+        if (date.year <= 1900) {
           return LocaleKeys.declareInfo_motherDeathDateInvalid.tr;
+        }
+        if (date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_motherDeathDateLimit.tr;
         }
 
         return null;
@@ -1134,8 +1206,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (date.year <= 1900 || date.isAfter(DateTime.now())) {
+        if (date.year <= 1900) {
           return LocaleKeys.declareInfo_conclusionDateInvalid.tr;
+        }
+        if (date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_conclusionDateLimit.tr;
         }
 
         return null;
@@ -1183,29 +1258,46 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       controller: controller.medicalFeeCtrl,
       inputFormatters: InputFormatterEnum.phoneNumber,
       textInputType: TextInputType.number,
-      maxLengthInputForm: 18,
+      maxLengthInputForm: 15,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
 
   // Số BHXH của người nuôi dưỡng(TH mẹ chết)
   Widget _buildGuardianBhxh() {
-    return CardInputTextFormWithLabel(
-      hintText: 'Nhập số BHXH',
-      labelText: 'Số BHXH của người nuôi dưỡng(TH mẹ chết)',
-      controller: controller.guardianBhxhCtrl,
-      maxLengthInputForm: 30,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: 'bc501fee-e687-4369-818b-6c3602c55bc2',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_inputGuardianBhxhIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        hintText: LocaleKeys.declareInfo_inputGuardianBhxhHint.tr,
+        labelText: LocaleKeys.declareInfo_inputGuardianBhxh.tr,
+        controller: controller.guardianBhxhCtrl,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+        maxLengthInputForm: 50,
+        validator: validator,
+      ).paddingOnly(bottom: AppDimens.paddingSmall),
+    );
   }
 
   // Nghỉ dưỡng thai
   Widget _buildMaternityRestDropdown() {
     return Obx(
       () => CardDropdownWithLabel<MaternityLeaveModel>(
-        labelText: 'Nghỉ dưỡng thai',
-        hintText: 'Chọn nghỉ dưỡng thai',
+        labelText: LocaleKeys.declareInfo_maternityLeave.tr,
+        hintText: LocaleKeys.declareInfo_maternityLeaveHint.tr,
         items: AppData.instance.maternityLeave.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.maternityRest.value,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.maternityRest.value = null;
+        },
         onChanged: (value) {
           if (value == null) return;
           controller.maternityRest.value = value;
@@ -1218,11 +1310,15 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildChildCareDropdown() {
     return Obx(
       () => CardDropdownWithLabel<ParentalLeaveModel>(
-        labelText: 'Nghỉ chăm con',
-        hintText: 'Chọn nghỉ chăm con',
+        labelText: LocaleKeys.declareInfo_parentalLeave.tr,
+        hintText: LocaleKeys.declareInfo_parentalLeaveHint.tr,
         items: AppData.instance.parentalLeave.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.parentalLeave.value,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.parentalLeave.value = null;
+        },
         onChanged: (value) {
           if (value == null) return;
           controller.parentalLeave.value = value;
@@ -1235,11 +1331,15 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   Widget _buildSurrogacyDropdown() {
     return Obx(
       () => CardDropdownWithLabel<SurrogacyModel>(
-        labelText: 'Mang thai hộ',
-        hintText: 'Chọn mang thai hộ',
+        labelText: LocaleKeys.declareInfo_surrogacy.tr,
+        hintText: LocaleKeys.declareInfo_surrogacyHint.tr,
         items: AppData.instance.surrogacy.toList(),
         display: (item) => '${item.value} - ${item.text}',
         selectedItem: controller.surrogacy.value,
+        enableClearIcon: true,
+        onTapClear: () {
+          controller.surrogacy.value = null;
+        },
         onChanged: (value) {
           if (value == null) return;
           controller.surrogacy.value = value;
@@ -1292,8 +1392,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Mã hồ sơ
   Widget _buildFileCodeText() {
     return CardInputTextFormWithLabel(
-      hintText: 'Nhập mã hồ sơ',
-      labelText: 'Mã hồ sơ',
+      hintText: LocaleKeys.declareInfo_fileCodeHint.tr,
+      labelText: LocaleKeys.declareInfo_fileCode.tr,
       controller: controller.fileCodeTextCtrl,
       maxLengthInputForm: 255,
     ).paddingOnly(bottom: AppDimens.paddingSmall);

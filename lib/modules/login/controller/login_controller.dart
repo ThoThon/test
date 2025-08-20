@@ -112,7 +112,8 @@ class LoginController extends BaseGetxController {
           ..relationships = d02Categories.relationships
           ..positions = d02Categories.positions
           ..birthTypes = d02Categories.birthTypes
-          ..receiveResults = d02Categories.receiveResults;
+          ..receiveResults = d02Categories.receiveResults
+          ..oldProvinces = d02Categories.oldProvinces;
       }
     } catch (e) {
       logger.d(e);

@@ -73,9 +73,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                       //Tỉnh khai sinh
                       _buildSelectProvince(),
 
-                      //Huyện khai sinh
-                      _buildSelectDistrict(),
-
                       //Xã khai sinh
                       _buildSelectWard(),
 
@@ -88,9 +85,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
 
                       //Tỉnh nơi nhận
                       _buildSelectProvinceReceive(),
-
-                      //Huyện nơi nhận
-                      _buildSelectDistrictReceive(),
 
                       //Xã nơi nhận
                       _buildSelectWardReceive(),
@@ -139,9 +133,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
 
                       //Tỉnh thường trú
                       _buildSelectProvinceTT(),
-
-                      //Huyện thường trú
-                      _buildSelectDistrictTT(),
 
                       //Xã thường trú
                       _buildSelectWardTT(),
@@ -260,10 +251,13 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     return FormFieldRegistrant<String>(
       registrarId: "65ae4c88-428a-4851-9a0f-b8791754ebd8",
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_cccdNumberIsNotEmpty.tr;
+        }
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_cccdNumberIncorrectFormat.tr;
         }
 
         return null;
@@ -278,7 +272,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
           hintText: LocaleKeys.declareInfo_inputCCCD.tr,
           isRequired: true,
           maxLengthInputForm: 20,
-          inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+          inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
           onChanged: controller.onChangeCCCD,
         );
       },
@@ -568,54 +562,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     );
   }
 
-  Widget _buildSelectDistrict() {
-    return FormFieldRegistrant<District>(
-      registrarId: 'f3b96333-610d-4bda-9081-6f843344439e',
-      validator: (value) {
-        if (controller.tk1State.districtOfBirth.value == null) {
-          return LocaleKeys.declareInfo_districtOfBirthCannotEmpty.tr;
-        }
-        return null;
-      },
-      builder: (fieldKey, validator) {
-        return Obx(
-          () {
-            return UtilWidget.buildCardBottomSheetSelect2<District>(
-              fieldKey: fieldKey,
-              validator: validator,
-              label: LocaleKeys.declareInfo_districtOfBirth.tr,
-              // hintText: LocaleKeys.declareInfo_selectDistrictOfBirth.tr,
-              funcSelect: (didChange) async {
-                final districtOfBirth =
-                    controller.tk1State.provinceOfBirth.value;
-                if (districtOfBirth == null) {
-                  controller.showSnackBar(
-                      LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
-                  return;
-                }
-
-                final result = await Get.bottomSheet<District>(
-                  SelectDistrictBts(
-                    provinceCode: districtOfBirth.id,
-                    selectedDistrict: controller.tk1State.districtOfBirth.value,
-                  ),
-                  isScrollControlled: true,
-                );
-
-                if (result != null) {
-                  controller.changeDistrictOfBirth(result);
-                  didChange(result);
-                }
-              },
-              selectedItem: controller.tk1State.districtOfBirth.value,
-              display: (district) => '${district.id} - ${district.name}',
-            );
-          },
-        );
-      },
-    );
-  }
-
   Widget _buildSelectWard() {
     return FormFieldRegistrant<Ward>(
       registrarId: '97cc0bcb-a423-4f90-9d54-b99754230075',
@@ -642,18 +588,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final districtOfBirth =
-                    controller.tk1State.districtOfBirth.value;
-                if (districtOfBirth == null) {
-                  controller.showSnackBar(
-                      LocaleKeys.declareInfo_districtOfBirthNotSelected.tr);
-                  return;
-                }
-
                 final result = await Get.bottomSheet<Ward>(
                   SelectWardBts(
                     provinceCode: provinceOfBirth.id,
-                    districtCode: districtOfBirth.id,
                     selectedWard: controller.tk1State.wardOfBirth.value,
                   ),
                   isScrollControlled: true,
@@ -730,55 +667,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     );
   }
 
-  Widget _buildSelectDistrictReceive() {
-    return FormFieldRegistrant<District>(
-      registrarId: '507641c2-8f74-4bc4-b143-692a37dfa33a',
-      validator: (value) {
-        if (controller.tk1State.districtReceive.value == null) {
-          return LocaleKeys.declareInfo_districtReceiveCannotEmpty.tr;
-        }
-        return null;
-      },
-      builder: (fieldKey, validator) {
-        return Obx(
-          () {
-            return UtilWidget.buildCardBottomSheetSelect2<District>(
-              fieldKey: fieldKey,
-              validator: validator,
-              autovalidateMode: controller.tk1State.autoValidateMode.value,
-              label: LocaleKeys.declareInfo_districtReceive.tr,
-              // hintText: LocaleKeys.declareInfo_selectDistrictReceive.tr,
-              funcSelect: (didChange) async {
-                final provinceReceive =
-                    controller.tk1State.provinceReceive.value;
-                if (provinceReceive == null) {
-                  controller.showSnackBar(
-                      LocaleKeys.declareInfo_provinceReceiveNotSelected.tr);
-                  return;
-                }
-
-                final result = await Get.bottomSheet<District>(
-                  SelectDistrictBts(
-                    provinceCode: provinceReceive.id,
-                    selectedDistrict: controller.tk1State.districtReceive.value,
-                  ),
-                  isScrollControlled: true,
-                );
-
-                if (result != null) {
-                  controller.onChangeDistrictReceive(result);
-                  didChange(result);
-                }
-              },
-              selectedItem: controller.tk1State.districtReceive.value,
-              display: (district) => '${district.id} - ${district.name}',
-            );
-          },
-        );
-      },
-    );
-  }
-
   Widget _buildSelectWardReceive() {
     return FormFieldRegistrant<Ward>(
       registrarId: '81de63f5-e93b-48bd-8bec-e6b93dd2481b',
@@ -806,18 +694,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final districtReceive =
-                    controller.tk1State.districtReceive.value;
-                if (districtReceive == null) {
-                  controller.showSnackBar(
-                      LocaleKeys.declareInfo_districtReceiveNotSelected.tr);
-                  return;
-                }
-
                 final result = await Get.bottomSheet<Ward>(
                   SelectWardBts(
                     provinceCode: provinceReceive.id,
-                    districtCode: districtReceive.id,
                     selectedWard: controller.tk1State.wardReceive.value,
                   ),
                   isScrollControlled: true,
@@ -888,7 +767,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   BottomSheetSearch<Province>(
                     maxLength: 20,
                     title: LocaleKeys.declareInfo_selectProvince.tr,
-                    listFilter: AppData.instance.provinces.toList(),
+                    listFilter: AppData.instance.oldProvinces.toList(),
                     selectedItem: controller.tk1State.provinceKCB.value,
                     display: (value) => '${value.id} - ${value.name}',
                     hintText: LocaleKeys.declareInfo_inputProvince.tr,
@@ -928,7 +807,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
         _buildSelectReceiveResult(),
         sdsSBHeight12,
         _buildSelectProvinceReceivePaper(),
-        _buildSelectDistrictReceivePaper(),
         _buildSelectWardReceivePaper(),
         _buildInputAddressReceivePaper(),
       ],
@@ -1033,61 +911,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
         });
   }
 
-  Widget _buildSelectDistrictReceivePaper() {
-    return FormFieldRegistrant<District>(
-      registrarId: 'ec90fe82-9080-4d37-9326-f39664e59924',
-      validator: (value) {
-        final isRequired = controller.tk1State.receiveResult.value ==
-            ReceiveProfileResultEnum.paper;
-        if (isRequired &&
-            controller.tk1State.districtReceivePaper.value == null) {
-          return LocaleKeys.declareInfo_districtReceivePaperCannotEmpty.tr;
-        }
-        return null;
-      },
-      builder: (fieldKey, validator) {
-        return Obx(
-          () {
-            final isRequired = controller.tk1State.receiveResult.value ==
-                ReceiveProfileResultEnum.paper;
-            return UtilWidget.buildCardBottomSheetSelect2<District>(
-              fieldKey: fieldKey,
-              validator: validator,
-              enable: isRequired,
-              autovalidateMode: controller.tk1State.autoValidateMode.value,
-              label: LocaleKeys.declareInfo_districtReceivePaper.tr,
-              isRequired: isRequired,
-              funcSelect: (didChange) async {
-                final provinceReceivePaper =
-                    controller.tk1State.provinceReceivePaper.value;
-                if (provinceReceivePaper == null) {
-                  controller.showSnackBar('Chưa chọn tỉnh nhận hồ sơ giấy');
-                  return;
-                }
-
-                final result = await Get.bottomSheet<District>(
-                  SelectDistrictBts(
-                    provinceCode: provinceReceivePaper.id,
-                    selectedDistrict:
-                        controller.tk1State.districtReceivePaper.value,
-                  ),
-                  isScrollControlled: true,
-                );
-
-                if (result != null) {
-                  controller.onChangeDistrictReceivePaper(result);
-                  didChange(result);
-                }
-              },
-              selectedItem: controller.tk1State.districtReceivePaper.value,
-              display: (district) => '${district.id} - ${district.name}',
-            );
-          },
-        );
-      },
-    );
-  }
-
   Widget _buildSelectWardReceivePaper() {
     return FormFieldRegistrant<Ward>(
       registrarId: '7a781b3c-a304-4090-af73-ff6f1ad6da9a',
@@ -1119,17 +942,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final districtReceivePaper =
-                    controller.tk1State.districtReceivePaper.value;
-                if (districtReceivePaper == null) {
-                  controller.showSnackBar('Chưa chọn huyện nhận hồ sơ giấy');
-                  return;
-                }
-
                 final result = await Get.bottomSheet<Ward>(
                   SelectWardBts(
                     provinceCode: provinceReceivePaper.id,
-                    districtCode: districtReceivePaper.id,
                     selectedWard: controller.tk1State.wardReceivePaper.value,
                   ),
                   isScrollControlled: true,
@@ -1225,7 +1040,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                 }
               },
               selectedItem: controller.tk1State.hospitalKCB.value,
-              display: (hospital) => '${hospital.id} - ${hospital.name}',
+              display: (hospital) => '${hospital.code} - ${hospital.name}',
             );
           },
         );
@@ -1292,6 +1107,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             controller.tk1State.isHouseholdInfoRequired.value) {
           return LocaleKeys.declareInfo_headOfHouseholdCCCDCannotEmpty.tr;
         }
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_headOfHouseholdCCCDIncorrectFormat.tr;
+        }
 
         return null;
       },
@@ -1305,7 +1123,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
             autovalidateMode: controller.tk1State.autoValidateMode.value,
             isRequired: controller.tk1State.isHouseholdInfoRequired.value,
             controller: controller.tk1State.headOfHouseholdCCCDTextCtrl,
-            inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+            inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
             onChanged: controller.onChangeHeadOfHouseholdCCCD,
             maxLengthInputForm: 20,
           ),
@@ -1362,57 +1180,6 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
     );
   }
 
-  Widget _buildSelectDistrictTT() {
-    return FormFieldRegistrant<District>(
-      registrarId: 'a35c3a81-220f-42c4-afb7-de557a04261e',
-      validator: (value) {
-        if (controller.tk1State.isHouseholdInfoRequired.value &&
-            controller.tk1State.districtTT.value == null) {
-          return LocaleKeys.declareInfo_districtTTCannotEmpty.tr;
-        }
-        return null;
-      },
-      builder: (fieldKey, validator) {
-        return Obx(
-          () {
-            return UtilWidget.buildCardBottomSheetSelect2<District>(
-              fieldKey: fieldKey,
-              validator: validator,
-              autovalidateMode: controller.tk1State.autoValidateMode.value,
-              label: LocaleKeys.declareInfo_districtTT.tr,
-              isRequired: controller.tk1State.isHouseholdInfoRequired.value,
-              funcSelect: (didChange) async {
-                final provinceTT = controller.tk1State.provinceTT.value;
-                if (provinceTT == null) {
-                  controller.showSnackBar(
-                      LocaleKeys.declareInfo_provinceTTNotSelected.tr);
-                  return;
-                }
-
-                final result = await Get.bottomSheet<District>(
-                  SelectDistrictBts(
-                    provinceCode: provinceTT.id,
-                    selectedDistrict: controller.tk1State.districtTT.value,
-                  ),
-                  isScrollControlled: true,
-                );
-
-                if (result != null) {
-                  controller.onChangeDistrictTT(result);
-                  didChange(result);
-                }
-              },
-              selectedItem: controller.tk1State.districtTT.value,
-              display: (district) => '${district.id} - ${district.name}',
-              enableClearIcon: controller.enableClearTTIcon.value,
-              onTapClear: controller.onTapClearDistrictTT,
-            );
-          },
-        );
-      },
-    );
-  }
-
   Widget _buildSelectWardTT() {
     return FormFieldRegistrant<Ward>(
       registrarId: 'abe5f5fe-6937-4454-b1ac-d831586d565c',
@@ -1440,17 +1207,9 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final districtTT = controller.tk1State.districtTT.value;
-                if (districtTT == null) {
-                  controller.showSnackBar(
-                      LocaleKeys.declareInfo_districtTTNotSelected.tr);
-                  return;
-                }
-
                 final result = await Get.bottomSheet<Ward>(
                   SelectWardBts(
                     provinceCode: provinceTT.id,
-                    districtCode: districtTT.id,
                     selectedWard: controller.tk1State.wardTT.value,
                   ),
                   isScrollControlled: true,

@@ -496,12 +496,12 @@ extension CommonInfoTab on RegisterCodePage {
     return FormFieldRegistrant<String>(
       registrarId: 'd79912bf-403b-49e5-9e23-f6f508512494',
       validator: (value) {
-        final trimmedValue = value?.trim();
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.unitInfo_emailContactIsNotEmpty.tr;
         }
         if (!trimmedValue.isEmailValid) {
-          return LocaleKeys.unitInfo_emailIsNotValid.tr;
+          return LocaleKeys.registerCode_emailUnitIncorrectFormat.tr;
         }
         return null;
       },
@@ -512,7 +512,7 @@ extension CommonInfoTab on RegisterCodePage {
           labelText: LocaleKeys.registerCode_emailUnit.tr,
           controller: controller.emailUnitCtrl,
           isRequired: true,
-          inputFormatters: InputFormatterEnum.email,
+          inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
           maxLengthInputForm: 50,
         );
       },

@@ -5,11 +5,9 @@ import 'package:v_bhxh/modules/src.dart';
 
 class SelectWardController extends BaseGetxController {
   final String provinceCode;
-  final String districtCode;
 
   SelectWardController({
     required this.provinceCode,
-    required this.districtCode,
     Ward? ward,
   }) {
     selectedWard.value = ward;
@@ -33,7 +31,6 @@ class SelectWardController extends BaseGetxController {
       showLoading();
       final response = await _repository.getWards(
         provinceCode: provinceCode,
-        districtCode: districtCode,
       );
       if (response.isSuccess) {
         wards.value = response.result;

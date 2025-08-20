@@ -129,8 +129,8 @@ class DeclareInfo630bResponse {
       ngayNghiTuan: json['ngayNghiTuan'] ?? '',
       soSeriCT: json['soSeriCT'] ?? '',
       ngaySinhCon: DateTime.tryParse(json['ngaySinhCon'] ?? ''),
-      soCon: json['soCon'] ?? 0,
-      soCCHoacThaiCL: json['soCCHoacThaiCL'] ?? 0,
+      soCon: json['soCon'],
+      soCCHoacThaiCL: json['soCCHoacThaiCL'],
       dieuKienKhamThai: json['dieuKienKhamThai'] ?? '',
       dieuKienSinhCon: json['dieuKienSinhCon'] ?? '',
       nghiDuongThai: json['nghiDuongThai'] ?? '',
@@ -147,7 +147,7 @@ class DeclareInfo630bResponse {
       maSoBHXHCuaMe: json['maSoBHXHCuaMe'] ?? '',
       theBHYTCuaMe: json['theBHYTCuaMe'] ?? '',
       soCMNDCuaMe: json['soCMNDCuaMe'] ?? '',
-      phiGiamDinhYKhoa: json['phiGiamDinhYKhoa'] ?? 0,
+      phiGiamDinhYKhoa: json['phiGiamDinhYKhoa'],
       soBHXHNND: json['soBHXHNND'] ?? '',
       phauThuatThai32: json['phauThuatThai32'] ?? '',
       dotBoSung: json['dotBoSung'] ?? '',
@@ -162,8 +162,7 @@ class DeclareInfo630bResponse {
       dotDaGiaiQuyet: json['dotDaGiaiQuyet'] ?? '',
       lyDoDieuChinh: json['lyDoDieuChinh'] ?? '',
       tuoiThai: json['tuoiThai'],
-      tuNgayDuyetTruoc:
-          DateTime.tryParse(json['tuNgayDuyetTruoc'] ?? '') ?? DateTime.now(),
+      tuNgayDuyetTruoc: DateTime.tryParse(json['tuNgayDuyetTruoc'] ?? ''),
     );
   }
 }

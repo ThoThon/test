@@ -122,6 +122,9 @@ class LocaleKeys {
   static const unitInfo_representInfo = 'unitInfo_representInfo';
   static const unitInfo_transactionPersonInfo =
       'unitInfo_transactionPersonInfo';
+  static const unitInfo_transactionWayIsEmpty =
+      'unitInfo_transactionWayIsEmpty';
+  static const unitInfo_receiveMethodIsEmpty = 'unitInfo_receiveMethodIsEmpty';
   static const unitInfo_represent = 'unitInfo_represent';
   static const unitInfo_representCannotEmpty = 'unitInfo_representCannotEmpty';
   static const unitInfo_position = 'unitInfo_position';
@@ -163,7 +166,9 @@ class LocaleKeys {
   static const unitInfo_phoneContact = 'unitInfo_phoneContact';
   static const unitInfo_phoneContactCannotEmpty =
       'unitInfo_phoneContactCannotEmpty';
-  static const unitInfo_email = 'unitInfo_email';
+  static const unitInfo_emailContact = 'unitInfo_emailContact';
+  static const unitInfo_emailContactIncorrectFormat =
+      'unitInfo_emailContactIncorrectFormat';
   static const unitInfo_fileInclude = 'unitInfo_fileInclude';
   static const unitInfo_attached = 'unitInfo_attached';
   static const unitInfo_serviceInfo = 'unitInfo_serviceInfo';
@@ -408,7 +413,9 @@ class LocaleKeys {
   static const declareInfo_cccdNumber = 'declareInfo_cccdNumber';
   static const declareInfo_cccdNumberIsNotEmpty =
       'declareInfo_cccdNumberIsNotEmpty';
-  static const declareInfo_cccdNumberIsValid = 'declareInfo_cccdNumberIsValid';
+  static const declareInfo_cccdNumberInValid = 'declareInfo_cccdNumberInValid';
+  static const declareInfo_cccdNumberIncorrectFormat =
+      'declareInfo_cccdNumberIncorrectFormat';
   static const declareInfo_dob = 'declareInfo_dob';
   static const declareInfo_dobCannotEmpty = 'declareInfo_dobCannotEmpty';
   static const declareInfo_dobInvalid = 'declareInfo_dobInvalid';
@@ -504,6 +511,8 @@ class LocaleKeys {
       'declareInfo_headOfHouseholdFullNameCannotEmpty';
   static const declareInfo_headOfHouseholdCCCD =
       'declareInfo_headOfHouseholdCCCD';
+  static const declareInfo_headOfHouseholdCCCDIncorrectFormat =
+      'declareInfo_headOfHouseholdCCCDIncorrectFormat';
   static const declareInfo_headOfHouseholdCCCDCannotEmpty =
       'declareInfo_headOfHouseholdCCCDCannotEmpty';
   static const declareInfo_provinceTT = 'declareInfo_provinceTT';
@@ -654,7 +663,6 @@ class LocaleKeys {
   static const declareInfo_toDayBeforeFromDay =
       'declareInfo_toDayBeforeFromDay';
   static const declareInfo_fullNameEmpty = 'declareInfo_fullNameEmpty';
-  static const declareInfo_inputBHXHCode = 'declareInfo_inputBHXHCode';
   static const declareInfo_cccd = 'declareInfo_cccd';
   static const declareInfo_cccdEmpty = 'declareInfo_cccdEmpty';
   static const declareInfo_birthDayChild = 'declareInfo_birthDayChild';
@@ -667,8 +675,11 @@ class LocaleKeys {
   static const declareInfo_numberChildEmpty = 'declareInfo_numberChildEmpty';
   static const declareInfo_numberChildInvalid =
       'declareInfo_numberChildInvalid';
-  static const declareInfo_bhytCardCode = 'declareInfo_bhytCardCode';
-  static const declareInfo_bhytCardCodeHint = 'declareInfo_bhytCardCodeHint';
+  static const declareInfo_bhytCardCodeChild = 'declareInfo_bhytCardCodeChild';
+  static const declareInfo_bhytCardCodeChildIncorrectFormat =
+      'declareInfo_bhytCardCodeChildIncorrectFormat';
+  static const declareInfo_bhytCardCodeChildHint =
+      'declareInfo_bhytCardCodeChildHint';
   static const declareInfo_bhytCardCodeEmpty = 'declareInfo_bhytCardCodeEmpty';
   static const declareInfo_countDay = 'declareInfo_countDay';
   static const declareInfo_countDayHint = 'declareInfo_countDayHint';
@@ -721,6 +732,8 @@ class LocaleKeys {
   static const declareInfo_receiveMethodEmpty =
       'declareInfo_receiveMethodEmpty';
   static const declareInfo_bankNumber = 'declareInfo_bankNumber';
+  static const declareInfo_bankNumberInCorrectFormat =
+      'declareInfo_bankNumberInCorrectFormat';
   static const declareInfo_bankNumberHint = 'declareInfo_bankNumberHint';
   static const declareInfo_bankNumberEmpty = 'declareInfo_bankNumberEmpty';
   static const declareInfo_accountHolderName = 'declareInfo_accountHolderName';
@@ -743,6 +756,7 @@ class LocaleKeys {
   static const declareInfo_resolvedPeriodEmpty =
       'declareInfo_resolvedPeriodEmpty';
   static const declareInfo_resolvedDate = 'declareInfo_resolvedDate';
+  static const declareInfo_resolvedDateLimit = 'declareInfo_resolvedDateLimit';
   static const declareInfo_resolvedDateInvalid =
       'declareInfo_resolvedDateInvalid';
   static const declareInfo_resolvedDateEmpty = 'declareInfo_resolvedDateEmpty';
@@ -752,6 +766,8 @@ class LocaleKeys {
   static const declareInfo_attachPaper = 'declareInfo_attachPaper';
   static const declareInfo_saveButton = 'declareInfo_saveButton';
   static const declareInfo_conclusionDate = 'declareInfo_conclusionDate';
+  static const declareInfo_conclusionDateLimit =
+      'declareInfo_conclusionDateLimit';
   static const declareInfo_conclusionDateCannotEmpty =
       'declareInfo_conclusionDateCannotEmpty';
   static const declareInfo_conclusionDateInvalid =
@@ -764,9 +780,13 @@ class LocaleKeys {
   static const declareInfo_childDeathDate = 'declareInfo_childDeathDate';
   static const declareInfo_childDeathDateCannotEmpty =
       'declareInfo_childDeathDateCannotEmpty';
+  static const declareInfo_childDeathDateLimit =
+      'declareInfo_childDeathDateLimit';
   static const declareInfo_childDeathDateInvalid =
       'declareInfo_childDeathDateInvalid';
   static const declareInfo_pregnancyWeek = 'declareInfo_pregnancyWeek';
+  static const declareInfo_pregnancyWeekLimit =
+      'declareInfo_pregnancyWeekLimit';
   static const declareInfo_pregnancyWeekCannotEmpty =
       'declareInfo_pregnancyWeekCannotEmpty';
   static const declareInfo_pregnancyWeekHint = 'declareInfo_pregnancyWeekHint';
@@ -784,8 +804,47 @@ class LocaleKeys {
   static const declareInfo_medicalFee = 'declareInfo_medicalFee';
   static const declareInfo_medicalFeeInput = 'declareInfo_medicalFeeInput';
   static const declareInfo_motherDeathDate = 'declareInfo_motherDeathDate';
+  static const declareInfo_motherDeathDateLimit =
+      'declareInfo_motherDeathDateLimit';
   static const declareInfo_motherDeathDateInvalid =
       'declareInfo_motherDeathDateInvalid';
+  static const declareInfo_workDateInvalid = 'declareInfo_workDateInvalid';
+  static const declareInfo_workDate = 'declareInfo_workDate';
+  static const declareInfo_contraception = 'declareInfo_contraception';
+  static const declareInfo_contraceptionHint = 'declareInfo_contraceptionHint';
+  static const declareInfo_childBirth = 'declareInfo_childBirth';
+  static const declareInfo_childbirthHint = 'declareInfo_childbirthHint';
+  static const declareInfo_bhxhCodeChildHint = 'declareInfo_bhxhCodeChildHint';
+  static const declareInfo_bhxhCodeChild = 'declareInfo_bhxhCodeChild';
+  static const declareInfo_bhxhCodeMotherHint =
+      'declareInfo_bhxhCodeMotherHint';
+  static const declareInfo_bhxhCodeMother = 'declareInfo_bhxhCodeMother';
+  static const declareInfo_bhytCardMotherHint =
+      'declareInfo_bhytCardMotherHint';
+  static const declareInfo_bhytCardMother = 'declareInfo_bhytCardMother';
+  static const declareInfo_bhytCardMotherIncorrectFormat =
+      'declareInfo_bhytCardMotherIncorrectFormat';
+  static const declareInfo_cmndMotherInput = 'declareInfo_cmndMotherInput';
+  static const declareInfo_cmndMother = 'declareInfo_cmndMother';
+  static const declareInfo_cmndMotherIncorrectFormat =
+      'declareInfo_cmndMotherIncorrectFormat';
+  static const declareInfo_surgeryOrUnder32Week =
+      'declareInfo_surgeryOrUnder32Week';
+  static const declareInfo_surgeryOrUnder32WeekHint =
+      'declareInfo_surgeryOrUnder32WeekHint';
+  static const declareInfo_inputGuardianBhxh = 'declareInfo_inputGuardianBhxh';
+  static const declareInfo_inputGuardianBhxhIncorrectFormat =
+      'declareInfo_inputGuardianBhxhIncorrectFormat';
+  static const declareInfo_inputGuardianBhxhHint =
+      'declareInfo_inputGuardianBhxhHint';
+  static const declareInfo_maternityLeave = 'declareInfo_maternityLeave';
+  static const declareInfo_maternityLeaveHint =
+      'declareInfo_maternityLeaveHint';
+  static const declareInfo_parentalLeave = 'declareInfo_parentalLeave';
+  static const declareInfo_parentalLeaveHint = 'declareInfo_parentalLeaveHint';
+  static const declareInfo_surrogacy = 'declareInfo_surrogacy';
+  static const declareInfo_surrogacyHint = 'declareInfo_surrogacyHint';
+  static const declareInfo_pickDayOff = 'declareInfo_pickDayOff';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -833,6 +892,8 @@ class LocaleKeys {
       'familyMember_birthTypeMonthYear';
   static const familyMember_birthTypeFull = 'familyMember_birthTypeFull';
   static const familyMember_cccdNumber = 'familyMember_cccdNumber';
+  static const familyMember_cccdNumberIncorrectFormat =
+      'familyMember_cccdNumberIncorrectFormat';
   static const familyMember_note = 'familyMember_note';
   static const familyMember_isParticipant = 'familyMember_isParticipant';
   static const familyMember_selectGender = 'familyMember_selectGender';
@@ -1047,6 +1108,8 @@ class LocaleKeys {
   static const registerCode_contactInfo = 'registerCode_contactInfo';
   static const registerCode_phoneUnit = 'registerCode_phoneUnit';
   static const registerCode_emailUnit = 'registerCode_emailUnit';
+  static const registerCode_emailUnitIncorrectFormat =
+      'registerCode_emailUnitIncorrectFormat';
   static const registerCode_personTransactionSocial =
       'registerCode_personTransactionSocial';
   static const registerCode_phoneContact = 'registerCode_phoneContact';
@@ -1161,6 +1224,8 @@ class LocaleKeys {
   static const otherInfo_phoneNumber = 'otherInfo_phoneNumber';
   static const otherInfo_inputPhoneNumber = 'otherInfo_inputPhoneNumber';
   static const otherInfo_accountNumber = 'otherInfo_accountNumber';
+  static const otherInfo_accountNumberIncorrectFormat =
+      'otherInfo_accountNumberIncorrectFormat';
   static const otherInfo_inputAccountNumber = 'otherInfo_inputAccountNumber';
   static const otherInfo_bankName = 'otherInfo_bankName';
   static const otherInfo_inputBankName = 'otherInfo_inputBankName';
@@ -1321,6 +1386,9 @@ class Locales {
     'unitInfo_businessIndustry': 'Ngành nghề sản xuất',
     'unitInfo_representInfo': 'Thông tin người đại diện',
     'unitInfo_transactionPersonInfo': 'Thông tin người giao dịch',
+    'unitInfo_transactionWayIsEmpty': 'Phương thức đóng không được để trống',
+    'unitInfo_receiveMethodIsEmpty':
+        'Phương thức nhận kết quả không được để trống',
     'unitInfo_represent': 'Người đại diện',
     'unitInfo_representCannotEmpty': 'Người đại diện không được bỏ trống',
     'unitInfo_position': 'Chức vụ',
@@ -1361,7 +1429,9 @@ class Locales {
     'unitInfo_phoneContact': 'Điện thoại di động',
     'unitInfo_phoneContactCannotEmpty':
         'Điện thoại di động không được bỏ trống',
-    'unitInfo_email': 'Email liên hệ',
+    'unitInfo_emailContact': 'Email liên hệ',
+    'unitInfo_emailContactIncorrectFormat':
+        'Email liên hệ không đúng định dạng',
     'unitInfo_fileInclude': 'Hồ sơ kèm theo',
     'unitInfo_attached': 'Đính kèm',
     'unitInfo_serviceInfo': 'Thông tin dịch vụ',
@@ -1583,7 +1653,8 @@ class Locales {
     'declareInfo_generateTk1Data': 'Sinh dữ liệu TK1-TS',
     'declareInfo_cccdNumber': 'Số CCCD',
     'declareInfo_cccdNumberIsNotEmpty': 'Số CCCD không được bỏ trống',
-    'declareInfo_cccdNumberIsValid': 'Số CCCD phải có đủ 12 số',
+    'declareInfo_cccdNumberInValid': 'Số CCCD không hợp lệ',
+    'declareInfo_cccdNumberIncorrectFormat': 'Số CCCD không đúng định dạng',
     'declareInfo_dob': 'Ngày sinh',
     'declareInfo_dobCannotEmpty': 'Ngày sinh không được bỏ trống',
     'declareInfo_dobInvalid': 'Ngày sinh không hợp lệ',
@@ -1662,6 +1733,8 @@ class Locales {
     'declareInfo_headOfHouseholdFullNameCannotEmpty':
         'Họ và tên chủ hộ không được để trống',
     'declareInfo_headOfHouseholdCCCD': 'Số CCCD của chủ hộ',
+    'declareInfo_headOfHouseholdCCCDIncorrectFormat':
+        'Số CCCD của chủ hộ không đúng định dạng',
     'declareInfo_headOfHouseholdCCCDCannotEmpty':
         'Số CCCD của chủ hộ không được để trống',
     'declareInfo_provinceTT': 'Tỉnh thường trú',
@@ -1776,7 +1849,6 @@ class Locales {
     'declareInfo_toDayInvalid': 'Đến ngày không hợp lệ',
     'declareInfo_toDayBeforeFromDay': 'Đến ngày không được nhỏ hơn Từ ngày',
     'declareInfo_fullNameEmpty': 'Họ và tên không được bỏ trống',
-    'declareInfo_inputBHXHCode': 'Nhập mã số BHXH',
     'declareInfo_cccd': 'Số CCCD',
     'declareInfo_cccdEmpty': 'Số CCCD không được bỏ trống',
     'declareInfo_birthDayChild': 'Ngày sinh con',
@@ -1786,8 +1858,10 @@ class Locales {
     'declareInfo_numberChildHint': 'Nhập số con',
     'declareInfo_numberChildEmpty': 'Số con không được bỏ trống',
     'declareInfo_numberChildInvalid': 'Số con không hợp lệ',
-    'declareInfo_bhytCardCode': 'Mã thẻ BHYT của con',
-    'declareInfo_bhytCardCodeHint': 'Nhập mã thẻ BHYT của con',
+    'declareInfo_bhytCardCodeChild': 'Mã thẻ BHYT của con',
+    'declareInfo_bhytCardCodeChildIncorrectFormat':
+        'Mã thẻ BHYT của con không đúng định dạng',
+    'declareInfo_bhytCardCodeChildHint': 'Nhập mã thẻ BHYT của con',
     'declareInfo_bhytCardCodeEmpty': 'Mã thẻ BHYT của con không được bỏ trống',
     'declareInfo_countDay': 'Tổng số ngày',
     'declareInfo_countDayHint': 'Nhập số ngày',
@@ -1831,6 +1905,8 @@ class Locales {
     'declareInfo_receiveMethodHint': 'Chọn hình thức nhận',
     'declareInfo_receiveMethodEmpty': 'Hình thức nhận không được bỏ trống',
     'declareInfo_bankNumber': 'Số tài khoản ngân hàng',
+    'declareInfo_bankNumberInCorrectFormat':
+        'Số tài khoản ngân hàng không đúng định dạng',
     'declareInfo_bankNumberHint': 'Nhập số tài khoản ngân hàng',
     'declareInfo_bankNumberEmpty': 'Số tài khoản ngân hàng không được bỏ trống',
     'declareInfo_accountHolderName': 'Tên chủ tài khoản',
@@ -1849,6 +1925,8 @@ class Locales {
     'declareInfo_resolvedPeriodHint': 'Đợt tháng/năm',
     'declareInfo_resolvedPeriodEmpty': 'Đợt đã giải quyết không được bỏ trống',
     'declareInfo_resolvedDate': 'Ngày đã giải quyết',
+    'declareInfo_resolvedDateLimit':
+        'Ngày đã giải quyết không được lớn hơn ngày hiện tại',
     'declareInfo_resolvedDateInvalid': 'Ngày đã giải quyết không hợp lệ',
     'declareInfo_resolvedDateEmpty': 'Ngày đã giải quyết không được bỏ trống',
     'declareInfo_adjustReason': 'Lý do điều chỉnh',
@@ -1857,6 +1935,8 @@ class Locales {
     'declareInfo_attachPaper': 'Gửi kèm hồ sơ giấy',
     'declareInfo_saveButton': 'Lưu',
     'declareInfo_conclusionDate': 'Ngày kết luận',
+    'declareInfo_conclusionDateLimit':
+        'Ngày kết luận không được lớn hơn ngày hiện tại',
     'declareInfo_conclusionDateCannotEmpty':
         'Ngày kết luận không được bỏ trống',
     'declareInfo_conclusionDateInvalid': 'Ngày kết luận không hợp lệ',
@@ -1866,8 +1946,11 @@ class Locales {
     'declareInfo_childDeathDate': 'Ngày con chết',
     'declareInfo_childDeathDateCannotEmpty':
         'Ngày con chết không được để trống',
+    'declareInfo_childDeathDateLimit':
+        'Ngày con chết không được lớn hơn ngày hiện tại',
     'declareInfo_childDeathDateInvalid': 'Ngày con chết không hợp lệ',
     'declareInfo_pregnancyWeek': 'Tuổi thai',
+    'declareInfo_pregnancyWeekLimit': 'Tuổi thai không được lớn hơn 45',
     'declareInfo_pregnancyWeekCannotEmpty': 'Tuổi thai không được bỏ trống',
     'declareInfo_pregnancyWeekHint': 'Nhập số tuần tuổi thai',
     'declareInfo_countChildDeath': 'Số con chết',
@@ -1880,7 +1963,41 @@ class Locales {
     'declareInfo_medicalFee': 'Phí giám định y khoa',
     'declareInfo_medicalFeeInput': 'Nhập phí giám định y khoa',
     'declareInfo_motherDeathDate': 'Ngày mẹ chết',
+    'declareInfo_motherDeathDateLimit':
+        'Ngày mẹ chết không được lớn hơn ngày hiện tại',
     'declareInfo_motherDeathDateInvalid': 'Ngày mẹ chết không hợp lệ',
+    'declareInfo_workDateInvalid': 'Ngày đi làm thực tế không hợp lệ',
+    'declareInfo_workDate': 'Ngày đi làm thực tế',
+    'declareInfo_contraception': 'Biện pháp tránh thai',
+    'declareInfo_contraceptionHint': 'Chọn biện pháp',
+    'declareInfo_childBirth': 'Điều kiện sinh con',
+    'declareInfo_childbirthHint': 'Chọn điều kiện sinh con',
+    'declareInfo_bhxhCodeChildHint': 'Nhập mã số BHXH của con',
+    'declareInfo_bhxhCodeChild': 'Mã số BHXH của con',
+    'declareInfo_bhxhCodeMotherHint': 'Nhập mã số BHXH của mẹ',
+    'declareInfo_bhxhCodeMother': 'Mã số BHXH của mẹ',
+    'declareInfo_bhytCardMotherHint': 'Nhập mã thẻ BHYT của mẹ',
+    'declareInfo_bhytCardMother': 'Mã thẻ BHYT của mẹ',
+    'declareInfo_bhytCardMotherIncorrectFormat':
+        'Mã thẻ BHYT của mẹ không đúng định dạng',
+    'declareInfo_cmndMotherInput': 'Nhập số CMND của mẹ',
+    'declareInfo_cmndMother': 'Số CMND của mẹ',
+    'declareInfo_cmndMotherIncorrectFormat':
+        'Số CMND của mẹ không đúng định dạng',
+    'declareInfo_surgeryOrUnder32Week': 'Phẫu thuật hoặc thai dưới 32 tuần',
+    'declareInfo_surgeryOrUnder32WeekHint': 'Chọn',
+    'declareInfo_inputGuardianBhxh':
+        'Số BHXH của người nuôi dưỡng (TH mẹ chết)',
+    'declareInfo_inputGuardianBhxhIncorrectFormat':
+        'Số BHXH của người nuôi dưỡng không đúng định dạng',
+    'declareInfo_inputGuardianBhxhHint': 'Nhập số BHXH',
+    'declareInfo_maternityLeave': 'Nghỉ dưỡng thai',
+    'declareInfo_maternityLeaveHint': 'Chọn nghỉ dưỡng thai',
+    'declareInfo_parentalLeave': 'Nghỉ chăm con',
+    'declareInfo_parentalLeaveHint': 'Chọn nghỉ chăm con',
+    'declareInfo_surrogacy': 'Mang thai hộ',
+    'declareInfo_surrogacyHint': 'Chọn mang thai hộ',
+    'declareInfo_pickDayOff': 'Chọn ngày nghỉ',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1917,6 +2034,7 @@ class Locales {
     'familyMember_birthTypeMonthYear': 'Tháng/Năm',
     'familyMember_birthTypeFull': 'Ngày/Tháng/Năm',
     'familyMember_cccdNumber': 'Số CCCD',
+    'familyMember_cccdNumberIncorrectFormat': 'Số CCCD không đúng định dạng',
     'familyMember_note': 'Ghi chú',
     'familyMember_isParticipant': 'Là người tham gia',
     'familyMember_selectGender': 'Vui lòng chọn giới tính',
@@ -2103,6 +2221,8 @@ class Locales {
     'registerCode_contactInfo': 'Thông tin liên hệ',
     'registerCode_phoneUnit': 'Điện thoại đơn vị',
     'registerCode_emailUnit': 'Email đơn vị',
+    'registerCode_emailUnitIncorrectFormat':
+        'Email đơn vị không đúng định dạng',
     'registerCode_personTransactionSocial': 'Người giao dịch BHXH',
     'registerCode_phoneContact': 'Điện thoại liên hệ',
     'registerCode_socialSecurityAgency': 'Cơ quan BHXH',
@@ -2189,6 +2309,8 @@ class Locales {
     'otherInfo_phoneNumber': 'Số điện thoại',
     'otherInfo_inputPhoneNumber': 'Nhập số điện thoại đơn vị',
     'otherInfo_accountNumber': 'Số tài khoản',
+    'otherInfo_accountNumberIncorrectFormat':
+        'Số tài khoản không đúng định dạng',
     'otherInfo_inputAccountNumber': 'Nhập số tài khoản của đơn vị',
     'otherInfo_bankName': 'Mở tại ngân hàng',
     'otherInfo_inputBankName': 'Nhập tên ngân hàng của đơn vị',

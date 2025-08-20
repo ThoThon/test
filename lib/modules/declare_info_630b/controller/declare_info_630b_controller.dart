@@ -161,6 +161,8 @@ class DeclareInfo630bController extends BaseGetxController {
 
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
+  final scrollController = ScrollController();
+
   final DeclareInfoArgument argument = Get.arguments;
 
   @override
@@ -198,6 +200,7 @@ class DeclareInfo630bController extends BaseGetxController {
     resolvedPeriodCtrl.dispose();
     resolvedDateCtrl.dispose();
     adjustReasonCtrl.dispose();
+    scrollController.dispose();
     super.onClose();
   }
 

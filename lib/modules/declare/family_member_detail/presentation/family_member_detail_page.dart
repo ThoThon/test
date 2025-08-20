@@ -3,11 +3,10 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/base_get_page.dart';
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
-import 'package:v_bhxh/modules/declare/declare_info/clean/domain/entity/entity_src.dart';
-import 'package:v_bhxh/modules/declare/declare_info/clean/presentation/presentation_src.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/presentation/controller/family_member_detail_controller.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 part 'family_member_detail_widget.dart';
 

@@ -53,7 +53,6 @@ extension UnitInfoWidget on UnitInfoPage {
               _buildTitleAndIcon(title: LocaleKeys.unitInfo_otherInfo.tr),
               _buildCardToggle(
                 isEdit: isEdit,
-                hasBottomPadding: false,
                 cardEdit: _buildCardOtherInfoEdit(),
                 card: _buildCardOtherInfo(),
               ),
@@ -168,12 +167,12 @@ extension UnitInfoWidget on UnitInfoPage {
   List<Widget> _buildCardAddressInfo() {
     return [
       _buildText2(
-        left: LocaleKeys.unitInfo_addressRegister.tr,
-        right: controller.addressRegisterController.text,
+        top: LocaleKeys.unitInfo_addressRegister.tr,
+        bottom: controller.addressRegisterController.text,
       ),
       _buildText2(
-        left: LocaleKeys.unitInfo_addressTransaction.tr,
-        right: controller.addressTransactionController.text,
+        top: LocaleKeys.unitInfo_addressTransaction.tr,
+        bottom: controller.addressTransactionController.text,
       ),
     ];
   }
@@ -253,16 +252,16 @@ extension UnitInfoWidget on UnitInfoPage {
       ),
       _buildInputItemEdit(
         controller: controller.emailContactController,
-        label: LocaleKeys.unitInfo_email.tr,
+        label: LocaleKeys.unitInfo_emailContact.tr,
         maxLengthInputForm: 250,
-        inputFormatters: InputFormatterEnum.email,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
         validator: (value) {
-          final trimmedValue = value?.trim();
-          if (trimmedValue == null || trimmedValue.isEmpty) {
+          final trimmedValue = value?.trim() ?? '';
+          if (trimmedValue.isEmpty) {
             return LocaleKeys.unitInfo_emailContactIsNotEmpty.tr;
           }
           if (!trimmedValue.isEmailValid) {
-            return LocaleKeys.unitInfo_emailIsNotValid.tr;
+            return LocaleKeys.unitInfo_emailContactIncorrectFormat.tr;
           }
           return null;
         },
@@ -282,7 +281,7 @@ extension UnitInfoWidget on UnitInfoPage {
         right: controller.phoneContactController.text,
       ),
       _buildText(
-        left: LocaleKeys.unitInfo_email.tr,
+        left: LocaleKeys.unitInfo_emailContact.tr,
         right: controller.emailContactController.text,
       ),
     ];
@@ -300,6 +299,13 @@ extension UnitInfoWidget on UnitInfoPage {
         selectedItem: controller.selectedMethod.value,
         onChanged: (value) {
           controller.selectedMethod.value = value;
+        },
+        autovalidateMode: AutovalidateMode.always,
+        validator: (value) {
+          if (value == null) {
+            return LocaleKeys.unitInfo_transactionWayIsEmpty.tr;
+          }
+          return null;
         },
       ),
       sdsSBHeight12,
@@ -327,7 +333,15 @@ extension UnitInfoWidget on UnitInfoPage {
         onChanged: (value) {
           controller.selectedReceive.value = value;
         },
+        autovalidateMode: AutovalidateMode.always,
+        validator: (value) {
+          if (value == null) {
+            return LocaleKeys.unitInfo_receiveMethodIsEmpty.tr;
+          }
+          return null;
+        },
       ),
+      sdsSBHeight12,
     ];
   }
 
@@ -420,28 +434,29 @@ extension UnitInfoWidget on UnitInfoPage {
         bottom: AppDimens.paddingSmallest, top: AppDimens.paddingSmallest);
   }
 
-  //Thông tin địa chỉ
+  //Cho riêng thông tin địa chỉ
   Widget _buildText2({
     int? maxLines,
     TextStyle? style,
-    required String left,
-    required String right,
+    required String top,
+    required String bottom,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SDSBuildText(
-          left,
+          top,
           style: (style ?? AppTextStyle.font14Re).copyWith(
             color: AppColors.dsGray2,
           ),
           maxLines: maxLines ?? 3,
         ),
-        SDSBuildText(
-          right,
-          style: style ?? AppTextStyle.font14Re,
-          maxLines: maxLines ?? 3,
-        ),
+        if (bottom.trim().isNotEmpty)
+          SDSBuildText(
+            bottom,
+            style: style ?? AppTextStyle.font14Re,
+            maxLines: maxLines ?? 3,
+          ),
       ],
     ).paddingOnly(
       bottom: AppDimens.paddingSmallest,
@@ -525,12 +540,12 @@ extension UnitInfoWidget on UnitInfoPage {
     required RxBool isEdit,
     required List<Widget> cardEdit,
     required List<Widget> card,
-    bool hasBottomPadding = true,
   }) {
+    bool hasBottomPadding = controller.isEditAll.value;
     return Padding(
       padding: hasBottomPadding
-          ? const EdgeInsets.only(bottom: AppDimens.defaultPadding)
-          : EdgeInsets.zero,
+          ? EdgeInsets.zero
+          : const EdgeInsets.only(bottom: AppDimens.defaultPadding),
       child: isEdit.value
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,

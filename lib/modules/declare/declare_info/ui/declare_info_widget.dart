@@ -150,12 +150,14 @@ extension DeclareInfoWidget on DeclareInfoPage {
     return FormFieldRegistrant<String>(
       registrarId: registrarId,
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? ' ';
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_cccdNumberIsNotEmpty.tr;
         }
-
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_cccdNumberIncorrectFormat.tr;
+        }
         return null;
       },
       builder: (fieldKey, validator) {
@@ -168,7 +170,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
           hintText: LocaleKeys.declareInfo_inputCCCD.tr,
           isRequired: true,
           maxLengthInputForm: 20,
-          inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+          inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
           onChanged: controller.onChangeCCCD,
         );
       },

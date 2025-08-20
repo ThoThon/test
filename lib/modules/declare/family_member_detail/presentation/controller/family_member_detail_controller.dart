@@ -55,9 +55,6 @@ class FamilyMemberDetailControllerCl extends BaseGetClController {
   /// Tỉnh khai sinh *
   final selectedProvince = Rxn<Province>();
 
-  /// Huyện khai sinh *
-  final selectedDistrict = Rxn<District>();
-
   /// Xã khai sinh *
   final selectedWard = Rxn<Ward>();
 
@@ -82,7 +79,6 @@ class FamilyMemberDetailControllerCl extends BaseGetClController {
       selectedEthnic.value = member.ethnic;
       selectedNationality.value = member.nation;
       selectedProvince.value = member.province;
-      selectedDistrict.value = member.district;
       selectedWard.value = member.ward;
       relationship.value = member.relationship;
       cccdNumberTextCtrl.text = member.cccdNumber;
@@ -116,7 +112,6 @@ class FamilyMemberDetailControllerCl extends BaseGetClController {
         ethnic: selectedEthnic.value!,
         nation: selectedNationality.value!,
         province: selectedProvince.value!,
-        district: selectedDistrict.value!,
         ward: selectedWard.value!,
         relationship: relationship.value!,
         isParticipant: isParticipant.value,

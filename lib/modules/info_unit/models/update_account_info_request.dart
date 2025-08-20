@@ -12,8 +12,8 @@ class UpdateAccountInfoRequest extends Equatable {
   final String loaiDoiTuong;
   final String tenNguoiKeKhai;
   final int luongCoSo;
-  final int phuongThucDong;
-  final String ptNhanKq;
+  final int? phuongThucDong;
+  final String? ptNhanKq;
 
   const UpdateAccountInfoRequest({
     required this.toChucId,
@@ -27,8 +27,8 @@ class UpdateAccountInfoRequest extends Equatable {
     required this.loaiDoiTuong,
     required this.tenNguoiKeKhai,
     required this.luongCoSo,
-    required this.phuongThucDong,
-    required this.ptNhanKq,
+    this.phuongThucDong,
+    this.ptNhanKq,
   });
 
   Map<String, dynamic> toJson() {

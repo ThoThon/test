@@ -51,9 +51,6 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                         //Tỉnh khai sinh
                         _buildSelectProvince(),
 
-                        //Huyện khai sinh
-                        _buildSelectDistrict(),
-
                         //Xã khai sinh
                         _buildSelectWard(),
 
@@ -415,8 +412,7 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                       if (value == null) return;
 
                       if (controller.selectedProvince.value != value) {
-                        // Reset district and ward when province changes
-                        controller.selectedDistrict.value = null;
+                        // Reset ward when province changes
                         controller.selectedWard.value = null;
                       }
 
@@ -430,60 +426,6 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
               },
               selectedItem: controller.selectedProvince.value,
               display: (province) => province.name,
-              validator: validator,
-            );
-          },
-        );
-      },
-    );
-  }
-
-  Widget _buildSelectDistrict() {
-    return FormFieldRegistrant<District>(
-      registrarId: '2e677fd1-32c6-4df2-a1eb-64f7c0ecfc45',
-      validator: (value) {
-        if (controller.selectedDistrict.value == null) {
-          return LocaleKeys.familyMember_districtOfBirthCannotEmpty.tr;
-        }
-        return null;
-      },
-      builder: (fieldKey, validator) {
-        return Obx(
-          () {
-            return UtilWidget.buildCardBottomSheetSelect2<District>(
-              fieldKey: fieldKey,
-              label: LocaleKeys.familyMember_districtOfBirth.tr,
-              funcSelect: (didChange) async {
-                final districtOfBirth = controller.selectedProvince.value;
-                if (districtOfBirth == null) {
-                  nav.showSnackBar(
-                      LocaleKeys.declareInfo_provinceOfBirthNotSelected.tr);
-                  return;
-                }
-
-                final result = await nav.showBottomSheet<District>(
-                  SelectDistrictBtsCl(),
-                  settings: RouteSettings(
-                    arguments: SelectDistrictArgument(
-                      provinceCode: districtOfBirth.id,
-                      selectedDistrict: controller.selectedDistrict.value,
-                    ),
-                  ),
-                );
-
-                if (result != null) {
-                  if (controller.selectedDistrict.value != result) {
-                    // Reset ward when district changes
-                    controller.selectedWard.value = null;
-                  }
-
-                  controller.selectedDistrict.value = result;
-
-                  didChange(result);
-                }
-              },
-              selectedItem: controller.selectedDistrict.value,
-              display: (district) => '${district.id} - ${district.name}',
               validator: validator,
             );
           },
@@ -516,21 +458,10 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                   return;
                 }
 
-                final districtOfBirth = controller.selectedDistrict.value;
-                if (districtOfBirth == null) {
-                  nav.showSnackBar(
-                      LocaleKeys.declareInfo_districtOfBirthNotSelected.tr);
-                  return;
-                }
-
-                final result = await nav.showBottomSheet<Ward>(
-                  SelectWardBtsCl(),
-                  settings: RouteSettings(
-                    arguments: SelectWardArgument(
-                      provinceCode: provinceOfBirth.id,
-                      districtCode: districtOfBirth.id,
-                      selectedWard: controller.selectedWard.value,
-                    ),
+                final result = await Get.bottomSheet<Ward>(
+                  SelectWardBts(
+                    provinceCode: provinceOfBirth.id,
+                    selectedWard: controller.selectedWard.value,
                   ),
                 );
 
@@ -598,13 +529,25 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
   }
 
   Widget _buildInputCCCDNumber() {
-    return CardInputTextFormWithLabel(
-      labelText: LocaleKeys.familyMember_cccdNumber.tr,
-      controller: controller.cccdNumberTextCtrl,
-      isRequired: false,
-      hintText: LocaleKeys.declareInfo_inputCCCD.tr,
-      maxLengthInputForm: 20,
-      inputFormatters: InputFormatterEnum.textNormalWithoutDiacritics,
+    return FormFieldRegistrant<String>(
+      registrarId: '2bdc7f55-a00c-44fa-b4eb-f481fabac82d',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.familyMember_cccdNumberIncorrectFormat.tr;
+        }
+        return null;
+      },
+      builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
+        fieldKey: formFieldKey,
+        validator: validator,
+        labelText: LocaleKeys.familyMember_cccdNumber.tr,
+        controller: controller.cccdNumberTextCtrl,
+        isRequired: false,
+        hintText: LocaleKeys.declareInfo_inputCCCD.tr,
+        maxLengthInputForm: 20,
+        inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
+      ),
     );
   }
 

@@ -7,12 +7,13 @@ import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/family
 import 'package:v_bhxh/modules/declare_607/declare_info_607/controller/declare_info_607_controller.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
+part '../model/tk1_tab_607_widget.dart';
 part 'd01_tab_607_widget.dart';
 part 'declare_info_607_widget.dart';
-part '../model/tk1_tab_607_widget.dart';
 
 class DeclareInfo607Page extends BaseGetWidget<DeclareInfo607Controller> {
   DeclareInfo607Page({super.key});

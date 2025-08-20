@@ -103,10 +103,13 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
           return FormFieldRegistrant<String>(
             registrarId: "1068d470-d07d-4e70-b247-4fc9928748dd",
             validator: (value) {
-              final trimmedValue = value?.trim();
+              final trimmedValue = value?.trim() ?? '';
 
-              if (trimmedValue == null || trimmedValue.isEmpty) {
+              if (trimmedValue.isEmpty) {
                 return LocaleKeys.declareInfo_bankNumberEmpty.tr;
+              }
+              if (trimmedValue.containsVietnamese) {
+                return LocaleKeys.declareInfo_bankNumberInCorrectFormat.tr;
               }
               return null;
             },
@@ -118,8 +121,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                   autovalidateMode: controller.autoValidateMode.value,
                   isRequired: controller.isATMpayment,
                   hintText: LocaleKeys.declareInfo_bankNumberHint.tr,
-                  inputFormatters:
-                      InputFormatterEnum.textNormalWithoutDiacritics,
+                  inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
                   labelText: LocaleKeys.declareInfo_bankNumber.tr,
                   controller: controller.bankNumberCtrl,
                   maxLengthInputForm: 50,
@@ -292,17 +294,17 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
           return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
         }
 
-        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-        if (toDate == null) {
-          return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
-        }
-        if (toDate.isAfter(DateTime.now())) {
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
           return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (toDate.year <= 1900 || toDate.year >= 2100) {
+        if (date.year <= 1900 || date.year >= 2100) {
           return LocaleKeys.declareInfo_resolvedDateInvalid.tr;
+        }
+        if (date.isAfter(DateTime.now())) {
+          return LocaleKeys.declareInfo_resolvedDateLimit.tr;
         }
 
         return null;
