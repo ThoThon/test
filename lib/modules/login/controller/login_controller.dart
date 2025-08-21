@@ -45,26 +45,42 @@ class LoginController extends BaseGetxController {
         password: password,
       );
 
-      if (response.isSuccess) {
-        await Future.wait([
-          hiveApp.put(HiveKeys.keyUsername, username),
-          hiveApp.put(HiveKeys.keyJwtToken, response.result),
-        ]);
-        await (
-          _getAccountInfo(),
-          _getD02Categories(),
-          _get630Categories(),
-          _getToTalNotiUnread(),
-        ).wait;
-        Get.offAllNamed(AppRoutes.home.path);
-        return;
-      } else {
+      if (!response.isSuccess) {
         showSnackBar(
           isHaveUsername.value
               ? LocaleKeys.login_invalidPassword.tr
               : LocaleKeys.login_usernameAndPasswordInValid.tr,
         );
+        return;
       }
+
+      await Future.wait([
+        hiveApp.put(HiveKeys.keyUsername, username),
+        hiveApp.put(HiveKeys.keyJwtToken, response.result),
+      ]);
+
+      final (
+        getAccountInfoSuccess,
+        getD02CategoriesSuccess,
+        get630CategoriesSuccess,
+        _,
+      ) = await (
+        _getAccountInfo(),
+        _getD02Categories(),
+        _get630Categories(),
+        _getToTalNotiUnread(),
+      ).wait;
+
+      // Nếu get 1 trong các thông tin không thành công thì hiển thị thông báo lỗi
+      // và không chuyển hướng đến Home
+      if (!getAccountInfoSuccess ||
+          !getD02CategoriesSuccess ||
+          !get630CategoriesSuccess) {
+        showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
+        return;
+      }
+
+      Get.offAllNamed(AppRoutes.home.path);
     } catch (e) {
       logger.e(e);
     } finally {
@@ -83,20 +99,22 @@ class LoginController extends BaseGetxController {
     }
   }
 
-  Future<void> _getAccountInfo() async {
+  Future<bool> _getAccountInfo() async {
     try {
       final res = await _loginRepository.getAccountInfo();
       if (res.code == AppConst.statusCodeSuccess && res.result != null) {
         AppData.instance.accountInfoModel.value = res.result;
         //Lưu tên tổ chức lại để hiện ngoài màn login
-        hiveApp.put(HiveKeys.keyCompanyName, res.result?.tenToChuc);
+        await hiveApp.put(HiveKeys.keyCompanyName, res.result?.tenToChuc);
+        return true;
       }
     } catch (e) {
       logger.d(e);
     }
+    return false;
   }
 
-  Future<void> _getD02Categories() async {
+  Future<bool> _getD02Categories() async {
     try {
       final res = await _loginRepository.getD02Categories();
       final d02Categories = res.result;
@@ -111,13 +129,15 @@ class LoginController extends BaseGetxController {
           ..birthTypes = d02Categories.birthTypes
           ..receiveResults = d02Categories.receiveResults
           ..oldProvinces = d02Categories.oldProvinces;
+        return true;
       }
     } catch (e) {
       logger.d(e);
     }
+    return false;
   }
 
-  Future<void> _get630Categories() async {
+  Future<bool> _get630Categories() async {
     try {
       final response = await _loginRepository.get630aCategories();
       final categories630 = response.result;
@@ -139,10 +159,12 @@ class LoginController extends BaseGetxController {
           ..surrogacy = categories630.surrogacy
           ..surgeryPregnancy32w = categories630.surgeryPregnancy32w
           ..contraception = categories630.contraception;
+        return true;
       }
     } catch (e) {
       logger.d(e);
     }
+    return false;
   }
 
   @override

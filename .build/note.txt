@@ -1,3 +1,6 @@
+21/08/2025
+- Đảm bảo gọi thành công các api lấy dữ liệu cần thiết ở màn login thì mới cho phép mở màn home
+
 15/08/2025
 - [Appmobile]_Thủ tục 630b_Lỗi maxlength trường [Số BHXH của người nuôi dưỡng] - BHW-3050
 - Bản mới do Hiệp test Mac mới hẹ hẹ hẹ
