@@ -1,18 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Tuyến bệnh viện
-class HospitalLineModel extends Equatable {
+class HospitalLine extends Equatable implements Entity {
   final String value;
   final String text;
 
-  const HospitalLineModel({
+  const HospitalLine({
     required this.value,
     required this.text,
   });
 
   @Deprecated('Sử dụng HospitalLineData để parse Json')
-  factory HospitalLineModel.fromJson(Map<String, dynamic> json) {
-    return HospitalLineModel(
+  factory HospitalLine.fromJson(Map<String, dynamic> json) {
+    return HospitalLine(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

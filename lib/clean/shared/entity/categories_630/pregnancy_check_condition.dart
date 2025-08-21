@@ -1,18 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Điều kiện khám thai
-class PregnancyCheckConditionModel extends Equatable {
+class PregnancyCheckCondition extends Equatable implements Entity {
   final String value;
   final String text;
 
-  const PregnancyCheckConditionModel({
+  const PregnancyCheckCondition({
     required this.value,
     required this.text,
   });
 
   @Deprecated('Sử dụng PregnancyCheckConditionData để parse Json')
-  factory PregnancyCheckConditionModel.fromJson(Map<String, dynamic> json) {
-    return PregnancyCheckConditionModel(
+  factory PregnancyCheckCondition.fromJson(Map<String, dynamic> json) {
+    return PregnancyCheckCondition(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

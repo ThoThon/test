@@ -1,53 +1,54 @@
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 
-class CategoriesProcedure630 {
+class CategoriesProcedure630 implements Entity {
   // Hình thức kê khai
-  final Set<DeclareForm630Model> declareForm;
+  final Set<DeclareForm630> declareForm;
 
   // Mã nhóm hưởng 630a
-  final Set<BenefitGroup630aModel> benefitGroup630a;
+  final Set<BenefitGroup630a> benefitGroup630a;
 
   // Tuyến bệnh viện
-  final Set<HospitalLineModel> hospitalLine;
+  final Set<HospitalLine> hospitalLine;
 
   // Bệnh dài ngày
-  final Set<LongDieaseModel> longDiease;
+  final Set<LongDiease> longDiease;
 
   // Điều kiện làm việc
-  final Set<WorkConditionModel> workCondition;
+  final Set<WorkCondition> workCondition;
 
   // Hình thức nhận
-  final Set<ReceiveFormModel> receiveForm;
+  final Set<ReceiveForm> receiveForm;
 
   // Ngân hàng
-  final Set<BankModel> bank;
+  final Set<Bank> bank;
 
   // Mã nhóm hưởng 630b
-  final Set<BenefitGroup630bModel> benefitGroup630b;
+  final Set<BenefitGroup630b> benefitGroup630b;
 
   // Mã nhóm hưởng cấp 2
-  final Set<BenefitGroupLv2Model> benefitGroupLv2;
+  final Set<BenefitGroupLv2> benefitGroupLv2;
 
   // Điều kiện khám thai
-  final Set<PregnancyCheckConditionModel> pregnancyCondition;
+  final Set<PregnancyCheckCondition> pregnancyCondition;
 
   // Điều kiện sinh con
-  final Set<ChildBirthConditionModel> childBirthCondition;
+  final Set<ChildBirthCondition> childBirthCondition;
 
   // Nghỉ dưỡng thai
-  final Set<MaternityLeaveModel> maternityLeave;
+  final Set<MaternityLeave> maternityLeave;
 
   // Nghỉ chăm con
-  final Set<ParentalLeaveModel> parentalLeave;
+  final Set<ParentalLeave> parentalLeave;
 
   // Mang thai hộ
-  final Set<SurrogacyModel> surrogacy;
+  final Set<Surrogacy> surrogacy;
 
   // Phẫu thuật hoặc thai dưới 32 tuần
-  final Set<SurgeryPregnancy32wModel> surgeryPregnancy32w;
+  final Set<SurgeryPregnancy32w> surgeryPregnancy32w;
 
   // Biện pháp tránh thai
-  final Set<ContraceptionModel> contraception;
+  final Set<Contraception> contraception;
 
   const CategoriesProcedure630({
     required this.declareForm,
@@ -67,73 +68,4 @@ class CategoriesProcedure630 {
     required this.surgeryPregnancy32w,
     required this.contraception,
   });
-
-  factory CategoriesProcedure630.fromJson(Map<String, dynamic> json) {
-    return CategoriesProcedure630(
-      declareForm: (json['phatSinhDieuChinhs'] as List?)
-              ?.map((e) => DeclareForm630Model.fromJson(e))
-              .toSet() ??
-          <DeclareForm630Model>{},
-      benefitGroup630a: (json['maNhomHuong630as'] as List?)
-              ?.map((e) => BenefitGroup630aModel.fromJson(e))
-              .toSet() ??
-          <BenefitGroup630aModel>{},
-      hospitalLine: (json['tuyenBenhViens'] as List?)
-              ?.map((e) => HospitalLineModel.fromJson(e))
-              .toSet() ??
-          <HospitalLineModel>{},
-      longDiease: (json['benhDaiNgays'] as List?)
-              ?.map((e) => LongDieaseModel.fromJson(e))
-              .toSet() ??
-          <LongDieaseModel>{},
-      workCondition: (json['dieuKienLamViecs'] as List?)
-              ?.map((e) => WorkConditionModel.fromJson(e))
-              .toSet() ??
-          <WorkConditionModel>{},
-      receiveForm: (json['hinhThucNhans'] as List?)
-              ?.map((e) => ReceiveFormModel.fromJson(e))
-              .toSet() ??
-          <ReceiveFormModel>{},
-      bank: (json['nganHangs'] as List?)
-              ?.map((e) => BankModel.fromJson(e))
-              .toSet() ??
-          <BankModel>{},
-      benefitGroup630b: (json['maNhomHuong630bs'] as List?)
-              ?.map((e) => BenefitGroup630bModel.fromJson(e))
-              .toSet() ??
-          <BenefitGroup630bModel>{},
-      benefitGroupLv2: (json['maNhomHuong2s'] as List?)
-              ?.map((e) => BenefitGroupLv2Model.fromJson(e))
-              .toSet() ??
-          <BenefitGroupLv2Model>{},
-      pregnancyCondition: (json['dieuKienKhamThais'] as List?)
-              ?.map((e) => PregnancyCheckConditionModel.fromJson(e))
-              .toSet() ??
-          <PregnancyCheckConditionModel>{},
-      childBirthCondition: (json['dieuKienSinhCons'] as List?)
-              ?.map((e) => ChildBirthConditionModel.fromJson(e))
-              .toSet() ??
-          <ChildBirthConditionModel>{},
-      maternityLeave: (json['nghiDuongThais'] as List?)
-              ?.map((e) => MaternityLeaveModel.fromJson(e))
-              .toSet() ??
-          <MaternityLeaveModel>{},
-      parentalLeave: (json['chaNghiChamCons'] as List?)
-              ?.map((e) => ParentalLeaveModel.fromJson(e))
-              .toSet() ??
-          <ParentalLeaveModel>{},
-      surrogacy: (json['mangThaiHos'] as List?)
-              ?.map((e) => SurrogacyModel.fromJson(e))
-              .toSet() ??
-          <SurrogacyModel>{},
-      surgeryPregnancy32w: (json['phauThuatThai32s'] as List?)
-              ?.map((e) => SurgeryPregnancy32wModel.fromJson(e))
-              .toSet() ??
-          <SurgeryPregnancy32wModel>{},
-      contraception: (json['bienPhapKHHGDs'] as List?)
-              ?.map((e) => ContraceptionModel.fromJson(e))
-              .toSet() ??
-          <ContraceptionModel>{},
-    );
-  }
 }

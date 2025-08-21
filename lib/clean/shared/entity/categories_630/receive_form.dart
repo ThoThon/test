@@ -1,20 +1,21 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 const ATMPaymentValue = 'ATM';
 
 /// Hình thức nhận
-class ReceiveFormModel extends Equatable {
+class ReceiveForm extends Equatable implements Entity {
   final String value;
   final String text;
 
-  const ReceiveFormModel({
+  const ReceiveForm({
     required this.value,
     required this.text,
   });
 
   @Deprecated('Sử dụng ReceiveFormData để parse Json')
-  factory ReceiveFormModel.fromJson(Map<String, dynamic> json) {
-    return ReceiveFormModel(
+  factory ReceiveForm.fromJson(Map<String, dynamic> json) {
+    return ReceiveForm(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

@@ -23,21 +23,21 @@ class AppData {
   final accountInfo = Rxn<AccountInfo>();
 
   // Thủ tục 630
-  var declareForm = <DeclareForm630Model>{};
-  var benefitGroup630a = <BenefitGroup630aModel>{};
-  var workCondition = <WorkConditionModel>{};
-  var receiveForm = <ReceiveFormModel>{};
-  var bank = <BankModel>{};
-  var hospitalLine = <HospitalLineModel>{};
-  var longDiease = <LongDieaseModel>{};
-  var pregnancyCondition = <PregnancyCheckConditionModel>{};
-  var childBirthCondition = <ChildBirthConditionModel>{};
-  var maternityLeave = <MaternityLeaveModel>{};
-  var parentalLeave = <ParentalLeaveModel>{};
-  var surrogacy = <SurrogacyModel>{};
-  var surgeryPregnancy32w = <SurgeryPregnancy32wModel>{};
-  var contraception = <ContraceptionModel>{};
-  var benefitGroup630b = <BenefitGroup630bModel>{};
+  var declareForm = <DeclareForm630>{};
+  var benefitGroup630a = <BenefitGroup630a>{};
+  var workCondition = <WorkCondition>{};
+  var receiveForm = <ReceiveForm>{};
+  var bank = <Bank>{};
+  var hospitalLine = <HospitalLine>{};
+  var longDiease = <LongDiease>{};
+  var pregnancyCondition = <PregnancyCheckCondition>{};
+  var childBirthCondition = <ChildBirthCondition>{};
+  var maternityLeave = <MaternityLeave>{};
+  var parentalLeave = <ParentalLeave>{};
+  var surrogacy = <Surrogacy>{};
+  var surgeryPregnancy32w = <SurgeryPregnancy32w>{};
+  var contraception = <Contraception>{};
+  var benefitGroup630b = <BenefitGroup630b>{};
 
   /// Số lượng thông báo chưa đọc
   final totalUnread = 0.obs;

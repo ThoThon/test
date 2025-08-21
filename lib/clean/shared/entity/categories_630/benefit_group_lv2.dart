@@ -1,19 +1,21 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Mã nhóm hưởng cấp 2
-class BenefitGroupLv2Model extends Equatable {
+class BenefitGroupLv2 extends Equatable implements Entity {
   final String maNhomHuong;
   final String maNhomHuongC2;
   final String tenNhomHuongC2;
 
-  const BenefitGroupLv2Model({
+  const BenefitGroupLv2({
     required this.maNhomHuong,
     required this.maNhomHuongC2,
     required this.tenNhomHuongC2,
   });
 
-  factory BenefitGroupLv2Model.fromJson(Map<String, dynamic> json) {
-    return BenefitGroupLv2Model(
+  @Deprecated('Sử dụng BenefitGroupLv2Data để parse Json')
+  factory BenefitGroupLv2.fromJson(Map<String, dynamic> json) {
+    return BenefitGroupLv2(
       maNhomHuong: json['maNhomHuong'] ?? '',
       maNhomHuongC2: json['maNhomHuongC2'] ?? '',
       tenNhomHuongC2: json['tenNhomHuongC2'] ?? '',

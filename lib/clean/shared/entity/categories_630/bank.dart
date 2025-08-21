@@ -1,7 +1,8 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Ngân hàng
-class BankModel extends Equatable {
+class Bank extends Equatable implements Entity {
   final int id;
 
   /// Mã tỉnh
@@ -13,7 +14,7 @@ class BankModel extends Equatable {
   /// Tên ngân hàng
   final String name;
 
-  const BankModel({
+  const Bank({
     required this.id,
     required this.provinceCoe,
     required this.code,
@@ -21,9 +22,9 @@ class BankModel extends Equatable {
   });
 
   @Deprecated('Sử dụng BankData để parse Json')
-  factory BankModel.fromJson(Map<String, dynamic> json) {
-    return BankModel(
-      id: json["id"] ?? "",
+  factory Bank.fromJson(Map<String, dynamic> json) {
+    return Bank(
+      id: json["id"] ?? 0,
       provinceCoe: json["maTinh"] ?? "",
       code: json["maNganHang"] ?? "",
       name: json["ciName"] ?? "",

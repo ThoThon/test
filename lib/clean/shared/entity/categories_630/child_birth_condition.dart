@@ -1,18 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Điều kiện sinh con
-class ChildBirthConditionModel extends Equatable {
+class ChildBirthCondition extends Equatable implements Entity {
   final String value;
   final String text;
 
-  const ChildBirthConditionModel({
+  const ChildBirthCondition({
     required this.value,
     required this.text,
   });
 
   @Deprecated('Sử dụng ChildBirthConditionData để parse Json')
-  factory ChildBirthConditionModel.fromJson(Map<String, dynamic> json) {
-    return ChildBirthConditionModel(
+  factory ChildBirthCondition.fromJson(Map<String, dynamic> json) {
+    return ChildBirthCondition(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

@@ -10,8 +10,8 @@ class DeclareInfo630bResponse {
   final String? soCmnd;
   final String? maNhanVien;
   final String phatSinhDieuChinh;
-  final BenefitGroup630bModel? maNhomHuong;
-  final BenefitGroupLv2Model? maNhomHuong2;
+  final BenefitGroup630b? maNhomHuong;
+  final BenefitGroupLv2? maNhomHuong2;
   final DateTime tuNgay;
   final DateTime denNgay;
   final int tongSoNgay;
@@ -46,7 +46,7 @@ class DeclareInfo630bResponse {
   final String? hinhThucNhan;
   final String? soTaiKhoan;
   final String? tenChuTaiKhoan;
-  final BankModel? nganHang;
+  final Bank? nganHang;
   final String? dotDaGiaiQuyet;
   final String? lyDoDieuChinh;
   final DateTime? tuNgayDuyetTruoc;
@@ -156,9 +156,8 @@ class DeclareInfo630bResponse {
       hinhThucNhan: json['hinhThucNhan'] ?? '',
       soTaiKhoan: json['soTaiKhoan'] ?? '',
       tenChuTaiKhoan: json['tenChuTaiKhoan'] ?? '',
-      nganHang: json['nganHang'] != null
-          ? BankModel.fromJson(json['nganHang'])
-          : null,
+      nganHang:
+          json['nganHang'] != null ? Bank.fromJson(json['nganHang']) : null,
       dotDaGiaiQuyet: json['dotDaGiaiQuyet'] ?? '',
       lyDoDieuChinh: json['lyDoDieuChinh'] ?? '',
       tuoiThai: json['tuoiThai'],

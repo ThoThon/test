@@ -1,18 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Mang thai hộ
-class SurrogacyModel extends Equatable {
+class Surrogacy extends Equatable implements Entity {
   final String value;
   final String text;
 
-  const SurrogacyModel({
+  const Surrogacy({
     required this.value,
     required this.text,
   });
 
   @Deprecated('Sử dụng SurrogacyData để parse Json')
-  factory SurrogacyModel.fromJson(Map<String, dynamic> json) {
-    return SurrogacyModel(
+  factory Surrogacy.fromJson(Map<String, dynamic> json) {
+    return Surrogacy(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

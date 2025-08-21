@@ -1,18 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Điều kiện làm việc
-class WorkConditionModel extends Equatable {
+class WorkCondition extends Equatable implements Entity {
   final String value;
   final String text;
 
-  const WorkConditionModel({
+  const WorkCondition({
     required this.value,
     required this.text,
   });
 
   @Deprecated('Sử dụng WorkConditionData để parse Json')
-  factory WorkConditionModel.fromJson(Map<String, dynamic> json) {
-    return WorkConditionModel(
+  factory WorkCondition.fromJson(Map<String, dynamic> json) {
+    return WorkCondition(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

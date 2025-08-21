@@ -1,18 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Nghỉ dưỡng thai
-class MaternityLeaveModel extends Equatable {
+class MaternityLeave extends Equatable implements Entity {
   final String value;
   final String text;
 
-  const MaternityLeaveModel({
+  const MaternityLeave({
     required this.value,
     required this.text,
   });
 
   @Deprecated('Sử dụng MaternityLeaveData để parse Json')
-  factory MaternityLeaveModel.fromJson(Map<String, dynamic> json) {
-    return MaternityLeaveModel(
+  factory MaternityLeave.fromJson(Map<String, dynamic> json) {
+    return MaternityLeave(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );

@@ -154,7 +154,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   bool get isRequiredPregnancyCondition =>
       benefitGroupLv2.value?.maNhomHuongC2 == 'T11';
 
-  void onChangeBenefitGroup(BenefitGroup630bModel? method) {
+  void onChangeBenefitGroup(BenefitGroup630b? method) {
     if (method == null) {
       return;
     }
@@ -256,7 +256,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeReceiveMethod(ReceiveFormModel? method) {
+  void onChangeReceiveMethod(ReceiveForm? method) {
     if (method == null) {
       return;
     }
@@ -286,7 +286,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     receiveForm.value = method;
   }
 
-  void onChangeDeclareMethod(DeclareForm630Model? method) {
+  void onChangeDeclareMethod(DeclareForm630? method) {
     if (method == null) {
       return;
     }

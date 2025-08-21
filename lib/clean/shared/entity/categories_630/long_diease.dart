@@ -1,7 +1,8 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Bệnh dài ngày
-class LongDieaseModel extends Equatable {
+class LongDiease extends Equatable implements Entity {
   /// Key
   final String id;
 
@@ -11,15 +12,15 @@ class LongDieaseModel extends Equatable {
   /// Mã bệnh
   final String code;
 
-  const LongDieaseModel({
+  const LongDiease({
     required this.id,
     required this.name,
     required this.code,
   });
 
   @Deprecated('Sử dụng LongDieaseData để parse Json')
-  factory LongDieaseModel.fromJson(Map<String, dynamic> json) {
-    return LongDieaseModel(
+  factory LongDiease.fromJson(Map<String, dynamic> json) {
+    return LongDiease(
       id: json["key"] ?? "",
       name: json["tenBenh"] ?? "",
       code: json["maBenh"] ?? "",

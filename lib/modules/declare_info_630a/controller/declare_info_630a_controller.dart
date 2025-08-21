@@ -33,10 +33,10 @@ class DeclareInfo630aController extends BaseGetxController {
   final staffCodeTextCtrl = TextEditingController();
 
   /// Hình thức kê khai *
-  final declareForm = Rxn<DeclareForm630Model>();
+  final declareForm = Rxn<DeclareForm630>();
 
   /// Mã nhóm hưởng *
-  final benefitGroup = Rxn<BenefitGroup630aModel>();
+  final benefitGroup = Rxn<BenefitGroup630a>();
 
   /// Ngày sinh con *
   final birthDayChildCtrl = TextEditingController();
@@ -63,10 +63,10 @@ class DeclareInfo630aController extends BaseGetxController {
   final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
 
   /// Tuyến bệnh viện
-  final selectHospitalLine = Rxn<HospitalLineModel>();
+  final selectHospitalLine = Rxn<HospitalLine>();
 
   /// Chọn/Nhập mã bệnh
-  final selectDiseaseCode = Rxn<LongDieaseModel>();
+  final selectDiseaseCode = Rxn<LongDiease>();
 
   /// Tên bệnh
   final diseaseNameTextCtrl = TextEditingController();
@@ -75,7 +75,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final serialNumberCtrl = TextEditingController();
 
   /// Điều kiện làm việc
-  final workCondition = Rxn<WorkConditionModel>();
+  final workCondition = Rxn<WorkCondition>();
 
   /// Nghỉ dưỡng thai
   final isMaternityRest = false.obs;
@@ -90,7 +90,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final noteTextCtrl = TextEditingController();
 
   /// Hình thức nhận *
-  final receiveForm = Rxn<ReceiveFormModel>();
+  final receiveForm = Rxn<ReceiveForm>();
 
   /// Số tài khoản ngân hàng
   final bankNumberCtrl = TextEditingController();
@@ -99,7 +99,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final accountHolderNameCtrl = TextEditingController();
 
   /// Ngân hàng
-  final selectedBank = Rxn<BankModel>();
+  final selectedBank = Rxn<Bank>();
 
   /// Đợt đã giải quyết
   final resolvedPeriodCtrl = TextEditingController();
@@ -452,7 +452,7 @@ class DeclareInfo630aController extends BaseGetxController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeReceiveMethod(ReceiveFormModel? method) {
+  void onChangeReceiveMethod(ReceiveForm? method) {
     if (method == null) {
       return;
     }
@@ -482,7 +482,7 @@ class DeclareInfo630aController extends BaseGetxController {
     receiveForm.value = method;
   }
 
-  void onChangeDeclareMethod(DeclareForm630Model? method) {
+  void onChangeDeclareMethod(DeclareForm630? method) {
     if (method == null) {
       return;
     }
@@ -508,7 +508,7 @@ class DeclareInfo630aController extends BaseGetxController {
     }
   }
 
-  void onChangeBenefitGroup(BenefitGroup630aModel? group) {
+  void onChangeBenefitGroup(BenefitGroup630a? group) {
     if (group == null) {
       return;
     }

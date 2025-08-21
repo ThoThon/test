@@ -1,4 +1,5 @@
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_procedure_630.dart';
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/shared/model/account_info_data.dart';
 import 'package:v_bhxh/clean/core/data/model/base_response_cl.dart';
@@ -83,5 +84,11 @@ class LoginRepositoryImpl extends LoginRepository {
     final data = BaseResponseCl<int>.fromJson(response);
 
     return data.result ?? 0;
+  }
+
+  @override
+  Future<CategoriesProcedure630> get630Categories() {
+    // TODO: implement get630Categories
+    throw UnimplementedError();
   }
 }

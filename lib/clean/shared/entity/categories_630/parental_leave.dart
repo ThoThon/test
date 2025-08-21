@@ -1,18 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 /// Nghỉ chăm con
-class ParentalLeaveModel extends Equatable {
+class ParentalLeave extends Equatable implements Entity {
   final String value;
   final String text;
 
-  const ParentalLeaveModel({
+  const ParentalLeave({
     required this.value,
     required this.text,
   });
 
   @Deprecated('Sử dụng ParentalLeaveData để parse Json')
-  factory ParentalLeaveModel.fromJson(Map<String, dynamic> json) {
-    return ParentalLeaveModel(
+  factory ParentalLeave.fromJson(Map<String, dynamic> json) {
+    return ParentalLeave(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
     );
