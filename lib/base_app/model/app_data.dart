@@ -19,6 +19,7 @@ class AppData {
   var resultReceivingOptions = <RegisterReceiveResultModel>{};
   var birthTypes = <BirthTypeModel>{};
   var receiveResults = <ReceiveResultModel>{};
+  var oldProvinces = <ProvinceModel>{};
 
   // Thủ tục 630
   var declareForm = <DeclareForm630Model>{};

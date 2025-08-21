@@ -1,7 +1,13 @@
+21/08/2025
+- Đảm bảo gọi thành công các api lấy dữ liệu cần thiết ở màn login thì mới cho phép mở màn home
+
 15/08/2025
 - [Appmobile]_Thủ tục 630b_Lỗi maxlength trường [Số BHXH của người nuôi dưỡng] - BHW-3050
 - Bản mới do Hiệp test Mac mới hẹ hẹ hẹ
 - [Appmobile]_Thủ tục 630b_Lỗi trường [Ngày sinh con] đang được tự động lưu theo Trường [Từ ngày] - BHW-3055
+- [Appmobile]_Thủ tục 630b - Chỉnh sửa hiển thị "..." tại các trường giá trị dài khi chọn từ combobox - BHW-3062
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613: Bổ sung api cho trường Tỉnh nơi KCB, Bệnh viện nơi KCB - BHW-3079
+- [Appmobile]_Lấy Categories trả về danh sách Bệnh viện nơi KCB - BHW-3080
 
 14/08/2025
 - [Appmobile]_Lỗi unikey - BHW-3001
@@ -53,6 +59,7 @@
 - Sửa lỗi không thể cập nhật thông tin đơn vị khi trường lương cơ sở rỗng
 - Loại bỏ việc reset mã hồ sơ khi thay đổi hình thức kê khai - BHW-2949
 - [Appmobile]_Bổ sung popup thông báo hiển thị khi api trả về statuscode 429 - BHW-2985
+- [Appmobile]_Thủ tục 600,607, 608, 610, 612, 613 - Tờ khai TK1 + Màn Đăng ký cấp mã - Cập nhật danh mục hành chính 2 cấp
 
 08/08/2025
 - [Appmobile]_Chỉnh sửa call api /api/HoSo630a/update-ms - BHW-2972

@@ -168,7 +168,7 @@ class CardDropdownWithLabel<T> extends StatelessWidget {
                     child: SDSBuildText(
                       display(e),
                       style: AppTextStyle.font14Re,
-                      maxLines: 2,
+                      maxLines: 1,
                       textAlign: TextAlign.start,
                       overflow: TextOverflow.ellipsis,
                     ),
