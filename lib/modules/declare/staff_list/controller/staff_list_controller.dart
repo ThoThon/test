@@ -91,7 +91,9 @@ class StaffListController extends BaseGetxController {
         ProcedureType.procedure630b => _repository630.getListStaff630b(
             declarationPeriodId: declarationPeriodId,
           ),
-        _ => throw UnimplementedError('Not implemented yet'),
+        ProcedureType.procedure630c => _repository630.getListStaff630c(
+            declarationPeriodId: declarationPeriodId,
+          ),
       };
 
       if (response.isSuccess) {

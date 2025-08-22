@@ -63,9 +63,9 @@ extension PersonInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: "f05931e0-6c1a-4fce-8eca-317d78fac1cc",
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_fullNameEmpty.tr;
         }
 
@@ -76,7 +76,7 @@ extension PersonInfoGroupExt630c on DeclareInfo630cPage {
           fieldKey: fieldKey,
           validator: validator,
           labelText: LocaleKeys.declareInfo_fullName.tr,
-          controller: TextEditingController(),
+          controller: controller.fullNameTextCtrl,
           isRequired: true,
           maxLengthInputForm: 100,
         );
@@ -89,9 +89,9 @@ extension PersonInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: "8a227189-01de-4fe2-9037-b73b3fff89c5",
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_bhxhCodeCannotEmpty.tr;
         }
         if (trimmedValue.length < 10) {
@@ -105,7 +105,7 @@ extension PersonInfoGroupExt630c on DeclareInfo630cPage {
           validator: validator,
           isRequired: true,
           labelText: LocaleKeys.declareInfo_bhxhCode.tr,
-          controller: TextEditingController(),
+          controller: controller.bhxhTextCtrl,
           maxLengthInputForm: 10,
           hintText: LocaleKeys.declareInfo_inputBhxhCode.tr,
           inputFormatters: InputFormatterEnum.digitsOnly,
@@ -125,7 +125,7 @@ extension PersonInfoGroupExt630c on DeclareInfo630cPage {
       builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
         fieldKey: formFieldKey,
         labelText: LocaleKeys.declareInfo_cccd.tr,
-        controller: TextEditingController(),
+        controller: controller.cccdTextCtrl,
         hintText: LocaleKeys.declareInfo_inputCCCD.tr,
         maxLengthInputForm: 20,
         inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
@@ -138,7 +138,7 @@ extension PersonInfoGroupExt630c on DeclareInfo630cPage {
   Widget _buildStaffCode() {
     return CardInputTextFormWithLabel(
       labelText: LocaleKeys.declareInfo_staffCode.tr,
-      controller: TextEditingController(),
+      controller: controller.staffCodeTextCtrl,
       hintText: LocaleKeys.declareInfo_inputStaffCode.tr,
       maxLengthInputForm: 100,
     );

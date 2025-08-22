@@ -1,10 +1,17 @@
+import 'package:collection/collection.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.src.dart';
+import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_request.dart';
+import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_response.dart';
+import 'package:v_bhxh/modules/declare_info_630c/repository/declare_info_630c_repository.dart';
 import 'package:v_bhxh/modules/login/model/categories_630/bank_model.dart';
 import 'package:v_bhxh/modules/login/model/categories_630/benefit_group_630_model.dart';
 import 'package:v_bhxh/modules/login/model/categories_630/declare_form_model.dart';
 import 'package:v_bhxh/modules/login/model/categories_630/receive_form_model.dart';
 import 'package:v_bhxh/modules/src.dart';
+
+import '../../declare/staff_list/model/model_src.dart';
 
 class DeclareInfo630cController extends BaseGetxController {
   /// id 630c dùng khi update
@@ -100,9 +107,20 @@ class DeclareInfo630cController extends BaseGetxController {
     return declareForm.value?.value == declareMethodAdjustValue;
   }
 
+  late final _repository = DeclareInfo630cRepository(this);
+
+  final declarationPeriodController =
+      Get.findOrNull<DeclarationPeriodController>();
+
   /// Trả về "true" khi "Hình thức nhận" là "Chi trả qua ATM"
   bool get isATMpayment {
     return receiveForm.value?.value == ATMPaymentValue;
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    _get630cDetail();
   }
 
   @override
@@ -138,10 +156,223 @@ class DeclareInfo630cController extends BaseGetxController {
       registeredKey.currentState?.firstInvalid?.scrollToIntoView();
     } else {
       if (argument.isUpdateStaff) {
-        // await _update630b();
+        await _update630c();
       } else {
-        // await _add630b();
+        await _add630c();
       }
+    }
+  }
+
+  Future<void> _add630c() async {
+    try {
+      showLoadingOverlay();
+      final response = await _repository.addProcedure630c(_buildRequest());
+      if (response.result != null && response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        if (argument.isAddPeriodFromDeclarePeriod) {
+          Get.offNamed(
+            AppRoutes.staffList.path,
+            arguments: StaffListArgument(
+              declarationPeriodId: argument.declarationPeriodId,
+              procedureType: ProcedureType.procedure630c,
+            ),
+          )?.then((value) {
+            declarationPeriodController?.getDeclarationPeriods();
+          });
+        } else if (argument.isAddStaffFromStaffList) {
+          Get.back(
+            result: argument.declarationPeriodId,
+          );
+        }
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  DeclareInfo630cRequest _buildRequest() {
+    return DeclareInfo630cRequest(
+      id: id,
+      kyKeKhaiId: argument.declarationPeriodId,
+      hoTen: fullNameTextCtrl.text,
+      maSoBhxh: bhxhTextCtrl.text,
+      soCmnd: cccdTextCtrl.text,
+      maNhanVien: staffCodeTextCtrl.text,
+      phatSinhDieuChinh: declareForm.value?.value ?? '',
+      maNhomHuong: benefitGroup.value?.value ?? '',
+      tuNgay: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
+      denNgay: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
+      tongSoNgay: int.tryParse(countDayTextCtrl.text.trim()),
+      tuNgayDonVi:
+          convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
+      ngayTroLaiLamViec:
+          convertStringToDateSafe(returnWorkDateCtrl.text, PATTERN_1),
+      ngayGiamDinh: convertStringToDateSafe(appraisalDateCtrl.text, PATTERN_1),
+      tyLeSuyGiam: int.tryParse(rateToDeclineCtrl.text),
+      soSeriCT: serialNumberCtrl.text,
+      dotBoSung: supplementalPeriodCtrl.text,
+      maHoSo: fileCodeTextCtrl.text,
+      ghiChu: noteTextCtrl.text,
+      hinhThucNhan: receiveForm.value?.value ?? '',
+      soTaiKhoan: bankNumberCtrl.text,
+      tenChuTaiKhoan: accountHolderNameCtrl.text,
+      maNganHang: selectedBank.value?.code,
+      dotDaGiaiQuyet: resolvedPeriodCtrl.text,
+      tuNgayDuyetTruoc:
+          convertStringToDateSafe(resolvedDateCtrl.text, PATTERN_1),
+      lyDoDieuChinh: adjustReasonCtrl.text,
+    );
+  }
+
+  Future<void> _get630cDetail() async {
+    final staffId = argument.staffId;
+    if (staffId == null) {
+      return;
+    }
+    try {
+      showLoadingOverlay();
+
+      final response = await _repository.getDetail630c(id: staffId);
+      final infoDetail = response.result;
+      if (response.isSuccess && infoDetail != null) {
+        mapFrom630cDetail(infoDetail);
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.d(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  void mapFrom630cDetail(DeclareInfo630cResponse detail) {
+    id = detail.id;
+    // Họ và tên
+    fullNameTextCtrl.text = detail.hoTen.trim();
+
+    // Mã số BHXH
+    bhxhTextCtrl.text = detail.maSoBhxh.trim();
+
+    // Số CCCD
+    if (detail.soCmnd != null) {
+      cccdTextCtrl.text = detail.soCmnd!.trim();
+    }
+
+    // Mã nhân viên
+    if (detail.maNhanVien != null) {
+      staffCodeTextCtrl.text = detail.maNhanVien!.trim();
+    }
+
+    // Hìnhh thức kê khai
+    declareForm.value = AppData.instance.declareForm.firstWhereOrNull(
+      (item) => item.value == detail.phatSinhDieuChinh,
+    );
+
+    // Mã nhóm hưởng
+    benefitGroup.value = AppData.instance.benefitGroup630c.firstWhereOrNull(
+      (item) => item.value == detail.maNhomHuong,
+    );
+
+    // Từ ngày
+    fromDateCtrl.text = convertDateToStringSafe(detail.tuNgay, PATTERN_1) ?? '';
+
+    // Đến ngày
+    toDateCtrl.text = convertDateToStringSafe(detail.denNgay, PATTERN_1) ?? '';
+
+    // Tổng số ngày
+    countDayTextCtrl.text = detail.tongSoNgay.toString();
+
+    // Từ ngày đơn vị
+    fromDateUnitTextCtrl.text =
+        convertDateToStringSafe(detail.tuNgayDonVi, PATTERN_1) ?? '';
+
+    // Ngày trở lại làm việc
+    returnWorkDateCtrl.text =
+        convertDateToStringSafe(detail.ngayTroLaiLamViec, PATTERN_1) ?? '';
+
+    // Ngày giám định
+    appraisalDateCtrl.text =
+        convertDateToStringSafe(detail.ngayGiamDinh, PATTERN_1) ?? '';
+
+    // Tỷ lệ suy giảm
+    if (detail.tyLeSuyGiam != null) {
+      rateToDeclineCtrl.text = detail.tyLeSuyGiam.toString();
+    }
+    // Số serial
+    serialNumberCtrl.text = detail.soSeriCT?.trim() ?? '';
+
+    // Đợt bổ sung
+    supplementalPeriodCtrl.text = detail.dotBoSung?.trim() ?? '';
+
+    // Mã hồ sơ
+    fileCodeTextCtrl.text = detail.maHoSo?.trim() ?? '';
+
+    // Ghi chú
+    noteTextCtrl.text = detail.ghiChu?.trim() ?? '';
+
+    // Hình thức nhận
+    receiveForm.value = AppData.instance.receiveForm.firstWhereOrNull(
+      (item) => item.value == detail.hinhThucNhan,
+    );
+
+    // Số tài khoản ngân hàng
+    bankNumberCtrl.text = detail.soTaiKhoan?.trim() ?? '';
+
+    // Tên chủ tài khoản
+    accountHolderNameCtrl.text = detail.tenChuTaiKhoan?.trim() ?? '';
+
+    // Ngân hàng
+    selectedBank.value = AppData.instance.bank.firstWhereOrNull(
+      (item) => item == detail.nganHang,
+    );
+
+    // Đợt đã giải quyết
+    resolvedPeriodCtrl.text = detail.dotDaGiaiQuyet?.trim() ?? '';
+
+    // Ngày đã giải quyết
+    resolvedDateCtrl.text =
+        convertDateToStringSafe(detail.tuNgayDuyetTruoc, PATTERN_1) ?? '';
+
+    // Lý do điều chỉnh
+    adjustReasonCtrl.text = detail.lyDoDieuChinh?.trim() ?? '';
+  }
+
+  Future<void> _update630c() async {
+    try {
+      // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
+      // => Chặn việc cập nhật
+      if (id == null) {
+        showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
+        return;
+      }
+
+      showLoadingOverlay();
+
+      final response = await _repository.update630c(_buildRequest());
+
+      if (response.isSuccess) {
+        showSnackBar(
+          LocaleKeys.declareInfo_saveDataSuccess.tr,
+          typeAction: AppConst.actionSuccess,
+        );
+        Get.back(
+          result: argument.declarationPeriodId,
+        );
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
     }
   }
 }

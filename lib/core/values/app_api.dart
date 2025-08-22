@@ -122,4 +122,11 @@ class AppApi {
   static const String urlSaveXml630b = '/api/HoSo630b/save-xml';
   static const String urlGetPreviewPdf630b = '/api/HoSo630b/preview-pdf';
   // === Kết thúc các api liên quan đến thủ tục 630b ===
+
+  // === Danh sách các api liên quan đến thủ tục 630c ===
+  static const String urlGetListStaff630c = '/api/HoSo630c/get-list';
+  static const String urlAdd630c = '/api/HoSo630c/add-630c';
+  static const String urlGetDetail630c = '/api/HoSo630c/get-630c-detail';
+  static const String urlUpdate630c = '/api/HoSo630c/update-630c';
+  // === Kết thúc các api liên quan đến thủ tục 630c ===
 }

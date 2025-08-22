@@ -19,7 +19,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
         _buildInputAccountHolderName(),
 
         // Ngân hàng
-        _buildSelectBank(), 
+        _buildSelectBank(),
 
         // Thông tin khác
         _buildOtherInfoGroup(),
@@ -81,7 +81,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
           () => CardDropdownWithLabel<ReceiveFormModel>(
             fieldKey: formFieldKey,
             validator: validator,
-            // autovalidateMode: controller.autoValidateMode.value,
+            autovalidateMode: controller.autoValidateMode.value,
             labelText: LocaleKeys.declareInfo_receiveMethod.tr,
             hintText: LocaleKeys.declareInfo_receiveMethodHint.tr,
             items: AppData.instance.receiveForm.toList(),
@@ -121,7 +121,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
                   fieldKey: fieldKey,
                   validator: validator,
                   isRequired: controller.isATMpayment,
-                  // autovalidateMode: controller.autoValidateMode.value,
+                  autovalidateMode: controller.autoValidateMode.value,
                   hintText: LocaleKeys.declareInfo_bankNumberHint.tr,
                   inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
                   labelText: LocaleKeys.declareInfo_bankNumber.tr,
@@ -145,9 +145,9 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
           return FormFieldRegistrant<String>(
             registrarId: "d7e1b39e-ca34-4447-bc50-e1d5b1f784e3",
             validator: (value) {
-              final trimmedValue = value?.trim();
+              final trimmedValue = value?.trim() ?? '';
 
-              if (trimmedValue == null || trimmedValue.isEmpty) {
+              if (trimmedValue.isEmpty) {
                 return LocaleKeys.declareInfo_accountHolderNameEmpty.tr;
               }
 
@@ -159,7 +159,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
                   fieldKey: fieldKey,
                   validator: validator,
                   isRequired: controller.isATMpayment,
-                  // autovalidateMode: controller.autoValidateMode.value,
+                  autovalidateMode: controller.autoValidateMode.value,
                   hintText: LocaleKeys.declareInfo_accountHolderNameHint.tr,
                   labelText: LocaleKeys.declareInfo_accountHolderName.tr,
                   controller: controller.accountHolderNameCtrl,
@@ -193,7 +193,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
                   return UtilWidget.buildCardBottomSheetSelect2<BankModel>(
                     fieldKey: fieldKey,
                     validator: validator,
-                    // autovalidateMode: controller.autoValidateMode.value,
+                    autovalidateMode: controller.autoValidateMode.value,
                     isRequired: controller.isATMpayment,
                     label: LocaleKeys.declareInfo_bank.tr,
                     hintText: LocaleKeys.declareInfo_bankHint.tr,
@@ -240,9 +240,9 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: "5a068727-dc58-4dc7-a096-00cef42126d6",
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_resolvedPeriodEmpty.tr;
         }
         if (trimmedValue.length < 10) {
@@ -266,7 +266,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
           () => CardInputTextFormWithLabel(
             fieldKey: fieldKey,
             validator: validator,
-            // autovalidateMode: controller.autoValidateMode.value,
+            autovalidateMode: controller.autoValidateMode.value,
             inputFormatters: InputFormatterEnum.periodMonthYear,
             isRequired: controller.isAdjustDeclareForm,
             hintText: LocaleKeys.declareInfo_resolvedPeriodHint.tr,
@@ -284,10 +284,10 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: '3fe3e16f-70a2-4f68-969c-bc08f9e22be3',
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
         // Nếu bắt buộc và không nhập thì báo lỗi
-        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+        if ((trimmedValue.isEmpty)) {
           return LocaleKeys.declareInfo_resolvedDateEmpty.tr;
         }
 
@@ -316,7 +316,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
         return Obx(
           () => CardInputSelectDateWithLabel(
             fieldKey: formFieldKey,
-            // autovalidateMode: controller.autoValidateMode.value,
+            autovalidateMode: controller.autoValidateMode.value,
             labelText: LocaleKeys.declareInfo_resolvedDate.tr,
             inputFormatters: InputFormatterEnum.dateFullBirthDay,
             controller: controller.resolvedDateCtrl,
@@ -352,9 +352,9 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: 'a99250f5-e7cc-4c8b-8b58-58ebb67ae81f',
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_adjustReasonEmpty.tr;
         }
 
@@ -365,7 +365,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
           () => CardInputTextFormWithLabel(
             validator: validator,
             fieldKey: formFieldKey,
-            // autovalidateMode: controller.autoValidateMode.value,
+            autovalidateMode: controller.autoValidateMode.value,
             isRequired: controller.isAdjustDeclareForm,
             hintText: LocaleKeys.declareInfo_adjustReasonHint.tr,
             labelText: LocaleKeys.declareInfo_adjustReason.tr,
