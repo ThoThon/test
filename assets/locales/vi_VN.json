@@ -572,6 +572,7 @@
     "bhytCardCodeChildHint": "Nhập mã thẻ BHYT của con",
     "bhytCardCodeEmpty": "Mã thẻ BHYT của con không được bỏ trống",
     "countDay": "Tổng số ngày",
+    "countDayInvalid": "Tổng số ngày không hợp lệ",
     "countDayHint": "Nhập số ngày",
     "countDayEmpty": "Tổng số ngày không được bỏ trống",
     "fromDateUnit": "Từ ngày đơn vị",

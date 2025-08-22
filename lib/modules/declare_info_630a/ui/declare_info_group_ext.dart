@@ -455,6 +455,10 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         if (trimmedValue == null || trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_countDayEmpty.tr;
         }
+        // REF: BHW-3106
+        if (trimmedValue == '0') {
+          return LocaleKeys.declareInfo_countDayInvalid.tr;
+        }
         return null;
       },
       builder: (fieldKey, validator) {
