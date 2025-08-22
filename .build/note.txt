@@ -6,6 +6,7 @@
 
 21/08/2025
 - Đảm bảo gọi thành công các api lấy dữ liệu cần thiết ở màn login thì mới cho phép mở màn home
+- [Appmobile]_Màn Tra cứu lịch sử: Bổ sung hiển thị tất cả thông tin Tại các bước xử lý tiến độ tra cứu - BHW-3089
 
 15/08/2025
 - [Appmobile]_Thủ tục 630b_Lỗi maxlength trường [Số BHXH của người nuôi dưỡng] - BHW-3050

@@ -528,9 +528,9 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         return FormFieldRegistrant<String>(
           registrarId: "8c6ff477-1365-4954-8dd1-194c50f98df7",
           validator: (value) {
-            final trimmedValue = value?.trim();
+            final trimmedValue = value?.trim() ?? '';
             // Địng dạng "xx mm/yyyy"
-            if (trimmedValue == null || trimmedValue.isEmpty) {
+            if (trimmedValue.isEmpty) {
               return null;
             }
             if (trimmedValue.length < 10) {
