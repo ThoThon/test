@@ -3,6 +3,7 @@
 - [Appmobile]_Thủ tục 630c_Dựng giao diện + ghép api cho form kê khai thủ tục 630c: Hình thức kê khai phát sinh - BHW-3096
 - [Appmobile]_Thủ tục 630c_Bổ sung ghép api Cập nhật hồ sơ 630c - BHW-3100  
 - [Appmobile]_Thủ tục 630c_Ghép add mới thủ tục 630c - BHW-3098
+- [Appmobile]_Thủ tục 630c_Bổ sung api Lưu mới thông tin chung - BHW-3101
 
 21/08/2025
 - Đảm bảo gọi thành công các api lấy dữ liệu cần thiết ở màn login thì mới cho phép mở màn home

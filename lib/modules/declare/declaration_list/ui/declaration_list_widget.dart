@@ -20,6 +20,19 @@ extension DeclarationListWidget on DeclarationListPage {
                     style: AppTextStyle.font16Bo,
                   ),
                   sdsSBHeight12,
+                  if (saveResult.hasDsM01hsb)
+                    _buildDeclarationItem(
+                      title:
+                          'Danh sách đề nghị giải quyết hưởng chế độ dưỡng sức (Mẫu 01D-HSB)',
+                      onTap: () {
+                        controller.getPreviewPdf(
+                          previewDocumentType:
+                              PreviewDocumentTypeEnum.healingHsb,
+                          title: 'Tờ khai tham gia',
+                        );
+                      },
+                    ).paddingOnly(bottom: AppDimens.paddingSmall),
+                  sdsSBHeight12,
                   if (saveResult.hasTsM01hsb)
                     _buildDeclarationItem(
                       title:

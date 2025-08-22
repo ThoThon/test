@@ -36,7 +36,6 @@ class NotificationRepository extends BaseRepository {
       EnumRequestMethod.delete,
       jsonMap: id,
     );
-    logger.d(response);
     return BaseResponse.fromJson(response);
   }
 }
