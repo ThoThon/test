@@ -213,7 +213,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
           ),
           SDSBuildText(
             title,
-            maxLines: 4,
+            overflow: TextOverflow.visible,
           ).paddingOnly(
             top: AppDimens.paddingSmallest,
             bottom: AppDimens.defaultPadding,
