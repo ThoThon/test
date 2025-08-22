@@ -1,5 +1,4 @@
 export 'bank_model.dart';
-export 'benefit_group_630a_model.dart';
 export 'benefit_group_630b_model.dart';
 export 'benefit_group_lv2_model.dart';
 export 'categories_procedure_630.dart';

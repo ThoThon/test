@@ -32,7 +32,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final declareForm = Rxn<DeclareForm630Model>();
 
   /// Mã nhóm hưởng *
-  final benefitGroup = Rxn<BenefitGroup630aModel>();
+  final benefitGroup = Rxn<BenefitGroup630Model>();
 
   /// Ngày sinh con *
   final birthDayChildCtrl = TextEditingController();
@@ -502,7 +502,7 @@ class DeclareInfo630aController extends BaseGetxController {
     }
   }
 
-  void onChangeBenefitGroup(BenefitGroup630aModel? group) {
+  void onChangeBenefitGroup(BenefitGroup630Model? group) {
     if (group == null) {
       return;
     }

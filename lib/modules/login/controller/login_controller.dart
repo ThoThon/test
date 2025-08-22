@@ -158,7 +158,8 @@ class LoginController extends BaseGetxController {
           ..parentalLeave = categories630.parentalLeave
           ..surrogacy = categories630.surrogacy
           ..surgeryPregnancy32w = categories630.surgeryPregnancy32w
-          ..contraception = categories630.contraception;
+          ..contraception = categories630.contraception
+          ..benefitGroup630c = categories630.benefitGroup630c;
         return true;
       }
     } catch (e) {

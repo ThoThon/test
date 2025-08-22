@@ -59,6 +59,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
 
         // Đợt bổ sung
         _buildInputSupplementalPeriod(),
+        
         // Mã hồ sơ
         _buildFileCodeText(),
 
@@ -108,7 +109,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
 
   // Mã nhóm hưởng
   Widget _buildBenefitGroupCodeDropdown() {
-    return FormFieldRegistrant<BenefitGroup630bModel>(
+    return FormFieldRegistrant<BenefitGroup630Model>(
       registrarId: '288f21dd-7191-4dd5-8d7d-bb0ff607d2aa',
       validator: (value) {
         if (value == null) {
@@ -117,15 +118,20 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         return null;
       },
       builder: (formFieldKey, validator) {
-        return CardDropdownWithLabel<BenefitGroup630bModel>(
-          validator: validator,
-          fieldKey: formFieldKey,
-          labelText: LocaleKeys.declareInfo_benefitGroupCode.tr,
-          isRequired: true,
-          hintText: LocaleKeys.declareInfo_selectBenefitGroupCode.tr,
-          items: AppData.instance.benefitGroup630b.toList(),
-          display: (item) => '${item.value} - ${item.text}',
-          onChanged: (value) {},
+        return Obx(
+          () => CardDropdownWithLabel<BenefitGroup630Model>(
+            validator: validator,
+            fieldKey: formFieldKey,
+            labelText: LocaleKeys.declareInfo_benefitGroupCode.tr,
+            isRequired: true,
+            hintText: LocaleKeys.declareInfo_selectBenefitGroupCode.tr,
+            items: AppData.instance.benefitGroup630c.toList(),
+            display: (item) => '${item.value} - ${item.text}',
+            selectedItem: controller.benefitGroup.value,
+            onChanged: (value) {
+              controller.benefitGroup.value = value;
+            },
+          ),
         );
       },
     );
@@ -397,7 +403,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
               validator: validator,
               labelText: 'Ngày trở lại làm việc',
               inputFormatters: InputFormatterEnum.dateFullBirthDay,
-              controller: controller.fromDateUnitTextCtrl,
+              controller: controller.returnWorkDateCtrl,
               hintText: PATTERN_1,
               isRequired: true,
               onSelectDate: () async {
@@ -408,13 +414,13 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
                   title: LocaleKeys.dialog_selectDayMonthYear.tr,
                   dateFormat: PATTERN_1,
                   dateTimeInit: convertStringToDateStrict(
-                        controller.fromDateUnitTextCtrl.text,
+                        controller.returnWorkDateCtrl.text,
                         PATTERN_1,
                       ) ??
                       DateTime.now(),
                 );
                 if (selectedDate != null) {
-                  controller.fromDateUnitTextCtrl.text =
+                  controller.returnWorkDateCtrl.text =
                       convertDateToString(selectedDate, PATTERN_1);
                 }
               },
@@ -460,7 +466,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           validator: validator,
           labelText: 'Ngày giám định',
           inputFormatters: InputFormatterEnum.dateFullBirthDay,
-          controller: controller.fromDateUnitTextCtrl,
+          controller: controller.appraisalDateCtrl,
           hintText: PATTERN_1,
           isRequired: true,
           onSelectDate: () async {
@@ -471,13 +477,13 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
               title: LocaleKeys.dialog_selectDayMonthYear.tr,
               dateFormat: PATTERN_1,
               dateTimeInit: convertStringToDateStrict(
-                    controller.fromDateUnitTextCtrl.text,
+                    controller.appraisalDateCtrl.text,
                     PATTERN_1,
                   ) ??
                   DateTime.now(),
             );
             if (selectedDate != null) {
-              controller.fromDateUnitTextCtrl.text =
+              controller.appraisalDateCtrl.text =
                   convertDateToString(selectedDate, PATTERN_1);
             }
           },
@@ -491,7 +497,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
     return CardInputTextFormWithLabel(
       hintText: 'Nhập tỷ lệ',
       labelText: 'Tỷ lệ suy giảm',
-      controller: TextEditingController(),
+      controller: controller.rateToDeclineCtrl,
       maxLengthInputForm: 30,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }

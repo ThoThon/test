@@ -1,20 +1,23 @@
 import 'package:equatable/equatable.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 
-/// Mã nhóm hưởng 630b
-class BenefitGroup630bModel extends Equatable {
+/// Mã nhóm hưởng của thủ tục 630 a,b,c
+
+const benefitGroupSickChildValue = 'O2';
+
+class BenefitGroup630Model extends Equatable {
   final String value;
   final String text;
   final Set<BenefitGroupLv2Model> benefitGroupLv2;
 
-  const BenefitGroup630bModel({
+  const BenefitGroup630Model({
     required this.value,
     required this.text,
     required this.benefitGroupLv2,
   });
 
-  factory BenefitGroup630bModel.fromJson(Map<String, dynamic> json) {
-    return BenefitGroup630bModel(
+  factory BenefitGroup630Model.fromJson(Map<String, dynamic> json) {
+    return BenefitGroup630Model(
       value: json['value'] ?? '',
       text: json['text'] ?? '',
       benefitGroupLv2: json['maNhomHuong2s'] != null

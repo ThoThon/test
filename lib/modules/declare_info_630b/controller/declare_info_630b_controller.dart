@@ -28,7 +28,7 @@ class DeclareInfo630bController extends BaseGetxController {
   final declareForm = Rxn<DeclareForm630Model>();
 
   /// Mã nhóm hưởng *
-  final benefitGroup = Rxn<BenefitGroup630bModel>();
+  final benefitGroup = Rxn<BenefitGroup630Model>();
 
   /// Mã nhóm hưởng cấp 2
   final benefitGroupLv2 = Rxn<BenefitGroupLv2Model>();

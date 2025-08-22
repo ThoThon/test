@@ -24,7 +24,10 @@ enum ProcedureType {
   procedure630a,
 
   /// Thủ tục 630b
-  procedure630b;
+  procedure630b,
+
+  /// Thủ tục 630c
+  procedure630c;
 
   static ProcedureType fromInt(int? value) {
     switch (value) {
@@ -44,6 +47,8 @@ enum ProcedureType {
         return ProcedureType.procedure630a;
       case 1663:
         return ProcedureType.procedure630b;
+      case 1664:
+        return ProcedureType.procedure630c;
       default:
         return ProcedureType.procedure600;
     }
@@ -66,6 +71,8 @@ enum ProcedureType {
       case ProcedureType.procedure630a:
         return LocaleKeys.declareInfo_title630a.tr;
       case ProcedureType.procedure630b:
+        return LocaleKeys.declareInfo_title630b.tr;
+        case ProcedureType.procedure630c:
         return LocaleKeys.declareInfo_title630b.tr;
     }
   }

@@ -1,3 +1,4 @@
+import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.src.dart';
 import 'package:v_bhxh/modules/login/model/categories_630/bank_model.dart';
 import 'package:v_bhxh/modules/login/model/categories_630/benefit_group_630b_model.dart';
@@ -28,7 +29,7 @@ class DeclareInfo630cController extends BaseGetxController {
   final declareForm = Rxn<DeclareForm630Model>();
 
   /// Mã nhóm hưởng *
-  final benefitGroup = Rxn<BenefitGroup630bModel>();
+  final benefitGroup = Rxn<BenefitGroup630Model>();
 
   /// Từ ngày *
   final toDateCtrl = TextEditingController();
@@ -86,17 +87,23 @@ class DeclareInfo630cController extends BaseGetxController {
 
   final scrollController = ScrollController();
 
+  final registeredKey = GlobalKey<FormRegistryWidgetState>();
+
+  final formKey = GlobalKey<FormState>();
+
+  final autoValidateMode = Rxn<AutovalidateMode>();
+
+  final DeclareInfoArgument argument = Get.arguments;
+
   /// Trả về "true" khi "Hình thức kê khai" là "Điều chỉnh"
   bool get isAdjustDeclareForm {
     return declareForm.value?.value == declareMethodAdjustValue;
   }
 
-
   /// Trả về "true" khi "Hình thức nhận" là "Chi trả qua ATM"
   bool get isATMpayment {
     return receiveForm.value?.value == ATMPaymentValue;
   }
-
 
   @override
   void onClose() {
@@ -122,5 +129,19 @@ class DeclareInfo630cController extends BaseGetxController {
     adjustReasonCtrl.dispose();
     scrollController.dispose();
     super.onClose();
+  }
+
+  Future<void> saveDraft() async {
+    if (formKey.currentState?.validate() != true) {
+      autoValidateMode.value = AutovalidateMode.always;
+      // Scroll to the first invalid field
+      registeredKey.currentState?.firstInvalid?.scrollToIntoView();
+    } else {
+      if (argument.isUpdateStaff) {
+        // await _update630b();
+      } else {
+        // await _add630b();
+      }
+    }
   }
 }
