@@ -59,7 +59,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
 
         // Đợt bổ sung
         _buildInputSupplementalPeriod(),
-        
+
         // Mã hồ sơ
         _buildFileCodeText(),
 
@@ -142,8 +142,8 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: '54af24f8-e53f-4a4c-968d-712476ac3f79',
       validator: (value) {
-        final trimmedValue = value?.trim();
-        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+        final trimmedValue = value?.trim() ?? '';
+        if ((trimmedValue.isEmpty)) {
           return LocaleKeys.declareInfo_fromDayEmpty.tr;
         }
 
@@ -210,9 +210,9 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: '37302f60-4b26-4718-b001-17583856bddc',
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+        if ((trimmedValue.isEmpty)) {
           return LocaleKeys.declareInfo_toDayEmpty.tr;
         }
 
@@ -279,9 +279,9 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: 'f95dcd9a-f398-47c4-b982-fe4475af230a',
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_countDayEmpty.tr;
         }
         return null;
@@ -307,10 +307,10 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: 'a9335fff-2888-4a91-9031-f839d652115e',
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
         // Nếu bắt buộc và không nhập thì báo lỗi
-        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+        if ((trimmedValue.isEmpty)) {
           return LocaleKeys.declareInfo_fromDateUnitEmpty.tr;
         }
 
@@ -373,10 +373,10 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         return FormFieldRegistrant<String>(
           registrarId: 'e5567996-cc79-402e-8ab0-45447e57c27c',
           validator: (value) {
-            final trimmedValue = value?.trim();
+            final trimmedValue = value?.trim() ?? '';
 
             // Nếu bắt buộc và không nhập thì báo lỗi
-            if ((trimmedValue == null || trimmedValue.isEmpty)) {
+            if ((trimmedValue.isEmpty)) {
               return LocaleKeys.declareInfo_fromDateUnitEmpty.tr;
             }
 
@@ -436,10 +436,10 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: '4f4466d0-2477-4edc-9ff0-b592dbe46f94',
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
         // Nếu bắt buộc và không nhập thì báo lỗi
-        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+        if ((trimmedValue.isEmpty)) {
           return LocaleKeys.declareInfo_fromDateUnitEmpty.tr;
         }
 
@@ -529,9 +529,9 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         return FormFieldRegistrant<String>(
           registrarId: "8c6ff477-1365-4954-8dd1-194c50f98df7",
           validator: (value) {
-            final trimmedValue = value?.trim();
+            final trimmedValue = value?.trim() ?? '';
             // Địng dạng "xx mm/yyyy"
-            if (trimmedValue == null || trimmedValue.isEmpty) {
+            if (trimmedValue.isEmpty) {
               return null;
             }
             if (trimmedValue.length < 10) {
