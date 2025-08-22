@@ -389,6 +389,7 @@ class LocaleKeys {
   static const declareInfo_title613 = 'declareInfo_title613';
   static const declareInfo_title630a = 'declareInfo_title630a';
   static const declareInfo_title630b = 'declareInfo_title630b';
+  static const declareInfo_title630c = 'declareInfo_title630c';
   static const declareInfo_fullName = 'declareInfo_fullName';
   static const declareInfo_fullNameHint = 'declareInfo_fullNameHint';
   static const declareInfo_fullNameCannotEmpty =
@@ -1629,6 +1630,7 @@ class Locales {
     'declareInfo_title613': 'Thủ tục 613',
     'declareInfo_title630a': 'Thủ tục 630a',
     'declareInfo_title630b': 'Thủ tục 630b',
+    'declareInfo_title630c': 'Thủ tục 630c',
     'declareInfo_fullName': 'Họ và tên',
     'declareInfo_fullNameHint': 'Nhập họ và tên',
     'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

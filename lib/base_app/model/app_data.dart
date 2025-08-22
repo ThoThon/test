@@ -23,7 +23,7 @@ class AppData {
 
   // Thủ tục 630
   var declareForm = <DeclareForm630Model>{};
-  var benefitGroup630a = <BenefitGroup630aModel>{};
+  var benefitGroup630a = <BenefitGroup630Model>{};
   var workCondition = <WorkConditionModel>{};
   var receiveForm = <ReceiveFormModel>{};
   var bank = <BankModel>{};
@@ -36,7 +36,8 @@ class AppData {
   var surrogacy = <SurrogacyModel>{};
   var surgeryPregnancy32w = <SurgeryPregnancy32wModel>{};
   var contraception = <ContraceptionModel>{};
-  var benefitGroup630b = <BenefitGroup630bModel>{};
+  var benefitGroup630b = <BenefitGroup630Model>{};
+  var benefitGroup630c = <BenefitGroup630Model>{};
 
   final Rx<AccountInfoModel?> accountInfoModel = Rx<AccountInfoModel?>(null);
   final totalUnread = 0.obs;

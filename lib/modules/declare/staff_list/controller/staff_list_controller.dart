@@ -91,6 +91,7 @@ class StaffListController extends BaseGetxController {
         ProcedureType.procedure630b => _repository630.getListStaff630b(
             declarationPeriodId: declarationPeriodId,
           ),
+        _ => throw UnimplementedError('Not implemented yet'),
       };
 
       if (response.isSuccess) {
@@ -244,6 +245,7 @@ class StaffListController extends BaseGetxController {
           _repository.deleteTk1D01(id: staffId),
         ProcedureType.procedure630a => _repository630.delete630a(id: staffId),
         ProcedureType.procedure630b => _repository630.delete630b(id: staffId),
+        _ => throw UnimplementedError('Not implemented yet'),
       };
 
       if (response.isSuccess) {
@@ -273,6 +275,7 @@ class StaffListController extends BaseGetxController {
         AppRoutes.declareInfo607.path,
       ProcedureType.procedure630a => AppRoutes.declareInfo630a.path,
       ProcedureType.procedure630b => AppRoutes.declareInfo630b.path,
+      ProcedureType.procedure630c => AppRoutes.declareInfo630c.path,
     };
 
     final result = await Get.toNamed(
@@ -300,6 +303,7 @@ class StaffListController extends BaseGetxController {
         AppRoutes.declareInfo607.path,
       ProcedureType.procedure630a => AppRoutes.declareInfo630a.path,
       ProcedureType.procedure630b => AppRoutes.declareInfo630b.path,
+      ProcedureType.procedure630c => AppRoutes.declareInfo630c.path,
     };
 
     final result = await Get.toNamed(

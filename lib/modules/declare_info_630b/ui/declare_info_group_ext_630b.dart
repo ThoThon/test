@@ -200,7 +200,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã nhóm hưởng
   Widget _buildBenefitGroupCodeDropdown() {
-    return FormFieldRegistrant<BenefitGroup630bModel>(
+    return FormFieldRegistrant<BenefitGroup630Model>(
       registrarId: '65d1041d-d071-42f5-9a69-59b3382f6764',
       validator: (value) {
         if (value == null) {
@@ -210,7 +210,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<BenefitGroup630bModel>(
+          () => CardDropdownWithLabel<BenefitGroup630Model>(
             validator: validator,
             fieldKey: formFieldKey,
             labelText: LocaleKeys.declareInfo_benefitGroupCode.tr,

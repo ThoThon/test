@@ -10,7 +10,7 @@ class DeclareInfo630bResponse {
   final String? soCmnd;
   final String? maNhanVien;
   final String phatSinhDieuChinh;
-  final BenefitGroup630bModel? maNhomHuong;
+  final BenefitGroup630Model? maNhomHuong;
   final BenefitGroupLv2Model? maNhomHuong2;
   final DateTime tuNgay;
   final DateTime denNgay;

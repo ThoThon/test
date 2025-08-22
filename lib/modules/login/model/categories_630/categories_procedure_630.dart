@@ -5,7 +5,7 @@ class CategoriesProcedure630 {
   final Set<DeclareForm630Model> declareForm;
 
   // Mã nhóm hưởng 630a
-  final Set<BenefitGroup630aModel> benefitGroup630a;
+  final Set<BenefitGroup630Model> benefitGroup630a;
 
   // Tuyến bệnh viện
   final Set<HospitalLineModel> hospitalLine;
@@ -23,7 +23,7 @@ class CategoriesProcedure630 {
   final Set<BankModel> bank;
 
   // Mã nhóm hưởng 630b
-  final Set<BenefitGroup630bModel> benefitGroup630b;
+  final Set<BenefitGroup630Model> benefitGroup630b;
 
   // Mã nhóm hưởng cấp 2
   final Set<BenefitGroupLv2Model> benefitGroupLv2;
@@ -49,6 +49,8 @@ class CategoriesProcedure630 {
   // Biện pháp tránh thai
   final Set<ContraceptionModel> contraception;
 
+  final Set<BenefitGroup630Model> benefitGroup630c;
+
   const CategoriesProcedure630({
     required this.declareForm,
     required this.benefitGroup630a,
@@ -66,6 +68,7 @@ class CategoriesProcedure630 {
     required this.surrogacy,
     required this.surgeryPregnancy32w,
     required this.contraception,
+    required this.benefitGroup630c,
   });
 
   factory CategoriesProcedure630.fromJson(Map<String, dynamic> json) {
@@ -75,9 +78,9 @@ class CategoriesProcedure630 {
               .toSet() ??
           <DeclareForm630Model>{},
       benefitGroup630a: (json['maNhomHuong630as'] as List?)
-              ?.map((e) => BenefitGroup630aModel.fromJson(e))
+              ?.map((e) => BenefitGroup630Model.fromJson(e))
               .toSet() ??
-          <BenefitGroup630aModel>{},
+          <BenefitGroup630Model>{},
       hospitalLine: (json['tuyenBenhViens'] as List?)
               ?.map((e) => HospitalLineModel.fromJson(e))
               .toSet() ??
@@ -99,9 +102,9 @@ class CategoriesProcedure630 {
               .toSet() ??
           <BankModel>{},
       benefitGroup630b: (json['maNhomHuong630bs'] as List?)
-              ?.map((e) => BenefitGroup630bModel.fromJson(e))
+              ?.map((e) => BenefitGroup630Model.fromJson(e))
               .toSet() ??
-          <BenefitGroup630bModel>{},
+          <BenefitGroup630Model>{},
       benefitGroupLv2: (json['maNhomHuong2s'] as List?)
               ?.map((e) => BenefitGroupLv2Model.fromJson(e))
               .toSet() ??
@@ -134,6 +137,10 @@ class CategoriesProcedure630 {
               ?.map((e) => ContraceptionModel.fromJson(e))
               .toSet() ??
           <ContraceptionModel>{},
+      benefitGroup630c: (json['maNhomHuong630cs'] as List?)
+              ?.map((e) => BenefitGroup630Model.fromJson(e))
+              .toSet() ??
+          <BenefitGroup630Model>{},
     );
   }
 }
