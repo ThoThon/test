@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.src.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_request.dart';
 import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_response.dart';
 import 'package:v_bhxh/modules/declare_info_630c/repository/declare_info_630c_repository.dart';
@@ -12,6 +13,7 @@ import 'package:v_bhxh/modules/login/model/categories_630/receive_form_model.dar
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../declare/staff_list/model/model_src.dart';
+import '../../select_staff/select_staff_src.dart';
 
 // REF: BHW-3103
 const declineValid = ['D301', 'D302', 'D303'];
@@ -104,6 +106,8 @@ class DeclareInfo630cController extends BaseGetxController {
   final autoValidateMode = Rxn<AutovalidateMode>();
 
   final DeclareInfoArgument argument = Get.arguments;
+
+  late final declareInfoRepository = DeclareInfoRepository(this);
 
   /// Trả về "true" khi "Hình thức kê khai" là "Điều chỉnh"
   bool get isAdjustDeclareForm {
@@ -381,7 +385,6 @@ class DeclareInfo630cController extends BaseGetxController {
 
   bool get isRateToDecline => declineValid.contains(benefitGroup.value?.value);
 
-
   void onChangeReceiveMethod(ReceiveFormModel? method) {
     if (method == null) {
       return;
@@ -410,5 +413,46 @@ class DeclareInfo630cController extends BaseGetxController {
     }
 
     receiveForm.value = method;
+  }
+
+  void goToSelectStaffPage() async {
+    final result = await Get.toNamed(
+      AppRoutes.selectStaff.path,
+      // Truyền id sang để biết nhân viên nào đang được chọn
+      arguments: selectedStaffId,
+    );
+    if (result is SelectStaffResponse) {
+      _getDetailStaff(staffId: result.id);
+    }
+  }
+
+  Future<void> _getDetailStaff({
+    required String staffId,
+  }) async {
+    try {
+      showLoadingOverlay();
+      final response = await declareInfoRepository.getDetailStaff(id: staffId);
+      final staff = response.result;
+      if (response.isSuccess && staff != null) {
+        mapFromStaffDetail(staff);
+      } else {
+        showSnackBar(response.errorMessage);
+      }
+    } catch (e) {
+      logger.e(e);
+    } finally {
+      hideLoadingOverlay();
+    }
+  }
+
+  void mapFromStaffDetail(StaffDetailResponse staff) {
+    // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
+    selectedStaffId = staff.id;
+
+    fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
+
+    bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
+
+    cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 }
