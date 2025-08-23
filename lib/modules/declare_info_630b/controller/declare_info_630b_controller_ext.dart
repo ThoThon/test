@@ -68,14 +68,14 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       maNhomHuong2: benefitGroupLv2.value?.maNhomHuongC2 ?? '',
       tuNgay: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       denNgay: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(countDayTextCtrl.text.trim()),
+      tongSoNgay: int.tryParse(countDayTextCtrl.text),
       tuNgayDonVi:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
       ngayNghiTuan: weeklyDayOffString,
       soSeriCT: serialNumberCtrl.text.trim(),
       ngaySinhCon: convertStringToDateSafe(birthDayChildCtrl.text, PATTERN_1),
-      soCon: int.tryParse(numberChildCtrl.text.trim()),
-      soCCHoacThaiCL: int.tryParse(numberChildDeathCtrl.text.trim()),
+      soCon: int.tryParse(numberChildCtrl.text),
+      soCCHoacThaiCL: int.tryParse(numberChildDeathCtrl.text),
       dieuKienKhamThai: pregnancyCondition.value?.value ?? '',
       dieuKienSinhCon: childbirthCondition.value?.value ?? '',
       nghiDuongThai: maternityRest.value?.value ?? '',
@@ -93,7 +93,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       maSoBHXHCuaMe: bhxhCodeMotherCtrl.text.trim(),
       theBHYTCuaMe: bhytCardMotherCtrl.text.trim(),
       soCMNDCuaMe: cccdMotherCtrl.text.trim(),
-      phiGiamDinhYKhoa: int.tryParse(medicalFeeCtrl.text.trim()),
+      phiGiamDinhYKhoa: int.tryParse(medicalFeeCtrl.text),
       soBHXHNND: guardianBhxhCtrl.text.trim(),
       phauThuatThai32: surgeryOrUnder32Week.value?.value ?? '',
       dotBoSung: supplementalPeriodCtrl.text.trim(),
@@ -107,7 +107,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       tuNgayDuyetTruoc:
           convertStringToDateSafe(resolvedDateCtrl.text, PATTERN_1),
       lyDoDieuChinh: adjustReasonCtrl.text.trim(),
-      tuoiThai: int.tryParse(pregnancyWeekCtrl.text.trim()),
+      tuoiThai: int.tryParse(pregnancyWeekCtrl.text),
     );
   }
 

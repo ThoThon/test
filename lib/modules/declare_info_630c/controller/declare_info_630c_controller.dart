@@ -212,13 +212,13 @@ class DeclareInfo630cController extends BaseGetxController {
       maNhomHuong: benefitGroup.value?.value ?? '',
       tuNgay: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       denNgay: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(countDayTextCtrl.text.trim()),
+      tongSoNgay: int.tryParse(countDayTextCtrl.text),
       tuNgayDonVi:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
       ngayTroLaiLamViec:
           convertStringToDateSafe(returnWorkDateCtrl.text, PATTERN_1),
       ngayGiamDinh: convertStringToDateSafe(appraisalDateCtrl.text, PATTERN_1),
-      tyLeSuyGiam: int.tryParse(rateToDeclineCtrl.text.trim()),
+      tyLeSuyGiam: int.tryParse(rateToDeclineCtrl.text),
       soSeriCT: serialNumberCtrl.text.trim(),
       dotBoSung: supplementalPeriodCtrl.text.trim(),
       maHoSo: fileCodeTextCtrl.text.trim(),
@@ -379,6 +379,5 @@ class DeclareInfo630cController extends BaseGetxController {
     }
   }
 
-    bool get isRateToDecline => declineValid.contains(benefitGroup.value?.value);
-
+  bool get isRateToDecline => declineValid.contains(benefitGroup.value?.value);
 }
