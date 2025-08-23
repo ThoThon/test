@@ -410,10 +410,16 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
     return FormFieldRegistrant<String>(
       registrarId: "e19fc7c1-084a-4acc-964f-e3aa8198a180",
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_countDayEmpty.tr;
+        }
+
+        // REF: BHW-3106
+        final number = int.tryParse(trimmedValue) ?? 0;
+        if (number == 0) {
+          return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
         return null;
       },
