@@ -4,6 +4,7 @@
 - [Appmobile]_Thủ tục 630c_Bổ sung Validate bắt buộc cho trường [Tỷ lệ suy giảm] - BHW-3103
 - [Appmobile]_Thủ tục 630c_Bổ sung ghép api Cập nhật hồ sơ 630c - BHW-3100  
 - [Appmobile]_Thủ tục 630c_Ghép add mới thủ tục 630c - BHW-3098
+- [Appmobile]_Thủ tục 630a, 630b: Trường Tổng số ngày: Bắt validate không cho phép nhập = 0 - BHW-3106
 - [Appmobile]_Thủ tục 630c_Bổ sung api Lưu mới thông tin chung - BHW-3101
 
 21/08/2025

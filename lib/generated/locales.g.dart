@@ -680,6 +680,7 @@ class LocaleKeys {
       'declareInfo_bhytCardCodeChildHint';
   static const declareInfo_bhytCardCodeEmpty = 'declareInfo_bhytCardCodeEmpty';
   static const declareInfo_countDay = 'declareInfo_countDay';
+  static const declareInfo_countDayInvalid = 'declareInfo_countDayInvalid';
   static const declareInfo_countDayHint = 'declareInfo_countDayHint';
   static const declareInfo_countDayEmpty = 'declareInfo_countDayEmpty';
   static const declareInfo_fromDateUnit = 'declareInfo_fromDateUnit';
@@ -1865,6 +1866,7 @@ class Locales {
     'declareInfo_bhytCardCodeChildHint': 'Nhập mã thẻ BHYT của con',
     'declareInfo_bhytCardCodeEmpty': 'Mã thẻ BHYT của con không được bỏ trống',
     'declareInfo_countDay': 'Tổng số ngày',
+    'declareInfo_countDayInvalid': 'Tổng số ngày không hợp lệ',
     'declareInfo_countDayHint': 'Nhập số ngày',
     'declareInfo_countDayEmpty': 'Tổng số ngày không được bỏ trống',
     'declareInfo_fromDateUnit': 'Từ ngày đơn vị',
