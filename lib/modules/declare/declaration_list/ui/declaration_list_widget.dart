@@ -32,7 +32,6 @@ extension DeclarationListWidget on DeclarationListPage {
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
-                  sdsSBHeight12,
                   if (saveResult.hasTsM01hsb)
                     _buildDeclarationItem(
                       title:

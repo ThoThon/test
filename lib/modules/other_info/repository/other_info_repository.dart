@@ -85,7 +85,6 @@ class OtherInfoRepository extends BaseRepository {
       // Có thể việc gen pdf ở BE tốn thời gian, nên cần tăng thời gian timeout
       timeOut: const Duration(minutes: 2),
     );
-    logger.d(response);
     return BaseResponse<SaveXmlResult>.fromJson(
       response,
       fromJson: (json) => SaveXmlResult.fromJson(json),
