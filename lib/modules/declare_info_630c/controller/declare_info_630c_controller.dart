@@ -13,6 +13,9 @@ import 'package:v_bhxh/modules/src.dart';
 
 import '../../declare/staff_list/model/model_src.dart';
 
+// REF: BHW-3103
+const declineValid = ['D301', 'D302', 'D303'];
+
 class DeclareInfo630cController extends BaseGetxController {
   /// id 630c dùng khi update
   String? id;
@@ -201,33 +204,33 @@ class DeclareInfo630cController extends BaseGetxController {
     return DeclareInfo630cRequest(
       id: id,
       kyKeKhaiId: argument.declarationPeriodId,
-      hoTen: fullNameTextCtrl.text,
-      maSoBhxh: bhxhTextCtrl.text,
-      soCmnd: cccdTextCtrl.text,
-      maNhanVien: staffCodeTextCtrl.text,
+      hoTen: fullNameTextCtrl.text.trim(),
+      maSoBhxh: bhxhTextCtrl.text.trim(),
+      soCmnd: cccdTextCtrl.text.trim(),
+      maNhanVien: staffCodeTextCtrl.text.trim(),
       phatSinhDieuChinh: declareForm.value?.value ?? '',
       maNhomHuong: benefitGroup.value?.value ?? '',
       tuNgay: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       denNgay: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(countDayTextCtrl.text.trim()),
+      tongSoNgay: int.tryParse(countDayTextCtrl.text),
       tuNgayDonVi:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
       ngayTroLaiLamViec:
           convertStringToDateSafe(returnWorkDateCtrl.text, PATTERN_1),
       ngayGiamDinh: convertStringToDateSafe(appraisalDateCtrl.text, PATTERN_1),
       tyLeSuyGiam: int.tryParse(rateToDeclineCtrl.text),
-      soSeriCT: serialNumberCtrl.text,
-      dotBoSung: supplementalPeriodCtrl.text,
-      maHoSo: fileCodeTextCtrl.text,
-      ghiChu: noteTextCtrl.text,
+      soSeriCT: serialNumberCtrl.text.trim(),
+      dotBoSung: supplementalPeriodCtrl.text.trim(),
+      maHoSo: fileCodeTextCtrl.text.trim(),
+      ghiChu: noteTextCtrl.text.trim(),
       hinhThucNhan: receiveForm.value?.value ?? '',
-      soTaiKhoan: bankNumberCtrl.text,
-      tenChuTaiKhoan: accountHolderNameCtrl.text,
+      soTaiKhoan: bankNumberCtrl.text.trim(),
+      tenChuTaiKhoan: accountHolderNameCtrl.text.trim(),
       maNganHang: selectedBank.value?.code,
-      dotDaGiaiQuyet: resolvedPeriodCtrl.text,
+      dotDaGiaiQuyet: resolvedPeriodCtrl.text.trim(),
       tuNgayDuyetTruoc:
           convertStringToDateSafe(resolvedDateCtrl.text, PATTERN_1),
-      lyDoDieuChinh: adjustReasonCtrl.text,
+      lyDoDieuChinh: adjustReasonCtrl.text.trim(),
     );
   }
 
@@ -375,6 +378,8 @@ class DeclareInfo630cController extends BaseGetxController {
       hideLoadingOverlay();
     }
   }
+
+  bool get isRateToDecline => declineValid.contains(benefitGroup.value?.value);
 
 
   void onChangeReceiveMethod(ReceiveFormModel? method) {
