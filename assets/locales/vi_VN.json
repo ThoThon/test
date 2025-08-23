@@ -691,7 +691,11 @@
     "parentalLeaveHint": "Chọn nghỉ chăm con",
     "surrogacy": "Mang thai hộ",
     "surrogacyHint": "Chọn mang thai hộ",
-    "pickDayOff": "Chọn ngày nghỉ"
+    "pickDayOff": "Chọn ngày nghỉ",
+    "rateToDecline": "Tỷ lệ suy giảm",
+    "rateToDeclineInput": "Nhập tỷ lệ suy giảm",
+    "rateToDeclineCannotEmpty": "Tỷ lệ suy giảm không được bỏ trống",
+    "rateToDeclineMax": "Tỷ lệ suy giảm có giá trị tối đa là 100"
   },
   "familyMember": {
     "title": "Thêm thành viên",

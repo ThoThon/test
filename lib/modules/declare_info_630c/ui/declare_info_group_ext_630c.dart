@@ -34,8 +34,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           children: [
             Expanded(child: _buildCountDay()),
             sdsSBWidth12,
-            if (!controller.isAdjustDeclareForm)
-              Expanded(child: _buildFromDateUnit()),
+            Expanded(child: _buildFromDateUnit()),
           ],
         ),
         sdsSBHeight12,
@@ -180,7 +179,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           labelText: LocaleKeys.declareInfo_fromDay.tr,
           controller: controller.fromDateCtrl,
           hintText: PATTERN_1,
-          isRequired: !controller.isAdjustDeclareForm,
+          isRequired: true,
           inputFormatters: InputFormatterEnum.dateFullBirthDay,
           onSelectDate: () async {
             KeyBoard.hide();
@@ -250,7 +249,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           inputFormatters: InputFormatterEnum.dateFullBirthDay,
           controller: controller.toDateCtrl,
           hintText: PATTERN_1,
-          isRequired: !controller.isAdjustDeclareForm,
+          isRequired: true,
           onSelectDate: () async {
             KeyBoard.hide();
             final selectedDate = await DatePickerUtils.showCalendarPicker(
@@ -290,7 +289,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         return CardInputTextFormWithLabel(
           fieldKey: fieldKey,
           validator: validator,
-          isRequired: !controller.isAdjustDeclareForm,
+          isRequired: true,
           labelText: LocaleKeys.declareInfo_countDay.tr,
           controller: controller.countDayTextCtrl,
           maxLengthInputForm: 3,
@@ -494,12 +493,41 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
 
   // Tỷ lệ suy giảm
   Widget _buildRateOfDecline() {
-    return CardInputTextFormWithLabel(
-      hintText: 'Nhập tỷ lệ',
-      labelText: 'Tỷ lệ suy giảm',
-      controller: controller.rateToDeclineCtrl,
-      maxLengthInputForm: 30,
-    ).paddingOnly(bottom: AppDimens.paddingSmall);
+    return FormFieldRegistrant<String>(
+      registrarId: '75dba361-fd10-4f43-bbe7-3d13e3a6af79',
+      validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+
+        // Nếu trường này là bắt buộc khi isRateToDecline = true
+        if (controller.isRateToDecline && trimmedValue.isEmpty) {
+          return LocaleKeys.declareInfo_rateToDeclineCannotEmpty.tr;
+        }
+
+        if (trimmedValue.isNotEmpty) {
+          final number = int.parse(trimmedValue);
+          if (number < 0 || number > 100) {
+            return LocaleKeys.declareInfo_rateToDeclineMax.tr;
+          }
+        }
+
+        return null;
+      },
+      builder: (formFieldKey, validator) {
+        return Obx(
+          () => CardInputTextFormWithLabel(
+            fieldKey: formFieldKey,
+            validator: validator,
+            hintText: LocaleKeys.declareInfo_rateToDeclineInput.tr,
+            labelText: LocaleKeys.declareInfo_rateToDecline.tr,
+            controller: controller.rateToDeclineCtrl,
+            inputFormatters: InputFormatterEnum.phoneNumber,
+            textInputType: TextInputType.number,
+            maxLengthInputForm: 3,
+            isRequired: controller.isRateToDecline,
+          ).paddingOnly(bottom: AppDimens.paddingSmall),
+        );
+      },
+    );
   }
 
   // Số serial
