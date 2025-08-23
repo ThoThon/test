@@ -1,4 +1,6 @@
 23/08/2025
+- [Appmobile]_Thủ tục 630c: Trường [Ngày trở lại làm việc]: Lỗi text hiển thị cảnh báo - BHW-3109
+- [Appmobile]_Thủ tục 630c_Trường [Ngày giám định] không là trường bắt buộc - BHW-3113
 - [Appmobile]_Thủ tục 630c: Ghép api Lấy chi tiết hồ sơ theo id nhân viên - BHW-3111
 
 22/08/2025
