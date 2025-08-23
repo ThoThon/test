@@ -201,10 +201,10 @@ class DeclareInfo630cController extends BaseGetxController {
     return DeclareInfo630cRequest(
       id: id,
       kyKeKhaiId: argument.declarationPeriodId,
-      hoTen: fullNameTextCtrl.text,
-      maSoBhxh: bhxhTextCtrl.text,
-      soCmnd: cccdTextCtrl.text,
-      maNhanVien: staffCodeTextCtrl.text,
+      hoTen: fullNameTextCtrl.text.trim(),
+      maSoBhxh: bhxhTextCtrl.text.trim(),
+      soCmnd: cccdTextCtrl.text.trim(),
+      maNhanVien: staffCodeTextCtrl.text.trim(),
       phatSinhDieuChinh: declareForm.value?.value ?? '',
       maNhomHuong: benefitGroup.value?.value ?? '',
       tuNgay: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
@@ -215,19 +215,19 @@ class DeclareInfo630cController extends BaseGetxController {
       ngayTroLaiLamViec:
           convertStringToDateSafe(returnWorkDateCtrl.text, PATTERN_1),
       ngayGiamDinh: convertStringToDateSafe(appraisalDateCtrl.text, PATTERN_1),
-      tyLeSuyGiam: int.tryParse(rateToDeclineCtrl.text),
-      soSeriCT: serialNumberCtrl.text,
-      dotBoSung: supplementalPeriodCtrl.text,
-      maHoSo: fileCodeTextCtrl.text,
-      ghiChu: noteTextCtrl.text,
+      tyLeSuyGiam: int.tryParse(rateToDeclineCtrl.text.trim()),
+      soSeriCT: serialNumberCtrl.text.trim(),
+      dotBoSung: supplementalPeriodCtrl.text.trim(),
+      maHoSo: fileCodeTextCtrl.text.trim(),
+      ghiChu: noteTextCtrl.text.trim(),
       hinhThucNhan: receiveForm.value?.value ?? '',
-      soTaiKhoan: bankNumberCtrl.text,
-      tenChuTaiKhoan: accountHolderNameCtrl.text,
+      soTaiKhoan: bankNumberCtrl.text.trim(),
+      tenChuTaiKhoan: accountHolderNameCtrl.text.trim(),
       maNganHang: selectedBank.value?.code,
-      dotDaGiaiQuyet: resolvedPeriodCtrl.text,
+      dotDaGiaiQuyet: resolvedPeriodCtrl.text.trim(),
       tuNgayDuyetTruoc:
           convertStringToDateSafe(resolvedDateCtrl.text, PATTERN_1),
-      lyDoDieuChinh: adjustReasonCtrl.text,
+      lyDoDieuChinh: adjustReasonCtrl.text.trim(),
     );
   }
 
