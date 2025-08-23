@@ -437,8 +437,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
 
-        // Nếu bắt buộc và không nhập thì báo lỗi
-        if ((trimmedValue.isEmpty)) {
+        if (trimmedValue.isEmpty) {
           return null;
         }
 
