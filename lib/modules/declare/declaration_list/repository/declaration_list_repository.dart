@@ -158,7 +158,7 @@ class DeclarationListRepository extends BaseRepository {
     }
 
     final response = await baseCallApi(
-      AppApi.urlGetPreviewPdf630b, EnumRequestMethod.post,
+      AppApi.urlGetPreviewPdf630c, EnumRequestMethod.post,
       jsonMap: request.toJson(),
       // Có thể việc gen pdf ở BE tốn thời gian, nên cần tăng thời gian timeout
       timeOut: const Duration(minutes: 2),
