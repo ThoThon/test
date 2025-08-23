@@ -1,3 +1,6 @@
+23/08/2025
+- [Appmobile]_Thủ tục 630c: Ghép api Lấy chi tiết hồ sơ theo id nhân viên - BHW-3111
+
 22/08/2025
 - [Appmobile]_Thủ tục 630c_Dựng giao diện + ghép api cho form Thủ tục 630c với hình thức kê khai là Điều chỉnh - BHW-3097
 - [Appmobile]_Thủ tục 630c_Dựng giao diện + ghép api cho form kê khai thủ tục 630c: Hình thức kê khai phát sinh - BHW-3096
