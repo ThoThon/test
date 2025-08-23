@@ -13,6 +13,9 @@ import 'package:v_bhxh/modules/src.dart';
 
 import '../../declare/staff_list/model/model_src.dart';
 
+// REF: BHW-3103
+const declineValid = ['D301', 'D302', 'D303'];
+
 class DeclareInfo630cController extends BaseGetxController {
   /// id 630c dùng khi update
   String? id;
@@ -375,4 +378,7 @@ class DeclareInfo630cController extends BaseGetxController {
       hideLoadingOverlay();
     }
   }
+
+    bool get isRateToDecline => declineValid.contains(benefitGroup.value?.value);
+
 }
