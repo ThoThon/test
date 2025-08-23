@@ -843,6 +843,12 @@ class LocaleKeys {
   static const declareInfo_surrogacy = 'declareInfo_surrogacy';
   static const declareInfo_surrogacyHint = 'declareInfo_surrogacyHint';
   static const declareInfo_pickDayOff = 'declareInfo_pickDayOff';
+  static const declareInfo_rateToDecline = 'declareInfo_rateToDecline';
+  static const declareInfo_rateToDeclineInput =
+      'declareInfo_rateToDeclineInput';
+  static const declareInfo_rateToDeclineCannotEmpty =
+      'declareInfo_rateToDeclineCannotEmpty';
+  static const declareInfo_rateToDeclineMax = 'declareInfo_rateToDeclineMax';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1993,6 +1999,11 @@ class Locales {
     'declareInfo_surrogacy': 'Mang thai hộ',
     'declareInfo_surrogacyHint': 'Chọn mang thai hộ',
     'declareInfo_pickDayOff': 'Chọn ngày nghỉ',
+    'declareInfo_rateToDecline': 'Tỷ lệ suy giảm',
+    'declareInfo_rateToDeclineInput': 'Nhập tỷ lệ suy giảm',
+    'declareInfo_rateToDeclineCannotEmpty':
+        'Tỷ lệ suy giảm không được bỏ trống',
+    'declareInfo_rateToDeclineMax': 'Tỷ lệ suy giảm có giá trị tối đa là 100',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

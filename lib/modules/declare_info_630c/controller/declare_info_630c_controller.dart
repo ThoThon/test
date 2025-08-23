@@ -6,6 +6,9 @@ import 'package:v_bhxh/modules/login/model/categories_630/declare_form_model.dar
 import 'package:v_bhxh/modules/login/model/categories_630/receive_form_model.dart';
 import 'package:v_bhxh/modules/src.dart';
 
+// REF: BHW-3103
+const declineValid = ['D301', 'D302', 'D303'];
+
 class DeclareInfo630cController extends BaseGetxController {
   /// id 630c dùng khi update
   String? id;
@@ -144,4 +147,6 @@ class DeclareInfo630cController extends BaseGetxController {
       }
     }
   }
+
+  bool get isRateToDecline => declineValid.contains(benefitGroup.value?.value);
 }
