@@ -850,6 +850,16 @@ class LocaleKeys {
   static const declareInfo_rateToDeclineCannotEmpty =
       'declareInfo_rateToDeclineCannotEmpty';
   static const declareInfo_rateToDeclineMax = 'declareInfo_rateToDeclineMax';
+  static const declareInfo_returnToWorkDate = 'declareInfo_returnToWorkDate';
+  static const declareInfo_returnToWorkDateCannotEmpty =
+      'declareInfo_returnToWorkDateCannotEmpty';
+  static const declareInfo_returnToWorkDateInvalid =
+      'declareInfo_returnToWorkDateInvalid';
+  static const declareInfo_appraisalDate = 'declareInfo_appraisalDate';
+  static const declareInfo_appraisalDateInvalid =
+      'declareInfo_appraisalDateInvalid';
+  static const declareInfo_appraisalDateCannotEmpty =
+      'declareInfo_appraisalDateCannotEmpty';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -2006,6 +2016,14 @@ class Locales {
     'declareInfo_rateToDeclineCannotEmpty':
         'Tỷ lệ suy giảm không được bỏ trống',
     'declareInfo_rateToDeclineMax': 'Tỷ lệ suy giảm có giá trị tối đa là 100',
+    'declareInfo_returnToWorkDate': 'Ngày trở lại làm việc',
+    'declareInfo_returnToWorkDateCannotEmpty':
+        'Ngày trở lại làm việc không được bỏ trống',
+    'declareInfo_returnToWorkDateInvalid': 'Ngày trở lại làm việc không hợp lệ',
+    'declareInfo_appraisalDate': 'Ngày giám định',
+    'declareInfo_appraisalDateInvalid': 'Ngày giám định không hợp lệ',
+    'declareInfo_appraisalDateCannotEmpty':
+        'Ngày giám định không được bỏ trống',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

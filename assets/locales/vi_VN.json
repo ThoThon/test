@@ -695,7 +695,13 @@
     "rateToDecline": "Tỷ lệ suy giảm",
     "rateToDeclineInput": "Nhập tỷ lệ suy giảm",
     "rateToDeclineCannotEmpty": "Tỷ lệ suy giảm không được bỏ trống",
-    "rateToDeclineMax": "Tỷ lệ suy giảm có giá trị tối đa là 100"
+    "rateToDeclineMax": "Tỷ lệ suy giảm có giá trị tối đa là 100",
+    "returnToWorkDate": "Ngày trở lại làm việc",
+    "returnToWorkDateCannotEmpty": "Ngày trở lại làm việc không được bỏ trống",
+    "returnToWorkDateInvalid": "Ngày trở lại làm việc không hợp lệ",
+    "appraisalDate": "Ngày giám định",
+    "appraisalDateInvalid": "Ngày giám định không hợp lệ",
+    "appraisalDateCannotEmpty": "Ngày giám định không được bỏ trống"
   },
   "familyMember": {
     "title": "Thêm thành viên",
