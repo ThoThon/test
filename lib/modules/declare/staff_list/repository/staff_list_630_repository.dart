@@ -81,4 +81,34 @@ class StaffList630Repository extends BaseRepository {
     );
     return BaseResponse.fromJson(response);
   }
+
+
+  Future<BaseResponse<StaffListResponse>> getListStaff630c({
+    required String declarationPeriodId,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlGetListStaff630c,
+      EnumRequestMethod.get,
+      jsonMap: {
+        "kyKeKhaiId": declarationPeriodId,
+      },
+    );
+    return BaseResponse<StaffListResponse>.fromJson(
+      response,
+      fromJson: (json) => StaffListResponse.fromJson630b(json),
+    );
+  }
+
+
+  /// Xóa nhân viên (Xóa toàn bộ hồ sơ thủ tục 630b của nhân viên đó)
+  Future<BaseResponse> delete630c({
+    required String id,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlDelete630b,
+      EnumRequestMethod.delete,
+      queryParameters: {'id': id},
+    );
+    return BaseResponse.fromJson(response);
+  }
 }

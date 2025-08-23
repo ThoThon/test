@@ -81,7 +81,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
           () => CardDropdownWithLabel<ReceiveFormModel>(
             fieldKey: formFieldKey,
             validator: validator,
-            // autovalidateMode: controller.autoValidateMode.value,
+            autovalidateMode: controller.autoValidateMode.value,
             labelText: LocaleKeys.declareInfo_receiveMethod.tr,
             hintText: LocaleKeys.declareInfo_receiveMethodHint.tr,
             items: AppData.instance.receiveForm.toList(),
@@ -121,7 +121,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
                   fieldKey: fieldKey,
                   validator: validator,
                   isRequired: controller.isATMpayment,
-                  // autovalidateMode: controller.autoValidateMode.value,
+                  autovalidateMode: controller.autoValidateMode.value,
                   hintText: LocaleKeys.declareInfo_bankNumberHint.tr,
                   inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
                   labelText: LocaleKeys.declareInfo_bankNumber.tr,
@@ -159,7 +159,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
                   fieldKey: fieldKey,
                   validator: validator,
                   isRequired: controller.isATMpayment,
-                  // autovalidateMode: controller.autoValidateMode.value,
+                  autovalidateMode: controller.autoValidateMode.value,
                   hintText: LocaleKeys.declareInfo_accountHolderNameHint.tr,
                   labelText: LocaleKeys.declareInfo_accountHolderName.tr,
                   controller: controller.accountHolderNameCtrl,
@@ -193,7 +193,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
                   return UtilWidget.buildCardBottomSheetSelect2<BankModel>(
                     fieldKey: fieldKey,
                     validator: validator,
-                    // autovalidateMode: controller.autoValidateMode.value,
+                    autovalidateMode: controller.autoValidateMode.value,
                     isRequired: controller.isATMpayment,
                     label: LocaleKeys.declareInfo_bank.tr,
                     hintText: LocaleKeys.declareInfo_bankHint.tr,
@@ -266,7 +266,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
           () => CardInputTextFormWithLabel(
             fieldKey: fieldKey,
             validator: validator,
-            // autovalidateMode: controller.autoValidateMode.value,
+            autovalidateMode: controller.autoValidateMode.value,
             inputFormatters: InputFormatterEnum.periodMonthYear,
             isRequired: controller.isAdjustDeclareForm,
             hintText: LocaleKeys.declareInfo_resolvedPeriodHint.tr,
@@ -316,7 +316,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
         return Obx(
           () => CardInputSelectDateWithLabel(
             fieldKey: formFieldKey,
-            // autovalidateMode: controller.autoValidateMode.value,
+            autovalidateMode: controller.autoValidateMode.value,
             labelText: LocaleKeys.declareInfo_resolvedDate.tr,
             inputFormatters: InputFormatterEnum.dateFullBirthDay,
             controller: controller.resolvedDateCtrl,
@@ -365,7 +365,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
           () => CardInputTextFormWithLabel(
             validator: validator,
             fieldKey: formFieldKey,
-            // autovalidateMode: controller.autoValidateMode.value,
+            autovalidateMode: controller.autoValidateMode.value,
             isRequired: controller.isAdjustDeclareForm,
             hintText: LocaleKeys.declareInfo_adjustReasonHint.tr,
             labelText: LocaleKeys.declareInfo_adjustReason.tr,

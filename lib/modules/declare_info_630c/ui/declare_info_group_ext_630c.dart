@@ -34,8 +34,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           children: [
             Expanded(child: _buildCountDay()),
             sdsSBWidth12,
-            if (!controller.isAdjustDeclareForm)
-              Expanded(child: _buildFromDateUnit()),
+            Expanded(child: _buildFromDateUnit()),
           ],
         ),
         sdsSBHeight12,
@@ -180,7 +179,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           labelText: LocaleKeys.declareInfo_fromDay.tr,
           controller: controller.fromDateCtrl,
           hintText: PATTERN_1,
-          isRequired: !controller.isAdjustDeclareForm,
+          isRequired: true,
           inputFormatters: InputFormatterEnum.dateFullBirthDay,
           onSelectDate: () async {
             KeyBoard.hide();
@@ -250,7 +249,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           inputFormatters: InputFormatterEnum.dateFullBirthDay,
           controller: controller.toDateCtrl,
           hintText: PATTERN_1,
-          isRequired: !controller.isAdjustDeclareForm,
+          isRequired: true,
           onSelectDate: () async {
             KeyBoard.hide();
             final selectedDate = await DatePickerUtils.showCalendarPicker(
@@ -290,7 +289,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         return CardInputTextFormWithLabel(
           fieldKey: fieldKey,
           validator: validator,
-          isRequired: !controller.isAdjustDeclareForm,
+          isRequired: true,
           labelText: LocaleKeys.declareInfo_countDay.tr,
           controller: controller.countDayTextCtrl,
           maxLengthInputForm: 3,
