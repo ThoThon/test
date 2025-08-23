@@ -380,4 +380,35 @@ class DeclareInfo630cController extends BaseGetxController {
   }
 
   bool get isRateToDecline => declineValid.contains(benefitGroup.value?.value);
+
+
+  void onChangeReceiveMethod(ReceiveFormModel? method) {
+    if (method == null) {
+      return;
+    }
+
+    // Nếu khác ATM thì reset các trường liên quan ATM
+    // REF: BHW-3022
+    if (method.value != ATMPaymentValue) {
+      bankNumberCtrl.clear();
+      accountHolderNameCtrl.clear();
+      selectedBank.value = null;
+    }
+
+    // Scroll đến cuối màn hình khi chọn "Chi trả qua ATM"
+    // REF: BHW-3051
+    if (receiveForm.value != method && method.value == ATMPaymentValue) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (scrollController.hasClients) {
+          scrollController.animateTo(
+            scrollController.position.maxScrollExtent,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.ease,
+          );
+        }
+      });
+    }
+
+    receiveForm.value = method;
+  }
 }

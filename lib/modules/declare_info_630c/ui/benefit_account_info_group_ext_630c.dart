@@ -88,9 +88,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
             isRequired: true,
             display: (item) => item.text,
             selectedItem: controller.receiveForm.value,
-            onChanged: (value) {
-              controller.receiveForm.value = value;
-            },
+            onChanged: controller.onChangeReceiveMethod,
           ).paddingOnly(bottom: AppDimens.paddingSmall),
         );
       },

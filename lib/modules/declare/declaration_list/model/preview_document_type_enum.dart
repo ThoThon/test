@@ -14,7 +14,11 @@ enum PreviewDocumentTypeEnum {
 
   /// 4
   /// Thai sản
-  maternityHsb;
+  maternityHsb,
+
+  /// 5
+  /// Dưỡng sức
+  healingHsb;
 
   int get value {
     switch (this) {
@@ -28,6 +32,8 @@ enum PreviewDocumentTypeEnum {
         return 3;
       case PreviewDocumentTypeEnum.maternityHsb:
         return 4;
+      case PreviewDocumentTypeEnum.healingHsb:
+        return 5;
     }
   }
 }

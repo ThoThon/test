@@ -160,9 +160,10 @@ class StaffListController extends BaseGetxController {
   }
 
   void onTapButtonContinue() {
-    // Thủ tục 630a phải đi qua màn "Thông tin khác" nữa
+    // Thủ tục 630 phải đi qua màn "Thông tin khác" nữa
     if (argument.procedureType == ProcedureType.procedure630a ||
-        argument.procedureType == ProcedureType.procedure630b) {
+        argument.procedureType == ProcedureType.procedure630b ||
+        argument.procedureType == ProcedureType.procedure630c) {
       if (declaredStaffs.isEmpty) {
         showSnackBar(LocaleKeys.declarationPeriod_declaredStaffsIsEmpty.tr);
         return;

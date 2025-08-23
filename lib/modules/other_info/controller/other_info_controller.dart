@@ -108,6 +108,9 @@ class OtherInfoController extends BaseGetxController {
         ProcedureType.procedure630b => _repository.saveXml630b(
             declarationPeriodId: declarationPeriodId,
           ),
+        ProcedureType.procedure630c => _repository.saveXml630c(
+            declarationPeriodId: declarationPeriodId,
+          ),
         _ => throw UnimplementedError('Not implemented yet'),
       };
       if (response.isSuccess) {
