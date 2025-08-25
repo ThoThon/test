@@ -460,7 +460,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
         // REF: BHW-3106
-        final newText = double.tryParse(trimmedValue);
+        final newText = int.tryParse(trimmedValue);
         if (newText != null && newText == 0) {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
