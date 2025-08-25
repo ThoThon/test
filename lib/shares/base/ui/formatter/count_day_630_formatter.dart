@@ -1,23 +1,24 @@
 import 'package:flutter/services.dart';
+
 /// REF: BHW-3107
 /// Formatter cho phép nhập số thập phân theo quy tắc:
 /// - Chỉ dùng dấu "," để phân tách (không cho nhập ".").
 /// - Nếu sau dấu "," nhập số:
 ///   + 0  → giữ nguyên 0
 ///   + 1-9 → tự động đổi thành 5
-class RoundDecimalInputFormatter extends TextInputFormatter {
+class CountDay630Formatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    final text = newValue.text;
+    final newText = newValue.text.replaceAll('.', ',');
 
     // Nếu rỗng → giữ nguyên
-    if (text.isEmpty) return newValue;
+    if (newText.isEmpty) return newValue;
 
     // Tách chuỗi nhập vào thành 2 phần: trước và sau dấu ","
-    final parts = text.split(',');
+    final parts = newText.split(',');
 
     // Luôn lấy phần trước dấu "," → đây là phần nguyên
     final integerPart = parts[0];

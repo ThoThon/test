@@ -155,7 +155,7 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.countDay:
         return [
-          RoundDecimalInputFormatter(),
+          CountDay630Formatter(),
           NumericTextFormatter(
             type: 1,
             isDot: true,
