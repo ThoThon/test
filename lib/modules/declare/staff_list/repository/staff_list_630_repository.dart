@@ -84,7 +84,7 @@ class StaffList630Repository extends BaseRepository {
     required String id,
   }) async {
     final response = await baseCallApi(
-      AppApi.urlDelete630b,
+      AppApi.urlDelete630c,
       EnumRequestMethod.delete,
       queryParameters: {'id': id},
     );
