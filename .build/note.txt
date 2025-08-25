@@ -1,3 +1,6 @@
+25/08/2025
+- [Appmobile]_Thủ tục 630c_Trường [Số CCCD] Hiển thị text cảnh báo khi nhập ký tự tiếng Việt - BHW-3120
+
 23/08/2025
 - [Appmobile]_Thủ tục 630c: Trường [Ngày trở lại làm việc]: Lỗi text hiển thị cảnh báo - BHW-3109
 - [Appmobile]_Thủ tục 630c_Trường [Ngày giám định] không là trường bắt buộc - BHW-3113

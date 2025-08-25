@@ -120,6 +120,10 @@ extension PersonInfoGroupExt630c on DeclareInfo630cPage {
     return FormFieldRegistrant<String>(
       registrarId: '9a4d0f16-a6b0-4335-94b9-5b8ce7618a7b',
       validator: (value) {
+        final trimmedValue = value?.trim() ?? '';
+        if (trimmedValue.containsVietnamese) {
+          return LocaleKeys.declareInfo_cccdNumberIncorrectFormat.tr;
+        }
         return null;
       },
       builder: (formFieldKey, validator) => CardInputTextFormWithLabel(
