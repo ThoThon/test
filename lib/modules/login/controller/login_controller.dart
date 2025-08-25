@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../services/remote/api_service.dart';
 import '../models/login/login_info.dart';
 import '../models/login/login_storage.dart';
 
@@ -33,24 +34,33 @@ class LoginController extends GetxController {
     isLoading.value = true;
     errorMessage.value = '';
 
-    await Future.delayed(const Duration(seconds: 1));
+    try {
+      final tax = taxController.text.trim();
+      final user = usernameController.text.trim();
+      final pass = passwordController.text.trim();
 
-    final tax = taxController.text.trim();
-    final user = usernameController.text.trim();
-    final pass = passwordController.text.trim();
+      final response =
+          await ApiService.login(taxCode: tax, username: user, password: pass);
 
-    if (tax == "1111111111" && user == "demo" && pass == "123456") {
-      final info = LoginInfo(
-        username: user,
-        password: pass,
-        taxCode: tax,
-      );
-      await LoginStorage.saveLoginInfo(info);
-      isLoading.value = false;
-      return true;
+      if (response['success'] == true) {
+        String token = response['data']['token'];
+
+        final info = LoginInfo(
+          username: user,
+          password: pass,
+          taxCode: tax,
+          token: token,
+        );
+        await LoginStorage.saveLoginInfo(info);
+        isLoading.value = false;
+        return true;
+      } else {
+        errorMessage.value = "Đăng nhập thất bại";
+      }
+    } catch (e) {
+      print('Lỗi login : $e');
+      errorMessage.value = "Thông tin đăng nhập không hợp lệ";
     }
-
-    errorMessage.value = "Thông tin đăng nhập không hợp lệ";
     isLoading.value = false;
     return false;
   }

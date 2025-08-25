@@ -16,6 +16,11 @@ class LoginStorage {
     return _box.get(keyUserLogin);
   }
 
+  static String? getToken() {
+    final info = getLoginInfo();
+    return info?.token;
+  }
+
   static Future<void> clearLoginInfo() async {
     await _box.delete(keyUserLogin);
   }
@@ -25,6 +30,7 @@ class LoginStorage {
     return info != null &&
         info.username.trim().isNotEmpty &&
         info.password.trim().isNotEmpty &&
-        info.taxCode.trim().isNotEmpty;
+        info.taxCode.trim().isNotEmpty &&
+        info.token.trim().isNotEmpty;
   }
 }

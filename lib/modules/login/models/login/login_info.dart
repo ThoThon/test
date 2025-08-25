@@ -13,9 +13,13 @@ class LoginInfo {
   @HiveField(2)
   final String taxCode;
 
+  @HiveField(3)
+  final String token;
+
   LoginInfo({
     required this.username,
     required this.password,
     required this.taxCode,
+    required this.token,
   });
 }

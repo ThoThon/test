@@ -158,8 +158,8 @@ class LoginScreen extends GetView<LoginController> {
           title: "Lỗi",
           middleText: controller.errorMessage.value,
           backgroundColor: Colors.white,
-          titleStyle: const TextStyle(color: Color(0xFFf24e1e)),
-          middleTextStyle: const TextStyle(color: Color(0xFFf24e1e)),
+          titleStyle: const TextStyle(color: Colors.black),
+          middleTextStyle: const TextStyle(color: Colors.black),
           radius: 15,
           actions: [
             TextButton(

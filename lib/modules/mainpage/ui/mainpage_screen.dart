@@ -8,7 +8,7 @@ class MainpageScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text(
         "API Data Screen",
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

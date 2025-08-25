@@ -20,19 +20,22 @@ class LoginInfoAdapter extends TypeAdapter<LoginInfo> {
       username: fields[0] as String,
       password: fields[1] as String,
       taxCode: fields[2] as String,
+      token: fields[3] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, LoginInfo obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.username)
       ..writeByte(1)
       ..write(obj.password)
       ..writeByte(2)
-      ..write(obj.taxCode);
+      ..write(obj.taxCode)
+      ..writeByte(3)
+      ..write(obj.token);
   }
 
   @override
