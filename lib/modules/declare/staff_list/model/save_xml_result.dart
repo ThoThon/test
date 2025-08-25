@@ -5,6 +5,7 @@ class SaveXmlResult {
   final bool hasD02;
   final bool hasOdM01hsb;
   final bool hasTsM01hsb;
+  final bool hasDsM01hsb;
   final List<Tk1PreviewPath>? tk1s;
   final String? attachPreviewPath;
 
@@ -13,6 +14,7 @@ class SaveXmlResult {
     required this.hasD02,
     required this.hasOdM01hsb,
     required this.hasTsM01hsb,
+    required this.hasDsM01hsb,
     this.tk1s,
     this.attachPreviewPath,
   });
@@ -23,6 +25,7 @@ class SaveXmlResult {
       hasD02: json['hasD02'] ?? false,
       hasOdM01hsb: json['hasOdM01hsb'] ?? false,
       hasTsM01hsb: json['hasTsM01hsb'] ?? false,
+      hasDsM01hsb: json['hasDsM01hsb'] ?? false,
       tk1s: (json['tK1s'] as List<dynamic>?)
           ?.map((e) => Tk1PreviewPath.fromJson(e as Map<String, dynamic>))
           .toList(),

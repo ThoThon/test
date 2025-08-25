@@ -72,8 +72,8 @@ enum ProcedureType {
         return LocaleKeys.declareInfo_title630a.tr;
       case ProcedureType.procedure630b:
         return LocaleKeys.declareInfo_title630b.tr;
-        case ProcedureType.procedure630c:
-        return LocaleKeys.declareInfo_title630b.tr;
+      case ProcedureType.procedure630c:
+        return LocaleKeys.declareInfo_title630c.tr;
     }
   }
 }

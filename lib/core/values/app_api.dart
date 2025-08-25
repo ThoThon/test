@@ -129,5 +129,7 @@ class AppApi {
   static const String urlGetDetail630c = '/api/HoSo630c/get-630c-detail';
   static const String urlDelete630c = '/api/HoSo630c/delete-630c';
   static const String urlUpdate630c = '/api/HoSo630c/update-630c';
+  static const String urlSaveXml630c = '/api/HoSo630c/save-xml';
+  static const String urlGetPreviewPdf630c = '/api/HoSo630c/preview-pdf';
   // === Kết thúc các api liên quan đến thủ tục 630c ===
 }

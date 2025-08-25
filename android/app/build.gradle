@@ -51,8 +51,8 @@ android {
         applicationId "com.viettel.ttcntt.vbhxh"
         minSdkVersion 23
         targetSdkVersion 35
-        versionCode 164
-        versionName "1.0.0"
+        versionCode 165
+        versionName "1.0.10"
     }
 
     signingConfigs {

@@ -376,22 +376,22 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
 
             // Nếu bắt buộc và không nhập thì báo lỗi
             if ((trimmedValue.isEmpty)) {
-              return LocaleKeys.declareInfo_fromDateUnitEmpty.tr;
+              return LocaleKeys.declareInfo_returnToWorkDateCannotEmpty.tr;
             }
 
             // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
             if (trimmedValue.length < 7) {
-              return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
+              return LocaleKeys.declareInfo_returnToWorkDateInvalid.tr;
             }
 
             final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
             if (toDate == null) {
-              return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
+              return LocaleKeys.declareInfo_returnToWorkDateInvalid.tr;
             }
 
             // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
             if (toDate.year <= 1900 || toDate.year >= 2100) {
-              return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
+              return LocaleKeys.declareInfo_returnToWorkDateInvalid.tr;
             }
 
             return null;
@@ -400,7 +400,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
             return CardInputSelectDateWithLabel(
               fieldKey: fieldKey,
               validator: validator,
-              labelText: 'Ngày trở lại làm việc',
+              labelText: LocaleKeys.declareInfo_returnToWorkDate.tr,
               inputFormatters: InputFormatterEnum.dateFullBirthDay,
               controller: controller.returnWorkDateCtrl,
               hintText: PATTERN_1,
@@ -437,24 +437,23 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
       validator: (value) {
         final trimmedValue = value?.trim() ?? '';
 
-        // Nếu bắt buộc và không nhập thì báo lỗi
-        if ((trimmedValue.isEmpty)) {
-          return LocaleKeys.declareInfo_fromDateUnitEmpty.tr;
+        if (trimmedValue.isEmpty) {
+          return null;
         }
 
         // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
         if (trimmedValue.length < 7) {
-          return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
+          return LocaleKeys.declareInfo_appraisalDateInvalid.tr;
         }
 
         final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
         if (toDate == null) {
-          return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
+          return LocaleKeys.declareInfo_appraisalDateInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
         if (toDate.year <= 1900 || toDate.year >= 2100) {
-          return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
+          return LocaleKeys.declareInfo_appraisalDateInvalid.tr;
         }
 
         return null;
@@ -463,11 +462,11 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         return CardInputSelectDateWithLabel(
           fieldKey: fieldKey,
           validator: validator,
-          labelText: 'Ngày giám định',
+          labelText: LocaleKeys.declareInfo_appraisalDate.tr,
           inputFormatters: InputFormatterEnum.dateFullBirthDay,
           controller: controller.appraisalDateCtrl,
           hintText: PATTERN_1,
-          isRequired: true,
+          isRequired: false,
           onSelectDate: () async {
             KeyBoard.hide();
             final selectedDate = await DatePickerUtils.showCalendarPicker(
