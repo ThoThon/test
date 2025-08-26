@@ -115,5 +115,6 @@ abstract class AppNavigator {
     String message, {
     Duration duration = const Duration(seconds: 2),
     SnackBarType type = SnackBarType.failure,
+    Alignment? align,
   });
 }

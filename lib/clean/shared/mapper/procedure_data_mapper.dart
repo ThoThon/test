@@ -1,7 +1,7 @@
+import 'package:v_bhxh/clean/shared/mapper/base/base_data_mapper.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/data/model/procedure_data.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/domain/entity/procedure.dart';
-import 'package:v_bhxh/clean/shared/mapper/base/base_data_mapper.dart';
 
 class ProcedureDataMapper extends BaseDataMapper<ProcedureData, Procedure> {
   @override
