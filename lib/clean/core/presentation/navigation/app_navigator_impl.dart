@@ -153,10 +153,11 @@ class AppNavigatorImpl extends AppNavigator {
     String message, {
     Duration duration = const Duration(seconds: 2),
     SnackBarType type = SnackBarType.failure,
+    Alignment? align,
   }) {
     BotToast.showCustomText(
       duration: message.length > 100 ? 5.seconds : duration,
-      align: Alignment.topCenter,
+      align: align ?? Alignment.topCenter,
       toastBuilder: (cancel) {
         return Material(
           color: Colors.transparent,
@@ -186,13 +187,16 @@ class AppNavigatorImpl extends AppNavigator {
                 Expanded(
                   child: Row(
                     children: [
-                      SvgPicture.asset(type.iconPath).paddingOnly(
-                        right: AppDimens.paddingVerySmall,
-                      ),
+                      if (type.iconPath != null)
+                        SvgPicture.asset(type.iconPath!).paddingOnly(
+                          right: AppDimens.paddingVerySmall,
+                        ),
                       Expanded(
                         child: SDSBuildText(
-                          message.tr,
-                          style: AppTextStyle.font14Bo,
+                          message,
+                          style: AppTextStyle.font14Bo.copyWith(
+                            color: type.textColor,
+                          ),
                           maxLines: 3,
                         ),
                       ),
@@ -202,9 +206,9 @@ class AppNavigatorImpl extends AppNavigator {
                 // if (mainButton != null) mainButton,
                 InkWell(
                   onTap: cancel,
-                  child: const Icon(
+                  child: Icon(
                     Icons.close,
-                    color: AppColors.basicBlack,
+                    color: type.textColor,
                   ).paddingOnly(left: AppDimens.padding14),
                 ),
               ],
