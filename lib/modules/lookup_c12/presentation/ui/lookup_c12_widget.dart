@@ -1,6 +1,6 @@
 part of 'lookup_c12_page.dart';
 
-extension LookupC12Widget on LookupC12Page {
+extension LookupC12Widget on LookupC12ClPage {
   Widget _buildBody() {
     return SDSSafearea(
       child: Column(
@@ -40,7 +40,7 @@ extension LookupC12Widget on LookupC12Page {
       () {
         final month = index + 1;
         final file =
-            controller.listFileC12.firstWhereOrNull((e) => e.thang == month);
+            controller.listFileC12.firstWhereOrNull((e) => e.month == month);
         final isActive = file != null;
 
         return Container(
@@ -65,7 +65,7 @@ extension LookupC12Widget on LookupC12Page {
                 InkWell(
                   onTap: () {
                     if (file != null) {
-                      Get.toNamed(
+                      nav.toNamed(
                         AppRoutesCl.viewPdf.path,
                         arguments: ViewPdfArgument(
                           url: file.c12FilePath,
