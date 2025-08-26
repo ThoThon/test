@@ -58,7 +58,9 @@ enum AppRoutesCl {
   // Thông tin khác
   otherInfo,
 
-  declareInfo630b;
+  declareInfo630b,
+
+  declareInfo630c;
 
   String get path {
     return '/$name';

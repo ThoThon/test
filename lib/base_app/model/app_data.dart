@@ -24,7 +24,7 @@ class AppData {
 
   // Thủ tục 630
   var declareForm = <DeclareForm630>{};
-  var benefitGroup630a = <BenefitGroup630a>{};
+  var benefitGroup630a = <BenefitGroup630>{};
   var workCondition = <WorkCondition>{};
   var receiveForm = <ReceiveForm>{};
   var bank = <Bank>{};
@@ -37,7 +37,8 @@ class AppData {
   var surrogacy = <Surrogacy>{};
   var surgeryPregnancy32w = <SurgeryPregnancy32w>{};
   var contraception = <Contraception>{};
-  var benefitGroup630b = <BenefitGroup630b>{};
+  var benefitGroup630b = <BenefitGroup630>{};
+  var benefitGroup630c = <BenefitGroup630>{};
 
   /// Số lượng thông báo chưa đọc
   final totalUnread = 0.obs;

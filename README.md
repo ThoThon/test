@@ -11,6 +11,10 @@ Flutter project mẫu base chung cho các dự án mới của SDS
 - Mỗi thư mục sẽ có `tên thư mục`.src.dart để export các file trong thư mục đó
 - Thư mục package sẽ chứa file `export_package.dart` export các package sử dụng trong dự án để tránh xung đột khi sử dụng và hạn chế import trong các file code
 
+### Đọc nội dung file note từ google doc
+- Nếu lần đầu chạy cần cài lib requests "python3 -m pip install requests"
+- Link google doc: https://docs.google.com/document/d/1TsmKEE6U-jfo8vXxYKcXXQq1tQEdNiGLM5q16VJCr5Y/edit?usp=sharing
+
 ### Generated
 
 - Dữ liệu ảnh sẽ để trong thư mục assets/image và gen code theo hướng dẫn trong file `README image.md` để cập nhật nhanh code khi thay đổi dữ liệu ảnh

@@ -125,7 +125,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
 
   // Mã nhóm hưởng
   Widget _buildBenefitGroupCodeDropdown() {
-    return FormFieldRegistrant<BenefitGroup630a>(
+    return FormFieldRegistrant<BenefitGroup630>(
       registrarId: 'aca45ce6-4a50-4f46-8ca8-3b7e895bd78f',
       validator: (value) {
         if (value == null) {
@@ -135,7 +135,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<BenefitGroup630a>(
+          () => CardDropdownWithLabel<BenefitGroup630>(
             validator: validator,
             fieldKey: formFieldKey,
             labelText: LocaleKeys.declareInfo_benefitGroupCode.tr,
@@ -450,10 +450,16 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
     return FormFieldRegistrant<String>(
       registrarId: "cbeeff96-8f3b-46da-a6b7-f84fa21225fe",
       validator: (value) {
-        final trimmedValue = value?.trim();
+        final trimmedValue = value?.trim() ?? '';
 
-        if (trimmedValue == null || trimmedValue.isEmpty) {
+        if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_countDayEmpty.tr;
+        }
+
+        // REF: BHW-3106
+        final number = int.tryParse(trimmedValue) ?? 0;
+        if (number == 0) {
+          return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
         return null;
       },
