@@ -27,6 +27,7 @@ class AppColors {
   ///background, border snackBar
   static const Color backgroundSuccess = Color(0xFFECFBF1);
   static const Color backgroundFail = Color(0xFFFEEEEC);
+  static const Color backgroundInfo = Color(0xFF44494D);
   static const Color backgroundWarning = Color(0xFFFFF4D8);
   static const Color backgroundNotification = Color(0xFFE9F3FF);
 
