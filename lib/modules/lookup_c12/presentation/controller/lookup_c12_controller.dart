@@ -1,4 +1,5 @@
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../domain/entity/lookup_c12.dart';
@@ -38,8 +39,9 @@ class LookupC12Controller extends BaseGetClController {
       action: () async {
         listFileC12.value =
             await _getC12FileUseCase.execute(selectedYear.value.year);
-        nav.showSnackBarCustom(
-          message: LocaleKeys.history_lookupSuccess.tr,
+        nav.showSnackBar(
+          LocaleKeys.history_lookupSuccess.tr,
+          type: SnackBarType.info,
           align: const Alignment(0.0, 0.8),
         );
       },

@@ -115,11 +115,6 @@ abstract class AppNavigator {
     String message, {
     Duration duration = const Duration(seconds: 2),
     SnackBarType type = SnackBarType.failure,
-  });
-
-  void showSnackBarCustom<T>({
-    required String message,
-    Duration duration = const Duration(seconds: 2),
     Alignment? align,
   });
 }
