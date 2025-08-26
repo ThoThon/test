@@ -17,6 +17,7 @@ import 'package:v_bhxh/modules/declare/staff_list/ui/staff_list_page.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/ui/declare_info_607_page.dart';
 import 'package:v_bhxh/modules/declare_info_630a/ui/declare_info_630a_page.dart';
 import 'package:v_bhxh/modules/declare_info_630b/ui/declare_info_630b_page.dart';
+import 'package:v_bhxh/modules/declare_info_630c/ui/declare_info_630c_page.dart';
 import 'package:v_bhxh/modules/forgot_password/presentation/binding/forgot_password_binding.dart';
 import 'package:v_bhxh/modules/forgot_password/presentation/forgot_password_page.dart';
 import 'package:v_bhxh/modules/history/ui/history_page.dart';
@@ -152,6 +153,10 @@ class AppPages {
     GetPage(
       name: AppRoutesCl.declareInfo630b.path,
       page: () => DeclareInfo630bPage(),
+    ),
+    GetPage(
+      name: AppRoutesCl.declareInfo630c.path,
+      page: () => DeclareInfo630cPage(),
     ),
   ];
 }

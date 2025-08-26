@@ -59,8 +59,9 @@ class InputFormatterEnum {
   /// 19 : Mã số thuế cho nhập text thường, ký tự đặc biệt, trử khoảng trống
   static const int taxCodeNormal = 19;
 
-  /// 20 : Chỉ nhập text, số, khoảng trắng và `không có dấu tiếng Việt`
-  // static const int textNormalWithoutDiacritics = 20;
+  /// 20 : `Tổng số ngày` ở thủ tục 630a,b,c cho phép nhập thập phân
+  // REF: BHW-3107
+  static const int countDay = 20;
 
   /// 21 : Nhập hệ số
   static const int coefficient = 21;

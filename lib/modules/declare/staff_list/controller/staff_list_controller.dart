@@ -93,6 +93,9 @@ class StaffListController extends BaseGetxController {
         ProcedureType.procedure630b => _repository630.getListStaff630b(
             declarationPeriodId: declarationPeriodId,
           ),
+        ProcedureType.procedure630c => _repository630.getListStaff630c(
+            declarationPeriodId: declarationPeriodId,
+          ),
       };
 
       if (response.isSuccess) {
@@ -159,9 +162,10 @@ class StaffListController extends BaseGetxController {
   }
 
   void onTapButtonContinue() {
-    // Thủ tục 630a phải đi qua màn "Thông tin khác" nữa
+    // Thủ tục 630 phải đi qua màn "Thông tin khác" nữa
     if (argument.procedureType == ProcedureType.procedure630a ||
-        argument.procedureType == ProcedureType.procedure630b) {
+        argument.procedureType == ProcedureType.procedure630b ||
+        argument.procedureType == ProcedureType.procedure630c) {
       if (declaredStaffs.isEmpty) {
         showSnackBar(LocaleKeys.declarationPeriod_declaredStaffsIsEmpty.tr);
         return;
@@ -246,6 +250,7 @@ class StaffListController extends BaseGetxController {
           _repository.deleteTk1D01(id: staffId),
         ProcedureType.procedure630a => _repository630.delete630a(id: staffId),
         ProcedureType.procedure630b => _repository630.delete630b(id: staffId),
+        ProcedureType.procedure630c => _repository630.delete630c(id: staffId),
       };
 
       if (response.isSuccess) {
@@ -275,6 +280,7 @@ class StaffListController extends BaseGetxController {
         AppRoutesCl.declareInfo607.path,
       ProcedureType.procedure630a => AppRoutesCl.declareInfo630a.path,
       ProcedureType.procedure630b => AppRoutesCl.declareInfo630b.path,
+      ProcedureType.procedure630c => AppRoutesCl.declareInfo630c.path,
     };
 
     final result = await Get.toNamed(
@@ -302,6 +308,7 @@ class StaffListController extends BaseGetxController {
         AppRoutesCl.declareInfo607.path,
       ProcedureType.procedure630a => AppRoutesCl.declareInfo630a.path,
       ProcedureType.procedure630b => AppRoutesCl.declareInfo630b.path,
+      ProcedureType.procedure630c => AppRoutesCl.declareInfo630c.path,
     };
 
     final result = await Get.toNamed(

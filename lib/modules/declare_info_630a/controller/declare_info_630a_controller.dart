@@ -36,7 +36,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final declareForm = Rxn<DeclareForm630>();
 
   /// Mã nhóm hưởng *
-  final benefitGroup = Rxn<BenefitGroup630a>();
+  final benefitGroup = Rxn<BenefitGroup630>();
 
   /// Ngày sinh con *
   final birthDayChildCtrl = TextEditingController();
@@ -251,37 +251,37 @@ class DeclareInfo630aController extends BaseGetxController {
     return DeclareInfo630aRequest(
       id: id,
       kyKeKhaiId: argument.declarationPeriodId,
-      hoTen: fullNameTextCtrl.text,
-      maSoBhxh: bhxhTextCtrl.text,
-      soCmnd: cccdTextCtrl.text,
-      maNhanVien: staffCodeTextCtrl.text,
+      hoTen: fullNameTextCtrl.text.trim(),
+      maSoBhxh: bhxhTextCtrl.text.trim(),
+      soCmnd: cccdTextCtrl.text.trim(),
+      maNhanVien: staffCodeTextCtrl.text.trim(),
       phatSinhDieuChinh: declareForm.value?.value ?? '',
       maNhomHuong: benefitGroup.value?.value ?? '',
       ngaySinhCon: convertStringToDateSafe(birthDayChildCtrl.text, PATTERN_1),
-      soCon: int.tryParse(numberChildCtrl.text.trim()),
-      theBhytCuaCon: bhytCardCodeChildCtrl.text,
+      soCon: int.tryParse(numberChildCtrl.text), // bỏ trim
+      theBhytCuaCon: bhytCardCodeChildCtrl.text.trim(),
       tuNgay: convertStringToDate(fromDateCtrl.text, PATTERN_1),
       denNgay: convertStringToDate(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(countDayTextCtrl.text.trim()) ?? 0,
+      tongSoNgay: int.tryParse(countDayTextCtrl.text) ?? 0, // bỏ trim
       tuNgayDonVi: convertStringToDate(fromDateUnitTextCtrl.text, PATTERN_1),
       ngayNghiTuan: weeklyDayOffString,
       tuyenBenhVien: selectHospitalLine.value?.value,
       maBenhDaiNgay: selectDiseaseCode.value?.code,
-      tenBenh: diseaseNameTextCtrl.text,
-      soSeriCT: serialNumberCtrl.text,
+      tenBenh: diseaseNameTextCtrl.text.trim(),
+      soSeriCT: serialNumberCtrl.text.trim(),
       dangKyNghiDuongThai: isMaternityRest.value,
       dieuKienLamViec: workCondition.value?.value,
-      dotBoSung: supplementalPeriodCtrl.text,
-      maHoSo: fileCodeTextCtrl.text,
-      ghiChu: noteTextCtrl.text,
+      dotBoSung: supplementalPeriodCtrl.text.trim(),
+      maHoSo: fileCodeTextCtrl.text.trim(),
+      ghiChu: noteTextCtrl.text.trim(),
       hinhThucNhan: receiveForm.value?.value,
-      soTaiKhoan: bankNumberCtrl.text,
-      tenChuTaiKhoan: accountHolderNameCtrl.text,
+      soTaiKhoan: bankNumberCtrl.text.trim(),
+      tenChuTaiKhoan: accountHolderNameCtrl.text.trim(),
       maNganHang: selectedBank.value?.code,
-      dotDaGiaiQuyet: resolvedPeriodCtrl.text,
+      dotDaGiaiQuyet: resolvedPeriodCtrl.text.trim(),
       tuNgayDuyetTruoc:
           convertStringToDateSafe(resolvedDateCtrl.text, PATTERN_1),
-      lyDoDieuChinh: adjustReasonCtrl.text,
+      lyDoDieuChinh: adjustReasonCtrl.text.trim(),
     );
   }
 
@@ -508,7 +508,7 @@ class DeclareInfo630aController extends BaseGetxController {
     }
   }
 
-  void onChangeBenefitGroup(BenefitGroup630a? group) {
+  void onChangeBenefitGroup(BenefitGroup630? group) {
     if (group == null) {
       return;
     }
