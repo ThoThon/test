@@ -136,7 +136,6 @@ class HomePage extends BaseGetWidget<HomeController> {
   }
 
   Widget _buildDrawer() {
-    final version = packageInfo.version;
     return Drawer(
       backgroundColor: AppColors.basicWhite,
       child: Padding(
@@ -172,7 +171,7 @@ class HomePage extends BaseGetWidget<HomeController> {
             ),
             const Spacer(),
             SDSBuildText(
-              '${LocaleKeys.home_version.tr} $version',
+              '${LocaleKeys.home_version.tr} ${packageInfo.version}',
               style: AppTextStyle.font16Re,
             ),
             sdsSBHeight16,
