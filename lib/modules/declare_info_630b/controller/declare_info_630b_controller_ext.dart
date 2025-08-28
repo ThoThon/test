@@ -213,12 +213,12 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   }
 
   void goToSelectStaffPage() async {
+    KeyBoard.hide();
     final result = await Get.toNamed(
       AppRoutes.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: selectedStaffId,
     );
-    KeyBoard.hide();
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
     }

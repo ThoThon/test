@@ -131,11 +131,11 @@ class DeclareInfo630aController extends BaseGetxController {
   }
 
   void goToSelectStaffPage() async {
+    KeyBoard.hide();
     final result = await Get.toNamed(
       AppRoutes.selectStaff.path,
       arguments: selectedStaffId,
     );
-KeyBoard.hide();
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
     }
