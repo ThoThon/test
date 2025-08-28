@@ -154,6 +154,10 @@ class DeclareInfoController extends BaseGetxController {
     );
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
+
+      // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
+      updateHouseholdInfoRequired();
+      updateClearTTIconState();
     }
   }
 
