@@ -1350,7 +1350,7 @@ class Locales {
     'dialog_sendRequestSignature': 'Gửi yêu cầu ký thành công',
     'dialog_sendFileToBHXH':
         'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
-    'dialog_max5File': 'Chỉ cho phép chọn tối đa 5 file',
+    'dialog_max5File': 'Chỉ cho phép đính kèm tối đa 5 file',
     'dialog_select': 'Chọn',
     'dialog_selectDayMonthYear': 'Chọn Ngày/Tháng/Năm',
     'dialog_selectMonthYear': 'Chọn Tháng/Năm',
