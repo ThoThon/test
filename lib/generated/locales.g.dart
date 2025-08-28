@@ -392,6 +392,7 @@ class LocaleKeys {
   static const declareInfo_title613 = 'declareInfo_title613';
   static const declareInfo_title630a = 'declareInfo_title630a';
   static const declareInfo_title630b = 'declareInfo_title630b';
+  static const declareInfo_title630c = 'declareInfo_title630c';
   static const declareInfo_fullName = 'declareInfo_fullName';
   static const declareInfo_fullNameHint = 'declareInfo_fullNameHint';
   static const declareInfo_fullNameCannotEmpty =
@@ -682,6 +683,7 @@ class LocaleKeys {
       'declareInfo_bhytCardCodeChildHint';
   static const declareInfo_bhytCardCodeEmpty = 'declareInfo_bhytCardCodeEmpty';
   static const declareInfo_countDay = 'declareInfo_countDay';
+  static const declareInfo_countDayInvalid = 'declareInfo_countDayInvalid';
   static const declareInfo_countDayHint = 'declareInfo_countDayHint';
   static const declareInfo_countDayEmpty = 'declareInfo_countDayEmpty';
   static const declareInfo_fromDateUnit = 'declareInfo_fromDateUnit';
@@ -845,6 +847,22 @@ class LocaleKeys {
   static const declareInfo_surrogacy = 'declareInfo_surrogacy';
   static const declareInfo_surrogacyHint = 'declareInfo_surrogacyHint';
   static const declareInfo_pickDayOff = 'declareInfo_pickDayOff';
+  static const declareInfo_rateToDecline = 'declareInfo_rateToDecline';
+  static const declareInfo_rateToDeclineInput =
+      'declareInfo_rateToDeclineInput';
+  static const declareInfo_rateToDeclineCannotEmpty =
+      'declareInfo_rateToDeclineCannotEmpty';
+  static const declareInfo_rateToDeclineMax = 'declareInfo_rateToDeclineMax';
+  static const declareInfo_returnToWorkDate = 'declareInfo_returnToWorkDate';
+  static const declareInfo_returnToWorkDateCannotEmpty =
+      'declareInfo_returnToWorkDateCannotEmpty';
+  static const declareInfo_returnToWorkDateInvalid =
+      'declareInfo_returnToWorkDateInvalid';
+  static const declareInfo_appraisalDate = 'declareInfo_appraisalDate';
+  static const declareInfo_appraisalDateInvalid =
+      'declareInfo_appraisalDateInvalid';
+  static const declareInfo_appraisalDateCannotEmpty =
+      'declareInfo_appraisalDateCannotEmpty';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1636,6 +1654,7 @@ class Locales {
     'declareInfo_title613': 'Thủ tục 613',
     'declareInfo_title630a': 'Thủ tục 630a',
     'declareInfo_title630b': 'Thủ tục 630b',
+    'declareInfo_title630c': 'Thủ tục 630c',
     'declareInfo_fullName': 'Họ và tên',
     'declareInfo_fullNameHint': 'Nhập họ và tên',
     'declareInfo_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -1864,6 +1883,7 @@ class Locales {
     'declareInfo_bhytCardCodeChildHint': 'Nhập mã thẻ BHYT của con',
     'declareInfo_bhytCardCodeEmpty': 'Mã thẻ BHYT của con không được bỏ trống',
     'declareInfo_countDay': 'Tổng số ngày',
+    'declareInfo_countDayInvalid': 'Tổng số ngày không hợp lệ',
     'declareInfo_countDayHint': 'Nhập số ngày',
     'declareInfo_countDayEmpty': 'Tổng số ngày không được bỏ trống',
     'declareInfo_fromDateUnit': 'Từ ngày đơn vị',
@@ -1998,6 +2018,19 @@ class Locales {
     'declareInfo_surrogacy': 'Mang thai hộ',
     'declareInfo_surrogacyHint': 'Chọn mang thai hộ',
     'declareInfo_pickDayOff': 'Chọn ngày nghỉ',
+    'declareInfo_rateToDecline': 'Tỷ lệ suy giảm',
+    'declareInfo_rateToDeclineInput': 'Nhập tỷ lệ suy giảm',
+    'declareInfo_rateToDeclineCannotEmpty':
+        'Tỷ lệ suy giảm không được bỏ trống',
+    'declareInfo_rateToDeclineMax': 'Tỷ lệ suy giảm có giá trị tối đa là 100',
+    'declareInfo_returnToWorkDate': 'Ngày trở lại làm việc',
+    'declareInfo_returnToWorkDateCannotEmpty':
+        'Ngày trở lại làm việc không được bỏ trống',
+    'declareInfo_returnToWorkDateInvalid': 'Ngày trở lại làm việc không hợp lệ',
+    'declareInfo_appraisalDate': 'Ngày giám định',
+    'declareInfo_appraisalDateInvalid': 'Ngày giám định không hợp lệ',
+    'declareInfo_appraisalDateCannotEmpty':
+        'Ngày giám định không được bỏ trống',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

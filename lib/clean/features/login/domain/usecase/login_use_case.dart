@@ -25,4 +25,10 @@ class LoginUseCase extends UseCase<LoginRequest, String> {
 
     return accessToken ?? '';
   }
+
+  @override
+  void cancel() {
+    _loginRepository.cancelAllRequests();
+    super.cancel();
+  }
 }

@@ -6,7 +6,7 @@ class CategoriesProcedure630 implements Entity {
   final Set<DeclareForm630> declareForm;
 
   // Mã nhóm hưởng 630a
-  final Set<BenefitGroup630a> benefitGroup630a;
+  final Set<BenefitGroup630> benefitGroup630a;
 
   // Tuyến bệnh viện
   final Set<HospitalLine> hospitalLine;
@@ -24,7 +24,7 @@ class CategoriesProcedure630 implements Entity {
   final Set<Bank> bank;
 
   // Mã nhóm hưởng 630b
-  final Set<BenefitGroup630b> benefitGroup630b;
+  final Set<BenefitGroup630> benefitGroup630b;
 
   // Mã nhóm hưởng cấp 2
   final Set<BenefitGroupLv2> benefitGroupLv2;
