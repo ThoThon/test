@@ -97,9 +97,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
             items: AppData.instance.declareForm.toList(),
             display: (item) => item.text,
             selectedItem: controller.declareForm.value,
-            onChanged: (value) {
-              controller.declareForm.value = value;
-            },
+            onChanged: controller.onChangeDeclareMethod,
           ),
         );
       },
