@@ -69,6 +69,7 @@ class DeclareInfo607Controller extends BaseGetxController {
 
       // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
       updateHouseholdInfoRequired();
+      updateClearTTIconState();
     }
   }
 
