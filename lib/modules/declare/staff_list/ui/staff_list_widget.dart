@@ -68,6 +68,7 @@ extension StaffListWidget on StaffListPage {
         ),
         sdsSBHeight8,
         AppSelectImageWidget(
+          checkMaxImageAttachments: controller.checkMaxImageAttachments,
           onPickImage: controller.pickImage,
           onTakePhoto: controller.takePhoto,
         ),
