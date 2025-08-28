@@ -11,6 +11,7 @@ import 'package:v_bhxh/modules/login/model/categories_630/benefit_group_630_mode
 import 'package:v_bhxh/modules/login/model/categories_630/declare_form_model.dart';
 import 'package:v_bhxh/modules/login/model/categories_630/receive_form_model.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../declare/staff_list/model/model_src.dart';
 import '../../select_staff/select_staff_src.dart';
@@ -421,6 +422,7 @@ class DeclareInfo630cController extends BaseGetxController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: selectedStaffId,
     );
+    KeyBoard.hide();
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
     }
