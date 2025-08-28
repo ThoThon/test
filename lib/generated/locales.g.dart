@@ -100,6 +100,7 @@ class LocaleKeys {
   static const home_logout = 'home_logout';
   static const home_home = 'home_home';
   static const home_accountInfo = 'home_accountInfo';
+  static const home_version = 'home_version';
   static const unitInfo_transactionRegister = 'unitInfo_transactionRegister';
   static const unitInfo_generalInfo = 'unitInfo_generalInfo';
   static const unitInfo_registerInfo = 'unitInfo_registerInfo';
@@ -1380,6 +1381,7 @@ class Locales {
     'home_logout': 'Đăng xuất',
     'home_home': 'Trang chủ',
     'home_accountInfo': 'Thông tin tài khoản',
+    'home_version': 'Phiên bản',
     'unitInfo_transactionRegister': 'Đăng ký giao dịch',
     'unitInfo_generalInfo': 'Thông tin chung',
     'unitInfo_registerInfo': 'Thông tin đăng ký',
