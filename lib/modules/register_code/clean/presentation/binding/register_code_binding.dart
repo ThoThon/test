@@ -3,6 +3,7 @@ import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
 import 'package:v_bhxh/modules/register_code/clean/domain/usecase/first_time_register_use_case.dart';
 import 'package:v_bhxh/modules/register_code/clean/domain/usecase/get_categories_use_case.dart';
 import 'package:v_bhxh/modules/register_code/clean/domain/usecase/get_certificate_use_case.dart';
+import 'package:v_bhxh/modules/register_code/clean/presentation/controller/register_code_controller.dart';
 
 import '../../../../src.dart';
 import '../../data/repository/register_code_repository_impl.dart';
@@ -12,7 +13,11 @@ class RegisterCodeBinding extends BaseBindings {
   @override
   void bindingsController() {
     Get.lazyPut(
-      () => sl(),
+      () => RegisterCodeController(
+        sl(),
+        sl(),
+        sl(),
+      ),
     );
   }
 
@@ -20,6 +25,7 @@ class RegisterCodeBinding extends BaseBindings {
   void bindingsRepository() {
     Get.lazyPut<RegisterCodeRepository>(
       () => RegisterCodeRepositoryImpl(
+        sl(),
         sl(),
         sl(),
         sl(),

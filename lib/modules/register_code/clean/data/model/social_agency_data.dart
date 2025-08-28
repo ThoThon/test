@@ -1,21 +1,20 @@
 import 'package:equatable/equatable.dart';
 
-class SocialAgencyModel extends Equatable {
+class SocialAgencyData extends Equatable {
   final String maCoQuanBHXH;
   final String tenCoQuanBHXH;
   final String maTinh;
   final String tenTinhThanhPho;
 
-  const SocialAgencyModel({
+  const SocialAgencyData({
     required this.maCoQuanBHXH,
     required this.tenCoQuanBHXH,
     required this.maTinh,
     required this.tenTinhThanhPho,
   });
 
-  @Deprecated('Sử dụng SocialAgencyData để parse Json')
-  factory SocialAgencyModel.fromJson(Map<String, dynamic> json) {
-    return SocialAgencyModel(
+  factory SocialAgencyData.fromJson(Map<String, dynamic> json) {
+    return SocialAgencyData(
       maCoQuanBHXH: json['maCoQuanBHXH'] ?? '',
       tenCoQuanBHXH: json['tenCoQuanBHXH'] ?? '',
       maTinh: json['maTinh'] ?? '',

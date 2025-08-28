@@ -1,6 +1,6 @@
 import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
-class FirstTimeRegister implements Entity {
+class FirstTimeRegisterRequest implements Entity {
   final String coQuanBHXHQuanLy;
   final String coQuanBHXHTinh;
   final String credentialID;
@@ -30,7 +30,7 @@ class FirstTimeRegister implements Entity {
   final String phuongThucNhan;
   final List<String>? imageFilePath;
 
-  FirstTimeRegister({
+  FirstTimeRegisterRequest({
     required this.coQuanBHXHQuanLy,
     required this.coQuanBHXHTinh,
     required this.credentialID,

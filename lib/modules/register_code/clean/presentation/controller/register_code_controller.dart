@@ -13,7 +13,10 @@ import '../../../../../clean/shared/entity/province.dart';
 import '../../../../../clean/shared/entity/ward.dart';
 import '../../../../../shares/widgets/keyboard/keyboard.dart';
 import '../../../../src.dart';
+import '../../domain/entity/categories.dart';
 import '../../domain/entity/certificate.dart';
+import '../../domain/entity/first_time_register_request.dart';
+import '../../domain/entity/social_agency.dart';
 import '../enum/register_code_tab_enum.dart';
 
 class RegisterCodeController extends BaseGetClController {
@@ -36,7 +39,7 @@ class RegisterCodeController extends BaseGetClController {
   final unitNameCtrl = TextEditingController();
 
   // Loại đối tượng
-  final selectedObject = Rxn<ObjectTypeModel>();
+  final selectedObject = Rxn<Categories>();
 
   // Loại hình đơn vị
   final unitTypeCtrl = TextEditingController();
@@ -79,7 +82,7 @@ class RegisterCodeController extends BaseGetClController {
   final phoneContactCtrl = TextEditingController();
 
   // Cơ quan BHXH
-  final socialAgency = Rxn<SocialAgencyModel>();
+  final socialAgency = Rxn<SocialAgency>();
 
   // Nơi nhận tỉnh
   final provinceReceive = Rxn<Province>();
@@ -88,13 +91,13 @@ class RegisterCodeController extends BaseGetClController {
   final wardReceive = Rxn<Ward>();
 
   // Đăng ký nhận kết quả
-  final registerResult = Rxn<RegisterReceiveResultModel>();
+  final registerResult = Rxn<Categories>();
 
   // Phương thức nhận kết quả
-  final resultReceiveMethod = Rxn<ReceiveMethodModel>();
+  final resultReceiveMethod = Rxn<Categories>();
 
   // Phương thức đóng
-  final paymentMethod = Rxn<PaymentMethodModel>();
+  final paymentMethod = Rxn<Categories>();
 
   // Tên đăng nhập MySign
   final usernameMySignCtrl = TextEditingController();
@@ -226,8 +229,8 @@ class RegisterCodeController extends BaseGetClController {
     listImage.removeAt(index);
   }
 
-  FirstRegisterRequest _buildRequest() {
-    return FirstRegisterRequest(
+  FirstTimeRegisterRequest _buildRequest() {
+    return FirstTimeRegisterRequest(
       coQuanBHXHQuanLy: socialAgency.value?.maCoQuanBHXH ?? '',
       coQuanBHXHTinh: '01',
       credentialID: certificate.value?.cerdentialID ?? '',

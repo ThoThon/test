@@ -1,9 +1,10 @@
 import 'package:v_bhxh/clean/shared/model/model_src.dart';
 import 'package:v_bhxh/modules/register_code/clean/data/model/categories_data.dart';
+import 'package:v_bhxh/modules/register_code/clean/data/model/social_agency_data.dart';
 
 class RegisterCodeCategoriesData {
   final Set<ProvinceData>? provinces;
-  final Set<CategoriesData>? agencies;
+  final Set<SocialAgencyData>? agencies;
   final Set<CategoriesData>? receiveMethods;
   final Set<CategoriesData>? paymentMethods;
   final Set<CategoriesData>? resultReceivingOptions;
@@ -24,7 +25,7 @@ class RegisterCodeCategoriesData {
           ?.map((e) => ProvinceData.fromJson(e))
           .toSet(),
       agencies: (json['dmCQQLs'] as List<dynamic>?)
-          ?.map((e) => CategoriesData.fromJson(e))
+          ?.map((e) => SocialAgencyData.fromJson(e))
           .toSet(),
       receiveMethods: (json['phuongThucNhans'] as List<dynamic>?)
           ?.map((e) => CategoriesData.fromJson(e))

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' as di;
 import 'package:http_parser/http_parser.dart';
 import 'package:v_bhxh/clean/shared/mapper/certificate_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/first_time_register_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/register_code_categories_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/model/model_src.dart';
 import 'package:v_bhxh/modules/register_code/clean/data/model/certificate_data.dart';
@@ -11,6 +12,7 @@ import 'package:v_bhxh/shares/package/export_package.dart';
 
 import '../../../../../clean/core/data/data_source/network/network_src.dart';
 import '../../../../src.dart';
+import '../../domain/entity/first_time_register_request.dart';
 import '../../domain/repository/register_code_repository.dart';
 
 const _signDocumentTimeOut = Duration(minutes: 3);
@@ -19,11 +21,13 @@ class RegisterCodeRepositoryImpl extends RegisterCodeRepository {
   final AuthAppServerApiClient _authAppServerApiClient;
   final CertificateDataMapper _certificateDataMapper;
   final RegisterCodeCategoriesDataMapper _registerCodeCategoriesDataMapper;
+  final FirstTimeRegisterRequestDataMapper _firstTimeRegisterRequestDataMapper;
 
   RegisterCodeRepositoryImpl(
     this._authAppServerApiClient,
     this._certificateDataMapper,
     this._registerCodeCategoriesDataMapper,
+    this._firstTimeRegisterRequestDataMapper,
   );
 
   @override
@@ -62,9 +66,10 @@ class RegisterCodeRepositoryImpl extends RegisterCodeRepository {
 
   @override
   Future<BaseResponseCl<bool>> firstTimeRegister({
-    required FirstRegisterRequest request,
+    required FirstTimeRegisterRequest request,
   }) async {
-    final mapData = request.toJson();
+    final requestData = _firstTimeRegisterRequestDataMapper.mapToData(request);
+    final mapData = requestData.toJson();
 
     if (request.imageFilePath != null && request.imageFilePath!.isNotEmpty) {
       final List<di.MultipartFile> multipartFiles = [];

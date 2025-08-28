@@ -3,18 +3,18 @@ import 'dart:async';
 import 'package:v_bhxh/clean/core/data/model/model_src.dart';
 import 'package:v_bhxh/clean/core/domain/usecase/base_use_case.dart';
 
-import '../../../../src.dart';
+import '../entity/first_time_register_request.dart';
 import '../repository/register_code_repository.dart';
 
 class FirstTimeRegisterUseCase
-    extends UseCase<FirstRegisterRequest, BaseResponseCl<bool>> {
+    extends UseCase<FirstTimeRegisterRequest, BaseResponseCl<bool>> {
   final RegisterCodeRepository _registerCodeRepository;
 
   FirstTimeRegisterUseCase(this._registerCodeRepository);
   @override
-  Future<BaseResponseCl<bool>> execute(FirstRegisterRequest input) {
+  Future<BaseResponseCl<bool>> execute(FirstTimeRegisterRequest input) {
     return _registerCodeRepository.firstTimeRegister(
-      request: FirstRegisterRequest(
+      request: FirstTimeRegisterRequest(
         coQuanBHXHQuanLy: input.coQuanBHXHQuanLy,
         coQuanBHXHTinh: input.coQuanBHXHTinh,
         credentialID: input.credentialID,

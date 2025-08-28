@@ -66,7 +66,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Cơ quan BHXH
   Widget _buildSelectBhxhAgency() {
-    return FormFieldRegistrant<SocialAgencyModel>(
+    return FormFieldRegistrant<SocialAgency>(
       registrarId: 'd50c7b2a-28b6-4c25-a7bb-f3fb7ed88ee1',
       validator: (value) {
         if (controller.socialAgency.value == null) {
@@ -83,7 +83,7 @@ extension RegisterInfoTab on RegisterCodePage {
               label: LocaleKeys.registerCode_socialSecurityAgency.tr,
               funcSelect: (didChange) {
                 Get.bottomSheet(
-                  BottomSheetSearch<SocialAgencyModel>(
+                  BottomSheetSearch<SocialAgency>(
                     title: LocaleKeys.registerCode_selectSocialAgency.tr,
                     maxLength: 20,
                     listFilter: AppData.instance.socialAgency.toList(),
@@ -170,7 +170,7 @@ extension RegisterInfoTab on RegisterCodePage {
               funcSelect: (didChange) async {
                 final province = controller.provinceReceive.value;
                 if (province == null) {
-                  controller.showSnackBar(
+                  nav.showSnackBar(
                       LocaleKeys.registerCode_provinceReceiveIsEmpty.tr);
                   return;
                 }
@@ -199,7 +199,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Đăng ký nhận kết quả
   Widget _buildSelectRegisterResult() {
-    return FormFieldRegistrant<RegisterReceiveResultModel>(
+    return FormFieldRegistrant<Categories>(
       registrarId: 'ecd9b8e1-2a1a-46ab-b717-ff9197dc8271',
       validator: (value) {
         if (value == null) {
@@ -210,7 +210,7 @@ extension RegisterInfoTab on RegisterCodePage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return CardDropdownWithLabel<RegisterReceiveResultModel>(
+            return CardDropdownWithLabel<Categories>(
               fieldKey: fieldKey,
               validator: validator,
               labelText: LocaleKeys.registerCode_registerResult.tr,
@@ -257,7 +257,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Phương thức nhận kết quả
   Widget _buildSelectMethodResult() {
-    return FormFieldRegistrant<ReceiveMethodModel>(
+    return FormFieldRegistrant<Categories>(
       registrarId: '543267ff-a0c3-4bcc-9129-c5da0ad19093',
       validator: (value) {
         if (value == null) {
@@ -268,7 +268,7 @@ extension RegisterInfoTab on RegisterCodePage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return CardDropdownWithLabel<ReceiveMethodModel>(
+            return CardDropdownWithLabel<Categories>(
               fieldKey: fieldKey,
               validator: validator,
               labelText: LocaleKeys.registerCode_methodReceiveResult.tr,
@@ -288,7 +288,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Phương thức đóng
   Widget _buildSelectMethodClose() {
-    return FormFieldRegistrant<PaymentMethodModel>(
+    return FormFieldRegistrant<Categories>(
       registrarId: '76f6f431-65ba-4d58-9c97-c20f48ebd416',
       validator: (value) {
         if (value == null) {
@@ -299,7 +299,7 @@ extension RegisterInfoTab on RegisterCodePage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return CardDropdownWithLabel<PaymentMethodModel>(
+            return CardDropdownWithLabel<Categories>(
               fieldKey: fieldKey,
               validator: validator,
               labelText: LocaleKeys.registerCode_methodPayment.tr,
@@ -701,7 +701,7 @@ extension RegisterInfoTab on RegisterCodePage {
   }
 
   Widget _buildDropdownSerial() {
-    return CardDropdownWithLabel<CertificateModel>(
+    return CardDropdownWithLabel<Certificate>(
       isRequired: true,
       labelText: LocaleKeys.registerService_serialNumber.tr,
       items: controller.listCert,
