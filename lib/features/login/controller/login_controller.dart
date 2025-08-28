@@ -40,11 +40,14 @@ class LoginController extends GetxController {
       final user = usernameController.text.trim();
       final pass = passwordController.text.trim();
 
-      final response =
-          await ApiService.login(taxCode: tax, username: user, password: pass);
+      final response = await ApiService.login(
+        taxCode: tax,
+        username: user,
+        password: pass,
+      );
 
-      if (response['success'] == true) {
-        String token = response['data']['token'];
+      if (response.success && response.data != null) {
+        String token = response.data!;
 
         final info = LoginInfo(
           username: user,

@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 
 import '../../features/login/models/login/login_storage.dart';
+import 'base_response.dart';
 import 'dio_client.dart';
 
 class ApiService {
-  static Future<Map<String, dynamic>> login({
+  static Future<BaseResponse<String>> login({
     required String taxCode,
     required String username,
     required String password,
@@ -17,7 +18,15 @@ class ApiService {
         'password': password,
       },
     );
-    return response.data;
+    String? token;
+    if (response.data['data'] != null) {
+      token = response.data['data']['token'];
+    }
+    return BaseResponse<String>(
+      success: response.data['success'] ?? false,
+      message: response.data['message'] ?? '',
+      data: token,
+    );
   }
 
   static Future<Map<String, dynamic>> callApiWithToken(String endpoint) async {
