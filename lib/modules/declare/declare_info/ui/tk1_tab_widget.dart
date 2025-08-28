@@ -864,6 +864,13 @@ extension Tk1TabWidget on DeclareInfoPage {
             controller.d02Tk1State.bhxhTextCtrl.text.trim().isEmpty) {
           return 'Vui lòng thêm thành viên gia đình';
         }
+
+        // REF: TH1 VBHXHMOB-16
+        if (controller.tk1State.familyMembers.isEmpty &&
+            !controller.isHouseholdInfoEmpty) {
+          return 'Kê khai ít nhất 1 thành viên trong gia đình';
+        }
+
         return null;
       },
       builder: (fieldKey, validator) {

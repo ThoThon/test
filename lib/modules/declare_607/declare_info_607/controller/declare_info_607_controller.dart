@@ -563,6 +563,7 @@ class DeclareInfo607Controller extends BaseGetxController {
     if (result is FamilyMember) {
       tk1State.familyMembers.add(result);
     }
+    updateHouseholdInfoRequired();
   }
 
   Future<void> editFamilyMember(FamilyMember member) async {
@@ -617,6 +618,7 @@ class DeclareInfo607Controller extends BaseGetxController {
         typeAction: AppConst.actionSuccess,
       );
     }
+    updateHouseholdInfoRequired();
   }
 
   void onTapClearProvinceTT() {
@@ -685,6 +687,12 @@ class DeclareInfo607Controller extends BaseGetxController {
 
     // Nếu 1 trong các thông tin của chủ hộ được điền thì sẽ phải điền tất cả
     if (!isHouseholdInfoEmpty) {
+      tk1State.isHouseholdInfoRequired.value = true;
+      return;
+    }
+
+    // REF: TH2 VBHXHMOB-16
+    if (tk1State.familyMembers.isNotEmpty) {
       tk1State.isHouseholdInfoRequired.value = true;
       return;
     }
