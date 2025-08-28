@@ -457,4 +457,28 @@ class DeclareInfo630cController extends BaseGetxController {
 
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
+
+  void onChangeDeclareMethod(DeclareForm630Model? method) {
+    if (method == null) {
+      return;
+    }
+    declareForm.value = method;
+
+    // Nếu chọn hình thức kê khai khác "Phát sinh" (1) thì reset các trường liên quan
+    // REF: VBHXHMOB-9
+    if (method.value != declareMethodArisingValue) {
+      returnWorkDateCtrl.clear();
+      rateToDeclineCtrl.clear();
+      appraisalDateCtrl.clear();
+      serialNumberCtrl.clear();
+      supplementalPeriodCtrl.clear();
+    }
+
+    // REF: VBHXHMOB-9
+    if (method.value != declareMethodAdjustValue) {
+      resolvedPeriodCtrl.clear();
+      resolvedDateCtrl.clear();
+      adjustReasonCtrl.clear();
+    }
+  }
 }
