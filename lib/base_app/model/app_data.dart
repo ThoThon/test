@@ -1,5 +1,6 @@
 import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 import '../../clean/shared/entity/entity_src.dart';
+import '../../modules/register_code/clean/domain/entity/categories.dart';
 import '../../modules/src.dart';
 
 class AppData {
@@ -12,11 +13,11 @@ class AppData {
   var provinces = <Province>{};
   var relationships = <Relationship>{};
   var positions = <Position>{};
-  var socialAgency = <SocialAgencyModel>{};
-  var receiveMethod = <ReceiveMethodModel>{};
-  var paymentMethods = <PaymentMethodModel>{};
-  var objectType = <ObjectTypeModel>{};
-  var resultReceivingOptions = <RegisterReceiveResultModel>{};
+  var socialAgency = <Categories>{};
+  var receiveMethod = <Categories>{};
+  var paymentMethods = <Categories>{};
+  var objectType = <Categories>{};
+  var resultReceivingOptions = <Categories>{};
   var birthTypes = <BirthType>{};
   var receiveResults = <ReceiveResult>{};
   var oldProvinces = <Province>{};
