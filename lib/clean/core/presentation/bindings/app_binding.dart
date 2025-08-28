@@ -8,6 +8,7 @@ import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
 import 'package:v_bhxh/clean/shared/mapper/categories_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/certificate_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/first_time_register_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/lookup_c12_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
@@ -59,6 +60,7 @@ class AppBinding extends BaseBindings {
       () => RegisterCodeCategoriesDataMapper(sl(), sl(), sl()),
       fenix: true,
     );
+    Get.lazyPut(() => FirstTimeRegisterRequestDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

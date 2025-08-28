@@ -329,7 +329,7 @@ class RegisterCodeController extends BaseGetClController {
       content: LocaleKeys.dialog_confirmSignatureMySign.tr,
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       onFinish: () {
-        // cancelAllRequest();
+        _firstTimeRegisterUseCase.cancel;
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );

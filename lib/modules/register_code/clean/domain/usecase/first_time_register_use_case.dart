@@ -45,4 +45,9 @@ class FirstTimeRegisterUseCase
       ),
     );
   }
+
+  @override
+  void cancel() {
+    _registerCodeRepository.cancelAllRequests();
+  }
 }
