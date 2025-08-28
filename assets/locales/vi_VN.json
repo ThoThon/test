@@ -92,7 +92,8 @@
     "hello": "Xin chào,",
     "logout": "Đăng xuất",
     "home": "Trang chủ",
-    "accountInfo": "Thông tin tài khoản"
+    "accountInfo": "Thông tin tài khoản",
+    "version":"Phiên bản"
   },
   "unitInfo": {
     "transactionRegister": "Đăng ký giao dịch",

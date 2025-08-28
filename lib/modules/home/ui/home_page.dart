@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:upgrader/upgrader.dart';
+import 'package:v_bhxh/base_app/controllers_base/base_controller.src.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/home/controller/home_controller.dart';
 
@@ -135,11 +136,13 @@ class HomePage extends BaseGetWidget<HomeController> {
   }
 
   Widget _buildDrawer() {
+    final version = packageInfo.version;
     return Drawer(
       backgroundColor: AppColors.basicWhite,
       child: Padding(
         padding: const EdgeInsets.all(AppDimens.defaultPadding),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             sdsSBHeight32,
             _buildCompanyName(),
@@ -167,6 +170,12 @@ class HomePage extends BaseGetWidget<HomeController> {
               icon: Icons.logout,
               onTap: controller.showDialogLogout,
             ),
+            const Spacer(),
+            SDSBuildText(
+              '${LocaleKeys.home_version.tr} $version',
+              style: AppTextStyle.font16Re,
+            ),
+            sdsSBHeight16,
           ],
         ),
       ),
