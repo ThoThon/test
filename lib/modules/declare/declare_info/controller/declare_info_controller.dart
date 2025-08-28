@@ -151,6 +151,7 @@ class DeclareInfoController extends BaseGetxController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: d02State.selectedStaffId,
     );
+    KeyBoard.hide();
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
     }
