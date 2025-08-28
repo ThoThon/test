@@ -1,6 +1,7 @@
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/modules/register_code/clean/data/model/certificate_data.dart';
-import 'package:v_bhxh/modules/register_code/clean/domain/entity/certificate.dart';
+
+import '../../../modules/register_code/data/model/certificate_data.dart';
+import '../../../modules/register_code/domain/entity/certificate.dart';
 
 class CertificateDataMapper
     extends BaseDataMapper<CertificateData, Certificate> {

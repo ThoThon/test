@@ -1,9 +1,9 @@
 import 'package:v_bhxh/clean/shared/mapper/categories_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 import 'package:v_bhxh/clean/shared/mapper/social_agency_data_mapper.dart';
-import 'package:v_bhxh/modules/register_code/clean/domain/entity/register_code_categories.dart';
 
-import '../../../modules/register_code/clean/data/model/register_code_categories_data.dart';
+import '../../../modules/register_code/data/model/register_code_categories_data.dart';
+import '../../../modules/register_code/domain/entity/register_code_categories.dart';
 
 class RegisterCodeCategoriesDataMapper
     extends BaseDataMapper<RegisterCodeCategoriesData, RegisterCodeCategories> {

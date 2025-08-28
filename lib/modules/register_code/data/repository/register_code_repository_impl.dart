@@ -1,19 +1,18 @@
 import 'package:dio/dio.dart' as di;
 import 'package:http_parser/http_parser.dart';
-import 'package:v_bhxh/clean/shared/mapper/certificate_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/first_time_register_request_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/register_code_categories_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/model/model_src.dart';
-import 'package:v_bhxh/modules/register_code/clean/data/model/certificate_data.dart';
-import 'package:v_bhxh/modules/register_code/clean/data/model/register_code_categories_data.dart';
-import 'package:v_bhxh/modules/register_code/clean/domain/entity/certificate.dart';
-import 'package:v_bhxh/modules/register_code/clean/domain/entity/register_code_categories.dart';
-import 'package:v_bhxh/shares/package/export_package.dart';
+import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
+import 'package:v_bhxh/modules/register_code/domain/entity/certificate.dart';
 
-import '../../../../../clean/core/data/data_source/network/network_src.dart';
-import '../../../../src.dart';
+import '../../../../clean/core/data/model/model_src.dart';
+import '../../../../clean/shared/mapper/certificate_data_mapper.dart';
+import '../../../../clean/shared/mapper/first_time_register_request_data_mapper.dart';
+import '../../../../clean/shared/mapper/register_code_categories_data_mapper.dart';
+import '../../../src.dart';
 import '../../domain/entity/first_time_register_request.dart';
+import '../../domain/entity/register_code_categories.dart';
 import '../../domain/repository/register_code_repository.dart';
+import '../model/certificate_data.dart';
+import '../model/register_code_categories_data.dart';
 
 const _signDocumentTimeOut = Duration(minutes: 3);
 
@@ -106,7 +105,7 @@ class RegisterCodeRepositoryImpl extends RegisterCodeRepository {
       path: AppApi.urlRegisterFirstForCode,
       cancelToken: cancelToken,
       body: formData,
-      options: Options(
+      options: di.Options(
         sendTimeout: _signDocumentTimeOut,
       ),
     );

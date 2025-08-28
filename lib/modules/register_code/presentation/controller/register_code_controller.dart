@@ -2,9 +2,6 @@ import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
-import 'package:v_bhxh/modules/register_code/clean/domain/usecase/first_time_register_use_case.dart';
-import 'package:v_bhxh/modules/register_code/clean/domain/usecase/get_categories_use_case.dart';
-import 'package:v_bhxh/modules/register_code/clean/domain/usecase/get_certificate_use_case.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../../clean/core/presentation/navigation/navigation_src.dart';
@@ -12,11 +9,14 @@ import '../../../../../clean/routes/app_routes_cl.dart';
 import '../../../../../clean/shared/entity/province.dart';
 import '../../../../../clean/shared/entity/ward.dart';
 import '../../../../../shares/widgets/keyboard/keyboard.dart';
-import '../../../../src.dart';
+import '../../../src.dart';
 import '../../domain/entity/categories.dart';
 import '../../domain/entity/certificate.dart';
 import '../../domain/entity/first_time_register_request.dart';
 import '../../domain/entity/social_agency.dart';
+import '../../domain/usecase/first_time_register_use_case.dart';
+import '../../domain/usecase/get_categories_use_case.dart';
+import '../../domain/usecase/get_certificate_use_case.dart';
 import '../enum/register_code_tab_enum.dart';
 
 class RegisterCodeController extends BaseGetClController {

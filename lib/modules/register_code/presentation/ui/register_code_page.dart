@@ -6,12 +6,12 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/widget_src.dart';
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
-import 'package:v_bhxh/modules/register_code/clean/domain/entity/certificate.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../domain/entity/categories.dart';
+import '../../domain/entity/certificate.dart';
 import '../../domain/entity/social_agency.dart';
 import '../controller/register_code_controller.dart';
 import '../enum/register_code_tab_enum.dart';

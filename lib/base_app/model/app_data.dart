@@ -1,8 +1,8 @@
 import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 
 import '../../clean/shared/entity/entity_src.dart';
-import '../../modules/register_code/clean/domain/entity/categories.dart';
-import '../../modules/register_code/clean/domain/entity/social_agency.dart';
+import '../../modules/register_code/domain/entity/categories.dart';
+import '../../modules/register_code/domain/entity/social_agency.dart';
 import '../../modules/src.dart';
 
 class AppData {

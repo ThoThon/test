@@ -1,6 +1,7 @@
 import 'package:v_bhxh/clean/shared/model/model_src.dart';
-import 'package:v_bhxh/modules/register_code/clean/data/model/categories_data.dart';
-import 'package:v_bhxh/modules/register_code/clean/data/model/social_agency_data.dart';
+
+import 'categories_data.dart';
+import 'social_agency_data.dart';
 
 class RegisterCodeCategoriesData {
   final Set<ProvinceData>? provinces;

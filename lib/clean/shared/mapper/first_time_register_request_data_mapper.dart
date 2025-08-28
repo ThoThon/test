@@ -1,6 +1,7 @@
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/modules/register_code/clean/data/model/first_time_register_request_data.dart';
-import 'package:v_bhxh/modules/register_code/clean/domain/entity/first_time_register_request.dart';
+
+import '../../../modules/register_code/data/model/first_time_register_request_data.dart';
+import '../../../modules/register_code/domain/entity/first_time_register_request.dart';
 
 class FirstTimeRegisterRequestDataMapper extends BaseDataMapper<
     FirstTimeRegisterRequestData,
