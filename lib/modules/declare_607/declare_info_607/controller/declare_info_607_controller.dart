@@ -59,6 +59,7 @@ class DeclareInfo607Controller extends BaseGetxController {
   }
 
   Future<void> goToSelectStaffPage() async {
+    KeyBoard.hide();
     final result = await Get.toNamed(
       AppRoutes.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn

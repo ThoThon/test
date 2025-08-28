@@ -5,6 +5,7 @@ import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
+import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
 import '../../select_staff/model/model_src.dart';
@@ -130,11 +131,11 @@ class DeclareInfo630aController extends BaseGetxController {
   }
 
   void goToSelectStaffPage() async {
+    KeyBoard.hide();
     final result = await Get.toNamed(
       AppRoutes.selectStaff.path,
       arguments: selectedStaffId,
     );
-
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
     }
