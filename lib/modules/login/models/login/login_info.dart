@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 part 'login_info.g.dart';
 
 @HiveType(typeId: 0)
-class LoginInfo {
+class LoginInfo extends HiveObject {
   @HiveField(0)
   final String username;
 
@@ -14,12 +14,32 @@ class LoginInfo {
   final String taxCode;
 
   @HiveField(3)
-  final String token;
+  final String? token; // Nullable để có thể xóa token
 
   LoginInfo({
     required this.username,
     required this.password,
     required this.taxCode,
-    required this.token,
+    this.token,
   });
+
+  // Tạo copy với token mới
+  LoginInfo copyWith({
+    String? username,
+    String? password,
+    String? taxCode,
+    String? token,
+  }) {
+    return LoginInfo(
+      username: username ?? this.username,
+      password: password ?? this.password,
+      taxCode: taxCode ?? this.taxCode,
+      token: token ?? this.token,
+    );
+  }
+
+  @override
+  String toString() {
+    return 'LoginInfo{username: $username, taxCode: $taxCode, hasToken: ${token != null}}';
+  }
 }

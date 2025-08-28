@@ -20,7 +20,7 @@ class LoginInfoAdapter extends TypeAdapter<LoginInfo> {
       username: fields[0] as String,
       password: fields[1] as String,
       taxCode: fields[2] as String,
-      token: fields[3] as String?,
+      token: fields[3] as String,
     );
   }
 

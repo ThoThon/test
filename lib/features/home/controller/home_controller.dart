@@ -14,13 +14,7 @@ class HomeController extends GetxController {
     currentIndex.value = index;
   }
 
-  /// Logout - chỉ xóa token, giữ lại thông tin đăng nhập
   Future<void> logout() async {
-    await LoginStorage.clearToken(); // Chỉ xóa token
-  }
-
-  /// Logout hoàn toàn - xóa tất cả thông tin (nếu cần)
-  Future<void> logoutCompletely() async {
-    await LoginStorage.clearLoginInfo(); // Xóa tất cả
+    await LoginStorage.clearLoginInfo();
   }
 }

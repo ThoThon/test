@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:test_getx/modules/login/ui/widgets/input_field.dart';
 
-import '../../../routes/app_routes.dart';
+import '../../../modules/login/ui/widgets/input_field.dart';
 import '../controller/login_controller.dart';
 import 'widgets/footer_button.dart';
 
@@ -32,50 +31,6 @@ class LoginScreen extends GetView<LoginController> {
       children: [
         _buildIconLogo(),
         const SizedBox(height: 24),
-
-        Obx(() {
-          if (controller.hasRestoredLogin.value) {
-            return Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.blue.shade200),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.info_outline,
-                      color: Colors.blue.shade600, size: 20),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      "Thông tin đăng nhập trước đó đã được khôi phục",
-                      style: TextStyle(
-                        color: Colors.blue.shade700,
-                        fontSize: 13,
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: controller.clearFields,
-                    style: TextButton.styleFrom(
-                      minimumSize: const Size(60, 30),
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                    ),
-                    child: const Text(
-                      "Xóa",
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-          return const SizedBox.shrink();
-        }),
-
-        const SizedBox(height: 16),
         _buildTaxCode(),
         const SizedBox(height: 24),
         _buildUserName(),
@@ -83,39 +38,6 @@ class LoginScreen extends GetView<LoginController> {
         _buildPassword(),
         const SizedBox(height: 30),
         _buttonLogin(),
-
-        // Hiển thị lỗi nếu có
-        Obx(() {
-          if (controller.errorMessage.value.isNotEmpty) {
-            return Container(
-              margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.red.shade50,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.red.shade200),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.error_outline,
-                      color: Colors.red.shade600, size: 20),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      controller.errorMessage.value,
-                      style: TextStyle(
-                        color: Colors.red.shade700,
-                        fontSize: 13,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-          return const SizedBox.shrink();
-        }),
-
         const SizedBox(height: 200),
         _buildBottom(),
         SizedBox(height: Get.mediaQuery.padding.bottom + 20),
@@ -155,17 +77,16 @@ class LoginScreen extends GetView<LoginController> {
 
   Widget _buildUserName() {
     return InputField(
-      label: "Tài khoản",
-      controller: controller.usernameController,
-      hintText: 'Tài khoản',
-      clearIconAsset: 'assets/icons/blank.svg',
-      validator: (value) {
-        if (value == null || value.trim().isEmpty) {
-          return 'Tài khoản không được để trống';
-        }
-        return null;
-      },
-    );
+        label: "Tài khoản",
+        controller: controller.usernameController,
+        hintText: 'Tài khoản',
+        clearIconAsset: 'assets/icons/blank.svg',
+        validator: (value) {
+          if (value == null || value.trim().isEmpty) {
+            return 'Tài khoản không được để trống';
+          }
+          return null;
+        });
   }
 
   Widget _buildPassword() {
@@ -179,7 +100,7 @@ class LoginScreen extends GetView<LoginController> {
           return 'Mật khẩu không được để trống';
         }
         if (value.length < 6 || value.length > 50) {
-          return 'Mật khẩu chỉ từ 6 đến 50 ký tự';
+          return 'Mật khóa chỉ từ 6 đến 50 ký tự';
         }
         return null;
       },
@@ -190,15 +111,15 @@ class LoginScreen extends GetView<LoginController> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SizedBox(
-        width: double.infinity,
+        width: 400,
         height: 60,
         child: Obx(
           () => ElevatedButton(
-            onPressed: controller.isLoading.value ? null : _onLoginPressed,
+            onPressed:
+                controller.isLoading.value ? null : controller.onLoginPressed,
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFFf24e1e),
               foregroundColor: Colors.white,
-              disabledBackgroundColor: Colors.grey.shade300,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -208,8 +129,7 @@ class LoginScreen extends GetView<LoginController> {
                     width: 20,
                     height: 20,
                     child: CircularProgressIndicator(
-                      color: Colors.white,
-                      strokeWidth: 2,
+                      color: Color(0xFFf24e1e),
                     ),
                   )
                 : const Text(
@@ -224,29 +144,6 @@ class LoginScreen extends GetView<LoginController> {
         ),
       ),
     );
-  }
-
-  void _onLoginPressed() async {
-    // Ẩn lỗi cũ
-    controller.errorMessage.value = '';
-
-    if (controller.formKey.currentState?.validate() ?? false) {
-      final success = await controller.login();
-
-      if (success) {
-        Get.offAllNamed(Routes.home);
-
-        // Thông báo đăng nhập thành công
-        Get.snackbar(
-          "Thành công",
-          "Đăng nhập thành công!",
-          backgroundColor: Colors.green,
-          colorText: Colors.white,
-          duration: const Duration(seconds: 2),
-        );
-      }
-      // Lỗi sẽ hiển thị tự động qua Obx
-    }
   }
 
   Widget _buildBottom() {

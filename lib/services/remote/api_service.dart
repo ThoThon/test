@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../modules/login/models/login/login_storage.dart';
+import '../../features/login/models/login/login_storage.dart';
 import 'dio_client.dart';
 
 class ApiService {
