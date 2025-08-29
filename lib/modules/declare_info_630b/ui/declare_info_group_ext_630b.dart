@@ -415,10 +415,13 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_countDayEmpty.tr;
         }
-
+        // Không hợp lệ nếu bắt đầu hoặc kết thúc chuỗi là ","
+        if (trimmedValue.endsWith(',') || trimmedValue.startsWith(',')) {
+          return LocaleKeys.declareInfo_countDayInvalid.tr;
+        }
         // REF: BHW-3106
-        final number = int.tryParse(trimmedValue) ?? 0;
-        if (number == 0) {
+        final newText = int.tryParse(trimmedValue);
+        if (newText != null && newText == 0) {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
         return null;
@@ -430,10 +433,9 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           isRequired: true,
           labelText: LocaleKeys.declareInfo_countDay.tr,
           controller: controller.countDayTextCtrl,
-          maxLengthInputForm: 3,
           hintText: LocaleKeys.declareInfo_countDayHint.tr,
-          inputFormatters: InputFormatterEnum.digitsOnly,
-          textInputType: TextInputType.number,
+          inputFormatters: InputFormatterEnum.countDay,
+          textInputType: const TextInputType.numberWithOptions(decimal: true),
         );
       },
     );
