@@ -93,7 +93,7 @@
     "logout": "Đăng xuất",
     "home": "Trang chủ",
     "accountInfo": "Thông tin tài khoản",
-    "version":"Phiên bản"
+    "version": "Phiên bản"
   },
   "unitInfo": {
     "transactionRegister": "Đăng ký giao dịch",
@@ -702,7 +702,8 @@
     "returnToWorkDateInvalid": "Ngày trở lại làm việc không hợp lệ",
     "appraisalDate": "Ngày giám định",
     "appraisalDateInvalid": "Ngày giám định không hợp lệ",
-    "appraisalDateCannotEmpty": "Ngày giám định không được bỏ trống"
+    "appraisalDateCannotEmpty": "Ngày giám định không được bỏ trống",
+    "declarationPeriosMax99": "Không kê khai quá đợt 99"
   },
   "familyMember": {
     "title": "Thêm thành viên",

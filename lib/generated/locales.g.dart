@@ -861,6 +861,8 @@ class LocaleKeys {
       'declareInfo_appraisalDateInvalid';
   static const declareInfo_appraisalDateCannotEmpty =
       'declareInfo_appraisalDateCannotEmpty';
+  static const declareInfo_declarationPeriosMax99 =
+      'declareInfo_declarationPeriosMax99';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -2026,6 +2028,7 @@ class Locales {
     'declareInfo_appraisalDateInvalid': 'Ngày giám định không hợp lệ',
     'declareInfo_appraisalDateCannotEmpty':
         'Ngày giám định không được bỏ trống',
+    'declareInfo_declarationPeriosMax99': 'Không kê khai quá đợt 99',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
