@@ -4,12 +4,12 @@ abstract class BaseDataMapper<Data, Entity> {
 
   Entity mapToEntity(Data? data);
 
-  List<Entity> mapToListEntity(Iterable<Data>? listData) {
-    return listData?.map(mapToEntity).toList() ?? List.empty();
+  List<Entity> mapToListEntity(Iterable<Data>? data) {
+    return data?.map(mapToEntity).toList() ?? List.empty();
   }
 
-  Set<Entity> mapToSetEntity(Iterable<Data>? setData) {
-    return setData?.map(mapToEntity).toSet() ?? <Entity>{};
+  Set<Entity> mapToSetEntity(Iterable<Data>? data) {
+    return data?.map(mapToEntity).toSet() ?? <Entity>{};
   }
 }
 
