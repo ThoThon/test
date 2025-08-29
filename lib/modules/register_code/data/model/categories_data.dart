@@ -1,14 +1,14 @@
-class CategoriesData {
+class CategoryData {
   final String? value;
   final String? text;
 
-  CategoriesData({
+  CategoryData({
     this.value,
     this.text,
   });
 
-  factory CategoriesData.fromJson(Map<String, dynamic> json) {
-    return CategoriesData(
+  factory CategoryData.fromJson(Map<String, dynamic> json) {
+    return CategoryData(
       value: json['value'],
       text: json['text'],
     );
