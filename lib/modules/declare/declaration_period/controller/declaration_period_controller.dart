@@ -98,14 +98,7 @@ class DeclarationPeriodController extends BaseGetxController {
   }
 
   Future<void> createDeclarationPeriod() async {
-    // REF: VBHXBMOB-22
-    final restrictedProcedures = {
-      ProcedureType.procedure630a,
-      ProcedureType.procedure630b,
-      ProcedureType.procedure630c,
-    };
-
-    if (restrictedProcedures.contains(argument.procedureType) &&
+    if (argument.procedureType.isProcedure630 &&
         (declarationPeriods.lastOrNull?.period ?? 0) > 98) {
       showSnackBar(LocaleKeys.declareInfo_declarationPeriosMax99.tr);
       return;
