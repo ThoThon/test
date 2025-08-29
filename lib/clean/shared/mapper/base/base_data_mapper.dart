@@ -25,12 +25,12 @@ abstract class BaseEntityMapper<Entity, Data> {
     return mapToData(entity);
   }
 
-  List<Data>? mapToNullableListData(List<Entity>? listEntity) {
-    return listEntity?.map(mapToData).toList();
+  List<Data>? mapToNullableListData(Iterable<Entity>? entities) {
+    return entities?.map(mapToData).toList();
   }
 
-  List<Data> mapToListData(List<Entity>? listEntity) {
-    return mapToNullableListData(listEntity) ?? List.empty();
+  List<Data> mapToListData(Iterable<Entity>? entities) {
+    return mapToNullableListData(entities) ?? List.empty();
   }
 }
 
@@ -46,11 +46,11 @@ mixin DataMapperMixin<Data, Entity> on BaseDataMapper<Data, Entity> {
     return mapToData(entity);
   }
 
-  List<Data>? mapToNullableListData(List<Entity>? listEntity) {
-    return listEntity?.map(mapToData).toList();
+  List<Data>? mapToNullableListData(Iterable<Entity>? entities) {
+    return entities?.map(mapToData).toList();
   }
 
-  List<Data> mapToListData(List<Entity>? listEntity) {
-    return mapToNullableListData(listEntity) ?? List.empty();
+  List<Data> mapToListData(Iterable<Entity>? entities) {
+    return mapToNullableListData(entities) ?? List.empty();
   }
 }
