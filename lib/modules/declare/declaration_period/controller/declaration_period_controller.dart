@@ -99,7 +99,7 @@ class DeclarationPeriodController extends BaseGetxController {
 
   Future<void> createDeclarationPeriod() async {
     // REF: VBHXBMOB-22
-    if (declarationPeriods.last.period > 99) {
+    if ((declarationPeriods.lastOrNull?.period ?? 0) > 99) {
       showSnackBar(
         LocaleKeys.declareInfo_declarationPeriosMax99.tr,
       );
