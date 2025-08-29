@@ -99,10 +99,15 @@ class DeclarationPeriodController extends BaseGetxController {
 
   Future<void> createDeclarationPeriod() async {
     // REF: VBHXBMOB-22
-    if ((declarationPeriods.lastOrNull?.period ?? 0) > 99) {
-      showSnackBar(
-        LocaleKeys.declareInfo_declarationPeriosMax99.tr,
-      );
+    final restrictedProcedures = {
+      ProcedureType.procedure630a,
+      ProcedureType.procedure630b,
+      ProcedureType.procedure630c,
+    };
+
+    if (restrictedProcedures.contains(argument.procedureType) &&
+        (declarationPeriods.lastOrNull?.period ?? 0) > 98) {
+      showSnackBar(LocaleKeys.declareInfo_declarationPeriosMax99.tr);
       return;
     }
     try {
