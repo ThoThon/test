@@ -38,7 +38,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
                         final filteredWards = controller.wards.where((item) {
                           final name = TiengViet.parse(item.name).toLowerCase();
                           final id = item.id.toLowerCase();
-                          final query = controller.keyword.value.toLowerCase();
+                          final query = controller.keyword.value;
                           return name.contains(query) || id.contains(query);
                         }).toList();
 

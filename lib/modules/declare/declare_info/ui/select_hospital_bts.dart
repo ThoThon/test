@@ -41,7 +41,7 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
                             controller.hospitals.where((item) {
                           final name = TiengViet.parse(item.name).toLowerCase();
                           final code = item.code.toLowerCase();
-                          final query = controller.keyword.value.toLowerCase();
+                          final query = controller.keyword.value;
                           return name.contains(query) || code.contains(query);
                         }).toList();
 
