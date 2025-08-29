@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
 abstract class UseCase<Input, Output> {
   const UseCase();
 
@@ -8,6 +10,7 @@ abstract class UseCase<Input, Output> {
   );
 
   /// Cancel the use case if it's still running
+  @mustCallSuper
   void cancel() {}
 }
 
@@ -17,5 +20,6 @@ abstract class NoInputUseCase<Output> {
   FutureOr<Output> execute();
 
   /// Cancel the use case if it's still running
+  @mustCallSuper
   void cancel() {}
 }

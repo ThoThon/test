@@ -42,6 +42,8 @@ abstract class AppNavigator {
     Map<String, String>? parameters,
   });
 
+  void until(RoutePredicate predicate, {int? id});
+
   /// Show bottom sheet phức tạp cho [BaseGetBtsDialog] có controller
   Future<T?> showBottomSheet<T>(
     BaseGetBtsDialog bottomSheet, {
