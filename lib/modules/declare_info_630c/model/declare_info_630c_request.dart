@@ -11,6 +11,7 @@ class DeclareInfo630cRequest {
   final DateTime? denNgay;
   final int? tongSoNgay;
   final DateTime? tuNgayDonVi;
+  final DateTime? denNgayDonVi;
   final DateTime? ngayTroLaiLamViec;
   final DateTime? ngayGiamDinh;
   final int? tyLeSuyGiam;
@@ -39,6 +40,7 @@ class DeclareInfo630cRequest {
     this.denNgay,
     this.tongSoNgay,
     this.tuNgayDonVi,
+    this.denNgayDonVi,
     this.ngayTroLaiLamViec,
     this.ngayGiamDinh,
     this.tyLeSuyGiam,
@@ -69,6 +71,7 @@ class DeclareInfo630cRequest {
       'denNgay': denNgay?.toIso8601String(),
       'tongSoNgay': tongSoNgay,
       'tuNgayDonVi': tuNgayDonVi?.toIso8601String(),
+      'denNgayDonVi': tuNgayDonVi?.toIso8601String(),
       'ngayTroLaiLamViec': ngayTroLaiLamViec?.toIso8601String(),
       'ngayGiamDinh': ngayGiamDinh?.toIso8601String(),
       'tyLeSuyGiam': tyLeSuyGiam,

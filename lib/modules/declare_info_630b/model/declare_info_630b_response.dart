@@ -16,6 +16,7 @@ class DeclareInfo630bResponse {
   final DateTime denNgay;
   final int tongSoNgay;
   final DateTime tuNgayDonVi;
+  final DateTime denNgayDonVi;
   final String? ngayNghiTuan;
   final String? soSeriCT;
   final DateTime? ngaySinhCon;
@@ -66,6 +67,7 @@ class DeclareInfo630bResponse {
     required this.denNgay,
     required this.tongSoNgay,
     required this.tuNgayDonVi,
+    required this.denNgayDonVi,
     this.ngayNghiTuan,
     this.soSeriCT,
     this.ngaySinhCon,
@@ -125,6 +127,8 @@ class DeclareInfo630bResponse {
       denNgay: DateTime.tryParse(json['denNgay'] ?? '') ?? DateTime.now(),
       tongSoNgay: json['tongSoNgay'] ?? 0,
       tuNgayDonVi:
+          DateTime.tryParse(json['tuNgayDonVi'] ?? '') ?? DateTime.now(),
+      denNgayDonVi:
           DateTime.tryParse(json['tuNgayDonVi'] ?? '') ?? DateTime.now(),
       ngayNghiTuan: json['ngayNghiTuan'] ?? '',
       soSeriCT: json['soSeriCT'] ?? '',

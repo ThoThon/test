@@ -41,17 +41,21 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         ),
         sdsSBHeight12,
 
-        // "Tổng số ngày" và "Từ ngày đơn vị"
+        // "Từ ngày đơn vị" và "Đến ngày đơn vị"
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: _buildCountDay()),
-            sdsSBWidth12,
             Expanded(child: _buildFromDateUnit()),
+            sdsSBWidth12,
+            Expanded(child: _buildToDateUnit()),
           ],
         ),
         sdsSBHeight12,
 
+        // Tổng số ngày
+        _buildCountDay(),
+        sdsSBHeight12,
+        
         // Nghỉ hàng tuần
         _buildWeeklyDayOffDropdown(),
         sdsSBHeight12,
@@ -444,7 +448,8 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
       },
     );
   }
-// Tổng số ngày
+
+  // Tổng số ngày
   Widget _buildCountDay() {
     return FormFieldRegistrant<String>(
       registrarId: "cbeeff96-8f3b-46da-a6b7-f84fa21225fe",
@@ -480,6 +485,67 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
     );
   }
 
+  // Đến ngày đơn vị
+  Widget _buildToDateUnit() {
+    return FormFieldRegistrant<String>(
+      registrarId: '7635551a-1e46-40ca-845d-f7cd96261280',
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        // Nếu bắt buộc và không nhập thì báo lỗi
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+          return LocaleKeys.declareInfo_toDateUnitCannotEmpty.tr;
+        }
+
+        // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
+        if (trimmedValue.length < 7) {
+          return LocaleKeys.declareInfo_toDateUnitInvalid.tr;
+        }
+
+        final date = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (date == null) {
+          return LocaleKeys.declareInfo_toDateUnitInvalid.tr;
+        }
+
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (date.year <= 1900 || date.year >= 2100) {
+          return LocaleKeys.declareInfo_toDateUnitInvalid.tr;
+        }
+
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return CardInputSelectDateWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_toDateUnit.tr,
+          inputFormatters: InputFormatterEnum.dateFullBirthDay,
+          controller: controller.toDateUnitTextCtrl,
+          hintText: PATTERN_1,
+          isRequired: true,
+          onSelectDate: () async {
+            KeyBoard.hide();
+            final selectedDate = await DatePickerUtils.showCalendarPicker(
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+              title: LocaleKeys.dialog_selectDayMonthYear.tr,
+              dateFormat: PATTERN_1,
+              dateTimeInit: convertStringToDateStrict(
+                    controller.toDateUnitTextCtrl.text,
+                    PATTERN_1,
+                  ) ??
+                  DateTime.now(),
+            );
+            if (selectedDate != null) {
+              controller.toDateUnitTextCtrl.text =
+                  convertDateToString(selectedDate, PATTERN_1);
+            }
+          },
+        );
+      },
+    );
+  }
+
   // Từ ngày đơn vị
   Widget _buildFromDateUnit() {
     return FormFieldRegistrant<String>(
@@ -497,14 +563,23 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
         }
 
-        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-        if (toDate == null) {
+        final fromDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (fromDate == null) {
           return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (toDate.year <= 1900 || toDate.year >= 2100) {
+        if (fromDate.year <= 1900 || fromDate.year >= 2100) {
           return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
+        }
+
+        final toDate = convertStringToDateStrict(
+          controller.toDateUnitTextCtrl.text,
+          PATTERN_1,
+        );
+
+        if (toDate != null && fromDate.isAfter(toDate)) {
+          return LocaleKeys.declareInfo_fromDateUnitLimit.tr;
         }
 
         return null;

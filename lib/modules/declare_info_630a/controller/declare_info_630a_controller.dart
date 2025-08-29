@@ -50,11 +50,14 @@ class DeclareInfo630aController extends BaseGetxController {
   /// Đến ngày *
   final toDateCtrl = TextEditingController();
 
-  /// Tổng số ngày *
-  final countDayTextCtrl = TextEditingController();
-
   /// Từ ngày đơn vị *
   final fromDateUnitTextCtrl = TextEditingController();
+
+  /// Đến ngày đơn vị *
+  final toDateUnitTextCtrl = TextEditingController();
+
+  /// Tổng số ngày *
+  final countDayTextCtrl = TextEditingController();
 
   /// Nghỉ hàng tuần
   final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
@@ -253,12 +256,13 @@ class DeclareInfo630aController extends BaseGetxController {
       phatSinhDieuChinh: declareForm.value?.value ?? '',
       maNhomHuong: benefitGroup.value?.value ?? '',
       ngaySinhCon: convertStringToDateSafe(birthDayChildCtrl.text, PATTERN_1),
-      soCon: int.tryParse(numberChildCtrl.text), // bỏ trim
+      soCon: int.tryParse(numberChildCtrl.text),
       theBhytCuaCon: bhytCardCodeChildCtrl.text.trim(),
       tuNgay: convertStringToDate(fromDateCtrl.text, PATTERN_1),
       denNgay: convertStringToDate(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(countDayTextCtrl.text) ?? 0, // bỏ trim
+      tongSoNgay: int.tryParse(countDayTextCtrl.text) ?? 0,
       tuNgayDonVi: convertStringToDate(fromDateUnitTextCtrl.text, PATTERN_1),
+      denNgayDonVi: convertStringToDate(toDateUnitTextCtrl.text, PATTERN_1),
       ngayNghiTuan: weeklyDayOffString,
       tuyenBenhVien: selectHospitalLine.value?.value,
       maBenhDaiNgay: selectDiseaseCode.value?.code,
@@ -359,12 +363,16 @@ class DeclareInfo630aController extends BaseGetxController {
     // Đến ngày
     toDateCtrl.text = convertDateToStringSafe(detail.denNgay, PATTERN_1) ?? '';
 
-    // Tổng số ngày
-    countDayTextCtrl.text = detail.tongSoNgay.toString();
-
     // Từ ngày đơn vị
     fromDateUnitTextCtrl.text =
         convertDateToStringSafe(detail.tuNgayDonVi, PATTERN_1) ?? '';
+
+    // Đến ngày đơn vị
+    toDateUnitTextCtrl.text =
+        convertDateToStringSafe(detail.tuNgayDonVi, PATTERN_1) ?? '';
+
+    // Tổng số ngày
+    countDayTextCtrl.text = detail.tongSoNgay.toString();
 
     // Nghỉ hàng tuần
     // Vì BE trả về kiểu "ngayNghiTuan": "t3;t4;t5" nên phải làm như này
@@ -532,6 +540,7 @@ class DeclareInfo630aController extends BaseGetxController {
     toDateCtrl.dispose();
     countDayTextCtrl.dispose();
     fromDateUnitTextCtrl.dispose();
+    toDateUnitTextCtrl.dispose();
     diseaseNameTextCtrl.dispose();
     serialNumberCtrl.dispose();
     supplementalPeriodCtrl.dispose();

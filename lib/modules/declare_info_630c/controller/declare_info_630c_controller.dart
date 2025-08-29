@@ -50,11 +50,14 @@ class DeclareInfo630cController extends BaseGetxController {
   /// Đến ngày *
   final fromDateCtrl = TextEditingController();
 
-  /// Tổng số ngày *
-  final countDayTextCtrl = TextEditingController();
-
   /// Từ ngày đơn vị *
   final fromDateUnitTextCtrl = TextEditingController();
+
+  /// Đến ngày đơn vị *
+  final toDateUnitTextCtrl = TextEditingController();
+
+  /// Tổng số ngày *
+  final countDayTextCtrl = TextEditingController();
 
   /// Ngày trở lại làm việc *
   final returnWorkDateCtrl = TextEditingController();
@@ -141,6 +144,7 @@ class DeclareInfo630cController extends BaseGetxController {
     toDateCtrl.dispose();
     countDayTextCtrl.dispose();
     fromDateUnitTextCtrl.dispose();
+    toDateUnitTextCtrl.dispose();
     returnWorkDateCtrl.dispose();
     appraisalDateCtrl.dispose();
     rateToDeclineCtrl.dispose();
@@ -220,6 +224,7 @@ class DeclareInfo630cController extends BaseGetxController {
       tongSoNgay: int.tryParse(countDayTextCtrl.text),
       tuNgayDonVi:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
+      denNgayDonVi: convertStringToDateSafe(toDateUnitTextCtrl.text, PATTERN_1),
       ngayTroLaiLamViec:
           convertStringToDateSafe(returnWorkDateCtrl.text, PATTERN_1),
       ngayGiamDinh: convertStringToDateSafe(appraisalDateCtrl.text, PATTERN_1),
@@ -295,12 +300,16 @@ class DeclareInfo630cController extends BaseGetxController {
     // Đến ngày
     toDateCtrl.text = convertDateToStringSafe(detail.denNgay, PATTERN_1) ?? '';
 
-    // Tổng số ngày
-    countDayTextCtrl.text = detail.tongSoNgay.toString();
-
     // Từ ngày đơn vị
     fromDateUnitTextCtrl.text =
         convertDateToStringSafe(detail.tuNgayDonVi, PATTERN_1) ?? '';
+
+    // Đến ngày đơn vị
+    toDateUnitTextCtrl.text =
+        convertDateToStringSafe(detail.denNgayDonVi, PATTERN_1) ?? '';
+
+    // Tổng số ngày
+    countDayTextCtrl.text = detail.tongSoNgay.toString();
 
     // Ngày trở lại làm việc
     returnWorkDateCtrl.text =

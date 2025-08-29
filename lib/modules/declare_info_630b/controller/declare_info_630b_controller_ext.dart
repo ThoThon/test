@@ -72,6 +72,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       tongSoNgay: int.tryParse(countDayTextCtrl.text),
       tuNgayDonVi:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
+      denNgayDonVi: convertStringToDateSafe(toDateUnitTextCtrl.text, PATTERN_1),
       ngayNghiTuan: weeklyDayOffString,
       soSeriCT: serialNumberCtrl.text.trim(),
       ngaySinhCon: convertStringToDateSafe(birthDayChildCtrl.text, PATTERN_1),
@@ -368,12 +369,16 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     // Đến ngày
     toDateCtrl.text = convertDateToStringSafe(detail.denNgay, PATTERN_1) ?? '';
 
-    // Tổng số ngày
-    countDayTextCtrl.text = detail.tongSoNgay.toString();
-
     // Từ ngày đơn vị
     fromDateUnitTextCtrl.text =
         convertDateToStringSafe(detail.tuNgayDonVi, PATTERN_1) ?? '';
+
+    // Đến ngày đơn vị
+    toDateUnitTextCtrl.text =
+        convertDateToStringSafe(detail.denNgayDonVi, PATTERN_1) ?? '';
+
+    // Tổng số ngày
+    countDayTextCtrl.text = detail.tongSoNgay.toString();
 
     // Ngày nghỉ tuần
     // Vì BE trả về kiểu "ngayNghiTuan": "t3;t4;t5" nên phải làm như này

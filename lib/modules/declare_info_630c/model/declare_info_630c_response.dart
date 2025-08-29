@@ -13,6 +13,7 @@ class DeclareInfo630cResponse {
   final DateTime? denNgay;
   final int tongSoNgay;
   final DateTime? tuNgayDonVi;
+  final DateTime? denNgayDonVi;
   final DateTime? ngayTroLaiLamViec;
   final DateTime? ngayGiamDinh;
   final int? tyLeSuyGiam;
@@ -41,6 +42,7 @@ class DeclareInfo630cResponse {
     this.denNgay,
     required this.tongSoNgay,
     this.tuNgayDonVi,
+    this.denNgayDonVi,
     this.ngayTroLaiLamViec,
     this.ngayGiamDinh,
     this.tyLeSuyGiam,
@@ -72,6 +74,9 @@ class DeclareInfo630cResponse {
       tongSoNgay: json['tongSoNgay'] ?? 0,
       tuNgayDonVi: json['tuNgayDonVi'] != null
           ? DateTime.parse(json['tuNgayDonVi'])
+          : null,
+      denNgayDonVi: json['denNgayDonVi'] != null
+          ? DateTime.parse(json['denNgayDonVi'])
           : null,
       ngayTroLaiLamViec: json['ngayTroLaiLamViec'] != null
           ? DateTime.parse(json['ngayTroLaiLamViec'])

@@ -93,7 +93,7 @@
     "logout": "Đăng xuất",
     "home": "Trang chủ",
     "accountInfo": "Thông tin tài khoản",
-    "version":"Phiên bản"
+    "version": "Phiên bản"
   },
   "unitInfo": {
     "transactionRegister": "Đăng ký giao dịch",
@@ -579,6 +579,10 @@
     "fromDateUnit": "Từ ngày đơn vị",
     "fromDateUnitInvalid": "Từ ngày đơn vị không hợp lệ",
     "fromDateUnitEmpty": "Từ ngày đơn vị không được bỏ trống",
+    "fromDateUnitLimit": "Từ ngày đơn vị không được lớn hơn Đến ngày đơn vị",
+    "toDateUnit": "Đến ngày đơn vị",
+    "toDateUnitInvalid": "Đến ngày đơn vị không hợp lệ",
+    "toDateUnitCannotEmpty": "Đến ngày đơn vị không được bỏ trống",
     "weeklyDayOff": "Nghỉ hàng tuần",
     "weeklyDayOffHint": "Chọn ngày nghỉ hàng tuần",
     "hospitalLine": "Tuyến bệnh viện",
