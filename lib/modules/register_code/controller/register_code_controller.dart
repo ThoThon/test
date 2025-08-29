@@ -309,7 +309,7 @@ class RegisterCodeController extends BaseGetxController {
       if (e is DioException && e.type != DioExceptionType.cancel) {
         ShowDialog.dismissDialog();
         _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
         );
       }
     }
@@ -324,7 +324,7 @@ class RegisterCodeController extends BaseGetxController {
       onFinish: () {
         cancelAllRequest();
         _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
         );
       },
       onCancel: () {

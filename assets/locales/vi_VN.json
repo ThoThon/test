@@ -52,7 +52,6 @@
     "cannotConnectMySign": "Không thể kết nối tới hệ thống ký số.",
     "sendFileSuccess": "Gửi hồ sơ thành công",
     "sendFileFail": "Gửi hồ sơ thất bại",
-    "signatureTimeOut": "Hết thời gian ký số\nVui lòng thực hiện lại",
     "cancelRequest": "Hủy yêu cầu",
     "confirmSignatureMySign": "Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian",
     "sendRequestSignature": "Gửi yêu cầu ký thành công",

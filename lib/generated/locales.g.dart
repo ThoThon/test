@@ -63,7 +63,6 @@ class LocaleKeys {
   static const dialog_cannotConnectMySign = 'dialog_cannotConnectMySign';
   static const dialog_sendFileSuccess = 'dialog_sendFileSuccess';
   static const dialog_sendFileFail = 'dialog_sendFileFail';
-  static const dialog_signatureTimeOut = 'dialog_signatureTimeOut';
   static const dialog_cancelRequest = 'dialog_cancelRequest';
   static const dialog_confirmSignatureMySign = 'dialog_confirmSignatureMySign';
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
@@ -1344,7 +1343,6 @@ class Locales {
     'dialog_cannotConnectMySign': 'Không thể kết nối tới hệ thống ký số.',
     'dialog_sendFileSuccess': 'Gửi hồ sơ thành công',
     'dialog_sendFileFail': 'Gửi hồ sơ thất bại',
-    'dialog_signatureTimeOut': 'Hết thời gian ký số\nVui lòng thực hiện lại',
     'dialog_cancelRequest': 'Hủy yêu cầu',
     'dialog_confirmSignatureMySign':
         'Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian',
