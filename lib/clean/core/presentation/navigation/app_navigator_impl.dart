@@ -102,6 +102,11 @@ class AppNavigatorImpl extends AppNavigator {
   }
 
   @override
+  void until(RoutePredicate predicate, {int? id}) {
+    return Get.until(predicate, id: id);
+  }
+
+  @override
   Future<T?> showBottomSheet<T>(
     BaseGetBtsDialog bottomSheet, {
     RouteSettings? settings,
