@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
-class Certificate implements Entity {
+class Certificate extends Equatable implements Entity {
   final int stt;
   final String serialNumber;
   final String name;
@@ -9,7 +10,7 @@ class Certificate implements Entity {
   final String cerdentialID;
   final String userId;
 
-  Certificate({
+  const Certificate({
     required this.stt,
     required this.serialNumber,
     required this.name,
@@ -18,4 +19,15 @@ class Certificate implements Entity {
     required this.cerdentialID,
     required this.userId,
   });
+
+  @override
+  List<Object?> get props => [
+        stt,
+        serialNumber,
+        name,
+        validFrom,
+        validTo,
+        cerdentialID,
+        userId,
+      ];
 }

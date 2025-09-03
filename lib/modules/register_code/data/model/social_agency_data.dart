@@ -1,10 +1,8 @@
-import 'package:equatable/equatable.dart';
-
-class SocialAgencyData extends Equatable {
-  final String maCoQuanBHXH;
-  final String tenCoQuanBHXH;
-  final String maTinh;
-  final String tenTinhThanhPho;
+class SocialAgencyData {
+  final String? maCoQuanBHXH;
+  final String? tenCoQuanBHXH;
+  final String? maTinh;
+  final String? tenTinhThanhPho;
 
   const SocialAgencyData({
     required this.maCoQuanBHXH,
@@ -15,14 +13,10 @@ class SocialAgencyData extends Equatable {
 
   factory SocialAgencyData.fromJson(Map<String, dynamic> json) {
     return SocialAgencyData(
-      maCoQuanBHXH: json['maCoQuanBHXH'] ?? '',
-      tenCoQuanBHXH: json['tenCoQuanBHXH'] ?? '',
-      maTinh: json['maTinh'] ?? '',
-      tenTinhThanhPho: json['tenTinhThanhPho'] ?? '',
+      maCoQuanBHXH: json['maCoQuanBHXH'],
+      tenCoQuanBHXH: json['tenCoQuanBHXH'],
+      maTinh: json['maTinh'],
+      tenTinhThanhPho: json['tenTinhThanhPho'],
     );
   }
-
-  @override
-  List<Object?> get props =>
-      [maCoQuanBHXH, tenCoQuanBHXH, tenTinhThanhPho, maTinh];
 }

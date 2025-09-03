@@ -106,7 +106,7 @@ class RegisterCodeRepositoryImpl extends RegisterCodeRepository {
       cancelToken: cancelToken,
       body: formData,
       options: di.Options(
-        sendTimeout: _signDocumentTimeOut,
+        receiveTimeout: _signDocumentTimeOut,
       ),
     );
     return BaseResponseCl<bool>.fromJson(response);

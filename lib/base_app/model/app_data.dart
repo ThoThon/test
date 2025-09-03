@@ -1,7 +1,7 @@
 import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 
+import '../../clean/shared/entity/category.dart';
 import '../../clean/shared/entity/entity_src.dart';
-import '../../modules/register_code/domain/entity/categories.dart';
 import '../../modules/register_code/domain/entity/social_agency.dart';
 import '../../modules/src.dart';
 
@@ -16,10 +16,10 @@ class AppData {
   var relationships = <Relationship>{};
   var positions = <Position>{};
   var socialAgency = <SocialAgency>{};
-  var receiveMethod = <Categories>{};
-  var paymentMethods = <Categories>{};
-  var objectType = <Categories>{};
-  var resultReceivingOptions = <Categories>{};
+  var receiveMethod = <Category>{};
+  var paymentMethods = <Category>{};
+  var objectType = <Category>{};
+  var resultReceivingOptions = <Category>{};
   var birthTypes = <BirthType>{};
   var receiveResults = <ReceiveResult>{};
   var oldProvinces = <Province>{};

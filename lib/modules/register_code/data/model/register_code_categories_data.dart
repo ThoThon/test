@@ -1,15 +1,15 @@
 import 'package:v_bhxh/clean/shared/model/model_src.dart';
 
-import 'categories_data.dart';
+import '../../../../clean/shared/model/category_data.dart';
 import 'social_agency_data.dart';
 
 class RegisterCodeCategoriesData {
-  final Set<ProvinceData>? provinces;
-  final Set<SocialAgencyData>? agencies;
-  final Set<CategoryData>? receiveMethods;
-  final Set<CategoryData>? paymentMethods;
-  final Set<CategoryData>? resultReceivingOptions;
-  final Set<CategoryData>? objectType;
+  final List<ProvinceData>? provinces;
+  final List<SocialAgencyData>? agencies;
+  final List<CategoryData>? receiveMethods;
+  final List<CategoryData>? paymentMethods;
+  final List<CategoryData>? resultReceivingOptions;
+  final List<CategoryData>? objectType;
 
   const RegisterCodeCategoriesData({
     this.provinces,
@@ -24,22 +24,22 @@ class RegisterCodeCategoriesData {
     return RegisterCodeCategoriesData(
       provinces: (json['tinhs'] as List<dynamic>?)
           ?.map((e) => ProvinceData.fromJson(e))
-          .toSet(),
+          .toList(),
       agencies: (json['dmCQQLs'] as List<dynamic>?)
           ?.map((e) => SocialAgencyData.fromJson(e))
-          .toSet(),
+         .toList(),
       receiveMethods: (json['phuongThucNhans'] as List<dynamic>?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       paymentMethods: (json['phuongThucDong'] as List<dynamic>?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       resultReceivingOptions: (json['dangKyNhanKetQuas'] as List<dynamic>?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       objectType: (json['loaiDoiTuongs'] as List<dynamic>?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
     );
   }
 }

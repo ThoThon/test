@@ -1,12 +1,12 @@
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 
-import '../../../modules/register_code/data/model/categories_data.dart';
-import '../../../modules/register_code/domain/entity/categories.dart';
+import '../entity/category.dart';
+import '../model/category_data.dart';
 
-class CategoriesDataMapper extends BaseDataMapper<CategoryData, Categories> {
+class CategoriesDataMapper extends BaseDataMapper<CategoryData, Category> {
   @override
-  Categories mapToEntity(CategoryData? data) {
-    return Categories(
+  Category mapToEntity(CategoryData? data) {
+    return Category(
       value: data?.value ?? '',
       text: data?.text ?? '',
     );

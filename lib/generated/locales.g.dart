@@ -1107,6 +1107,8 @@ class LocaleKeys {
   static const registerService_serialNumber = 'registerService_serialNumber';
   static const registerService_inputCCCDregisterMySignCannotEmpty =
       'registerService_inputCCCDregisterMySignCannotEmpty';
+  static const registerService_certificateInfoNotFound =
+      'registerService_certificateInfoNotFound';
   static const registerCode_commonInfo = 'registerCode_commonInfo';
   static const registerCode_registerInfo = 'registerCode_registerInfo';
   static const registerCode_unitInfo = 'registerCode_unitInfo';
@@ -2236,6 +2238,7 @@ class Locales {
     'registerService_serialNumber': 'Số serial',
     'registerService_inputCCCDregisterMySignCannotEmpty':
         'Nhập CCCD đăng ký MySign để lấy thông tin CTS',
+    'registerService_certificateInfoNotFound': 'Chưa có thông tin chứng thư số',
     'registerCode_commonInfo': 'Thông tin chung',
     'registerCode_registerInfo': 'Thông tin đăng ký',
     'registerCode_unitInfo': 'Thông tin đơn vị',

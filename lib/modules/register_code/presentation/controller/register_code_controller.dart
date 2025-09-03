@@ -1,23 +1,26 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:path/path.dart';
-import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../../clean/core/presentation/navigation/navigation_src.dart';
-import '../../../../../clean/routes/app_routes_cl.dart';
 import '../../../../../clean/shared/entity/province.dart';
 import '../../../../../clean/shared/entity/ward.dart';
 import '../../../../../shares/widgets/keyboard/keyboard.dart';
+import '../../../../clean/routes/app_routes_cl.dart';
+import '../../../../clean/shared/entity/category.dart';
 import '../../../src.dart';
-import '../../domain/entity/categories.dart';
 import '../../domain/entity/certificate.dart';
 import '../../domain/entity/first_time_register_request.dart';
+import '../../domain/entity/register_code_categories.dart';
 import '../../domain/entity/social_agency.dart';
 import '../../domain/usecase/first_time_register_use_case.dart';
 import '../../domain/usecase/get_categories_use_case.dart';
 import '../../domain/usecase/get_certificate_use_case.dart';
 import '../enum/register_code_tab_enum.dart';
+
+/// Tỉnh mặc định là "Hà Nội"
+const _defaultProvinceCode = '01';
 
 class RegisterCodeController extends BaseGetClController {
   final GetCertificateUseCase _getCertificateUseCase;
@@ -39,7 +42,7 @@ class RegisterCodeController extends BaseGetClController {
   final unitNameCtrl = TextEditingController();
 
   // Loại đối tượng
-  final selectedObject = Rxn<Categories>();
+  final selectedObject = Rxn<Category>();
 
   // Loại hình đơn vị
   final unitTypeCtrl = TextEditingController();
@@ -91,13 +94,13 @@ class RegisterCodeController extends BaseGetClController {
   final wardReceive = Rxn<Ward>();
 
   // Đăng ký nhận kết quả
-  final registerResult = Rxn<Categories>();
+  final registerResult = Rxn<Category>();
 
   // Phương thức nhận kết quả
-  final resultReceiveMethod = Rxn<Categories>();
+  final resultReceiveMethod = Rxn<Category>();
 
   // Phương thức đóng
-  final paymentMethod = Rxn<Categories>();
+  final paymentMethod = Rxn<Category>();
 
   // Tên đăng nhập MySign
   final usernameMySignCtrl = TextEditingController();
@@ -125,6 +128,8 @@ class RegisterCodeController extends BaseGetClController {
   final registeredRegisterTabKey = GlobalKey<FormRegistryWidgetState>();
 
   final isEnableBtnSearchCert = false.obs;
+
+  final registerCodeCategories = RegisterCodeCategories.empty().obs;
 
   @override
   void onInit() {
@@ -155,13 +160,7 @@ class RegisterCodeController extends BaseGetClController {
       showLoadingOverlay: true,
       action: () async {
         final response = await _getCategoriesUseCase.execute();
-        AppData.instance
-          ..provinces = response.provinces
-          ..socialAgency = response.agencies
-          ..receiveMethod = response.receiveMethods
-          ..paymentMethods = response.paymentMethods
-          ..resultReceivingOptions = response.resultReceivingOptions
-          ..objectType = response.objectType;
+        registerCodeCategories.value = response;
       },
     );
   }
@@ -232,7 +231,7 @@ class RegisterCodeController extends BaseGetClController {
   FirstTimeRegisterRequest _buildRequest() {
     return FirstTimeRegisterRequest(
       coQuanBHXHQuanLy: socialAgency.value?.maCoQuanBHXH ?? '',
-      coQuanBHXHTinh: '01',
+      coQuanBHXHTinh: _defaultProvinceCode,
       credentialID: certificate.value?.cerdentialID ?? '',
       diaChi: addressUnitCtrl.text,
       diaChiHuyen: '', // Do do đã bỏ huyện
@@ -279,6 +278,9 @@ class RegisterCodeController extends BaseGetClController {
   }
 
   Future<void> registerCodeFirst() async {
+    _showDialogVerifyFailed(
+      errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+    );
     final invalidTab = _invalidTab;
     if (invalidTab == null) {
       // Nếu tất cả các tab đều hợp lệ thì chuyển đến tab cuối cùng (tab thông tin đăng ký)
@@ -292,7 +294,7 @@ class RegisterCodeController extends BaseGetClController {
     // try {
     if (certificate.value == null) {
       nav.showSnackBar(
-        'Chưa có thông tin chứng thư số',
+        LocaleKeys.registerService_certificateInfoNotFound.tr,
         type: SnackBarType.failure,
       );
       return;
@@ -303,7 +305,7 @@ class RegisterCodeController extends BaseGetClController {
       action: () async {
         if (certificate.value == null) {
           nav.showSnackBar(
-            'Chưa có thông tin chứng thư số',
+            LocaleKeys.registerService_certificateInfoNotFound.tr,
             type: SnackBarType.failure,
           );
           return;
@@ -323,55 +325,44 @@ class RegisterCodeController extends BaseGetClController {
   }
 
   void _showDialogCheckedSuccess() {
-    ShowDialog.showDialogTimerCount(
-      timerCount: 125,
-      showCloseButton: true,
-      content: LocaleKeys.dialog_confirmSignatureMySign.tr,
+    nav.showTimerDialog(
       title: LocaleKeys.dialog_sendRequestSignature.tr,
+      subtitle: LocaleKeys.dialog_confirmSignatureMySign.tr,
       onFinish: () {
-        _firstTimeRegisterUseCase.cancel;
+        _firstTimeRegisterUseCase.cancel();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
       },
       onCancel: () {
-        Get.until(ModalRoute.withName(AppRoutesCl.login.path));
+        nav.until(ModalRoute.withName(AppRoutesCl.login.path));
       },
     );
   }
 
   void _showDialogVerifySuccess() {
-    ShowDialog.showDialogConfirm2(
-      title: LocaleKeys.dialog_sendFileSuccess.tr,
-      content: LocaleKeys.dialog_submitRegisterToSuccessMessage.tr,
+    nav.showInfoDialog(
       iconType: DialogIconType.success,
-      exitTitle: LocaleKeys.dialog_close.tr,
-      isDisableButtonConfirm: true,
-      backgroundColorBack: AppColors.basicWhite,
-      textStyleBack:
-          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+      title: LocaleKeys.dialog_sendFileSuccess.tr,
+      showConfirmButton: false,
+      cancelTitle: LocaleKeys.dialog_close.tr,
+      subtitle: LocaleKeys.dialog_submitRegisterToSuccessMessage.tr,
       onCancel: () {
         // Get back vì màn trước của nó đang là màn login
-        Get.back();
+        nav.back();
       },
     );
   }
 
   void _showDialogVerifyFailed({
     required String errorMessage,
-    VoidCallback? onRetry,
   }) {
-    ShowDialog.showDialogConfirm2(
+    nav.showInfoDialog(
       title: LocaleKeys.dialog_sendFileFail.tr,
-      content: errorMessage,
+      confirmTitle: LocaleKeys.dialog_close.tr,
+      subtitle: errorMessage,
+      showCancelButton: false,
       iconType: DialogIconType.failure,
-      exitTitle: LocaleKeys.dialog_close.tr,
-      backgroundColorBack: AppColors.basicWhite,
-      textStyleBack:
-          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
-      showConfirmButton: onRetry != null,
-      confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
-      onConfirm: onRetry,
     );
   }
 
