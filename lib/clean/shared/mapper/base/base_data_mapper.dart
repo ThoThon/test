@@ -4,12 +4,12 @@ abstract class BaseDataMapper<Data, Entity> {
 
   Entity mapToEntity(Data? data);
 
-  List<Entity> mapToListEntity(List<Data>? listData) {
-    return listData?.map(mapToEntity).toList() ?? List.empty();
+  List<Entity> mapToListEntity(Iterable<Data>? data) {
+    return data?.map(mapToEntity).toList() ?? List.empty();
   }
 
-  Set<Entity> mapToSetEntity(Set<Data>? setData) {
-    return setData?.map(mapToEntity).toSet() ?? <Entity>{};
+  Set<Entity> mapToSetEntity(Iterable<Data>? data) {
+    return data?.map(mapToEntity).toSet() ?? <Entity>{};
   }
 }
 
@@ -25,12 +25,12 @@ abstract class BaseEntityMapper<Entity, Data> {
     return mapToData(entity);
   }
 
-  List<Data>? mapToNullableListData(List<Entity>? listEntity) {
-    return listEntity?.map(mapToData).toList();
+  List<Data>? mapToNullableListData(Iterable<Entity>? entities) {
+    return entities?.map(mapToData).toList();
   }
 
-  List<Data> mapToListData(List<Entity>? listEntity) {
-    return mapToNullableListData(listEntity) ?? List.empty();
+  List<Data> mapToListData(Iterable<Entity>? entities) {
+    return mapToNullableListData(entities) ?? List.empty();
   }
 }
 
@@ -46,11 +46,11 @@ mixin DataMapperMixin<Data, Entity> on BaseDataMapper<Data, Entity> {
     return mapToData(entity);
   }
 
-  List<Data>? mapToNullableListData(List<Entity>? listEntity) {
-    return listEntity?.map(mapToData).toList();
+  List<Data>? mapToNullableListData(Iterable<Entity>? entities) {
+    return entities?.map(mapToData).toList();
   }
 
-  List<Data> mapToListData(List<Entity>? listEntity) {
-    return mapToNullableListData(listEntity) ?? List.empty();
+  List<Data> mapToListData(Iterable<Entity>? entities) {
+    return mapToNullableListData(entities) ?? List.empty();
   }
 }
