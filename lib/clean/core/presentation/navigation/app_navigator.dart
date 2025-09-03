@@ -102,7 +102,7 @@ abstract class AppNavigator {
   Future<void> showTimerDialog({
     required String title,
     required String subtitle,
-    int initialSeconds = 120,
+    int initialSeconds = 125,
     VoidCallback? onFinish,
     VoidCallback? onCancel,
     bool barrierDismissible = false,

@@ -29,11 +29,12 @@ import 'package:v_bhxh/modules/info_unit/ui/unit_info_page.dart';
 import 'package:v_bhxh/modules/notification/ui/notification_page.dart';
 import 'package:v_bhxh/modules/other_info/ui/other_info_page.dart';
 import 'package:v_bhxh/modules/profile/ui/profile_page.dart';
-import 'package:v_bhxh/modules/register_code/ui/register_code_page.dart';
 import 'package:v_bhxh/modules/register_service/ui/register_service_page.dart';
 import 'package:v_bhxh/modules/select_staff/ui/select_staff_page.dart';
 import 'package:v_bhxh/modules/view_pdf/ui/view_pdf_page.dart';
 
+import '../../modules/register_code/presentation/binding/register_code_binding.dart';
+import '../../modules/register_code/presentation/ui/register_code_page.dart';
 import '../../modules/lookup_c12/presentation/binding/lookup_c12_binding.dart';
 import '../../modules/lookup_c12/presentation/ui/lookup_c12_page.dart';
 
@@ -132,7 +133,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.registerCode.path,
-      page: () => RegisterCodePage(),
+      page: RegisterCodePage.new,
+      binding: RegisterCodeBinding(),
     ),
     GetPage(
       name: AppRoutesCl.changeBaseUrl.path,

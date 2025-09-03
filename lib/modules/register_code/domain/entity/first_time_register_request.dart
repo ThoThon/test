@@ -1,4 +1,6 @@
-class FirstRegisterRequest {
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
+
+class FirstTimeRegisterRequest implements Entity {
   final String coQuanBHXHQuanLy;
   final String coQuanBHXHTinh;
   final String credentialID;
@@ -28,7 +30,7 @@ class FirstRegisterRequest {
   final String phuongThucNhan;
   final List<String>? imageFilePath;
 
-  FirstRegisterRequest({
+  FirstTimeRegisterRequest({
     required this.coQuanBHXHQuanLy,
     required this.coQuanBHXHTinh,
     required this.credentialID,
@@ -58,37 +60,4 @@ class FirstRegisterRequest {
     required this.phuongThucNhan,
     this.imageFilePath,
   });
-
-  Map<String, dynamic> toJson() {
-    return {
-      'CoQuanBHXHQuanLy': coQuanBHXHQuanLy,
-      'CoQuanBHXHTinh': coQuanBHXHTinh,
-      'CredentialID': credentialID,
-      'DiaChi': diaChi,
-      'DiaChi_Huyen': diaChiHuyen,
-      'DiaChi_Tinh': diaChiTinh,
-      'DiaChi_Xa': diaChiXa,
-      'DiaChiDangKyKinhDoanh': diaChiDangKyKinhDoanh,
-      'DienThoai': dienThoai,
-      'DienThoaiLienHe': dienThoaiLienHe,
-      'Email': email,
-      'HoSoKemTheo': hoSoKemTheo,
-      'LoaiDoiTuong': loaiDoiTuong,
-      'LoaiHinhDonVi': loaiHinhDonVi,
-      'MaSoThue': maSoThue,
-      'NganhNgheSX': nganhNgheSX,
-      'NgayDangKy': ngayDangKy,
-      'NgayLap': ngayLap,
-      'NguoiGiaoDich': nguoiGiaoDich,
-      'NoiCapQuyetDinh': noiCapQuyetDinh,
-      'NoiDung': noiDung,
-      'PhuongThucDong': phuongThucDong,
-      'PhuongThucNhanKetQua': phuongThucNhanKetQua,
-      'SoQuyetDinh': soQuyetDinh,
-      'TenDonVi': tenDonVi,
-      'UserId': userId,
-      'PhuongThucNhan': phuongThucNhan,
-      'TepDinhKemPath': imageFilePath, 
-    };
-  }
 }

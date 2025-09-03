@@ -1,16 +1,38 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:path/path.dart';
-import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
-import 'package:v_bhxh/base_app/model/app_data.dart';
-import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
-import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
-import 'package:v_bhxh/shares/package/export_package.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
-import '../../../shares/widgets/keyboard/keyboard.dart';
-import '../../src.dart';
+import '../../../../../clean/core/presentation/navigation/navigation_src.dart';
+import '../../../../../clean/shared/entity/province.dart';
+import '../../../../../clean/shared/entity/ward.dart';
+import '../../../../../shares/widgets/keyboard/keyboard.dart';
+import '../../../../clean/routes/app_routes_cl.dart';
+import '../../../../clean/shared/entity/category.dart';
+import '../../../src.dart';
+import '../../domain/entity/certificate.dart';
+import '../../domain/entity/first_time_register_request.dart';
+import '../../domain/entity/register_code_categories.dart';
+import '../../domain/entity/social_agency.dart';
+import '../../domain/usecase/first_time_register_use_case.dart';
+import '../../domain/usecase/get_categories_use_case.dart';
+import '../../domain/usecase/get_certificate_use_case.dart';
+import '../enum/register_code_tab_enum.dart';
 
-class RegisterCodeController extends BaseGetxController {
+/// Tỉnh mặc định là "Hà Nội"
+const _defaultProvinceCode = '01';
+
+class RegisterCodeController extends BaseGetClController {
+  final GetCertificateUseCase _getCertificateUseCase;
+  final GetCategoriesUseCase _getCategoriesUseCase;
+  final FirstTimeRegisterUseCase _firstTimeRegisterUseCase;
+
+  RegisterCodeController(
+    this._getCertificateUseCase,
+    this._getCategoriesUseCase,
+    this._firstTimeRegisterUseCase,
+  );
+
   final currentTab = RegisterCodeTabEnum.common_info.obs;
 
   // Mã số thuế
@@ -20,7 +42,7 @@ class RegisterCodeController extends BaseGetxController {
   final unitNameCtrl = TextEditingController();
 
   // Loại đối tượng
-  final selectedObject = Rxn<ObjectTypeModel>();
+  final selectedObject = Rxn<Category>();
 
   // Loại hình đơn vị
   final unitTypeCtrl = TextEditingController();
@@ -63,7 +85,7 @@ class RegisterCodeController extends BaseGetxController {
   final phoneContactCtrl = TextEditingController();
 
   // Cơ quan BHXH
-  final socialAgency = Rxn<SocialAgencyModel>();
+  final socialAgency = Rxn<SocialAgency>();
 
   // Nơi nhận tỉnh
   final provinceReceive = Rxn<Province>();
@@ -72,13 +94,13 @@ class RegisterCodeController extends BaseGetxController {
   final wardReceive = Rxn<Ward>();
 
   // Đăng ký nhận kết quả
-  final registerResult = Rxn<RegisterReceiveResultModel>();
+  final registerResult = Rxn<Category>();
 
   // Phương thức nhận kết quả
-  final resultReceiveMethod = Rxn<ReceiveMethodModel>();
+  final resultReceiveMethod = Rxn<Category>();
 
   // Phương thức đóng
-  final paymentMethod = Rxn<PaymentMethodModel>();
+  final paymentMethod = Rxn<Category>();
 
   // Tên đăng nhập MySign
   final usernameMySignCtrl = TextEditingController();
@@ -89,23 +111,25 @@ class RegisterCodeController extends BaseGetxController {
   // Nội dung
   final contentCtrl = TextEditingController();
 
-  late final _registerCodeRepository = RegisterCodeRepository(this);
+  final certificate = Rxn<Certificate>();
 
-  final certificate = Rxn<CertificateModel>();
-
-  final listCert = <CertificateModel>[].obs;
+  final listCert = <Certificate>[].obs;
 
   final imagePath = Rxn<String>();
 
   final listImage = <String>[].obs;
 
   final formKeyCommonTab = GlobalKey<FormState>();
+
   final registeredCommonTabKey = GlobalKey<FormRegistryWidgetState>();
 
   final formKeyRegisterTab = GlobalKey<FormState>();
+
   final registeredRegisterTabKey = GlobalKey<FormRegistryWidgetState>();
 
   final isEnableBtnSearchCert = false.obs;
+
+  final registerCodeCategories = RegisterCodeCategories.empty().obs;
 
   @override
   void onInit() {
@@ -132,25 +156,13 @@ class RegisterCodeController extends BaseGetxController {
   }
 
   Future<void> getRegisterFirstCategories() async {
-    try {
-      showLoadingOverlay();
-      final response =
-          await _registerCodeRepository.getRegisterFirstCategories();
-      final registerCategories = response.result;
-      if (registerCategories != null && response.isSuccess) {
-        AppData.instance
-          ..provinces = registerCategories.provinces
-          ..socialAgency = registerCategories.agencies
-          ..receiveMethod = registerCategories.receiveMethods
-          ..paymentMethods = registerCategories.paymentMethods
-          ..resultReceivingOptions = registerCategories.resultReceivingOptions
-          ..objectType = registerCategories.objectType;
-      }
-    } catch (e) {
-      logger.d(e);
-    } finally {
-      hideLoadingOverlay();
-    }
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        final response = await _getCategoriesUseCase.execute();
+        registerCodeCategories.value = response;
+      },
+    );
   }
 
   void changeProvinceReceive(Province value) {
@@ -165,19 +177,15 @@ class RegisterCodeController extends BaseGetxController {
   }
 
   Future<void> fetchListCert() async {
-    try {
-      showLoadingOverlay();
-      listCert.clear();
-      final response =
-          await _registerCodeRepository.getListCert(usernameMySignCtrl.text);
-      if (response.isSuccess) {
-        listCert.value = response.result;
-      }
-    } catch (e) {
-      logger.d(e);
-    } finally {
-      hideLoadingOverlay();
-    }
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        listCert.clear();
+        final response =
+            await _getCertificateUseCase.execute(usernameMySignCtrl.text);
+        listCert.value = response;
+      },
+    );
   }
 
   Future<void> getListCertificate() async {
@@ -185,7 +193,8 @@ class RegisterCodeController extends BaseGetxController {
     if (listCert.isNotEmpty) {
       certificate.value = listCert.firstOrNull;
     } else {
-      showSnackBar(LocaleKeys.registerService_cccdRegisterMySignNotFound.tr);
+      nav.showSnackBar(
+          LocaleKeys.registerService_cccdRegisterMySignNotFound.tr);
     }
   }
 
@@ -196,7 +205,7 @@ class RegisterCodeController extends BaseGetxController {
         listImage.add(path);
       }
     } catch (e) {
-      showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
+      nav.showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
     }
   }
 
@@ -207,7 +216,7 @@ class RegisterCodeController extends BaseGetxController {
         listImage.add(path);
       }
     } catch (e) {
-      showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
+      nav.showSnackBar(LocaleKeys.app_someThingWentWrong.tr);
     }
   }
 
@@ -219,10 +228,10 @@ class RegisterCodeController extends BaseGetxController {
     listImage.removeAt(index);
   }
 
-  FirstRegisterRequest _buildRequest() {
-    return FirstRegisterRequest(
+  FirstTimeRegisterRequest _buildRequest() {
+    return FirstTimeRegisterRequest(
       coQuanBHXHQuanLy: socialAgency.value?.maCoQuanBHXH ?? '',
-      coQuanBHXHTinh: '01',
+      coQuanBHXHTinh: _defaultProvinceCode,
       credentialID: certificate.value?.cerdentialID ?? '',
       diaChi: addressUnitCtrl.text,
       diaChiHuyen: '', // Do do đã bỏ huyện
@@ -269,6 +278,9 @@ class RegisterCodeController extends BaseGetxController {
   }
 
   Future<void> registerCodeFirst() async {
+    _showDialogVerifyFailed(
+      errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+    );
     final invalidTab = _invalidTab;
     if (invalidTab == null) {
       // Nếu tất cả các tab đều hợp lệ thì chuyển đến tab cuối cùng (tab thông tin đăng ký)
@@ -279,93 +291,75 @@ class RegisterCodeController extends BaseGetxController {
       return;
     }
     // goToRegisterTab();
-    try {
-      if (certificate.value == null) {
-        showSnackBar(
-          'Chưa có thông tin chứng thư số',
-          typeAction: AppConst.actionFail,
-        );
-        return;
-      }
-
-      _showDialogCheckedSuccess();
-
-      final response =
-          await _registerCodeRepository.registerCodeFirst(_buildRequest());
-
-      if (response.isSuccess) {
-        // Đóng dialog kiểm tra ký số
-        ShowDialog.dismissDialog();
-
-        _showDialogVerifySuccess();
-      } else {
-        // Đóng dialog kiểm tra ký số
-        ShowDialog.dismissDialog();
-
-        _showDialogVerifyFailed(
-          errorMessage: response.errorMessage,
-        );
-      }
-    } catch (e) {
-      if (e is DioException && e.type != DioExceptionType.cancel) {
-        ShowDialog.dismissDialog();
-        _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
-        );
-      }
+    // try {
+    if (certificate.value == null) {
+      nav.showSnackBar(
+        LocaleKeys.registerService_certificateInfoNotFound.tr,
+        type: SnackBarType.failure,
+      );
+      return;
     }
+
+    goToRegisterTab();
+    return buildState(
+      action: () async {
+        if (certificate.value == null) {
+          nav.showSnackBar(
+            LocaleKeys.registerService_certificateInfoNotFound.tr,
+            type: SnackBarType.failure,
+          );
+          return;
+        }
+        _showDialogCheckedSuccess();
+        final response =
+            await _firstTimeRegisterUseCase.execute(_buildRequest());
+        if (response) {
+          ShowDialog.dismissDialog();
+          _showDialogVerifySuccess();
+        }
+      },
+    );
   }
 
   void _showDialogCheckedSuccess() {
-    ShowDialog.showDialogTimerCount(
-      timerCount: 125,
-      showCloseButton: true,
-      content: LocaleKeys.dialog_confirmSignatureMySign.tr,
+    nav.showTimerDialog(
       title: LocaleKeys.dialog_sendRequestSignature.tr,
+      subtitle: LocaleKeys.dialog_confirmSignatureMySign.tr,
       onFinish: () {
-        cancelAllRequest();
+        _firstTimeRegisterUseCase.cancel();
         _showDialogVerifyFailed(
           errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
         );
       },
       onCancel: () {
-        Get.until(ModalRoute.withName(AppRoutesCl.login.path));
+        nav.until(ModalRoute.withName(AppRoutesCl.login.path));
       },
     );
   }
 
   void _showDialogVerifySuccess() {
-    ShowDialog.showDialogConfirm2(
-      title: LocaleKeys.dialog_sendFileSuccess.tr,
-      content: LocaleKeys.dialog_submitRegisterToSuccessMessage.tr,
+    nav.showInfoDialog(
       iconType: DialogIconType.success,
-      exitTitle: LocaleKeys.dialog_close.tr,
-      isDisableButtonConfirm: true,
-      backgroundColorBack: AppColors.basicWhite,
-      textStyleBack:
-          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+      title: LocaleKeys.dialog_sendFileSuccess.tr,
+      showConfirmButton: false,
+      cancelTitle: LocaleKeys.dialog_close.tr,
+      subtitle: LocaleKeys.dialog_submitRegisterToSuccessMessage.tr,
       onCancel: () {
         // Get back vì màn trước của nó đang là màn login
-        Get.back();
+        nav.back();
       },
     );
   }
 
   void _showDialogVerifyFailed({
     required String errorMessage,
-    VoidCallback? onRetry,
   }) {
-    ShowDialog.showDialogConfirm2(
+    nav.showInfoDialog(
       title: LocaleKeys.dialog_sendFileFail.tr,
-      content: errorMessage,
+      confirmTitle: LocaleKeys.dialog_close.tr,
+      subtitle: errorMessage,
+      showCancelButton: false,
       iconType: DialogIconType.failure,
-      exitTitle: LocaleKeys.dialog_close.tr,
-      backgroundColorBack: AppColors.basicWhite,
-      textStyleBack:
-          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
-      showConfirmButton: onRetry != null,
-      confirmTitle: onRetry != null ? LocaleKeys.dialog_resend.tr : null,
-      onConfirm: onRetry,
     );
   }
 

@@ -130,7 +130,7 @@ extension CommonInfoTab on RegisterCodePage {
 
   // Loại đối tượng
   Widget _buildSelectObjectType() {
-    return FormFieldRegistrant<ObjectTypeModel?>(
+    return FormFieldRegistrant<Category>(
       registrarId: '0ccae861-ff27-479e-8b7a-53e40bc5603f',
       validator: (value) {
         if (value == null) {
@@ -141,12 +141,13 @@ extension CommonInfoTab on RegisterCodePage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return CardDropdownWithLabel(
+            return CardDropdownWithLabel<Category>(
               fieldKey: fieldKey,
               validator: validator,
               labelText: LocaleKeys.registerCode_objectType.tr,
               isRequired: true,
-              items: AppData.instance.objectType.toList(),
+              items:
+                  controller.registerCodeCategories.value.objectType.toList(),
               display: (object) => object.text,
               selectedItem: controller.selectedObject.value,
               onChanged: (value) {

@@ -66,7 +66,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Cơ quan BHXH
   Widget _buildSelectBhxhAgency() {
-    return FormFieldRegistrant<SocialAgencyModel>(
+    return FormFieldRegistrant<SocialAgency>(
       registrarId: 'd50c7b2a-28b6-4c25-a7bb-f3fb7ed88ee1',
       validator: (value) {
         if (controller.socialAgency.value == null) {
@@ -82,11 +82,12 @@ extension RegisterInfoTab on RegisterCodePage {
               validator: validator,
               label: LocaleKeys.registerCode_socialSecurityAgency.tr,
               funcSelect: (didChange) {
-                Get.bottomSheet(
-                  BottomSheetSearch<SocialAgencyModel>(
+                nav.bottomSheet(
+                  BottomSheetSearch<SocialAgency>(
                     title: LocaleKeys.registerCode_selectSocialAgency.tr,
                     maxLength: 20,
-                    listFilter: AppData.instance.socialAgency.toList(),
+                    listFilter: controller.registerCodeCategories.value.agencies
+                        .toList(),
                     selectedItem: controller.socialAgency.value,
                     display: (value) => value.tenCoQuanBHXH,
                     onAccept: (value) {
@@ -125,11 +126,13 @@ extension RegisterInfoTab on RegisterCodePage {
               validator: validator,
               label: LocaleKeys.registerCode_provinceReceive.tr,
               funcSelect: (didChange) {
-                Get.bottomSheet(
+                nav.bottomSheet(
                   BottomSheetSearch<Province>(
                     title: LocaleKeys.unitInfo_selectProvince.tr,
                     maxLength: 20,
-                    listFilter: AppData.instance.provinces.toList(),
+                    listFilter: controller
+                        .registerCodeCategories.value.provinces
+                        .toList(),
                     selectedItem: controller.provinceReceive.value,
                     display: (value) => '${value.id} - ${value.name}',
                     onAccept: (value) {
@@ -170,12 +173,12 @@ extension RegisterInfoTab on RegisterCodePage {
               funcSelect: (didChange) async {
                 final province = controller.provinceReceive.value;
                 if (province == null) {
-                  controller.showSnackBar(
+                  nav.showSnackBar(
                       LocaleKeys.registerCode_provinceReceiveIsEmpty.tr);
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
+                final result = await nav.bottomSheet<Ward>(
                   SelectWardBts(
                     provinceCode: province.id,
                     selectedWard: controller.wardReceive.value,
@@ -199,7 +202,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Đăng ký nhận kết quả
   Widget _buildSelectRegisterResult() {
-    return FormFieldRegistrant<RegisterReceiveResultModel>(
+    return FormFieldRegistrant<Category>(
       registrarId: 'ecd9b8e1-2a1a-46ab-b717-ff9197dc8271',
       validator: (value) {
         if (value == null) {
@@ -210,12 +213,14 @@ extension RegisterInfoTab on RegisterCodePage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return CardDropdownWithLabel<RegisterReceiveResultModel>(
+            return CardDropdownWithLabel<Category>(
               fieldKey: fieldKey,
               validator: validator,
               labelText: LocaleKeys.registerCode_registerResult.tr,
               isRequired: true,
-              items: AppData.instance.resultReceivingOptions.toList(),
+              items: controller
+                  .registerCodeCategories.value.resultReceivingOptions
+                  .toList(),
               display: (result) => result.text,
               selectedItem: controller.registerResult.value,
               onChanged: (value) {
@@ -257,7 +262,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Phương thức nhận kết quả
   Widget _buildSelectMethodResult() {
-    return FormFieldRegistrant<ReceiveMethodModel>(
+    return FormFieldRegistrant<Category>(
       registrarId: '543267ff-a0c3-4bcc-9129-c5da0ad19093',
       validator: (value) {
         if (value == null) {
@@ -268,12 +273,13 @@ extension RegisterInfoTab on RegisterCodePage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return CardDropdownWithLabel<ReceiveMethodModel>(
+            return CardDropdownWithLabel<Category>(
               fieldKey: fieldKey,
               validator: validator,
               labelText: LocaleKeys.registerCode_methodReceiveResult.tr,
               isRequired: true,
-              items: AppData.instance.receiveMethod.toList(),
+              items: controller.registerCodeCategories.value.receiveMethods
+                  .toList(),
               display: (result) => result.text,
               selectedItem: controller.resultReceiveMethod.value,
               onChanged: (value) {
@@ -288,7 +294,7 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Phương thức đóng
   Widget _buildSelectMethodClose() {
-    return FormFieldRegistrant<PaymentMethodModel>(
+    return FormFieldRegistrant<Category>(
       registrarId: '76f6f431-65ba-4d58-9c97-c20f48ebd416',
       validator: (value) {
         if (value == null) {
@@ -299,12 +305,13 @@ extension RegisterInfoTab on RegisterCodePage {
       builder: (fieldKey, validator) {
         return Obx(
           () {
-            return CardDropdownWithLabel<PaymentMethodModel>(
+            return CardDropdownWithLabel<Category>(
               fieldKey: fieldKey,
               validator: validator,
               labelText: LocaleKeys.registerCode_methodPayment.tr,
               isRequired: true,
-              items: AppData.instance.paymentMethods.toList(),
+              items: controller.registerCodeCategories.value.paymentMethods
+                  .toList(),
               display: (result) => result.text,
               selectedItem: controller.paymentMethod.value,
               onChanged: (value) {
@@ -471,7 +478,7 @@ extension RegisterInfoTab on RegisterCodePage {
   }
 
   void _showBottomSheetUploadOptions() {
-    Get.bottomSheet(
+    nav.bottomSheet(
       UtilWidget.buildBottomSheetFigma(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -503,7 +510,7 @@ extension RegisterInfoTab on RegisterCodePage {
       color: Colors.white,
       child: InkWell(
         onTap: () {
-          Get.back();
+          nav.back();
           onTap();
         },
         child: Row(
@@ -701,7 +708,7 @@ extension RegisterInfoTab on RegisterCodePage {
   }
 
   Widget _buildDropdownSerial() {
-    return CardDropdownWithLabel<CertificateModel>(
+    return CardDropdownWithLabel<Certificate>(
       isRequired: true,
       labelText: LocaleKeys.registerService_serialNumber.tr,
       items: controller.listCert,
