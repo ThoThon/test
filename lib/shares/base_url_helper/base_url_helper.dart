@@ -21,6 +21,10 @@ class BaseUrlHelper {
     return hiveApp.put(HiveKeys.keyBaseUrl, url);
   }
 
+  Future<void> switchToUatEnv() {
+    return hiveApp.put(HiveKeys.keyBaseUrl, AppApi.urlUat);
+  }
+
   Future<void> switchEnv() async {
     final cbData = await Clipboard.getData(Clipboard.kTextPlain);
     if (cbData?.text == kTriggerChangeBaseUrl) {

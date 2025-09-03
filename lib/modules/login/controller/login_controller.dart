@@ -4,6 +4,7 @@ import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/core/core.src.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/login/repository/login_repository.dart';
+import 'package:v_bhxh/shares/base_url_helper/base_url_helper.dart';
 import 'package:v_bhxh/shares/function/logger.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
@@ -39,6 +40,12 @@ class LoginController extends BaseGetxController {
 
       final username = usernameTextCtrl.text.trim();
       final password = passwordTextCtrl.text.trim();
+
+      // Với tài khoản demo gửi lên store sẽ gọi tới base url uat
+      // để tránh lỗi chưa deploy api lên production
+      if (username == AppConst.demoAccount) {
+        await BaseUrlHelper.instance.switchToUatEnv();
+      }
 
       final response = await _loginRepository.login(
         username: username,
