@@ -1,4 +1,3 @@
-// lib/features/profile/ui/profile_screen.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +8,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
@@ -48,14 +47,14 @@ class ProfileScreen extends GetView<ProfileController> {
             ),
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
         Obx(
           () => Text(
             controller.userName.value.isNotEmpty
                 ? controller.userName.value
                 : "Người dùng",
             style: const TextStyle(
-              fontSize: 24,
+              fontSize: 22,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -68,11 +67,6 @@ class ProfileScreen extends GetView<ProfileController> {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.grey[50],
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey[300]!),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -103,7 +97,6 @@ class ProfileScreen extends GetView<ProfileController> {
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
-              color: Colors.grey,
             ),
           ),
         ),
@@ -128,7 +121,19 @@ class ProfileScreen extends GetView<ProfileController> {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
-        onPressed: controller.logout,
+        onPressed: () {
+          Get.defaultDialog(
+              title: "Xác nhận",
+              middleText: "Bạn có chắc chắn muốn đăng xuất",
+              textCancel: "Hủy",
+              textConfirm: "Đăng xuất",
+              confirmTextColor: Colors.white,
+              buttonColor: const Color(0xFFf24e1e),
+              onConfirm: () {
+                Get.back();
+                controller.logout();
+              });
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFFf24e1e),
           foregroundColor: Colors.white,

@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../../../routes/app_routes.dart';
 import '../../../services/remote/api_service.dart';
-import '../models/login/login_info.dart';
-import '../models/login/login_storage.dart';
+import '../models/login_info.dart';
+import '../models/login_storage.dart';
 
 class LoginController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -47,7 +47,7 @@ class LoginController extends GetxController {
       );
 
       if (response.success && response.data != null) {
-        String token = response.data!;
+        String token = response.data!.token;
 
         final info = LoginInfo(
           username: user,

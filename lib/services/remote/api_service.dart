@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 
-import '../../features/login/models/login/login_storage.dart';
+import '../../features/login/models/login_response.dart';
+import '../../features/login/models/login_storage.dart';
 import 'base_response.dart';
 import 'dio_client.dart';
 
 class ApiService {
-  static Future<BaseResponse<String>> login({
+  static Future<BaseResponse<LoginResponse>> login({
     required String taxCode,
     required String username,
     required String password,
@@ -18,19 +19,19 @@ class ApiService {
         'password': password,
       },
     );
-    String? token;
-    if (response.data['data'] != null) {
-      token = response.data['data']['token'];
-    }
-    return BaseResponse<String>(
-      success: response.data['success'] ?? false,
-      message: response.data['message'] ?? '',
-      data: token,
+
+    return BaseResponse<LoginResponse>.fromJson(
+      response.data,
+      func: (json) => LoginResponse.fromJson(json),
     );
   }
 
-  static Future<Map<String, dynamic>> callApiWithToken(String endpoint) async {
+  static Future<BaseResponse<T>> callApiWithToken<T>({
+    required String endpoint,
+    T Function(dynamic json)? func,
+  }) async {
     String? token = LoginStorage.getToken();
+
     final response = await DioClient.dio.get(
       endpoint,
       options: Options(
@@ -39,6 +40,10 @@ class ApiService {
         },
       ),
     );
-    return response.data;
+
+    return BaseResponse<T>.fromJson(
+      response.data,
+      func: func,
+    );
   }
 }

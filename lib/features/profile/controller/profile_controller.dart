@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../../routes/app_routes.dart';
-import '../../login/models/login/login_storage.dart';
+import '../../login/models/login_storage.dart';
 
 class ProfileController extends GetxController {
   final RxString userName = ''.obs;

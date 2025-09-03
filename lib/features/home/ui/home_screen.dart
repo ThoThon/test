@@ -11,30 +11,58 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final screens = [
-      MainpageScreen(),
-      ProfileScreen(),
+      const MainpageScreen(),
+      const ProfileScreen(),
     ];
     return Obx(
       () {
         return Scaffold(
           appBar: AppBar(
-            title: const Text("Trang chủ"),
+            title: Text(
+              _getAppBarTitle(controller.currentIndex.value),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
           ),
           body: IndexedStack(
             index: controller.currentIndex.value,
             children: screens,
           ),
           bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
             currentIndex: controller.currentIndex.value,
-            onTap: controller.changeTab,
+            onTap: (index) {
+              controller.changeTab(index);
+            },
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
               BottomNavigationBarItem(
                   icon: Icon(Icons.person), label: "Profile"),
             ],
+            selectedItemColor: const Color(0xFFf24e1e),
+            unselectedItemColor: Colors.black54,
+            iconSize: 28,
+            selectedLabelStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+            unselectedLabelStyle: const TextStyle(
+              fontSize: 14,
+              color: Colors.black54,
+            ),
           ),
         );
       },
     );
+  }
+
+  String _getAppBarTitle(int index) {
+    switch (index) {
+      case 0:
+        return "Trang chủ";
+      case 1:
+        return "Thông tin cá nhân";
+      default:
+        return "Trang chủ";
+    }
   }
 }
