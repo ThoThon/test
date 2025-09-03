@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../../features/login/models/login_response.dart';
 import '../../features/login/models/login_storage.dart';
+import '../../features/mainpage/models/product.dart';
 import 'base_response.dart';
 import 'dio_client.dart';
 
@@ -23,6 +24,36 @@ class ApiService {
     return BaseResponse<LoginResponse>.fromJson(
       response.data,
       func: (json) => LoginResponse.fromJson(json),
+    );
+  }
+
+  static Future<BaseResponse<List<Product>>> getProducts({
+    required int page,
+    required int limit,
+  }) async {
+    String? token = LoginStorage.getToken();
+
+    final response = await DioClient.dio.get(
+      '/products',
+      queryParameters: {
+        'page': page,
+        'limit': limit,
+      },
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      ),
+    );
+
+    return BaseResponse<List<Product>>.fromJson(
+      response.data,
+      func: (json) {
+        if (json is List) {
+          return json.map((item) => Product.fromJson(item)).toList();
+        }
+        return <Product>[];
+      },
     );
   }
 
