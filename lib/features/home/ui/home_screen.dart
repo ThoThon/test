@@ -39,7 +39,7 @@ class HomeScreen extends GetView<HomeController> {
                   icon: Icon(Icons.person), label: "Profile"),
             ],
             selectedItemColor: const Color(0xFFf24e1e),
-            unselectedItemColor: Colors.black54,
+            unselectedItemColor: Colors.black45,
             iconSize: 28,
             selectedLabelStyle: const TextStyle(
               fontSize: 16,
@@ -47,7 +47,7 @@ class HomeScreen extends GetView<HomeController> {
             ),
             unselectedLabelStyle: const TextStyle(
               fontSize: 14,
-              color: Colors.black54,
+              color: Colors.black45,
             ),
           ),
         );

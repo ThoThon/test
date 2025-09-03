@@ -121,19 +121,7 @@ class ProfileScreen extends GetView<ProfileController> {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
-        onPressed: () {
-          Get.defaultDialog(
-              title: "Xác nhận",
-              middleText: "Bạn có chắc chắn muốn đăng xuất",
-              textCancel: "Hủy",
-              textConfirm: "Đăng xuất",
-              confirmTextColor: Colors.white,
-              buttonColor: const Color(0xFFf24e1e),
-              onConfirm: () {
-                Get.back();
-                controller.logout();
-              });
-        },
+        onPressed: controller.logout,
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFFf24e1e),
           foregroundColor: Colors.white,
