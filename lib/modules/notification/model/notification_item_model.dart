@@ -5,7 +5,7 @@ class NotificationItemModel {
   final String notificationObjectId;
   final String message;
   final DateTime createDate;
-  int status;
+  final int status;
   final String name;
   final String timeAgo;
   final String appAction;
