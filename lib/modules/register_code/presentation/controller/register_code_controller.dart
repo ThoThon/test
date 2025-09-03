@@ -313,12 +313,9 @@ class RegisterCodeController extends BaseGetClController {
         _showDialogCheckedSuccess();
         final response =
             await _firstTimeRegisterUseCase.execute(_buildRequest());
-        if (response.isSuccess) {
+        if (response) {
           ShowDialog.dismissDialog();
           _showDialogVerifySuccess();
-        } else {
-          ShowDialog.dismissDialog();
-          _showDialogVerifyFailed(errorMessage: response.errorMessage);
         }
       },
     );

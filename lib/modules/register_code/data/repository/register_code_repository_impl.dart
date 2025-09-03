@@ -64,7 +64,7 @@ class RegisterCodeRepositoryImpl extends RegisterCodeRepository {
   }
 
   @override
-  Future<BaseResponseCl<bool>> firstTimeRegister({
+  Future<bool> firstTimeRegister({
     required FirstTimeRegisterRequest request,
   }) async {
     final requestData = _firstTimeRegisterRequestDataMapper.mapToData(request);
@@ -109,6 +109,7 @@ class RegisterCodeRepositoryImpl extends RegisterCodeRepository {
         receiveTimeout: _signDocumentTimeOut,
       ),
     );
-    return BaseResponseCl<bool>.fromJson(response);
+    final data = BaseResponseCl<bool>.fromJson(response);
+    return data.result ?? false;
   }
 }
