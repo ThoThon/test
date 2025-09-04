@@ -68,7 +68,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
 
   // Hình thức nhận
   Widget _buildReceiveMethodDropDown() {
-    return FormFieldRegistrant<ReceiveFormModel>(
+    return FormFieldRegistrant<ReceiveForm>(
       registrarId: '7ab4d569-2ae6-4e79-ab4a-9cb7287595b2',
       validator: (value) {
         if (value == null) {
@@ -78,7 +78,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<ReceiveFormModel>(
+          () => CardDropdownWithLabel<ReceiveForm>(
             fieldKey: formFieldKey,
             validator: validator,
             autovalidateMode: controller.autoValidateMode.value,
@@ -177,7 +177,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
     return Obx(
       () {
         if (controller.isATMpayment) {
-          return FormFieldRegistrant<BankModel>(
+          return FormFieldRegistrant<Bank>(
             registrarId: '1838b9f6-8e6c-40ff-8aa1-1884312fb5b3',
             validator: (value) {
               if (controller.selectedBank.value == null) {
@@ -188,7 +188,7 @@ extension BenefitAccountInfoGroupExt630c on DeclareInfo630cPage {
             builder: (fieldKey, validator) {
               return Obx(
                 () {
-                  return UtilWidget.buildCardBottomSheetSelect2<BankModel>(
+                  return UtilWidget.buildCardBottomSheetSelect2<Bank>(
                     fieldKey: fieldKey,
                     validator: validator,
                     autovalidateMode: controller.autoValidateMode.value,

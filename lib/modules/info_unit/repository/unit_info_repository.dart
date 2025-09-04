@@ -2,7 +2,7 @@ import 'package:v_bhxh/base_app/base_app.src.dart';
 import 'package:v_bhxh/modules/info_unit/models/update_account_info_request.dart';
 import 'package:v_bhxh/modules/src.dart';
 
-import '../../login/model/account_info_model.dart';
+import '../../../clean/shared/entity/account_info.dart';
 
 class UnitInfoRepository extends BaseRepository {
   UnitInfoRepository(super.controller);
@@ -17,18 +17,18 @@ class UnitInfoRepository extends BaseRepository {
     return BaseResponse.fromJson(response);
   }
 
-  Future<BaseResponse<AccountInfoModel>> getAccountInfo() async {
+  Future<BaseResponse<AccountInfo>> getAccountInfo() async {
     final response = await baseCallApi(
       AppApi.urlGetAccountInfo,
       EnumRequestMethod.get,
     );
-    return BaseResponse<AccountInfoModel>.fromJson(
+    return BaseResponse<AccountInfo>.fromJson(
       response,
-      fromJson: (json) => AccountInfoModel.fromJson(json),
+      fromJson: (json) => AccountInfo.fromJson(json),
     );
   }
 
-   Future<BaseResponse<int>> getToTalNotiUnread() async {
+  Future<BaseResponse<int>> getToTalNotiUnread() async {
     final response = await baseCallApi(
       AppApi.urlGetNotificationUnread,
       EnumRequestMethod.get,

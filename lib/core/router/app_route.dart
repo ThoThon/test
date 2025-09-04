@@ -1,72 +1,67 @@
-enum AppRoutes {
-  // pageBuilder,
-  login,
-  forgotLogin,
-  procedureList,
-  declarationPeriod,
-  staffList,
-  declareInfo,
-  familyMemberDetail,
-  declarationFormDetail,
-  declarationList,
-  viewPdf,
+// enum AppRoutes {
+//   // pageBuilder,
+//   login,
+//   forgotLogin,
+//   procedureList,
+//   declarationPeriod,
+//   staffList,
+//   declareInfo,
+//   familyMemberDetail,
+//   declarationFormDetail,
+//   declarationList,
+//   viewPdf,
 
-  routeDioLog,
-  splash,
+//   routeDioLog,
 
-  ///Trang chủ
-  home,
-  moduleIcare,
+//   ///Trang chủ
+//   home,
+//   moduleIcare,
 
-  ///Thông tin đơn vị
-  infoUnit,
+//   ///Thông tin đơn vị
+//   infoUnit,
 
-  ///Lịch sử
-  history,
+//   ///Lịch sử
+//   history,
 
-  ///Tra cứu C12
-  lookupC12,
+//   ///Tra cứu C12
+//   lookupC12,
 
-  ///Chi tiết lịch sử hồ sơ kê khai
-  historyDetailDeclare,
+//   ///Chi tiết lịch sử hồ sơ kê khai
+//   historyDetailDeclare,
 
-  ///Chi tiết lịch sử đăng ký giao dịch
-  historyDetailRegister,
+//   ///Chi tiết lịch sử đăng ký giao dịch
+//   historyDetailRegister,
 
-  //Chọn nhân viên
-  selectStaff,
+//   //Chọn nhân viên
+//   selectStaff,
 
-  //Thông tin cá nhân
-  profile,
+//   //Thông tin cá nhân
+//   profile,
 
-  //Thông báo
-  notification,
+//   //Thông báo
+//   notification,
 
-  //Đăng ký dịch vụ
-  registerService,
+//   //Đăng ký dịch vụ
+//   registerService,
 
-  //Đăng ký cấp mã
-  registerCode,
+//   //Đăng ký cấp mã
+//   registerCode,
 
-  // Thay đổi đường dẫn
-  changeBaseUrl,
+//   // Thay đổi đường dẫn
+//   changeBaseUrl,
 
-  // Thủ tục 607
-  declareInfo607,
+//   declareInfo607,
 
-  // Thủ tục 630a
-  declareInfo630a,
+//   // Thủ tục 630a
+//   declareInfo630a,
 
-  // Thông tin khác
-  otherInfo,
+//   // Thông tin khác
+//   otherInfo,
 
-  // Thủ tục 630b
-  declareInfo630b,
+//   // Thủ tục 630b
+//   declareInfo630b;
 
-  // Thủ tục 630c
-  declareInfo630c;
-
-  String get path {
-    return '/vbhxh_$name';
-  }
-}
+//   String get path {
+//     return '/$name';
+//   }
+// }

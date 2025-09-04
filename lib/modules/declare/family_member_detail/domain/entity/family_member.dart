@@ -1,0 +1,124 @@
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/member_detail_response.dart';
+import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
+
+import 'birth_type_enum.dart';
+
+class FamilyMember implements Entity {
+  /// ID thành viên gia đình - Gen với uuid
+  final String? id;
+
+  /// Họ và tên *
+  final String fullName;
+
+  /// Mã số bảo hiểm xã hội
+  final String bhxhNumber;
+
+  /// Số CMND/CCCD/HC
+  final String cccdNumber;
+
+  // Ghi chú
+  final String note;
+
+  /// Loại ngày sinh *
+  final BirthTypeEnum birthType;
+
+  /// Ngày sinh *
+  final DateTime? dateOfBirth;
+
+  /// Giới tính *
+  final Gender gender;
+
+  /// Dân tộc *
+  final Ethnic? ethnic;
+
+  /// Quốc tịch *
+  final Nation? nation;
+
+  /// Tỉnh khai sinh *
+  final Province? province;
+
+  /// Huyện khai sinh *
+  final District? district;
+
+  /// Xã khai sinh *
+  final Ward? ward;
+
+  /// Mối quan hệ với chủ hộ *
+  final Relationship? relationship;
+
+  /// Là người tham gia
+  final bool isParticipant;
+
+  final String? giaDinhId;
+
+  final bool isUpdate;
+
+  const FamilyMember({
+    this.id,
+    required this.fullName,
+    required this.bhxhNumber,
+    required this.cccdNumber,
+    required this.note,
+    required this.birthType,
+    this.dateOfBirth,
+    required this.gender,
+    this.ethnic,
+    this.nation,
+    this.province,
+    this.district,
+    this.ward,
+    this.relationship,
+    required this.isParticipant,
+    this.giaDinhId,
+    // Mặc định isUpdate là false khi tạo mới
+    this.isUpdate = false,
+  });
+
+  factory FamilyMember.fromResponse(MemberDetailResponse member) {
+    return FamilyMember(
+      id: member.id,
+      fullName: member.hoTen ?? '',
+      bhxhNumber: member.maSoBhxh ?? '',
+      cccdNumber: member.cmnd ?? '',
+      note: member.ghiChu ?? '',
+      birthType: member.chiCoNamSinh,
+      dateOfBirth: member.ngaySinh,
+      gender: member.gioiTinh,
+      ethnic: member.danToc,
+      nation: member.quocTich,
+      province: member.khaiSinhTinh,
+      district: member.khaiSinhHuyen,
+      ward: member.khaiSinhXa,
+      relationship: member.moiQuanHe,
+      isParticipant: member.laNguoiThamGia,
+      // Đọc từ response => đã có dữ liệu, isUpdate sẽ là true để cập nhật ở BE
+      isUpdate: true,
+    );
+  }
+
+  factory FamilyMember.fromStaff(StaffFamilyResponse staff) {
+    return FamilyMember(
+      id: staff.id,
+      fullName: staff.hoTen ?? '',
+      bhxhNumber: staff.maSoBhxh ?? '',
+      cccdNumber: staff.cmnd ?? '',
+      birthType: staff.chiCoNamSinh,
+      dateOfBirth: staff.ngaySinh,
+      gender: staff.gioiTinh,
+      ethnic: staff.danTocs,
+      nation: staff.quocTichs,
+      province: staff.tinhKhaiSinh,
+      district: staff.huyenKhaiSinh,
+      ward: staff.xaKhaiSinh,
+      relationship: staff.moiQuanHe,
+      isParticipant: false,
+      // Mỗi thành viên của nhân viên có 1 id -> id này sẽ gán tương ứng vs giaDinhId cho từng thành viên đc thêm trong tk1
+      giaDinhId: staff.id,
+      note: '',
+      // Set là false thì đây là case chọn nhân viên, khi xóa sẽ chỉ xóa local chứ không xóa ở BE
+      isUpdate: false,
+    );
+  }
+}

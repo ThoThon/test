@@ -1,9 +1,13 @@
 import 'package:collection/collection.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
+import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../../base_app/model/app_data.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
-import '../../login/model/categories_630/categories_630_src.dart';
+import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
 import '../../select_staff/model/model_src.dart';
 import '../../src.dart';
 
@@ -33,13 +37,13 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
         );
         if (argument.isAddPeriodFromDeclarePeriod) {
           Get.offNamed(
-            AppRoutes.staffList.path,
+            AppRoutesCl.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure630b,
             ),
           )?.then((value) {
-            declarationPeriodController?.getDeclarationPeriods();
+            eventBus.fire(const RefreshDeclarationPeriodEvent());
           });
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
@@ -151,7 +155,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   bool get isRequiredPregnancyCondition =>
       benefitGroupLv2.value?.maNhomHuongC2 == 'T11';
 
-  void onChangeBenefitGroup(BenefitGroup630Model? method) {
+  void onChangeBenefitGroup(BenefitGroup630? method) {
     if (method == null) {
       return;
     }
@@ -215,7 +219,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   void goToSelectStaffPage() async {
     KeyBoard.hide();
     final result = await Get.toNamed(
-      AppRoutes.selectStaff.path,
+      AppRoutesCl.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: selectedStaffId,
     );
@@ -254,7 +258,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeReceiveMethod(ReceiveFormModel? method) {
+  void onChangeReceiveMethod(ReceiveForm? method) {
     if (method == null) {
       return;
     }
@@ -284,7 +288,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     receiveForm.value = method;
   }
 
-  void onChangeDeclareMethod(DeclareForm630Model? method) {
+  void onChangeDeclareMethod(DeclareForm630? method) {
     if (method == null) {
       return;
     }

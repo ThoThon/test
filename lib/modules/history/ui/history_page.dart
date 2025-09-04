@@ -1,3 +1,5 @@
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+
 import '../../src.dart';
 
 part 'history_declare_tab.dart';

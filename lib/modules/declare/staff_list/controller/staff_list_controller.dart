@@ -1,5 +1,7 @@
 import 'package:path/path.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/repository/staff_list_607_repository.dart';
 import 'package:v_bhxh/modules/declare/staff_list/repository/staff_list_repository.dart';
@@ -169,7 +171,7 @@ class StaffListController extends BaseGetxController {
         showSnackBar(LocaleKeys.declarationPeriod_declaredStaffsIsEmpty.tr);
         return;
       }
-      Get.toNamed(AppRoutes.otherInfo.path, arguments: argument);
+      Get.toNamed(AppRoutesCl.otherInfo.path, arguments: argument);
     } else {
       saveXml();
     }
@@ -200,7 +202,7 @@ class StaffListController extends BaseGetxController {
 
       if (response.isSuccess && response.result != null) {
         Get.toNamed(
-          AppRoutes.declarationList.path,
+          AppRoutesCl.declarationList.path,
           arguments: DeclarationListArgument(
             declarationPeriodId: declarationPeriodId,
             saveXmlResult: response.result!,
@@ -270,16 +272,16 @@ class StaffListController extends BaseGetxController {
 
   Future<void> createStaff() async {
     final path = switch (procedureType) {
-      ProcedureType.procedure600 => AppRoutes.declareInfo.path,
+      ProcedureType.procedure600 => AppRoutesCl.declareInfo.path,
       ProcedureType.procedure607 ||
       ProcedureType.procedure608 ||
       ProcedureType.procedure610 ||
       ProcedureType.procedure612 ||
       ProcedureType.procedure613 =>
-        AppRoutes.declareInfo607.path,
-      ProcedureType.procedure630a => AppRoutes.declareInfo630a.path,
-      ProcedureType.procedure630b => AppRoutes.declareInfo630b.path,
-      ProcedureType.procedure630c => AppRoutes.declareInfo630c.path,
+        AppRoutesCl.declareInfo607.path,
+      ProcedureType.procedure630a => AppRoutesCl.declareInfo630a.path,
+      ProcedureType.procedure630b => AppRoutesCl.declareInfo630b.path,
+      ProcedureType.procedure630c => AppRoutesCl.declareInfo630c.path,
     };
 
     final result = await Get.toNamed(
@@ -298,16 +300,16 @@ class StaffListController extends BaseGetxController {
 
   Future<void> updateStaff(DeclaredStaffModel staff) async {
     final path = switch (procedureType) {
-      ProcedureType.procedure600 => AppRoutes.declareInfo.path,
+      ProcedureType.procedure600 => AppRoutesCl.declareInfo.path,
       ProcedureType.procedure607 ||
       ProcedureType.procedure608 ||
       ProcedureType.procedure610 ||
       ProcedureType.procedure612 ||
       ProcedureType.procedure613 =>
-        AppRoutes.declareInfo607.path,
-      ProcedureType.procedure630a => AppRoutes.declareInfo630a.path,
-      ProcedureType.procedure630b => AppRoutes.declareInfo630b.path,
-      ProcedureType.procedure630c => AppRoutes.declareInfo630c.path,
+        AppRoutesCl.declareInfo607.path,
+      ProcedureType.procedure630a => AppRoutesCl.declareInfo630a.path,
+      ProcedureType.procedure630b => AppRoutesCl.declareInfo630b.path,
+      ProcedureType.procedure630c => AppRoutesCl.declareInfo630c.path,
     };
 
     final result = await Get.toNamed(

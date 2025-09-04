@@ -68,7 +68,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
 
   // Hình thức nhận
   Widget _buildReceiveMethodDropDown() {
-    return FormFieldRegistrant<ReceiveFormModel>(
+    return FormFieldRegistrant<ReceiveForm>(
       registrarId: '3ab86dc5-6f4b-4350-bdd4-28aa600ac4ad',
       validator: (value) {
         if (value == null) {
@@ -78,7 +78,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<ReceiveFormModel>(
+          () => CardDropdownWithLabel<ReceiveForm>(
             fieldKey: formFieldKey,
             validator: validator,
             autovalidateMode: controller.autoValidateMode.value,
@@ -177,7 +177,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
     return Obx(
       () {
         if (controller.isATMpayment) {
-          return FormFieldRegistrant<BankModel>(
+          return FormFieldRegistrant<Bank>(
             registrarId: '4fd76b7c-3f06-4448-9dc3-481d1569495d',
             validator: (value) {
               if (controller.selectedBank.value == null) {
@@ -188,7 +188,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
             builder: (fieldKey, validator) {
               return Obx(
                 () {
-                  return UtilWidget.buildCardBottomSheetSelect2<BankModel>(
+                  return UtilWidget.buildCardBottomSheetSelect2<Bank>(
                     fieldKey: fieldKey,
                     isRequired: controller.isATMpayment,
                     validator: validator,
@@ -197,7 +197,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                     hintText: LocaleKeys.declareInfo_bankHint.tr,
                     funcSelect: (didChange) async {
                       Get.bottomSheet(
-                        BottomSheetSearch<BankModel>(
+                        BottomSheetSearch<Bank>(
                           title: LocaleKeys.declareInfo_bankHint.tr,
                           maxLength: 20,
                           hintText: LocaleKeys.declareInfo_inputBankName.tr,

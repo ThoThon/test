@@ -1,6 +1,8 @@
-import 'package:bot_toast/bot_toast.dart';
+import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
+import 'package:v_bhxh/clean/core/presentation/navigation/snack_bar_type.dart';
+import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/modules/src.dart';
-import 'package:v_bhxh/shares/base_url_helper/base_url_helper.dart';
+import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 
 class ChangeBaseUrlPage extends StatefulWidget {
   const ChangeBaseUrlPage({super.key});
@@ -10,31 +12,38 @@ class ChangeBaseUrlPage extends StatefulWidget {
 }
 
 class _ChangeBaseUrlPageState extends State<ChangeBaseUrlPage> {
-  final urlTextCtrl = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      urlTextCtrl.text = BaseUrlHelper.instance.currentUrl;
-    });
-  }
+  final _nav = Get.find<AppNavigator>();
+  final _envConfig = Get.find<EnvConfig>();
+  final _baseUrlHelper = Get.find<BaseUrlHelperCl>();
+  late final _urlTextCtrl = TextEditingController(text: _baseUrlHelper.baseUrl);
 
   @override
   void dispose() {
     super.dispose();
-    urlTextCtrl.dispose();
+    _urlTextCtrl.dispose();
   }
 
   Future<void> _changeBaseUrl() async {
-    final newUrl = urlTextCtrl.text.trim();
+    final newUrl = _urlTextCtrl.text.trim();
     if (newUrl.isEmpty || !GetUtils.isURL(newUrl)) {
-      BotToast.showText(text: 'Đường dẫn không hợp lệ');
+      _nav.showSnackBar('Đường dẫn không hợp lệ');
       return;
     }
-    await BaseUrlHelper.instance.setBaseUrl(newUrl);
-    BotToast.showText(text: 'Đường dẫn đã được thay đổi thành công');
-    Get.back();
+    await _baseUrlHelper.changeBaseUrl(newUrl);
+    _showChangeBaseUrlSuccessMessage();
+  }
+
+  Future<void> _resetBaseUrl() async {
+    _urlTextCtrl.text = _envConfig.baseUrl;
+    await _baseUrlHelper.resetBaseUrl();
+    _showChangeBaseUrlSuccessMessage();
+  }
+
+  void _showChangeBaseUrlSuccessMessage() {
+    _nav.showSnackBar(
+      'Đường dẫn đã được thay đổi thành công',
+      type: SnackBarType.success,
+    );
   }
 
   @override
@@ -45,14 +54,42 @@ class _ChangeBaseUrlPageState extends State<ChangeBaseUrlPage> {
       ),
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _buildLogo(),
             const SizedBox(height: 20),
             BuildInputTextWithLabel(
               label: 'Nhập đường dẫn',
               buildInputText: BuildInputText(
-                InputTextModel(controller: urlTextCtrl),
+                InputTextModel(controller: _urlTextCtrl),
               ),
+            ),
+            const SizedBox(height: 4),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Đường dẫn mặc định:',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextButton(
+                  onPressed: _resetBaseUrl,
+                  child: const Text(
+                    'Đặt lại',
+                    style: TextStyle(
+                      color: AppColors.primaryColor,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Text(
+              _envConfig.baseUrl,
+              maxLines: 3,
             ),
             const SizedBox(height: 20),
             UtilWidget.buildSolidButton(

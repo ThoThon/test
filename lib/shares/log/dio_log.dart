@@ -2,8 +2,7 @@ import 'package:dio_log_sds/dio_log_sds.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
-import '../../core/core.src.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 
 const String kTriggerShowDioLog = "SHOW_LOG_VBHXH";
 
@@ -28,7 +27,7 @@ class Diolog {
 
     showDebugBtn(Get.context!);
 
-    Get.toNamed(AppRoutes.routeDioLog.path);
+    Get.toNamed(AppRoutesCl.routeDioLog.path);
   }
 
   Future<bool> _triggerCheckShowDiolog() async {

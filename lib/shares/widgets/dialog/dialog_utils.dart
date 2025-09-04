@@ -35,6 +35,8 @@ class ShowDialog {
     _numberOfDialogs++;
   }
 
+  @Deprecated("Use nav.showNotificationDialog instead")
+
   /// Hiển thị dialog thông báo với nội dung cần hiển thị
   ///
   /// `funtion` hành động khi bấm đóng
@@ -147,6 +149,7 @@ class ShowDialog {
     return iconData;
   }
 
+  @Deprecated("Use nav.showErrorDialog instead")
   static void showErrorMessage(String error) {
     // Không check bằng _numberOfDialogs để ngăn ngừa việc mở nhiều dialog cùng lúc
     // vì có bug là nếu 1 dialog đang mở mà bị chuyển màn hình (user không chủ động bấm đóng dialog),
@@ -158,6 +161,7 @@ class ShowDialog {
     showDialogNotificationError(error, isActiveBack: false);
   }
 
+  @Deprecated("Use nav.showInfoDialog instead")
   static Future<void> showDialogConfirm2({
     required String title,
     String? content,
@@ -291,6 +295,7 @@ class ShowDialog {
     }
   }
 
+  @Deprecated("Use nav.showTimerDialog instead")
   static Future<void> showDialogTimerCount({
     required String title,
     required String content,
@@ -362,6 +367,7 @@ class ShowDialog {
     );
   }
 
+  @Deprecated("Use nav.showInfoDialog instead")
   static Future<void> showDialogConfirmNew({
     required String title,
     String? content,

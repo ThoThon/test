@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/declare/declaration_period/model/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 
 enum D02ActionEnum {
   // Thêm mới nhân viên từ màn "Danh sách nhân viên"

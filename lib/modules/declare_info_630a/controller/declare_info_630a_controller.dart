@@ -2,8 +2,12 @@ import 'package:collection/collection.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';
@@ -30,10 +34,10 @@ class DeclareInfo630aController extends BaseGetxController {
   final staffCodeTextCtrl = TextEditingController();
 
   /// Hình thức kê khai *
-  final declareForm = Rxn<DeclareForm630Model>();
+  final declareForm = Rxn<DeclareForm630>();
 
   /// Mã nhóm hưởng *
-  final benefitGroup = Rxn<BenefitGroup630Model>();
+  final benefitGroup = Rxn<BenefitGroup630>();
 
   /// Ngày sinh con *
   final birthDayChildCtrl = TextEditingController();
@@ -60,10 +64,10 @@ class DeclareInfo630aController extends BaseGetxController {
   final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
 
   /// Tuyến bệnh viện
-  final selectHospitalLine = Rxn<HospitalLineModel>();
+  final selectHospitalLine = Rxn<HospitalLine>();
 
   /// Chọn/Nhập mã bệnh
-  final selectDiseaseCode = Rxn<LongDieaseModel>();
+  final selectDiseaseCode = Rxn<LongDiease>();
 
   /// Tên bệnh
   final diseaseNameTextCtrl = TextEditingController();
@@ -72,7 +76,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final serialNumberCtrl = TextEditingController();
 
   /// Điều kiện làm việc
-  final workCondition = Rxn<WorkConditionModel>();
+  final workCondition = Rxn<WorkCondition>();
 
   /// Nghỉ dưỡng thai
   final isMaternityRest = false.obs;
@@ -87,7 +91,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final noteTextCtrl = TextEditingController();
 
   /// Hình thức nhận *
-  final receiveForm = Rxn<ReceiveFormModel>();
+  final receiveForm = Rxn<ReceiveForm>();
 
   /// Số tài khoản ngân hàng
   final bankNumberCtrl = TextEditingController();
@@ -96,7 +100,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final accountHolderNameCtrl = TextEditingController();
 
   /// Ngân hàng
-  final selectedBank = Rxn<BankModel>();
+  final selectedBank = Rxn<Bank>();
 
   /// Đợt đã giải quyết
   final resolvedPeriodCtrl = TextEditingController();
@@ -117,8 +121,8 @@ class DeclareInfo630aController extends BaseGetxController {
 
   final DeclareInfoArgument argument = Get.arguments;
 
-  final declarationPeriodController =
-      Get.findOrNull<DeclarationPeriodController>();
+  // final declarationPeriodController =
+  //     Get.findOrNull<DeclarationPeriodController>();
 
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
@@ -133,7 +137,7 @@ class DeclareInfo630aController extends BaseGetxController {
   void goToSelectStaffPage() async {
     KeyBoard.hide();
     final result = await Get.toNamed(
-      AppRoutes.selectStaff.path,
+      AppRoutesCl.selectStaff.path,
       arguments: selectedStaffId,
     );
     if (result is SelectStaffResponse) {
@@ -184,14 +188,16 @@ class DeclareInfo630aController extends BaseGetxController {
           typeAction: AppConst.actionSuccess,
         );
         if (argument.isAddPeriodFromDeclarePeriod) {
+          // Đóng màn kê khai này và mở màn danh sách nhân viên
+          // .then để bắt sự kiện đóng màn danh sách nhân viên này để refresh màn đợt kê khai
           Get.offNamed(
-            AppRoutes.staffList.path,
+            AppRoutesCl.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure630a,
             ),
           )?.then((value) {
-            declarationPeriodController?.getDeclarationPeriods();
+            eventBus.fire(const RefreshDeclarationPeriodEvent());
           });
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
@@ -447,7 +453,7 @@ class DeclareInfo630aController extends BaseGetxController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeReceiveMethod(ReceiveFormModel? method) {
+  void onChangeReceiveMethod(ReceiveForm? method) {
     if (method == null) {
       return;
     }
@@ -477,7 +483,7 @@ class DeclareInfo630aController extends BaseGetxController {
     receiveForm.value = method;
   }
 
-  void onChangeDeclareMethod(DeclareForm630Model? method) {
+  void onChangeDeclareMethod(DeclareForm630? method) {
     if (method == null) {
       return;
     }
@@ -503,7 +509,7 @@ class DeclareInfo630aController extends BaseGetxController {
     }
   }
 
-  void onChangeBenefitGroup(BenefitGroup630Model? group) {
+  void onChangeBenefitGroup(BenefitGroup630? group) {
     if (group == null) {
       return;
     }

@@ -78,7 +78,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
 
   // Hình thức kê khai
   Widget _buildDeclareMethodDropdown() {
-    return FormFieldRegistrant<DeclareForm630Model>(
+    return FormFieldRegistrant<DeclareForm630>(
       registrarId: '96d3d63a-b8a7-4413-91f6-fbabfacffeb0',
       validator: (value) {
         if (value == null) {
@@ -88,7 +88,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<DeclareForm630Model>(
+          () => CardDropdownWithLabel<DeclareForm630>(
             fieldKey: formFieldKey,
             validator: validator,
             labelText: LocaleKeys.declareInfo_declareMethod.tr,
@@ -106,7 +106,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
 
   // Mã nhóm hưởng
   Widget _buildBenefitGroupCodeDropdown() {
-    return FormFieldRegistrant<BenefitGroup630Model>(
+    return FormFieldRegistrant<BenefitGroup630>(
       registrarId: '288f21dd-7191-4dd5-8d7d-bb0ff607d2aa',
       validator: (value) {
         if (value == null) {
@@ -116,7 +116,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<BenefitGroup630Model>(
+          () => CardDropdownWithLabel<BenefitGroup630>(
             validator: validator,
             fieldKey: formFieldKey,
             labelText: LocaleKeys.declareInfo_benefitGroupCode.tr,

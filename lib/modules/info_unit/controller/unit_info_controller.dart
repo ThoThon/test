@@ -1,5 +1,5 @@
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/info_unit/models/update_account_info_request.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 
 import '../../../base_app/base_app.src.dart';
 import '../../../modules/src.dart';
@@ -62,9 +62,7 @@ abstract class UnitInfoController extends BaseGetxController {
   // Đăng ký nhận kết quả
   Rx<ReceiveResultEnum?> selectedReceive = Rx<ReceiveResultEnum?>(null);
 
-  final appController = Get.find<AppController>();
-
-  AccountInfoModel? accountInfo;
+  AccountInfo? accountInfo;
 
   final isEditAll = false.obs;
 
