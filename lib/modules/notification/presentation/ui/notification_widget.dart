@@ -27,7 +27,11 @@ extension NotificationWidget on NotificationPage {
         ),
         if (controller.isShowCheckbox.value)
           Padding(
-            padding: const EdgeInsets.all(AppDimens.defaultPadding),
+            padding: const EdgeInsets.only(
+              left: AppDimens.defaultPadding,
+              right: AppDimens.defaultPadding,
+              top: AppDimens.defaultPadding,
+            ),
             child: UtilWidget.buildSolidButton(
               backgroundColor: enableButtonDelete
                   ? AppColors.primaryColor
@@ -45,6 +49,7 @@ extension NotificationWidget on NotificationPage {
               },
             ),
           ),
+        sdsSBHeight20,
       ],
     );
   }
@@ -106,7 +111,7 @@ extension NotificationWidget on NotificationPage {
     );
   }
 
-  Widget _buildIconNotification(NotificationItemModel item) {
+  Widget _buildIconNotification(NotificationItem item) {
     return SDSImageSvg(
       item.entityType == EnityType.declaraForm
           ? Assets.ASSETS_ICONS_IC_NOTIFICATION_DECLARE_SVG
@@ -116,7 +121,7 @@ extension NotificationWidget on NotificationPage {
   }
 
   void _buildBtsActionNoti() {
-    Get.bottomSheet(
+    nav.bottomSheet(
       UtilWidget.buildBottomSheetFigma(
         child: Column(
           children: [
@@ -124,7 +129,7 @@ extension NotificationWidget on NotificationPage {
               onTap: () {
                 controller.isShowCheckbox.toggle();
                 controller.selectedID.clear();
-                Get.back();
+                nav.back();
               },
               child: Row(
                 children: [

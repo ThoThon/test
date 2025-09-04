@@ -278,31 +278,17 @@ class RegisterCodeController extends BaseGetClController {
   }
 
   Future<void> registerCodeFirst() async {
-    _showDialogVerifyFailed(
-      errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
-    );
-    final invalidTab = _invalidTab;
-    if (invalidTab == null) {
-      // Nếu tất cả các tab đều hợp lệ thì chuyển đến tab cuối cùng (tab thông tin đăng ký)
-      currentTab.value = RegisterCodeTabEnum.register_info;
-    } else {
-      // Nếu có tab không hợp lệ thì chuyển đến tab đó
-      currentTab.value = invalidTab;
-      return;
-    }
-    // goToRegisterTab();
-    // try {
-    if (certificate.value == null) {
-      nav.showSnackBar(
-        LocaleKeys.registerService_certificateInfoNotFound.tr,
-        type: SnackBarType.failure,
-      );
-      return;
-    }
-
-    goToRegisterTab();
     return buildState(
       action: () async {
+        final invalidTab = _invalidTab;
+        if (invalidTab == null) {
+          // Nếu tất cả các tab đều hợp lệ thì chuyển đến tab cuối cùng (tab thông tin đăng ký)
+          currentTab.value = RegisterCodeTabEnum.register_info;
+        } else {
+          // Nếu có tab không hợp lệ thì chuyển đến tab đó
+          currentTab.value = invalidTab;
+          return;
+        }
         if (certificate.value == null) {
           nav.showSnackBar(
             LocaleKeys.registerService_certificateInfoNotFound.tr,

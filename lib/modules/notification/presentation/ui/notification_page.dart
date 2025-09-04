@@ -1,19 +1,15 @@
-import 'package:v_bhxh/modules/notification/controller/notification_controller.dart';
-
-import '../../../modules/src.dart';
-import '../model/model_src.dart';
+import '../../../../../clean/core/presentation/widgets/widget_src.dart';
+import '../../../src.dart';
+import '../../notification_src.dart';
+import '../enity_type.dart';
 
 part 'notification_widget.dart';
 
-class NotificationPage extends BaseGetWidget {
+class NotificationPage extends BaseGetPage<NotificationController> {
   NotificationPage({super.key});
-  @override
-  NotificationController get controller => _controller;
-
-  late final _controller = Get.put(NotificationController());
 
   @override
-  Widget buildWidgets(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     return Container(
       color: AppColors.primaryColor,
       child: Scaffold(
@@ -62,7 +58,7 @@ class NotificationPage extends BaseGetWidget {
             () => Padding(
               padding: const EdgeInsets.symmetric(
                   vertical: AppDimens.defaultPadding),
-              child: SafeArea(child: _buildBody()),
+              child: _buildBody(),
             ),
           ),
         ),

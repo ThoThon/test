@@ -18,6 +18,9 @@ import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
 import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 
+import '../../../shared/mapper/notification_item_data_mapper.dart';
+import '../../../shared/mapper/notification_list_data_mapper.dart';
+import '../../../shared/mapper/notification_list_request_data_mapper.dart';
 import '../../../shared/mapper/social_agency_data_mapper.dart';
 import 'base_bindings.dart';
 
@@ -53,6 +56,9 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => WardDataMapper(), fenix: true);
     Get.lazyPut(() => ForgotPasswordRequestDataMapper(), fenix: true);
     Get.lazyPut(() => LookupC12DataMapper(), fenix: true);
+    Get.lazyPut(() => NotificationItemDataMapper(), fenix: true);
+    Get.lazyPut(() => NotificationListDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => NotificationListRequestDataMapper(), fenix: true);
     Get.lazyPut(() => CategoriesDataMapper(), fenix: true);
     Get.lazyPut(() => SocialAgencyDataMapper(), fenix: true);
     Get.lazyPut(() => CertificateDataMapper(), fenix: true);

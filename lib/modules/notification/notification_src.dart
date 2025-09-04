@@ -1,4 +1,3 @@
-export 'controller/controller_src.dart';
-export 'model/model_src.dart';
-export 'repository/repository_src.dart';
-export 'ui/ui_src.dart';
+export 'data/data_src.dart';
+export 'domain/domain_src.dart';
+export 'presentation/presentation_src.dart';

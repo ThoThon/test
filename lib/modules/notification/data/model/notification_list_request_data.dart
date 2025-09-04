@@ -1,8 +1,8 @@
-class NotificationRequest {
+class NotificationListRequestData {
   final int pageIndex;
   final int pageSize;
 
-  NotificationRequest({
+  NotificationListRequestData({
     required this.pageIndex,
     required this.pageSize,
   });
