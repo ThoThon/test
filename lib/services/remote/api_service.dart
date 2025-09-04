@@ -2,12 +2,10 @@ import 'package:dio/dio.dart';
 
 import '../../features/login/models/login_response.dart';
 import '../../features/login/models/login_storage.dart';
-import '../../features/mainpage/product_model.dart';
 import 'base_response.dart';
 import 'dio_client.dart';
 
 class ApiService {
-  /// Đăng nhập
   static Future<BaseResponse<LoginResponse>> login({
     required String taxCode,
     required String username,
@@ -28,18 +26,14 @@ class ApiService {
     );
   }
 
-  /// Lấy danh sách sản phẩm (đã tự gắn token từ interceptor)
-  static Future<BaseResponse<List<Product>>> getProducts({
-    required int page,
-    required int size,
+  static Future<BaseResponse<T>> callApiWithToken<T>({
+    required String endpoint,
+    T Function(dynamic json)? func,
   }) async {
-    final token = LoginStorage.getToken(); // lấy token đã lưu sau login
+    String? token = LoginStorage.getToken();
+
     final response = await DioClient.dio.get(
-      '/products',
-      queryParameters: {
-        'page': page,
-        'size': size,
-      },
+      endpoint,
       options: Options(
         headers: {
           'Authorization': 'Bearer $token',
@@ -47,14 +41,9 @@ class ApiService {
       ),
     );
 
-    return BaseResponse<List<Product>>.fromJson(
+    return BaseResponse<T>.fromJson(
       response.data,
-      func: (json) {
-        if (json is List) {
-          return json.map((e) => Product.fromJson(e)).toList();
-        }
-        return [];
-      },
+      func: func,
     );
   }
 }

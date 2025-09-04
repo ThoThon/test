@@ -11,12 +11,14 @@ class BaseResponse<T> {
 
   factory BaseResponse.fromJson(
     Map<String, dynamic> json, {
-    T Function(dynamic json)? func,
+    T Function(dynamic x)? func,
   }) {
-    return BaseResponse(
+    return BaseResponse<T>(
       success: json['success'] ?? false,
       message: json['message'] ?? '',
-      data: func != null ? func(json['data']) : json['data'],
+      data: json['data'] != null
+          ? (func != null ? func(json['data']) : json['data'])
+          : null,
     );
   }
 }

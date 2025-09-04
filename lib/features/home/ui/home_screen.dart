@@ -11,7 +11,7 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final screens = [
-      const MainPageScreen(),
+      const MainpageScreen(),
       const ProfileScreen(),
     ];
     return Obx(
