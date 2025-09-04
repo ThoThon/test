@@ -182,8 +182,7 @@ extension NotificationWidget on NotificationPage {
                           ),
                         ),
                         SDSBuildText(
-                          convertDateToStringSafe(item.createDate, PATTERN_6) ??
-                              '',
+                          convertDateStringToString(item.createDate, PATTERN_6),
                           style: AppTextStyle.font12Re
                               .copyWith(color: AppColors.dsGray1),
                         ),

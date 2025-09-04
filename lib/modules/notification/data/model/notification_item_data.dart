@@ -4,7 +4,7 @@ class NotificationItemData {
   final String? entityType;
   final String? notificationObjectId;
   final String? message;
-  final DateTime? createDate;
+  final String? createDate;
   final int? status;
   final String? name;
   final String? timeAgo;
@@ -36,7 +36,7 @@ class NotificationItemData {
       entityType: json['entityType'],
       notificationObjectId: json['notificationObjectId'],
       message: json['message'],
-      createDate: DateTime.tryParse(json['createDate'] ?? ''),
+      createDate: json['createDate'],
       status: json['status'],
       name: json['name'],
       timeAgo: json['timeAgo'],

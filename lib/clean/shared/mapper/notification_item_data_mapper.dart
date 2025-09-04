@@ -13,7 +13,7 @@ class NotificationItemDataMapper
       entityType: data?.entityType ?? '',
       notificationObjectId: data?.notificationObjectId ?? '',
       message: data?.message ?? '',
-      createDate: data?.createDate ?? DateTime.now(),
+      createDate: data?.createDate ?? '',
       status: data?.status ?? 0,
       name: data?.name ?? '',
       timeAgo: data?.timeAgo ?? '',

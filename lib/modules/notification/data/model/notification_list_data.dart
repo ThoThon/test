@@ -13,11 +13,9 @@ class NotificationListData {
 
   factory NotificationListData.fromJson(Map<String, dynamic> json) {
     return NotificationListData(
-      data: json['data'] != null
-          ? (json['data'] as List<dynamic>)
-              .map((e) => NotificationItemData.fromJson(e))
-              .toList()
-          : [],
+      data: (json['data'] as List<dynamic>)
+          .map((e) => NotificationItemData.fromJson(e))
+          .toList(),
       total: json['total'],
       totalUnread: json['totalUnread'],
     );

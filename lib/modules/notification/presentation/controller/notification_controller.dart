@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:v_bhxh/base_app/base_app.src.dart';
-import 'package:v_bhxh/generated/locales.g.dart';
-import 'package:v_bhxh/shares/date/date_utils.dart';
 
 import '../../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
 import '../../../../../core/values/const.dart';
@@ -35,9 +33,6 @@ class NotificationController extends BaseGetClController {
   }
 
   Future<void> fetchListNotification({bool isLoadMore = false}) async {
-    if (!isLoadMore) {
-      isLoading.value = false;
-    }
     final request = _buildRequest(isLoadMore: isLoadMore);
     return buildState(
       showLoading: !isLoadMore,
@@ -69,23 +64,6 @@ class NotificationController extends BaseGetClController {
     listNotification.clear();
     await fetchListNotification();
     refreshController.refreshCompleted();
-  }
-
-  String timeAgo(DateTime createDate) {
-    final now = DateTime.now();
-    final difference = now.difference(createDate);
-
-    if (difference.inSeconds < 60) {
-      return '${difference.inSeconds} ${LocaleKeys.notification_secondBefore.tr}';
-    } else if (difference.inMinutes < 60) {
-      return '${difference.inMinutes} ${LocaleKeys.notification_minuteBefore.tr}';
-    } else if (difference.inHours < 24) {
-      return '${difference.inHours} ${LocaleKeys.notification_hourBefore.tr}';
-    } else if (difference.inDays < 7) {
-      return '${difference.inDays} ${LocaleKeys.notification_dayBefore.tr}';
-    } else {
-      return convertDateToString(createDate, PATTERN_1);
-    }
   }
 
   Future<void> deleteListNotification() async {
