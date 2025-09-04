@@ -1,16 +1,22 @@
+// lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:test_getx/services/local/hive_storage.dart';
 
 import 'features/login/models/login_storage.dart';
 import 'routes/app_pages.dart';
 import 'routes/app_routes.dart';
+import 'services/local/hive_storage.dart';
+import 'services/remote/dio_client.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Initialize Hive
   await HiveStorage.init();
+
+  // Initialize Dio với Interceptor
+  DioClient.init();
 
   final bool hasLogin = LoginStorage.isLoggedIn;
 
