@@ -9,6 +9,6 @@ abstract class NotificationRepository extends BaseRepositoryCl {
 
   // Xóa list thông báo
   Future<bool> deleteListNotification({
-    required List<String> id,
+    required List<String> ids,
   });
 }

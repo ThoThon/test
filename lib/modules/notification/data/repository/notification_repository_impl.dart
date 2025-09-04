@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:v_bhxh/clean/core/data/data_source/network/rest_api_client.dart';
 import 'package:v_bhxh/clean/shared/mapper/notification_list_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/notification_list_request_data_mapper.dart';
@@ -5,7 +7,6 @@ import 'package:v_bhxh/clean/shared/mapper/notification_list_request_data_mapper
 import '../../../../../clean/core/data/data_source/network/auth_app_server_api_client.dart';
 import '../../../../../clean/core/data/model/base_response_cl.dart';
 import '../../../../../core/values/app_api.dart';
-import '../../../../shares/package/export_package.dart';
 import '../../notification_src.dart';
 
 class NotificationRepositoryImpl extends NotificationRepository {
@@ -38,13 +39,12 @@ class NotificationRepositoryImpl extends NotificationRepository {
   }
 
   @override
-  Future<bool> deleteListNotification({required List<String> id}) async {
+  Future<bool> deleteListNotification({required List<String> ids}) async {
     final response = await _authAppServerApiClient.request(
       method: RestMethod.delete,
       path: AppApi.urlDeleteListNotification,
       cancelToken: cancelToken,
-      body: id,
-      options: Options(contentType: Headers.jsonContentType),
+      body: jsonEncode(ids),
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;

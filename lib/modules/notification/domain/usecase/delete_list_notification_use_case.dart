@@ -10,6 +10,6 @@ class DeleteListNotificationUseCase extends UseCase<List<String>, bool> {
 
   @override
   Future<bool> execute(List<String> input) {
-    return _notificationRepository.deleteListNotification(id: input);
+    return _notificationRepository.deleteListNotification(ids: input);
   }
 }
