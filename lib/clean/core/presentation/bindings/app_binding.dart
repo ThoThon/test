@@ -18,6 +18,9 @@ import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
 import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 
+import '../../../shared/mapper/notification_item_data_mapper.dart';
+import '../../../shared/mapper/notification_list_data_mapper.dart';
+import '../../../shared/mapper/notification_list_request_data_mapper.dart';
 import '../../../shared/mapper/social_agency_data_mapper.dart';
 import 'base_bindings.dart';
 
