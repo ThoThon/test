@@ -51,4 +51,7 @@ class AppConst {
   static const String nfcDisabledNotSupported = "nfc_not_supported";
 
   static const int countMonth = 12;
+
+  /// Tài khoản demo trên store
+  static const String demoAccount = 'sd8888k24';
 }

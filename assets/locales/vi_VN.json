@@ -52,7 +52,6 @@
     "cannotConnectMySign": "Không thể kết nối tới hệ thống ký số.",
     "sendFileSuccess": "Gửi hồ sơ thành công",
     "sendFileFail": "Gửi hồ sơ thất bại",
-    "signatureTimeOut": "Hết thời gian ký số\nVui lòng thực hiện lại",
     "cancelRequest": "Hủy yêu cầu",
     "confirmSignatureMySign": "Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian",
     "sendRequestSignature": "Gửi yêu cầu ký thành công",
@@ -706,7 +705,8 @@
     "returnToWorkDateInvalid": "Ngày trở lại làm việc không hợp lệ",
     "appraisalDate": "Ngày giám định",
     "appraisalDateInvalid": "Ngày giám định không hợp lệ",
-    "appraisalDateCannotEmpty": "Ngày giám định không được bỏ trống"
+    "appraisalDateCannotEmpty": "Ngày giám định không được bỏ trống",
+    "declarationPeriosMax99": "Không kê khai quá đợt 99"
   },
   "familyMember": {
     "title": "Thêm thành viên",
