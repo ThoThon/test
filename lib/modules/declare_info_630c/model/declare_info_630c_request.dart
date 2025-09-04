@@ -9,7 +9,7 @@ class DeclareInfo630cRequest {
   final String? maNhomHuong;
   final DateTime? tuNgay;
   final DateTime? denNgay;
-  final int? tongSoNgay;
+  final double? tongSoNgay;
   final DateTime? tuNgayDonVi;
   final DateTime? denNgayDonVi;
   final DateTime? ngayTroLaiLamViec;
@@ -71,7 +71,7 @@ class DeclareInfo630cRequest {
       'denNgay': denNgay?.toIso8601String(),
       'tongSoNgay': tongSoNgay,
       'tuNgayDonVi': tuNgayDonVi?.toIso8601String(),
-      'denNgayDonVi': tuNgayDonVi?.toIso8601String(),
+      'denNgayDonVi': denNgayDonVi?.toIso8601String(),
       'ngayTroLaiLamViec': ngayTroLaiLamViec?.toIso8601String(),
       'ngayGiamDinh': ngayGiamDinh?.toIso8601String(),
       'tyLeSuyGiam': tyLeSuyGiam,

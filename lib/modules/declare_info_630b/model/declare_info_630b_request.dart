@@ -10,7 +10,7 @@ class DeclareInfo630bRequest {
   final String? maNhomHuong2;
   final DateTime? tuNgay;
   final DateTime? denNgay;
-  final int? tongSoNgay;
+  final double? tongSoNgay;
   final DateTime? tuNgayDonVi;
   final DateTime? denNgayDonVi;
   final String? ngayNghiTuan;
@@ -63,8 +63,8 @@ class DeclareInfo630bRequest {
     this.denNgay,
     this.tongSoNgay,
     this.tuNgayDonVi,
-    this.ngayNghiTuan,
     this.denNgayDonVi,
+    this.ngayNghiTuan,
     this.soSeriCT,
     this.ngaySinhCon,
     this.soCon,

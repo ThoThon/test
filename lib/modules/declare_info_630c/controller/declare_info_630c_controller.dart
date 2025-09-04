@@ -221,7 +221,7 @@ class DeclareInfo630cController extends BaseGetxController {
       maNhomHuong: benefitGroup.value?.value ?? '',
       tuNgay: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       denNgay: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(countDayTextCtrl.text),
+      tongSoNgay: CurrencyUtils.formatNumberCurrency(countDayTextCtrl.text),
       tuNgayDonVi:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
       denNgayDonVi: convertStringToDateSafe(toDateUnitTextCtrl.text, PATTERN_1),
@@ -309,7 +309,10 @@ class DeclareInfo630cController extends BaseGetxController {
         convertDateToStringSafe(detail.denNgayDonVi, PATTERN_1) ?? '';
 
     // Tổng số ngày
-    countDayTextCtrl.text = detail.tongSoNgay.toString();
+    if (detail.tongSoNgay > 0) {
+      countDayTextCtrl.text =
+          CurrencyUtils.formatCurrencyForeign(detail.tongSoNgay);
+    }
 
     // Ngày trở lại làm việc
     returnWorkDateCtrl.text =

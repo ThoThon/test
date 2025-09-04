@@ -69,7 +69,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       maNhomHuong2: benefitGroupLv2.value?.maNhomHuongC2 ?? '',
       tuNgay: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       denNgay: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(countDayTextCtrl.text),
+      tongSoNgay: CurrencyUtils.formatNumberCurrency(countDayTextCtrl.text),
       tuNgayDonVi:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
       denNgayDonVi: convertStringToDateSafe(toDateUnitTextCtrl.text, PATTERN_1),
@@ -378,7 +378,10 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
         convertDateToStringSafe(detail.denNgayDonVi, PATTERN_1) ?? '';
 
     // Tổng số ngày
-    countDayTextCtrl.text = detail.tongSoNgay.toString();
+    if (detail.tongSoNgay > 0) {
+      countDayTextCtrl.text =
+          CurrencyUtils.formatCurrencyForeign(detail.tongSoNgay);
+    }
 
     // Ngày nghỉ tuần
     // Vì BE trả về kiểu "ngayNghiTuan": "t3;t4;t5" nên phải làm như này

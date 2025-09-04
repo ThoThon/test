@@ -42,7 +42,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         // Tổng số ngày
         _buildCountDay(),
         sdsSBHeight12,
-        
+
         // Ngày trở lại làm việc
         _buildReturnToWorkDate(),
 
@@ -290,8 +290,8 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
         // REF: BHW-3106
-        final newText = int.tryParse(trimmedValue);
-        if (newText != null && newText == 0) {
+        final newText = CurrencyUtils.formatNumberCurrency(trimmedValue);
+        if (newText == 0) {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
         return null;
@@ -310,9 +310,6 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
       },
     );
   }
-
-
-
 
   // Đến ngày đơn vị
   Widget _buildToDateUnit() {
@@ -402,7 +399,6 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
         }
 
-
         final toDate = convertStringToDateStrict(
           controller.toDateUnitTextCtrl.text,
           PATTERN_1,
@@ -411,7 +407,6 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         if (toDate != null && fromDate.isAfter(toDate)) {
           return LocaleKeys.declareInfo_fromDateUnitLimit.tr;
         }
-
 
         return null;
       },

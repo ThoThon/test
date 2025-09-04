@@ -11,7 +11,7 @@ class DeclareInfo630cResponse {
   final String maNhomHuong;
   final DateTime? tuNgay;
   final DateTime? denNgay;
-  final int tongSoNgay;
+  final double tongSoNgay;
   final DateTime? tuNgayDonVi;
   final DateTime? denNgayDonVi;
   final DateTime? ngayTroLaiLamViec;
@@ -71,7 +71,7 @@ class DeclareInfo630cResponse {
       maNhomHuong: json['maNhomHuong'] ?? '',
       tuNgay: json['tuNgay'] != null ? DateTime.parse(json['tuNgay']) : null,
       denNgay: json['denNgay'] != null ? DateTime.parse(json['denNgay']) : null,
-      tongSoNgay: json['tongSoNgay'] ?? 0,
+      tongSoNgay: json['tongSoNgay']?.toDouble() ?? 0,
       tuNgayDonVi: json['tuNgayDonVi'] != null
           ? DateTime.parse(json['tuNgayDonVi'])
           : null,

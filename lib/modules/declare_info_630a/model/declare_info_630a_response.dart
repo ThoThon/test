@@ -12,7 +12,7 @@ class DeclareInfo630aResponse {
   final String soSeriCT;
   final DateTime tuNgay;
   final DateTime denNgay;
-  final String tongSoNgay;
+  final double tongSoNgay;
   final DateTime tuNgayDonVi;
   final DateTime denNgayDonVi;
   final String? ngayNghiTuan;
@@ -84,7 +84,7 @@ class DeclareInfo630aResponse {
       soSeriCT: json['soSeriCT'] ?? '',
       tuNgay: DateTime.tryParse(json['tuNgay'] ?? '') ?? DateTime.now(),
       denNgay: DateTime.tryParse(json['denNgay'] ?? '') ?? DateTime.now(),
-      tongSoNgay: json['tongSoNgay']?.toString() ?? '',
+      tongSoNgay: json['tongSoNgay']?.toDouble() ?? 0,
       tuNgayDonVi:
           DateTime.tryParse(json['tuNgayDonVi'] ?? '') ?? DateTime.now(),
       denNgayDonVi:

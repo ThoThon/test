@@ -260,7 +260,7 @@ class DeclareInfo630aController extends BaseGetxController {
       theBhytCuaCon: bhytCardCodeChildCtrl.text.trim(),
       tuNgay: convertStringToDate(fromDateCtrl.text, PATTERN_1),
       denNgay: convertStringToDate(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(countDayTextCtrl.text) ?? 0,
+      tongSoNgay: CurrencyUtils.formatNumberCurrency(countDayTextCtrl.text),
       tuNgayDonVi: convertStringToDate(fromDateUnitTextCtrl.text, PATTERN_1),
       denNgayDonVi: convertStringToDate(toDateUnitTextCtrl.text, PATTERN_1),
       ngayNghiTuan: weeklyDayOffString,
@@ -369,11 +369,13 @@ class DeclareInfo630aController extends BaseGetxController {
 
     // Đến ngày đơn vị
     toDateUnitTextCtrl.text =
-        convertDateToStringSafe(detail.tuNgayDonVi, PATTERN_1) ?? '';
+        convertDateToStringSafe(detail.denNgayDonVi, PATTERN_1) ?? '';
 
     // Tổng số ngày
-    countDayTextCtrl.text = detail.tongSoNgay.toString();
-
+    if (detail.tongSoNgay > 0) {
+      countDayTextCtrl.text =
+          CurrencyUtils.formatCurrencyForeign(detail.tongSoNgay);
+    }
     // Nghỉ hàng tuần
     // Vì BE trả về kiểu "ngayNghiTuan": "t3;t4;t5" nên phải làm như này
     final dayOff = detail.ngayNghiTuan;

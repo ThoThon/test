@@ -10,7 +10,7 @@ class DeclareInfo630aRequest {
   final String? soSeriCT;
   final DateTime tuNgay;
   final DateTime denNgay;
-  final int tongSoNgay;
+  final double tongSoNgay;
   final DateTime tuNgayDonVi;
   final DateTime denNgayDonVi;
   final String? ngayNghiTuan;

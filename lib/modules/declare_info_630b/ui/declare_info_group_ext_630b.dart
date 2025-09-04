@@ -31,7 +31,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         ),
         sdsSBHeight12,
 
-         // "Từ ngày đơn vị" và "Đến ngày đơn vị"
+        // "Từ ngày đơn vị" và "Đến ngày đơn vị"
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,7 +45,6 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         // Tổng số ngày
         _buildCountDay(),
         sdsSBHeight12,
-        
 
         // Nghỉ hàng tuần
         _buildWeeklyDayOffDropdown(),
@@ -425,8 +424,8 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
         // REF: BHW-3106
-        final newText = int.tryParse(trimmedValue);
-        if (newText != null && newText == 0) {
+        final newText = CurrencyUtils.formatNumberCurrency(trimmedValue);
+        if (newText == 0) {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
         return null;
@@ -529,12 +528,12 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
         }
 
-       // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
         if (fromDate.year <= 1900 || fromDate.year >= 2100) {
           return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
         }
 
-         final toDate = convertStringToDateStrict(
+        final toDate = convertStringToDateStrict(
           controller.toDateUnitTextCtrl.text,
           PATTERN_1,
         );

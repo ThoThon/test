@@ -55,7 +55,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
         // Tổng số ngày
         _buildCountDay(),
         sdsSBHeight12,
-        
+
         // Nghỉ hàng tuần
         _buildWeeklyDayOffDropdown(),
         sdsSBHeight12,
@@ -464,8 +464,8 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
         // REF: BHW-3106
-        final newText = int.tryParse(trimmedValue);
-        if (newText != null && newText == 0) {
+        final newText = CurrencyUtils.formatNumberCurrency(trimmedValue);
+        if (newText == 0) {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
         return null;

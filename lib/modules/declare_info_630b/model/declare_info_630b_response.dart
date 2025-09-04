@@ -14,7 +14,7 @@ class DeclareInfo630bResponse {
   final BenefitGroupLv2Model? maNhomHuong2;
   final DateTime tuNgay;
   final DateTime denNgay;
-  final int tongSoNgay;
+  final double tongSoNgay;
   final DateTime tuNgayDonVi;
   final DateTime denNgayDonVi;
   final String? ngayNghiTuan;
@@ -125,11 +125,11 @@ class DeclareInfo630bResponse {
       maNhomHuong2: benefitGroupLv2,
       tuNgay: DateTime.tryParse(json['tuNgay'] ?? '') ?? DateTime.now(),
       denNgay: DateTime.tryParse(json['denNgay'] ?? '') ?? DateTime.now(),
-      tongSoNgay: json['tongSoNgay'] ?? 0,
+      tongSoNgay: json['tongSoNgay']?.toDouble() ?? 0,
       tuNgayDonVi:
           DateTime.tryParse(json['tuNgayDonVi'] ?? '') ?? DateTime.now(),
       denNgayDonVi:
-          DateTime.tryParse(json['tuNgayDonVi'] ?? '') ?? DateTime.now(),
+          DateTime.tryParse(json['denNgayDonVi'] ?? '') ?? DateTime.now(),
       ngayNghiTuan: json['ngayNghiTuan'] ?? '',
       soSeriCT: json['soSeriCT'] ?? '',
       ngaySinhCon: DateTime.tryParse(json['ngaySinhCon'] ?? ''),
