@@ -6,17 +6,19 @@ import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
+import 'package:v_bhxh/clean/shared/mapper/categories_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/certificate_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/first_time_register_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/lookup_c12_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/clean/shared/mapper/notification_item_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/notification_list_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/notification_list_request_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/register_code_categories_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
 import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 
+import '../../../shared/mapper/social_agency_data_mapper.dart';
 import 'base_bindings.dart';
 
 class AppBinding extends BaseBindings {
@@ -54,6 +56,14 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => NotificationItemDataMapper(), fenix: true);
     Get.lazyPut(() => NotificationListDataMapper(sl()), fenix: true);
     Get.lazyPut(() => NotificationListRequestDataMapper(), fenix: true);
+    Get.lazyPut(() => CategoriesDataMapper(), fenix: true);
+    Get.lazyPut(() => SocialAgencyDataMapper(), fenix: true);
+    Get.lazyPut(() => CertificateDataMapper(), fenix: true);
+    Get.lazyPut(
+      () => RegisterCodeCategoriesDataMapper(sl(), sl(), sl()),
+      fenix: true,
+    );
+    Get.lazyPut(() => FirstTimeRegisterRequestDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

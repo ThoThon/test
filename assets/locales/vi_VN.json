@@ -906,7 +906,8 @@
     "inputCCCDregisterMySign": "Nhập CCCD đăng ký MySign",
     "signature": "Chữ ký số",
     "serialNumber": "Số serial",
-    "inputCCCDregisterMySignCannotEmpty": "Nhập CCCD đăng ký MySign để lấy thông tin CTS"
+    "inputCCCDregisterMySignCannotEmpty": "Nhập CCCD đăng ký MySign để lấy thông tin CTS",
+    "certificateInfoNotFound": "Chưa có thông tin chứng thư số"
   },
   "registerCode": {
     "commonInfo": "Thông tin chung",
