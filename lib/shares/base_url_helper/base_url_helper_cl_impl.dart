@@ -16,6 +16,9 @@ class BaseUrlHelperClImpl extends BaseUrlHelperCl {
   final AppNavigator _nav;
   final EnvConfig _envConfig;
 
+  // Do các api client phụ thuộc vào BaseUrlHelperCl, nhưng BaseUrlHelperCl cũng phụ thuộc vào các api client
+  // để thay đổi baseUrl, nên không thể inject trực tiếp qua constructor được.
+  // Do đó, sử dụng getIt để lấy instance lazily.
   late final _authApiClient = sl<AuthAppServerApiClient>();
   late final _authUploadApiClient = sl<AuthAppUploadApiClient>();
   late final _nonAuthApiClient = sl<NonAuthAppServerApiClient>();
