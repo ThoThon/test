@@ -6,7 +6,7 @@ class NotificationItem implements Entity {
   final String entityType;
   final String notificationObjectId;
   final String message;
-  final String createDate;
+  final DateTime createDate;
   final int status;
   final String name;
   final String timeAgo;
