@@ -121,7 +121,7 @@ extension NotificationWidget on NotificationPage {
   }
 
   void _buildBtsActionNoti() {
-    Get.bottomSheet(
+    nav.bottomSheet(
       UtilWidget.buildBottomSheetFigma(
         child: Column(
           children: [
@@ -129,7 +129,7 @@ extension NotificationWidget on NotificationPage {
               onTap: () {
                 controller.isShowCheckbox.toggle();
                 controller.selectedID.clear();
-                Get.back();
+                nav.back();
               },
               child: Row(
                 children: [

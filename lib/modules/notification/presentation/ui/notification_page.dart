@@ -1,7 +1,6 @@
 import '../../../../../clean/core/presentation/widgets/widget_src.dart';
 import '../../../src.dart';
 import '../../notification_src.dart';
-import '../controller/notification_controller.dart';
 import '../enity_type.dart';
 
 part 'notification_widget.dart';

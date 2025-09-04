@@ -6,7 +6,6 @@ import 'package:v_bhxh/shares/date/date_utils.dart';
 
 import '../../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
 import '../../../../../core/values/const.dart';
-import '../../../../../shares/function/function.src.dart';
 import '../../notification_src.dart';
 
 class NotificationController extends BaseGetClController {
@@ -90,16 +89,17 @@ class NotificationController extends BaseGetClController {
   }
 
   Future<void> deleteListNotification() async {
-    try {
-      final response =
-          await _deleteListNotificationUseCase.execute(selectedID.toList());
-      if (response) {
-        isShowCheckbox.value = false;
-        listNotification.clear();
-        fetchListNotification();
-      }
-    } catch (e) {
-      logger.d(e);
-    }
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        final response =
+            await _deleteListNotificationUseCase.execute(selectedID.toList());
+        if (response) {
+          isShowCheckbox.value = false;
+          listNotification.clear();
+          fetchListNotification();
+        }
+      },
+    );
   }
 }
