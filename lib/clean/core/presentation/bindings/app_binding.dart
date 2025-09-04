@@ -9,6 +9,9 @@ import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
 import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/lookup_c12_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
+import 'package:v_bhxh/clean/shared/mapper/notification_item_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/notification_list_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/notification_list_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
@@ -48,6 +51,9 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => WardDataMapper(), fenix: true);
     Get.lazyPut(() => ForgotPasswordRequestDataMapper(), fenix: true);
     Get.lazyPut(() => LookupC12DataMapper(), fenix: true);
+    Get.lazyPut(() => NotificationItemDataMapper(), fenix: true);
+    Get.lazyPut(() => NotificationListDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => NotificationListRequestDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

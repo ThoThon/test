@@ -26,7 +26,6 @@ import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_registe
 import 'package:v_bhxh/modules/home_clean/presentation/binding/home_binding.dart';
 import 'package:v_bhxh/modules/home_clean/presentation/view/home_page.dart';
 import 'package:v_bhxh/modules/info_unit/ui/unit_info_page.dart';
-import 'package:v_bhxh/modules/notification/ui/notification_page.dart';
 import 'package:v_bhxh/modules/other_info/ui/other_info_page.dart';
 import 'package:v_bhxh/modules/profile/ui/profile_page.dart';
 import 'package:v_bhxh/modules/register_code/ui/register_code_page.dart';
@@ -36,6 +35,7 @@ import 'package:v_bhxh/modules/view_pdf/ui/view_pdf_page.dart';
 
 import '../../modules/lookup_c12/presentation/binding/lookup_c12_binding.dart';
 import '../../modules/lookup_c12/presentation/ui/lookup_c12_page.dart';
+import '../../modules/notification/notification_src.dart';
 
 class AppPages {
   static final pages = [
@@ -120,7 +120,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.notification.path,
-      page: () => NotificationPage(),
+      page: NotificationPage.new,
+      binding: NotificationBinding(),
     ),
     GetPage(
       name: AppRoutesCl.profile.path,
