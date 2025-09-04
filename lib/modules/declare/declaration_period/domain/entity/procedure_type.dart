@@ -80,4 +80,10 @@ enum ProcedureType {
         return LocaleKeys.declareInfo_title630c.tr;
     }
   }
+
+  // REF: VBHXHMOB-22
+  bool get isProcedure630 =>
+      this == ProcedureType.procedure630a ||
+      this == ProcedureType.procedure630b ||
+      this == ProcedureType.procedure630c;
 }

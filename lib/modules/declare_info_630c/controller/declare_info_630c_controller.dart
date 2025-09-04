@@ -11,6 +11,7 @@ import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_request
 import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_response.dart';
 import 'package:v_bhxh/modules/declare_info_630c/repository/declare_info_630c_repository.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../declare/staff_list/model/model_src.dart';
 import '../../select_staff/select_staff_src.dart';
@@ -416,6 +417,7 @@ class DeclareInfo630cController extends BaseGetxController {
   }
 
   void goToSelectStaffPage() async {
+    KeyBoard.hide();
     final result = await Get.toNamed(
       AppRoutesCl.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn
@@ -454,5 +456,29 @@ class DeclareInfo630cController extends BaseGetxController {
     bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
 
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
+  }
+
+  void onChangeDeclareMethod(DeclareForm630? method) {
+    if (method == null) {
+      return;
+    }
+    declareForm.value = method;
+
+    // Nếu chọn hình thức kê khai khác "Phát sinh" (1) thì reset các trường liên quan
+    // REF: VBHXHMOB-9
+    if (method.value != declareMethodArisingValue) {
+      returnWorkDateCtrl.clear();
+      rateToDeclineCtrl.clear();
+      appraisalDateCtrl.clear();
+      serialNumberCtrl.clear();
+      supplementalPeriodCtrl.clear();
+    }
+
+    // REF: VBHXHMOB-9
+    if (method.value != declareMethodAdjustValue) {
+      resolvedPeriodCtrl.clear();
+      resolvedDateCtrl.clear();
+      adjustReasonCtrl.clear();
+    }
   }
 }

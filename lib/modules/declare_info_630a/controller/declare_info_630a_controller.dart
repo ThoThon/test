@@ -9,6 +9,7 @@ import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dar
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 
+import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
 import '../../select_staff/model/model_src.dart';
@@ -134,11 +135,11 @@ class DeclareInfo630aController extends BaseGetxController {
   }
 
   void goToSelectStaffPage() async {
+    KeyBoard.hide();
     final result = await Get.toNamed(
       AppRoutesCl.selectStaff.path,
       arguments: selectedStaffId,
     );
-
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
     }

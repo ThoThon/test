@@ -147,6 +147,7 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void goToSelectStaffPage() async {
+    KeyBoard.hide();
     final result = await Get.toNamed(
       AppRoutesCl.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn
@@ -154,6 +155,10 @@ class DeclareInfoController extends BaseGetxController {
     );
     if (result is SelectStaffResponse) {
       _getDetailStaff(staffId: result.id);
+
+      // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
+      updateHouseholdInfoRequired();
+      updateClearTTIconState();
     }
   }
 
@@ -618,6 +623,7 @@ class DeclareInfoController extends BaseGetxController {
     if (result is FamilyMember) {
       tk1State.familyMembers.add(result);
     }
+    updateHouseholdInfoRequired();
   }
 
   Future<void> editFamilyMember(FamilyMember member) async {
@@ -671,6 +677,7 @@ class DeclareInfoController extends BaseGetxController {
         typeAction: AppConst.actionSuccess,
       );
     }
+    updateHouseholdInfoRequired();
   }
 
   @override
@@ -820,6 +827,12 @@ class DeclareInfoController extends BaseGetxController {
 
     // Nếu 1 trong các thông tin của chủ hộ được điền thì sẽ phải điền tất cả
     if (!isHouseholdInfoEmpty) {
+      tk1State.isHouseholdInfoRequired.value = true;
+      return;
+    }
+
+    // REF: TH2 VBHXHMOB-16
+    if (tk1State.familyMembers.isNotEmpty) {
       tk1State.isHouseholdInfoRequired.value = true;
       return;
     }

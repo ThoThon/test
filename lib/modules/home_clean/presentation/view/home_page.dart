@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/widget_src.dart';
+import 'package:v_bhxh/clean/shared/utils/app_info.dart';
+import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
 import 'package:v_bhxh/modules/home_clean/presentation/controller/home_controller_cl.dart';
 
 import '../../../../base_app/base_app.src.dart';
@@ -15,7 +17,8 @@ part 'home_widget.dart';
 class HomePageCL extends BaseGetPage<HomeControllerCl> {
   HomePageCL({super.key});
 
-  late final _remoteConfigStorage = Get.find<RemoteConfigStorage>();
+  late final _remoteConfigStorage = sl<RemoteConfigStorage>();
+  late final _appInfo = sl<AppInfo>();
 
   @override
   Widget buildPage(BuildContext context) {

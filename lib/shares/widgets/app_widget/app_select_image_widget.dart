@@ -13,10 +13,12 @@ import 'package:v_bhxh/shares/widgets/utils_widget/utils_widget.dart';
 class AppSelectImageWidget extends StatelessWidget {
   const AppSelectImageWidget({
     super.key,
+    required this.checkMaxImageAttachments,
     this.onTakePhoto,
     this.onPickImage,
   });
 
+  final bool Function() checkMaxImageAttachments;
   final VoidCallback? onTakePhoto;
   final VoidCallback? onPickImage;
 
@@ -60,6 +62,10 @@ class AppSelectImageWidget extends StatelessWidget {
   }
 
   void _showBottomSheetUploadOptions() {
+    if (checkMaxImageAttachments()) {
+      return;
+    }
+
     Get.bottomSheet(
       UtilWidget.buildBottomSheetFigma(
         child: Column(

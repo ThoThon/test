@@ -119,6 +119,12 @@ class DeclarationPeriodController extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
+        if (argument.type.isProcedure630 &&
+            (declarationPeriods.lastOrNull?.period ?? 0) >= 99) {
+          nav.showSnackBar(LocaleKeys.declareInfo_declarationPeriosMax99.tr);
+          return;
+        }
+
         final period = await _createDeclarationPeriodUseCase.execute(
           CreateDeclarationPeriodUseCaseInput(
             year: selectedPeriodDate.value.year,

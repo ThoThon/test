@@ -146,6 +146,7 @@ extension HomeWidget on HomePageCL {
       child: Padding(
         padding: const EdgeInsets.all(AppDimens.defaultPadding),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             sdsSBHeight32,
             _buildCompanyName(),
@@ -173,6 +174,12 @@ extension HomeWidget on HomePageCL {
               icon: Icons.logout,
               onTap: controller.showDialogLogout,
             ),
+            const Spacer(),
+            SDSBuildText(
+              '${LocaleKeys.home_version.tr} ${_appInfo.versionName}',
+              style: AppTextStyle.font16Re,
+            ),
+            sdsSBHeight16,
           ],
         ),
       ),

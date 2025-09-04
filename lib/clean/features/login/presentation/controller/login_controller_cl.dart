@@ -5,10 +5,13 @@ import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controlle
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/core/values/const.dart';
+import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 
 class LoginControllerCl extends BaseGetClController {
   // final LoginArgument argument;
 
+  final BaseUrlHelperCl _baseUrlHelper;
   final LoginUseCase _loginUseCase;
   final SaveAuthInfoUseCase _saveAuthInfoUseCase;
   final GetAccountInfoUseCase _getAccountInfoUseCase;
@@ -25,6 +28,7 @@ class LoginControllerCl extends BaseGetClController {
 
   LoginControllerCl(
     // this.argument,
+    this._baseUrlHelper,
     this._loginUseCase,
     this._saveAuthInfoUseCase,
     this._getAccountInfoUseCase,
@@ -44,9 +48,18 @@ class LoginControllerCl extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
+        final username = usernameTextCtrl.text.trim();
+        final password = passwordTextCtrl.text.trim();
+
+        // Với tài khoản demo gửi lên store sẽ gọi tới base url uat
+        // để tránh lỗi chưa deploy api lên production
+        if (username == AppConst.demoAccount) {
+          await _baseUrlHelper.switchToUatEnv();
+        }
+
         final loginRequest = LoginRequest(
-          username: usernameTextCtrl.text.trim(),
-          password: passwordTextCtrl.text.trim(),
+          username: username,
+          password: password,
         );
 
         final accessToken = await _loginUseCase.execute(loginRequest);

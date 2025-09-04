@@ -102,6 +102,7 @@ class LocaleKeys {
   static const home_logout = 'home_logout';
   static const home_home = 'home_home';
   static const home_accountInfo = 'home_accountInfo';
+  static const home_version = 'home_version';
   static const unitInfo_transactionRegister = 'unitInfo_transactionRegister';
   static const unitInfo_generalInfo = 'unitInfo_generalInfo';
   static const unitInfo_registerInfo = 'unitInfo_registerInfo';
@@ -863,6 +864,8 @@ class LocaleKeys {
       'declareInfo_appraisalDateInvalid';
   static const declareInfo_appraisalDateCannotEmpty =
       'declareInfo_appraisalDateCannotEmpty';
+  static const declareInfo_declarationPeriosMax99 =
+      'declareInfo_declarationPeriosMax99';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1358,7 +1361,7 @@ class Locales {
     'dialog_sendRequestSignature': 'Gửi yêu cầu ký thành công',
     'dialog_sendFileToBHXH':
         'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
-    'dialog_max5File': 'Chỉ cho phép chọn tối đa 5 file',
+    'dialog_max5File': 'Chỉ cho phép đính kèm tối đa 5 file',
     'dialog_select': 'Chọn',
     'dialog_selectDayMonthYear': 'Chọn Ngày/Tháng/Năm',
     'dialog_selectMonthYear': 'Chọn Tháng/Năm',
@@ -1388,6 +1391,7 @@ class Locales {
     'home_logout': 'Đăng xuất',
     'home_home': 'Trang chủ',
     'home_accountInfo': 'Thông tin tài khoản',
+    'home_version': 'Phiên bản',
     'unitInfo_transactionRegister': 'Đăng ký giao dịch',
     'unitInfo_generalInfo': 'Thông tin chung',
     'unitInfo_registerInfo': 'Thông tin đăng ký',
@@ -2033,6 +2037,7 @@ class Locales {
     'declareInfo_appraisalDateInvalid': 'Ngày giám định không hợp lệ',
     'declareInfo_appraisalDateCannotEmpty':
         'Ngày giám định không được bỏ trống',
+    'declareInfo_declarationPeriosMax99': 'Không kê khai quá đợt 99',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

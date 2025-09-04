@@ -3,6 +3,8 @@ class AppApi {
   // Base URL test có thể ký
   static const String urlSign = "https://vbhxh1.easyhrm.vn/dev-api-mobile";
 
+  static const String urlUat = "https://vbhxh1.easyhrm.vn/api-mobile";
+
   static const String version = "";
 
   static const urlLogin = '/api/Authen/auth';
