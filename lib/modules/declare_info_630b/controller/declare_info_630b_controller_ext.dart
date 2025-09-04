@@ -5,6 +5,7 @@ import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/de
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../../base_app/model/app_data.dart';
+import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
 import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
 import '../../select_staff/model/model_src.dart';
@@ -216,6 +217,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
   }
 
   void goToSelectStaffPage() async {
+    KeyBoard.hide();
     final result = await Get.toNamed(
       AppRoutesCl.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn

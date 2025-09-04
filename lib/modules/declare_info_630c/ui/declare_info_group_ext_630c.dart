@@ -97,9 +97,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
             items: AppData.instance.declareForm.toList(),
             display: (item) => item.text,
             selectedItem: controller.declareForm.value,
-            onChanged: (value) {
-              controller.declareForm.value = value;
-            },
+            onChanged: controller.onChangeDeclareMethod,
           ),
         );
       },
@@ -522,6 +520,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           () => CardInputTextFormWithLabel(
             fieldKey: formFieldKey,
             validator: validator,
+            autovalidateMode: controller.autoValidateMode.value,
             hintText: LocaleKeys.declareInfo_rateToDeclineInput.tr,
             labelText: LocaleKeys.declareInfo_rateToDecline.tr,
             controller: controller.rateToDeclineCtrl,

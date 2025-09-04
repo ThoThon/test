@@ -55,7 +55,7 @@ class DeclarationListController extends BaseGetxController {
       onFinish: () {
         cancelAllRequest();
         _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_signatureTimeOut.tr,
+          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
         );
       },
       onCancel: () {

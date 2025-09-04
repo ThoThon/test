@@ -19,6 +19,7 @@ class LoginBinding extends BaseBindings {
         sl(),
         sl(),
         sl(),
+        sl(),
       ),
     );
   }

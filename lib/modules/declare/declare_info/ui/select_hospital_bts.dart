@@ -37,11 +37,13 @@ class SelectHospitalBts extends BaseGetWidget<SelectHospitalController> {
                   child: baseShowLoading(
                     () => Obx(
                       () {
-                        final filteredHospitals = controller.hospitals
-                            .where((item) => TiengViet.parse(item.name)
-                                .toLowerCase()
-                                .contains(controller.keyword.value))
-                            .toList();
+                        final filteredHospitals =
+                            controller.hospitals.where((item) {
+                          final name = TiengViet.parse(item.name).toLowerCase();
+                          final code = item.code.toLowerCase();
+                          final query = controller.keyword.value;
+                          return name.contains(query) || code.contains(query);
+                        }).toList();
 
                         return ListView.separated(
                           itemCount: filteredHospitals.length,

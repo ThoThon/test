@@ -23,9 +23,8 @@ class BuildInputTextState extends State<BuildInputText> {
   @override
   void initState() {
     widget.inputTextFormModel.controller.addListener(() {
-      if (widget.inputTextFormModel.controller.text.isNotEmpty) {
-        _isShowButtonClear.value = true;
-      }
+      _isShowButtonClear.value =
+          widget.inputTextFormModel.controller.text.isNotEmpty;
     });
     _showPassword.value = widget.inputTextFormModel.obscureText;
     super.initState();

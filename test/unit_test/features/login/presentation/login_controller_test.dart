@@ -7,8 +7,11 @@ import 'package:v_bhxh/clean/features/login/presentation/controller/login_contro
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
+import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 
 class MockAppNavigator extends Mock implements AppNavigator {}
+
+class MockBaseUrlHelperCl extends Mock implements BaseUrlHelperCl {}
 
 class MockLoginUseCase extends Mock implements LoginUseCase {}
 
@@ -35,6 +38,7 @@ class FakeSaveAuthInfoUseCaseInput extends Fake
 
 void main() {
   late LoginControllerCl controller;
+  final baseUrlHelper = MockBaseUrlHelperCl();
   final loginUseCase = MockLoginUseCase();
   final saveAuthInfoUseCase = MockSaveAuthInfoUseCase();
   final getAccountInfoUseCase = MockGetAccountInfoUseCase();
@@ -53,6 +57,7 @@ void main() {
   setUp(
     () {
       controller = LoginControllerCl(
+        baseUrlHelper,
         loginUseCase,
         saveAuthInfoUseCase,
         getAccountInfoUseCase,

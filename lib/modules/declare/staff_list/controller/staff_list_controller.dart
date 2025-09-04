@@ -34,12 +34,17 @@ class StaffListController extends BaseGetxController {
   String get declarationPeriodId => argument.declarationPeriodId;
   ProcedureType get procedureType => argument.procedureType;
 
+  /// REF: VBHXHMOB-1
+  bool checkMaxImageAttachments() {
+    final reachedMax = listAttachImage.length >= maxImageAttachments;
+    if (reachedMax) {
+      showSnackBar(LocaleKeys.dialog_max5File.tr);
+    }
+    return reachedMax;
+  }
+
   Future<void> pickImage() async {
     try {
-      if (listAttachImage.length >= maxImageAttachments) {
-        showSnackBar(LocaleKeys.dialog_max5File.tr);
-        return;
-      }
       final path = await ImageUtils.pickImage();
       if (path != null) {
         await upLoadFile(path);
@@ -51,10 +56,6 @@ class StaffListController extends BaseGetxController {
 
   Future<void> takePhoto() async {
     try {
-      if (listAttachImage.length >= maxImageAttachments) {
-        showSnackBar(LocaleKeys.dialog_max5File.tr);
-        return;
-      }
       final path = await ImageUtils.takePhoto();
       if (path != null) {
         await upLoadFile(path);

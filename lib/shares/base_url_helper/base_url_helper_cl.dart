@@ -6,4 +6,6 @@ abstract class BaseUrlHelperCl {
   Future<void> openChangeBaseUrlPage();
 
   Future<void> resetBaseUrl();
+
+  Future<void> switchToUatEnv();
 }

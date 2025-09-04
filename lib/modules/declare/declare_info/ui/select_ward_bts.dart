@@ -35,11 +35,12 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
                   child: baseShowLoading(
                     () => Obx(
                       () {
-                        final filteredWards = controller.wards
-                            .where((item) => TiengViet.parse(item.name)
-                                .toLowerCase()
-                                .contains(controller.keyword.value))
-                            .toList();
+                        final filteredWards = controller.wards.where((item) {
+                          final name = TiengViet.parse(item.name).toLowerCase();
+                          final id = item.id.toLowerCase();
+                          final query = controller.keyword.value;
+                          return name.contains(query) || id.contains(query);
+                        }).toList();
 
                         return ListView.separated(
                           itemCount: filteredWards.length,

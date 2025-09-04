@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
+import 'package:v_bhxh/clean/core/presentation/navigation/snack_bar_type.dart';
 import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
@@ -31,22 +30,19 @@ class _ChangeBaseUrlPageState extends State<ChangeBaseUrlPage> {
       return;
     }
     await _baseUrlHelper.changeBaseUrl(newUrl);
-    _showDialogConfirmReset();
+    _showChangeBaseUrlSuccessMessage();
   }
 
   Future<void> _resetBaseUrl() async {
     _urlTextCtrl.text = _envConfig.baseUrl;
     await _baseUrlHelper.resetBaseUrl();
-    _showDialogConfirmReset();
+    _showChangeBaseUrlSuccessMessage();
   }
 
-  void _showDialogConfirmReset() {
-    _nav.showConfirmDialog(
-      title: 'Đường dẫn đã được thay đổi thành công',
-      subtitle: 'Khởi động lại ứng dụng để áp dụng thay đổi?',
-      onConfirm: () {
-        exit(0);
-      },
+  void _showChangeBaseUrlSuccessMessage() {
+    _nav.showSnackBar(
+      'Đường dẫn đã được thay đổi thành công',
+      type: SnackBarType.success,
     );
   }
 
