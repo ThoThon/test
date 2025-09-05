@@ -100,7 +100,8 @@ class LoginControllerCl extends BaseGetClController {
       ..relationships.assignAll(d02Categories.relationships)
       ..positions.assignAll(d02Categories.positions)
       ..birthTypes.assignAll(d02Categories.birthTypes)
-      ..receiveResults.assignAll(d02Categories.receiveResults);
+      ..receiveResults.assignAll(d02Categories.receiveResults)
+      ..oldProvinces.assignAll(d02Categories.oldProvinces);
   }
 
   Future<void> _getToTalNotiUnread() async {
