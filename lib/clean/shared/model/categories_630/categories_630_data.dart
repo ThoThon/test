@@ -7,49 +7,49 @@ class Categories630Data {
   final List<CategoryData>? declareForm;
 
   // Mã nhóm hưởng 630a
-  final Set<BenefitGroup630Data>? benefitGroup630a;
+  final List<BenefitGroup630Data>? benefitGroup630a;
 
   // Tuyến bệnh viện
-  final Set<CategoryData>? hospitalLine;
+  final List<CategoryData>? hospitalLine;
 
   // Bệnh dài ngày
-  final Set<LongDieaseData>? longDiease;
+  final List<LongDieaseData>? longDiease;
 
   // Điều kiện làm việc
-  final Set<CategoryData>? workCondition;
+  final List<CategoryData>? workCondition;
 
   // Hình thức nhận
-  final Set<CategoryData>? receiveForm;
+  final List<CategoryData>? receiveForm;
 
   // Ngân hàng
-  final Set<BankData>? bank;
+  final List<BankData>? bank;
 
   // Mã nhóm hưởng 630b
-  final Set<BenefitGroup630Data>? benefitGroup630b;
+  final List<BenefitGroup630Data>? benefitGroup630b;
 
   // Điều kiện khám thai
-  final Set<CategoryData>? pregnancyCondition;
+  final List<CategoryData>? pregnancyCondition;
 
   // Điều kiện sinh con
-  final Set<CategoryData>? childBirthCondition;
+  final List<CategoryData>? childBirthCondition;
 
   // Nghỉ dưỡng thai
-  final Set<CategoryData>? maternityLeave;
+  final List<CategoryData>? maternityLeave;
 
   // Nghỉ chăm con
-  final Set<CategoryData>? parentalLeave;
+  final List<CategoryData>? parentalLeave;
 
   // Mang thai hộ
-  final Set<CategoryData>? surrogacy;
+  final List<CategoryData>? surrogacy;
 
   // Phẫu thuật hoặc thai dưới 32 tuần
-  final Set<CategoryData>? surgeryPregnancy32w;
+  final List<CategoryData>? surgeryPregnancy32w;
 
   // Biện pháp tránh thai
-  final Set<CategoryData>? contraception;
+  final List<CategoryData>? contraception;
 
   // Mã nhóm hưởng 630c
-  final Set<BenefitGroup630Data>? benefitGroup630c;
+  final List<BenefitGroup630Data>? benefitGroup630c;
 
   Categories630Data({
     this.declareForm,
@@ -77,49 +77,49 @@ class Categories630Data {
           .toList(),
       benefitGroup630a: (json['maNhomHuong630as'] as List?)
           ?.map((e) => BenefitGroup630Data.fromJson630a(e))
-          .toSet(),
+          .toList(),
       hospitalLine: (json['tuyenBenhViens'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       longDiease: (json['benhDaiNgays'] as List?)
           ?.map((e) => LongDieaseData.fromJson(e))
-          .toSet(),
+          .toList(),
       workCondition: (json['dieuKienLamViecs'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       receiveForm: (json['hinhThucNhans'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       bank: (json['nganHangs'] as List?)
           ?.map((e) => BankData.fromJson(e))
-          .toSet(),
+          .toList(),
       benefitGroup630b: (json['maNhomHuong630bs'] as List?)
           ?.map((e) => BenefitGroup630Data.fromJson630b(e))
-          .toSet(),
+          .toList(),
       pregnancyCondition: (json['dieuKienKhamThais'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       childBirthCondition: (json['dieuKienSinhCons'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       maternityLeave: (json['nghiDuongThais'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       parentalLeave: (json['chaNghiChamCons'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       surrogacy: (json['mangThaiHos'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       surgeryPregnancy32w: (json['phauThuatThai32s'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       contraception: (json['bienPhapKHHGDs'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       benefitGroup630c: (json['maNhomHuong630cs'] as List?)
           ?.map((e) => BenefitGroup630Data.fromJson630c(e))
-          .toSet(),
+          .toList(),
     );
   }
 }

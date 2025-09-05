@@ -4,7 +4,7 @@ import 'package:v_bhxh/clean/shared/model/categories_630/benefit_group_lv2_data.
 class BenefitGroup630Data {
   final String? value;
   final String? text;
-  final Set<BenefitGroupLv2Data>? benefitGroupLv2;
+  final List<BenefitGroupLv2Data>? benefitGroupLv2;
 
   const BenefitGroup630Data({
     this.value,
@@ -25,7 +25,7 @@ class BenefitGroup630Data {
       text: json['text'],
       benefitGroupLv2: (json['maNhomHuong2s'] as List?)
           ?.map((e) => BenefitGroupLv2Data.fromJson(e))
-          .toSet(),
+          .toList(),
     );
   }
 
