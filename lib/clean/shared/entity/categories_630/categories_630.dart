@@ -4,7 +4,7 @@ import 'package:v_bhxh/clean/shared/entity/category.dart';
 
 class Categories630 implements Entity {
   // Hình thức kê khai
-  final Map<String, Category> declareForm;
+  final MapCategory declareForm;
 
   // Mã nhóm hưởng 630a
   final Set<BenefitGroup630> benefitGroup630a;
