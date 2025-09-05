@@ -3,12 +3,13 @@ import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
-import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 
+import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
@@ -34,7 +35,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final staffCodeTextCtrl = TextEditingController();
 
   /// Hình thức kê khai *
-  final declareForm = Rxn<DeclareForm630>();
+  final declareForm = Rxn<Category>();
 
   /// Mã nhóm hưởng *
   final benefitGroup = Rxn<BenefitGroup630>();
@@ -64,7 +65,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
 
   /// Tuyến bệnh viện
-  final selectHospitalLine = Rxn<HospitalLine>();
+  final selectHospitalLine = Rxn<Category>();
 
   /// Chọn/Nhập mã bệnh
   final selectDiseaseCode = Rxn<LongDiease>();
@@ -76,7 +77,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final serialNumberCtrl = TextEditingController();
 
   /// Điều kiện làm việc
-  final workCondition = Rxn<WorkCondition>();
+  final workCondition = Rxn<Category>();
 
   /// Nghỉ dưỡng thai
   final isMaternityRest = false.obs;
@@ -91,7 +92,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final noteTextCtrl = TextEditingController();
 
   /// Hình thức nhận *
-  final receiveForm = Rxn<ReceiveForm>();
+  final receiveForm = Rxn<Category>();
 
   /// Số tài khoản ngân hàng
   final bankNumberCtrl = TextEditingController();
@@ -338,9 +339,7 @@ class DeclareInfo630aController extends BaseGetxController {
     staffCodeTextCtrl.text = detail.maNhanVien.trim();
 
     // Hìnhh thức kê khai
-    declareForm.value = AppData.instance.declareForm.firstWhereOrNull(
-      (item) => item.value == detail.phatSinhDieuChinh,
-    );
+    declareForm.value = AppData.instance.declareForm[detail.phatSinhDieuChinh];
 
     // Mã nhóm hưởng
     benefitGroup.value = AppData.instance.benefitGroup630a.firstWhereOrNull(
@@ -384,9 +383,8 @@ class DeclareInfo630aController extends BaseGetxController {
     }
 
     // Tuyến bệnh viện
-    selectHospitalLine.value = AppData.instance.hospitalLine.firstWhereOrNull(
-      (item) => item.value == detail.tuyenBenhVien,
-    );
+    selectHospitalLine.value =
+        AppData.instance.hospitalLine[detail.tuyenBenhVien];
 
     // Mã bệnh
     selectDiseaseCode.value = AppData.instance.longDiease
@@ -399,9 +397,8 @@ class DeclareInfo630aController extends BaseGetxController {
     serialNumberCtrl.text = detail.soSeriCT.trim();
 
     // Điều kiện làm việc
-    workCondition.value = AppData.instance.workCondition.firstWhereOrNull(
-      (item) => item.value == detail.dieuKienLamViec,
-    );
+    workCondition.value =
+        AppData.instance.workCondition[detail.dieuKienLamViec];
 
     // Nghỉ dưỡng thai
     isMaternityRest.value = detail.dangKyNghiDuongThai;
@@ -416,9 +413,7 @@ class DeclareInfo630aController extends BaseGetxController {
     noteTextCtrl.text = detail.ghiChu.trim();
 
     // Hình thức nhận
-    receiveForm.value = AppData.instance.receiveForm.firstWhereOrNull(
-      (item) => item.value == detail.hinhThucNhan,
-    );
+    receiveForm.value = AppData.instance.receiveForm[detail.hinhThucNhan];
 
     // Số tài khoản ngân hàng
     bankNumberCtrl.text = detail.soTaiKhoan.trim();
@@ -453,7 +448,7 @@ class DeclareInfo630aController extends BaseGetxController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeReceiveMethod(ReceiveForm? method) {
+  void onChangeReceiveMethod(Category? method) {
     if (method == null) {
       return;
     }
@@ -483,7 +478,7 @@ class DeclareInfo630aController extends BaseGetxController {
     receiveForm.value = method;
   }
 
-  void onChangeDeclareMethod(DeclareForm630? method) {
+  void onChangeDeclareMethod(Category? method) {
     if (method == null) {
       return;
     }

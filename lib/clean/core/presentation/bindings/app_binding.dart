@@ -6,7 +6,9 @@ import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/shared/config/env_config.dart';
 import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
-import 'package:v_bhxh/clean/shared/mapper/categories_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/categories_630/benefit_group_630_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/categories_630/long_diease_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/category_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/certificate_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/first_time_register_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.dart';
@@ -18,6 +20,9 @@ import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
 import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 
+import '../../../shared/mapper/categories_630/bank_data_mapper.dart';
+import '../../../shared/mapper/categories_630/benefit_group_lv2_data_mapper.dart';
+import '../../../shared/mapper/categories_630/categories_630_data_mapper.dart';
 import '../../../shared/mapper/notification_item_data_mapper.dart';
 import '../../../shared/mapper/notification_list_data_mapper.dart';
 import '../../../shared/mapper/notification_list_request_data_mapper.dart';
@@ -59,7 +64,7 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => NotificationItemDataMapper(), fenix: true);
     Get.lazyPut(() => NotificationListDataMapper(sl()), fenix: true);
     Get.lazyPut(() => NotificationListRequestDataMapper(), fenix: true);
-    Get.lazyPut(() => CategoriesDataMapper(), fenix: true);
+    Get.lazyPut(() => CategoryDataMapper(), fenix: true);
     Get.lazyPut(() => SocialAgencyDataMapper(), fenix: true);
     Get.lazyPut(() => CertificateDataMapper(), fenix: true);
     Get.lazyPut(
@@ -67,6 +72,14 @@ class AppBinding extends BaseBindings {
       fenix: true,
     );
     Get.lazyPut(() => FirstTimeRegisterRequestDataMapper(), fenix: true);
+    Get.lazyPut(
+      () => Categories630DataMapper(sl(), sl(), sl(), sl()),
+      fenix: true,
+    );
+    Get.lazyPut(() => BenefitGroup630DataMapper(sl()), fenix: true);
+    Get.lazyPut(() => BenefitGroupLv2DataMapper(), fenix: true);
+    Get.lazyPut(() => BankDataMapper(), fenix: true);
+    Get.lazyPut(() => LongDieaseDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

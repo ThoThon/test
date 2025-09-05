@@ -2,7 +2,6 @@ import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dar
 
 import '../../clean/shared/entity/category.dart';
 import '../../clean/shared/entity/entity_src.dart';
-import '../../modules/register_code/domain/entity/social_agency.dart';
 import '../../modules/src.dart';
 
 class AppData {
@@ -15,31 +14,26 @@ class AppData {
   var provinces = <Province>{};
   var relationships = <Relationship>{};
   var positions = <Position>{};
-  var socialAgency = <SocialAgency>{};
-  var receiveMethod = <Category>{};
-  var paymentMethods = <Category>{};
-  var objectType = <Category>{};
-  var resultReceivingOptions = <Category>{};
   var birthTypes = <BirthType>{};
   var receiveResults = <ReceiveResult>{};
   var oldProvinces = <Province>{};
   final accountInfo = Rxn<AccountInfo>();
 
   // Thủ tục 630
-  var declareForm = <DeclareForm630>{};
+  var declareForm = MapCategory();
   var benefitGroup630a = <BenefitGroup630>{};
-  var workCondition = <WorkCondition>{};
-  var receiveForm = <ReceiveForm>{};
+  var workCondition = MapCategory();
+  var receiveForm = MapCategory();
   var bank = <Bank>{};
-  var hospitalLine = <HospitalLine>{};
+  var hospitalLine = MapCategory();
   var longDiease = <LongDiease>{};
-  var pregnancyCondition = <PregnancyCheckCondition>{};
-  var childBirthCondition = <ChildBirthCondition>{};
-  var maternityLeave = <MaternityLeave>{};
-  var parentalLeave = <ParentalLeave>{};
-  var surrogacy = <Surrogacy>{};
-  var surgeryPregnancy32w = <SurgeryPregnancy32w>{};
-  var contraception = <Contraception>{};
+  var pregnancyCondition = MapCategory();
+  var childBirthCondition = MapCategory();
+  var maternityLeave = MapCategory();
+  var parentalLeave = MapCategory();
+  var surrogacy = MapCategory();
+  var surgeryPregnancy32w = MapCategory();
+  var contraception = MapCategory();
   var benefitGroup630b = <BenefitGroup630>{};
   var benefitGroup630c = <BenefitGroup630>{};
 

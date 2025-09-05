@@ -68,7 +68,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
 
   // Hình thức nhận
   Widget _buildReceiveMethodDropDown() {
-    return FormFieldRegistrant<ReceiveForm>(
+    return FormFieldRegistrant<Category>(
       registrarId: '3ab86dc5-6f4b-4350-bdd4-28aa600ac4ad',
       validator: (value) {
         if (value == null) {
@@ -78,7 +78,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<ReceiveForm>(
+          () => CardDropdownWithLabel<Category>(
             fieldKey: formFieldKey,
             validator: validator,
             autovalidateMode: controller.autoValidateMode.value,

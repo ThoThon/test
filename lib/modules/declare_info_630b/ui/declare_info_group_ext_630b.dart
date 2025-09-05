@@ -172,7 +172,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Hình thức kê khai
   Widget _buildDeclareMethodDropdown() {
-    return FormFieldRegistrant<DeclareForm630>(
+    return FormFieldRegistrant<Category>(
       registrarId: 'c030669e-725e-4598-b1e8-14083c9b32de',
       validator: (value) {
         if (value == null) {
@@ -182,7 +182,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<DeclareForm630>(
+          () => CardDropdownWithLabel<Category>(
             fieldKey: formFieldKey,
             validator: validator,
             labelText: LocaleKeys.declareInfo_declareMethod.tr,
@@ -542,7 +542,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Điều kiện khám thai
   Widget _buildIsPregnancyConditionDropdown() {
-    return FormFieldRegistrant<PregnancyCheckCondition>(
+    return FormFieldRegistrant<Category>(
       registrarId: '0fe0020c-fbb7-40a0-9222-a71f8fde457c',
       validator: (value) {
         if (controller.pregnancyCondition.value == null &&
@@ -553,7 +553,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<PregnancyCheckCondition>(
+          () => CardDropdownWithLabel<Category>(
             fieldKey: formFieldKey,
             validator: validator,
             onTapClear: () {
@@ -619,7 +619,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Biện pháp tránh thai
   Widget _buildContraceptionMethodDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<Contraception>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_contraception.tr,
         enableClearIcon: true,
         onTapClear: () {
@@ -640,7 +640,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Điều kiện sinh con
   Widget _buildIsChildbirthConditionDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<ChildBirthCondition>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_childBirth.tr,
         hintText: LocaleKeys.declareInfo_childbirthHint.tr,
         items: AppData.instance.childBirthCondition.toList(),
@@ -1106,7 +1106,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Phẫu thuật hoặc thai dưới 32 tuần
   Widget _buildSurgeryOrUnder32WeekDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<SurgeryPregnancy32w>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_surgeryOrUnder32Week.tr,
         hintText: LocaleKeys.declareInfo_surgeryOrUnder32WeekHint.tr,
         items: AppData.instance.surgeryPregnancy32w.toList(),
@@ -1294,7 +1294,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Nghỉ dưỡng thai
   Widget _buildMaternityRestDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<MaternityLeave>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_maternityLeave.tr,
         hintText: LocaleKeys.declareInfo_maternityLeaveHint.tr,
         items: AppData.instance.maternityLeave.toList(),
@@ -1315,7 +1315,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Nghỉ chăm con
   Widget _buildChildCareDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<ParentalLeave>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_parentalLeave.tr,
         hintText: LocaleKeys.declareInfo_parentalLeaveHint.tr,
         items: AppData.instance.parentalLeave.toList(),
@@ -1336,7 +1336,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Mang thai hộ
   Widget _buildSurrogacyDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<Surrogacy>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_surrogacy.tr,
         hintText: LocaleKeys.declareInfo_surrogacyHint.tr,
         items: AppData.instance.surrogacy.toList(),

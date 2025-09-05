@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
+import 'package:v_bhxh/clean/features/login/domain/usecase/get_630_categories_use_case.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
 import 'package:v_bhxh/clean/features/login/presentation/controller/login_controller_cl.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
@@ -28,6 +29,9 @@ class MockSaveCompanyNameUseCase extends Mock
 class MockGetD02CategoriesUseCase extends Mock
     implements GetD02CategoriesUseCase {}
 
+class MockGet630CategoriesUseCase extends Mock
+    implements Get630CategoriesUseCase {}
+
 class MockGetUnreadNotificationCountUseCase extends Mock
     implements GetUnreadNotificationCountUseCase {}
 
@@ -45,6 +49,7 @@ void main() {
   final getLastUsernameUseCase = MockGetLastUsernameUseCase();
   final saveCompanyNameUseCase = MockSaveCompanyNameUseCase();
   final getD02CategoriesUseCase = MockGetD02CategoriesUseCase();
+  final get630CategoriesUseCase = MockGet630CategoriesUseCase();
   final getUnreadNotificationCountUseCase =
       MockGetUnreadNotificationCountUseCase();
   final navigator = MockAppNavigator();
@@ -64,6 +69,7 @@ void main() {
         getLastUsernameUseCase,
         saveCompanyNameUseCase,
         getD02CategoriesUseCase,
+        get630CategoriesUseCase,
         getUnreadNotificationCountUseCase,
       );
       controller.nav = navigator;

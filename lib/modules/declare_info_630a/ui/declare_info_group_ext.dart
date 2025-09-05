@@ -97,7 +97,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
 
   // Hình thức kê khai
   Widget _buildDeclareMethodDropdown() {
-    return FormFieldRegistrant<DeclareForm630>(
+    return FormFieldRegistrant<Category>(
       registrarId: '1b6c5f61-7b44-418c-94c0-fde7a6e4b892',
       validator: (value) {
         if (value == null) {
@@ -107,7 +107,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<DeclareForm630>(
+          () => CardDropdownWithLabel<Category>(
             fieldKey: formFieldKey,
             labelText: LocaleKeys.declareInfo_declareMethod.tr,
             isRequired: true,
@@ -578,14 +578,14 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return const SizedBox.shrink();
         }
         return Obx(
-          () => UtilWidget.buildCardBottomSheetSelect2<HospitalLine>(
+          () => UtilWidget.buildCardBottomSheetSelect2<Category>(
             label: LocaleKeys.declareInfo_hospitalLine.tr,
             hintText: LocaleKeys.declareInfo_hospitalLineSelect.tr,
             enableClearIcon: true,
             isRequired: false,
             funcSelect: (didChange) async {
               Get.bottomSheet(
-                BottomSheetSearch<HospitalLine>(
+                BottomSheetSearch<Category>(
                   title: LocaleKeys.declareInfo_hospitalLineSelect.tr,
                   maxLength: 50,
                   hintText: LocaleKeys.declareInfo_inputHospitalLine.tr,
@@ -696,7 +696,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return const SizedBox.shrink();
         }
         return Obx(
-          () => CardDropdownWithLabel<WorkCondition>(
+          () => CardDropdownWithLabel<Category>(
             labelText: LocaleKeys.declareInfo_workingCondition.tr,
             hintText: LocaleKeys.declareInfo_workingConditionHint.tr,
             items: AppData.instance.workCondition.toList(),

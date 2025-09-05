@@ -5,9 +5,10 @@ import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/de
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../../base_app/model/app_data.dart';
+import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
+import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
-import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
 import '../../select_staff/model/model_src.dart';
 import '../../src.dart';
 
@@ -258,7 +259,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeReceiveMethod(ReceiveForm? method) {
+  void onChangeReceiveMethod(Category? method) {
     if (method == null) {
       return;
     }
@@ -288,7 +289,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     receiveForm.value = method;
   }
 
-  void onChangeDeclareMethod(DeclareForm630? method) {
+  void onChangeDeclareMethod(Category? method) {
     if (method == null) {
       return;
     }
@@ -352,9 +353,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Hình thức kê khai
-    declareForm.value = AppData.instance.declareForm.firstWhereOrNull(
-      (item) => item.value == detail.phatSinhDieuChinh,
-    );
+    declareForm.value = AppData.instance.declareForm[detail.phatSinhDieuChinh];
 
     // Mã nhóm hưởng
     if (detail.maNhomHuong != null) {
@@ -396,20 +395,19 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Điều kiện khám thai
-    pregnancyCondition.value = AppData.instance.pregnancyCondition
-        .firstWhereOrNull((item) => item.value == detail.dieuKienKhamThai);
+    pregnancyCondition.value =
+        AppData.instance.pregnancyCondition[detail.dieuKienKhamThai];
     // Tuổi thai
     if (detail.tuoiThai != null) {
       pregnancyWeekCtrl.text = detail.tuoiThai.toString();
     }
 
     // Biện pháp tránh thai
-    contraception.value = AppData.instance.contraception
-        .firstWhereOrNull((item) => item.value == detail.bienPhapKHHGD);
+    contraception.value = AppData.instance.contraception[detail.bienPhapKHHGD];
 
     // Điều kiện sinh con
-    childbirthCondition.value = AppData.instance.childBirthCondition
-        .firstWhereOrNull((item) => item.value == detail.dieuKienSinhCon);
+    childbirthCondition.value =
+        AppData.instance.childBirthCondition[detail.dieuKienSinhCon];
 
     // Ngày sinh con
     birthDayChildCtrl.text =
@@ -463,8 +461,8 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Phẫu thuật hoặc thai dưới 32 tuần
-    surgeryOrUnder32Week.value = AppData.instance.surgeryPregnancy32w
-        .firstWhereOrNull((item) => item.value == detail.phauThuatThai32);
+    surgeryOrUnder32Week.value =
+        AppData.instance.surgeryPregnancy32w[detail.phauThuatThai32];
 
     // Ngày mẹ chết
     motherDeathDateCtrl.text =
@@ -485,17 +483,13 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Nghỉ dưỡng thai
-    maternityRest.value = AppData.instance.maternityLeave
-        .firstWhereOrNull((item) => item.value == detail.nghiDuongThai);
+    maternityRest.value = AppData.instance.maternityLeave[detail.nghiDuongThai];
 
     // Nghỉ chăm con
-    parentalLeave.value = AppData.instance.parentalLeave
-        .firstWhereOrNull((item) => item.value == detail.chaNghiChamCon);
+    parentalLeave.value = AppData.instance.parentalLeave[detail.chaNghiChamCon];
 
     // Mang thai hộ
-    surrogacy.value = AppData.instance.surrogacy.firstWhereOrNull(
-      (item) => item.value == detail.mangThaiHo,
-    );
+    surrogacy.value = AppData.instance.surrogacy[detail.mangThaiHo];
 
     // Đợt bổ sung
     if (detail.dotBoSung != null) {
@@ -513,8 +507,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Hình thức nhận
-    receiveForm.value = AppData.instance.receiveForm
-        .firstWhereOrNull((item) => item.value == detail.hinhThucNhan);
+    receiveForm.value = AppData.instance.receiveForm[detail.hinhThucNhan];
 
     // Số tài khoản ngân hàng
     if (detail.soTaiKhoan != null) {
