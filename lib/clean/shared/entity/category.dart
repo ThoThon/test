@@ -10,6 +10,11 @@ const declareMethodAdjustValue = '2';
 /// Hình thức nhận : ATM
 const ATMPaymentValue = 'ATM';
 
+/// Map danh mục:
+/// - key là value của Category
+/// - value là Category
+typedef MapCategory = Map<String, Category>;
+
 class Category extends Equatable implements Entity {
   final String value;
   final String text;

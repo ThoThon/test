@@ -4,7 +4,7 @@ import 'categories_630_src.dart';
 
 class Categories630Data {
   // Hình thức kê khai
-  final Set<CategoryData>? declareForm;
+  final List<CategoryData>? declareForm;
 
   // Mã nhóm hưởng 630a
   final Set<BenefitGroup630Data>? benefitGroup630a;
@@ -74,7 +74,7 @@ class Categories630Data {
     return Categories630Data(
       declareForm: (json['phatSinhDieuChinhs'] as List?)
           ?.map((e) => CategoryData.fromJson(e))
-          .toSet(),
+          .toList(),
       benefitGroup630a: (json['maNhomHuong630as'] as List?)
           ?.map((e) => BenefitGroup630Data.fromJson630a(e))
           .toSet(),
