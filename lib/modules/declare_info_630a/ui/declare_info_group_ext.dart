@@ -112,7 +112,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
             labelText: LocaleKeys.declareInfo_declareMethod.tr,
             isRequired: true,
             hintText: LocaleKeys.declareInfo_selectDeclareMethod.tr,
-            items: AppData.instance.declareForm.values.toList(),
+            items: AppData.instance.declareForm.toList(),
             display: (item) => item.text,
             selectedItem: controller.declareForm.value,
             onChanged: controller.onChangeDeclareMethod,

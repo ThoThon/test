@@ -30,3 +30,7 @@ class Category extends Equatable implements Entity {
         text,
       ];
 }
+
+extension MapCategoryExt on MapCategory {
+  List<Category> toList() => values.toList();
+}
