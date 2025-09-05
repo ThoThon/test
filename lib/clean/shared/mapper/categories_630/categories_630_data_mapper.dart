@@ -24,7 +24,7 @@ class Categories630DataMapper
   @override
   Categories630 mapToEntity(Categories630Data? data) {
     return Categories630(
-      declareForm: _categoryDataMapper.mapToSetEntity(data?.declareForm),
+      declareForm: _categoryDataMapper.toMapByValue(data?.declareForm),
       benefitGroup630a:
           _benefitGroup630DataMapper.mapToSetEntity(data?.benefitGroup630a),
       hospitalLine: _categoryDataMapper.mapToSetEntity(data?.hospitalLine),

@@ -11,4 +11,17 @@ class CategoryDataMapper extends BaseDataMapper<CategoryData, Category> {
       text: data?.text ?? '',
     );
   }
+
+  Map<String, Category> toMapByValue(Iterable<CategoryData>? data) {
+    final result = <String, Category>{};
+    if (data == null) return result;
+    for (final item in data) {
+      final entity = mapToEntity(item);
+      final key = entity.value;
+      if (key.isNotEmpty) {
+        result[key] = entity;
+      }
+    }
+    return result;
+  }
 }

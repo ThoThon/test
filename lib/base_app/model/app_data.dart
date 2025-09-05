@@ -26,7 +26,7 @@ class AppData {
   final accountInfo = Rxn<AccountInfo>();
 
   // Thủ tục 630
-  var declareForm = <Category>{};
+  var declareForm = MapCategory();
   var benefitGroup630a = <BenefitGroup630>{};
   var workCondition = <Category>{};
   var receiveForm = <Category>{};

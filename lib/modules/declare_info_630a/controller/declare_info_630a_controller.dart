@@ -339,9 +339,7 @@ class DeclareInfo630aController extends BaseGetxController {
     staffCodeTextCtrl.text = detail.maNhanVien.trim();
 
     // Hìnhh thức kê khai
-    declareForm.value = AppData.instance.declareForm.firstWhereOrNull(
-      (item) => item.value == detail.phatSinhDieuChinh,
-    );
+    declareForm.value = AppData.instance.declareForm[detail.phatSinhDieuChinh];
 
     // Mã nhóm hưởng
     benefitGroup.value = AppData.instance.benefitGroup630a.firstWhereOrNull(

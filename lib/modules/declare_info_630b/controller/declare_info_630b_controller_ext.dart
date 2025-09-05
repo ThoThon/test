@@ -353,9 +353,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Hình thức kê khai
-    declareForm.value = AppData.instance.declareForm.firstWhereOrNull(
-      (item) => item.value == detail.phatSinhDieuChinh,
-    );
+    declareForm.value = AppData.instance.declareForm[detail.phatSinhDieuChinh];
 
     // Mã nhóm hưởng
     if (detail.maNhomHuong != null) {
