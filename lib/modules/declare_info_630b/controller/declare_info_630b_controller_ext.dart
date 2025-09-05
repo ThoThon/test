@@ -5,6 +5,7 @@ import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/de
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../../base_app/model/app_data.dart';
+import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
 import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
@@ -258,7 +259,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeReceiveMethod(ReceiveForm? method) {
+  void onChangeReceiveMethod(Category? method) {
     if (method == null) {
       return;
     }
@@ -288,7 +289,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     receiveForm.value = method;
   }
 
-  void onChangeDeclareMethod(DeclareForm630? method) {
+  void onChangeDeclareMethod(Category? method) {
     if (method == null) {
       return;
     }

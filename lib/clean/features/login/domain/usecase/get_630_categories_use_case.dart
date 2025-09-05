@@ -5,13 +5,13 @@ import 'package:v_bhxh/clean/features/login/domain/repository/login_repository.d
 
 import '../../../../shared/entity/categories_630/categories_630_src.dart';
 
-class Get630CategoriesUseCase extends NoInputUseCase<CategoriesProcedure630> {
+class Get630CategoriesUseCase extends NoInputUseCase<Categories630> {
   final LoginRepository _loginRepository;
 
   Get630CategoriesUseCase(this._loginRepository);
 
   @override
-  Future<CategoriesProcedure630> execute() {
+  Future<Categories630> execute() {
     return _loginRepository.get630Categories();
   }
 }

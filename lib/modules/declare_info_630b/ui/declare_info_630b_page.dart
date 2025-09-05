@@ -6,6 +6,7 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 
 import '../../../base_app/model/base_model.src.dart';
+import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
 
 part 'benefit_account_info_group_ext_630b.dart';

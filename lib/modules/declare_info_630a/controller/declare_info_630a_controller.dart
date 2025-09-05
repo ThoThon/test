@@ -9,6 +9,7 @@ import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dar
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 
+import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
@@ -34,7 +35,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final staffCodeTextCtrl = TextEditingController();
 
   /// Hình thức kê khai *
-  final declareForm = Rxn<DeclareForm630>();
+  final declareForm = Rxn<Category>();
 
   /// Mã nhóm hưởng *
   final benefitGroup = Rxn<BenefitGroup630>();
@@ -64,7 +65,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
 
   /// Tuyến bệnh viện
-  final selectHospitalLine = Rxn<HospitalLine>();
+  final selectHospitalLine = Rxn<Category>();
 
   /// Chọn/Nhập mã bệnh
   final selectDiseaseCode = Rxn<LongDiease>();
@@ -76,7 +77,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final serialNumberCtrl = TextEditingController();
 
   /// Điều kiện làm việc
-  final workCondition = Rxn<WorkCondition>();
+  final workCondition = Rxn<Category>();
 
   /// Nghỉ dưỡng thai
   final isMaternityRest = false.obs;
@@ -91,7 +92,7 @@ class DeclareInfo630aController extends BaseGetxController {
   final noteTextCtrl = TextEditingController();
 
   /// Hình thức nhận *
-  final receiveForm = Rxn<ReceiveForm>();
+  final receiveForm = Rxn<Category>();
 
   /// Số tài khoản ngân hàng
   final bankNumberCtrl = TextEditingController();
@@ -453,7 +454,7 @@ class DeclareInfo630aController extends BaseGetxController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeReceiveMethod(ReceiveForm? method) {
+  void onChangeReceiveMethod(Category? method) {
     if (method == null) {
       return;
     }
@@ -483,7 +484,7 @@ class DeclareInfo630aController extends BaseGetxController {
     receiveForm.value = method;
   }
 
-  void onChangeDeclareMethod(DeclareForm630? method) {
+  void onChangeDeclareMethod(Category? method) {
     if (method == null) {
       return;
     }

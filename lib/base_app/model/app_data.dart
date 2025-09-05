@@ -26,20 +26,20 @@ class AppData {
   final accountInfo = Rxn<AccountInfo>();
 
   // Thủ tục 630
-  var declareForm = <DeclareForm630>{};
+  var declareForm = <Category>{};
   var benefitGroup630a = <BenefitGroup630>{};
-  var workCondition = <WorkCondition>{};
-  var receiveForm = <ReceiveForm>{};
+  var workCondition = <Category>{};
+  var receiveForm = <Category>{};
   var bank = <Bank>{};
-  var hospitalLine = <HospitalLine>{};
+  var hospitalLine = <Category>{};
   var longDiease = <LongDiease>{};
-  var pregnancyCondition = <PregnancyCheckCondition>{};
-  var childBirthCondition = <ChildBirthCondition>{};
-  var maternityLeave = <MaternityLeave>{};
-  var parentalLeave = <ParentalLeave>{};
-  var surrogacy = <Surrogacy>{};
-  var surgeryPregnancy32w = <SurgeryPregnancy32w>{};
-  var contraception = <Contraception>{};
+  var pregnancyCondition = <Category>{};
+  var childBirthCondition = <Category>{};
+  var maternityLeave = <Category>{};
+  var parentalLeave = <Category>{};
+  var surrogacy = <Category>{};
+  var surgeryPregnancy32w = <Category>{};
+  var contraception = <Category>{};
   var benefitGroup630b = <BenefitGroup630>{};
   var benefitGroup630c = <BenefitGroup630>{};
 

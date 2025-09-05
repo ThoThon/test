@@ -7,6 +7,8 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
+import '../../../clean/shared/entity/category.dart';
+
 part 'declare_info_630c_widget.dart';
 part 'benefit_account_info_group_ext_630c.dart';
 part 'declare_info_group_ext_630c.dart';

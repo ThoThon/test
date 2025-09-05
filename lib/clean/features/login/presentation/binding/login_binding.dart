@@ -30,7 +30,7 @@ class LoginBinding extends BaseBindings {
   @override
   void bindingsRepository() {
     Get.lazyPut<LoginRepository>(
-      () => LoginRepositoryImpl(sl(), sl(), sl(), sl(), sl()),
+      () => LoginRepositoryImpl(sl(), sl(), sl(), sl(), sl(), sl()),
     );
   }
 
@@ -44,5 +44,6 @@ class LoginBinding extends BaseBindings {
     Get.lazyPut(() => GetUnreadNotificationCountUseCase(sl()));
     Get.lazyPut(() => GetLastUsernameUseCase(sl()));
     Get.lazyPut(() => SaveCompanyNameUseCase(sl()));
+    Get.lazyPut(() => Get630CategoriesUseCase(sl()));
   }
 }

@@ -1,13 +1,15 @@
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
-import 'package:v_bhxh/clean/shared/entity/categories_630/categories_procedure_630.dart';
-import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
-import 'package:v_bhxh/clean/shared/model/account_info_data.dart';
 import 'package:v_bhxh/clean/core/data/model/base_response_cl.dart';
-import 'package:v_bhxh/clean/shared/model/d02_categories_data.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/repository/login_repository.dart';
-import 'package:v_bhxh/core/values/app_api.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
+import 'package:v_bhxh/clean/shared/mapper/categories_630/categories_630_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
+import 'package:v_bhxh/clean/shared/model/account_info_data.dart';
+import 'package:v_bhxh/clean/shared/model/categories_630/categories_630_data.dart';
+import 'package:v_bhxh/clean/shared/model/d02_categories_data.dart';
+import 'package:v_bhxh/core/values/app_api.dart';
 
 class LoginRepositoryImpl extends LoginRepository {
   final NonAuthAppServerApiClient _nonAuthAppServerApiClient;
@@ -16,6 +18,7 @@ class LoginRepositoryImpl extends LoginRepository {
   final LoginRequestDataMapper _loginRequestDataMapper;
   final AccountInfoDataMapper _accountInfoDataMapper;
   final D02CategoriesDataMapper _d02CategoriesDataMapper;
+  final Categories630DataMapper _categories630dataMapper;
 
   LoginRepositoryImpl(
     this._nonAuthAppServerApiClient,
@@ -23,6 +26,7 @@ class LoginRepositoryImpl extends LoginRepository {
     this._loginRequestDataMapper,
     this._accountInfoDataMapper,
     this._d02CategoriesDataMapper,
+    this._categories630dataMapper,
   );
 
   @override
@@ -87,8 +91,18 @@ class LoginRepositoryImpl extends LoginRepository {
   }
 
   @override
-  Future<CategoriesProcedure630> get630Categories() {
-    // TODO: implement get630Categories
-    throw UnimplementedError();
+  Future<Categories630> get630Categories() async {
+    final response = await _authAppServerApiClient.request(
+      method: RestMethod.get,
+      path: AppApi.urlGet630Categories,
+      cancelToken: cancelToken,
+    );
+
+    final data = BaseResponseCl<Categories630Data>.fromJson(
+      response,
+      fromJson: (json) => Categories630Data.fromJson(json),
+    );
+
+    return _categories630dataMapper.mapToEntity(data.result);
   }
 }

@@ -13,6 +13,7 @@ import 'package:v_bhxh/modules/declare_info_630c/repository/declare_info_630c_re
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
+import '../../../clean/shared/entity/category.dart';
 import '../../declare/staff_list/model/model_src.dart';
 import '../../select_staff/select_staff_src.dart';
 
@@ -39,7 +40,7 @@ class DeclareInfo630cController extends BaseGetxController {
   final staffCodeTextCtrl = TextEditingController();
 
   /// Hình thức kê khai *
-  final declareForm = Rxn<DeclareForm630>();
+  final declareForm = Rxn<Category>();
 
   /// Mã nhóm hưởng *
   final benefitGroup = Rxn<BenefitGroup630>();
@@ -78,7 +79,7 @@ class DeclareInfo630cController extends BaseGetxController {
   final noteTextCtrl = TextEditingController();
 
   /// Hình thức nhận *
-  final receiveForm = Rxn<ReceiveForm>();
+  final receiveForm = Rxn<Category>();
 
   /// Số tài khoản ngân hàng *
   final bankNumberCtrl = TextEditingController();
@@ -386,7 +387,7 @@ class DeclareInfo630cController extends BaseGetxController {
 
   bool get isRateToDecline => declineValid.contains(benefitGroup.value?.value);
 
-  void onChangeReceiveMethod(ReceiveForm? method) {
+  void onChangeReceiveMethod(Category? method) {
     if (method == null) {
       return;
     }
@@ -458,7 +459,7 @@ class DeclareInfo630cController extends BaseGetxController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeDeclareMethod(DeclareForm630? method) {
+  void onChangeDeclareMethod(Category? method) {
     if (method == null) {
       return;
     }

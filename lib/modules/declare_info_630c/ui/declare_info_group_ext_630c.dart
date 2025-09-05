@@ -78,7 +78,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
 
   // Hình thức kê khai
   Widget _buildDeclareMethodDropdown() {
-    return FormFieldRegistrant<DeclareForm630>(
+    return FormFieldRegistrant<Category>(
       registrarId: '96d3d63a-b8a7-4413-91f6-fbabfacffeb0',
       validator: (value) {
         if (value == null) {
@@ -88,7 +88,7 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<DeclareForm630>(
+          () => CardDropdownWithLabel<Category>(
             fieldKey: formFieldKey,
             validator: validator,
             labelText: LocaleKeys.declareInfo_declareMethod.tr,

@@ -109,23 +109,23 @@ class LoginControllerCl extends BaseGetClController {
   Future<void> _get630Categories() async {
     final categories630 = await _get630categoriesUseCase.execute();
     // setter .value. của RxSet là protected nên sẽ sử dụng assignAll
-   AppData.instance
-      ..declareForm = categories630.declareForm
-      ..benefitGroup630a = categories630.benefitGroup630a
-      ..hospitalLine = categories630.hospitalLine
-      ..longDiease = categories630.longDiease
-      ..workCondition = categories630.workCondition
-      ..receiveForm = categories630.receiveForm
-      ..bank = categories630.bank
-      ..benefitGroup630b = categories630.benefitGroup630b
-      ..pregnancyCondition = categories630.pregnancyCondition
-      ..childBirthCondition = categories630.childBirthCondition
-      ..maternityLeave = categories630.maternityLeave
-      ..parentalLeave = categories630.parentalLeave
-      ..surrogacy = categories630.surrogacy
-      ..surgeryPregnancy32w = categories630.surgeryPregnancy32w
-      ..contraception = categories630.contraception
-      ..benefitGroup630c = categories630.benefitGroup630c;
+    AppData.instance
+      ..declareForm.assignAll(categories630.declareForm)
+      ..benefitGroup630a.assignAll(categories630.benefitGroup630a)
+      ..hospitalLine.assignAll(categories630.hospitalLine)
+      ..longDiease.assignAll(categories630.longDiease)
+      ..workCondition.assignAll(categories630.workCondition)
+      ..receiveForm.assignAll(categories630.receiveForm)
+      ..bank.assignAll(categories630.bank)
+      ..benefitGroup630b.assignAll(categories630.benefitGroup630b)
+      ..pregnancyCondition.assignAll(categories630.pregnancyCondition)
+      ..childBirthCondition.assignAll(categories630.childBirthCondition)
+      ..maternityLeave.assignAll(categories630.maternityLeave)
+      ..parentalLeave.assignAll(categories630.parentalLeave)
+      ..surrogacy.assignAll(categories630.surrogacy)
+      ..surgeryPregnancy32w.assignAll(categories630.surgeryPregnancy32w)
+      ..contraception.assignAll(categories630.contraception)
+      ..benefitGroup630c.assignAll(categories630.benefitGroup630c);
   }
 
   Future<void> _getToTalNotiUnread() async {

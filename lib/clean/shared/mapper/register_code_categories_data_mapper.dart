@@ -1,4 +1,4 @@
-import 'package:v_bhxh/clean/shared/mapper/categories_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/category_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 import 'package:v_bhxh/clean/shared/mapper/social_agency_data_mapper.dart';
 
@@ -9,7 +9,7 @@ class RegisterCodeCategoriesDataMapper
     extends BaseDataMapper<RegisterCodeCategoriesData, RegisterCodeCategories> {
   final ProvinceDataMapper _provinceDataMapper;
   final SocialAgencyDataMapper _socialAgencyDataMapper;
-  final CategoriesDataMapper _categoriesDataMapper;
+  final CategoryDataMapper _categoriesDataMapper;
   RegisterCodeCategoriesDataMapper(
     this._provinceDataMapper,
     this._categoriesDataMapper,
