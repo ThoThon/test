@@ -39,7 +39,6 @@ class LoginBinding extends BaseBindings {
     Get.lazyPut(() => LoginUseCase(sl()));
     Get.lazyPut(() => SaveAuthInfoUseCase(sl()));
     Get.lazyPut(() => GetAccountInfoUseCase(sl()));
-    Get.lazyPut(() => Get630CategoriesUseCase(sl()));
     Get.lazyPut(() => GetD02CategoriesUseCase(sl()));
     Get.lazyPut(() => GetUnreadNotificationCountUseCase(sl()));
     Get.lazyPut(() => GetLastUsernameUseCase(sl()));
