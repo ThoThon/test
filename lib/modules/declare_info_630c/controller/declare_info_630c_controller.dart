@@ -326,9 +326,7 @@ class DeclareInfo630cController extends BaseGetxController {
     noteTextCtrl.text = detail.ghiChu?.trim() ?? '';
 
     // Hình thức nhận
-    receiveForm.value = AppData.instance.receiveForm.firstWhereOrNull(
-      (item) => item.value == detail.hinhThucNhan,
-    );
+    receiveForm.value = AppData.instance.receiveForm[detail.hinhThucNhan];
 
     // Số tài khoản ngân hàng
     bankNumberCtrl.text = detail.soTaiKhoan?.trim() ?? '';

@@ -3,9 +3,9 @@ import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
-import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 
@@ -383,9 +383,8 @@ class DeclareInfo630aController extends BaseGetxController {
     }
 
     // Tuyến bệnh viện
-    selectHospitalLine.value = AppData.instance.hospitalLine.firstWhereOrNull(
-      (item) => item.value == detail.tuyenBenhVien,
-    );
+    selectHospitalLine.value =
+        AppData.instance.hospitalLine[detail.tuyenBenhVien];
 
     // Mã bệnh
     selectDiseaseCode.value = AppData.instance.longDiease
@@ -398,9 +397,8 @@ class DeclareInfo630aController extends BaseGetxController {
     serialNumberCtrl.text = detail.soSeriCT.trim();
 
     // Điều kiện làm việc
-    workCondition.value = AppData.instance.workCondition.firstWhereOrNull(
-      (item) => item.value == detail.dieuKienLamViec,
-    );
+    workCondition.value =
+        AppData.instance.workCondition[detail.dieuKienLamViec];
 
     // Nghỉ dưỡng thai
     isMaternityRest.value = detail.dangKyNghiDuongThai;
@@ -415,9 +413,7 @@ class DeclareInfo630aController extends BaseGetxController {
     noteTextCtrl.text = detail.ghiChu.trim();
 
     // Hình thức nhận
-    receiveForm.value = AppData.instance.receiveForm.firstWhereOrNull(
-      (item) => item.value == detail.hinhThucNhan,
-    );
+    receiveForm.value = AppData.instance.receiveForm[detail.hinhThucNhan];
 
     // Số tài khoản ngân hàng
     bankNumberCtrl.text = detail.soTaiKhoan.trim();

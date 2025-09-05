@@ -10,16 +10,16 @@ class Categories630 implements Entity {
   final Set<BenefitGroup630> benefitGroup630a;
 
   // Tuyến bệnh viện
-  final Set<Category> hospitalLine;
+  final MapCategory hospitalLine;
 
   // Bệnh dài ngày
   final Set<LongDiease> longDiease;
 
   // Điều kiện làm việc
-  final Set<Category> workCondition;
+  final MapCategory workCondition;
 
   // Hình thức nhận
-  final Set<Category> receiveForm;
+  final MapCategory receiveForm;
 
   // Ngân hàng
   final Set<Bank> bank;
@@ -28,25 +28,25 @@ class Categories630 implements Entity {
   final Set<BenefitGroup630> benefitGroup630b;
 
   // Điều kiện khám thai
-  final Set<Category> pregnancyCondition;
+  final MapCategory pregnancyCondition;
 
   // Điều kiện sinh con
-  final Set<Category> childBirthCondition;
+  final MapCategory childBirthCondition;
 
   // Nghỉ dưỡng thai
-  final Set<Category> maternityLeave;
+  final MapCategory maternityLeave;
 
   // Nghỉ chăm con
-  final Set<Category> parentalLeave;
+  final MapCategory parentalLeave;
 
   // Mang thai hộ
-  final Set<Category> surrogacy;
+  final MapCategory surrogacy;
 
   // Phẫu thuật hoặc thai dưới 32 tuần
-  final Set<Category> surgeryPregnancy32w;
+  final MapCategory surgeryPregnancy32w;
 
   // Biện pháp tránh thai
-  final Set<Category> contraception;
+  final MapCategory contraception;
 
   // Mã nhóm hưởng 630c
   final Set<BenefitGroup630> benefitGroup630c;

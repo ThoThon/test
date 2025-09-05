@@ -27,23 +27,23 @@ class Categories630DataMapper
       declareForm: _categoryDataMapper.toMapByValue(data?.declareForm),
       benefitGroup630a:
           _benefitGroup630DataMapper.mapToSetEntity(data?.benefitGroup630a),
-      hospitalLine: _categoryDataMapper.mapToSetEntity(data?.hospitalLine),
+      hospitalLine: _categoryDataMapper.toMapByValue(data?.hospitalLine),
       longDiease: _longDieaseDataMapper.mapToSetEntity(data?.longDiease),
-      workCondition: _categoryDataMapper.mapToSetEntity(data?.workCondition),
-      receiveForm: _categoryDataMapper.mapToSetEntity(data?.receiveForm),
+      workCondition: _categoryDataMapper.toMapByValue(data?.workCondition),
+      receiveForm: _categoryDataMapper.toMapByValue(data?.receiveForm),
       bank: _bankDataMapper.mapToSetEntity(data?.bank),
       benefitGroup630b:
           _benefitGroup630DataMapper.mapToSetEntity(data?.benefitGroup630b),
       pregnancyCondition:
-          _categoryDataMapper.mapToSetEntity(data?.pregnancyCondition),
+          _categoryDataMapper.toMapByValue(data?.pregnancyCondition),
       childBirthCondition:
-          _categoryDataMapper.mapToSetEntity(data?.childBirthCondition),
-      maternityLeave: _categoryDataMapper.mapToSetEntity(data?.maternityLeave),
-      parentalLeave: _categoryDataMapper.mapToSetEntity(data?.parentalLeave),
-      surrogacy: _categoryDataMapper.mapToSetEntity(data?.surrogacy),
+          _categoryDataMapper.toMapByValue(data?.childBirthCondition),
+      maternityLeave: _categoryDataMapper.toMapByValue(data?.maternityLeave),
+      parentalLeave: _categoryDataMapper.toMapByValue(data?.parentalLeave),
+      surrogacy: _categoryDataMapper.toMapByValue(data?.surrogacy),
       surgeryPregnancy32w:
-          _categoryDataMapper.mapToSetEntity(data?.surgeryPregnancy32w),
-      contraception: _categoryDataMapper.mapToSetEntity(data?.contraception),
+          _categoryDataMapper.toMapByValue(data?.surgeryPregnancy32w),
+      contraception: _categoryDataMapper.toMapByValue(data?.contraception),
       benefitGroup630c:
           _benefitGroup630DataMapper.mapToSetEntity(data?.benefitGroup630c),
     );

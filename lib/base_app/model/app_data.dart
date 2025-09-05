@@ -28,18 +28,18 @@ class AppData {
   // Thủ tục 630
   var declareForm = MapCategory();
   var benefitGroup630a = <BenefitGroup630>{};
-  var workCondition = <Category>{};
-  var receiveForm = <Category>{};
+  var workCondition = MapCategory();
+  var receiveForm = MapCategory();
   var bank = <Bank>{};
-  var hospitalLine = <Category>{};
+  var hospitalLine = MapCategory();
   var longDiease = <LongDiease>{};
-  var pregnancyCondition = <Category>{};
-  var childBirthCondition = <Category>{};
-  var maternityLeave = <Category>{};
-  var parentalLeave = <Category>{};
-  var surrogacy = <Category>{};
-  var surgeryPregnancy32w = <Category>{};
-  var contraception = <Category>{};
+  var pregnancyCondition = MapCategory();
+  var childBirthCondition = MapCategory();
+  var maternityLeave = MapCategory();
+  var parentalLeave = MapCategory();
+  var surrogacy = MapCategory();
+  var surgeryPregnancy32w = MapCategory();
+  var contraception = MapCategory();
   var benefitGroup630b = <BenefitGroup630>{};
   var benefitGroup630c = <BenefitGroup630>{};
 
