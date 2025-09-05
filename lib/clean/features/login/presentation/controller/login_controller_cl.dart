@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
+import 'package:v_bhxh/clean/features/login/domain/usecase/get_630_categories_use_case.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/core/values/const.dart';
@@ -18,6 +19,7 @@ class LoginControllerCl extends BaseGetClController {
   final GetLastUsernameUseCase _getLastUsernameUseCase;
   final SaveCompanyNameUseCase _saveCompanyNameUseCase;
   final GetD02CategoriesUseCase _getD02CategoriesUseCase;
+  final Get630CategoriesUseCase _get630categoriesUseCase;
   final GetUnreadNotificationCountUseCase _getUnreadNotificationCountUseCase;
 
   final formKey = GlobalKey<FormState>();
@@ -35,6 +37,7 @@ class LoginControllerCl extends BaseGetClController {
     this._getLastUsernameUseCase,
     this._saveCompanyNameUseCase,
     this._getD02CategoriesUseCase,
+    this._get630categoriesUseCase,
     this._getUnreadNotificationCountUseCase,
   );
 
@@ -74,7 +77,7 @@ class LoginControllerCl extends BaseGetClController {
         await (
           _getAccountInfo(),
           _getD02Categories(),
-          // TODO: get630Categories
+          _get630Categories(),
           _getToTalNotiUnread(),
         ).wait;
 
@@ -101,6 +104,28 @@ class LoginControllerCl extends BaseGetClController {
       ..positions.assignAll(d02Categories.positions)
       ..birthTypes.assignAll(d02Categories.birthTypes)
       ..receiveResults.assignAll(d02Categories.receiveResults);
+  }
+
+  Future<void> _get630Categories() async {
+    final categories630 = await _get630categoriesUseCase.execute();
+    // setter .value. của RxSet là protected nên sẽ sử dụng assignAll
+   AppData.instance
+      ..declareForm = categories630.declareForm
+      ..benefitGroup630a = categories630.benefitGroup630a
+      ..hospitalLine = categories630.hospitalLine
+      ..longDiease = categories630.longDiease
+      ..workCondition = categories630.workCondition
+      ..receiveForm = categories630.receiveForm
+      ..bank = categories630.bank
+      ..benefitGroup630b = categories630.benefitGroup630b
+      ..pregnancyCondition = categories630.pregnancyCondition
+      ..childBirthCondition = categories630.childBirthCondition
+      ..maternityLeave = categories630.maternityLeave
+      ..parentalLeave = categories630.parentalLeave
+      ..surrogacy = categories630.surrogacy
+      ..surgeryPregnancy32w = categories630.surgeryPregnancy32w
+      ..contraception = categories630.contraception
+      ..benefitGroup630c = categories630.benefitGroup630c;
   }
 
   Future<void> _getToTalNotiUnread() async {
