@@ -285,7 +285,7 @@ class AppNavigatorImpl extends AppNavigator {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
-                  _dismissDialog();
+                  dismissDialog();
                   onClose?.call();
                 },
                 style: ButtonStyle(
@@ -406,7 +406,7 @@ class AppNavigatorImpl extends AppNavigator {
                       textStyle: AppTextStyle.font14Re
                           .copyWith(color: AppColors.primaryColor),
                       onPressed: () {
-                        _dismissDialog();
+                        dismissDialog();
                         onCancel?.call();
                       },
                     ),
@@ -421,7 +421,7 @@ class AppNavigatorImpl extends AppNavigator {
                           .copyWith(color: AppColors.basicWhite),
                       title: confirmTitle ?? LocaleKeys.dialog_confirm.tr,
                       onPressed: () {
-                        _dismissDialog();
+                        dismissDialog();
                         onConfirm?.call();
                       },
                     ),
@@ -491,7 +491,7 @@ class AppNavigatorImpl extends AppNavigator {
                     textStyle: AppTextStyle.font14Re
                         .copyWith(color: AppColors.primaryColor),
                     onPressed: () {
-                      _dismissDialog();
+                      dismissDialog();
                       onCancel?.call();
                     },
                   ),
@@ -504,7 +504,7 @@ class AppNavigatorImpl extends AppNavigator {
                         .copyWith(color: AppColors.basicWhite),
                     title: confirmTitle ?? LocaleKeys.dialog_confirm.tr,
                     onPressed: () {
-                      _dismissDialog();
+                      dismissDialog();
                       onConfirm?.call();
                     },
                   ),
@@ -548,7 +548,7 @@ class AppNavigatorImpl extends AppNavigator {
             CountDownTimer(
               start: initialSeconds,
               onFinish: () {
-                _dismissDialog();
+                dismissDialog();
                 onFinish?.call();
               },
             ),
@@ -576,7 +576,7 @@ class AppNavigatorImpl extends AppNavigator {
                 textStyle:
                     AppTextStyle.font14Bo.copyWith(color: AppColors.basicWhite),
                 onPressed: () {
-                  _dismissDialog();
+                  dismissDialog();
                   onCancel?.call();
                 },
               ),
@@ -603,7 +603,8 @@ class AppNavigatorImpl extends AppNavigator {
     );
   }
 
-  void _dismissDialog() {
+  @override
+  void dismissDialog() {
     if (Get.isDialogOpen == true) {
       Get.back();
     }

@@ -296,14 +296,20 @@ class RegisterCodeController extends BaseGetClController {
           );
           return;
         }
+
         _showDialogCheckedSuccess();
-        final response =
-            await _firstTimeRegisterUseCase.execute(_buildRequest());
-        if (response) {
-          ShowDialog.dismissDialog();
-          _showDialogVerifySuccess();
-        }
+        await _firstTimeRegisterUseCase.execute(_buildRequest());
+        nav.dismissDialog();
+        _showDialogVerifySuccess();
       },
+      // onError: (error) {
+      //   if () {
+      //     nav.dismissDialog();
+      //     return null;
+      //   }
+
+      //   return error;
+      // },
     );
   }
 

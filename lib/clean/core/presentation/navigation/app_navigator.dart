@@ -119,4 +119,6 @@ abstract class AppNavigator {
     SnackBarType type = SnackBarType.failure,
     Alignment? align,
   });
+
+  void dismissDialog();
 }
