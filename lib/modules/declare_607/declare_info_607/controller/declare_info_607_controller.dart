@@ -682,9 +682,11 @@ class DeclareInfo607Controller extends BaseGetxController {
   /// Cập nhật thông tin chủ hộ là required hay không
   void updateHouseholdInfoRequired() {
     // Nếu "Người tham gia là chủ hộ" true -> Bắt buộc
-    tk1State.isHouseholdInfoRequired.value =
-        tk1State.isParticipantHeadOfHousehold.value;
-
+    if (tk1State.isParticipantHeadOfHousehold.value) {
+      tk1State.isHouseholdInfoRequired.value = true;
+      return;
+    }
+    
     // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
     if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
       tk1State.isHouseholdInfoRequired.value = true;
