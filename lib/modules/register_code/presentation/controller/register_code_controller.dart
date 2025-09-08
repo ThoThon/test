@@ -25,6 +25,9 @@ import '../enum/register_code_tab_enum.dart';
 /// Tỉnh mặc định là "Hà Nội"
 const _defaultProvinceCode = '01';
 
+/// Nếu mã số thuế không hợp lệ thì trả về code = '06'
+const _taxCodeInvalid = '06';
+
 class RegisterCodeController extends BaseGetClController {
   final GetCertificateUseCase _getCertificateUseCase;
   final GetCategoriesUseCase _getCategoriesUseCase;
@@ -321,7 +324,7 @@ class RegisterCodeController extends BaseGetClController {
           final serverMsg = error.serverError!.errorMessage;
           final serverCode = error.serverError!.code;
 
-          if (serverCode == '06') {
+          if (serverCode == _taxCodeInvalid) {
             _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
             return null;
           }
