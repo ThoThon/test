@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../../features/login/models/login_response.dart';
 import '../../features/login/models/login_storage.dart';
+import '../../features/mainpage/product_model.dart';
 import 'base_response.dart';
 import 'dio_client.dart';
 
@@ -23,6 +24,19 @@ class ApiService {
     return BaseResponse<LoginResponse>.fromJson(
       response.data,
       func: (json) => LoginResponse.fromJson(json),
+    );
+  }
+
+  static Future<BaseResponse<List<Product>>> getProducts({
+    required int page,
+    int size = 10,
+  }) async {
+    return await callApiWithToken<List<Product>>(
+      endpoint: "/products?page=$page&size=$size",
+      func: (json) {
+        final list = json as List;
+        return list.map((e) => Product.fromJson(e)).toList();
+      },
     );
   }
 

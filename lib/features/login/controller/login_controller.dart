@@ -1,8 +1,8 @@
-import 'package:app_crud_getx/services/remote/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../routes/app_routes.dart';
+import '../../../services/remote/api_service.dart';
 import '../models/login_info.dart';
 import '../models/login_storage.dart';
 
