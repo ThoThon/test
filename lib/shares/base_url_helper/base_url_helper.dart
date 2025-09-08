@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:v_bhxh/base_app/controllers_base/app_controller/app_controller.dart';
-import 'package:v_bhxh/core/router/app_route.dart';
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive_impl.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/core/values/hive_key.dart';
 
@@ -14,21 +14,21 @@ class BaseUrlHelper {
   BaseUrlHelper._();
 
   String get currentUrl {
-    return hiveApp.get(HiveKeys.keyBaseUrl) ?? AppApi.urlSign;
+    return AppHiveImpl.instance.get(HiveKeys.keyBaseUrl) ?? AppApi.urlSign;
   }
 
   Future<void> setBaseUrl(String url) async {
-    return hiveApp.put(HiveKeys.keyBaseUrl, url);
+    return AppHiveImpl.instance.put(HiveKeys.keyBaseUrl, url);
   }
 
   Future<void> switchToUatEnv() {
-    return hiveApp.put(HiveKeys.keyBaseUrl, AppApi.urlUat);
+    return AppHiveImpl.instance.put(HiveKeys.keyBaseUrl, AppApi.urlUat);
   }
 
   Future<void> switchEnv() async {
     final cbData = await Clipboard.getData(Clipboard.kTextPlain);
     if (cbData?.text == kTriggerChangeBaseUrl) {
-      Get.toNamed(AppRoutes.changeBaseUrl.path);
+      Get.toNamed(AppRoutesCl.changeBaseUrl.path);
     }
   }
 }

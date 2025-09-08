@@ -176,7 +176,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Hình thức kê khai
   Widget _buildDeclareMethodDropdown() {
-    return FormFieldRegistrant<DeclareForm630Model>(
+    return FormFieldRegistrant<Category>(
       registrarId: 'c030669e-725e-4598-b1e8-14083c9b32de',
       validator: (value) {
         if (value == null) {
@@ -186,7 +186,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<DeclareForm630Model>(
+          () => CardDropdownWithLabel<Category>(
             fieldKey: formFieldKey,
             validator: validator,
             labelText: LocaleKeys.declareInfo_declareMethod.tr,
@@ -204,7 +204,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Mã nhóm hưởng
   Widget _buildBenefitGroupCodeDropdown() {
-    return FormFieldRegistrant<BenefitGroup630Model>(
+    return FormFieldRegistrant<BenefitGroup630>(
       registrarId: '65d1041d-d071-42f5-9a69-59b3382f6764',
       validator: (value) {
         if (value == null) {
@@ -214,7 +214,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<BenefitGroup630Model>(
+          () => CardDropdownWithLabel<BenefitGroup630>(
             validator: validator,
             fieldKey: formFieldKey,
             labelText: LocaleKeys.declareInfo_benefitGroupCode.tr,
@@ -239,7 +239,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         if (listBenefitLv2 == null || listBenefitLv2.isEmpty) {
           return UtilWidget.shrink;
         }
-        return FormFieldRegistrant<BenefitGroupLv2Model>(
+        return FormFieldRegistrant<BenefitGroupLv2>(
           registrarId: '862496a1-7059-4921-a936-21623836ba38',
           validator: (value) {
             if (controller.benefitGroupLv2.value == null) {
@@ -249,7 +249,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           },
           builder: (formFieldKey, validator) {
             return Obx(
-              () => CardDropdownWithLabel<BenefitGroupLv2Model>(
+              () => CardDropdownWithLabel<BenefitGroupLv2>(
                 autovalidateMode: controller.autoValidateMode.value,
                 validator: validator,
                 fieldKey: formFieldKey,
@@ -618,7 +618,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
 
   // Điều kiện khám thai
   Widget _buildIsPregnancyConditionDropdown() {
-    return FormFieldRegistrant<PregnancyCheckConditionModel>(
+    return FormFieldRegistrant<Category>(
       registrarId: '0fe0020c-fbb7-40a0-9222-a71f8fde457c',
       validator: (value) {
         if (controller.pregnancyCondition.value == null &&
@@ -629,7 +629,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<PregnancyCheckConditionModel>(
+          () => CardDropdownWithLabel<Category>(
             fieldKey: formFieldKey,
             validator: validator,
             onTapClear: () {
@@ -695,7 +695,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Biện pháp tránh thai
   Widget _buildContraceptionMethodDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<ContraceptionModel>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_contraception.tr,
         enableClearIcon: true,
         onTapClear: () {
@@ -716,7 +716,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Điều kiện sinh con
   Widget _buildIsChildbirthConditionDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<ChildBirthConditionModel>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_childBirth.tr,
         hintText: LocaleKeys.declareInfo_childbirthHint.tr,
         items: AppData.instance.childBirthCondition.toList(),
@@ -1182,7 +1182,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Phẫu thuật hoặc thai dưới 32 tuần
   Widget _buildSurgeryOrUnder32WeekDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<SurgeryPregnancy32wModel>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_surgeryOrUnder32Week.tr,
         hintText: LocaleKeys.declareInfo_surgeryOrUnder32WeekHint.tr,
         items: AppData.instance.surgeryPregnancy32w.toList(),
@@ -1370,7 +1370,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Nghỉ dưỡng thai
   Widget _buildMaternityRestDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<MaternityLeaveModel>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_maternityLeave.tr,
         hintText: LocaleKeys.declareInfo_maternityLeaveHint.tr,
         items: AppData.instance.maternityLeave.toList(),
@@ -1391,7 +1391,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Nghỉ chăm con
   Widget _buildChildCareDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<ParentalLeaveModel>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_parentalLeave.tr,
         hintText: LocaleKeys.declareInfo_parentalLeaveHint.tr,
         items: AppData.instance.parentalLeave.toList(),
@@ -1412,7 +1412,7 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
   // Mang thai hộ
   Widget _buildSurrogacyDropdown() {
     return Obx(
-      () => CardDropdownWithLabel<SurrogacyModel>(
+      () => CardDropdownWithLabel<Category>(
         labelText: LocaleKeys.declareInfo_surrogacy.tr,
         hintText: LocaleKeys.declareInfo_surrogacyHint.tr,
         items: AppData.instance.surrogacy.toList(),

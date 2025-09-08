@@ -1,25 +1,161 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "v_bhxh",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "v_bhxh (profile mode)",
+            "name": "Run Dev (Debug)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "program": "lib/main_dev.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "dev",
+                "--target",
+                "lib/main_dev.dart"
+            ]
         },
         {
-            "name": "v_bhxh (release mode)",
+            "name": "Run Dev (Release)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "program": "lib/main_dev.dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "dev",
+                "--target",
+                "lib/main_dev.dart"
+            ]
+        },
+        {
+            "name": "Run Dev (Profile)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_dev.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "dev",
+                "--target",
+                "lib/main_dev.dart"
+            ]
+        },
+        {
+            "name": "Run Uat (Debug)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_uat.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "uat",
+                "--target",
+                "lib/main_uat.dart"
+            ]
+        },
+        {
+            "name": "Run Uat (Release)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_uat.dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "uat",
+                "--target",
+                "lib/main_uat.dart"
+            ]
+        },
+        {
+            "name": "Run Uat (Profile)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_uat.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "uat",
+                "--target",
+                "lib/main_uat.dart"
+            ]
+        },
+        {
+            "name": "Run Prod SDS (Debug)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod_sds.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "prodsds",
+                "--target",
+                "lib/main_prod_sds.dart"
+            ]
+        },
+        {
+            "name": "Run Prod SDS (Release)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod_sds.dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "prodsds",
+                "--target",
+                "lib/main_prod_sds.dart"
+            ]
+        },
+        {
+            "name": "Run Prod SDS (Profile)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod_sds.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "prodsds",
+                "--target",
+                "lib/main_prod_sds.dart"
+            ]
+        },
+        {
+            "name": "Run Prod (Debug)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "prod",
+                "--target",
+                "lib/main_prod.dart"
+            ]
+        },
+        {
+            "name": "Run Prod (Release)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod.dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "prod",
+                "--target",
+                "lib/main_prod.dart"
+            ]
+        },
+        {
+            "name": "Run Prod (Profile)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "prod",
+                "--target",
+                "lib/main_prod.dart"
+            ]
         }
     ]
 }

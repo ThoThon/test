@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/login/model/categories_630/bank_model.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 
 class DeclareInfo630cResponse {
   final String id;
@@ -24,7 +24,7 @@ class DeclareInfo630cResponse {
   final String? hinhThucNhan;
   final String? soTaiKhoan;
   final String? tenChuTaiKhoan;
-  final BankModel? nganHang;
+  final Bank? nganHang;
   final String? dotDaGiaiQuyet;
   final DateTime? tuNgayDuyetTruoc;
   final String? lyDoDieuChinh;
@@ -92,9 +92,8 @@ class DeclareInfo630cResponse {
       hinhThucNhan: json['hinhThucNhan'],
       soTaiKhoan: json['soTaiKhoan'],
       tenChuTaiKhoan: json['tenChuTaiKhoan'],
-      nganHang: json['nganHang'] != null
-          ? BankModel.fromJson(json['nganHang'])
-          : null,
+      nganHang:
+          json['nganHang'] != null ? Bank.fromJson(json['nganHang']) : null,
       dotDaGiaiQuyet: json['dotDaGiaiQuyet'] ?? '',
       tuNgayDuyetTruoc: json['tuNgayDuyetTruoc'] != null
           ? DateTime.parse(json['tuNgayDuyetTruoc'])

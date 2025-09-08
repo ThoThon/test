@@ -1,5 +1,5 @@
 import 'package:tiengviet/tiengviet.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 class SelectWardBts extends BaseGetWidget<SelectWardController> {
@@ -18,7 +18,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
   ));
 
   final String provinceCode;
-  final WardModel? selectedWard;
+  final Ward? selectedWard;
   final _isShowButtonClear = false.obs;
 
   @override
@@ -109,7 +109,7 @@ class SelectWardBts extends BaseGetWidget<SelectWardController> {
     ).paddingSymmetric(vertical: AppDimens.paddingSmall);
   }
 
-  Widget _buildItem(WardModel item) {
+  Widget _buildItem(Ward item) {
     return Obx(
       () {
         final isSelected = controller.selectedWard.value == item;

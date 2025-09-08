@@ -40,6 +40,8 @@ class LocaleKeys {
   static const app_cancel = 'app_cancel';
   static const app_close = 'app_close';
   static const app_select = 'app_select';
+  static const app_somethingWentWrong = 'app_somethingWentWrong';
+  static const app_cannotConnectToServer = 'app_cannotConnectToServer';
   static const dialog_error429 = 'dialog_error429';
   static const dialog_updateSuccess = 'dialog_updateSuccess';
   static const dialog_updateSuccessDialog = 'dialog_updateSuccessDialog';
@@ -63,6 +65,7 @@ class LocaleKeys {
   static const dialog_cannotConnectMySign = 'dialog_cannotConnectMySign';
   static const dialog_sendFileSuccess = 'dialog_sendFileSuccess';
   static const dialog_sendFileFail = 'dialog_sendFileFail';
+  static const dialog_signatureTimeOut = 'dialog_signatureTimeOut';
   static const dialog_cancelRequest = 'dialog_cancelRequest';
   static const dialog_confirmSignatureMySign = 'dialog_confirmSignatureMySign';
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
@@ -312,6 +315,7 @@ class LocaleKeys {
   static const login_password = 'login_password';
   static const login_passwordCannotEmpty = 'login_passwordCannotEmpty';
   static const login_forgetPassword = 'login_forgetPassword';
+  static const login_forgetPasswordSuccess = 'login_forgetPasswordSuccess';
   static const login_resetPassword = 'login_resetPassword';
   static const login_changeAccount = 'login_changeAccount';
   static const login_hello = 'login_hello';
@@ -1111,6 +1115,8 @@ class LocaleKeys {
   static const registerService_serialNumber = 'registerService_serialNumber';
   static const registerService_inputCCCDregisterMySignCannotEmpty =
       'registerService_inputCCCDregisterMySignCannotEmpty';
+  static const registerService_certificateInfoNotFound =
+      'registerService_certificateInfoNotFound';
   static const registerCode_commonInfo = 'registerCode_commonInfo';
   static const registerCode_registerInfo = 'registerCode_registerInfo';
   static const registerCode_unitInfo = 'registerCode_unitInfo';
@@ -1299,6 +1305,9 @@ class Locales {
     'app_cancel': 'Hủy bỏ',
     'app_close': 'Đóng',
     'app_select': '--Chọn--',
+    'app_somethingWentWrong': 'Đã có lỗi xảy ra, vui lòng thử lại sau.',
+    'app_cannotConnectToServer':
+        'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',
     'dialog_close': 'Đóng',
     'dialog_errorConnectFailedStr':
         'Không thể kết nối tới máy chủ\nQuý khách vui lòng kiểm tra lại kết nối mạng.',
@@ -1313,7 +1322,7 @@ class Locales {
     'dialog_error404':
         'Không tìm thấy đường dẫn này, xin vui lòng liên hệ Admin',
     'dialog_error401':
-        'Phiên đăng nhập đã hết hạn. Quý khách vui lòng đăng nhập lại',
+        'Phiên đăng nhập đã hết hạn\nQuý khách vui lòng đăng nhập lại',
     'dialog_error429':
         'Hiện tại có quá nhiều lượt truy cập. Vui lòng thử lại sau vài phút.',
     'dialog_success': 'Thành công',
@@ -1350,6 +1359,7 @@ class Locales {
     'dialog_cannotConnectMySign': 'Không thể kết nối tới hệ thống ký số.',
     'dialog_sendFileSuccess': 'Gửi hồ sơ thành công',
     'dialog_sendFileFail': 'Gửi hồ sơ thất bại',
+    'dialog_signatureTimeOut': 'Hết thời gian ký số\nVui lòng thực hiện lại',
     'dialog_cancelRequest': 'Hủy yêu cầu',
     'dialog_confirmSignatureMySign':
         'Vui lòng xác thực ký trên MySign\ntrước khi hết thời gian',
@@ -1589,6 +1599,7 @@ class Locales {
     'login_password': 'Mật khẩu',
     'login_passwordCannotEmpty': 'Mật khẩu không được bỏ trống',
     'login_forgetPassword': 'Quên mật khẩu?',
+    'login_forgetPasswordSuccess': 'Quên mật khẩu thành công',
     'login_resetPassword': 'Lấy lại mật khẩu',
     'login_changeAccount': 'Tài khoản khác',
     'login_hello': 'Xin chào,',
@@ -2242,6 +2253,7 @@ class Locales {
     'registerService_serialNumber': 'Số serial',
     'registerService_inputCCCDregisterMySignCannotEmpty':
         'Nhập CCCD đăng ký MySign để lấy thông tin CTS',
+    'registerService_certificateInfoNotFound': 'Chưa có thông tin chứng thư số',
     'registerCode_commonInfo': 'Thông tin chung',
     'registerCode_registerInfo': 'Thông tin đăng ký',
     'registerCode_unitInfo': 'Thông tin đơn vị',

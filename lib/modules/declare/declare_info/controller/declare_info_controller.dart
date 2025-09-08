@@ -1,10 +1,14 @@
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
@@ -23,9 +27,6 @@ class DeclareInfoController extends BaseGetxController {
   final d01State = D01State();
 
   final autovalidateMode = Rx<AutovalidateMode?>(null);
-
-  final declarationPeriodController =
-      Get.findOrNull<DeclarationPeriodController>();
 
   final enableClearTTIcon = false.obs;
 
@@ -148,7 +149,7 @@ class DeclareInfoController extends BaseGetxController {
   void goToSelectStaffPage() async {
     KeyBoard.hide();
     final result = await Get.toNamed(
-      AppRoutes.selectStaff.path,
+      AppRoutesCl.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: d02State.selectedStaffId,
     );
@@ -163,7 +164,7 @@ class DeclareInfoController extends BaseGetxController {
 
   Future<void> createNewDeclarationForm() async {
     final result = await Get.toNamed(
-      AppRoutes.declarationFormDetail.path,
+      AppRoutesCl.declarationFormDetail.path,
       arguments: DeclarationFormDetailArgument(
         bhxhCode: d02Tk1State.bhxhTextCtrl.text,
         fullName: d02Tk1State.fullNameTextCtrl.text,
@@ -180,7 +181,7 @@ class DeclareInfoController extends BaseGetxController {
 
   Future<void> editDeclarationForm(DeclarationForm form) async {
     final result = await Get.toNamed(
-      AppRoutes.declarationFormDetail.path,
+      AppRoutesCl.declarationFormDetail.path,
       arguments: DeclarationFormDetailArgument(form: form),
     );
     if (result is DeclarationForm) {
@@ -330,14 +331,16 @@ class DeclareInfoController extends BaseGetxController {
           typeAction: AppConst.actionSuccess,
         );
         if (argument.isAddPeriodFromDeclarePeriod) {
+          // Đóng màn kê khai này và mở màn danh sách nhân viên
+          // .then để bắt sự kiện đóng màn danh sách nhân viên này để refresh màn đợt kê khai
           Get.offNamed(
-            AppRoutes.staffList.path,
+            AppRoutesCl.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure600,
             ),
-          )?.then((value) {
-            declarationPeriodController?.getDeclarationPeriods();
+          )?.then((_) {
+            eventBus.fire(const RefreshDeclarationPeriodEvent());
           });
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
@@ -454,7 +457,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void changeProvinceOfBirth(ProvinceModel value) {
+  void changeProvinceOfBirth(Province value) {
     if (tk1State.provinceOfBirth.value != value) {
       // Xóa huyện, xã, địa chỉ khai sinh khi thay đổi tỉnh khai sinh
       tk1State.wardOfBirth.value = null;
@@ -482,7 +485,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void changeWardOfBirth(WardModel value) {
+  void changeWardOfBirth(Ward value) {
     tk1State.wardOfBirth.value = value;
 
     // Đồng bộ xã nơi nhận hồ sơ với xã khai sinh
@@ -506,7 +509,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onChangeProvinceReceive(ProvinceModel value) {
+  void onChangeProvinceReceive(Province value) {
     if (tk1State.provinceReceive.value != value) {
       // Khi user thay đổi tỉnh nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -527,7 +530,7 @@ class DeclareInfoController extends BaseGetxController {
     }
   }
 
-  void onChangeWardReceive(WardModel value) {
+  void onChangeWardReceive(Ward value) {
     if (tk1State.wardReceive.value != value) {
       // Khi user thay đổi xã nơi nhận hồ sơ tự động uncheck checkbox trùng địa chỉ
       tk1State.isDuplicateBirthAddress.value = false;
@@ -551,9 +554,10 @@ class DeclareInfoController extends BaseGetxController {
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
     _syncHeadOfHouseholdInfo();
+    updateHouseholdInfoRequired();
   }
 
-  void onChangeProvinceKCB(ProvinceModel value) {
+  void onChangeProvinceKCB(Province value) {
     if (tk1State.provinceKCB.value != value) {
       // Xóa bệnh viện nơi KCB khi thay đổi tỉnh nơi KCB
       tk1State.hospitalKCB.value = null;
@@ -589,7 +593,7 @@ class DeclareInfoController extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
-  void onChangeProvinceTT(ProvinceModel value) {
+  void onChangeProvinceTT(Province value) {
     if (tk1State.provinceTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
       // Xóa huyện, xã thường trú khi thay đổi tỉnh thường trú
@@ -600,7 +604,7 @@ class DeclareInfoController extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
-  void onChangeWardTT(WardModel value) {
+  void onChangeWardTT(Ward value) {
     if (tk1State.wardTT.value != value) {
       tk1State.isParticipantHeadOfHousehold.value = false;
     }
@@ -616,7 +620,7 @@ class DeclareInfoController extends BaseGetxController {
 
   Future<void> addFamilyMember() async {
     KeyBoard.hide();
-    final result = await Get.toNamed(AppRoutes.familyMemberDetail.path);
+    final result = await Get.toNamed(AppRoutesCl.familyMemberDetail.path);
     if (result is FamilyMember) {
       tk1State.familyMembers.add(result);
     }
@@ -625,7 +629,7 @@ class DeclareInfoController extends BaseGetxController {
 
   Future<void> editFamilyMember(FamilyMember member) async {
     final result = await Get.toNamed(
-      AppRoutes.familyMemberDetail.path,
+      AppRoutesCl.familyMemberDetail.path,
       arguments: member,
     );
     if (result is FamilyMember) {
@@ -710,7 +714,7 @@ class DeclareInfoController extends BaseGetxController {
   //   final cccd = d02Tk1State.cccdTextCtrl.text.trim();
   //   if (!_isValidCCCD(cccd)) return;
   //   final result = await Get.toNamed(
-  //     AppRoutes.nfc.path,
+  //     AppRoutesCl.nfc.path,
   //     arguments: cccd,
   //   );
   //   if (result != null) {
@@ -816,6 +820,12 @@ class DeclareInfoController extends BaseGetxController {
   }
 
   void updateHouseholdInfoRequired() {
+    // Nếu "Người tham gia là chủ hộ" true -> Bắt buộc
+    if (tk1State.isParticipantHeadOfHousehold.value) {
+      tk1State.isHouseholdInfoRequired.value = true;
+      return;
+    }
+
     // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
     if (d02Tk1State.bhxhTextCtrl.text.trim().isEmpty) {
       tk1State.isHouseholdInfoRequired.value = true;

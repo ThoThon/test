@@ -119,7 +119,7 @@
 //         //   ),
 //         // );
 //         // await Future.delayed(const Duration(seconds: 3));
-//         // Get.toNamed(AppRoutes.nfcInformationUser.path);
+//         // Get.toNamed(AppRoutesCl.nfcInformationUser.path);
 //       },
 //     ).paddingOnly(top: AppDimens.paddingSmall);
 //   }

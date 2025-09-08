@@ -1,4 +1,6 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
 
 import '../../declare/declaration_list/model/declaration_list_argument.dart';
 import '../../declare/staff_list/model/staff_list_argument.dart';
@@ -115,7 +117,7 @@ class OtherInfoController extends BaseGetxController {
       };
       if (response.isSuccess) {
         Get.toNamed(
-          AppRoutes.declarationList.path,
+          AppRoutesCl.declarationList.path,
           arguments: DeclarationListArgument(
             declarationPeriodId: argument.declarationPeriodId,
             saveXmlResult: response.result!,

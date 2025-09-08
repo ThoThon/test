@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:get/get.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/d02_detail/declare_info_detail_response.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/model/model_src.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
 
 class Tk1State {
   final formKey = GlobalKey<FormState>();
@@ -14,10 +14,10 @@ class Tk1State {
   final autoValidateMode = AutovalidateMode.disabled.obs;
 
   /// Tỉnh khai sinh *
-  final provinceOfBirth = Rxn<ProvinceModel>();
+  final provinceOfBirth = Rxn<Province>();
 
   /// Xã khai sinh *
-  final wardOfBirth = Rxn<WardModel>();
+  final wardOfBirth = Rxn<Ward>();
 
   /// Địa chỉ khai sinh *
   final birthAddressTextCtrl = TextEditingController();
@@ -26,16 +26,16 @@ class Tk1State {
   final isDuplicateBirthAddress = false.obs;
 
   /// Tỉnh nơi nhận *
-  final provinceReceive = Rxn<ProvinceModel>();
+  final provinceReceive = Rxn<Province>();
 
   /// Xã nơi nhận *
-  final wardReceive = Rxn<WardModel>();
+  final wardReceive = Rxn<Ward>();
 
   /// Địa chỉ nơi nhận *
   final addressReceiveTextCtrl = TextEditingController();
 
   /// Tỉnh nơi KCB *
-  final provinceKCB = Rxn<ProvinceModel>();
+  final provinceKCB = Rxn<Province>();
 
   /// Bệnh viện nơi KCB *
   final hospitalKCB = Rxn<Hospital>();
@@ -53,10 +53,10 @@ class Tk1State {
   final headOfHouseholdCCCDTextCtrl = TextEditingController();
 
   /// Tỉnh thường trú
-  final provinceTT = Rxn<ProvinceModel>();
+  final provinceTT = Rxn<Province>();
 
   /// Xã thường trú
-  final wardTT = Rxn<WardModel>();
+  final wardTT = Rxn<Ward>();
 
   /// Địa chỉ thường trú
   final addressTTTextCtrl = TextEditingController();

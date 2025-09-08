@@ -1,6 +1,6 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller.src.dart';
+import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 class SelectWardController extends BaseGetxController {
@@ -8,7 +8,7 @@ class SelectWardController extends BaseGetxController {
 
   SelectWardController({
     required this.provinceCode,
-    WardModel? ward,
+    Ward? ward,
   }) {
     selectedWard.value = ward;
   }
@@ -17,8 +17,8 @@ class SelectWardController extends BaseGetxController {
 
   final searchTextCtrl = TextEditingController();
   final keyword = ''.obs;
-  final selectedWard = Rxn<WardModel>();
-  final wards = <WardModel>[].obs;
+  final selectedWard = Rxn<Ward>();
+  final wards = <Ward>[].obs;
 
   @override
   void onReady() {

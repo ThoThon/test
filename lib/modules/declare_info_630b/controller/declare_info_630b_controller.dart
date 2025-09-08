@@ -1,7 +1,8 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
-import 'package:v_bhxh/modules/login/model/model_src.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 
 import '../../../base_app/base_app.src.dart';
+import '../../../clean/shared/entity/category.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';
 import '../../src.dart';
 
@@ -25,13 +26,13 @@ class DeclareInfo630bController extends BaseGetxController {
   final staffCodeTextCtrl = TextEditingController();
 
   /// Hình thức kê khai *
-  final declareForm = Rxn<DeclareForm630Model>();
+  final declareForm = Rxn<Category>();
 
   /// Mã nhóm hưởng *
-  final benefitGroup = Rxn<BenefitGroup630Model>();
+  final benefitGroup = Rxn<BenefitGroup630>();
 
   /// Mã nhóm hưởng cấp 2
-  final benefitGroupLv2 = Rxn<BenefitGroupLv2Model>();
+  final benefitGroupLv2 = Rxn<BenefitGroupLv2>();
 
   /// Từ ngày *
   final fromDateCtrl = TextEditingController();
@@ -55,16 +56,16 @@ class DeclareInfo630bController extends BaseGetxController {
   final serialNumberCtrl = TextEditingController();
 
   /// Điều kiện khám thai
-  final pregnancyCondition = Rxn<PregnancyCheckConditionModel>();
+  final pregnancyCondition = Rxn<Category>();
 
   /// Tuổi thai
   final pregnancyWeekCtrl = TextEditingController();
 
   /// Biện pháp tránh thai
-  final contraception = Rxn<ContraceptionModel>();
+  final contraception = Rxn<Category>();
 
   /// Điều kiện sinh con
-  final childbirthCondition = Rxn<ChildBirthConditionModel>();
+  final childbirthCondition = Rxn<Category>();
 
   /// Ngày sinh con
   final birthDayChildCtrl = TextEditingController();
@@ -100,7 +101,7 @@ class DeclareInfo630bController extends BaseGetxController {
   final cccdMotherCtrl = TextEditingController();
 
   /// Phẫu thuật hoặc thai < 32 tuần
-  final surgeryOrUnder32Week = Rxn<SurgeryPregnancy32wModel>();
+  final surgeryOrUnder32Week = Rxn<Category>();
 
   /// Ngày mẹ chết
   final motherDeathDateCtrl = TextEditingController();
@@ -115,13 +116,13 @@ class DeclareInfo630bController extends BaseGetxController {
   final guardianBhxhCtrl = TextEditingController();
 
   /// Nghỉ dưỡng thai
-  final maternityRest = Rxn<MaternityLeaveModel>();
+  final maternityRest = Rxn<Category>();
 
   /// Nghỉ chăm con
-  final parentalLeave = Rxn<ParentalLeaveModel>();
+  final parentalLeave = Rxn<Category>();
 
   /// Mang thai hộ
-  final surrogacy = Rxn<SurrogacyModel>();
+  final surrogacy = Rxn<Category>();
 
   /// Đợt bổ sung
   final supplementalPeriodCtrl = TextEditingController();
@@ -133,7 +134,7 @@ class DeclareInfo630bController extends BaseGetxController {
   final noteTextCtrl = TextEditingController();
 
   /// Hình thức nhận *
-  final receiveForm = Rxn<ReceiveFormModel>();
+  final receiveForm = Rxn<Category>();
 
   /// Số tài khoản ngân hàng
   final bankNumberCtrl = TextEditingController();
@@ -142,7 +143,7 @@ class DeclareInfo630bController extends BaseGetxController {
   final accountHolderNameCtrl = TextEditingController();
 
   /// Ngân hàng
-  final selectedBank = Rxn<BankModel>();
+  final selectedBank = Rxn<Bank>();
 
   /// Đợt đã giải quyết
   final resolvedPeriodCtrl = TextEditingController();
@@ -161,9 +162,6 @@ class DeclareInfo630bController extends BaseGetxController {
   final autoValidateMode = Rxn<AutovalidateMode>();
 
   final formKey = GlobalKey<FormState>();
-
-  final declarationPeriodController =
-      Get.findOrNull<DeclarationPeriodController>();
 
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 

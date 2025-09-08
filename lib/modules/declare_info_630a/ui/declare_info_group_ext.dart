@@ -101,7 +101,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
 
   // Hình thức kê khai
   Widget _buildDeclareMethodDropdown() {
-    return FormFieldRegistrant<DeclareForm630Model>(
+    return FormFieldRegistrant<Category>(
       registrarId: '1b6c5f61-7b44-418c-94c0-fde7a6e4b892',
       validator: (value) {
         if (value == null) {
@@ -111,7 +111,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<DeclareForm630Model>(
+          () => CardDropdownWithLabel<Category>(
             fieldKey: formFieldKey,
             labelText: LocaleKeys.declareInfo_declareMethod.tr,
             isRequired: true,
@@ -129,7 +129,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
 
   // Mã nhóm hưởng
   Widget _buildBenefitGroupCodeDropdown() {
-    return FormFieldRegistrant<BenefitGroup630Model>(
+    return FormFieldRegistrant<BenefitGroup630>(
       registrarId: 'aca45ce6-4a50-4f46-8ca8-3b7e895bd78f',
       validator: (value) {
         if (value == null) {
@@ -139,7 +139,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
       },
       builder: (formFieldKey, validator) {
         return Obx(
-          () => CardDropdownWithLabel<BenefitGroup630Model>(
+          () => CardDropdownWithLabel<BenefitGroup630>(
             validator: validator,
             fieldKey: formFieldKey,
             labelText: LocaleKeys.declareInfo_benefitGroupCode.tr,
@@ -654,14 +654,14 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return const SizedBox.shrink();
         }
         return Obx(
-          () => UtilWidget.buildCardBottomSheetSelect2<HospitalLineModel>(
+          () => UtilWidget.buildCardBottomSheetSelect2<Category>(
             label: LocaleKeys.declareInfo_hospitalLine.tr,
             hintText: LocaleKeys.declareInfo_hospitalLineSelect.tr,
             enableClearIcon: true,
             isRequired: false,
             funcSelect: (didChange) async {
               Get.bottomSheet(
-                BottomSheetSearch<HospitalLineModel>(
+                BottomSheetSearch<Category>(
                   title: LocaleKeys.declareInfo_hospitalLineSelect.tr,
                   maxLength: 50,
                   hintText: LocaleKeys.declareInfo_inputHospitalLine.tr,
@@ -696,14 +696,14 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return const SizedBox.shrink();
         }
         return Obx(
-          () => UtilWidget.buildCardBottomSheetSelect2<LongDieaseModel>(
+          () => UtilWidget.buildCardBottomSheetSelect2<LongDiease>(
             label: LocaleKeys.declareInfo_diseaseCode.tr,
             hintText: LocaleKeys.declareInfo_selectDiseaseCode.tr,
             isRequired: false,
             enableClearIcon: true,
             funcSelect: (didChange) async {
               Get.bottomSheet(
-                BottomSheetSearch<LongDieaseModel>(
+                BottomSheetSearch<LongDiease>(
                   title: LocaleKeys.declareInfo_selectDiseaseCode.tr,
                   maxLength: 50,
                   hintText: LocaleKeys.declareInfo_inputDiseaseCode.tr,
@@ -772,7 +772,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
           return const SizedBox.shrink();
         }
         return Obx(
-          () => CardDropdownWithLabel<WorkConditionModel>(
+          () => CardDropdownWithLabel<Category>(
             labelText: LocaleKeys.declareInfo_workingCondition.tr,
             hintText: LocaleKeys.declareInfo_workingConditionHint.tr,
             items: AppData.instance.workCondition.toList(),

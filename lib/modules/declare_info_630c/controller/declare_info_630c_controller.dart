@@ -2,17 +2,18 @@ import 'package:collection/collection.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.src.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/presentation/controller/declaration_period_controller.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_request.dart';
 import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_response.dart';
 import 'package:v_bhxh/modules/declare_info_630c/repository/declare_info_630c_repository.dart';
-import 'package:v_bhxh/modules/login/model/categories_630/bank_model.dart';
-import 'package:v_bhxh/modules/login/model/categories_630/benefit_group_630_model.dart';
-import 'package:v_bhxh/modules/login/model/categories_630/declare_form_model.dart';
-import 'package:v_bhxh/modules/login/model/categories_630/receive_form_model.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
+import '../../../clean/shared/entity/category.dart';
 import '../../declare/staff_list/model/model_src.dart';
 import '../../select_staff/select_staff_src.dart';
 
@@ -39,10 +40,10 @@ class DeclareInfo630cController extends BaseGetxController {
   final staffCodeTextCtrl = TextEditingController();
 
   /// Hình thức kê khai *
-  final declareForm = Rxn<DeclareForm630Model>();
+  final declareForm = Rxn<Category>();
 
   /// Mã nhóm hưởng *
-  final benefitGroup = Rxn<BenefitGroup630Model>();
+  final benefitGroup = Rxn<BenefitGroup630>();
 
   /// Từ ngày *
   final toDateCtrl = TextEditingController();
@@ -81,7 +82,7 @@ class DeclareInfo630cController extends BaseGetxController {
   final noteTextCtrl = TextEditingController();
 
   /// Hình thức nhận *
-  final receiveForm = Rxn<ReceiveFormModel>();
+  final receiveForm = Rxn<Category>();
 
   /// Số tài khoản ngân hàng *
   final bankNumberCtrl = TextEditingController();
@@ -90,7 +91,7 @@ class DeclareInfo630cController extends BaseGetxController {
   final accountHolderNameCtrl = TextEditingController();
 
   /// Ngân hàng *
-  final selectedBank = Rxn<BankModel>();
+  final selectedBank = Rxn<Bank>();
 
   /// Đợt đã giải quyết
   final resolvedPeriodCtrl = TextEditingController();
@@ -186,7 +187,7 @@ class DeclareInfo630cController extends BaseGetxController {
         );
         if (argument.isAddPeriodFromDeclarePeriod) {
           Get.offNamed(
-            AppRoutes.staffList.path,
+            AppRoutesCl.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure630c,
@@ -285,9 +286,7 @@ class DeclareInfo630cController extends BaseGetxController {
     }
 
     // Hìnhh thức kê khai
-    declareForm.value = AppData.instance.declareForm.firstWhereOrNull(
-      (item) => item.value == detail.phatSinhDieuChinh,
-    );
+    declareForm.value = AppData.instance.declareForm[detail.phatSinhDieuChinh];
 
     // Mã nhóm hưởng
     benefitGroup.value = AppData.instance.benefitGroup630c.firstWhereOrNull(
@@ -339,9 +338,7 @@ class DeclareInfo630cController extends BaseGetxController {
     noteTextCtrl.text = detail.ghiChu?.trim() ?? '';
 
     // Hình thức nhận
-    receiveForm.value = AppData.instance.receiveForm.firstWhereOrNull(
-      (item) => item.value == detail.hinhThucNhan,
-    );
+    receiveForm.value = AppData.instance.receiveForm[detail.hinhThucNhan];
 
     // Số tài khoản ngân hàng
     bankNumberCtrl.text = detail.soTaiKhoan?.trim() ?? '';
@@ -398,7 +395,7 @@ class DeclareInfo630cController extends BaseGetxController {
 
   bool get isRateToDecline => declineValid.contains(benefitGroup.value?.value);
 
-  void onChangeReceiveMethod(ReceiveFormModel? method) {
+  void onChangeReceiveMethod(Category? method) {
     if (method == null) {
       return;
     }
@@ -431,7 +428,7 @@ class DeclareInfo630cController extends BaseGetxController {
   void goToSelectStaffPage() async {
     KeyBoard.hide();
     final result = await Get.toNamed(
-      AppRoutes.selectStaff.path,
+      AppRoutesCl.selectStaff.path,
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: selectedStaffId,
     );
@@ -470,7 +467,7 @@ class DeclareInfo630cController extends BaseGetxController {
     cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
   }
 
-  void onChangeDeclareMethod(DeclareForm630Model? method) {
+  void onChangeDeclareMethod(Category? method) {
     if (method == null) {
       return;
     }

@@ -1,4 +1,5 @@
 import 'package:v_bhxh/base_app/model/base_model.src.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/info_unit/models/update_account_info_request.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/string_utils.dart';
@@ -32,7 +33,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
   }
 
   void fetchDataAccountInfo() {
-    accountInfo = AppData.instance.accountInfoModel.value;
+    accountInfo = AppData.instance.accountInfo.value;
     taxCodeController.text = accountInfo?.taxCode ?? '';
     unitNameController.text = accountInfo?.tenToChuc ?? '';
     unitCodeController.text = accountInfo?.maDonVi ?? '';
@@ -120,7 +121,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
             await _getAccountInfo();
             await _getToTalNotiUnread();
             Get.offAllNamed(
-              AppRoutes.home.path,
+              AppRoutesCl.home.path,
             );
           },
         );
@@ -156,7 +157,7 @@ class UnitInfoControllerImpICare extends UnitInfoController {
     try {
       final res = await unitInfoRepository.getAccountInfo();
       if (res.code == AppConst.statusCodeSuccess && res.result != null) {
-        AppData.instance.accountInfoModel.value = res.result;
+        AppData.instance.accountInfo.value = res.result;
       }
     } catch (e) {
       logger.d(e);

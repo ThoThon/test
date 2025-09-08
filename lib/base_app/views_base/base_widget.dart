@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:loading_overlay_pro/loading_overlay_pro.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/app_controller.dart';
 
 import '../../shares/widgets/utils_widget/utils_widget.src.dart';
 import '../controllers_base/base_controller/base_controller.src.dart';
 
 abstract class BaseGetWidget<T extends BaseGetxController> extends GetView<T> {
-  const BaseGetWidget({super.key});
+  BaseGetWidget({super.key});
+
+  // TODO: Xóa sau khi chuyển sang clean
+  late final appCtrl = Get.find<AppController>();
 
   Widget buildWidgets(BuildContext context);
 

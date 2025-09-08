@@ -12,10 +12,7 @@ import 'package:v_bhxh/shares/function/logger.dart';
 const _fetchAndActivateRemoteConfigThrottleTime = Duration(minutes: 15);
 
 class RemoteConfigStorage {
-  RemoteConfigStorage._();
-
   // Make RemoteConfigStorage a singleton
-  static final RemoteConfigStorage instance = RemoteConfigStorage._();
   late final _remoteConfig = FirebaseRemoteConfig.instance;
   static const remoteConfigDefaultValues = {
     RemoteConfigConst.minAppVersionAndroid: '1.0.0',
@@ -36,7 +33,7 @@ class RemoteConfigStorage {
     return minAppVersionAndroid;
   }
 
-  Future<void> initialize() async {
+  Future<RemoteConfigStorage> initialize() async {
     try {
       await _remoteConfig.setConfigSettings(
         RemoteConfigSettings(
@@ -55,6 +52,8 @@ class RemoteConfigStorage {
     } catch (e) {
       logger.e('RemoteConfigStorage initialize error: $e');
     }
+
+    return this;
   }
 
   DateTime get lastSuccessFetchTime => _remoteConfig.lastFetchTime;

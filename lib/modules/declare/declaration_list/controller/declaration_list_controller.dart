@@ -1,7 +1,9 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/history_argument.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/repository/declaration_list_repository.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog.src.dart';
 
@@ -57,7 +59,7 @@ class DeclarationListController extends BaseGetxController {
         );
       },
       onCancel: () {
-        Get.until(ModalRoute.withName(AppRoutes.declarationPeriod.path));
+        Get.until(ModalRoute.withName(AppRoutesCl.declarationPeriod.path));
       },
     );
   }
@@ -73,11 +75,11 @@ class DeclarationListController extends BaseGetxController {
           AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
       backgroundColorBack: AppColors.basicWhite,
       onCancel: () {
-        Get.until(ModalRoute.withName(AppRoutes.home.path));
+        Get.until(ModalRoute.withName(AppRoutesCl.home.path));
       },
       onConfirm: () {
         Get.toNamed(
-          AppRoutes.history.path,
+          AppRoutesCl.history.path,
           arguments: HistoryArgument(
             selectedTab: HistoryTabEnum.file_declare,
           ),
@@ -136,7 +138,7 @@ class DeclarationListController extends BaseGetxController {
 
       if (response.isSuccess && url != null) {
         Get.toNamed(
-          AppRoutes.viewPdf.path,
+          AppRoutesCl.viewPdf.path,
           arguments: ViewPdfArgument(
             url: url,
             title: title,

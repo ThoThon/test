@@ -78,7 +78,7 @@ extension HistoryRegisterTab on HistoryPage {
               InkWell(
                 onTap: () {
                   Get.toNamed(
-                    AppRoutes.historyDetailRegister.path,
+                    AppRoutesCl.historyDetailRegister.path,
                     arguments: item,
                   )?.then(
                     (value) async {
