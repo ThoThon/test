@@ -305,21 +305,20 @@ class RegisterCodeController extends BaseGetClController {
           return;
         }
         // Kiểm tra mst có hợp lệ hay không
-        final taxCodeIsValid = await _taxCodeVerifyUseCase.execute(
+        await _taxCodeVerifyUseCase.execute(
           TaxCodeVerifyRequest(
             taxCode: taxCodeCtrl.text,
             userId: certificate.value?.userId ?? '',
             credentialID: certificate.value?.cerdentialID ?? '',
           ),
         );
-        if (taxCodeIsValid) {
-          _showDialogCheckedSuccess();
-          await _firstTimeRegisterUseCase.execute(_buildRequest());
-          nav.dismissDialog();
-          _showDialogVerifySuccess();
-        }
+        _showDialogCheckedSuccess();
+        await _firstTimeRegisterUseCase.execute(_buildRequest());
+        nav.dismissDialog();
+        _showDialogVerifySuccess();
       },
       onError: (error) {
+        // REF: VBHXHMOB-44
         if (error is RemoteException && error.serverError != null) {
           final serverMsg = error.serverError!.errorMessage;
           final serverCode = error.serverError!.code;
