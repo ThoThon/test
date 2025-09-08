@@ -1,12 +1,12 @@
 import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/entity/province.dart';
+import 'package:v_bhxh/clean/shared/entity/ward.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/family_member.dart';
 import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
-import 'package:v_bhxh/clean/shared/entity/province.dart';
-import 'package:v_bhxh/clean/shared/entity/ward.dart';
 import 'package:v_bhxh/modules/select_staff/model/select_staff_response.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
@@ -526,13 +526,11 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   void onChangeHeadOfHouseholdFullName(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
-    // tk1State.headOfHouseholdTextCtrl.text = value;
     updateHouseholdInfoRequired();
   }
 
   void onChangeHeadOfHouseholdCCCD(String value) {
     tk1State.isParticipantHeadOfHousehold.value = false;
-    // tk1State.headOfHouseholdCCCDTextCtrl.text = value;
     updateHouseholdInfoRequired();
   }
 
@@ -683,6 +681,12 @@ class DeclareInfo607Controller extends BaseGetxController {
 
   /// Cập nhật thông tin chủ hộ là required hay không
   void updateHouseholdInfoRequired() {
+    // Nếu "Người tham gia là chủ hộ" true -> Bắt buộc
+    if (tk1State.isParticipantHeadOfHousehold.value) {
+      tk1State.isHouseholdInfoRequired.value = true;
+      return;
+    }
+    
     // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
     if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
       tk1State.isHouseholdInfoRequired.value = true;
