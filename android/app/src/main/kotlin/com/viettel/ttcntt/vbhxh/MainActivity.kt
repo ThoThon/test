@@ -1,4 +1,4 @@
-package com.viettel.ttcntt.v_bhxh
+package com.viettel.ttcntt.vbhxh
 
 import io.flutter.embedding.android.FlutterActivity
 
