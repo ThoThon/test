@@ -1,8 +1,8 @@
+import 'package:app_crud_getx/features/login/ui/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:test_getx/features/login/ui/widgets/input_field.dart';
 
 import '../controller/login_controller.dart';
 import 'widgets/footer_button.dart';
