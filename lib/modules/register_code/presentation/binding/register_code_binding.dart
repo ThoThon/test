@@ -1,5 +1,6 @@
 import 'package:v_bhxh/clean/core/presentation/bindings/base_bindings.dart';
 import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
+import 'package:v_bhxh/modules/register_code/domain/usecase/tax_code_verify_use_case.dart';
 
 import '../../../src.dart';
 import '../../data/repository/register_code_repository_impl.dart';
@@ -17,6 +18,7 @@ class RegisterCodeBinding extends BaseBindings {
         sl(),
         sl(),
         sl(),
+        sl(),
       ),
     );
   }
@@ -25,6 +27,7 @@ class RegisterCodeBinding extends BaseBindings {
   void bindingsRepository() {
     Get.lazyPut<RegisterCodeRepository>(
       () => RegisterCodeRepositoryImpl(
+        sl(),
         sl(),
         sl(),
         sl(),
@@ -38,5 +41,6 @@ class RegisterCodeBinding extends BaseBindings {
     Get.lazyPut(() => GetCategoriesUseCase(sl()));
     Get.lazyPut(() => GetCertificateUseCase(sl()));
     Get.lazyPut(() => FirstTimeRegisterUseCase(sl()));
+    Get.lazyPut(() => TaxCodeVerifyUseCase(sl()));
   }
 }
