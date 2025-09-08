@@ -1,6 +1,7 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 import 'package:v_bhxh/modules/register_code/domain/entity/tax_code_verify_request.dart';
 import 'package:v_bhxh/modules/register_code/domain/usecase/tax_code_verify_use_case.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -301,17 +302,31 @@ class RegisterCodeController extends BaseGetClController {
           return;
         }
         // Kiểm tra mst có hợp lệ hay không
-        await _taxCodeVerifyUseCase.execute(
+        final response = await _taxCodeVerifyUseCase.execute(
           TaxCodeVerifyRequest(
             taxCode: taxCodeCtrl.text,
             userId: certificate.value?.userId ?? '',
             credentialID: certificate.value?.cerdentialID ?? '',
           ),
         );
-        _showDialogCheckedSuccess();
-        await _firstTimeRegisterUseCase.execute(_buildRequest());
-        nav.dismissDialog();
-        _showDialogVerifySuccess();
+        if (response) {
+          _showDialogCheckedSuccess();
+          await _firstTimeRegisterUseCase.execute(_buildRequest());
+          nav.dismissDialog();
+          _showDialogVerifySuccess();
+        }
+      },
+      onError: (error) {
+        if (error is RemoteException && error.serverError != null) {
+          final serverMsg = error.serverError!.errorMessage;
+          final serverCode = error.serverError!.code;
+
+          if (serverCode == '06') {
+            _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
+            return null;
+          }
+        }
+        return error;
       },
     );
   }
