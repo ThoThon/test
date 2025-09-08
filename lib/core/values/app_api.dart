@@ -85,6 +85,7 @@ class AppApi {
   static const String urlDeleteListNotification =
       '/api/Notification/delete-list';
   static const String urlDeleteAllNotification = '/api/Notification/delete-all';
+  static const String urlTaxCodeVerify = '/api/RegisterService/taxcode-verify';
 
   // === Danh sách các api liên quan đến thủ tục 607 ===
   static const String urlGetStaffList607 = '/api/HoSoTk1/get-list';
