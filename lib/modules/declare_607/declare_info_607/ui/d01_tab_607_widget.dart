@@ -50,7 +50,7 @@ extension D01Tab607Widget on DeclareInfo607Page {
           ),
         ),
         UtilWidget.buildSolidButton(
-          title: 'Thêm bảng kê',
+          title: LocaleKeys.declareInfo_addTable.tr,
           onPressed: controller.createNewDeclarationForm,
           side: const BorderSide(
             color: AppColors.colorBlack,
@@ -108,31 +108,28 @@ extension D01Tab607Widget on DeclareInfo607Page {
           controller.showDialogDeleteForm(form);
         }
       },
-      itemBuilder: (context) => [
-        const PopupMenuItem(
-          value: ActionD01FormEnum.edit,
-          child: Row(
-            children: [
-              SDSBuildText('Sửa'),
-              sdsSBWidth16,
-              Icon(
-                Icons.autorenew,
-                color: AppColors.dsGray3,
+      itemBuilder: (ctx) {
+        return ActionD01FormEnum.values.map(
+          (action) {
+            return PopupMenuItem<ActionD01FormEnum>(
+              padding: const EdgeInsets.only(left: AppDimens.padding24),
+              value: action,
+              child: Row(
+                children: [
+                  SDSImageSvg(
+                    action.icon,
+                    color: AppColors.colorBlack,
+                    height: AppDimens.sizeIconDefault,
+                    width: AppDimens.sizeIconDefault,
+                  ),
+                  sdsSBWidth16,
+                  SDSBuildText(action.title),
+                ],
               ),
-            ],
-          ),
-        ),
-        PopupMenuItem(
-          value: ActionD01FormEnum.delete,
-          child: Row(
-            children: [
-              const SDSBuildText('Xóa'),
-              sdsSBWidth16,
-              SDSImageSvg(Assets.ASSETS_ICONS_IC_DELETE_SVG),
-            ],
-          ),
-        ),
-      ],
+            );
+          },
+        ).toList();
+      },
     );
   }
 }
