@@ -302,14 +302,14 @@ class RegisterCodeController extends BaseGetClController {
           return;
         }
         // Kiểm tra mst có hợp lệ hay không
-        final response = await _taxCodeVerifyUseCase.execute(
+        final taxCodeIsValid = await _taxCodeVerifyUseCase.execute(
           TaxCodeVerifyRequest(
             taxCode: taxCodeCtrl.text,
             userId: certificate.value?.userId ?? '',
             credentialID: certificate.value?.cerdentialID ?? '',
           ),
         );
-        if (response) {
+        if (taxCodeIsValid) {
           _showDialogCheckedSuccess();
           await _firstTimeRegisterUseCase.execute(_buildRequest());
           nav.dismissDialog();
