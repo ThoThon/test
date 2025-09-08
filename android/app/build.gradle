@@ -57,24 +57,24 @@ android {
             dimension "default"
             applicationIdSuffix ".dev"
             manifestPlaceholders = [appName: "vBHXH [DEV]"]
-            // Không cần set signingConfig để sử dụng debug keystore mặc định
-            // signingConfig signingConfigs.dev
+            // Set signingConfig.debug để sử dụng debug keystore mặc định
+            signingConfig signingConfigs.debug
         }
         
         uat {
             dimension "default"
             applicationIdSuffix ".uat"
             manifestPlaceholders = [appName: "vBHXH [UAT]"]
-            // Không cần set signingConfig để sử dụng debug keystore mặc định
-            // signingConfig signingConfigs.uat
+            // Set signingConfig.debug để sử dụng debug keystore mặc định
+            signingConfig signingConfigs.debug
         }
 
         prodsds {
             dimension "default"
             applicationIdSuffix ".prod"
             manifestPlaceholders = [appName: "vBHXH [PROD]"]
-            // Không cần set signingConfig để sử dụng debug keystore mặc định
-            // signingConfig signingConfigs.prodsds
+            // Set signingConfig.debug để sử dụng debug keystore mặc định
+            signingConfig signingConfigs.debug
         }
 
         prod {
