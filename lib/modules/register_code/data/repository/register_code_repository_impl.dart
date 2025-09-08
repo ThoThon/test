@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart' as di;
 import 'package:http_parser/http_parser.dart';
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
+import 'package:v_bhxh/clean/shared/mapper/tax_code_verify_request_data_mapper.dart';
 import 'package:v_bhxh/modules/register_code/domain/entity/certificate.dart';
+import 'package:v_bhxh/modules/register_code/domain/entity/tax_code_verify_request.dart';
 
 import '../../../../clean/core/data/model/model_src.dart';
 import '../../../../clean/shared/mapper/certificate_data_mapper.dart';
@@ -21,12 +23,14 @@ class RegisterCodeRepositoryImpl extends RegisterCodeRepository {
   final CertificateDataMapper _certificateDataMapper;
   final RegisterCodeCategoriesDataMapper _registerCodeCategoriesDataMapper;
   final FirstTimeRegisterRequestDataMapper _firstTimeRegisterRequestDataMapper;
+  final TaxCodeVerifyRequestDataMapper _taxCodeVerifyRequestDataMapper;
 
   RegisterCodeRepositoryImpl(
     this._authAppServerApiClient,
     this._certificateDataMapper,
     this._registerCodeCategoriesDataMapper,
     this._firstTimeRegisterRequestDataMapper,
+    this._taxCodeVerifyRequestDataMapper,
   );
 
   @override
@@ -109,6 +113,25 @@ class RegisterCodeRepositoryImpl extends RegisterCodeRepository {
         receiveTimeout: _signDocumentTimeOut,
       ),
     );
+    final data = BaseResponseCl<bool>.fromJson(response);
+    return data.result ?? false;
+  }
+
+  @override
+  Future<bool> taxCodeVerify({
+    required TaxCodeVerifyRequest request,
+  }) async {
+    final requestData = _taxCodeVerifyRequestDataMapper.mapToData(request);
+    final mapData = requestData.toJson();
+    final formData = di.FormData.fromMap(mapData);
+
+    final response = await _authAppServerApiClient.request(
+      method: RestMethod.post,
+      path: AppApi.urlTaxCodeVerify,
+      cancelToken: cancelToken,
+      body: formData,
+    );
+
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;
   }
