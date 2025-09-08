@@ -1,6 +1,7 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 import 'package:v_bhxh/modules/register_code/domain/entity/tax_code_verify_request.dart';
 import 'package:v_bhxh/modules/register_code/domain/usecase/tax_code_verify_use_case.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -23,6 +24,9 @@ import '../enum/register_code_tab_enum.dart';
 
 /// Tỉnh mặc định là "Hà Nội"
 const _defaultProvinceCode = '01';
+
+/// Nếu mã số thuế không hợp lệ thì trả về code = '06'
+const _taxCodeInvalid = '06';
 
 class RegisterCodeController extends BaseGetClController {
   final GetCertificateUseCase _getCertificateUseCase;
@@ -312,6 +316,19 @@ class RegisterCodeController extends BaseGetClController {
         await _firstTimeRegisterUseCase.execute(_buildRequest());
         nav.dismissDialog();
         _showDialogVerifySuccess();
+      },
+      onError: (error) {
+        // REF: VBHXHMOB-44
+        if (error is RemoteException && error.serverError != null) {
+          final serverMsg = error.serverError!.errorMessage;
+          final serverCode = error.serverError!.code;
+
+          if (serverCode == _taxCodeInvalid) {
+            _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
+            return null;
+          }
+        }
+        return error;
       },
     );
   }

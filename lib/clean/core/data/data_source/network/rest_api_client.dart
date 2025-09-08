@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:v_bhxh/clean/core/data/model/server_error.dart';
 import 'package:v_bhxh/clean/shared/constants/const.dart';
@@ -49,7 +50,7 @@ class RestApiClient {
   }
 
   void _checkServerError(dynamic data) {
-    if (data is Map<String, dynamic> && data['code'] == responseCodeFailure) {
+    if (data is Map<String, dynamic> && data['code'] != responseCodeSuccess) {
       final serverError = ServerError.fromJson(data);
       throw RemoteException(
         kind: RemoteExceptionKind.serverDefined,
