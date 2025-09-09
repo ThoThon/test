@@ -31,6 +31,9 @@ const _taxCodeInvalid = '06';
 /// Nếu bị từ chối ký từ phía My Sign thì trả về code = '58062'
 const _isSignAuthDeclined = '58062';
 
+// Chỉ cho phép up tối đa 7 file ảnh
+const maxImageAttachments = 7;
+
 class RegisterCodeController extends BaseGetClController {
   final GetCertificateUseCase _getCertificateUseCase;
   final GetCategoriesUseCase _getCategoriesUseCase;
@@ -146,6 +149,15 @@ class RegisterCodeController extends BaseGetClController {
   void onInit() {
     super.onInit();
     getRegisterFirstCategories();
+  }
+
+  /// REF: VBHXHMOB-56
+  bool checkMaxImageAttachments() {
+    final reachedMax = listImage.length >= maxImageAttachments;
+    if (reachedMax) {
+      nav.showSnackBar(LocaleKeys.dialog_max7File.tr);
+    }
+    return reachedMax;
   }
 
   void onTabChanged(RegisterCodeTabEnum tab) {
