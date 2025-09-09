@@ -54,8 +54,10 @@ class ApiService {
     return BaseResponse<List<Product>>.fromJson(
       response.data,
       func: (json) {
-        final list = json as List;
-        return list.map((e) => Product.fromJson(e)).toList();
+        if (json is List) {
+          return json.map((e) => Product.fromJson(e)).toList();
+        }
+        return [];
       },
     );
   }
