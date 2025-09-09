@@ -36,4 +36,24 @@ class ProductRepository {
   static Future<List<Product>> refreshProducts({int size = 10}) async {
     return await getProducts(page: 1, size: size);
   }
+
+  // Lấy chi tiết sản phẩm
+  static Future<Product?> getProductDetail({
+    required int productId,
+  }) async {
+    try {
+      final response = await ProductApiService.getProductDetail(
+        productId: productId,
+      );
+
+      if (response.success && response.data != null) {
+        return response.data!;
+      }
+
+      return null;
+    } catch (e) {
+      print('Lỗi trong ProductRepository.getProductDetail: $e');
+      rethrow;
+    }
+  }
 }

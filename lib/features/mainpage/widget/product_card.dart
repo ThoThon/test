@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../routes/app_routes.dart';
 import '../models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
@@ -17,6 +19,10 @@ class ProductCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           //Sang trang chi tiết
+          Get.toNamed(
+            Routes.productDetail,
+            arguments: {'productId': product.id},
+          );
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

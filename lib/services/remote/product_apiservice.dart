@@ -21,4 +21,18 @@ class ProductApiService {
       },
     );
   }
+
+  //API chi tiết sản phẩm
+  static Future<BaseResponse<Product>> getProductDetail({
+    required int productId,
+  }) async {
+    final response = await DioClient.dio.get(
+      "/products/$productId",
+    );
+
+    return BaseResponse<Product>.fromJson(
+      response.data,
+      func: (json) => Product.fromJson(json),
+    );
+  }
 }
