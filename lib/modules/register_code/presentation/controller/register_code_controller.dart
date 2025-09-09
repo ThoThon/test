@@ -353,10 +353,10 @@ class RegisterCodeController extends BaseGetClController {
     nav.showInfoDialog(
       iconType: DialogIconType.success,
       title: LocaleKeys.dialog_sendFileSuccess.tr,
-      showConfirmButton: false,
-      cancelTitle: LocaleKeys.dialog_close.tr,
+      showCancelButton: false,
+      confirmTitle: LocaleKeys.dialog_close.tr,
       subtitle: LocaleKeys.dialog_submitRegisterToSuccessMessage.tr,
-      onCancel: () {
+      onConfirm: () {
         // Get back vì màn trước của nó đang là màn login
         nav.back();
       },
