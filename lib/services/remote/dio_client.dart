@@ -15,7 +15,7 @@ class DioClient {
       onRequest: (options, handler) {
         final token = LoginStorage.getToken();
 
-        print("🟢 Token gửi đi: $token"); // debug
+        print("Token gửi đi: $token"); // debug
         if (token != null && token.isNotEmpty) {
           options.headers['Authorization'] = token;
         }

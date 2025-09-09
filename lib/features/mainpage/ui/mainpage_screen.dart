@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../controller/mainpage_controller.dart';
 import '../widget/product_card.dart';
-import 'mainpage_controller.dart';
 
 class MainpageScreen extends GetView<MainpageController> {
   const MainpageScreen({super.key});

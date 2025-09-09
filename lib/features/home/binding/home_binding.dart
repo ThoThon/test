@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../mainpage/ui/mainpage_controller.dart';
+import '../../mainpage/controller/mainpage_controller.dart';
 import '../../profile/controller/profile_controller.dart';
 import '../controller/home_controller.dart';
 

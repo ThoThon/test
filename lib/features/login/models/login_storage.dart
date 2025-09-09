@@ -9,7 +9,7 @@ class LoginStorage {
   static Box<LoginInfo> get _box => Hive.box<LoginInfo>(boxName);
 
   static Future<void> saveLoginInfo(LoginInfo info) async {
-    print("🔑 Save token: ${info.token}"); // debug
+    print("Save token: ${info.token}"); // debug
 
     await _box.put(keyUserLogin, info);
   }

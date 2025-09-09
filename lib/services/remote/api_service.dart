@@ -1,7 +1,7 @@
 import '../../features/login/models/login_info.dart';
 import '../../features/login/models/login_response.dart';
 import '../../features/login/models/login_storage.dart';
-import '../../features/mainpage/product_model.dart';
+import '../../features/mainpage/models/product_model.dart';
 import 'base_response.dart';
 import 'dio_client.dart';
 
@@ -31,13 +31,13 @@ class ApiService {
       await LoginStorage.saveLoginInfo(
         LoginInfo(
           username: username,
-          password: password,
+          password: '',
           taxCode: taxCode,
           token: token,
         ),
       );
 
-      print("✅ Token đã lưu Hive: $token");
+      print("Token đã lưu Hive: $token");
     }
 
     return result;
