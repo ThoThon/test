@@ -318,15 +318,18 @@ class RegisterCodeController extends BaseGetClController {
         _showDialogVerifySuccess();
       },
       onError: (error) {
+        nav.dismissDialog();
         // REF: VBHXHMOB-44
         if (error is RemoteException && error.serverError != null) {
           final serverMsg = error.serverError!.errorMessage;
           final serverCode = error.serverError!.code;
 
-          if (serverCode == _taxCodeInvalid) {
-            _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
-            return null;
-          }
+          _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
+          return null;
+          // if (serverCode == _taxCodeInvalid) {
+          //   _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
+          //   return null;
+          // }
         }
         return error;
       },
