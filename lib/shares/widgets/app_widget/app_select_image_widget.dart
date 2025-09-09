@@ -8,6 +8,7 @@ import 'package:v_bhxh/core/values/dimens.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/shares/base/ui/sds_build_text.dart';
 import 'package:v_bhxh/shares/widgets/image_app/sds_image_svg.dart';
+import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 import 'package:v_bhxh/shares/widgets/utils_widget/utils_widget.dart';
 
 class AppSelectImageWidget extends StatelessWidget {
@@ -44,7 +45,7 @@ class AppSelectImageWidget extends StatelessWidget {
               children: [
                 SDSImageSvg(Assets.ASSETS_ICONS_IC_UP_FILE_SVG),
                 SDSBuildText(
-                  'Tải ảnh lên',
+                  LocaleKeys.staffList_uploadImage.tr,
                   style: AppTextStyle.font14Re
                       .copyWith(color: AppColors.primaryColor),
                 ),
@@ -65,7 +66,7 @@ class AppSelectImageWidget extends StatelessWidget {
     if (checkMaxImageAttachments()) {
       return;
     }
-
+    KeyBoard.hide();
     Get.bottomSheet(
       UtilWidget.buildBottomSheetFigma(
         child: Column(
