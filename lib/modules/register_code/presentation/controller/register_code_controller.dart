@@ -28,6 +28,9 @@ const _defaultProvinceCode = '01';
 /// Nếu mã số thuế không hợp lệ thì trả về code = '06'
 const _taxCodeInvalid = '06';
 
+/// Nếu bị từ chối ký từ phía My Sign thì trả về code = '58062'
+const _isSignAuthDeclined = '58062';
+
 class RegisterCodeController extends BaseGetClController {
   final GetCertificateUseCase _getCertificateUseCase;
   final GetCategoriesUseCase _getCategoriesUseCase;
@@ -320,16 +323,16 @@ class RegisterCodeController extends BaseGetClController {
       onError: (error) {
         nav.dismissDialog();
         // REF: VBHXHMOB-44
+        // REF: VBHXHMOB-50
         if (error is RemoteException && error.serverError != null) {
           final serverMsg = error.serverError!.errorMessage;
           final serverCode = error.serverError!.code;
 
-          _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
-          return null;
-          // if (serverCode == _taxCodeInvalid) {
-          //   _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
-          //   return null;
-          // }
+          if (serverCode == _isSignAuthDeclined ||
+              serverCode == _taxCodeInvalid) {
+            _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
+            return null;
+          }
         }
         return error;
       },
