@@ -478,6 +478,7 @@ extension RegisterInfoTab on RegisterCodePage {
   }
 
   void _showBottomSheetUploadOptions() {
+    KeyBoard.hide();
     nav.bottomSheet(
       UtilWidget.buildBottomSheetFigma(
         child: Column(
