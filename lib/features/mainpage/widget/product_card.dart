@@ -59,7 +59,7 @@ class ProductCard extends StatelessWidget {
                                 (m) => '${m[1]},',
                               )} VNĐ",
                           style: theme.textTheme.titleMedium?.copyWith(
-                            color: Colors.red[600],
+                            color: const Color(0xFFf24e1e),
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),

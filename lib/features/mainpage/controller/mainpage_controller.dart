@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../services/remote/api_service.dart';
+import '../../../repositories/product_repository.dart';
 import '../models/product_model.dart';
 
 class MainpageController extends GetxController {
@@ -28,26 +28,27 @@ class MainpageController extends GetxController {
 
     isLoading.value = true;
     try {
-      final response = await ApiService.getProducts(page: page);
-      if (response.success && response.data != null) {
-        final newProducts = response.data!;
+      final List<Product> newProducts;
 
-        if (refresh) {
-          products.assignAll(newProducts);
-        } else {
-          products.addAll(newProducts);
-        }
-
-        if (newProducts.length < 10) {
-          hasMore.value = false;
-        }
-
-        page++;
+      if (refresh) {
+        newProducts = await ProductRepository.refreshProducts();
       } else {
+        newProducts = await ProductRepository.loadMoreProducts(page: page);
+      }
+
+      if (refresh) {
+        products.assignAll(newProducts);
+      } else {
+        products.addAll(newProducts);
+      }
+
+      if (newProducts.length < 10) {
         hasMore.value = false;
       }
+
+      page++;
     } catch (e) {
-      print("Lỗi Error: $e");
+      print("Lỗi fetchProducts: $e");
       hasMore.value = false;
     } finally {
       isLoading.value = false;

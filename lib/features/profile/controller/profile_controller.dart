@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../../repositories/auth_repository.dart';
 import '../../../routes/app_routes.dart';
-import '../../login/models/login_storage.dart';
 
 class ProfileController extends GetxController {
   final RxString userName = ''.obs;
@@ -14,7 +14,7 @@ class ProfileController extends GetxController {
   }
 
   void loadUserInfo() {
-    final loginInfo = LoginStorage.getLoginInfo();
+    final loginInfo = AuthRepository.savedLoginInfo;
     if (loginInfo != null) {
       userName.value = loginInfo.username;
       userTaxCode.value = loginInfo.taxCode;
@@ -22,7 +22,7 @@ class ProfileController extends GetxController {
   }
 
   Future<void> logout() async {
-    await LoginStorage.clearLoginInfo();
+    await AuthRepository.logout();
     Get.offAllNamed(Routes.login);
   }
 }

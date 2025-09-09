@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../repositories/auth_repository.dart';
 import '../../../routes/app_routes.dart';
-import '../../../services/remote/api_service.dart';
-import '../models/login_info.dart';
-import '../models/login_storage.dart';
 
 class LoginController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -23,7 +21,7 @@ class LoginController extends GetxController {
   }
 
   void loadSavedLogin() {
-    final stored = LoginStorage.getLoginInfo();
+    final stored = AuthRepository.savedLoginInfo;
     if (stored != null) {
       taxController.text = stored.taxCode;
       usernameController.text = stored.username;
@@ -40,35 +38,24 @@ class LoginController extends GetxController {
       final user = usernameController.text.trim();
       final pass = passwordController.text.trim();
 
-      final response = await ApiService.login(
+      final success = await AuthRepository.login(
         taxCode: tax,
         username: user,
         password: pass,
       );
 
-      if (response.success && response.data != null) {
-        String token = response.data!.token;
-
-        final info = LoginInfo(
-          username: user,
-          password: pass,
-          taxCode: tax,
-          token: token,
-        );
-        await LoginStorage.saveLoginInfo(info);
-
-        return true;
-      } else {
+      if (!success) {
         errorMessage.value = "Đăng nhập thất bại";
       }
+
+      return success;
     } catch (e) {
-      print('Lỗi login : $e');
+      print('Lỗi login: $e');
       errorMessage.value = "Thông tin đăng nhập không hợp lệ";
+      return false;
     } finally {
       isLoading.value = false;
     }
-
-    return false;
   }
 
   Future<void> onLoginPressed() async {
