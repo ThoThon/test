@@ -14,8 +14,10 @@ class DioClient {
   )..interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
         final token = LoginStorage.getToken();
+
+        print("🟢 Token gửi đi: $token"); // debug
         if (token != null && token.isNotEmpty) {
-          options.headers['Authorization'] = 'Bearer $token';
+          options.headers['Authorization'] = token;
         }
         handler.next(options);
       },

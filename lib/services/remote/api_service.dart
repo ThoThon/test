@@ -1,5 +1,4 @@
-import 'package:dio/dio.dart';
-
+import '../../features/login/models/login_info.dart';
 import '../../features/login/models/login_response.dart';
 import '../../features/login/models/login_storage.dart';
 import '../../features/mainpage/product_model.dart';
@@ -21,43 +20,43 @@ class ApiService {
       },
     );
 
-    return BaseResponse<LoginResponse>.fromJson(
+    final result = BaseResponse<LoginResponse>.fromJson(
       response.data,
       func: (json) => LoginResponse.fromJson(json),
     );
+
+    if (result.success && result.data != null) {
+      final token = result.data!.token;
+
+      await LoginStorage.saveLoginInfo(
+        LoginInfo(
+          username: username,
+          password: password,
+          taxCode: taxCode,
+          token: token,
+        ),
+      );
+
+      print("✅ Token đã lưu Hive: $token");
+    }
+
+    return result;
   }
 
   static Future<BaseResponse<List<Product>>> getProducts({
     required int page,
     int size = 10,
   }) async {
-    return await callApiWithToken<List<Product>>(
-      endpoint: "/products?page=$page&size=$size",
+    final response = await DioClient.dio.get(
+      "/products?page=$page&size=$size",
+    );
+
+    return BaseResponse<List<Product>>.fromJson(
+      response.data,
       func: (json) {
         final list = json as List;
         return list.map((e) => Product.fromJson(e)).toList();
       },
-    );
-  }
-
-  static Future<BaseResponse<T>> callApiWithToken<T>({
-    required String endpoint,
-    T Function(dynamic json)? func,
-  }) async {
-    String? token = LoginStorage.getToken();
-
-    final response = await DioClient.dio.get(
-      endpoint,
-      options: Options(
-        headers: {
-          'Authorization': 'Bearer $token',
-        },
-      ),
-    );
-
-    return BaseResponse<T>.fromJson(
-      response.data,
-      func: func,
     );
   }
 }
