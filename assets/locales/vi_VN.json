@@ -60,6 +60,7 @@
     "sendRequestSignature": "Gửi yêu cầu ký thành công",
     "sendFileToBHXH": "Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!",
     "max5File": "Chỉ cho phép đính kèm tối đa 5 file",
+    "max7File": "Chỉ cho phép đính kèm tối đa 7 file",
     "select": "Chọn",
     "selectDayMonthYear": "Chọn Ngày/Tháng/Năm",
     "selectMonthYear": "Chọn Tháng/Năm",
