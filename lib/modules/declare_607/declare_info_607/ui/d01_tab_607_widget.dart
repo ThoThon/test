@@ -99,6 +99,7 @@ extension D01Tab607Widget on DeclareInfo607Page {
       constraints: const BoxConstraints(),
       color: AppColors.basicWhite,
       icon: const Icon(Icons.more_horiz),
+      offset: const Offset(12, 40),
       onSelected: (value) {
         if (value == ActionD01FormEnum.edit) {
           // Gọi hàm sửa
