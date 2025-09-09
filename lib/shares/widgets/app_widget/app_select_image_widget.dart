@@ -63,10 +63,10 @@ class AppSelectImageWidget extends StatelessWidget {
   }
 
   void _showBottomSheetUploadOptions() {
+    KeyBoard.hide();
     if (checkMaxImageAttachments()) {
       return;
     }
-    KeyBoard.hide();
     Get.bottomSheet(
       UtilWidget.buildBottomSheetFigma(
         child: Column(
