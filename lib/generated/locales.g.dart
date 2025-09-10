@@ -1352,7 +1352,8 @@ class Locales {
     'dialog_submitRegisterToSuccessMessage':
         'Vui lòng kiểm tra email đã đăng ký\nThời gian làm việc từ 3-5 ngày',
     'dialog_resend': 'Gửi lại',
-    'dialog_cannotConnectMySign': 'Không thể kết nối tới hệ thống ký số.',
+    'dialog_cannotConnectMySign':
+        'Hết thời gian ký số - Vui lòng thực hiện lại',
     'dialog_sendFileSuccess': 'Gửi hồ sơ thành công',
     'dialog_sendFileFail': 'Gửi hồ sơ thất bại',
     'dialog_signatureTimeOut': 'Hết thời gian ký số\nVui lòng thực hiện lại',
