@@ -26,10 +26,8 @@ import '../enum/register_code_tab_enum.dart';
 const _defaultProvinceCode = '01';
 
 /// Nếu mã số thuế không hợp lệ thì trả về code = '06'
+/// Nếu bị từ chối ký từ phía My Sign thì trả về code = '06'
 const _taxCodeInvalid = '06';
-
-/// Nếu bị từ chối ký từ phía My Sign thì trả về code = '58062'
-const _isSignAuthDeclined = '58062';
 
 // Chỉ cho phép up tối đa 7 file ảnh
 const maxImageAttachments = 7;
@@ -336,13 +334,20 @@ class RegisterCodeController extends BaseGetClController {
         nav.dismissDialog();
         // REF: VBHXHMOB-44
         // REF: VBHXHMOB-50
-        if (error is RemoteException && error.serverError != null) {
-          final serverMsg = error.serverError!.errorMessage;
-          final serverCode = error.serverError!.code;
+        if (error is RemoteException) {
+          if (error.kind == RemoteExceptionKind.serverDefined) {
+            final serverMsg = error.serverError?.errorMessage;
+            final serverCode = error.serverError?.code;
+            if (serverCode == _taxCodeInvalid) {
+              _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
+              return null;
+            }
+          }
 
-          if (serverCode == _isSignAuthDeclined ||
-              serverCode == _taxCodeInvalid) {
-            _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
+          if (!isClosed && error.kind == RemoteExceptionKind.cancellation) {
+            _showDialogVerifyFailed(
+              errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
+            );
             return null;
           }
         }
@@ -353,13 +358,11 @@ class RegisterCodeController extends BaseGetClController {
 
   void _showDialogCheckedSuccess() {
     nav.showTimerDialog(
+      initialSeconds: 3,
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       subtitle: LocaleKeys.dialog_confirmSignatureMySign.tr,
       onFinish: () {
         _firstTimeRegisterUseCase.cancel();
-        _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
-        );
       },
       onCancel: () {
         nav.until(ModalRoute.withName(AppRoutesCl.login.path));
