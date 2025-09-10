@@ -495,6 +495,7 @@ class DeclareInfo607Controller extends BaseGetxController {
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
     _syncHeadOfHouseholdInfo();
+    _clearHeadOfHouseInfo();
     updateHouseholdInfoRequired();
   }
 
@@ -515,7 +516,12 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.provinceTT.value = tk1State.provinceReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
       tk1State.addressTTTextCtrl.text = tk1State.addressReceiveTextCtrl.text;
-    } else {
+    }
+  }
+
+  /// Xóa thông tin chủ hộ khi bỏ tích "Người tham gia là chủ hộ"
+  void _clearHeadOfHouseInfo() {
+    if (!tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.headOfHouseholdTextCtrl.clear();
       tk1State.headOfHouseholdCCCDTextCtrl.clear();
       tk1State.provinceTT.value = null;
@@ -686,7 +692,7 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.isHouseholdInfoRequired.value = true;
       return;
     }
-    
+
     // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
     if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
       tk1State.isHouseholdInfoRequired.value = true;
