@@ -424,7 +424,6 @@ class DeclareInfoController extends BaseGetxController {
     // Tỉnh nơi nhận trùng với Tỉnh khai sinh, Huyện nơi nhận trùng với Huyện khai sinh, Xã nơi nhận trùng với Xã khai sinh, Địa chỉ nơi nhận trùng với địa chỉ khai sinh.
     // TH nếu đ/c khai sinh sửa lại thì đ/c nhận hồ sơ cũng thay đổi
     _syncBirthAddress();
-    _syncHeadOfHouseholdInfo();
   }
 
   /// Đồng bộ địa chỉ nơi nhận hồ sơ với địa chỉ khai sinh

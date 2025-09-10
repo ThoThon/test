@@ -334,7 +334,6 @@ class DeclareInfo607Controller extends BaseGetxController {
     // Tỉnh nơi nhận trùng với Tỉnh khai sinh, Huyện nơi nhận trùng với Huyện khai sinh, Xã nơi nhận trùng với Xã khai sinh, Địa chỉ nơi nhận trùng với địa chỉ khai sinh.
     // TH nếu đ/c khai sinh sửa lại thì đ/c nhận hồ sơ cũng thay đổi
     _syncBirthAddress();
-    _syncHeadOfHouseholdInfo();
     _syncPaperReceiveLocation();
   }
 
@@ -686,7 +685,7 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.isHouseholdInfoRequired.value = true;
       return;
     }
-    
+
     // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
     if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
       tk1State.isHouseholdInfoRequired.value = true;
