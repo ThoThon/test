@@ -358,7 +358,6 @@ class RegisterCodeController extends BaseGetClController {
 
   void _showDialogCheckedSuccess() {
     nav.showTimerDialog(
-      initialSeconds: 3,
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       subtitle: LocaleKeys.dialog_confirmSignatureMySign.tr,
       onFinish: () {
