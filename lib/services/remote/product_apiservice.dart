@@ -35,4 +35,39 @@ class ProductApiService {
       func: (json) => Product.fromJson(json),
     );
   }
+
+  // API cập nhật sản phẩm
+  static Future<BaseResponse<Product>> updateProduct({
+    required int productId,
+    required String name,
+    required int price,
+    required int quantity,
+    required String cover,
+  }) async {
+    final response = await DioClient.dio.put(
+      "/products/$productId",
+      data: {
+        'name': name,
+        'price': price,
+        'quantity': quantity,
+        'cover': cover,
+      },
+    );
+
+    return BaseResponse<Product>.fromJson(
+      response.data,
+      func: (json) => Product.fromJson(json),
+    );
+  }
+
+  // API xóa sản phẩm
+  static Future<BaseResponse<dynamic>> deleteProduct({
+    required int productId,
+  }) async {
+    final response = await DioClient.dio.delete(
+      "/products/$productId",
+    );
+
+    return BaseResponse<dynamic>.fromJson(response.data);
+  }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controller/product_detail_controller.dart';
+import '../widget/product_edit_dialog.dart';
 
 class ProductDetailScreen extends GetView<ProductDetailController> {
   const ProductDetailScreen({super.key});
@@ -13,14 +14,13 @@ class ProductDetailScreen extends GetView<ProductDetailController> {
       appBar: AppBar(
         title: const Text(
           "Chi tiết sản phẩm",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: controller.onBackPressed,
         ),
         backgroundColor: Colors.white,
-        elevation: 1,
       ),
       body: Obx(() {
         if (controller.isLoading.value) {
@@ -143,7 +143,7 @@ class ProductDetailScreen extends GetView<ProductDetailController> {
                 Text(
                   productDetail.name,
                   style: const TextStyle(
-                    fontSize: 24,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
                   ),
@@ -246,59 +246,83 @@ class ProductDetailScreen extends GetView<ProductDetailController> {
                 const SizedBox(height: 30),
 
                 // Nút hành động
-                Row(
-                  children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          //Sửa thông tin
-                        },
-                        icon: const Icon(Icons.edit,
-                            size: 20, color: Colors.white),
-                        label: const Text(
-                          "Sửa thông tin",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                Obx(() => Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton.icon(
+                            onPressed: controller.isUpdating.value ||
+                                    controller.isDeleting.value
+                                ? null
+                                : () => _showEditDialog(productDetail),
+                            icon: controller.isUpdating.value
+                                ? const SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+                                      color: Colors.white,
+                                      strokeWidth: 2,
+                                    ),
+                                  )
+                                : const Icon(Icons.edit,
+                                    size: 20, color: Colors.white),
+                            label: Text(
+                              controller.isUpdating.value
+                                  ? "Đang cập nhật..."
+                                  : "Sửa thông tin",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
                           ),
                         ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: ElevatedButton.icon(
+                            onPressed: controller.isUpdating.value ||
+                                    controller.isDeleting.value
+                                ? null
+                                : controller.deleteProduct,
+                            icon: controller.isDeleting.value
+                                ? const SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+                                      color: Colors.white,
+                                      strokeWidth: 2,
+                                    ),
+                                  )
+                                : const Icon(Icons.delete,
+                                    size: 20, color: Colors.white),
+                            label: Text(
+                              controller.isDeleting.value
+                                  ? "Đang xóa..."
+                                  : "Xóa sản phẩm",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          //Xóa sản phẩm
-                        },
-                        icon: const Icon(Icons.delete,
-                            size: 20, color: Colors.white),
-                        label: const Text(
-                          "Xóa sản phẩm",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                      ],
+                    )),
 
                 const SizedBox(height: 20),
               ],
@@ -335,6 +359,27 @@ class ProductDetailScreen extends GetView<ProductDetailController> {
           ),
         ),
       ],
+    );
+  }
+
+  void _showEditDialog(productDetail) {
+    showDialog(
+      context: Get.context!,
+      builder: (context) => ProductEditDialog(
+        productId: productDetail.id,
+        currentName: productDetail.name,
+        currentPrice: productDetail.price,
+        currentQuantity: productDetail.quantity,
+        currentCover: productDetail.cover,
+        onSave: (name, price, quantity, cover) async {
+          await controller.updateProduct(
+            name: name,
+            price: price,
+            quantity: quantity,
+            cover: cover,
+          );
+        },
+      ),
     );
   }
 }

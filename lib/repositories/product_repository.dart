@@ -56,4 +56,48 @@ class ProductRepository {
       return null;
     }
   }
+
+  // Cập nhật sản phẩm
+  static Future<Product?> updateProduct({
+    required int productId,
+    required String name,
+    required int price,
+    required int quantity,
+    required String cover,
+  }) async {
+    try {
+      final response = await ProductApiService.updateProduct(
+        productId: productId,
+        name: name,
+        price: price,
+        quantity: quantity,
+        cover: cover,
+      );
+
+      if (response.success && response.data != null) {
+        return response.data!;
+      }
+
+      return null;
+    } catch (e) {
+      print('Lỗi trong ProductRepository.updateProduct: $e');
+      return null;
+    }
+  }
+
+  // Xóa sản phẩm
+  static Future<bool> deleteProduct({
+    required int productId,
+  }) async {
+    try {
+      final response = await ProductApiService.deleteProduct(
+        productId: productId,
+      );
+
+      return response.success;
+    } catch (e) {
+      print('Lỗi trong ProductRepository.deleteProduct: $e');
+      return false;
+    }
+  }
 }
