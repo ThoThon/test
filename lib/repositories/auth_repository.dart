@@ -35,7 +35,7 @@ class AuthRepository {
       return false;
     } catch (e) {
       print('Lỗi trong AuthRepository.login: $e');
-      rethrow;
+      return false;
     }
   }
 

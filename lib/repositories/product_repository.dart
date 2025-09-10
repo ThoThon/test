@@ -20,11 +20,11 @@ class ProductRepository {
       return [];
     } catch (e) {
       print('Lỗi trong ProductRepository.getProducts: $e');
-      rethrow;
+      return [];
     }
   }
 
-  // Tải thêm sản phẩm (wrapper cho getProducts)
+  // Tải thêm sản phẩm
   static Future<List<Product>> loadMoreProducts({
     required int page,
     int size = 10,
@@ -32,7 +32,7 @@ class ProductRepository {
     return await getProducts(page: page, size: size);
   }
 
-  // Làm mới danh sách sản phẩm (trang đầu tiên)
+  // Làm mới danh sách sản phẩm
   static Future<List<Product>> refreshProducts({int size = 10}) async {
     return await getProducts(page: 1, size: size);
   }
@@ -53,7 +53,7 @@ class ProductRepository {
       return null;
     } catch (e) {
       print('Lỗi trong ProductRepository.getProductDetail: $e');
-      rethrow;
+      return null;
     }
   }
 }
