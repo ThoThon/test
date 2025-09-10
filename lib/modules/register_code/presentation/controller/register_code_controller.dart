@@ -27,7 +27,7 @@ const _defaultProvinceCode = '01';
 
 /// Nếu mã số thuế không hợp lệ thì trả về code = '06'
 /// Nếu bị từ chối ký từ phía My Sign thì trả về code = '06'
-const _taxCodeInvalid = '06';
+const _registerFailedErrorCode = '06';
 
 // Chỉ cho phép up tối đa 7 file ảnh
 const maxImageAttachments = 7;
@@ -338,7 +338,7 @@ class RegisterCodeController extends BaseGetClController {
           if (error.kind == RemoteExceptionKind.serverDefined) {
             final serverMsg = error.serverError?.errorMessage;
             final serverCode = error.serverError?.code;
-            if (serverCode == _taxCodeInvalid) {
+            if (serverCode == _registerFailedErrorCode) {
               _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
               return null;
             }
