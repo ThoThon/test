@@ -1,4 +1,3 @@
-// lib/services/remote/product_apiservice.dart
 import '../../features/mainpage/models/product_model.dart';
 import 'base_response.dart';
 import 'base_response_list.dart';

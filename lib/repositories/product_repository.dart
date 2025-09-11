@@ -25,6 +25,32 @@ class ProductRepository {
     }
   }
 
+  // Lấy danh sách với thông tin pagination đầy đủ
+  static Future<({List<Product> products, bool hasMore})>
+      getProductsWithPagination({
+    required int page,
+    int size = 10,
+  }) async {
+    try {
+      final response = await ProductApiService.getProducts(
+        page: page,
+        size: size,
+      );
+
+      if (response.success) {
+        return (
+          products: response.data,
+          hasMore: response.hasMoreData(size),
+        );
+      }
+
+      return (products: <Product>[], hasMore: false);
+    } catch (e) {
+      print('Lỗi trong ProductRepository.getProductsWithPagination: $e');
+      return (products: <Product>[], hasMore: false);
+    }
+  }
+
   // Tải thêm sản phẩm
   static Future<List<Product>> loadMoreProducts({
     required int page,

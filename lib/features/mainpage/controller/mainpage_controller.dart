@@ -7,10 +7,17 @@ import '../../../repositories/product_repository.dart';
 import '../models/product_model.dart';
 
 class MainpageController extends GetxController {
+  // Danh sách sản phẩm
   var products = <Product>[].obs;
+
+  // Trạng thái loading
   var isLoading = false.obs;
-  var hasMore = true.obs;
-  var page = 1;
+  var isLoadingMore = false.obs;
+
+  // Pagination
+  var currentPage = 1;
+  var hasMoreData = true.obs;
+  final int pageSize = 10;
 
   // Pull to refresh controller
   late RefreshController refreshController;
@@ -19,7 +26,7 @@ class MainpageController extends GetxController {
   void onInit() {
     super.onInit();
     refreshController = RefreshController(initialRefresh: false);
-    fetchProducts();
+    fetchProducts(isInitial: true);
   }
 
   @override
@@ -28,100 +35,167 @@ class MainpageController extends GetxController {
     super.onClose();
   }
 
-  Future<void> fetchProducts({bool refresh = false}) async {
-    if (isLoading.value) return;
-
-    if (refresh) {
-      page = 1;
-      products.clear();
-      hasMore.value = true;
+  /// Lấy danh sách sản phẩm
+  Future<void> fetchProducts({bool isInitial = false}) async {
+    if (isInitial) {
+      isLoading.value = true;
+      currentPage = 1;
+      hasMoreData.value = true;
     }
 
-    if (!hasMore.value && !refresh) return;
-
-    isLoading.value = true;
     try {
-      final List<Product> newProducts;
+      final result = await ProductRepository.getProductsWithPagination(
+        page: currentPage,
+        size: pageSize,
+      );
 
-      if (refresh) {
-        newProducts = await ProductRepository.refreshProducts();
+      if (isInitial) {
+        products.assignAll(result.products);
       } else {
-        newProducts = await ProductRepository.loadMoreProducts(page: page);
+        products.addAll(result.products);
       }
 
-      if (refresh) {
-        products.assignAll(newProducts);
-      } else {
-        products.addAll(newProducts);
-      }
+      hasMoreData.value = result.hasMore;
 
-      if (newProducts.length < 10) {
-        hasMore.value = false;
+      if (result.products.isNotEmpty) {
+        currentPage++;
       }
-
-      page++;
     } catch (e) {
       print("Lỗi fetchProducts: $e");
-      hasMore.value = false;
+      _showErrorSnackbar("Có lỗi xảy ra khi tải dữ liệu");
     } finally {
-      isLoading.value = false;
+      if (isInitial) {
+        isLoading.value = false;
+      }
     }
   }
 
-  // Xử lý pull to refresh
+  /// Xử lý pull to refresh
   Future<void> onRefresh() async {
-    await fetchProducts(refresh: true);
-    refreshController.refreshCompleted();
+    try {
+      currentPage = 1;
+      hasMoreData.value = true;
+
+      final result = await ProductRepository.getProductsWithPagination(
+        page: 1,
+        size: pageSize,
+      );
+
+      products.assignAll(result.products);
+      hasMoreData.value = result.hasMore;
+      currentPage = 2;
+
+      refreshController.refreshCompleted();
+
+      if (result.products.isNotEmpty) {
+        _showSuccessSnackbar("Đã cập nhật danh sách sản phẩm");
+      }
+    } catch (e) {
+      print("Lỗi onRefresh: $e");
+      refreshController.refreshFailed();
+      _showErrorSnackbar("Không thể làm mới dữ liệu");
+    }
   }
 
-  // Xử lý load more
+  /// Xử lý load more
   Future<void> onLoadMore() async {
-    if (!hasMore.value) {
+    if (!hasMoreData.value) {
       refreshController.loadNoData();
       return;
     }
 
-    await fetchProducts();
+    try {
+      isLoadingMore.value = true;
 
-    if (hasMore.value) {
-      refreshController.loadComplete();
-    } else {
-      refreshController.loadNoData();
-    }
-  }
-
-  void loadMore() {
-    if (!isLoading.value && hasMore.value) {
-      fetchProducts();
-    }
-  }
-
-  // Method để refresh từ bên ngoài (khi có update/delete)
-  Future<void> refreshAfterAction({String? message}) async {
-    await fetchProducts(refresh: true);
-
-    if (message != null) {
-      Get.snackbar(
-        "Cập nhật",
-        message,
-        backgroundColor: const Color(0xFFf24e1e),
-        colorText: Colors.white,
-        snackPosition: SnackPosition.TOP,
-        duration: const Duration(seconds: 2),
+      final result = await ProductRepository.getProductsWithPagination(
+        page: currentPage,
+        size: pageSize,
       );
+
+      if (result.products.isNotEmpty) {
+        products.addAll(result.products);
+        currentPage++;
+        refreshController.loadComplete();
+      } else {
+        hasMoreData.value = false;
+        refreshController.loadNoData();
+      }
+
+      hasMoreData.value = result.hasMore;
+    } catch (e) {
+      print("Lỗi onLoadMore: $e");
+      refreshController.loadFailed();
+      _showErrorSnackbar("Không thể tải thêm dữ liệu");
+    } finally {
+      isLoadingMore.value = false;
     }
   }
 
-  // Method để xóa sản phẩm khỏi danh sách local (không cần gọi API)
+  /// Làm mới sau khi có thao tác update/delete
+  Future<void> refreshAfterAction({String? message}) async {
+    try {
+      currentPage = 1;
+      hasMoreData.value = true;
+
+      final result = await ProductRepository.getProductsWithPagination(
+        page: 1,
+        size: pageSize,
+      );
+
+      products.assignAll(result.products);
+      hasMoreData.value = result.hasMore;
+      currentPage = 2;
+
+      if (message != null) {
+        _showSuccessSnackbar(message);
+      }
+    } catch (e) {
+      print("Lỗi refreshAfterAction: $e");
+      _showErrorSnackbar("Không thể cập nhật danh sách");
+    }
+  }
+
+  /// Xóa sản phẩm khỏi danh sách local
   void removeProductFromList(int productId) {
     products.removeWhere((product) => product.id == productId);
   }
 
-  // Method để cập nhật sản phẩm trong danh sách local
+  /// Cập nhật sản phẩm trong danh sách local
   void updateProductInList(Product updatedProduct) {
     final index = products.indexWhere((p) => p.id == updatedProduct.id);
     if (index != -1) {
       products[index] = updatedProduct;
     }
+  }
+
+  /// Reset refresh controller state
+  void resetRefreshController() {
+    refreshController.resetNoData();
+  }
+
+  /// Hiển thị snackbar thành công
+  void _showSuccessSnackbar(String message) {
+    Get.snackbar(
+      "Thành công",
+      message,
+      backgroundColor: Colors.green,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.TOP,
+      duration: const Duration(seconds: 2),
+      icon: const Icon(Icons.check_circle, color: Colors.white),
+    );
+  }
+
+  /// Hiển thị snackbar lỗi
+  void _showErrorSnackbar(String message) {
+    Get.snackbar(
+      "Lỗi",
+      message,
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.TOP,
+      duration: const Duration(seconds: 3),
+      icon: const Icon(Icons.error, color: Colors.white),
+    );
   }
 }
