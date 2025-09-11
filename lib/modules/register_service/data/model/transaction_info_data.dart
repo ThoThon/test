@@ -7,8 +7,8 @@ class TransactionInfoData {
   final String? tenCQQL;
   final String? tenChuTheCTS;
   final String? tenToChucCKS;
-  final DateTime? thoiHanTuNgay;
-  final DateTime? thoiHanDenNgay;
+  final String? thoiHanTuNgay;
+  final String? thoiHanDenNgay;
   final String? email;
   final String? dienThoai;
   final String? soSerialCTS;
@@ -41,12 +41,8 @@ class TransactionInfoData {
       tenCQQL: json['tenCQQL'],
       tenChuTheCTS: json['tenChuTheCTS'],
       tenToChucCKS: json['tenToChucCKS'],
-      thoiHanTuNgay: json['thoiHanTuNgay'] != null
-          ? DateTime.tryParse(json['thoiHanTuNgay'])
-          : null,
-      thoiHanDenNgay: json['thoiHanDenNgay'] != null
-          ? DateTime.tryParse(json['thoiHanDenNgay'])
-          : null,
+      thoiHanTuNgay: json['thoiHanTuNgay'],
+      thoiHanDenNgay: json['thoiHanDenNgay'],
       email: json['email'],
       dienThoai: json['dienThoai'],
       soSerialCTS: json['soSerialCTS'],

@@ -1,19 +1,12 @@
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/history_argument.dart';
 import 'package:v_bhxh/modules/register_code/domain/entity/certificate.dart';
-import 'package:v_bhxh/modules/register_service/domain/usecase/cancel_register_use_case.dart';
-import 'package:v_bhxh/modules/register_service/domain/usecase/get_list_certification_use_case.dart';
-import 'package:v_bhxh/modules/register_service/domain/usecase/get_transaction_info_use_case.dart';
-import 'package:v_bhxh/modules/register_service/domain/usecase/register_service_use_case.dart';
-import 'package:v_bhxh/modules/register_service/domain/usecase/update_transaction_info_use_case.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
 import '../../../../clean/shared/constants/const.dart';
 import '../../../../clean/shared/exceptions/remote/remote_exception.dart';
-import '../../domain/entity/register_service_request.dart';
-import '../../domain/entity/transaction_info.dart';
 
 class RegisterServiceController extends BaseGetClController {
   final GetTransactionInfoUseCase _getTransactionInfoUseCase;
@@ -139,10 +132,10 @@ class RegisterServiceController extends BaseGetClController {
       cancelTitle: LocaleKeys.dialog_exit.tr,
       confirmTitle: LocaleKeys.dialog_history.tr,
       onCancel: () {
-        Get.until(ModalRoute.withName(AppRoutesCl.home.path));
+        nav.until(ModalRoute.withName(AppRoutesCl.home.path));
       },
       onConfirm: () {
-        Get.toNamed(
+        nav.toNamed(
           AppRoutesCl.history.path,
           arguments: HistoryArgument(
             selectedTab: HistoryTabEnum.register_transaction,
@@ -230,9 +223,9 @@ class RegisterServiceController extends BaseGetClController {
   bool get hasBeenRegister {
     final hasInfo = transactionInfo.value;
     if (hasInfo == null) return false;
-    return hasInfo.tenChuTheCTS.isNotEmpty ||
-        hasInfo.tenToChucCKS.isNotEmpty ||
-        hasInfo.soSerialCTS.isNotEmpty;
+    return hasInfo.certificateOwner.isNotEmpty ||
+        hasInfo.certificateOrgName.isNotEmpty ||
+        hasInfo.certificateSerial.isNotEmpty;
   }
 
   bool get isDisableRegisterButton {

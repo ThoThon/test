@@ -5,14 +5,11 @@ import 'package:v_bhxh/clean/shared/mapper/register_service_request_data_mapper.
 import 'package:v_bhxh/clean/shared/mapper/transaction_info_data_mapper.dart';
 import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/modules/register_code/domain/entity/certificate.dart';
-import 'package:v_bhxh/modules/register_service/data/model/transaction_info_data.dart';
-import 'package:v_bhxh/modules/register_service/domain/entity/transaction_info.dart';
-import 'package:v_bhxh/modules/register_service/domain/repository/register_service_repository.dart';
 
 import '../../../../clean/core/data/model/model_src.dart';
 import '../../../../clean/shared/constants/const.dart';
 import '../../../register_code/data/model/certificate_data.dart';
-import '../../domain/entity/register_service_request.dart';
+import '../../register_service_src.dart';
 
 class RegisterServiceRepositoryImpl extends RegisterServiceRepository {
   final AuthAppServerApiClient _authAppServerApiClient;

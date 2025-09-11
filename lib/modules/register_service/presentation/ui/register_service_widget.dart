@@ -42,30 +42,30 @@ extension RegisterServiceWidget on RegisterServicePage {
             // Mã số thuế
             _buildDoubleItem(
               titleLeft: LocaleKeys.registerService_taxCode.tr,
-              contenTitleLeft: registerInfo?.maSoThue,
+              contenTitleLeft: registerInfo?.taxCode,
               titleRight: LocaleKeys.registerService_unitCode.tr,
-              contenTitleRight: registerInfo?.maDonVi,
+              contenTitleRight: registerInfo?.unitCode,
             ),
             sdsSBHeight12,
 
             // Tên đơn vị
             _buildSingleItem(
               title: LocaleKeys.registerService_unitName.tr,
-              contenTitle: registerInfo?.tenCongTy,
+              contenTitle: registerInfo?.companyName,
             ),
             sdsSBHeight12,
 
             // Tên cơ quan quản lý
             _buildSingleItem(
               title: LocaleKeys.registerService_manageAgencyName.tr,
-              contenTitle: registerInfo?.tenCQQL,
+              contenTitle: registerInfo?.managementAgencyName,
             ),
             sdsSBHeight12,
 
             // Mã cơ quan quản lý
             _buildSingleItem(
               title: LocaleKeys.registerService_manageAgencyCode.tr,
-              contenTitle: registerInfo?.maCQQL,
+              contenTitle: registerInfo?.managementAgencyCode,
             ),
           ],
         );
@@ -98,7 +98,7 @@ extension RegisterServiceWidget on RegisterServicePage {
             // Tên chủ thể CTS
             _buildSingleItem(
               title: LocaleKeys.registerService_subjectNameCert.tr,
-              contenTitle: cert?.name ?? registerInfo?.tenChuTheCTS,
+              contenTitle: cert?.name ?? registerInfo?.certificateOwner,
             ),
             sdsSBHeight12,
 
@@ -107,7 +107,7 @@ extension RegisterServiceWidget on RegisterServicePage {
               title: LocaleKeys.registerService_organizationNameOfCert.tr,
               // TODO: Phía BE chưa có thuộc tính này, tạm thời fix cứng
               contenTitle: controller.hasBeenRegister
-                  ? registerInfo?.tenToChucCKS
+                  ? registerInfo?.certificateOrgName
                   // Fix cứng "Viettel - CA RS" khi chọn xong chứng thư số
                   : (cert == null ? '' : "Viettel - CA RS"),
             ),
@@ -118,13 +118,13 @@ extension RegisterServiceWidget on RegisterServicePage {
               titleLeft: LocaleKeys.registerService_dayStart.tr,
               contenTitleLeft: cert?.validFrom ??
                   convertDateToStringSafe(
-                    registerInfo?.thoiHanTuNgay,
+                    registerInfo?.validFrom,
                     PATTERN_1,
                   ),
               titleRight: LocaleKeys.registerService_dayEnd.tr,
               contenTitleRight: cert?.validTo ??
                   convertDateToStringSafe(
-                    registerInfo?.thoiHanDenNgay,
+                    registerInfo?.validTo,
                     PATTERN_1,
                   ),
             ),
@@ -133,7 +133,7 @@ extension RegisterServiceWidget on RegisterServicePage {
             // Số điện thoại
             _buildSingleItem(
               title: LocaleKeys.registerService_phoneNumber.tr,
-              contenTitle: registerInfo?.dienThoai,
+              contenTitle: registerInfo?.phoneNumber,
             ),
             sdsSBHeight12,
 
@@ -384,7 +384,7 @@ extension RegisterServiceWidget on RegisterServicePage {
       isRequired: true,
       labelText: LocaleKeys.registerService_serialNumber.tr,
       items: controller.listRegisterInfo,
-      display: (cert) => cert.soSerialCTS,
+      display: (cert) => cert.certificateSerial,
       selectedItem: controller.transactionInfo.value,
       onChanged: (value) {
         controller.transactionInfo.value = value;

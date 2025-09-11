@@ -1,33 +1,60 @@
 class TransactionInfo {
-  final String idCongTy;
-  final String tenCongTy;
-  final String maSoThue;
-  final String maDonVi;
-  final String maCQQL;
-  final String tenCQQL;
-  final String tenChuTheCTS;
-  final String tenToChucCKS;
-  final DateTime thoiHanTuNgay;
-  final DateTime thoiHanDenNgay;
+  // idCongTy
+  final String companyId;
+
+  // tenCongTy
+  final String companyName;
+
+  // maSoThue
+  final String taxCode;
+
+  // maDonVi
+  final String unitCode;
+
+  // maCQQL
+  final String managementAgencyCode;
+
+  // tenCQQL
+  final String managementAgencyName;
+
+  // tenChuTheCTS
+  final String certificateOwner;
+
+  // tenToChucCKS
+  final String certificateOrgName;
+
+  // thoiHanTuNgay
+  final DateTime validFrom;
+
+  // thoiHanDenNgay
+  final DateTime validTo;
+
+  // email
   final String email;
-  final String dienThoai;
-  final String soSerialCTS;
-  final String userId; // Mã người dùng trong hệ thống MySign
+
+  // dienThoai
+  final String phoneNumber;
+
+  // soSerialCTS
+  final String certificateSerial;
+
+  // userId
+  final String userId;
 
   TransactionInfo({
-    required this.idCongTy,
-    required this.tenCongTy,
-    required this.maSoThue,
-    required this.maDonVi,
-    required this.maCQQL,
-    required this.tenCQQL,
-    required this.tenChuTheCTS,
-    required this.tenToChucCKS,
-    required this.thoiHanTuNgay,
-    required this.thoiHanDenNgay,
+    required this.companyId,
+    required this.companyName,
+    required this.taxCode,
+    required this.unitCode,
+    required this.managementAgencyCode,
+    required this.managementAgencyName,
+    required this.certificateOwner,
+    required this.certificateOrgName,
+    required this.validFrom,
+    required this.validTo,
     required this.email,
-    required this.dienThoai,
-    required this.soSerialCTS,
-    required this.userId, // Mã người dùng trong hệ thống MySign
+    required this.phoneNumber,
+    required this.certificateSerial,
+    required this.userId,
   });
 }

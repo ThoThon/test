@@ -7,19 +7,19 @@ class TransactionInfoDataMapper
   @override
   TransactionInfo mapToEntity(TransactionInfoData? data) {
     return TransactionInfo(
-      idCongTy: data?.idCongTy ?? '',
-      tenCongTy: data?.tenCongTy ?? '',
-      maSoThue: data?.maSoThue ?? '',
-      maDonVi: data?.maDonVi ?? '',
-      maCQQL: data?.maCQQL ?? '',
-      tenCQQL: data?.tenCQQL ?? '',
-      tenChuTheCTS: data?.tenChuTheCTS ?? '',
-      tenToChucCKS: data?.tenToChucCKS ?? '',
-      thoiHanTuNgay: data?.thoiHanTuNgay ?? DateTime.now(),
-      thoiHanDenNgay: data?.thoiHanDenNgay ?? DateTime.now(),
+      companyId: data?.idCongTy ?? '',
+      companyName: data?.tenCongTy ?? '',
+      taxCode: data?.maSoThue ?? '',
+      unitCode: data?.maDonVi ?? '',
+      managementAgencyCode: data?.maCQQL ?? '',
+      managementAgencyName: data?.tenCQQL ?? '',
+      certificateOwner: data?.tenChuTheCTS ?? '',
+      certificateOrgName: data?.tenToChucCKS ?? '',
+      validFrom: DateTime.tryParse(data?.thoiHanTuNgay ?? '') ?? DateTime.now(),
+      validTo: DateTime.tryParse(data?.thoiHanDenNgay ?? '') ?? DateTime.now(),
       email: data?.email ?? '',
-      dienThoai: data?.dienThoai ?? '',
-      soSerialCTS: data?.soSerialCTS ?? '',
+      phoneNumber: data?.dienThoai ?? '',
+      certificateSerial: data?.soSerialCTS ?? '',
       userId: data?.userId ?? '',
     );
   }
