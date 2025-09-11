@@ -326,22 +326,22 @@ class DeclareInfoController extends BaseGetxController {
       final response = await declareInfoRepository.addD02(request: request);
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi thêm mới thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
         );
         if (argument.isAddPeriodFromDeclarePeriod) {
           // Đóng màn kê khai này và mở màn danh sách nhân viên
-          // .then để bắt sự kiện đóng màn danh sách nhân viên này để refresh màn đợt kê khai
           Get.offNamed(
             AppRoutesCl.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure600,
             ),
-          )?.then((_) {
-            eventBus.fire(const RefreshDeclarationPeriodEvent());
-          });
+          );
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
             result: argument.declarationPeriodId,
@@ -378,6 +378,9 @@ class DeclareInfoController extends BaseGetxController {
       final response = await declareInfoRepository.updateD02(request: request);
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi cập nhật thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,

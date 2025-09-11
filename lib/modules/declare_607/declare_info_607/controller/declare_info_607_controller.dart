@@ -258,6 +258,9 @@ class DeclareInfo607Controller extends BaseGetxController {
       final response = await declareInfoRepository.addTk1(request: request);
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi thêm mới thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
@@ -271,9 +274,7 @@ class DeclareInfo607Controller extends BaseGetxController {
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: argument.procedureType,
             ),
-          )?.then((value) {
-            eventBus.fire(const RefreshDeclarationPeriodEvent());
-          });
+          );
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
             result: argument.declarationPeriodId,
@@ -308,6 +309,9 @@ class DeclareInfo607Controller extends BaseGetxController {
       final response = await declareInfoRepository.updateTk1(request: request);
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi cập nhật thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,

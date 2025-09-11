@@ -6,11 +6,13 @@ import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/controller/declaration_period_controller.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_request.dart';
 import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_response.dart';
 import 'package:v_bhxh/modules/declare_info_630c/repository/declare_info_630c_repository.dart';
 import 'package:v_bhxh/modules/src.dart';
+import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../clean/shared/entity/category.dart';
@@ -176,7 +178,10 @@ class DeclareInfo630cController extends BaseGetxController {
     try {
       showLoadingOverlay();
       final response = await _repository.addProcedure630c(_buildRequest());
-      if (response.result != null && response.isSuccess) {
+      if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi thêm mới thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
@@ -188,9 +193,7 @@ class DeclareInfo630cController extends BaseGetxController {
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure630c,
             ),
-          )?.then((value) {
-            declarationPeriodController?.getDeclarationPeriods();
-          });
+          );
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
             result: argument.declarationPeriodId,
@@ -364,6 +367,9 @@ class DeclareInfo630cController extends BaseGetxController {
       final response = await _repository.update630c(_buildRequest());
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi cập nhật thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,

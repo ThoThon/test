@@ -3,7 +3,7 @@ part of 'declaration_period_page.dart';
 extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   Widget _buildBody() {
     return RefreshIndicator(
-      onRefresh: controller.getDeclarationPeriods,
+      onRefresh: controller.refreshDeclarationPeriods,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(
           AppDimens.defaultPadding,
@@ -73,6 +73,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
     }
 
     return ListView.separated(
+      key: const PageStorageKey<String>('declarationPeriods'),
       padding: const EdgeInsets.only(bottom: AppDimens.defaultPadding),
       itemCount: controller.declarationPeriods.length,
       separatorBuilder: (context, index) => sdsSBHeight16,
@@ -253,7 +254,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             onTap: () {
               controller.selectFilter.value = status;
               Get.back();
-              controller.getDeclarationPeriods();
+              controller.refreshDeclarationPeriods();
             },
             text: status.title,
             style: isSelected

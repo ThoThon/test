@@ -31,7 +31,10 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     try {
       showLoadingOverlay();
       final response = await repository.addProcedure630b(_buildRequest());
-      if (response.result != null && response.isSuccess) {
+      if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi thêm mới thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
@@ -43,9 +46,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure630b,
             ),
-          )?.then((value) {
-            eventBus.fire(const RefreshDeclarationPeriodEvent());
-          });
+          );
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
             result: argument.declarationPeriodId,
@@ -200,6 +201,9 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       final response = await repository.update630b(_buildRequest());
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi cập nhật thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
