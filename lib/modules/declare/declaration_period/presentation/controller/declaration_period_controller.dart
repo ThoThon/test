@@ -45,7 +45,10 @@ class DeclarationPeriodController extends BaseGetClController {
   @override
   void onReady() {
     super.onReady();
-    _getDeclarationPeriods(showLoading: true);
+    _getDeclarationPeriods(
+      showLoading: true,
+      showLoadingOverlay: false,
+    );
   }
 
   void _listenToEvents() {
@@ -58,16 +61,19 @@ class DeclarationPeriodController extends BaseGetClController {
   }
 
   Future<void> refreshDeclarationPeriods() {
-    return _getDeclarationPeriods(showLoading: false);
+    return _getDeclarationPeriods(
+      showLoading: false,
+      showLoadingOverlay: true,
+    );
   }
 
   Future<void> _getDeclarationPeriods({
     bool showLoading = true,
+    bool showLoadingOverlay = false,
   }) {
     return buildState(
       showLoading: showLoading,
-      // Nếu không show loading thì sẽ hiện loading overlay
-      showLoadingOverlay: !showLoading,
+      showLoadingOverlay: showLoadingOverlay,
       action: () async {
         declarationPeriods.value = await _getDeclarationPeriodsUseCase.execute(
           GetDeclarationPeriodsUseCaseInput(
