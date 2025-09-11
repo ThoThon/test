@@ -183,7 +183,10 @@ class DeclareInfo630aController extends BaseGetxController {
     try {
       showLoadingOverlay();
       final response = await _repository.addProcedure630a(_buildRequest());
-      if (response.result != null && response.isSuccess) {
+      if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi thêm mới thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
@@ -197,9 +200,7 @@ class DeclareInfo630aController extends BaseGetxController {
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure630a,
             ),
-          )?.then((value) {
-            eventBus.fire(const RefreshDeclarationPeriodEvent());
-          });
+          );
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
             result: argument.declarationPeriodId,
@@ -229,6 +230,9 @@ class DeclareInfo630aController extends BaseGetxController {
       final response = await _repository.update630a(_buildRequest());
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi cập nhật thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,

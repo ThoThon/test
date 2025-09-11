@@ -45,23 +45,36 @@ class DeclarationPeriodController extends BaseGetClController {
   @override
   void onReady() {
     super.onReady();
-    getDeclarationPeriods();
+    _getDeclarationPeriods(
+      showLoading: true,
+      showLoadingOverlay: false,
+    );
   }
 
   void _listenToEvents() {
     _declarationPeriodEventSubscription ??=
         eventBus.on<DeclarationPeriodEvent>().listen((event) {
       if (event is RefreshDeclarationPeriodEvent) {
-        getDeclarationPeriods();
+        refreshDeclarationPeriods();
       }
     });
   }
 
-  Future<void> getDeclarationPeriods() {
+  Future<void> refreshDeclarationPeriods() {
+    return _getDeclarationPeriods(
+      showLoading: false,
+      showLoadingOverlay: true,
+    );
+  }
+
+  Future<void> _getDeclarationPeriods({
+    bool showLoading = true,
+    bool showLoadingOverlay = false,
+  }) {
     return buildState(
-      showLoading: true,
+      showLoading: showLoading,
+      showLoadingOverlay: showLoadingOverlay,
       action: () async {
-        declarationPeriods.clear();
         declarationPeriods.value = await _getDeclarationPeriodsUseCase.execute(
           GetDeclarationPeriodsUseCaseInput(
             year: selectedPeriodDate.value.year,
@@ -82,7 +95,7 @@ class DeclarationPeriodController extends BaseGetClController {
     );
     if (date != null) {
       selectedPeriodDate.value = date;
-      getDeclarationPeriods();
+      refreshDeclarationPeriods();
     }
   }
 
@@ -109,7 +122,7 @@ class DeclarationPeriodController extends BaseGetClController {
             LocaleKeys.declarationPeriod_contentDeletePeriodSuccess.tr,
             type: SnackBarType.success,
           );
-          getDeclarationPeriods();
+          refreshDeclarationPeriods();
         }
       },
     );
@@ -146,31 +159,28 @@ class DeclarationPeriodController extends BaseGetClController {
           ProcedureType.procedure630c => AppRoutesCl.declareInfo630c.path,
         };
 
-        final declareInfoArgument = DeclareInfoArgument(
-          declarationPeriodId: period.id,
-          action: D02ActionEnum.addPeriodFromDeclarePeriod,
-          procedureType: argument.type,
-        );
+        refreshDeclarationPeriods();
 
-        nav.toNamed(path, arguments: declareInfoArgument)?.whenComplete(() {
-          // Refresh the list of declaration periods after creating a new one
-          getDeclarationPeriods();
-        });
+        nav.toNamed(
+          path,
+          arguments: DeclareInfoArgument(
+            declarationPeriodId: period.id,
+            action: D02ActionEnum.addPeriodFromDeclarePeriod,
+            procedureType: argument.type,
+          ),
+        );
       },
     );
   }
 
   Future<void> editDeclarationPeriod(DeclarationPeriod period) async {
-    final staffListArgument = StaffListArgument(
-      declarationPeriodId: period.id,
-      procedureType: period.procedureType,
+    nav.toNamed(
+      AppRoutesCl.staffList.path,
+      arguments: StaffListArgument(
+        declarationPeriodId: period.id,
+        procedureType: period.procedureType,
+      ),
     );
-    nav
-        .toNamed(AppRoutesCl.staffList.path, arguments: staffListArgument)
-        ?.whenComplete(() {
-      // Refresh the list of declaration periods after editing
-      getDeclarationPeriods();
-    });
   }
 
   @override
