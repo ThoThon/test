@@ -60,10 +60,7 @@ class ProductCard extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          "${product.price.toString().replaceAllMapped(
-                                RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                                (m) => '${m[1]},',
-                              )} VNĐ",
+                          "${product.price} VNĐ",
                           style: theme.textTheme.titleMedium?.copyWith(
                             color: const Color(0xFFf24e1e),
                             fontWeight: FontWeight.bold,

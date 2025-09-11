@@ -156,10 +156,7 @@ class ProductDetailScreen extends GetView<ProductDetailController> {
                   children: [
                     Expanded(
                       child: Text(
-                        "${productDetail.price.toString().replaceAllMapped(
-                              RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                              (m) => '${m[1]},',
-                            )} VNĐ",
+                        "${productDetail.price} VNĐ",
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -231,11 +228,9 @@ class ProductDetailScreen extends GetView<ProductDetailController> {
                       _buildInfoRow("Tên sản phẩm:", productDetail.name),
                       const SizedBox(height: 12),
                       _buildInfoRow(
-                          "Giá bán:",
-                          "${productDetail.price.toString().replaceAllMapped(
-                                RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                                (m) => '${m[1]},',
-                              )} VNĐ"),
+                        "Giá bán:",
+                        "${productDetail.price} VNĐ",
+                      ),
                       const SizedBox(height: 12),
                       _buildInfoRow(
                           "Số lượng:", "${productDetail.quantity} sản phẩm"),
