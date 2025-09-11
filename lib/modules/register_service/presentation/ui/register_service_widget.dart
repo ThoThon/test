@@ -29,7 +29,7 @@ extension RegisterServiceWidget on RegisterServicePage {
   Widget _buildCardUnitInfo() {
     return Obx(
       () {
-        final registerInfo = controller.registerServiceInfo.value;
+        final registerInfo = controller.transactionInfo.value;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -77,7 +77,7 @@ extension RegisterServiceWidget on RegisterServicePage {
     return Obx(
       () {
         final cert = controller.certificate.value;
-        final registerInfo = controller.registerServiceInfo.value;
+        final registerInfo = controller.transactionInfo.value;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -343,7 +343,7 @@ extension RegisterServiceWidget on RegisterServicePage {
             onPressed: () {
               if (controller.certificate.value != null) {
                 if (!controller.isDiableChangeInfoButton) {
-                  controller.changeInfo();
+                  controller.updateInfo();
                 }
               }
             },
@@ -366,7 +366,7 @@ extension RegisterServiceWidget on RegisterServicePage {
 
   // Hiện serial từ chứng thư số
   Widget _buildDropdownSerialCert() {
-    return CardDropdownWithLabel<CertificateModel>(
+    return CardDropdownWithLabel<Certificate>(
       isRequired: true,
       labelText: LocaleKeys.registerService_serialNumber.tr,
       items: controller.listCert,
@@ -380,14 +380,14 @@ extension RegisterServiceWidget on RegisterServicePage {
 
   // Hiện serial từ thông tin đã đăng ký trước đó
   Widget _buildDropdownSerialRegister() {
-    return CardDropdownWithLabel<RegisterServiceInfoModel>(
+    return CardDropdownWithLabel<TransactionInfo>(
       isRequired: true,
       labelText: LocaleKeys.registerService_serialNumber.tr,
       items: controller.listRegisterInfo,
       display: (cert) => cert.soSerialCTS,
-      selectedItem: controller.registerServiceInfo.value,
+      selectedItem: controller.transactionInfo.value,
       onChanged: (value) {
-        controller.registerServiceInfo.value = value;
+        controller.transactionInfo.value = value;
       },
     );
   }
