@@ -1,3 +1,4 @@
+// lib/repositories/product_repository.dart
 import '../features/mainpage/models/product_model.dart';
 import '../services/remote/product_apiservice.dart';
 
@@ -13,8 +14,8 @@ class ProductRepository {
         size: size,
       );
 
-      if (response.success && response.data != null) {
-        return response.data!;
+      if (response.success) {
+        return response.data;
       }
 
       return [];

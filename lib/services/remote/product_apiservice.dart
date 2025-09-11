@@ -1,9 +1,11 @@
+// lib/services/remote/product_apiservice.dart
 import '../../features/mainpage/models/product_model.dart';
 import 'base_response.dart';
+import 'base_response_list.dart';
 import 'dio_client.dart';
 
 class ProductApiService {
-  static Future<BaseResponse<List<Product>>> getProducts({
+  static Future<BaseResponseList<Product>> getProducts({
     required int page,
     int size = 10,
   }) async {
@@ -11,18 +13,13 @@ class ProductApiService {
       "/products?page=$page&size=$size",
     );
 
-    return BaseResponse<List<Product>>.fromJson(
+    return BaseResponseList<Product>.fromJson(
       response.data,
-      func: (json) {
-        if (json is List) {
-          return json.map((e) => Product.fromJson(e)).toList();
-        }
-        return [];
-      },
+      func: (json) => Product.fromJson(json),
     );
   }
 
-  //API chi tiết sản phẩm
+  // API chi tiết sản phẩm
   static Future<BaseResponse<Product>> getProductDetail({
     required int productId,
   }) async {
