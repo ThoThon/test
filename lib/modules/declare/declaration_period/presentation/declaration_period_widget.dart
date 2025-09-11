@@ -2,7 +2,7 @@ part of 'declaration_period_page.dart';
 
 extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   Widget _buildBody() {
-    return RefreshIndicator(
+    return RefreshIndicator.adaptive(
       onRefresh: controller.refreshDeclarationPeriods,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(
