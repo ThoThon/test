@@ -67,7 +67,7 @@ class AppApi {
   static const String urlGetListCert =
       '/api/RegisterService/get-list-credentials';
 
-  static const String urlFetchRegisterServiceInfo =
+  static const String urlGetRegisterServiceInfo =
       '/api/RegisterService/get-registration-info';
   static const String urlRegisterNewService =
       '/api/RegisterService/register-new-service';

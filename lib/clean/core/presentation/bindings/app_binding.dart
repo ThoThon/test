@@ -15,7 +15,9 @@ import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.d
 import 'package:v_bhxh/clean/shared/mapper/lookup_c12_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 import 'package:v_bhxh/clean/shared/mapper/register_code_categories_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/register_service_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/tax_code_verify_request_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/transaction_info_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
@@ -82,6 +84,8 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => BankDataMapper(), fenix: true);
     Get.lazyPut(() => LongDieaseDataMapper(), fenix: true);
     Get.lazyPut(() => TaxCodeVerifyRequestDataMapper(), fenix: true);
+    Get.lazyPut(() => TransactionInfoDataMapper(), fenix: true);
+    Get.lazyPut(() => RegisterServiceRequestDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {
