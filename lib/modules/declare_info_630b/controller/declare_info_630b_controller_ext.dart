@@ -376,7 +376,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     toDateCtrl.text = convertDateToStringSafe(detail.denNgay, PATTERN_1) ?? '';
 
     // Tổng số ngày
-    countDayTextCtrl.text = detail.tongSoNgay.toString();
+    countDayTextCtrl.text = detail.tongSoNgay?.toString() ?? '';
 
     // Từ ngày đơn vị
     fromDateUnitTextCtrl.text =
