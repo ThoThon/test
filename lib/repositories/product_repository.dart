@@ -1,33 +1,8 @@
-// lib/repositories/product_repository.dart
 import '../features/mainpage/models/product_model.dart';
 import '../services/remote/product_apiservice.dart';
 
 class ProductRepository {
-  // Lấy danh sách sản phẩm với phân trang
-  static Future<List<Product>> getProducts({
-    required int page,
-    int size = 10,
-  }) async {
-    try {
-      final response = await ProductApiService.getProducts(
-        page: page,
-        size: size,
-      );
-
-      if (response.success) {
-        return response.data;
-      }
-
-      return [];
-    } catch (e) {
-      print('Lỗi trong ProductRepository.getProducts: $e');
-      return [];
-    }
-  }
-
-  // Lấy danh sách với thông tin pagination đầy đủ
-  static Future<({List<Product> products, bool hasMore})>
-      getProductsWithPagination({
+  static Future<({List<Product> products, bool hasMore})> getProducts({
     required int page,
     int size = 10,
   }) async {
@@ -46,22 +21,9 @@ class ProductRepository {
 
       return (products: <Product>[], hasMore: false);
     } catch (e) {
-      print('Lỗi trong ProductRepository.getProductsWithPagination: $e');
+      print('Lỗi trong ProductRepository.getProducts: $e');
       return (products: <Product>[], hasMore: false);
     }
-  }
-
-  // Tải thêm sản phẩm
-  static Future<List<Product>> loadMoreProducts({
-    required int page,
-    int size = 10,
-  }) async {
-    return await getProducts(page: page, size: size);
-  }
-
-  // Làm mới danh sách sản phẩm
-  static Future<List<Product>> refreshProducts({int size = 10}) async {
-    return await getProducts(page: 1, size: size);
   }
 
   // Lấy chi tiết sản phẩm

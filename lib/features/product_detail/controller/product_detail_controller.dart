@@ -77,7 +77,7 @@ class ProductDetailController extends GetxController {
       if (updatedProduct != null) {
         productDetail.value = updatedProduct;
 
-        // ✅ Cập nhật luôn trong MainPage controller
+        // Cập nhật luôn trong MainPage controller
         try {
           final mainController = Get.find<MainpageController>();
           mainController.updateProductInList(updatedProduct);
@@ -111,7 +111,7 @@ class ProductDetailController extends GetxController {
       );
 
       if (success) {
-        // ✅ Xóa luôn trong MainPage controller
+        //Xóa luôn trong MainPage controller
         try {
           final mainController = Get.find<MainpageController>();
           mainController.removeProductFromList(productId!);

@@ -15,7 +15,6 @@ class BaseResponseList<T> {
   }) {
     List<T> items = [];
 
-    // Parse data array
     if (json['data'] != null && json['data'] is List) {
       items = (json['data'] as List).map((item) => func(item)).toList();
     }
