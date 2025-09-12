@@ -12,10 +12,10 @@ class DeclareInfo630bResponse {
   final String phatSinhDieuChinh;
   final BenefitGroup630? maNhomHuong;
   final BenefitGroupLv2? maNhomHuong2;
-  final DateTime tuNgay;
-  final DateTime denNgay;
-  final int tongSoNgay;
-  final DateTime tuNgayDonVi;
+  final DateTime? tuNgay;
+  final DateTime? denNgay;
+  final int? tongSoNgay;
+  final DateTime? tuNgayDonVi;
   final String? ngayNghiTuan;
   final String? soSeriCT;
   final DateTime? ngaySinhCon;
@@ -64,7 +64,7 @@ class DeclareInfo630bResponse {
     required this.maNhomHuong2,
     required this.tuNgay,
     required this.denNgay,
-    required this.tongSoNgay,
+    this.tongSoNgay,
     required this.tuNgayDonVi,
     this.ngayNghiTuan,
     this.soSeriCT,
@@ -121,11 +121,10 @@ class DeclareInfo630bResponse {
       phatSinhDieuChinh: json['phatSinh_DieuChinh'] ?? '',
       maNhomHuong: benefitGroup,
       maNhomHuong2: benefitGroupLv2,
-      tuNgay: DateTime.tryParse(json['tuNgay'] ?? '') ?? DateTime.now(),
-      denNgay: DateTime.tryParse(json['denNgay'] ?? '') ?? DateTime.now(),
-      tongSoNgay: json['tongSoNgay'] ?? 0,
-      tuNgayDonVi:
-          DateTime.tryParse(json['tuNgayDonVi'] ?? '') ?? DateTime.now(),
+      tuNgay: DateTime.tryParse(json['tuNgay'] ?? ''),
+      denNgay: DateTime.tryParse(json['denNgay'] ?? ''),
+      tongSoNgay: json['tongSoNgay'],
+      tuNgayDonVi: DateTime.tryParse(json['tuNgayDonVi'] ?? ''),
       ngayNghiTuan: json['ngayNghiTuan'] ?? '',
       soSeriCT: json['soSeriCT'] ?? '',
       ngaySinhCon: DateTime.tryParse(json['ngaySinhCon'] ?? ''),
