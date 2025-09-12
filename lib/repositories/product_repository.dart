@@ -46,6 +46,32 @@ class ProductRepository {
     }
   }
 
+  // Tạo sản phẩm mới
+  static Future<Product?> createProduct({
+    required String name,
+    required int price,
+    required int quantity,
+    required String cover,
+  }) async {
+    try {
+      final response = await ProductApiService.createProduct(
+        name: name,
+        price: price,
+        quantity: quantity,
+        cover: cover,
+      );
+
+      if (response.success && response.data != null) {
+        return response.data!;
+      }
+
+      return null;
+    } catch (e) {
+      print('Lỗi trong ProductRepository.createProduct: $e');
+      return null;
+    }
+  }
+
   // Cập nhật sản phẩm
   static Future<Product?> updateProduct({
     required int productId,

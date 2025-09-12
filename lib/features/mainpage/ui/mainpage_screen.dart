@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
+import '../../../routes/app_routes.dart';
 import '../controller/mainpage_controller.dart';
 import '../widget/product_card.dart';
 
@@ -40,6 +41,15 @@ class MainpageScreen extends GetView<MainpageController> {
           child: _buildProductGrid(),
         );
       }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.toNamed(Routes.productCreate),
+        backgroundColor: const Color(0xFFf24e1e),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 28,
+        ),
+      ),
     );
   }
 
@@ -65,27 +75,50 @@ class MainpageScreen extends GetView<MainpageController> {
           ),
           const SizedBox(height: 8),
           Text(
-            "Kéo xuống để làm mới",
+            "Nhấn nút + để thêm sản phẩm mới",
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey[500],
             ),
           ),
           const SizedBox(height: 24),
-          ElevatedButton.icon(
-            onPressed: () => controller.onRefresh(),
-            icon: const Icon(Icons.refresh, color: Colors.white),
-            label: const Text(
-              "Làm mới",
-              style: TextStyle(color: Colors.white),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFFf24e1e),
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () => controller.onRefresh(),
+                icon: const Icon(Icons.refresh, color: Colors.white),
+                label: const Text(
+                  "Làm mới",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFf24e1e),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
               ),
-            ),
+              const SizedBox(width: 16),
+              ElevatedButton.icon(
+                onPressed: () => Get.toNamed(Routes.productCreate),
+                icon: const Icon(Icons.add, color: Colors.white),
+                label: const Text(
+                  "Thêm sản phẩm",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

@@ -120,6 +120,11 @@ class MainpageController extends GetxController {
     }
   }
 
+  /// Thêm sản phẩm mới vào đầu danh sách
+  void addNewProductToList(Product newProduct) {
+    products.insert(0, newProduct);
+  }
+
   /// Cập nhật sản phẩm trong danh sách local
   void updateProductInList(Product updatedProduct) {
     final index = products.indexWhere((p) => p.id == updatedProduct.id);

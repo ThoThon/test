@@ -18,6 +18,29 @@ class ProductApiService {
     );
   }
 
+  // API tạo sản phẩm mới
+  static Future<BaseResponse<Product>> createProduct({
+    required String name,
+    required int price,
+    required int quantity,
+    required String cover,
+  }) async {
+    final response = await DioClient.dio.post(
+      "/products",
+      data: {
+        'name': name,
+        'price': price,
+        'quantity': quantity,
+        'cover': cover,
+      },
+    );
+
+    return BaseResponse<Product>.fromJson(
+      response.data,
+      func: (json) => Product.fromJson(json),
+    );
+  }
+
   // API chi tiết sản phẩm
   static Future<BaseResponse<Product>> getProductDetail({
     required int productId,
