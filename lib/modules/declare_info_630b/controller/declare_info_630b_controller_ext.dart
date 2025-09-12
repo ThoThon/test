@@ -433,9 +433,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Số con chết
-    if (detail.soCCHoacThaiCL != null && detail.soCCHoacThaiCL! > 0) {
-      numberChildDeathCtrl.text = detail.soCCHoacThaiCL.toString();
-    }
+    numberChildDeathCtrl.text = detail.soCCHoacThaiCL?.toString() ?? '';
 
     // Ngày con chết
     childDeathDateCtrl.text =
@@ -477,9 +475,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
         convertDateToStringSafe(detail.ngayKetLuan, PATTERN_1) ?? '';
 
     // Phí giám định y khoa
-    if (detail.phiGiamDinhYKhoa != null && detail.phiGiamDinhYKhoa! > 0) {
-      medicalFeeCtrl.text = detail.phiGiamDinhYKhoa.toString();
-    }
+    medicalFeeCtrl.text = detail.phiGiamDinhYKhoa?.toString() ?? '';
 
     // Số BHXH của người nuôi dưỡng (TH mẹ chết)
     if (detail.soBHXHNND != null) {

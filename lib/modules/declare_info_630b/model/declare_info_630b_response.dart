@@ -144,7 +144,7 @@ class DeclareInfo630bResponse {
       maSoBHXHCuaCon: json['maSoBHXHCuaCon'] ?? '',
       theBhytCuaCon: json['theBhytCuaCon'] ?? '',
       maSoBHXHCuaMe: json['maSoBHXHCuaMe'] ?? '',
-      theBHYTCuaMe: json['theBHYTCuaMe'] ?? '',
+      theBHYTCuaMe: json['theBHYTCuaMe'],
       soCMNDCuaMe: json['soCMNDCuaMe'] ?? '',
       phiGiamDinhYKhoa: json['phiGiamDinhYKhoa'],
       soBHXHNND: json['soBHXHNND'] ?? '',
