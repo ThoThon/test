@@ -74,6 +74,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
 
     return ListView.separated(
       key: const PageStorageKey<String>('declarationPeriods'),
+      controller: controller.periodsScrollController,
       padding: const EdgeInsets.only(bottom: AppDimens.defaultPadding),
       itemCount: controller.declarationPeriods.length,
       separatorBuilder: (context, index) => sdsSBHeight16,
@@ -254,7 +255,9 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             onTap: () {
               controller.selectFilter.value = status;
               Get.back();
-              controller.refreshDeclarationPeriods();
+              controller.refreshDeclarationPeriods(
+                scrollStrategy: PeriodsScrollStrategy.toTop,
+              );
             },
             text: status.title,
             style: isSelected

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
@@ -29,6 +30,8 @@ class DeclarationPeriodController extends BaseGetClController {
   final selectedPeriodDate = DateTime.now().obs;
   final selectFilter = DeclarationPeriodFilter.all.obs;
 
+  final periodsScrollController = ScrollController();
+
   DeclarationPeriodController(
     this._getDeclarationPeriodsUseCase,
     this._deleteDeclarationPeriodUseCase,
@@ -55,21 +58,27 @@ class DeclarationPeriodController extends BaseGetClController {
     _declarationPeriodEventSubscription ??=
         eventBus.on<DeclarationPeriodEvent>().listen((event) {
       if (event is RefreshDeclarationPeriodEvent) {
-        refreshDeclarationPeriods();
+        refreshDeclarationPeriods(scrollStrategy: event.scrollStrategy);
       }
     });
   }
 
-  Future<void> refreshDeclarationPeriods() {
+  /// Khi thêm mới đợt kê khai thì sẽ scroll đến cuối danh sách để hiển thị đợt kê khai mới thêm.
+  /// Mặc định [scrollToLast] là `false`, tức là không scroll mà giữ nguyên vị trí hiện tại.
+  Future<void> refreshDeclarationPeriods({
+    PeriodsScrollStrategy scrollStrategy = PeriodsScrollStrategy.none,
+  }) {
     return _getDeclarationPeriods(
       showLoading: false,
       showLoadingOverlay: true,
+      scrollStrategy: scrollStrategy,
     );
   }
 
   Future<void> _getDeclarationPeriods({
     bool showLoading = true,
     bool showLoadingOverlay = false,
+    PeriodsScrollStrategy scrollStrategy = PeriodsScrollStrategy.none,
   }) {
     return buildState(
       showLoading: showLoading,
@@ -83,8 +92,32 @@ class DeclarationPeriodController extends BaseGetClController {
             status: selectFilter.value.statusNumber,
           ),
         );
+
+        _scrollPeriods(scrollStrategy: scrollStrategy);
       },
     );
+  }
+
+  void _scrollPeriods({
+    required PeriodsScrollStrategy scrollStrategy,
+  }) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (periodsScrollController.hasClients) {
+        switch (scrollStrategy) {
+          case PeriodsScrollStrategy.none:
+            // Không làm gì, giữ nguyên vị trí hiện tại.
+            break;
+          case PeriodsScrollStrategy.toTop:
+            periodsScrollController
+                .jumpTo(periodsScrollController.position.minScrollExtent);
+            break;
+          case PeriodsScrollStrategy.toLast:
+            periodsScrollController
+                .jumpTo(periodsScrollController.position.maxScrollExtent);
+            break;
+        }
+      }
+    });
   }
 
   void pickPeriodDate() async {
@@ -95,7 +128,7 @@ class DeclarationPeriodController extends BaseGetClController {
     );
     if (date != null) {
       selectedPeriodDate.value = date;
-      refreshDeclarationPeriods();
+      refreshDeclarationPeriods(scrollStrategy: PeriodsScrollStrategy.toTop);
     }
   }
 
@@ -159,7 +192,7 @@ class DeclarationPeriodController extends BaseGetClController {
           ProcedureType.procedure630c => AppRoutesCl.declareInfo630c.path,
         };
 
-        refreshDeclarationPeriods();
+        refreshDeclarationPeriods(scrollStrategy: PeriodsScrollStrategy.toLast);
 
         nav.toNamed(
           path,
@@ -185,8 +218,9 @@ class DeclarationPeriodController extends BaseGetClController {
 
   @override
   void onClose() {
-    super.onClose();
     _declarationPeriodEventSubscription?.cancel();
     _declarationPeriodEventSubscription = null;
+    periodsScrollController.dispose();
+    super.onClose();
   }
 }
