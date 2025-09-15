@@ -206,16 +206,6 @@ class RegisterCodeController extends BaseGetClController {
     );
   }
 
-  Future<void> getListCertificate() async {
-    await fetchListCert();
-    if (listCert.isNotEmpty) {
-      certificate.value = listCert.firstOrNull;
-    } else {
-      nav.showSnackBar(
-          LocaleKeys.registerService_cccdRegisterMySignNotFound.tr);
-    }
-  }
-
   Future<void> pickImage() async {
     try {
       final path = await ImageUtils.pickImage();
