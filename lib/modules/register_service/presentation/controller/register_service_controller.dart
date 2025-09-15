@@ -5,7 +5,6 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
-import '../../../../clean/shared/constants/const.dart';
 import '../../../../clean/shared/exceptions/remote/remote_exception.dart';
 
 class RegisterServiceController extends BaseGetClController {
@@ -168,14 +167,6 @@ class RegisterServiceController extends BaseGetClController {
       onError: (error) {
         nav.dismissDialog();
         if (error is RemoteException) {
-          if (error.kind == RemoteExceptionKind.serverDefined) {
-            final serverMsg = error.serverError?.errorMessage;
-            final serverCode = error.serverError?.code;
-            if (serverCode == responseCodeShowDialog) {
-              _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
-              return null;
-            }
-          }
           if (!isClosed && error.kind == RemoteExceptionKind.cancellation) {
             _showDialogVerifyFailed(
               errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
@@ -200,14 +191,6 @@ class RegisterServiceController extends BaseGetClController {
         nav.dismissDialog();
 
         if (error is RemoteException) {
-          if (error.kind == RemoteExceptionKind.serverDefined) {
-            final serverMsg = error.serverError?.errorMessage;
-            final serverCode = error.serverError?.code;
-            if (serverCode == responseCodeShowDialog) {
-              _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
-              return null;
-            }
-          }
           if (!isClosed && error.kind == RemoteExceptionKind.cancellation) {
             _showDialogVerifyFailed(
               errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
