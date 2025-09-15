@@ -19,7 +19,7 @@ class AppUpgradeWrapper extends StatelessWidget {
     return UpgradeAlert(
       showIgnore: false,
       upgrader: Upgrader(
-        durationUntilAlertAgain: const Duration(hours: 12),
+        durationUntilAlertAgain: const Duration(hours: 2),
         // Ngôn ngữ của dialog sẽ theo ngôn ngữ của app thay vì của hệ thống
         messages: UpgraderMessages(code: 'vi'),
         // Force update bằng minAppVersion
