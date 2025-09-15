@@ -14,13 +14,20 @@ class HomePageCL extends BaseGetPage<HomeControllerCl> {
   HomePageCL({super.key});
 
   late final _appInfo = sl<AppInfo>();
+  late final _remoteConfigStorage = sl<RemoteConfigStorage>();
 
   @override
   Widget buildPage(BuildContext context) {
-    return Scaffold(
-      drawer: _buildDrawer(),
-      appBar: _buildAppBar(),
-      body: _buildBody(),
+    // Nếu treo ở màn home, và user không thể logout để mở màn login thì dialog update sẽ không được hiện
+    // => Bọc AppUpgradeWrapper cho màn home luôn để dialog update luôn được hiện khi onResume
+    // Đã thử bọc AppUpgradeWrapper ở App nhưng cũng gặp bug dialog không hiển thị
+    return AppUpgradeWrapper(
+      minAppVersion: _remoteConfigStorage.minAppVersion,
+      child: Scaffold(
+        drawer: _buildDrawer(),
+        appBar: _buildAppBar(),
+        body: _buildBody(),
+      ),
     );
   }
 }

@@ -1,10 +1,6 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
-import 'package:upgrader/upgrader.dart';
 import 'package:v_bhxh/assets.dart';
 import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/widget_src.dart';
@@ -21,6 +17,7 @@ import 'package:v_bhxh/shares/base/ui/formatter/input_formatter_enum.dart';
 import 'package:v_bhxh/shares/base/ui/text_widget.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper.dart';
 import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
+import 'package:v_bhxh/shares/widgets/app_widget/app_upgrade_wrapper.dart';
 import 'package:v_bhxh/shares/widgets/appbar/base_app_bar.dart';
 import 'package:v_bhxh/shares/widgets/image_app/sds_image_svg.dart';
 import 'package:v_bhxh/shares/widgets/input/card_input_text_form.dart';
@@ -38,18 +35,8 @@ class LoginPage extends BaseGetPage<LoginControllerCl> {
 
   @override
   Widget buildPage(BuildContext context) {
-    return UpgradeAlert(
-      showIgnore: false,
-      upgrader: Upgrader(
-        durationUntilAlertAgain: const Duration(hours: 12),
-        // Ngôn ngữ của dialog sẽ theo ngôn ngữ của app thay vì của hệ thống
-        messages: UpgraderMessages(code: 'vi'),
-        // Force update bằng minAppVersion
-        minAppVersion: kDebugMode ? null : _remoteConfigStorage.minAppVersion,
-      ),
-      dialogStyle: Platform.isIOS
-          ? UpgradeDialogStyle.cupertino
-          : UpgradeDialogStyle.material,
+    return AppUpgradeWrapper(
+      minAppVersion: _remoteConfigStorage.minAppVersion,
       child: Scaffold(
         // Thêm appbar để status bar của hệ thống hiển thị đúng màu sắc
         appBar: const BaseAppBar(title: UtilWidget.shrink),
