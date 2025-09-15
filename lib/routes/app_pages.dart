@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../features/cart/binding/cart_binding.dart';
+import '../features/cart/screen/cart_screen.dart';
 import '../features/home/binding/home_binding.dart';
 import '../features/home/ui/home_screen.dart';
 import '../features/login/binding/login_binding.dart';
@@ -31,6 +33,11 @@ class AppPages {
       name: Routes.productCreate,
       page: () => const ProductCreateScreen(),
       binding: ProductCreateBinding(),
+    ),
+    GetPage(
+      name: Routes.cart,
+      page: () => const CartScreen(),
+      binding: CartBinding(),
     ),
   ];
 }

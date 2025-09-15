@@ -1,4 +1,3 @@
-// lib/features/product_create/controller/product_create_controller.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

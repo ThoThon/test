@@ -22,6 +22,7 @@ class HomeScreen extends GetView<HomeController> {
               _getAppBarTitle(controller.currentIndex.value),
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            automaticallyImplyLeading: false,
           ),
           body: IndexedStack(
             index: controller.currentIndex.value,
@@ -34,9 +35,14 @@ class HomeScreen extends GetView<HomeController> {
               controller.changeTab(index);
             },
             items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: "Profile"),
+                icon: Icon(Icons.home),
+                label: "Home",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: "Profile",
+              ),
             ],
             selectedItemColor: const Color(0xFFf24e1e),
             unselectedItemColor: Colors.black45,

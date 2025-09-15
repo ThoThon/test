@@ -1,9 +1,9 @@
-// lib/features/mainpage/ui/mainpage_screen.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import '../../../routes/app_routes.dart';
+import '../../cart/controller/cart_controller.dart';
 import '../controller/mainpage_controller.dart';
 import '../widget/product_card.dart';
 
@@ -12,44 +12,114 @@ class MainpageScreen extends GetView<MainpageController> {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = Get.find<CartController>();
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      body: Obx(() {
-        // Hiển thị loading khi lần đầu tải
-        if (controller.products.isEmpty && controller.isLoading.value) {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Color(0xFFf24e1e),
+      body: Column(
+        children: [
+          // Header với nút +
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            color: Colors.white,
+            child: Row(
+              children: [
+                const Expanded(
+                  child: Text(
+                    "Danh sách sản phẩm",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
+                //Nút thêm sản phẩm
+                IconButton(
+                  onPressed: () => Get.toNamed(Routes.productCreate),
+                  icon: const Icon(
+                    Icons.add,
+                    size: 28,
+                    color: Color(0xFFf24e1e),
+                  ),
+                ),
+              ],
             ),
-          );
-        }
+          ),
 
-        // Hiển thị message khi không có sản phẩm
-        if (controller.products.isEmpty && !controller.isLoading.value) {
-          return _buildEmptyState();
-        }
+          // Danh sách sản phẩm
+          Expanded(
+            child: Obx(() {
+              if (controller.products.isEmpty && controller.isLoading.value) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Color(0xFFf24e1e),
+                  ),
+                );
+              }
 
-        // Hiển thị danh sách sản phẩm với SmartRefresher
-        return SmartRefresher(
-          controller: controller.refreshController,
-          enablePullDown: true,
-          enablePullUp: true,
-          onRefresh: controller.onRefresh,
-          onLoading: controller.onLoadMore,
-          header: _buildRefreshHeader(),
-          footer: _buildLoadMoreFooter(),
-          child: _buildProductGrid(),
+              if (controller.products.isEmpty && !controller.isLoading.value) {
+                return _buildEmptyState();
+              }
+
+              return SmartRefresher(
+                controller: controller.refreshController,
+                enablePullDown: true,
+                enablePullUp: true,
+                onRefresh: controller.onRefresh,
+                onLoading: controller.onLoadMore,
+                header: _buildRefreshHeader(),
+                footer: _buildLoadMoreFooter(),
+                child: _buildProductGrid(),
+              );
+            }),
+          ),
+        ],
+      ),
+
+      // Giỏ hàng
+      floatingActionButton: Obx(() {
+        final count = cartController.totalItems.value;
+        return Stack(
+          clipBehavior: Clip.none,
+          children: [
+            FloatingActionButton(
+              onPressed: () => Get.toNamed(Routes.cart),
+              backgroundColor: const Color(0xFFf24e1e),
+              child: const Icon(
+                Icons.shopping_cart_outlined,
+                color: Colors.white,
+                size: 28,
+              ),
+            ),
+            if (count > 0)
+              Positioned(
+                right: -2,
+                top: -2,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                  ),
+                  constraints: const BoxConstraints(
+                    minWidth: 20,
+                    minHeight: 20,
+                  ),
+                  child: Text(
+                    count > 99 ? '99+' : count.toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+          ],
         );
       }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed(Routes.productCreate),
-        backgroundColor: const Color(0xFFf24e1e),
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 28,
-        ),
-      ),
     );
   }
 
@@ -218,7 +288,7 @@ class MainpageScreen extends GetView<MainpageController> {
         crossAxisCount: 2,
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
-        childAspectRatio: 0.8,
+        childAspectRatio: 0.75,
       ),
       itemCount: controller.products.length,
       itemBuilder: (context, index) {
