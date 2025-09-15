@@ -87,7 +87,8 @@ class ExceptionHandler {
               nav.showInfoDialog(
                 title: LocaleKeys.dialog_fail.tr,
                 confirmTitle: LocaleKeys.dialog_close.tr,
-                subtitle: exception.serverError?.errorMessage ?? '',
+                subtitle: exception.serverError?.errorMessage ??
+                    LocaleKeys.app_somethingWentWrong.tr,
                 showCancelButton: false,
                 iconType: DialogIconType.failure,
               );
