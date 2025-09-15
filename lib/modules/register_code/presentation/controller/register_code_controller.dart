@@ -200,9 +200,8 @@ class RegisterCodeController extends BaseGetClController {
       action: () async {
         final response =
             await _getCertificateUseCase.execute(usernameMySignCtrl.text);
-        listCert.clear();
         listCert.value = response;
-        certificate.value = listCert.first;
+        certificate.value = listCert.firstOrNull;
       },
     );
   }
