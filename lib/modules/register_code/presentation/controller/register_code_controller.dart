@@ -198,10 +198,11 @@ class RegisterCodeController extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
-        listCert.clear();
         final response =
             await _getCertificateUseCase.execute(usernameMySignCtrl.text);
+        listCert.clear();
         listCert.value = response;
+        certificate.value = listCert.first;
       },
     );
   }
