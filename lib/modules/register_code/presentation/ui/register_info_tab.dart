@@ -429,7 +429,7 @@ extension RegisterInfoTab on RegisterCodePage {
         ),
         onPressed: () {
           KeyBoard.hide();
-          if (isEnableBtn) controller.getListCertificate();
+          if (isEnableBtn) controller.fetchListCert();
         },
         child: Center(
           child: SDSImageSvg(Assets.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG),
