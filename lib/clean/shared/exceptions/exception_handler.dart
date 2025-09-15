@@ -77,12 +77,6 @@ class ExceptionHandler {
                 break;
             }
 
-            if (appExceptionWrapper.overrideMessage != null) {
-              nav.showSnackBar(
-                appExceptionWrapper.overrideMessage!,
-              );
-              return;
-            }
             if (exception.serverError?.code == responseCodeShowDialog) {
               nav.showInfoDialog(
                 title: LocaleKeys.dialog_fail.tr,
@@ -91,6 +85,13 @@ class ExceptionHandler {
                     LocaleKeys.app_somethingWentWrong.tr,
                 showCancelButton: false,
                 iconType: DialogIconType.failure,
+              );
+              return;
+            }
+
+            if (appExceptionWrapper.overrideMessage != null) {
+              nav.showSnackBar(
+                appExceptionWrapper.overrideMessage!,
               );
               return;
             }
