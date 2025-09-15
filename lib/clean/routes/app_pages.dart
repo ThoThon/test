@@ -2,6 +2,7 @@ import 'package:dio_log_sds/dio_log_sds.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/features/login/presentation/binding/login_binding.dart';
 import 'package:v_bhxh/clean/features/login/presentation/login_page.dart';
+import 'package:v_bhxh/clean/features/login/presentation/splash_page.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/change_base_url/ui/change_base_url_page.dart';
 import 'package:v_bhxh/modules/declare/declaration_form_detail/ui/declaration_form_detail_page.dart';
@@ -41,6 +42,10 @@ import '../../modules/register_service/presentation/ui/register_service_page.dar
 
 class AppPages {
   static final pages = [
+    GetPage(
+      name: AppRoutesCl.splash.path,
+      page: SplashPage.new,
+    ),
     GetPage(
       name: AppRoutesCl.login.path,
       page: LoginPage.new,
