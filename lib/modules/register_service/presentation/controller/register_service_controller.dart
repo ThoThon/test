@@ -94,6 +94,14 @@ class RegisterServiceController extends BaseGetClController {
       onError: (error) {
         nav.dismissDialog();
         if (error is RemoteException) {
+          if (error.kind == RemoteExceptionKind.serverDefined) {
+            final serverMsg = error.serverError?.errorMessage;
+            final serverCode = error.serverError?.code;
+            if (serverCode == responseCodeShowDialog) {
+              _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
+              return null;
+            }
+          }
           if (!isClosed && error.kind == RemoteExceptionKind.cancellation) {
             _showDialogVerifyFailed(
               errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
