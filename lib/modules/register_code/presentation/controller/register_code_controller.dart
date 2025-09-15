@@ -1,7 +1,6 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
-import 'package:v_bhxh/clean/shared/constants/const.dart';
 import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 import 'package:v_bhxh/modules/register_code/domain/entity/tax_code_verify_request.dart';
 import 'package:v_bhxh/modules/register_code/domain/usecase/tax_code_verify_use_case.dart';
@@ -322,14 +321,14 @@ class RegisterCodeController extends BaseGetClController {
         // REF: VBHXHMOB-44
         // REF: VBHXHMOB-50
         if (error is RemoteException) {
-          if (error.kind == RemoteExceptionKind.serverDefined) {
-            final serverMsg = error.serverError?.errorMessage;
-            final serverCode = error.serverError?.code;
-            if (serverCode == responseCodeShowDialog) {
-              _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
-              return null;
-            }
-          }
+          // if (error.kind == RemoteExceptionKind.serverDefined) {
+          //   final serverMsg = error.serverError?.errorMessage;
+          //   final serverCode = error.serverError?.code;
+          //   if (serverCode == responseCodeShowDialog) {
+          //     _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
+          //     return null;
+          //   }
+          // }
 
           if (!isClosed && error.kind == RemoteExceptionKind.cancellation) {
             _showDialogVerifyFailed(
