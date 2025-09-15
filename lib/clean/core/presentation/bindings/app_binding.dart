@@ -18,6 +18,7 @@ import 'package:v_bhxh/clean/shared/mapper/register_code_categories_data_mapper.
 import 'package:v_bhxh/clean/shared/mapper/register_service_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/tax_code_verify_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/transaction_info_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/update_unit_info_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
@@ -86,6 +87,7 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => TaxCodeVerifyRequestDataMapper(), fenix: true);
     Get.lazyPut(() => TransactionInfoDataMapper(), fenix: true);
     Get.lazyPut(() => RegisterServiceRequestDataMapper(), fenix: true);
+    Get.lazyPut(() => UpdateUnitInfoRequestDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {
