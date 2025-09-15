@@ -1,4 +1,3 @@
-// lib/features/product_create/ui/product_create_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';

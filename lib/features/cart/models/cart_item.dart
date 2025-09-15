@@ -19,17 +19,13 @@ class CartItem {
   @HiveField(4)
   final int quantity;
 
-  @HiveField(5)
-  final DateTime addedAt;
-
   CartItem({
     required this.productId,
     required this.name,
     required this.price,
     required this.cover,
     this.quantity = 1,
-    DateTime? addedAt,
-  }) : addedAt = addedAt ?? DateTime.now();
+  });
 
   CartItem copyWith({
     int? productId,
@@ -37,7 +33,6 @@ class CartItem {
     int? price,
     String? cover,
     int? quantity,
-    DateTime? addedAt,
   }) {
     return CartItem(
       productId: productId ?? this.productId,
@@ -45,7 +40,6 @@ class CartItem {
       price: price ?? this.price,
       cover: cover ?? this.cover,
       quantity: quantity ?? this.quantity,
-      addedAt: addedAt ?? this.addedAt,
     );
   }
 

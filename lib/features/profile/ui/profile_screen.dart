@@ -8,18 +8,20 @@ class ProfileScreen extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          const SizedBox(height: 40),
-          _buildProfileHeader(),
-          const SizedBox(height: 40),
-          _buildUserInfo(),
-          const Spacer(),
-          _buildLogoutButton(),
-          const SizedBox(height: 20),
-        ],
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            const SizedBox(height: 40),
+            _buildProfileHeader(),
+            const SizedBox(height: 40),
+            _buildUserInfo(),
+            const SizedBox(height: 200),
+            _buildLogoutButton(),
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }
@@ -66,7 +68,19 @@ class ProfileScreen extends GetView<ProfileController> {
   Widget _buildUserInfo() {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -75,6 +89,7 @@ class ProfileScreen extends GetView<ProfileController> {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
+              color: Color(0xFFf24e1e),
             ),
           ),
           const SizedBox(height: 16),
@@ -91,12 +106,13 @@ class ProfileScreen extends GetView<ProfileController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: 100,
+          width: 110,
           child: Text(
             label,
             style: const TextStyle(
               fontSize: 16,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
+              color: Colors.grey,
             ),
           ),
         ),
@@ -107,7 +123,8 @@ class ProfileScreen extends GetView<ProfileController> {
               value.value.isNotEmpty ? value.value : "-",
               style: const TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
               ),
             ),
           ),
@@ -119,24 +136,40 @@ class ProfileScreen extends GetView<ProfileController> {
   Widget _buildLogoutButton() {
     return SizedBox(
       width: double.infinity,
-      height: 50,
-      child: ElevatedButton(
-        onPressed: controller.logout,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFf24e1e),
-          foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        child: const Text(
-          "Đăng xuất",
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+      height: 56,
+      child: Obx(() => ElevatedButton.icon(
+            onPressed: controller.isLoggingOut.value ? null : controller.logout,
+            icon: controller.isLoggingOut.value
+                ? const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                      strokeWidth: 2,
+                    ),
+                  )
+                : const Icon(
+                    Icons.logout,
+                    color: Colors.white,
+                    size: 20,
+                  ),
+            label: Text(
+              controller.isLoggingOut.value ? "Đang đăng xuất..." : "Đăng xuất",
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFf24e1e),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              elevation: 2,
+            ),
+          )),
     );
   }
 }

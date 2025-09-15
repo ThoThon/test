@@ -33,18 +33,6 @@ class CartController extends GetxController {
 
       await CartStorage.addToCart(cartItem);
       loadCartItems();
-
-      Get.snackbar(
-        "Thành công",
-        "Đã thêm ${product.name} vào giỏ hàng",
-        backgroundColor: Colors.green,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-        duration: const Duration(seconds: 2),
-        margin: const EdgeInsets.all(16),
-        borderRadius: 8,
-        icon: const Icon(Icons.shopping_cart, color: Colors.white),
-      );
     } catch (e) {
       print('Lỗi addToCart: $e');
       Get.snackbar(
@@ -61,17 +49,6 @@ class CartController extends GetxController {
     try {
       await CartStorage.removeFromCart(productId);
       loadCartItems();
-
-      Get.snackbar(
-        "Thành công",
-        "Đã xóa sản phẩm khỏi giỏ hàng",
-        backgroundColor: Colors.orange,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-        duration: const Duration(seconds: 2),
-        margin: const EdgeInsets.all(16),
-        borderRadius: 8,
-      );
     } catch (e) {
       print('Lỗi removeFromCart: $e');
       Get.snackbar(
@@ -122,14 +99,6 @@ class CartController extends GetxController {
       if (confirm == true) {
         await CartStorage.clearCart();
         loadCartItems();
-
-        Get.snackbar(
-          "Thành công",
-          "Đã xóa tất cả sản phẩm khỏi giỏ hàng",
-          backgroundColor: Colors.green,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM,
-        );
       }
     } catch (e) {
       print('Lỗi clearCart: $e');

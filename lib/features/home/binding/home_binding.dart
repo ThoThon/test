@@ -11,7 +11,6 @@ class HomeBinding extends Bindings {
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<ProfileController>(() => ProfileController());
     Get.lazyPut<MainpageController>(() => MainpageController());
-
     Get.lazyPut<CartController>(() => CartController());
   }
 }

@@ -60,7 +60,13 @@ class CartStorage {
   }
 
   static Future<void> clearCart() async {
-    await _box.delete(keyCartItems);
+    try {
+      await _box.delete(keyCartItems);
+      print("Đã xóa tất cả sản phẩm trong giỏ hàng");
+    } catch (e) {
+      print("Lỗi khi xóa giỏ hàng: $e");
+      await _box.clear();
+    }
   }
 
   static int get itemCount {
