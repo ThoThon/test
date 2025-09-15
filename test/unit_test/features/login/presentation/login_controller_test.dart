@@ -72,7 +72,6 @@ void main() {
         get630CategoriesUseCase,
         getUnreadNotificationCountUseCase,
       );
-      controller.nav = navigator;
       controller.onOpen();
     },
   );
