@@ -615,7 +615,11 @@ extension RegisterInfoTab on RegisterCodePage {
                 textStyle:
                     AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
                 onPressed: () {
-                  controller.registerCodeFirst();
+                  EasyThrottle.throttle(
+                    'first_register',
+                    AppConst.defaultButtonThrottleDuration,
+                    controller.registerCodeFirst,
+                  );
                 },
               ),
             ),
