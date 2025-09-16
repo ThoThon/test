@@ -91,7 +91,8 @@ extension RegisterServiceWidget on RegisterServicePage {
             _buildInputUsernameMySign(),
             sdsSBHeight12,
             // DropDown Số serial
-            controller.certificate.value == null
+            // Vì là 2 model khác nhau nên phải dùng 2 dropdown khác nhau
+            controller.hasBeenRegister
                 ? _buildDropdownSerialRegister()
                 : _buildDropdownSerialCert(),
             sdsSBHeight12,
