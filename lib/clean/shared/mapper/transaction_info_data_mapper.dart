@@ -15,8 +15,6 @@ class TransactionInfoDataMapper
       managementAgencyName: data?.tenCQQL ?? '',
       certificateOwner: data?.tenChuTheCTS ?? '',
       certificateOrgName: data?.tenToChucCKS ?? '',
-      // validFrom: DateTime.tryParse(data?.thoiHanTuNgay ?? '') ?? DateTime.now(),
-      // validTo: DateTime.tryParse(data?.thoiHanDenNgay ?? '') ?? DateTime.now(),
       validFrom: data?.thoiHanTuNgay ?? '',
       validTo: data?.thoiHanDenNgay ?? '',
       email: data?.email ?? '',
