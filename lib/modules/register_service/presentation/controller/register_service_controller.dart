@@ -100,9 +100,9 @@ class RegisterServiceController extends BaseGetClController {
             return null;
           }
         }
-        hidePageLoadingOverlay();
         return error;
       },
+      onFinally: hidePageLoadingOverlay,
     );
   }
 
@@ -174,9 +174,9 @@ class RegisterServiceController extends BaseGetClController {
             return null;
           }
         }
-        hidePageLoadingOverlay();
         return error;
       },
+      onFinally: hidePageLoadingOverlay,
     );
   }
 
@@ -199,9 +199,9 @@ class RegisterServiceController extends BaseGetClController {
             return null;
           }
         }
-        hidePageLoadingOverlay();
         return error;
       },
+      onFinally: hidePageLoadingOverlay,
     );
   }
 
