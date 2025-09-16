@@ -73,7 +73,6 @@ class UnitInfoController extends BaseGetClController {
   void onInit() async {
     super.onInit();
     await _getAccountInfo();
-    fetchDataAccountInfo();
   }
 
   @override
@@ -94,7 +93,7 @@ class UnitInfoController extends BaseGetClController {
     super.onClose();
   }
 
-  void fetchDataAccountInfo() {
+  void mapAccountInfoToUI() {
     accountInfo = AppData.instance.accountInfo.value;
     taxCodeController.text = accountInfo?.taxCode ?? '';
     unitNameController.text = accountInfo?.tenToChuc ?? '';
@@ -133,7 +132,7 @@ class UnitInfoController extends BaseGetClController {
         cancelTitle: LocaleKeys.unitInfo_cancel.tr,
         confirmTitle: LocaleKeys.unitInfo_continue.tr,
         onCancel: () {
-          fetchDataAccountInfo();
+          mapAccountInfoToUI();
           isEditAll.value = false;
         },
       );
@@ -147,6 +146,10 @@ class UnitInfoController extends BaseGetClController {
         if (formKey.currentState?.validate() ?? false) {
           if (isInputUnchanged) return;
           await _updateUnitInfoUseCase.execute(_buildRequest());
+          _getAccountInfo();
+          _getToTalNotiUnread();
+          isEditAll.value = false;
+
           nav.showInfoDialog(
             title: LocaleKeys.dialog_updateSuccess.tr,
             iconType: DialogIconType.success,
@@ -154,12 +157,6 @@ class UnitInfoController extends BaseGetClController {
             subtitle: LocaleKeys.dialog_updateSuccessDialog.tr,
             confirmTitle: LocaleKeys.dialog_close.tr,
             showCancelButton: false,
-            onConfirm: () async {
-              await _getAccountInfo();
-              await _getToTalNotiUnread();
-              fetchDataAccountInfo();
-              isEditAll.value = false;
-            },
           );
         }
       },
@@ -169,15 +166,15 @@ class UnitInfoController extends BaseGetClController {
   UpdateUnitInfoRequest _buildRequest() {
     return UpdateUnitInfoRequest(
       organizationId: accountInfo?.toChucId ?? "",
-      organizationName: unitNameController.text,
-      registeredAddress: addressRegisterController.text,
-      address: addressTransactionController.text,
-      contactEmail: emailContactController.text,
-      signerName: nameRepresentController.text,
-      receiverPhone: phoneContactController.text,
-      jobTitle: positionController.text,
+      organizationName: unitNameController.text.trim(),
+      registeredAddress: addressRegisterController.text.trim(),
+      address: addressTransactionController.text.trim(),
+      contactEmail: emailContactController.text.trim(),
+      signerName: nameRepresentController.text.trim(),
+      receiverPhone: phoneContactController.text.trim(),
+      jobTitle: positionController.text.trim(),
       objectType: accountInfo?.loaiDoiTuong ?? "",
-      declarerName: personTransactionController.text,
+      declarerName: personTransactionController.text.trim(),
       salary: int.tryParse(basicSalaryController.text.replaceAll('.', '')) ?? 0,
       paymentMethod: selectedMethod.value?.month ?? 0,
       resultReceivingMethod: selectedReceive.value?.receive.tr ?? '',
@@ -190,6 +187,7 @@ class UnitInfoController extends BaseGetClController {
       action: () async {
         final res = await _getUnitInfoUseCase.execute();
         AppData.instance.accountInfo.value = res;
+        mapAccountInfoToUI();
       },
     );
   }
