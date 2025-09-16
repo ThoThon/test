@@ -5,7 +5,6 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
-import '../../../../clean/shared/exceptions/remote/remote_exception.dart';
 
 class RegisterServiceController extends BaseGetClController {
   final GetTransactionInfoUseCase _getTransactionInfoUseCase;
@@ -90,18 +89,6 @@ class RegisterServiceController extends BaseGetClController {
         nav.dismissDialog();
         _showDialogVerifySuccess();
       },
-      onError: (error) {
-        nav.dismissDialog();
-        if (error is RemoteException) {
-          if (!isClosed && error.kind == RemoteExceptionKind.cancellation) {
-            _showDialogVerifyFailed(
-              errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
-            );
-            return null;
-          }
-        }
-        return error;
-      },
       onFinally: hidePageLoadingOverlay,
     );
   }
@@ -144,18 +131,6 @@ class RegisterServiceController extends BaseGetClController {
     );
   }
 
-  void _showDialogVerifyFailed({
-    required String errorMessage,
-  }) {
-    nav.showInfoDialog(
-      title: LocaleKeys.dialog_fail.tr,
-      confirmTitle: LocaleKeys.dialog_close.tr,
-      subtitle: errorMessage,
-      showCancelButton: false,
-      iconType: DialogIconType.failure,
-    );
-  }
-
   Future<void> cancelRegister() async {
     return buildState(
       action: () async {
@@ -163,18 +138,6 @@ class RegisterServiceController extends BaseGetClController {
         await _cancelRegisterUseCase.execute();
         nav.dismissDialog();
         _showDialogVerifySuccess();
-      },
-      onError: (error) {
-        nav.dismissDialog();
-        if (error is RemoteException) {
-          if (!isClosed && error.kind == RemoteExceptionKind.cancellation) {
-            _showDialogVerifyFailed(
-              errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
-            );
-            return null;
-          }
-        }
-        return error;
       },
       onFinally: hidePageLoadingOverlay,
     );
@@ -187,19 +150,6 @@ class RegisterServiceController extends BaseGetClController {
         await _updateTransactionInfoUseCase.execute(_buildRequest());
         nav.dismissDialog();
         _showDialogVerifySuccess();
-      },
-      onError: (error) {
-        nav.dismissDialog();
-
-        if (error is RemoteException) {
-          if (!isClosed && error.kind == RemoteExceptionKind.cancellation) {
-            _showDialogVerifyFailed(
-              errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
-            );
-            return null;
-          }
-        }
-        return error;
       },
       onFinally: hidePageLoadingOverlay,
     );
