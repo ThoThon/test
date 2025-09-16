@@ -337,6 +337,7 @@ class RegisterCodeController extends BaseGetClController {
             return null;
           }
         }
+        hidePageLoadingOverlay();
         return error;
       },
     );
@@ -347,7 +348,7 @@ class RegisterCodeController extends BaseGetClController {
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       subtitle: LocaleKeys.dialog_confirmSignatureMySign.tr,
       onFinish: () {
-        _firstTimeRegisterUseCase.cancel();
+        showPageLoadingOverlay();
       },
       onCancel: () {
         nav.until(ModalRoute.withName(AppRoutesCl.login.path));
