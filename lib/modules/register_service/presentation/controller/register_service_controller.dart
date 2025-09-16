@@ -100,6 +100,7 @@ class RegisterServiceController extends BaseGetClController {
             return null;
           }
         }
+        hidePageLoadingOverlay();
         return error;
       },
     );
@@ -115,8 +116,7 @@ class RegisterServiceController extends BaseGetClController {
     nav.showTimerDialog(
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       onFinish: () {
-        _registerServiceUseCase.cancel();
-        _cancelRegisterUseCase.cancel();
+        showPageLoadingOverlay();
       },
       onCancel: nav.back,
       subtitle: LocaleKeys.dialog_confirmSignatureMySign.tr,
@@ -174,6 +174,7 @@ class RegisterServiceController extends BaseGetClController {
             return null;
           }
         }
+        hidePageLoadingOverlay();
         return error;
       },
     );
@@ -198,6 +199,7 @@ class RegisterServiceController extends BaseGetClController {
             return null;
           }
         }
+        hidePageLoadingOverlay();
         return error;
       },
     );
