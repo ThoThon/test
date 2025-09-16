@@ -321,7 +321,7 @@ extension RegisterServiceWidget on RegisterServicePage {
               width: 1,
               color: controller.isDiableChangeInfoButton
                   ? AppColors.colorBorder
-                  : AppColors.colorBlack,
+                  : AppColors.primaryColor,
             ),
             backgroundColor: controller.isDiableChangeInfoButton
                 ? AppColors.basicWhite
@@ -329,7 +329,7 @@ extension RegisterServiceWidget on RegisterServicePage {
             textStyle: AppTextStyle.font14Re.copyWith(
               color: controller.isDiableChangeInfoButton
                   ? AppColors.colorBorder
-                  : AppColors.colorBlack,
+                  : AppColors.primaryColor,
             ),
             title: LocaleKeys.registerService_updateInfo.tr,
             borderRadius: AppDimens.radius30,
