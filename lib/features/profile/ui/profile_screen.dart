@@ -17,7 +17,7 @@ class ProfileScreen extends GetView<ProfileController> {
             _buildProfileHeader(),
             const SizedBox(height: 40),
             _buildUserInfo(),
-            const SizedBox(height: 200),
+            const SizedBox(height: 300),
             _buildLogoutButton(),
             const SizedBox(height: 20),
           ],
