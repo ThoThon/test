@@ -24,10 +24,10 @@ class TransactionInfo {
   final String certificateOrgName;
 
   // thoiHanTuNgay
-  final DateTime validFrom;
+  final String validFrom;
 
   // thoiHanDenNgay
-  final DateTime validTo;
+  final String validTo;
 
   // email
   final String email;
