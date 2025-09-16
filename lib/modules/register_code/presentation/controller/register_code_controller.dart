@@ -337,9 +337,9 @@ class RegisterCodeController extends BaseGetClController {
             return null;
           }
         }
-        hidePageLoadingOverlay();
         return error;
       },
+      onFinally: hidePageLoadingOverlay,
     );
   }
 
