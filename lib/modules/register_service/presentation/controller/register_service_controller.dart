@@ -89,6 +89,10 @@ class RegisterServiceController extends BaseGetClController {
         nav.dismissDialog();
         _showDialogVerifySuccess();
       },
+      onError: (error) {
+        nav.dismissDialog();
+        return error;
+      },
       onFinally: hidePageLoadingOverlay,
     );
   }
@@ -139,6 +143,10 @@ class RegisterServiceController extends BaseGetClController {
         nav.dismissDialog();
         _showDialogVerifySuccess();
       },
+      onError: (error) {
+        nav.dismissDialog();
+        return error;
+      },
       onFinally: hidePageLoadingOverlay,
     );
   }
@@ -150,6 +158,10 @@ class RegisterServiceController extends BaseGetClController {
         await _updateTransactionInfoUseCase.execute(_buildRequest());
         nav.dismissDialog();
         _showDialogVerifySuccess();
+      },
+      onError: (error) {
+        nav.dismissDialog();
+        return error;
       },
       onFinally: hidePageLoadingOverlay,
     );

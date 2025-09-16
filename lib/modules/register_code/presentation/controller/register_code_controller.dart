@@ -315,6 +315,10 @@ class RegisterCodeController extends BaseGetClController {
         nav.dismissDialog();
         _showDialogVerifySuccess();
       },
+      onError: (error) {
+        nav.dismissDialog();
+        return error;
+      },
       onFinally: hidePageLoadingOverlay,
     );
   }

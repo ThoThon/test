@@ -78,7 +78,6 @@ class ExceptionHandler {
             }
 
             if (exception.serverError?.code == responseCodeShowDialog) {
-              nav.dismissDialog();
               nav.showInfoDialog(
                 title: LocaleKeys.dialog_fail.tr,
                 confirmTitle: LocaleKeys.dialog_close.tr,
