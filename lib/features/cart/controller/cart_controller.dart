@@ -34,14 +34,7 @@ class CartController extends GetxController {
       await CartStorage.addToCart(cartItem);
       loadCartItems();
     } catch (e) {
-      print('Lỗi addToCart: $e');
-      Get.snackbar(
-        "Lỗi",
-        "Không thể thêm sản phẩm vào giỏ hàng",
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      _showError("Không thể thêm sản phẩm vào giỏ hàng");
     }
   }
 
@@ -50,14 +43,7 @@ class CartController extends GetxController {
       await CartStorage.removeFromCart(productId);
       loadCartItems();
     } catch (e) {
-      print('Lỗi removeFromCart: $e');
-      Get.snackbar(
-        "Lỗi",
-        "Không thể xóa sản phẩm",
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      _showError("Không thể xóa sản phẩm");
     }
   }
 
@@ -66,42 +52,35 @@ class CartController extends GetxController {
       await CartStorage.updateQuantity(productId, newQuantity);
       loadCartItems();
     } catch (e) {
-      print('Lỗi updateQuantity: $e');
+      _showError("Không thể cập nhật số lượng");
     }
   }
 
   Future<void> clearCart() async {
-    try {
-      final confirm = await Get.defaultDialog<bool>(
-        title: "Xác nhận",
-        middleText: "Bạn có chắc chắn muốn xóa tất cả sản phẩm trong giỏ hàng?",
-        backgroundColor: Colors.white,
-        titleStyle:
-            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        middleTextStyle: const TextStyle(color: Colors.black),
-        radius: 15,
+    final confirm = await Get.dialog<bool>(
+      AlertDialog(
+        title: const Text("Xác nhận"),
+        content: const Text("Bạn có chắc muốn xóa tất cả sản phẩm?"),
         actions: [
           TextButton(
             onPressed: () => Get.back(result: false),
-            child: const Text("Hủy", style: TextStyle(color: Colors.grey)),
+            child: const Text("Hủy"),
           ),
-          ElevatedButton(
+          TextButton(
             onPressed: () => Get.back(result: true),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
-              foregroundColor: Colors.white,
-            ),
-            child: const Text("Xóa tất cả"),
+            child: const Text("Xóa", style: TextStyle(color: Colors.red)),
           ),
         ],
-      );
+      ),
+    );
 
-      if (confirm == true) {
+    if (confirm == true) {
+      try {
         await CartStorage.clearCart();
         loadCartItems();
+      } catch (e) {
+        _showError("Không thể xóa giỏ hàng");
       }
-    } catch (e) {
-      print('Lỗi clearCart: $e');
     }
   }
 
@@ -120,5 +99,15 @@ class CartController extends GetxController {
     } catch (e) {
       return null;
     }
+  }
+
+  void _showError(String message) {
+    Get.snackbar(
+      "Lỗi",
+      message,
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+    );
   }
 }
