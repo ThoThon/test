@@ -24,50 +24,40 @@ extension HomeWidget on HomePageCL {
                   childAspectRatio: 1.55,
                   children: [
                     _buildMenuItem(
-                      HomeMenuItem(
-                        assetImage: Assets.ASSETS_ICONS_HOME_UNIT_INFO_SVG,
-                        title: LocaleKeys.home_unitInfo,
-                        onPressd: () {
-                          nav.toNamed(AppRoutesCl.infoUnit.path);
-                        },
-                      ),
+                      title: LocaleKeys.home_unitInfo.tr,
+                      imagePath: Assets.ASSETS_ICONS_HOME_UNIT_INFO_SVG,
+                      onPressed: () {
+                        nav.toNamed(AppRoutesCl.infoUnit.path);
+                      },
                     ),
                     _buildMenuItem(
-                      HomeMenuItem(
-                        assetImage: Assets.ASSETS_ICONS_HOME_DECLARATION_SVG,
-                        title: LocaleKeys.home_procedureList,
-                        onPressd: () {
-                          nav.toNamed(AppRoutesCl.procedureList.path);
-                        },
-                      ),
+                      title: LocaleKeys.home_procedureList.tr,
+                      imagePath: Assets.ASSETS_ICONS_HOME_DECLARATION_SVG,
+                      onPressed: () {
+                        nav.toNamed(AppRoutesCl.procedureList.path);
+                      },
                     ),
                     _buildMenuItem(
-                      HomeMenuItem(
-                        assetImage: Assets.ASSETS_ICONS_HOME_HISTORY_SVG,
-                        title: LocaleKeys.home_history,
-                        onPressd: () {
-                          nav.toNamed(AppRoutesCl.history.path);
-                        },
-                      ),
+                      title: LocaleKeys.home_history.tr,
+                      imagePath: Assets.ASSETS_ICONS_HOME_HISTORY_SVG,
+                      onPressed: () {
+                        nav.toNamed(AppRoutesCl.history.path);
+                      },
                     ),
                     _buildMenuItem(
-                      HomeMenuItem(
-                        assetImage: Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG,
-                        title: LocaleKeys.home_lookupC12,
-                        onPressd: () {
-                          nav.toNamed(AppRoutesCl.lookupC12.path);
-                        },
-                      ),
+                      title: LocaleKeys.home_lookupC12.tr,
+                      imagePath: Assets.ASSETS_ICONS_HOME_LOOKUP_C12_SVG,
+                      onPressed: () {
+                        nav.toNamed(AppRoutesCl.lookupC12.path);
+                      },
                     ),
                     _buildMenuItem(
-                      HomeMenuItem(
-                        assetImage:
-                            Assets.ASSETS_ICONS_HOME_IC_REGISTER_SERVICE_SVG,
-                        title: LocaleKeys.home_registerService,
-                        onPressd: () {
-                          nav.toNamed(AppRoutesCl.registerService.path);
-                        },
-                      ),
+                      title: LocaleKeys.home_registerService.tr,
+                      imagePath:
+                          Assets.ASSETS_ICONS_HOME_IC_REGISTER_SERVICE_SVG,
+                      onPressed: () {
+                        nav.toNamed(AppRoutesCl.registerService.path);
+                      },
                     ),
                   ],
                 ),
@@ -79,9 +69,13 @@ extension HomeWidget on HomePageCL {
     );
   }
 
-  Widget _buildMenuItem(HomeMenuItem item) {
+  Widget _buildMenuItem({
+    required String title,
+    required String imagePath,
+    VoidCallback? onPressed,
+  }) {
     return InkWell(
-      onTap: item.onPressd,
+      onTap: onPressed,
       child: UtilWidget.buildCardBase(
         Stack(
           children: [
@@ -89,7 +83,7 @@ extension HomeWidget on HomePageCL {
               top: AppDimens.paddingSmall,
               left: AppDimens.paddingSmall,
               child: SDSBuildText(
-                item.title.tr,
+                title,
                 style: AppTextStyle.font14Re,
               ),
             ),
@@ -97,7 +91,7 @@ extension HomeWidget on HomePageCL {
               bottom: AppDimens.paddingSmallest,
               right: AppDimens.paddingSmallest,
               child: SDSImageSvg(
-                item.assetImage,
+                imagePath,
                 height: 56,
                 width: 56,
               ),
