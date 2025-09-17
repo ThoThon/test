@@ -7,7 +7,7 @@ class AccessTokenInterceptor extends InterceptorsWrapper {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     final token = LoginStorage.getToken();
 
-    print("Token gửi đi: $token"); // debug
+    print("Token gửi đi: $token");
     if (token != null && token.isNotEmpty) {
       options.headers['Authorization'] = token;
     }

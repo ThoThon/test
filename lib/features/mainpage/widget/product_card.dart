@@ -21,11 +21,9 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Phần ảnh với InkWell để navigate
           Expanded(
             child: InkWell(
               onTap: () {
-                //Sang trang chi tiết
                 Get.toNamed(
                   Routes.productDetail,
                   arguments: {'productId': product.id},
@@ -45,7 +43,7 @@ class ProductCard extends StatelessWidget {
             ),
           ),
 
-          // Phần thông tin sản phẩm
+          // Thông tin sản phẩm
           Padding(
             padding: const EdgeInsets.all(8),
             child: Column(

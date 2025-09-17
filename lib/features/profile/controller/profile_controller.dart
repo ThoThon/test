@@ -26,7 +26,7 @@ class ProfileController extends GetxController {
 
   Future<void> logout() async {
     try {
-      // Hiển thị dialog xác nhận đăng xuất
+      // Dialog xác nhận đăng xuất
       final confirmed = await _showLogoutConfirmDialog();
       if (!confirmed) return;
 

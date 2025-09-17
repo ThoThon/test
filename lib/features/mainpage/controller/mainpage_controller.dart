@@ -11,16 +11,15 @@ class MainpageController extends GetxController {
 
   // Pagination
   var currentPage = 1;
-  var hasMoreData = true.obs;
   final int pageSize = 10;
+  static const int defaultPageNumber = 1;
 
-  late RefreshController refreshController;
+  final refreshController = RefreshController(initialRefresh: false);
 
   @override
   void onInit() {
     super.onInit();
-    refreshController = RefreshController(initialRefresh: false);
-    fetchProducts(isInitial: true);
+    fetchProducts();
   }
 
   @override
@@ -30,94 +29,48 @@ class MainpageController extends GetxController {
   }
 
   /// Lấy danh sách sản phẩm
-  Future<void> fetchProducts({bool isInitial = false}) async {
-    if (isInitial) {
+  Future<void> fetchProducts({bool isLoadMore = false}) async {
+    if (!isLoadMore) {
       isLoading.value = true;
-      currentPage = 1;
-      hasMoreData.value = true;
     }
 
     try {
+      final page = isLoadMore ? currentPage + 1 : defaultPageNumber;
+
       final result = await ProductRepository.getProducts(
-        page: currentPage,
+        page: page,
         size: pageSize,
       );
 
-      if (isInitial) {
-        products.assignAll(result.products);
-      } else {
+      if (isLoadMore) {
         products.addAll(result.products);
+      } else {
+        products.assignAll(result.products);
       }
 
-      hasMoreData.value = result.hasMore;
-      if (result.products.isNotEmpty) {
-        currentPage++;
-      }
+      // Chỉ cập nhật currentPage khi load thành công
+      currentPage = page;
     } catch (e) {
       print("Lỗi fetchProducts: $e");
       _showErrorSnackbar("Có lỗi xảy ra khi tải dữ liệu");
     } finally {
-      if (isInitial) {
+      if (isLoadMore) {
+        refreshController.loadComplete();
+      } else {
         isLoading.value = false;
+        refreshController.refreshCompleted();
       }
     }
   }
 
   /// Pull to refresh
   Future<void> onRefresh() async {
-    try {
-      currentPage = 1;
-      hasMoreData.value = true;
-
-      final result = await ProductRepository.getProducts(
-        page: 1,
-        size: pageSize,
-      );
-
-      products.assignAll(result.products);
-      hasMoreData.value = result.hasMore;
-
-      if (result.products.isNotEmpty) {
-        currentPage = 2;
-      }
-
-      refreshController.resetNoData();
-      refreshController.refreshCompleted();
-    } catch (e) {
-      print("Lỗi onRefresh: $e");
-      refreshController.refreshFailed();
-      _showErrorSnackbar("Không thể làm mới dữ liệu");
-    }
+    await fetchProducts(isLoadMore: false);
   }
 
   /// Load more
   Future<void> onLoadMore() async {
-    if (!hasMoreData.value) {
-      refreshController.loadNoData();
-      return;
-    }
-
-    try {
-      final result = await ProductRepository.getProducts(
-        page: currentPage,
-        size: pageSize,
-      );
-
-      if (result.products.isNotEmpty) {
-        products.addAll(result.products);
-        currentPage++;
-        refreshController.loadComplete();
-      }
-
-      hasMoreData.value = result.hasMore;
-      if (!result.hasMore) {
-        refreshController.loadNoData();
-      }
-    } catch (e) {
-      print("Lỗi onLoadMore: $e");
-      refreshController.loadFailed();
-      _showErrorSnackbar("Không thể tải thêm dữ liệu");
-    }
+    await fetchProducts(isLoadMore: true);
   }
 
   /// Thêm sản phẩm mới vào đầu danh sách

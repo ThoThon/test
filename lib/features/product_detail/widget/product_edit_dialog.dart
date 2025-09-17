@@ -26,23 +26,17 @@ class ProductEditDialog extends StatefulWidget {
 
 class _ProductEditDialogState extends State<ProductEditDialog> {
   final _formKey = GlobalKey<FormState>();
-  late TextEditingController _nameController;
-  late TextEditingController _priceController;
-  late TextEditingController _quantityController;
-  late TextEditingController _coverController;
+  late final _nameController = TextEditingController(text: widget.currentName);
+  late final _priceController =
+      TextEditingController(text: widget.currentPrice.toString());
+
+  late final _quantityController =
+      TextEditingController(text: widget.currentQuantity.toString());
+
+  late final _coverController =
+      TextEditingController(text: widget.currentCover);
 
   bool _isLoading = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _nameController = TextEditingController(text: widget.currentName);
-    _priceController =
-        TextEditingController(text: widget.currentPrice.toString());
-    _quantityController =
-        TextEditingController(text: widget.currentQuantity.toString());
-    _coverController = TextEditingController(text: widget.currentCover);
-  }
 
   @override
   void dispose() {

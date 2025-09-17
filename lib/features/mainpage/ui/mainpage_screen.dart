@@ -18,7 +18,7 @@ class MainpageScreen extends GetView<MainpageController> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          // Header với nút +
+          // Header với icon thêm sản phẩm
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             color: Colors.white,
@@ -34,12 +34,12 @@ class MainpageScreen extends GetView<MainpageController> {
                     ),
                   ),
                 ),
-                //Nút thêm sản phẩm
+                // Icon thêm sản phẩm (+)
                 IconButton(
                   onPressed: () => Get.toNamed(Routes.productCreate),
                   icon: const Icon(
-                    Icons.add,
-                    size: 28,
+                    Icons.add_circle_outline,
+                    size: 30,
                     color: Color(0xFFf24e1e),
                   ),
                 ),
@@ -77,9 +77,10 @@ class MainpageScreen extends GetView<MainpageController> {
         ],
       ),
 
-      // Giỏ hàng
+      // FloatingActionButton thành giỏ hàng
       floatingActionButton: Obx(() {
         final count = cartController.totalItems.value;
+
         return Stack(
           clipBehavior: Clip.none,
           children: [
@@ -123,7 +124,6 @@ class MainpageScreen extends GetView<MainpageController> {
     );
   }
 
-  /// Widget hiển thị khi danh sách trống
   Widget _buildEmptyState() {
     return Center(
       child: Column(
@@ -152,50 +152,26 @@ class MainpageScreen extends GetView<MainpageController> {
             ),
           ),
           const SizedBox(height: 24),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton.icon(
-                onPressed: () => controller.onRefresh(),
-                icon: const Icon(Icons.refresh, color: Colors.white),
-                label: const Text(
-                  "Làm mới",
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFf24e1e),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
+          ElevatedButton.icon(
+            onPressed: () => controller.onRefresh(),
+            icon: const Icon(Icons.refresh, color: Colors.white),
+            label: const Text(
+              "Làm mới",
+              style: TextStyle(color: Colors.white),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFf24e1e),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
               ),
-              const SizedBox(width: 16),
-              ElevatedButton.icon(
-                onPressed: () => Get.toNamed(Routes.productCreate),
-                icon: const Icon(Icons.add, color: Colors.white),
-                label: const Text(
-                  "Thêm sản phẩm",
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ],
       ),
     );
   }
 
-  /// Header cho pull to refresh
   Widget _buildRefreshHeader() {
     return const WaterDropHeader(
       waterDropColor: Color(0xFFf24e1e),
@@ -206,18 +182,14 @@ class MainpageScreen extends GetView<MainpageController> {
     );
   }
 
-  /// Footer cho load more
   Widget _buildLoadMoreFooter() {
     return CustomFooter(
       builder: (BuildContext context, LoadStatus? mode) {
         Widget body;
-
         switch (mode) {
           case LoadStatus.idle:
-            body = const Text(
-              "Kéo lên để tải thêm",
-              style: TextStyle(color: Colors.grey),
-            );
+            body = const Text("Kéo lên để tải thêm",
+                style: TextStyle(color: Colors.grey));
             break;
           case LoadStatus.loading:
             body = const Row(
@@ -232,55 +204,24 @@ class MainpageScreen extends GetView<MainpageController> {
                   ),
                 ),
                 SizedBox(width: 8),
-                Text(
-                  "Đang tải...",
-                  style: TextStyle(color: Colors.grey),
-                ),
+                Text("Đang tải...", style: TextStyle(color: Colors.grey)),
               ],
             );
             break;
-          case LoadStatus.failed:
-            body = const Text(
-              "Tải thất bại! Nhấn để thử lại",
-              style: TextStyle(color: Colors.red),
-            );
-            break;
           case LoadStatus.canLoading:
-            body = const Text(
-              "Thả để tải thêm",
-              style: TextStyle(color: Color(0xFFf24e1e)),
-            );
-            break;
-          case LoadStatus.noMore:
-            body = Container(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.check_circle, color: Colors.grey, size: 16),
-                  SizedBox(width: 4),
-                  Text(
-                    "Đã hiển thị tất cả sản phẩm",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ],
-              ),
-            );
+            body = const Text("Thả để tải thêm",
+                style: TextStyle(color: Color(0xFFf24e1e)));
             break;
           default:
             body = const Text("");
             break;
         }
 
-        return Container(
-          height: 55.0,
-          child: Center(child: body),
-        );
+        return SizedBox(height: 55.0, child: Center(child: body));
       },
     );
   }
 
-  /// Widget hiển thị grid sản phẩm
   Widget _buildProductGrid() {
     return GridView.builder(
       padding: const EdgeInsets.all(12),

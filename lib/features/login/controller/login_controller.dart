@@ -59,32 +59,45 @@ class LoginController extends GetxController {
   }
 
   Future<void> onLoginPressed() async {
-    if (formKey.currentState?.validate() ?? false) {
+    if (!(formKey.currentState?.validate() ?? false)) {
+      return;
+    }
+
+    try {
       final success = await login();
 
       if (success) {
         Get.offAllNamed(Routes.home);
       } else {
-        Get.defaultDialog(
-          title: "Lỗi",
-          middleText: errorMessage.value,
-          backgroundColor: Colors.white,
-          titleStyle: const TextStyle(color: Colors.black),
-          middleTextStyle: const TextStyle(color: Colors.black),
-          radius: 15,
-          actions: [
-            TextButton(
-              onPressed: () => Get.back(),
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: const Color(0xFFf24e1e),
-              ),
-              child: const Text("Đóng"),
-            ),
-          ],
-        );
+        _showErrorDialog();
       }
+    } catch (e) {
+      print('Lỗi onLoginPressed: $e');
+      _showErrorDialog();
     }
+  }
+
+  void _showErrorDialog() {
+    Get.defaultDialog(
+      title: "Lỗi",
+      middleText: errorMessage.value.isNotEmpty
+          ? errorMessage.value
+          : "Có lỗi xảy ra khi đăng nhập",
+      backgroundColor: Colors.white,
+      titleStyle: const TextStyle(color: Colors.black),
+      middleTextStyle: const TextStyle(color: Colors.black),
+      radius: 15,
+      actions: [
+        TextButton(
+          onPressed: () => Get.back(),
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: const Color(0xFFf24e1e),
+          ),
+          child: const Text("Đóng"),
+        ),
+      ],
+    );
   }
 
   @override
