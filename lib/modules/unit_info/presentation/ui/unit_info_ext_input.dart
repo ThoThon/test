@@ -47,7 +47,7 @@ extension UnitInfoExtInput on UnitInfoPage {
         ],
       ),
       _buildInputItem(
-        controller: controller.unitNameController,
+        textController: controller.unitNameController,
         label: LocaleKeys.unitInfo_unitName.tr,
         maxLengthInputForm: 250,
         validator: (value) {
@@ -74,7 +74,7 @@ extension UnitInfoExtInput on UnitInfoPage {
     return [
       _buildTitle(title: LocaleKeys.unitInfo_addressInfo.tr),
       _buildInputItem(
-        controller: controller.addressRegisterController,
+        textController: controller.addressRegisterController,
         label: LocaleKeys.unitInfo_addressRegister.tr,
         maxLengthInputForm: 255,
         validator: (value) {
@@ -86,7 +86,7 @@ extension UnitInfoExtInput on UnitInfoPage {
         },
       ),
       _buildInputItem(
-        controller: controller.addressTransactionController,
+        textController: controller.addressTransactionController,
         label: LocaleKeys.unitInfo_addressTransaction.tr,
         maxLengthInputForm: 255,
         validator: (value) {
@@ -105,7 +105,7 @@ extension UnitInfoExtInput on UnitInfoPage {
     return [
       _buildTitle(title: LocaleKeys.unitInfo_representInfo.tr),
       _buildInputItem(
-        controller: controller.nameRepresentController,
+        textController: controller.nameRepresentController,
         label: LocaleKeys.unitInfo_represent.tr,
         maxLengthInputForm: 100,
         validator: (value) {
@@ -117,7 +117,7 @@ extension UnitInfoExtInput on UnitInfoPage {
         },
       ),
       _buildInputItem(
-        controller: controller.positionController,
+        textController: controller.positionController,
         label: LocaleKeys.unitInfo_position.tr,
         maxLengthInputForm: 50,
         validator: (value) {
@@ -136,7 +136,7 @@ extension UnitInfoExtInput on UnitInfoPage {
     return [
       _buildTitle(title: LocaleKeys.unitInfo_transactionPersonInfo.tr),
       _buildInputItem(
-        controller: controller.personTransactionController,
+        textController: controller.personTransactionController,
         label: LocaleKeys.unitInfo_transactionPerson.tr,
         maxLengthInputForm: 100,
         validator: (value) {
@@ -148,7 +148,7 @@ extension UnitInfoExtInput on UnitInfoPage {
         },
       ),
       _buildInputItem(
-        controller: controller.phoneContactController,
+        textController: controller.phoneContactController,
         label: LocaleKeys.unitInfo_phoneContact.tr,
         inputFormatters: InputFormatterEnum.phoneNumber,
         maxLengthInputForm: 20,
@@ -162,7 +162,7 @@ extension UnitInfoExtInput on UnitInfoPage {
         },
       ),
       _buildInputItem(
-        controller: controller.emailContactController,
+        textController: controller.emailContactController,
         label: LocaleKeys.unitInfo_emailContact.tr,
         maxLengthInputForm: 250,
         inputFormatters: InputFormatterEnum.textNormalWithoutSpace,
@@ -193,6 +193,7 @@ extension UnitInfoExtInput on UnitInfoPage {
         selectedItem: controller.selectedMethod.value,
         onChanged: (value) {
           controller.selectedMethod.value = value;
+          controller.checkInputChanged();
         },
         autovalidateMode: AutovalidateMode.always,
         validator: (value) {
@@ -204,7 +205,7 @@ extension UnitInfoExtInput on UnitInfoPage {
       ),
       sdsSBHeight12,
       _buildInputItem(
-        controller: controller.basicSalaryController,
+        textController: controller.basicSalaryController,
         label: LocaleKeys.unitInfo_basicSalary.tr,
         inputFormatters: InputFormatterEnum.salaryNormal,
         textInputType: TextInputType.number,
@@ -226,6 +227,7 @@ extension UnitInfoExtInput on UnitInfoPage {
         selectedItem: controller.selectedReceive.value,
         onChanged: (value) {
           controller.selectedReceive.value = value;
+          controller.checkInputChanged();
         },
         autovalidateMode: AutovalidateMode.always,
         validator: (value) {
@@ -254,7 +256,7 @@ extension UnitInfoExtInput on UnitInfoPage {
   }
 
   Widget _buildInputItem({
-    required TextEditingController controller,
+    required TextEditingController textController,
     required String label,
     int? inputFormatters,
     int? maxLengthInputForm,
@@ -266,13 +268,16 @@ extension UnitInfoExtInput on UnitInfoPage {
       labelText: label,
       textStyle: AppTextStyle.font14Re,
       validator: validator,
-      controller: controller,
+      controller: textController,
       inputFormatters: inputFormatters ?? InputFormatterEnum.textNormal,
       maxLengthInputForm: maxLengthInputForm,
       isShowCounterText: false,
       isRequired: true,
       autovalidateMode: AutovalidateMode.always,
-      onChanged: onChanged,
+      onChanged: (value) {
+        controller.checkInputChanged();
+        onChanged?.call(value);
+      },
       textInputType: textInputType ?? TextInputType.text,
     ).paddingOnly(bottom: AppDimens.paddingSmall);
   }
@@ -302,19 +307,28 @@ extension UnitInfoExtInput on UnitInfoPage {
             Expanded(
               child: UtilWidget.buildSolidButton(
                 backgroundColor: AppColors.basicWhite,
-                textStyle:
-                    AppTextStyle.font16Bo.copyWith(color: AppColors.basicBlack),
+                textStyle: AppTextStyle.font16Bo
+                    .copyWith(color: AppColors.primaryColor),
                 title: LocaleKeys.unitInfo_cancel.tr,
                 onPressed: controller.handleCancelEdit,
                 borderRadius: AppDimens.radius30,
+                side: const BorderSide(
+                  color: AppColors.primaryColor,
+                  width: 1,
+                ),
               ),
             ),
-            const SizedBox(width: 16),
+            sdsSBHeight16,
             Expanded(
-              child: UtilWidget.buildSolidButton(
-                title: LocaleKeys.unitInfo_change.tr,
-                onPressed: controller.updateAccountInfo,
-                borderRadius: AppDimens.radius30,
+              child: Obx(
+                () => UtilWidget.buildSolidButton(
+                  title: LocaleKeys.app_save.tr,
+                  // REF: VBHXHMOB-80
+                  onPressed: controller.isInputUnchanged.value
+                      ? null
+                      : controller.updateAccountInfo,
+                  borderRadius: AppDimens.radius30,
+                ),
               ),
             ),
           ],

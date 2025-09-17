@@ -598,10 +598,10 @@ extension RegisterInfoTab on RegisterCodePage {
                 backgroundColor: AppColors.basicWhite,
                 side: const BorderSide(
                   width: 1,
-                  color: AppColors.colorBlack,
+                  color: AppColors.primaryColor,
                 ),
-                textStyle:
-                    AppTextStyle.font14Re.copyWith(color: AppColors.colorBlack),
+                textStyle: AppTextStyle.font14Re
+                    .copyWith(color: AppColors.primaryColor),
                 onPressed: () {
                   controller.onTabChanged(RegisterCodeTabEnum.common_info);
                 },

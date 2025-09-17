@@ -69,6 +69,8 @@ class UnitInfoController extends BaseGetClController {
 
   final formKey = GlobalKey<FormState>();
 
+  final isInputUnchanged = true.obs;
+
   @override
   void onInit() async {
     super.onInit();
@@ -117,12 +119,12 @@ class UnitInfoController extends BaseGetClController {
     originalInfo = _buildRequest();
   }
 
-  bool get isInputUnchanged {
-    return originalInfo == _buildRequest();
+  void checkInputChanged() {
+    isInputUnchanged.value = originalInfo == _buildRequest();
   }
 
   void handleCancelEdit() {
-    if (isInputUnchanged) {
+    if (isInputUnchanged.value) {
       isEditAll.value = false;
     } else {
       nav.showInfoDialog(
@@ -144,7 +146,7 @@ class UnitInfoController extends BaseGetClController {
       showLoadingOverlay: true,
       action: () async {
         if (formKey.currentState?.validate() ?? false) {
-          if (isInputUnchanged) return;
+          if (isInputUnchanged.value) return;
           await _updateUnitInfoUseCase.execute(_buildRequest());
           _getAccountInfo();
           _getToTalNotiUnread();
