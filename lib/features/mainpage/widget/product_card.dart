@@ -89,7 +89,7 @@ class ProductCard extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                // Button thêm/xóa khỏi giỏ hàng
+                // Button thêm vào giỏ hàng
                 SizedBox(
                   width: double.infinity,
                   height: 32,
@@ -100,8 +100,8 @@ class ProductCard extends StatelessWidget {
                       onPressed: product.quantity > 0
                           ? () {
                               if (isInCart) {
-                                // Nếu đã có trong giỏ, xóa khỏi giỏ
-                                cartController.removeFromCart(product.id);
+                                // Nếu đã có trong giỏ, mở giỏ hàng
+                                Get.toNamed(Routes.cart);
                               } else {
                                 // Nếu chưa có, thêm vào giỏ
                                 cartController.addToCart(product);
@@ -110,13 +110,13 @@ class ProductCard extends StatelessWidget {
                           : null,
                       icon: Icon(
                         isInCart
-                            ? Icons.remove_shopping_cart
+                            ? Icons.shopping_cart
                             : Icons.add_shopping_cart,
                         size: 16,
                         color: Colors.white,
                       ),
                       label: Text(
-                        isInCart ? "Xóa khỏi giỏ" : "Thêm vào giỏ",
+                        isInCart ? "Trong giỏ" : "Thêm vào giỏ",
                         style: const TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
@@ -126,7 +126,7 @@ class ProductCard extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: product.quantity > 0
                             ? (isInCart
-                                ? Colors.orange
+                                ? Colors.green
                                 : const Color(0xFFf24e1e))
                             : Colors.grey,
                         foregroundColor: Colors.white,
