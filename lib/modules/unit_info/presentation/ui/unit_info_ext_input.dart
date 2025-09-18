@@ -318,17 +318,23 @@ extension UnitInfoExtInput on UnitInfoPage {
                 ),
               ),
             ),
-            sdsSBHeight16,
+            sdsSBWidth16,
             Expanded(
               child: Obx(
-                () => UtilWidget.buildSolidButton(
-                  title: LocaleKeys.app_save.tr,
-                  // REF: VBHXHMOB-80
-                  onPressed: controller.isInputUnchanged.value
-                      ? null
-                      : controller.updateAccountInfo,
-                  borderRadius: AppDimens.radius30,
-                ),
+                () {
+                  final isEnabled = !controller.isInputUnchanged.value;
+                  return UtilWidget.buildSolidButton(
+                    backgroundColor: isEnabled
+                        ? AppColors.primaryColor
+                        : AppColors.primaryColorDisable,
+                    title: LocaleKeys.app_save.tr,
+                    // REF: VBHXHMOB-80
+                    onPressed: () {
+                      if (isEnabled) controller.updateAccountInfo();
+                    },
+                    borderRadius: AppDimens.radius30,
+                  );
+                },
               ),
             ),
           ],
