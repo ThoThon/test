@@ -8,14 +8,14 @@ import '../../../../clean/core/presentation/controllers/base_get_cl_controller.d
 
 class RegisterServiceController extends BaseGetClController {
   final GetTransactionInfoUseCase _getTransactionInfoUseCase;
-  final GetListCertificationUseCase _getListCertificationUseCase;
+  final GetListCertificateUseCase _getListCertificateUseCase;
   final RegisterServiceUseCase _registerServiceUseCase;
   final UpdateTransactionInfoUseCase _updateTransactionInfoUseCase;
   final CancelRegisterUseCase _cancelRegisterUseCase;
 
   RegisterServiceController(
     this._getTransactionInfoUseCase,
-    this._getListCertificationUseCase,
+    this._getListCertificateUseCase,
     this._registerServiceUseCase,
     this._updateTransactionInfoUseCase,
     this._cancelRegisterUseCase,
@@ -46,10 +46,9 @@ class RegisterServiceController extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
-        listCert.clear();
-        listCert.value =
-            await _getListCertificationUseCase.execute(usernameMySignCtrl.text);
-
+        final response =
+            await _getListCertificateUseCase.execute(usernameMySignCtrl.text);
+        listCert.value = response;
         certificate.value = listCert.firstOrNull;
       },
     );
