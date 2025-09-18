@@ -1,4 +1,3 @@
-// lib/features/cart/widget/cart_item_card.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -77,76 +76,10 @@ class CartItemCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
 
-                    // Điều khiển số lượng và xóa
+                    // Nút xóa
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        // Nút giảm số lượng
-                        Container(
-                          width: 32,
-                          height: 32,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey[300]!),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: IconButton(
-                            padding: EdgeInsets.zero,
-                            onPressed: () {
-                              if (cartItem.quantity > 1) {
-                                cartController.updateQuantity(
-                                  cartItem.productId,
-                                  cartItem.quantity - 1,
-                                );
-                              }
-                            },
-                            icon: const Icon(
-                              Icons.remove,
-                              size: 16,
-                              color: Color(0xFFf24e1e),
-                            ),
-                          ),
-                        ),
-
-                        // Hiển thị số lượng
-                        Container(
-                          width: 60,
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: Text(
-                            "${cartItem.quantity}",
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-
-                        // Nút tăng số lượng
-                        Container(
-                          width: 32,
-                          height: 32,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey[300]!),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: IconButton(
-                            padding: EdgeInsets.zero,
-                            onPressed: () {
-                              cartController.updateQuantity(
-                                cartItem.productId,
-                                cartItem.quantity + 1,
-                              );
-                            },
-                            icon: const Icon(
-                              Icons.add,
-                              size: 16,
-                              color: Color(0xFFf24e1e),
-                            ),
-                          ),
-                        ),
-
-                        const Spacer(),
-
-                        // Nút xóa
                         IconButton(
                           onPressed: () {
                             _showDeleteConfirmDialog(

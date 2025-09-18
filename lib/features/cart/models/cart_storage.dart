@@ -16,17 +16,11 @@ class CartStorage {
       (cartItem) => cartItem.productId == item.productId,
     );
 
-    if (existingIndex >= 0) {
-      // Nếu đã có, tăng số lượng
-      currentItems[existingIndex] = currentItems[existingIndex].copyWith(
-        quantity: currentItems[existingIndex].quantity + item.quantity,
-      );
-    } else {
+    if (existingIndex < 0) {
       // Nếu chưa có, thêm mới
       currentItems.add(item);
+      await _box.put(keyCartItems, currentItems.map((e) => e).toList());
     }
-
-    await _box.put(keyCartItems, currentItems.map((e) => e).toList());
   }
 
   static List<CartItem> getCartItems() {
@@ -42,23 +36,6 @@ class CartStorage {
     await _box.put(keyCartItems, currentItems.map((e) => e).toList());
   }
 
-  static Future<void> updateQuantity(int productId, int newQuantity) async {
-    if (newQuantity <= 0) {
-      await removeFromCart(productId);
-      return;
-    }
-
-    final currentItems = getCartItems();
-    final index = currentItems.indexWhere(
-      (item) => item.productId == productId,
-    );
-
-    if (index >= 0) {
-      currentItems[index] = currentItems[index].copyWith(quantity: newQuantity);
-      await _box.put(keyCartItems, currentItems.map((e) => e).toList());
-    }
-  }
-
   static Future<void> clearCart() async {
     try {
       await _box.delete(keyCartItems);
@@ -71,11 +48,11 @@ class CartStorage {
 
   static int get itemCount {
     final items = getCartItems();
-    return items.fold(0, (total, item) => total + item.quantity);
+    return items.length;
   }
 
   static int get totalPrice {
     final items = getCartItems();
-    return items.fold(0, (total, item) => total + item.totalPrice);
+    return items.fold(0, (total, item) => total + item.price);
   }
 }

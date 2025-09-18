@@ -21,6 +21,7 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Ảnh sản phẩm
           Expanded(
             child: InkWell(
               onTap: () {
@@ -89,34 +90,33 @@ class ProductCard extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                // Button thêm vào giỏ hàng
+                // Button thêm/xóa giỏ hàng
                 SizedBox(
                   width: double.infinity,
                   height: 32,
                   child: Obx(() {
-                    final isInCart = cartController.isInCart(product.id);
+                    final isInCart = cartController.cartItems
+                        .any((item) => item.productId == product.id);
 
                     return ElevatedButton.icon(
                       onPressed: product.quantity > 0
                           ? () {
                               if (isInCart) {
-                                // Nếu đã có trong giỏ, mở giỏ hàng
-                                Get.toNamed(Routes.cart);
+                                cartController.removeFromCart(product.id);
                               } else {
-                                // Nếu chưa có, thêm vào giỏ
                                 cartController.addToCart(product);
                               }
                             }
                           : null,
                       icon: Icon(
                         isInCart
-                            ? Icons.shopping_cart
+                            ? Icons.remove_shopping_cart
                             : Icons.add_shopping_cart,
                         size: 16,
                         color: Colors.white,
                       ),
                       label: Text(
-                        isInCart ? "Trong giỏ" : "Thêm vào giỏ",
+                        isInCart ? "Xóa khỏi giỏ" : "Thêm vào giỏ",
                         style: const TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
@@ -126,7 +126,7 @@ class ProductCard extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: product.quantity > 0
                             ? (isInCart
-                                ? Colors.green
+                                ? Colors.orange
                                 : const Color(0xFFf24e1e))
                             : Colors.grey,
                         foregroundColor: Colors.white,

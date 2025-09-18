@@ -16,15 +16,11 @@ class CartItem {
   @HiveField(3)
   final String cover;
 
-  @HiveField(4)
-  final int quantity;
-
   CartItem({
     required this.productId,
     required this.name,
     required this.price,
     required this.cover,
-    this.quantity = 1,
   });
 
   CartItem copyWith({
@@ -39,9 +35,6 @@ class CartItem {
       name: name ?? this.name,
       price: price ?? this.price,
       cover: cover ?? this.cover,
-      quantity: quantity ?? this.quantity,
     );
   }
-
-  int get totalPrice => price * quantity;
 }
