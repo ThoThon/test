@@ -31,7 +31,7 @@ class RegisterServiceBinding extends BaseBindings {
 
   @override
   void bindingsUseCase() {
-    Get.lazyPut(() => GetListCertificationUseCase(sl()));
+    Get.lazyPut(() => GetListCertificateUseCase(sl()));
     Get.lazyPut(() => GetTransactionInfoUseCase(sl()));
     Get.lazyPut(() => RegisterServiceUseCase(sl()));
     Get.lazyPut(() => UpdateTransactionInfoUseCase(sl()));

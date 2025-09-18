@@ -5,7 +5,7 @@ export 'domain/entity/register_service_request.dart';
 export 'domain/entity/transaction_info.dart';
 export 'domain/repository/register_service_repository.dart';
 export 'domain/usecase/cancel_register_use_case.dart';
-export 'domain/usecase/get_list_certification_use_case.dart';
+export 'domain/usecase/get_list_certificate_use_case.dart';
 export 'domain/usecase/get_transaction_info_use_case.dart';
 export 'domain/usecase/register_service_use_case.dart';
 export 'domain/usecase/update_transaction_info_use_case.dart';
