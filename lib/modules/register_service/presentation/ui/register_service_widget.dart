@@ -323,9 +323,7 @@ extension RegisterServiceWidget on RegisterServicePage {
                   ? AppColors.colorBorder
                   : AppColors.primaryColor,
             ),
-            backgroundColor: controller.isDiableChangeInfoButton
-                ? AppColors.basicWhite
-                : AppColors.basicWhite,
+            backgroundColor: AppColors.basicWhite,
             textStyle: AppTextStyle.font14Re.copyWith(
               color: controller.isDiableChangeInfoButton
                   ? AppColors.colorBorder
