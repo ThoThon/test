@@ -138,8 +138,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   }
 
   Widget _buildDateAndButton(DeclarationPeriod period, bool canEditAndDelete) {
-    final date = convertDateToStringSafe(
-        period.updateDate ?? period.createTime, PATTERN_14);
+    final date = convertDateToStringSafe(period.createTime, PATTERN_14);
 
     return Row(
       children: [
