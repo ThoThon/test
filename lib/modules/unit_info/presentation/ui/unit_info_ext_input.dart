@@ -322,15 +322,15 @@ extension UnitInfoExtInput on UnitInfoPage {
             Expanded(
               child: Obx(
                 () {
-                  final isDisableBtn = controller.isInputUnchanged.value;
+                  final isEnabled = !controller.isInputUnchanged.value;
                   return UtilWidget.buildSolidButton(
-                    backgroundColor: isDisableBtn
-                        ? AppColors.primaryColorDisable
-                        : AppColors.primaryColor,
+                    backgroundColor: isEnabled
+                        ? AppColors.primaryColor
+                        : AppColors.primaryColorDisable,
                     title: LocaleKeys.app_save.tr,
                     // REF: VBHXHMOB-80
                     onPressed: () {
-                      isDisableBtn ? null : controller.updateAccountInfo();
+                      if (isEnabled) controller.updateAccountInfo();
                     },
                     borderRadius: AppDimens.radius30,
                   );
