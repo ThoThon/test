@@ -4,55 +4,47 @@ import 'cart_item.dart';
 
 class CartStorage {
   static const String boxName = 'cartBox';
-  static const String keyCartItems = 'cart_items';
+  static Box<CartItem> get _box => Hive.box<CartItem>(boxName);
 
-  static Box<List> get _box => Hive.box<List>(boxName);
-
+  // Thêm sản phẩm
   static Future<void> addToCart(CartItem item) async {
-    final currentItems = getCartItems();
-
-    // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
-    final existingIndex = currentItems.indexWhere(
-      (cartItem) => cartItem.productId == item.productId,
-    );
-
-    if (existingIndex < 0) {
-      // Nếu chưa có, thêm mới
-      currentItems.add(item);
-      await _box.put(keyCartItems, currentItems.map((e) => e).toList());
-    }
+    final key = 'product/${item.productId}';
+    await _box.put(key, item);
   }
 
+  // Lấy tất cả sản phẩm
   static List<CartItem> getCartItems() {
-    final data = _box.get(keyCartItems);
-    if (data == null) return [];
-
-    return data.cast<CartItem>();
+    return _box.values.toList();
   }
 
+  // Xóa sản phẩm theo ID
   static Future<void> removeFromCart(int productId) async {
-    final currentItems = getCartItems();
-    currentItems.removeWhere((item) => item.productId == productId);
-    await _box.put(keyCartItems, currentItems.map((e) => e).toList());
+    final key = 'product/$productId';
+    await _box.delete(key);
   }
 
+  // Xóa hết
   static Future<void> clearCart() async {
-    try {
-      await _box.delete(keyCartItems);
-      print("Đã xóa tất cả sản phẩm trong giỏ hàng");
-    } catch (e) {
-      print("Lỗi khi xóa giỏ hàng: $e");
-      await _box.clear();
-    }
+    await _box.clear();
   }
 
-  static int get itemCount {
-    final items = getCartItems();
-    return items.length;
-  }
+  // Đếm số lượng
+  static int get itemCount => _box.length;
 
+  // Tính tổng tiền
   static int get totalPrice {
-    final items = getCartItems();
-    return items.fold(0, (total, item) => total + item.price);
+    return _box.values.fold(0, (total, item) => total + item.price);
+  }
+
+  // Kiểm tra sản phẩm có trong giỏ hàng không
+  static bool isInCart(int productId) {
+    final key = 'product/$productId';
+    return _box.containsKey(key);
+  }
+
+  // Lấy sản phẩm theo ID
+  static CartItem? getCartItem(int productId) {
+    final key = 'product/$productId';
+    return _box.get(key);
   }
 }

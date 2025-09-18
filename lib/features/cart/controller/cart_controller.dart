@@ -22,28 +22,20 @@ class CartController extends GetxController {
   }
 
   Future<void> addToCart(Product product) async {
-    try {
-      final cartItem = CartItem(
-        productId: product.id,
-        name: product.name,
-        price: product.price,
-        cover: product.cover,
-      );
+    final cartItem = CartItem(
+      productId: product.id,
+      name: product.name,
+      price: product.price,
+      cover: product.cover,
+    );
 
-      await CartStorage.addToCart(cartItem);
-      loadCartItems();
-    } catch (e) {
-      _showError("Không thể thêm sản phẩm vào giỏ hàng");
-    }
+    await CartStorage.addToCart(cartItem);
+    loadCartItems();
   }
 
   Future<void> removeFromCart(int productId) async {
-    try {
-      await CartStorage.removeFromCart(productId);
-      loadCartItems();
-    } catch (e) {
-      _showError("Không thể xóa sản phẩm");
-    }
+    await CartStorage.removeFromCart(productId);
+    loadCartItems();
   }
 
   Future<void> clearCart() async {
@@ -65,12 +57,8 @@ class CartController extends GetxController {
     );
 
     if (confirm == true) {
-      try {
-        await CartStorage.clearCart();
-        loadCartItems();
-      } catch (e) {
-        _showError("Không thể xóa giỏ hàng");
-      }
+      await CartStorage.clearCart();
+      loadCartItems();
     }
   }
 
@@ -80,24 +68,10 @@ class CartController extends GetxController {
   }
 
   bool isInCart(int productId) {
-    return cartItems.any((item) => item.productId == productId);
+    return CartStorage.isInCart(productId);
   }
 
   CartItem? getCartItem(int productId) {
-    try {
-      return cartItems.firstWhere((item) => item.productId == productId);
-    } catch (e) {
-      return null;
-    }
-  }
-
-  void _showError(String message) {
-    Get.snackbar(
-      "Lỗi",
-      message,
-      backgroundColor: Colors.red,
-      colorText: Colors.white,
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    return CartStorage.getCartItem(productId);
   }
 }
