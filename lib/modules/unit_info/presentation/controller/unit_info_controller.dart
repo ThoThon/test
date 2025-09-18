@@ -136,6 +136,9 @@ class UnitInfoController extends BaseGetClController {
         onCancel: () {
           mapAccountInfoToUI();
           isEditAll.value = false;
+
+          // REF: VBHXHMOB-100
+          isInputUnchanged.value = true;
         },
       );
     }
