@@ -67,6 +67,7 @@ class RegisterServiceController extends BaseGetClController {
         final userId = transactionInfo.value!.userId;
         if (userId.isNotEmpty) {
           usernameMySignCtrl.text = userId;
+          isUsernameMySignEmpty.value = false;
           await fetchListCert();
         }
       },
