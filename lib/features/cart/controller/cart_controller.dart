@@ -21,14 +21,13 @@ class CartController extends GetxController {
     _updateTotals();
   }
 
-  Future<void> addToCart(Product product, {int quantity = 1}) async {
+  Future<void> addToCart(Product product) async {
     try {
       final cartItem = CartItem(
         productId: product.id,
         name: product.name,
         price: product.price,
         cover: product.cover,
-        quantity: quantity,
       );
 
       await CartStorage.addToCart(cartItem);
@@ -44,15 +43,6 @@ class CartController extends GetxController {
       loadCartItems();
     } catch (e) {
       _showError("Không thể xóa sản phẩm");
-    }
-  }
-
-  Future<void> updateQuantity(int productId, int newQuantity) async {
-    try {
-      await CartStorage.updateQuantity(productId, newQuantity);
-      loadCartItems();
-    } catch (e) {
-      _showError("Không thể cập nhật số lượng");
     }
   }
 
