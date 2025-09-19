@@ -77,19 +77,18 @@ extension DeclarationListWidget on DeclarationListPage {
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
-                  if (saveResult.attachPreviewPath != null)
-                    _buildDeclarationItem(
-                      title: 'File đính kèm',
-                      onTap: () {
-                        Get.toNamed(
-                          AppRoutesCl.viewPdf.path,
-                          arguments: ViewPdfArgument(
-                            url: saveResult.attachPreviewPath!,
-                            title: 'File đính kèm',
-                          ),
-                        );
-                      },
-                    ),
+                  _buildDeclarationItem(
+                    title: 'File đính kèm',
+                    onTap: () {
+                      Get.toNamed(
+                        AppRoutesCl.viewPdf.path,
+                        arguments: ViewPdfArgument(
+                          url: saveResult.attachPreviewPath,
+                          title: 'File đính kèm',
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -114,7 +113,7 @@ extension DeclarationListWidget on DeclarationListPage {
 
   Widget _buildTk1Preview() {
     final paths = controller.argument.saveXmlResult.tk1s;
-    if (paths == null || paths.isEmpty) {
+    if (paths.isEmpty) {
       return UtilWidget.shrink;
     }
 
@@ -148,7 +147,7 @@ extension DeclarationListWidget on DeclarationListPage {
                   ),
                   Expanded(
                     child: SDSBuildText(
-                      path.hoTen ?? '',
+                      path.name,
                       style: AppTextStyle.font14Re,
                       maxLines: 1,
                     ),

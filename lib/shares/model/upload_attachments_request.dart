@@ -10,6 +10,7 @@ class UploadImageRequest {
   Map<String, dynamic> toJson() {
     return {
       'kyKeKhaiId': periodId,
+      'file': file,
     };
   }
 }

@@ -11,10 +11,11 @@ import 'package:v_bhxh/modules/declare/declaration_period/domain/usecase/use_cas
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/declare_info_argument.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/domain/entity/entity_src.dart';
-import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/date_picker/date_picker_utils.dart';
+
+import '../../../staff_list/domain/entity/entity_src.dart';
 
 class DeclarationPeriodController extends BaseGetClController {
   final Procedure argument;

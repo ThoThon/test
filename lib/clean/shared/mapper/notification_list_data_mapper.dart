@@ -1,5 +1,4 @@
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/clean/shared/mapper/notification_item_data_mapper.dart';
 
 import '../../../modules/notification/notification_src.dart';
 
