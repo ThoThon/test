@@ -28,7 +28,6 @@ class CartController extends GetxController {
       price: product.price,
       cover: product.cover,
     );
-
     await CartStorage.addToCart(cartItem);
     loadCartItems();
   }

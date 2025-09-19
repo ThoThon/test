@@ -24,10 +24,10 @@ class ProductCard extends StatelessWidget {
           // Ảnh sản phẩm
           Expanded(
             child: InkWell(
-              onTap: () {
-                Get.toNamed(
+              onTap: () async {
+                await Get.toNamed(
                   Routes.productDetail,
-                  arguments: {'productId': product.id},
+                  arguments: product.id,
                 );
               },
               child: Image.network(

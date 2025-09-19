@@ -23,6 +23,12 @@ class MainpageController extends GetxController {
   }
 
   @override
+  void onReady() {
+    super.onReady();
+    onRefresh();
+  }
+
+  @override
   void onClose() {
     refreshController.dispose();
     super.onClose();
@@ -71,24 +77,6 @@ class MainpageController extends GetxController {
   /// Load more
   Future<void> onLoadMore() async {
     await fetchProducts(isLoadMore: true);
-  }
-
-  /// Thêm sản phẩm mới vào đầu danh sách
-  void addNewProductToList(Product newProduct) {
-    products.insert(0, newProduct);
-  }
-
-  /// Cập nhật sản phẩm trong danh sách local
-  void updateProductInList(Product updatedProduct) {
-    final index = products.indexWhere((p) => p.id == updatedProduct.id);
-    if (index != -1) {
-      products[index] = updatedProduct;
-    }
-  }
-
-  /// Xóa sản phẩm khỏi danh sách local
-  void removeProductFromList(int productId) {
-    products.removeWhere((product) => product.id == productId);
   }
 
   void _showErrorSnackbar(String message) {

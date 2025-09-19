@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../repositories/product_repository.dart';
-import '../../mainpage/controller/mainpage_controller.dart';
 
 class ProductCreateController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -46,17 +45,9 @@ class ProductCreateController extends GetxController {
       );
 
       if (newProduct != null) {
-        // Thêm sản phẩm mới vào đầu danh sách trong MainPage controller
-        try {
-          final mainController = Get.find<MainpageController>();
-          mainController.addNewProductToList(newProduct);
-        } catch (e) {
-          print('Không tìm thấy MainpageController: $e');
-        }
-
         _showSuccessDialog("Tạo sản phẩm thành công!", onConfirm: () {
           Get.back(); // Đóng dialog
-          Get.back(); // Quay về trang trước
+          Get.until(ModalRoute.withName('/home')); // Quay về màn home
         });
       } else {
         errorMessage.value = "Tạo sản phẩm thất bại";
