@@ -214,7 +214,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
               onChanged: (value) {
                 controller.updateHouseholdInfoRequired();
                 controller.updateClearTTIconState();
-                controller.enableCheckboxGenerateTk1();
+                controller.updateGenerateTk1();
               },
             );
           },

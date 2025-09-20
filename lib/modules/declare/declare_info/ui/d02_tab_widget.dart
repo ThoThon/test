@@ -397,7 +397,7 @@ extension D02TabWidget on DeclareInfoPage {
                     controller.d02State.isGenerateTk1Data.value =
                         value.isGenerateTk1(
                             controller.d02State.declarationType.value);
-                    controller.enableCheckboxGenerateTk1();
+                    controller.updateGenerateTk1();
                   },
                 ).paddingOnly(bottom: AppDimens.paddingSmall);
               },
@@ -442,8 +442,8 @@ extension D02TabWidget on DeclareInfoPage {
           () => UtilWidget.buildCheckboxWithLabel(
             label: LocaleKeys.declareInfo_generateTk1Data.tr,
             value: controller.d02State.isGenerateTk1Data.value,
-            enable: controller.d02State.enableCheckoxGenerateTk1.value,
-            onChanged: controller.d02State.enableCheckoxGenerateTk1.value
+            enable: controller.d02State.isGenerateTk1CheckboxEnabled.value,
+            onChanged: controller.d02State.isGenerateTk1CheckboxEnabled.value
                 ? (value) {
                     controller.d02State.isGenerateTk1Data.value = value;
                     controller.updateHouseholdInfoRequired();

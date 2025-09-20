@@ -15,6 +15,9 @@ import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 import '../../../../base_app/base_app.src.dart';
 import '../../../select_staff/model/select_staff_response.dart';
 
+// Khi chọn "Loại khai báo" là "Tăng lao động"
+const laborIncrease = 1;
+
 class DeclareInfoController extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
   final currentTab = DeclareInfoTab.d02.obs;
@@ -819,18 +822,18 @@ class DeclareInfoController extends BaseGetxController {
   ///
   /// Nếu Mã số BHXH == null -> checkboxTk1 = true và disable checkbox này
   /// Nếu Mã số BHXH != null -> enable checkboxTk1
-  void enableCheckboxGenerateTk1() {
+  void updateGenerateTk1() {
     final declarationTypeId = d02State.declarationType.value?.value;
     final plan = d02State.plan.value?.id;
-    if (declarationTypeId != 1) return;
+    if (declarationTypeId != laborIncrease) return;
     if (['TM', 'TH'].contains(plan)) {
-      if (d02Tk1State.bhxhTextCtrl.text.isEmpty) {
-        d02State.enableCheckoxGenerateTk1.value = false;
+      if (d02Tk1State.bhxhTextCtrl.text.trim().isEmpty) {
+        d02State.isGenerateTk1CheckboxEnabled.value = false;
         d02State.isGenerateTk1Data.value = true;
         return;
       }
     }
-    d02State.enableCheckoxGenerateTk1.value = true;
+    d02State.isGenerateTk1CheckboxEnabled.value = true;
   }
 
   void updateClearTTIconState() {

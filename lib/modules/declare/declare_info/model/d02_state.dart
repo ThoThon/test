@@ -66,7 +66,7 @@ class D02State {
   /// Sinh dữ liệu D01-TS
   final isGenerateD01Data = false.obs;
 
-  final enableCheckoxGenerateTk1 = true.obs;
+  final isGenerateTk1CheckboxEnabled = true.obs;
 
   void mapFromD02Detail(DeclareInfoDetailResponse detail) {
     final d02Lt = detail.d02Lt;

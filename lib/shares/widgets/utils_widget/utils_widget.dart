@@ -1338,11 +1338,22 @@ class UtilWidget {
           Checkbox(
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             value: value,
-            activeColor:
-                enable ? AppColors.primaryColor : AppColors.primaryColorDisable,
-            onChanged: (value) {
-              onChanged?.call(value ?? false);
-            },
+            fillColor: WidgetStateProperty.resolveWith(
+              (states) {
+                if (states.contains(WidgetState.disabled)) {
+                  return AppColors.primaryColorDisable;
+                }
+                if (states.contains(WidgetState.selected)) {
+                  return AppColors.primaryColor;
+                }
+                return AppColors.basicWhite;
+              },
+            ),
+            onChanged: enable
+                ? (value) {
+                    onChanged?.call(value ?? false);
+                  }
+                : null,
           ),
           SDSBuildText(
             label,
