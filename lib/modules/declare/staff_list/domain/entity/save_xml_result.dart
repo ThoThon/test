@@ -9,7 +9,7 @@ class SaveXmlResultCl implements Entity {
   final bool hasTsM01hsb;
   final bool hasDsM01hsb;
   final List<Tk1PreviewPath> tk1s;
-  final String attachPreviewPath;
+  final String? attachPreviewPath;
 
   const SaveXmlResultCl({
     required this.hasD01,
@@ -18,6 +18,6 @@ class SaveXmlResultCl implements Entity {
     required this.hasTsM01hsb,
     required this.hasDsM01hsb,
     required this.tk1s,
-    required this.attachPreviewPath,
+    this.attachPreviewPath,
   });
 }

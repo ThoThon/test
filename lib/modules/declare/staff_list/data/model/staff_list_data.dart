@@ -3,11 +3,11 @@ import 'package:v_bhxh/modules/declare/staff_list/data/model/declared_staff_data
 
 class StaffListData {
   final List<DeclaredStaffData>? staffs;
-  final List<AttachedImageData>? image;
+  final List<AttachedImageData>? images;
 
   StaffListData({
     this.staffs,
-    this.image,
+    this.images,
   });
 
   factory StaffListData.fromJsonD02(Map<String, dynamic> json) {
@@ -15,7 +15,7 @@ class StaffListData {
       staffs: (json['d02Results'] as List<dynamic>?)
           ?.map((e) => DeclaredStaffData.fromJson(e as Map<String, dynamic>))
           .toList(),
-      image: (json['attachImages'] as List<dynamic>?)
+      images: (json['attachImages'] as List<dynamic>?)
           ?.map((e) => AttachedImageData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -26,7 +26,7 @@ class StaffListData {
       staffs: (json['tk1Results'] as List<dynamic>?)
           ?.map((e) => DeclaredStaffData.fromJson(e as Map<String, dynamic>))
           .toList(),
-      image: (json['attachImages'] as List<dynamic>?)
+      images: (json['attachImages'] as List<dynamic>?)
           ?.map((e) => AttachedImageData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -37,7 +37,7 @@ class StaffListData {
       staffs: (json['results'] as List<dynamic>?)
           ?.map((e) => DeclaredStaffData.fromJson(e as Map<String, dynamic>))
           .toList(),
-      image: (json['attachImages'] as List<dynamic>?)
+      images: (json['attachImages'] as List<dynamic>?)
           ?.map((e) => AttachedImageData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );

@@ -4,9 +4,9 @@ import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/src.dart';
-import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
+import '../../../../../clean/shared/model/upload_image_request_data.dart';
 
 // Chỉ cho phép up tối đa 5 file ảnh
 const maxImageAttachments = 5;
@@ -26,6 +26,7 @@ class StaffListController extends BaseGetClController {
   final Delete630aUseCase _delete630aUseCase;
   final Delete630bUseCase _delete630bUseCase;
   final Delete630cUseCase _delete630cUseCase;
+  final StaffListArgument argument;
 
   StaffListController(
     this._getStaffList600UseCase,
@@ -41,10 +42,11 @@ class StaffListController extends BaseGetClController {
     this._deleteTk01UseCase,
     this._delete630aUseCase,
     this._delete630bUseCase,
-    this._delete630cUseCase,
-  );
+    this._delete630cUseCase, {
+    required this.argument,
+  });
 
-  final argument = Get.arguments as StaffListArgument;
+  // final argument = Get.arguments as StaffListArgument;
 
   final declaredStaffs = <DeclaredStaff>[].obs;
 
@@ -134,7 +136,7 @@ class StaffListController extends BaseGetClController {
       showLoading: true,
       action: () async {
         await _uploadAttachImageUseCase.execute(
-          UploadImageRequest(
+          UploadImageRequestData(
             file: imagePath,
             periodId: declarationPeriodId,
           ),
@@ -158,7 +160,7 @@ class StaffListController extends BaseGetClController {
         }
 
         await _deleteAttachImageUseCase.execute(
-          UploadImageRequest(
+          UploadImageRequestData(
             file: fileName,
             periodId: declarationPeriodId,
           ),
@@ -229,10 +231,7 @@ class StaffListController extends BaseGetClController {
   }
 
   void showDialogDeleteStaff(DeclaredStaff staff) {
-    ShowDialog.showDialogConfirm2(
-      backgroundColorBack: AppColors.basicWhite,
-      textStyleBack:
-          AppTextStyle.font14Re.copyWith(color: AppColors.primaryColor),
+    nav.showConfirmDialog(
       title: LocaleKeys.staffList_deleteStaffConfirmMessage.tr,
       confirmTitle: LocaleKeys.app_delete.tr,
       onConfirm: () {

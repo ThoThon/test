@@ -17,6 +17,7 @@ class OtherInfoBinding extends BaseBindings {
           sl(),
           sl(),
           sl(),
+          argument: Get.arguments,
         ));
   }
 

@@ -1,8 +1,8 @@
-class UploadImageRequest {
+class UploadImageRequestData {
   final String file;
   final String periodId;
 
-  UploadImageRequest({
+  UploadImageRequestData({
     required this.file,
     required this.periodId,
   });

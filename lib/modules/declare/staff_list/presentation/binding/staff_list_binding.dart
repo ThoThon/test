@@ -29,6 +29,7 @@ class StaffListBinding extends BaseBindings {
           sl(),
           sl(),
           sl(),
+          argument: Get.arguments,
         ));
   }
 

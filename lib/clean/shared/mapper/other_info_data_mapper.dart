@@ -7,7 +7,7 @@ class OtherInfoDataMapper extends BaseDataMapper<OtherInfoData, OtherInfo>
   @override
   OtherInfo mapToEntity(OtherInfoData? data) {
     return OtherInfo(
-      id: data?.id ?? '',
+      id: data?.id,
       periodId: data?.kyKeKhaiId ?? '',
       approvalRound: data?.dotXetDuyet ?? '',
       phoneNumber: data?.soDienThoai ?? '',

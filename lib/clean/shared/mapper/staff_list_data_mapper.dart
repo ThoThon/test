@@ -14,7 +14,7 @@ class StaffListDataMapper extends BaseDataMapper<StaffListData, StaffList> {
   StaffList mapToEntity(StaffListData? data) {
     return StaffList(
       staffs: _declaredStaffDataMapper.mapToListEntity(data?.staffs),
-      image: _attachedImageDataMapper.mapToListEntity(data?.image),
+      image: _attachedImageDataMapper.mapToListEntity(data?.images),
     );
   }
 }

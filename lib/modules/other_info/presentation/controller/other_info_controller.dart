@@ -12,6 +12,7 @@ class OtherInfoController extends BaseGetClController {
   final SaveXmlResult630bUseCase _saveXmlResult630bUseCase;
   final SaveXmlResult630cUseCase _saveXmlResult630cUseCase;
   final UpdateOtherInfoUseCase _updateOtherInfoUseCase;
+  final StaffListArgument argument;
 
   OtherInfoController(
     this._addOtherInfoUseCase,
@@ -19,8 +20,9 @@ class OtherInfoController extends BaseGetClController {
     this._saveXmlResult630aUseCase,
     this._saveXmlResult630bUseCase,
     this._saveXmlResult630cUseCase,
-    this._updateOtherInfoUseCase,
-  );
+    this._updateOtherInfoUseCase, {
+    required this.argument,
+  });
 
   //  Gửi kèm hồ sơ giấy
   final isAttachPaper = false.obs;
@@ -45,8 +47,6 @@ class OtherInfoController extends BaseGetClController {
 
   // Lý do giải trình
   final reasonExplanationCtrl = TextEditingController();
-
-  final argument = Get.arguments as StaffListArgument;
 
   final otherInfo = Rxn<OtherInfo>();
 
@@ -84,8 +84,7 @@ class OtherInfoController extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
-        final response = await _addOtherInfoUseCase.execute(_buildRequest);
-        id = response;
+        id = await _addOtherInfoUseCase.execute(_buildRequest);
         await saveXml();
       },
     );

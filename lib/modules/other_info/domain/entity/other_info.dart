@@ -1,7 +1,7 @@
 import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
 class OtherInfo implements Entity {
-  final String id;
+  final String? id;
   final String periodId;
   final String approvalRound;
   final String phoneNumber;
@@ -13,7 +13,7 @@ class OtherInfo implements Entity {
   final bool attachedPaperDocuments;
 
   OtherInfo({
-    required this.id,
+    this.id,
     required this.periodId,
     required this.approvalRound,
     required this.phoneNumber,

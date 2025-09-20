@@ -867,6 +867,16 @@ class LocaleKeys {
       'declareInfo_appraisalDateCannotEmpty';
   static const declareInfo_declarationPeriosMax99 =
       'declareInfo_declarationPeriosMax99';
+  static const declareInfo_listOfForm = 'declareInfo_listOfForm';
+  static const declareInfo_healingHsbList = 'declareInfo_healingHsbList';
+  static const declareInfo_maternityHsbList = 'declareInfo_maternityHsbList';
+  static const declareInfo_sickHsbList = 'declareInfo_sickHsbList';
+  static const declareInfo_d02LaborList = 'declareInfo_d02LaborList';
+  static const declareInfo_d01infoTable = 'declareInfo_d01infoTable';
+  static const declareInfo_participationDeclaration =
+      'declareInfo_participationDeclaration';
+  static const declareInfo_laborList = 'declareInfo_laborList';
+  static const declareInfo_tk1Declaration = 'declareInfo_tk1Declaration';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -2042,6 +2052,20 @@ class Locales {
     'declareInfo_appraisalDateCannotEmpty':
         'Ngày giám định không được bỏ trống',
     'declareInfo_declarationPeriosMax99': 'Không kê khai quá đợt 99',
+    'declareInfo_listOfForm': 'Danh sách biểu mẫu',
+    'declareInfo_healingHsbList':
+        'Danh sách đề nghị giải quyết hưởng chế độ dưỡng sức (Mẫu 01D-HSB)',
+    'declareInfo_maternityHsbList':
+        'Danh sách đề nghị giải quyết hưởng chế độ thai sản (Mẫu 01D-HSB)',
+    'declareInfo_sickHsbList':
+        'Danh sách đề nghị giải quyết hưởng chế độ ốm đau (Mẫu 01D-HSB)',
+    'declareInfo_d02LaborList':
+        'Danh sách lao động tham gia BHXH - (Mẫu D02-LT)',
+    'declareInfo_d01infoTable': 'Bảng kê thông tin (Mẫu D01-TS)',
+    'declareInfo_participationDeclaration': 'Tờ khai tham gia',
+    'declareInfo_laborList': 'Danh sách lao động',
+    'declareInfo_tk1Declaration':
+        'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

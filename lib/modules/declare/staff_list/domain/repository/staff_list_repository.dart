@@ -1,6 +1,6 @@
 import 'package:v_bhxh/clean/core/domain/repository/base_repository_cl.dart';
 
-import '../../../../../shares/model/upload_attachments_request.dart';
+import '../../../../../clean/shared/model/upload_image_request_data.dart';
 import '../entity/entity_src.dart';
 
 abstract class StaffListRepository extends BaseRepositoryCl {
@@ -9,7 +9,7 @@ abstract class StaffListRepository extends BaseRepositoryCl {
   });
 
   Future<String> uploadImage({
-    required UploadImageRequest request,
+    required UploadImageRequestData request,
   });
 
   Future<SaveXmlResultCl> saveXml({
@@ -17,7 +17,8 @@ abstract class StaffListRepository extends BaseRepositoryCl {
   });
 
   Future<bool> deleteImage({
-    required UploadImageRequest request,
+    required String kyKeKhaiId,
+    required String fileName,
   });
 
   /// Xóa nhân viên (Xóa toàn bộ hồ sơ TK1 D01 của nhân viên đó)

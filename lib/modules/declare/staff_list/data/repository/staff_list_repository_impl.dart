@@ -1,15 +1,11 @@
 import 'package:dio/dio.dart' as di;
 import 'package:http_parser/http_parser.dart';
-import 'package:v_bhxh/modules/declare/staff_list/data/model/save_xml_result_data.dart';
-import 'package:v_bhxh/modules/declare/staff_list/domain/entity/save_xml_result.dart';
-import 'package:v_bhxh/modules/declare/staff_list/domain/entity/staff_list.dart';
-import 'package:v_bhxh/modules/declare/staff_list/domain/repository/staff_list_repository.dart';
 
 import '../../../../../clean/core/data/data_source/network/network_src.dart';
 import '../../../../../clean/core/data/model/base_response_cl.dart';
 import '../../../../../clean/shared/mapper/mapper_src.dart';
+import '../../../../../clean/shared/model/upload_image_request_data.dart';
 import '../../../../src.dart';
-import '../model/staff_list_data.dart';
 
 class StaffListRepositoryImpl extends StaffListRepository {
   final AuthAppServerApiClient _authAppServerApiClient;
@@ -40,11 +36,12 @@ class StaffListRepositoryImpl extends StaffListRepository {
 
   @override
   Future<bool> deleteImage({
-    required UploadImageRequest request,
+    required String kyKeKhaiId,
+    required String fileName,
   }) async {
     final response = await _authAppServerApiClient.request(
       method: RestMethod.delete,
-      path: "/api/Upload/delete-images/${request.periodId}/${request.file}",
+      path: "/api/Upload/delete-images/$kyKeKhaiId/$fileName",
       cancelToken: cancelToken,
     );
     final data = BaseResponseCl<bool>.fromJson(response);
@@ -107,7 +104,7 @@ class StaffListRepositoryImpl extends StaffListRepository {
 
   @override
   Future<String> uploadImage({
-    required UploadImageRequest request,
+    required UploadImageRequestData request,
   }) async {
     final mapData = request.toJson();
     if (request.file.isNotEmpty) {
