@@ -6,7 +6,6 @@ import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.da
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
-import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -14,6 +13,7 @@ import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../../base_app/base_app.src.dart';
 import '../../../select_staff/model/select_staff_response.dart';
+import '../../staff_list/domain/entity/entity_src.dart';
 
 // Khi chọn "Loại khai báo" là "Tăng lao động"
 const laborIncrease = 1;
@@ -114,10 +114,13 @@ class DeclareInfoController extends BaseGetxController {
   bool get isBhxhCodeRequired {
     final declarationTypeId = d02State.declarationType.value?.value;
 
-    // Tăng lương/Giảm lao động/Giảm lương
+    // Tăng lương/Giảm lao động/Giảm lương/Khác
     if (declarationTypeId == 2 ||
         declarationTypeId == 3 ||
-        declarationTypeId == 4) {
+        declarationTypeId == 4 ||
+
+        // REF: VBHXHMOB-109
+        declarationTypeId == 5) {
       return true;
     }
 

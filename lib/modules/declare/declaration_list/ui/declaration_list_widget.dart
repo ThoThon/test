@@ -16,52 +16,52 @@ extension DeclarationListWidget on DeclarationListPage {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SDSBuildText(
-                    'Danh sách biểu mẫu',
+                    LocaleKeys.declareInfo_listOfForm.tr,
                     style: AppTextStyle.font16Bo,
                   ),
                   sdsSBHeight12,
                   if (saveResult.hasDsM01hsb)
                     _buildDeclarationItem(
-                      title:
-                          'Danh sách đề nghị giải quyết hưởng chế độ dưỡng sức (Mẫu 01D-HSB)',
+                      title: LocaleKeys.declareInfo_healingHsbList.tr,
                       onTap: () {
                         controller.getPreviewPdf(
                           previewDocumentType:
                               PreviewDocumentTypeEnum.healingHsb,
-                          title: 'Tờ khai tham gia',
+                          title: LocaleKeys
+                              .declareInfo_participationDeclaration.tr,
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
                   if (saveResult.hasTsM01hsb)
                     _buildDeclarationItem(
-                      title:
-                          'Danh sách đề nghị giải quyết hưởng chế độ thai sản (Mẫu 01D-HSB)',
+                      title: LocaleKeys.declareInfo_maternityHsbList.tr,
                       onTap: () {
                         controller.getPreviewPdf(
                           previewDocumentType:
                               PreviewDocumentTypeEnum.maternityHsb,
-                          title: 'Tờ khai tham gia',
+                          title: LocaleKeys
+                              .declareInfo_participationDeclaration.tr,
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
                   if (saveResult.hasOdM01hsb)
                     _buildDeclarationItem(
-                      title:
-                          'Danh sách đề nghị giải quyết hưởng chế độ ốm đau (Mẫu 01D-HSB)',
+                      title: LocaleKeys.declareInfo_sickHsbList.tr,
                       onTap: () {
                         controller.getPreviewPdf(
                           previewDocumentType: PreviewDocumentTypeEnum.sickHsb,
-                          title: 'Tờ khai tham gia',
+                          title: LocaleKeys
+                              .declareInfo_participationDeclaration.tr,
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
                   if (saveResult.hasD02)
                     _buildDeclarationItem(
-                      title: 'Danh sách lao động tham gia BHXH - (Mẫu D02-LT)',
+                      title: LocaleKeys.declareInfo_d02LaborList.tr,
                       onTap: () {
                         controller.getPreviewPdf(
                           previewDocumentType: PreviewDocumentTypeEnum.d02,
-                          title: 'Danh sách lao động',
+                          title: LocaleKeys.declareInfo_laborList.tr,
                           isRotateHorizontal: true,
                         );
                       },
@@ -69,23 +69,24 @@ extension DeclarationListWidget on DeclarationListPage {
                   _buildTk1Preview(),
                   if (saveResult.hasD01)
                     _buildDeclarationItem(
-                      title: 'Bảng kê thông tin (Mẫu D01-TS)',
+                      title: LocaleKeys.declareInfo_d01infoTable.tr,
                       onTap: () {
                         controller.getPreviewPdf(
                           previewDocumentType: PreviewDocumentTypeEnum.d01,
-                          title: 'Tờ khai tham gia',
+                          title: LocaleKeys
+                              .declareInfo_participationDeclaration.tr,
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
                   if (saveResult.attachPreviewPath != null)
                     _buildDeclarationItem(
-                      title: 'File đính kèm',
+                      title: LocaleKeys.unitInfo_missingFileInclude.tr,
                       onTap: () {
                         Get.toNamed(
                           AppRoutesCl.viewPdf.path,
                           arguments: ViewPdfArgument(
                             url: saveResult.attachPreviewPath!,
-                            title: 'File đính kèm',
+                            title: LocaleKeys.unitInfo_missingFileInclude.tr,
                           ),
                         );
                       },
@@ -100,7 +101,7 @@ extension DeclarationListWidget on DeclarationListPage {
           borderRadius: AppDimens.radius30,
           textStyle:
               AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-          title: 'Ký gửi',
+          title: LocaleKeys.dialog_consignment.tr,
           onPressed: controller.signDocument,
         ).paddingOnly(
           top: AppDimens.defaultPadding,
@@ -114,7 +115,7 @@ extension DeclarationListWidget on DeclarationListPage {
 
   Widget _buildTk1Preview() {
     final paths = controller.argument.saveXmlResult.tk1s;
-    if (paths == null || paths.isEmpty) {
+    if (paths.isEmpty) {
       return UtilWidget.shrink;
     }
 
@@ -134,7 +135,7 @@ extension DeclarationListWidget on DeclarationListPage {
       iconColor: AppColors.dsGray2,
       collapsedIconColor: AppColors.dsGray2,
       title: SDSBuildText(
-        'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
+        LocaleKeys.declareInfo_tk1Declaration.tr,
         style: AppTextStyle.font14Bo,
         maxLines: 3,
       ),
@@ -148,7 +149,7 @@ extension DeclarationListWidget on DeclarationListPage {
                   ),
                   Expanded(
                     child: SDSBuildText(
-                      path.hoTen ?? '',
+                      path.name,
                       style: AppTextStyle.font14Re,
                       maxLines: 1,
                     ),
@@ -159,7 +160,8 @@ extension DeclarationListWidget on DeclarationListPage {
                       controller.getPreviewPdf(
                         previewDocumentType: PreviewDocumentTypeEnum.tk1,
                         documentRecordId: path.documentRecordId,
-                        title: 'Tờ khai tham gia',
+                        title:
+                            LocaleKeys.declareInfo_participationDeclaration.tr,
                       );
                     },
                     child: SDSImageSvg(Assets.ASSETS_ICONS_IC_EYE_SVG),

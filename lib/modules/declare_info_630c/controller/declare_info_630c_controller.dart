@@ -16,7 +16,7 @@ import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../clean/shared/entity/category.dart';
-import '../../declare/staff_list/model/model_src.dart';
+import '../../declare/staff_list/domain/entity/entity_src.dart';
 import '../../select_staff/select_staff_src.dart';
 
 // REF: BHW-3103
