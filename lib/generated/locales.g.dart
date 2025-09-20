@@ -986,6 +986,7 @@ class LocaleKeys {
   static const staffList_edit = 'staffList_edit';
   static const staffList_delete = 'staffList_delete';
   static const staffList_listEmployee = 'staffList_listEmployee';
+  static const staffList_cannotDeleteImage = 'staffList_cannotDeleteImage';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -2134,6 +2135,7 @@ class Locales {
     'staffList_edit': 'Sửa',
     'staffList_delete': 'Xóa',
     'staffList_listEmployee': 'Danh sách nhân viên',
+    'staffList_cannotDeleteImage': 'Có lỗi xảy ra, không thể xóa ảnh',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

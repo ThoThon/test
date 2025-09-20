@@ -7,8 +7,6 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
-import '../../domain/entity/entity_src.dart';
-import '../../domain/use_case/use_case_src.dart';
 
 // Chỉ cho phép up tối đa 5 file ảnh
 const maxImageAttachments = 5;
@@ -48,7 +46,7 @@ class StaffListController extends BaseGetClController {
 
   final argument = Get.arguments as StaffListArgument;
 
-  final declaredStaffs = const <DeclaredStaff>[].obs;
+  final declaredStaffs = <DeclaredStaff>[].obs;
 
   final listAttachImage = <AttachedImage>[].obs;
 
@@ -155,7 +153,7 @@ class StaffListController extends BaseGetClController {
       action: () async {
         final fileName = _getFileNameFromUrl(fileNameFromUrl);
         if (fileName == null || fileName.trim().isEmpty) {
-          nav.showSnackBar('Có lỗi xảy ra, không thể xóa ảnh');
+          nav.showSnackBar(LocaleKeys.staffList_cannotDeleteImage.tr);
           return;
         }
 
@@ -192,11 +190,12 @@ class StaffListController extends BaseGetClController {
 
   Future<void> saveXml() async {
     if (declaredStaffs.isEmpty) {
-      nav.showSnackBar('Chưa có nhân viên nào được khai báo');
+      nav.showSnackBar(LocaleKeys.declarationPeriod_declaredStaffsIsEmpty.tr);
       return;
     }
 
     return buildState(
+      showLoadingOverlay: true,
       action: () async {
         final response = await switch (procedureType) {
           ProcedureType.procedure600 => _saveXml600UseCase.execute(
@@ -312,7 +311,7 @@ class StaffListController extends BaseGetClController {
       ProcedureType.procedure630c => AppRoutesCl.declareInfo630c.path,
     };
 
-    final result = await Get.toNamed(
+    final result = await nav.toNamed(
       path,
       arguments: DeclareInfoArgument(
         declarationPeriodId: declarationPeriodId,

@@ -44,7 +44,7 @@ class OtherInfoRepositoryImpl extends OtherInfoRepository {
       method: RestMethod.get,
       path: AppApi.urlGetDetailMs,
       cancelToken: cancelToken,
-      body: {"key": key},
+      queryParameters: {"key": key},
     );
 
     final data = BaseResponseCl<OtherInfoData>.fromJson(

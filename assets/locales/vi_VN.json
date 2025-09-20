@@ -792,7 +792,8 @@
     "noEmployeeDeclaredMessage": "Chưa có nhân viên nào được khai báo",
     "edit": "Sửa",
     "delete": "Xóa",
-    "listEmployee": "Danh sách nhân viên"
+    "listEmployee": "Danh sách nhân viên",
+    "cannotDeleteImage": "Có lỗi xảy ra, không thể xóa ảnh"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",
