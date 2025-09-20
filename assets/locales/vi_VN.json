@@ -707,7 +707,9 @@
     "appraisalDate": "Ngày giám định",
     "appraisalDateInvalid": "Ngày giám định không hợp lệ",
     "appraisalDateCannotEmpty": "Ngày giám định không được bỏ trống",
-    "declarationPeriosMax99": "Không kê khai quá đợt 99"
+    "declarationPeriosMax99": "Không kê khai quá đợt 99",
+    "toolTipCheckboxTk1": "Báo tăng lao động tham gia BHXH",
+    "toolTipCheckboxD01": "Kê khai hồ sơ chậm muộn"
   },
   "familyMember": {
     "title": "Thêm thành viên",

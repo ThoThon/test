@@ -716,47 +716,6 @@ class DeclareInfoController extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
-  // void goToScanCCCD() async {
-  //   autovalidateMode.value = AutovalidateMode.always;
-
-  //   final cccd = d02Tk1State.cccdTextCtrl.text.trim();
-  //   if (!_isValidCCCD(cccd)) return;
-  //   final result = await Get.toNamed(
-  //     AppRoutesCl.nfc.path,
-  //     arguments: cccd,
-  //   );
-  //   if (result != null) {
-  //     sendNfcRequestModel = result;
-  //     Gender? gender = sendNfcRequestModel.sexVMN?.parseGender;
-  //     final query =
-  //         sendNfcRequestModel.nationalityVMN?.trim().toUpperCase() ?? '';
-  //     d02Tk1State
-  //       ..fullNameTextCtrl.text = sendNfcRequestModel.nameVNM ?? ''
-  //       ..cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? ''
-  //       ..dateOfBirthTextCtrl.text = sendNfcRequestModel.dobVMN ?? ''
-  //       ..gender.value = gender
-  //       ..selectedEthnic.value = AppData.instance.ethnics
-  //           .toList()
-  //           .firstWhereOrNull(
-  //               (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM)
-  //       ..selectedNationality.value =
-  //           AppData.instance.nations.toList().firstWhereOrNull(
-  //                 (nations) => nations.text.trim() == query,
-  //               );
-  //   }
-  // }
-
-  // bool _isValidCCCD(String cccd) {
-  //   if (cccd.isEmpty) {
-  //     showSnackBar(LocaleKeys.nfc_pleaseFillCccd.tr);
-  //     return false;
-  //   } else if (cccd.length < 12) {
-  //     showSnackBar(LocaleKeys.declareInfo_cccdNumberIsValid.tr);
-  //     return false;
-  //   }
-  //   return true;
-  // }
-
   /// Nếu chọn loại khai báo và phương án trong các type sau
   /// "Từ tháng/năm" sẽ thành isRequired
   ///
@@ -854,6 +813,24 @@ class DeclareInfoController extends BaseGetxController {
 
     // Nếu không có điều kiện nào thỏa mãn
     tk1State.isHouseholdInfoRequired.value = false;
+  }
+
+  /// REF: VBHXHMOB-108
+  ///
+  /// Nếu Mã số BHXH == null -> checkboxTk1 = true và disable checkbox này
+  /// Nếu Mã số BHXH != null -> enable checkboxTk1
+  void enableCheckboxGenerateTk1() {
+    final declarationTypeId = d02State.declarationType.value?.value;
+    final plan = d02State.plan.value?.id;
+    if (declarationTypeId != 1) return;
+    if (['TM', 'TH'].contains(plan)) {
+      if (d02Tk1State.bhxhTextCtrl.text.isEmpty) {
+        d02State.enableCheckoxGenerateTk1.value = false;
+        d02State.isGenerateTk1Data.value = true;
+        return;
+      }
+    }
+    d02State.enableCheckoxGenerateTk1.value = true;
   }
 
   void updateClearTTIconState() {

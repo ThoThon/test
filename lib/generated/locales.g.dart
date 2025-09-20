@@ -867,6 +867,10 @@ class LocaleKeys {
       'declareInfo_appraisalDateCannotEmpty';
   static const declareInfo_declarationPeriosMax99 =
       'declareInfo_declarationPeriosMax99';
+  static const declareInfo_toolTipCheckboxTk1 =
+      'declareInfo_toolTipCheckboxTk1';
+  static const declareInfo_toolTipCheckboxD01 =
+      'declareInfo_toolTipCheckboxD01';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -2041,6 +2045,8 @@ class Locales {
     'declareInfo_appraisalDateCannotEmpty':
         'Ngày giám định không được bỏ trống',
     'declareInfo_declarationPeriosMax99': 'Không kê khai quá đợt 99',
+    'declareInfo_toolTipCheckboxTk1': 'Báo tăng lao động tham gia BHXH',
+    'declareInfo_toolTipCheckboxD01': 'Kê khai hồ sơ chậm muộn',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

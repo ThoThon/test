@@ -397,6 +397,7 @@ extension D02TabWidget on DeclareInfoPage {
                     controller.d02State.isGenerateTk1Data.value =
                         value.isGenerateTk1(
                             controller.d02State.declarationType.value);
+                    controller.enableCheckboxGenerateTk1();
                   },
                 ).paddingOnly(bottom: AppDimens.paddingSmall);
               },
@@ -437,20 +438,25 @@ extension D02TabWidget on DeclareInfoPage {
   Widget _buildGenerateTk1DataCheckbox() {
     return Row(
       children: [
-        UtilWidget.buildCheckboxWithLabel(
-          label: LocaleKeys.declareInfo_generateTk1Data.tr,
-          value: controller.d02State.isGenerateTk1Data.value,
-          onChanged: (value) {
-            controller.d02State.isGenerateTk1Data.value = value;
-            controller.updateHouseholdInfoRequired();
-          },
+        Obx(
+          () => UtilWidget.buildCheckboxWithLabel(
+            label: LocaleKeys.declareInfo_generateTk1Data.tr,
+            value: controller.d02State.isGenerateTk1Data.value,
+            enable: controller.d02State.enableCheckoxGenerateTk1.value,
+            onChanged: controller.d02State.enableCheckoxGenerateTk1.value
+                ? (value) {
+                    controller.d02State.isGenerateTk1Data.value = value;
+                    controller.updateHouseholdInfoRequired();
+                  }
+                : null,
+          ),
         ),
         sdsSBWidth8,
-        const Tooltip(
-          margin: EdgeInsets.only(right: AppDimens.padding32),
-          message: "Báo tăng lao động tham gia BHXH",
+        Tooltip(
+          margin: const EdgeInsets.only(right: AppDimens.padding32),
+          message: LocaleKeys.declareInfo_toolTipCheckboxTk1.tr,
           triggerMode: TooltipTriggerMode.tap,
-          child: Icon(
+          child: const Icon(
             Icons.help_outline,
             size: 16,
           ),
@@ -697,12 +703,12 @@ extension D02TabWidget on DeclareInfoPage {
           },
         ),
         sdsSBWidth8,
-        const Tooltip(
+        Tooltip(
           verticalOffset: -50,
-          margin: EdgeInsets.only(right: AppDimens.padding32),
-          message: "Kê khai hồ sơ chậm muộn",
+          margin: const EdgeInsets.only(right: AppDimens.padding32),
+          message: LocaleKeys.declareInfo_toolTipCheckboxD01.tr,
           triggerMode: TooltipTriggerMode.tap,
-          child: Icon(
+          child: const Icon(
             Icons.help_outline,
             size: 16,
           ),

@@ -1326,6 +1326,7 @@ class UtilWidget {
     required String label,
     required bool value,
     ValueChanged<bool>? onChanged,
+    bool enable = true,
   }) {
     return GestureDetector(
       onTap: () {
@@ -1337,7 +1338,8 @@ class UtilWidget {
           Checkbox(
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             value: value,
-            activeColor: AppColors.primaryColor,
+            activeColor:
+                enable ? AppColors.primaryColor : AppColors.primaryColorDisable,
             onChanged: (value) {
               onChanged?.call(value ?? false);
             },
