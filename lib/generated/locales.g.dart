@@ -877,6 +877,10 @@ class LocaleKeys {
       'declareInfo_participationDeclaration';
   static const declareInfo_laborList = 'declareInfo_laborList';
   static const declareInfo_tk1Declaration = 'declareInfo_tk1Declaration';
+  static const declareInfo_toolTipCheckboxTk1 =
+      'declareInfo_toolTipCheckboxTk1';
+  static const declareInfo_toolTipCheckboxD01 =
+      'declareInfo_toolTipCheckboxD01';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -2066,6 +2070,8 @@ class Locales {
     'declareInfo_laborList': 'Danh sách lao động',
     'declareInfo_tk1Declaration':
         'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
+    'declareInfo_toolTipCheckboxTk1': 'Báo tăng lao động tham gia BHXH',
+    'declareInfo_toolTipCheckboxD01': 'Kê khai hồ sơ chậm muộn',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

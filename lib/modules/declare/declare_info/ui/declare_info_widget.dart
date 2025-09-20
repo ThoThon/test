@@ -214,6 +214,7 @@ extension DeclareInfoWidget on DeclareInfoPage {
               onChanged: (value) {
                 controller.updateHouseholdInfoRequired();
                 controller.updateClearTTIconState();
+                controller.updateGenerateTk1();
               },
             );
           },

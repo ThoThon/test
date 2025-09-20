@@ -15,6 +15,9 @@ import '../../../../base_app/base_app.src.dart';
 import '../../../select_staff/model/select_staff_response.dart';
 import '../../staff_list/domain/entity/entity_src.dart';
 
+// Khi chọn "Loại khai báo" là "Tăng lao động"
+const laborIncrease = 1;
+
 class DeclareInfoController extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
   final currentTab = DeclareInfoTab.d02.obs;
@@ -719,47 +722,6 @@ class DeclareInfoController extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
-  // void goToScanCCCD() async {
-  //   autovalidateMode.value = AutovalidateMode.always;
-
-  //   final cccd = d02Tk1State.cccdTextCtrl.text.trim();
-  //   if (!_isValidCCCD(cccd)) return;
-  //   final result = await Get.toNamed(
-  //     AppRoutesCl.nfc.path,
-  //     arguments: cccd,
-  //   );
-  //   if (result != null) {
-  //     sendNfcRequestModel = result;
-  //     Gender? gender = sendNfcRequestModel.sexVMN?.parseGender;
-  //     final query =
-  //         sendNfcRequestModel.nationalityVMN?.trim().toUpperCase() ?? '';
-  //     d02Tk1State
-  //       ..fullNameTextCtrl.text = sendNfcRequestModel.nameVNM ?? ''
-  //       ..cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? ''
-  //       ..dateOfBirthTextCtrl.text = sendNfcRequestModel.dobVMN ?? ''
-  //       ..gender.value = gender
-  //       ..selectedEthnic.value = AppData.instance.ethnics
-  //           .toList()
-  //           .firstWhereOrNull(
-  //               (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM)
-  //       ..selectedNationality.value =
-  //           AppData.instance.nations.toList().firstWhereOrNull(
-  //                 (nations) => nations.text.trim() == query,
-  //               );
-  //   }
-  // }
-
-  // bool _isValidCCCD(String cccd) {
-  //   if (cccd.isEmpty) {
-  //     showSnackBar(LocaleKeys.nfc_pleaseFillCccd.tr);
-  //     return false;
-  //   } else if (cccd.length < 12) {
-  //     showSnackBar(LocaleKeys.declareInfo_cccdNumberIsValid.tr);
-  //     return false;
-  //   }
-  //   return true;
-  // }
-
   /// Nếu chọn loại khai báo và phương án trong các type sau
   /// "Từ tháng/năm" sẽ thành isRequired
   ///
@@ -857,6 +819,24 @@ class DeclareInfoController extends BaseGetxController {
 
     // Nếu không có điều kiện nào thỏa mãn
     tk1State.isHouseholdInfoRequired.value = false;
+  }
+
+  /// REF: VBHXHMOB-108
+  ///
+  /// Nếu Mã số BHXH == null -> checkboxTk1 = true và disable checkbox này
+  /// Nếu Mã số BHXH != null -> enable checkboxTk1
+  void updateGenerateTk1() {
+    final declarationTypeId = d02State.declarationType.value?.value;
+    final plan = d02State.plan.value?.id;
+    if (declarationTypeId != laborIncrease) return;
+    if (['TM', 'TH'].contains(plan)) {
+      if (d02Tk1State.bhxhTextCtrl.text.trim().isEmpty) {
+        d02State.isGenerateTk1CheckboxEnabled.value = false;
+        d02State.isGenerateTk1Data.value = true;
+        return;
+      }
+    }
+    d02State.isGenerateTk1CheckboxEnabled.value = true;
   }
 
   void updateClearTTIconState() {

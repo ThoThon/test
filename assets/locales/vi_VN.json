@@ -716,7 +716,10 @@
     "d01infoTable": "Bảng kê thông tin (Mẫu D01-TS)",
     "participationDeclaration": "Tờ khai tham gia",
     "laborList": "Danh sách lao động",
-    "tk1Declaration": "Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)"
+    "tk1Declaration": "Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)",
+    "declarationPeriosMax99": "Không kê khai quá đợt 99",
+    "toolTipCheckboxTk1": "Báo tăng lao động tham gia BHXH",
+    "toolTipCheckboxD01": "Kê khai hồ sơ chậm muộn"
   },
   "familyMember": {
     "title": "Thêm thành viên",
