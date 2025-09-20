@@ -8,7 +8,7 @@ import '../../../base_app/model/app_data.dart';
 import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
 import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
-import '../../declare/staff_list/model/staff_list_argument.dart';
+import '../../declare/staff_list/domain/entity/entity_src.dart';
 import '../../select_staff/model/model_src.dart';
 import '../../src.dart';
 

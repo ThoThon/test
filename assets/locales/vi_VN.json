@@ -707,7 +707,16 @@
     "appraisalDate": "Ngày giám định",
     "appraisalDateInvalid": "Ngày giám định không hợp lệ",
     "appraisalDateCannotEmpty": "Ngày giám định không được bỏ trống",
-    "declarationPeriosMax99": "Không kê khai quá đợt 99"
+    "declarationPeriosMax99": "Không kê khai quá đợt 99",
+    "listOfForm": "Danh sách biểu mẫu",
+    "healingHsbList": "Danh sách đề nghị giải quyết hưởng chế độ dưỡng sức (Mẫu 01D-HSB)",
+    "maternityHsbList": "Danh sách đề nghị giải quyết hưởng chế độ thai sản (Mẫu 01D-HSB)",
+    "sickHsbList": "Danh sách đề nghị giải quyết hưởng chế độ ốm đau (Mẫu 01D-HSB)",
+    "d02LaborList": "Danh sách lao động tham gia BHXH - (Mẫu D02-LT)",
+    "d01infoTable": "Bảng kê thông tin (Mẫu D01-TS)",
+    "participationDeclaration": "Tờ khai tham gia",
+    "laborList": "Danh sách lao động",
+    "tk1Declaration": "Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)"
   },
   "familyMember": {
     "title": "Thêm thành viên",
@@ -792,7 +801,8 @@
     "noEmployeeDeclaredMessage": "Chưa có nhân viên nào được khai báo",
     "edit": "Sửa",
     "delete": "Xóa",
-    "listEmployee": "Danh sách nhân viên"
+    "listEmployee": "Danh sách nhân viên",
+    "cannotDeleteImage": "Có lỗi xảy ra, không thể xóa ảnh"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",

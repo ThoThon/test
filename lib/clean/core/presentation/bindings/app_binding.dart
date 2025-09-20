@@ -9,16 +9,8 @@ import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
 import 'package:v_bhxh/clean/shared/mapper/categories_630/benefit_group_630_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/categories_630/long_diease_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/category_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/certificate_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/first_time_register_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/lookup_c12_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/clean/shared/mapper/register_code_categories_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/register_service_request_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/tax_code_verify_request_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/transaction_info_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/update_unit_info_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
@@ -27,9 +19,6 @@ import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 import '../../../shared/mapper/categories_630/bank_data_mapper.dart';
 import '../../../shared/mapper/categories_630/benefit_group_lv2_data_mapper.dart';
 import '../../../shared/mapper/categories_630/categories_630_data_mapper.dart';
-import '../../../shared/mapper/notification_item_data_mapper.dart';
-import '../../../shared/mapper/notification_list_data_mapper.dart';
-import '../../../shared/mapper/notification_list_request_data_mapper.dart';
 import '../../../shared/mapper/social_agency_data_mapper.dart';
 import 'base_bindings.dart';
 
@@ -88,6 +77,12 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => TransactionInfoDataMapper(), fenix: true);
     Get.lazyPut(() => RegisterServiceRequestDataMapper(), fenix: true);
     Get.lazyPut(() => UpdateUnitInfoRequestDataMapper(), fenix: true);
+    Get.lazyPut(() => AttachedImageDataMapper(), fenix: true);
+    Get.lazyPut(() => DeclaredStaffDataMapper(), fenix: true);
+    Get.lazyPut(() => OtherInfoDataMapper(), fenix: true);
+    Get.lazyPut(() => SaveXmlResultDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => StaffListDataMapper(sl(), sl()), fenix: true);
+    Get.lazyPut(() => Tk1PreviewPathDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

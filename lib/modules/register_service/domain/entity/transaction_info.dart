@@ -1,4 +1,6 @@
-class TransactionInfo {
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
+
+class TransactionInfo implements Entity {
   // idCongTy
   final String companyId;
 
