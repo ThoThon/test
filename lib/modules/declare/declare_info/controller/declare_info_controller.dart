@@ -111,10 +111,13 @@ class DeclareInfoController extends BaseGetxController {
   bool get isBhxhCodeRequired {
     final declarationTypeId = d02State.declarationType.value?.value;
 
-    // Tăng lương/Giảm lao động/Giảm lương
+    // Tăng lương/Giảm lao động/Giảm lương/Khác
     if (declarationTypeId == 2 ||
         declarationTypeId == 3 ||
-        declarationTypeId == 4) {
+        declarationTypeId == 4 ||
+
+        // REF: VBHXHMOB-109
+        declarationTypeId == 5) {
       return true;
     }
 
