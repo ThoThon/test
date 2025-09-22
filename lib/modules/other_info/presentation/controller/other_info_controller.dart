@@ -77,7 +77,7 @@ class OtherInfoController extends BaseGetClController {
           if (error.kind == RemoteExceptionKind.serverDefined) {
             final serverCode = error.serverError?.code;
             // REF: VBHXHMOB-116
-            // Vì trước đó có lỗi gì đấy không nhớ
+            // Trước có lỗi thiếu id, nên phải vào màn này gọi api lấy về id
             // Nên config auto vào màn này sẽ get detail
             if (serverCode == responseCodeNotFound) return null;
           }
