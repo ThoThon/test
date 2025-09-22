@@ -39,6 +39,7 @@ class StaffList630RepositoryImpl extends StaffList630Repository {
       method: RestMethod.delete,
       path: AppApi.urlDelete630a,
       cancelToken: cancelToken,
+      queryParameters: {'id': id},
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;
@@ -71,6 +72,7 @@ class StaffList630RepositoryImpl extends StaffList630Repository {
       method: RestMethod.delete,
       path: AppApi.urlDelete630c,
       cancelToken: cancelToken,
+      queryParameters: {'id': id},
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;
@@ -103,6 +105,7 @@ class StaffList630RepositoryImpl extends StaffList630Repository {
       method: RestMethod.delete,
       path: AppApi.urlDelete630c,
       cancelToken: cancelToken,
+      queryParameters: {'id': id},
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;

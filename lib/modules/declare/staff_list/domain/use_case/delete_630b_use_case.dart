@@ -10,6 +10,6 @@ class Delete630bUseCase extends UseCase<String, bool> {
 
   @override
   Future<bool> execute(String input) {
-    return _staffList630Repository.delete630a(id: input);
+    return _staffList630Repository.delete630b(id: input);
   }
 }
