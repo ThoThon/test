@@ -12,7 +12,7 @@ abstract class StaffList630Repository extends BaseRepositoryCl {
     required String id,
   });
 
-  Future<StaffList> getListStaff630b({
+  Future<StaffList> getStaffList630b({
     required String declarationPeriodId,
   });
 
@@ -21,7 +21,7 @@ abstract class StaffList630Repository extends BaseRepositoryCl {
     required String id,
   });
 
-  Future<StaffList> getListStaff630c({
+  Future<StaffList> getStaffList630c({
     required String declarationPeriodId,
   });
 

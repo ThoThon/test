@@ -1,7 +1,3 @@
-import 'package:v_bhxh/modules/declare/staff_list/data/model/staff_list_data.dart';
-import 'package:v_bhxh/modules/declare/staff_list/domain/entity/staff_list.dart';
-import 'package:v_bhxh/modules/declare/staff_list/domain/repository/staff_list_630_repository.dart';
-
 import '../../../../../clean/core/data/data_source/network/network_src.dart';
 import '../../../../../clean/core/data/model/base_response_cl.dart';
 import '../../../../../clean/shared/mapper/mapper_src.dart';
@@ -49,7 +45,7 @@ class StaffList630RepositoryImpl extends StaffList630Repository {
   }
 
   @override
-  Future<StaffList> getListStaff630b({
+  Future<StaffList> getStaffList630b({
     required String declarationPeriodId,
   }) async {
     final response = await _authAppServerApiClient.request(
@@ -81,7 +77,7 @@ class StaffList630RepositoryImpl extends StaffList630Repository {
   }
 
   @override
-  Future<StaffList> getListStaff630c({
+  Future<StaffList> getStaffList630c({
     required String declarationPeriodId,
   }) async {
     final response = await _authAppServerApiClient.request(
