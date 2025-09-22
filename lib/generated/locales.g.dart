@@ -1276,6 +1276,13 @@ class LocaleKeys {
   static const otherInfo_inputReason = 'otherInfo_inputReason';
   static const otherInfo_next = 'otherInfo_next';
   static const otherInfo_titleTooltip = 'otherInfo_titleTooltip';
+  static const weeklyDayOff_monday = 'weeklyDayOff_monday';
+  static const weeklyDayOff_tuesday = 'weeklyDayOff_tuesday';
+  static const weeklyDayOff_wednesday = 'weeklyDayOff_wednesday';
+  static const weeklyDayOff_thursday = 'weeklyDayOff_thursday';
+  static const weeklyDayOff_friday = 'weeklyDayOff_friday';
+  static const weeklyDayOff_saturday = 'weeklyDayOff_saturday';
+  static const weeklyDayOff_sunday = 'weeklyDayOff_sunday';
 }
 
 class Locales {
@@ -2398,5 +2405,12 @@ class Locales {
     'otherInfo_inputReason': 'Nhập lý do giải trình',
     'otherInfo_next': 'Tiếp theo',
     'otherInfo_titleTooltip': 'Trường hợp chọn nhận trợ cấp qua đơn vị',
+    'weeklyDayOff_monday': 'Thứ hai',
+    'weeklyDayOff_tuesday': 'Thứ ba',
+    'weeklyDayOff_wednesday': 'Thứ tư',
+    'weeklyDayOff_thursday': 'Thứ năm',
+    'weeklyDayOff_friday': 'Thứ sáu',
+    'weeklyDayOff_saturday': 'Thứ bảy',
+    'weeklyDayOff_sunday': 'Chủ nhật',
   };
 }

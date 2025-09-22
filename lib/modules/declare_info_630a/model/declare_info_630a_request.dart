@@ -1,3 +1,5 @@
+import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
+
 class DeclareInfo630aRequest {
   final String? id;
   final String? kyKeKhaiId;
@@ -26,7 +28,7 @@ class DeclareInfo630aRequest {
   final String? hinhThucNhan;
   final String? soTaiKhoan;
   final String? tenChuTaiKhoan;
-  final String? maNganHang;
+  final Bank? maNganHang;
   final String? ghiChu;
   final String? dotDaGiaiQuyet;
   final DateTime? tuNgayDuyetTruoc;
@@ -95,7 +97,7 @@ class DeclareInfo630aRequest {
         'hinhThucNhan': hinhThucNhan,
         'soTaiKhoan': soTaiKhoan,
         'tenChuTaiKhoan': tenChuTaiKhoan,
-        'maNganHang': maNganHang,
+        'maNganHang': maNganHang?.code ?? '',
         'ghiChu': ghiChu,
         'dotDaGiaiQuyet': dotDaGiaiQuyet,
         'tuNgayDuyetTruoc': tuNgayDuyetTruoc?.toIso8601String(),
