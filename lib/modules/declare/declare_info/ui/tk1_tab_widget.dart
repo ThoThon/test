@@ -328,11 +328,14 @@ extension Tk1TabWidget on DeclareInfoPage {
                 }
 
                 final result = await Get.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: provinceOfBirth.id,
-                    selectedWard: controller.tk1State.wardOfBirth.value,
-                  ),
+                  SelectWardBtsCl(),
                   isScrollControlled: true,
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: provinceOfBirth.id,
+                      selectedWard: controller.tk1State.wardOfBirth.value,
+                    ),
+                  ),
                 );
 
                 if (result != null) {
@@ -434,11 +437,14 @@ extension Tk1TabWidget on DeclareInfoPage {
                 }
 
                 final result = await Get.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: provinceReceive.id,
-                    selectedWard: controller.tk1State.wardReceive.value,
-                  ),
+                  SelectWardBtsCl(),
                   isScrollControlled: true,
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: provinceReceive.id,
+                      selectedWard: controller.tk1State.wardOfBirth.value,
+                    ),
+                  ),
                 );
 
                 if (result != null) {
@@ -736,13 +742,15 @@ extension Tk1TabWidget on DeclareInfoPage {
                 }
 
                 final result = await Get.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: provinceTT.id,
-                    selectedWard: controller.tk1State.wardTT.value,
-                  ),
+                  SelectWardBtsCl(),
                   isScrollControlled: true,
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: provinceTT.id,
+                      selectedWard: controller.tk1State.wardOfBirth.value,
+                    ),
+                  ),
                 );
-
                 if (result != null) {
                   controller.onChangeWardTT(result);
                   didChange(result);

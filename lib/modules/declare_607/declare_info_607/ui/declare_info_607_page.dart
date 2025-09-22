@@ -11,6 +11,9 @@ import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
+import '../../../declare/declare_info/clean/domain/entity/entity_src.dart';
+import '../../../declare/declare_info/clean/presentation/presentation_src.dart';
+
 part '../model/tk1_tab_607_widget.dart';
 part 'd01_tab_607_widget.dart';
 part 'declare_info_607_widget.dart';

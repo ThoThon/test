@@ -8,6 +8,9 @@ import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
+
+import '../../declare_info/clean/domain/entity/entity_src.dart';
+import '../../declare_info/clean/presentation/presentation_src.dart';
 part 'family_member_detail_widget.dart';
 
 class FamilyMemberDetailPage
