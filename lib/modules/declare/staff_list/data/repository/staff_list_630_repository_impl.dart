@@ -39,13 +39,14 @@ class StaffList630RepositoryImpl extends StaffList630Repository {
       method: RestMethod.delete,
       path: AppApi.urlDelete630a,
       cancelToken: cancelToken,
+      queryParameters: {'id': id},
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;
   }
 
   @override
-  Future<StaffList> getListStaff630b({
+  Future<StaffList> getStaffList630b({
     required String declarationPeriodId,
   }) async {
     final response = await _authAppServerApiClient.request(
@@ -71,13 +72,14 @@ class StaffList630RepositoryImpl extends StaffList630Repository {
       method: RestMethod.delete,
       path: AppApi.urlDelete630c,
       cancelToken: cancelToken,
+      queryParameters: {'id': id},
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;
   }
 
   @override
-  Future<StaffList> getListStaff630c({
+  Future<StaffList> getStaffList630c({
     required String declarationPeriodId,
   }) async {
     final response = await _authAppServerApiClient.request(
@@ -103,6 +105,7 @@ class StaffList630RepositoryImpl extends StaffList630Repository {
       method: RestMethod.delete,
       path: AppApi.urlDelete630c,
       cancelToken: cancelToken,
+      queryParameters: {'id': id},
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;
