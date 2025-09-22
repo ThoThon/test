@@ -12,7 +12,7 @@ class GetStaffList630bUseCase extends UseCase<String, StaffList> {
 
   @override
   Future<StaffList> execute(String input) {
-    return _staffList630Repository.getStaffList630a(
+    return _staffList630Repository.getStaffList630b(
       declarationPeriodId: input,
     );
   }
