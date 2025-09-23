@@ -2,10 +2,6 @@ import 'package:v_bhxh/clean/core/presentation/widgets/widget_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/src.dart';
 
-import '../../domain/entity/declared_staff.dart';
-import '../../domain/entity/entity_src.dart';
-import '../controller/staff_list_controller.dart';
-
 part 'staff_list_widget.dart';
 
 class StaffListPage extends BaseGetPage<StaffListController> {
