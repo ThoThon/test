@@ -327,9 +327,8 @@ extension Tk1TabWidget on DeclareInfoPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
+                final result = await nav.showBottomSheet<Ward>(
                   SelectWardBtsCl(),
-                  isScrollControlled: true,
                   settings: RouteSettings(
                     arguments: SelectWardArgument(
                       provinceCode: provinceOfBirth.id,
@@ -436,9 +435,8 @@ extension Tk1TabWidget on DeclareInfoPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
+                final result = await nav.showBottomSheet<Ward>(
                   SelectWardBtsCl(),
-                  isScrollControlled: true,
                   settings: RouteSettings(
                     arguments: SelectWardArgument(
                       provinceCode: provinceReceive.id,
@@ -741,9 +739,8 @@ extension Tk1TabWidget on DeclareInfoPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
+                final result = await nav.showBottomSheet<Ward>(
                   SelectWardBtsCl(),
-                  isScrollControlled: true,
                   settings: RouteSettings(
                     arguments: SelectWardArgument(
                       provinceCode: provinceTT.id,

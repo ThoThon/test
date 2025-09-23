@@ -10,6 +10,8 @@ import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
+import '../../../../clean/core/presentation/navigation/navigation_src.dart';
+import '../../../../clean/shared/utils/get_finder.dart';
 import '../../family_member_detail/domain/entity/birth_type_enum.dart';
 import '../clean/presentation/select_ward_bts.dart';
 
@@ -25,6 +27,9 @@ class DeclareInfoPage extends BaseGetWidget<DeclareInfoController> {
   DeclareInfoController get controller => _controller;
 
   late final _controller = Get.put(DeclareInfoController());
+
+  // TODO: Sau khi clean thì nhớ xóa
+  late final nav = sl<AppNavigator>();
 
   @override
   Widget buildWidgets(BuildContext context) {

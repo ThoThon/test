@@ -439,7 +439,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
               validator: validator,
               label: LocaleKeys.declareInfo_ethnic.tr,
               funcSelect: (didChange) {
-                Get.bottomSheet(
+                nav.bottomSheet(
                   BottomSheetSearch<Ethnic>(
                     title: LocaleKeys.declareInfo_selectEthnic.tr,
                     maxLength: 20,
@@ -588,9 +588,8 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
+                final result = await nav.showBottomSheet<Ward>(
                   SelectWardBtsCl(),
-                  isScrollControlled: true,
                   settings: RouteSettings(
                     arguments: SelectWardArgument(
                       provinceCode: provinceOfBirth.id,
@@ -697,9 +696,8 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
+                final result = await nav.showBottomSheet<Ward>(
                   SelectWardBtsCl(),
-                  isScrollControlled: true,
                   settings: RouteSettings(
                     arguments: SelectWardArgument(
                       provinceCode: provinceReceive.id,
@@ -948,9 +946,8 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
+                final result = await nav.showBottomSheet<Ward>(
                   SelectWardBtsCl(),
-                  isScrollControlled: true,
                   settings: RouteSettings(
                     arguments: SelectWardArgument(
                       provinceCode: provinceReceivePaper.id,
@@ -1216,9 +1213,8 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
+                final result = await nav.showBottomSheet<Ward>(
                   SelectWardBtsCl(),
-                  isScrollControlled: true,
                   settings: RouteSettings(
                     arguments: SelectWardArgument(
                       provinceCode: provinceTT.id,
