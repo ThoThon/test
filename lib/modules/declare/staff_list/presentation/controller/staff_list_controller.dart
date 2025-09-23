@@ -102,22 +102,19 @@ class StaffListController extends BaseGetClController {
     listAttachImage.removeAt(index);
   }
 
-  Future<void> _getStaffList() async {
+  Future<void> _getStaffList({bool showLoading = true}) async {
     return buildState(
-      showLoading: true,
+      showLoading: showLoading,
       action: () async {
         final response = await switch (procedureType) {
-          ProcedureType.procedure600 => _getStaffList600UseCase.execute(
-              declarationPeriodId,
-            ),
+          ProcedureType.procedure600 =>
+            _getStaffList600UseCase.execute(declarationPeriodId),
           ProcedureType.procedure607 ||
           ProcedureType.procedure608 ||
           ProcedureType.procedure610 ||
           ProcedureType.procedure612 ||
           ProcedureType.procedure613 =>
-            _getStaffList607UseCase.execute(
-              declarationPeriodId,
-            ),
+            _getStaffList607UseCase.execute(declarationPeriodId),
           ProcedureType.procedure630a =>
             _getStaffList630aUseCase.execute(declarationPeriodId),
           ProcedureType.procedure630b =>
@@ -128,15 +125,12 @@ class StaffListController extends BaseGetClController {
         declaredStaffs.value = response.staffs;
         listAttachImage.value = response.image;
       },
-      onFinally: () {},
     );
   }
 
-  Future<void> upLoadFile(
-    String imagePath,
-  ) async {
+  Future<void> upLoadFile(String imagePath) async {
     return buildState(
-      showLoading: true,
+      showLoadingOverlay: true,
       action: () async {
         await _uploadAttachImageUseCase.execute(
           UploadImageRequestData(
@@ -144,12 +138,11 @@ class StaffListController extends BaseGetClController {
             periodId: declarationPeriodId,
           ),
         );
-        await _getStaffList();
+        await _getStaffList(showLoading: false);
         _scrollStaffList();
       },
     );
   }
-
 
   // REF: VBHXHMOB-119
   void _scrollStaffList() {
@@ -340,5 +333,11 @@ class StaffListController extends BaseGetClController {
     if (result != null) {
       _getStaffList();
     }
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 }
