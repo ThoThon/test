@@ -7,6 +7,7 @@ extension StaffListWidget on StaffListPage {
         sdsSBHeight16,
         Expanded(
           child: SingleChildScrollView(
+            controller: controller.scrollController,
             padding: const EdgeInsets.only(
               bottom: AppDimens.defaultPadding,
             ),
