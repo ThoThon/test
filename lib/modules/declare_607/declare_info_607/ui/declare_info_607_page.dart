@@ -1,7 +1,9 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/clean/core/presentation/navigation/app_navigator.dart';
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
+import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/family_member.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/controller/declare_info_607_controller.dart';
@@ -10,6 +12,9 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
+
+import '../../../declare/declare_info/clean/domain/entity/entity_src.dart';
+import '../../../declare/declare_info/clean/presentation/presentation_src.dart';
 
 part '../model/tk1_tab_607_widget.dart';
 part 'd01_tab_607_widget.dart';
@@ -20,6 +25,9 @@ class DeclareInfo607Page extends BaseGetWidget<DeclareInfo607Controller> {
 
   @override
   DeclareInfo607Controller get controller => _controller;
+
+  // TODO: Sau khi clean thì nhớ xóa
+  late final nav = sl<AppNavigator>();
 
   late final _controller = Get.put(DeclareInfo607Controller());
 

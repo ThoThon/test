@@ -458,12 +458,14 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                   return;
                 }
 
-                final result = await nav.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: provinceOfBirth.id,
-                    selectedWard: controller.selectedWard.value,
+                final result = await nav.showBottomSheet<Ward>(
+                  SelectWardBtsCl(),
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: provinceOfBirth.id,
+                      selectedWard: controller.selectedWard.value,
+                    ),
                   ),
-                  isScrollControlled: true,
                 );
 
                 if (result != null) {

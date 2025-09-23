@@ -11,17 +11,15 @@ class GetWardsUseCase extends UseCase<GetWardsUseCaseInput, List<Ward>> {
   Future<List<Ward>> execute(GetWardsUseCaseInput input) {
     return _wardRepository.getWards(
       provinceCode: input.provinceCode,
-      districtCode: input.districtCode,
+
     );
   }
 }
 
 class GetWardsUseCaseInput {
   final String provinceCode;
-  final String districtCode;
 
   GetWardsUseCaseInput({
     required this.provinceCode,
-    required this.districtCode,
   });
 }
