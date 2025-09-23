@@ -70,7 +70,7 @@ class StaffList630RepositoryImpl extends StaffList630Repository {
   }) async {
     final response = await _authAppServerApiClient.request(
       method: RestMethod.delete,
-      path: AppApi.urlDelete630c,
+      path: AppApi.urlDelete630b,
       cancelToken: cancelToken,
       queryParameters: {'id': id},
     );
