@@ -458,9 +458,8 @@ extension FamilyMemberDetailWidget on FamilyMemberDetailPage {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
+                final result = await nav.showBottomSheet<Ward>(
                   SelectWardBtsCl(),
-                  isScrollControlled: true,
                   settings: RouteSettings(
                     arguments: SelectWardArgument(
                       provinceCode: provinceOfBirth.id,
