@@ -19,7 +19,7 @@ class AppNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accessToken = AppHiveImpl.instance.get(HiveKeys.keyJwtToken);
+    final accessToken = AppHiveImpl.instance.get<String>(HiveKeys.keyJwtToken);
     return Image.network(
       url,
       width: width,

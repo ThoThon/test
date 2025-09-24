@@ -14,7 +14,7 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    final accessToken = AppHiveImpl.instance.get(HiveKeys.keyJwtToken);
+    final accessToken = AppHiveImpl.instance.get<String>(HiveKeys.keyJwtToken);
     return Scaffold(
       appBar: BaseAppBar(
         leading: UtilWidget.buildButtonBackAppbar(),
