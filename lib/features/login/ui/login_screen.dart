@@ -1,46 +1,81 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
-import '../controller/login_controller.dart';
+import '../bloc/login_bloc.dart';
+import '../bloc/login_event.dart';
+import '../bloc/login_state.dart';
 import '../widgets/footer_button.dart';
-import '../widgets/input_field.dart';
+import '../widgets/input_field_bloc.dart';
 
-class LoginScreen extends GetView<LoginController> {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => LoginBloc()..add(LoginStarted()),
+      child: const LoginScreenView(),
+    );
+  }
+}
+
+class LoginScreenView extends StatefulWidget {
+  const LoginScreenView({super.key});
+
+  @override
+  State<LoginScreenView> createState() => _LoginScreenViewState();
+}
+
+class _LoginScreenViewState extends State<LoginScreenView> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Form(
-            key: controller.formKey,
-            child: _buildBodyPage(),
-          ),
+      body: BlocListener<LoginBloc, LoginState>(
+        listener: (context, state) {
+          if (state.errorMessage.isNotEmpty) {
+            _showErrorDialog(context, state.errorMessage);
+          }
+        },
+        child: BlocConsumer<LoginBloc, LoginState>(
+          listener: (context, state) {
+            if (state.isLoginSuccess) {
+              Navigator.of(context).pushReplacementNamed('/home');
+            }
+          },
+          builder: (context, state) {
+            return SingleChildScrollView(
+              child: SafeArea(
+                child: Form(
+                  key: context.read<LoginBloc>().formKey,
+                  child: _buildBodyPage(context, state),
+                ),
+              ),
+            );
+          },
         ),
       ),
     );
   }
 
-  Widget _buildBodyPage() {
+  Widget _buildBodyPage(BuildContext context, LoginState state) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildIconLogo(),
         const SizedBox(height: 24),
-        _buildTaxCode(),
+        _buildTaxCode(context),
         const SizedBox(height: 24),
-        _buildUserName(),
+        _buildUserName(context),
         const SizedBox(height: 24),
-        _buildPassword(),
+        _buildPassword(context),
         const SizedBox(height: 30),
-        _buttonLogin(),
+        _buttonLogin(context, state),
         const SizedBox(height: 200),
         _buildBottom(),
-        SizedBox(height: Get.mediaQuery.padding.bottom + 20),
+        SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
       ],
     );
   }
@@ -56,10 +91,11 @@ class LoginScreen extends GetView<LoginController> {
     );
   }
 
-  Widget _buildTaxCode() {
-    return InputField(
+  Widget _buildTaxCode(BuildContext context) {
+    final bloc = context.read<LoginBloc>();
+    return InputFieldBloc(
       label: "Mã số thuế",
-      controller: controller.taxController,
+      controller: bloc.taxController,
       inputFormatter: [FilteringTextInputFormatter.digitsOnly],
       hintText: 'Mã số thuế',
       clearIconAsset: 'assets/icons/blank.svg',
@@ -72,27 +108,44 @@ class LoginScreen extends GetView<LoginController> {
         }
         return null;
       },
+      onChanged: (value) {
+        bloc.add(LoginFormChanged(
+          taxCode: value,
+          username: bloc.usernameController.text,
+          password: bloc.passwordController.text,
+        ));
+      },
     );
   }
 
-  Widget _buildUserName() {
-    return InputField(
-        label: "Tài khoản",
-        controller: controller.usernameController,
-        hintText: 'Tài khoản',
-        clearIconAsset: 'assets/icons/blank.svg',
-        validator: (value) {
-          if (value == null || value.trim().isEmpty) {
-            return 'Tài khoản không được để trống';
-          }
-          return null;
-        });
+  Widget _buildUserName(BuildContext context) {
+    final bloc = context.read<LoginBloc>();
+    return InputFieldBloc(
+      label: "Tài khoản",
+      controller: bloc.usernameController,
+      hintText: 'Tài khoản',
+      clearIconAsset: 'assets/icons/blank.svg',
+      validator: (value) {
+        if (value == null || value.trim().isEmpty) {
+          return 'Tài khoản không được để trống';
+        }
+        return null;
+      },
+      onChanged: (value) {
+        bloc.add(LoginFormChanged(
+          taxCode: bloc.taxController.text,
+          username: value,
+          password: bloc.passwordController.text,
+        ));
+      },
+    );
   }
 
-  Widget _buildPassword() {
-    return InputField(
+  Widget _buildPassword(BuildContext context) {
+    final bloc = context.read<LoginBloc>();
+    return InputFieldBloc(
       label: "Mật khẩu",
-      controller: controller.passwordController,
+      controller: bloc.passwordController,
       hintText: 'Mật khẩu',
       showPassword: true,
       validator: (value) {
@@ -100,49 +153,89 @@ class LoginScreen extends GetView<LoginController> {
           return 'Mật khẩu không được để trống';
         }
         if (value.length < 6 || value.length > 50) {
-          return 'Mật khóa chỉ từ 6 đến 50 ký tự';
+          return 'Mật khẩu chỉ từ 6 đến 50 ký tự';
         }
         return null;
+      },
+      onChanged: (value) {
+        bloc.add(LoginFormChanged(
+          taxCode: bloc.taxController.text,
+          username: bloc.usernameController.text,
+          password: value,
+        ));
       },
     );
   }
 
-  Widget _buttonLogin() {
+  Widget _buttonLogin(BuildContext context, LoginState state) {
+    final bloc = context.read<LoginBloc>();
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SizedBox(
         width: 400,
         height: 60,
-        child: Obx(
-          () => ElevatedButton(
-            onPressed:
-                controller.isLoading.value ? null : controller.onLoginPressed,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFFf24e1e),
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
+        child: ElevatedButton(
+          onPressed: state.isLoading
+              ? null
+              : () {
+                  if (!(bloc.formKey.currentState?.validate() ?? false)) return;
+                  bloc.add(LoginSubmitted(
+                    taxCode: bloc.taxController.text.trim(),
+                    username: bloc.usernameController.text.trim(),
+                    password: bloc.passwordController.text.trim(),
+                  ));
+                },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFFf24e1e),
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
             ),
-            child: controller.isLoading.value
-                ? const SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(
-                      color: Color(0xFFf24e1e),
-                    ),
-                  )
-                : const Text(
-                    "Đăng nhập",
-                    style: TextStyle(
-                      fontSize: 16,
-                      height: 1.5,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
           ),
+          child: state.isLoading
+              ? const SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(color: Colors.white),
+                )
+              : const Text(
+                  "Đăng nhập",
+                  style: TextStyle(
+                    fontSize: 16,
+                    height: 1.5,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
         ),
       ),
+    );
+  }
+
+  void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Lỗi"),
+          content: Text(
+            message.isNotEmpty ? message : "Có lỗi xảy ra khi đăng nhập",
+          ),
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: const Color(0xFFf24e1e),
+              ),
+              child: const Text("Đóng"),
+            ),
+          ],
+        );
+      },
     );
   }
 

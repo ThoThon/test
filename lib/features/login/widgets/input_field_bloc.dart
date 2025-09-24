@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
-class InputField extends StatefulWidget {
+class InputFieldBloc extends StatefulWidget {
   final String label;
   final String hintText;
   final TextEditingController controller;
@@ -10,8 +10,9 @@ class InputField extends StatefulWidget {
   final String? clearIconAsset;
   final bool showPassword;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
 
-  const InputField({
+  const InputFieldBloc({
     super.key,
     required this.label,
     required this.hintText,
@@ -20,16 +21,30 @@ class InputField extends StatefulWidget {
     this.clearIconAsset,
     this.showPassword = false,
     this.validator,
+    this.onChanged,
   });
 
   @override
-  State<InputField> createState() => _InputFieldState();
+  State<InputFieldBloc> createState() => _InputFieldBlocState();
 }
 
-class _InputFieldState extends State<InputField> {
+class _InputFieldBlocState extends State<InputFieldBloc> {
   bool _obscure = true;
   String _inputText = '';
   String? _errorMessage;
+
+  @override
+  void initState() {
+    super.initState();
+    _inputText = widget.controller.text;
+    widget.controller.addListener(() {
+      if (mounted) {
+        setState(() {
+          _inputText = widget.controller.text;
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +86,10 @@ class _InputFieldState extends State<InputField> {
               ),
               suffixIcon: _buildSuffixIcon(),
             ),
-            onChanged: (value) => setState(() => _inputText = value),
+            onChanged: (value) {
+              setState(() => _inputText = value);
+              widget.onChanged?.call(value);
+            },
             validator: (value) {
               final result = widget.validator?.call(value);
               setState(
@@ -117,6 +135,7 @@ class _InputFieldState extends State<InputField> {
         onPressed: () {
           widget.controller.clear();
           setState(() => _inputText = '');
+          widget.onChanged?.call('');
         },
         icon: SvgPicture.asset(
           widget.clearIconAsset!,
