@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 
-class GetPreviewPdfRequestCl extends Equatable implements Entity {
+class GetPreviewPdfRequest extends Equatable implements Entity {
   final String declarationPeriodId;
   final int previewDocumentType;
   final String? documentRecordId;
 
-  const GetPreviewPdfRequestCl({
+  const GetPreviewPdfRequest({
     required this.declarationPeriodId,
     required this.previewDocumentType,
     this.documentRecordId,

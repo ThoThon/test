@@ -1,3 +1,4 @@
+
 enum PreviewDocumentTypeEnum {
   /// 0
   d01,
@@ -20,7 +21,7 @@ enum PreviewDocumentTypeEnum {
   /// Dưỡng sức
   healingHsb;
 
-  int get value {
+  int get rawValue {
     switch (this) {
       case PreviewDocumentTypeEnum.d01:
         return 0;

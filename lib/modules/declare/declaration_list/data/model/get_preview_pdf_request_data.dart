@@ -1,9 +1,9 @@
-class GetPreviewPdfRequestClData {
+class GetPreviewPdfRequestData {
   final String? declarationPeriodId;
   final int? previewDocumentType;
   final String? documentRecordId;
 
-  const GetPreviewPdfRequestClData({
+  const GetPreviewPdfRequestData({
     this.declarationPeriodId,
     this.previewDocumentType,
     this.documentRecordId,
