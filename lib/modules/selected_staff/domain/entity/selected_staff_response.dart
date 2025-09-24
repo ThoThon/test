@@ -1,5 +1,5 @@
 import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
-import 'package:v_bhxh/modules/select_staff_cl/domain/entity/staff_info.dart';
+import 'package:v_bhxh/modules/selected_staff/domain/entity/staff_info.dart';
 
 class SelectStaffResponse implements Entity {
   final List<StaffInfo> nhanSus;

@@ -1,17 +1,20 @@
+import 'package:get/get_rx/src/rx_workers/utils/debouncer.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:v_bhxh/modules/select_staff_cl/domain/entity/select_staff_request.dart';
-import 'package:v_bhxh/modules/select_staff_cl/domain/entity/staff_info.dart';
-import 'package:v_bhxh/modules/select_staff_cl/domain/use_case/get_staff_list_select_use_case.dart';
+import 'package:v_bhxh/modules/selected_staff/domain/entity/selected_staff_request.dart';
+import 'package:v_bhxh/modules/selected_staff/domain/entity/staff_info.dart';
+import 'package:v_bhxh/modules/selected_staff/domain/use_case/get_staff_list_selected_use_case.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
-import '../../domain/entity/select_staff_response.dart';
+import '../../domain/entity/selected_staff_response.dart';
 
 class SelectStaffController extends BaseGetClController {
   final GetStaffListSelectUseCase _getStaffListSelectUseCase;
   SelectStaffController(this._getStaffListSelectUseCase);
 
   final listStaffSelect = <StaffInfo>[].obs;
+
+  final debouncer = Debouncer(delay: const Duration(seconds: 1));
 
   int page = AppConst.defaultPageNumber;
 
@@ -66,12 +69,11 @@ class SelectStaffController extends BaseGetClController {
     refreshController.refreshCompleted();
   }
 
-  // @override
-  // Future<void> functionSearch() async {
-  //   debouncer(
-  //     () {
-  //       onRefresh();
-  //     },
-  //   );
-  // }
+  Future<void> functionSearch() async {
+    debouncer(
+      () {
+        onRefresh();
+      },
+    );
+  }
 }

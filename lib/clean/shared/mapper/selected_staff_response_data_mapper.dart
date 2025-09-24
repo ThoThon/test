@@ -1,8 +1,8 @@
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 import 'package:v_bhxh/clean/shared/mapper/staff_info_data_mapper.dart';
-import 'package:v_bhxh/modules/select_staff_cl/data/model/select_staff_response_data.dart';
+import 'package:v_bhxh/modules/selected_staff/data/model/selected_staff_response_data.dart';
 
-import '../../../modules/select_staff_cl/domain/entity/select_staff_response.dart';
+import '../../../modules/selected_staff/domain/entity/selected_staff_response.dart';
 
 class SelectStaffResponseDataMapper
     extends BaseDataMapper<SelectStaffResponseData, SelectStaffResponse> {

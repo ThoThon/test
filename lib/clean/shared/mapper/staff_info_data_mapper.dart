@@ -1,6 +1,6 @@
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/modules/select_staff_cl/data/model/staff_info_data.dart';
-import 'package:v_bhxh/modules/select_staff_cl/domain/entity/staff_info.dart';
+import 'package:v_bhxh/modules/selected_staff/data/model/staff_info_data.dart';
+import 'package:v_bhxh/modules/selected_staff/domain/entity/staff_info.dart';
 
 class StaffInfoDataMapper extends BaseDataMapper<StaffInfoData, StaffInfo> {
   @override

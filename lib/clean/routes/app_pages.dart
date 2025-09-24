@@ -29,7 +29,6 @@ import 'package:v_bhxh/modules/home_clean/presentation/view/home_page.dart';
 import 'package:v_bhxh/modules/other_info/presentation/binding/other_info_binding.dart';
 import 'package:v_bhxh/modules/profile/ui/profile_page.dart';
 import 'package:v_bhxh/modules/register_service/presentation/binding/register_service_binding.dart';
-import 'package:v_bhxh/modules/select_staff/ui/select_staff_page.dart';
 import 'package:v_bhxh/modules/unit_info/presentation/binding/unit_info_binding.dart';
 import 'package:v_bhxh/modules/view_pdf/ui/view_pdf_page.dart';
 
@@ -41,6 +40,8 @@ import '../../modules/other_info/presentation/ui/other_info_page.dart';
 import '../../modules/register_code/presentation/binding/register_code_binding.dart';
 import '../../modules/register_code/presentation/ui/register_code_page.dart';
 import '../../modules/register_service/presentation/ui/register_service_page.dart';
+import '../../modules/selected_staff/presentation/binding/selected_staff_binding.dart';
+import '../../modules/selected_staff/presentation/ui/selected_staff_page.dart';
 import '../../modules/unit_info/presentation/ui/unit_info_page.dart';
 
 class AppPages {
@@ -128,7 +129,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.selectStaff.path,
-      page: () => SelectStaffPage(),
+      page: SelectStaffPage.new,
+      binding: SelectStaffBinding(),
     ),
     GetPage(
       name: AppRoutesCl.notification.path,

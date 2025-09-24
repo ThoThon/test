@@ -1,4 +1,4 @@
-part of 'select_staff_page.dart';
+part of 'selected_staff_page.dart';
 
 extension SelectStaffWidget on SelectStaffPage {
   Widget _buildBody() {
@@ -16,7 +16,7 @@ extension SelectStaffWidget on SelectStaffPage {
   Widget _buildSearchStaff() {
     return BuildInputText(
       InputTextModel(
-        controller: controller.searchController,
+        controller: controller.searchTextCtrl,
         hintText: LocaleKeys.staffList_fillFullName.tr,
         hintTextColor: AppColors.thumbColorSwitch,
         prefixIconColor: AppColors.thumbColorSwitch,
@@ -41,7 +41,7 @@ extension SelectStaffWidget on SelectStaffPage {
         ),
       );
 
-  Widget _buildItemStaff(SelectStaffResponse item, int index) {
+  Widget _buildItemStaff(StaffInfo item, int index) {
     return InkWell(
       onTap: () {
         Get.back(result: item);
@@ -84,7 +84,7 @@ extension SelectStaffWidget on SelectStaffPage {
     );
   }
 
-  Widget _buildStaffInfo(SelectStaffResponse item) {
+  Widget _buildStaffInfo(StaffInfo item) {
     return Row(
       children: [
         Expanded(

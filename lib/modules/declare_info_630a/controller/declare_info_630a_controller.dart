@@ -12,8 +12,7 @@ import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
 import '../../declare/declaration_period/domain/entity/entity_src.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';
-import '../../declare/staff_list/domain/entity/entity_src.dart';
-import '../../select_staff/model/model_src.dart';
+import '../../selected_staff/domain/entity/staff_info.dart';
 import '../repository/declare_info_630a_repository.dart';
 
 class DeclareInfo630aController extends BaseGetxController {
@@ -141,7 +140,7 @@ class DeclareInfo630aController extends BaseGetxController {
       AppRoutesCl.selectStaff.path,
       arguments: selectedStaffId,
     );
-    if (result is SelectStaffResponse) {
+    if (result is StaffInfo) {
       _getDetailStaff(staffId: result.id);
     }
   }
