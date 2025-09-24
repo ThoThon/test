@@ -95,7 +95,7 @@ class _BottomSheetSearchState<T> extends State<BottomSheetSearch<T>> {
     isClear.value = textEditingController.text.isNotEmpty;
     return UtilWidget.buildTextInput(
       inputFormatters: [
-        RegexpEmojiUtil.allowCommonCharacters,
+        RegexpUtil.allowCommonCharacters,
       ],
       maxLength: maxLength,
       height: height,
