@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:v_bhxh/clean/core/data/data_source/local/app_hive_impl.dart';
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
+import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
 import 'package:v_bhxh/core/values/hive_key.dart';
 
 class AppNetworkImage extends StatelessWidget {
@@ -19,7 +20,7 @@ class AppNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accessToken = AppHiveImpl.instance.get<String>(HiveKeys.keyJwtToken);
+    final accessToken = sl<AppHive>().get<String>(HiveKeys.keyJwtToken);
     return Image.network(
       url,
       width: width,

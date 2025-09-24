@@ -1,6 +1,7 @@
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:v_bhxh/clean/core/data/data_source/local/app_hive_impl.dart';
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
+import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/modules/view_pdf/controller/view_pdf_controller.dart';
 
@@ -14,7 +15,7 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
 
   @override
   Widget buildWidgets(BuildContext context) {
-    final accessToken = AppHiveImpl.instance.get<String>(HiveKeys.keyJwtToken);
+    final accessToken = sl<AppHive>().get<String>(HiveKeys.keyJwtToken);
     return Scaffold(
       appBar: BaseAppBar(
         leading: UtilWidget.buildButtonBackAppbar(),
