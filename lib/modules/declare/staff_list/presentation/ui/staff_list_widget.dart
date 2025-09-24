@@ -99,8 +99,8 @@ extension StaffListWidget on StaffListPage {
                   final imageAttach = controller.listAttachImage[index];
                   return Row(
                     children: [
-                      Image.network(
-                        imageAttach.imgPath,
+                      AppNetworkImage(
+                        url: imageAttach.imgPath,
                         height: 60,
                         width: 60,
                         fit: BoxFit.cover,

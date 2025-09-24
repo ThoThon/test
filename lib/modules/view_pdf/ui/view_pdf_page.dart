@@ -1,5 +1,7 @@
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:v_bhxh/clean/core/data/data_source/local/app_hive.dart';
+import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/modules/view_pdf/controller/view_pdf_controller.dart';
 
@@ -13,6 +15,7 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
 
   @override
   Widget buildWidgets(BuildContext context) {
+    final accessToken = sl<AppHive>().get<String>(HiveKeys.keyJwtToken);
     return Scaffold(
       appBar: BaseAppBar(
         leading: UtilWidget.buildButtonBackAppbar(),
@@ -32,6 +35,10 @@ class ViewPdfPage extends BaseGetWidget<ViewPdfController> {
                     quarterTurns:
                         controller.argument.isRotateHorizontal ?? false ? 1 : 0,
                     child: SfPdfViewer.network(
+                      headers: {
+                        if (accessToken != null)
+                          'Authorization': 'Bearer $accessToken',
+                      },
                       controller.argument.url,
                       controller: controller.pdfViewerController,
                       pageLayoutMode: PdfPageLayoutMode.continuous,
