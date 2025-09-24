@@ -12,7 +12,7 @@ class SelectStaffResponseDataMapper
   @override
   SelectStaffResponse mapToEntity(SelectStaffResponseData? data) {
     return SelectStaffResponse(
-      nhanSus: _staffInfoDataMapper.mapToListEntity(data?.nhanSus),
+      staff: _staffInfoDataMapper.mapToListEntity(data?.nhanSus),
       total: data?.total ?? 0,
     );
   }

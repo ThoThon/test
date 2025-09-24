@@ -8,10 +8,10 @@ class StaffDetailDataMapper
   StaffDetail mapToEntity(StaffDetailData? data) {
     return StaffDetail(
       id: data?.id ?? '',
-      hoTen: data?.hoTen ?? '',
-      maSoBHXH: data?.maSoBHXH ?? '',
-      soCCCD: data?.soCCCD ?? '',
-      chucVu: data?.chucVu ?? '',
+      fullName: data?.hoTen ?? '',
+      bhxhNumber: data?.maSoBHXH ?? '',
+      cccdNumber: data?.soCCCD ?? '',
+      position: data?.chucVu ?? '',
     );
   }
 }

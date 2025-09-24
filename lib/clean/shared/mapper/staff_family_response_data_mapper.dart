@@ -10,7 +10,6 @@ class StaffFamilyResponseDataMapper
   final WardDataMapper _wardDataMapper;
   final CategoryDataMapper _categoryDataMapper;
 
-  
   StaffFamilyResponseDataMapper(
     this._relationshipDataMapper,
     this._provinceDataMapper,
@@ -22,17 +21,17 @@ class StaffFamilyResponseDataMapper
   StaffFamilyResponseCl mapToEntity(StaffFamilyResponseDataCl? data) {
     return StaffFamilyResponseCl(
       id: data?.id,
-      hoTen: data?.hoTen,
-      ngaySinh: data?.ngaySinh,
-      moiQuanHe: _relationshipDataMapper.mapToEntity(data?.moiQuanHe),
-      maSoBhxh: data?.maSoBhxh,
-      gioiTinh: data?.gioiTinh?.rawValue ?? 0,
-      tinhKhaiSinh: _provinceDataMapper.mapToEntity(data?.tinhKhaiSinh),
-      xaKhaiSinh: _wardDataMapper.mapToEntity(data?.xaKhaiSinh),
-      cmnd: data?.cmnd,
-      chiCoNamSinh: data?.chiCoNamSinh?.rawValue ?? 0,
-      quocTichs: _categoryDataMapper.mapToEntity(data?.quocTichs),
-      danTocs: _categoryDataMapper.mapToEntity(data?.danTocs),
+      fullName: data?.hoTen,
+      dateOfBirth: data?.ngaySinh,
+      relationship: _relationshipDataMapper.mapToEntity(data?.moiQuanHe),
+      socialInsuranceNumber: data?.maSoBhxh,
+      gender: data?.gioiTinh?.rawValue ?? 0,
+      birthProvince: _provinceDataMapper.mapToEntity(data?.tinhKhaiSinh),
+      birthWard: _wardDataMapper.mapToEntity(data?.xaKhaiSinh),
+      identityCard: data?.cmnd,
+      onlyYearOfBirth: data?.chiCoNamSinh?.rawValue ?? 0,
+      nationality: _categoryDataMapper.mapToEntity(data?.quocTichs),
+      ethnicity: _categoryDataMapper.mapToEntity(data?.danTocs),
     );
   }
 }

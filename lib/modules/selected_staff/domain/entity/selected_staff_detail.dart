@@ -1,83 +1,84 @@
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 import 'package:v_bhxh/clean/shared/entity/category.dart';
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/clean/domain/entity/staff_family_response_cl.dart';
 
 import '../../../src.dart';
 
-class SelectedStaffDetail {
+class SelectedStaffDetail implements Entity {
   final String? id;
-  final String? hoTen;
-  final String? maSoBHXH;
-  final String? soCCCD;
-  final int? gioiTinh;
-  final int? chiCoNamSinh;
-  final String? ngaySinh;
-  final Category? danToc;
-  final Category? quocTich;
-  final String? chucVu;
-  final bool dongTheoHeSo;
-  final int? heSoLuongCoBan;
-  final int? tienLuong;
-  final int? phuCapChucVu;
-  final int? phuCapThamNienVuotKhung;
-  final int? phuCapThamNienNghe;
-  final int? phuCapLuong;
-  final int? phuCapBoSung;
-  final Province? benhVienTinh;
-  final Hospital? benhVien;
-  final Province? khaiSinhTinh;
-  final Ward? khaiSinhXa;
-  final String? diaChiKhaiSinh;
-  final Province? noiNhanTinh;
-  final Ward? noiNhanXa;
-  final String? diaChiNoiNhan;
-  final String? dienThoaiLienHe;
-  final String? hoTenChuHo;
-  final String? chuHoSoCCCD;
-  final Province? chuHoThuongTruTinh;
-  final Ward? chuHoThuongTruXa;
-  final String? diaChiThuongTruChuHo;
-  final bool trungDiaChiKhaiSinh;
-  final bool laChuHo;
-  final String? tyLeDong;
-  final List<StaffFamilyResponseCl> danhSachThanhViens;
+  final String? fullName;
+  final String? bhxhNumber;
+  final String? cccdNumber;
+  final int? gender;
+  final int? onlyYearOfBirth;
+  final String? dateOfBirth;
+  final Category? ethnicity;
+  final Category? nationality;
+  final String? position;
+  final bool basedOnCoefficient;
+  final int? baseSalaryCoefficient;
+  final int? salary;
+  final int? positionAllowance;
+  final int? seniorityBeyondFrameAllowance;
+  final int? seniorityAllowance;
+  final int? salaryAllowance;
+  final int? additionalAllowance;
+  final Province? hospitalProvince;
+  final Hospital? hospital;
+  final Province? birthProvince;
+  final Ward? birthWard;
+  final String? birthAddress;
+  final Province? receivingProvince;
+  final Ward? receivingWard;
+  final String? receivingAddress;
+  final String? contactPhone;
+  final String? householdHeadName;
+  final String? householdHeadIdentityCard;
+  final Province? householdHeadPermanentProvince;
+  final Ward? householdHeadPermanentWard;
+  final String? householdHeadPermanentAddress;
+  final bool sameAsBirthAddress;
+  final bool isHouseholdHead;
+  final String? contributionRate;
+  final List<StaffFamilyResponseCl> familyMembers;
 
   const SelectedStaffDetail({
     this.id,
-    this.hoTen,
-    this.maSoBHXH,
-    this.soCCCD,
-    this.gioiTinh,
-    this.chiCoNamSinh,
-    this.ngaySinh,
-    this.danToc,
-    this.quocTich,
-    this.chucVu,
-    required this.dongTheoHeSo,
-    this.heSoLuongCoBan,
-    this.tienLuong,
-    this.phuCapChucVu,
-    this.phuCapThamNienVuotKhung,
-    this.phuCapThamNienNghe,
-    this.phuCapLuong,
-    this.phuCapBoSung,
-    this.benhVienTinh,
-    this.benhVien,
-    this.khaiSinhTinh,
-    this.khaiSinhXa,
-    this.diaChiKhaiSinh,
-    this.noiNhanTinh,
-    this.noiNhanXa,
-    this.diaChiNoiNhan,
-    this.dienThoaiLienHe,
-    this.hoTenChuHo,
-    this.chuHoSoCCCD,
-    this.chuHoThuongTruTinh,
-    this.chuHoThuongTruXa,
-    this.diaChiThuongTruChuHo,
-    required this.trungDiaChiKhaiSinh,
-    required this.laChuHo,
-    this.tyLeDong,
-    required this.danhSachThanhViens,
+    this.fullName,
+    this.bhxhNumber,
+    this.cccdNumber,
+    this.gender,
+    this.onlyYearOfBirth,
+    this.dateOfBirth,
+    this.ethnicity,
+    this.nationality,
+    this.position,
+    required this.basedOnCoefficient,
+    this.baseSalaryCoefficient,
+    this.salary,
+    this.positionAllowance,
+    this.seniorityBeyondFrameAllowance,
+    this.seniorityAllowance,
+    this.salaryAllowance,
+    this.additionalAllowance,
+    this.hospitalProvince,
+    this.hospital,
+    this.birthProvince,
+    this.birthWard,
+    this.birthAddress,
+    this.receivingProvince,
+    this.receivingWard,
+    this.receivingAddress,
+    this.contactPhone,
+    this.householdHeadName,
+    this.householdHeadIdentityCard,
+    this.householdHeadPermanentProvince,
+    this.householdHeadPermanentWard,
+    this.householdHeadPermanentAddress,
+    required this.sameAsBirthAddress,
+    required this.isHouseholdHead,
+    this.contributionRate,
+    required this.familyMembers,
   });
 }

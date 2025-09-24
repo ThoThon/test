@@ -2,14 +2,16 @@ import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 import 'package:v_bhxh/modules/selected_staff/data/model/selected_staff_request_data.dart';
 import 'package:v_bhxh/modules/selected_staff/domain/entity/selected_staff_request.dart';
 
+import '../../../core/values/const.dart';
+
 class SelectStaffRequestDataMapper
     extends BaseDataMapper<SelectStaffRequestData, SelectStaffRequest>
     with DataMapperMixin {
   @override
   SelectStaffRequest mapToEntity(SelectStaffRequestData? data) {
     return SelectStaffRequest(
-      pageIndex: data?.pageIndex ?? 0,
-      pageSize: data?.pageSize ?? 0,
+      pageIndex: data?.pageIndex ?? AppConst.defaultPageNumber,
+      pageSize: data?.pageSize ?? AppConst.defaultPageSize,
       hoTen: data?.hoTen,
       maSoBHXH: data?.maSoBHXH,
     );

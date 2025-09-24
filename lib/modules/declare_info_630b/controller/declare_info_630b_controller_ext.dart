@@ -8,7 +8,6 @@ import '../../../base_app/model/app_data.dart';
 import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
 import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
-import '../../selected_staff/domain/entity/staff_detail.dart';
 import '../../src.dart';
 
 extension DeclareInfo630bControllerExt on DeclareInfo630bController {
@@ -227,9 +226,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: selectedStaffId,
     );
-    if (result is StaffDetail) {
-      _getDetailStaff(staffId: result.id);
-    }
+    _getDetailStaff(staffId: result);
   }
 
   Future<void> _getDetailStaff({

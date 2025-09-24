@@ -1,15 +1,17 @@
-class StaffDetail {
+import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
+
+class StaffDetail implements Entity {
   final String id;
-  final String hoTen;
-  final String maSoBHXH;
-  final String soCCCD;
-  final String chucVu;
+  final String fullName;
+  final String bhxhNumber;
+  final String cccdNumber;
+  final String position;
 
   StaffDetail({
     required this.id,
-    required this.hoTen,
-    required this.maSoBHXH,
-    required this.soCCCD,
-    required this.chucVu,
+    required this.fullName,
+    required this.bhxhNumber,
+    required this.cccdNumber,
+    required this.position,
   });
 }

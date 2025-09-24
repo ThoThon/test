@@ -16,7 +16,6 @@ import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../clean/shared/entity/category.dart';
-import '../../selected_staff/domain/entity/staff_detail.dart';
 
 // REF: BHW-3103
 const declineValid = ['D301', 'D302', 'D303'];
@@ -425,9 +424,7 @@ class DeclareInfo630cController extends BaseGetxController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: selectedStaffId,
     );
-    if (result is StaffDetail) {
-      _getDetailStaff(staffId: result.id);
-    }
+    _getDetailStaff(staffId: result);
   }
 
   Future<void> _getDetailStaff({

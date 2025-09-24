@@ -2,7 +2,6 @@ import 'package:get/get_rx/src/rx_workers/utils/debouncer.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:v_bhxh/modules/selected_staff/domain/entity/selected_staff_request.dart';
 import 'package:v_bhxh/modules/selected_staff/domain/entity/staff_detail.dart';
-import 'package:v_bhxh/modules/selected_staff/domain/use_case/get_staff_detail_use_case.dart';
 import 'package:v_bhxh/modules/selected_staff/domain/use_case/get_staff_list_selected_use_case.dart';
 import 'package:v_bhxh/modules/src.dart';
 
@@ -11,11 +10,9 @@ import '../../domain/entity/selected_staff_response.dart';
 
 class SelectStaffController extends BaseGetClController {
   final GetStaffListSelectUseCase _getStaffListSelectUseCase;
-  final GetStaffDetailUseCase _getStaffDetailUseCase;
 
   SelectStaffController(
     this._getStaffListSelectUseCase,
-    this._getStaffDetailUseCase,
   );
 
   final listStaffSelect = <StaffDetail>[].obs;
@@ -48,19 +45,7 @@ class SelectStaffController extends BaseGetClController {
       showLoading: !isLoadMore,
       action: () async {
         final res = await _getStaffListSelectUseCase.execute(request);
-        listStaffSelect.addAll(res.nhanSus);
-      },
-    );
-  }
-
-  Future<void> getDetailStaff({
-    bool isLoadMore = false,
-    required String idStaff,
-  }) async {
-    return buildState(
-      showLoading: !isLoadMore,
-      action: () async {
-        await _getStaffDetailUseCase.execute(idStaff);
+        listStaffSelect.addAll(res.staff);
       },
     );
   }

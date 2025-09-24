@@ -47,7 +47,7 @@ extension SelectStaffWidget on SelectStaffPage {
   ) {
     return InkWell(
       onTap: () async {
-        Get.back(result: item);
+        Get.back(result: item.id);
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,9 +66,9 @@ extension SelectStaffWidget on SelectStaffPage {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildStaffInfo(item),
-                if (item.chucVu.isNotEmpty)
+                if (item.position.isNotEmpty)
                   SDSBuildText(
-                    item.chucVu,
+                    item.position,
                     style: AppTextStyle.font14Re,
                   ),
               ],
@@ -92,7 +92,7 @@ extension SelectStaffWidget on SelectStaffPage {
       children: [
         Expanded(
           child: SDSBuildText(
-            '${item.hoTen}${item.maSoBHXH.isNotEmpty ? ' (${item.maSoBHXH})' : ''}',
+            '${item.fullName}${item.bhxhNumber.isNotEmpty ? ' (${item.bhxhNumber})' : ''}',
             maxLines: 4,
             style: AppTextStyle.font14Re,
           ),
