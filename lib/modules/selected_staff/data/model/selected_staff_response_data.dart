@@ -1,7 +1,7 @@
-import 'staff_info_data.dart';
+import 'staff_detail_data.dart';
 
 class SelectStaffResponseData {
-  final List<StaffInfoData>? nhanSus;
+  final List<StaffDetailData>? nhanSus;
   final int? total;
 
   SelectStaffResponseData({
@@ -12,7 +12,7 @@ class SelectStaffResponseData {
   factory SelectStaffResponseData.fromJson(Map<String, dynamic> json) {
     return SelectStaffResponseData(
       nhanSus: (json['nhanSus'] as List<dynamic>? ?? [])
-          .map((e) => StaffInfoData.fromJson(e as Map<String, dynamic>))
+          .map((e) => StaffDetailData.fromJson(e as Map<String, dynamic>))
           .toList(),
       total: json['total'],
     );

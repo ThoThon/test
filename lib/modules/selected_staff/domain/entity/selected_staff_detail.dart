@@ -1,5 +1,6 @@
 import 'package:v_bhxh/clean/shared/entity/category.dart';
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/clean/domain/entity/staff_family_response_cl.dart';
 
 import '../../../src.dart';
 
@@ -39,7 +40,7 @@ class SelectedStaffDetail {
   final bool trungDiaChiKhaiSinh;
   final bool laChuHo;
   final String? tyLeDong;
-  final List<StaffFamilyResponse> danhSachThanhViens;
+  final List<StaffFamilyResponseCl> danhSachThanhViens;
 
   const SelectedStaffDetail({
     this.id,

@@ -1,11 +1,11 @@
-class StaffInfo {
+class StaffDetail {
   final String id;
   final String hoTen;
   final String maSoBHXH;
   final String soCCCD;
   final String chucVu;
 
-  StaffInfo({
+  StaffDetail({
     required this.id,
     required this.hoTen,
     required this.maSoBHXH,

@@ -1,11 +1,11 @@
-class StaffInfoData {
+class StaffDetailData {
   final String? id;
   final String? hoTen;
   final String? maSoBHXH;
   final String? soCCCD;
   final String? chucVu;
 
-  StaffInfoData({
+  StaffDetailData({
     this.id,
     this.hoTen,
     this.maSoBHXH,
@@ -13,8 +13,8 @@ class StaffInfoData {
     this.chucVu,
   });
 
-  factory StaffInfoData.fromJson(Map<String, dynamic> json) {
-    return StaffInfoData(
+  factory StaffDetailData.fromJson(Map<String, dynamic> json) {
+    return StaffDetailData(
       id: json['id'],
       hoTen: json['hoTen'],
       maSoBHXH: json['maSoBHXH'],

@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/selected_staff/domain/entity/staff_info.dart';
+import 'package:v_bhxh/modules/selected_staff/domain/entity/staff_detail.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../../../clean/core/presentation/widgets/base_get_page.dart';

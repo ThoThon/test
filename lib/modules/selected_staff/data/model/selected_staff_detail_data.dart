@@ -1,5 +1,6 @@
 import 'package:v_bhxh/clean/shared/model/category_data.dart';
 import 'package:v_bhxh/clean/shared/model/model_src.dart';
+import 'package:v_bhxh/modules/declare/declare_info/clean/data/model/staff_family_response_data_cl.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
 
@@ -39,7 +40,7 @@ class SelectedStaffDetailData {
   final bool? trungDiaChiKhaiSinh;
   final bool? laChuHo;
   final String? tyLeDong;
-  final List<StaffFamilyResponse>? danhSachThanhViens;
+  final List<StaffFamilyResponseDataCl>? danhSachThanhViens;
 
   const SelectedStaffDetailData({
     this.id,
@@ -118,7 +119,7 @@ class SelectedStaffDetailData {
       trungDiaChiKhaiSinh: json['trungDiaChiKhaiSinh'],
       laChuHo: json['laChuHo'],
       danhSachThanhViens: (json['danhSachThanhViens'] as List?)
-          ?.map((e) => StaffFamilyResponse.fromJson(e))
+          ?.map((e) => StaffFamilyResponseDataCl.fromJson(e))
           .toList(),
     );
   }

@@ -12,7 +12,7 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../../base_app/base_app.src.dart';
-import '../../../selected_staff/domain/entity/staff_info.dart';
+import '../../../selected_staff/domain/entity/staff_detail.dart';
 
 // Khi chọn "Loại khai báo" là "Tăng lao động"
 const laborIncrease = 1;
@@ -158,7 +158,7 @@ class DeclareInfoController extends BaseGetxController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: d02State.selectedStaffId,
     );
-    if (result is StaffInfo) {
+    if (result is StaffDetail) {
       _getDetailStaff(staffId: result.id);
 
       // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên

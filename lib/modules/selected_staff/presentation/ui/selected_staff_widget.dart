@@ -41,9 +41,13 @@ extension SelectStaffWidget on SelectStaffPage {
         ),
       );
 
-  Widget _buildItemStaff(StaffInfo item, int index) {
+  Widget _buildItemStaff(
+    StaffDetail item,
+    int index,
+  ) {
     return InkWell(
       onTap: () {
+        // controller.getDetailStaff(idStaff: item.id);
         Get.back(result: item);
       },
       child: Row(
@@ -84,7 +88,7 @@ extension SelectStaffWidget on SelectStaffPage {
     );
   }
 
-  Widget _buildStaffInfo(StaffInfo item) {
+  Widget _buildStaffInfo(StaffDetail item) {
     return Row(
       children: [
         Expanded(

@@ -1,5 +1,6 @@
 import 'package:v_bhxh/clean/shared/mapper/category_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
+import 'package:v_bhxh/clean/shared/mapper/staff_family_response_data_mapper.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
 import 'package:v_bhxh/modules/selected_staff/data/model/selected_staff_detail_data.dart';
 import 'package:v_bhxh/modules/selected_staff/domain/entity/selected_staff_detail.dart';
@@ -9,11 +10,13 @@ class SelectedStaffDetailDataMapper
   final CategoryDataMapper _categoryDataMapper;
   final ProvinceDataMapper _provinceDataMapper;
   final WardDataMapper _wardDataMapper;
+  final StaffFamilyResponseDataMapper _staffFamilyResponseDataMapper;
 
   SelectedStaffDetailDataMapper(
     this._categoryDataMapper,
     this._provinceDataMapper,
     this._wardDataMapper,
+    this._staffFamilyResponseDataMapper,
   );
   @override
   SelectedStaffDetail mapToEntity(SelectedStaffDetailData? data) {
@@ -53,13 +56,15 @@ class SelectedStaffDetailDataMapper
       dienThoaiLienHe: data?.dienThoaiLienHe,
       hoTenChuHo: data?.hoTenChuHo,
       chuHoSoCCCD: data?.chuHoSoCCCD,
-      chuHoThuongTruTinh: _provinceDataMapper.mapToEntity(data?.chuHoThuongTruTinh),
+      chuHoThuongTruTinh:
+          _provinceDataMapper.mapToEntity(data?.chuHoThuongTruTinh),
       chuHoThuongTruXa: _wardDataMapper.mapToEntity(data?.chuHoThuongTruXa),
       diaChiThuongTruChuHo: data?.diaChiKhaiSinh,
       trungDiaChiKhaiSinh: data?.trungDiaChiKhaiSinh ?? false,
       laChuHo: data?.laChuHo ?? false,
       tyLeDong: data?.tyLeDong,
-      danhSachThanhViens: StaffFamilyResponse(moiQuanHe: moiQuanHe, gioiTinh: gioiTinh, chiCoNamSinh: chiCoNamSinh),
+      danhSachThanhViens: _staffFamilyResponseDataMapper
+          .mapToListEntity(data?.danhSachThanhViens),
     );
   }
 }
