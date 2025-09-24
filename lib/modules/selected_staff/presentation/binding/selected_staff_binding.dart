@@ -34,9 +34,7 @@ class SelectStaffBinding extends BaseBindings {
   @override
   void bindingsUseCase() {
     Get.lazyPut(
-      () => GetStaffListSelectUseCase(
-        sl(),
-      ),
+      () => GetStaffListSelectUseCase(sl()),
     );
     Get.lazyPut(
       () => GetStaffDetailUseCase(sl()),

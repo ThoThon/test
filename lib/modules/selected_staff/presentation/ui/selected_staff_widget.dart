@@ -46,8 +46,7 @@ extension SelectStaffWidget on SelectStaffPage {
     int index,
   ) {
     return InkWell(
-      onTap: () {
-        // controller.getDetailStaff(idStaff: item.id);
+      onTap: () async {
         Get.back(result: item);
       },
       child: Row(
