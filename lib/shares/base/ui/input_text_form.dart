@@ -142,7 +142,7 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.rate:
         return [
-          // Chỉ cho phép nhật số và dấu chấm hoặc dấu phẩy
+          // Chỉ cho phép nhập số và dấu chấm hoặc dấu phẩy
           // REF: VBHXHMOB-110
           RegexpUtil.allowNumberByDotOrComma(isDot: true),
           NumericTextFormatter(

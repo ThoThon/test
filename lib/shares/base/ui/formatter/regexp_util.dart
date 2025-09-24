@@ -8,7 +8,7 @@ class RegexpUtil {
   );
 
   /// REF: VBHXHMOB-110
-  /// Chỉ cho phép nhật số và dấu chấm hoặc dấu phẩy
+  /// Chỉ cho phép nhập số và dấu chấm hoặc dấu phẩy
   ///
   /// [isDot] true: phân cách phần nghìn bởi dấu chấm, false: phân cách phần nghìn bởi dấu phẩy
   static FilteringTextInputFormatter allowNumberByDotOrComma({
