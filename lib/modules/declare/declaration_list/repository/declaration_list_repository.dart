@@ -10,24 +10,6 @@ class DeclarationListRepository extends BaseRepository {
 
   final _cachedPdfUrls = <GetPreviewPdfRequest, String?>{};
 
-  Future<BaseResponse> signDocument({
-    required String declarationPeriodId,
-  }) async {
-    final response = await baseCallApi(
-      AppApi.urlSignDocument, EnumRequestMethod.post,
-      queryParameters: {
-        "kyKeKhaiId": declarationPeriodId,
-      },
-      // Cần chờ user mở app mysign để ký số nên set timeout là 3 phút
-      timeOut: _signDocumentTimeOut,
-      functionError: (err) {
-        // rethrow error để xử lý ở controller
-        throw err;
-      },
-    );
-    return BaseResponse.fromJson(response);
-  }
-
   Future<BaseResponse<String>> getPreviewPdf({
     required GetPreviewPdfRequest request,
   }) async {
@@ -144,7 +126,6 @@ class DeclarationListRepository extends BaseRepository {
     return result;
   }
 
-
   Future<BaseResponse<String>> getPreviewPdf630c({
     required GetPreviewPdfRequest request,
   }) async {
@@ -172,5 +153,23 @@ class DeclarationListRepository extends BaseRepository {
     }
 
     return result;
+  }
+
+  Future<BaseResponse> signDocument({
+    required String declarationPeriodId,
+  }) async {
+    final response = await baseCallApi(
+      AppApi.urlSignDocument, EnumRequestMethod.post,
+      queryParameters: {
+        "kyKeKhaiId": declarationPeriodId,
+      },
+      // Cần chờ user mở app mysign để ký số nên set timeout là 3 phút
+      timeOut: _signDocumentTimeOut,
+      functionError: (err) {
+        // rethrow error để xử lý ở controller
+        throw err;
+      },
+    );
+    return BaseResponse.fromJson(response);
   }
 }
