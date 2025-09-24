@@ -29,7 +29,6 @@ class AppNetworkImage extends StatelessWidget {
         if (accessToken != null) 'Authorization': 'Bearer $accessToken',
       },
       loadingBuilder: (context, child, loadingProgress) {
-        print(loadingProgress);
         if (loadingProgress == null) {
           return child;
         }
