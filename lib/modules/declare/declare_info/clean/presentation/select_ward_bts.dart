@@ -57,7 +57,7 @@ class SelectWardBtsCl extends BaseGetBtsDialog<SelectWardControllerCl> {
   Widget buildSearch() {
     return UtilWidget.buildTextInput(
       inputFormatters: [
-        RegexpEmojiUtil.allowCommonCharacters,
+        RegexpUtil.allowCommonCharacters,
       ],
       maxLength: 20,
       controller: controller.searchTextCtrl,
