@@ -74,7 +74,7 @@ class LoginControllerCl extends BaseGetClController {
           ),
         );
 
-        // Nếu gọi ngay sau khi login mà tiến hành gọi các api khác thì có thể gặp lỗi 401 (do token chưa hợp lệ ngay lập tức ???)
+        // Nếu ngay sau khi login thành công mà tiến hành gọi các api khác thì có thể gặp lỗi 401 (do token chưa hợp lệ ngay lập tức ???)
         // Nên phải delay một chút để đảm bảo token đã hợp lệ
         await Future.delayed(const Duration(milliseconds: 100));
 
