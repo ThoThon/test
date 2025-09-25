@@ -351,6 +351,7 @@ extension D02TabWidget on DeclareInfoPage {
               }
               controller.d02State.plan.value = null;
               controller.d02State.declarationType.value = value;
+              controller.updateGenerateTk1();
             },
           ),
         );
