@@ -4,7 +4,9 @@ import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 
 import '../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
+import '../../../../shares/utils/utils_src.dart';
 import '../../../declare/declaration_list/declaration_list_src.dart';
+import '../../../home_clean/presentation/events/home_event.dart';
 
 class RegisterServiceController extends BaseGetClController {
   final GetTransactionInfoUseCase _getTransactionInfoUseCase;
@@ -87,6 +89,7 @@ class RegisterServiceController extends BaseGetClController {
         _showDialogCheckedSuccess();
         await _registerServiceUseCase.execute(_buildRequest());
         nav.dismissDialog();
+        eventBus.fire(const GetUnreadNotificationCountEvent());
         _showDialogVerifySuccess();
       },
       onError: (error) {
@@ -141,6 +144,7 @@ class RegisterServiceController extends BaseGetClController {
         _showDialogCheckedSuccess();
         await _cancelRegisterUseCase.execute();
         nav.dismissDialog();
+        eventBus.fire(const GetUnreadNotificationCountEvent());
         _showDialogVerifySuccess();
       },
       onError: (error) {
@@ -157,6 +161,7 @@ class RegisterServiceController extends BaseGetClController {
         _showDialogCheckedSuccess();
         await _updateTransactionInfoUseCase.execute(_buildRequest());
         nav.dismissDialog();
+        eventBus.fire(const GetUnreadNotificationCountEvent());
         _showDialogVerifySuccess();
       },
       onError: (error) {
