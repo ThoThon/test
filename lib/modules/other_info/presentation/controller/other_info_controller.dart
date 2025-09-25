@@ -3,7 +3,8 @@ import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
 
-import '../../../declare/declaration_list/model/model_src.dart';
+
+import '../../../declare/declaration_list/declaration_list_src.dart';
 import '../../../src.dart';
 
 const responseCodeNotFound = '02';
