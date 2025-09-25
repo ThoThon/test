@@ -86,6 +86,7 @@ class DeclarationListController extends BaseGetClController {
     bool isRotateHorizontal = false,
   }) async {
     return buildState(
+      showLoadingOverlay: true,
       action: () async {
         final request = GetPreviewPdfRequest(
           declarationPeriodId: argument.declarationPeriodId,
