@@ -26,11 +26,12 @@ class SelectWardBtsCl extends BaseGetBtsDialog<SelectWardControllerCl> {
                   child: baseShowLoading(
                     () => Obx(
                       () {
-                        final filteredWards = controller.wards
-                            .where((item) => TiengViet.parse(item.name)
-                                .toLowerCase()
-                                .contains(controller.keyword.value))
-                            .toList();
+                        final filteredWards = controller.wards.where((item) {
+                          final name = TiengViet.parse(item.name).toLowerCase();
+                          final id = item.id;
+                          final keyword = controller.keyword.value;
+                          return name.contains(keyword) || id.contains(keyword);
+                        }).toList();
 
                         return ListView.separated(
                           itemCount: filteredWards.length,
