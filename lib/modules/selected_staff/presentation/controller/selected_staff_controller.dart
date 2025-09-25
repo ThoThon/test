@@ -46,6 +46,7 @@ class SelectStaffController extends BaseGetClController {
       action: () async {
         final res = await _getStaffListSelectUseCase.execute(request);
         listStaffSelect.addAll(res.staff);
+        page = request.pageIndex;
       },
     );
   }
@@ -56,8 +57,8 @@ class SelectStaffController extends BaseGetClController {
     return SelectStaffRequest(
       pageIndex: isLoadMore ? page + 1 : AppConst.defaultPageNumber,
       pageSize: 20,
-      hoTen: searchTextCtrl.text.trim(),
-      maSoBHXH: "",
+      fullName: searchTextCtrl.text.trim(),
+      bhxhNumber: "",
     );
   }
 

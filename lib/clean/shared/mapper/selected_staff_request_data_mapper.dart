@@ -12,8 +12,8 @@ class SelectStaffRequestDataMapper
     return SelectStaffRequest(
       pageIndex: data?.pageIndex ?? AppConst.defaultPageNumber,
       pageSize: data?.pageSize ?? AppConst.defaultPageSize,
-      hoTen: data?.hoTen,
-      maSoBHXH: data?.maSoBHXH,
+      fullName: data?.hoTen,
+      bhxhNumber: data?.maSoBHXH,
     );
   }
 
@@ -22,8 +22,8 @@ class SelectStaffRequestDataMapper
     return SelectStaffRequestData(
       pageIndex: entity.pageIndex,
       pageSize: entity.pageSize,
-      hoTen: entity.hoTen,
-      maSoBHXH: entity.maSoBHXH,
+      hoTen: entity.fullName,
+      maSoBHXH: entity.bhxhNumber,
     );
   }
 }

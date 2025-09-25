@@ -2,6 +2,8 @@ import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 import 'package:v_bhxh/clean/shared/entity/category.dart';
 
 import '../../../../../../clean/shared/entity/entity_src.dart';
+import '../../../../family_member_detail/domain/entity/entity_src.dart';
+import '../../../model/gender.dart';
 
 class StaffFamilyResponseCl implements Entity {
   final String? id;
@@ -9,11 +11,11 @@ class StaffFamilyResponseCl implements Entity {
   final String? dateOfBirth;
   final Relationship relationship;
   final String? socialInsuranceNumber;
-  final int gender;
+  final Gender gender;
   final Province? birthProvince;
   final Ward? birthWard;
   final String? identityCard;
-  final int onlyYearOfBirth;
+  final BirthTypeEnum onlyYearOfBirth;
   final Category? nationality;
   final Category? ethnicity;
 
