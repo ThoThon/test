@@ -1,11 +1,11 @@
 import 'package:path/path.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
-import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
 import '../../../../../clean/shared/model/upload_image_request_data.dart';
+import '../../../declaration_list/domain/entity/declaration_list_argument.dart';
 import '../../../declaration_period/domain/entity/entity_src.dart';
 
 // Chỉ cho phép up tối đa 5 file ảnh

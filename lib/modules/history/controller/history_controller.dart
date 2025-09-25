@@ -1,10 +1,10 @@
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
-import 'package:v_bhxh/modules/declare/declaration_list/model/history_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../base_app/base_app.src.dart';
+import '../../declare/declaration_list/declaration_list_src.dart';
 import '../repository/history_repository.dart';
 
 part 'history_declare_ext_controller.dart';
