@@ -40,6 +40,7 @@ class StaffListBinding extends BaseBindings {
         sl(),
         sl(),
         sl(),
+        sl(),
       ),
     );
     Get.lazyPut<StaffList607Repository>(

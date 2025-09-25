@@ -20,8 +20,8 @@ class DeclarationListPage extends BaseGetPage<DeclarationListController> {
           leading:
               UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
           backgroundColor: AppColors.primaryColor,
-          title: const BaseAppBarTitle(
-            title: "Danh sách biểu mẫu tờ khai",
+          title: BaseAppBarTitle(
+            title: LocaleKeys.declareInfo_listOfDeclarationForm.tr,
             textColor: AppColors.basicWhite,
           ),
         ),
