@@ -826,8 +826,8 @@ class DeclareInfoController extends BaseGetxController {
   void updateGenerateTk1() {
     final declarationTypeId = d02State.declarationType.value?.value;
     final plan = d02State.plan.value?.id;
-    if (declarationTypeId != laborIncrease) return;
-    if (['TM', 'TH'].contains(plan)) {
+
+    if (['TM', 'TH'].contains(plan) && declarationTypeId == laborIncrease) {
       if (d02Tk1State.bhxhTextCtrl.text.trim().isEmpty) {
         d02State.isGenerateTk1CheckboxEnabled.value = false;
         d02State.isGenerateTk1Data.value = true;

@@ -6,7 +6,7 @@ import '../../../src.dart';
 class UnitInfoBinding extends BaseBindings {
   @override
   void bindingsController() {
-    Get.lazyPut(() => UnitInfoController(sl(), sl(), sl()));
+    Get.lazyPut(() => UnitInfoController(sl(), sl()));
   }
 
   @override
@@ -22,7 +22,6 @@ class UnitInfoBinding extends BaseBindings {
 
   @override
   void bindingsUseCase() {
-    Get.lazyPut(() => GetTotalNotiUnreadUseCase(sl()));
     Get.lazyPut(() => GetUnitInfoUseCase(sl()));
     Get.lazyPut(() => UpdateUnitInfoUseCase(sl()));
   }

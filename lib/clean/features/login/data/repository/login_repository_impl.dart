@@ -78,19 +78,6 @@ class LoginRepositoryImpl extends LoginRepository {
   }
 
   @override
-  Future<int> getUnreadNotificationCount() async {
-    final response = await _authAppServerApiClient.request(
-      method: RestMethod.get,
-      path: AppApi.urlGetNotificationUnread,
-      cancelToken: cancelToken,
-    );
-
-    final data = BaseResponseCl<int>.fromJson(response);
-
-    return data.result ?? 0;
-  }
-
-  @override
   Future<Categories630> get630Categories() async {
     final response = await _authAppServerApiClient.request(
       method: RestMethod.get,

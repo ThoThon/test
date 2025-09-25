@@ -1,17 +1,18 @@
+import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/bindings/binding_src.dart';
+import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
 import 'package:v_bhxh/modules/home_clean/data/repository/home_repository_impl.dart';
 import 'package:v_bhxh/modules/home_clean/domain/repository/home_repository.dart';
+import 'package:v_bhxh/modules/home_clean/domain/usecase/get_unread_notification_count_use_case.dart';
 import 'package:v_bhxh/modules/home_clean/domain/usecase/read_all_notification_use_case.dart';
 import 'package:v_bhxh/modules/home_clean/presentation/controller/home_controller_cl.dart';
-
-import '../../../../clean/shared/utils/get_finder.dart';
-import '../../../src.dart';
 
 class HomeBinding extends BaseBindings {
   @override
   void bindingsController() {
     Get.lazyPut(
       () => HomeControllerCl(
+        sl(),
         sl(),
       ),
     );
@@ -29,5 +30,6 @@ class HomeBinding extends BaseBindings {
   @override
   void bindingsUseCase() {
     Get.lazyPut(() => ReadAllNotificationUseCase(sl()));
+    Get.lazyPut(() => GetUnreadNotificationCountUseCase(sl()));
   }
 }

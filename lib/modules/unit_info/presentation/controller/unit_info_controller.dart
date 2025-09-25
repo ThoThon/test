@@ -1,17 +1,17 @@
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
+import 'package:v_bhxh/modules/home_clean/presentation/events/home_event.dart';
 
 import '../../../../base_app/model/app_data.dart';
 import '../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
+import '../../../../shares/utils/utils_src.dart';
 import '../../../../shares/widgets/dialog/dialog_utils.dart';
 import '../../../src.dart';
 
 class UnitInfoController extends BaseGetClController {
-  final GetTotalNotiUnreadUseCase _getTotalNotiUnreadUseCase;
   final GetUnitInfoUseCase _getUnitInfoUseCase;
   final UpdateUnitInfoUseCase _updateUnitInfoUseCase;
 
   UnitInfoController(
-    this._getTotalNotiUnreadUseCase,
     this._getUnitInfoUseCase,
     this._updateUnitInfoUseCase,
   );
@@ -152,7 +152,7 @@ class UnitInfoController extends BaseGetClController {
           if (isInputUnchanged.value) return;
           await _updateUnitInfoUseCase.execute(_buildRequest());
           _getAccountInfo();
-          _getToTalNotiUnread();
+          eventBus.fire(const GetUnreadNotificationCountEvent());
           isEditAll.value = false;
 
           nav.showInfoDialog(
@@ -193,15 +193,6 @@ class UnitInfoController extends BaseGetClController {
         final res = await _getUnitInfoUseCase.execute();
         AppData.instance.accountInfo.value = res;
         mapAccountInfoToUI();
-      },
-    );
-  }
-
-  Future<void> _getToTalNotiUnread() async {
-    return buildState(
-      action: () async {
-        final res = await _getTotalNotiUnreadUseCase.execute();
-        AppData.instance.totalUnread.value = res;
       },
     );
   }
