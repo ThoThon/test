@@ -122,8 +122,8 @@ class StaffListController extends BaseGetClController {
           ProcedureType.procedure630c =>
             _getStaffList630cUseCase.execute(declarationPeriodId),
         };
-        declaredStaffs.assignAll(response.staffs);
-        listAttachImage.assignAll(response.image);
+        declaredStaffs.value = response.staffs;
+        listAttachImage.value = response.image;
       },
     );
   }
@@ -132,13 +132,13 @@ class StaffListController extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
-        final response = await _uploadAttachImageUseCase.execute(
+        final image = await _uploadAttachImageUseCase.execute(
           UploadImageRequestData(
             file: imagePath,
             periodId: declarationPeriodId,
           ),
         );
-        listAttachImage.add(response);
+        listAttachImage.value = [...listAttachImage, image];
         _scrollStaffList();
       },
     );
