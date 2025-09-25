@@ -33,8 +33,7 @@ class DeclarationListRepositoryImpl extends DeclarationListRepository {
       method: RestMethod.post,
       path: AppApi.urlGetPreviewPdf,
       cancelToken: cancelToken,
-      queryParameters:
-          _getPreviewPdfRequestDataMapper.mapToData(request).toJson(),
+      body: _getPreviewPdfRequestDataMapper.mapToData(request).toJson(),
       options: Options(
         receiveTimeout: _getPreviewPdfTimeOut,
       ),
@@ -43,7 +42,7 @@ class DeclarationListRepositoryImpl extends DeclarationListRepository {
     final data = BaseResponseCl<String>.fromJson(response);
 
     // Lưu URL vào cache
-    if (data.isSuccess && data.result is String) {
+    if (data.result != null) {
       _cachedPdfUrls[request] = data.result;
     }
     return data.result ?? '';
@@ -61,8 +60,7 @@ class DeclarationListRepositoryImpl extends DeclarationListRepository {
       method: RestMethod.post,
       path: AppApi.urlGetPreviewPdf607,
       cancelToken: cancelToken,
-      queryParameters:
-          _getPreviewPdfRequestDataMapper.mapToData(request).toJson(),
+      body: _getPreviewPdfRequestDataMapper.mapToData(request).toJson(),
       options: Options(
         receiveTimeout: _getPreviewPdfTimeOut,
       ),
@@ -70,7 +68,7 @@ class DeclarationListRepositoryImpl extends DeclarationListRepository {
     final data = BaseResponseCl<String>.fromJson(response);
 
     // Lưu URL vào cache
-    if (data.isSuccess && data.result is String) {
+    if (data.result != null) {
       _cachedPdfUrls[request] = data.result;
     }
     return data.result ?? '';
@@ -88,8 +86,7 @@ class DeclarationListRepositoryImpl extends DeclarationListRepository {
       method: RestMethod.post,
       path: AppApi.urlGetPreviewPdf630a,
       cancelToken: cancelToken,
-      queryParameters:
-          _getPreviewPdfRequestDataMapper.mapToData(request).toJson(),
+      body: _getPreviewPdfRequestDataMapper.mapToData(request).toJson(),
       options: Options(
         receiveTimeout: _getPreviewPdfTimeOut,
       ),
@@ -97,7 +94,7 @@ class DeclarationListRepositoryImpl extends DeclarationListRepository {
     final data = BaseResponseCl<String>.fromJson(response);
 
     // Lưu URL vào cache
-    if (data.isSuccess && data.result is String) {
+    if (data.result != null) {
       _cachedPdfUrls[request] = data.result;
     }
     return data.result ?? '';
@@ -115,8 +112,7 @@ class DeclarationListRepositoryImpl extends DeclarationListRepository {
       method: RestMethod.post,
       path: AppApi.urlGetPreviewPdf630b,
       cancelToken: cancelToken,
-      queryParameters:
-          _getPreviewPdfRequestDataMapper.mapToData(request).toJson(),
+      body: _getPreviewPdfRequestDataMapper.mapToData(request).toJson(),
       options: Options(
         receiveTimeout: _getPreviewPdfTimeOut,
       ),
@@ -124,7 +120,7 @@ class DeclarationListRepositoryImpl extends DeclarationListRepository {
     final data = BaseResponseCl<String>.fromJson(response);
 
     // Lưu URL vào cache
-    if (data.isSuccess && data.result is String) {
+    if (data.result != null) {
       _cachedPdfUrls[request] = data.result;
     }
     return data.result ?? '';
@@ -142,8 +138,7 @@ class DeclarationListRepositoryImpl extends DeclarationListRepository {
       method: RestMethod.post,
       path: AppApi.urlGetPreviewPdf630c,
       cancelToken: cancelToken,
-      queryParameters:
-          _getPreviewPdfRequestDataMapper.mapToData(request).toJson(),
+      body: _getPreviewPdfRequestDataMapper.mapToData(request).toJson(),
       options: Options(
         receiveTimeout: _getPreviewPdfTimeOut,
       ),
@@ -151,7 +146,7 @@ class DeclarationListRepositoryImpl extends DeclarationListRepository {
     final data = BaseResponseCl<String>.fromJson(response);
 
     // Lưu URL vào cache
-    if (data.isSuccess && data.result is String) {
+    if (data.result != null) {
       _cachedPdfUrls[request] = data.result;
     }
     return data.result ?? '';

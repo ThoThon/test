@@ -89,7 +89,7 @@ class DeclarationListController extends BaseGetClController {
       action: () async {
         final request = GetPreviewPdfRequest(
           declarationPeriodId: argument.declarationPeriodId,
-          previewDocumentType: previewDocumentType.rawValue,
+          previewDocumentType: previewDocumentType,
           documentRecordId: documentRecordId,
         );
 
