@@ -6,7 +6,7 @@ import 'package:v_bhxh/clean/features/login/presentation/splash_page.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/change_base_url/ui/change_base_url_page.dart';
 import 'package:v_bhxh/modules/declare/declaration_form_detail/ui/declaration_form_detail_page.dart';
-import 'package:v_bhxh/modules/declare/declaration_list/ui/declaration_list_page.dart';
+import 'package:v_bhxh/modules/declare/declaration_list/presentation/binding/declaration_list_binding.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/binding/declaration_period_binding.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/declaration_period_page.dart';
 import 'package:v_bhxh/modules/declare/declare_info/ui/declare_info_page.dart';
@@ -32,6 +32,7 @@ import 'package:v_bhxh/modules/register_service/presentation/binding/register_se
 import 'package:v_bhxh/modules/unit_info/presentation/binding/unit_info_binding.dart';
 import 'package:v_bhxh/modules/view_pdf/ui/view_pdf_page.dart';
 
+import '../../modules/declare/declaration_list/presentation/ui/declaration_list_page.dart';
 import '../../modules/declare/staff_list/presentation/ui/staff_list_page.dart';
 import '../../modules/lookup_c12/presentation/binding/lookup_c12_binding.dart';
 import '../../modules/lookup_c12/presentation/ui/lookup_c12_page.dart';
@@ -111,7 +112,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.declarationList.path,
-      page: () => DeclarationListPage(),
+      page: DeclarationListPage.new,
+      binding: DeclarationListBinding(),
     ),
     GetPage(
       name: AppRoutesCl.viewPdf.path,

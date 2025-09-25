@@ -24,6 +24,7 @@ import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 import '../../../shared/mapper/categories_630/bank_data_mapper.dart';
 import '../../../shared/mapper/categories_630/benefit_group_lv2_data_mapper.dart';
 import '../../../shared/mapper/categories_630/categories_630_data_mapper.dart';
+import '../../../shared/mapper/get_preview_pdf_request_data_mapper.dart';
 import '../../../shared/mapper/social_agency_data_mapper.dart';
 import 'base_bindings.dart';
 
@@ -88,6 +89,8 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => SaveXmlResultDataMapper(sl()), fenix: true);
     Get.lazyPut(() => StaffListDataMapper(sl(), sl()), fenix: true);
     Get.lazyPut(() => Tk1PreviewPathDataMapper(), fenix: true);
+    Get.lazyPut(() => GetPreviewPdfRequestDataMapper(), fenix: true);
+    
     Get.lazyPut(() => SelectStaffRequestDataMapper(), fenix: true);
     Get.lazyPut(() => SelectStaffResponseDataMapper(sl()), fenix: true);
     Get.lazyPut(() => StaffDetailDataMapper(), fenix: true);
