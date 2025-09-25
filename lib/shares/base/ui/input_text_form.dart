@@ -55,7 +55,7 @@ class BuildInputTextState extends State<BuildInputText> {
       case InputFormatterEnum.password:
         return [
           // Chặn emoji
-          RegexpEmojiUtil.allowCommonCharacters,
+          RegexpUtil.allowCommonCharacters,
           FilteringTextInputFormatter.deny(RegExp(r'( )')),
         ];
       case InputFormatterEnum.phoneNumber:
@@ -107,6 +107,9 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.percent:
         return [
+          // Chỉ cho phép nhật số và dấu chấm hoặc dấu phẩy
+          // REF: VBHXHMOB-110
+          RegexpUtil.allowNumberByDotOrComma(isDot: true),
           NumericTextFormatter(
             type: 1,
             isDot: true,
@@ -118,15 +121,18 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.textNormal:
         return [
-          RegexpEmojiUtil.allowCommonCharacters,
+          RegexpUtil.allowCommonCharacters,
         ];
       case InputFormatterEnum.taxCodeNormal:
         return [
-          RegexpEmojiUtil.allowCommonCharacters,
+          RegexpUtil.allowCommonCharacters,
           FilteringTextInputFormatter.deny(RegExp(r'( )')),
         ];
       case InputFormatterEnum.coefficient:
         return [
+          // Chỉ cho phép nhật số và dấu chấm hoặc dấu phẩy
+          // REF: VBHXHMOB-110
+          RegexpUtil.allowNumberByDotOrComma(isDot: true),
           NumericTextFormatter(
             type: 1,
             isDot: true,
@@ -136,6 +142,9 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.rate:
         return [
+          // Chỉ cho phép nhập số và dấu chấm hoặc dấu phẩy
+          // REF: VBHXHMOB-110
+          RegexpUtil.allowNumberByDotOrComma(isDot: true),
           NumericTextFormatter(
             type: 1,
             isDot: true,
@@ -145,7 +154,7 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.textNormalWithoutSpace:
         return [
-          RegexpEmojiUtil.allowCommonCharacters,
+          RegexpUtil.allowCommonCharacters,
           FilteringTextInputFormatter.deny(RegExp(r'( )')),
         ];
       case InputFormatterEnum.periodMonthYear:

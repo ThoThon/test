@@ -1,3 +1,110 @@
+24/09/2025
+- VBHXHMOB-125 - FE_Bổ sung thêm access token cho link response trả về của api/upload/image
+- VBHXHMOB-128 - FE_Bổ sung thêm access token cho link response trả về của /api/HoSo630a/preview-pdf
+- VBHXHMOB-129 - FE_Bổ sung thêm access token cho link response trả về của /api/HoSo630b/preview-pdf
+- VBHXHMOB-130 - FE_Bổ sung thêm access token cho link response trả về của /api/HoSo630c/preview-pdf
+- VBHXHMOB-131 - FE_Bổ sung thêm access token cho link response trả về của /api/HoSoD02/preview-pdf
+- VBHXHMOB-132 - FE_Bổ sung thêm access token cho link response trả về của /api/HoSoTk1/preview-pdf
+- Clean Bottom sheet Chọn Tỉnh/Xã
+
+
+23/09/2025
+- [Appmobile]_Thủ tục 630b: Màn Danh sách nhân viên: Xóa hồ sơ nhân sự - VBHXHMOB-118
+- [Appmobile]_Màn Danh sách nhân viên: Chỉnh sửa không thực hiện refresh khi thêm thêm file đính kèm -VBHXHMOB-119
+- [Appmobile]_Màn danh sách biểu mẫu tờ khai: Không có file đính kèm nhưng hiển thị card file đính kèm - VBHXHMOB-120
+- [Appmobile]_Lỗi gọi api vào màn Danh sách biểu mẫu tờ khai - VBHXHMOB-121
+
+22/09/2025
+- [Appmobile]_Thủ tục 630b, 630c: Màn Danh sách nhân viên - VBHXHMOB-115
+- [Appmobile]_Màn thông tin khác: Chỉnh sửa bỏ hiển thị toast thông báo "Not found" - VBHXHMOB-116
+- [Appmobile]_Màn Danh sách nhân viên: Xóa hồ sơ nhân sự - VBHXHMOB-117
+
+20/09/2025
+- [Appmobile]_Thủ tục 600: Bổ sung Validate trường [Mã số BHXH] cho [Loại khai báo] và [Phương án] - VBHXHMOB-109
+- [Appmobile]_Thủ tục 600: Validate trường checkbox [Sinh dữ liệu TK1-TS] - VBHXHMOB-108
+- Clean arch màn Danh sách nhân viên kê khai
+- Clean arch màn Thông tin khác
+
+19/09/2025
+- [Appmobile]_Đăng ký dịch vụ: Lỗi trạng thái button Cập nhật - VBHXHMOB-94
+
+18/09/2025
+- [Appmobile]_Màn Thông tin đơn vị: Chỉnh sửa UI hiển thị 2 button Huỷ và Lưu - VBHXHMOB-99
+- [Appmobile]_Màn Đợt kê khai: Chỉnh sửa hiển thị thời gian update bằng thời gian tạo - VBHXHMOB-98
+- [Appmobile]_Màn đăng ký dịch vụ : Lỗi hiển thị lại số serial -VBHXHMOB-84
+- [Appmobile]_[Màn đăng ký]: Chỉnh sửa hiển thị ban đầu tại trường số serial - VBHXHMOB-83
+- [Appmobile]_Màn Thông tin đơn vị: Lỗi hiển thị trang thái button Lưu - VBHXHMOB-100
+
+17/09/2025
+- Sửa lỗi “Connection closed before full header was received”
+
+16/09/2025
+- [Appmobile]_[Màn đăng ký dịch vụ]: Lỗi hiển thị Trường [Ngày bắt đầu], [Ngày kết thúc] - VBHXHMOB-76
+- [Appmobile]_Chỉnh sửa thời gian đợi timeout với trường hợp chuyển ký - VBHXHMOB-74
+- [Appmobile]_[Màn Đăng ký cấp mã]_Chặn double click tại button Đăng ký - VBHXHMOB-81
+- Clean arch màn Thông tin đơn vị
+
+15/09/2025
+- VBHXHMOB-65 - [Appmobile]_Thông báo update trên màn login
+- [Appmobile]_Màn Đăng ký Dịch vụ: Trả về hiển thị popup thay vì toast thông báo khi nhận response từ MySign trả về - VBHXHMOB-79
+- [Appmobile]_Màn đăng ký lần đầu_Lỗi hiển thị toast thông báo khi lấy thông tin CTS - VBHXHMOB-73
+- [Appmobile]_Màn đăng ký cấp mã: Lỗi hiển thị lại số serial - VBHXHMOB-78
+- [Appmobile]_Màn Đăng ký dịch vụ: Trả về hiển thị popup thay vì toast thông báo khi nhận response từ MySign trả về - VBHXHMOB-75
+
+12/09/2025
+- [Appmobile]_Thủ tục 630b: Trả về giá trị đúng cho trường [Từ ngày], [Đến ngày], [Đến ngày đơn vị] theo api/HoSo630b/get-630b-detail - VBHXHMOB-70
+- [Appmobile]_Thủ tục 630b: Trả về giá trị đúng cho trường [Tổng số ngày] theo api/HoSo630b/get-630b-detail - VBHXH-68
+- [Appmobile]_Thủ tục 630b: Hiển thị sai dữ liệu so với api/HoSo630b/get-630b-detail - VBHXH - 69
+- VBHXHMOB-72 - [Appmobile]_Chỉnh sửa refresh danh sách Đợt khi kích chọn lọc trạng thái
+- VBHXHMOB-71 - [Appmobile]_Chỉnh sửa hiển thị danh sách Màn Đợt kê khai
+
+
+11/09/2025 
+- Clean arch cho màn Đăng ký dịch vụ
+- [Appmobile]_Màn Quên mật khẩu: Chỉnh sửa hiển thị popup thay vì toast thông báo - VBHXHMOB-63
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613: Thủ tục TK1: Lỗi tự động xóa thông tin thành viên gia đình - VBHXHMOB-31
+- [Appmobile]_Chỉnh sửa text hiển thị tại popup quá timeout - VBHXHMOB-62
+- [Appmobile]_Chỉnh sửa refreshdanh sách màn Đợt kê khai - VBHXHMOB-67
+
+10/09/2025
+- [Appmobile]_Màn Đăng ký cấp mã: Lỗi focus chuột - VBHXHMOB-51
+- [Appmobile]_Màn Đăng ký cấp mã: Lỗi quá timeout không trả về popup -VBHXHMOB-58
+
+08/09/2025
+- [Appmobile]_Màn đăng ký_Check trùng MST khi ký gửi hồ sơ - VBHXHMOB-44
+- Appmobile]_Màn D01_Dánh sách bảng kê: Chỉnh sửa giao diện hộp hiển thị nút Sửa, Xoá - VBHXH - 45
+- [Appmobile]_Tờ khai TK1-TS_Lỗi validate chủ hộ - VBHXHMOB-39
+- [Appmobile]_Tờ khai TK1-TS_Lỗi check validate chủ hộ- VBHXHMOB-40
+- [Appmobile]_Màn đăng ký cấp mã: Xoá hiển thị popup chuyển ký khi Mã số thuế không hợp lệ - VBHXH-26
+
+05/09/2025
+- [Appmobile]_Hồ sơ TK1: 600, 607, 608, 610, 612, 613: Tỉnh nơi KCB: Danh sách hiển thị trong Bottom Sheet rỗng - VBHXHMOB-24  
+- [Appmobile]_Lỗi không gọi /api/HoSo630/get-categories - VBHXHMOB-28
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613: Hồ sơ TK1: Lỗi hiển thị Bottom sheet của chọn Phường/xã - VBHXHMOB-29
+
+04/09/2025
+- Cập nhật core app: Các màn đã cập nhật: Đăng nhập, quên mật khẩu, trang chủ, tra cứu c12, thông báo, đợt kê khai, danh sách thành viên trong gia đình, danh sách thủ tục, đăng ký cấp mã
+
+28/08/2025
+- [Appmobile]_Thủ tục 630c_Lỗi hiển thị text thông báo đỏ trường [Tỷ lệ suy giảm] - VBHXHMOB-10
+- [Appmobile]_Thủ tục 630c_Reset giá trị khi chọn giữa Phát sinh và Điều chỉnh - VBHXHMOB-9
+- [Appmobile]_Thủ tục 600, 607, 608, 610, 612, 613, 630a, 630b, 630c: Lỗi focus chuột - VBHXHMOB-13
+- [Appmobile]_Check dữ liệu danh sách thành viên hộ gia đình - VBHXHMOB-16
+- [Appmobile]_Chặn đính kèm file trường hợp đã đính kèm 5 file. - VBHXHMOB-1
+- [Appmobile]_Bổ sung hiển thị thông tin phiên bản của app - VBHXHMOB-15
+- [Appmobile]_Lỗi không cho xóa trường Tỉnh,xã của chủ hộ khi tích NTG là chủ hộ tờ tờ khai TK1-TS - VBHXHMOB-18
+
+25/08/2025
+- [Appmobile]_Thủ tục 630c_Trường [Số CCCD] Hiển thị text cảnh báo khi nhập ký tự tiếng Việt - BHW-3120
+- [Appmobile]_Thủ tục 630c: Bổ sung api Xoá toàn bộ 630c - BHW-3123
+- [Appmobile]_Thủ tục 630c: Lỗi validate trường [Tổng số ngày] khi nhập = 0 - BHW-3119
+
+23/08/2025
+- [Appmobile]_Thủ tục 630c: Trường [Ngày trở lại làm việc]: Lỗi text hiển thị cảnh báo - BHW-3109
+- [Appmobile]_Thủ tục 630c_Trường [Ngày giám định] không là trường bắt buộc - BHW-3113
+- [Appmobile]_Thủ tục 630c: Ghép api Lấy chi tiết hồ sơ theo id nhân viên - BHW-3111
+
+
 22/08/2025
 - [Appmobile]_Thủ tục 630c_Dựng giao diện + ghép api cho form Thủ tục 630c với hình thức kê khai là Điều chỉnh - BHW-3097
 - [Appmobile]_Thủ tục 630c_Dựng giao diện + ghép api cho form kê khai thủ tục 630c: Hình thức kê khai phát sinh - BHW-3096
