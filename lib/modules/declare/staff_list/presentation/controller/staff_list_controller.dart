@@ -132,13 +132,13 @@ class StaffListController extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
-        final response = await _uploadAttachImageUseCase.execute(
+        final image = await _uploadAttachImageUseCase.execute(
           UploadImageRequestData(
             file: imagePath,
             periodId: declarationPeriodId,
           ),
         );
-        listAttachImage.add(response);
+        listAttachImage.value = [...listAttachImage, image];
         _scrollStaffList();
       },
     );
