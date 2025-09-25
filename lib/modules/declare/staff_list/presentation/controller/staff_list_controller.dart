@@ -122,8 +122,8 @@ class StaffListController extends BaseGetClController {
           ProcedureType.procedure630c =>
             _getStaffList630cUseCase.execute(declarationPeriodId),
         };
-        declaredStaffs.value = response.staffs;
-        listAttachImage.value = response.image;
+        declaredStaffs.assignAll(response.staffs);
+        listAttachImage.assignAll(response.image);
       },
     );
   }
