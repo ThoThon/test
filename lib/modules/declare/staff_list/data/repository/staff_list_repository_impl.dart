@@ -11,11 +11,13 @@ class StaffListRepositoryImpl extends StaffListRepository {
   final AuthAppServerApiClient _authAppServerApiClient;
   final SaveXmlResultDataMapper _saveXmlResultDataMapper;
   final StaffListDataMapper _staffListDataMapper;
+  final AttachedImageDataMapper _attachedImageDataMapper;
 
   StaffListRepositoryImpl(
     this._authAppServerApiClient,
     this._staffListDataMapper,
     this._saveXmlResultDataMapper,
+    this._attachedImageDataMapper,
   );
 
   @override
@@ -103,7 +105,7 @@ class StaffListRepositoryImpl extends StaffListRepository {
   }
 
   @override
-  Future<String> uploadImage({
+  Future<AttachedImage> uploadImage({
     required UploadImageRequestData request,
   }) async {
     final mapData = request.toJson();
@@ -139,7 +141,10 @@ class StaffListRepositoryImpl extends StaffListRepository {
       body: formData,
     );
 
-    final data = BaseResponseCl<String>.fromJson(response);
-    return data.result ?? '';
+    final data = BaseResponseCl<AttachedImageData>.fromJson(
+      response,
+      fromJson: (json) => AttachedImageData.fromJson(json),
+    );
+    return _attachedImageDataMapper.mapToEntity(data.result);
   }
 }

@@ -55,12 +55,12 @@ extension StaffListWidget on StaffListPage {
               style: AppTextStyle.font16Bo,
             ),
             sdsSBWidth8,
-            const Tooltip(
+            Tooltip(
               verticalOffset: -50,
-              margin: EdgeInsets.only(right: AppDimens.padding32),
-              message: "Chỉ cho phép chọn tối đa 5 file",
+              margin: const EdgeInsets.only(right: AppDimens.padding32),
+              message: LocaleKeys.staffList_maximumImage.tr,
               triggerMode: TooltipTriggerMode.tap,
-              child: Icon(
+              child: const Icon(
                 Icons.help_outline,
                 size: 16,
               ),
