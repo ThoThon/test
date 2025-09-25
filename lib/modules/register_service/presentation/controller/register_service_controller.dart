@@ -124,7 +124,7 @@ class RegisterServiceController extends BaseGetClController {
       iconType: DialogIconType.success,
       cancelTitle: LocaleKeys.dialog_exit.tr,
       confirmTitle: LocaleKeys.dialog_history.tr,
-      onCancel: () async {
+      onCancel: () {
         nav.until(ModalRoute.withName(AppRoutesCl.home.path));
       },
       onConfirm: () {
