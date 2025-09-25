@@ -226,7 +226,9 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: selectedStaffId,
     );
-    _getDetailStaff(staffId: result);
+    if (result is String) {
+      await _getDetailStaff(staffId: result);
+    }
   }
 
   Future<void> _getDetailStaff({

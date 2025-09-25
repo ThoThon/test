@@ -139,7 +139,9 @@ class DeclareInfo630aController extends BaseGetxController {
       AppRoutesCl.selectStaff.path,
       arguments: selectedStaffId,
     );
-    _getDetailStaff(staffId: result);
+    if (result is String) {
+      await _getDetailStaff(staffId: result);
+    }
   }
 
   Future<void> _getDetailStaff({

@@ -63,7 +63,9 @@ class DeclareInfo607Controller extends BaseGetxController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: tk1State.selectedStaffId,
     );
-    await _getDetailStaff(staffId: result);
+    if (result is String) {
+      await _getDetailStaff(staffId: result);
+    }
 
     // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
     updateHouseholdInfoRequired();

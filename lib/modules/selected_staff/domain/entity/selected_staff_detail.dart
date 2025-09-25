@@ -2,6 +2,7 @@ import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
 import 'package:v_bhxh/clean/shared/entity/category.dart';
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declare_info/clean/domain/entity/staff_family_response_cl.dart';
+import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
 
 import '../../../src.dart';
 
@@ -10,8 +11,8 @@ class SelectedStaffDetail implements Entity {
   final String? fullName;
   final String? bhxhNumber;
   final String? cccdNumber;
-  final int? gender;
-  final int? onlyYearOfBirth;
+  final Gender? gender;
+  final BirthTypeEnum? onlyYearOfBirth;
   final String? dateOfBirth;
   final Category? ethnicity;
   final Category? nationality;

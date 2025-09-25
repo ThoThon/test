@@ -1,20 +1,17 @@
 import 'package:v_bhxh/clean/shared/model/category_data.dart';
 import 'package:v_bhxh/clean/shared/model/model_src.dart';
 
-import '../../../../family_member_detail/domain/entity/birth_type_enum.dart';
-import '../../../model/gender.dart';
-
 class StaffFamilyResponseDataCl {
   final String? id;
   final String? hoTen;
   final String? ngaySinh;
   final RelationshipData? moiQuanHe;
   final String? maSoBhxh;
-  final Gender? gioiTinh;
+  final int? gioiTinh;
   final ProvinceData? tinhKhaiSinh;
   final WardData? xaKhaiSinh;
   final String? cmnd;
-  final BirthTypeEnum? chiCoNamSinh;
+  final int? chiCoNamSinh;
   final CategoryData? quocTichs;
   final CategoryData? danTocs;
 
@@ -32,21 +29,31 @@ class StaffFamilyResponseDataCl {
     this.quocTichs,
     this.danTocs,
   });
+
   factory StaffFamilyResponseDataCl.fromJson(Map<String, dynamic> json) {
     return StaffFamilyResponseDataCl(
       id: json['id'],
       hoTen: json['hoTen'],
       ngaySinh: json['ngaySinh'],
-      moiQuanHe: RelationshipData.fromJson(json['moiQuanHe']),
+      moiQuanHe: json['moiQuanHe'] != null
+          ? RelationshipData.fromJson(json['moiQuanHe'])
+          : null,
       maSoBhxh: json['maSoBhxh'],
-      gioiTinh: Gender.parse(json['gioiTinh']),
-      tinhKhaiSinh: ProvinceData.fromJson(json['tinhKhaiSinh']),
-      xaKhaiSinh: WardData.fromJson(json['xaKhaiSinh']),
+      gioiTinh: json['gioiTinh'],
+      tinhKhaiSinh: json['tinhKhaiSinh'] != null
+          ? ProvinceData.fromJson(json['tinhKhaiSinh'])
+          : null,
+      xaKhaiSinh: json['xaKhaiSinh'] != null
+          ? WardData.fromJson(json['xaKhaiSinh'])
+          : null,
       cmnd: json['cmnd'],
-      chiCoNamSinh: BirthTypeEnum.parse(json['chiCoNamSinh']) ??
-          BirthTypeEnum.defaultValue,
-      quocTichs: CategoryData.fromJson(json['quocTichs']),
-      danTocs: CategoryData.fromJson(json['danTocs']),
+      chiCoNamSinh: json['chiCoNamSinh'],
+      quocTichs: json['quocTichs'] != null
+          ? CategoryData.fromJson(json['quocTichs'])
+          : null,
+      danTocs: json['danTocs'] != null
+          ? CategoryData.fromJson(json['danTocs'])
+          : null,
     );
   }
 }

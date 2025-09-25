@@ -1,16 +1,15 @@
 import 'package:v_bhxh/clean/shared/model/category_data.dart';
 import 'package:v_bhxh/clean/shared/model/model_src.dart';
-import 'package:v_bhxh/modules/declare/declare_info/clean/data/model/staff_family_response_data_cl.dart';
+import 'package:v_bhxh/modules/declare/declare_info/clean/data/model/staff_family_response_data.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/model_src.dart';
-import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/birth_type_enum.dart';
 
 class SelectedStaffDetailData {
   final String? id;
   final String? hoTen;
   final String? maSoBHXH;
   final String? soCCCD;
-  final Gender? gioiTinh;
-  final BirthTypeEnum? chiCoNamSinh;
+  final int? gioiTinh;
+  final int? chiCoNamSinh;
   final String? ngaySinh;
   final CategoryData? danToc;
   final CategoryData? quocTich;
@@ -87,11 +86,14 @@ class SelectedStaffDetailData {
       hoTen: json['hoTen'],
       maSoBHXH: json['maSoBHXH'],
       soCCCD: json['soCCCD'],
-      gioiTinh: Gender.parse(json['gioiTinh']),
-      chiCoNamSinh: BirthTypeEnum.parse(json['chiCoNamSinh']),
+      gioiTinh: json['gioiTinh'],
+      chiCoNamSinh: json['chiCoNamSinh'],
       ngaySinh: json['ngaySinh'],
-      danToc: CategoryData.fromJson(json['danToc']),
-      quocTich: CategoryData.fromJson(json['quocTich']),
+      danToc:
+          json['danToc'] != null ? CategoryData.fromJson(json['danToc']) : null,
+      quocTich: json['quocTich'] != null
+          ? CategoryData.fromJson(json['quocTich'])
+          : null,
       chucVu: json['chucVu'],
       dongTheoHeSo: json['dongTheoHeSo'],
       heSoLuongCoBan: json['heSoLuongCoBan'],
@@ -101,23 +103,38 @@ class SelectedStaffDetailData {
       phuCapThamNienNghe: json['phuCapThamNienNghe']?.toDouble(),
       phuCapLuong: json['phuCapLuong'],
       phuCapBoSung: json['phuCapBoSung'],
-      benhVienTinh: ProvinceData.fromJson(json['benhVienTinh']),
-      benhVien: Hospital.fromJson(json['benhVien']),
-      khaiSinhTinh: ProvinceData.fromJson(json['khaiSinhTinh']),
-      khaiSinhXa: WardData.fromJson(json['khaiSinhXa']),
+      benhVienTinh: json['benhVienTinh'] != null
+          ? ProvinceData.fromJson(json['benhVienTinh'])
+          : null,
+      benhVien:
+          json['benhVien'] != null ? Hospital.fromJson(json['benhVien']) : null,
+      khaiSinhTinh: json['khaiSinhTinh'] != null
+          ? ProvinceData.fromJson(json['khaiSinhTinh'])
+          : null,
+      khaiSinhXa: json['khaiSinhXa'] != null
+          ? WardData.fromJson(json['khaiSinhXa'])
+          : null,
       diaChiKhaiSinh: json['diaChiKhaiSinh'],
-      noiNhanTinh: ProvinceData.fromJson(json['noiNhanTinh']),
-      noiNhanXa: WardData.fromJson(json['noiNhanXa']),
+      noiNhanTinh: json['noiNhanTinh'] != null
+          ? ProvinceData.fromJson(json['noiNhanTinh'])
+          : null,
+      noiNhanXa: json['noiNhanXa'] != null
+          ? WardData.fromJson(json['noiNhanXa'])
+          : null,
       diaChiNoiNhan: json['diaChiNoiNhan'],
       dienThoaiLienHe: json['dienThoaiLienHe'],
       hoTenChuHo: json['hoTenChuHo'],
       chuHoSoCCCD: json['chuHoSoCCCD'],
-      chuHoThuongTruTinh: ProvinceData.fromJson(json['chuHoThuongTruTinh']),
-      chuHoThuongTruXa: WardData.fromJson(json['chuHoThuongTruXa']),
+      chuHoThuongTruTinh: json['chuHoThuongTruTinh'] != null
+          ? ProvinceData.fromJson(json['chuHoThuongTruTinh'])
+          : null,
+      chuHoThuongTruXa: json['chuHoThuongTruXa'] != null
+          ? WardData.fromJson(json['chuHoThuongTruXa'])
+          : null,
       diaChiThuongTruChuHo: json['diaChiThuongTruChuHo'],
-      tyLeDong: json['tyLeDong'],
       trungDiaChiKhaiSinh: json['trungDiaChiKhaiSinh'],
       laChuHo: json['laChuHo'],
+      tyLeDong: json['tyLeDong'],
       danhSachThanhViens: (json['danhSachThanhViens'] as List?)
           ?.map((e) => StaffFamilyResponseDataCl.fromJson(e))
           .toList(),
