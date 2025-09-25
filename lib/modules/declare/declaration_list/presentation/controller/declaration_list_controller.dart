@@ -1,4 +1,6 @@
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/modules/home_clean/presentation/events/home_event.dart';
+import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog.src.dart';
 
 import '../../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
@@ -35,6 +37,7 @@ class DeclarationListController extends BaseGetClController {
           argument.declarationPeriodId,
         );
         nav.dismissDialog();
+        eventBus.fire(const GetUnreadNotificationCountEvent());
         _showDialogVerifySuccess();
       },
       onError: (error) {

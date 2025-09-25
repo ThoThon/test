@@ -2,7 +2,6 @@ export 'data/model/update_unit_info_request_data.dart';
 export 'data/repository/unit_info_repository_impl.dart';
 export 'domain/entity/update_unit_info_request.dart';
 export 'domain/repository/unit_info_repository.dart';
-export 'domain/usecase/get_total_noti_unread_use_case.dart';
 export 'domain/usecase/get_unit_info_use_case.dart';
 export 'domain/usecase/update_unit_info_use_case.dart';
 export 'presentation/binding/unit_info_binding.dart';
