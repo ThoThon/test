@@ -37,6 +37,7 @@ class DeclarationListController extends BaseGetClController {
           argument.declarationPeriodId,
         );
         nav.dismissDialog();
+        eventBus.fire(const GetUnreadNotificationCountEvent());
         _showDialogVerifySuccess();
       },
       onError: (error) {
@@ -76,8 +77,6 @@ class DeclarationListController extends BaseGetClController {
         );
       },
       onCancel: () {
-        eventBus.fire(const GetUnreadNotificationCountEvent());
-
         nav.until(ModalRoute.withName(AppRoutesCl.home.path));
       },
     );

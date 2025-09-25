@@ -124,9 +124,7 @@ class RegisterServiceController extends BaseGetClController {
       iconType: DialogIconType.success,
       cancelTitle: LocaleKeys.dialog_exit.tr,
       confirmTitle: LocaleKeys.dialog_history.tr,
-      onCancel: () async{
-        eventBus.fire(const GetUnreadNotificationCountEvent());
-
+      onCancel: () async {
         nav.until(ModalRoute.withName(AppRoutesCl.home.path));
       },
       onConfirm: () {
@@ -146,6 +144,7 @@ class RegisterServiceController extends BaseGetClController {
         _showDialogCheckedSuccess();
         await _cancelRegisterUseCase.execute();
         nav.dismissDialog();
+        eventBus.fire(const GetUnreadNotificationCountEvent());
         _showDialogVerifySuccess();
       },
       onError: (error) {
