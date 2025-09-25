@@ -1,4 +1,4 @@
-part of 'select_staff_page.dart';
+part of 'selected_staff_page.dart';
 
 extension SelectStaffWidget on SelectStaffPage {
   Widget _buildBody() {
@@ -16,7 +16,7 @@ extension SelectStaffWidget on SelectStaffPage {
   Widget _buildSearchStaff() {
     return BuildInputText(
       InputTextModel(
-        controller: controller.searchController,
+        controller: controller.searchTextCtrl,
         hintText: LocaleKeys.staffList_fillFullName.tr,
         hintTextColor: AppColors.thumbColorSwitch,
         prefixIconColor: AppColors.thumbColorSwitch,
@@ -41,10 +41,13 @@ extension SelectStaffWidget on SelectStaffPage {
         ),
       );
 
-  Widget _buildItemStaff(SelectStaffResponse item, int index) {
+  Widget _buildItemStaff(
+    StaffDetail item,
+    int index,
+  ) {
     return InkWell(
-      onTap: () {
-        Get.back(result: item);
+      onTap: () async {
+        Get.back(result: item.id);
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,9 +66,9 @@ extension SelectStaffWidget on SelectStaffPage {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildStaffInfo(item),
-                if (item.chucVu.isNotEmpty)
+                if (item.position.isNotEmpty)
                   SDSBuildText(
-                    item.chucVu,
+                    item.position,
                     style: AppTextStyle.font14Re,
                   ),
               ],
@@ -84,12 +87,12 @@ extension SelectStaffWidget on SelectStaffPage {
     );
   }
 
-  Widget _buildStaffInfo(SelectStaffResponse item) {
+  Widget _buildStaffInfo(StaffDetail item) {
     return Row(
       children: [
         Expanded(
           child: SDSBuildText(
-            '${item.hoTen}${item.maSoBHXH.isNotEmpty ? ' (${item.maSoBHXH})' : ''}',
+            '${item.fullName}${item.bhxhNumber.isNotEmpty ? ' (${item.bhxhNumber})' : ''}',
             maxLines: 4,
             style: AppTextStyle.font14Re,
           ),

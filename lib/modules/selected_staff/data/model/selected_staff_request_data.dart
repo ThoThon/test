@@ -1,12 +1,12 @@
-class StaffListRequest {
-  final int pageIndex;
-  final int pageSize;
+class SelectStaffRequestData {
+  final int? pageIndex;
+  final int? pageSize;
   final String? hoTen;
   final String? maSoBHXH;
 
-  StaffListRequest({
-    required this.pageIndex,
-    required this.pageSize,
+  SelectStaffRequestData({
+    this.pageIndex,
+    this.pageSize,
     this.hoTen,
     this.maSoBHXH,
   });
@@ -15,8 +15,8 @@ class StaffListRequest {
     return {
       'pageIndex': pageIndex,
       'pageSize': pageSize,
-      'hoTen': hoTen ?? "",
-      'maSoBHXH': maSoBHXH ?? "",
+      'hoTen': hoTen,
+      'maSoBHXH': maSoBHXH,
     };
   }
 }

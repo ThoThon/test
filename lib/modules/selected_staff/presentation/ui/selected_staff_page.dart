@@ -1,20 +1,16 @@
+import 'package:v_bhxh/modules/selected_staff/domain/entity/staff_detail.dart';
 import 'package:v_bhxh/modules/src.dart';
 
-import '../controller/controller_src.dart';
-import '../model/select_staff_response.dart';
+import '../../../../clean/core/presentation/widgets/base_get_page.dart';
+import '../controller/selected_staff_controller.dart';
 
-part 'select_staff_widget.dart';
+part 'selected_staff_widget.dart';
 
-class SelectStaffPage extends BaseGetWidget {
+class SelectStaffPage extends BaseGetPage<SelectStaffController> {
   SelectStaffPage({super.key});
 
   @override
-  SelectStaffController get controller => _controller;
-
-  late final _controller = Get.put(SelectStaffController());
-
-  @override
-  Widget buildWidgets(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
         centerTitle: true,

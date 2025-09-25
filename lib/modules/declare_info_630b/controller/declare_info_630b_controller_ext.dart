@@ -8,8 +8,6 @@ import '../../../base_app/model/app_data.dart';
 import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
 import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
-import '../../declare/staff_list/domain/entity/entity_src.dart';
-import '../../select_staff/model/model_src.dart';
 import '../../src.dart';
 
 extension DeclareInfo630bControllerExt on DeclareInfo630bController {
@@ -228,8 +226,8 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: selectedStaffId,
     );
-    if (result is SelectStaffResponse) {
-      _getDetailStaff(staffId: result.id);
+    if (result is String) {
+      await _getDetailStaff(staffId: result);
     }
   }
 
