@@ -1,6 +1,6 @@
 import 'package:v_bhxh/clean/shared/model/categories_630/categories_630_src.dart';
 
-class DeclareInfo630aData {
+class DeclareInfo630aResponseData {
   final String? id;
   final String? kyKeKhaiId;
   final String? phatSinhDieuChinh;
@@ -34,7 +34,7 @@ class DeclareInfo630aData {
   final String? tuNgayDuyetTruoc;
   final String? lyDoDieuChinh;
 
-  DeclareInfo630aData({
+  DeclareInfo630aResponseData({
     this.id,
     this.kyKeKhaiId,
     this.phatSinhDieuChinh,
@@ -69,8 +69,8 @@ class DeclareInfo630aData {
     this.lyDoDieuChinh,
   });
 
-  factory DeclareInfo630aData.fromJson(Map<String, dynamic> json) {
-    return DeclareInfo630aData(
+  factory DeclareInfo630aResponseData.fromJson(Map<String, dynamic> json) {
+    return DeclareInfo630aResponseData(
       id: json['id'],
       kyKeKhaiId: json['kyKeKhaiId'],
       phatSinhDieuChinh: json['phatSinh_DieuChinh'],
@@ -98,49 +98,12 @@ class DeclareInfo630aData {
       hinhThucNhan: json['hinhThucNhan'],
       soTaiKhoan: json['soTaiKhoan'],
       tenChuTaiKhoan: json['tenChuTaiKhoan'],
-      nganHang: BankData.fromJson(json['nganHang']),
+      nganHang:
+          json['nganHang'] != null ? BankData.fromJson(json['nganHang']) : null,
       ghiChu: json['ghiChu'],
       dotDaGiaiQuyet: json['dotDaGiaiQuyet'],
       tuNgayDuyetTruoc: json['tuNgayDuyetTruoc'],
       lyDoDieuChinh: json['lyDoDieuChinh'],
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'kyKeKhaiId': kyKeKhaiId,
-      'phatSinh_DieuChinh': phatSinhDieuChinh,
-      'hoTen': hoTen,
-      'maSoBhxh': maSoBhxh,
-      'soCmnd': soCmnd,
-      'maNhanVien': maNhanVien,
-      'maNhomHuong': maNhomHuong,
-      'soSeriCT': soSeriCT,
-      'tuNgay': tuNgay,
-      'denNgay': denNgay,
-      'tongSoNgay': tongSoNgay,
-      'tuNgayDonVi': tuNgayDonVi,
-      'ngayNghiTuan': ngayNghiTuan,
-      'tuyenBenhVien': tuyenBenhVien,
-      'ngaySinhCon': ngaySinhCon,
-      'theBhytCuaCon': theBhytCuaCon,
-      'soCon': soCon,
-      'maBenhDaiNgay': maBenhDaiNgay,
-      'tenBenh': tenBenh,
-      'dieuKienLamViec': dieuKienLamViec,
-      'dangKyNghiDuongThai': dangKyNghiDuongThai,
-      'dotBoSung': dotBoSung,
-      'maHoSo': maHoSo,
-      'hinhThucNhan': hinhThucNhan,
-      'soTaiKhoan': soTaiKhoan,
-      'tenChuTaiKhoan': tenChuTaiKhoan,
-      // Chỉ gửi mã ngân hàng
-      'nganHang': nganHang?.code,
-      'ghiChu': ghiChu,
-      'dotDaGiaiQuyet': dotDaGiaiQuyet,
-      'tuNgayDuyetTruoc': tuNgayDuyetTruoc,
-      'lyDoDieuChinh': lyDoDieuChinh,
-    };
   }
 }

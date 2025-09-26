@@ -1,6 +1,5 @@
 import 'package:collection/collection.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
-import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
@@ -10,6 +9,8 @@ import 'package:v_bhxh/modules/declare_info_630a_cl/domain/entity/declare_info_6
 import 'package:v_bhxh/modules/declare_info_630a_cl/domain/use_case/add_procedure_630a_use_case.dart';
 import 'package:v_bhxh/modules/declare_info_630a_cl/domain/use_case/get_detail_procedure_630a_use_case.dart';
 import 'package:v_bhxh/modules/declare_info_630a_cl/domain/use_case/update_procedure_630a_use_case.dart';
+import 'package:v_bhxh/modules/selected_staff/domain/entity/selected_staff_detail.dart';
+import 'package:v_bhxh/modules/selected_staff/domain/use_case/get_staff_detail_use_case.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 
@@ -17,17 +18,18 @@ import '../../../../clean/core/presentation/controllers/base_get_cl_controller.d
 import '../../../../clean/shared/entity/category.dart';
 import '../../../../shares/widgets/keyboard/keyboard.dart';
 import '../../../declare/declaration_period/domain/entity/entity_src.dart';
-import '../../../select_staff/select_staff_src.dart';
 
 class DeclareInfo630aController extends BaseGetClController {
   final AddProcedure630aUseCase _addProcedure630aUseCase;
   final GetDetailProcedure630aUseCase _getDetailProcedure630aUseCase;
   final UpdateProcedure630aUseCase _updateProcedure630aUseCase;
+  final GetStaffDetailUseCase _getStaffDetailUseCase;
 
   DeclareInfo630aController(
     this._addProcedure630aUseCase,
     this._getDetailProcedure630aUseCase,
     this._updateProcedure630aUseCase,
+    this._getStaffDetailUseCase,
   );
 
   /// id 630a dùng khi update
@@ -154,28 +156,22 @@ class DeclareInfo630aController extends BaseGetClController {
       AppRoutesCl.selectStaff.path,
       arguments: selectedStaffId,
     );
-    if (result is SelectStaffResponse) {
-      _getDetailStaff(staffId: result.id);
+
+    if (result is String) {
+      await _getDetailStaff(staffId: result);
     }
   }
 
   Future<void> _getDetailStaff({
     required String staffId,
   }) async {
-    try {
-      showLoadingOverlay();
-      final response = await declareInfoRepository.getDetailStaff(id: staffId);
-      final staff = response.result;
-      if (response.isSuccess && staff != null) {
-        mapFromStaffDetail(staff);
-      } else {
-        showSnackBar(response.errorMessage);
-      }
-    } catch (e) {
-      logger.e(e);
-    } finally {
-      hideLoadingOverlay();
-    }
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        final response = await _getStaffDetailUseCase.execute(staffId);
+        mapFromStaffDetail(response);
+      },
+    );
   }
 
   Future<void> saveDraft() async {
@@ -258,39 +254,39 @@ class DeclareInfo630aController extends BaseGetClController {
   DeclareInfo630a _buildRequest() {
     return DeclareInfo630a(
       id: id,
-      kyKeKhaiId: argument.declarationPeriodId,
-      hoTen: fullNameTextCtrl.text.trim(),
-      maSoBhxh: bhxhTextCtrl.text.trim(),
-      soCmnd: cccdTextCtrl.text.trim(),
-      maNhanVien: staffCodeTextCtrl.text.trim(),
-      phatSinhDieuChinh: declareForm.value?.value ?? '',
-      maNhomHuong: benefitGroup.value?.value ?? '',
-      ngaySinhCon: convertDateStringToString(birthDayChildCtrl.text, PATTERN_1),
-      soCon: int.tryParse(numberChildCtrl.text) ?? 0,
-      theBhytCuaCon: bhytCardCodeChildCtrl.text.trim(),
-      tuNgay: convertDateStringToString(fromDateCtrl.text, PATTERN_1),
-      denNgay: convertDateStringToString(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(countDayTextCtrl.text) ?? 0,
-      tuNgayDonVi:
+      periodId: argument.declarationPeriodId,
+      fullName: fullNameTextCtrl.text.trim(),
+      bhxhNumber: bhxhTextCtrl.text.trim(),
+      cccdNumber: cccdTextCtrl.text.trim(),
+      employeeId: staffCodeTextCtrl.text.trim(),
+      adjustment: declareForm.value?.value ?? '',
+      groupCode: benefitGroup.value?.value ?? '',
+      childDob: convertDateStringToString(birthDayChildCtrl.text, PATTERN_1),
+      childCount: int.tryParse(numberChildCtrl.text) ?? 0,
+      childBhyt: bhytCardCodeChildCtrl.text.trim(),
+      fromDate: convertDateStringToString(fromDateCtrl.text, PATTERN_1),
+      toDate: convertDateStringToString(toDateCtrl.text, PATTERN_1),
+      totalDays: int.tryParse(countDayTextCtrl.text) ?? 0,
+      unitFromDate:
           convertDateStringToString(fromDateUnitTextCtrl.text, PATTERN_1),
-      ngayNghiTuan: weeklyDayOffString,
-      tuyenBenhVien: selectHospitalLine.value?.value ?? '',
-      maBenhDaiNgay: selectDiseaseCode.value?.code ?? '',
-      tenBenh: diseaseNameTextCtrl.text.trim(),
-      soSeriCT: serialNumberCtrl.text.trim(),
-      dangKyNghiDuongThai: isMaternityRest.value,
-      dieuKienLamViec: workCondition.value?.value ?? '',
-      dotBoSung: supplementalPeriodCtrl.text.trim(),
-      maHoSo: fileCodeTextCtrl.text.trim(),
-      ghiChu: noteTextCtrl.text.trim(),
-      hinhThucNhan: receiveForm.value?.value ?? '',
-      soTaiKhoan: bankNumberCtrl.text.trim(),
-      tenChuTaiKhoan: accountHolderNameCtrl.text.trim(),
-      nganHang: selectedBank.value,
-      dotDaGiaiQuyet: resolvedPeriodCtrl.text.trim(),
-      tuNgayDuyetTruoc:
+      dayOff: weeklyDayOffString,
+      hospitalLevel: selectHospitalLine.value?.value ?? '',
+      chronicCode: selectDiseaseCode.value?.code ?? '',
+      diseaseName: diseaseNameTextCtrl.text.trim(),
+      seriNumber: serialNumberCtrl.text.trim(),
+      maternityLeave: isMaternityRest.value,
+      workCondition: workCondition.value?.value ?? '',
+      extraBatch: supplementalPeriodCtrl.text.trim(),
+      dossierId: fileCodeTextCtrl.text.trim(),
+      note: noteTextCtrl.text.trim(),
+      receiveType: receiveForm.value?.value ?? '',
+      bankAccount: bankNumberCtrl.text.trim(),
+      accountName: accountHolderNameCtrl.text.trim(),
+      bank: selectedBank.value,
+      resolvedBatch: resolvedPeriodCtrl.text.trim(),
+      prevApproveDate:
           convertDateStringToString(resolvedDateCtrl.text, PATTERN_1),
-      lyDoDieuChinh: adjustReasonCtrl.text.trim(),
+      adjustReason: adjustReasonCtrl.text.trim(),
     );
   }
 
@@ -325,52 +321,52 @@ class DeclareInfo630aController extends BaseGetClController {
 
   void mapFrom630aDetail(DeclareInfo630a detail) {
     id = detail.id;
-    // Họ và tên
-    fullNameTextCtrl.text = detail.hoTen.trim();
 
-    // Mã số BHXH
-    bhxhTextCtrl.text = detail.maSoBhxh.trim();
+    // Full name
+    fullNameTextCtrl.text = detail.fullName.trim();
 
-    // Số CCCD
-    cccdTextCtrl.text = detail.soCmnd.trim();
+    // BHXH number
+    bhxhTextCtrl.text = detail.bhxhNumber.trim();
 
-    // Mã nhân viên
-    staffCodeTextCtrl.text = detail.maNhanVien.trim();
+    // ID number (CCCD/CMND)
+    cccdTextCtrl.text = detail.cccdNumber.trim();
 
-    // Hìnhh thức kê khai
-    declareForm.value = AppData.instance.declareForm[detail.phatSinhDieuChinh];
+    // Employee ID
+    staffCodeTextCtrl.text = detail.employeeId.trim();
 
-    // Mã nhóm hưởng
+    // Adjustment form
+    declareForm.value = AppData.instance.declareForm[detail.adjustment];
+
+    // Benefit group
     benefitGroup.value = AppData.instance.benefitGroup630a.firstWhereOrNull(
-      (item) => item.value == detail.maNhomHuong,
+      (item) => item.value == detail.groupCode,
     );
 
-    // Ngày sinh con
+    // Child DOB
     birthDayChildCtrl.text =
-        convertDateStringToString(detail.ngaySinhCon, PATTERN_1);
+        convertDateStringToString(detail.childDob, PATTERN_1);
 
-    // Số con
-    numberChildCtrl.text = detail.soCon.toString();
+    // Number of children
+    numberChildCtrl.text = detail.childCount.toString();
 
-    // Mã thẻ BHYT của con
-    bhytCardCodeChildCtrl.text = detail.theBhytCuaCon;
+    // Child BHYT card
+    bhytCardCodeChildCtrl.text = detail.childBhyt;
 
-    // Từ ngày
-    fromDateCtrl.text = convertDateStringToString(detail.tuNgay, PATTERN_1);
+    // From date
+    fromDateCtrl.text = convertDateStringToString(detail.fromDate, PATTERN_1);
 
-    // Đến ngày
-    toDateCtrl.text = convertDateStringToString(detail.denNgay, PATTERN_1);
+    // To date
+    toDateCtrl.text = convertDateStringToString(detail.toDate, PATTERN_1);
 
-    // Tổng số ngày
-    countDayTextCtrl.text = detail.tongSoNgay.toString();
+    // Total days
+    countDayTextCtrl.text = detail.totalDays.toString();
 
-    // Từ ngày đơn vị
+    // Unit from date
     fromDateUnitTextCtrl.text =
-        convertDateStringToString(detail.tuNgayDonVi, PATTERN_1);
+        convertDateStringToString(detail.unitFromDate, PATTERN_1);
 
-    // Nghỉ hàng tuần
-    // Vì BE trả về kiểu "ngayNghiTuan": "t3;t4;t5" nên phải làm như này
-    final dayOff = detail.ngayNghiTuan;
+    // Weekly day off
+    final dayOff = detail.dayOff;
     if (dayOff.isNotEmpty) {
       weeklyDayOffs.value = dayOff
           .split(';')
@@ -379,70 +375,69 @@ class DeclareInfo630aController extends BaseGetClController {
           .toList();
     }
 
-    // Tuyến bệnh viện
+    // Hospital line
     selectHospitalLine.value =
-        AppData.instance.hospitalLine[detail.tuyenBenhVien];
+        AppData.instance.hospitalLine[detail.hospitalLevel];
 
-    // Mã bệnh
+    // Chronic disease code
     selectDiseaseCode.value = AppData.instance.longDiease
-        .firstWhereOrNull((item) => item.code == detail.maBenhDaiNgay);
+        .firstWhereOrNull((item) => item.code == detail.chronicCode);
 
-    // Tên bệnh
-    diseaseNameTextCtrl.text = detail.tenBenh.trim();
+    // Disease name
+    diseaseNameTextCtrl.text = detail.diseaseName.trim();
 
-    // Số serial
-    serialNumberCtrl.text = detail.soSeriCT.trim();
+    // Serial number
+    serialNumberCtrl.text = detail.seriNumber.trim();
 
-    // Điều kiện làm việc
-    workCondition.value =
-        AppData.instance.workCondition[detail.dieuKienLamViec];
+    // Work condition
+    workCondition.value = AppData.instance.workCondition[detail.workCondition];
 
-    // Nghỉ dưỡng thai
-    isMaternityRest.value = detail.dangKyNghiDuongThai;
+    // Maternity leave
+    isMaternityRest.value = detail.maternityLeave;
 
-    // Đợt bổ sung
-    supplementalPeriodCtrl.text = detail.dotBoSung.trim();
+    // Extra batch
+    supplementalPeriodCtrl.text = detail.extraBatch.trim();
 
-    // Mã hồ sơ
-    fileCodeTextCtrl.text = detail.maHoSo.trim();
+    // Dossier ID
+    fileCodeTextCtrl.text = detail.dossierId.trim();
 
-    // Ghi chú
-    noteTextCtrl.text = detail.ghiChu.trim();
+    // Note
+    noteTextCtrl.text = detail.note.trim();
 
-    // Hình thức nhận
-    receiveForm.value = AppData.instance.receiveForm[detail.hinhThucNhan];
+    // Receive type
+    receiveForm.value = AppData.instance.receiveForm[detail.receiveType];
 
-    // Số tài khoản ngân hàng
-    bankNumberCtrl.text = detail.soTaiKhoan.trim();
+    // Bank account
+    bankNumberCtrl.text = detail.bankAccount.trim();
 
-    // Tên chủ tài khoản
-    accountHolderNameCtrl.text = detail.tenChuTaiKhoan.trim();
+    // Account holder
+    accountHolderNameCtrl.text = detail.accountName.trim();
 
-    // Ngân hàng
+    // Bank
     selectedBank.value = AppData.instance.bank.firstWhereOrNull(
-      (item) => item == detail.nganHang,
+      (item) => item == detail.bank,
     );
 
-    // Đợt đã giải quyết
-    resolvedPeriodCtrl.text = detail.dotDaGiaiQuyet.trim();
+    // Resolved batch
+    resolvedPeriodCtrl.text = detail.resolvedBatch.trim();
 
-    // Ngày đã giải quyết
+    // Previous approve date
     resolvedDateCtrl.text =
-        convertDateStringToString(detail.tuNgayDuyetTruoc, PATTERN_1);
+        convertDateStringToString(detail.prevApproveDate, PATTERN_1);
 
-    // Lý do điều chỉnh
-    adjustReasonCtrl.text = detail.lyDoDieuChinh.trim();
+    // Adjust reason
+    adjustReasonCtrl.text = detail.adjustReason.trim();
   }
 
-  void mapFromStaffDetail(StaffDetailResponse staff) {
+  void mapFromStaffDetail(SelectedStaffDetail staff) {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
     selectedStaffId = staff.id;
 
-    fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
+    fullNameTextCtrl.text = staff.fullName?.trim() ?? '';
 
-    bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
+    bhxhTextCtrl.text = staff.bhxhNumber?.trim() ?? '';
 
-    cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
+    cccdTextCtrl.text = staff.cccdNumber?.trim() ?? '';
   }
 
   void onChangeReceiveMethod(Category? method) {

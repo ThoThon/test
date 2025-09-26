@@ -1,5 +1,6 @@
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/data/model/declare_info_630a_data.dart';
+import 'package:v_bhxh/clean/shared/mapper/declare_info_630a_response_data_mapper.dart';
+import 'package:v_bhxh/modules/declare_info_630a_cl/data/model/declare_info_630a_response_data.dart';
 import 'package:v_bhxh/modules/declare_info_630a_cl/domain/entity/declare_info_630a.dart';
 import 'package:v_bhxh/modules/declare_info_630a_cl/domain/repository/declare_info_630a_repository.dart';
 
@@ -9,11 +10,13 @@ import '../../../src.dart';
 
 class DeclareInfo630aRepositoryImpl extends DeclareInfo630aRepository {
   final AuthAppServerApiClient _authAppServerApiClient;
-  final DeclareInfo630aDataMapper _declareInfo630aDataMapper;
+  final DeclareInfo630aRequestDataMapper _declareInfo630aRequestDataMapper;
+  final DeclareInfo630aResponseDataMapper _declareInfo630aResponseDataMapper;
 
   DeclareInfo630aRepositoryImpl(
     this._authAppServerApiClient,
-    this._declareInfo630aDataMapper,
+    this._declareInfo630aRequestDataMapper,
+    this._declareInfo630aResponseDataMapper,
   );
   @override
   Future<bool> addProcedure630a({
@@ -23,7 +26,8 @@ class DeclareInfo630aRepositoryImpl extends DeclareInfo630aRepository {
       method: RestMethod.post,
       path: AppApi.urlAdd630a,
       cancelToken: cancelToken,
-      queryParameters: _declareInfo630aDataMapper.mapToData(request).toJson(),
+      queryParameters:
+          _declareInfo630aRequestDataMapper.mapToData(request).toJson(),
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;
@@ -41,11 +45,11 @@ class DeclareInfo630aRepositoryImpl extends DeclareInfo630aRepository {
         "key": id,
       },
     );
-    final data = BaseResponseCl<DeclareInfo630aData>.fromJson(
+    final data = BaseResponseCl<DeclareInfo630aResponseData>.fromJson(
       response,
-      fromJson: (json) => DeclareInfo630aData.fromJson(json),
+      fromJson: (json) => DeclareInfo630aResponseData.fromJson(json),
     );
-    return _declareInfo630aDataMapper.mapToEntity(data.result);
+    return _declareInfo630aResponseDataMapper.mapToEntity(data.result);
   }
 
   @override
@@ -56,7 +60,8 @@ class DeclareInfo630aRepositoryImpl extends DeclareInfo630aRepository {
       method: RestMethod.post,
       path: AppApi.urlUpdate630a,
       cancelToken: cancelToken,
-      queryParameters: _declareInfo630aDataMapper.mapToData(request).toJson(),
+      queryParameters:
+          _declareInfo630aRequestDataMapper.mapToData(request).toJson(),
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;
