@@ -8,7 +8,7 @@ abstract class StaffListRepository extends BaseRepositoryCl {
     required String declarationPeriodId,
   });
 
-  Future<String> uploadImage({
+  Future<AttachedImage> uploadImage({
     required UploadImageRequestData request,
   });
 

@@ -439,7 +439,7 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
               validator: validator,
               label: LocaleKeys.declareInfo_ethnic.tr,
               funcSelect: (didChange) {
-                Get.bottomSheet(
+                nav.bottomSheet(
                   BottomSheetSearch<Ethnic>(
                     title: LocaleKeys.declareInfo_selectEthnic.tr,
                     maxLength: 20,
@@ -588,12 +588,14 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: provinceOfBirth.id,
-                    selectedWard: controller.tk1State.wardOfBirth.value,
+                final result = await nav.showBottomSheet<Ward>(
+                  SelectWardBtsCl(),
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: provinceOfBirth.id,
+                      selectedWard: controller.tk1State.wardOfBirth.value,
+                    ),
                   ),
-                  isScrollControlled: true,
                 );
 
                 if (result != null) {
@@ -694,12 +696,14 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: provinceReceive.id,
-                    selectedWard: controller.tk1State.wardReceive.value,
+                final result = await nav.showBottomSheet<Ward>(
+                  SelectWardBtsCl(),
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: provinceReceive.id,
+                      selectedWard: controller.tk1State.wardOfBirth.value,
+                    ),
                   ),
-                  isScrollControlled: true,
                 );
 
                 if (result != null) {
@@ -942,12 +946,14 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: provinceReceivePaper.id,
-                    selectedWard: controller.tk1State.wardReceivePaper.value,
+                final result = await nav.showBottomSheet<Ward>(
+                  SelectWardBtsCl(),
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: provinceReceivePaper.id,
+                      selectedWard: controller.tk1State.wardOfBirth.value,
+                    ),
                   ),
-                  isScrollControlled: true,
                 );
 
                 if (result != null) {
@@ -1207,14 +1213,15 @@ extension Tk1Tab607Widget on DeclareInfo607Page {
                   return;
                 }
 
-                final result = await Get.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: provinceTT.id,
-                    selectedWard: controller.tk1State.wardTT.value,
+                final result = await nav.showBottomSheet<Ward>(
+                  SelectWardBtsCl(),
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: provinceTT.id,
+                      selectedWard: controller.tk1State.wardOfBirth.value,
+                    ),
                   ),
-                  isScrollControlled: true,
                 );
-
                 if (result != null) {
                   controller.onChangeWardTT(result);
                   didChange(result);

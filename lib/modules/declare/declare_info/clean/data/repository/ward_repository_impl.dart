@@ -6,7 +6,8 @@ import 'package:v_bhxh/core/values/app_api.dart';
 import 'package:v_bhxh/modules/declare/declare_info/clean/domain/repository/ward_repository.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 
-final _cachedWards = <(String, String), List<Ward>>{};
+/// Cache theo provinceCode
+final _cachedWards = <String, List<Ward>>{};
 
 class WardRepositoryImpl extends WardRepository {
   final AuthAppServerApiClient _authAppServerApiClient;
@@ -20,11 +21,9 @@ class WardRepositoryImpl extends WardRepository {
   @override
   Future<List<Ward>> getWards({
     required String provinceCode,
-    required String districtCode,
   }) async {
-    final key = (provinceCode, districtCode);
-    if (_cachedWards.containsKey(key)) {
-      return _cachedWards[key]!;
+    if (_cachedWards.containsKey(provinceCode)) {
+      return _cachedWards[provinceCode]!;
     }
 
     final response = await _authAppServerApiClient.request(
@@ -32,7 +31,6 @@ class WardRepositoryImpl extends WardRepository {
       path: AppApi.urlGetWards,
       queryParameters: {
         "provinceCode": provinceCode,
-        "districtCode": districtCode,
       },
       cancelToken: cancelToken,
     );
@@ -42,6 +40,8 @@ class WardRepositoryImpl extends WardRepository {
       WardData.fromJson,
     ).result;
 
-    return _wardDataMapper.mapToListEntity(data);
+    final wards = _wardDataMapper.mapToListEntity(data);
+    _cachedWards[provinceCode] = wards;
+    return wards;
   }
 }

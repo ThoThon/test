@@ -16,7 +16,7 @@ class SaveXmlResultDataMapper
       hasOdM01hsb: data?.hasOdM01hsb ?? false,
       hasTsM01hsb: data?.hasTsM01hsb ?? false,
       hasDsM01hsb: data?.hasDsM01hsb ?? false,
-      attachPreviewPath: data?.attachPreviewPath ?? '',
+      attachPreviewPath: data?.attachPreviewPath,
       tk1s: _tk1previewPathDataMapper.mapToListEntity(data?.tk1s),
     );
   }

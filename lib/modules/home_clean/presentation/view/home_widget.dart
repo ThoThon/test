@@ -263,48 +263,51 @@ extension HomeWidget on HomePageCL {
             ],
           ).paddingOnly(top: AppDimens.defaultPadding)),
       actions: [
-        IconButton(
-          onPressed: controller.goToNotificationPage,
-          icon: Obx(
-            () {
-              final unreadCount = AppData.instance.totalUnread.value;
-              return Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  SDSImageSvg(
-                    Assets.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG,
-                    color: AppColors.colorBlack,
-                  ),
-                  if (unreadCount > 0)
-                    Positioned(
-                      right: -10,
-                      top: -10,
-                      child: Container(
-                        padding: const EdgeInsets.all(2),
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          border:
-                              Border.all(width: 2, color: AppColors.colorWhite),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        constraints:
-                            const BoxConstraints(minWidth: 20, minHeight: 16),
-                        child: SDSBuildText(
-                          unreadCount > 99 ? '99+' : '$unreadCount',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                ],
-              );
-            },
-          ),
-        ),
+        Obx(() {
+          final unreadCount = AppData.instance.totalUnread.value;
+          return IconButton(
+            onPressed: controller.isLoadingNotificationCount.value
+                ? null
+                : controller.goToNotificationPage,
+            icon: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                SDSImageSvg(
+                  Assets.ASSETS_ICONS_HOME_IC_NOTIFICATION_SVG,
+                  color: AppColors.colorBlack,
+                ),
+                Positioned(
+                  right: -10,
+                  top: -10,
+                  child: controller.isLoadingNotificationCount.value
+                      ? const CupertinoActivityIndicator()
+                      : unreadCount > 0
+                          ? Container(
+                              padding: const EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                color: AppColors.primaryColor,
+                                border: Border.all(
+                                    width: 2, color: AppColors.colorWhite),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              constraints: const BoxConstraints(
+                                  minWidth: 20, minHeight: 16),
+                              child: SDSBuildText(
+                                unreadCount > 99 ? '99+' : '$unreadCount',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                ),
+              ],
+            ),
+          );
+        }),
         sdsSBWidth8,
       ],
     );

@@ -8,12 +8,7 @@
 // import 'package:v_bhxh/modules/src.dart';
 // import 'package:v_bhxh/shares/utils/utils_src.dart';
 
-// import '../../../clean/shared/entity/category.dart';
-// import '../../../shares/widgets/keyboard/keyboard.dart';
-// import '../../declare/declaration_period/domain/entity/entity_src.dart';
-// import '../../declare/declare_info/repository/declare_info_repository.dart';
-// import '../../select_staff/model/model_src.dart';
-// import '../repository/declare_info_630a_repository.dart';
+
 
 // class DeclareInfo630aController extends BaseGetxController {
 //   /// id 630a dùng khi update
@@ -134,16 +129,7 @@
 //     _get630aDetail();
 //   }
 
-//   void goToSelectStaffPage() async {
-//     KeyBoard.hide();
-//     final result = await Get.toNamed(
-//       AppRoutesCl.selectStaff.path,
-//       arguments: selectedStaffId,
-//     );
-//     if (result is SelectStaffResponse) {
-//       _getDetailStaff(staffId: result.id);
-//     }
-//   }
+
 
 //   Future<void> _getDetailStaff({
 //     required String staffId,

@@ -1,12 +1,12 @@
 import 'package:path/path.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
-import 'package:v_bhxh/modules/declare/declaration_list/model/model_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
 import '../../../../../clean/shared/model/upload_image_request_data.dart';
+import '../../../declaration_list/domain/entity/declaration_list_argument.dart';
+import '../../../declaration_period/domain/entity/entity_src.dart';
 
 // Chỉ cho phép up tối đa 5 file ảnh
 const maxImageAttachments = 5;
@@ -51,6 +51,8 @@ class StaffListController extends BaseGetClController {
   final declaredStaffs = <DeclaredStaff>[].obs;
 
   final listAttachImage = <AttachedImage>[].obs;
+
+  final scrollController = ScrollController();
 
   @override
   void onReady() {
@@ -100,22 +102,19 @@ class StaffListController extends BaseGetClController {
     listAttachImage.removeAt(index);
   }
 
-  Future<void> _getStaffList() async {
+  Future<void> _getStaffList({bool showLoading = true}) async {
     return buildState(
-      showLoading: true,
+      showLoading: showLoading,
       action: () async {
         final response = await switch (procedureType) {
-          ProcedureType.procedure600 => _getStaffList600UseCase.execute(
-              declarationPeriodId,
-            ),
+          ProcedureType.procedure600 =>
+            _getStaffList600UseCase.execute(declarationPeriodId),
           ProcedureType.procedure607 ||
           ProcedureType.procedure608 ||
           ProcedureType.procedure610 ||
           ProcedureType.procedure612 ||
           ProcedureType.procedure613 =>
-            _getStaffList607UseCase.execute(
-              declarationPeriodId,
-            ),
+            _getStaffList607UseCase.execute(declarationPeriodId),
           ProcedureType.procedure630a =>
             _getStaffList630aUseCase.execute(declarationPeriodId),
           ProcedureType.procedure630b =>
@@ -129,19 +128,31 @@ class StaffListController extends BaseGetClController {
     );
   }
 
-  Future<void> upLoadFile(
-    String imagePath,
-  ) async {
+  Future<void> upLoadFile(String imagePath) async {
     return buildState(
-      showLoading: true,
+      showLoadingOverlay: true,
       action: () async {
-        await _uploadAttachImageUseCase.execute(
+        final image = await _uploadAttachImageUseCase.execute(
           UploadImageRequestData(
             file: imagePath,
             periodId: declarationPeriodId,
           ),
         );
-        _getStaffList();
+        listAttachImage.value = [...listAttachImage, image];
+        _scrollStaffList();
+      },
+    );
+  }
+
+  // REF: VBHXHMOB-119
+  void _scrollStaffList() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        if (scrollController.hasClients) {
+          scrollController.jumpTo(
+            scrollController.position.maxScrollExtent,
+          );
+        }
       },
     );
   }
@@ -322,5 +333,11 @@ class StaffListController extends BaseGetClController {
     if (result != null) {
       _getStaffList();
     }
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 }

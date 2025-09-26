@@ -178,14 +178,15 @@ extension RegisterInfoTab on RegisterCodePage {
                   return;
                 }
 
-                final result = await nav.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: province.id,
-                    selectedWard: controller.wardReceive.value,
+                final result = await nav.showBottomSheet<Ward>(
+                  SelectWardBtsCl(),
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: province.id,
+                      selectedWard: controller.wardReceive.value,
+                    ),
                   ),
-                  isScrollControlled: true,
                 );
-
                 if (result != null) {
                   controller.changeWardReceive(result);
                   didChange(result);

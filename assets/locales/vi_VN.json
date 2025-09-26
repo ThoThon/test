@@ -707,8 +707,8 @@
     "appraisalDate": "Ngày giám định",
     "appraisalDateInvalid": "Ngày giám định không hợp lệ",
     "appraisalDateCannotEmpty": "Ngày giám định không được bỏ trống",
-    "declarationPeriosMax99": "Không kê khai quá đợt 99",
     "listOfForm": "Danh sách biểu mẫu",
+    "listOfDeclarationForm": "Danh sách biểu mẫu tờ khai",
     "healingHsbList": "Danh sách đề nghị giải quyết hưởng chế độ dưỡng sức (Mẫu 01D-HSB)",
     "maternityHsbList": "Danh sách đề nghị giải quyết hưởng chế độ thai sản (Mẫu 01D-HSB)",
     "sickHsbList": "Danh sách đề nghị giải quyết hưởng chế độ ốm đau (Mẫu 01D-HSB)",
@@ -804,7 +804,8 @@
     "edit": "Sửa",
     "delete": "Xóa",
     "listEmployee": "Danh sách nhân viên",
-    "cannotDeleteImage": "Có lỗi xảy ra, không thể xóa ảnh"
+    "cannotDeleteImage": "Có lỗi xảy ra, không thể xóa ảnh",
+    "maximumImage": "Chỉ cho phép chọn tối đa 5 file"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",

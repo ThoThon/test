@@ -6,13 +6,10 @@ import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/de
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/family_member.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
-import 'package:v_bhxh/modules/select_staff/model/select_staff_response.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
-
-import '../../../declare/staff_list/domain/entity/entity_src.dart';
 
 class DeclareInfo607Controller extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
@@ -66,13 +63,13 @@ class DeclareInfo607Controller extends BaseGetxController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: tk1State.selectedStaffId,
     );
-    if (result is SelectStaffResponse) {
-      await _getDetailStaff(staffId: result.id);
-
-      // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
-      updateHouseholdInfoRequired();
-      updateClearTTIconState();
+    if (result is String) {
+      await _getDetailStaff(staffId: result);
     }
+
+    // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
+    updateHouseholdInfoRequired();
+    updateClearTTIconState();
   }
 
   Future<void> _getDetailStaff({

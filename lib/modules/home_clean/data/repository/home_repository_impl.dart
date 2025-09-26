@@ -20,4 +20,17 @@ class HomeRepositoryImpl extends HomeRepository {
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;
   }
+
+  @override
+  Future<int> getUnreadNotificationCount() async {
+    final response = await _authAppServerApiClient.request(
+      method: RestMethod.get,
+      path: AppApi.urlGetNotificationUnread,
+      cancelToken: cancelToken,
+    );
+
+    final data = BaseResponseCl<int>.fromJson(response);
+
+    return data.result ?? 0;
+  }
 }

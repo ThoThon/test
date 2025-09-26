@@ -865,9 +865,9 @@ class LocaleKeys {
       'declareInfo_appraisalDateInvalid';
   static const declareInfo_appraisalDateCannotEmpty =
       'declareInfo_appraisalDateCannotEmpty';
-  static const declareInfo_declarationPeriosMax99 =
-      'declareInfo_declarationPeriosMax99';
   static const declareInfo_listOfForm = 'declareInfo_listOfForm';
+  static const declareInfo_listOfDeclarationForm =
+      'declareInfo_listOfDeclarationForm';
   static const declareInfo_healingHsbList = 'declareInfo_healingHsbList';
   static const declareInfo_maternityHsbList = 'declareInfo_maternityHsbList';
   static const declareInfo_sickHsbList = 'declareInfo_sickHsbList';
@@ -877,6 +877,8 @@ class LocaleKeys {
       'declareInfo_participationDeclaration';
   static const declareInfo_laborList = 'declareInfo_laborList';
   static const declareInfo_tk1Declaration = 'declareInfo_tk1Declaration';
+  static const declareInfo_declarationPeriosMax99 =
+      'declareInfo_declarationPeriosMax99';
   static const declareInfo_toolTipCheckboxTk1 =
       'declareInfo_toolTipCheckboxTk1';
   static const declareInfo_toolTipCheckboxD01 =
@@ -1001,6 +1003,7 @@ class LocaleKeys {
   static const staffList_delete = 'staffList_delete';
   static const staffList_listEmployee = 'staffList_listEmployee';
   static const staffList_cannotDeleteImage = 'staffList_cannotDeleteImage';
+  static const staffList_maximumImage = 'staffList_maximumImage';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -2062,8 +2065,8 @@ class Locales {
     'declareInfo_appraisalDateInvalid': 'Ngày giám định không hợp lệ',
     'declareInfo_appraisalDateCannotEmpty':
         'Ngày giám định không được bỏ trống',
-    'declareInfo_declarationPeriosMax99': 'Không kê khai quá đợt 99',
     'declareInfo_listOfForm': 'Danh sách biểu mẫu',
+    'declareInfo_listOfDeclarationForm': 'Danh sách biểu mẫu tờ khai',
     'declareInfo_healingHsbList':
         'Danh sách đề nghị giải quyết hưởng chế độ dưỡng sức (Mẫu 01D-HSB)',
     'declareInfo_maternityHsbList':
@@ -2077,6 +2080,7 @@ class Locales {
     'declareInfo_laborList': 'Danh sách lao động',
     'declareInfo_tk1Declaration':
         'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
+    'declareInfo_declarationPeriosMax99': 'Không kê khai quá đợt 99',
     'declareInfo_toolTipCheckboxTk1': 'Báo tăng lao động tham gia BHXH',
     'declareInfo_toolTipCheckboxD01': 'Kê khai hồ sơ chậm muộn',
     'familyMember_title': 'Thêm thành viên',
@@ -2173,6 +2177,7 @@ class Locales {
     'staffList_delete': 'Xóa',
     'staffList_listEmployee': 'Danh sách nhân viên',
     'staffList_cannotDeleteImage': 'Có lỗi xảy ra, không thể xóa ảnh',
+    'staffList_maximumImage': 'Chỉ cho phép chọn tối đa 5 file',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',

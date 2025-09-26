@@ -7,6 +7,7 @@ extension StaffListWidget on StaffListPage {
         sdsSBHeight16,
         Expanded(
           child: SingleChildScrollView(
+            controller: controller.scrollController,
             padding: const EdgeInsets.only(
               bottom: AppDimens.defaultPadding,
             ),
@@ -54,12 +55,12 @@ extension StaffListWidget on StaffListPage {
               style: AppTextStyle.font16Bo,
             ),
             sdsSBWidth8,
-            const Tooltip(
+            Tooltip(
               verticalOffset: -50,
-              margin: EdgeInsets.only(right: AppDimens.padding32),
-              message: "Chỉ cho phép chọn tối đa 5 file",
+              margin: const EdgeInsets.only(right: AppDimens.padding32),
+              message: LocaleKeys.staffList_maximumImage.tr,
               triggerMode: TooltipTriggerMode.tap,
-              child: Icon(
+              child: const Icon(
                 Icons.help_outline,
                 size: 16,
               ),
@@ -98,8 +99,8 @@ extension StaffListWidget on StaffListPage {
                   final imageAttach = controller.listAttachImage[index];
                   return Row(
                     children: [
-                      Image.network(
-                        imageAttach.imgPath,
+                      AppNetworkImage(
+                        url: imageAttach.imgPath,
                         height: 60,
                         width: 60,
                         fit: BoxFit.cover,

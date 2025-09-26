@@ -1,9 +1,13 @@
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
 
-import '../../../declare/declaration_list/model/model_src.dart';
+
+import '../../../declare/declaration_list/declaration_list_src.dart';
 import '../../../src.dart';
+
+const responseCodeNotFound = '02';
 
 class OtherInfoController extends BaseGetClController {
   final AddOtherInfoUseCase _addOtherInfoUseCase;
@@ -68,6 +72,18 @@ class OtherInfoController extends BaseGetClController {
         final response = await _getDetailOtherInfoUseCase
             .execute(argument.declarationPeriodId);
         mapOtherInfoDetail(response);
+      },
+      onError: (error) {
+        if (error is RemoteException) {
+          if (error.kind == RemoteExceptionKind.serverDefined) {
+            final serverCode = error.serverError?.code;
+            // REF: VBHXHMOB-116
+            // Trước có lỗi thiếu id, nên phải vào màn này gọi api lấy về id
+            // Nên config auto vào màn này sẽ get detail
+            if (serverCode == responseCodeNotFound) return null;
+          }
+        }
+        return error;
       },
     );
   }

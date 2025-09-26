@@ -20,7 +20,6 @@ class LoginControllerCl extends BaseGetClController {
   final SaveCompanyNameUseCase _saveCompanyNameUseCase;
   final GetD02CategoriesUseCase _getD02CategoriesUseCase;
   final Get630CategoriesUseCase _get630categoriesUseCase;
-  final GetUnreadNotificationCountUseCase _getUnreadNotificationCountUseCase;
 
   final formKey = GlobalKey<FormState>();
   late final usernameTextCtrl =
@@ -38,7 +37,6 @@ class LoginControllerCl extends BaseGetClController {
     this._saveCompanyNameUseCase,
     this._getD02CategoriesUseCase,
     this._get630categoriesUseCase,
-    this._getUnreadNotificationCountUseCase,
   );
 
   @override
@@ -74,11 +72,14 @@ class LoginControllerCl extends BaseGetClController {
           ),
         );
 
+        // Nếu ngay sau khi login thành công mà tiến hành gọi các api khác thì có thể gặp lỗi 401 (do token chưa hợp lệ ngay lập tức ???)
+        // Nên phải delay một chút để đảm bảo token đã hợp lệ
+        await Future.delayed(const Duration(milliseconds: 100));
+
         await (
           _getAccountInfo(),
           _getD02Categories(),
           _get630Categories(),
-          _getToTalNotiUnread(),
         ).wait;
 
         nav.offAllNamed(AppRoutesCl.home.path);
@@ -127,11 +128,6 @@ class LoginControllerCl extends BaseGetClController {
       ..surgeryPregnancy32w.assignAll(categories630.surgeryPregnancy32w)
       ..contraception.assignAll(categories630.contraception)
       ..benefitGroup630c.assignAll(categories630.benefitGroup630c);
-  }
-
-  Future<void> _getToTalNotiUnread() async {
-    final totalUnread = await _getUnreadNotificationCountUseCase.execute();
-    AppData.instance.totalUnread.value = totalUnread;
   }
 
   void goToRegisterCodePage() {

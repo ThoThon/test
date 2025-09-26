@@ -12,8 +12,6 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../../base_app/base_app.src.dart';
-import '../../../select_staff/model/select_staff_response.dart';
-import '../../staff_list/domain/entity/entity_src.dart';
 
 // Khi chọn "Loại khai báo" là "Tăng lao động"
 const laborIncrease = 1;
@@ -159,13 +157,13 @@ class DeclareInfoController extends BaseGetxController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: d02State.selectedStaffId,
     );
-    if (result is SelectStaffResponse) {
-      _getDetailStaff(staffId: result.id);
-
-      // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
-      updateHouseholdInfoRequired();
-      updateClearTTIconState();
+    if (result is String) {
+      await _getDetailStaff(staffId: result);
     }
+
+    // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
+    updateHouseholdInfoRequired();
+    updateClearTTIconState();
   }
 
   Future<void> createNewDeclarationForm() async {
@@ -828,8 +826,8 @@ class DeclareInfoController extends BaseGetxController {
   void updateGenerateTk1() {
     final declarationTypeId = d02State.declarationType.value?.value;
     final plan = d02State.plan.value?.id;
-    if (declarationTypeId != laborIncrease) return;
-    if (['TM', 'TH'].contains(plan)) {
+
+    if (['TM', 'TH'].contains(plan) && declarationTypeId == laborIncrease) {
       if (d02Tk1State.bhxhTextCtrl.text.trim().isEmpty) {
         d02State.isGenerateTk1CheckboxEnabled.value = false;
         d02State.isGenerateTk1Data.value = true;

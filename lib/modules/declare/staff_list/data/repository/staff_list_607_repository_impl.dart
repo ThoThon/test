@@ -39,7 +39,7 @@ class StaffList607RepositoryImpl extends StaffList607Repository {
   }) async {
     final response = await _authAppServerApiClient.request(
       method: RestMethod.post,
-      path: AppApi.urlSaveXml,
+      path: AppApi.urlSaveXml607,
       cancelToken: cancelToken,
       queryParameters: {
         "kyKeKhaiId": declarationPeriodId,

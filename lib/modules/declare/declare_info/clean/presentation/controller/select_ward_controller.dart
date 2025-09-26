@@ -35,7 +35,6 @@ class SelectWardControllerCl extends BaseGetClController {
         wards.value = await _getWardsUseCase.execute(
           GetWardsUseCaseInput(
             provinceCode: argument.provinceCode,
-            districtCode: argument.districtCode,
           ),
         );
       },

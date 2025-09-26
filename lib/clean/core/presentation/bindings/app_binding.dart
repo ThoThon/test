@@ -11,6 +11,11 @@ import 'package:v_bhxh/clean/shared/mapper/categories_630/long_diease_data_mappe
 import 'package:v_bhxh/clean/shared/mapper/category_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
+import 'package:v_bhxh/clean/shared/mapper/selected_staff_detail_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/selected_staff_request_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/selected_staff_response_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/staff_detail_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/staff_family_response_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
@@ -19,6 +24,7 @@ import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 import '../../../shared/mapper/categories_630/bank_data_mapper.dart';
 import '../../../shared/mapper/categories_630/benefit_group_lv2_data_mapper.dart';
 import '../../../shared/mapper/categories_630/categories_630_data_mapper.dart';
+import '../../../shared/mapper/get_preview_pdf_request_data_mapper.dart';
 import '../../../shared/mapper/social_agency_data_mapper.dart';
 import 'base_bindings.dart';
 
@@ -83,6 +89,19 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => SaveXmlResultDataMapper(sl()), fenix: true);
     Get.lazyPut(() => StaffListDataMapper(sl(), sl()), fenix: true);
     Get.lazyPut(() => Tk1PreviewPathDataMapper(), fenix: true);
+    Get.lazyPut(() => GetPreviewPdfRequestDataMapper(), fenix: true);
+    
+    Get.lazyPut(() => SelectStaffRequestDataMapper(), fenix: true);
+    Get.lazyPut(() => SelectStaffResponseDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => StaffDetailDataMapper(), fenix: true);
+    Get.lazyPut(
+      () => SelectedStaffDetailDataMapper(sl(), sl(), sl(), sl()),
+      fenix: true,
+    );
+    Get.lazyPut(
+      () => StaffFamilyResponseDataMapper(sl(), sl(), sl(), sl()),
+      fenix: true,
+    );
   }
 
   Future<void> _bindingsCore(AppEnv env) async {
