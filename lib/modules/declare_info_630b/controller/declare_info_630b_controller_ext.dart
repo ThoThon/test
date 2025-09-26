@@ -8,6 +8,7 @@ import '../../../base_app/model/app_data.dart';
 import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
 import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
+import '../../declare_info_630a/domain/entity/weekly_day_off_enum.dart';
 import '../../src.dart';
 
 extension DeclareInfo630bControllerExt on DeclareInfo630bController {

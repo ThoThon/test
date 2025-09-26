@@ -90,7 +90,7 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => StaffListDataMapper(sl(), sl()), fenix: true);
     Get.lazyPut(() => Tk1PreviewPathDataMapper(), fenix: true);
     Get.lazyPut(() => GetPreviewPdfRequestDataMapper(), fenix: true);
-    
+
     Get.lazyPut(() => SelectStaffRequestDataMapper(), fenix: true);
     Get.lazyPut(() => SelectStaffResponseDataMapper(sl()), fenix: true);
     Get.lazyPut(() => StaffDetailDataMapper(), fenix: true);
@@ -102,6 +102,8 @@ class AppBinding extends BaseBindings {
       () => StaffFamilyResponseDataMapper(sl(), sl(), sl(), sl()),
       fenix: true,
     );
+    Get.lazyPut(() => DeclareInfo630aRequestDataMapper(), fenix: true);
+    Get.lazyPut(() => DeclareInfo630aResponseDataMapper(sl()), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

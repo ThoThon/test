@@ -1,20 +1,20 @@
-class DeclareInfo630aRequest {
+class DeclareInfo630aRequestData {
   final String? id;
   final String? kyKeKhaiId;
-  final String phatSinhDieuChinh;
-  final String hoTen;
-  final String maSoBhxh;
+  final String? phatSinhDieuChinh;
+  final String? hoTen;
+  final String? maSoBhxh;
   final String? soCmnd;
   final String? maNhanVien;
-  final String maNhomHuong;
+  final String? maNhomHuong;
   final String? soSeriCT;
-  final DateTime tuNgay;
-  final DateTime denNgay;
-  final int tongSoNgay;
-  final DateTime tuNgayDonVi;
+  final String? tuNgay;
+  final String? denNgay;
+  final int? tongSoNgay;
+  final String? tuNgayDonVi;
   final String? ngayNghiTuan;
   final String? tuyenBenhVien;
-  final DateTime? ngaySinhCon;
+  final String? ngaySinhCon;
   final String? theBhytCuaCon;
   final int? soCon;
   final String? maBenhDaiNgay;
@@ -29,23 +29,23 @@ class DeclareInfo630aRequest {
   final String? maNganHang;
   final String? ghiChu;
   final String? dotDaGiaiQuyet;
-  final DateTime? tuNgayDuyetTruoc;
+  final String? tuNgayDuyetTruoc;
   final String? lyDoDieuChinh;
 
-  DeclareInfo630aRequest({
+  DeclareInfo630aRequestData({
     this.id,
     this.kyKeKhaiId,
-    required this.phatSinhDieuChinh,
-    required this.hoTen,
-    required this.maSoBhxh,
+    this.phatSinhDieuChinh,
+    this.hoTen,
+    this.maSoBhxh,
     this.soCmnd,
     this.maNhanVien,
-    required this.maNhomHuong,
+    this.maNhomHuong,
     this.soSeriCT,
-    required this.tuNgay,
-    required this.denNgay,
-    required this.tongSoNgay,
-    required this.tuNgayDonVi,
+    this.tuNgay,
+    this.denNgay,
+    this.tongSoNgay,
+    this.tuNgayDonVi,
     this.ngayNghiTuan,
     this.tuyenBenhVien,
     this.ngaySinhCon,
@@ -77,13 +77,13 @@ class DeclareInfo630aRequest {
         'maNhanVien': maNhanVien,
         'maNhomHuong': maNhomHuong,
         'soSeriCT': soSeriCT,
-        'tuNgay': tuNgay.toIso8601String(),
-        'denNgay': denNgay.toIso8601String(),
+        'tuNgay': tuNgay,
+        'denNgay': denNgay,
         'tongSoNgay': tongSoNgay,
-        'tuNgayDonVi': tuNgayDonVi.toIso8601String(),
+        'tuNgayDonVi': tuNgayDonVi,
         'ngayNghiTuan': ngayNghiTuan,
         'tuyenBenhVien': tuyenBenhVien,
-        'ngaySinhCon': ngaySinhCon?.toIso8601String(),
+        'ngaySinhCon': ngaySinhCon,
         'theBhytCuaCon': theBhytCuaCon,
         'soCon': soCon,
         'maBenhDaiNgay': maBenhDaiNgay,
@@ -98,7 +98,7 @@ class DeclareInfo630aRequest {
         'maNganHang': maNganHang,
         'ghiChu': ghiChu,
         'dotDaGiaiQuyet': dotDaGiaiQuyet,
-        'tuNgayDuyetTruoc': tuNgayDuyetTruoc?.toIso8601String(),
+        'tuNgayDuyetTruoc': tuNgayDuyetTruoc,
         'lyDoDieuChinh': lyDoDieuChinh,
       };
 }
