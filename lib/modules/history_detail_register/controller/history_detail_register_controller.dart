@@ -1,4 +1,5 @@
 import 'package:v_bhxh/base_app/base_app.src.dart';
+import 'package:v_bhxh/modules/history/history_src.dart';
 import 'package:v_bhxh/modules/history_detail_register/model/result_lookup_history_register_model.dart';
 import 'package:v_bhxh/modules/src.dart';
 
@@ -9,7 +10,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
 
   ResultLookupHistoryRegisterModel? resultLookupHistoryRegister;
 
-  late final HistoryRegisterItemModel historyRegisterItem;
+  late final RegisterHistoryItem registerHistoryItem;
 
   @override
   void onInit() async {
@@ -20,8 +21,8 @@ class HistoryDetailRegisterController extends BaseGetxController {
   void getArg() {
     final args = Get.arguments;
     if (args == null) return;
-    if (args is HistoryRegisterItemModel) {
-      historyRegisterItem = args;
+    if (args is RegisterHistoryItem) {
+      registerHistoryItem = args;
     }
     return;
   }
@@ -30,7 +31,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
     try {
       showLoadingOverlay();
       final res = await _historyDetaiRepository
-          .lookupHistoryRegister(historyRegisterItem.messId);
+          .lookupHistoryRegister(registerHistoryItem.messId);
       if (res.isSuccess && res.result != null) {
         resultLookupHistoryRegister = res.result;
 
@@ -39,7 +40,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
           showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái và số hồ sơ
-          historyRegisterItem
+          registerHistoryItem
             ..trangThaiTK = res.result?.trangThai ?? ''
             ..soHoSo = res.result?.soHoSo ?? '';
           showSnackBarCustom(

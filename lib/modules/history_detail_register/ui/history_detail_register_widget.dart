@@ -2,7 +2,7 @@ part of 'history_detail_register_page.dart';
 
 extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
   Widget _buildBody() {
-    final itemRegister = controller.historyRegisterItem;
+    final itemRegister = controller.registerHistoryItem;
     return Column(
       children: [
         Expanded(
@@ -29,7 +29,7 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
   }
 
   Widget _buildProfileInfoCard(
-    HistoryRegisterItemModel item,
+    RegisterHistoryItem item,
   ) {
     return Container(
       decoration: BoxDecoration(
@@ -87,7 +87,7 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
   }
 
   Widget _buildProgressHandleCard(
-    HistoryRegisterItemModel item,
+    RegisterHistoryItem item,
   ) {
     final isNewData = controller.resultLookupHistoryRegister != null;
     final resultLookup = controller.resultLookupHistoryRegister;

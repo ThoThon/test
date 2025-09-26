@@ -2,7 +2,7 @@ part of 'history_detail_declare_page.dart';
 
 extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   Widget _buildBody() {
-    final model = controller.historyDeclareItem;
+    final model = controller.declarationHistoryItem;
     return Column(
       children: [
         Expanded(
@@ -29,7 +29,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   }
 
   Widget _buildProfileInfoCard(
-    HistoryDeclareItemModel model,
+    DeclarationHistoryItem model,
   ) {
     return Container(
       decoration: BoxDecoration(
@@ -87,7 +87,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   }
 
   Widget _buildProgressHandleCard(
-    HistoryDeclareItemModel model,
+    DeclarationHistoryItem model,
   ) {
     final newData = controller.resultLookupHistoryDeclare != null;
     final resultLookup = controller.resultLookupHistoryDeclare;
@@ -228,7 +228,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
     );
   }
 
-  Widget _buildButtonLookup(HistoryDeclareItemModel model) {
+  Widget _buildButtonLookup(DeclarationHistoryItem model) {
     return Padding(
       padding: const EdgeInsets.only(
         left: AppDimens.defaultPadding,

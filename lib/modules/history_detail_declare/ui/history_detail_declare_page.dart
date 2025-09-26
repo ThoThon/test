@@ -1,5 +1,6 @@
 import 'package:timelines_plus/timelines_plus.dart';
 
+import '../../history/history_src.dart';
 import '../../src.dart';
 
 part 'history_detail_declare_widget.dart';

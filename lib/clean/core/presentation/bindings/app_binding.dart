@@ -11,9 +11,6 @@ import 'package:v_bhxh/clean/shared/mapper/categories_630/long_diease_data_mappe
 import 'package:v_bhxh/clean/shared/mapper/category_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/clean/shared/mapper/selected_staff_detail_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/selected_staff_request_data_mapper.dart';
-import 'package:v_bhxh/clean/shared/mapper/selected_staff_response_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/staff_detail_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/staff_family_response_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
@@ -90,7 +87,6 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => StaffListDataMapper(sl(), sl()), fenix: true);
     Get.lazyPut(() => Tk1PreviewPathDataMapper(), fenix: true);
     Get.lazyPut(() => GetPreviewPdfRequestDataMapper(), fenix: true);
-    
     Get.lazyPut(() => SelectStaffRequestDataMapper(), fenix: true);
     Get.lazyPut(() => SelectStaffResponseDataMapper(sl()), fenix: true);
     Get.lazyPut(() => StaffDetailDataMapper(), fenix: true);
@@ -102,6 +98,13 @@ class AppBinding extends BaseBindings {
       () => StaffFamilyResponseDataMapper(sl(), sl(), sl(), sl()),
       fenix: true,
     );
+    Get.lazyPut(() => DeclarationHistoryItemDataMapper(), fenix: true);
+    Get.lazyPut(() => DeclarationHistoryListDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => DeclarationHistoryListRequestDataMapper(), fenix: true);
+    Get.lazyPut(() => RegisterHistoryItemDataMapper(), fenix: true);
+    Get.lazyPut(() => RegisterHistoryListDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => RegisterHistoryListRequestDataMapper(), fenix: true);
+    Get.lazyPut(() => ProcedureTypeFilterDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {
