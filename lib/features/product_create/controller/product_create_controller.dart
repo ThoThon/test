@@ -46,7 +46,6 @@ class ProductCreateController extends GetxController {
 
       if (newProduct != null) {
         _showSuccessDialog("Tạo sản phẩm thành công!", onConfirm: () {
-          Get.back(); // Đóng dialog
           Get.until(ModalRoute.withName('/home')); // Quay về màn home
         });
       } else {

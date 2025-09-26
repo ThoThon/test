@@ -6,8 +6,6 @@ import '../../mainpage/models/product_model.dart';
 
 class ProductDetailController extends GetxController {
   final RxBool isLoading = false.obs;
-  final RxBool isUpdating = false.obs;
-  final RxBool isDeleting = false.obs;
   final RxString errorMessage = ''.obs;
   final Rx<Product?> productDetail = Rx<Product?>(null);
 
@@ -47,7 +45,7 @@ class ProductDetailController extends GetxController {
     required int quantity,
     required String cover,
   }) async {
-    isUpdating.value = true;
+    isLoading.value = true;
 
     try {
       final updatedProduct = await ProductRepository.updateProduct(
@@ -68,7 +66,7 @@ class ProductDetailController extends GetxController {
       print('Lỗi updateProduct: $e');
       _showErrorDialog("Có lỗi xảy ra khi cập nhật sản phẩm");
     } finally {
-      isUpdating.value = false;
+      isLoading.value = false;
     }
   }
 
@@ -76,7 +74,7 @@ class ProductDetailController extends GetxController {
     final confirmed = await _showConfirmDeleteDialog();
     if (!confirmed) return;
 
-    isDeleting.value = true;
+    isLoading.value = true;
 
     try {
       final success = await ProductRepository.deleteProduct(
@@ -87,8 +85,7 @@ class ProductDetailController extends GetxController {
         _showSuccessDialog(
           "Xóa sản phẩm thành công!",
           onConfirm: () {
-            Get.back(); // Đóng dialog
-            Get.until(ModalRoute.withName('/home')); // Quay về home
+            Get.until(ModalRoute.withName('/home'));
           },
         );
       } else {
@@ -98,7 +95,7 @@ class ProductDetailController extends GetxController {
       print('Lỗi deleteProduct: $e');
       _showErrorDialog("Có lỗi xảy ra khi xóa sản phẩm");
     } finally {
-      isDeleting.value = false;
+      isLoading.value = false;
     }
   }
 

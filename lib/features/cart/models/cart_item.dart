@@ -28,7 +28,6 @@ class CartItem {
     String? name,
     int? price,
     String? cover,
-    int? quantity,
   }) {
     return CartItem(
       productId: productId ?? this.productId,

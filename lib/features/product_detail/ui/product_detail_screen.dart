@@ -245,11 +245,10 @@ class ProductDetailScreen extends GetView<ProductDetailController> {
                       children: [
                         Expanded(
                           child: ElevatedButton.icon(
-                            onPressed: controller.isUpdating.value ||
-                                    controller.isDeleting.value
+                            onPressed: controller.isLoading.value
                                 ? null
                                 : () => _showEditDialog(productDetail),
-                            icon: controller.isUpdating.value
+                            icon: controller.isLoading.value
                                 ? const SizedBox(
                                     width: 20,
                                     height: 20,
@@ -261,8 +260,8 @@ class ProductDetailScreen extends GetView<ProductDetailController> {
                                 : const Icon(Icons.edit,
                                     size: 20, color: Colors.white),
                             label: Text(
-                              controller.isUpdating.value
-                                  ? "Đang cập nhật..."
+                              controller.isLoading.value
+                                  ? "Đang xử lý..."
                                   : "Sửa thông tin",
                               style: const TextStyle(
                                 fontSize: 16,
@@ -282,11 +281,10 @@ class ProductDetailScreen extends GetView<ProductDetailController> {
                         const SizedBox(width: 12),
                         Expanded(
                           child: ElevatedButton.icon(
-                            onPressed: controller.isUpdating.value ||
-                                    controller.isDeleting.value
+                            onPressed: controller.isLoading.value
                                 ? null
                                 : controller.deleteProduct,
-                            icon: controller.isDeleting.value
+                            icon: controller.isLoading.value
                                 ? const SizedBox(
                                     width: 20,
                                     height: 20,
@@ -298,8 +296,8 @@ class ProductDetailScreen extends GetView<ProductDetailController> {
                                 : const Icon(Icons.delete,
                                     size: 20, color: Colors.white),
                             label: Text(
-                              controller.isDeleting.value
-                                  ? "Đang xóa..."
+                              controller.isLoading.value
+                                  ? "Đang xử lý..."
                                   : "Xóa sản phẩm",
                               style: const TextStyle(
                                 fontSize: 16,
