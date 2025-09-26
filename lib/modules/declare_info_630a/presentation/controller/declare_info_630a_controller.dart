@@ -5,10 +5,10 @@ import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/domain/entity/declare_info_630a.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/domain/use_case/add_procedure_630a_use_case.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/domain/use_case/get_detail_procedure_630a_use_case.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/domain/use_case/update_procedure_630a_use_case.dart';
+import 'package:v_bhxh/modules/declare_info_630a/domain/entity/declare_info_630a.dart';
+import 'package:v_bhxh/modules/declare_info_630a/domain/use_case/add_procedure_630a_use_case.dart';
+import 'package:v_bhxh/modules/declare_info_630a/domain/use_case/get_detail_procedure_630a_use_case.dart';
+import 'package:v_bhxh/modules/declare_info_630a/domain/use_case/update_procedure_630a_use_case.dart';
 import 'package:v_bhxh/modules/selected_staff/domain/entity/selected_staff_detail.dart';
 import 'package:v_bhxh/modules/selected_staff/domain/use_case/get_staff_detail_use_case.dart';
 import 'package:v_bhxh/modules/src.dart';
@@ -18,19 +18,22 @@ import '../../../../clean/core/presentation/controllers/base_get_cl_controller.d
 import '../../../../clean/shared/entity/category.dart';
 import '../../../../shares/widgets/keyboard/keyboard.dart';
 import '../../../declare/declaration_period/domain/entity/entity_src.dart';
+import '../../domain/entity/weekly_day_off_enum.dart';
 
 class DeclareInfo630aController extends BaseGetClController {
   final AddProcedure630aUseCase _addProcedure630aUseCase;
   final GetDetailProcedure630aUseCase _getDetailProcedure630aUseCase;
   final UpdateProcedure630aUseCase _updateProcedure630aUseCase;
   final GetStaffDetailUseCase _getStaffDetailUseCase;
+  final DeclareInfoArgument argument;
 
   DeclareInfo630aController(
     this._addProcedure630aUseCase,
     this._getDetailProcedure630aUseCase,
     this._updateProcedure630aUseCase,
-    this._getStaffDetailUseCase,
-  );
+    this._getStaffDetailUseCase, {
+    required this.argument,
+  });
 
   /// id 630a dùng khi update
   String? id;
@@ -127,18 +130,11 @@ class DeclareInfo630aController extends BaseGetClController {
   /// Lý do điều chỉnh
   final adjustReasonCtrl = TextEditingController();
 
-  // late final _repository = DeclareInfo630aRepository(this);
-
-  // late final declareInfoRepository = DeclareInfoRepository(this);
-
   final autoValidateMode = Rxn<AutovalidateMode>();
 
   final formKey = GlobalKey<FormState>();
 
-  final DeclareInfoArgument argument = Get.arguments;
-
-  // final declarationPeriodController =
-  //     Get.findOrNull<DeclarationPeriodController>();
+  // final DeclareInfoArgument argument = Get.arguments;
 
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
@@ -152,7 +148,7 @@ class DeclareInfo630aController extends BaseGetClController {
 
   void goToSelectStaffPage() async {
     KeyBoard.hide();
-    final result = await Get.toNamed(
+    final result = await nav.toNamed(
       AppRoutesCl.selectStaff.path,
       arguments: selectedStaffId,
     );
@@ -201,7 +197,7 @@ class DeclareInfo630aController extends BaseGetClController {
           type: SnackBarType.success,
         );
         if (argument.isAddPeriodFromDeclarePeriod) {
-          Get.offNamed(
+          nav.offNamed(
             AppRoutesCl.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
@@ -212,7 +208,7 @@ class DeclareInfo630aController extends BaseGetClController {
         }
 
         if (argument.isAddStaffFromStaffList) {
-          Get.back(
+          nav.back(
             result: argument.declarationPeriodId,
           );
           return;
@@ -228,7 +224,7 @@ class DeclareInfo630aController extends BaseGetClController {
         // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
         // => Chặn việc cập nhật
         if (id == null) {
-          nav.showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
+          nav.showSnackBar(LocaleKeys.dialog_cannotUpdateInfo.tr);
           return;
         }
 
@@ -241,7 +237,7 @@ class DeclareInfo630aController extends BaseGetClController {
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           type: SnackBarType.success,
         );
-        Get.back(
+        nav.back(
           result: argument.declarationPeriodId,
         );
       },

@@ -64,7 +64,8 @@
     "select": "Chọn",
     "selectDayMonthYear": "Chọn Ngày/Tháng/Năm",
     "selectMonthYear": "Chọn Tháng/Năm",
-    "selectYear": "Chọn năm"
+    "selectYear": "Chọn năm",
+    "cannotUpdateInfo": "Có lỗi xảy ra, không thể cập nhật thông tin"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -718,7 +719,8 @@
     "laborList": "Danh sách lao động",
     "tk1Declaration": "Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)",
     "toolTipCheckboxTk1": "Báo tăng lao động tham gia BHXH",
-    "toolTipCheckboxD01": "Kê khai hồ sơ chậm muộn"
+    "toolTipCheckboxD01": "Kê khai hồ sơ chậm muộn",
+    "declarationPeriodsMax99":"Không kê khai quá đợt 99"
   },
   "familyMember": {
     "title": "Thêm thành viên",

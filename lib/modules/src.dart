@@ -9,7 +9,6 @@ export '../../shares/function/function.src.dart';
 export '../shares/base/base.src.dart';
 export '../shares/shares.src.dart';
 export 'declare/declare_src.dart';
-export 'declare_info_630a/declare_info_630a_src.dart';
 export 'declare_info_630b/declare_info_630b_src.dart';
 export 'history/history_src.dart';
 export 'history_detail_declare/history_detail_declare_src.dart';

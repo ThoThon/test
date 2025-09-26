@@ -1,8 +1,8 @@
 import 'package:v_bhxh/clean/core/presentation/bindings/binding_src.dart';
 import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/data/repository/declare_info_630a_repository_impl.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/domain/use_case/add_procedure_630a_use_case.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/presentation/controller/declare_info_630a_controller.dart';
+import 'package:v_bhxh/modules/declare_info_630a/data/repository/declare_info_630a_repository_impl.dart';
+import 'package:v_bhxh/modules/declare_info_630a/domain/use_case/add_procedure_630a_use_case.dart';
+import 'package:v_bhxh/modules/declare_info_630a/presentation/controller/declare_info_630a_controller.dart';
 import 'package:v_bhxh/modules/src.dart';
 
 import '../../../selected_staff/domain/use_case/get_staff_detail_use_case.dart';
@@ -19,6 +19,7 @@ class DeclareInfo630aBinding extends BaseBindings {
         sl(),
         sl(),
         sl(),
+        argument: Get.arguments,
       ),
     );
   }

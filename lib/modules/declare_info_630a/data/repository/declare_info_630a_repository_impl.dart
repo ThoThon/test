@@ -1,8 +1,8 @@
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
 import 'package:v_bhxh/clean/shared/mapper/declare_info_630a_response_data_mapper.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/data/model/declare_info_630a_response_data.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/domain/entity/declare_info_630a.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/domain/repository/declare_info_630a_repository.dart';
+import 'package:v_bhxh/modules/declare_info_630a/data/model/declare_info_630a_response_data.dart';
+import 'package:v_bhxh/modules/declare_info_630a/domain/entity/declare_info_630a.dart';
+import 'package:v_bhxh/modules/declare_info_630a/domain/repository/declare_info_630a_repository.dart';
 
 import '../../../../clean/core/data/model/base_response_cl.dart';
 import '../../../../clean/shared/mapper/mapper_src.dart';

@@ -1,7 +1,7 @@
 import 'package:v_bhxh/clean/shared/mapper/categories_630/bank_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/data/model/declare_info_630a_response_data.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/domain/entity/declare_info_630a.dart';
+import 'package:v_bhxh/modules/declare_info_630a/data/model/declare_info_630a_response_data.dart';
+import 'package:v_bhxh/modules/declare_info_630a/domain/entity/declare_info_630a.dart';
 
 class DeclareInfo630aResponseDataMapper
     extends BaseDataMapper<DeclareInfo630aResponseData, DeclareInfo630a> {

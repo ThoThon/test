@@ -76,6 +76,7 @@ class LocaleKeys {
   static const dialog_selectDayMonthYear = 'dialog_selectDayMonthYear';
   static const dialog_selectMonthYear = 'dialog_selectMonthYear';
   static const dialog_selectYear = 'dialog_selectYear';
+  static const dialog_cannotUpdateInfo = 'dialog_cannotUpdateInfo';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -877,12 +878,12 @@ class LocaleKeys {
       'declareInfo_participationDeclaration';
   static const declareInfo_laborList = 'declareInfo_laborList';
   static const declareInfo_tk1Declaration = 'declareInfo_tk1Declaration';
-  static const declareInfo_declarationPeriosMax99 =
-      'declareInfo_declarationPeriosMax99';
   static const declareInfo_toolTipCheckboxTk1 =
       'declareInfo_toolTipCheckboxTk1';
   static const declareInfo_toolTipCheckboxD01 =
       'declareInfo_toolTipCheckboxD01';
+  static const declareInfo_declarationPeriodsMax99 =
+      'declareInfo_declarationPeriodsMax99';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -1394,6 +1395,7 @@ class Locales {
     'dialog_selectDayMonthYear': 'Chọn Ngày/Tháng/Năm',
     'dialog_selectMonthYear': 'Chọn Tháng/Năm',
     'dialog_selectYear': 'Chọn năm',
+    'dialog_cannotUpdateInfo': 'Có lỗi xảy ra, không thể cập nhật thông tin',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -2080,9 +2082,9 @@ class Locales {
     'declareInfo_laborList': 'Danh sách lao động',
     'declareInfo_tk1Declaration':
         'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
-    'declareInfo_declarationPeriosMax99': 'Không kê khai quá đợt 99',
     'declareInfo_toolTipCheckboxTk1': 'Báo tăng lao động tham gia BHXH',
     'declareInfo_toolTipCheckboxD01': 'Kê khai hồ sơ chậm muộn',
+    'declareInfo_declarationPeriodsMax99': 'Không kê khai quá đợt 99',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',

@@ -168,7 +168,7 @@ class DeclarationPeriodController extends BaseGetClController {
       action: () async {
         if (argument.type.isProcedure630 &&
             (declarationPeriods.lastOrNull?.period ?? 0) >= 99) {
-          nav.showSnackBar(LocaleKeys.declareInfo_declarationPeriosMax99.tr);
+          nav.showSnackBar(LocaleKeys.declareInfo_declarationPeriodsMax99.tr);
           return;
         }
 

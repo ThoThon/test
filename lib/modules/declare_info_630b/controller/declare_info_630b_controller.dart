@@ -4,6 +4,7 @@ import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dar
 import '../../../base_app/base_app.src.dart';
 import '../../../clean/shared/entity/category.dart';
 import '../../declare/declare_info/repository/declare_info_repository.dart';
+import '../../declare_info_630a/domain/entity/weekly_day_off_enum.dart';
 import '../../src.dart';
 
 class DeclareInfo630bController extends BaseGetxController {

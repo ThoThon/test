@@ -1,7 +1,7 @@
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/modules/declare_info_630a_cl/domain/entity/declare_info_630a.dart';
+import 'package:v_bhxh/modules/declare_info_630a/domain/entity/declare_info_630a.dart';
 
-import '../../../modules/declare_info_630a_cl/data/model/declare_info_630a_request_data.dart';
+import '../../../modules/declare_info_630a/data/model/declare_info_630a_request_data.dart';
 
 class DeclareInfo630aRequestDataMapper
     extends BaseEntityMapper<DeclareInfo630a, DeclareInfo630aRequestData> {
