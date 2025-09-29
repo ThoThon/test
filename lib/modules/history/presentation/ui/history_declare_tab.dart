@@ -63,7 +63,7 @@ extension HistoryDeclareTab on HistoryPage {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppDimens.radius16),
-        color: item.trangThai.cardStatusColor,
+        color: item.status.cardStatusColor,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -72,15 +72,15 @@ extension HistoryDeclareTab on HistoryPage {
             width: 8,
             height: 8,
             decoration: BoxDecoration(
-              color: item.trangThai.historyStatusColor,
+              color: item.status.historyStatusColor,
               shape: BoxShape.circle,
             ),
           ),
           sdsSBWidth8,
           SDSBuildText(
-            item.trangThai.titleStatus,
+            item.status.titleStatus,
             style: AppTextStyle.font12Re.copyWith(
-              color: item.trangThai.historyStatusColor,
+              color: item.status.historyStatusColor,
             ),
           ),
         ],
@@ -94,13 +94,13 @@ extension HistoryDeclareTab on HistoryPage {
         SDSImageSvg(Assets.ASSETS_ICONS_IC_PROCEDURE_SVG),
         sdsSBWidth8,
         SDSBuildText(
-          "${LocaleKeys.history_procedure.tr} ${item.maThuTuc}${LocaleKeys.history_number.tr}",
+          "${LocaleKeys.history_procedure.tr} ${item.procedureCode}${LocaleKeys.history_number.tr}",
           style: AppTextStyle.font14Bo,
         ),
-        if (item.soHoSo?.isNotEmpty ?? false)
+        if (item.dossierNumber?.isNotEmpty ?? false)
           Expanded(
             child: SDSBuildText(
-              item.soHoSo ?? '',
+              item.dossierNumber ?? '',
               style: AppTextStyle.font14Bo,
               overflow: TextOverflow.ellipsis,
             ),
@@ -114,7 +114,7 @@ extension HistoryDeclareTab on HistoryPage {
       children: [
         Expanded(
           child: SDSBuildText(
-            changeDateString(item.thoiGianGui, pattern: PATTERN_14),
+            changeDateString(item.submissionTime, pattern: PATTERN_14),
             style: AppTextStyle.font12Re.copyWith(color: AppColors.dsGray2),
             maxLines: 1,
           ),

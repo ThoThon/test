@@ -8,20 +8,20 @@ class RegisterHistoryItemDataMapper
   @override
   RegisterHistoryItem mapToEntity(RegisterHistoryItemData? data) {
     return RegisterHistoryItem(
-      messId: data?.messId ?? '',
-      toKhai: data?.toKhai ?? '',
-      thoiGianGui: data?.thoiGianGui ?? '',
-      trangThaiTK: data?.trangThaiTK ?? '',
-      nam: data?.nam ?? 0,
-      thang: data?.thang ?? 0,
-      soHoSo: data?.soHoSo,
-      tiepNhan: data?.tiepNhan,
-      kqBuoc1: data?.kqBuoc1,
-      kqBuoc2: data?.kqBuoc2,
-      kqBuoc3: data?.kqBuoc3,
-      trangThaiBuoc1: data?.trangThaiBuoc1,
-      trangThaiBuoc2: data?.trangThaiBuoc2,
-      trangThaiBuoc3: data?.trangThaiBuoc3,
+      id: data?.messId ?? '',
+      declaration: data?.toKhai ?? '',
+      submissionTime: data?.thoiGianGui ?? '',
+      status: data?.trangThaiTK ?? '',
+      year: data?.nam ?? 0,
+      month: data?.thang ?? 0,
+      dossierNumber: data?.soHoSo,
+      receiver: data?.tiepNhan,
+      step1Result: data?.kqBuoc1,
+      step2Result: data?.kqBuoc2,
+      step3Result: data?.kqBuoc3,
+      step1Status: data?.trangThaiBuoc1,
+      step2Status: data?.trangThaiBuoc2,
+      step3Status: data?.trangThaiBuoc3,
     );
   }
 }

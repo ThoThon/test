@@ -1,8 +1,6 @@
-import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
-
 import 'declaration_history_item_data.dart';
 
-class DeclarationHistoryListData implements Entity {
+class DeclarationHistoryListData {
   final List<DeclarationHistoryItemData>? historyResults;
   final int? totalCount;
 
@@ -13,8 +11,8 @@ class DeclarationHistoryListData implements Entity {
 
   factory DeclarationHistoryListData.fromJson(Map<String, dynamic> json) {
     return DeclarationHistoryListData(
-      historyResults: (json['historyResults'] as List<dynamic>)
-          .map((e) =>
+      historyResults: (json['historyResults'] as List<dynamic>?)
+          ?.map((e) =>
               DeclarationHistoryItemData.fromJson(e as Map<String, dynamic>))
           .toList(),
       totalCount: json['totalCount'],

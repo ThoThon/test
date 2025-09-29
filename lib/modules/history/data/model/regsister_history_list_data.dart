@@ -1,8 +1,6 @@
-import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
-
 import 'register_history_item_data.dart';
 
-class RegisterHistoryListData implements Entity {
+class RegisterHistoryListData {
   final List<RegisterHistoryItemData>? historyResults;
   final int? totalCount;
 

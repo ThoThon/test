@@ -33,10 +33,10 @@ extension HistoryDeclareExtController on HistoryController {
       pageSize: Get.context?.isTablet ?? false
           ? AppConst.largePageSize
           : AppConst.defaultPageSize,
-      nam: selectedPeriodDate.value.year.toString(),
-      thang: selectedPeriodDate.value.month.toString(),
-      maThuTuc: selectProcedure.value?.loai.toString() ?? '',
-      soHoSo: searchController.text.trim(),
+      year: selectedPeriodDate.value.year.toString(),
+      month: selectedPeriodDate.value.month.toString(),
+      procedureCode: selectProcedure.value?.type.toString() ?? '',
+      dossierNumber: searchController.text.trim(),
     );
   }
 

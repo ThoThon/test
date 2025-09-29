@@ -1,6 +1,4 @@
-import 'package:v_bhxh/clean/core/domain/entity/entity.dart';
-
-class RegisterHistoryListRequestData implements Entity {
+class RegisterHistoryListRequestData {
   final int? pageIndex;
   final int? pageSize;
   final int? thang;

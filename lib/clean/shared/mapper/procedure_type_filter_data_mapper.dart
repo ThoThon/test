@@ -7,11 +7,11 @@ class ProcedureTypeFilterDataMapper
   @override
   ProcedureTypeFilter mapToEntity(ProcedureTypeFilterData? data) {
     return ProcedureTypeFilter(
-      ten: data?.ten ?? '',
-      tenCha: data?.tenCha ?? '',
-      loai: data?.loai.toString() ?? '',
-      ma: data?.ma ?? '',
-      ghiChu: data?.ghiChu ?? '',
+      name: data?.ten ?? '',
+      parentName: data?.tenCha ?? '',
+      type: data?.loai.toString() ?? '',
+      code: data?.ma ?? '',
+      note: data?.ghiChu ?? '',
     );
   }
 }

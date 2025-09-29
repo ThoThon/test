@@ -2,27 +2,13 @@ import '../../../base_app/base_app.src.dart';
 import '../../src.dart';
 
 class HistoryDetailDeclareController extends BaseGetxController {
-  late final DeclarationHistoryItem declarationHistoryItem;
-
   late final _historyDetaiDeclareRepository =
       HistoryDetailDeclareRepository(this);
 
   ResultLookupHistoryDeclareModel? resultLookupHistoryDeclare;
 
-  @override
-  void onInit() async {
-    super.onInit();
-    getArg();
-  }
-
-  void getArg() {
-    final args = Get.arguments;
-    if (args == null) return;
-    if (args is DeclarationHistoryItem) {
-      declarationHistoryItem = args;
-    }
-    return;
-  }
+  final argument =
+      Rxn<DeclarationHistoryItem>(Get.arguments as DeclarationHistoryItem?);
 
   Future<void> getFileNumber(String key) async {
     // Nếu không có số hồ sơ thì sẽ gọi api này để lấy số hồ sơ
@@ -33,9 +19,10 @@ class HistoryDetailDeclareController extends BaseGetxController {
         if (res.result!.rHRecordNumber.isNotEmpty) {
           // Tra cứu số hồ sơ thành công thì gọi đến tra cứu lịch sử
           await lookupProgressHistory(res.result?.rHRecordNumber ?? '');
-
           // Cập nhật số hồ sơ
-          declarationHistoryItem.soHoSo = res.result?.rHRecordNumber ?? '';
+          argument.value?.copyWith(
+            dossierNumber: res.result?.rHRecordNumber ?? '',
+          );
         } else {
           showSnackBar(res.errorMessage);
         }
@@ -62,7 +49,9 @@ class HistoryDetailDeclareController extends BaseGetxController {
           showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái
-          declarationHistoryItem.trangThai = res.result?.trangThai ?? '';
+          argument.value?.copyWith(
+            status: res.result?.trangThai ?? '',
+          );
           showSnackBarCustom(
             LocaleKeys.history_lookupSuccess.tr,
             align: const Alignment(0.0, 0.8),

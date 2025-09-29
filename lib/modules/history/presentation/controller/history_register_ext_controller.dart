@@ -10,10 +10,10 @@ extension HistoryRegisterExtController on HistoryController {
       pageSize: Get.context?.isTablet ?? false
           ? AppConst.largePageSize
           : AppConst.defaultPageSize,
-      nam: selectedPeriodDate.value.year,
-      thang: selectedPeriodDate.value.month,
-      soHoSo: searchController.text.trim(),
-      loaiGiaoDich: selectFilterHistoryRegister.value.type,
+      year: selectedPeriodDate.value.year,
+      month: selectedPeriodDate.value.month,
+      dossierNumber: searchController.text.trim(),
+      transactionType: selectFilterHistoryRegister.value.type,
     );
   }
 

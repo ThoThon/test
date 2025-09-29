@@ -9,10 +9,10 @@ class RegisterHistoryListRequestDataMapper extends BaseEntityMapper<
     return RegisterHistoryListRequestData(
       pageIndex: entity.pageIndex,
       pageSize: entity.pageSize,
-      thang: entity.thang,
-      nam: entity.nam,
-      soHoSo: entity.soHoSo,
-      loaiGiaoDich: entity.loaiGiaoDich,
+      thang: entity.month,
+      nam: entity.year,
+      soHoSo: entity.dossierNumber,
+      loaiGiaoDich: entity.transactionType,
     );
   }
 }

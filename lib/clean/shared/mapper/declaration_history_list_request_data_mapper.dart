@@ -9,12 +9,12 @@ class DeclarationHistoryListRequestDataMapper extends BaseEntityMapper<
       DeclarationHistoryListRequest entity) {
     return DeclarationHistoryListRequestData(
       companyId: entity.companyId,
-      maThuTuc: entity.maThuTuc,
-      thang: entity.thang,
-      nam: entity.nam,
+      maThuTuc: entity.procedureCode,
+      thang: entity.month,
+      nam: entity.year,
       pageIndex: entity.pageIndex,
       pageSize: entity.pageSize,
-      soHoSo: entity.soHoSo,
+      soHoSo: entity.dossierNumber,
     );
   }
 }

@@ -28,7 +28,8 @@ class HistoryController extends BaseGetClController {
 
   final listHistoryRegister = <RegisterHistoryItem>[].obs;
 
-  final currentTab = HistoryTabEnum.file_declare.obs;
+  late final currentTab =
+      Rx<HistoryTabEnum?>(argument?.selectedTab ?? HistoryTabEnum.file_declare);
 
   int pageHistoryRegister = AppConst.defaultPageNumber;
 
@@ -56,17 +57,14 @@ class HistoryController extends BaseGetClController {
     // Thêm option "Tất cả" cho bộ lọc thủ tục
     listProcedureFilter.add(
       ProcedureTypeFilter(
-        ten: LocaleKeys.history_all.tr,
-        tenCha: '',
-        loai: '',
-        ma: '',
-        ghiChu: '',
+        name: LocaleKeys.history_all.tr,
+        parentName: '',
+        type: '',
+        code: '',
+        note: '',
       ),
     );
 
-    if (argument != null) {
-      currentTab.value = argument?.selectedTab ?? HistoryTabEnum.file_declare;
-    }
     getProcedureFilter();
     getHistoryDeclare();
     getHistoryRegister();
