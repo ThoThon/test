@@ -10,6 +10,8 @@ export 'declaration_history_list_data_mapper.dart';
 export 'declaration_history_list_request_data_mapper.dart';
 export 'declaration_period_data_mapper.dart';
 export 'declaration_type_data_mapper.dart';
+export 'declare_info_630a_request_data_mapper.dart';
+export 'declare_info_630a_response_data_mapper.dart';
 export 'declared_staff_data_mapper.dart';
 export 'district_data_mapper.dart';
 export 'ethnic_data_mapper.dart';

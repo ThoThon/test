@@ -8,6 +8,7 @@ import 'package:v_bhxh/shares/utils/utils_src.dart';
 import '../../../base_app/model/base_model.src.dart';
 import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
+import '../../declare_info_630a/domain/entity/weekly_day_off_enum.dart';
 
 part 'benefit_account_info_group_ext_630b.dart';
 part 'declare_info_630b_widget.dart';

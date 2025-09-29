@@ -1,3 +1,5 @@
+import '../../../src.dart';
+
 enum WeeklyDayOffEnum {
   monday,
   tuesday,
@@ -10,19 +12,19 @@ enum WeeklyDayOffEnum {
   String get title {
     switch (this) {
       case WeeklyDayOffEnum.monday:
-        return 'Thứ hai';
+        return LocaleKeys.weeklyDayOff_monday.tr;
       case WeeklyDayOffEnum.tuesday:
-        return 'Thứ ba';
+        return LocaleKeys.weeklyDayOff_tuesday.tr;
       case WeeklyDayOffEnum.wednesday:
-        return 'Thứ tư';
+        return LocaleKeys.weeklyDayOff_wednesday.tr;
       case WeeklyDayOffEnum.thursday:
-        return 'Thứ năm';
+        return LocaleKeys.weeklyDayOff_thursday.tr;
       case WeeklyDayOffEnum.friday:
-        return 'Thứ sáu';
+        return LocaleKeys.weeklyDayOff_friday.tr;
       case WeeklyDayOffEnum.saturday:
-        return 'Thứ bảy';
+        return LocaleKeys.weeklyDayOff_saturday.tr;
       case WeeklyDayOffEnum.sunday:
-        return 'Chủ nhật';
+        return LocaleKeys.weeklyDayOff_sunday.tr;
     }
   }
 
