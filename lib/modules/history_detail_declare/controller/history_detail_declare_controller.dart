@@ -1,5 +1,3 @@
-import 'package:v_bhxh/modules/history/history_src.dart';
-
 import '../../../base_app/base_app.src.dart';
 import '../../src.dart';
 

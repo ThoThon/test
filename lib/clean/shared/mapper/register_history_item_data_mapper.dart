@@ -14,6 +14,14 @@ class RegisterHistoryItemDataMapper
       trangThaiTK: data?.trangThaiTK ?? '',
       nam: data?.nam ?? 0,
       thang: data?.thang ?? 0,
+      soHoSo: data?.soHoSo,
+      tiepNhan: data?.tiepNhan,
+      kqBuoc1: data?.kqBuoc1,
+      kqBuoc2: data?.kqBuoc2,
+      kqBuoc3: data?.kqBuoc3,
+      trangThaiBuoc1: data?.trangThaiBuoc1,
+      trangThaiBuoc2: data?.trangThaiBuoc2,
+      trangThaiBuoc3: data?.trangThaiBuoc3,
     );
   }
 }

@@ -13,6 +13,15 @@ class DeclarationHistoryItemDataMapper
       thang: data?.thang ?? '',
       nam: data?.nam ?? '',
       trangThai: data?.trangThai ?? '',
+      soHoSo: data?.soHoSo,
+      maLoiBuoc1: data?.maLoiBuoc1,
+      ketQuaBuoc1: data?.ketQuaBuoc1,
+      maLoiBuoc2: data?.maLoiBuoc2,
+      ketQuaBuoc2: data?.ketQuaBuoc2,
+      maLoiBuoc3: data?.maLoiBuoc3,
+      ketQuaBuoc3: data?.ketQuaBuoc3,
+      maLoiBuoc4: data?.maLoiBuoc4,
+      ketQuaBuoc4: data?.ketQuaBuoc4,
     );
   }
 }

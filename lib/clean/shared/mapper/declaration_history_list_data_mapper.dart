@@ -1,4 +1,3 @@
-import 'package:v_bhxh/clean/shared/mapper/declaration_history_item_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 import 'package:v_bhxh/modules/history/data/model/declaration_history_list_data.dart';
 import 'package:v_bhxh/modules/history/domain/entity/declaration_history_list.dart';
