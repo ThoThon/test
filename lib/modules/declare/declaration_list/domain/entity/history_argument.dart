@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/src.dart';
+import '../../../../history/history_src.dart';
 
 class HistoryArgument {
   final HistoryTabEnum? selectedTab;

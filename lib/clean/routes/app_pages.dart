@@ -21,7 +21,7 @@ import 'package:v_bhxh/modules/declare_info_630b/ui/declare_info_630b_page.dart'
 import 'package:v_bhxh/modules/declare_info_630c/ui/declare_info_630c_page.dart';
 import 'package:v_bhxh/modules/forgot_password/presentation/binding/forgot_password_binding.dart';
 import 'package:v_bhxh/modules/forgot_password/presentation/forgot_password_page.dart';
-import 'package:v_bhxh/modules/history/ui/history_page.dart';
+import 'package:v_bhxh/modules/history/history_src.dart';
 import 'package:v_bhxh/modules/history_detail_declare/ui/history_detail_declare_page.dart';
 import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';
 import 'package:v_bhxh/modules/home_clean/presentation/binding/home_binding.dart';
@@ -73,7 +73,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.history.path,
-      page: () => HistoryPage(),
+      page: HistoryPage.new,
+      binding: HistoryBinding(),
     ),
     GetPage(
       name: AppRoutesCl.historyDetailDeclare.path,
