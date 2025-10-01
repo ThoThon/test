@@ -29,7 +29,7 @@ class HistoryController extends BaseGetClController {
   final listHistoryRegister = <RegisterHistoryItem>[].obs;
 
   late final currentTab =
-      Rx<HistoryTabEnum?>(argument?.selectedTab ?? HistoryTabEnum.file_declare);
+      Rx<HistoryTabEnum>(argument?.selectedTab ?? HistoryTabEnum.file_declare);
 
   int pageHistoryRegister = AppConst.defaultPageNumber;
 
@@ -102,5 +102,11 @@ class HistoryController extends BaseGetClController {
     KeyBoard.hide();
     if (currentTab.value == tab) return;
     currentTab.value = tab;
+  }
+
+  @override
+  void onClose() {
+    searchController.dispose();
+    super.onClose();
   }
 }

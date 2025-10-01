@@ -11,8 +11,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
 
   late final RegisterHistoryItem registerHistoryItem;
 
-  final agrument =
-      Rxn<RegisterHistoryItem?>(Get.arguments as RegisterHistoryItem?);
+  final agrument = Get.safeArguments<RegisterHistoryItem>();
 
   Future<void> lookupHistoryRegister() async {
     try {
@@ -27,7 +26,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
           showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái và số hồ sơ
-          agrument.value?.copyWith(
+          agrument?.copyWith(
             status: res.result?.trangThai ?? '',
             dossierNumber: res.result?.soHoSo ?? '',
           );

@@ -5,10 +5,25 @@ class HistoryDetailDeclareController extends BaseGetxController {
   late final _historyDetaiDeclareRepository =
       HistoryDetailDeclareRepository(this);
 
+  late final DeclarationHistoryItem historyDeclareItem;
+
   ResultLookupHistoryDeclareModel? resultLookupHistoryDeclare;
 
-  final argument =
-      Rxn<DeclarationHistoryItem>(Get.arguments as DeclarationHistoryItem?);
+  final argument = Get.safeArguments<DeclarationHistoryItem>();
+  @override
+  void onInit() async {
+    super.onInit();
+    getArg();
+  }
+
+  void getArg() {
+    final args = Get.arguments;
+    if (args == null) return;
+    if (args is DeclarationHistoryItem) {
+      historyDeclareItem = args;
+    }
+    return;
+  }
 
   Future<void> getFileNumber(String key) async {
     // Nếu không có số hồ sơ thì sẽ gọi api này để lấy số hồ sơ
@@ -20,7 +35,7 @@ class HistoryDetailDeclareController extends BaseGetxController {
           // Tra cứu số hồ sơ thành công thì gọi đến tra cứu lịch sử
           await lookupProgressHistory(res.result?.rHRecordNumber ?? '');
           // Cập nhật số hồ sơ
-          argument.value?.copyWith(
+          argument?.copyWith(
             dossierNumber: res.result?.rHRecordNumber ?? '',
           );
         } else {
@@ -49,7 +64,7 @@ class HistoryDetailDeclareController extends BaseGetxController {
           showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái
-          argument.value?.copyWith(
+          argument?.copyWith(
             status: res.result?.trangThai ?? '',
           );
           showSnackBarCustom(
