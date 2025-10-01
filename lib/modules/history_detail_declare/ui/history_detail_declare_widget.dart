@@ -2,7 +2,7 @@ part of 'history_detail_declare_page.dart';
 
 extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   Widget _buildBody() {
-    final model = controller.historyDeclareItem;
+    final model = controller.historyDeclareItem.value;
     return Column(
       children: [
         Expanded(
@@ -29,7 +29,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   }
 
   Widget _buildProfileInfoCard(
-    DeclarationHistoryItem model,
+    DeclarationHistoryItem? model,
   ) {
     return Container(
       decoration: BoxDecoration(
@@ -40,19 +40,19 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
         children: [
           _buildProfleInfoItem(
             textLeft: LocaleKeys.history_status.tr,
-            textRight: model.status.titleStatus,
-            color: model.status.historyStatusColor,
+            textRight: model?.status.titleStatus ?? '',
+            color: model?.status.historyStatusColor,
           ),
           sdsSBHeight8,
           _buildProfleInfoItem(
             textLeft: LocaleKeys.history_profileNumber.tr,
-            textRight: model.dossierNumber ?? '',
+            textRight: model?.dossierNumber ?? '',
           ),
           sdsSBHeight8,
           _buildProfleInfoItem(
             textLeft: LocaleKeys.history_timeResgiter.tr,
             textRight: changeDateString(
-              model.submissionTime,
+              model?.submissionTime ?? '',
               pattern: PATTERN_14,
             ),
           ),
@@ -87,7 +87,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   }
 
   Widget _buildProgressHandleCard(
-    DeclarationHistoryItem model,
+    DeclarationHistoryItem? model,
   ) {
     final newData = controller.resultLookupHistoryDeclare != null;
     final resultLookup = controller.resultLookupHistoryDeclare;
@@ -99,10 +99,10 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
             resultLookup?.buoc4?.moTaKetQua ?? '',
           ]
         : [
-            model.step1Result ?? '',
-            model.step2Result ?? '',
-            model.step3Result ?? '',
-            model.step4Result ?? '',
+            model?.step1Result ?? '',
+            model?.step2Result ?? '',
+            model?.step3Result ?? '',
+            model?.step4Result ?? '',
           ];
 
     final statuses = newData
@@ -113,10 +113,10 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
             resultLookup?.buoc4?.maKetQua ?? '',
           ]
         : [
-            model.step1ErrorCode ?? '',
-            model.step2ErrorCode ?? '',
-            model.step3ErrorCode ?? '',
-            model.step4ErrorCode ?? '',
+            model?.step1ErrorCode ?? '',
+            model?.step2ErrorCode ?? '',
+            model?.step3ErrorCode ?? '',
+            model?.step4ErrorCode ?? '',
           ];
 
     final isLastSteps = newData
@@ -127,9 +127,9 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
             null,
           ]
         : [
-            model.step2ErrorCode,
-            model.step3ErrorCode,
-            model.step4ErrorCode,
+            model?.step2ErrorCode,
+            model?.step3ErrorCode,
+            model?.step4ErrorCode,
             null,
           ];
 

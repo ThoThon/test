@@ -2,7 +2,7 @@ import '../../../base_app/base_app.src.dart';
 import '../../src.dart';
 
 class HistoryDetailDeclareController extends BaseGetxController {
-  late final DeclarationHistoryItem historyDeclareItem;
+  final historyDeclareItem = Rxn<DeclarationHistoryItem>();
 
   late final _historyDetaiDeclareRepository =
       HistoryDetailDeclareRepository(this);
@@ -19,7 +19,7 @@ class HistoryDetailDeclareController extends BaseGetxController {
     final args = Get.arguments;
     if (args == null) return;
     if (args is DeclarationHistoryItem) {
-      historyDeclareItem = args;
+      historyDeclareItem.value = args;
     }
     return;
   }
@@ -35,7 +35,7 @@ class HistoryDetailDeclareController extends BaseGetxController {
           await lookupProgressHistory(res.result?.rHRecordNumber ?? '');
           // Cập nhật số hồ sơ
           // historyDeclareItem.soHoSo = res.result?.rHRecordNumber ?? '';
-          historyDeclareItem = historyDeclareItem.copyWith(
+          historyDeclareItem.value = historyDeclareItem.value?.copyWith(
             dossierNumber: res.result?.rHRecordNumber ?? '',
           );
         } else {
@@ -64,7 +64,7 @@ class HistoryDetailDeclareController extends BaseGetxController {
           showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái
-          historyDeclareItem = historyDeclareItem.copyWith(
+          historyDeclareItem.value = historyDeclareItem.value?.copyWith(
             status: res.result?.trangThai ?? '',
           );
           showSnackBarCustom(

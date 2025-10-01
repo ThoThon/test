@@ -9,7 +9,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
 
   ResultLookupHistoryRegisterModel? resultLookupHistoryRegister;
 
-  late final RegisterHistoryItem historyRegisterItem;
+  final historyRegisterItem = Rxn<RegisterHistoryItem>();
 
   @override
   void onInit() async {
@@ -21,7 +21,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
     final args = Get.arguments;
     if (args == null) return;
     if (args is RegisterHistoryItem) {
-      historyRegisterItem = args;
+      historyRegisterItem.value = args;
     }
     return;
   }
@@ -30,7 +30,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
     try {
       showLoadingOverlay();
       final res = await _historyDetaiRepository
-          .lookupHistoryRegister(historyRegisterItem.id);
+          .lookupHistoryRegister(historyRegisterItem.value?.id ?? '');
       if (res.isSuccess && res.result != null) {
         resultLookupHistoryRegister = res.result;
 
@@ -39,7 +39,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
           showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái và số hồ sơ
-          historyRegisterItem = historyRegisterItem.copyWith(
+          historyRegisterItem.value = historyRegisterItem.value?.copyWith(
             status: res.result?.trangThai ?? '',
             dossierNumber: res.result?.soHoSo ?? '',
           );
