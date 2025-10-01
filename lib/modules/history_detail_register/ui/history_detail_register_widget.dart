@@ -2,7 +2,7 @@ part of 'history_detail_register_page.dart';
 
 extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
   Widget _buildBody() {
-    final itemRegister = controller.registerHistoryItem;
+    final itemRegister = controller.historyRegisterItem;
     return Column(
       children: [
         Expanded(

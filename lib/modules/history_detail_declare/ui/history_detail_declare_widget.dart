@@ -2,7 +2,7 @@ part of 'history_detail_declare_page.dart';
 
 extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   Widget _buildBody() {
-    final model = controller.argument;
+    final model = controller.historyDeclareItem;
     return Column(
       children: [
         Expanded(

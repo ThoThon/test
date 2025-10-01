@@ -2,14 +2,13 @@ import '../../../base_app/base_app.src.dart';
 import '../../src.dart';
 
 class HistoryDetailDeclareController extends BaseGetxController {
+  late final DeclarationHistoryItem historyDeclareItem;
+
   late final _historyDetaiDeclareRepository =
       HistoryDetailDeclareRepository(this);
 
-  late final DeclarationHistoryItem historyDeclareItem;
-
   ResultLookupHistoryDeclareModel? resultLookupHistoryDeclare;
 
-  final argument = Get.safeArguments<DeclarationHistoryItem>();
   @override
   void onInit() async {
     super.onInit();
@@ -35,7 +34,8 @@ class HistoryDetailDeclareController extends BaseGetxController {
           // Tra cứu số hồ sơ thành công thì gọi đến tra cứu lịch sử
           await lookupProgressHistory(res.result?.rHRecordNumber ?? '');
           // Cập nhật số hồ sơ
-          argument?.copyWith(
+          // historyDeclareItem.soHoSo = res.result?.rHRecordNumber ?? '';
+          historyDeclareItem = historyDeclareItem.copyWith(
             dossierNumber: res.result?.rHRecordNumber ?? '',
           );
         } else {
@@ -64,7 +64,7 @@ class HistoryDetailDeclareController extends BaseGetxController {
           showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái
-          argument?.copyWith(
+          historyDeclareItem = historyDeclareItem.copyWith(
             status: res.result?.trangThai ?? '',
           );
           showSnackBarCustom(
