@@ -2,7 +2,7 @@ part of 'history_detail_register_page.dart';
 
 extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
   Widget _buildBody() {
-    final itemRegister = controller.registerHistoryItem;
+    final itemRegister = controller.historyRegisterItem.value;
     return Column(
       children: [
         Expanded(
@@ -29,7 +29,7 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
   }
 
   Widget _buildProfileInfoCard(
-    RegisterHistoryItem item,
+    RegisterHistoryItem? item,
   ) {
     return Container(
       decoration: BoxDecoration(
@@ -40,19 +40,19 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
         children: [
           _buildProfleInfoItem(
             textLeft: LocaleKeys.history_status.tr,
-            textRight: item.status.titleStatus,
-            color: item.status.historyStatusColor,
+            textRight: item?.status.titleStatus,
+            color: item?.status.historyStatusColor,
           ),
           sdsSBHeight8,
           _buildProfleInfoItem(
             textLeft: LocaleKeys.history_profileNumber.tr,
-            textRight: item.dossierNumber,
+            textRight: item?.dossierNumber,
           ),
           sdsSBHeight8,
           _buildProfleInfoItem(
             textLeft: LocaleKeys.history_timeResgiter.tr,
             textRight: changeDateString(
-              item.submissionTime,
+              item?.submissionTime ?? '',
               pattern: PATTERN_14,
             ),
           ),
@@ -87,7 +87,7 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
   }
 
   Widget _buildProgressHandleCard(
-    RegisterHistoryItem item,
+    RegisterHistoryItem? item,
   ) {
     final isNewData = controller.resultLookupHistoryRegister != null;
     final resultLookup = controller.resultLookupHistoryRegister;
@@ -99,9 +99,9 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
             resultLookup?.buoc3?.moTaKetQua ?? '',
           ]
         : [
-            item.step1Result,
-            item.step2Result,
-            item.step3Result,
+            item?.step1Result,
+            item?.step2Result,
+            item?.step3Result,
           ];
 
     final statuses = [
@@ -111,9 +111,9 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
     ];
 
     final stepStates = [
-      item.step1Status,
-      item.step2Status,
-      item.step3Status,
+      item?.step1Status,
+      item?.step2Status,
+      item?.step3Status,
     ];
 
     final isLastSteps = isNewData
@@ -123,8 +123,8 @@ extension HistoryDetailRegisterWidget on HistoryDetailRegisterPage {
             null,
           ]
         : [
-            item.step2Result ?? '',
-            item.step3Result ?? '',
+            item?.step2Result ?? '',
+            item?.step3Result ?? '',
             null,
           ];
 

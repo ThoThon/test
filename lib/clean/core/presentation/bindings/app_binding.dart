@@ -108,6 +108,9 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => ProcedureTypeFilterDataMapper(), fenix: true);
     Get.lazyPut(() => DeclareInfo630aRequestDataMapper(), fenix: true);
     Get.lazyPut(() => DeclareInfo630aResponseDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => StepDataMapper(), fenix: true);
+    Get.lazyPut(() => DeclareHistoryLookupResultDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => FileNumberDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

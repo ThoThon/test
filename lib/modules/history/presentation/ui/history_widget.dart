@@ -12,7 +12,7 @@ extension HistoryWidget on HistoryPage {
             child: Obx(
               () {
                 return IndexedStack(
-                  index: controller.currentTab.value?.index,
+                  index: controller.currentTab.value.index,
                   children: [
                     _buildHistoryDeclare(),
                     _buildHistoryRegister(),
@@ -244,8 +244,8 @@ extension HistoryWidget on HistoryPage {
                   controller.getHistoryDeclare();
                 },
                 text: isFirstItem
-                    ? procedure.name.tr
-                    : '${procedure.code} - ${procedure.name.tr}',
+                    ? procedure.name
+                    : '${procedure.code} - ${procedure.name}',
                 style: (controller.selectProcedure.value == procedure ||
                         (controller.selectProcedure.value == null &&
                             isFirstItem))

@@ -17,20 +17,19 @@ class DeclareHistoryLookupResultData {
 
   factory DeclareHistoryLookupResultData.fromJson(Map<String, dynamic> json) {
     return DeclareHistoryLookupResultData(
-      buoc1: StepData.fromJson(json['buoc_1']),
-      buoc2: StepData.fromJson(json['buoc_2']),
-      buoc3: StepData.fromJson(json['buoc_3']),
-      buoc4: StepData.fromJson(json['buoc_4']),
+      buoc1: json['buoc_1'] != null
+          ? StepData.fromJson(json['buoc_1'] as Map<String, dynamic>)
+          : null,
+      buoc2: json['buoc_2'] != null
+          ? StepData.fromJson(json['buoc_2'] as Map<String, dynamic>)
+          : null,
+      buoc3: json['buoc_3'] != null
+          ? StepData.fromJson(json['buoc_3'] as Map<String, dynamic>)
+          : null,
+      buoc4: json['buoc_4'] != null
+          ? StepData.fromJson(json['buoc_4'] as Map<String, dynamic>)
+          : null,
       trangThai: json['trangThai'],
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'buoc_1': buoc1?.toJson(),
-      'buoc_2': buoc2?.toJson(),
-      'buoc_3': buoc3?.toJson(),
-      'buoc_4': buoc4?.toJson(),
-    };
   }
 }
