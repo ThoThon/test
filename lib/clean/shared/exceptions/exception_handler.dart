@@ -96,9 +96,12 @@ class ExceptionHandler {
               return;
             }
 
+            final serverErrorMessage =
+                exception.serverError?.errorMessage?.trim() ?? '';
             nav.showSnackBar(
-              exception.serverError?.errorMessage ??
-                  LocaleKeys.app_somethingWentWrong.tr,
+              serverErrorMessage.isNotEmpty
+                  ? serverErrorMessage
+                  : LocaleKeys.app_somethingWentWrong.tr,
             );
             break;
           case RemoteExceptionKind.network:
