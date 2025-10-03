@@ -16,6 +16,7 @@ class DeclareInfo630a implements Entity {
   final String toDate;
   final int totalDays;
   final String unitFromDate;
+  final String unitToDate;
   final String dayOff;
   final String hospitalLevel;
   final String childDob;
@@ -50,6 +51,7 @@ class DeclareInfo630a implements Entity {
     required this.toDate,
     required this.totalDays,
     required this.unitFromDate,
+    required this.unitToDate,
     required this.dayOff,
     required this.hospitalLevel,
     required this.childDob,

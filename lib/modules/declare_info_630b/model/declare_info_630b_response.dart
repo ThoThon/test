@@ -65,7 +65,7 @@ class DeclareInfo630bResponse {
     required this.maNhomHuong2,
     required this.tuNgay,
     required this.denNgay,
-    this.tongSoNgay,
+    required this.tongSoNgay,
     required this.tuNgayDonVi,
     required this.denNgayDonVi,
     this.ngayNghiTuan,

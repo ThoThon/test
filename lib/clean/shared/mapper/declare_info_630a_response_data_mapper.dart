@@ -23,6 +23,7 @@ class DeclareInfo630aResponseDataMapper
       toDate: data?.denNgay ?? '',
       totalDays: data?.tongSoNgay ?? 0,
       unitFromDate: data?.tuNgayDonVi ?? '',
+      unitToDate: data?.denNgayDonVi ?? '',
       dayOff: data?.ngayNghiTuan ?? '',
       hospitalLevel: data?.tuyenBenhVien ?? '',
       childDob: data?.ngaySinhCon ?? '',

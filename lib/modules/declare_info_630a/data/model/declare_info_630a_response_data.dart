@@ -14,6 +14,7 @@ class DeclareInfo630aResponseData {
   final String? denNgay;
   final int? tongSoNgay;
   final String? tuNgayDonVi;
+  final String? denNgayDonVi;
   final String? ngayNghiTuan;
   final String? tuyenBenhVien;
   final String? ngaySinhCon;
@@ -48,6 +49,7 @@ class DeclareInfo630aResponseData {
     this.denNgay,
     this.tongSoNgay,
     this.tuNgayDonVi,
+    this.denNgayDonVi,
     this.ngayNghiTuan,
     this.tuyenBenhVien,
     this.ngaySinhCon,
