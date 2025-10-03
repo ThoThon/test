@@ -9,10 +9,13 @@ import 'package:v_bhxh/clean/shared/exceptions/exception_handler.dart';
 import 'package:v_bhxh/clean/shared/mapper/categories_630/benefit_group_630_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/categories_630/long_diease_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/category_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/declaration_history_record_list_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/forgot_password_request_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/get_record_pdf_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 import 'package:v_bhxh/clean/shared/mapper/staff_detail_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/staff_family_response_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/staff_info_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/utils/utils_src.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl_impl.dart';
@@ -108,6 +111,10 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => ProcedureTypeFilterDataMapper(), fenix: true);
     Get.lazyPut(() => DeclareInfo630aRequestDataMapper(), fenix: true);
     Get.lazyPut(() => DeclareInfo630aResponseDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => StaffInfoDataMapper(), fenix: true);
+    Get.lazyPut(() => DeclarationHistoryRecordListDataMapper(sl()),
+        fenix: true);
+    Get.lazyPut(() => GetRecordPdfDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {

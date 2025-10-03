@@ -3,6 +3,31 @@ part of 'declaration_list_page.dart';
 extension DeclarationListWidget on DeclarationListPage {
   Widget _buildBody() {
     final saveResult = controller.argument.saveXmlResult;
+    final declareHistoryRecord =
+        controller.argument.declarationHistoryRecordList;
+    final isFromHistoryPage = controller.argument.isFromHistoryPage;
+
+    final hasDsM01hsb = isFromHistoryPage
+        ? declareHistoryRecord?.hasDsM01hsb
+        : saveResult?.hasDsM01hsb;
+
+    final hasTsM01hsb = isFromHistoryPage
+        ? declareHistoryRecord?.hasTsM01hsb
+        : saveResult?.hasTsM01hsb;
+
+    final hasOdM01hsb = isFromHistoryPage
+        ? declareHistoryRecord?.hasOdM01hsb
+        : saveResult?.hasOdM01hsb;
+
+    final hasD02 =
+        isFromHistoryPage ? declareHistoryRecord?.hasD02 : saveResult?.hasD02;
+
+    final hasD01 =
+        isFromHistoryPage ? declareHistoryRecord?.hasD01 : saveResult?.hasD01;
+
+    final attachPreviewPath = isFromHistoryPage
+        ? declareHistoryRecord?.attachPreviewPath
+        : saveResult?.attachPreviewPath;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,72 +45,79 @@ extension DeclarationListWidget on DeclarationListPage {
                     style: AppTextStyle.font16Bo,
                   ),
                   sdsSBHeight12,
-                  if (saveResult.hasDsM01hsb)
+                  if (hasDsM01hsb ?? false)
                     _buildDeclarationItem(
                       title: LocaleKeys.declareInfo_healingHsbList.tr,
                       onTap: () {
                         controller.getPreviewPdf(
-                          previewDocumentType:
-                              PreviewDocumentTypeEnum.healingHsb,
+                          id: declareHistoryRecord?.dsM01hsbId,
                           title: LocaleKeys
                               .declareInfo_participationDeclaration.tr,
+                          previewDocumentType:
+                              PreviewDocumentTypeEnum.healingHsb,
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
-                  if (saveResult.hasTsM01hsb)
+                  if (hasTsM01hsb ?? false)
                     _buildDeclarationItem(
                       title: LocaleKeys.declareInfo_maternityHsbList.tr,
                       onTap: () {
                         controller.getPreviewPdf(
-                          previewDocumentType:
-                              PreviewDocumentTypeEnum.maternityHsb,
+                          id: declareHistoryRecord?.tsM01hsbId,
                           title: LocaleKeys
                               .declareInfo_participationDeclaration.tr,
+                          previewDocumentType:
+                              PreviewDocumentTypeEnum.maternityHsb,
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
-                  if (saveResult.hasOdM01hsb)
+                  if (hasOdM01hsb ?? false)
                     _buildDeclarationItem(
                       title: LocaleKeys.declareInfo_sickHsbList.tr,
                       onTap: () {
                         controller.getPreviewPdf(
-                          previewDocumentType: PreviewDocumentTypeEnum.sickHsb,
+                          id: declareHistoryRecord?.odM01hsbId,
                           title: LocaleKeys
                               .declareInfo_participationDeclaration.tr,
+                          previewDocumentType: PreviewDocumentTypeEnum.sickHsb,
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
-                  if (saveResult.hasD02)
+                  if (hasD02 ?? false)
                     _buildDeclarationItem(
                       title: LocaleKeys.declareInfo_d02LaborList.tr,
                       onTap: () {
                         controller.getPreviewPdf(
-                          previewDocumentType: PreviewDocumentTypeEnum.d02,
+                          id: declareHistoryRecord?.d02Id,
                           title: LocaleKeys.declareInfo_laborList.tr,
+                          previewDocumentType: PreviewDocumentTypeEnum.d02,
                           isRotateHorizontal: true,
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
                   _buildTk1Preview(),
-                  if (saveResult.hasD01)
+                  if (hasD01 ?? false)
                     _buildDeclarationItem(
                       title: LocaleKeys.declareInfo_d01infoTable.tr,
                       onTap: () {
                         controller.getPreviewPdf(
-                          previewDocumentType: PreviewDocumentTypeEnum.d01,
+                          id: declareHistoryRecord?.d01Id,
                           title: LocaleKeys
                               .declareInfo_participationDeclaration.tr,
+                          previewDocumentType: PreviewDocumentTypeEnum.d01,
                         );
                       },
                     ).paddingOnly(bottom: AppDimens.paddingSmall),
-                  if (saveResult.attachPreviewPath != null)
+                  if (attachPreviewPath != null)
                     _buildDeclarationItem(
                       title: LocaleKeys.unitInfo_missingFileInclude.tr,
                       onTap: () {
                         Get.toNamed(
                           AppRoutesCl.viewPdf.path,
                           arguments: ViewPdfArgument(
-                            url: saveResult.attachPreviewPath!,
+                            url: saveResult?.attachPreviewPath ??
+                                declareHistoryRecord?.attachPreviewPath ??
+                                '',
                             title: LocaleKeys.unitInfo_missingFileInclude.tr,
                           ),
                         );
@@ -114,8 +146,8 @@ extension DeclarationListWidget on DeclarationListPage {
   }
 
   Widget _buildTk1Preview() {
-    final paths = controller.argument.saveXmlResult.tk1s;
-    if (paths.isEmpty) {
+    final paths = controller.argument.saveXmlResult?.tk1s;
+    if (paths == null) {
       return UtilWidget.shrink;
     }
 
@@ -157,7 +189,7 @@ extension DeclarationListWidget on DeclarationListPage {
                   UtilWidget.sizedBoxWidth16,
                   InkWell(
                     onTap: () {
-                      controller.getPreviewPdf(
+                      controller.createPdf(
                         previewDocumentType: PreviewDocumentTypeEnum.tk1,
                         documentRecordId: path.documentRecordId,
                         title:

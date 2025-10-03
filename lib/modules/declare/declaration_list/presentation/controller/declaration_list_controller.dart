@@ -1,14 +1,15 @@
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/modules/declare/declaration_list/domain/use_case/get_record_pdf_use_case.dart';
 import 'package:v_bhxh/modules/home_clean/presentation/events/home_event.dart';
 import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog.src.dart';
 
 import '../../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
-import '../../../../history/history_src.dart';
 import '../../../../src.dart';
 import '../../../../view_pdf/model/view_pdf_argument.dart';
 import '../../../declaration_period/domain/entity/entity_src.dart';
 import '../../declaration_list_src.dart';
+import '../../domain/entity/get_record_pdf_request.dart';
 
 class DeclarationListController extends BaseGetClController {
   final GetViewPdf600UseCase _getViewPdf600UseCase;
@@ -17,6 +18,7 @@ class DeclarationListController extends BaseGetClController {
   final GetViewPdf630bUseCase _getViewPdf630bUseCase;
   final GetViewPdf630cUseCase _getViewPdf630cUseCase;
   final SignDocumentUseCase _signDocumentUseCase;
+  final GetRecordPdfUseCase _getRecordPdfUseCase;
   final DeclarationListArgument argument;
 
   DeclarationListController(
@@ -25,7 +27,8 @@ class DeclarationListController extends BaseGetClController {
     this._getViewPdf630aUseCase,
     this._getViewPdf630bUseCase,
     this._getViewPdf630cUseCase,
-    this._signDocumentUseCase, {
+    this._signDocumentUseCase,
+    this._getRecordPdfUseCase, {
     required this.argument,
   });
 
@@ -35,7 +38,7 @@ class DeclarationListController extends BaseGetClController {
         _showDialogCheckedSuccess();
 
         await _signDocumentUseCase.execute(
-          argument.declarationPeriodId,
+          argument.declarationPeriodId ?? '',
         );
         nav.dismissDialog();
         eventBus.fire(const GetUnreadNotificationCountEvent());
@@ -83,7 +86,7 @@ class DeclarationListController extends BaseGetClController {
     );
   }
 
-  Future<void> getPreviewPdf({
+  Future<void> createPdf({
     required PreviewDocumentTypeEnum previewDocumentType,
     String? documentRecordId,
     required String title,
@@ -93,7 +96,7 @@ class DeclarationListController extends BaseGetClController {
       showLoadingOverlay: true,
       action: () async {
         final request = GetPreviewPdfRequest(
-          declarationPeriodId: argument.declarationPeriodId,
+          declarationPeriodId: argument.declarationPeriodId ?? '',
           previewDocumentType: previewDocumentType,
           documentRecordId: documentRecordId,
         );
@@ -112,6 +115,7 @@ class DeclarationListController extends BaseGetClController {
             _getViewPdf630bUseCase.execute(request),
           ProcedureType.procedure630c =>
             _getViewPdf630cUseCase.execute(request),
+          _ => throw UnimplementedError('Not implemented yet'),
         };
 
         nav.toNamed(
@@ -124,5 +128,55 @@ class DeclarationListController extends BaseGetClController {
         );
       },
     );
+  }
+
+  Future<void> recordPdf({
+    String? id,
+    String? staffId,
+    required String title,
+    bool isRotateHorizontal = false,
+  }) async {
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        final url = await _getRecordPdfUseCase.execute(
+          GetRecordPdfRequest(
+            id: id ?? '',
+            staffId: staffId,
+          ),
+        );
+        nav.toNamed(
+          AppRoutesCl.viewPdf.path,
+          arguments: ViewPdfArgument(
+            url: url,
+            title: title,
+            isRotateHorizontal: isRotateHorizontal,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> getPreviewPdf({
+    String? id,
+    String? staffId,
+    required String title,
+    bool isRotateHorizontal = false,
+    required PreviewDocumentTypeEnum previewDocumentType,
+    String? documentRecordId,
+  }) async {
+    argument.isFromHistoryPage
+        ? await recordPdf(
+            id: id,
+            title: title,
+            staffId: staffId,
+            isRotateHorizontal: isRotateHorizontal,
+          )
+        : await createPdf(
+            previewDocumentType: previewDocumentType,
+            title: title,
+            documentRecordId: documentRecordId,
+            isRotateHorizontal: isRotateHorizontal,
+          );
   }
 }
