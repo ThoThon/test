@@ -51,7 +51,7 @@
     "submitRegisterToSuccess": "Gửi hồ sơ lên cổng tiếp nhận của BHXH thành công.",
     "submitRegisterToSuccessMessage": "Vui lòng kiểm tra email đã đăng ký\nThời gian làm việc từ 3-5 ngày",
     "resend": "Gửi lại",
-    "cannotConnectMySign": "Không thể kết nối tới hệ thống ký số.",
+    "cannotConnectMySign": "Hết thời gian ký số - Vui lòng thực hiện lại",
     "sendFileSuccess": "Gửi hồ sơ thành công",
     "sendFileFail": "Gửi hồ sơ thất bại",
     "signatureTimeOut": "Hết thời gian ký số\nVui lòng thực hiện lại",
@@ -60,10 +60,12 @@
     "sendRequestSignature": "Gửi yêu cầu ký thành công",
     "sendFileToBHXH": "Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!",
     "max5File": "Chỉ cho phép đính kèm tối đa 5 file",
+    "max7File": "Chỉ cho phép đính kèm tối đa 7 file",
     "select": "Chọn",
     "selectDayMonthYear": "Chọn Ngày/Tháng/Năm",
     "selectMonthYear": "Chọn Tháng/Năm",
-    "selectYear": "Chọn năm"
+    "selectYear": "Chọn năm",
+    "cannotUpdateInfo": "Có lỗi xảy ra, không thể cập nhật thông tin"
   },
   "input": {
     "inputEmpty": "Không được bỏ trống",
@@ -710,7 +712,19 @@
     "appraisalDate": "Ngày giám định",
     "appraisalDateInvalid": "Ngày giám định không hợp lệ",
     "appraisalDateCannotEmpty": "Ngày giám định không được bỏ trống",
-    "declarationPeriosMax99": "Không kê khai quá đợt 99"
+    "listOfForm": "Danh sách biểu mẫu",
+    "listOfDeclarationForm": "Danh sách biểu mẫu tờ khai",
+    "healingHsbList": "Danh sách đề nghị giải quyết hưởng chế độ dưỡng sức (Mẫu 01D-HSB)",
+    "maternityHsbList": "Danh sách đề nghị giải quyết hưởng chế độ thai sản (Mẫu 01D-HSB)",
+    "sickHsbList": "Danh sách đề nghị giải quyết hưởng chế độ ốm đau (Mẫu 01D-HSB)",
+    "d02LaborList": "Danh sách lao động tham gia BHXH - (Mẫu D02-LT)",
+    "d01infoTable": "Bảng kê thông tin (Mẫu D01-TS)",
+    "participationDeclaration": "Tờ khai tham gia",
+    "laborList": "Danh sách lao động",
+    "tk1Declaration": "Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)",
+    "toolTipCheckboxTk1": "Báo tăng lao động tham gia BHXH",
+    "toolTipCheckboxD01": "Kê khai hồ sơ chậm muộn",
+    "declarationPeriodsMax99":"Không kê khai quá đợt 99"
   },
   "familyMember": {
     "title": "Thêm thành viên",
@@ -795,7 +809,9 @@
     "noEmployeeDeclaredMessage": "Chưa có nhân viên nào được khai báo",
     "edit": "Sửa",
     "delete": "Xóa",
-    "listEmployee": "Danh sách nhân viên"
+    "listEmployee": "Danh sách nhân viên",
+    "cannotDeleteImage": "Có lỗi xảy ra, không thể xóa ảnh",
+    "maximumImage": "Chỉ cho phép chọn tối đa 5 file"
   },
   "profile": {
     "accountInfo": "Thông tin tài khoản",
@@ -1022,5 +1038,14 @@
     "inputReason": "Nhập lý do giải trình",
     "next": "Tiếp theo",
     "titleTooltip": "Trường hợp chọn nhận trợ cấp qua đơn vị"
+  },
+  "weeklyDayOff": {
+    "monday": "Thứ hai",
+    "tuesday": "Thứ ba",
+    "wednesday": "Thứ tư",
+    "thursday": "Thứ năm",
+    "friday": "Thứ sáu",
+    "saturday": "Thứ bảy",
+    "sunday": "Chủ nhật"
   }
 }

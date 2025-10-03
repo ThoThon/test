@@ -8,8 +8,7 @@ import '../../../base_app/model/app_data.dart';
 import '../../../clean/shared/entity/categories_630/categories_630_src.dart';
 import '../../../clean/shared/entity/category.dart';
 import '../../../shares/widgets/keyboard/keyboard.dart';
-import '../../declare/staff_list/model/staff_list_argument.dart';
-import '../../select_staff/model/model_src.dart';
+import '../../declare_info_630a/domain/entity/weekly_day_off_enum.dart';
 import '../../src.dart';
 
 extension DeclareInfo630bControllerExt on DeclareInfo630bController {
@@ -31,7 +30,10 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     try {
       showLoadingOverlay();
       final response = await repository.addProcedure630b(_buildRequest());
-      if (response.result != null && response.isSuccess) {
+      if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi thêm mới thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
@@ -43,9 +45,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure630b,
             ),
-          )?.then((value) {
-            eventBus.fire(const RefreshDeclarationPeriodEvent());
-          });
+          );
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
             result: argument.declarationPeriodId,
@@ -201,6 +201,9 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       final response = await repository.update630b(_buildRequest());
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi cập nhật thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
@@ -225,8 +228,8 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: selectedStaffId,
     );
-    if (result is SelectStaffResponse) {
-      _getDetailStaff(staffId: result.id);
+    if (result is String) {
+      await _getDetailStaff(staffId: result);
     }
   }
 
@@ -437,9 +440,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Số con chết
-    if (detail.soCCHoacThaiCL != null && detail.soCCHoacThaiCL! > 0) {
-      numberChildDeathCtrl.text = detail.soCCHoacThaiCL.toString();
-    }
+    numberChildDeathCtrl.text = detail.soCCHoacThaiCL?.toString() ?? '';
 
     // Ngày con chết
     childDeathDateCtrl.text =
@@ -481,9 +482,7 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
         convertDateToStringSafe(detail.ngayKetLuan, PATTERN_1) ?? '';
 
     // Phí giám định y khoa
-    if (detail.phiGiamDinhYKhoa != null && detail.phiGiamDinhYKhoa! > 0) {
-      medicalFeeCtrl.text = detail.phiGiamDinhYKhoa.toString();
-    }
+    medicalFeeCtrl.text = detail.phiGiamDinhYKhoa?.toString() ?? '';
 
     // Số BHXH của người nuôi dưỡng (TH mẹ chết)
     if (detail.soBHXHNND != null) {

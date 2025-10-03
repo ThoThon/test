@@ -1,7 +1,6 @@
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:path/path.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
-import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 import 'package:v_bhxh/modules/register_code/domain/entity/tax_code_verify_request.dart';
 import 'package:v_bhxh/modules/register_code/domain/usecase/tax_code_verify_use_case.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -25,8 +24,8 @@ import '../enum/register_code_tab_enum.dart';
 /// Tỉnh mặc định là "Hà Nội"
 const _defaultProvinceCode = '01';
 
-/// Nếu mã số thuế không hợp lệ thì trả về code = '06'
-const _taxCodeInvalid = '06';
+// Chỉ cho phép up tối đa 7 file ảnh
+const maxImageAttachments = 7;
 
 class RegisterCodeController extends BaseGetClController {
   final GetCertificateUseCase _getCertificateUseCase;
@@ -145,6 +144,15 @@ class RegisterCodeController extends BaseGetClController {
     getRegisterFirstCategories();
   }
 
+  /// REF: VBHXHMOB-56
+  bool checkMaxImageAttachments() {
+    final reachedMax = listImage.length >= maxImageAttachments;
+    if (reachedMax) {
+      nav.showSnackBar(LocaleKeys.dialog_max7File.tr);
+    }
+    return reachedMax;
+  }
+
   void onTabChanged(RegisterCodeTabEnum tab) {
     KeyBoard.hide();
     if (currentTab.value == tab) return;
@@ -188,22 +196,12 @@ class RegisterCodeController extends BaseGetClController {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
-        listCert.clear();
         final response =
             await _getCertificateUseCase.execute(usernameMySignCtrl.text);
         listCert.value = response;
+        certificate.value = listCert.firstOrNull;
       },
     );
-  }
-
-  Future<void> getListCertificate() async {
-    await fetchListCert();
-    if (listCert.isNotEmpty) {
-      certificate.value = listCert.firstOrNull;
-    } else {
-      nav.showSnackBar(
-          LocaleKeys.registerService_cccdRegisterMySignNotFound.tr);
-    }
   }
 
   Future<void> pickImage() async {
@@ -318,18 +316,10 @@ class RegisterCodeController extends BaseGetClController {
         _showDialogVerifySuccess();
       },
       onError: (error) {
-        // REF: VBHXHMOB-44
-        if (error is RemoteException && error.serverError != null) {
-          final serverMsg = error.serverError!.errorMessage;
-          final serverCode = error.serverError!.code;
-
-          if (serverCode == _taxCodeInvalid) {
-            _showDialogVerifyFailed(errorMessage: serverMsg ?? '');
-            return null;
-          }
-        }
+        nav.dismissDialog();
         return error;
       },
+      onFinally: hidePageLoadingOverlay,
     );
   }
 
@@ -338,10 +328,7 @@ class RegisterCodeController extends BaseGetClController {
       title: LocaleKeys.dialog_sendRequestSignature.tr,
       subtitle: LocaleKeys.dialog_confirmSignatureMySign.tr,
       onFinish: () {
-        _firstTimeRegisterUseCase.cancel();
-        _showDialogVerifyFailed(
-          errorMessage: LocaleKeys.dialog_cannotConnectMySign.tr,
-        );
+        showPageLoadingOverlay();
       },
       onCancel: () {
         nav.until(ModalRoute.withName(AppRoutesCl.login.path));
@@ -353,25 +340,13 @@ class RegisterCodeController extends BaseGetClController {
     nav.showInfoDialog(
       iconType: DialogIconType.success,
       title: LocaleKeys.dialog_sendFileSuccess.tr,
-      showConfirmButton: false,
-      cancelTitle: LocaleKeys.dialog_close.tr,
+      showCancelButton: false,
+      confirmTitle: LocaleKeys.dialog_close.tr,
       subtitle: LocaleKeys.dialog_submitRegisterToSuccessMessage.tr,
-      onCancel: () {
+      onConfirm: () {
         // Get back vì màn trước của nó đang là màn login
         nav.back();
       },
-    );
-  }
-
-  void _showDialogVerifyFailed({
-    required String errorMessage,
-  }) {
-    nav.showInfoDialog(
-      title: LocaleKeys.dialog_sendFileFail.tr,
-      confirmTitle: LocaleKeys.dialog_close.tr,
-      subtitle: errorMessage,
-      showCancelButton: false,
-      iconType: DialogIconType.failure,
     );
   }
 

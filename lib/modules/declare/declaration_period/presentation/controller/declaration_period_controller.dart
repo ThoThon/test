@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
@@ -10,10 +11,11 @@ import 'package:v_bhxh/modules/declare/declaration_period/domain/usecase/use_cas
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/declare_info_argument.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/domain/entity/entity_src.dart';
-import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/shares/date/date_utils.dart';
 import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/date_picker/date_picker_utils.dart';
+
+import '../../../staff_list/domain/entity/entity_src.dart';
 
 class DeclarationPeriodController extends BaseGetClController {
   final Procedure argument;
@@ -28,6 +30,8 @@ class DeclarationPeriodController extends BaseGetClController {
   final declarationPeriods = <DeclarationPeriod>[].obs;
   final selectedPeriodDate = DateTime.now().obs;
   final selectFilter = DeclarationPeriodFilter.all.obs;
+
+  final periodsScrollController = ScrollController();
 
   DeclarationPeriodController(
     this._getDeclarationPeriodsUseCase,
@@ -45,23 +49,42 @@ class DeclarationPeriodController extends BaseGetClController {
   @override
   void onReady() {
     super.onReady();
-    getDeclarationPeriods();
+    _getDeclarationPeriods(
+      showLoading: true,
+      showLoadingOverlay: false,
+    );
   }
 
   void _listenToEvents() {
     _declarationPeriodEventSubscription ??=
         eventBus.on<DeclarationPeriodEvent>().listen((event) {
       if (event is RefreshDeclarationPeriodEvent) {
-        getDeclarationPeriods();
+        refreshDeclarationPeriods(scrollStrategy: event.scrollStrategy);
       }
     });
   }
 
-  Future<void> getDeclarationPeriods() {
+  /// Khi thêm mới đợt kê khai thì sẽ scroll đến cuối danh sách để hiển thị đợt kê khai mới thêm.
+  /// Mặc định [scrollToLast] là `false`, tức là không scroll mà giữ nguyên vị trí hiện tại.
+  Future<void> refreshDeclarationPeriods({
+    PeriodsScrollStrategy scrollStrategy = PeriodsScrollStrategy.none,
+  }) {
+    return _getDeclarationPeriods(
+      showLoading: false,
+      showLoadingOverlay: true,
+      scrollStrategy: scrollStrategy,
+    );
+  }
+
+  Future<void> _getDeclarationPeriods({
+    bool showLoading = true,
+    bool showLoadingOverlay = false,
+    PeriodsScrollStrategy scrollStrategy = PeriodsScrollStrategy.none,
+  }) {
     return buildState(
-      showLoading: true,
+      showLoading: showLoading,
+      showLoadingOverlay: showLoadingOverlay,
       action: () async {
-        declarationPeriods.clear();
         declarationPeriods.value = await _getDeclarationPeriodsUseCase.execute(
           GetDeclarationPeriodsUseCaseInput(
             year: selectedPeriodDate.value.year,
@@ -70,8 +93,32 @@ class DeclarationPeriodController extends BaseGetClController {
             status: selectFilter.value.statusNumber,
           ),
         );
+
+        _scrollPeriods(scrollStrategy: scrollStrategy);
       },
     );
+  }
+
+  void _scrollPeriods({
+    required PeriodsScrollStrategy scrollStrategy,
+  }) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (periodsScrollController.hasClients) {
+        switch (scrollStrategy) {
+          case PeriodsScrollStrategy.none:
+            // Không làm gì, giữ nguyên vị trí hiện tại.
+            break;
+          case PeriodsScrollStrategy.toTop:
+            periodsScrollController
+                .jumpTo(periodsScrollController.position.minScrollExtent);
+            break;
+          case PeriodsScrollStrategy.toLast:
+            periodsScrollController
+                .jumpTo(periodsScrollController.position.maxScrollExtent);
+            break;
+        }
+      }
+    });
   }
 
   void pickPeriodDate() async {
@@ -82,7 +129,7 @@ class DeclarationPeriodController extends BaseGetClController {
     );
     if (date != null) {
       selectedPeriodDate.value = date;
-      getDeclarationPeriods();
+      refreshDeclarationPeriods(scrollStrategy: PeriodsScrollStrategy.toTop);
     }
   }
 
@@ -109,7 +156,7 @@ class DeclarationPeriodController extends BaseGetClController {
             LocaleKeys.declarationPeriod_contentDeletePeriodSuccess.tr,
             type: SnackBarType.success,
           );
-          getDeclarationPeriods();
+          refreshDeclarationPeriods();
         }
       },
     );
@@ -121,7 +168,7 @@ class DeclarationPeriodController extends BaseGetClController {
       action: () async {
         if (argument.type.isProcedure630 &&
             (declarationPeriods.lastOrNull?.period ?? 0) >= 99) {
-          nav.showSnackBar(LocaleKeys.declareInfo_declarationPeriosMax99.tr);
+          nav.showSnackBar(LocaleKeys.declareInfo_declarationPeriodsMax99.tr);
           return;
         }
 
@@ -146,37 +193,35 @@ class DeclarationPeriodController extends BaseGetClController {
           ProcedureType.procedure630c => AppRoutesCl.declareInfo630c.path,
         };
 
-        final declareInfoArgument = DeclareInfoArgument(
-          declarationPeriodId: period.id,
-          action: D02ActionEnum.addPeriodFromDeclarePeriod,
-          procedureType: argument.type,
-        );
+        refreshDeclarationPeriods(scrollStrategy: PeriodsScrollStrategy.toLast);
 
-        nav.toNamed(path, arguments: declareInfoArgument)?.whenComplete(() {
-          // Refresh the list of declaration periods after creating a new one
-          getDeclarationPeriods();
-        });
+        nav.toNamed(
+          path,
+          arguments: DeclareInfoArgument(
+            declarationPeriodId: period.id,
+            action: D02ActionEnum.addPeriodFromDeclarePeriod,
+            procedureType: argument.type,
+          ),
+        );
       },
     );
   }
 
   Future<void> editDeclarationPeriod(DeclarationPeriod period) async {
-    final staffListArgument = StaffListArgument(
-      declarationPeriodId: period.id,
-      procedureType: period.procedureType,
+    nav.toNamed(
+      AppRoutesCl.staffList.path,
+      arguments: StaffListArgument(
+        declarationPeriodId: period.id,
+        procedureType: period.procedureType,
+      ),
     );
-    nav
-        .toNamed(AppRoutesCl.staffList.path, arguments: staffListArgument)
-        ?.whenComplete(() {
-      // Refresh the list of declaration periods after editing
-      getDeclarationPeriods();
-    });
   }
 
   @override
   void onClose() {
-    super.onClose();
     _declarationPeriodEventSubscription?.cancel();
     _declarationPeriodEventSubscription = null;
+    periodsScrollController.dispose();
+    super.onClose();
   }
 }

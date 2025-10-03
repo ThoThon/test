@@ -2,8 +2,8 @@ part of 'declaration_period_page.dart';
 
 extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   Widget _buildBody() {
-    return RefreshIndicator(
-      onRefresh: controller.getDeclarationPeriods,
+    return RefreshIndicator.adaptive(
+      onRefresh: controller.refreshDeclarationPeriods,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(
           AppDimens.defaultPadding,
@@ -73,6 +73,8 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
     }
 
     return ListView.separated(
+      key: const PageStorageKey<String>('declarationPeriods'),
+      controller: controller.periodsScrollController,
       padding: const EdgeInsets.only(bottom: AppDimens.defaultPadding),
       itemCount: controller.declarationPeriods.length,
       separatorBuilder: (context, index) => sdsSBHeight16,
@@ -136,8 +138,7 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
   }
 
   Widget _buildDateAndButton(DeclarationPeriod period, bool canEditAndDelete) {
-    final date = convertDateToStringSafe(
-        period.updateDate ?? period.createTime, PATTERN_14);
+    final date = convertDateToStringSafe(period.createTime, PATTERN_14);
 
     return Row(
       children: [
@@ -253,7 +254,9 @@ extension DeclarationPeriodPageWidget on DeclarationPeriodPage {
             onTap: () {
               controller.selectFilter.value = status;
               Get.back();
-              controller.getDeclarationPeriods();
+              controller.refreshDeclarationPeriods(
+                scrollStrategy: PeriodsScrollStrategy.toTop,
+              );
             },
             text: status.title,
             style: isSelected

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
+import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/shares/firebase/remote_config_storage.dart';
 
 class AppController extends BaseGetClController with WidgetsBindingObserver {
@@ -12,6 +13,17 @@ class AppController extends BaseGetClController with WidgetsBindingObserver {
     super.onInit();
     WidgetsBinding.instance.addObserver(this);
     _configSystemUI();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    // App có dùng UpgraderAlert để check update, nếu set initialRoute ở app là login page thì UpgraderAlert sẽ bị lỗi không hiển thị khi mở app
+    // Chọn cách fix là tạo màn splash và khi và delay 1 chút mới chuyển sang login
+    // Trước thử chuyển sang login luôn ở onReady thì gặp tình trạng lúc hiện lúc ko
+    Future.delayed(const Duration(milliseconds: 200), () {
+      nav.offAllNamed(AppRoutesCl.login.path);
+    });
   }
 
   void _configSystemUI() {

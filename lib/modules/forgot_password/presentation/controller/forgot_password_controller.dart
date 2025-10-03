@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/constants/const.dart';
+import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/modules/forgot_password/domain/entity/forgot_password_request.dart';
 import 'package:v_bhxh/modules/forgot_password/domain/usecase/forgot_password_use_case.dart';
@@ -33,6 +35,19 @@ class ForgotPasswordController extends BaseGetClController {
           result ?? LocaleKeys.login_forgetPasswordSuccess.tr,
         );
       },
+      onError: (error) {
+        if (error is RemoteException) {
+          if (error.kind == RemoteExceptionKind.serverDefined) {
+            final serverMsg = error.serverError?.errorMessage;
+            final serverCode = error.serverError?.code;
+            if (serverCode == responseCodeShowDialog) {
+              _showDialogFail(errorMessage: serverMsg ?? '');
+              return null;
+            }
+          }
+        }
+        return error;
+      },
     );
   }
 
@@ -47,15 +62,17 @@ class ForgotPasswordController extends BaseGetClController {
     );
   }
 
-  // void _showDialogFail(String errorMessage) {
-  //   ShowDialog.showDialogConfirmNew(
-  //     title: LocaleKeys.dialog_fail.tr,
-  //     content: errorMessage,
-  //     iconType: DialogIconType.failure,
-  //     confirmTitle: LocaleKeys.dialog_history.tr,
-  //     showConfirmButton: false,
-  //   );
-  // }
+  void _showDialogFail({
+    required String errorMessage,
+  }) {
+    nav.showInfoDialog(
+      title: LocaleKeys.dialog_fail.tr,
+      confirmTitle: LocaleKeys.dialog_close.tr,
+      subtitle: errorMessage,
+      showCancelButton: false,
+      iconType: DialogIconType.failure,
+    );
+  }
 
   void goToLoginPage() {
     nav.offAllNamed(AppRoutesCl.login.path);

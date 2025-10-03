@@ -12,6 +12,8 @@ class HeaderUploadInterceptor extends BaseInterceptor {
   /// Vì nếu có Transfer-Encoding: chunked sẽ lỗi khi upload file
   final _headers = <String, dynamic>{
     Headers.contentTypeHeader: Headers.jsonContentType,
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Connection': 'keep-alive',
   };
 
   @override

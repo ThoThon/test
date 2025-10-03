@@ -26,11 +26,12 @@ class SelectWardBtsCl extends BaseGetBtsDialog<SelectWardControllerCl> {
                   child: baseShowLoading(
                     () => Obx(
                       () {
-                        final filteredWards = controller.wards
-                            .where((item) => TiengViet.parse(item.name)
-                                .toLowerCase()
-                                .contains(controller.keyword.value))
-                            .toList();
+                        final filteredWards = controller.wards.where((item) {
+                          final name = TiengViet.parse(item.name).toLowerCase();
+                          final id = item.id;
+                          final keyword = controller.keyword.value;
+                          return name.contains(keyword) || id.contains(keyword);
+                        }).toList();
 
                         return ListView.separated(
                           itemCount: filteredWards.length,
@@ -57,7 +58,7 @@ class SelectWardBtsCl extends BaseGetBtsDialog<SelectWardControllerCl> {
   Widget buildSearch() {
     return UtilWidget.buildTextInput(
       inputFormatters: [
-        RegexpEmojiUtil.allowCommonCharacters,
+        RegexpUtil.allowCommonCharacters,
       ],
       maxLength: 20,
       controller: controller.searchTextCtrl,

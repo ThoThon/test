@@ -9,15 +9,13 @@ import 'package:v_bhxh/core/theme/colors.dart';
 import 'package:v_bhxh/shares/widgets/utils_widget/utils_widget.dart';
 
 mixin GetPageMixin<T extends BaseGetClController> on GetView<T> {
-  late final nav = Get.find<AppNavigator>();
-  late final appCtrl = Get.find<AppController>();
+  late final nav = sl<AppNavigator>();
+  late final appCtrl = sl<AppController>();
 
   @override
   T get controller => _controller;
 
-  late final _controller = (isFactory ? Get.findFactory<T>() : Get.find<T>())
-    ..nav = nav
-    ..appCtrl = appCtrl;
+  late final _controller = (isFactory ? slf<T>() : sl<T>());
 
   bool get isFactory => false;
 

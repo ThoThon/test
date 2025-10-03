@@ -153,6 +153,8 @@ class BaseApi {
   Map<String, String> getBaseHeader() {
     return {
       "Content-Type": "application/json",
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
       // 'Authorization': hiveApp.get(AppKey.keyToken) ?? "",
       // 'Authorization': "Bearer 123456aA@",
       'Authorization': "",

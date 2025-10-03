@@ -5,9 +5,7 @@ import 'package:v_bhxh/clean/shared/entity/ward.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/family_member.dart';
-import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/model/model_src.dart';
-import 'package:v_bhxh/modules/select_staff/model/select_staff_response.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
@@ -65,13 +63,13 @@ class DeclareInfo607Controller extends BaseGetxController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: tk1State.selectedStaffId,
     );
-    if (result is SelectStaffResponse) {
-      await _getDetailStaff(staffId: result.id);
-
-      // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
-      updateHouseholdInfoRequired();
-      updateClearTTIconState();
+    if (result is String) {
+      await _getDetailStaff(staffId: result);
     }
+
+    // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
+    updateHouseholdInfoRequired();
+    updateClearTTIconState();
   }
 
   Future<void> _getDetailStaff({
@@ -258,6 +256,9 @@ class DeclareInfo607Controller extends BaseGetxController {
       final response = await declareInfoRepository.addTk1(request: request);
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi thêm mới thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
@@ -271,9 +272,7 @@ class DeclareInfo607Controller extends BaseGetxController {
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: argument.procedureType,
             ),
-          )?.then((value) {
-            eventBus.fire(const RefreshDeclarationPeriodEvent());
-          });
+          );
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
             result: argument.declarationPeriodId,
@@ -308,6 +307,9 @@ class DeclareInfo607Controller extends BaseGetxController {
       final response = await declareInfoRepository.updateTk1(request: request);
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi cập nhật thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
@@ -495,6 +497,7 @@ class DeclareInfo607Controller extends BaseGetxController {
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
     _syncHeadOfHouseholdInfo();
+    _clearHeadOfHouseInfo();
     updateHouseholdInfoRequired();
   }
 
@@ -515,7 +518,12 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.provinceTT.value = tk1State.provinceReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
       tk1State.addressTTTextCtrl.text = tk1State.addressReceiveTextCtrl.text;
-    } else {
+    }
+  }
+
+  /// Xóa thông tin chủ hộ khi bỏ tích "Người tham gia là chủ hộ"
+  void _clearHeadOfHouseInfo() {
+    if (!tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.headOfHouseholdTextCtrl.clear();
       tk1State.headOfHouseholdCCCDTextCtrl.clear();
       tk1State.provinceTT.value = null;
@@ -686,7 +694,7 @@ class DeclareInfo607Controller extends BaseGetxController {
       tk1State.isHouseholdInfoRequired.value = true;
       return;
     }
-    
+
     // Nếu "Mã số BHXH" empty thì Thông tin chủ hộ sẽ là required
     if (tk1State.bhxhTextCtrl.text.trim().isEmpty) {
       tk1State.isHouseholdInfoRequired.value = true;

@@ -1326,6 +1326,7 @@ class UtilWidget {
     required String label,
     required bool value,
     ValueChanged<bool>? onChanged,
+    bool enable = true,
   }) {
     return GestureDetector(
       onTap: () {
@@ -1337,10 +1338,22 @@ class UtilWidget {
           Checkbox(
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             value: value,
-            activeColor: AppColors.primaryColor,
-            onChanged: (value) {
-              onChanged?.call(value ?? false);
-            },
+            fillColor: WidgetStateProperty.resolveWith(
+              (states) {
+                if (states.contains(WidgetState.disabled)) {
+                  return AppColors.primaryColorDisable;
+                }
+                if (states.contains(WidgetState.selected)) {
+                  return AppColors.primaryColor;
+                }
+                return AppColors.basicWhite;
+              },
+            ),
+            onChanged: enable
+                ? (value) {
+                    onChanged?.call(value ?? false);
+                  }
+                : null,
           ),
           SDSBuildText(
             label,

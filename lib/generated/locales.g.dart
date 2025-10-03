@@ -71,10 +71,12 @@ class LocaleKeys {
   static const dialog_sendRequestSignature = 'dialog_sendRequestSignature';
   static const dialog_sendFileToBHXH = 'dialog_sendFileToBHXH';
   static const dialog_max5File = 'dialog_max5File';
+  static const dialog_max7File = 'dialog_max7File';
   static const dialog_select = 'dialog_select';
   static const dialog_selectDayMonthYear = 'dialog_selectDayMonthYear';
   static const dialog_selectMonthYear = 'dialog_selectMonthYear';
   static const dialog_selectYear = 'dialog_selectYear';
+  static const dialog_cannotUpdateInfo = 'dialog_cannotUpdateInfo';
   static const input_inputEmpty = 'input_inputEmpty';
   static const input_inputValidateLength = 'input_inputValidateLength';
   static const input_textEmpty = 'input_textEmpty';
@@ -869,8 +871,24 @@ class LocaleKeys {
       'declareInfo_appraisalDateInvalid';
   static const declareInfo_appraisalDateCannotEmpty =
       'declareInfo_appraisalDateCannotEmpty';
-  static const declareInfo_declarationPeriosMax99 =
-      'declareInfo_declarationPeriosMax99';
+  static const declareInfo_listOfForm = 'declareInfo_listOfForm';
+  static const declareInfo_listOfDeclarationForm =
+      'declareInfo_listOfDeclarationForm';
+  static const declareInfo_healingHsbList = 'declareInfo_healingHsbList';
+  static const declareInfo_maternityHsbList = 'declareInfo_maternityHsbList';
+  static const declareInfo_sickHsbList = 'declareInfo_sickHsbList';
+  static const declareInfo_d02LaborList = 'declareInfo_d02LaborList';
+  static const declareInfo_d01infoTable = 'declareInfo_d01infoTable';
+  static const declareInfo_participationDeclaration =
+      'declareInfo_participationDeclaration';
+  static const declareInfo_laborList = 'declareInfo_laborList';
+  static const declareInfo_tk1Declaration = 'declareInfo_tk1Declaration';
+  static const declareInfo_toolTipCheckboxTk1 =
+      'declareInfo_toolTipCheckboxTk1';
+  static const declareInfo_toolTipCheckboxD01 =
+      'declareInfo_toolTipCheckboxD01';
+  static const declareInfo_declarationPeriodsMax99 =
+      'declareInfo_declarationPeriodsMax99';
   static const familyMember_title = 'familyMember_title';
   static const familyMember_fullName = 'familyMember_fullName';
   static const familyMember_fullNameCannotEmpty =
@@ -990,6 +1008,8 @@ class LocaleKeys {
   static const staffList_edit = 'staffList_edit';
   static const staffList_delete = 'staffList_delete';
   static const staffList_listEmployee = 'staffList_listEmployee';
+  static const staffList_cannotDeleteImage = 'staffList_cannotDeleteImage';
+  static const staffList_maximumImage = 'staffList_maximumImage';
   static const profile_accountInfo = 'profile_accountInfo';
   static const profile_companyName = 'profile_companyName';
   static const profile_taxCode = 'profile_taxCode';
@@ -1265,6 +1285,13 @@ class LocaleKeys {
   static const otherInfo_inputReason = 'otherInfo_inputReason';
   static const otherInfo_next = 'otherInfo_next';
   static const otherInfo_titleTooltip = 'otherInfo_titleTooltip';
+  static const weeklyDayOff_monday = 'weeklyDayOff_monday';
+  static const weeklyDayOff_tuesday = 'weeklyDayOff_tuesday';
+  static const weeklyDayOff_wednesday = 'weeklyDayOff_wednesday';
+  static const weeklyDayOff_thursday = 'weeklyDayOff_thursday';
+  static const weeklyDayOff_friday = 'weeklyDayOff_friday';
+  static const weeklyDayOff_saturday = 'weeklyDayOff_saturday';
+  static const weeklyDayOff_sunday = 'weeklyDayOff_sunday';
 }
 
 class Locales {
@@ -1356,7 +1383,8 @@ class Locales {
     'dialog_submitRegisterToSuccessMessage':
         'Vui lòng kiểm tra email đã đăng ký\nThời gian làm việc từ 3-5 ngày',
     'dialog_resend': 'Gửi lại',
-    'dialog_cannotConnectMySign': 'Không thể kết nối tới hệ thống ký số.',
+    'dialog_cannotConnectMySign':
+        'Hết thời gian ký số - Vui lòng thực hiện lại',
     'dialog_sendFileSuccess': 'Gửi hồ sơ thành công',
     'dialog_sendFileFail': 'Gửi hồ sơ thất bại',
     'dialog_signatureTimeOut': 'Hết thời gian ký số\nVui lòng thực hiện lại',
@@ -1367,10 +1395,12 @@ class Locales {
     'dialog_sendFileToBHXH':
         'Gửi hồ sơ đến cổng Bảo hiểm xã hội\nViệt Nam thành công!',
     'dialog_max5File': 'Chỉ cho phép đính kèm tối đa 5 file',
+    'dialog_max7File': 'Chỉ cho phép đính kèm tối đa 7 file',
     'dialog_select': 'Chọn',
     'dialog_selectDayMonthYear': 'Chọn Ngày/Tháng/Năm',
     'dialog_selectMonthYear': 'Chọn Tháng/Năm',
     'dialog_selectYear': 'Chọn năm',
+    'dialog_cannotUpdateInfo': 'Có lỗi xảy ra, không thể cập nhật thông tin',
     'input_inputEmpty': 'Không được bỏ trống',
     'input_inputValidateLength': 'Phải lớn hơn @length ký tự!',
     'input_textEmpty': '-',
@@ -2047,7 +2077,24 @@ class Locales {
     'declareInfo_appraisalDateInvalid': 'Ngày giám định không hợp lệ',
     'declareInfo_appraisalDateCannotEmpty':
         'Ngày giám định không được bỏ trống',
-    'declareInfo_declarationPeriosMax99': 'Không kê khai quá đợt 99',
+    'declareInfo_listOfForm': 'Danh sách biểu mẫu',
+    'declareInfo_listOfDeclarationForm': 'Danh sách biểu mẫu tờ khai',
+    'declareInfo_healingHsbList':
+        'Danh sách đề nghị giải quyết hưởng chế độ dưỡng sức (Mẫu 01D-HSB)',
+    'declareInfo_maternityHsbList':
+        'Danh sách đề nghị giải quyết hưởng chế độ thai sản (Mẫu 01D-HSB)',
+    'declareInfo_sickHsbList':
+        'Danh sách đề nghị giải quyết hưởng chế độ ốm đau (Mẫu 01D-HSB)',
+    'declareInfo_d02LaborList':
+        'Danh sách lao động tham gia BHXH - (Mẫu D02-LT)',
+    'declareInfo_d01infoTable': 'Bảng kê thông tin (Mẫu D01-TS)',
+    'declareInfo_participationDeclaration': 'Tờ khai tham gia',
+    'declareInfo_laborList': 'Danh sách lao động',
+    'declareInfo_tk1Declaration':
+        'Tờ khai tham gia, điều chỉnh thông tin BHXH, BHYT (Mẫu TK1-TS)',
+    'declareInfo_toolTipCheckboxTk1': 'Báo tăng lao động tham gia BHXH',
+    'declareInfo_toolTipCheckboxD01': 'Kê khai hồ sơ chậm muộn',
+    'declareInfo_declarationPeriodsMax99': 'Không kê khai quá đợt 99',
     'familyMember_title': 'Thêm thành viên',
     'familyMember_fullName': 'Họ và tên',
     'familyMember_fullNameCannotEmpty': 'Họ và tên không được bỏ trống',
@@ -2141,6 +2188,8 @@ class Locales {
     'staffList_edit': 'Sửa',
     'staffList_delete': 'Xóa',
     'staffList_listEmployee': 'Danh sách nhân viên',
+    'staffList_cannotDeleteImage': 'Có lỗi xảy ra, không thể xóa ảnh',
+    'staffList_maximumImage': 'Chỉ cho phép chọn tối đa 5 file',
     'profile_accountInfo': 'Thông tin tài khoản',
     'profile_companyName': 'Tên công ty',
     'profile_taxCode': 'Mã số thuế',
@@ -2373,5 +2422,12 @@ class Locales {
     'otherInfo_inputReason': 'Nhập lý do giải trình',
     'otherInfo_next': 'Tiếp theo',
     'otherInfo_titleTooltip': 'Trường hợp chọn nhận trợ cấp qua đơn vị',
+    'weeklyDayOff_monday': 'Thứ hai',
+    'weeklyDayOff_tuesday': 'Thứ ba',
+    'weeklyDayOff_wednesday': 'Thứ tư',
+    'weeklyDayOff_thursday': 'Thứ năm',
+    'weeklyDayOff_friday': 'Thứ sáu',
+    'weeklyDayOff_saturday': 'Thứ bảy',
+    'weeklyDayOff_sunday': 'Chủ nhật',
   };
 }

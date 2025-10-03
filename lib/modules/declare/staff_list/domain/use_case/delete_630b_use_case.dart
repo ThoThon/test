@@ -1,0 +1,15 @@
+import 'dart:async';
+
+import 'package:v_bhxh/clean/core/domain/usecase/base_use_case.dart';
+import 'package:v_bhxh/modules/declare/staff_list/domain/repository/staff_list_630_repository.dart';
+
+class Delete630bUseCase extends UseCase<String, bool> {
+  final StaffList630Repository _staffList630Repository;
+
+  Delete630bUseCase(this._staffList630Repository);
+
+  @override
+  Future<bool> execute(String input) {
+    return _staffList630Repository.delete630b(id: input);
+  }
+}

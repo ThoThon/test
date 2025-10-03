@@ -2,10 +2,11 @@ import 'package:dio_log_sds/dio_log_sds.dart';
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/features/login/presentation/binding/login_binding.dart';
 import 'package:v_bhxh/clean/features/login/presentation/login_page.dart';
+import 'package:v_bhxh/clean/features/login/presentation/splash_page.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/modules/change_base_url/ui/change_base_url_page.dart';
 import 'package:v_bhxh/modules/declare/declaration_form_detail/ui/declaration_form_detail_page.dart';
-import 'package:v_bhxh/modules/declare/declaration_list/ui/declaration_list_page.dart';
+import 'package:v_bhxh/modules/declare/declaration_list/presentation/binding/declaration_list_binding.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/binding/declaration_period_binding.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/declaration_period_page.dart';
 import 'package:v_bhxh/modules/declare/declare_info/ui/declare_info_page.dart';
@@ -13,33 +14,44 @@ import 'package:v_bhxh/modules/declare/family_member_detail/presentation/binding
 import 'package:v_bhxh/modules/declare/family_member_detail/presentation/family_member_detail_page.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/presentation/binding/procedure_list_binding.dart';
 import 'package:v_bhxh/modules/declare/procedure_list/presentation/procedure_list_page.dart';
-import 'package:v_bhxh/modules/declare/staff_list/ui/staff_list_page.dart';
+import 'package:v_bhxh/modules/declare/staff_list/presentation/binding/staff_list_binding.dart';
 import 'package:v_bhxh/modules/declare_607/declare_info_607/ui/declare_info_607_page.dart';
-import 'package:v_bhxh/modules/declare_info_630a/ui/declare_info_630a_page.dart';
+import 'package:v_bhxh/modules/declare_info_630a/presentation/ui/declare_info_630a_page.dart';
 import 'package:v_bhxh/modules/declare_info_630b/ui/declare_info_630b_page.dart';
 import 'package:v_bhxh/modules/declare_info_630c/ui/declare_info_630c_page.dart';
 import 'package:v_bhxh/modules/forgot_password/presentation/binding/forgot_password_binding.dart';
 import 'package:v_bhxh/modules/forgot_password/presentation/forgot_password_page.dart';
-import 'package:v_bhxh/modules/history/ui/history_page.dart';
+import 'package:v_bhxh/modules/history/history_src.dart';
 import 'package:v_bhxh/modules/history_detail_declare/ui/history_detail_declare_page.dart';
 import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';
 import 'package:v_bhxh/modules/home_clean/presentation/binding/home_binding.dart';
 import 'package:v_bhxh/modules/home_clean/presentation/view/home_page.dart';
-import 'package:v_bhxh/modules/info_unit/ui/unit_info_page.dart';
-import 'package:v_bhxh/modules/other_info/ui/other_info_page.dart';
+import 'package:v_bhxh/modules/other_info/presentation/binding/other_info_binding.dart';
 import 'package:v_bhxh/modules/profile/ui/profile_page.dart';
-import 'package:v_bhxh/modules/register_service/ui/register_service_page.dart';
-import 'package:v_bhxh/modules/select_staff/ui/select_staff_page.dart';
+import 'package:v_bhxh/modules/register_service/presentation/binding/register_service_binding.dart';
+import 'package:v_bhxh/modules/unit_info/presentation/binding/unit_info_binding.dart';
 import 'package:v_bhxh/modules/view_pdf/ui/view_pdf_page.dart';
 
-import '../../modules/register_code/presentation/binding/register_code_binding.dart';
-import '../../modules/register_code/presentation/ui/register_code_page.dart';
+import '../../modules/declare/declaration_list/presentation/ui/declaration_list_page.dart';
+import '../../modules/declare/staff_list/presentation/ui/staff_list_page.dart';
+import '../../modules/declare_info_630a/presentation/binding/declare_info_630a_binding.dart';
 import '../../modules/lookup_c12/presentation/binding/lookup_c12_binding.dart';
 import '../../modules/lookup_c12/presentation/ui/lookup_c12_page.dart';
 import '../../modules/notification/notification_src.dart';
+import '../../modules/other_info/presentation/ui/other_info_page.dart';
+import '../../modules/register_code/presentation/binding/register_code_binding.dart';
+import '../../modules/register_code/presentation/ui/register_code_page.dart';
+import '../../modules/register_service/presentation/ui/register_service_page.dart';
+import '../../modules/selected_staff/presentation/binding/selected_staff_binding.dart';
+import '../../modules/selected_staff/presentation/ui/selected_staff_page.dart';
+import '../../modules/unit_info/presentation/ui/unit_info_page.dart';
 
 class AppPages {
   static final pages = [
+    GetPage(
+      name: AppRoutesCl.splash.path,
+      page: SplashPage.new,
+    ),
     GetPage(
       name: AppRoutesCl.login.path,
       page: LoginPage.new,
@@ -56,11 +68,13 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.infoUnit.path,
-      page: () => UnitInfoPage(),
+      page: UnitInfoPage.new,
+      binding: UnitInfoBinding(),
     ),
     GetPage(
       name: AppRoutesCl.history.path,
-      page: () => HistoryPage(),
+      page: HistoryPage.new,
+      binding: HistoryBinding(),
     ),
     GetPage(
       name: AppRoutesCl.historyDetailDeclare.path,
@@ -82,7 +96,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.staffList.path,
-      page: () => StaffListPage(),
+      page: StaffListPage.new,
+      binding: StaffListBinding(),
     ),
     GetPage(
       name: AppRoutesCl.declareInfo.path,
@@ -99,7 +114,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.declarationList.path,
-      page: () => DeclarationListPage(),
+      page: DeclarationListPage.new,
+      binding: DeclarationListBinding(),
     ),
     GetPage(
       name: AppRoutesCl.viewPdf.path,
@@ -117,7 +133,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.selectStaff.path,
-      page: () => SelectStaffPage(),
+      page: SelectStaffPage.new,
+      binding: SelectStaffBinding(),
     ),
     GetPage(
       name: AppRoutesCl.notification.path,
@@ -130,7 +147,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.registerService.path,
-      page: () => RegisterServicePage(),
+      page: RegisterServicePage.new,
+      binding: RegisterServiceBinding(),
     ),
     GetPage(
       name: AppRoutesCl.registerCode.path,
@@ -147,11 +165,13 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.declareInfo630a.path,
-      page: () => DeclareInfo630aPage(),
+      page: DeclareInfo630aPage.new,
+      binding: DeclareInfo630aBinding(),
     ),
     GetPage(
       name: AppRoutesCl.otherInfo.path,
-      page: () => OtherInfoPage(),
+      page: OtherInfoPage.new,
+      binding: OtherInfoBinding(),
     ),
     GetPage(
       name: AppRoutesCl.declareInfo630b.path,

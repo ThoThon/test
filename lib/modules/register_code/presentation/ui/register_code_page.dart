@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:dotted_border/dotted_border.dart';
+import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/widget_src.dart';
@@ -10,6 +10,8 @@ import 'package:v_bhxh/shares/utils/utils_src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../../clean/shared/entity/category.dart';
+import '../../../declare/declare_info/clean/domain/entity/entity_src.dart';
+import '../../../declare/declare_info/clean/presentation/presentation_src.dart';
 import '../../domain/entity/certificate.dart';
 import '../../domain/entity/social_agency.dart';
 import '../controller/register_code_controller.dart';

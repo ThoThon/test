@@ -1,19 +1,20 @@
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
 import 'package:v_bhxh/clean/shared/entity/entity_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/procedure_type.dart';
+import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
 import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/add_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/model/d02/update_d02_request.dart';
 import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
 import 'package:v_bhxh/modules/declare/family_member_detail/domain/entity/entity_src.dart';
-import 'package:v_bhxh/modules/declare/staff_list/model/staff_list_argument.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/utils/event_bus_util.dart';
 import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
 import '../../../../base_app/base_app.src.dart';
-import '../../../select_staff/model/select_staff_response.dart';
+
+// Khi chọn "Loại khai báo" là "Tăng lao động"
+const laborIncrease = 1;
 
 class DeclareInfoController extends BaseGetxController {
   final DeclareInfoArgument argument = Get.arguments;
@@ -111,10 +112,13 @@ class DeclareInfoController extends BaseGetxController {
   bool get isBhxhCodeRequired {
     final declarationTypeId = d02State.declarationType.value?.value;
 
-    // Tăng lương/Giảm lao động/Giảm lương
+    // Tăng lương/Giảm lao động/Giảm lương/Khác
     if (declarationTypeId == 2 ||
         declarationTypeId == 3 ||
-        declarationTypeId == 4) {
+        declarationTypeId == 4 ||
+
+        // REF: VBHXHMOB-109
+        declarationTypeId == 5) {
       return true;
     }
 
@@ -153,13 +157,13 @@ class DeclareInfoController extends BaseGetxController {
       // Truyền id sang để biết nhân viên nào đang được chọn
       arguments: d02State.selectedStaffId,
     );
-    if (result is SelectStaffResponse) {
-      _getDetailStaff(staffId: result.id);
-
-      // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
-      updateHouseholdInfoRequired();
-      updateClearTTIconState();
+    if (result is String) {
+      await _getDetailStaff(staffId: result);
     }
+
+    // Kiểm tra xem có required thông tin chủ hộ hay không sau khi chọn nhân viên
+    updateHouseholdInfoRequired();
+    updateClearTTIconState();
   }
 
   Future<void> createNewDeclarationForm() async {
@@ -326,22 +330,22 @@ class DeclareInfoController extends BaseGetxController {
       final response = await declareInfoRepository.addD02(request: request);
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi thêm mới thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
         );
         if (argument.isAddPeriodFromDeclarePeriod) {
           // Đóng màn kê khai này và mở màn danh sách nhân viên
-          // .then để bắt sự kiện đóng màn danh sách nhân viên này để refresh màn đợt kê khai
           Get.offNamed(
             AppRoutesCl.staffList.path,
             arguments: StaffListArgument(
               declarationPeriodId: argument.declarationPeriodId,
               procedureType: ProcedureType.procedure600,
             ),
-          )?.then((_) {
-            eventBus.fire(const RefreshDeclarationPeriodEvent());
-          });
+          );
         } else if (argument.isAddStaffFromStaffList) {
           Get.back(
             result: argument.declarationPeriodId,
@@ -378,6 +382,9 @@ class DeclareInfoController extends BaseGetxController {
       final response = await declareInfoRepository.updateD02(request: request);
 
       if (response.isSuccess) {
+        // Refresh màn đợt kê khai sau khi cập nhật thành công
+        eventBus.fire(const RefreshDeclarationPeriodEvent());
+
         showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
           typeAction: AppConst.actionSuccess,
@@ -416,9 +423,6 @@ class DeclareInfoController extends BaseGetxController {
     required bool value,
   }) {
     tk1State.isDuplicateBirthAddress.value = value;
-    if (!value) {
-      _clearBirthAddress();
-    }
 
     // Khi chọn checkbox thì:
     // Tỉnh nơi nhận trùng với Tỉnh khai sinh, Huyện nơi nhận trùng với Huyện khai sinh, Xã nơi nhận trùng với Xã khai sinh, Địa chỉ nơi nhận trùng với địa chỉ khai sinh.
@@ -433,6 +437,8 @@ class DeclareInfoController extends BaseGetxController {
       tk1State.provinceReceive.value = tk1State.provinceOfBirth.value;
       tk1State.wardReceive.value = tk1State.wardOfBirth.value;
       tk1State.addressReceiveTextCtrl.text = tk1State.birthAddressTextCtrl.text;
+    } else {
+      _clearBirthAddress();
     }
   }
 
@@ -554,6 +560,7 @@ class DeclareInfoController extends BaseGetxController {
   void onChangeParticipantHeadOfHousehold(bool value) {
     tk1State.isParticipantHeadOfHousehold.value = value;
     _syncHeadOfHouseholdInfo();
+    _clearHeadOfHouseInfo();
     updateHouseholdInfoRequired();
   }
 
@@ -574,7 +581,12 @@ class DeclareInfoController extends BaseGetxController {
       tk1State.provinceTT.value = tk1State.provinceReceive.value;
       tk1State.wardTT.value = tk1State.wardReceive.value;
       tk1State.addressTTTextCtrl.text = tk1State.addressReceiveTextCtrl.text;
-    } else {
+    }
+  }
+
+  /// Xóa thông tin chủ hộ khi bỏ tích "Người tham gia là chủ hộ"
+  void _clearHeadOfHouseInfo() {
+    if (!tk1State.isParticipantHeadOfHousehold.value) {
       tk1State.headOfHouseholdTextCtrl.clear();
       tk1State.headOfHouseholdCCCDTextCtrl.clear();
       tk1State.provinceTT.value = null;
@@ -708,47 +720,6 @@ class DeclareInfoController extends BaseGetxController {
     updateHouseholdInfoRequired();
   }
 
-  // void goToScanCCCD() async {
-  //   autovalidateMode.value = AutovalidateMode.always;
-
-  //   final cccd = d02Tk1State.cccdTextCtrl.text.trim();
-  //   if (!_isValidCCCD(cccd)) return;
-  //   final result = await Get.toNamed(
-  //     AppRoutesCl.nfc.path,
-  //     arguments: cccd,
-  //   );
-  //   if (result != null) {
-  //     sendNfcRequestModel = result;
-  //     Gender? gender = sendNfcRequestModel.sexVMN?.parseGender;
-  //     final query =
-  //         sendNfcRequestModel.nationalityVMN?.trim().toUpperCase() ?? '';
-  //     d02Tk1State
-  //       ..fullNameTextCtrl.text = sendNfcRequestModel.nameVNM ?? ''
-  //       ..cccdTextCtrl.text = sendNfcRequestModel.numberVMN ?? ''
-  //       ..dateOfBirthTextCtrl.text = sendNfcRequestModel.dobVMN ?? ''
-  //       ..gender.value = gender
-  //       ..selectedEthnic.value = AppData.instance.ethnics
-  //           .toList()
-  //           .firstWhereOrNull(
-  //               (ethnics) => ethnics.text == sendNfcRequestModel.nationVNM)
-  //       ..selectedNationality.value =
-  //           AppData.instance.nations.toList().firstWhereOrNull(
-  //                 (nations) => nations.text.trim() == query,
-  //               );
-  //   }
-  // }
-
-  // bool _isValidCCCD(String cccd) {
-  //   if (cccd.isEmpty) {
-  //     showSnackBar(LocaleKeys.nfc_pleaseFillCccd.tr);
-  //     return false;
-  //   } else if (cccd.length < 12) {
-  //     showSnackBar(LocaleKeys.declareInfo_cccdNumberIsValid.tr);
-  //     return false;
-  //   }
-  //   return true;
-  // }
-
   /// Nếu chọn loại khai báo và phương án trong các type sau
   /// "Từ tháng/năm" sẽ thành isRequired
   ///
@@ -846,6 +817,24 @@ class DeclareInfoController extends BaseGetxController {
 
     // Nếu không có điều kiện nào thỏa mãn
     tk1State.isHouseholdInfoRequired.value = false;
+  }
+
+  /// REF: VBHXHMOB-108
+  ///
+  /// Nếu Mã số BHXH == null -> checkboxTk1 = true và disable checkbox này
+  /// Nếu Mã số BHXH != null -> enable checkboxTk1
+  void updateGenerateTk1() {
+    final declarationTypeId = d02State.declarationType.value?.value;
+    final plan = d02State.plan.value?.id;
+
+    if (['TM', 'TH'].contains(plan) && declarationTypeId == laborIncrease) {
+      if (d02Tk1State.bhxhTextCtrl.text.trim().isEmpty) {
+        d02State.isGenerateTk1CheckboxEnabled.value = false;
+        d02State.isGenerateTk1Data.value = true;
+        return;
+      }
+    }
+    d02State.isGenerateTk1CheckboxEnabled.value = true;
   }
 
   void updateClearTTIconState() {

@@ -9,7 +9,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
 
   ResultLookupHistoryRegisterModel? resultLookupHistoryRegister;
 
-  late final HistoryRegisterItemModel historyRegisterItem;
+  final historyRegisterItem = Rxn<RegisterHistoryItem>();
 
   @override
   void onInit() async {
@@ -20,8 +20,8 @@ class HistoryDetailRegisterController extends BaseGetxController {
   void getArg() {
     final args = Get.arguments;
     if (args == null) return;
-    if (args is HistoryRegisterItemModel) {
-      historyRegisterItem = args;
+    if (args is RegisterHistoryItem) {
+      historyRegisterItem.value = args;
     }
     return;
   }
@@ -30,7 +30,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
     try {
       showLoadingOverlay();
       final res = await _historyDetaiRepository
-          .lookupHistoryRegister(historyRegisterItem.messId);
+          .lookupHistoryRegister(historyRegisterItem.value?.id ?? '');
       if (res.isSuccess && res.result != null) {
         resultLookupHistoryRegister = res.result;
 
@@ -39,9 +39,10 @@ class HistoryDetailRegisterController extends BaseGetxController {
           showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái và số hồ sơ
-          historyRegisterItem
-            ..trangThaiTK = res.result?.trangThai ?? ''
-            ..soHoSo = res.result?.soHoSo ?? '';
+          historyRegisterItem.value = historyRegisterItem.value?.copyWith(
+            status: res.result?.trangThai ?? '',
+            dossierNumber: res.result?.soHoSo ?? '',
+          );
           showSnackBarCustom(
             LocaleKeys.history_lookupSuccess.tr,
             align: const Alignment(0.0, 0.8),

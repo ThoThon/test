@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:v_bhxh/clean/core/presentation/navigation/navigation_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
@@ -7,6 +8,9 @@ import 'package:v_bhxh/clean/shared/exceptions/base/app_exception_wrapper.dart';
 import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 import 'package:v_bhxh/generated/locales.g.dart';
 import 'package:v_bhxh/shares/function/logger.dart';
+
+import '../../../shares/widgets/dialog/dialog_utils.dart';
+import '../constants/const.dart';
 
 class ExceptionHandler {
   final AppNavigator nav;
@@ -73,6 +77,18 @@ class ExceptionHandler {
                 break;
             }
 
+            if (exception.serverError?.code == responseCodeShowDialog) {
+              nav.showInfoDialog(
+                title: LocaleKeys.dialog_fail.tr,
+                confirmTitle: LocaleKeys.dialog_close.tr,
+                subtitle: exception.serverError?.errorMessage ??
+                    LocaleKeys.app_somethingWentWrong.tr,
+                showCancelButton: false,
+                iconType: DialogIconType.failure,
+              );
+              return;
+            }
+
             if (appExceptionWrapper.overrideMessage != null) {
               nav.showSnackBar(
                 appExceptionWrapper.overrideMessage!,
@@ -80,9 +96,12 @@ class ExceptionHandler {
               return;
             }
 
+            final serverErrorMessage =
+                exception.serverError?.errorMessage?.trim() ?? '';
             nav.showSnackBar(
-              exception.serverError?.errorMessage ??
-                  LocaleKeys.app_somethingWentWrong.tr,
+              serverErrorMessage.isNotEmpty
+                  ? serverErrorMessage
+                  : LocaleKeys.app_somethingWentWrong.tr,
             );
             break;
           case RemoteExceptionKind.network:

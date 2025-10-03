@@ -178,14 +178,15 @@ extension RegisterInfoTab on RegisterCodePage {
                   return;
                 }
 
-                final result = await nav.bottomSheet<Ward>(
-                  SelectWardBts(
-                    provinceCode: province.id,
-                    selectedWard: controller.wardReceive.value,
+                final result = await nav.showBottomSheet<Ward>(
+                  SelectWardBtsCl(),
+                  settings: RouteSettings(
+                    arguments: SelectWardArgument(
+                      provinceCode: province.id,
+                      selectedWard: controller.wardReceive.value,
+                    ),
                   ),
-                  isScrollControlled: true,
                 );
-
                 if (result != null) {
                   controller.changeWardReceive(result);
                   didChange(result);
@@ -429,7 +430,7 @@ extension RegisterInfoTab on RegisterCodePage {
         ),
         onPressed: () {
           KeyBoard.hide();
-          if (isEnableBtn) controller.getListCertificate();
+          if (isEnableBtn) controller.fetchListCert();
         },
         child: Center(
           child: SDSImageSvg(Assets.ASSETS_ICONS_IC_LOOKUP_MY_SIGN_SVG),
@@ -440,92 +441,10 @@ extension RegisterInfoTab on RegisterCodePage {
 
   // Tệp đính kèm
   Widget _buildSelectUploadFile() {
-    return DottedBorder(
-      color: AppColors.colorBorder,
-      strokeWidth: 2,
-      dashPattern: [4, 4],
-      borderType: BorderType.RRect,
-      radius: const Radius.circular(16),
-      child: InkWell(
-        onTap: _showBottomSheetUploadOptions,
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: AppColors.basicWhite,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: AppDimens.padding24),
-          child: Center(
-            child: Column(
-              children: [
-                SDSImageSvg(Assets.ASSETS_ICONS_IC_UP_FILE_SVG),
-                SDSBuildText(
-                  LocaleKeys.registerCode_downloadAttachment.tr,
-                  style: AppTextStyle.font14Re
-                      .copyWith(color: AppColors.primaryColor),
-                ),
-                SDSBuildText(
-                  LocaleKeys.registerCode_contentDownloadAttachment.tr,
-                  style: AppTextStyle.font14Re
-                      .copyWith(color: AppColors.textColorGrey),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _showBottomSheetUploadOptions() {
-    nav.bottomSheet(
-      UtilWidget.buildBottomSheetFigma(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildUploadOption(
-              icon: Icons.camera_alt_outlined,
-              text: LocaleKeys.registerCode_imageFromCamera.tr,
-              onTap: controller.takePhoto,
-            ),
-            const Divider(height: 1),
-            _buildUploadOption(
-              icon: Icons.image_outlined,
-              text: LocaleKeys.registerCode_imageFromLibrary.tr,
-              onTap: controller.pickImage,
-            ),
-            UtilWidget.sizedBox16,
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildUploadOption({
-    required IconData icon,
-    required String text,
-    required VoidCallback onTap,
-  }) {
-    return Material(
-      color: Colors.white,
-      child: InkWell(
-        onTap: () {
-          nav.back();
-          onTap();
-        },
-        child: Row(
-          children: [
-            Icon(icon),
-            UtilWidget.sizedBoxWidth8,
-            Expanded(
-              child: SDSBuildText(
-                text,
-                style: AppTextStyle.font16Semi,
-              ),
-            ),
-          ],
-        ).paddingSymmetric(vertical: AppDimens.defaultPadding),
-      ),
+    return AppSelectImageWidget(
+      checkMaxImageAttachments: controller.checkMaxImageAttachments,
+      onPickImage: controller.pickImage,
+      onTakePhoto: controller.takePhoto,
     );
   }
 
@@ -680,10 +599,10 @@ extension RegisterInfoTab on RegisterCodePage {
                 backgroundColor: AppColors.basicWhite,
                 side: const BorderSide(
                   width: 1,
-                  color: AppColors.colorBlack,
+                  color: AppColors.primaryColor,
                 ),
-                textStyle:
-                    AppTextStyle.font14Re.copyWith(color: AppColors.colorBlack),
+                textStyle: AppTextStyle.font14Re
+                    .copyWith(color: AppColors.primaryColor),
                 onPressed: () {
                   controller.onTabChanged(RegisterCodeTabEnum.common_info);
                 },
@@ -697,7 +616,11 @@ extension RegisterInfoTab on RegisterCodePage {
                 textStyle:
                     AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
                 onPressed: () {
-                  controller.registerCodeFirst();
+                  EasyThrottle.throttle(
+                    'first_register',
+                    AppConst.defaultButtonThrottleDuration,
+                    controller.registerCodeFirst,
+                  );
                 },
               ),
             ),

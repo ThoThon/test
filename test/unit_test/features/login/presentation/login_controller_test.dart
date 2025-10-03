@@ -32,9 +32,6 @@ class MockGetD02CategoriesUseCase extends Mock
 class MockGet630CategoriesUseCase extends Mock
     implements Get630CategoriesUseCase {}
 
-class MockGetUnreadNotificationCountUseCase extends Mock
-    implements GetUnreadNotificationCountUseCase {}
-
 class FakeLoginRequest extends Fake implements LoginRequest {}
 
 class FakeSaveAuthInfoUseCaseInput extends Fake
@@ -50,8 +47,6 @@ void main() {
   final saveCompanyNameUseCase = MockSaveCompanyNameUseCase();
   final getD02CategoriesUseCase = MockGetD02CategoriesUseCase();
   final get630CategoriesUseCase = MockGet630CategoriesUseCase();
-  final getUnreadNotificationCountUseCase =
-      MockGetUnreadNotificationCountUseCase();
   final navigator = MockAppNavigator();
 
   setUpAll(() {
@@ -70,9 +65,7 @@ void main() {
         saveCompanyNameUseCase,
         getD02CategoriesUseCase,
         get630CategoriesUseCase,
-        getUnreadNotificationCountUseCase,
       );
-      controller.nav = navigator;
       controller.onOpen();
     },
   );
@@ -102,8 +95,7 @@ void main() {
       when(() => getD02CategoriesUseCase.execute()).thenAnswer((_) async {
         return D02Categories.empty();
       });
-      when(() => getUnreadNotificationCountUseCase.execute())
-          .thenAnswer((_) async => 0);
+
       when(() => navigator.offAllNamed(AppRoutesCl.home.path))
           .thenAnswer((_) async {});
 

@@ -10,6 +10,10 @@ class HeaderInterceptor extends BaseInterceptor {
 
   final _headers = <String, dynamic>{
     Headers.contentTypeHeader: Headers.jsonContentType,
+    // Fix lỗi "Connection closed before full header was received" khi ký dữ liệu
+    // REF: https://stackoverflow.com/a/77700014
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Connection': 'keep-alive',
     // Set Transfer-Encoding là 'chunked' để BE tự tính content-length, nhằm tránh lỗi sai content-length
     'Transfer-Encoding': 'chunked',
   };
