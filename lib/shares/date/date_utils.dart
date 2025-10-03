@@ -145,3 +145,15 @@ String convertDateStringToString(String dateString, String pattern) {
   );
   return convertDateToString(dateTime, pattern);
 }
+
+String? convertDateStringToStringSafe(String? dateTime, String pattern) {
+  if (dateTime == null) {
+    return null;
+  }
+
+  try {
+    return convertDateStringToString(dateTime, pattern);
+  } catch (_) {
+    return null;
+  }
+}

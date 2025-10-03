@@ -266,7 +266,8 @@ class DeclareInfo630aController extends BaseGetClController {
       fromDate: convertDateStringToString(fromDateCtrl.text, PATTERN_1),
       toDate: convertDateStringToString(toDateCtrl.text, PATTERN_1),
       totalDays: int.tryParse(countDayTextCtrl.text) ?? 0,
-      unitFromDate: convertDateStringToString(fromDateUnitTextCtrl.text, PATTERN_1),
+      unitFromDate:
+          convertDateStringToString(fromDateUnitTextCtrl.text, PATTERN_1),
       unitToDate: convertDateStringToString(toDateUnitTextCtrl.text, PATTERN_1),
       dayOff: weeklyDayOffString,
       hospitalLevel: selectHospitalLine.value?.value ?? '',
@@ -288,9 +289,6 @@ class DeclareInfo630aController extends BaseGetClController {
       adjustReason: adjustReasonCtrl.text.trim(),
     );
   }
-
-
-      
 
   Future<void> _get630aDetail() async {
     return buildState(
@@ -355,22 +353,24 @@ class DeclareInfo630aController extends BaseGetClController {
     bhytCardCodeChildCtrl.text = detail.childBhyt;
 
     // From date
-    fromDateCtrl.text = convertDateStringToString(detail.fromDate, PATTERN_1);
+    fromDateCtrl.text =
+        convertDateStringToStringSafe(detail.fromDate, PATTERN_1) ?? '';
 
     // To date
-    toDateCtrl.text = convertDateStringToString(detail.toDate, PATTERN_1);
+    toDateCtrl.text =
+        convertDateStringToStringSafe(detail.toDate, PATTERN_1) ?? '';
 
     // Total days
     countDayTextCtrl.text = detail.totalDays.toString();
 
     // Unit from date
     fromDateUnitTextCtrl.text =
-        convertDateStringToString(detail.unitFromDate, PATTERN_1);
-
+        convertDateStringToStringSafe(detail.unitFromDate, PATTERN_1) ?? '';
 
     // Unit to date
-    toDateUnitTextCtrl.text =convertDateStringToString(detail.unitToDate, PATTERN_1);
-    
+    toDateUnitTextCtrl.text =
+        convertDateStringToStringSafe(detail.unitToDate, PATTERN_1) ?? '';
+
     // Weekly day off
     final dayOff = detail.dayOff;
     if (dayOff.isNotEmpty) {
@@ -428,8 +428,10 @@ class DeclareInfo630aController extends BaseGetClController {
     resolvedPeriodCtrl.text = detail.resolvedBatch.trim();
 
     // Previous approve date
-    resolvedDateCtrl.text =
-        convertDateStringToString(detail.prevApproveDate, PATTERN_1);
+    if (detail.prevApproveDate.isNotEmpty) {
+      resolvedDateCtrl.text =
+          convertDateStringToString(detail.prevApproveDate, PATTERN_1);
+    }
 
     // Adjust reason
     adjustReasonCtrl.text = detail.adjustReason.trim();
