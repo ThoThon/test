@@ -3,8 +3,10 @@ import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
 import 'package:v_bhxh/modules/declare_info_630a/data/repository/declare_info_630a_repository_impl.dart';
 import 'package:v_bhxh/modules/declare_info_630a/domain/use_case/add_procedure_630a_use_case.dart';
 import 'package:v_bhxh/modules/declare_info_630a/presentation/controller/declare_info_630a_controller.dart';
+import 'package:v_bhxh/modules/selected_staff/data/repository/selected_staff_repository_impl.dart';
 import 'package:v_bhxh/modules/src.dart';
 
+import '../../../selected_staff/domain/repository/selected_staff_repository.dart';
 import '../../../selected_staff/domain/use_case/get_staff_detail_use_case.dart';
 import '../../domain/repository/declare_info_630a_repository.dart';
 import '../../domain/use_case/get_detail_procedure_630a_use_case.dart';
@@ -33,8 +35,18 @@ class DeclareInfo630aBinding extends BaseBindings {
         sl(),
       ),
     );
+
     Get.lazyPut<StaffListRepository>(
       () => StaffListRepositoryImpl(
+        sl(),
+        sl(),
+        sl(),
+        sl(),
+      ),
+    );
+
+    Get.lazyPut<SelectStaffRepository>(
+      () => SelectStaffRepositoryImpl(
         sl(),
         sl(),
         sl(),
