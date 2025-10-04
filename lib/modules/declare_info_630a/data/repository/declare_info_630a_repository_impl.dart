@@ -59,8 +59,7 @@ class DeclareInfo630aRepositoryImpl extends DeclareInfo630aRepository {
       method: RestMethod.post,
       path: AppApi.urlUpdate630a,
       cancelToken: cancelToken,
-      queryParameters:
-          _declareInfo630aRequestDataMapper.mapToData(request).toJson(),
+      body: _declareInfo630aRequestDataMapper.mapToData(request).toJson(),
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;

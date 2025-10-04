@@ -257,18 +257,14 @@ class DeclareInfo630aController extends BaseGetClController {
       employeeId: staffCodeTextCtrl.text.trim(),
       adjustment: declareForm.value?.value ?? '',
       groupCode: benefitGroup.value?.value ?? '',
-      childDob:
-          convertDateStringToStringSafe(birthDayChildCtrl.text, PATTERN_1) ??
-              '',
+      childDob: convertStringToDateSafe(birthDayChildCtrl.text, PATTERN_1),
       childCount: int.tryParse(numberChildCtrl.text) ?? 0,
       childBhyt: bhytCardCodeChildCtrl.text.trim(),
-      fromDate:
-          convertDateStringToStringSafe(fromDateCtrl.text, PATTERN_1) ?? '',
-      toDate: convertDateStringToStringSafe(toDateCtrl.text, PATTERN_1) ?? '',
+      fromDate: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
+      toDate: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
       totalDays: int.tryParse(countDayTextCtrl.text) ?? 0,
       unitFromDate:
-          convertDateStringToStringSafe(fromDateUnitTextCtrl.text, PATTERN_1) ??
-              '',
+          convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
       dayOff: weeklyDayOffString,
       hospitalLevel: selectHospitalLine.value?.value ?? '',
       chronicCode: selectDiseaseCode.value?.code ?? '',
@@ -285,7 +281,7 @@ class DeclareInfo630aController extends BaseGetClController {
       bank: selectedBank.value,
       resolvedBatch: resolvedPeriodCtrl.text.trim(),
       prevApproveDate:
-          convertDateStringToStringSafe(resolvedDateCtrl.text, PATTERN_1) ?? '',
+          convertStringToDateSafe(resolvedDateCtrl.text, PATTERN_1),
       adjustReason: adjustReasonCtrl.text.trim(),
     );
   }
@@ -345,7 +341,7 @@ class DeclareInfo630aController extends BaseGetClController {
 
     // Child DOB
     birthDayChildCtrl.text =
-        convertDateStringToStringSafe(detail.childDob, PATTERN_1) ?? '';
+        convertDateToStringSafe(detail.childDob, PATTERN_1) ?? '';
 
     // Number of children
     numberChildCtrl.text = detail.childCount.toString();
@@ -355,18 +351,17 @@ class DeclareInfo630aController extends BaseGetClController {
 
     // From date
     fromDateCtrl.text =
-        convertDateStringToStringSafe(detail.fromDate, PATTERN_1) ?? '';
+        convertDateToStringSafe(detail.fromDate, PATTERN_1) ?? '';
 
     // To date
-    toDateCtrl.text =
-        convertDateStringToStringSafe(detail.toDate, PATTERN_1) ?? '';
+    toDateCtrl.text = convertDateToStringSafe(detail.toDate, PATTERN_1) ?? '';
 
     // Total days
     countDayTextCtrl.text = detail.totalDays.toString();
 
     // Unit from date
     fromDateUnitTextCtrl.text =
-        convertDateStringToStringSafe(detail.unitFromDate, PATTERN_1) ?? '';
+        convertDateToStringSafe(detail.unitFromDate, PATTERN_1) ?? '';
 
     // Weekly day off
     final dayOff = detail.dayOff;
@@ -426,7 +421,7 @@ class DeclareInfo630aController extends BaseGetClController {
 
     // Previous approve date
     resolvedDateCtrl.text =
-        convertDateStringToStringSafe(detail.prevApproveDate, PATTERN_1) ?? '';
+        convertDateToStringSafe(detail.prevApproveDate, PATTERN_1) ?? '';
 
     // Adjust reason
     adjustReasonCtrl.text = detail.adjustReason.trim();
