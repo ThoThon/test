@@ -5,13 +5,16 @@ import 'package:v_bhxh/modules/view_pdf/model/view_pdf_argument.dart';
 
 import '../../declaration_list_src.dart';
 
-part 'declaration_widget.dart';
+part 'declaration_list_preview_pdf_widget.dart';
+part 'declaration_list_record_pdf_widget.dart';
 
 class DeclarationListPage extends BaseGetPage<DeclarationListController> {
   DeclarationListPage({super.key});
 
   @override
   Widget buildPage(BuildContext context) {
+    final isFromHistoryPage = controller.argument.isFromHistoryPage;
+
     return Container(
       color: AppColors.primaryColor,
       child: Scaffold(
@@ -26,7 +29,9 @@ class DeclarationListPage extends BaseGetPage<DeclarationListController> {
           ),
         ),
         body: BaseCardBody(
-          child: _buildBody(),
+          child: isFromHistoryPage
+              ? _buildBodyRecordPdf()
+              : _buildBodyPreviewPdf(),
         ),
       ),
     );

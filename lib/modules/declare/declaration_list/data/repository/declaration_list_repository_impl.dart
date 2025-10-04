@@ -16,7 +16,7 @@ const _getPreviewPdfTimeOut = Duration(minutes: 2);
 class DeclarationListRepositoryImpl extends DeclarationListRepository {
   final AuthAppServerApiClient _authAppServerApiClient;
   final GetPreviewPdfRequestDataMapper _getPreviewPdfRequestDataMapper;
-  final GetRecordPdfDataMapper _getRecordPdfDataMapper;
+  final GetRecordPdfRequestDataMapper _getRecordPdfDataMapper;
 
   DeclarationListRepositoryImpl(
     this._authAppServerApiClient,

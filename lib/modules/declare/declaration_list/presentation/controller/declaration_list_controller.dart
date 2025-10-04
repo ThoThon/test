@@ -86,7 +86,7 @@ class DeclarationListController extends BaseGetClController {
     );
   }
 
-  Future<void> createPdf({
+  Future<void> getPreviewPdf({
     required PreviewDocumentTypeEnum previewDocumentType,
     String? documentRecordId,
     required String title,
@@ -130,7 +130,7 @@ class DeclarationListController extends BaseGetClController {
     );
   }
 
-  Future<void> recordPdf({
+  Future<void> getRecordPdf({
     String? id,
     String? staffId,
     required String title,
@@ -155,28 +155,5 @@ class DeclarationListController extends BaseGetClController {
         );
       },
     );
-  }
-
-  Future<void> getPreviewPdf({
-    String? id,
-    String? staffId,
-    required String title,
-    bool isRotateHorizontal = false,
-    required PreviewDocumentTypeEnum previewDocumentType,
-    String? documentRecordId,
-  }) async {
-    argument.isFromHistoryPage
-        ? await recordPdf(
-            id: id,
-            title: title,
-            staffId: staffId,
-            isRotateHorizontal: isRotateHorizontal,
-          )
-        : await createPdf(
-            previewDocumentType: previewDocumentType,
-            title: title,
-            documentRecordId: documentRecordId,
-            isRotateHorizontal: isRotateHorizontal,
-          );
   }
 }

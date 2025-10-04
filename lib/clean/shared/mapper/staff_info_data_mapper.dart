@@ -7,7 +7,7 @@ class StaffInfoDataMapper extends BaseDataMapper<StaffInfoData, StaffInfo> {
   @override
   StaffInfo mapToEntity(StaffInfoData? data) {
     return StaffInfo(
-      id: data?.id ?? '',
+      staffId: data?.id ?? '',
       stt: data?.stt ?? 0,
       name: data?.hoTen ?? '',
       bhxhNumber: data?.maSoBHXH ?? '',

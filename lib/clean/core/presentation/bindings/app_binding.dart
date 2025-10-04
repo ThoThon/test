@@ -114,7 +114,7 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => StaffInfoDataMapper(), fenix: true);
     Get.lazyPut(() => DeclarationHistoryRecordListDataMapper(sl()),
         fenix: true);
-    Get.lazyPut(() => GetRecordPdfDataMapper(), fenix: true);
+    Get.lazyPut(() => GetRecordPdfRequestDataMapper(), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {
