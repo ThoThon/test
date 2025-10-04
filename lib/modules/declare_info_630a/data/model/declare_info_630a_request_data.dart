@@ -8,13 +8,13 @@ class DeclareInfo630aRequestData {
   final String? maNhanVien;
   final String? maNhomHuong;
   final String? soSeriCT;
-  final DateTime? tuNgay;
-  final DateTime? denNgay;
+  final String? tuNgay;
+  final String? denNgay;
   final int? tongSoNgay;
-  final DateTime? tuNgayDonVi;
+  final String? tuNgayDonVi;
   final String? ngayNghiTuan;
   final String? tuyenBenhVien;
-  final DateTime? ngaySinhCon;
+  final String? ngaySinhCon;
   final String? theBhytCuaCon;
   final int? soCon;
   final String? maBenhDaiNgay;
@@ -29,7 +29,7 @@ class DeclareInfo630aRequestData {
   final String? maNganHang;
   final String? ghiChu;
   final String? dotDaGiaiQuyet;
-  final DateTime? tuNgayDuyetTruoc;
+  final String? tuNgayDuyetTruoc;
   final String? lyDoDieuChinh;
 
   DeclareInfo630aRequestData({
@@ -77,13 +77,13 @@ class DeclareInfo630aRequestData {
         'maNhanVien': maNhanVien,
         'maNhomHuong': maNhomHuong,
         'soSeriCT': soSeriCT,
-        'tuNgay': tuNgay?.toIso8601String(),
-        'denNgay': denNgay?.toIso8601String(),
+        'tuNgay': tuNgay,
+        'denNgay': denNgay,
         'tongSoNgay': tongSoNgay,
-        'tuNgayDonVi': tuNgayDonVi?.toIso8601String(),
+        'tuNgayDonVi': tuNgayDonVi,
         'ngayNghiTuan': ngayNghiTuan,
         'tuyenBenhVien': tuyenBenhVien,
-        'ngaySinhCon': ngaySinhCon?.toIso8601String(),
+        'ngaySinhCon': ngaySinhCon,
         'theBhytCuaCon': theBhytCuaCon,
         'soCon': soCon,
         'maBenhDaiNgay': maBenhDaiNgay,
@@ -98,7 +98,7 @@ class DeclareInfo630aRequestData {
         'maNganHang': maNganHang,
         'ghiChu': ghiChu,
         'dotDaGiaiQuyet': dotDaGiaiQuyet,
-        'tuNgayDuyetTruoc': tuNgayDuyetTruoc?.toIso8601String(),
+        'tuNgayDuyetTruoc': tuNgayDuyetTruoc,
         'lyDoDieuChinh': lyDoDieuChinh,
       };
 }
