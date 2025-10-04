@@ -1,5 +1,4 @@
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
-import 'package:v_bhxh/clean/shared/mapper/declare_info_630a_response_data_mapper.dart';
 import 'package:v_bhxh/modules/declare_info_630a/data/model/declare_info_630a_response_data.dart';
 import 'package:v_bhxh/modules/declare_info_630a/domain/entity/declare_info_630a.dart';
 import 'package:v_bhxh/modules/declare_info_630a/domain/repository/declare_info_630a_repository.dart';
@@ -38,7 +37,7 @@ class DeclareInfo630aRepositoryImpl extends DeclareInfo630aRepository {
     required String id,
   }) async {
     final response = await _authAppServerApiClient.request(
-      method: RestMethod.post,
+      method: RestMethod.get,
       path: AppApi.urlGetDetail630a,
       cancelToken: cancelToken,
       queryParameters: {
@@ -60,8 +59,7 @@ class DeclareInfo630aRepositoryImpl extends DeclareInfo630aRepository {
       method: RestMethod.post,
       path: AppApi.urlUpdate630a,
       cancelToken: cancelToken,
-      queryParameters:
-          _declareInfo630aRequestDataMapper.mapToData(request).toJson(),
+      body: _declareInfo630aRequestDataMapper.mapToData(request).toJson(),
     );
     final data = BaseResponseCl<bool>.fromJson(response);
     return data.result ?? false;

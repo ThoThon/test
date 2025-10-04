@@ -12,13 +12,13 @@ class DeclareInfo630a implements Entity {
   final String employeeId;
   final String groupCode;
   final String seriNumber;
-  final String fromDate;
-  final String toDate;
+  final DateTime? fromDate;
+  final DateTime? toDate;
   final int totalDays;
-  final String unitFromDate;
+  final DateTime? unitFromDate;
   final String dayOff;
   final String hospitalLevel;
-  final String childDob;
+  final DateTime? childDob;
   final String childBhyt;
   final int childCount;
   final String chronicCode;
@@ -33,7 +33,7 @@ class DeclareInfo630a implements Entity {
   final Bank? bank;
   final String note;
   final String resolvedBatch;
-  final String prevApproveDate;
+  final DateTime? prevApproveDate;
   final String adjustReason;
 
   DeclareInfo630a({
@@ -46,13 +46,13 @@ class DeclareInfo630a implements Entity {
     required this.employeeId,
     required this.groupCode,
     required this.seriNumber,
-    required this.fromDate,
-    required this.toDate,
+    this.fromDate,
+    this.toDate,
     required this.totalDays,
-    required this.unitFromDate,
+    this.unitFromDate,
     required this.dayOff,
     required this.hospitalLevel,
-    required this.childDob,
+    this.childDob,
     required this.childBhyt,
     required this.childCount,
     required this.chronicCode,
@@ -67,7 +67,7 @@ class DeclareInfo630a implements Entity {
     this.bank,
     required this.note,
     required this.resolvedBatch,
-    required this.prevApproveDate,
+    this.prevApproveDate,
     required this.adjustReason,
   });
 }
