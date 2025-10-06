@@ -558,7 +558,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
   // Đến ngày đơn vị
   Widget _buildToDateUnit() {
     return FormFieldRegistrant<String>(
-      registrarId: '7635551a-1e46-40ca-845d-f7cd96261280',
+      registrarId: '0c32d024-ef68-453d-b287-e32b80ec182c',
       validator: (value) {
         final trimmedValue = value?.trim();
 
