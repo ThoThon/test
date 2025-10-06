@@ -1,21 +1,14 @@
 import 'package:v_bhxh/clean/core/data/data_source/network/network_src.dart';
 import 'package:v_bhxh/clean/shared/mapper/declaration_history_list_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/declaration_history_list_request_data_mapper.dart';
+import 'package:v_bhxh/clean/shared/mapper/declaration_history_record_list_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/procedure_type_filter_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/register_history_list_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/mapper/register_history_list_request_data_mapper.dart';
 import 'package:v_bhxh/clean/shared/model/model_src.dart';
-import 'package:v_bhxh/modules/history/data/model/declaration_history_list_data.dart';
-import 'package:v_bhxh/modules/history/data/model/procedure_type_filter_data.dart';
-import 'package:v_bhxh/modules/history/data/model/regsister_history_list_data.dart';
-import 'package:v_bhxh/modules/history/domain/entity/declaration_history_list.dart';
-import 'package:v_bhxh/modules/history/domain/entity/declaration_history_list_request.dart';
-import 'package:v_bhxh/modules/history/domain/entity/procedure_type_filter.dart';
-import 'package:v_bhxh/modules/history/domain/entity/register_history_list_request.dart';
-import 'package:v_bhxh/modules/history/domain/repository/history_repository.dart';
 
 import '../../../src.dart';
-import '../../domain/entity/register_history_list.dart';
+import '../model/declaration_history_record_list_data.dart';
 
 class HistoryRepositoryImpl extends HistoryRepository {
   final AuthAppServerApiClient _authAppServerApiClient;
@@ -26,6 +19,8 @@ class HistoryRepositoryImpl extends HistoryRepository {
   final RegisterHistoryListRequestDataMapper
       _registerHistoryListRequestDataMapper;
   final ProcedureTypeFilterDataMapper _procedureTypeFilterDataMapper;
+  final DeclarationHistoryRecordListDataMapper
+      _declarationHistoryRecordListDataMapper;
 
   HistoryRepositoryImpl(
     this._authAppServerApiClient,
@@ -34,6 +29,7 @@ class HistoryRepositoryImpl extends HistoryRepository {
     this._registerHistoryListDataMapper,
     this._registerHistoryListRequestDataMapper,
     this._procedureTypeFilterDataMapper,
+    this._declarationHistoryRecordListDataMapper,
   );
 
   @override
@@ -85,5 +81,24 @@ class HistoryRepositoryImpl extends HistoryRepository {
       ProcedureTypeFilterData.fromJson,
     );
     return _procedureTypeFilterDataMapper.mapToListEntity(data.result);
+  }
+
+  @override
+  Future<DeclarationHistoryRecordList> getDeclareHistoryRecordList({
+    required String keyMap,
+  }) async {
+    final response = await _authAppServerApiClient.request(
+      method: RestMethod.get,
+      path: AppApi.urlGetDeclarationRecord,
+      cancelToken: cancelToken,
+      queryParameters: {"keyMap": keyMap},
+    );
+
+    final data = BaseResponseCl<DeclarationHistoryRecordListData>.fromJson(
+      response,
+      fromJson: (json) => DeclarationHistoryRecordListData.fromJson(json),
+    );
+
+    return _declarationHistoryRecordListDataMapper.mapToEntity(data.result);
   }
 }
