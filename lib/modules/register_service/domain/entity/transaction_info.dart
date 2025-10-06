@@ -26,10 +26,10 @@ class TransactionInfo implements Entity {
   final String certificateOrgName;
 
   // thoiHanTuNgay
-  final String validFrom;
+  final DateTime validFrom;
 
   // thoiHanDenNgay
-  final String validTo;
+  final DateTime validTo;
 
   // email
   final String email;
