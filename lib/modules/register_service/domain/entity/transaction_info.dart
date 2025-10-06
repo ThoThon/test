@@ -26,10 +26,10 @@ class TransactionInfo implements Entity {
   final String certificateOrgName;
 
   // thoiHanTuNgay
-  final DateTime validFrom;
+  final DateTime? validFrom;
 
   // thoiHanDenNgay
-  final DateTime validTo;
+  final DateTime? validTo;
 
   // email
   final String email;
@@ -52,8 +52,8 @@ class TransactionInfo implements Entity {
     required this.managementAgencyName,
     required this.certificateOwner,
     required this.certificateOrgName,
-    required this.validFrom,
-    required this.validTo,
+    this.validFrom,
+    this.validTo,
     required this.email,
     required this.phoneNumber,
     required this.certificateSerial,
