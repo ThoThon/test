@@ -587,6 +587,7 @@
     "fromDateUnitLimit": "Từ ngày đơn vị không được lớn hơn Đến ngày đơn vị",
     "toDateUnit": "Đến ngày đơn vị",
     "toDateUnitInvalid": "Đến ngày đơn vị không hợp lệ",
+    "toDateUnitLimit":"Đến ngày đơn vị không được nhỏ hơn Từ ngày đơn vị",
     "toDateUnitCannotEmpty": "Đến ngày đơn vị không được bỏ trống",
     "weeklyDayOff": "Nghỉ hàng tuần",
     "weeklyDayOffHint": "Chọn ngày nghỉ hàng tuần",
