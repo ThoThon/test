@@ -265,7 +265,7 @@ class DeclareInfo630aController extends BaseGetClController {
       childBhyt: bhytCardCodeChildCtrl.text.trim(),
       fromDate: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       toDate: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      totalDays: int.tryParse(countDayTextCtrl.text) ?? 0,
+      totalDays: double.tryParse(countDayTextCtrl.text),
       unitFromDate:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
       unitToDate: convertStringToDateSafe(toDateUnitTextCtrl.text, PATTERN_1),

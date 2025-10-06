@@ -21,7 +21,7 @@ class DeclareInfo630aResponseDataMapper
       seriNumber: data?.soSeriCT ?? '',
       fromDate: DateTime.tryParse(data?.tuNgay ?? ''),
       toDate: DateTime.tryParse(data?.denNgay ?? ''),
-      totalDays: data?.tongSoNgay ?? 0,
+      totalDays: data?.tongSoNgay,
       unitFromDate: DateTime.tryParse(data?.tuNgayDonVi ?? ''),
       unitToDate: DateTime.tryParse(data?.denNgayDonVi ?? ''),
       dayOff: data?.ngayNghiTuan ?? '',

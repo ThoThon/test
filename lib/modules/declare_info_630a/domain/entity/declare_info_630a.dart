@@ -14,7 +14,7 @@ class DeclareInfo630a implements Entity {
   final String seriNumber;
   final DateTime? fromDate;
   final DateTime? toDate;
-  final int totalDays;
+  final double? totalDays;
   final DateTime? unitFromDate;
   final DateTime? unitToDate;
   final String dayOff;
