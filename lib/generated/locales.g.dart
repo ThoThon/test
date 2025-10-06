@@ -696,6 +696,7 @@ class LocaleKeys {
   static const declareInfo_fromDateUnitLimit = 'declareInfo_fromDateUnitLimit';
   static const declareInfo_toDateUnit = 'declareInfo_toDateUnit';
   static const declareInfo_toDateUnitInvalid = 'declareInfo_toDateUnitInvalid';
+  static const declareInfo_toDateUnitLimit = 'declareInfo_toDateUnitLimit';
   static const declareInfo_toDateUnitCannotEmpty =
       'declareInfo_toDateUnitCannotEmpty';
   static const declareInfo_weeklyDayOff = 'declareInfo_weeklyDayOff';
@@ -1934,6 +1935,8 @@ class Locales {
         'Từ ngày đơn vị không được lớn hơn Đến ngày đơn vị',
     'declareInfo_toDateUnit': 'Đến ngày đơn vị',
     'declareInfo_toDateUnitInvalid': 'Đến ngày đơn vị không hợp lệ',
+    'declareInfo_toDateUnitLimit':
+        'Đến ngày đơn vị không được nhỏ hơn Từ ngày đơn vị',
     'declareInfo_toDateUnitCannotEmpty': 'Đến ngày đơn vị không được bỏ trống',
     'declareInfo_weeklyDayOff': 'Nghỉ hàng tuần',
     'declareInfo_weeklyDayOffHint': 'Chọn ngày nghỉ hàng tuần',
