@@ -1,5 +1,6 @@
 import 'package:v_bhxh/clean/core/presentation/bindings/binding_src.dart';
 import 'package:v_bhxh/clean/shared/utils/get_finder.dart';
+import 'package:v_bhxh/modules/history/domain/use_case/get_declaration_history_record_list_use_case.dart';
 
 import '../../../src.dart';
 
@@ -8,6 +9,7 @@ class HistoryBinding extends BaseBindings {
   void bindingsController() {
     Get.lazyPut(
       () => HistoryController(
+        sl(),
         sl(),
         sl(),
         sl(),
@@ -26,6 +28,7 @@ class HistoryBinding extends BaseBindings {
         sl(),
         sl(),
         sl(),
+        sl(),
       ),
     );
   }
@@ -35,5 +38,6 @@ class HistoryBinding extends BaseBindings {
     Get.lazyPut(() => GetDeclarationHistoryListUseCase(sl()));
     Get.lazyPut(() => GetProcedureListFilterUseCase(sl()));
     Get.lazyPut(() => GetRegisterHistoryListUseCase(sl()));
+    Get.lazyPut(() => GetDeclarationHistoryRecordListUseCase(sl()));
   }
 }

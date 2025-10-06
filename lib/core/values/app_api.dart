@@ -18,6 +18,9 @@ class AppApi {
       '/HoSoBHXH/SearchProcessDocumentByKey';
   static const String urlUpdateHistoryRigister =
       '/HoSoBHXH/UpdateHistoryRegister';
+  static const String urlGetDeclarationRecord =
+      '/api/History/get-danh-sach-ho-so';
+  static const String urlHistoryPreviewPDF = '/api/History/preview-pdf';
   //
   static const String urlGetAccountInfo = '/api/Authen/get-account-info';
   static const String urlUpdateAccountInfo = '/api/Authen/update-account-info';

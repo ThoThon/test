@@ -39,6 +39,7 @@ extension HistoryDeclareTab on HistoryPage {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          sdsSBHeight12,
           _buildCardStatus(item),
           sdsSBHeight12,
           const Divider(
@@ -56,36 +57,51 @@ extension HistoryDeclareTab on HistoryPage {
   }
 
   Widget _buildCardStatus(DeclarationHistoryItem item) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppDimens.paddingVerySmall,
-        vertical: AppDimens.paddingSmallest,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppDimens.radius16),
-        color: item.status.cardStatusColor,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 8,
-            height: 8,
-            decoration: BoxDecoration(
-              color: item.status.historyStatusColor,
-              shape: BoxShape.circle,
-            ),
+    return Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppDimens.paddingVerySmall,
+            vertical: AppDimens.paddingSmallest,
           ),
-          sdsSBWidth8,
-          SDSBuildText(
-            item.status.titleStatus,
-            style: AppTextStyle.font12Re.copyWith(
-              color: item.status.historyStatusColor,
-            ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppDimens.radius16),
+            color: item.status.cardStatusColor,
           ),
-        ],
-      ),
-    ).paddingOnly(top: AppDimens.paddingSmall, left: AppDimens.defaultPadding);
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  color: item.status.historyStatusColor,
+                  shape: BoxShape.circle,
+                ),
+              ),
+              sdsSBWidth8,
+              SDSBuildText(
+                item.status.titleStatus,
+                style: AppTextStyle.font12Re.copyWith(
+                  color: item.status.historyStatusColor,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const Spacer(),
+        InkWell(
+          onTap: () {
+            controller.getDeclarationHistoryRecordList(
+              keyMap: item.id,
+            );
+          },
+          child: SDSImageSvg(Assets.ASSETS_ICONS_IC_EYE_SVG),
+        )
+      ],
+    ).paddingSymmetric(
+      horizontal: AppDimens.defaultPadding,
+    );
   }
 
   Widget _buildTitleProcedure(DeclarationHistoryItem item) {

@@ -157,3 +157,14 @@ String? convertDateStringToStringSafe(String? dateTime, String pattern) {
     return null;
   }
 }
+
+// String? convertDateStringToStringSafe(String? dateString, String pattern) {
+//   if (dateString == null || dateString.isEmpty) {
+//     return null;
+//   }
+//   try {
+//     return convertDateStringToString(dateString, pattern);
+//   } catch (_) {
+//     return null;
+//   }
+// }
