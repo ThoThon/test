@@ -8,13 +8,13 @@ class DeclarationHistoryItem implements Entity {
   final String month;
   final String year;
   final String status;
-  final String? step1ErrorCode;
+  final bool? step1Status;
   final String? step1Result;
-  final String? step2ErrorCode;
+  final bool? step2Status;
   final String? step2Result;
-  final String? step3ErrorCode;
+  final bool? step3Status;
   final String? step3Result;
-  final String? step4ErrorCode;
+  final bool? step4Status;
   final String? step4Result;
 
   const DeclarationHistoryItem({
@@ -25,13 +25,13 @@ class DeclarationHistoryItem implements Entity {
     required this.month,
     required this.year,
     required this.status,
-    this.step1ErrorCode,
+    this.step1Status,
     this.step1Result,
-    this.step2ErrorCode,
+    this.step2Status,
     this.step2Result,
-    this.step3ErrorCode,
+    this.step3Status,
     this.step3Result,
-    this.step4ErrorCode,
+    this.step4Status,
     this.step4Result,
   });
 
@@ -43,13 +43,13 @@ class DeclarationHistoryItem implements Entity {
     String? month,
     String? year,
     String? status,
-    String? step1ErrorCode,
+    bool? step1Status,
     String? step1Result,
-    String? step2ErrorCode,
+    bool? step2Status,
     String? step2Result,
-    String? step3ErrorCode,
+    bool? step3Status,
     String? step3Result,
-    String? step4ErrorCode,
+    bool? step4Status,
     String? step4Result,
   }) {
     return DeclarationHistoryItem(
@@ -60,13 +60,13 @@ class DeclarationHistoryItem implements Entity {
       month: month ?? this.month,
       year: year ?? this.year,
       status: status ?? this.status,
-      step1ErrorCode: step1ErrorCode ?? this.step1ErrorCode,
+      step1Status: step1Status ?? this.step1Status,
       step1Result: step1Result ?? this.step1Result,
-      step2ErrorCode: step2ErrorCode ?? this.step2ErrorCode,
+      step2Status: step2Status ?? this.step2Status,
       step2Result: step2Result ?? this.step2Result,
-      step3ErrorCode: step3ErrorCode ?? this.step3ErrorCode,
+      step3Status: step3Status ?? this.step3Status,
       step3Result: step3Result ?? this.step3Result,
-      step4ErrorCode: step4ErrorCode ?? this.step4ErrorCode,
+      step4Status: step4Status ?? this.step4Status,
       step4Result: step4Result ?? this.step4Result,
     );
   }

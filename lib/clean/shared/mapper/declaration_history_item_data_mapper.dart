@@ -14,13 +14,13 @@ class DeclarationHistoryItemDataMapper
       year: data?.nam ?? '',
       status: data?.trangThai ?? '',
       dossierNumber: data?.soHoSo,
-      step1ErrorCode: data?.maLoiBuoc1,
+      step1Status: data?.trangThaiBuoc1,
       step1Result: data?.ketQuaBuoc1,
-      step2ErrorCode: data?.maLoiBuoc2,
+      step2Status: data?.trangThaiBuoc2,
       step2Result: data?.ketQuaBuoc2,
-      step3ErrorCode: data?.maLoiBuoc3,
+      step3Status: data?.trangThaiBuoc3,
       step3Result: data?.ketQuaBuoc3,
-      step4ErrorCode: data?.maLoiBuoc4,
+      step4Status: data?.trangThaiBuoc4,
       step4Result: data?.ketQuaBuoc4,
     );
   }

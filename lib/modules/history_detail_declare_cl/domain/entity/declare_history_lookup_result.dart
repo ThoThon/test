@@ -16,4 +16,6 @@ class DeclareHistoryLookupResult implements Entity {
     this.step4,
     required this.status,
   });
+
+  
 }

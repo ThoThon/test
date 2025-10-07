@@ -15,6 +15,7 @@ class HistoryDetailDeclareBinding extends BaseBindings {
       () => HistoryDetailDeclareController(
         sl(),
         sl(),
+        argument: Get.arguments,
       ),
     );
   }

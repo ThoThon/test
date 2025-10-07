@@ -10,29 +10,18 @@ class HistoryDetailDeclareController extends BaseGetClController {
 
   final DeclareHistoryLookupResultUseCase _declareHistoryLookupResultUseCase;
   final GetFileNumberUseCase _getFileNumberUseCase;
-  // final DeclarationHistoryItem argument;
+  final DeclarationHistoryItem argument;
 
   HistoryDetailDeclareController(
     this._declareHistoryLookupResultUseCase,
-    this._getFileNumberUseCase,
-    //   {
-    //   required this.argument,
-    // }
-  );
+    this._getFileNumberUseCase, {
+    required this.argument,
+  });
 
   @override
   void onInit() async {
     super.onInit();
-    getArg();
-  }
-
-  void getArg() {
-    final args = Get.arguments;
-    if (args == null) return;
-    if (args is DeclarationHistoryItem) {
-      historyDeclareItem.value = args;
-    }
-    return;
+    historyDeclareItem.value = argument;
   }
 
   // Nếu không có số hồ sơ thì sẽ gọi api này để lấy số hồ sơ
@@ -55,11 +44,15 @@ class HistoryDetailDeclareController extends BaseGetClController {
         final res = await _declareHistoryLookupResultUseCase.execute(soHoSo);
         historyDeclareItem.value = historyDeclareItem.value?.copyWith(
           status: res.status,
-          step1ErrorCode: res.step1?.resultCode,
-          step2ErrorCode: res.step2?.resultCode,
-          step3ErrorCode: res.step3?.resultCode,
-          step4ErrorCode: res.step4?.resultCode,
-          step1Result: res.step1?.resultDescription,
+          step1Status: res.step1?.isSuccessStep,
+          step2Status: res.step2?.isSuccessStep,
+          step3Status: res.step3?.isSuccessStep,
+          step4Status: res.step4?.isSuccessStep,
+          // REF : VBHXHMOB-144
+          // Chỉ cập nhật step1Result nếu đang rỗng hoặc null
+          step1Result: (historyDeclareItem.value?.step1Result?.isEmpty ?? true)
+              ? res.step1?.resultDescription
+              : historyDeclareItem.value?.step1Result,
           step2Result: res.step2?.resultDescription,
           step3Result: res.step3?.resultDescription,
           step4Result: res.step4?.resultDescription,

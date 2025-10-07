@@ -27,9 +27,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
     ).paddingAll(AppDimens.defaultPadding);
   }
 
-  Widget _buildProfileInfoCard(
-    DeclarationHistoryItem? item,
-  ) {
+  Widget _buildProfileInfoCard(DeclarationHistoryItem? item) {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.basicWhite,
@@ -37,18 +35,18 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
       ),
       child: Column(
         children: [
-          _buildProfleInfoItem(
+          _buildProfileInfoItem(
             textLeft: LocaleKeys.history_status.tr,
             textRight: item?.status.titleStatus ?? '',
             color: item?.status.historyStatusColor,
           ),
           sdsSBHeight8,
-          _buildProfleInfoItem(
+          _buildProfileInfoItem(
             textLeft: LocaleKeys.history_profileNumber.tr,
             textRight: item?.dossierNumber ?? '',
           ),
           sdsSBHeight8,
-          _buildProfleInfoItem(
+          _buildProfileInfoItem(
             textLeft: LocaleKeys.history_timeResgiter.tr,
             textRight: changeDateString(
               item?.submissionTime ?? '',
@@ -63,7 +61,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
     );
   }
 
-  Widget _buildProfleInfoItem({
+  Widget _buildProfileInfoItem({
     required String textRight,
     required String textLeft,
     Color? color,
@@ -85,23 +83,21 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
     );
   }
 
-  Widget _buildProgressHandleCard(
-    DeclarationHistoryItem? item,
-  ) {
+  Widget _buildProgressHandleCard(DeclarationHistoryItem? item) {
     // Kết quả các bước
-    final resultStep = [
+    final stepResult = [
       item?.step1Result ?? '',
       item?.step2Result ?? '',
       item?.step3Result ?? '',
       item?.step4Result ?? '',
     ];
 
-    // Mã lỗi các bước
-    final errorStep = [
-      item?.step1ErrorCode ?? '',
-      item?.step2ErrorCode ?? '',
-      item?.step3ErrorCode ?? '',
-      item?.step4ErrorCode ?? '',
+    // Trạng thái các bước
+    final stepStatus = [
+      item?.step1Status ?? false,
+      item?.step2Status ?? false,
+      item?.step3Status ?? false,
+      item?.step4Status ?? false,
     ];
 
     return Column(
@@ -114,14 +110,14 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
         Column(
           children: List.generate(
             4,
-            (index) {
-              return _buildStatusItem(
-                errorStep: errorStep[index],
-                numberStep: '${index + 1}',
-                title: resultStep[index],
-                isLastStep: index == resultStep.length - 1,
-              );
-            },
+            (index) => _buildStatusItem(
+              index: index + 1,
+              stepResult: stepResult[index],
+              stepStatus: stepStatus[index],
+              // Kiểm tra nếu bước tiếp theo có dữ liệu (cho bước 1-3) để đặt màu connector xanh
+              // Bước 4 không cần kiểm tra (false vì không có connector)
+              hasNextData: index < 3 ? stepResult[index + 1].isNotEmpty : false,
+            ),
           ),
         ),
       ],
@@ -129,33 +125,35 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   }
 
   Widget _buildStatusItem({
-    required String numberStep,
-    required String title,
-    required String errorStep,
-    required bool isLastStep,
+    required int index,
+    required String stepResult,
+    required bool stepStatus,
+    required bool hasNextData,
   }) {
+    final connector = DashedLineConnector(
+      thickness: 1.5,
+      gap: 6,
+      dash: 3,
+      color: hasNextData ? AppColors.statusGreen : AppColors.dsGray5,
+    );
+
     final indicator = Container(
       width: AppDimens.btnRecommend,
       height: AppDimens.btnRecommend,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppDimens.radius30),
-        color: title.isEmpty ? AppColors.dsGray5 : _colorStepIsValid(errorStep),
+        color: stepResult.isEmpty
+            ? AppColors.dsGray5
+            : (stepStatus ? AppColors.statusGreen : AppColors.statusRed),
       ),
       child: Center(
         child: SDSBuildText(
-          numberStep,
+          '$index',
           style: AppTextStyle.font14Bo.copyWith(
             color: AppColors.colorWhite,
-          ), 
+          ),
         ),
       ),
-    );
-
-    final connector = DashedLineConnector(
-      thickness: 1.5,
-      gap: 6,
-      dash: 3,
-      color: title.isNotEmpty ? AppColors.statusGreen : AppColors.dsGray5,
     );
 
     return TimelineTile(
@@ -163,7 +161,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
       node: TimelineNode(
         indicator: indicator,
         indicatorPosition: 0,
-        endConnector: isLastStep ? null : connector,
+        endConnector: index == 4 ? null : connector,
       ),
       contents: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -175,8 +173,9 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
           ),
           sdsSBHeight4,
           SDSBuildText(
-            title,
+            stepResult,
             overflow: TextOverflow.visible,
+            style: AppTextStyle.font14Re.copyWith(color: AppColors.basicBlack),
           ),
           sdsSBHeight16,
         ],
@@ -190,17 +189,12 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
       textStyle: AppTextStyle.font16Re.copyWith(color: AppColors.basicWhite),
       title: LocaleKeys.history_lookup.tr,
       onPressed: () {
-        model?.dossierNumber?.isNotEmpty ?? false
-            ? controller.lookupProgressHistory(model?.dossierNumber ?? '')
-            : controller.getFileNumber(model?.id ?? '');
+        if ((model?.dossierNumber ?? '').isNotEmpty) {
+          controller.lookupProgressHistory(model!.dossierNumber!);
+        } else {
+          controller.getFileNumber(model?.id ?? '');
+        }
       },
     );
-  }
-
-  // Phải dựa vào "maLoiBuocX" trả về để biết trạng thái của bước đó
-  Color _colorStepIsValid(String errorCode) {
-    return ResultValidEnum.isValidCode(errorCode)
-        ? AppColors.statusGreen
-        : AppColors.statusRed;
   }
 }

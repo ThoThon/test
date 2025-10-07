@@ -4,12 +4,14 @@ class Step implements Entity {
   final String resultDate;
   final String resultCode;
   final String resultDescription;
-  final bool isFail;
+  final bool? isFail;
 
   Step({
     required this.resultDate,
     required this.resultCode,
     required this.resultDescription,
-    required this.isFail,
+    this.isFail,
   });
+
+  bool get isSuccessStep => !(isFail ?? true);
 }

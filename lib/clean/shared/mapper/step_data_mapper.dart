@@ -9,7 +9,7 @@ class StepDataMapper extends BaseDataMapper<StepData, Step> {
       resultDate: data?.ngayKetQua ?? '',
       resultCode: data?.maKetQua ?? '',
       resultDescription: data?.moTaKetQua ?? '',
-      isFail: data?.isFail ?? false,
+      isFail: data?.isFail,
     );
   }
 }
