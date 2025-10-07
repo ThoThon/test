@@ -294,6 +294,12 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         if (newText == 0) {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
+        // REF: VBHXHMOB-37
+        final fractional = ((newText * 10) % 10).round();
+        if (fractional != 0 && fractional != 5) {
+          return LocaleKeys.declareInfo_countDayInvalid.tr;
+        }
+
         return null;
       },
       builder: (fieldKey, validator) {

@@ -265,7 +265,9 @@ class DeclareInfo630aController extends BaseGetClController {
       childBhyt: bhytCardCodeChildCtrl.text.trim(),
       fromDate: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       toDate: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      totalDays: double.tryParse(countDayTextCtrl.text),
+      totalDays: CurrencyUtils.formatNumberCurrency(
+        countDayTextCtrl.text,
+      ),
       unitFromDate:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
       unitToDate: convertStringToDateSafe(toDateUnitTextCtrl.text, PATTERN_1),
@@ -361,7 +363,10 @@ class DeclareInfo630aController extends BaseGetClController {
     toDateCtrl.text = convertDateToStringSafe(detail.toDate, PATTERN_1) ?? '';
 
     // Total days
-    countDayTextCtrl.text = detail.totalDays.toString();
+    if (detail.totalDays != null && detail.totalDays! > 0) {
+      countDayTextCtrl.text =
+          CurrencyUtils.formatCurrencyForeign(detail.totalDays);
+    }
 
     // Unit from date
     fromDateUnitTextCtrl.text =

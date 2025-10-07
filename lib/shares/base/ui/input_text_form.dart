@@ -1,5 +1,4 @@
 import 'package:flutter/services.dart';
-import 'package:v_bhxh/shares/base/ui/formatter/count_day_630_formatter.dart';
 import 'package:v_bhxh/shares/base/ui/formatter/custom_period_month_year_formatter.dart';
 
 import '../../../modules/src.dart';
@@ -163,7 +162,6 @@ class BuildInputTextState extends State<BuildInputText> {
         ];
       case InputFormatterEnum.countDay:
         return [
-          CountDay630Formatter(),
           NumericTextFormatter(
             type: 1,
             isDot: true,
