@@ -294,6 +294,11 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         if (newText == 0) {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
+
+        if (!isTotalDayValid(value)) {
+          return LocaleKeys.declareInfo_countDayInvalid.tr;
+        }
+
         return null;
       },
       builder: (fieldKey, validator) {

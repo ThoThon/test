@@ -428,6 +428,11 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
         if (newText == 0) {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
+
+        if (!isTotalDayValid(value)) {
+          return LocaleKeys.declareInfo_countDayInvalid.tr;
+        }
+
         return null;
       },
       builder: (fieldKey, validator) {
