@@ -50,14 +50,3 @@ bool isEmail(String? value) {
 
   return true;
 }
-
-// REF : VBHXHMOB-37
-bool isTotalDayValid(String? value) {
-  if (value == null || value.trim().isEmpty) return false;
-
-  final number = CurrencyUtils.formatNumberCurrency(value);
-
-  final fractional = ((number * 10) % 10).round();
-
-  return fractional == 0 || fractional == 5;
-}

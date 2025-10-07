@@ -429,7 +429,9 @@ extension DeclareInfoGruopExt630b on DeclareInfo630bPage {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
 
-        if (!isTotalDayValid(value)) {
+        // REF: VBHXHMOB-37
+        final fractional = ((newText * 10) % 10).round();
+        if (fractional != 0 && fractional != 5) {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
 
