@@ -117,9 +117,11 @@ extension RegisterServiceWidget on RegisterServicePage {
             // "Ngày bắt đầu" và "Ngày kết thúc"
             _buildDoubleItem(
               titleLeft: LocaleKeys.registerService_dayStart.tr,
-              contenTitleLeft: cert?.validFrom ?? registerInfo?.validFrom,
+              contenTitleLeft: cert?.validFrom ??
+                  convertDateToStringSafe(registerInfo?.validFrom, PATTERN_1),
               titleRight: LocaleKeys.registerService_dayEnd.tr,
-              contenTitleRight: cert?.validTo ?? registerInfo?.validTo,
+              contenTitleRight: cert?.validTo ??
+                  convertDateToStringSafe(registerInfo?.validTo, PATTERN_1),
             ),
             sdsSBHeight12,
 

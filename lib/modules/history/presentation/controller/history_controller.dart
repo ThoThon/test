@@ -1,6 +1,7 @@
 import 'package:get/get_rx/src/rx_workers/utils/debouncer.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/modules/history/domain/use_case/get_declaration_history_record_list_use_case.dart';
 import 'package:v_bhxh/modules/src.dart';
 import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
@@ -15,12 +16,15 @@ class HistoryController extends BaseGetClController {
   final GetDeclarationHistoryListUseCase _getDeclarationHistoryListUseCase;
   final GetProcedureListFilterUseCase _getProcedureListFilterUseCase;
   final GetRegisterHistoryListUseCase _getRegisterHistoryListUseCase;
+  final GetDeclarationHistoryRecordListUseCase
+      _getDeclarationHistoryRecordListUseCase;
   final HistoryArgument? argument;
 
   HistoryController(
     this._getDeclarationHistoryListUseCase,
     this._getProcedureListFilterUseCase,
-    this._getRegisterHistoryListUseCase, {
+    this._getRegisterHistoryListUseCase,
+    this._getDeclarationHistoryRecordListUseCase, {
     this.argument,
   });
 

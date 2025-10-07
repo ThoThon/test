@@ -6,7 +6,6 @@ import 'package:v_bhxh/shares/widgets/dialog/dialog_utils.dart';
 import '../../../../clean/core/presentation/controllers/base_get_cl_controller.dart';
 import '../../../../shares/utils/utils_src.dart';
 import '../../../declare/declaration_list/declaration_list_src.dart';
-import '../../../history/domain/entity/history_tab_enum.dart';
 import '../../../home_clean/presentation/events/home_event.dart';
 
 class RegisterServiceController extends BaseGetClController {

@@ -40,6 +40,25 @@ extension HistoryDeclareExtController on HistoryController {
     );
   }
 
+  Future<void> getDeclarationHistoryRecordList({
+    required String keyMap,
+  }) async {
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        final response =
+            await _getDeclarationHistoryRecordListUseCase.execute(keyMap);
+        nav.toNamed(
+          AppRoutesCl.declarationList.path,
+          arguments: DeclarationListArgument(
+            declarationHistoryRecordList: response,
+            isFromHistoryPage: true,
+          ),
+        );
+      },
+    );
+  }
+
   Future<void> onLoadMoreDeclare() async {
     await getHistoryDeclare(isLoadMore: true);
     declareRefreshCtrl.loadComplete();
