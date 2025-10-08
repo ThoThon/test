@@ -15,13 +15,13 @@ class SelectedStaffDetailData {
   final CategoryData? quocTich;
   final String? chucVu;
   final bool? dongTheoHeSo;
-  final String? heSoLuongCoBan;
-  final String? tienLuong;
-  final String? phuCapChucVu;
-  final String? phuCapThamNienVuotKhung;
-  final String? phuCapThamNienNghe;
-  final String? phuCapLuong;
-  final String? phuCapBoSung;
+  final double? heSoLuongCoBan;
+  final double? tienLuong;
+  final double? phuCapChucVu;
+  final double? phuCapThamNienVuotKhung;
+  final double? phuCapThamNienNghe;
+  final double? phuCapLuong;
+  final double? phuCapBoSung;
   final ProvinceData? benhVienTinh;
   final Hospital? benhVien;
   final ProvinceData? khaiSinhTinh;
@@ -38,7 +38,7 @@ class SelectedStaffDetailData {
   final String? diaChiThuongTruChuHo;
   final bool? trungDiaChiKhaiSinh;
   final bool? laChuHo;
-  final String? tyLeDong;
+  final double? tyLeDong;
   final List<StaffFamilyResponseDataCl>? danhSachThanhViens;
 
   const SelectedStaffDetailData({
@@ -96,13 +96,13 @@ class SelectedStaffDetailData {
           : null,
       chucVu: json['chucVu'],
       dongTheoHeSo: json['dongTheoHeSo'],
-      heSoLuongCoBan: json['heSoLuongCoBan'],
-      tienLuong: json['tienLuong'],
-      phuCapChucVu: json['phuCapChucVu'],
+      heSoLuongCoBan: json['heSoLuongCoBan']?.toDouble(),
+      tienLuong: json['tienLuong']?.toDouble(),
+      phuCapChucVu: json['phuCapChucVu']?.toDouble(),
       phuCapThamNienVuotKhung: json['phuCapThamNienVuotKhung']?.toDouble(),
       phuCapThamNienNghe: json['phuCapThamNienNghe']?.toDouble(),
-      phuCapLuong: json['phuCapLuong'],
-      phuCapBoSung: json['phuCapBoSung'],
+      phuCapLuong: json['phuCapLuong']?.toDouble(),
+      phuCapBoSung: json['phuCapBoSung']?.toDouble(),
       benhVienTinh: json['benhVienTinh'] != null
           ? ProvinceData.fromJson(json['benhVienTinh'])
           : null,
@@ -134,7 +134,7 @@ class SelectedStaffDetailData {
       diaChiThuongTruChuHo: json['diaChiThuongTruChuHo'],
       trungDiaChiKhaiSinh: json['trungDiaChiKhaiSinh'],
       laChuHo: json['laChuHo'],
-      tyLeDong: json['tyLeDong'],
+      tyLeDong: json['tyLeDong']?.toDouble(),
       danhSachThanhViens: (json['danhSachThanhViens'] as List?)
           ?.map((e) => StaffFamilyResponseDataCl.fromJson(e))
           .toList(),

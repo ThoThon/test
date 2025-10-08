@@ -18,13 +18,13 @@ class SelectedStaffDetail implements Entity {
   final Category? nationality;
   final String? position;
   final bool basedOnCoefficient;
-  final int? baseSalaryCoefficient;
-  final int? salary;
-  final int? positionAllowance;
-  final int? seniorityBeyondFrameAllowance;
-  final int? seniorityAllowance;
-  final int? salaryAllowance;
-  final int? additionalAllowance;
+  final double? baseSalaryCoefficient;
+  final double? salary;
+  final double? positionAllowance;
+  final double? seniorityBeyondFrameAllowance;
+  final double? seniorityAllowance;
+  final double? salaryAllowance;
+  final double? additionalAllowance;
   final Province? hospitalProvince;
   final Hospital? hospital;
   final Province? birthProvince;
@@ -41,7 +41,7 @@ class SelectedStaffDetail implements Entity {
   final String? householdHeadPermanentAddress;
   final bool sameAsBirthAddress;
   final bool isHouseholdHead;
-  final String? contributionRate;
+  final double? contributionRate;
   final List<StaffFamilyResponseCl> familyMembers;
 
   const SelectedStaffDetail({
