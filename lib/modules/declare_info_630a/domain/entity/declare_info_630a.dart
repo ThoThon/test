@@ -20,7 +20,7 @@ class DeclareInfo630a implements Entity {
   final String hospitalLevel;
   final DateTime? childDob;
   final String childBhyt;
-  final int childCount;
+  final int? childCount;
   final String chronicCode;
   final String diseaseName;
   final String workCondition;
@@ -54,7 +54,7 @@ class DeclareInfo630a implements Entity {
     required this.hospitalLevel,
     this.childDob,
     required this.childBhyt,
-    required this.childCount,
+    this.childCount,
     required this.chronicCode,
     required this.diseaseName,
     required this.workCondition,

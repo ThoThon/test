@@ -21,7 +21,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
             ),
           ),
         ),
-        _buildButtonLookup(model),
+        _buildButtonLookup(),
         sdsSBHeight16,
       ],
     ).paddingAll(AppDimens.defaultPadding);
@@ -85,20 +85,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
 
   Widget _buildProgressHandleCard(DeclarationHistoryItem? item) {
     // Kết quả các bước
-    final stepResult = [
-      item?.step1Result ?? '',
-      item?.step2Result ?? '',
-      item?.step3Result ?? '',
-      item?.step4Result ?? '',
-    ];
-
-    // Trạng thái các bước
-    final stepStatus = [
-      item?.step1Status ?? false,
-      item?.step2Status ?? false,
-      item?.step3Status ?? false,
-      item?.step4Status ?? false,
-    ];
+    final steps = item?.steps ?? [];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,11 +99,12 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
             4,
             (index) => _buildStatusItem(
               index: index + 1,
-              stepResult: stepResult[index],
-              stepStatus: stepStatus[index],
+              stepResult: steps[index].result,
+              stepStatus: steps[index].status,
               // Kiểm tra nếu bước tiếp theo có dữ liệu (cho bước 1-3) để đặt màu connector xanh
               // Bước 4 không cần kiểm tra (false vì không có connector)
-              hasNextData: index < 3 ? stepResult[index + 1].isNotEmpty : false,
+              hasNextData:
+                  index < 3 ? steps[index + 1].result.isNotEmpty : false,
             ),
           ),
         ),
@@ -183,18 +171,12 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
     );
   }
 
-  Widget _buildButtonLookup(DeclarationHistoryItem? model) {
+  Widget _buildButtonLookup() {
     return UtilWidget.buildSolidButton(
       borderRadius: AppDimens.radius30,
       textStyle: AppTextStyle.font16Re.copyWith(color: AppColors.basicWhite),
       title: LocaleKeys.history_lookup.tr,
-      onPressed: () {
-        if ((model?.dossierNumber ?? '').isNotEmpty) {
-          controller.lookupProgressHistory(model!.dossierNumber!);
-        } else {
-          controller.getFileNumber(model?.id ?? '');
-        }
-      },
+      onPressed: controller.lookupProgressHistory,
     );
   }
 }

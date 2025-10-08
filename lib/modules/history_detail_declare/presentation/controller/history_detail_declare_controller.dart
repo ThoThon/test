@@ -1,6 +1,7 @@
 import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 
 import '../../../../clean/core/presentation/navigation/navigation_src.dart';
+import '../../../history/domain/entity/declaration_history_step.dart';
 import '../../../src.dart';
 
 class HistoryDetailDeclareController extends BaseGetClController {
@@ -24,38 +25,52 @@ class HistoryDetailDeclareController extends BaseGetClController {
     historyDeclareItem.value = argument;
   }
 
-  // Nếu không có số hồ sơ thì sẽ gọi api này để lấy số hồ sơ
-  Future<void> getFileNumber(String key) async {
+  Future<void> lookupProgressHistory() async {
     return buildState(
       showLoadingOverlay: true,
       action: () async {
-        final response = await _getFileNumberUseCase.execute(key);
-        historyDeclareItem.value = historyDeclareItem.value?.copyWith(
-          dossierNumber: response.code,
-        );
-      },
-    );
-  }
+        if (historyDeclareItem.value?.dossierNumber == null) {
+          // Nếu không có số hồ sơ thì sẽ gọi api này để lấy số hồ sơ
+          final fileNumber = await _getFileNumberUseCase.execute(
+            historyDeclareItem.value?.id ?? '',
+          );
+          historyDeclareItem.value = historyDeclareItem.value?.copyWith(
+            dossierNumber: fileNumber.recordNumber,
+          );
+        }
 
-  Future<void> lookupProgressHistory(String soHoSo) async {
-    return buildState(
-      showLoadingOverlay: true,
-      action: () async {
-        final res = await _declareHistoryLookupResultUseCase.execute(soHoSo);
+        final res = await _declareHistoryLookupResultUseCase.execute(
+          historyDeclareItem.value?.dossierNumber ?? '',
+        );
+
+        final resultFirstStep =
+            historyDeclareItem.value?.steps?[0].result ?? '';
+
         historyDeclareItem.value = historyDeclareItem.value?.copyWith(
           status: res.status,
-          step1Status: res.step1?.isSuccessStep,
-          step2Status: res.step2?.isSuccessStep,
-          step3Status: res.step3?.isSuccessStep,
-          step4Status: res.step4?.isSuccessStep,
-          // REF : VBHXHMOB-144
-          // Chỉ cập nhật step1Result nếu đang rỗng hoặc null
-          step1Result: (historyDeclareItem.value?.step1Result?.isEmpty ?? true)
-              ? res.step1?.resultDescription
-              : historyDeclareItem.value?.step1Result,
-          step2Result: res.step2?.resultDescription,
-          step3Result: res.step3?.resultDescription,
-          step4Result: res.step4?.resultDescription,
+          steps: [
+            DeclarationHistoryStep(
+              status: res.step1?.isSuccessStep ?? false,
+              // REF: VBHXHMOB-142
+              // Nếu có bước 1 rồi thì không cần cập nhật nữa
+
+              result: historyDeclareItem.value?.steps == null
+                  ? res.step1?.resultDescription ?? ''
+                  : resultFirstStep,
+            ),
+            DeclarationHistoryStep(
+              status: res.step2?.isSuccessStep ?? false,
+              result: res.step2?.resultDescription ?? '',
+            ),
+            DeclarationHistoryStep(
+              status: res.step3?.isSuccessStep ?? false,
+              result: res.step3?.resultDescription ?? '',
+            ),
+            DeclarationHistoryStep(
+              status: res.step4?.isSuccessStep ?? false,
+              result: res.step4?.resultDescription ?? '',
+            ),
+          ],
         );
         hasLookup = true;
         nav.showSnackBar(

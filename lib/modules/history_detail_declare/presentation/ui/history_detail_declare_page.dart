@@ -29,7 +29,9 @@ class HistoryDetailDeclarePage
           centerTitle: true,
         ),
         body: BaseCardBody(
-          child: _buildBody(),
+          child: Obx(
+            () => _buildBody(),
+          ),
         ),
       ),
     );
