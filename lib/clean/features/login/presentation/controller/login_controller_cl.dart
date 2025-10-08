@@ -6,6 +6,7 @@ import 'package:v_bhxh/clean/features/login/domain/entity/login_request.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/get_630_categories_use_case.dart';
 import 'package:v_bhxh/clean/features/login/domain/usecase/use_case_src.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
+import 'package:v_bhxh/clean/shared/exceptions/remote/remote_exception.dart';
 import 'package:v_bhxh/core/values/const.dart';
 import 'package:v_bhxh/shares/base_url_helper/base_url_helper_cl.dart';
 
@@ -76,11 +77,11 @@ class LoginControllerCl extends BaseGetClController {
         // Nên phải delay một chút để đảm bảo token đã hợp lệ
         await Future.delayed(const Duration(milliseconds: 100));
 
-        await (
+        await Future.wait([
           _getAccountInfo(),
           _getD02Categories(),
           _get630Categories(),
-        ).wait;
+        ]);
 
         nav.offAllNamed(AppRoutesCl.home.path);
       },
