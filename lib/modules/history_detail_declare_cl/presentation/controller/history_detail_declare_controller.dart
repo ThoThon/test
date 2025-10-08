@@ -18,6 +18,8 @@ class HistoryDetailDeclareController extends BaseGetClController {
     required this.argument,
   });
 
+  final hasLookup = false.obs;
+
   @override
   void onInit() async {
     super.onInit();
@@ -57,6 +59,7 @@ class HistoryDetailDeclareController extends BaseGetClController {
           step3Result: res.step3?.resultDescription,
           step4Result: res.step4?.resultDescription,
         );
+        hasLookup.value = true;
         nav.showSnackBar(
           type: SnackBarType.info,
           LocaleKeys.history_lookupSuccess.tr,

@@ -16,8 +16,12 @@ class HistoryDetailDeclarePage
       color: AppColors.primaryColor,
       child: Scaffold(
         appBar: BaseAppBar(
-          leading:
-              UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
+          leading: UtilWidget.buildButtonBackAppbar(
+            color: AppColors.basicWhite,
+            onTap: () {
+              nav.back(result: controller.hasLookup.value);
+            },
+          ),
           backgroundColor: AppColors.primaryColor,
           title: BaseAppBarTitle(
             title: LocaleKeys.history_lookup.tr,

@@ -136,16 +136,16 @@ extension HistoryDeclareTab on HistoryPage {
           ),
         ),
         InkWell(
-          onTap: () {
-            Get.toNamed(
+          onTap: () async {
+            final result = await nav.toNamed(
               AppRoutesCl.historyDetailDeclare.path,
               arguments: item,
-            )?.then(
-              (value) async {
-                controller.listHistoryDeclare.clear();
-                await controller.getHistoryDeclare();
-              },
             );
+
+            if (result == true) {
+              controller.listHistoryDeclare.clear();
+              await controller.getHistoryDeclare();
+            }
           },
           child: Row(
             children: [
