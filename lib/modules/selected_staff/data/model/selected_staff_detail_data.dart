@@ -96,7 +96,7 @@ class SelectedStaffDetailData {
           : null,
       chucVu: json['chucVu'],
       dongTheoHeSo: json['dongTheoHeSo'],
-      heSoLuongCoBan: json['heSoLuongCoBan'],
+      heSoLuongCoBan: json['heSoLuongCoBan']?.toDouble(),
       tienLuong: json['tienLuong']?.toDouble(),
       phuCapChucVu: json['phuCapChucVu']?.toDouble(),
       phuCapThamNienVuotKhung: json['phuCapThamNienVuotKhung']?.toDouble(),
