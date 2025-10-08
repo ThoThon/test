@@ -350,7 +350,9 @@ class DeclareInfo630aController extends BaseGetClController {
         convertDateToStringSafe(detail.childDob, PATTERN_1) ?? '';
 
     // Number of children
-    numberChildCtrl.text = detail.childCount.toString();
+    if (detail.childCount != null) {
+      numberChildCtrl.text = detail.childCount.toString();
+    }
 
     // Child BHYT card
     bhytCardCodeChildCtrl.text = detail.childBhyt;

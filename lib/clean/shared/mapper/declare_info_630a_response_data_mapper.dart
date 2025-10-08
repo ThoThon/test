@@ -28,7 +28,7 @@ class DeclareInfo630aResponseDataMapper
       hospitalLevel: data?.tuyenBenhVien ?? '',
       childDob: DateTime.tryParse(data?.ngaySinhCon ?? ''),
       childBhyt: data?.theBhytCuaCon ?? '',
-      childCount: data?.soCon ?? 0,
+      childCount: data?.soCon,
       chronicCode: data?.maBenhDaiNgay ?? '',
       diseaseName: data?.tenBenh ?? '',
       workCondition: data?.dieuKienLamViec ?? '',
