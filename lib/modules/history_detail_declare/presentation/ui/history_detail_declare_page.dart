@@ -2,7 +2,6 @@ import 'package:timelines_plus/timelines_plus.dart';
 import 'package:v_bhxh/clean/core/presentation/widgets/base_get_page.dart';
 
 import '../../../src.dart';
-import '../controller/history_detail_declare_controller.dart';
 
 part 'history_detail_declare_widget.dart';
 
@@ -19,7 +18,7 @@ class HistoryDetailDeclarePage
           leading: UtilWidget.buildButtonBackAppbar(
             color: AppColors.basicWhite,
             onTap: () {
-              nav.back(result: controller.hasLookup.value);
+              nav.back(result: controller.hasLookup);
             },
           ),
           backgroundColor: AppColors.primaryColor,

@@ -1,10 +1,10 @@
 import 'package:v_bhxh/clean/core/data/model/base_response_cl.dart';
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/modules/history_detail_declare_cl/data/model/declare_history_lookup_result_data.dart';
-import 'package:v_bhxh/modules/history_detail_declare_cl/data/model/file_number_data.dart';
-import 'package:v_bhxh/modules/history_detail_declare_cl/domain/entity/declare_history_lookup_result.dart';
-import 'package:v_bhxh/modules/history_detail_declare_cl/domain/entity/file_number.dart';
-import 'package:v_bhxh/modules/history_detail_declare_cl/domain/repository/history_detail_declare_repository.dart';
+import 'package:v_bhxh/modules/history_detail_declare/data/model/declare_history_lookup_result_data.dart';
+import 'package:v_bhxh/modules/history_detail_declare/data/model/file_number_data.dart';
+import 'package:v_bhxh/modules/history_detail_declare/domain/entity/declare_history_lookup_result.dart';
+import 'package:v_bhxh/modules/history_detail_declare/domain/entity/file_number.dart';
+import 'package:v_bhxh/modules/history_detail_declare/domain/repository/history_detail_declare_repository.dart';
 
 import '../../../../clean/core/data/data_source/network/network_src.dart';
 import '../../../../core/values/app_api.dart';

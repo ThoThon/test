@@ -1,6 +1,6 @@
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
-import 'package:v_bhxh/modules/history_detail_declare_cl/data/model/step_data.dart';
-import 'package:v_bhxh/modules/history_detail_declare_cl/domain/entity/step.dart';
+import 'package:v_bhxh/modules/history_detail_declare/data/model/step_data.dart';
+import 'package:v_bhxh/modules/history_detail_declare/domain/entity/step.dart';
 
 class StepDataMapper extends BaseDataMapper<StepData, Step> {
   @override
@@ -9,7 +9,7 @@ class StepDataMapper extends BaseDataMapper<StepData, Step> {
       resultDate: data?.ngayKetQua ?? '',
       resultCode: data?.maKetQua ?? '',
       resultDescription: data?.moTaKetQua ?? '',
-      isFail: data?.isFail,
+      isFail: data?.isFail ?? false,
     );
   }
 }

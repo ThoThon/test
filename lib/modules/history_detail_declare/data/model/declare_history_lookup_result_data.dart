@@ -1,4 +1,4 @@
-import 'package:v_bhxh/modules/history_detail_declare_cl/data/model/step_data.dart';
+import 'package:v_bhxh/modules/history_detail_declare/data/model/step_data.dart';
 
 class DeclareHistoryLookupResultData {
   final StepData? buoc1;

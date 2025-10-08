@@ -2,8 +2,6 @@ import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controlle
 
 import '../../../../clean/core/presentation/navigation/navigation_src.dart';
 import '../../../src.dart';
-import '../../domain/use_case/declare_history_lookup_result_use_case.dart';
-import '../../domain/use_case/get_file_number_use_case.dart';
 
 class HistoryDetailDeclareController extends BaseGetClController {
   final historyDeclareItem = Rxn<DeclarationHistoryItem>();
@@ -18,7 +16,7 @@ class HistoryDetailDeclareController extends BaseGetClController {
     required this.argument,
   });
 
-  final hasLookup = false.obs;
+  bool hasLookup = false;
 
   @override
   void onInit() async {
@@ -59,7 +57,7 @@ class HistoryDetailDeclareController extends BaseGetClController {
           step3Result: res.step3?.resultDescription,
           step4Result: res.step4?.resultDescription,
         );
-        hasLookup.value = true;
+        hasLookup = true;
         nav.showSnackBar(
           type: SnackBarType.info,
           LocaleKeys.history_lookupSuccess.tr,
