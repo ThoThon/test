@@ -1,13 +1,39 @@
+import 'package:collection/collection.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
 
-import '../../../base_app/base_app.src.dart';
-import '../../../clean/shared/entity/category.dart';
-import '../../declare/declare_info/repository/declare_info_repository.dart';
-import '../../declare_info_630a/domain/entity/weekly_day_off_enum.dart';
-import '../../src.dart';
+import '../../../../base_app/base_app.src.dart';
+import '../../../../clean/core/presentation/navigation/snack_bar_type.dart';
+import '../../../../clean/routes/app_routes_cl.dart';
+import '../../../../clean/shared/entity/category.dart';
+import '../../../../shares/utils/utils_src.dart';
+import '../../../../shares/widgets/keyboard/keyboard.dart';
+import '../../../declare/declaration_period/domain/entity/entity_src.dart';
+import '../../../declare/declaration_period/presentation/events/declaration_period_event.dart';
+import '../../../declare_info_630a/declare_info_630a_src.dart';
+import '../../../selected_staff/domain/entity/selected_staff_detail.dart';
+import '../../../selected_staff/domain/use_case/get_staff_detail_use_case.dart';
+import '../../../src.dart';
+import '../../declare_info_630b_src.dart';
 
-class DeclareInfo630bController extends BaseGetxController {
+part 'declare_info_630b_controller_ext.dart';
+
+class DeclareInfo630bController extends BaseGetClController {
+  final AddProcedure630bUseCase _addProcedure630bUseCase;
+  final GetDetailProcedure630bUseCase _getDetailProcedure630bUseCase;
+  final UpdateProcedure630bUseCase _updateProcedure630bUseCase;
+  final GetStaffDetailUseCase _getStaffDetailUseCase;
+  final DeclareInfoArgument argument;
+
+  DeclareInfo630bController(
+    this._addProcedure630bUseCase,
+    this._getDetailProcedure630bUseCase,
+    this._updateProcedure630bUseCase,
+    this._getStaffDetailUseCase, {
+    required this.argument,
+  });
+
   /// id 630b dùng khi update
   String? id;
 
@@ -152,11 +178,6 @@ class DeclareInfo630bController extends BaseGetxController {
   /// Lý do điều chỉnh
   final adjustReasonCtrl = TextEditingController();
 
-  /// ========== Khai báo thêm ==========
-  late final repository = DeclareInfo630bRepository(this);
-
-  late final declareInfoRepository = DeclareInfoRepository(this);
-
   final autoValidateMode = Rxn<AutovalidateMode>();
 
   final formKey = GlobalKey<FormState>();
@@ -164,8 +185,6 @@ class DeclareInfo630bController extends BaseGetxController {
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   final scrollController = ScrollController();
-
-  final DeclareInfoArgument argument = Get.arguments;
 
   @override
   void onClose() {

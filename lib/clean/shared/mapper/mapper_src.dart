@@ -44,3 +44,5 @@ export 'tk1_preview_path_data_mapper.dart';
 export 'transaction_info_data_mapper.dart';
 export 'update_unit_info_request_data_mapper.dart';
 export 'ward_data_mapper.dart';
+export 'declare_info_630b_request_data_mapper.dart';
+export 'declare_info_630b_response_data_mapper.dart';

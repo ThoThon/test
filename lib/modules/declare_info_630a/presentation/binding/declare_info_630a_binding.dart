@@ -36,15 +36,6 @@ class DeclareInfo630aBinding extends BaseBindings {
       ),
     );
 
-    Get.lazyPut<StaffListRepository>(
-      () => StaffListRepositoryImpl(
-        sl(),
-        sl(),
-        sl(),
-        sl(),
-      ),
-    );
-
     Get.lazyPut<SelectStaffRepository>(
       () => SelectStaffRepositoryImpl(
         sl(),
