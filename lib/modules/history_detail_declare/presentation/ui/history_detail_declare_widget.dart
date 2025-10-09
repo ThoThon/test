@@ -84,8 +84,10 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
   }
 
   Widget _buildProgressHandleCard(DeclarationHistoryItem? item) {
+    if (item == null) return const SizedBox.shrink();
+
     // Kết quả các bước
-    final steps = item?.steps ?? [];
+    final steps = item.steps ?? [];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
