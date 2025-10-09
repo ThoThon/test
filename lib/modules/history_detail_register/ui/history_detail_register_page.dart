@@ -2,6 +2,8 @@ import 'package:timelines_plus/timelines_plus.dart';
 import 'package:v_bhxh/modules/history_detail_register/controller/history_detail_register_controller.dart';
 import 'package:v_bhxh/modules/src.dart';
 
+import '../../history_detail_declare/domain/entity/result_valid_enum.dart';
+
 part 'history_detail_register_widget.dart';
 
 class HistoryDetailRegisterPage extends BaseGetWidget {

@@ -89,7 +89,8 @@ extension RegisterInfoTab on RegisterCodePage {
                     listFilter: controller.registerCodeCategories.value.agencies
                         .toList(),
                     selectedItem: controller.socialAgency.value,
-                    display: (value) => value.tenCoQuanBHXH,
+                    display: (value) =>
+                        '${value.maCoQuanBHXH} - ${value.tenCoQuanBHXH}',
                     onAccept: (value) {
                       if (value == null) return;
                       controller.socialAgency.value = value;
@@ -100,7 +101,7 @@ extension RegisterInfoTab on RegisterCodePage {
                 );
               },
               selectedItem: controller.socialAgency.value,
-              display: (item) => item.tenCoQuanBHXH,
+              display: (item) => '${item.maCoQuanBHXH} - ${item.tenCoQuanBHXH}',
             );
           },
         );

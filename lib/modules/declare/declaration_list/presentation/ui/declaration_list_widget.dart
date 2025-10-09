@@ -23,14 +23,15 @@ extension DeclarationListPrpdfWidget on DeclarationListPage {
             ),
           ),
         ),
-        UtilWidget.buildSolidButton(
-          height: AppDimens.btnLargeFigma,
-          borderRadius: AppDimens.radius30,
-          textStyle:
-              AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
-          title: LocaleKeys.dialog_consignment.tr,
-          onPressed: controller.signDocument,
-        ),
+        if (!isFromHistoryPage)
+          UtilWidget.buildSolidButton(
+            height: AppDimens.btnLargeFigma,
+            borderRadius: AppDimens.radius30,
+            textStyle:
+                AppTextStyle.font14Re.copyWith(color: AppColors.basicWhite),
+            title: LocaleKeys.dialog_consignment.tr,
+            onPressed: controller.signDocument,
+          ),
         sdsSBHeight16,
       ],
     ).paddingAll(AppDimens.defaultPadding);

@@ -1,9 +1,9 @@
-import '../../src.dart';
+import 'package:v_bhxh/modules/history_detail_declare/data/model/step_data.dart';
 
 class ResultLookupHistoryRegisterModel {
-  final Buoc? buoc1;
-  final Buoc? buoc2;
-  final Buoc? buoc3;
+  final StepData? buoc1;
+  final StepData? buoc2;
+  final StepData? buoc3;
   final String? trangThai;
   final String? soHoSo;
   final String? thoiGianGui;
@@ -19,9 +19,9 @@ class ResultLookupHistoryRegisterModel {
 
   factory ResultLookupHistoryRegisterModel.fromJson(Map<String, dynamic> json) {
     return ResultLookupHistoryRegisterModel(
-      buoc1: Buoc.fromJson(json['buoc_1'] ?? {}),
-      buoc2: Buoc.fromJson(json['buoc_2'] ?? {}),
-      buoc3: Buoc.fromJson(json['buoc_3'] ?? {}),
+      buoc1: json['buoc_1'] != null ? StepData.fromJson(json['buoc_1']) : null,
+      buoc2: json['buoc_2'] != null ? StepData.fromJson(json['buoc_2']) : null,
+      buoc3: json['buoc_3'] != null ? StepData.fromJson(json['buoc_3']) : null,
       trangThai: json['trangThai'] ?? '',
       soHoSo: json['soHoSo'] ?? '',
       thoiGianGui: json['thoiGianGui'] ?? '',

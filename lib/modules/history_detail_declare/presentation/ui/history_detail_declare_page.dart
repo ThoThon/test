@@ -1,26 +1,26 @@
 import 'package:timelines_plus/timelines_plus.dart';
+import 'package:v_bhxh/clean/core/presentation/widgets/base_get_page.dart';
 
-import '../../history/history_src.dart';
-import '../../src.dart';
+import '../../../src.dart';
 
 part 'history_detail_declare_widget.dart';
 
-class HistoryDetailDeclarePage extends BaseGetWidget {
+class HistoryDetailDeclarePage
+    extends BaseGetPage<HistoryDetailDeclareController> {
   HistoryDetailDeclarePage({super.key});
 
   @override
-  HistoryDetailDeclareController get controller => _controller;
-
-  late final _controller = Get.put(HistoryDetailDeclareController());
-
-  @override
-  Widget buildWidgets(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     return Container(
       color: AppColors.primaryColor,
       child: Scaffold(
         appBar: BaseAppBar(
-          leading:
-              UtilWidget.buildButtonBackAppbar(color: AppColors.basicWhite),
+          leading: UtilWidget.buildButtonBackAppbar(
+            color: AppColors.basicWhite,
+            onTap: () {
+              nav.back(result: controller.hasLookup);
+            },
+          ),
           backgroundColor: AppColors.primaryColor,
           title: BaseAppBarTitle(
             title: LocaleKeys.history_lookup.tr,
@@ -28,9 +28,9 @@ class HistoryDetailDeclarePage extends BaseGetWidget {
           ),
           centerTitle: true,
         ),
-        body: buildLoadingOverlay(
-          () => BaseCardBody(
-            child: _buildBody(),
+        body: BaseCardBody(
+          child: Obx(
+            () => _buildBody(),
           ),
         ),
       ),

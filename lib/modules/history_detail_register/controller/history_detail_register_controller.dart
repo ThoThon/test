@@ -35,7 +35,7 @@ class HistoryDetailRegisterController extends BaseGetxController {
         resultLookupHistoryRegister = res.result;
 
         // Kiểm tra Bước 1 xem có null hay không
-        if (resultLookupHistoryRegister!.buoc1!.maKetQua.isEmpty) {
+        if (resultLookupHistoryRegister!.buoc1!.maKetQua!.isEmpty) {
           showSnackBar(res.errorMessage);
         } else {
           // Cập nhật trạng thái và số hồ sơ
