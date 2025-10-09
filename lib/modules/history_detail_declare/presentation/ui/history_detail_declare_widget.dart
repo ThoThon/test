@@ -87,7 +87,7 @@ extension HistoryDetailDeclareWidget on HistoryDetailDeclarePage {
     if (item == null) return const SizedBox.shrink();
 
     // Kết quả các bước
-    final steps = item.steps ?? [];
+    final steps = item.steps;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

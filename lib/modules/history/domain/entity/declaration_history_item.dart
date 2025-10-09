@@ -9,7 +9,7 @@ class DeclarationHistoryItem implements Entity {
   final String month;
   final String year;
   final String status;
-  final List<DeclarationHistoryStep>? steps;
+  final List<DeclarationHistoryStep> steps;
 
   const DeclarationHistoryItem({
     required this.id,
@@ -19,7 +19,7 @@ class DeclarationHistoryItem implements Entity {
     required this.month,
     required this.year,
     required this.status,
-    this.steps,
+    required this.steps,
   });
 
   DeclarationHistoryItem copyWith({

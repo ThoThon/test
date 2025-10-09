@@ -43,8 +43,7 @@ class HistoryDetailDeclareController extends BaseGetClController {
           historyDeclareItem.value?.dossierNumber ?? '',
         );
 
-        final resultFirstStep =
-            historyDeclareItem.value?.steps?[0].result ?? '';
+        final resultFirstStep = historyDeclareItem.value?.steps[0].result ?? '';
 
         historyDeclareItem.value = historyDeclareItem.value?.copyWith(
           status: res.status,
@@ -54,7 +53,7 @@ class HistoryDetailDeclareController extends BaseGetClController {
               // REF: VBHXHMOB-142
               // Nếu có bước 1 rồi thì không cần cập nhật nữa
 
-              result: historyDeclareItem.value?.steps == null
+              result: resultFirstStep.isEmpty
                   ? res.step1?.resultDescription ?? ''
                   : resultFirstStep,
             ),

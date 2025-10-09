@@ -19,9 +19,9 @@ class ResultLookupHistoryRegisterModel {
 
   factory ResultLookupHistoryRegisterModel.fromJson(Map<String, dynamic> json) {
     return ResultLookupHistoryRegisterModel(
-      buoc1: StepData.fromJson(json['buoc_1'] ?? {}),
-      buoc2: StepData.fromJson(json['buoc_2'] ?? {}),
-      buoc3: StepData.fromJson(json['buoc_3'] ?? {}),
+      buoc1: json['buoc_1'] != null ? StepData.fromJson(json['buoc_1']) : null,
+      buoc2: json['buoc_2'] != null ? StepData.fromJson(json['buoc_2']) : null,
+      buoc3: json['buoc_3'] != null ? StepData.fromJson(json['buoc_3']) : null,
       trangThai: json['trangThai'] ?? '',
       soHoSo: json['soHoSo'] ?? '',
       thoiGianGui: json['thoiGianGui'] ?? '',
