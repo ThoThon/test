@@ -1,6 +1,7 @@
 import 'package:v_bhxh/clean/shared/mapper/mapper_src.dart';
 import 'package:v_bhxh/modules/history/data/model/declaration_history_item_data.dart';
 import 'package:v_bhxh/modules/history/domain/entity/declaration_history_item.dart';
+import 'package:v_bhxh/modules/history/domain/entity/declaration_history_step.dart';
 
 class DeclarationHistoryItemDataMapper
     extends BaseDataMapper<DeclarationHistoryItemData, DeclarationHistoryItem> {
@@ -14,14 +15,24 @@ class DeclarationHistoryItemDataMapper
       year: data?.nam ?? '',
       status: data?.trangThai ?? '',
       dossierNumber: data?.soHoSo,
-      step1ErrorCode: data?.maLoiBuoc1,
-      step1Result: data?.ketQuaBuoc1,
-      step2ErrorCode: data?.maLoiBuoc2,
-      step2Result: data?.ketQuaBuoc2,
-      step3ErrorCode: data?.maLoiBuoc3,
-      step3Result: data?.ketQuaBuoc3,
-      step4ErrorCode: data?.maLoiBuoc4,
-      step4Result: data?.ketQuaBuoc4,
+      steps: [
+        DeclarationHistoryStep(
+          status: data?.trangThaiBuoc1 ?? false,
+          result: data?.ketQuaBuoc1 ?? '',
+        ),
+        DeclarationHistoryStep(
+          status: data?.trangThaiBuoc2 ?? false,
+          result: data?.ketQuaBuoc2 ?? '',
+        ),
+        DeclarationHistoryStep(
+          status: data?.trangThaiBuoc3 ?? false,
+          result: data?.ketQuaBuoc3 ?? '',
+        ),
+        DeclarationHistoryStep(
+          status: data?.trangThaiBuoc4 ?? false,
+          result: data?.ketQuaBuoc4 ?? '',
+        ),
+      ],
     );
   }
 }

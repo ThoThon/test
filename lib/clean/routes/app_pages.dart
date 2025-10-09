@@ -22,7 +22,7 @@ import 'package:v_bhxh/modules/declare_info_630c/ui/declare_info_630c_page.dart'
 import 'package:v_bhxh/modules/forgot_password/presentation/binding/forgot_password_binding.dart';
 import 'package:v_bhxh/modules/forgot_password/presentation/forgot_password_page.dart';
 import 'package:v_bhxh/modules/history/history_src.dart';
-import 'package:v_bhxh/modules/history_detail_declare/ui/history_detail_declare_page.dart';
+import 'package:v_bhxh/modules/history_detail_declare/presentation/ui/history_detail_declare_page.dart';
 import 'package:v_bhxh/modules/history_detail_register/ui/history_detail_register_page.dart';
 import 'package:v_bhxh/modules/home_clean/presentation/binding/home_binding.dart';
 import 'package:v_bhxh/modules/home_clean/presentation/view/home_page.dart';
@@ -35,6 +35,7 @@ import 'package:v_bhxh/modules/view_pdf/ui/view_pdf_page.dart';
 import '../../modules/declare/declaration_list/presentation/ui/declaration_list_page.dart';
 import '../../modules/declare/staff_list/presentation/ui/staff_list_page.dart';
 import '../../modules/declare_info_630a/presentation/binding/declare_info_630a_binding.dart';
+import '../../modules/history_detail_declare/presentation/binding/history_detail_declare_binding.dart';
 import '../../modules/lookup_c12/presentation/binding/lookup_c12_binding.dart';
 import '../../modules/lookup_c12/presentation/ui/lookup_c12_page.dart';
 import '../../modules/notification/notification_src.dart';
@@ -78,7 +79,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutesCl.historyDetailDeclare.path,
-      page: () => HistoryDetailDeclarePage(),
+      page: HistoryDetailDeclarePage.new,
+      binding: HistoryDetailDeclareBinding(),
     ),
     GetPage(
       name: AppRoutesCl.historyDetailRegister.path,
