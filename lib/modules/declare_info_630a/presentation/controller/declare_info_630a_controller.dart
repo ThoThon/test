@@ -134,8 +134,6 @@ class DeclareInfo630aController extends BaseGetClController {
 
   final formKey = GlobalKey<FormState>();
 
-  // final DeclareInfoArgument argument = Get.arguments;
-
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   final scrollController = ScrollController();

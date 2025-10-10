@@ -584,7 +584,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
             enableClearIcon: true,
             isRequired: false,
             funcSelect: (didChange) async {
-              Get.bottomSheet(
+              nav.bottomSheet(
                 BottomSheetSearch<Category>(
                   title: LocaleKeys.declareInfo_hospitalLineSelect.tr,
                   maxLength: 50,
@@ -626,7 +626,7 @@ extension DeclareInfoGroupWidgetExt on DeclareInfo630aPage {
             isRequired: false,
             enableClearIcon: true,
             funcSelect: (didChange) async {
-              Get.bottomSheet(
+              nav.bottomSheet(
                 BottomSheetSearch<LongDiease>(
                   title: LocaleKeys.declareInfo_selectDiseaseCode.tr,
                   maxLength: 50,
