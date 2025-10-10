@@ -62,7 +62,7 @@ extension DeclarationListRecordPdfExt on DeclarationListPage {
         onTap: () {
           controller.getPreviewPdf(
             previewDocumentType: PreviewDocumentTypeEnum.d01,
-            title: LocaleKeys.declareInfo_participationDeclaration.tr,
+            title: LocaleKeys.declareInfo_infoTable.tr,
           );
         },
       ),
