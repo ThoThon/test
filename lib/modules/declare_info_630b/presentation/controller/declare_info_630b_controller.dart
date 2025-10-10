@@ -15,7 +15,6 @@ import '../../../declare_info_630a/declare_info_630a_src.dart';
 import '../../../selected_staff/domain/entity/selected_staff_detail.dart';
 import '../../../selected_staff/domain/use_case/get_staff_detail_use_case.dart';
 import '../../../src.dart';
-import '../../declare_info_630b_src.dart';
 
 part 'declare_info_630b_controller_ext.dart';
 

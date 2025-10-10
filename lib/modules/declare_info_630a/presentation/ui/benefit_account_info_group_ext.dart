@@ -196,7 +196,7 @@ extension BenefitAccountInfoGroupExt on DeclareInfo630aPage {
                     label: LocaleKeys.declareInfo_bank.tr,
                     hintText: LocaleKeys.declareInfo_bankHint.tr,
                     funcSelect: (didChange) async {
-                      Get.bottomSheet(
+                      nav.bottomSheet(
                         BottomSheetSearch<Bank>(
                           title: LocaleKeys.declareInfo_bankHint.tr,
                           maxLength: 20,

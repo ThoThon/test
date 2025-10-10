@@ -120,6 +120,8 @@ class AppBinding extends BaseBindings {
     Get.lazyPut(() => FileNumberDataMapper(), fenix: true);
     Get.lazyPut(() => DeclareInfo630bRequestDataMapper(), fenix: true);
     Get.lazyPut(() => DeclareInfo630bResponseDataMapper(sl()), fenix: true);
+    Get.lazyPut(() => DeclareInfo630cRequestDataMapper(), fenix: true);
+    Get.lazyPut(() => DeclareInfo630cResponseDataMapper(sl()), fenix: true);
   }
 
   Future<void> _bindingsCore(AppEnv env) async {
