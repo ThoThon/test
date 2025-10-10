@@ -49,3 +49,5 @@ export 'declare_history_lookup_result_data_mapper.dart';
 export 'step_data_mapper.dart';
 export 'declare_info_630b_request_data_mapper.dart';
 export 'declare_info_630b_response_data_mapper.dart';
+export 'declare_info_630c_request_data_mapper.dart';
+export 'declare_info_630c_response_data_mapper.dart';

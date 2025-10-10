@@ -1,26 +1,39 @@
 import 'package:collection/collection.dart';
 import 'package:flutter_form_registry/flutter_form_registry.dart';
-import 'package:v_bhxh/base_app/controllers_base/base_controller/base_controller.src.dart';
 import 'package:v_bhxh/base_app/model/app_data.dart';
+import 'package:v_bhxh/clean/core/presentation/controllers/base_get_cl_controller.dart';
 import 'package:v_bhxh/clean/routes/app_routes_cl.dart';
-import 'package:v_bhxh/clean/shared/entity/categories_630/categories_630_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/domain/entity/entity_src.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/presentation/controller/declaration_period_controller.dart';
-import 'package:v_bhxh/modules/declare/declaration_period/presentation/events/declaration_period_event.dart';
-import 'package:v_bhxh/modules/declare/declare_info/repository/declare_info_repository.dart';
-import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_request.dart';
-import 'package:v_bhxh/modules/declare_info_630c/model/declare_info_630c_response.dart';
-import 'package:v_bhxh/modules/declare_info_630c/repository/declare_info_630c_repository.dart';
-import 'package:v_bhxh/modules/src.dart';
-import 'package:v_bhxh/shares/utils/event_bus_util.dart';
-import 'package:v_bhxh/shares/widgets/keyboard/keyboard.dart';
 
-import '../../../clean/shared/entity/category.dart';
+import '../../../../clean/core/presentation/navigation/navigation_src.dart';
+import '../../../../clean/shared/entity/categories_630/categories_630_src.dart';
+import '../../../../clean/shared/entity/category.dart';
+import '../../../../shares/utils/utils_src.dart';
+import '../../../../shares/widgets/keyboard/keyboard.dart';
+import '../../../declare/declaration_period/domain/entity/entity_src.dart';
+import '../../../declare/declaration_period/presentation/events/declaration_period_event.dart';
+import '../../../selected_staff/domain/entity/selected_staff_detail.dart';
+import '../../../selected_staff/domain/use_case/get_staff_detail_use_case.dart';
+import '../../../src.dart';
+import '../../declare_info_630c_src.dart';
 
 // REF: BHW-3103
 const declineValid = ['D301', 'D302', 'D303'];
 
-class DeclareInfo630cController extends BaseGetxController {
+class DeclareInfo630cController extends BaseGetClController {
+  final AddProcedure630cUseCase _addProcedure630cUseCase;
+  final GetDetailProcedure630cUseCase _getDetailProcedure630cUseCase;
+  final UpdateProcedure630cUseCase _updateProcedure630cUseCase;
+  final GetStaffDetailUseCase _getStaffDetailUseCase;
+  final DeclareInfoArgument argument;
+
+  DeclareInfo630cController(
+    this._addProcedure630cUseCase,
+    this._getDetailProcedure630cUseCase,
+    this._updateProcedure630cUseCase,
+    this._getStaffDetailUseCase, {
+    required this.argument,
+  });
+
   /// id 630c dùng khi update
   String? id;
 
@@ -107,19 +120,10 @@ class DeclareInfo630cController extends BaseGetxController {
 
   final autoValidateMode = Rxn<AutovalidateMode>();
 
-  final DeclareInfoArgument argument = Get.arguments;
-
-  late final declareInfoRepository = DeclareInfoRepository(this);
-
   /// Trả về "true" khi "Hình thức kê khai" là "Điều chỉnh"
   bool get isAdjustDeclareForm {
     return declareForm.value?.value == declareMethodAdjustValue;
   }
-
-  late final _repository = DeclareInfo630cRepository(this);
-
-  final declarationPeriodController =
-      Get.findOrNull<DeclarationPeriodController>();
 
   /// Trả về "true" khi "Hình thức nhận" là "Chi trả qua ATM"
   bool get isATMpayment {
@@ -173,16 +177,17 @@ class DeclareInfo630cController extends BaseGetxController {
   }
 
   Future<void> _add630c() async {
-    try {
-      showLoadingOverlay();
-      final response = await _repository.addProcedure630c(_buildRequest());
-      if (response.isSuccess) {
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        await _addProcedure630cUseCase.execute(_buildRequest());
+
         // Refresh màn đợt kê khai sau khi thêm mới thành công
         eventBus.fire(const RefreshDeclarationPeriodEvent());
 
-        showSnackBar(
+        nav.showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
-          typeAction: AppConst.actionSuccess,
+          type: SnackBarType.success,
         );
         if (argument.isAddPeriodFromDeclarePeriod) {
           Get.offNamed(
@@ -197,192 +202,172 @@ class DeclareInfo630cController extends BaseGetxController {
             result: argument.declarationPeriodId,
           );
         }
-      } else {
-        showSnackBar(response.errorMessage);
-      }
-    } catch (e) {
-      logger.d(e);
-    } finally {
-      hideLoadingOverlay();
-    }
+      },
+    );
   }
 
-  DeclareInfo630cRequest _buildRequest() {
-    return DeclareInfo630cRequest(
+  DeclareInfo630c _buildRequest() {
+    return DeclareInfo630c(
       id: id,
-      kyKeKhaiId: argument.declarationPeriodId,
-      hoTen: fullNameTextCtrl.text.trim(),
-      maSoBhxh: bhxhTextCtrl.text.trim(),
-      soCmnd: cccdTextCtrl.text.trim(),
-      maNhanVien: staffCodeTextCtrl.text.trim(),
-      phatSinhDieuChinh: declareForm.value?.value ?? '',
-      maNhomHuong: benefitGroup.value?.value ?? '',
-      tuNgay: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
-      denNgay: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      tongSoNgay: int.tryParse(countDayTextCtrl.text),
-      tuNgayDonVi:
+      periodId: argument.declarationPeriodId,
+      fullName: fullNameTextCtrl.text.trim(),
+      bhxhNumber: bhxhTextCtrl.text.trim(),
+      cccdNumber: cccdTextCtrl.text.trim(),
+      employeeId: staffCodeTextCtrl.text.trim(),
+      adjustment: declareForm.value?.value ?? '',
+      groupCode: benefitGroup.value?.value ?? '',
+      fromDate: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
+      toDate: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
+      totalDays: int.tryParse(countDayTextCtrl.text),
+      unitFromDate:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
-      ngayTroLaiLamViec:
+      returnToWorkDate:
           convertStringToDateSafe(returnWorkDateCtrl.text, PATTERN_1),
-      ngayGiamDinh: convertStringToDateSafe(appraisalDateCtrl.text, PATTERN_1),
-      tyLeSuyGiam: int.tryParse(rateToDeclineCtrl.text),
-      soSeriCT: serialNumberCtrl.text.trim(),
-      dotBoSung: supplementalPeriodCtrl.text.trim(),
-      maHoSo: fileCodeTextCtrl.text.trim(),
-      ghiChu: noteTextCtrl.text.trim(),
-      hinhThucNhan: receiveForm.value?.value ?? '',
-      soTaiKhoan: bankNumberCtrl.text.trim(),
-      tenChuTaiKhoan: accountHolderNameCtrl.text.trim(),
-      maNganHang: selectedBank.value?.code,
-      dotDaGiaiQuyet: resolvedPeriodCtrl.text.trim(),
-      tuNgayDuyetTruoc:
+      appraisalDate: convertStringToDateSafe(appraisalDateCtrl.text, PATTERN_1),
+      rateToDecline: int.tryParse(rateToDeclineCtrl.text),
+      seriNumber: serialNumberCtrl.text.trim(),
+      extraBatch: supplementalPeriodCtrl.text.trim(),
+      dossierId: fileCodeTextCtrl.text.trim(),
+      note: noteTextCtrl.text.trim(),
+      receiveType: receiveForm.value?.value ?? '',
+      bankAccount: bankNumberCtrl.text.trim(),
+      accountName: accountHolderNameCtrl.text.trim(),
+      bank: selectedBank.value,
+      resolvedBatch: resolvedPeriodCtrl.text.trim(),
+      prevApproveDate:
           convertStringToDateSafe(resolvedDateCtrl.text, PATTERN_1),
-      lyDoDieuChinh: adjustReasonCtrl.text.trim(),
+      adjustReason: adjustReasonCtrl.text.trim(),
     );
   }
 
   Future<void> _get630cDetail() async {
-    final staffId = argument.staffId;
-    if (staffId == null) {
-      return;
-    }
-    try {
-      showLoadingOverlay();
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        final staffId = argument.staffId;
+        if (staffId == null) {
+          return;
+        }
+        final response = await _getDetailProcedure630cUseCase.execute(staffId);
 
-      final response = await _repository.getDetail630c(id: staffId);
-      final infoDetail = response.result;
-      if (response.isSuccess && infoDetail != null) {
-        mapFrom630cDetail(infoDetail);
-      } else {
-        showSnackBar(response.errorMessage);
-      }
-    } catch (e) {
-      logger.d(e);
-    } finally {
-      hideLoadingOverlay();
-    }
+        mapFrom630cDetail(response);
+      },
+    );
   }
 
-  void mapFrom630cDetail(DeclareInfo630cResponse detail) {
+  void mapFrom630cDetail(DeclareInfo630c detail) {
     id = detail.id;
     // Họ và tên
-    fullNameTextCtrl.text = detail.hoTen.trim();
+    fullNameTextCtrl.text = detail.fullName.trim();
 
     // Mã số BHXH
-    bhxhTextCtrl.text = detail.maSoBhxh.trim();
+    bhxhTextCtrl.text = detail.bhxhNumber.trim();
 
     // Số CCCD
-    if (detail.soCmnd != null) {
-      cccdTextCtrl.text = detail.soCmnd!.trim();
+    if (detail.cccdNumber != null) {
+      cccdTextCtrl.text = detail.cccdNumber!.trim();
     }
 
     // Mã nhân viên
-    if (detail.maNhanVien != null) {
-      staffCodeTextCtrl.text = detail.maNhanVien!.trim();
+    if (detail.employeeId != null) {
+      staffCodeTextCtrl.text = detail.employeeId!.trim();
     }
 
     // Hìnhh thức kê khai
-    declareForm.value = AppData.instance.declareForm[detail.phatSinhDieuChinh];
+    declareForm.value = AppData.instance.declareForm[detail.adjustment];
 
     // Mã nhóm hưởng
     benefitGroup.value = AppData.instance.benefitGroup630c.firstWhereOrNull(
-      (item) => item.value == detail.maNhomHuong,
+      (item) => item.value == detail.groupCode,
     );
 
     // Từ ngày
-    fromDateCtrl.text = convertDateToStringSafe(detail.tuNgay, PATTERN_1) ?? '';
+    fromDateCtrl.text =
+        convertDateToStringSafe(detail.fromDate, PATTERN_1) ?? '';
 
     // Đến ngày
-    toDateCtrl.text = convertDateToStringSafe(detail.denNgay, PATTERN_1) ?? '';
+    toDateCtrl.text = convertDateToStringSafe(detail.toDate, PATTERN_1) ?? '';
 
     // Tổng số ngày
-    countDayTextCtrl.text = detail.tongSoNgay.toString();
+    countDayTextCtrl.text = detail.totalDays.toString();
 
     // Từ ngày đơn vị
     fromDateUnitTextCtrl.text =
-        convertDateToStringSafe(detail.tuNgayDonVi, PATTERN_1) ?? '';
+        convertDateToStringSafe(detail.unitFromDate, PATTERN_1) ?? '';
 
     // Ngày trở lại làm việc
     returnWorkDateCtrl.text =
-        convertDateToStringSafe(detail.ngayTroLaiLamViec, PATTERN_1) ?? '';
+        convertDateToStringSafe(detail.returnToWorkDate, PATTERN_1) ?? '';
 
     // Ngày giám định
     appraisalDateCtrl.text =
-        convertDateToStringSafe(detail.ngayGiamDinh, PATTERN_1) ?? '';
+        convertDateToStringSafe(detail.appraisalDate, PATTERN_1) ?? '';
 
     // Tỷ lệ suy giảm
-    if (detail.tyLeSuyGiam != null) {
-      rateToDeclineCtrl.text = detail.tyLeSuyGiam.toString();
+    if (detail.rateToDecline != null) {
+      rateToDeclineCtrl.text = detail.rateToDecline.toString();
     }
     // Số serial
-    serialNumberCtrl.text = detail.soSeriCT?.trim() ?? '';
+    serialNumberCtrl.text = detail.seriNumber?.trim() ?? '';
 
     // Đợt bổ sung
-    supplementalPeriodCtrl.text = detail.dotBoSung?.trim() ?? '';
+    supplementalPeriodCtrl.text = detail.extraBatch?.trim() ?? '';
 
     // Mã hồ sơ
-    fileCodeTextCtrl.text = detail.maHoSo?.trim() ?? '';
+    fileCodeTextCtrl.text = detail.dossierId.trim();
 
     // Ghi chú
-    noteTextCtrl.text = detail.ghiChu?.trim() ?? '';
+    noteTextCtrl.text = detail.note?.trim() ?? '';
 
     // Hình thức nhận
-    receiveForm.value = AppData.instance.receiveForm[detail.hinhThucNhan];
+    receiveForm.value = AppData.instance.receiveForm[detail.receiveType];
 
     // Số tài khoản ngân hàng
-    bankNumberCtrl.text = detail.soTaiKhoan?.trim() ?? '';
+    bankNumberCtrl.text = detail.bankAccount?.trim() ?? '';
 
     // Tên chủ tài khoản
-    accountHolderNameCtrl.text = detail.tenChuTaiKhoan?.trim() ?? '';
+    accountHolderNameCtrl.text = detail.accountName?.trim() ?? '';
 
     // Ngân hàng
     selectedBank.value = AppData.instance.bank.firstWhereOrNull(
-      (item) => item == detail.nganHang,
+      (item) => item == detail.bank,
     );
 
     // Đợt đã giải quyết
-    resolvedPeriodCtrl.text = detail.dotDaGiaiQuyet?.trim() ?? '';
+    resolvedPeriodCtrl.text = detail.resolvedBatch?.trim() ?? '';
 
     // Ngày đã giải quyết
     resolvedDateCtrl.text =
-        convertDateToStringSafe(detail.tuNgayDuyetTruoc, PATTERN_1) ?? '';
+        convertDateToStringSafe(detail.prevApproveDate, PATTERN_1) ?? '';
 
     // Lý do điều chỉnh
-    adjustReasonCtrl.text = detail.lyDoDieuChinh?.trim() ?? '';
+    adjustReasonCtrl.text = detail.adjustReason?.trim() ?? '';
   }
 
   Future<void> _update630c() async {
-    try {
-      // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
-      // => Chặn việc cập nhật
-      if (id == null) {
-        showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
-        return;
-      }
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        // Cập nhật cần có id của tờ khai, nhưng nếu get detail lỗi thì id sẽ là null
+        // => Chặn việc cập nhật
+        if (id == null) {
+          nav.showSnackBar("Có lỗi xảy ra, không thể cập nhật thông tin");
+          return;
+        }
 
-      showLoadingOverlay();
+        await _updateProcedure630cUseCase.execute(_buildRequest());
 
-      final response = await _repository.update630c(_buildRequest());
-
-      if (response.isSuccess) {
-        // Refresh màn đợt kê khai sau khi cập nhật thành công
         eventBus.fire(const RefreshDeclarationPeriodEvent());
 
-        showSnackBar(
+        nav.showSnackBar(
           LocaleKeys.declareInfo_saveDataSuccess.tr,
-          typeAction: AppConst.actionSuccess,
+          type: SnackBarType.success,
         );
-        Get.back(
+        nav.back(
           result: argument.declarationPeriodId,
         );
-      } else {
-        showSnackBar(response.errorMessage);
-      }
-    } catch (e) {
-      logger.e(e);
-    } finally {
-      hideLoadingOverlay();
-    }
+      },
+    );
   }
 
   bool get isRateToDecline => declineValid.contains(benefitGroup.value?.value);
@@ -432,31 +417,24 @@ class DeclareInfo630cController extends BaseGetxController {
   Future<void> _getDetailStaff({
     required String staffId,
   }) async {
-    try {
-      showLoadingOverlay();
-      final response = await declareInfoRepository.getDetailStaff(id: staffId);
-      final staff = response.result;
-      if (response.isSuccess && staff != null) {
-        mapFromStaffDetail(staff);
-      } else {
-        showSnackBar(response.errorMessage);
-      }
-    } catch (e) {
-      logger.e(e);
-    } finally {
-      hideLoadingOverlay();
-    }
+    return buildState(
+      showLoadingOverlay: true,
+      action: () async {
+        final response = await _getStaffDetailUseCase.execute(staffId);
+        mapFromStaffDetail(response);
+      },
+    );
   }
 
-  void mapFromStaffDetail(StaffDetailResponse staff) {
+  void mapFromStaffDetail(SelectedStaffDetail staff) {
     // Với logic chọn nhân viên thì sẽ ghi đè dữ liệu hiện tại
     selectedStaffId = staff.id;
 
-    fullNameTextCtrl.text = staff.hoTen?.trim() ?? '';
+    fullNameTextCtrl.text = staff.fullName?.trim() ?? '';
 
-    bhxhTextCtrl.text = staff.maSoBHXH?.trim() ?? '';
+    bhxhTextCtrl.text = staff.bhxhNumber?.trim() ?? '';
 
-    cccdTextCtrl.text = staff.soCCCD?.trim() ?? '';
+    cccdTextCtrl.text = staff.cccdNumber?.trim() ?? '';
   }
 
   void onChangeDeclareMethod(Category? method) {

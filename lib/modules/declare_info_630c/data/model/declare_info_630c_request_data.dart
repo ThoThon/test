@@ -1,4 +1,4 @@
-class DeclareInfo630cRequest {
+class DeclareInfo630cRequestData {
   final String? id;
   final String? kyKeKhaiId;
   final String? hoTen;
@@ -7,12 +7,12 @@ class DeclareInfo630cRequest {
   final String? maNhanVien;
   final String? phatSinhDieuChinh;
   final String? maNhomHuong;
-  final DateTime? tuNgay;
-  final DateTime? denNgay;
+  final String? tuNgay;
+  final String? denNgay;
   final int? tongSoNgay;
-  final DateTime? tuNgayDonVi;
-  final DateTime? ngayTroLaiLamViec;
-  final DateTime? ngayGiamDinh;
+  final String? tuNgayDonVi;
+  final String? ngayTroLaiLamViec;
+  final String? ngayGiamDinh;
   final int? tyLeSuyGiam;
   final String? soSeriCT;
   final String? dotBoSung;
@@ -23,10 +23,10 @@ class DeclareInfo630cRequest {
   final String? tenChuTaiKhoan;
   final String? maNganHang;
   final String? dotDaGiaiQuyet;
-  final DateTime? tuNgayDuyetTruoc;
+  final String? tuNgayDuyetTruoc;
   final String? lyDoDieuChinh;
 
-  DeclareInfo630cRequest({
+  DeclareInfo630cRequestData({
     this.id,
     this.kyKeKhaiId,
     this.hoTen,
@@ -65,12 +65,12 @@ class DeclareInfo630cRequest {
       'maNhanVien': maNhanVien,
       'phatSinh_DieuChinh': phatSinhDieuChinh,
       'maNhomHuong': maNhomHuong,
-      'tuNgay': tuNgay?.toIso8601String(),
-      'denNgay': denNgay?.toIso8601String(),
+      'tuNgay': tuNgay,
+      'denNgay': denNgay,
       'tongSoNgay': tongSoNgay,
-      'tuNgayDonVi': tuNgayDonVi?.toIso8601String(),
-      'ngayTroLaiLamViec': ngayTroLaiLamViec?.toIso8601String(),
-      'ngayGiamDinh': ngayGiamDinh?.toIso8601String(),
+      'tuNgayDonVi': tuNgayDonVi,
+      'ngayTroLaiLamViec': ngayTroLaiLamViec,
+      'ngayGiamDinh': ngayGiamDinh,
       'tyLeSuyGiam': tyLeSuyGiam,
       'soSeriCT': soSeriCT,
       'dotBoSung': dotBoSung,
@@ -81,7 +81,7 @@ class DeclareInfo630cRequest {
       'tenChuTaiKhoan': tenChuTaiKhoan,
       'maNganHang': maNganHang,
       'dotDaGiaiQuyet': dotDaGiaiQuyet,
-      'tuNgayDuyetTruoc': tuNgayDuyetTruoc?.toIso8601String(),
+      'tuNgayDuyetTruoc': tuNgayDuyetTruoc,
       'lyDoDieuChinh': lyDoDieuChinh,
     };
   }
