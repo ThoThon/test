@@ -874,6 +874,7 @@ class LocaleKeys {
   static const declareInfo_sickHsbList = 'declareInfo_sickHsbList';
   static const declareInfo_d02LaborList = 'declareInfo_d02LaborList';
   static const declareInfo_d01infoTable = 'declareInfo_d01infoTable';
+  static const declareInfo_infoTable = 'declareInfo_infoTable';
   static const declareInfo_participationDeclaration =
       'declareInfo_participationDeclaration';
   static const declareInfo_laborList = 'declareInfo_laborList';
@@ -2078,6 +2079,7 @@ class Locales {
     'declareInfo_d02LaborList':
         'Danh sách lao động tham gia BHXH - (Mẫu D02-LT)',
     'declareInfo_d01infoTable': 'Bảng kê thông tin (Mẫu D01-TS)',
+    'declareInfo_infoTable': 'Bảng kê thông tin',
     'declareInfo_participationDeclaration': 'Tờ khai tham gia',
     'declareInfo_laborList': 'Danh sách lao động',
     'declareInfo_tk1Declaration':
