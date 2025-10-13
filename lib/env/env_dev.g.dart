@@ -10,5 +10,5 @@ part of 'env_dev.dart';
 // ignore_for_file: type=lint
 // generated_from: lib/env/.env.dev
 final class _EnvDev {
-  static const String baseUrl = 'https://vbhxh1.easyhrm.vn/dev2-api-mobile';
+  static const String baseUrl = 'https://vbhxh1.easyhrm.vn/api-mobile';
 }
