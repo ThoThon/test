@@ -34,7 +34,7 @@ class DeclareInfo630bRequestData {
   final String? denNgay;
 
   /// Tổng số ngày
-  final int? tongSoNgay;
+  final double? tongSoNgay;
 
   /// Từ ngày đơn vị
   final String? tuNgayDonVi;

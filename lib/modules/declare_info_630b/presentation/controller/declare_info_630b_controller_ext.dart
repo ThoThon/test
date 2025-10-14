@@ -59,7 +59,9 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
       groupCodeLv2: benefitGroupLv2.value?.maNhomHuongC2 ?? '',
       fromDate: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       toDate: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      totalDays: int.tryParse(countDayTextCtrl.text),
+      totalDays: CurrencyUtils.formatNumberCurrency(
+        countDayTextCtrl.text,
+      ),
       unitFromDate:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
       unitToDate: convertStringToDateSafe(toDateUnitTextCtrl.text, PATTERN_1),
@@ -318,8 +320,9 @@ extension DeclareInfo630bControllerExt on DeclareInfo630bController {
     }
 
     // Mã nhân viên
-    staffCodeTextCtrl.text = detail.employeeId!.trim();
-
+    if (detail.employeeId != null) {
+      staffCodeTextCtrl.text = detail.employeeId!.trim();
+    }
     // Hình thức kê khai
     declareForm.value = AppData.instance.declareForm[detail.adjustment];
 
