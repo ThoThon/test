@@ -34,10 +34,13 @@ class DeclareInfo630c implements Entity {
   final DateTime? toDate;
 
   /// Tổng số ngày
-  final int? totalDays;
+  final double? totalDays;
 
   /// Từ ngày đơn vị
   final DateTime? unitFromDate;
+
+  /// Đến ngày đơn vị
+  final DateTime? unitToDate;
 
   /// Ngày trở lại làm việc
   final DateTime? returnToWorkDate;
@@ -94,6 +97,7 @@ class DeclareInfo630c implements Entity {
     this.toDate,
     this.totalDays,
     this.unitFromDate,
+    this.unitToDate,
     this.returnToWorkDate,
     this.appraisalDate,
     this.rateToDecline,

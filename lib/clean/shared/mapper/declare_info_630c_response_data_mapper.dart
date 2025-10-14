@@ -25,6 +25,7 @@ class DeclareInfo630cResponseDataMapper
       toDate: DateTime.tryParse(data?.denNgay ?? ''),
       totalDays: data?.tongSoNgay,
       unitFromDate: DateTime.tryParse(data?.tuNgayDonVi ?? ''),
+      unitToDate: DateTime.tryParse(data?.denNgayDonVi ?? ''),
       seriNumber: data?.soSeriCT,
       appraisalDate: DateTime.tryParse(data?.ngayGiamDinh ?? ''),
       returnToWorkDate: DateTime.tryParse(data?.ngayTroLaiLamViec ?? ''),

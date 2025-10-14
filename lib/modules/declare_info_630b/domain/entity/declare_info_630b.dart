@@ -38,10 +38,13 @@ class DeclareInfo630b implements Entity {
   final DateTime? toDate;
 
   /// Tổng số ngày
-  final int? totalDays;
+  final double? totalDays;
 
   /// Từ ngày đơn vị
   final DateTime? unitFromDate;
+
+  /// Đến ngày đơn vị
+  final DateTime? unitToDate;
 
   /// Ngày nghỉ hàng tuần
   final String? dayOff;
@@ -162,6 +165,7 @@ class DeclareInfo630b implements Entity {
     this.toDate,
     this.totalDays,
     this.unitFromDate,
+    this.unitToDate,
     this.dayOff,
     this.seriNumber,
     this.childDob,

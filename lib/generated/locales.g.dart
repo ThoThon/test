@@ -693,6 +693,12 @@ class LocaleKeys {
   static const declareInfo_fromDateUnitInvalid =
       'declareInfo_fromDateUnitInvalid';
   static const declareInfo_fromDateUnitEmpty = 'declareInfo_fromDateUnitEmpty';
+  static const declareInfo_fromDateUnitLimit = 'declareInfo_fromDateUnitLimit';
+  static const declareInfo_toDateUnit = 'declareInfo_toDateUnit';
+  static const declareInfo_toDateUnitInvalid = 'declareInfo_toDateUnitInvalid';
+  static const declareInfo_toDateUnitLimit = 'declareInfo_toDateUnitLimit';
+  static const declareInfo_toDateUnitCannotEmpty =
+      'declareInfo_toDateUnitCannotEmpty';
   static const declareInfo_weeklyDayOff = 'declareInfo_weeklyDayOff';
   static const declareInfo_weeklyDayOffHint = 'declareInfo_weeklyDayOffHint';
   static const declareInfo_hospitalLine = 'declareInfo_hospitalLine';
@@ -1920,12 +1926,19 @@ class Locales {
     'declareInfo_bhytCardCodeChildHint': 'Nhập mã thẻ BHYT của con',
     'declareInfo_bhytCardCodeEmpty': 'Mã thẻ BHYT của con không được bỏ trống',
     'declareInfo_countDay': 'Tổng số ngày',
-    'declareInfo_countDayInvalid': 'Tổng số ngày không hợp lệ',
-    'declareInfo_countDayHint': 'Nhập số ngày',
+    'declareInfo_countDayInvalid': 'Tổng số ngày nhập không hợp lệ',
+    'declareInfo_countDayHint': 'Nhập tổng số ngày (VD: 10 hoặc 10,5)',
     'declareInfo_countDayEmpty': 'Tổng số ngày không được bỏ trống',
     'declareInfo_fromDateUnit': 'Từ ngày đơn vị',
     'declareInfo_fromDateUnitInvalid': 'Từ ngày đơn vị không hợp lệ',
     'declareInfo_fromDateUnitEmpty': 'Từ ngày đơn vị không được bỏ trống',
+    'declareInfo_fromDateUnitLimit':
+        'Từ ngày đơn vị không được lớn hơn Đến ngày đơn vị',
+    'declareInfo_toDateUnit': 'Đến ngày đơn vị',
+    'declareInfo_toDateUnitInvalid': 'Đến ngày đơn vị không hợp lệ',
+    'declareInfo_toDateUnitLimit':
+        'Đến ngày đơn vị không được nhỏ hơn Từ ngày đơn vị',
+    'declareInfo_toDateUnitCannotEmpty': 'Đến ngày đơn vị không được bỏ trống',
     'declareInfo_weeklyDayOff': 'Nghỉ hàng tuần',
     'declareInfo_weeklyDayOffHint': 'Chọn ngày nghỉ hàng tuần',
     'declareInfo_hospitalLine': 'Tuyến bệnh viện',

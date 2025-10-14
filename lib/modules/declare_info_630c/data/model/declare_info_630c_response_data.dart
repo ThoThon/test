@@ -11,8 +11,9 @@ class DeclareInfo630cResponseData {
   final String? maNhomHuong;
   final String? tuNgay;
   final String? denNgay;
-  final int? tongSoNgay;
+  final double? tongSoNgay;
   final String? tuNgayDonVi;
+  final String? denNgayDonVi;
   final String? ngayTroLaiLamViec;
   final String? ngayGiamDinh;
   final int? tyLeSuyGiam;
@@ -41,6 +42,7 @@ class DeclareInfo630cResponseData {
     this.denNgay,
     this.tongSoNgay,
     this.tuNgayDonVi,
+    this.denNgayDonVi,
     this.ngayTroLaiLamViec,
     this.ngayGiamDinh,
     this.tyLeSuyGiam,
@@ -71,6 +73,7 @@ class DeclareInfo630cResponseData {
       denNgay: json['denNgay'],
       tongSoNgay: json['tongSoNgay'],
       tuNgayDonVi: json['tuNgayDonVi'],
+      denNgayDonVi: json['denNgayDonVi'],
       ngayTroLaiLamViec: json['ngayTroLaiLamViec'],
       ngayGiamDinh: json['ngayGiamDinh'],
       tyLeSuyGiam: json['tyLeSuyGiam'],

@@ -19,6 +19,7 @@ class DeclareInfo630cRequestDataMapper
       denNgay: entity.toDate?.toIso8601String(),
       tongSoNgay: entity.totalDays,
       tuNgayDonVi: entity.unitFromDate?.toIso8601String(),
+      denNgayDonVi: entity.unitToDate?.toIso8601String(),
       soSeriCT: entity.seriNumber,
       ngayTroLaiLamViec: entity.returnToWorkDate?.toIso8601String(),
       ngayGiamDinh: entity.appraisalDate?.toIso8601String(),

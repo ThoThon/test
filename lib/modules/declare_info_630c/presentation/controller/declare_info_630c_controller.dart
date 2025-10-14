@@ -64,11 +64,14 @@ class DeclareInfo630cController extends BaseGetClController {
   /// Đến ngày *
   final fromDateCtrl = TextEditingController();
 
-  /// Tổng số ngày *
-  final countDayTextCtrl = TextEditingController();
-
   /// Từ ngày đơn vị *
   final fromDateUnitTextCtrl = TextEditingController();
+
+  /// Đến ngày đơn vị *
+  final toDateUnitTextCtrl = TextEditingController();
+
+  /// Tổng số ngày *
+  final countDayTextCtrl = TextEditingController();
 
   /// Ngày trở lại làm việc *
   final returnWorkDateCtrl = TextEditingController();
@@ -146,6 +149,7 @@ class DeclareInfo630cController extends BaseGetClController {
     toDateCtrl.dispose();
     countDayTextCtrl.dispose();
     fromDateUnitTextCtrl.dispose();
+    toDateUnitTextCtrl.dispose();
     returnWorkDateCtrl.dispose();
     appraisalDateCtrl.dispose();
     rateToDeclineCtrl.dispose();
@@ -218,9 +222,12 @@ class DeclareInfo630cController extends BaseGetClController {
       groupCode: benefitGroup.value?.value ?? '',
       fromDate: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       toDate: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      totalDays: int.tryParse(countDayTextCtrl.text),
+      totalDays: CurrencyUtils.formatNumberCurrency(
+        countDayTextCtrl.text,
+      ),
       unitFromDate:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
+      unitToDate: convertStringToDateSafe(toDateUnitTextCtrl.text, PATTERN_1),
       returnToWorkDate:
           convertStringToDateSafe(returnWorkDateCtrl.text, PATTERN_1),
       appraisalDate: convertStringToDateSafe(appraisalDateCtrl.text, PATTERN_1),
@@ -288,12 +295,19 @@ class DeclareInfo630cController extends BaseGetClController {
     // Đến ngày
     toDateCtrl.text = convertDateToStringSafe(detail.toDate, PATTERN_1) ?? '';
 
-    // Tổng số ngày
-    countDayTextCtrl.text = detail.totalDays.toString();
-
     // Từ ngày đơn vị
     fromDateUnitTextCtrl.text =
         convertDateToStringSafe(detail.unitFromDate, PATTERN_1) ?? '';
+
+    // Đến ngày đơn vị
+    toDateUnitTextCtrl.text =
+        convertDateToStringSafe(detail.unitToDate, PATTERN_1) ?? '';
+
+    // Tổng số ngày
+    if (detail.totalDays != null && detail.totalDays! > 0) {
+      countDayTextCtrl.text =
+          CurrencyUtils.formatCurrencyForeign(detail.totalDays);
+    }
 
     // Ngày trở lại làm việc
     returnWorkDateCtrl.text =

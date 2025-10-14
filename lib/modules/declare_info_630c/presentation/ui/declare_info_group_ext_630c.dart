@@ -28,15 +28,19 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         ),
         sdsSBHeight12,
 
-        // "Tổng số ngày" và "Từ ngày đơn vị"
+        // "Từ ngày đơn vị" và "Đến ngày đơn vị"
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: _buildCountDay()),
-            sdsSBWidth12,
             Expanded(child: _buildFromDateUnit()),
+            sdsSBWidth12,
+            Expanded(child: _buildToDateUnit()),
           ],
         ),
+        sdsSBHeight12,
+
+        // Tổng số ngày
+        _buildCountDay(),
         sdsSBHeight12,
 
         // Ngày trở lại làm việc
@@ -281,12 +285,21 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
         if (trimmedValue.isEmpty) {
           return LocaleKeys.declareInfo_countDayEmpty.tr;
         }
-
-        // REF: BHW-3106
-        final number = int.tryParse(trimmedValue) ?? 0;
-        if (number == 0) {
+        // Không hợp lệ nếu bắt đầu hoặc kết thúc chuỗi là ","
+        if (trimmedValue.endsWith(',') || trimmedValue.startsWith(',')) {
           return LocaleKeys.declareInfo_countDayInvalid.tr;
         }
+        // REF: BHW-3106
+        final newText = CurrencyUtils.formatNumberCurrency(trimmedValue);
+        if (newText == 0) {
+          return LocaleKeys.declareInfo_countDayInvalid.tr;
+        }
+        // REF: VBHXHMOB-37
+        final fractional = ((newText * 10) % 10).round();
+        if (fractional != 0 && fractional != 5) {
+          return LocaleKeys.declareInfo_countDayInvalid.tr;
+        }
+
         return null;
       },
       builder: (fieldKey, validator) {
@@ -296,10 +309,9 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           isRequired: true,
           labelText: LocaleKeys.declareInfo_countDay.tr,
           controller: controller.countDayTextCtrl,
-          maxLengthInputForm: 3,
           hintText: LocaleKeys.declareInfo_countDayHint.tr,
-          inputFormatters: InputFormatterEnum.digitsOnly,
-          textInputType: TextInputType.number,
+          inputFormatters: InputFormatterEnum.countDay,
+          textInputType: const TextInputType.numberWithOptions(decimal: true),
         );
       },
     );
@@ -322,14 +334,23 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
           return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
         }
 
-        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
-        if (toDate == null) {
+        final fromDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (fromDate == null) {
           return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
         }
 
         // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
-        if (toDate.year <= 1900 || toDate.year >= 2100) {
+        if (fromDate.year <= 1900 || fromDate.year >= 2100) {
           return LocaleKeys.declareInfo_fromDateUnitInvalid.tr;
+        }
+
+        final toDate = convertStringToDateStrict(
+          controller.toDateUnitTextCtrl.text,
+          PATTERN_1,
+        );
+
+        if (toDate != null && fromDate.isAfter(toDate)) {
+          return LocaleKeys.declareInfo_fromDateUnitLimit.tr;
         }
 
         return null;
@@ -358,6 +379,74 @@ extension DeclareInfoGroupExt630c on DeclareInfo630cPage {
             );
             if (selectedDate != null) {
               controller.fromDateUnitTextCtrl.text =
+                  convertDateToString(selectedDate, PATTERN_1);
+            }
+          },
+        );
+      },
+    );
+  }
+
+  // Đến ngày đơn vị
+  Widget _buildToDateUnit() {
+    return FormFieldRegistrant<String>(
+      registrarId: '7635551a-1e46-40ca-845d-f7cd96261280',
+      validator: (value) {
+        final trimmedValue = value?.trim();
+
+        // Nếu bắt buộc và không nhập thì báo lỗi
+        if ((trimmedValue == null || trimmedValue.isEmpty)) {
+          return null;
+        }
+
+        // Kiểm tra độ dài chuỗi (MM/yyyy = 7 ký tự)
+        if (trimmedValue.length < 7) {
+          return LocaleKeys.declareInfo_toDateUnitInvalid.tr;
+        }
+
+        final toDate = convertStringToDateStrict(trimmedValue, PATTERN_1);
+        if (toDate == null) {
+          return LocaleKeys.declareInfo_toDateUnitInvalid.tr;
+        }
+
+        // date phải trong khoảng từ 1900 đến 2100 thì mới tạo được xml
+        if (toDate.year <= 1900 || toDate.year >= 2100) {
+          return LocaleKeys.declareInfo_toDateUnitInvalid.tr;
+        }
+        final fromDate = convertStringToDateStrict(
+          controller.fromDateUnitTextCtrl.text,
+          PATTERN_1,
+        );
+
+        if (fromDate != null && toDate.isBefore(fromDate)) {
+          return LocaleKeys.declareInfo_toDateUnitLimit.tr;
+        }
+        return null;
+      },
+      builder: (fieldKey, validator) {
+        return CardInputSelectDateWithLabel(
+          fieldKey: fieldKey,
+          validator: validator,
+          labelText: LocaleKeys.declareInfo_toDateUnit.tr,
+          inputFormatters: InputFormatterEnum.dateFullBirthDay,
+          controller: controller.toDateUnitTextCtrl,
+          hintText: PATTERN_1,
+          isRequired: false,
+          onSelectDate: () async {
+            KeyBoard.hide();
+            final selectedDate = await DatePickerUtils.showCalendarPicker(
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: AppDimens.padding32),
+              title: LocaleKeys.dialog_selectDayMonthYear.tr,
+              dateFormat: PATTERN_1,
+              dateTimeInit: convertStringToDateStrict(
+                    controller.toDateUnitTextCtrl.text,
+                    PATTERN_1,
+                  ) ??
+                  DateTime.now(),
+            );
+            if (selectedDate != null) {
+              controller.toDateUnitTextCtrl.text =
                   convertDateToString(selectedDate, PATTERN_1);
             }
           },

@@ -39,10 +39,13 @@ class DeclareInfo630bResponseData {
   final String? denNgay;
 
   /// Tổng số ngày
-  final int? tongSoNgay;
+  final double? tongSoNgay;
 
   /// Từ ngày đơn vị
   final String? tuNgayDonVi;
+
+  /// Đến ngày đơn vị
+  final String? denNgayDonVi;
 
   /// Ngày nghỉ hàng tuần
   final String? ngayNghiTuan;
@@ -163,6 +166,7 @@ class DeclareInfo630bResponseData {
     this.denNgay,
     this.tongSoNgay,
     this.tuNgayDonVi,
+    this.denNgayDonVi,
     this.ngayNghiTuan,
     this.soSeriCT,
     this.ngaySinhCon,
@@ -223,6 +227,7 @@ class DeclareInfo630bResponseData {
       denNgay: json['denNgay'],
       tongSoNgay: json['tongSoNgay'],
       tuNgayDonVi: json['tuNgayDonVi'],
+      denNgayDonVi: json['denNgayDonVi'],
       ngayNghiTuan: json['ngayNghiTuan'],
       soSeriCT: json['soSeriCT'],
       ngaySinhCon: json['ngaySinhCon'],

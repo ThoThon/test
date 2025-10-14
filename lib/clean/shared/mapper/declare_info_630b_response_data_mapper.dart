@@ -25,6 +25,7 @@ class DeclareInfo630bResponseDataMapper
       toDate: DateTime.tryParse(data?.denNgay ?? ''),
       totalDays: data?.tongSoNgay,
       unitFromDate: DateTime.tryParse(data?.tuNgayDonVi ?? ''),
+      unitToDate: DateTime.tryParse(data?.denNgayDonVi ?? ''),
       dayOff: data?.ngayNghiTuan ?? '',
       seriNumber: data?.soSeriCT,
       antenatalCondition: data?.dieuKienKhamThai,

@@ -34,10 +34,13 @@ class DeclareInfo630bRequestData {
   final String? denNgay;
 
   /// Tổng số ngày
-  final int? tongSoNgay;
+  final double? tongSoNgay;
 
   /// Từ ngày đơn vị
   final String? tuNgayDonVi;
+
+  /// Đến ngày đơn vị
+  final String? denNgayDonVi;
 
   /// Ngày nghỉ hàng tuần
   final String? ngayNghiTuan;
@@ -158,6 +161,7 @@ class DeclareInfo630bRequestData {
     this.denNgay,
     this.tongSoNgay,
     this.tuNgayDonVi,
+    this.denNgayDonVi,
     this.ngayNghiTuan,
     this.soSeriCT,
     this.dieuKienKhamThai,
@@ -209,6 +213,7 @@ class DeclareInfo630bRequestData {
         'denNgay': denNgay,
         'tongSoNgay': tongSoNgay,
         'tuNgayDonVi': tuNgayDonVi,
+        'denNgayDonVi': denNgayDonVi,
         'ngayNghiTuan': ngayNghiTuan,
         'soSeriCT': soSeriCT,
         'dieuKienKhamThai': dieuKienKhamThai,

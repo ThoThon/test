@@ -66,11 +66,14 @@ class DeclareInfo630bController extends BaseGetClController {
   /// Đến ngày *
   final toDateCtrl = TextEditingController();
 
-  /// Tổng số ngày *
-  final countDayTextCtrl = TextEditingController();
-
   /// Từ ngày đơn vị *
   final fromDateUnitTextCtrl = TextEditingController();
+
+  /// Đến ngày đơn vị *
+  final toDateUnitTextCtrl = TextEditingController();
+
+  /// Tổng số ngày *
+  final countDayTextCtrl = TextEditingController();
 
   /// Nghỉ hàng tuần
   final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
@@ -195,6 +198,7 @@ class DeclareInfo630bController extends BaseGetClController {
     toDateCtrl.dispose();
     countDayTextCtrl.dispose();
     fromDateUnitTextCtrl.dispose();
+    toDateUnitTextCtrl.dispose();
     serialNumberCtrl.dispose();
     pregnancyWeekCtrl.dispose();
     birthDayChildCtrl.dispose();

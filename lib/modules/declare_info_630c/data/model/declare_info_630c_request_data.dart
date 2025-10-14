@@ -9,8 +9,9 @@ class DeclareInfo630cRequestData {
   final String? maNhomHuong;
   final String? tuNgay;
   final String? denNgay;
-  final int? tongSoNgay;
+  final double? tongSoNgay;
   final String? tuNgayDonVi;
+  final String? denNgayDonVi;
   final String? ngayTroLaiLamViec;
   final String? ngayGiamDinh;
   final int? tyLeSuyGiam;
@@ -39,6 +40,7 @@ class DeclareInfo630cRequestData {
     this.denNgay,
     this.tongSoNgay,
     this.tuNgayDonVi,
+    this.denNgayDonVi,
     this.ngayTroLaiLamViec,
     this.ngayGiamDinh,
     this.tyLeSuyGiam,
@@ -69,6 +71,7 @@ class DeclareInfo630cRequestData {
       'denNgay': denNgay,
       'tongSoNgay': tongSoNgay,
       'tuNgayDonVi': tuNgayDonVi,
+      'denNgayDonVi': denNgayDonVi,
       'ngayTroLaiLamViec': ngayTroLaiLamViec,
       'ngayGiamDinh': ngayGiamDinh,
       'tyLeSuyGiam': tyLeSuyGiam,

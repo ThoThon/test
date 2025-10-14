@@ -73,11 +73,14 @@ class DeclareInfo630aController extends BaseGetClController {
   /// Đến ngày *
   final toDateCtrl = TextEditingController();
 
-  /// Tổng số ngày *
-  final countDayTextCtrl = TextEditingController();
-
   /// Từ ngày đơn vị *
   final fromDateUnitTextCtrl = TextEditingController();
+
+  /// Đến ngày đơn vị *
+  final toDateUnitTextCtrl = TextEditingController();
+
+  /// Tổng số ngày *
+  final countDayTextCtrl = TextEditingController();
 
   /// Nghỉ hàng tuần
   final weeklyDayOffs = <WeeklyDayOffEnum>[].obs;
@@ -260,9 +263,12 @@ class DeclareInfo630aController extends BaseGetClController {
       childBhyt: bhytCardCodeChildCtrl.text.trim(),
       fromDate: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       toDate: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),
-      totalDays: int.tryParse(countDayTextCtrl.text) ?? 0,
+      totalDays: CurrencyUtils.formatNumberCurrency(
+        countDayTextCtrl.text,
+      ),
       unitFromDate:
           convertStringToDateSafe(fromDateUnitTextCtrl.text, PATTERN_1),
+      unitToDate: convertStringToDateSafe(toDateUnitTextCtrl.text, PATTERN_1),
       dayOff: weeklyDayOffString,
       hospitalLevel: selectHospitalLine.value?.value ?? '',
       chronicCode: selectDiseaseCode.value?.code ?? '',
@@ -357,11 +363,18 @@ class DeclareInfo630aController extends BaseGetClController {
     toDateCtrl.text = convertDateToStringSafe(detail.toDate, PATTERN_1) ?? '';
 
     // Total days
-    countDayTextCtrl.text = detail.totalDays.toString();
+    if (detail.totalDays != null && detail.totalDays! > 0) {
+      countDayTextCtrl.text =
+          CurrencyUtils.formatCurrencyForeign(detail.totalDays);
+    }
 
     // Unit from date
     fromDateUnitTextCtrl.text =
         convertDateToStringSafe(detail.unitFromDate, PATTERN_1) ?? '';
+
+    // Unit to date
+    toDateUnitTextCtrl.text =
+        convertDateToStringSafe(detail.unitToDate, PATTERN_1) ?? '';
 
     // Weekly day off
     final dayOff = detail.dayOff;
@@ -523,6 +536,7 @@ class DeclareInfo630aController extends BaseGetClController {
     toDateCtrl.dispose();
     countDayTextCtrl.dispose();
     fromDateUnitTextCtrl.dispose();
+    toDateUnitTextCtrl.dispose();
     diseaseNameTextCtrl.dispose();
     serialNumberCtrl.dispose();
     supplementalPeriodCtrl.dispose();
