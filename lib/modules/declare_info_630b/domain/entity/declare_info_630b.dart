@@ -38,7 +38,7 @@ class DeclareInfo630b implements Entity {
   final DateTime? toDate;
 
   /// Tổng số ngày
-  final int? totalDays;
+  final double? totalDays;
 
   /// Từ ngày đơn vị
   final DateTime? unitFromDate;
