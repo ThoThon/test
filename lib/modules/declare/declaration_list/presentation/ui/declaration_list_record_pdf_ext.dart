@@ -60,9 +60,9 @@ extension DeclarationListRecordPdfExt on DeclarationListPage {
         visible: recordPdfList?.hasD01 ?? false,
         title: LocaleKeys.declareInfo_d01infoTable.tr,
         onTap: () {
-          controller.getPreviewPdf(
-            previewDocumentType: PreviewDocumentTypeEnum.d01,
-            title: LocaleKeys.declareInfo_participationDeclaration.tr,
+          controller.getRecordPdf(
+            id: controller.argument.declarationHistoryRecordList?.d01Id,
+            title: LocaleKeys.declareInfo_infoTable.tr,
           );
         },
       ),

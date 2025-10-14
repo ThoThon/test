@@ -137,8 +137,6 @@ class DeclareInfo630aController extends BaseGetClController {
 
   final formKey = GlobalKey<FormState>();
 
-  // final DeclareInfoArgument argument = Get.arguments;
-
   final registeredKey = GlobalKey<FormRegistryWidgetState>();
 
   final scrollController = ScrollController();
@@ -261,7 +259,7 @@ class DeclareInfo630aController extends BaseGetClController {
       adjustment: declareForm.value?.value ?? '',
       groupCode: benefitGroup.value?.value ?? '',
       childDob: convertStringToDateSafe(birthDayChildCtrl.text, PATTERN_1),
-      childCount: int.tryParse(numberChildCtrl.text) ?? 0,
+      childCount: int.tryParse(numberChildCtrl.text),
       childBhyt: bhytCardCodeChildCtrl.text.trim(),
       fromDate: convertStringToDateSafe(fromDateCtrl.text, PATTERN_1),
       toDate: convertStringToDateSafe(toDateCtrl.text, PATTERN_1),

@@ -6,7 +6,9 @@ import 'package:v_bhxh/modules/declare_info_630a/domain/entity/declare_info_630a
 class DeclareInfo630aResponseDataMapper
     extends BaseDataMapper<DeclareInfo630aResponseData, DeclareInfo630a> {
   final BankDataMapper _bankDataMapper;
+
   DeclareInfo630aResponseDataMapper(this._bankDataMapper);
+
   @override
   DeclareInfo630a mapToEntity(DeclareInfo630aResponseData? data) {
     return DeclareInfo630a(

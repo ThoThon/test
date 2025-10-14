@@ -76,11 +76,11 @@ class LoginControllerCl extends BaseGetClController {
         // Nên phải delay một chút để đảm bảo token đã hợp lệ
         await Future.delayed(const Duration(milliseconds: 100));
 
-        await (
+        await Future.wait([
           _getAccountInfo(),
           _getD02Categories(),
           _get630Categories(),
-        ).wait;
+        ]);
 
         nav.offAllNamed(AppRoutesCl.home.path);
       },
