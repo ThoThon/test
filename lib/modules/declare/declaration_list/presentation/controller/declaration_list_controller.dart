@@ -73,7 +73,7 @@ class DeclarationListController extends BaseGetClController {
       cancelTitle: LocaleKeys.dialog_exit.tr,
       subtitle: LocaleKeys.dialog_sendFileToBHXH.tr,
       onConfirm: () {
-        nav.toNamed(
+        nav.offNamed(
           AppRoutesCl.history.path,
           arguments: HistoryArgument(
             selectedTab: HistoryTabEnum.file_declare,
